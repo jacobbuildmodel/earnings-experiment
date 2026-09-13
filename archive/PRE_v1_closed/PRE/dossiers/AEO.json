@@ -1,0 +1,38 @@
+{
+  "ticker": "AEO",
+  "version": "1.0.0",
+  "events": [
+    {
+      "event_date": "2026-09-09",
+      "logged_at": "2026-09-10T14:01:33.068064+00:00",
+      "sector": "RETAIL",
+      "forecast": {
+        "direction": "DOWN",
+        "conviction": "LOW",
+        "basis": "WEAK",
+        "regime": "SOFT/HIGH_MOVE",
+        "expected_move": 13.79
+      },
+      "trade_stance": "SHORT",
+      "idio_pct": -12.518,
+      "forecast_correct": true,
+      "failure_type": "A",
+      "deciding_variable": "Headline beat-and-raise was a one-time tariff refund. Q2 operating profit $211M vs $103M LY included a $161M NET IEEPA refund benefit, so underlying OI was ~$50M against a $45-50M guide - the top of the guide, not a beat. FY26 OI 'raised' $390-410M -> $540-550M, but the prior guide EXCLUDED refunds and the new one is 'inclusive of net tariff refund benefit': $545M - $161M = ~$384M vs a $400M midpoint, a ~4% CUT.",
+      "surprise": false,
+      "error_classes": [
+        "guide-changes-basis-and-the-raise-is-not-comparable"
+      ],
+      "lesson": "Reports and guides operating income on a basis that CHANGES between quarters. The May guide said in terms 'Guidance excludes any impact from IEEPA tariff refunds'; the September guide is 'inclusive of net tariff refund benefit'. Always strip the refund and restate both sides before calling a guide a raise or a cut."
+    }
+  ],
+  "rollup": {
+    "purged_events": 0,
+    "purged_correct": 0,
+    "purged_abs_gap_sum": 0.0,
+    "recurring_variables": {}
+  },
+  "standing_notes": [
+    "Guides FY operating income with an explicit tariff-refund INCLUSION/EXCLUSION clause that has already flipped once (excl. at Q1 FY26, incl. at Q2 FY26). The clause is in the press-release outlook table - read it before comparing any two AEO guides. A raise on a changed basis is not a raise."
+  ],
+  "last_updated": "2026-09-10T14:01:33.091361+00:00"
+}

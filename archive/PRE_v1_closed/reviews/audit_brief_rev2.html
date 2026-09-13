@@ -1,0 +1,596 @@
+<title>Does PRE Have Edge?</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --ground:#F6F8FA; --surface:#FFFFFF; --panel:#EEF2F6;
+    --ink:#131820; --muted:#59626F; --faint:#8A94A2;
+    --rule:#D9E0E8; --rule-strong:#B9C4D0;
+    --accent:#1C4E7A; --accent-soft:#E4EDF5;
+    --critical:#9E2B2B; --critical-soft:#F6E7E7;
+    --caution:#8A6410; --caution-soft:#F8F0DE;
+    --ok:#2E6B4F; --ok-soft:#E4F0EA;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0D1117; --surface:#141A22; --panel:#1A222C;
+      --ink:#E3E8EF; --muted:#98A3B2; --faint:#6B7787;
+      --rule:#242D38; --rule-strong:#36424F;
+      --accent:#6FA8D6; --accent-soft:#16283A;
+      --critical:#E0736F; --critical-soft:#2E1A1A;
+      --caution:#D6A550; --caution-soft:#2B2317;
+      --ok:#6FBF95; --ok-soft:#15271F;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0D1117; --surface:#141A22; --panel:#1A222C;
+    --ink:#E3E8EF; --muted:#98A3B2; --faint:#6B7787;
+    --rule:#242D38; --rule-strong:#36424F;
+    --accent:#6FA8D6; --accent-soft:#16283A;
+    --critical:#E0736F; --critical-soft:#2E1A1A;
+    --caution:#D6A550; --caution-soft:#2B2317;
+    --ok:#6FBF95; --ok-soft:#15271F;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground); color:var(--ink);
+    font-family:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+    font-size:16px; line-height:1.62; margin:0;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:56px 28px 96px}
+
+  /* ---- masthead ---- */
+  .mast{border-bottom:2px solid var(--ink); padding-bottom:20px; margin-bottom:8px}
+  .kicker{
+    font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:11px;
+    letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+    display:flex; flex-wrap:wrap; gap:14px; margin-bottom:14px;
+  }
+  h1{
+    font-family:"Newsreader",Georgia,serif; font-weight:500;
+    font-size:clamp(2.1rem,5vw,3.1rem); line-height:1.08; letter-spacing:-.015em;
+    margin:0 0 12px; text-wrap:balance;
+  }
+  .standfirst{
+    font-family:"Newsreader",Georgia,serif; font-size:1.22rem; line-height:1.5;
+    color:var(--muted); max-width:62ch; margin:0;
+  }
+  .meta{
+    display:flex; flex-wrap:wrap; gap:8px 28px; margin-top:22px;
+    font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--faint);
+  }
+  .meta b{color:var(--muted); font-weight:500}
+
+  /* ---- verdict strip ---- */
+  .verdict{
+    margin:32px 0 8px; border:1px solid var(--critical);
+    background:var(--critical-soft); border-radius:3px; padding:20px 22px;
+  }
+  .verdict h2{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--critical); margin:0 0 10px; font-weight:600;
+  }
+  .verdict p{margin:0; font-size:1.05rem; max-width:70ch}
+  .verdict p + p{margin-top:10px}
+
+  /* ---- sections ---- */
+  section{margin-top:52px; scroll-margin-top:20px}
+  .shead{display:flex; gap:16px; align-items:baseline; border-bottom:1px solid var(--rule-strong); padding-bottom:8px; margin-bottom:22px}
+  .snum{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600;
+    color:var(--accent); letter-spacing:.08em; flex:none; padding-top:4px;
+  }
+  h2.st{font-family:"Newsreader",Georgia,serif; font-weight:600; font-size:1.62rem; margin:0; letter-spacing:-.01em; text-wrap:balance}
+  h3{font-family:"IBM Plex Sans",sans-serif; font-size:.82rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:28px 0 10px}
+  p,li{max-width:70ch}
+  p{margin:0 0 14px}
+  ul,ol{padding-left:22px; margin:0 0 14px}
+  li{margin-bottom:9px}
+  a{color:var(--accent)}
+  code{font-family:"IBM Plex Mono",monospace; font-size:.875em; background:var(--panel); padding:1px 5px; border-radius:2px}
+  strong{font-weight:600}
+  em.q{font-style:italic; color:var(--muted)}
+
+  /* ---- data panel ---- */
+  .panel{
+    background:var(--surface); border:1px solid var(--rule);
+    border-left:3px solid var(--accent); border-radius:2px;
+    padding:18px 20px; margin:22px 0; overflow-x:auto;
+  }
+  .panel pre{
+    font-family:"IBM Plex Mono",monospace; font-size:13px; line-height:1.7;
+    margin:0; color:var(--ink); font-variant-numeric:tabular-nums;
+  }
+  .plabel{
+    font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--faint); margin-bottom:10px;
+  }
+
+  /* ---- tables ---- */
+  .tw{overflow-x:auto; margin:20px 0}
+  table{border-collapse:collapse; width:100%; font-size:14px; min-width:520px}
+  th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--rule); vertical-align:top}
+  th{
+    font-family:"IBM Plex Mono",monospace; font-size:10.5px; letter-spacing:.1em;
+    text-transform:uppercase; color:var(--faint); font-weight:500;
+    border-bottom:1px solid var(--rule-strong);
+  }
+  td.n{font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+
+  .pill{
+    display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:10.5px;
+    letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border-radius:2px;
+    font-weight:600; white-space:nowrap;
+  }
+  .p-crit{background:var(--critical-soft); color:var(--critical); border:1px solid var(--critical)}
+  .p-caut{background:var(--caution-soft); color:var(--caution); border:1px solid var(--caution)}
+  .p-ok{background:var(--ok-soft); color:var(--ok); border:1px solid var(--ok)}
+
+  /* ---- check list ---- */
+  .check{border-top:1px solid var(--rule); padding:18px 0 4px}
+  .check:first-of-type{border-top:none}
+  .ctop{display:flex; gap:12px; align-items:baseline; margin-bottom:6px; flex-wrap:wrap}
+  .cid{font-family:"IBM Plex Mono",monospace; font-size:12px; font-weight:600; color:var(--accent)}
+  .ctitle{font-weight:600; font-size:1.02rem}
+  .check p{margin:0 0 8px; color:var(--muted)}
+  .check p.lead{color:var(--ink)}
+
+  .revision{
+    margin:28px 0 8px; border:1px solid var(--caution);
+    background:var(--caution-soft); border-radius:3px; padding:20px 22px;
+  }
+  .revision h2{
+    font-family:"IBM Plex Mono",monospace; font-size:12px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--caution); margin:0 0 10px; font-weight:600;
+  }
+  .revision p{margin:0 0 10px; max-width:70ch}
+  .revision p:last-child{margin-bottom:0}
+  .revision table{margin:14px 0 4px}
+  .strike{text-decoration:line-through; color:var(--faint)}
+  .callout{
+    border:1px solid var(--rule-strong); border-radius:2px; background:var(--panel);
+    padding:16px 18px; margin:22px 0;
+  }
+  .callout p:last-child{margin-bottom:0}
+  .callout .plabel{color:var(--accent)}
+
+  figure{margin:26px 0}
+  figcaption{font-size:13px; color:var(--muted); margin-top:10px; max-width:70ch}
+  svg{display:block; width:100%; height:auto}
+
+  footer{margin-top:64px; padding-top:20px; border-top:2px solid var(--ink); font-size:13px; color:var(--muted)}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="kicker">
+    <span>Audit Brief</span><span>PRE Pre-Earnings Forecast Model</span><span>Prepared 2026-09-12</span>
+  </div>
+  <h1>Does PRE have edge?</h1>
+  <p class="standfirst">An external review is requested on one question. Everything below exists to let a third party answer it without trusting the party that built the model, graded it, and wrote its post-mortems.</p>
+  <div class="meta">
+    <span><b>Graded events</b> 27</span>
+    <span><b>Independent event-dates</b> 6</span>
+    <span><b>Trade layer</b> paused since 2026-08-09</span>
+    <span><b>Owner</b> Jacob Ong</span>
+    <span><b>Revision</b> 2 &middot; 2026-09-13, after external review</span>
+  </div>
+</header>
+
+<div class="verdict">
+  <h2>The finding that prompted this brief</h2>
+  <p>PRE's directional forecasts score <strong>51.9% (14/27)</strong>. Against the honest pre-specified null of 50%, that is <strong>p = 1.00</strong>. Mean idiosyncratic return is <strong>−0.85%</strong> when the model says UP and <strong>+1.02%</strong> when it says DOWN — a separation of <strong>−1.86pp</strong> at <strong>t = −0.50</strong>.</p>
+  <p><strong>After 27 graded events there is no evidence of directional skill.</strong> Not evidence of an inverted signal — evidence of nothing, in either direction.</p>
+  <p>And the deeper problem is not the sample size. <strong>The scoring stack was edited four times inside its own measurement window.</strong> The 51.9% is the blended in-sample score of a sequence of different models; out-of-sample n for the stack that exists today is <strong>5</strong>. See §04b — it is the argument that actually decides this, and it was absent from Revision 1.</p>
+</div>
+
+<div class="revision">
+  <h2>Revision 2 — what external review overturned</h2>
+  <p>Four independent reviews were commissioned. Three endorsed Revision 1's reasoning; one attacked it and was <strong>right on two of the three headline arguments</strong>. Both corrections have since been reproduced from source by the author. They are recorded here rather than silently edited away.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Revision 1 claimed</th><th>Status</th><th>What the test showed</th></tr></thead>
+    <tbody>
+      <tr>
+        <td class="strike">"The point estimate is backwards" — a −3.7pp edge against always-DOWN</td>
+        <td><span class="pill p-crit">Overturned</span></td>
+        <td>The model and always-DOWN issue <strong>identical predictions on 16 of 27 events.</strong> They differ only on the 11 UP calls, 5 right vs 6. McNemar exact <strong>p = 1.00</strong>. The whole "edge" is one event — and 55.6% was a benchmark chosen after seeing the data.</td>
+      </tr>
+      <tr>
+        <td class="strike">"The sample is six, not twenty-seven"</td>
+        <td><span class="pill p-crit">Overturned</span></td>
+        <td>That assumed same-night names are perfectly redundant (ICC = 1). Tested: Tarone/Pearson <strong>χ² = 4.92 on 5 df, dispersion 0.98</strong> — no block structure in <em>correctness</em>. Cluster bootstrap <strong>33–70%</strong> vs naive <strong>33–70%</strong>: identical. Returns share a tape; correctness does not, because the model's own calls vary within a night.</td>
+      </tr>
+      <tr>
+        <td>"~780 events needed"</td>
+        <td><span class="pill p-caut">Weakened</span></td>
+        <td>Arithmetically right for a 2pp effect on 10pp σ, but it prices only the binary-direction design. It is not a fact about earnings research — it is a fact about <em>this</em> measurement choice, and §06/C3 shows a continuous target dissolves it.</td>
+      </tr>
+    </tbody>
+  </table></div>
+  <p><strong>The reviewer's summary of the error is accurate and worth preserving verbatim in substance:</strong> the brief corrected an over-count with an under-count and called it rigour. Revision 1 committed, in §04, the same post-hoc benchmark selection it criticises elsewhere.</p>
+  <p><strong>The conclusion did not change.</strong> All four reviews independently reached the same verdict — retire the directional forecast — which means that verdict survived the collapse of two of the three arguments originally used to reach it. §04b is why.</p>
+</div>
+
+<!-- 1 -->
+<section>
+  <div class="shead"><span class="snum">01</span><h2 class="st">The single question, and the scope of the mandate</h2></div>
+
+  <p class="lead"><strong>Should this model continue to exist in its current form?</strong> Not <em class="q">is the method well-documented</em> — it is, exhaustively, and that may be part of the problem. The question is whether PRE measures anything, whether it <em class="q">can</em> measure anything on its current design, and whether its stated purpose is achievable.</p>
+
+  <p>Three sub-questions, in priority order:</p>
+  <ol>
+    <li><strong>Is there a detectable directional edge?</strong> If not, is the measurement design capable of detecting one within a useful horizon?</li>
+    <li><strong>Is the governance apparatus proportionate to the evidence?</strong> The system carries 497 test assertions, an error ledger with independence keys, a four-limb surprise gate, an Abstraction Test, and per-name dossiers — all governing a sample of 27.</li>
+    <li><strong>Is the purpose achievable?</strong> PRE's claimed edge is gap-capture: enter the last session before a print, exit the first open after. The owner is in Singapore; the US open is 21:30–22:30 SGT. The trade layer has been paused for over a month, so nothing has been executed.</li>
+  </ol>
+
+  <div class="callout">
+    <div class="plabel">Explicitly in scope</div>
+    <p>Recommending that the model be <strong>retired, or narrowed to something other than forecasting</strong>. The owner has stated he does not believe it is going anywhere on accuracy. That is a legitimate finding and the brief should not be read as a request to save the model.</p>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <div class="shead"><span class="snum">02</span><h2 class="st">What PRE is, in enough detail to audit it</h2></div>
+
+  <p>PRE makes a pre-registered, integrity-hashed directional call on a stock before an earnings print, then grades it on the <strong>first market open after the print</strong> — never the close, never pre-market. The graded variable is <strong>idiosyncratic open gap</strong>: the stock's open-to-prior-close move minus beta times the same move in a sector ETF.</p>
+
+  <p>It runs two layers deliberately split:</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Layer</th><th>Question</th><th>May abstain?</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Forecast</strong></td><td>What do I think happens?</td><td>Never</td><td>Live, 27 graded</td></tr>
+      <tr><td><strong>Trade</strong></td><td>Should money go on it?</td><td>Yes</td><td><span class="pill p-crit">Paused</span> since 2026-08-09</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>The forecast is a weighted sum of three components — <code>expectations</code> (0.55), <code>positioning</code> (0.35), <code>flow</code> (0.10) — mapped to a direction, a conviction label (HIGH/MEDIUM/LOW/COINFLIP) and a basis label (EVIDENCED/WEAK/COINFLIP). <code>expectations</code> is itself built from up to three legs:</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Leg</th><th>What it measures</th><th>Standalone evidence</th></tr></thead>
+    <tbody>
+      <tr><td><strong>REV</strong></td><td>Analyst estimate revisions</td><td>38% hit (n=8); 3/3 confirmed pointing <em>against</em> the realised gap</td></tr>
+      <tr><td><strong>GG</strong></td><td>Company's own guidance revision vs its own prior guidance</td><td>n=1</td></tr>
+      <tr><td><strong>VEL</strong></td><td>Forward-book (RPO) acceleration from SEC XBRL</td><td>n=2, and the two disagree</td></tr>
+    </tbody>
+  </table></div>
+
+  <p>Legs previously cut for category errors: <code>value</code>, <code>vrich</code>, and <code>SAT</code> in the directional term (SAT was found to be double-counted at 56–92% of every score). <strong>No leg in the current stack has demonstrated positive standalone edge.</strong> The <code>flow</code> component's own source comment states it "has never been validated at all."</p>
+
+  <h3>The blindness protocol</h3>
+  <p>This part is genuinely well-built and should be audited rather than assumed broken. The forecasting chat is forbidden from reading account files, holdings dicts, ratings, or any portfolio state; every registration writes <code>portfolio_aware: false</code> inside the hashed payload. A clock guard refuses registration after the 16:00 ET (AMC) / 09:30 ET (BMO) cutoff and stamps <code>post_cutoff</code> on any row logged late so it is excluded from scoring. All 27 graded rows are stamped <code>post_cutoff: false</code>.</p>
+</section>
+
+<!-- 3 -->
+<section>
+  <div class="shead"><span class="snum">03</span><h2 class="st">The record, against benchmarks it had never been measured against</h2></div>
+
+  <p>Until this session, PRE reported its hit rate against an implied 50% and nothing else. It had <strong>no null benchmark</strong>. Computed for the first time on 2026-09-12:</p>
+
+  <div class="callout">
+    <div class="plabel">Read the "best constant rule" line with care</div>
+    <p>Always-DOWN's 55.6% was identified <em>after</em> seeing the outcomes, so the −3.7pp gap is not a measured deficit — it is the better of two constants fitted to 27 points. The defensible statement is the one immediately above it: <strong>14/27 against a pre-specified 50% null is p = 1.00.</strong> The model has not been shown to beat no-skill; it has also not been shown to lose to it.</p>
+  </div>
+
+  <div class="panel">
+    <div class="plabel">Directional accuracy vs constant rules · n = 27</div>
+<pre>MODEL                      14/27  =  51.9%   ± 9.6pp (1 s.e.)
+ALWAYS DOWN                15/27  =  55.6%
+ALWAYS UP                  12/27  =  44.4%
+best constant rule                =  55.6%
+MODEL EDGE vs best constant       =  −3.7pp
+
+mean idio | model says UP    (n=11)  =  −0.85%
+mean idio | model says DOWN  (n=16)  =  +1.02%
+SEPARATION                           =  −1.86pp
+  s.e. 3.72   t = −0.50   → NOT significant
+
+idio standard deviation:  UP leg 8.24%   DOWN leg 11.06%</pre>
+  </div>
+
+  <figure>
+    <svg viewBox="0 0 720 268" role="img" aria-label="Dot plot of 27 realised idiosyncratic returns split by predicted direction, showing no separation between the two groups.">
+      <line x1="70" y1="232" x2="680" y2="232" stroke="var(--rule-strong)" stroke-width="1" fill="none"/>
+      <line x1="347.3" y1="52" x2="347.3" y2="232" stroke="var(--rule-strong)" stroke-width="1" stroke-dasharray="3 3" fill="none"/>
+
+      <text x="125.5" y="250" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">−20</text>
+      <text x="236.4" y="250" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">−10</text>
+      <text x="347.3" y="250" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">0</text>
+      <text x="458.2" y="250" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">+10</text>
+      <text x="569.1" y="250" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">+20</text>
+      <text x="680" y="250" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="11" text-anchor="middle">+30</text>
+      <text x="375" y="266" fill="var(--muted)" font-family="IBM Plex Sans, sans-serif" font-size="11" text-anchor="middle">realised idiosyncratic open gap, %</text>
+
+      <text x="62" y="104" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11.5" text-anchor="end" font-weight="600">says UP</text>
+      <text x="62" y="118" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="end">n=11</text>
+      <text x="62" y="179" fill="var(--ink)" font-family="IBM Plex Mono, monospace" font-size="11.5" text-anchor="end" font-weight="600">says DOWN</text>
+      <text x="62" y="193" fill="var(--faint)" font-family="IBM Plex Mono, monospace" font-size="10" text-anchor="end">n=16</text>
+
+      <g fill="var(--accent)" fill-opacity="0.62">
+        <circle cx="451.1" cy="100" r="6"/><circle cx="303.4" cy="100" r="6"/><circle cx="282.0" cy="100" r="6"/>
+        <circle cx="406.8" cy="100" r="6"/><circle cx="321.4" cy="100" r="6"/><circle cx="118.9" cy="100" r="6"/>
+        <circle cx="332.2" cy="100" r="6"/><circle cx="403.9" cy="100" r="6"/><circle cx="369.2" cy="100" r="6"/>
+        <circle cx="305.7" cy="100" r="6"/><circle cx="421.6" cy="100" r="6"/>
+      </g>
+      <g fill="var(--critical)" fill-opacity="0.62">
+        <circle cx="241.2" cy="175" r="6"/><circle cx="319.5" cy="175" r="6"/><circle cx="371.8" cy="175" r="6"/>
+        <circle cx="299.7" cy="175" r="6"/><circle cx="329.2" cy="175" r="6"/><circle cx="151.9" cy="175" r="6"/>
+        <circle cx="341.6" cy="175" r="6"/><circle cx="652.5" cy="175" r="6"/><circle cx="475.6" cy="175" r="6"/>
+        <circle cx="453.3" cy="175" r="6"/><circle cx="445.4" cy="175" r="6"/><circle cx="481.7" cy="175" r="6"/>
+        <circle cx="282.0" cy="175" r="6"/><circle cx="208.4" cy="175" r="6"/><circle cx="309.9" cy="175" r="6"/>
+        <circle cx="372.9" cy="175" r="6"/>
+      </g>
+
+      <line x1="337.8" y1="78" x2="337.8" y2="122" stroke="var(--accent)" stroke-width="2.5" fill="none"/>
+      <text x="337.8" y="70" fill="var(--accent)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" font-weight="600">mean −0.85</text>
+      <line x1="358.6" y1="153" x2="358.6" y2="197" stroke="var(--critical)" stroke-width="2.5" fill="none"/>
+      <text x="358.6" y="145" fill="var(--critical)" font-family="IBM Plex Mono, monospace" font-size="10.5" text-anchor="middle" font-weight="600">mean +1.02</text>
+    </svg>
+    <figcaption>Every graded event. If the model had directional skill the blue group would sit clearly to the right of the red group. It sits fractionally to the left, at t = −0.50 — which is what "no information" looks like, not what an inverted signal looks like. The two distributions are, on this evidence, the same distribution.</figcaption>
+  </figure>
+
+  <h3>Confidence is not correlated with accuracy</h3>
+  <div class="panel">
+    <div class="plabel">Hit rate by |signal| — a model that knows what it knows improves down this list</div>
+<pre>|signal| 0.00 – 0.10      5/5   = 100.0%
+|signal| 0.10 – 0.25      3/10  =  30.0%
+|signal| 0.25 – 0.50      6/10  =  60.0%
+|signal| 0.50 +           0/2   =   0.0%</pre>
+  </div>
+  <p>The strongest-signal bucket is 0-for-2 and the weakest is 5-for-5. <strong>This has been reported internally for three sessions as an "inverted conviction gradient" and treated as a finding requiring an owner decision.</strong> At these cell sizes it is noise, and framing it as a finding was an error by the model's own author. An evaluator should check whether the same over-reading has occurred elsewhere — see §05.</p>
+</section>
+
+<!-- 4 -->
+<section>
+  <div class="shead"><span class="snum">04</span><h2 class="st">Clustering: the correction that was itself wrong</h2></div>
+
+  <p>PRE's error ledger enforces an independence rule: confirmations are counted over distinct <code>(sector, event_date)</code> keys, because five names printing on one night share the tape, the sector move, and usually the deciding variable. Its documentation states plainly that counting them separately would <em class="q">fire a permanent model change off n=1 while displaying "3/3".</em></p>
+
+  <p>Revision 1 observed that this rule had never been applied to the hit rate, and concluded the effective sample was 6. <strong>That conclusion was wrong, and the error is instructive.</strong> Applying the clustering rule to the hit rate presumes what it should test: that within-night observations are redundant. For <em>returns</em> they largely are. For <em>correctness</em> they are not, because the model issues different calls on the same night — and once it does, its hits and misses are no longer locked together.</p>
+
+  <div class="panel">
+    <div class="plabel">Tested rather than assumed — is correctness clustered by event-date?</div>
+<pre>2026-07-30   n=12  obs= 7  exp= 6.22   χ² contrib 0.202
+2026-07-31   n= 2  obs= 1  exp= 1.04   χ² contrib 0.003
+2026-08-26   n= 7  obs= 2  exp= 3.63   χ² contrib 1.520
+2026-09-02   n= 1  obs= 0  exp= 0.52   χ² contrib 1.077
+2026-09-09   n= 2  obs= 2  exp= 1.04   χ² contrib 1.857
+2026-09-10   n= 3  obs= 2  exp= 1.56   χ² contrib 0.264
+
+Tarone/Pearson  χ² = 4.92 on 5 df      dispersion ratio = 0.98
+cluster bootstrap 95% CI   33% – 70%
+naive   bootstrap 95% CI   33% – 70%   ← indistinguishable</pre>
+  </div>
+
+  <p>Dispersion of 0.98 is the textbook signature of <strong>no block structure at all</strong>. The two bootstraps agree to the percentage point. The true effective n lies somewhere between 6 and 27 and <strong>this data cannot distinguish it from 27</strong> — so the honest reading is the wide interval, roughly <strong>33% to 70%</strong>, which is uninformative either way.</p>
+
+  <p>What survives from Revision 1 is only the fragility, which is real and does not depend on the clustering claim:</p>
+
+
+
+  <div class="panel">
+    <div class="plabel">Headline hit rate with one event-date removed</div>
+<pre>without 2026-08-26     60.0%   (+8.1pp)
+without 2026-07-30     46.7%   (−5.2pp)
+without 2026-09-09     48.0%   (−3.9pp)
+without 2026-09-10     50.0%   (−1.9pp)
+without 2026-09-02     53.8%   (+2.0pp)
+without 2026-07-31     52.0%   (+0.1pp)</pre>
+  </div>
+
+  <h3>The power calculation, and what it is actually a fact about</h3>
+  <p>Realised idio has a standard deviation of roughly <strong>10pp</strong>. Detecting a 2pp mean separation against that at conventional power needs about <strong>390 observations per arm — roughly 780 graded events</strong>, or several years at ~5 prints a week.</p>
+  <p><strong>That number is right and its interpretation in Revision 1 was too strong.</strong> It is not a fact about earnings research; it is a fact about choosing <em>binary direction on a 10pp-σ target</em> as the thing you measure. A continuous, direction-agnostic target — magnitude against the option-implied move — extracts far more information per event and, critically, can be backfilled over thousands of historical prints instead of waiting for live ones. The power wall is a property of the measurement design, and the design is the part that can be changed.</p>
+</section>
+
+<!-- 4b -->
+<section>
+  <div class="shead"><span class="snum">04b</span><h2 class="st">The argument that actually decides it, absent from Revision 1</h2></div>
+
+  <p class="lead">Every one of the four reviews except one missed this, and the brief it was reviewing missed it too. <strong>The scoring stack was modified repeatedly inside its own measurement window, each time in response to observed misses.</strong></p>
+
+  <p>Verified from the repository's own commit history against the graded window of 2026-07-30 → 2026-09-10:</p>
+
+  <div class="panel">
+    <div class="plabel">Changes to scoring code during the scoring period</div>
+<pre>2026-07-30 / 07-31   14 of the 27 events are graded
+2026-08-09           forecast layer restructured; "the forecast layer is graded"
+2026-08-12           learning loop + the units DEFECT + trade pause
+2026-08-26           7 events graded
+2026-09-02           DEFAULT_ETF extended — the BENCHMARK used to grade changes
+                     for 6 of 7 names (software→IGV, semis→SMH)
+2026-09-05           two controls shipped; AVGO graded
+2026-09-09 / 09-10    5 events graded
+2026-09-12           leg provenance persisted
+
+legs cut mid-sample: value · vrich · SAT-in-directional
+                     (SAT was found double-counted at 56–92% of every score)
+positioning: demoted · beta: re-estimated · freshness gate: shipped then reverted</pre>
+  </div>
+
+  <p>Three consequences, and they compound:</p>
+  <ol>
+    <li><strong>51.9% is not one model's record.</strong> It is the blended in-sample score of a sequence of different models, each edited after seeing the events it had already been graded on. Out-of-sample n for the stack that exists today is <strong>5</strong>.</li>
+    <li><strong>The measuring instrument moved too.</strong> The 2026-09-02 benchmark-table change altered how idio itself is computed for most names in that batch. Earlier and later outcomes are not on one scale.</li>
+    <li><strong>The history cannot be replayed.</strong> §08 records that <code>rev_raw</code>, <code>gg</code> and <code>vel</code> were null on every row before 2026-09-12. The current stack therefore <em>cannot</em> be re-run over its own past to produce a clean record.</li>
+  </ol>
+
+  <div class="callout">
+    <div class="plabel">Why this is fatal in a way small-sample noise is not</div>
+    <p>A small sample is a problem you can fix by waiting. <strong>This is a problem that waiting makes worse</strong>, because the mechanism generating the edits is still running. The error ledger's job is to detect mechanisms and demand changes; every change it extracts resets the out-of-sample clock to zero and destroys the frozen specification that a record requires.</p>
+    <p>Simulated against pure noise, the firing rule reaches a "3/3 independent, RIPE" class <strong>roughly 68% of the time</strong> over 13 misses with author-chosen mechanism labels — and ~93% with two labels in play. Revision 1 quoted <strong>1-in-8</strong>, which is the rate for a <em>single pre-specified</em> class and therefore the wrong number entirely.</p>
+    <p><strong>So the governance layer is not merely disproportionate to the evidence. It is the thing preventing evidence from existing.</strong> That is the finding that retires the model, and it holds regardless of what the hit rate says.</p>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <div class="shead"><span class="snum">05</span><h2 class="st">Why the author cannot answer this, stated plainly</h2></div>
+
+  <p>An external evaluator is not requested for missing expertise. It is requested because of a structural conflict that no amount of care removes. In this system the same party:</p>
+
+  <ul>
+    <li><strong>Makes the forecast</strong>, then <strong>grades it</strong>, then <strong>writes the post-mortem</strong> that judges it.</li>
+    <li><strong>Chooses the error-class name</strong>, the <code>failure_type</code> (A/B/C/D), and the <code>thesis_confirmed</code> flag — all three of which determine whether a class ever ripens into a required change.</li>
+    <li><strong>Runs the surprise gate on its own misses</strong>, deciding whether a loss was unforecastable or a blind spot.</li>
+    <li><strong>Decides whether two events share a mechanism.</strong> On 2026-09-12 the author judged CPRT to be the same mechanism as PLAB and AVGO, taking <code>rev-leg-points-against-the-print</code> to 3/3 and "RIPE". A different reviewer could reasonably call these three different mechanisms, and the class would not have fired.</li>
+  </ul>
+
+  <div class="callout">
+    <div class="plabel">Known author failures, disclosed rather than discovered</div>
+    <p><strong>Over-reading noise as findings.</strong> The "inverted conviction gradient" was reported as a live finding across three sessions on cells of n=2 and n=6, and repeatedly handed back to the owner as "your call" — which functioned as avoidance, not deference.</p>
+    <p><strong>Quoting a clustered count.</strong> The author wrote the rule forbidding clustered counts as samples, then reported n=27 as the headline sample for over a month.</p>
+    <p><strong>Threshold with no derivation.</strong> The "3 independent confirmations" bar is an adopted prior. Three binary observations align by chance roughly <strong>one time in eight</strong>. No false-positive rate was ever computed for the firing rule.</p>
+    <p><strong>Effort misallocated to the tractable.</strong> Substantial work went into sourcing the GG leg for one name (web-sourcing, transcript hunting) for a leg with n=1 of evidence, and into shipping code fixes — the comfortable work — while the question of whether any leg predicts anything went unasked.</p>
+  </div>
+</section>
+
+<!-- 6 -->
+<section>
+  <div class="shead"><span class="snum">06</span><h2 class="st">What to check</h2></div>
+
+  <p>Ordered by what would most change the decision. Each is falsifiable and runnable against the artefacts in §08.</p>
+
+  <div class="check">
+    <div class="ctop"><span class="cid">C1</span><span class="ctitle">Re-derive the record independently</span><span class="pill p-crit">Highest priority</span></div>
+    <p class="lead">Recompute every idio figure from raw price data without using PRE's own code. Confirm the 27 outcomes, the 51.9%, and the −1.86pp separation. The author computed both the forecasts and their grades; an independent recomputation is the floor for everything else.</p>
+    <p>Specifically check the beta estimation window (60 trading days ending 21 days before the event) and the sanity clamp that rejects beta outside [0.2, 3.0] — CPRT's beta was rejected and silently fell back to 1.0.</p>
+  </div>
+
+  <div class="check">
+    <div class="ctop"><span class="cid">C2</span><span class="ctitle">Test the power claim, and set a stopping rule</span></div>
+    <p class="lead">Verify the ~780-event requirement under realistic assumptions. Then answer the question the system has never posed: <strong>what sample size, by what date, would settle this?</strong> If no achievable n settles it, that is the finding.</p>
+    <p>Recommend an explicit pre-committed stopping rule — "if hit rate is below X at n=Y by date Z, retire the model" — so the decision is not perpetually deferred.</p>
+  </div>
+
+  <div class="check">
+    <div class="ctop"><span class="cid">C3</span><span class="ctitle">Does expected_move beat the implied move?</span><span class="pill p-caut">Currently untestable</span></div>
+    <p class="lead">The one calibrated output: <code>corr(expected_move, |idio|) = +0.545</code> (n=27, t≈3.3), bias −0.15pp. But <code>expected_move = mean(implied_move, avg_gap)</code> — the options market's own forecast averaged with the name's gap history.</p>
+    <p><strong>External review closed this analytically, and it needs no instrumentation.</strong> Where both inputs exist, <code>em − im = (avg_gap − im) / 2</code> identically. So <code>expected_move</code> is just the implied move shrunk halfway toward the name's gap history, and the <em>only</em> question it can ever answer is whether gap history adds information the options market lacks — at half weight. The +0.545 correlation is inherited; it is not evidence of skill.</p>
+    <p>What remains worth advising: whether a properly specified magnitude model — <code>P(|R_idio*| &gt; implied_move)</code>, scored by a decomposed Brier and benchmarked against the implied move rather than a constant — is a better use of this machinery. Note the known base rate: across 3,554 events since 2024, the pre-earnings straddle <strong>overpriced the realised move ~64% of the time</strong>, so the breach class is the minority and the default trade is short-vol, not long-straddle.</p>
+  </div>
+
+  <div class="check">
+    <div class="ctop"><span class="cid">C4</span><span class="ctitle">Audit the firing rule's false-positive rate</span></div>
+    <p class="lead">Simulate the error-ledger mechanics against pure noise. How often does a class reach "3 independent confirmations" and demand a model change when there is no underlying mechanism? If that rate is high, the learning loop manufactures work rather than knowledge.</p>
+    <p>Pay attention to the discretion in class naming: because the author chooses the mechanism label, the effective multiple-comparisons burden is unbounded and uncounted.</p>
+  </div>
+
+  <div class="check">
+    <div class="ctop"><span class="cid">C5</span><span class="ctitle">Attack the blindness protocol</span></div>
+    <p class="lead">This is the part most likely to be genuinely sound, and it should be attacked accordingly. Verify that no portfolio information reaches a forecast, that <code>post_cutoff</code> stamping cannot be bypassed, and that integrity hashes cover the blindness declaration.</p>
+    <p>Then consider the subtler channel the system already worries about: <strong>coverage selection.</strong> Names are supposed to come from the earnings calendar, but in practice the owner supplies the list. Assess whether the aggregate record is a biased sample even when each event is honestly frozen.</p>
+  </div>
+
+  <div class="check">
+    <div class="ctop"><span class="cid">C6</span><span class="ctitle">Price the alternative use of the same effort</span></div>
+    <p class="lead">The highest-value outputs of the most recent week required no forecast at all — see §07. Assess whether PRE should be re-scoped from <em class="q">predicting direction</em> to <em class="q">forensic reading of prints</em>, and what that would cost and save.</p>
+  </div>
+
+  <div class="check">
+    <div class="ctop"><span class="cid">C7</span><span class="ctitle">Execution feasibility of the claimed edge</span></div>
+    <p class="lead">PRE's edge is defined as gap-capture: the entire move exists at the open and decays fast. Measured examples: ORCL opened +7.51% and gave back 8.61pp within the session, closing below the prior close; PLAB opened +27.1% and cooled to ~+4% within twenty minutes.</p>
+    <p class="lead"><strong>Revision 2 withdraws the time-zone argument.</strong> The US open is 21:30–22:30 SGT — that is 9:30pm, not an unreasonable hour, and a genuine 2pp edge on 10pp σ at ~5 events a week is a per-trade Sharpe near 0.2, which is worth staying awake for. Retire this model on the measurement failure, not on the clock, or the clock argument will later be used to kill a good idea for a reason that was never true.</p>
+    <p>What does remain for the evaluator: gap decay is real and fast (ORCL gave back 8.61pp intraday; PLAB cooled from +27.1% to ~+4% in twenty minutes), so manual execution at the open carries slippage that must be priced into any economic test. A magnitude strategy expressed in options <em>entered days before the print</em> avoids the open-capture problem entirely — which is an independent structural argument for the re-scope.</p>
+  </div>
+</section>
+
+<!-- 7 -->
+<section>
+  <div class="shead"><span class="snum">07</span><h2 class="st">What actually produced value, and the case it is not forecasting</h2></div>
+
+  <p>Over 2026-09-05 to 2026-09-12 the forecast layer produced 5 calls and scored 4/5 — which, per §03 and §04, means approximately nothing. In the same period the same process produced these, and <strong>none of them required predicting a direction</strong>:</p>
+
+  <div class="tw"><table>
+    <thead><tr><th>Finding</th><th>Type</th><th>Would a forecast have produced it?</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>AEO's raise was a basis change.</strong> FY26 operating income "raised" $390–410M → $540–550M, but the prior guide <em>excluded</em> IEEPA tariff refunds and the new one is "inclusive of net tariff refund benefit." Strip the $161M Q2 refund: ~$384M vs a $400M midpoint — a ~4% cut presented as a +36% raise.</td>
+        <td>Filing forensics</td><td>No</td>
+      </tr>
+      <tr>
+        <td><strong>CPRT trades total loss frequency, not EPS.</strong> Revenue beat, EPS missed by 14.6%, net income −17.4%, US insurance volumes −7.5% — stock rose anyway.</td>
+        <td>Read-through</td><td>No — the model got this one wrong</td>
+      </tr>
+      <tr>
+        <td><strong>ORCL's card was stale and had fired its own trigger.</strong> Dated 2026-07-21, pinned at $126.50 with MoS −18.1%, and its text says "re-underwrite at the Q1 FY27 print." That print happened; the stock is ~30% above the pin.</td>
+        <td>Portfolio hygiene</td><td>No</td>
+      </tr>
+      <tr>
+        <td><strong>yfinance <code>.calendar</code> is off by one day for AMC reporters.</strong> Would have set four of five clock-guard cutoffs a full day late.</td>
+        <td>Data integrity</td><td>No</td>
+      </tr>
+      <tr>
+        <td><strong>The error ledger could not record a wrong thesis on a winning call.</strong> Classes were built only from rows where <code>correct is not True</code>, so a mechanism first observed on a win created no class at all.</td>
+        <td>Code defect</td><td>No</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout">
+    <div class="plabel">The hypothesis the evaluator should test hardest</div>
+    <p><strong>PRE's value is in the forensic discipline it imposes on reading a print, not in the forecast it wraps around it.</strong> The pre-registration ritual may be doing useful work — forcing a falsifier to be written before the outcome is known, forcing figures to be verified against primary sources — while the directional call it produces is noise.</p>
+    <p>If that is right, the recommendation is not to fix the forecast. It is to <strong>keep the discipline and delete the prediction</strong>, which would also free the model from a validation programme it cannot complete.</p>
+  </div>
+</section>
+
+<!-- 8 -->
+<section>
+  <div class="shead"><span class="snum">08</span><h2 class="st">Artefacts, and their known limits</h2></div>
+
+  <div class="tw"><table>
+    <thead><tr><th>File</th><th>Contains</th><th>Limit the evaluator must know</th></tr></thead>
+    <tbody>
+      <tr><td class="n">PRE/forecasts.jsonl</td><td>All 28 forecasts + 27 graded outcomes</td><td><strong><code>rev_raw</code>, <code>gg</code>, <code>vel</code> and <code>implied_move</code> are null on every row written before 2026-09-12.</strong> Leg attribution is unrecoverable for the entire history.</td></tr>
+      <tr><td class="n">PRE/ledger.jsonl</td><td>Trade layer, 54 entries / 12 outcomes</td><td>Produced by a scorer whose units were mis-specified; <strong>22 of 53 verdicts flip under corrected arithmetic.</strong> This is why the layer is paused.</td></tr>
+      <tr><td class="n">PRE/errors.jsonl</td><td>Error classes and dispositions</td><td>Class names, failure types and <code>thesis_confirmed</code> flags are all author-assigned.</td></tr>
+      <tr><td class="n">PRE/dossiers/</td><td>Per-name history, last 5 events</td><td>Hard retention cap; older detail is folded into counters and cannot be re-derived.</td></tr>
+      <tr><td class="n">PRE/METHOD.md</td><td>~19k-token method document</td><td>Written for an external evaluator to audit the <em>method</em>. It does not address whether the method measures anything.</td></tr>
+      <tr><td class="n">PRE/STATE.md</td><td>Session-by-session narrative</td><td>Author-written; contains the over-readings described in §05.</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="panel">
+    <div class="plabel">Reproduce the headline numbers</div>
+<pre>python PRE/run_tests.py                                  # 497 assertions, 11 suites
+python -c "from pre_forecast import score; print(score())"
+python PRE/pre_errors.py board                            # classes + surprise rate
+python PRE/pre_postmortem.py                              # trade-layer dashboard
+python baseline/check.py                                  # data-plane integrity gate</pre>
+  </div>
+
+  <p>Two live defects are deliberately unfixed and the evaluator should form a view on both. <strong>A verified company guidance signal is nulled when an unrelated analyst feed is corrupt</strong> — <code>expectations</code> is sourced from the trade layer, which fail-closes to zero, and the GG value reaches only a display string. <strong>And a direction-only REV fallback exists in code but has never fired</strong>, because the calling module does not pass the parameter. Wiring it would inject the one leg with 3/3 evidence of pointing the wrong way, so the dead plumbing has been protective.</p>
+</section>
+
+<!-- 9 -->
+<section>
+  <div class="shead"><span class="snum">09</span><h2 class="st">The author's own view, offered so it can be attacked</h2></div>
+
+  <p>Stated explicitly so the evaluator can disagree with a position rather than guess at one.</p>
+
+  <ol>
+    <li><strong>There is no directional edge and the design cannot find one.</strong> The honest reading of 27 events across 6 dates is that PRE has not been measured, not that it has been measured and failed. But the distinction stops mattering if no reachable sample size resolves it.</li>
+    <li><strong>The governance is inverted relative to the evidence.</strong> Four-limb surprise gates and independence-keyed confirmation counting are the apparatus of a mature research programme. Applied to n=6 they produce the <em>appearance</em> of rigour while the foundational question — does any leg predict anything — went unasked for six weeks.</li>
+    <li><strong>The pre-registration discipline is worth keeping even if the forecast is not.</strong> Writing a falsifier before the print, verifying every figure at source, refusing to hand-adjust a frozen call — that machinery caught a fabricated Adobe revenue figure, a systematic calendar error, and a guidance basis change in a single week.</li>
+    <li><strong>Revision 1 contained a real contradiction here and external review caught it.</strong> §07 argued the forecast produced nothing while the ritual around it produced everything — but the ritual's forcing function <em>is</em> the frozen call. A falsifier requires a claim to falsify; delete the prediction and the discipline has nothing to attach to, and "re-scope PRE to forensics" then rebuilds the earnings chat that already exists in this system. The resolution is not to delete the pre-print commitment but to <strong>change what is committed to</strong>: a magnitude or breach probability instead of a direction. That keeps the forcing function, gains a real benchmark (the implied move), and is backfillable over thousands of historical prints rather than waiting on live ones.</li>
+    <li><strong>The author has an obvious interest in a conclusion that preserves the work</strong>, and every recommendation above should be read with that in mind. Revision 1's two overturned arguments were both errors in the direction of a more dramatic finding.</li>
+  </ol>
+
+  <h3>Questions the author could not resolve and would like answered</h3>
+  <ul>
+    <li>Is there any legitimate way to extract signal from ~6 independent observations, or is every technique applied here simply overfitting with extra steps?</li>
+    <li>Should the model be measured on something other than binary direction — signed magnitude, a Brier score on calibrated probabilities, or economic P&amp;L net of realistic slippage — and would any of those reach significance faster?</li>
+    <li>Is per-name idiosyncratic gap even the right unit, given that mega-caps move their own benchmark? ORCL is a large IGV component and moved IGV on its own print night, so ADBE's idio that evening is measured against a benchmark ORCL pushed.</li>
+    <li>Given a stated horizon of roughly one month for the owner's actual book, is a one-open gap trade the right instrument at all?</li>
+  </ul>
+</section>
+
+<footer>
+  <p><strong>Revision 2, 2026-09-13.</strong> Prepared for external review at the owner's request on 2026-09-12; revised after four independent reviews, two of which overturned headline arguments. Every figure is reproducible from the artefacts in §08, and every correction in the Revision 2 block was re-derived from source by the author before being accepted. Where a number could not be verified, the brief says so rather than estimating. Superseded claims are struck through, not deleted.</p>
+</footer>
+
+</div>

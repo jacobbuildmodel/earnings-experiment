@@ -1,0 +1,62 @@
+═══════════════════════════════════════════════════════════════════
+PRE v1.2 — REVIEW MODE REPORT (read-only)
+generated: 2026-08-03T01:20:30.761813+00:00
+filters: none (full log)
+═══════════════════════════════════════════════════════════════════
+
+1. HEADLINE
+   date range          : n/a
+   n_prereg            : 0
+   n_traded (BUY+SHORT): 0
+   n_no_trade          : 0
+   n_outcome (postmortem present): 0
+   n_anomaly_isolated (frozen, excluded from tuning): 0
+   n_unregistered/rejected (invalid preregs): 0
+
+2. IDIO SIGN ACCURACY  (THE number)
+   n_outcome=0 — no scored outcomes yet
+
+3. PER-COMPONENT ATTRIBUTION  (standalone, no interaction fitting)
+   REV  : n_nonzero=0 — no signed contributions
+   GG   : n_nonzero=0 — no signed contributions
+   VEL  : n_nonzero=0 — no signed contributions
+   SAT  : n_nonzero=0 — no signed contributions
+   REACT: n_nonzero=0 — no signed contributions
+   FLAG : n_nonzero=0 — no signed contributions
+   (report only — no reweightings computed)
+
+4. CALIBRATION
+   MEDIUM: n=0
+   HIGH  : n=0
+   IRM: n=0
+
+5. TYPE-B COUNTER  (SAT regime-blindness; live holdout for v1.2 REV-gate)
+   taxonomy=B in last 0 outcomes: 0
+   note: v1.2 REV-gate on trial here — sustained Type-B at 0–1/10 post-v1.2 is the evidence the gate worked.
+
+6. REGIME SLICES  (descriptive, n-gated)
+   VIX>28            : n=0
+   VIX≤28            : n=0
+   G3 macro-overlap  : n=0
+   macro-clean       : n=0
+   SPX move >±1.5%   : n=0
+   SPX move within   : n=0
+
+7. NO-TRADE AUDIT WORKLIST  (owed a re-run per spec)
+   none — every NO_TRADE has a postmortem
+
+8. DISCIPLINE / INTEGRITY
+   integrity_hash: all preregs verify
+   price_source: all postmortems from a named independent source
+   preregs: none missing component/source/timestamp
+   records excluded from stats: 0 (0 hash-mismatch, 0 invalid)
+
+9. PENDING-CHANGE HOLDOUT TRACKER  (counts only; Jacob promotes)
+   [P2 GG sandbag-overlay] WATCH — confirming holdouts: 0/2 (from 0 ≥3-of-4 beaters where GG applied −1)
+       (no qualifying records carry the guidance_beat_4q flag)
+       promotion still needs a 2nd holdout AND Jacob's REACT-ablation call.
+   [v1.2 REV-gate] Type-B before 2026-06-26: 0 | on/after: 0  (validation: expect decline)
+
+───────────────────────────────────────────────────────────────────
+Rule changes remain WATCH → 2 holdouts → Jacob sign-off. This report decides nothing.
+───────────────────────────────────────────────────────────────────

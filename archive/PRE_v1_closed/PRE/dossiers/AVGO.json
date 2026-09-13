@@ -1,0 +1,43 @@
+{
+  "ticker": "AVGO",
+  "version": "1.0.0",
+  "events": [
+    {
+      "event_date": "2026-09-02",
+      "logged_at": "2026-09-04T20:10:37.750741+00:00",
+      "sector": "SEMIS",
+      "forecast": {
+        "direction": "UP",
+        "conviction": "HIGH",
+        "basis": "EVIDENCED",
+        "regime": "SOFT/HIGH_MOVE",
+        "expected_move": 6.8
+      },
+      "trade_stance": "BUY (never opened - trade pause)",
+      "idio_pct": -3.746,
+      "forecast_correct": false,
+      "failure_type": "A",
+      "deciding_variable": "Q4 non-GAAP op margin guided ~66% vs 67.9% delivered in Q3 -- ~1.9pt sequential step-down on AI/XPU mix, alongside +17.6% sequential revenue",
+      "surprise": false,
+      "error_classes": [
+        "rev-leg-points-against-the-print",
+        "vel-scores-a-forward-book-already-public"
+      ],
+      "lesson": "THIS COMPANY BEAT ITS OWN REVENUE GUIDE AND ITS OWN MARGIN GUIDE AND STILL GAPPED -4.22%. Q3 rev $29.591B vs $29.4B guided; op margin 67.9% vs ~67% guided; Q4 guided $34.8B (+93% YoY) with AI semi $21.7B (+236% YoY). The gap is NOT set by the revenue line -- it is set by the MARGIN line, and the margin guide must be read SEQUENTIALLY. The CFO framed 66% as 'flat from a year ago' (true YoY) which masks a 1.9pt step-down from the quarter just delivered. On the next print, compute Q(n+1) guided margin minus Q(n) ACTUAL margin before anything else."
+    }
+  ],
+  "rollup": {
+    "purged_events": 0,
+    "purged_correct": 0,
+    "purged_abs_gap_sum": 0.0,
+    "recurring_variables": {}
+  },
+  "standing_notes": [
+    "GG STRUCTURALLY UNAVAILABLE: AVGO guides ONE quarter forward only and never revises a prior period's guide (Q2 FY26 $22.0B, Q3 FY26 $29.4B are different periods, not a revision). Same shape as NVDA/PLAB. This is NOT a sourcing failure \u2014 do not chase it, do not web-source it.",
+    "VEL source is RevenueRemainingPerformanceObligation, verified 2026-09-02 against SEC XBRL companyconcept: one context per period-end, NO duplicate/partial-portion contexts, 13 prior quarters in a 20-45B band. The 45.0B -> 164.6B jump is real as filed, not a tag mismatch.",
+    "VEL STALENESS CAVEAT: the $164.6B RPO was FILED 2026-06-09 (Q2 10-Q) and is ~3 months public at the 2026-09-02 print. VEL reads the last filed 10-Q and is one quarter stale BY CONSTRUCTION, so on this name it scores a fact the market has already had a full quarter to price.",
+    "BENCHMARK SELF-INCLUSION: AVGO added to SMH in DEFAULT_ETF on 2026-09-02. AVGO is a top-5 SMH constituent (~8%), so its own gap mechanically moves its benchmark and measured idio is understated. NVDA (~20% of SMH) has the same defect, worse. Grading note for /post.",
+    "GUIDES ONE QUARTER FORWARD, MARGIN AS A PERCENT OF REVENUE, NEVER IN DOLLARS. The guide is two numbers: revenue and non-GAAP op margin %. Management frames the margin YoY; the market trades it SEQUENTIALLY vs the quarter just reported. 2026-09-02: 66% guided vs 67.9% delivered = -1.9pt, and that was the whole -4.22% gap on a double beat."
+  ],
+  "last_updated": "2026-09-04T20:10:37.770270+00:00"
+}

@@ -1,0 +1,40 @@
+# PRE v1.1 — Pre-Earnings Equity Directional Model (automation workspace)
+
+@~/.claude/trading-conventions.md
+
+## What this project is
+Runtime spec lives in PRE_v1_1_spec.md — that file is the law. This CLAUDE.md
+is the operating manual for running it via Claude Code.
+
+## The two layers (do not blur them)
+- ENGINE (pre_engine.py): all deterministic math + logging. Pure functions.
+  Gates G1/G2/G3 arithmetic, SAT(a)/(b), DS sum+clamp, conviction, sizing,
+  IRM, pre-registration logging, post-mortem idio math, accuracy + kill-switch
+  monitor. The engine NEVER guesses an input — missing input = 0 / UNAVAILABLE.
+- REASONING (you, Claude): the judgment inputs the engine cannot compute —
+  GG guide extraction, CBR-PRE C1-C3, FLAG scan, G0 dual-source date check,
+  VEL KPI selection, post-mortem taxonomy A-F. You hand the engine clean,
+  named, timestamped values; the engine does the arithmetic and logs.
+
+## Hard rules
+- Pull live data fresh every run. Never reuse a prior run's numbers.
+- Gates fail closed. An unevaluable gate blocks unless the verdict survives its
+  worst-case resolution.
+- ESTIMATED input may never be the deciding margin. Remove it; if verdict flips,
+  NO TRADE.
+- Output uses ONLY the OUTPUT MANDATE template in the spec for `pre [TICKER]`.
+  `pre audit [TICKER]` suspends the template and shows all arithmetic.
+- Every entry is pre-registered to log.jsonl (frozen, timestamped) before exit.
+- After any NO TRADE with idio move >3%, or any significant miss, run the
+  post-mortem and propose a diff-level rule change naming the failure case.
+  Mark it WATCH. Do NOT edit the spec until Jacob signs off.
+
+## Files
+- PRE_v1_1_spec.md     — the model (law)
+- pre_engine.py        — deterministic engine (Claude Code builds + maintains)
+- log.jsonl            — append-only pre-registrations + post-mortems (never hand-edit)
+- conventions          — @~/.claude/trading-conventions.md (shared with portfolio)
+
+## Token discipline
+One task per conversation. Screen/engine runs are cheap; deep `evaluate` and
+post-mortem reasoning go in their own chats so a single thread never bloats.

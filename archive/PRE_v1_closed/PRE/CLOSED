@@ -1,0 +1,20 @@
+PRE CLOSED 2026-09-13
+=====================
+The directional pre-earnings forecast model is a CLOSED EXPERIMENT. Its ledgers are
+read-only. Reasoning: PRE/pre_closed.py. Status and final record: PRE/STATE.md.
+
+FINAL RECORD, frozen at closure — these counts are asserted by baseline/check.py:
+  forecasts.jsonl  55
+  ledger.jsonl     135
+  errors.jsonl     21
+
+HEADLINE: 27 graded blind forecasts, 14 correct = 51.9%, p = 1.00 against a
+pre-specified 50% null. Separation between UP and DOWN calls -1.86pp, t = -0.50.
+Out-of-sample n for the final scoring stack: 5.
+
+Post-print work now belongs to /earnings. Two rules were extracted there: the
+guidance-qualifier diff, and the OCF/NI earnings-quality ratio.
+
+To genuinely reopen: delete this file AND record the decision in PRE/STATE.md.
+Deleting it silently re-arms every write path in pre_forecast, pre_errors and
+pre_ledger.
