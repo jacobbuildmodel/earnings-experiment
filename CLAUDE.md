@@ -6,8 +6,22 @@ background. He talks in plain English; you do all the technical work. Never ask 
 **The question:** before an earnings print, can we pick which stocks to BUY so the position profits from
 the result — and does the answer differ by type of business?
 
-**The design is `FRAMEWORK.md`. Where we left off is `STATE.md`.** Read `STATE.md` first every session.
-Read `FRAMEWORK.md` only in the sections the task needs — this file is re-sent every turn, so it stays short.
+## SESSION HANDOFF — the trigger phrase is `pre earnings model`
+When Jacob starts a new chat **in this folder** and types **`pre earnings model`** (or "PRE", "earnings
+experiment", "where we left off"), read up and continue exactly where the last chat stopped. Silently:
+
+1. `python check.py` — **PASS, or stop** and say what failed. A FAIL means the record may be damaged.
+2. Read `STATE.md` in full.
+3. Read only the `FRAMEWORK.md` sections the next action needs — it is long, and this file is re-sent
+   every turn.
+4. Reply with a 4–6 line **WHERE WE ARE**: phase · what's done · what's waiting on Jacob · the single
+   next action. Don't re-ask what he wants.
+
+🔴 **A chat that did not START in this folder must not run the experiment.** If this chat began in the
+DRIVE repo and moved here, it has already loaded the portfolio's rules and memory. Say so, and ask Jacob
+to start a fresh chat in `Earnings Experiment`.
+
+**End of every session:** update `STATE.md` so the next chat resumes cleanly, then commit it.
 
 ## 🔴 THE RULES THAT STOP THIS EXPERIMENT LYING — never relax them
 1. **Freeze before entry.** Factor snapshot, theses and all three decisions (T0 buy-all · T1 rule · T2 AI)
@@ -47,7 +61,8 @@ Read `FRAMEWORK.md` only in the sections the task needs — this file is re-sent
 ## GIT
 This is its own repo. Stage explicit paths only. New files are LF; `archive/**` is committed byte-exact
 (`-text`) and never renormalised. **Commit every freeze before the entry open — the commit timestamp is
-the proof the decision was blind.**
+the proof the decision was blind.** After every commit, `git push local main` — the backup at
+`C:\repos\earnings-experiment.git` sits off OneDrive.
 
 ## HOW JACOB WANTS ANSWERS
 No disclaimers, no hedging, no "consult an advisor". Say what the data says. Name-specific,

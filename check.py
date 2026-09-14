@@ -1,0 +1,123 @@
+"""Earnings Experiment - health check. The FIRST command of every session: PASS, or stop.
+
+What must be true before any work builds on this repo:
+  1. the core files exist
+  2. this folder is its own git repo
+  3. the archived PRE v1 record is exactly what was committed - no edits, additions or deletions
+  4. no secret files are tracked
+  5. uncommitted work is surfaced - a freeze is only provably blind once it is committed
+  6. the US-Eastern clock reads, because every freeze is timed against it
+  7. the toolchain the pipeline needs is importable
+"""
+import datetime
+import os
+import subprocess
+import sys
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, OSError):
+    pass
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+COLLECTION_OPENS = datetime.date(2026, 9, 21)
+# archive/ is a CLOSED record: 99 tracked files as of commit ea772cf. This number must never change.
+ARCHIVE_TRACKED = 99
+REQUIRED = ["CLAUDE.md", "STATE.md", "FRAMEWORK.md", "README.md", "archive/README.md",
+            ".gitignore", ".gitattributes"]
+
+fails, warns = [], []
+
+
+def ok(msg):
+    print(f"  [ok]   {msg}")
+
+
+def warn(msg):
+    warns.append(msg)
+    print(f"  [warn] {msg}")
+
+
+def bad(msg):
+    fails.append(msg)
+    print(f"  [FAIL] {msg}")
+
+
+def git(*args):
+    r = subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True,
+                       encoding="utf-8", errors="replace")
+    return r.returncode, r.stdout.strip()
+
+
+print("=" * 72)
+print("EARNINGS EXPERIMENT - health check")
+print("=" * 72)
+
+missing = [f for f in REQUIRED if not os.path.exists(os.path.join(ROOT, f))]
+if missing:
+    bad(f"core files missing: {missing}")
+else:
+    ok(f"all {len(REQUIRED)} core files present")
+
+rc, top = git("rev-parse", "--show-toplevel")
+if rc != 0:
+    bad("not a git repository - without git a freeze has no timestamp, so no decision can be shown to be blind")
+else:
+    if os.path.normcase(os.path.abspath(top)) != os.path.normcase(ROOT):
+        bad(f"the git repo root is {top}, not this folder")
+    else:
+        ok("this folder is its own git repo")
+
+    _, listing = git("ls-files", "archive")
+    n = len([x for x in listing.splitlines() if x.strip()])
+    if n != ARCHIVE_TRACKED:
+        bad(f"archive/ tracks {n} files, expected {ARCHIVE_TRACKED} - the closed record gained or lost files")
+    else:
+        ok(f"archive/ tracks {ARCHIVE_TRACKED} files")
+    _, dirty = git("status", "--porcelain", "--", "archive")
+    if dirty:
+        bad("archive/ differs from its commit - the closed record must never change:")
+        for line in dirty.splitlines()[:10]:
+            print(f"           {line}")
+    else:
+        ok("archive/ matches its commit exactly")
+
+    _, tracked = git("ls-files")
+    secrets = [f for f in tracked.splitlines() if f.endswith(".env")]
+    if secrets:
+        bad(f"secret files are tracked: {secrets}")
+    else:
+        ok("no .env files tracked")
+
+    _, status = git("status", "--porcelain")
+    if status:
+        lines = status.splitlines()
+        warn(f"{len(lines)} uncommitted change(s) - commit before any freeze")
+        for line in lines[:10]:
+            print(f"           {line}")
+    else:
+        ok("working tree clean")
+    _, head = git("log", "-1", "--format=%h %ad %s", "--date=short")
+    print(f"           HEAD {head}")
+
+try:
+    from zoneinfo import ZoneInfo
+    now = datetime.datetime.now(ZoneInfo("America/New_York"))
+    days = (COLLECTION_OPENS - now.date()).days
+    when = (f"collection opens in {days} day(s)" if days > 0 else
+            "collection opens TODAY" if days == 0 else f"collection opened {-days} day(s) ago")
+    ok(f"US Eastern {now:%Y-%m-%d %a %H:%M} - {when}")
+except Exception as exc:
+    warn(f"cannot read the US-Eastern clock ({type(exc).__name__}) - every freeze is timed against it; install tzdata")
+
+try:
+    import yfinance  # noqa: F401
+    ok("yfinance importable")
+except Exception as exc:
+    warn(f"yfinance not importable ({type(exc).__name__}) - the pipeline needs it")
+
+print("-" * 72)
+if fails:
+    print(f"FAIL - {len(fails)} problem(s), {len(warns)} warning(s). Stop: nothing built on this repo counts until it is fixed.")
+    sys.exit(1)
+print(f"PASS - {len(warns)} warning(s)")

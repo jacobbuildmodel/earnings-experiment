@@ -1,29 +1,60 @@
 # STATE — Earnings Experiment
 
-**Phase 0 · Build** · updated 2026-09-13
+**Phase 0 · Build** · updated 2026-09-14 · collection opens **Mon 2026-09-21**
+
+## Where things are
+
+| what | where |
+|---|---|
+| this project | `C:\Users\jacob\OneDrive\Desktop\Jacob\Earnings Experiment` — its own git repo |
+| backup | `C:\repos\earnings-experiment.git`, remote `local` — push after every commit |
+| PRE v1 | `archive/PRE_v1_closed/`, byte-exact and fenced — never read it while designing (`archive/README.md`) |
+| DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Done
-- Folder created as its own git repo.
-- The previous model (PRE v1) archived byte-exact in `archive/PRE_v1_closed/` — 98 files, SHA-256
-  verified against the originals, first commit `d256787` — and removed from the DRIVE repo.
-- `FRAMEWORK.md` v0.1 drafted: outputs-first design; three decision tracks (buy-all · rule · AI);
-  clusters × business stage; 84-factor library with evidence; data sources probed live; the rules;
-  the universe rule; timeline.
+
+- Repo created; PRE v1 archived — 98 files, SHA-256 verified (`d256787`).
+- `FRAMEWORK.md` v0.1 — outputs-first design (`ea772cf`).
+- **Handoff (2026-09-14):** trigger phrase wired in `CLAUDE.md`; `check.py` health check; off-OneDrive
+  backup; session-only evidence rescued into `analysis/exploratory/` (the pilot screen and the raw source probes).
+- **Every figure and quote in `FRAMEWORK.md` re-checked against the saved lookups (2026-09-14).** Corrected:
+  - pilot screen: **34** names passed, not 30. The "22 big movers" figure was dropped — it was annualised
+    at-the-money vol, and for 8 of the 34 the option expiry ended before the report
+  - replaced three overstated or unsourced descriptions ("shrinking", "on rate risk alone", "AI hardware
+    manufacturing") and a false sector claim (Manchester United is Communication Services)
+  - §8 no longer claims every source was probed live — only Alpha Vantage and yfinance were
+  - removed an unverified claim that 1.74 "matches the consensus quoted in coverage"
+  - Frazzini & Lamont: the premium tracks volume at **past** announcements, not pre-print volume
+  - a link labelled "Thomas & Zhang 2008" pointed to a different, 2019 paper — relabelled
+  - the calendar preview is date-sorted, so Sep 14 – Oct 9 is complete, not partial
 
 ## Waiting on Jacob — blocks the first trade (Mon 2026-09-21)
-1. **Primary exit:** A first open after the print · B reaction-day close · C +5 days. Default **A**.
-2. **Primary outcome** = beat the sector, raw P&L alongside. Default **yes**.
-3. **"bmc" = BMO?** Default **yes**.
-4. **Industry allowlist** (FRAMEWORK §10). A plain sector screen let in two homebuilders, an RV maker
-   and Manchester United. Default: the draft in §10.
+
+1. **Primary exit** — A first open after the print · B reaction-day close · C +5 days. Default **A**.
+2. **Primary outcome** — beat the sector, raw P&L alongside. Default **yes**.
+3. **"bmc" in his message = BMO.** Default **yes**.
+4. **Industry allowlist** — the draft in `FRAMEWORK.md` §10. Default **the draft**.
+
+Not blocking: ThetaData ~$40/month for historical options, or collect free going forward (default: free) ·
+a retail-attention source (default: leave it out of v0) · real trades, paper, or signals only (default: signals).
 
 ## Next actions — Sep 14–18
-1. Freeze decisions 1–4 into `registry/` once confirmed.
-2. Universe: pull the FULL season calendar (the one pulled so far is a 1,064-of-3,548-row preview);
-   apply the §10 allowlist; freeze `universe/`.
-3. Validate Alpha Vantage estimate history before building any D-family history: its EPS basis (it
-   disagrees with its own earnings history on ORCL — 1.39 vs 1.74) and whether "N days ago" is anchored
-   to the report date.
-3. Pipeline: snapshot → hash → git-commit before the open; grading code; ET clock guard.
-4. Factor extraction for the free families (A, C3–C4, D4–D5, E, F, I, J).
-5. External evaluator design brief → `reviews/`.
+
+1. Freeze decisions 1–4 into `registry/` once Jacob confirms.
+2. **Universe:** pull the FULL season calendar (`return_full_data`); apply the §10 allowlist; confirm every
+   date and session from two sources; freeze `universe/`. First clean event: **MU, Sep 30, after close.**
+3. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
+   ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history). Also
+   check whether "N days ago" in estimates history is anchored to the report date or to today.
+4. Pipeline: snapshot → hash → git-commit before the entry open; grading code; ET clock guard.
+5. History study on the free factor families (A, C3–C4, D, E, F, I, J).
+6. External evaluator design brief → `reviews/`.
+7. Probe a lead in `reviews/external_source_leads.md` only when a factor needs it.
+
+## Watch-outs
+
+- **Alpha Vantage free key: 25 calls a day, 1 a second.** Three probes were rate-limited for firing too
+  fast. The ETF-holdings endpoint the leave-one-out benchmark needs is still untested.
+- The pilot screen's implied-vol column is a proxy — never reuse it as the §10 rule.
+- `FRAMEWORK.md` was drafted in a chat that held PRE v1's full history. Review it with fresh eyes; the
+  external evaluator is the check on that.

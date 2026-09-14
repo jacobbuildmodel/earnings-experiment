@@ -1,6 +1,6 @@
 # Earnings Experiment — Framework v0.1
 
-> **Status: DRAFT for owner review · 2026-09-13 · NOT FROZEN.**
+> **Status: DRAFT for owner review · 2026-09-13 · figures re-verified 2026-09-14 · NOT FROZEN.**
 > Collection opens **Mon 2026-09-21**. Everything marked 🔒 must be frozen before then.
 
 ## How to read this
@@ -197,7 +197,7 @@ Column key — **free history**: ✅ reconstructable for past quarters at no cos
 | A1 | run-up 5 / 20 / 60d, raw and vs sector | stocks drift up into prints; retail over-extrapolates past gains | [pre-earnings over-extrapolation](https://mendoza.nd.edu/wp-content/uploads/2019/01/2016_spring_finance_seminar_series_peter_kelly_paper_updated_3_22_2016.pdf) | ✅ |
 | A2 | distance from 52-week high | | | ✅ |
 | A3 | realised volatility 20d | | | ✅ |
-| A4 | volume surge (5d ÷ 60d average) | high pre-print volume goes with a larger earnings premium | [Frazzini & Lamont 2007](https://www.nber.org/system/files/working_papers/w13090/w13090.pdf) | ✅ |
+| A4 | volume surge (5d ÷ 60d average), and volume at the last few prints vs normal | stocks with high trading volume at *past* announcements earn the largest earnings premium — attributed to attention-driven small-investor buying | [Frazzini & Lamont 2007](https://www.nber.org/system/files/working_papers/w13090/w13090.pdf) | ✅ |
 | A5 | gap history: average absolute gap and up-gap rate, last 8 prints | | | ✅ |
 | A6 | trend: price vs 50d and 200d average | | | ✅ |
 | A7 | relative strength vs sector ETF | | | ✅ |
@@ -257,7 +257,7 @@ retail attention × implied move.
 
 | id | factor | why it could matter | evidence | free history |
 |---|---|---|---|---|
-| F1 | average excess reaction of peers already reported this season | investors price late reporters off early ones; both under- and over-reaction are documented, so the *sign* has to be measured | [intra-industry transfer, Thomas & Zhang 2008 and follow-ups](https://link.springer.com/article/10.1007/s11142-019-9487-1) | ✅ |
+| F1 | average excess reaction of peers already reported this season | investors price late reporters off early ones; both under- and over-reaction are documented, so the *sign* has to be measured | [*Intra-industry information transfers*, Review of Accounting Studies 2019](https://link.springer.com/article/10.1007/s11142-019-9487-1) | ✅ |
 | F2 | peers' guidance direction this season | | | ⚠ manual |
 | F3 | early vs late reporter within its sector | late reporters show predictable pre-print drift | | ✅ |
 | F4 | supply-chain read-through: key supplier or customer already reported | | | ⚠ mapping needed |
@@ -323,10 +323,12 @@ N3 up-volume vs down-volume into the print · N4 momentum-factor crowding · N5 
 
 ## 8. INPUT — the data sources, tested rather than assumed
 
-Every row was **probed live on 2026-09-13**, not taken from documentation — and that already
+The Alpha Vantage and yfinance rows were **probed live on 2026-09-13**, not taken from their documentation — and that already
 mattered. A summary of the Alpha Vantage docs called news sentiment, insider trades and the earnings
 calendar *premium*; **all three returned data on the free key.** So did historical put/call, and so did
-estimate history. Only historical options came back genuinely blocked.
+estimate history. Only historical options came back genuinely blocked; the ETF-holdings endpoint the
+leave-one-out benchmark needs is still untested (it was rate-limited). Every raw response is saved in
+`analysis/exploratory/2026-09-13_source_probes/`.
 
 | source | cost | what it gives | history | verdict |
 |---|---|---|---|---|
@@ -348,7 +350,7 @@ estimate history. Only historical options came back genuinely blocked.
    **Rule: confirm date and session from two sources, one of them the company.**
 3. **The same vendor disagrees with itself.** For ORCL's quarter ending 2026-08-31, Alpha Vantage's
    earnings history gives a consensus of **1.39** (reported 1.63 — a 17% beat), while its estimates
-   history gives **1.74**, which matches the consensus quoted in coverage of the print. The likeliest
+   history gives **1.74**. The likeliest
    cause is two different EPS bases (GAAP vs adjusted). A beat-rate factor built on the wrong one would
    measure a surprise **nobody traded**. **Rule: one EPS basis — the adjusted consensus the market
    reports — validated per source before any history is built**, along with whether "7 / 30 / 90 days
@@ -410,17 +412,16 @@ belonged to no single model. Every rule below exists to stop that happening agai
 
 ### ⚠ Why industries, not sectors — tested on the first four weeks
 
-I ran a sector-and-size screen over everyone reporting Sep 14 – Oct 9. **30 names passed — including two
-homebuilders, an RV maker, a ski-resort operator, an auto-parts chain, a payroll processor, a lighting
-company, a shrinking plasma-drug maker and Manchester United.** Each is "Consumer Cyclical",
-"Technology", "Industrials" or "Healthcare" by its data label. A sector label cannot express *AI
-infrastructure* or *slow-growth*, so it admits exactly the names you said you don't care about — and
-implied volatility doesn't rescue it, because the homebuilders price 52–54% implied vol on rate risk
-alone.
+I ran a sector-and-size screen over everyone reporting Sep 14 – Oct 9. **34 names passed — including two
+homebuilders, an RV maker, a ski-resort operator, an auto-parts chain, a used-car dealer, a payroll
+processor, a lighting company, a plasma-drug maker with flat revenue, and Manchester United.** Every one
+carries a broad sector label the screen allowed. A sector label cannot express *AI infrastructure* or
+*slow-growth*, so it admits exactly the names you said you don't care about — and implied volatility
+doesn't rescue it: both homebuilders show 52–54% implied vol on options that span their own print.
 
 The same screen did surface what the experiment is for: **MU** (Sep 30, after close), **APLD** and
-**PENG** (AI infrastructure), **AEHR** (semiconductor test equipment), **JBL** (AI hardware
-manufacturing) and **BB**.
+**PENG** (AI infrastructure), **AEHR** (semiconductor test equipment), **JBL** (electronics
+manufacturing) and **BB**. Evidence and caveats: `analysis/exploratory/2026-09-13_pilot_screen/`.
 
 ### Draft allowlist — ⚠ your decision (§12), set once before the season
 
@@ -462,10 +463,13 @@ silently.
 **The honest parts.**
 
 - **The first weeks are thin — measured, not guessed.** Of 188 US reporters between Sep 14 and Oct 9
-  (from a partial calendar preview), **30** pass a sector-and-size screen and **22** price a big enough
-  move. Once the industry allowlist (§10) removes the homebuilders and their like, expect **roughly 2–4
-  genuine names a week** until Q3 season volume arrives from Oct 19. **MU on Sep 30** is the first event
-  that fits cleanly. Weeks one to three are for shaking out the pipeline.
+  (a date-sorted calendar preview that runs to Oct 28, so this window is complete), **34** pass a
+  sector-and-size screen. Under the draft allowlist (§10) the core AI, semiconductor, software and
+  hardware clusters get only a handful: **BB** (Sep 24), **JBL** and **MU** (Sep 30), then **AEHR**,
+  **PENG** and **APLD** (Oct 5–8). A few more would enter through the defense and healthcare rows
+  (e.g. AIR, ABVX), and through consumer names whose implied move clears 4% — which that screen could
+  not measure. Real volume arrives from Oct 19; **MU on Sep 30** is the first event that fits cleanly.
+  Weeks one to three are for shaking out the pipeline.
 - **End of November** gives a first out-of-sample read on rule v0 — built on free factors only, and
   with ~80–100 events it can only detect a *large* effect.
 - **Around March 2027** is the first test including options factors and AI judgment at full strength —
@@ -494,7 +498,7 @@ can catch a flaw while it is still free. I'll prepare the brief this week (`revi
 
 ---
 
-## References — all located and checked 2026-09-13
+## References — located 2026-09-13 · every figure and quote re-checked against the saved lookups 2026-09-14
 
 - Frazzini & Lamont (2007), *The earnings announcement premium and trading volume* —
   [NBER w13090](https://www.nber.org/system/files/working_papers/w13090/w13090.pdf) · global evidence:
@@ -509,8 +513,9 @@ can catch a flaw while it is still free. I'll prepare the brief this week (`revi
   [Journal of Finance](https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1540-6261.2004.00681.x)
 - Richardson, Teoh & Wysocki (2004), *The walk-down to beatable analyst forecasts* —
   [Contemporary Accounting Research](https://onlinelibrary.wiley.com/doi/abs/10.1506/KHNW-PJYL-ADUB-0RP6)
-- Intra-industry information transfers, incl. Thomas & Zhang (2008) —
-  [Review of Accounting Studies](https://link.springer.com/article/10.1007/s11142-019-9487-1)
+- *Intra-industry information transfers: evidence from changes in implied volatility around earnings
+  announcements* — Review of Accounting Studies (2019),
+  [Springer](https://link.springer.com/article/10.1007/s11142-019-9487-1)
 - Price, Doran, Peterson & Bliss (2012), *Earnings conference calls and stock returns: the incremental
   informativeness of textual tone* — [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=1625863)
 - *Investor information demand: evidence from Google searches around earnings announcements* —

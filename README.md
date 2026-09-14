@@ -12,6 +12,7 @@ Started 2026-09-13 · collection opens 2026-09-21.
 | `STATE.md` | where we left off, and the next action |
 | `FRAMEWORK.md` | the full design — outputs first, then inputs, then the rules |
 | `CLAUDE.md` | the operating rules the AI follows every session |
+| `check.py` | the health check — run first every session; PASS, or stop |
 
 ## Folders — created as the work reaches them
 
@@ -23,11 +24,13 @@ Started 2026-09-13 · collection opens 2026-09-21.
 | `ledger/` | append-only decisions and outcomes |
 | `analysis/` | exploratory and confirmatory analysis, kept strictly apart |
 | `src/` | pipeline code |
-| `reviews/` | external evaluator briefs and responses |
+| `reviews/` | external evaluator briefs and responses, and unverified source leads |
 | `archive/PRE_v1_closed/` | the retired previous model — **a record, not a starting point** |
 
 ## Open THIS folder as the session
 
-Start experiment sessions **in this folder**, not in the DRIVE repo. A session opened here loads only
-this project's rules. A session opened in DRIVE loads the portfolio's rules every turn — the wrong
-context for an experiment that must stay blind to the portfolio.
+Start experiment sessions **in this folder**, not in the DRIVE repo, and open with **`pre earnings model`**.
+A session opened here loads only this project's rules. A session opened in DRIVE loads the portfolio's
+rules and memory every turn — the wrong context for an experiment that must stay blind to the portfolio.
+
+Backup: every commit is pushed to `C:\repos\earnings-experiment.git`, off OneDrive.
