@@ -27,6 +27,8 @@
   - Frazzini & Lamont: the premium tracks volume at **past** announcements, not pre-print volume
   - a link labelled "Thomas & Zhang 2008" pointed to a different, 2019 paper — relabelled
   - the calendar preview is date-sorted, so Sep 14 – Oct 9 is complete, not partial
+- **PRE v1's reported figures checked against filings and call transcripts (2026-09-14).** Nothing was
+  fabricated; there were mislabels and one unsupported causal story. See `reviews/ERRATA_2026-09-14_PRE_v1_figures.md`.
 
 ## Waiting on Jacob — blocks the first trade (Mon 2026-09-21)
 
@@ -46,6 +48,11 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
 3. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
    ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history). Also
    check whether "N days ago" in estimates history is anchored to the report date or to today.
+   Lead (2026-09-14): the release gives GAAP EPS **$1.56** and non-GAAP **$1.92**; yfinance gives 1.74
+   estimated against 1.92 reported, so **1.74 is the non-GAAP consensus**. Earnings history's 1.63 and 1.39
+   match neither basis — find out what they are before using that endpoint.
+   **Pin "the open" as well:** for CPRT on 2026-09-11, yfinance's daily Open was 32.01 while the 09:30
+   one-minute bar opened at 31.76. Exit A needs one definition and one source.
 4. Pipeline: snapshot → hash → git-commit before the entry open; grading code; ET clock guard.
 5. History study on the free factor families (A, C3–C4, D, E, F, I, J).
 6. External evaluator design brief → `reviews/`.

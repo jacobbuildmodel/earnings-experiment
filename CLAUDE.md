@@ -57,6 +57,13 @@ to start a fresh chat in `Earnings Experiment`.
 - **Verify every figure against a primary source** before it enters a snapshot. Web summaries have
   fabricated numbers (a "$20.5B" revenue target that was really $26.5B). Flag fabrications explicitly.
 - **Never fabricate market data.** If a fetch fails, record the field as missing.
+- **Store the source tier with every value.** A figure said on the earnings call is company-stated,
+  not filed. Many headline metrics (e.g. GPU utilisation, unit volumes) appear only on the call.
+- **Read every filing in the event window** before attributing a reaction to the print. A same-evening
+  8-K (an acquisition, a CEO change) confounds it.
+- **yfinance's daily Open can differ from the 09:30 one-minute bar** (CPRT 2026-09-11: 32.01 vs 31.76).
+- **Alpha Vantage transcripts use fiscal quarters** (ORCL's Sep 2026 call is `2027Q1`) and can lag by
+  days. Returning nothing is not proof the call didn't happen.
 
 ## GIT
 This is its own repo. Stage explicit paths only. New files are LF; `archive/**` is committed byte-exact

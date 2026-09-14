@@ -35,6 +35,12 @@ The other reviews were delivered in chat and as pages:
 - Opus second opinion — the review that overturned the brief: https://claude.ai/code/artifact/3b37c450-9298-4142-8952-a60e46ded921
 - a ChatGPT audit brief and a Genspark research dossier (chat text, not saved as files)
 
+## Known errors in this record
+
+Figures were checked against filings and call transcripts on 2026-09-14. None was fabricated. Some
+are mislabelled, and one causal story is unsupported. The files here stay unedited; the corrections
+are in `reviews/ERRATA_2026-09-14_PRE_v1_figures.md`.
+
 ## When it may be opened
 
 At the verdict (`FRAMEWORK.md` §11, phase 6) — **to compare against, never to design from.**
