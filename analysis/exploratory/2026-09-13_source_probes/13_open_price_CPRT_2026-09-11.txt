@@ -1,0 +1,30 @@
+Probe 13 - which price is "the open"? CPRT, 2026-09-11. Run 2026-09-16 ~09:35 ET.
+
+yfinance Ticker('CPRT').history(start='2026-09-09', end='2026-09-16', auto_adjust=False)
+                                Open       High        Low      Close    Volume
+2026-09-09 00:00:00-04:00  32.360001  32.500000  31.740000  32.029999   7688500
+2026-09-10 00:00:00-04:00  31.910000  32.259998  30.540001  30.750000  15203700
+2026-09-11 00:00:00-04:00  32.009998  32.049999  29.580000  29.950001  21854400
+2026-09-14 00:00:00-04:00  30.629999  31.830000  30.250000  31.730000  11283800
+2026-09-15 00:00:00-04:00  31.549999  31.830000  30.990000  31.040001   7434100
+
+yfinance history(period='8d', interval='1m', prepost=True), 2026-09-11 09:28-09:31
+                                Open       High        Low      Close  Volume
+2026-09-11 09:28:00-04:00  32.750000  32.750000  32.650000  32.750000       0
+2026-09-11 09:29:00-04:00  32.310000  32.310000  31.798000  31.900000       0
+2026-09-11 09:30:00-04:00  31.760000  32.020000  31.600000  31.760000  475869
+2026-09-11 09:31:00-04:00  31.820000  31.860001  30.799999  31.334999  349228
+
+Alpha Vantage TIME_SERIES_DAILY CPRT compact (first 5 rows of 100, verbatim)
+timestamp,open,high,low,close,volume
+2026-09-15,31.5500,31.8300,30.9850,31.0400,7434635
+2026-09-14,30.6300,31.8300,30.2500,31.7300,11287934
+2026-09-11,32.0100,32.0450,29.5750,29.9500,21860312
+2026-09-10,31.9100,32.2600,30.5400,30.7500,15203736
+2026-09-09,32.3600,32.5000,31.7400,32.0300,7691064
+
+Reading: two independent vendors give the daily open as 32.01. The 09:30 one-minute bar opens at 31.76
+but trades up to 32.02 inside that minute, so 32.01 is a real print in the first minute - consistent
+with the official opening-auction price, while 31.76 is the first bar's first trade. The daily Open
+is the price a market-on-open order receives, so it is the tradeable "open". Pinned in
+registry/D001_outcome_v1.md.

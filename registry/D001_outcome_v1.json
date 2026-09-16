@@ -1,0 +1,50 @@
+{
+  "id": "D001_outcome_v1",
+  "frozen_on": "2026-09-16",
+  "authority": "D001_outcome_v1.md wins on any disagreement",
+  "session": {"tz": "America/New_York", "open": "09:30", "close": "16:00"},
+  "timing": {
+    "BMO": {"entry": ["open", -1], "exit_A": ["open", 0], "exit_B": ["close", 0], "exit_C": ["close", 5]},
+    "AMC": {"entry": ["open", 0], "exit_A": ["open", 1], "exit_B": ["close", 1], "exit_C": ["close", 6]},
+    "offsets_are": "trading sessions relative to the print date D",
+    "intraday_print": "VOID"
+  },
+  "primary_exit": "exit_A",
+  "prices": {
+    "open": "official opening price = daily-bar Open (not the 09:30 one-minute bar)",
+    "close": "official closing price = daily-bar Close",
+    "primary_source": "yfinance history(auto_adjust=False)",
+    "check_source": "alphavantage TIME_SERIES_DAILY",
+    "agree_if_abs_diff_pct_lte": 0.10,
+    "agree_if_abs_diff_usd_lte": 0.01,
+    "on_disagreement": "grade on primary, flag price_dispute, report results with and without",
+    "no_check_within_sessions": 5,
+    "no_check_flag": "single_source",
+    "round_decimals": 4,
+    "overwrite": false,
+    "missing_exit": "next official price, flag exit_delayed; none ever -> VOID"
+  },
+  "corporate_actions": {
+    "split": "entry_price / split_ratio, flag split_adjusted",
+    "cash_dividend": "exit_price + dividend when entry < ex_date <= exit, flag dividend_adjusted"
+  },
+  "outcome": {
+    "raw_return": "exit_price / entry_price - 1",
+    "primary": {"name": "WIN_raw", "exit": "exit_A", "test": "raw_return > 0"},
+    "BUY_correct": "WIN_raw",
+    "NO_BUY_correct": "not WIN_raw",
+    "secondary": [
+      {"name": "WIN_net", "test": "raw_return > 0.0020", "round_trip_cost": 0.0020},
+      {"name": "WIN_excess", "test": "raw_return - beta * bench_return > 0",
+       "benchmark": "frozen with the universe (ETF map, beta window, leave-one-out weight threshold)"}
+    ],
+    "secondary_exits": ["exit_B", "exit_C"]
+  },
+  "evaluation": {
+    "null": "T0 hit rate = share of all eligible events with WIN_raw",
+    "primary_comparison": "BUY-set hit rate minus T0 hit rate on the same events",
+    "also_reported": ["BUY-set minus NO_BUY-set hit rate", "NO_BUY accuracy", "mean raw_return per set", "void counts"],
+    "insufficient_if": "events < 30 or event_dates < 10"
+  },
+  "void_if": ["freeze commit after entry open", "print date or session differs from frozen", "intraday print", "no price"]
+}

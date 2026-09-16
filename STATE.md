@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 0 · Build** · updated 2026-09-14 · collection opens **Mon 2026-09-21**
+**Phase 0 · Build** · updated 2026-09-16 · collection opens **Mon 2026-09-21**
 
 ## Where things are
 
@@ -30,24 +30,19 @@
 - **PRE v1's reported figures checked against filings and call transcripts (2026-09-14).** Nothing was
   fabricated; there were mislabels and one unsupported causal story. See `reviews/ERRATA_2026-09-14_PRE_v1_figures.md`.
 
-## Jacob answered 2026-09-16 — the next chat freezes these into `registry/` FIRST
+## Frozen 2026-09-16 — `registry/` (hash-checked by `check.py`; never edit, only add versions)
 
-His words: *"a, (typically yes) but if its that simple everyone will be a perfect at prediction so this is
-up for experiementation what actually cause a price to increase a win to me is basically the share price
-go the desired direction as expected by the model … yes, draft."*
-
-1. **Primary exit = A**, the first open after the print. B and C are recorded as secondary.
-2. **Primary WIN = raw direction, which REPLACES the excess-return default in `FRAMEWORK.md`.**
-   - BUY wins if the exit price is above the entry price.
-   - NO_BUY is correct if it is not.
-   - Beating the sector (excess return) is still recorded, and whether it explains wins better is itself a
-     question to test.
-   - Before freezing: bump `FRAMEWORK.md` to v0.2 to match. Decide whether "above" means above zero or
-     above a round-trip cost. Pin the price source for the open (see next action 3).
-   - ⚠ Raw direction includes the whole market's overnight move, so **the bar to beat is T0's hit rate
-     (buy everything), not 50%**. Say this in the registry entry.
-3. **"bmc" = BMO.** Yes.
-4. **Industry allowlist = the §10 draft.**
+- **D001 outcome v1:**
+  - Exit A is the first official open after the print. The official open is the daily-bar Open, not the
+    09:30 one-minute bar: for CPRT on 2026-09-11, yfinance and Alpha Vantage both give 32.01 (probe 13).
+  - **WIN = raw_return > 0** (Jacob's choice). WIN_net (20 bp) and WIN_excess are secondary.
+  - **The bar is T0's hit rate, not 50%.**
+  - It also fixes: price sources and their tolerance, fetch-once storage, splits and dividends, VOID rules.
+- **D002 allowlist v1:** the §10 draft, verbatim. **Five terms are still judgment** (taxonomy source,
+  "AI-hosting", "robotics is the product", healthcare "largest", options liquidity, plus the screening date
+  and the implied-move formula). D003 must turn them into numbers before any calendar name is screened.
+- `FRAMEWORK.md` is now v0.2 (§2, §3, §5, §12 match the registry; **the registry wins on conflict**).
+- The WIN_excess benchmark (ETF map, beta window, leave-one-out threshold) is frozen WITH the universe.
 
 ## Jacob's research request (2026-09-16) — do it in the NEW chat, before the history study
 *"for more inspiration do look thorugh academic papers do not limit yourself to buy and sell specifically
@@ -62,21 +57,21 @@ microstructure and options-implied expectations.
 Not blocking: ThetaData ~$40/month for historical options, or collect free going forward (default: free) ·
 a retail-attention source (default: leave it out of v0) · real trades, paper, or signals only (default: signals).
 
-## Next actions — Sep 14–18
+## Next actions — Sep 16–18
 
-1. Freeze decisions 1–4 into `registry/` (answered above); update `FRAMEWORK.md` to v0.2 for the raw-direction WIN.
-   Then the literature review (above).
-2. **Universe:** pull the FULL season calendar (`return_full_data`); apply the §10 allowlist; confirm every
-   date and session from two sources; freeze `universe/`. First clean event: **MU, Sep 30, after close.**
+1. **Literature review** (Jacob's request above) → `reviews/literature_review.md`.
+2. **D003 universe screening rule:** give the five open D002 terms numbers, fix the screening date,
+   the implied-move formula and the WIN_excess benchmark. Freeze D003 BEFORE pulling the season calendar.
+   Then pull the FULL season calendar (`return_full_data`), apply the rule, confirm every date and
+   session from two sources, and freeze `universe/`. First clean event: **MU, Sep 30, after close.**
 3. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
    ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history). Also
    check whether "N days ago" in estimates history is anchored to the report date or to today.
    Lead (2026-09-14): the release gives GAAP EPS **$1.56** and non-GAAP **$1.92**; yfinance gives 1.74
    estimated against 1.92 reported, so **1.74 is the non-GAAP consensus**. Earnings history's 1.63 and 1.39
    match neither basis — find out what they are before using that endpoint.
-   **Pin "the open" as well:** for CPRT on 2026-09-11, yfinance's daily Open was 32.01 while the 09:30
-   one-minute bar opened at 31.76. Exit A needs one definition and one source.
-4. Pipeline: snapshot → hash → git-commit before the entry open; grading code; ET clock guard.
+4. Pipeline: snapshot → hash → git-commit before the entry open; grading code that reads
+   `registry/D001_outcome_v1.json`; ET clock guard.
 5. History study on the free factor families (A, C3–C4, D, E, F, I, J).
 6. External evaluator design brief → `reviews/`.
 7. Probe a lead in `reviews/external_source_leads.md` only when a factor needs it.

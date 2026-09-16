@@ -1,7 +1,12 @@
-# Earnings Experiment — Framework v0.1
+# Earnings Experiment — Framework v0.2
 
-> **Status: DRAFT for owner review · 2026-09-13 · figures re-verified 2026-09-14 · NOT FROZEN.**
+> **Status: DRAFT · v0.1 2026-09-13 · figures re-verified 2026-09-14 · v0.2 2026-09-16.**
 > Collection opens **Mon 2026-09-21**. Everything marked 🔒 must be frozen before then.
+>
+> **v0.2 (2026-09-16):** Jacob answered §12 #1–3 and #7. **The primary WIN is now raw direction, not
+> excess return.** §2, §3 and §12 are updated to match. **Frozen and authoritative:**
+> `registry/D001_outcome_v1.md` (exit, prices, outcome) and `registry/D002_universe_allowlist_v1.md`.
+> Where this document and the registry differ, **the registry wins**.
 
 ## How to read this
 
@@ -33,12 +38,12 @@ timeline, and what I need from you.
 | **BMO** (before market open) on day D | before D's open | **open of D−1** | open of D |
 | **AMC** (after market close) on day D | after D's close | **open of D** | open of D+1 |
 
-*Your message said "bmc" — read as BMO. Confirm (§12).*
+*"bmc" = BMO — confirmed 2026-09-16.*
 
 Every trade therefore holds **one full trading session plus the overnight gap**. That session
 matters: stocks tend to drift up into earnings (factor A1), and this entry deliberately captures it.
 
-### Exit — ⚠ YOUR DECISION, and it can never change afterwards
+### Exit — ✅ DECIDED 2026-09-16: A · frozen in `registry/D001`
 
 The exit defines what "profit from the earnings result" means. **It must be chosen before the first
 trade and never changed.** Choosing whichever exit looks best *after* seeing results is the easiest
@@ -46,7 +51,7 @@ way there is to manufacture an edge that doesn't exist.
 
 | option | exit at | what it measures | status |
 |---|---|---|---|
-| **A** | **first open after the print** | the result, and nothing after it | ✅ **PRIMARY (default)** |
+| **A** | **first open after the print** | the result, and nothing after it | ✅ **PRIMARY (chosen)** |
 | B | close of the reaction day | the result + the first full day of digestion, incl. the call | secondary |
 | C | close 5 trading days later | the result + post-earnings drift | secondary |
 
@@ -54,20 +59,29 @@ way there is to manufacture an edge that doesn't exist.
 exist to answer your question about whether an *immediate* sell makes sense — as a separate,
 labelled finding, never mixed into the main test.
 
-### The outcome — computed by code, never judged 🔒
+### The outcome — computed by code, never judged 🔒 · frozen in `registry/D001`
 
 ```
-raw_return    = exit_price / entry_price − 1
+raw_return    = exit_price / entry_price − 1        (exit A, official opening prices)
 bench_return  = the same window for the sector benchmark
 excess_return = raw_return − beta × bench_return
 
-WIN_excess    = excess_return > 0     ← PRIMARY  (did it beat its own sector?)
-WIN_raw       = raw_return    > 0     ← P&L view (did the account go up?)
+WIN_raw       = raw_return    > 0       ← PRIMARY  (did the price go the way the model expected?)
+WIN_net       = raw_return    > 0.20%   secondary  (after a 20 bp round trip)
+WIN_excess    = excess_return > 0       secondary  (did it beat its own sector?)
 ```
 
-**Why excess is primary:** in a rising market almost every buy "wins" on raw return. Excess return
-separates *the earnings result* from *the market that day*. Raw is still reported, because raw is
-what reaches the account.
+A BUY is correct if WIN_raw holds. A NO_BUY is correct if it does not.
+
+**Why raw is primary (Jacob, 2026-09-16):** a win is the share price moving the way the model expected.
+Whether beating the sector explains wins better is left as a question for the experiment, not assumed.
+
+**⚠ The price of that choice:** raw direction includes the whole market's move over the holding window.
+In a rising market most buys "win" whatever the model does. **So the bar to beat is T0's hit rate, not
+50%** (§3).
+
+**"The open"** is the official opening price, the daily-bar Open. It is not the first trade of the
+09:30 one-minute bar. For CPRT on 2026-09-11, two vendors give 32.01 while that bar opened at 31.76.
 
 **Leave-one-out benchmark.** When a stock is a large weight in its own ETF, its move contaminates the
 benchmark (ORCL moves IGV on its own print night). Where the weight `w` is material:
@@ -91,9 +105,12 @@ group. Without them there is no way to tell a good filter from a lucky market.
 
 | comparison | answers |
 |---|---|
-| T0 mean excess > 0 | does buying into earnings work *at all* in this universe? |
-| T1 BUY set − T1 NO_BUY set | does the rule separate winners from losers? |
+| T0 hit rate (share of eligible events with WIN_raw) | the null. What "buy everything" scores in this market |
+| **T1 BUY-set hit rate − T0 hit rate** | **PRIMARY.** Does the rule pick better than buying everything? |
+| T1 BUY-set hit rate − T1 NO_BUY-set hit rate | does the rule separate winners from losers? |
 | T2 lift − T1 lift | does AI judgment add something a formula can't? |
+
+Mean raw return per set, and the secondary outcomes, are reported beside every hit rate.
 
 ---
 
@@ -123,8 +140,8 @@ group. Without them there is no way to tell a good filter from a lucky market.
 | field | meaning |
 |---|---|
 | n events · n event-dates | how much evidence, counted honestly |
-| base rate | P(WIN_excess) and mean excess return for buy-all (T0) |
-| effect | WIN rate in the top third of the factor minus the bottom third; mean excess difference |
+| base rate | P(WIN_raw) and mean raw return for buy-all (T0); WIN_excess alongside |
+| effect | WIN_raw rate in the top third of the factor minus the bottom third; mean raw-return difference |
 | confidence interval | where the true effect plausibly lies |
 | q-value | significance **after** correcting for how many factors were tested |
 | stability | does it hold in both halves of the sample? |
@@ -423,7 +440,7 @@ The same screen did surface what the experiment is for: **MU** (Sep 30, after cl
 **PENG** (AI infrastructure), **AEHR** (semiconductor test equipment), **JBL** (electronics
 manufacturing) and **BB**. Evidence and caveats: `analysis/exploratory/2026-09-13_pilot_screen/`.
 
-### Draft allowlist — ⚠ your decision (§12), set once before the season
+### Allowlist — ✅ chosen 2026-09-16, frozen in `registry/D002`
 
 Setting this once, before any data, is what stops it becoming a dial that gets turned later.
 
@@ -484,13 +501,13 @@ silently.
 
 | # | decision | default if you don't choose | blocks |
 |---|---|---|---|
-| 1 | **Primary exit** — A first open after the print · B reaction-day close · C +5 days | **A** | the first trade |
-| 2 | Primary outcome = beat the sector (excess), with raw P&L reported alongside | **yes** | the first trade |
-| 3 | "bmc" in your message means BMO | **yes** | the first trade |
+| 1 | **Primary exit** — A first open after the print · B reaction-day close · C +5 days | ✅ **A** (2026-09-16) | — |
+| 2 | Primary outcome | ✅ **raw direction**; excess is secondary (2026-09-16) | — |
+| 3 | "bmc" in your message means BMO | ✅ **yes** (2026-09-16) | — |
 | 4 | Historical options data for the backfill — ThetaData ~$40/month, or skip and let Season A capture it free | **skip for now** | Phase 2 only |
 | 5 | Retail-attention source — a free Reddit API key, or leave C5–C6 out of v0 | **leave out of v0** | nothing |
 | 6 | Real trades, paper trades, or signals only? Outcomes are graded from market prices either way | **signals only** | nothing |
-| 7 | **Industry allowlist** (§10) — which industries count, cluster by cluster | **the draft in §10** | the universe freeze |
+| 7 | **Industry allowlist** (§10) — which industries count, cluster by cluster | ✅ **the §10 draft** (2026-09-16) → `registry/D002` | — |
 
 **External evaluator: yes — before the first trade, not after.** Last time, the one reviewer who found
 the fatal flaw found it in a finished record, when it could no longer be fixed. A design review now

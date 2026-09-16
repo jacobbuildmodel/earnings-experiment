@@ -8,6 +8,7 @@ What must be true before any work builds on this repo:
   5. uncommitted work is surfaced - a freeze is only provably blind once it is committed
   6. the US-Eastern clock reads, because every freeze is timed against it
   7. the toolchain the pipeline needs is importable
+  8. every frozen registry file still matches the hash recorded when it was frozen
 """
 import datetime
 import os
@@ -99,6 +100,31 @@ else:
         ok("working tree clean")
     _, head = git("log", "-1", "--format=%h %ad %s", "--date=short")
     print(f"           HEAD {head}")
+
+# Frozen registry files must be byte-identical (line endings normalised) to the hash recorded when frozen.
+import hashlib
+frozen_list = os.path.join(ROOT, "registry", "FROZEN.sha256")
+if not os.path.exists(frozen_list):
+    bad("registry/FROZEN.sha256 is missing - frozen decisions cannot be proven unchanged")
+else:
+    changed, count = [], 0
+    for line in open(frozen_list, encoding="utf-8"):
+        if not line.strip():
+            continue
+        digest, name = line.split(maxsplit=1)
+        name = name.strip().lstrip("*")
+        path = os.path.join(ROOT, "registry", name)
+        count += 1
+        if not os.path.exists(path):
+            changed.append(f"{name} (missing)")
+            continue
+        data = open(path, "rb").read().replace(b"\r\n", b"\n")
+        if hashlib.sha256(data).hexdigest() != digest:
+            changed.append(name)
+    if changed:
+        bad(f"frozen registry file(s) changed: {changed} - a change must be a NEW version, never an edit")
+    else:
+        ok(f"registry: {count} frozen file(s) match their hashes")
 
 try:
     from zoneinfo import ZoneInfo

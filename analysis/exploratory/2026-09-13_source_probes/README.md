@@ -18,6 +18,7 @@ response, recovered from the session record, with any API key masked and transie
 | 10 | `HISTORICAL_PUT_CALL_RATIO` ORCL | rate-limited | retried as #11 |
 | 11 | `HISTORICAL_PUT_CALL_RATIO` ORCL, 2026-09-10 | full chain 0.60, plus a ratio per expiry | historical put/call works |
 | 12 | `EARNINGS_ESTIMATES` ORCL | quarterly estimates back to 2017, with 7/30/60/90-day averages and revision counts | estimate history works |
+| 13 | `TIME_SERIES_DAILY` CPRT + yfinance daily and 1-minute (added 2026-09-16) | both vendors give the 2026-09-11 open as **32.01**; the 09:30 bar opens at 31.76 | the daily Open is the official open — pinned in `registry/D001` |
 
 ## ⚠ The trap these files prove
 
