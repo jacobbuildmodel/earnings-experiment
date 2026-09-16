@@ -30,19 +30,42 @@
 - **PRE v1's reported figures checked against filings and call transcripts (2026-09-14).** Nothing was
   fabricated; there were mislabels and one unsupported causal story. See `reviews/ERRATA_2026-09-14_PRE_v1_figures.md`.
 
-## Waiting on Jacob — blocks the first trade (Mon 2026-09-21)
+## Jacob answered 2026-09-16 — the next chat freezes these into `registry/` FIRST
 
-1. **Primary exit** — A first open after the print · B reaction-day close · C +5 days. Default **A**.
-2. **Primary outcome** — beat the sector, raw P&L alongside. Default **yes**.
-3. **"bmc" in his message = BMO.** Default **yes**.
-4. **Industry allowlist** — the draft in `FRAMEWORK.md` §10. Default **the draft**.
+His words: *"a, (typically yes) but if its that simple everyone will be a perfect at prediction so this is
+up for experiementation what actually cause a price to increase a win to me is basically the share price
+go the desired direction as expected by the model … yes, draft."*
+
+1. **Primary exit = A**, the first open after the print. B and C are recorded as secondary.
+2. **Primary WIN = raw direction, which REPLACES the excess-return default in `FRAMEWORK.md`.**
+   - BUY wins if the exit price is above the entry price.
+   - NO_BUY is correct if it is not.
+   - Beating the sector (excess return) is still recorded, and whether it explains wins better is itself a
+     question to test.
+   - Before freezing: bump `FRAMEWORK.md` to v0.2 to match. Decide whether "above" means above zero or
+     above a round-trip cost. Pin the price source for the open (see next action 3).
+   - ⚠ Raw direction includes the whole market's overnight move, so **the bar to beat is T0's hit rate
+     (buy everything), not 50%**. Say this in the registry entry.
+3. **"bmc" = BMO.** Yes.
+4. **Industry allowlist = the §10 draft.**
+
+## Jacob's research request (2026-09-16) — do it in the NEW chat, before the history study
+*"for more inspiration do look thorugh academic papers do not limit yourself to buy and sell specifically
+also look at scholors who did study on market pyscology and etc that may help u in your decision making"*
+→ A literature review on what moves prices around earnings: behavioural finance (investor attention,
+under- and over-reaction, disposition effect, limits to arbitrage, sentiment), plus market
+microstructure and options-implied expectations.
+- Output: `reviews/literature_review.md`.
+- Each idea becomes a **candidate** factor with its citation. Not proof — rule 6 applies.
+- Verify every paper exists and says what's claimed before citing it.
 
 Not blocking: ThetaData ~$40/month for historical options, or collect free going forward (default: free) ·
 a retail-attention source (default: leave it out of v0) · real trades, paper, or signals only (default: signals).
 
 ## Next actions — Sep 14–18
 
-1. Freeze decisions 1–4 into `registry/` once Jacob confirms.
+1. Freeze decisions 1–4 into `registry/` (answered above); update `FRAMEWORK.md` to v0.2 for the raw-direction WIN.
+   Then the literature review (above).
 2. **Universe:** pull the FULL season calendar (`return_full_data`); apply the §10 allowlist; confirm every
    date and session from two sources; freeze `universe/`. First clean event: **MU, Sep 30, after close.**
 3. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
