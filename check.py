@@ -126,6 +126,23 @@ else:
     else:
         ok(f"registry: {count} frozen file(s) match their hashes")
 
+# Frozen events: every file listed in an event's manifest must still match its hash.
+import json
+import glob
+manifests = glob.glob(os.path.join(ROOT, "events", "*", "*", "manifest.json"))
+changed = []
+for m in manifests:
+    edir = os.path.dirname(m)
+    for name, digest in json.load(open(m, encoding="utf-8"))["sha256"].items():
+        path = os.path.join(edir, name)
+        data = open(path, "rb").read().replace(b"\r\n", b"\n") if os.path.exists(path) else b""
+        if hashlib.sha256(data).hexdigest() != digest:
+            changed.append(os.path.relpath(path, ROOT))
+if changed:
+    bad(f"frozen event file(s) changed: {changed} - a frozen decision can never be edited")
+else:
+    ok(f"events: {len(manifests)} frozen event(s) match their hashes")
+
 try:
     from zoneinfo import ZoneInfo
     now = datetime.datetime.now(ZoneInfo("America/New_York"))
