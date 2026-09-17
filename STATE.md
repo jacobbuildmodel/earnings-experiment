@@ -93,24 +93,45 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
 - ⚠ **Rule gap:** 2026-11-27 closes at 13:00, so the S2 window 14:30–15:50 does not exist that day.
   **D003 v2 must fix this before the Season A screen (Oct 9).**
 
-## TONIGHT — the pilot run (times in Singapore; ET = SGT − 12)
+## Pilot — universe frozen 2026-09-17 (`universe/pilot/`, commit f29ad02)
 
-1. **12:01 SGT** — background job runs `s1_screen.py pilot nasdaq` (write-once).
-2. **Before 21:30 SGT** (09:30 ET):
-   - pull the Alpha Vantage `EARNINGS_CALENDAR` (3month) via MCP and save it verbatim to
-     `universe/pilot/raw/av_calendar.csv`
-   - run `s1_screen.py pilot market`
-   - after that, `s1_screen.py pilot screen` (SEC/filing tests; not time-bound)
-   - commit `universe/pilot/`
-3. For each candidate with a print Sep 21 – Oct 9, find the **company** date and session source and
-   write `events/pilot/<T>_<date>/confirm.json`.
-   **A BMO print on Mon Sep 21 has its S2 window TODAY, 14:30–15:50 ET = 02:30–03:50 SGT on Sep 18.**
-4. In each S2 window: `s2_gate.py` → `factors.py` → (if PASS) T2 writes `decision.json` + `thesis.md`
-   under D004 → `freeze.py`, all before the entry open.
+- The 00:01 ET background job was killed with no output. The capture was run by hand at **08:03–08:06 ET**,
+  inside the slot. Nasdaq: 145 rows · Alpha Vantage: 3,760 rows · union in the window: 153 names.
+- **12 candidates:** AEHR AIR APLD BB CHRN DRI JBL LEVI MU NKE PAYX PENG.
+  - ⚠ **PAYX** is in because Yahoo labels it "Software - Application", although FRAMEWORK meant payroll
+    to be OUT. Kept for the pilot (rule 5). Fix it in D003 v2 (e.g. exclude by name, or use SIC 7374).
+- Date and session confirmation is in `universe/pilot/event_status.json`, and each event's
+  `events/pilot/<T>_<date>/confirm.json` holds the company quote:
+
+  | S2 snapshot (ET, 14:30–15:50) | event | entry |
+  |---|---|---|
+  | Mon Sep 21 | PAYX BMO Sep 23 | Sep 22 open |
+  | Tue Sep 22 | DRI BMO Sep 24 · BB BMO Sep 24 (from call time) | Sep 23 open |
+  | Mon Sep 28 | JBL BMO Sep 30 · AIR AMC Sep 29 | Sep 29 open |
+  | Tue Sep 29 | MU AMC Sep 30 (from call time) | Sep 30 open |
+  | Wed Sep 30 | NKE AMC Oct 1 | Oct 1 open |
+  | Mon Oct 5 | PENG AMC Oct 6 (from call time) | Oct 6 open |
+
+  - **CHRN:** INELIGIBLE, unconfirmed. Its 10-K was already filed Aug 19; there is no company date and
+    no yfinance date.
+  - **PENDING:** AEHR (calendars say Oct 5, yfinance Nov 2), LEVI (calendars Oct 8, yfinance Sep 30),
+    APLD (Oct 8). None of the three had announced a date as of Sep 17. Re-check before their S2 windows.
+- **How company sources were found:** many IR sites are JavaScript-rendered, but their Q4 feed works:
+  `https://<ir-host>/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3&pageSize=8&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`
+  and `/feed/Event.svc/GetEventList?...`. BlackBerry puts its events in a script block on
+  investors.blackberry.com/press-releases. AAR lists its releases on aarcorp.com/en/investors/.
+  The web-search tool was down.
+- **Each S2 run:**
+  1. `python pipeline/s2_gate.py pilot <T> <date>`
+  2. `python pipeline/factors.py pilot <T> <date>`
+  3. if PASS: T2 writes `decision.json` + `thesis.md` under D004
+  4. `python pipeline/freeze.py pilot <T> <date>` — for INELIGIBLE events too
+- The S2 window in Singapore time is **02:30–03:50 SGT the next calendar day** (ET = SGT − 12 until
+  Nov 1).
 
 ## Next actions
 
-1. The pilot run above. First clean event: **MU, Sep 30, after close.**
+1. Run the S2 windows above (first: Mon Sep 21, 14:30 ET), and re-check AEHR, LEVI and APLD.
 2. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
    ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history).
    - Check whether "N days ago" in estimates history is anchored to the report date or to today.
