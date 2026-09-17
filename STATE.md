@@ -128,6 +128,11 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   4. `python pipeline/freeze.py pilot <T> <date>` — for INELIGIBLE events too
 - The S2 window in Singapore time is **02:30–03:50 SGT the next calendar day** (ET = SGT − 12 until
   Nov 1).
+- **Automated (Jacob approved 2026-09-17):** scheduled task `earnings-pilot-s2-window`, **02:35 SGT
+  Tue–Sat**, runs steps 1–4, re-checks the PENDING events, updates STATE and commits. It runs only while
+  the Claude app is open and the PC is awake; a missed window is recorded as `missed_window`, never faked.
+  Disable it after the pilot. Season A needs its own schedule, and **after Nov 1 (US DST ends) the S2
+  window moves to 03:30 SGT**.
 
 ## Next actions
 
