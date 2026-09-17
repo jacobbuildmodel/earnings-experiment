@@ -1,0 +1,79 @@
+{
+  "id": "D003_universe_screen_v1",
+  "frozen_on_et": "2026-09-16",
+  "authority": "D003_universe_screen_v1.md wins on any disagreement",
+  "seasons": {
+    "pilot":   {"window": ["2026-09-21", "2026-10-09"], "screen_date": "2026-09-17", "capture_et": ["2026-09-17T00:00", "2026-09-17T09:30"]},
+    "seasonA": {"window": ["2026-10-12", "2026-11-20"], "screen_date": "2026-10-09", "capture_et": ["2026-10-08T16:00", "2026-10-09T09:30"]}
+  },
+  "calendar_sources": {
+    "nasdaq": {"url": "https://api.nasdaq.com/api/calendar/earnings", "param": "date", "days": "weekdays from window_start-3 to window_end+3 calendar days"},
+    "alphavantage": {"function": "EARNINGS_CALENDAR", "horizon": "3month", "filter": "reportDate in same range"},
+    "combine": "union"
+  },
+  "s1": {
+    "quote_type": "EQUITY",
+    "exchanges": ["NYSE", "Nasdaq", "NYSE American"],
+    "exclude_industries": ["Shell Companies"],
+    "exclude_ticker": {"contains": ["^"], "suffixes": ["-P*", ".U", ".W", "-WT", ".R", "-RT"]},
+    "sec_latest_periodic_form_in": ["10-Q", "10-K", "10-Q/A", "10-K/A"],
+    "sec_exclude_forms": ["20-F", "40-F", "6-K"],
+    "market_cap_min": 2000000000,
+    "market_cap_second_source_band": [1900000000, 2100000000],
+    "prior_print_test": "at least one 10-Q or 10-K filed before screen_date"
+  },
+  "industry_map": {
+    "Semiconductors": {"cluster": "semis", "etf": "SOXX"},
+    "Semiconductor Equipment & Materials": {"cluster": "semis", "etf": "SOXX"},
+    "Software - Application": {"cluster": "software_internet", "etf": "IGV"},
+    "Software - Infrastructure": {"cluster": "software_internet", "etf": "IGV"},
+    "Internet Content & Information": {"cluster": "software_internet", "etf": "XLC"},
+    "Computer Hardware": {"cluster": "hardware_networking", "etf": "XLK"},
+    "Communication Equipment": {"cluster": "hardware_networking", "etf": "XLK"},
+    "Electronic Components": {"cluster": "hardware_networking", "etf": "XLK"},
+    "Aerospace & Defense": {"cluster": "drones_robotics_space_defense", "etf": "ITA"},
+    "Internet Retail": {"cluster": "consumer", "etf": "XLY"},
+    "Specialty Retail": {"cluster": "consumer", "etf": "XRT"},
+    "Apparel Retail": {"cluster": "consumer", "etf": "XRT"},
+    "Apparel Manufacturing": {"cluster": "consumer", "etf": "XLY"},
+    "Footwear & Accessories": {"cluster": "consumer", "etf": "XLY"},
+    "Restaurants": {"cluster": "consumer", "etf": "XLY"},
+    "Biotechnology": {"cluster": "healthcare_growth", "etf": "XBI", "market_cap_min": 10000000000},
+    "Medical Devices": {"cluster": "healthcare_growth", "etf": "IHI", "market_cap_min": 10000000000},
+    "Information Technology Services": {"cluster": "ai_infra", "etf": "XLK", "tests": ["AI_HOSTING"]},
+    "Capital Markets": {"cluster": "ai_infra", "etf": "XLK", "tests": ["BITCOIN_MINER", "AI_HOSTING"]},
+    "Specialty Industrial Machinery": {"cluster": "drones_robotics_space_defense", "etf": "XLI", "tests": ["ROBOTICS"]}
+  },
+  "named": {"MSTR": {"cluster": "crypto_proxy", "etf": "IBIT"}},
+  "filing_tests": {
+    "filings": "latest 10-K and latest 10-Q (primary document), filed <= screen_date and >= screen_date - 400 days",
+    "context_chars": 80,
+    "AI_HOSTING": {"patterns": ["high-performance computing", "high performance computing", "\\bhpc\\b", "\\bgpus?\\b", "ai cloud", "ai data center", "colocation"], "min": 10},
+    "BITCOIN_MINER": {"patterns": ["bitcoin mining", "mining pool", "hashrate", "hash rate"], "min": 5},
+    "ROBOTICS": {"patterns": ["\\brobot\\w*", "\\bautonomous\\b", "\\bunmanned\\b", "\\bdrone\\w*"], "min": 10},
+    "no_filing": "fail"
+  },
+  "s2": {
+    "window_et": ["14:30", "15:50"],
+    "snapshot_session": {"BMO": -2, "AMC": -1},
+    "confirm": "company source required + (yfinance get_earnings_dates timestamp or nasdaq pre-market/after-hours); disagree or missing -> unconfirmed",
+    "call_time_rule": "call < 09:30 -> BMO, call >= 16:00 -> AMC, flag session_from_call_time; call intraday -> unconfirmed",
+    "expiry": "first listed expiry >= reaction day",
+    "strike": "nearest spot, tie -> lower",
+    "implied_move": "(mid(call)+mid(put))/spot",
+    "implied_move_min": 0.04,
+    "max_rel_spread_each_leg": 0.10,
+    "min_oi_call_plus_put": 500,
+    "quote_retry_minutes": 5,
+    "diluted_flag_if_expiry_sessions_after_reaction_gt": 5,
+    "store_full_chain": true
+  },
+  "midseason": "weekly Friday re-pull of both calendars; companies absent from S1 calendar may join if they pass S1 at that time, flag added_midseason; S1 failures never re-tested in-season",
+  "benchmark": {
+    "beta_sessions": 252, "beta_min_sessions": 126, "beta_default": 1.0, "beta_clip": [0, 3],
+    "returns": "adjusted close-to-close daily",
+    "bench_window": "same price points as the stock exit",
+    "leave_one_out_weight_min": 0.02,
+    "weight_source": "issuer holdings file saved at snapshot; missing -> unadjusted, flag bench_weight_missing"
+  }
+}
