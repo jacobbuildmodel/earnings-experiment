@@ -1,0 +1,59 @@
+{
+ "season": "pilot",
+ "rule": "D003_universe_screen_v1",
+ "updated_et": "2026-09-17T08:11:10-04:00",
+ "events": {
+  "CHRN": {
+   "calendar_date": "2026-09-21",
+   "status": "INELIGIBLE",
+   "reason": "unconfirmed",
+   "evidence": [
+    "Nasdaq calendar lists 2026-09-21 with time-not-supplied; Alpha Vantage calendar has no row",
+    "yfinance get_earnings_dates has no future date (checked 2026-09-17 08:10 ET)",
+    "EDGAR: 10-K for fiscal year ended 2026-05-31 already filed 2026-08-19; 8-Ks of 2026-08-27 and 2026-09-16 and PRE 14A of 2026-09-15 read - none announces a results date",
+    "company source: none found; web search tool unavailable at the time"
+   ],
+   "recheck": "EDGAR re-read inside the 2026-09-17 S2 window; stays INELIGIBLE unless a company source appears before it"
+  },
+  "PAYX": {
+   "calendar_date": "2026-09-23",
+   "status": "CONFIRMED",
+   "session": "BMO",
+   "snapshot_session": "2026-09-21",
+   "entry": "2026-09-22 open"
+  },
+  "AIR": {
+   "status": "PENDING",
+   "note": "calendars disagree: Nasdaq 2026-09-29 after-hours, yfinance 2026-09-29 16:00; Alpha Vantage 2026-09-22"
+  },
+  "AEHR": {
+   "status": "PENDING",
+   "note": "calendars 2026-10-05; yfinance 2026-11-02 15:00 (intraday) - conflict"
+  },
+  "LEVI": {
+   "status": "PENDING",
+   "note": "calendars 2026-10-08; yfinance 2026-09-30 16:00 - conflict"
+  },
+  "BB": {
+   "status": "PENDING"
+  },
+  "DRI": {
+   "status": "PENDING"
+  },
+  "JBL": {
+   "status": "PENDING"
+  },
+  "MU": {
+   "status": "PENDING"
+  },
+  "NKE": {
+   "status": "PENDING"
+  },
+  "PENG": {
+   "status": "PENDING"
+  },
+  "APLD": {
+   "status": "PENDING"
+  }
+ }
+}

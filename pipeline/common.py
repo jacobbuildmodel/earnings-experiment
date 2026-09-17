@@ -89,7 +89,7 @@ class Sec:
 
     def document(self, cik, filing):
         acc = filing["accessionNumber"].replace("-", "")
-        path = os.path.join(self.cache_dir, f"{cik}_{acc}_{filing['primaryDocument']}")
+        path = os.path.join(self.cache_dir, f"{cik}_{acc}_{filing['primaryDocument'].replace('/', '_')}")
         if os.path.exists(path):
             return open(path, "rb").read()
         url = f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{filing['primaryDocument']}"
