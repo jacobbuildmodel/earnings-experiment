@@ -78,6 +78,8 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
    Lead (2026-09-14): the release gives GAAP EPS **$1.56** and non-GAAP **$1.92**; yfinance gives 1.74
    estimated against 1.92 reported, so **1.74 is the non-GAAP consensus**. Earnings history's 1.63 and 1.39
    match neither basis — find out what they are before using that endpoint.
+   **Lead (2026-09-17):** Nasdaq's earnings calendar gives ORCL the same pair — forecast $1.39, reported
+   $1.63 (probed on 2026-09-10) — so AV earnings history shares Nasdaq's consensus basis, not non-GAAP.
 3. Pipeline (include option-chain capture — literature review §6): snapshot → hash → git-commit before the entry open; grading code that reads
    `registry/D001_outcome_v1.json`; ET clock guard.
 4. History study on the free factor families (A, C3–C4, D, E, F, I, J) plus the free LR candidates.
