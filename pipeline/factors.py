@@ -153,6 +153,65 @@ def calendar_block(sheet, ticker, report_date):
     put(sheet, "L_weekday_LR07", report_date.strftime("%A"), "report date")
 
 
+def stage_block(sheet, ticker, snapshot_date):
+    """D004 §4: business stage from SEC XBRL companyfacts, facts filed before the snapshot."""
+    from common import Sec
+    sec = Sec(os.path.join(ROOT, "cache", "sec"))
+    cik = sec.cik(ticker)
+    facts = json.loads(sec.get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"))["facts"].get("us-gaap", {})
+    src = "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+
+    def quarters(tag):
+        """{(fy_end_label, fp, end): value} for ~3-month facts, plus annual facts, filed before the snapshot."""
+        units = facts.get(tag, {}).get("units", {}).get("USD", [])
+        q, a = {}, {}
+        for u in units:
+            if u.get("form") not in ("10-Q", "10-K", "10-Q/A", "10-K/A") or u["filed"] > snapshot_date or "start" not in u:
+                continue
+            days = (datetime.date.fromisoformat(u["end"]) - datetime.date.fromisoformat(u["start"])).days
+            if 80 <= days <= 100:
+                q[u["end"]] = (u["start"], u["val"])
+            elif 350 <= days <= 380:
+                a[u["end"]] = (u["start"], u["val"])
+        # derive Q4 = annual - three quarters inside that year, where the 3-month fact is missing
+        for end, (start, val) in a.items():
+            inside = [v for e, (s, v) in q.items() if start <= s and e < end]
+            if end not in q and len(inside) == 3:
+                q[end] = ("derived", val - sum(inside))
+        return q
+
+    rev = {}
+    for tag in ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"):
+        for end, v in quarters(tag).items():
+            rev.setdefault(end, v)  # per quarter, the first tag in priority order that has a value
+    op = quarters("OperatingIncomeLoss")
+    if not rev or not op:
+        put(sheet, "K_stage", "unknown", src, "revenue or operating income missing")
+        return
+    common_q = set(rev) & set(op)
+    if not common_q:
+        put(sheet, "K_stage", "unknown", src, "no quarter with both revenue and operating income")
+        return
+    latest = max(common_q)
+    if (datetime.date.fromisoformat(snapshot_date) - datetime.date.fromisoformat(latest)).days > 200:
+        put(sheet, "K_stage", "unknown", src, f"stale: latest quarter with both inputs ends {latest}")
+        return
+    le = datetime.date.fromisoformat(latest)
+    prior = [e for e in rev if 350 <= (le - datetime.date.fromisoformat(e)).days <= 380]
+    growth = rev[latest][1] / rev[prior[0]][1] - 1 if prior and rev[prior[0]][1] else None
+    margin = op[latest][1] / rev[latest][1] if latest in op and rev[latest][1] else None
+    flags = [f for f, cond in [("q4_derived", rev[latest][0] == "derived" or op.get(latest, ("",))[0] == "derived")] if cond]
+    if growth is None or margin is None:
+        stage = "unknown"
+    elif growth >= 0.20:
+        stage = "unprofitable_growth" if margin < 0 else "profitable_growth"
+    else:
+        stage = "mature"
+    put(sheet, "K_stage", stage, src, f"quarter ending {latest}; flags {flags}")
+    put(sheet, "K_rev_growth_yoy_q", growth, src, f"quarter ending {latest}")
+    put(sheet, "K_op_margin_q", margin, src, f"quarter ending {latest}")
+
+
 def run(season, ticker, report_date, dry=False):
     import yfinance as yf
     ticker = ticker.upper()
@@ -173,6 +232,7 @@ def run(season, ticker, report_date, dry=False):
     safely(sheet, "expectations", lambda: expectations(sheet, tk))
     safely(sheet, "options", lambda: options_block(sheet, chain, gate))
     safely(sheet, "calendar", lambda: calendar_block(sheet, ticker, report_date))
+    safely(sheet, "stage", lambda: stage_block(sheet, ticker, meta["captured_et"][:10]))
     out = {"meta": meta, "factors": sheet}
     (write_json if dry else write_once)(os.path.join(base, "factors.json"), out)
     print(json.dumps({k: v.get("value") for k, v in sheet.items() if k != "E_last4_prints"}, indent=1, default=str))

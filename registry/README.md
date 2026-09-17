@@ -12,3 +12,4 @@ same commit that adds the file. Lines are only ever appended.
 | D001 | trade mechanics and outcome v1: exit A, official open, WIN = raw direction, T0 is the bar | 2026-09-16 | LIVE |
 | D002 | universe industry allowlist v1 (the FRAMEWORK §10 draft, verbatim) | 2026-09-16 | LIVE; its open terms are set by D003 |
 | D003 | universe screening rule v1: season screen (S1), per-event gate (S2), Yahoo industry map, filing tests, benchmark map | 2026-09-16 ET | LIVE |
+| D004 | decision protocol v1: T0 buy-all, T1 null in the pilot, T2's allowed/forbidden inputs and outputs, business-stage formula | 2026-09-16 ET | LIVE |
