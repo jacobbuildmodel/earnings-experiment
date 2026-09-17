@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 0 · Build** · updated 2026-09-17 · collection opens **Mon 2026-09-21**
+**Phase 0 → 1 · Build → Pilot** · updated 2026-09-17 · collection opens **Mon 2026-09-21**
 
 ## Where things are
 
@@ -66,25 +66,65 @@
 Not blocking: ThetaData ~$40/month for historical options, or collect free going forward (default: free) ·
 a retail-attention source (default: leave it out of v0) · real trades, paper, or signals only (default: signals).
 
-## Next actions — Sep 16–18
+## Frozen 2026-09-16 ET (evening) — D003, D004, pipeline
 
-1. **D003 universe screening rule:** give the five open D002 terms numbers, fix the screening date,
-   the implied-move formula and the WIN_excess benchmark. Freeze D003 BEFORE pulling the season calendar.
-   Then pull the FULL season calendar (`return_full_data`), apply the rule, confirm every date and
-   session from two sources, and freeze `universe/`. First clean event: **MU, Sep 30, after close.**
+- **D003 universe screen v1.**
+  - S1, the season screen: pilot screen date **2026-09-17**, capture slot 00:00–09:30 ET;
+    Season A screen date **2026-10-09**.
+  - S2, the per-event gate: runs 14:30–15:50 ET in the session before entry.
+  - Also frozen: the Yahoo industry map, the filing keyword tests, the $10B healthcare floor, the
+    benchmark ETF map.
+- **D004 decision protocol v1.**
+  - T1 is null in the pilot.
+  - T2 has fixed allowed and forbidden inputs, and **may not read this season's outcomes**.
+  - BUY ⇔ confidence > 0.5.
+  - Business stage comes from SEC XBRL.
+- **Pipeline** in `pipeline/`:
+
+  | script | job |
+  |---|---|
+  | `s1_screen.py` | season screen (steps: nasdaq · market · screen) |
+  | `s2_gate.py` | per-event gate, plus the full option-chain capture |
+  | `factors.py` | factor snapshot |
+  | `freeze.py` | hash, commit, push; proves commit < entry open |
+  | `sessions.py` | NYSE holidays, from nyse.com |
+
+- `check.py` now also fails if any file frozen by an event manifest changes.
+- ⚠ **Rule gap:** 2026-11-27 closes at 13:00, so the S2 window 14:30–15:50 does not exist that day.
+  **D003 v2 must fix this before the Season A screen (Oct 9).**
+
+## TONIGHT — the pilot run (times in Singapore; ET = SGT − 12)
+
+1. **12:01 SGT** — background job runs `s1_screen.py pilot nasdaq` (write-once).
+2. **Before 21:30 SGT** (09:30 ET):
+   - pull the Alpha Vantage `EARNINGS_CALENDAR` (3month) via MCP and save it verbatim to
+     `universe/pilot/raw/av_calendar.csv`
+   - run `s1_screen.py pilot market`
+   - after that, `s1_screen.py pilot screen` (SEC/filing tests; not time-bound)
+   - commit `universe/pilot/`
+3. For each candidate with a print Sep 21 – Oct 9, find the **company** date and session source and
+   write `events/pilot/<T>_<date>/confirm.json`.
+   **A BMO print on Mon Sep 21 has its S2 window TODAY, 14:30–15:50 ET = 02:30–03:50 SGT on Sep 18.**
+4. In each S2 window: `s2_gate.py` → `factors.py` → (if PASS) T2 writes `decision.json` + `thesis.md`
+   under D004 → `freeze.py`, all before the entry open.
+
+## Next actions
+
+1. The pilot run above. First clean event: **MU, Sep 30, after close.**
 2. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
-   ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history). Also
-   check whether "N days ago" in estimates history is anchored to the report date or to today.
-   Lead (2026-09-14): the release gives GAAP EPS **$1.56** and non-GAAP **$1.92**; yfinance gives 1.74
-   estimated against 1.92 reported, so **1.74 is the non-GAAP consensus**. Earnings history's 1.63 and 1.39
-   match neither basis — find out what they are before using that endpoint.
-   **Lead (2026-09-17):** Nasdaq's earnings calendar gives ORCL the same pair — forecast $1.39, reported
-   $1.63 (probed on 2026-09-10) — so AV earnings history shares Nasdaq's consensus basis, not non-GAAP.
-3. Pipeline (include option-chain capture — literature review §6): snapshot → hash → git-commit before the entry open; grading code that reads
-   `registry/D001_outcome_v1.json`; ET clock guard.
-4. History study on the free factor families (A, C3–C4, D, E, F, I, J) plus the free LR candidates.
+   ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history).
+   - Check whether "N days ago" in estimates history is anchored to the report date or to today.
+   - Lead (2026-09-14): the release gives GAAP EPS **$1.56** and non-GAAP **$1.92**. yfinance gives 1.74
+     estimated against 1.92 reported, so **1.74 is the non-GAAP consensus**.
+   - Lead (2026-09-17): Nasdaq's calendar gives the same 1.39 / 1.63 pair as Alpha Vantage earnings
+     history — a shared consensus basis that is not non-GAAP. Find out what it is.
+   - `factors.py` currently uses yfinance surprise, flagged "basis NOT pinned".
+3. **D003 v2** for the Nov 27 early close, before 2026-10-09.
+4. History study on the free factor families (A, C3–C4, D, E, F, I, J) plus the free LR candidates
+   → rule v0, frozen before Oct 12.
 5. External evaluator design brief → `reviews/`.
-6. Probe a lead in `reviews/external_source_leads.md` only when a factor needs it (first: FINRA short-sale volume for LR09).
+6. Probe a lead in `reviews/external_source_leads.md` only when a factor needs it (first: FINRA
+   short-sale volume for LR09).
 
 ## Watch-outs
 
