@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 0 · Build** · updated 2026-09-16 · collection opens **Mon 2026-09-21**
+**Phase 0 · Build** · updated 2026-09-17 · collection opens **Mon 2026-09-21**
 
 ## Where things are
 
@@ -44,37 +44,45 @@
 - `FRAMEWORK.md` is now v0.2 (§2, §3, §5, §12 match the registry; **the registry wins on conflict**).
 - The WIN_excess benchmark (ETF map, beta window, leave-one-out threshold) is frozen WITH the universe.
 
-## Jacob's research request (2026-09-16) — do it in the NEW chat, before the history study
-*"for more inspiration do look thorugh academic papers do not limit yourself to buy and sell specifically
-also look at scholors who did study on market pyscology and etc that may help u in your decision making"*
-→ A literature review on what moves prices around earnings: behavioural finance (investor attention,
-under- and over-reaction, disposition effect, limits to arbitrage, sentiment), plus market
-microstructure and options-implied expectations.
-- Output: `reviews/literature_review.md`.
-- Each idea becomes a **candidate** factor with its citation. Not proof — rule 6 applies.
-- Verify every paper exists and says what's claimed before citing it.
+## Literature review — DONE 2026-09-17 → `reviews/literature_review.md`
+
+- 48 papers, each tagged by verification tier:
+  - **V1**: abstract read on a primary page. Only V1 figures are quoted.
+  - **V2**: bibliography confirmed only.
+- **27 candidate factors, LR01–LR27**, each with the sign that favours BUY, how well its window matches
+  ours, what data it needs, and its FRAMEWORK family.
+- Uncomfortable points:
+  - the announcement premium means **T0 is a real opponent**
+  - published edges decay: about 35% after publication in McLean & Pontiff's 2012 draft, and for large
+    stocks the post-earnings drift has been gone since 2006 (Martineau)
+  - most papers use 3-day windows, not our open-to-open
+  - many attention effects change the size of the move, not its direction
+- Caught: a wrong remembered title (Jin, Livnat & Zhang); an "11%" figure absent from the paper's own
+  abstract; McLean & Pontiff figures available only from the 2012 draft.
+- Actions it created: probe FINRA daily short-sale volume · **capture option chains before every entry
+  from Season A (or the pilot), even unused** · pin the EPS basis · choose a live sentiment proxy and
+  freeze it with the universe · read each paper's method section before its factor is registered.
 
 Not blocking: ThetaData ~$40/month for historical options, or collect free going forward (default: free) ·
 a retail-attention source (default: leave it out of v0) · real trades, paper, or signals only (default: signals).
 
 ## Next actions — Sep 16–18
 
-1. **Literature review** (Jacob's request above) → `reviews/literature_review.md`.
-2. **D003 universe screening rule:** give the five open D002 terms numbers, fix the screening date,
+1. **D003 universe screening rule:** give the five open D002 terms numbers, fix the screening date,
    the implied-move formula and the WIN_excess benchmark. Freeze D003 BEFORE pulling the season calendar.
    Then pull the FULL season calendar (`return_full_data`), apply the rule, confirm every date and
    session from two sources, and freeze `universe/`. First clean event: **MU, Sep 30, after close.**
-3. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
+2. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
    ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history). Also
    check whether "N days ago" in estimates history is anchored to the report date or to today.
    Lead (2026-09-14): the release gives GAAP EPS **$1.56** and non-GAAP **$1.92**; yfinance gives 1.74
    estimated against 1.92 reported, so **1.74 is the non-GAAP consensus**. Earnings history's 1.63 and 1.39
    match neither basis — find out what they are before using that endpoint.
-4. Pipeline: snapshot → hash → git-commit before the entry open; grading code that reads
+3. Pipeline (include option-chain capture — literature review §6): snapshot → hash → git-commit before the entry open; grading code that reads
    `registry/D001_outcome_v1.json`; ET clock guard.
-5. History study on the free factor families (A, C3–C4, D, E, F, I, J).
-6. External evaluator design brief → `reviews/`.
-7. Probe a lead in `reviews/external_source_leads.md` only when a factor needs it.
+4. History study on the free factor families (A, C3–C4, D, E, F, I, J) plus the free LR candidates.
+5. External evaluator design brief → `reviews/`.
+6. Probe a lead in `reviews/external_source_leads.md` only when a factor needs it (first: FINRA short-sale volume for LR09).
 
 ## Watch-outs
 
