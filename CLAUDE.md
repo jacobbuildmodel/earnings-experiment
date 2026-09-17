@@ -10,6 +10,9 @@ the result — and does the answer differ by type of business?
 When Jacob starts a new chat **in this folder** and types **`pre earnings model`** (or "PRE", "earnings
 experiment", "where we left off"), read up and continue exactly where the last chat stopped. Silently:
 
+0. `git pull --ff-only github main`, then `git push local main`. The per-event runs happen in a cloud
+   routine that commits to GitHub (`ops/cloud_routine.md`), so the laptop copy is behind until pulled.
+   Don't commit here during 14:30–15:50 ET on a snapshot day.
 1. `python check.py` — **PASS, or stop** and say what failed. A FAIL means the record may be damaged.
 2. Read `STATE.md` in full.
 3. Read only the `FRAMEWORK.md` sections the next action needs — it is long, and this file is re-sent
@@ -68,8 +71,9 @@ to start a fresh chat in `Earnings Experiment`.
 ## GIT
 This is its own repo. Stage explicit paths only. New files are LF; `archive/**` is committed byte-exact
 (`-text`) and never renormalised. **Commit every freeze before the entry open — the commit timestamp is
-the proof the decision was blind.** After every commit, `git push local main` — the backup at
-`C:\repos\earnings-experiment.git` sits off OneDrive.
+the proof the decision was blind.** After every commit, push to both remotes: `git push github main` (the private GitHub copy
+the cloud routine works from) and `git push local main` (the backup at `C:\repos\earnings-experiment.git`,
+off OneDrive).
 
 ## HOW JACOB WANTS ANSWERS
 No disclaimers, no hedging, no "consult an advisor". Say what the data says. Name-specific,
