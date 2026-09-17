@@ -77,11 +77,16 @@ def run(season, ticker, report_date):
         "Co-Authored-By: Claude Opus 5 <noreply@anthropic.com>")
     commit_time = datetime.datetime.fromisoformat(git("log", "-1", "--format=%cI"))
     sha = git("rev-parse", "--short", "HEAD")
-    pushed = subprocess.run(["git", "push", "-q", "local", "main"], cwd=ROOT).returncode == 0
+    # Push to every configured remote: `local` (off-OneDrive backup) and `github` on the laptop,
+    # `origin` in a cloud checkout. A cloud run that pushes nowhere loses the freeze with the sandbox.
+    pushes = {r: subprocess.run(["git", "push", "-q", r, "HEAD:main"], cwd=ROOT).returncode == 0
+              for r in git("remote").split()}
     ok = commit_time < entry_open
     print(f"{ticker} {report_date}: {gate['status']} frozen in {sha} at {commit_time.astimezone(ET):%Y-%m-%d %H:%M:%S} ET"
           f" - entry open {entry_open:%Y-%m-%d %H:%M} ET - {'BLIND (before open)' if ok else 'VOID (after open)'}"
-          f" - backup {'pushed' if pushed else 'PUSH FAILED'}")
+          f" - push: {', '.join(f'{r} ' + ('ok' if v else 'FAILED') for r, v in pushes.items()) or 'NO REMOTE'}")
+    if not any(pushes.values()):
+        print("WARNING: the freeze exists only in this checkout - push it before the entry open")
     if not ok:
         raise SystemExit(1)
 
