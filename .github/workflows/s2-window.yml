@@ -1,0 +1,78 @@
+# Per-event S2 gate + T2 decision, run by GitHub Actions.
+#
+# Why here and not a claude.ai routine: the cloud routine environment blocks outbound traffic to
+# SEC EDGAR, Nasdaq, NYSE and Yahoo (proxy 403, reproduced twice on 2026-09-17 - see the probe
+# commits). GitHub-hosted runners have open egress, and the laptop cannot be awake at 02:35 SGT.
+#
+# Two fires a day: 18:35 and 19:35 UTC = 14:35 and 15:35 ET on US daylight time, 13:35 and 14:35 ET
+# after Nov 1. At least one always lands inside the 14:30-15:50 ET window, and a second fire inside
+# the window is a no-op for events already gated. GitHub can start a scheduled run late, which is
+# why there are two.
+name: Earnings experiment - S2 window
+
+on:
+  schedule:
+    - cron: "35 18 * * 1-5"
+    - cron: "35 19 * * 1-5"
+  workflow_dispatch:        # lets a run be started by hand from the Actions tab
+
+jobs:
+  s2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    concurrency:
+      group: s2-window      # never two runs at once - they would both commit
+      cancel-in-progress: false
+    permissions:
+      contents: write       # the freeze commit is pushed to main
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Is an authentication secret set?
+        id: auth
+        run: |
+          echo "oauth=${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
+          echo "apikey=${{ secrets.ANTHROPIC_API_KEY != '' }}" >> "$GITHUB_OUTPUT"
+
+      - name: No secret set
+        if: steps.auth.outputs.oauth != 'true' && steps.auth.outputs.apikey != 'true'
+        run: |
+          echo "::error::No CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY secret. Add one in"
+          echo "::error::Settings > Secrets and variables > Actions. Nothing was gated this run."
+          exit 1
+
+      - name: Run the S2 window
+        if: steps.auth.outputs.oauth == 'true' || steps.auth.outputs.apikey == 'true'
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Open ops/cloud_routine.md, read the PART 2 production prompt in full, and follow it
+            exactly for the season named in STATE.md. The repository is already checked out and
+            its dependencies are installed, so skip PART 2's SETUP pip/pull steps; everything
+            else applies unchanged, including the hard rules.
+
+            This runner is GitHub Actions, not a claude.ai routine: the remote is `origin`, pushes
+            go to `origin HEAD:main`, and there is no `local` remote (freeze.py handles that).
+            Outbound network access is open here.
+
+            End with the short plain-English report PART 2 asks for. It appears in this run's log.
+          claude_args: |
+            --model claude-opus-5
+            --max-turns 120
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"

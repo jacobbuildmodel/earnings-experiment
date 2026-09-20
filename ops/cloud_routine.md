@@ -1,5 +1,12 @@
 # Cloud routine setup — for the Claude account that is linked to GitHub
 
+> ⚠ **PART 1 was run on 2026-09-17 and PART 2 was NOT created.** The claude.ai cloud environment
+> blocks outbound traffic to SEC EDGAR, Nasdaq, NYSE and Yahoo — proxy `403 Forbidden`, reproduced on
+> two independent runs (see `ops/cloud_probe.md` and the two `Cloud readiness probe` commits). Git,
+> Python and `check.py` all worked. **The per-event runs therefore happen in GitHub Actions instead:
+> `.github/workflows/s2-window.yml`, which runs the PART 2 prompt below.** Create the claude.ai
+> routine only if that environment's egress allowlist is ever opened to those four domains.
+
 Jacob's laptop cannot be awake for the S2 window (14:30–15:50 ET = 02:30–03:50 SGT), so the per-event
 runs happen in a claude.ai cloud routine working from this repository. The routine is created by a
 Claude account whose GitHub connection can reach `jacobbuildmodel/earnings-experiment`.
