@@ -62,6 +62,9 @@ jobs:
           # Pass ONLY the token that is set. An empty `anthropic_api_key` alongside the OAuth token
           # sends the action down the API-key path with no key.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Without this the action hides Claude's own output, so a failure gives no reason at all.
+          # The repository is private and GitHub masks secrets in logs.
+          show_full_output: true
           prompt: |
             Open ops/cloud_routine.md, read the PART 2 production prompt in full, and follow it
             exactly for the season named in STATE.md. The repository is already checked out and
