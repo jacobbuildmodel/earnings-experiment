@@ -1,7 +1,7 @@
 {
  "season": "pilot",
  "rule": "D003_universe_screen_v1",
- "updated_et": "2026-09-17T08:14:57-04:00",
+ "updated_et": "2026-09-20T02:56:08-04:00",
  "events": {
   "CHRN": {
    "calendar_date": "2026-09-21",
@@ -32,11 +32,17 @@
   },
   "AEHR": {
    "status": "PENDING",
-   "note": "calendars 2026-10-05; yfinance 2026-11-02 15:00 (intraday) - conflict; company newsroom (aehr.com/news) shows no FY27 Q1 date as of 2026-09-17T08:14:57-04:00"
+   "note": "calendars 2026-10-05; yfinance 2026-11-02 15:00 (intraday) - conflict; company newsroom (aehr.com/news) shows no FY27 Q1 date as of 2026-09-17T08:14:57-04:00",
+   "rechecks": [
+    "2026-09-20T02:56:08-04:00: aehr.com/newsroom newest item is 2026-09-03 (Lake Street conference) - still no FY27 Q1 results date. yfinance get_earnings_dates still 2026-11-02 15:00:00-05:00, intraday, which is 'unconfirmed' under D003 v1 section 6 and also outside the pilot window. Stays PENDING; earliest possible snapshot session is 2026-10-01, the D-2 case if the 2026-10-05 calendar date turns out to be BMO."
+   ]
   },
   "LEVI": {
    "status": "PENDING",
-   "note": "calendars 2026-10-08; yfinance 2026-09-30 16:00 - conflict; company IR feed shows no Q3 date announcement as of 2026-09-17T08:14:57-04:00"
+   "note": "calendars 2026-10-08; yfinance 2026-09-30 16:00 - conflict; company IR feed shows no Q3 date announcement as of 2026-09-17T08:14:57-04:00",
+   "rechecks": [
+    "2026-09-20T02:56:08-04:00: investors.levistrauss.com press-release feed, 20 newest items - the newest is 2026-07-08 (Q2 results); no Q3 2026 webcast announcement yet. yfinance still 2026-09-30 16:00:00-04:00. Last year the Q3 webcast release came 2025-09-25 for a 2025-10-09 print, so an announcement is expected around 2026-09-24. Stays PENDING; earliest possible snapshot session is 2026-09-29, the D-1 case for a 2026-09-30 AMC print."
+   ]
   },
   "BB": {
    "calendar_date": "2026-09-24",
@@ -94,7 +100,10 @@
   },
   "APLD": {
    "status": "PENDING",
-   "note": "calendars 2026-10-08, yfinance 2026-10-08 16:00; company press-release page shows no FY27 Q1 date as of 2026-09-17T08:14:57-04:00"
+   "note": "calendars 2026-10-08, yfinance 2026-10-08 16:00; company press-release page shows no FY27 Q1 date as of 2026-09-17T08:14:57-04:00",
+   "rechecks": [
+    "2026-09-20T02:56:08-04:00: ir.applieddigital.com/news-events/press-releases/rss, 10 newest items - the newest is 2026-07-27 16:05 ET (Q4 FY2026 results); no FY27 Q1 date announcement yet. yfinance still 2026-10-08 16:00:00-04:00. The company 'sets' its call about 12 days ahead (2026-07-15 for the 2026-07-27 print), so an announcement is expected around 2026-09-26. Stays PENDING; earliest possible snapshot session is 2026-10-06, the D-2 case if 2026-10-08 turns out to be BMO. Note the host's Q4 /feed/PressRelease.svc endpoint 404s - APLD is on stockpr, and its RSS feed is the working company source."
+   ]
   }
  }
 }

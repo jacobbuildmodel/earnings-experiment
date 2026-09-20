@@ -134,6 +134,25 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   Disable it after the pilot. Season A needs its own schedule, and **after Nov 1 (US DST ends) the S2
   window moves to 03:30 SGT**.
 
+## Cloud run log (GitHub Actions `.github/workflows/s2-window.yml`, PART 2 prompt)
+
+- **2026-09-20 02:56 ET (Sun):** first live run of the Actions job. `check.py` PASS. Nothing was due —
+  Sunday is not a session and no event has a snapshot_session of 2026-09-20; no gate, no decision, no
+  freeze. Re-checked the three PENDING names against their company sources; all three stay PENDING
+  (detail in `universe/pilot/event_status.json` → `rechecks`):
+  - **AEHR** — aehr.com/newsroom newest item 2026-09-03; no FY27 Q1 date. yfinance still 2026-11-02
+    15:00 ET, intraday (→ `unconfirmed` under D003 §6) and outside the pilot window.
+  - **LEVI** — IR feed newest item 2026-07-08; no Q3 date. Last year the equivalent release came 14 days
+    ahead, so expect ~Sep 24. yfinance still 2026-09-30 16:00; **its earliest possible snapshot session
+    is Tue 2026-09-29**, before the Oct 8 calendar date.
+  - **APLD** — IR RSS newest item 2026-07-27; no FY27 Q1 date. The company sets its call ~12 days ahead,
+    so expect ~Sep 26. yfinance still 2026-10-08 16:00.
+  - Data-source facts learned: the runner needs `lxml` or yfinance `get_earnings_dates()` raises
+    `ImportError`; APLD is **not** on Q4 — `/feed/PressRelease.svc/…` 404s on `ir.applieddigital.com`
+    and the working company source is `…/news-events/press-releases/rss`.
+  - The Actions environment reaches Yahoo, the IR hosts and PyPI — the egress block that stopped the
+    claude.ai cloud environment does not apply here.
+
 ## Next actions
 
 1. Run the S2 windows above (first: Mon Sep 21, 14:30 ET), and re-check AEHR, LEVI and APLD.
