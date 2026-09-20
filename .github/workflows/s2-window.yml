@@ -77,3 +77,32 @@ jobs:
             --model claude-opus-5
             --max-turns 120
             --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"
+
+      # Runs even when the step above fails: the action's own log buries the reason hundreds of
+      # lines up, so print the tail of its output file and keep the whole thing as an artifact.
+      - name: Why it failed (or what it did)
+        if: always()
+        run: |
+          f=/home/runner/work/_temp/claude-execution-output.json
+          echo "=============== the result record ==============="
+          if [ -f "$f" ]; then
+            jq -r '[.[] | select(.type=="result")] | .[-1] | "subtype=\(.subtype) is_error=\(.is_error) turns=\(.num_turns)\nresult:\n\(.result)\nerror:\n\(.error // "none")"' "$f" 2>/dev/null \
+              || echo "(jq could not read it - raw tail below)"
+            echo "=============== last assistant text ==============="
+            jq -r '[.[] | select(.type=="assistant") | .message.content[]? | select(.type=="text") | .text] | .[-3:][]?' "$f" 2>/dev/null
+            echo "=============== raw tail ==============="
+            tail -c 3000 "$f"
+          else
+            echo "no output file at $f"
+          fi
+          echo "=============== repository state ==============="
+          git log --oneline -3 || true
+          git status --porcelain || true
+
+      - name: Keep the full Claude output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-output
+          path: /home/runner/work/_temp/claude-execution-output.json
+          if-no-files-found: warn
