@@ -128,11 +128,15 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   4. `python pipeline/freeze.py pilot <T> <date>` — for INELIGIBLE events too
 - The S2 window in Singapore time is **02:30–03:50 SGT the next calendar day** (ET = SGT − 12 until
   Nov 1).
-- **Automated (Jacob approved 2026-09-17):** scheduled task `earnings-pilot-s2-window`, **02:35 SGT
-  Tue–Sat**, runs steps 1–4, re-checks the PENDING events, updates STATE and commits. It runs only while
-  the Claude app is open and the PC is awake; a missed window is recorded as `missed_window`, never faked.
-  Disable it after the pilot. Season A needs its own schedule, and **after Nov 1 (US DST ends) the S2
-  window moves to 03:30 SGT**.
+- **Automated — GitHub Actions, live 2026-09-20.** `.github/workflows/s2-window.yml` runs the PART 2
+  prompt at **18:35 and 19:35 UTC, Mon–Fri** (14:35 and 15:35 ET on daylight time; 13:35 and 14:35 ET
+  after Nov 1, so one fire is always inside the window). It needs nothing switched on at Jacob's end.
+  Authentication: repository secret `CLAUDE_CODE_OAUTH_TOKEN`; the job fails loudly if it is missing.
+  - ⚠ The laptop task `earnings-pilot-s2-window` is **DISABLED (2026-09-20)** and must stay that way.
+    Two schedulers would gate and freeze the same event twice. It also fired hours late whenever the
+    laptop slept — on 2026-09-18 it was due 02:43 SGT and started at 08:08 SGT, which is why it went.
+  - The claude.ai cloud routine was rejected: that environment blocks SEC, Nasdaq, NYSE and Yahoo at its
+    proxy (403, twice). See `ops/cloud_routine.md` and `ops/cloud_probe.md`.
 
 ## Cloud run log (GitHub Actions `.github/workflows/s2-window.yml`, PART 2 prompt)
 
