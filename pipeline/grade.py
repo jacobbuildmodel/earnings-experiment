@@ -5,8 +5,9 @@
 
 Two layers, kept apart:
   1. RAW, fetch-once (D001 §2): outcomes/<season>/prices/<T>_<date>.jsonl - one row per (symbol, session,
-     field, source), with the fetch time. A row is never rewritten; a later correction would be a new row
-     with a reason. Also stored once: the 8-K list for the event window, and the beta inputs.
+     field, source), with the fetch time. A row is never rewritten; a correction is a new row with a reason,
+     and the newest row for a key is the one in force. Beta is stored once. The 8-K list is re-read
+     each run until three days after exit C, then stored as final.
   2. DERIVED: outcomes/<season>/<T>_<date>.json - recomputed from the raw rows on every run by the same
      code, so anyone can re-derive every number.
 
@@ -58,16 +59,23 @@ class Store:
         self.rows = [json.loads(line) for line in open(path, encoding="utf-8")] if os.path.exists(path) else []
 
     def get(self, symbol, session, field, source):
+        """The row in force: the LAST one for that key, so a correction row supersedes the original."""
+        hit = None
         for r in self.rows:
             if (r["symbol"], r["session"], r["field"], r["source"]) == (symbol, session, field, source):
-                return r
-        return None
+                hit = r
+        return hit
 
-    def add(self, symbol, session, field, source, value, **extra):
-        if self.get(symbol, session, field, source):
-            return  # fetch once, never overwrite
+    def add(self, symbol, session, field, source, value, reason=None, **extra):
+        """Fetch once: a key that already has a row is skipped. A correction (D001 §2) is only ever a NEW
+        row that carries a reason; the old row stays in the file."""
+        old = self.get(symbol, session, field, source)
+        if old and not reason:
+            return
         row = {"symbol": symbol, "session": session, "field": field, "source": source, "value": value,
                "fetched_et": now_et().isoformat(timespec="seconds"), **extra}
+        if old:
+            row.update(correction_of=old["fetched_et"], reason=reason)
         self.rows.append(row)
         os.makedirs(os.path.dirname(self.path), exist_ok=True)
         with open(self.path, "a", encoding="utf-8", newline="\n") as f:
@@ -198,7 +206,13 @@ def price(store, sym, session, field):
     if a is None:
         flags.append("single_source")
     else:
-        diff = abs(y["value"] - a["value"])
+        # Alpha Vantage is as-traded; Yahoo back-adjusts for every split after the session. Put the AV
+        # value on Yahoo's basis with the splits recorded after this session before comparing.
+        ratio = 1.0
+        for r in store.rows:
+            if r["symbol"] == sym and r["field"] == "split" and r["session"] > session:
+                ratio *= r["value"]
+        diff = abs(y["value"] - a["value"] / ratio)
         if not (diff <= P["agree_if_abs_diff_usd_lte"] or diff / y["value"] * 100 <= P["agree_if_abs_diff_pct_lte"]):
             flags.append("price_dispute")
     return y["value"], flags

@@ -13,3 +13,4 @@ same commit that adds the file. Lines are only ever appended.
 | D002 | universe industry allowlist v1 (the FRAMEWORK §10 draft, verbatim) | 2026-09-16 | LIVE; its open terms are set by D003 |
 | D003 | universe screening rule v1: season screen (S1), per-event gate (S2), Yahoo industry map, filing tests, benchmark map | 2026-09-16 ET | LIVE |
 | D004 | decision protocol v1: T0 buy-all, T1 null in the pilot, T2's allowed/forbidden inputs and outputs, business-stage formula | 2026-09-16 ET | LIVE |
+| D005 | evaluation protocol v1: clustering by entry session, wild cluster bootstrap test of lift, fixed verdict wording, Holm/BH, partial pooling, grading details, power table; implementation hashes in `D005_implementation_v1.sha256` | 2026-09-21 ET | LIVE |

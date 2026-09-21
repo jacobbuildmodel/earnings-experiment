@@ -14,17 +14,19 @@ Started 2026-09-13 · collection opens 2026-09-21.
 | `CLAUDE.md` | the operating rules the AI follows every session |
 | `check.py` | the health check — run first every session; PASS, or stop |
 
-## Folders — created as the work reaches them
+## Folders
 
 | folder | holds |
 |---|---|
-| `registry/` | pre-registered hypotheses and frozen rule versions — hashed, never edited |
-| `universe/` | each season's screened universe, frozen on its screening date |
-| `events/` | one folder per earnings event: snapshot, thesis card, decisions, outcome |
-| `ledger/` | append-only decisions and outcomes |
-| `analysis/` | exploratory and confirmatory analysis, kept strictly apart |
-| `src/` | pipeline code |
-| `reviews/` | external evaluator briefs and responses, and unverified source leads |
+| `registry/` | frozen rules D001–D005 — hashed in `FROZEN.sha256`, never edited, only versioned |
+| `universe/` | each season's screened universe, event statuses, mid-season additions |
+| `events/` | one folder per event: confirmation, gate, option chain, factor snapshot, decision, thesis, manifest, timestamp tokens |
+| `outcomes/` | graded prices (fetch-once), outcomes and reports — never on disk for the AI step |
+| `pipeline/` | the code: `due.py` (unattended driver) · `s1_screen.py` · `s2_gate.py` · `factors.py` · `freeze.py` · `grade.py` · `report.py` · `runlog.py` |
+| `logs/actions/` | every tool call the AI step made, per GitHub Actions run |
+| `ops/` | runner setup and the AI step's instructions (`actions_prompt.md`) |
+| `analysis/` | exploratory analysis, kept apart from anything confirmatory |
+| `reviews/` | literature review, errata, the external evaluator brief, drafts of next rule versions |
 | `archive/PRE_v1_closed/` | the retired previous model — **a record, not a starting point** |
 
 ## Open THIS folder as the session
