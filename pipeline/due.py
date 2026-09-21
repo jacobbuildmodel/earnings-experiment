@@ -5,6 +5,7 @@ an agent following a prompt.
     python pipeline/due.py plan [--schedule S]  # prints GitHub step outputs: claude=, housekeeping=, last_chance=
     python pipeline/due.py t2-list              # events awaiting a T2 decision, one "<season> <TICKER> <date>" per line
     python pipeline/due.py finalize [--last-chance]
+    python pipeline/due.py midseason            # Fridays: D003 §7 mid-season screen, committed
 
 gate      For each CONFIRMED event whose snapshot session is today (ET) and has no gate.json:
           inside 14:30-15:50 ET, run s2_gate.py and factors.py. An INELIGIBLE event is frozen at once
@@ -182,6 +183,17 @@ def finalize(last_chance):
             commit([sf], f"Status: {season} event statuses from the frozen record")
 
 
+def midseason():
+    """D003 §7, Fridays: run the mid-season screen for every active season and commit what it wrote."""
+    if now_et().weekday() != 4:
+        print("not a Friday - no mid-season screen")
+        return
+    sh("pipeline/s1_screen.py", "active", "midseason")
+    paths = glob.glob(os.path.join(ROOT, "universe", "*", "midseason", "*.json"))
+    paths += glob.glob(os.path.join(ROOT, "universe", "*", "candidates_midseason.json")) + status_files()
+    commit(paths, f"Mid-season screen {now_et().date()} (D003 §7, code)")
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     cmd = a[0] if a else ""
@@ -192,6 +204,8 @@ if __name__ == "__main__":
     elif cmd == "t2-list":
         for s, t, d, _, _ in awaiting_t2():
             print(s, t, d)
+    elif cmd == "midseason":
+        midseason()
     elif cmd == "finalize":
         finalize("--last-chance" in a)
     else:

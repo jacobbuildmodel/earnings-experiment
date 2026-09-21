@@ -1,0 +1,51 @@
+# Grade frozen events - code only, no AI (rule 4: code grades, the AI never does).
+#
+# Runs after the close every weekday: 21:30 UTC = 17:30 EDT / 16:30 EST, after grade.py's
+# "session close + 15 min" settle rule in both regimes. Fetches each exit price once (D001 §2), the
+# 8-K list for print-timing and confounds, and beta; recomputes every outcome; commits outcomes/.
+# outcomes/ is never on disk for the AI step of s2-window.yml (D004 §3).
+name: Earnings experiment - grade
+
+on:
+  schedule:
+    - cron: "30 21 * * 1-5"
+  workflow_dispatch:
+
+jobs:
+  grade:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: grade
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Grade (fetch once, recompute, commit)
+        env:
+          # Optional. Without it every price is graded single_source (D001 §2).
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+        run: python pipeline/grade.py --commit
+
+      - name: Health check after grading
+        if: always()
+        run: python check.py

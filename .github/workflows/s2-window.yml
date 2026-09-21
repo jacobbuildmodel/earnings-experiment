@@ -62,6 +62,11 @@ jobs:
         continue-on-error: true
         run: python pipeline/due.py gate
 
+      - name: Mid-season screen - Fridays, housekeeping run only (code, D003 §7)
+        if: github.event.schedule == '0 23 * * 1-5'
+        continue-on-error: true
+        run: python pipeline/due.py midseason
+
       - name: Plan the AI step
         id: plan
         run: |
