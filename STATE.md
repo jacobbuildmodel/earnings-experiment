@@ -245,6 +245,14 @@ Two independent evaluators, each starting cold: E1 Sonnet, E2 Opus with an empir
   lists
 - grader implementation v2 registered in `D005_implementation_v1.sha256`
 
+## CHARTER.md — origin note (2026-09-21)
+
+Jacob's "purpose / edge / what improving means" questions were meant for the earnings model in his
+CLAUDE folder, not for this experiment. The answers written here became `CHARTER.md`. It stays, because
+it holds for the experiment too. Jacob received a generic handoff file (research and sources only, no
+experiment specifics) to carry into a CLAUDE-folder chat himself. Nothing was written to that folder
+(rule 9).
+
 ## Waiting on Jacob
 
 Nothing blocking. The Alpha Vantage secret was added 2026-09-21 (confirm on the first grading run: prices
