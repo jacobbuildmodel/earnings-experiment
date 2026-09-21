@@ -55,6 +55,9 @@ For each:
            "decided_et": "ISO time with offset, now"}}
    ```
 
+   - **Deadline.** Pilot (D004 v1): before the entry open. From Season A (D004 v2): `decided_et` must
+     be at or before the close of the snapshot session (16:00 ET, 13:00 on an early close). A later
+     decision is refused and T2 is frozen as MISSING. Decide in the same run that gated the event.
    - `confidence` = the probability that the exit-A open is above the entry open (D001 WIN_raw).
      **BUY if and only if confidence > 0.5.** `freeze.py` refuses a decision that breaks this.
    - The bar is the buy-everything hit rate, not 50%. Confidence is scored by a proper scoring rule

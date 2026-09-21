@@ -220,28 +220,48 @@ matches yfinance and the non-GAAP basis. This is a web summary, not yet verified
 1.39/1.63 pair is still unexplained. D005 §5 bars any EPS-surprise factor from a rule until the basis
 is pinned.
 
+## External evaluation — DONE 2026-09-21 → `reviews/evaluations/2026-09-21_external.md`
+
+Two independent evaluators, each starting cold: E1 Sonnet, E2 Opus with an empirical-finance lens.
+
+- **E2 verdict:** no critical flaws; the blindness machinery is "unusually strong". The binding threat
+  is **power**: ~100 events give 15–40% power against realistic edges, so a single-season "evidence"
+  result is likely false, or overstated if true.
+- **27 findings:** 22 accepted, 3 disclosed, 1 deferred, 1 not taken. All are logged with where they
+  landed.
+
+**Frozen 2026-09-21 as new versions** (v1s stay live and scored, rule 5):
+
+| rule | what changed | applies to |
+|---|---|---|
+| D003 v2 | S2 window from the close · ADP and PAYX named out (Jacob approved a payroll rule; the SIC filter was dropped after an audit showed it would remove AKAM, FICO, ROP and fintechs) · Alpha Vantage calendar by code · mid-season cap as of the screen date · `printed_before_entry` gate · stale-quote and two-expiry event-move recording | from seasonA |
+| D004 v2 | T2 deadline = snapshot-session close · timed inputs on the snapshot day | from seasonA |
+| D005 v2 | success needs hit-rate lift **and** return lift ≥ 0 · verdict on the full sample only · T2 confidence test (registrable as confirmatory) · within-date and leave-one-date-out · exit A split into the pre-print and print legs · gate selectivity · grading changes · disclosures · requirements for rule v0 | all seasons, pilot included; v1 printed beside it |
+
+**Code changes with them:**
+- the workflow guard: an AI edit to code, rules or workflow is restored and the run fails
+- git history reads are flagged in the log
+- `check.py` refuses deletions under events/universe/registry and any non-append change to the hash
+  lists
+- grader implementation v2 registered in `D005_implementation_v1.sha256`
+
 ## Waiting on Jacob
 
-1. **Add the `ALPHAVANTAGE_API_KEY` repository secret** on GitHub (Settings → Secrets and variables →
-   Actions). Without it, graded prices have no second source, and the mid-season screen runs on Nasdaq
-   alone.
-2. **D003 v2, payroll names** (`reviews/drafts/D003_v2_DRAFT.md` Change 2). Default: an SEC-SIC filter
-   plus ADP by name. Must be frozen before **2026-10-08 16:00 ET**.
-3. **Start the external evaluation.** The brief is `reviews/external_evaluator_brief.md`.
+Nothing blocking. The Alpha Vantage secret was added 2026-09-21 (confirm on the first grading run: prices
+should no longer be `single_source`).
 
 ## Next actions
 
 1. **Check today's first automated run:** PAYX (snapshot today, 14:40 ET fire = 02:40 SGT). Look for a
-   `Freeze PAYX …` or `Capture PAYX …` commit and `logs/actions/`. A dry run at 08:00 ET suggested
-   `thin_oi`: OI 52 + 191 at the 115 strike, and only a monthly expiry. Tue Sep 22 is DRI and BB.
-2. External evaluation. Every accepted change becomes a new rule version.
-3. Freeze D003 v2 before 2026-10-08 16:00 ET. With it: early-close window code, crons at 16:40 and
-   17:10 UTC, and version selection per season in `due.py`, `s2_gate.py` and `s1_screen.py`.
-4. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET. The Alpha Vantage calendar is saved by
-   hand through the MCP tool, unless the secret exists and `s1_screen.py` is taught to pull it.
-5. History study → rule v0, frozen before Oct 12. It may use only source-matched factors (D005 §5).
-6. Register Season A's confirmatory file? No: Season A is exploratory by D005. The first confirmatory
-   file is for Season B.
+   `Freeze PAYX …` or `Capture PAYX …` commit and `logs/actions/`. The dry run suggested `thin_oi`.
+   Tue Sep 22 is DRI and BB.
+2. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
+3. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
+   one-off workflow that runs `nasdaq`, `av`, `market`, `screen`, or run it in a laptop session.
+4. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any
+   surprise factor.
+5. Before Season B's screening date: register `D005_confirmatory_seasonB.json`, including
+   `T2_confidence`.
 
 ## Watch-outs
 

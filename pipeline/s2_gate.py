@@ -26,6 +26,8 @@ S2 = D003["s2"]
 
 
 def num(x):
+    if hasattr(x, "isoformat"):  # a timestamp (lastTradeDate) is kept as text
+        return x.isoformat()
     try:
         x = float(x)
         return None if math.isnan(x) else x
@@ -66,6 +68,27 @@ def second_sources(ticker, report_date):
     return found
 
 
+def printed_already(season, ticker, now, days, gate):
+    """D003 v2: an Item 2.02 8-K accepted in the last `days` days means the results are already public -
+    the event cannot be traded blind (external review 2026-09-21)."""
+    from common import Sec
+    sec = Sec(os.path.join(ROOT, "cache", "sec"))
+    cik = sec.cik(ticker)
+    if not cik:
+        gate["flags"].append("printed_check_no_cik")
+        return False
+    lo = (now - datetime.timedelta(days=days)).astimezone(datetime.timezone.utc)
+    rec = sec.submission(cik)["filings"]["recent"]
+    hits = []
+    for i, form in enumerate(rec["form"]):
+        if form.startswith("8-K") and "2.02" in rec["items"][i].split(","):
+            t = datetime.datetime.fromisoformat(rec["acceptanceDateTime"][i].replace("Z", "+00:00"))
+            if lo <= t <= now:
+                hits.append({"accepted_utc": rec["acceptanceDateTime"][i], "accession": rec["accessionNumber"][i]})
+    gate["printed_check"] = {"days": days, "item_2_02_filings": hits}
+    return bool(hits)
+
+
 def chain_gate(ticker, reaction_day, dry=False):
     import yfinance as yf
     tk = yf.Ticker(ticker)
@@ -91,8 +114,8 @@ def chain_gate(ticker, reaction_day, dry=False):
     def legs(calls, puts):
         c = calls[calls.strike == strike].iloc[0]
         p = puts[puts.strike == strike].iloc[0]
-        return ({k: num(c[k]) for k in ("bid", "ask", "openInterest", "lastPrice", "impliedVolatility")},
-                {k: num(p[k]) for k in ("bid", "ask", "openInterest", "lastPrice", "impliedVolatility")})
+        return ({k: num(c[k]) for k in ("bid", "ask", "openInterest", "lastPrice", "impliedVolatility", "lastTradeDate")},
+                {k: num(p[k]) for k in ("bid", "ask", "openInterest", "lastPrice", "impliedVolatility", "lastTradeDate")})
 
     call, put = legs(calls, puts)
     quoted = lambda l: (l["bid"] or 0) > 0 and (l["ask"] or 0) > (l["bid"] or 0)  # noqa: E731
@@ -170,6 +193,8 @@ def run(season, ticker, report_date, dry=False):
     elif disagree or not agree:
         gate.update(status="INELIGIBLE", reason="unconfirmed",
                     detail="second source disagrees" if disagree else "no second source for date+session")
+    elif D003.get("printed_before_entry_days") and printed_already(season, ticker, now, D003["printed_before_entry_days"], gate):
+        gate.update(status="INELIGIBLE", reason="printed_before_entry")
     else:
         gate["second_source_used"] = agree[0]
         opt, full = chain_gate(ticker, datetime.date.fromisoformat(tm["reaction_day"]), dry)

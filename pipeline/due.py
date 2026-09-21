@@ -6,6 +6,7 @@ an agent following a prompt.
     python pipeline/due.py t2-list              # events awaiting a T2 decision, one "<season> <TICKER> <date>" per line
     python pipeline/due.py finalize [--last-chance]
     python pipeline/due.py midseason            # Fridays: D003 §7 mid-season screen, committed
+    python pipeline/due.py init-status <season> # after a season screen: every candidate PENDING
 
 gate      For each CONFIRMED event whose snapshot session is today (ET) and has no gate.json:
           inside 14:30-15:50 ET, run s2_gate.py and factors.py. An INELIGIBLE event is frozen at once
@@ -30,7 +31,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et, rule_for, write_json  # noqa: E402
 from sessions import s2_window  # noqa: E402
-from freeze import decision_problems, git, push_all  # noqa: E402
+from freeze import decision_problems, git, push_all, t2_deadline  # noqa: E402
 
 PY = sys.executable
 # UTC cron of the day's housekeeping + last-chance run (see .github/workflows/s2-window.yml).
@@ -141,7 +142,7 @@ def awaiting_t2():
 
 
 def plan(schedule):
-    t2 = awaiting_t2()
+    t2 = [e for e in awaiting_t2() if now_et() < t2_deadline(e[0], e[4])]  # only events T2 may still decide
     housekeeping = schedule in ("", HOUSEKEEPING_CRON)  # "" = started by hand
     print(f"claude={'true' if (t2 or housekeeping) else 'false'}")
     print(f"housekeeping={'true' if housekeeping else 'false'}")
@@ -152,12 +153,14 @@ def plan(schedule):
 def finalize(last_chance):
     for season, t, date, d, gj in awaiting_t2():
         dp = os.path.join(d, "decision.json")
-        valid = os.path.exists(dp) and not decision_problems(load(dp), gj, entry_open(gj))
+        deadline = min(entry_open(gj), t2_deadline(season, gj))
+        valid = os.path.exists(dp) and not decision_problems(load(dp), gj, deadline)
         if valid:
             print(f"--- {t} {date}: valid decision, not frozen - freezing")
             sh("pipeline/freeze.py", season, t, date)
-        elif last_chance:
-            why = ("no valid T2 decision by the day's last run (" + now_et().strftime("%Y-%m-%d %H:%M ET") + ")")
+        elif last_chance or now_et() >= deadline:
+            why = ("no valid T2 decision by " + ("its deadline " + deadline.strftime("%Y-%m-%d %H:%M ET")
+                   if now_et() >= deadline else "the day's last run (" + now_et().strftime("%Y-%m-%d %H:%M ET") + ")"))
             print(f"--- {t} {date}: {why} - freezing with T2 MISSING")
             sh("pipeline/freeze.py", season, t, date, "--t2-missing", why)
         else:
@@ -204,6 +207,25 @@ def midseason():
     commit(paths, f"Mid-season screen {now_et().date()} (D003 §7, code)")
 
 
+def init_status(season):
+    """After a season screen: one PENDING entry per candidate, with its calendar dates, so the daily
+    housekeeping run looks for each company's own announcement (D003 §6). Never overwrites a status file."""
+    base = os.path.join(ROOT, "universe", season)
+    sp = os.path.join(base, "event_status.json")
+    if os.path.exists(sp):
+        print(f"{sp} exists - not touched")
+        return
+    cands = load(os.path.join(base, "candidates.json"))["candidates"]
+    events = {}
+    for c in cands:
+        dates = sorted({x["date"] for src in c["calendar"].values() for x in src})
+        events[c["ticker"]] = {"status": "PENDING", "calendar_dates": dates,
+                               "note": "needs a company date + session (D003 §6) and a second source"}
+    write_json(sp, {"season": season, "rule": rule_for("D003_universe_screen", season)["id"],
+                    "updated_et": now_et().isoformat(), "events": events})
+    commit([sp], f"{season}: event statuses initialised from the season screen ({len(events)} PENDING)")
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
     cmd = a[0] if a else ""
@@ -214,6 +236,8 @@ if __name__ == "__main__":
     elif cmd == "t2-list":
         for s, t, d, _, _ in awaiting_t2():
             print(s, t, d)
+    elif cmd == "init-status":
+        init_status(a[1])
     elif cmd == "midseason":
         midseason()
     elif cmd == "finalize":

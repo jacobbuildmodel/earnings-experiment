@@ -126,6 +126,23 @@ else:
     else:
         ok(f"registry: {count} frozen file(s) match their hashes")
 
+# Nothing frozen may be removed, and the hash lists only ever grow (external review 2026-09-21: deleting
+# an event folder, or editing a rule together with its hash line, would otherwise pass).
+_, gone = git("log", "--diff-filter=D", "--name-only", "--format=", "--", "events", "universe", "registry")
+gone = sorted({g for g in gone.splitlines() if g.strip()})
+if gone:
+    bad(f"file(s) under events/, universe/ or registry/ were deleted in history: {gone[:10]}")
+else:
+    ok("nothing under events/, universe/ or registry/ has ever been deleted")
+APPEND_ONLY = ["registry/FROZEN.sha256", "registry/D005_implementation_v1.sha256"]
+_, hist = git("log", "--format=", "-p", "--", *APPEND_ONLY)
+_, work = git("diff", "HEAD", "--", *APPEND_ONLY)
+removed = [ln for ln in (hist + "\n" + work).splitlines() if ln.startswith("-") and not ln.startswith("---")]
+if removed:
+    bad(f"an append-only hash list lost or changed a line: {removed[:5]}")
+else:
+    ok("hash lists are append-only (no line ever removed or changed)")
+
 # Frozen events: every file listed in an event's manifest must still match its hash.
 import json
 import glob

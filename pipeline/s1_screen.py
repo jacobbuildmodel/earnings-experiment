@@ -336,8 +336,18 @@ def midseason(season):
     keep = ["quoteType", "exchange", "marketCap", "industry", "sector", "longName", "shortName", "currency"]
     for t in new:
         try:
-            info = yf.Ticker(t).info or {}
+            tk = yf.Ticker(t)
+            info = tk.info or {}
             m = {k: info.get(k) for k in keep}
+            if RULE.get("midseason_cap_as_of_screen_date"):
+                # D003 v2: size as of the season screen date, so a name cannot qualify because it just rose
+                sd = datetime.date.fromisoformat(RULE["seasons"][season]["screen_date"])
+                h = tk.history(start=(sd - datetime.timedelta(days=10)).isoformat(), end=sd.isoformat(), auto_adjust=False)
+                close = float(h["Close"].dropna().iloc[-1]) if len(h) else None
+                shares = info.get("sharesOutstanding")
+                m["marketCap_at_repull"] = m.get("marketCap")
+                m["marketCap"] = shares * close if shares and close else None
+                m["cap_basis"] = f"sharesOutstanding {shares} x close {close} before {sd}"
         except Exception as exc:
             m = {"error": f"{type(exc).__name__}: {exc}"}
         rec, reason = screen_one(t, rows[t], m, sec, now.date(), base)

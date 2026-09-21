@@ -81,6 +81,10 @@ jobs:
         run: |
           echo "::error::No CLAUDE_CODE_OAUTH_TOKEN secret. T2 cannot run; code will freeze T2 as MISSING."
 
+      - name: Remember the code the AI step must not change
+        id: pre
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
       # Rules 9-10 and D004 by construction: the AI's checkout has no archive/ and no outcomes/.
       - name: Hide archive/ and outcomes/ from the AI
         if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true'
@@ -115,6 +119,21 @@ jobs:
         if: always()
         run: git sparse-checkout disable
 
+      # External review (2026-09-21): the code that freezes, logs and checks must not run from a tree the
+      # AI could have edited. Any change to it - committed or not - is restored and the run fails loudly.
+      - name: Guard - the AI step changed no code, rule or workflow
+        if: always() && steps.pre.outputs.sha != ''
+        run: |
+          PRE=${{ steps.pre.outputs.sha }}
+          CHANGED=$(git diff --name-only "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md)
+          if [ -n "$CHANGED" ]; then
+            echo "::error::The AI step changed protected files: $CHANGED - restored from $PRE; review the run"
+            git checkout "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md
+            echo "guard_tripped=true" >> "$GITHUB_ENV"
+          else
+            echo "protected files unchanged since $PRE"
+          fi
+
       - name: Finalize - freeze what the AI left, sync statuses (code, no AI)
         if: always()
         run: |
@@ -131,7 +150,9 @@ jobs:
 
       - name: Health check after the run
         if: always()
-        run: python check.py
+        run: |
+          python check.py
+          if [ "$guard_tripped" = "true" ]; then echo "::error::protected files were changed by the AI step"; exit 1; fi
 
       - name: What the AI step did
         if: always() && steps.plan.outputs.claude == 'true'

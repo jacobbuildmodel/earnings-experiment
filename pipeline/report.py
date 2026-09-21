@@ -15,6 +15,7 @@ import json
 import math
 import os
 import sys
+import zlib
 
 import numpy as np
 
@@ -201,12 +202,18 @@ def bh(pvals):
 
 # ---------------------------------------------------------------- evaluation (D005 §2-§4)
 
+def R(name):
+    """An independent, reproducible random stream per test (implementation v2): adding or removing one
+    test never changes another test's p-value."""
+    return np.random.default_rng([SEED, zlib.crc32(name.encode("utf-8"))])
+
+
 def sufficient(n, dates):
     return n >= MIN_EVENTS and dates >= MIN_DATES
 
 
 def verdict(n, dates, p):
-    """Season A / exploratory wording only. "confirmed" comes solely from confirmatory(), after Holm."""
+    """D005 v1 wording (still computed, rule 5). "confirmed" comes solely from confirmatory()."""
     if not sufficient(n, dates):
         return "insufficient"
     if p != p:
@@ -214,16 +221,76 @@ def verdict(n, dates, p):
     return f"evidence of lift (exploratory, p={p:.3f})" if p < 0.05 else f"no evidence of lift (p={p:.3f})"
 
 
+def verdict_v2(n, dates, p, return_lift):
+    """D005 v2 wording: a directional lift only counts as a success with a non-negative return lift."""
+    if not sufficient(n, dates):
+        return "insufficient"
+    if p != p:
+        return "no selection (track bought all or none)"
+    if p >= 0.05:
+        return f"no evidence of directional lift (p={p:.3f})"
+    if return_lift is not None and return_lift < 0:
+        return f"directional lift WITHOUT return lift - not a success (p={p:.3f}, return lift {return_lift:+.4f})"
+    return f"evidence of directional lift, return lift non-negative (exploratory, p={p:.3f})"
+
+
 def win(r, key="exit_A"):
     return 1.0 if r["exits"][key]["WIN_raw"] else 0.0
 
 
-def evaluate(rows, track, rng):
-    """One track against T0 on the events where the track has a decision."""
+def within_date(y, x, g):
+    """Separation with entry-session fixed effects: only dates with both a BUY and a NO_BUY inform it."""
+    yt, xt = y.astype(float).copy(), x.astype(float).copy()
+    for c in np.unique(g):
+        m = g == c
+        yt[m] -= yt[m].mean()
+        xt[m] -= xt[m].mean()
+    keep = np.array([np.ptp(x[g == c]) > 0 for c in g])
+    if keep.sum() < 3 or len(np.unique(g[keep])) < 2:
+        return {"estimate": None, "note": "fewer than 2 entry sessions with both a BUY and a NO_BUY"}
+    X = np.column_stack([np.zeros(keep.sum()) + 1e-12, xt[keep]])
+    X[:, 0] = 1.0
+    b, se, t = ols_k(yt[keep], X, g[keep], 1)
+    return {"estimate": b, "se_cr1": se, "t_cr1": t, "sessions_used": int(len(np.unique(g[keep]))),
+            "label": "robustness - descriptive"}
+
+
+def leave_one_date_out(y, x, g):
+    lifts = []
+    for c in np.unique(g):
+        m = g != c
+        if 0 < x[m].mean() < 1:
+            lifts.append(float(y[m][x[m] == 1].mean() - y[m].mean()))
+    full = float(y[x == 1].mean() - y.mean())
+    return {"lift_min": min(lifts) if lifts else None, "lift_max": max(lifts) if lifts else None,
+            "sign_flips": int(sum(np.sign(v) != np.sign(full) for v in lifts)), "dates": len(lifts),
+            "label": "robustness - descriptive"}
+
+
+def legs(rs, x):
+    """Secondary: exit A split into the pre-print session and the print gap, per set."""
+    out = {}
+    for name, m in (("all", np.ones(len(rs), bool)), ("BUY", x == 1), ("NO_BUY", x == 0)):
+        sel = [r["exits"]["exit_A"].get("legs") for r, k in zip(rs, m) if k]
+        sel = [s for s in sel if s]
+        if sel:
+            out[name] = {"n": len(sel),
+                         "pre_print_mean": float(np.mean([s["pre_print"] for s in sel])),
+                         "pre_print_up_share": float(np.mean([s["pre_print"] > 0 for s in sel])),
+                         "print_gap_mean": float(np.mean([s["print_gap"] for s in sel])),
+                         "print_gap_up_share": float(np.mean([s["print_gap"] > 0 for s in sel]))}
+    out["label"] = "secondary"
+    return out
+
+
+def evaluate(rows, track, variant="all"):
+    """One track against T0 on the events where the track has a decision. Only the "all" variant gets a
+    verdict; robustness cuts are descriptive (implementation v2, external review 2026-09-21)."""
     rs = [r for r in rows if r["decisions"].get(track) in ("BUY", "NO_BUY")]
     n = len(rs)
     if not n:
         return {"track": track, "n": 0, "verdict": "no decisions"}
+    tag = f"{track}/{variant}"
     y = np.array([win(r) for r in rs])
     ret = np.array([r["exits"]["exit_A"]["raw_return"] for r in rs])
     x = np.array([1.0 if r["decisions"][track] == "BUY" else 0.0 for r in rs])
@@ -231,23 +298,33 @@ def evaluate(rows, track, rng):
     dates = len(set(g))
     f = float(x.mean())
     t0_hit = float(y.mean())
-    out = {"track": track, "n": n, "event_dates": dates, "buy_share": f, "T0_hit_rate": t0_hit,
-           "T0_mean_return": float(ret.mean()), "sufficient": sufficient(n, dates)}
-    p = float("nan")
+    out = {"track": track, "variant": variant, "n": n, "event_dates": dates, "buy_share": f,
+           "T0_hit_rate": t0_hit, "T0_mean_return": float(ret.mean()), "sufficient": sufficient(n, dates)}
+    p, rlift = float("nan"), None
     if 0 < f < 1:
         out.update({"BUY_hit_rate": float(y[x == 1].mean()), "NO_BUY_hit_rate": float(y[x == 0].mean()),
                     "NO_BUY_accuracy": float(1 - y[x == 0].mean()),
-                    "BUY_mean_return": float(ret[x == 1].mean()), "NO_BUY_mean_return": float(ret[x == 0].mean())})
+                    "BUY_mean_return": float(ret[x == 1].mean()), "NO_BUY_mean_return": float(ret[x == 0].mean()),
+                    "exit_A_legs": legs(rs, x)})
         if out["sufficient"]:  # below the rule 7 minimum no effect size or p-value is produced to be quoted
             b, se, _ = ols_cluster(y, x, g)
-            p = wild_cluster_p(y, x, g, rng)
+            p = wild_cluster_p(y, x, g, R(tag + "/win"))
             rb, _, _ = ols_cluster(ret, x, g)
+            rlift = float(ret[x == 1].mean() - ret.mean())
             out.update({"lift": float(y[x == 1].mean() - t0_hit), "separation": b, "separation_se_cr1": se,
-                        "p_one_sided": p, "return_lift": float(ret[x == 1].mean() - ret.mean()),
-                        "return_separation": rb, "return_p_one_sided": wild_cluster_p(ret, x, g, rng)})
+                        "p_one_sided": p, "return_lift": rlift, "return_separation": rb,
+                        "return_p_one_sided": wild_cluster_p(ret, x, g, R(tag + "/ret")),
+                        "within_date": within_date(y, x, g), "leave_one_date_out": leave_one_date_out(y, x, g)})
     elif f == 1:
         out.update({"BUY_hit_rate": t0_hit, "lift": 0.0})
-    out["verdict"] = verdict(n, dates, p)
+    if variant == "all":
+        out["verdict_D005_v1"] = verdict(n, dates, p)
+        out["verdict"] = verdict_v2(n, dates, p, rlift)
+        if out["verdict"].startswith("evidence") or out["verdict"].startswith("directional"):
+            out["power_note"] = ("at this sample size a significant result is quite likely a false positive and "
+                                 "overstates the true edge (D005 v1 §7, v2 §5)")
+    else:
+        out["verdict"] = "robustness cut - descriptive, no verdict"
     if track == "T2":
         conf_all = [r.get("t2_confidence") for r in rs]
         ok = np.array([c is not None and isinstance(c, (int, float)) and math.isfinite(c) for c in conf_all])
@@ -268,17 +345,24 @@ def evaluate(rows, track, rng):
                 bins.append({"bin": f"{lo:.2f}-{min(hi, 1):.2f}", "n": int(m.sum()),
                              "mean_conf": float(conf[m].mean()) if m.any() else None,
                              "hit_rate": float(yy[m].mean()) if m.any() else None})
-            out["probability"] = {
+            prob = {
                 "n": int(len(conf)), "brier": brier, "brier_reference_in_sample_base_rate": brier_ref,
                 "brier_skill": 1 - brier / brier_ref if brier_ref else float("nan"),
                 "log_loss": float(-(yy * np.log(cc) + (1 - yy) * np.log(1 - cc)).mean()),
                 "auc": auc(conf, yy),
-                "auc_ci90_cluster": pairs_cluster_ci(lambda i: auc(conf[i], yy[i]), by_c, rng) if len(by_c) > 1 else None,
+                "auc_ci90_cluster": pairs_cluster_ci(lambda i: auc(conf[i], yy[i]), by_c, R(tag + "/auc")) if len(by_c) > 1 else None,
                 "share_conf_0.45_0.55": float(((conf >= 0.45) & (conf <= 0.55)).mean()), "calibration": bins}
+            # D005 v2: does the confidence number itself rank outcomes? WIN = a + b*confidence, clustered.
+            if sufficient(len(conf), len(set(gg))) and np.ptp(conf) > 0:
+                Xc = np.column_stack([np.ones(len(conf)), conf])
+                cb, cse, ct = ols_k(yy, Xc, gg, 1)
+                prob["confidence_test"] = {"slope": cb, "se_cr1": cse, "t_cr1": ct,
+                                           "p_one_sided": wild_p_k(yy, Xc, gg, 1, R(tag + "/conf"))}
+            out["probability"] = prob
     return out
 
 
-def t2_vs_t1(rows, rng):
+def t2_vs_t1(rows):
     """D005 §3: stacked WIN = a + g*T2 + b*BUY + d*BUY*T2, clustered by entry session; test d > 0."""
     rs = [r for r in rows if r["decisions"].get("T1") in ("BUY", "NO_BUY") and r["decisions"].get("T2") in ("BUY", "NO_BUY")]
     dates = len({r["entry_session"] for r in rs})
@@ -296,7 +380,7 @@ def t2_vs_t1(rows, rng):
         out["verdict"] = "no selection in one track"
         return out
     d, se, t = ols_k(y, X, g, 3)
-    p = wild_p_k(y, X, g, 3, rng)
+    p = wild_p_k(y, X, g, 3, R("T2_vs_T1"))
     out.update({"delta": d, "delta_se_cr1": se, "p_one_sided": p,
                 "verdict": f"T2 separates better than T1 (exploratory, p={p:.3f})" if p < 0.05 else f"no evidence T2 beats T1 (p={p:.3f})"})
     return out
@@ -318,13 +402,21 @@ def confirmatory(season, tracks, stacked):
             raw[h["id"]] = tracks["T2"]["all"].get("p_one_sided", float("nan"))
         elif h["test"] == "T2_vs_T1":
             raw[h["id"]] = stacked.get("p_one_sided", float("nan"))
+        elif h["test"] == "T2_confidence":
+            raw[h["id"]] = (tracks["T2"]["all"].get("probability", {}).get("confidence_test") or {}).get("p_one_sided", float("nan"))
     raw = {k: (1.0 if v != v else v) for k, v in raw.items()}  # an untestable hypothesis is not confirmed
     adj = holm(raw)
-    return {"registered": True, "alpha": 0.05, "raw_p": raw, "holm_p": adj,
-            "verdicts": {k: ("confirmed" if adj[k] < 0.05 else "not confirmed") for k in adj}}
+    # D005 v2 §1: a lift hypothesis is confirmed only with a non-negative return lift as well
+    rl = {h["id"]: tracks[h["test"][:2]]["all"].get("return_lift") for h in reg["hypotheses"]
+          if h["test"] in ("T1_lift", "T2_lift")}
+    verdicts = {}
+    for k in adj:
+        ok = adj[k] < 0.05 and (k not in rl or (rl[k] is not None and rl[k] >= 0))
+        verdicts[k] = "confirmed" if ok else "not confirmed"
+    return {"registered": True, "alpha": 0.05, "raw_p": raw, "holm_p": adj, "return_lift": rl, "verdicts": verdicts}
 
 
-def by_cluster(rows, track, rng):
+def by_cluster(rows, track):
     """Every cluster is listed; under the rule 7 minimum it is 'insufficient' whatever its estimate."""
     est, listing = {}, {}
     for c in sorted({r.get("cluster") for r in rows}, key=str):
@@ -357,7 +449,7 @@ def numeric_factors(season, event):
     return out
 
 
-def factor_table(season, rows, rng):
+def factor_table(season, rows):
     """D005 §5 exploration. Every test run is listed and counted; BH across all of them; a CANDIDATE
     needs q < 0.10, |t| > 3 and the same sign in both halves (split at the median entry session)."""
     facs = {r["event"]: numeric_factors(season, r["event"]) for r in rows}
@@ -383,7 +475,7 @@ def factor_table(season, rows, rng):
                 g = np.array([r["entry_session"] for r, _ in sel])
                 X = np.column_stack([np.ones_like(x), x])
                 eff, se, t = ols_k(y, X, g, 1)
-                p = wild_p_k(y, X, g, 1, rng, two_sided=True)
+                p = wild_p_k(y, X, g, 1, R(f"factor/{fac}/{gname}/{oname}"), two_sided=True)
                 halves = []
                 for first in (True, False):
                     m = np.array([(r["entry_session"] < med) == first for r, _ in sel])
@@ -401,6 +493,40 @@ def factor_table(season, rows, rng):
     return {"tests_run": len(tests), "candidates": [x for x in tests if x["status"] == "CANDIDATE"],
             "note": "B-family factors are measured only on implied move >= 4% (D003 gate) - truncated range",
             "tests": tests}
+
+
+def gate_selectivity(season):
+    """How hard the S2 gate bit, per cluster and per business stage, over every gated event - including
+    the INELIGIBLE ones (external review 2026-09-21: a cluster comparison is also a comparison of how
+    selective the gate was). Descriptive."""
+    cands = {}
+    for name in ("candidates.json", "candidates_midseason.json"):
+        cp = os.path.join(ROOT, "universe", season, name)
+        if os.path.exists(cp):
+            cands.update({c["ticker"]: c for c in json.load(open(cp, encoding="utf-8"))["candidates"]})
+    groups = {}
+    for gp in glob.glob(os.path.join(ROOT, "events", season, "*", "gate.json")):
+        g = json.load(open(gp, encoding="utf-8"))
+        if g.get("dry"):
+            continue
+        fp = os.path.join(os.path.dirname(gp), "factors.json")
+        stage = None
+        if os.path.exists(fp):
+            stage = ((json.load(open(fp, encoding="utf-8")).get("factors") or {}).get("K_stage") or {}).get("value")
+        im = (g.get("options") or {}).get("implied_move")
+        for key in (f"cluster={cands.get(g['ticker'], {}).get('cluster')}", f"stage={stage}"):
+            d = groups.setdefault(key, {"gated": 0, "passed": 0, "reasons": {}, "implied_moves": []})
+            d["gated"] += 1
+            d["passed"] += g["status"] == "PASS"
+            if g["status"] != "PASS":
+                d["reasons"][g.get("reason")] = d["reasons"].get(g.get("reason"), 0) + 1
+            if im is not None:
+                d["implied_moves"].append(im)
+    out = {}
+    for k, d in sorted(groups.items()):
+        ims = d.pop("implied_moves")
+        out[k] = {**d, "pass_rate": d["passed"] / d["gated"], "mean_implied_move_all_gated": float(np.mean(ims)) if ims else None}
+    return {"groups": out, "label": "descriptive"}
 
 
 def load_rows(season):
@@ -430,12 +556,11 @@ def implementation_status():
             h, name = line.split(maxsplit=1)
             want[name.strip()] = h
     got = {n: hashlib.sha256(open(os.path.join(ROOT, n), "rb").read().replace(b"\r\n", b"\n")).hexdigest() for n in want}
-    return "registered v1 (hashes match)" if got == want else f"CHANGED since registration: {[n for n in want if got[n] != want[n]]}"
+    return "registered (matches the latest version in D005_implementation_v1.sha256)" if got == want else f"CHANGED since registration: {[n for n in want if got[n] != want[n]]}"
 
 
 def run(season, write=False):
     rows, voids, pending, ineligible = load_rows(season)
-    rng = np.random.default_rng(SEED)
     rep = {"season": season, "computed_et": now_et().isoformat(timespec="seconds"), "rule": "D005_evaluation_v1",
            "implementation": implementation_status(),
            "counts": {"graded": len(rows), "void": voids, "pending": pending, "ineligible_never_graded": ineligible,
@@ -448,9 +573,10 @@ def run(season, write=False):
                 "excl_confound_8k": [r for r in rows if "confound_8k" not in r["flags"]]}
     rep["tracks"] = {}
     for track in ("T1", "T2"):
-        rep["tracks"][track] = {v: evaluate(rs, track, rng) for v, rs in variants.items()}
-        rep["tracks"][track]["by_cluster_partial_pooling"] = by_cluster(rows, track, rng)
-    rep["T2_vs_T1"] = t2_vs_t1(rows, rng)
+        rep["tracks"][track] = {v: evaluate(rs, track, v) for v, rs in variants.items()}
+        rep["tracks"][track]["by_cluster_partial_pooling"] = by_cluster(rows, track)
+    rep["T2_vs_T1"] = t2_vs_t1(rows)
+    rep["gate_selectivity"] = gate_selectivity(season)
     rep["confirmatory"] = confirmatory(season, rep["tracks"], rep["T2_vs_T1"])
     sec = {}
     for key in ("exit_A", "exit_B", "exit_C"):
@@ -462,7 +588,7 @@ def run(season, write=False):
                         "mean_raw_return": float(np.mean([e["raw_return"] for e in rr])),
                         "label": "PRIMARY outcome" if key == "exit_A" else "secondary"}
     rep["T0_by_exit"] = sec
-    rep["findings"] = factor_table(season, rows, rng)
+    rep["findings"] = factor_table(season, rows)
     summary = {k: v for k, v in rep.items() if k != "findings"}
     summary["findings"] = {k: v for k, v in rep["findings"].items() if k != "tests"}
     print(json.dumps(summary, indent=1, default=str))

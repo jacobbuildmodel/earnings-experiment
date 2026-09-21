@@ -95,6 +95,16 @@ def past_prints(sheet, tk, h, report_date):
     put(sheet, "E_past_reaction_volume_LR02", sum(vr) / len(vr) if vr else None, src)
     last = rows[0]["surprise_pct"] if rows else None
     put(sheet, "E_last_surprise_pct_LR17", last, src, "EPS basis NOT pinned")
+    # Report-date shift vs the same quarter a year earlier: later-than-usual reporting tends to carry bad
+    # news (Johnson & So 2018; Bagnoli, Kross & Watts 2002). Positive = later than last year.
+    past = sorted({ts.astimezone(ET).date() for ts in ed.index if ts.astimezone(ET).date() < report_date})
+    near = [d for d in past if 330 <= (report_date - d).days <= 400]
+    if near:
+        prior = min(near, key=lambda d: abs((report_date - d).days - 364))
+        put(sheet, "L_report_date_shift_days", (report_date - prior).days - 364, "yfinance get_earnings_dates",
+            f"vs {prior.isoformat()}; positive = later than the same quarter last year")
+    else:
+        put(sheet, "L_report_date_shift_days", None, "yfinance get_earnings_dates", "no print 330-400 days earlier")
 
 
 def expectations(sheet, tk):
@@ -141,6 +151,49 @@ def options_block(sheet, chain, gate):
     put(sheet, "B_put_call_volume_LR14", pv / cv if cv else None, src, "plain volume, gate expiry only")
     put(sheet, "B_put_call_oi", poi / coi if coi else None, src, "gate expiry only")
     put(sheet, "B_option_volume_gate_expiry", cv + pv, src)
+
+
+def term_structure_block(sheet, tk, gate, snap_session):
+    """B: the event-specific move from two expiries (Dubinsky, Johannes, Kaeck & Seeger 2019): the front
+    expiry's total variance minus the ordinary daily variance implied by the next expiry. The gate's
+    straddle move also prices non-event days; this strips them out. Recorded as a factor, not a gate."""
+    import numpy as np
+    from sessions import shift
+    o = gate.get("options") or {}
+    src = "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    if not o.get("expiry") or o.get("call") is None:
+        put(sheet, "B_event_move_term_structure", None, src, "no gate option data")
+        return
+    exps = [e for e in tk.options if e > o["expiry"]]
+    if not exps:
+        put(sheet, "B_event_move_term_structure", None, src, "no later expiry listed")
+        return
+    nxt = tk.option_chain(exps[0])
+    spot, k = o["spot"], o["strike"]
+    def atm_iv(calls, puts):
+        ks = sorted(set(calls.strike) & set(puts.strike), key=lambda s: (abs(s - spot), s))
+        if not ks:
+            return None
+        c = calls[calls.strike == ks[0]].impliedVolatility.iloc[0]
+        p = puts[puts.strike == ks[0]].impliedVolatility.iloc[0]
+        return float(np.nanmean([c, p]))
+    iv1 = np.nanmean([o["call"].get("impliedVolatility") or np.nan, o["put"].get("impliedVolatility") or np.nan])
+    iv2 = atm_iv(nxt.calls, nxt.puts)
+    def sessions_to(exp):
+        d, n, e = snap_session, 0, datetime.date.fromisoformat(exp)
+        while d < e:
+            d = shift(d, 1)
+            n += 1
+        return n
+    t1, t2 = sessions_to(o["expiry"]) / 252, sessions_to(exps[0]) / 252
+    if not (iv1 == iv1 and iv2 and t2 > t1 > 0):
+        put(sheet, "B_event_move_term_structure", None, src, f"unusable inputs iv1={iv1} iv2={iv2} t1={t1} t2={t2}")
+        return
+    daily_var = (iv2 ** 2 * t2 - iv1 ** 2 * t1) / (t2 - t1)
+    event_var = (iv1 ** 2 - daily_var) * t1
+    put(sheet, "B_event_move_term_structure", float(np.sqrt(event_var)) if event_var > 0 else None, src,
+        f"std of the event-day return; iv1={iv1:.4f} ({o['expiry']}), iv2={iv2:.4f} ({exps[0]})"
+        + ("" if event_var > 0 else "; negative event variance - term structure inverted, recorded missing"))
 
 
 def calendar_block(sheet, ticker, report_date):
@@ -238,6 +291,7 @@ def run(season, ticker, report_date, dry=False):
         safely(sheet, "past_prints", lambda: past_prints(sheet, tk, hist["h"], report_date))
     safely(sheet, "expectations", lambda: expectations(sheet, tk))
     safely(sheet, "options", lambda: options_block(sheet, chain, gate))
+    safely(sheet, "term_structure", lambda: term_structure_block(sheet, tk, gate, snap_session))
     safely(sheet, "calendar", lambda: calendar_block(sheet, ticker, report_date))
     safely(sheet, "stage", lambda: stage_block(sheet, ticker, meta["captured_et"][:10]))
     out = {"meta": meta, "factors": sheet}

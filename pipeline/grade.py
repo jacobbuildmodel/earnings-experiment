@@ -19,8 +19,12 @@ How D001 is applied where it leaves a choice (registered in D005 §6):
     1.2 s apart). Agree when |diff| <= 0.10% or <= $0.01. No check value -> flag single_source.
   - Print timing (D001 §6 "print date or session differs"): the company's Item 2.02 8-K acceptance time
     from SEC EDGAR. Inside the frozen release window -> verified. Inside the opposite window (the print
-    was really the other session) -> VOID print_session_differs. During market hours, or no 2.02 8-K
-    within D-3..D+3 -> timing_unverified (an 8-K can lag its press release), reported with and without.
+    was really the other session) -> VOID print_session_differs. Before the frozen window opens -> VOID
+    print_date_differs (an 8-K can lag its release, never precede it). During market hours, after the
+    window, or no 2.02 8-K within D-3..D+3 -> timing_unverified, reported with and without.
+  - Exit A with no price (even delayed 5 sessions) -> VOID no_price. Prices are fetched from 06:00 ET the
+    day after the session. Exit A is also split, as a secondary, into the pre-print session
+    (entry open -> entry close) and the print gap (entry close -> exit A open).
   - Confounds: every other 8-K item filed from the entry session to exit C is listed; items other than
     2.02 / 7.01 / 9.01 set the flag confound_8k (CLAUDE.md: read every filing in the event window).
   - Leave-one-out: no issuer holdings file is captured, so every excess return is flagged
@@ -83,9 +87,10 @@ class Store:
 
 
 def settled(session, field):
-    """A price is fetched only once it is final: after that session's close (+15 min)."""
-    d = datetime.date.fromisoformat(session)
-    return now_et() >= datetime.datetime.combine(d, datetime.time(16, 15), ET)
+    """A price is fetched only once it is final: from 06:00 ET the next calendar day, after the vendor's
+    overnight revision of the daily bar (implementation v2; v1 used the same day's close + 15 min)."""
+    d = datetime.date.fromisoformat(session) + datetime.timedelta(days=1)
+    return now_et() >= datetime.datetime.combine(d, datetime.time(6, 0), ET)
 
 
 def fetch_yf(store, symbol, points, start, end):
@@ -248,6 +253,10 @@ def timing_check(filings, report_date, session):
     other = "AMC" if session == "BMO" else "BMO"
     if any(h["window"] == other for h in hits):
         return "contradicted", hits
+    # An 8-K can lag its press release, but it can never precede it: a 2.02 filing accepted before the
+    # frozen release window opens means the results were public earlier (external review 2026-09-21).
+    if any(datetime.datetime.fromisoformat(h["accepted_et"]) < windows[session][0] for h in hits):
+        return "early", hits
     return "unverified", hits
 
 
@@ -270,7 +279,8 @@ def grade_event(season, edir, fetch, av):
     etf = cand.get(sym, {}).get("etf")
     cik = cand.get(sym, {}).get("cik")
     store = Store(os.path.join(ROOT, "outcomes", season, "prices", f"{ev}.jsonl"))
-    pts = [(tm["entry"]["session"], "open")] + [(tm[k]["session"], tm[k]["price"]) for k in ("exit_A", "exit_B", "exit_C")]
+    pts = [(tm["entry"]["session"], "open"), (tm["entry"]["session"], "close")]
+    pts += [(tm[k]["session"], tm[k]["price"]) for k in ("exit_A", "exit_B", "exit_C")]
     # room for exit_delayed: up to 5 sessions past exit C
     ext = [(shift(datetime.date.fromisoformat(tm["exit_C"]["session"]), i).isoformat(), f)
            for i in range(1, 6) for f in ("open", "close")]
@@ -314,6 +324,8 @@ def grade_event(season, edir, fetch, av):
         timing, hits = timing_check(filings["filings"], gate["report_date"], gate["session"])
         if timing == "contradicted":
             void = void or "print_session_differs"
+        elif timing == "early":
+            void = void or "print_date_differs"
         elif timing == "unverified":
             flags.append("timing_unverified")
         other = sorted({i for f in filings["filings"] for i in f["items"].split(",")} - OK_8K_ITEMS - {""})
@@ -352,8 +364,13 @@ def grade_event(season, edir, fetch, av):
         s["label"] = "PRIMARY" if key == D001["primary_exit"] else "secondary"
         exits[key] = s
     a = exits["exit_A"]
-    if void is None and a.get("status") == "no_price" and not any("raw_return" in exits[k] for k in exits):
+    if void is None and a.get("status") == "no_price":  # the primary exit has no price, even delayed
         void = "no_price"
+    # Secondary split of exit A (external review 2026-09-21): the session before the print, then the gap.
+    ec, _ = price(store, sym, tm["entry"]["session"], "close")
+    if "raw_return" in a and ec:
+        a["legs"] = {"pre_print": ec / a["entry"] - 1, "print_gap": a["exit"] / ec - 1,
+                     "entry_close": ec, "label": "secondary"}
     dec = load(os.path.join(edir, "decision.json"))
     tracks = {"T0": dec["t0"]["decision"], "T1": dec["t1"].get("decision"), "T2": dec["t2"].get("decision")}
     graded = "raw_return" in a and void is None

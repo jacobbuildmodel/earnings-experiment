@@ -27,7 +27,8 @@ import sys
 import requests
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import ET, ROOT, now_et, write_json, write_once  # noqa: E402
+from common import ET, ROOT, now_et, rule_for, write_json, write_once  # noqa: E402
+from sessions import close_time  # noqa: E402
 
 REQUIRED = ["confirm.json", "gate.json", "option_chain.json", "factors.json"]
 # Independent RFC 3161 authorities, all free, all tested 2026-09-21. Two are requested; one is enough.
@@ -57,6 +58,21 @@ def parse_et(s):
         return datetime.datetime.combine(datetime.date.fromisoformat(s[:10]), datetime.time(0, 0), ET)
     except ValueError:
         return None
+
+
+def t2_deadline(season, gate):
+    """When T2 must have decided. D004 v1 (pilot): before the entry open. D004 v2+: by the close of the
+    snapshot session, so T2 cannot see after-hours prints and trading that T1's snapshot never had."""
+    entry = datetime.date.fromisoformat(gate["timing"]["entry"]["session"])
+    entry_open = datetime.datetime.combine(entry, datetime.time(9, 30), ET)
+    try:
+        rule = rule_for("D004_decision_protocol", season)
+    except SystemExit:  # no JSON twin covers this season -> D004 v1
+        return entry_open
+    if rule.get("t2_deadline") == "snapshot_session_close":
+        snap = datetime.date.fromisoformat(gate["snapshot_session"])
+        return datetime.datetime.combine(snap, close_time(snap), ET)
+    return entry_open
 
 
 def decision_problems(d, gate, entry_open):
@@ -94,7 +110,7 @@ def decision_problems(d, gate, entry_open):
         elif decided and captured and decided < captured:
             p.append("T2 decided_et is before the snapshot was captured")
         elif decided and decided >= entry_open:
-            p.append("T2 decided_et is at or after the entry open")
+            p.append(f"T2 decided_et is at or after its deadline {entry_open.isoformat()}")
         # D004: T2 may read nothing published after the snapshot time. An item dated before the snapshot
         # day may give a date only; an item from the snapshot day itself must give its time, and that
         # time must precede captured_et (external review 2026-09-21: a day-level check let same-day,
@@ -187,7 +203,8 @@ def run(season, ticker, report_date, t2_missing=None):
             shutil.move(dpath, rejected)
             notes.append("decision.json written for an INELIGIBLE event - kept as decision_rejected.json")
     else:
-        problems = decision_problems(json.load(open(dpath, encoding="utf-8")), gate, entry_open) \
+        deadline = min(entry_open, t2_deadline(season, gate))
+        problems = decision_problems(json.load(open(dpath, encoding="utf-8")), gate, deadline) \
             if os.path.exists(dpath) else ["no decision.json"]
         if problems and not t2_missing:
             raise SystemExit("decision.json is not valid - fix it, or freeze with --t2-missing \"<why>\":\n  - "

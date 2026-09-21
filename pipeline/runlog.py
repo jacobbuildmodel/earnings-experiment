@@ -23,13 +23,17 @@ FENCES = [(re.compile(r"(^|[\s'\":/\x5c])archive" + SEP, re.I), "archive/ (rule 
           (re.compile(r"(^|[\s'\":/\x5c])outcomes" + SEP, re.I), "outcomes/ (D004: no graded outcomes)"),
           (re.compile(r"\.\." + SEP + r"CLAUDE\b|\bDRIVE\b"), "DRIVE repo (rule 9)")]
 
+# git commands that can print file contents from history (external review 2026-09-21: `git log -p` or
+# `git show <commit>` reads a graded outcome without naming outcomes/). Listed for review, not as breaches.
+GIT_CONTENT = re.compile(r"\bgit\s+(show|cat-file|blame|grep|log\b[^|;&]*(\s-p\b|--patch|\s-S|\s-G)|diff\s+[^-\s]|"
+                         r"checkout\s+\S+\s+--|restore\s+[^|;&]*--source)")
 
 def main(path, run_id):
     if not os.path.exists(path):
         print(f"no AI output at {path} - nothing to log")
         return
     msgs = json.load(open(path, encoding="utf-8"))
-    calls, breaches, result, by_id = [], [], None, {}
+    calls, breaches, review, result, by_id = [], [], [], None, {}
     for m in msgs:
         if m.get("type") == "assistant":
             for c in (m.get("message") or {}).get("content") or []:
@@ -41,6 +45,8 @@ def main(path, run_id):
                     for rx, what in FENCES:
                         if rx.search(inp):
                             breaches.append({"fence": what, "tool": c.get("name"), "input": inp[:600]})
+                    if c.get("name") == "Bash" and GIT_CONTENT.search(inp):
+                        review.append({"flag": "git content read", "input": inp[:600]})
         elif m.get("type") == "user":
             # What a web fetch actually returned (external review 2026-09-21): the hash and opening of
             # the content, so a reviewer can check a claimed publish time against what T2 really saw.
@@ -62,10 +68,12 @@ def main(path, run_id):
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H%MZ")
     out = os.path.join(ROOT, "logs", "actions", f"{stamp}_{run_id}.json")
     write_json(out, {"run_id": run_id, "logged_utc": stamp, "tool_calls": len(calls),
-                     "fence_breaches": breaches, "result": result, "calls": calls})
+                     "fence_breaches": breaches, "review_flags": review, "result": result, "calls": calls})
     print(f"{len(calls)} tool calls, {len(breaches)} fence breach(es) -> {os.path.relpath(out, ROOT)}")
     for b in breaches:
         print(f"FENCE BREACH: {b['fence']} via {b['tool']}: {b['input'][:200]}")
+    for r in review:
+        print(f"::warning::review - {r['flag']}: {r['input'][:200]}")
     commit([out], f"Log AI step of Actions run {run_id}: {len(calls)} tool calls, {len(breaches)} fence breach(es)")
 
 
