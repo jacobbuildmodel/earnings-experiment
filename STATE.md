@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 0 → 1 · Build → Pilot** · updated 2026-09-17 · collection opens **Mon 2026-09-21**
+**Phase 1 · Pilot (live)** · updated 2026-09-21 09:15 ET · pipeline hardened, D005 frozen, ready for the external evaluation
 
 ## Where things are
 
@@ -121,7 +121,7 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   and `/feed/Event.svc/GetEventList?...`. BlackBerry puts its events in a script block on
   investors.blackberry.com/press-releases. AAR lists its releases on aarcorp.com/en/investors/.
   The web-search tool was down.
-- **Each S2 run:**
+- **Each S2 run (superseded 2026-09-21 — see the hardening section; kept for the record):**
   1. `python pipeline/s2_gate.py pilot <T> <date>`
   2. `python pipeline/factors.py pilot <T> <date>`
   3. if PASS: T2 writes `decision.json` + `thesis.md` under D004
@@ -157,23 +157,91 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   - The Actions environment reaches Yahoo, the IR hosts and PyPI — the egress block that stopped the
     claude.ai cloud environment does not apply here.
 
+## Hardening before evaluation — 2026-09-21 (laptop session, ~07:50–09:15 ET)
+
+Everything below is committed: `c781a26` · `c5f8c6a` · `e61e01c`. Two independent reviews by a second
+model (Sonnet) were run. The first covered the design and pipeline, the second D005 and the grader.
+Their defects were fixed before anything went live.
+
+**Who does what now (GitHub Actions `.github/workflows/s2-window.yml`):**
+
+| step | who | what |
+|---|---|---|
+| gate + factor snapshot | **code** `pipeline/due.py gate` | inside 14:30–15:50 ET. INELIGIBLE → frozen at once. PASS → capture committed and pushed at once. No gate by 15:50 → `missed_window` |
+| T2 decision + thesis | **AI** `ops/actions_prompt.md` | only for events awaiting T2 (`due.py t2-list`). `archive/` and `outcomes/` are not on disk for it (sparse checkout). Every tool call is logged to `logs/actions/`, with fence breaches flagged |
+| freeze | `freeze.py` (the AI, or code in `due.py finalize`) | refuses BUY/confidence mismatches, missing `decided_et`, and inputs dated after the snapshot. Two RFC 3161 timestamps (DigiCert, FreeTSA). A lost push fails loudly. A rejected push is merged, never rebased |
+| last chance | **code** `due.py finalize --last-chance` at 23:00 UTC | a PASS event with no valid T2 is frozen with **T2 MISSING**, so T0 keeps it |
+| status file | **code** | `event_status.json` is synced from the frozen record (status `FROZEN`) |
+| mid-season screen | **code** `due.py midseason` | Fridays in the 23:00 UTC run (D003 §7) |
+| grading | **code** `.github/workflows/grade.yml` | 21:30 UTC weekdays. `grade.py --commit` writes `outcomes/` |
+
+- **Fires (UTC, Mon–Fri):** 18:40 · 19:10 · 19:40 · 20:10 · 20:40 · 23:00. That puts three in the
+  window in both EDT and EST; v1 had only one after Nov 1.
+- **The laptop task stays DISABLED.**
+
+**Fixed:**
+- **factors.py stage bug.** A derived Q4 broke the next year's Q4, so PAYX, DRI and AEHR read
+  `unknown`. They now read mature, mature and unprofitable_growth. Restated periods use the latest
+  filing before the snapshot.
+- **s2_gate.** An empty strike list no longer crashes the run.
+- **check.py** now verifies the timestamp tokens and fails if any commit touches a frozen file after
+  its freeze.
+- **The runner checks out `main` at step time.** A run that waited in the queue could otherwise gate
+  an event twice.
+
+**New code:**
+
+| file | job |
+|---|---|
+| `pipeline/grade.py` (D001) | prices fetched once; print timing checked against the company's Item 2.02 8-K; `confound_8k`; corrections |
+| `pipeline/report.py` (D005) | the full evaluation |
+| `pipeline/runlog.py` | logs every AI tool call |
+| `s1_screen.py` | now has `screen_one` and `midseason`; re-running the pilot screen reproduces `candidates.json` exactly |
+
+**Frozen: `registry/D005_evaluation_v1.md`** — the evaluation protocol, in place before any outcome
+can be known. Implementation hashes are in `D005_implementation_v1.sha256`.
+- the cluster is the entry session
+- lift is tested by the wild cluster bootstrap-t, one-sided
+- "insufficient" below 30 events or 10 event-dates, with no effect size produced
+- Holm only over registered confirmatory hypotheses (`D005_confirmatory_<season>.json`)
+- exploration needs BH q < 0.10, |t| > 3 and the same sign in both halves
+- **Power:** ~100 events detect only a ~12 pp lift. One season's "no evidence" is the expected result
+  even if a modest edge exists.
+
+**Recorded deviations:**
+- The 2026-09-18 Friday mid-season re-pull (D003 §7) was never run; no code existed. The 09-25
+  dry run found only BSET and GNS as new names, both industry_out.
+- The leave-one-out benchmark is not implemented, because issuer holdings files are not fetchable.
+  Every WIN_excess is flagged `bench_weight_missing`.
+- Until the `ALPHAVANTAGE_API_KEY` secret exists, every graded price is `single_source`.
+
+**EPS basis lead (2026-09-21):** coverage says the Zacks consensus for ORCL's quarter was 1.74, which
+matches yfinance and the non-GAAP basis. This is a web summary, not yet verified. The Nasdaq/AV
+1.39/1.63 pair is still unexplained. D005 §5 bars any EPS-surprise factor from a rule until the basis
+is pinned.
+
+## Waiting on Jacob
+
+1. **Add the `ALPHAVANTAGE_API_KEY` repository secret** on GitHub (Settings → Secrets and variables →
+   Actions). Without it, graded prices have no second source, and the mid-season screen runs on Nasdaq
+   alone.
+2. **D003 v2, payroll names** (`reviews/drafts/D003_v2_DRAFT.md` Change 2). Default: an SEC-SIC filter
+   plus ADP by name. Must be frozen before **2026-10-08 16:00 ET**.
+3. **Start the external evaluation.** The brief is `reviews/external_evaluator_brief.md`.
+
 ## Next actions
 
-1. Run the S2 windows above (first: Mon Sep 21, 14:30 ET), and re-check AEHR, LEVI and APLD.
-2. **Pin the EPS basis before building any beat or surprise factor.** Alpha Vantage gives ORCL's quarter
-   ending 2026-08-31 two consensus figures — 1.39 (earnings history) and 1.74 (estimates history).
-   - Check whether "N days ago" in estimates history is anchored to the report date or to today.
-   - Lead (2026-09-14): the release gives GAAP EPS **$1.56** and non-GAAP **$1.92**. yfinance gives 1.74
-     estimated against 1.92 reported, so **1.74 is the non-GAAP consensus**.
-   - Lead (2026-09-17): Nasdaq's calendar gives the same 1.39 / 1.63 pair as Alpha Vantage earnings
-     history — a shared consensus basis that is not non-GAAP. Find out what it is.
-   - `factors.py` currently uses yfinance surprise, flagged "basis NOT pinned".
-3. **D003 v2** for the Nov 27 early close, before 2026-10-09.
-4. History study on the free factor families (A, C3–C4, D, E, F, I, J) plus the free LR candidates
-   → rule v0, frozen before Oct 12.
-5. External evaluator design brief → `reviews/`.
-6. Probe a lead in `reviews/external_source_leads.md` only when a factor needs it (first: FINRA
-   short-sale volume for LR09).
+1. **Check today's first automated run:** PAYX (snapshot today, 14:40 ET fire = 02:40 SGT). Look for a
+   `Freeze PAYX …` or `Capture PAYX …` commit and `logs/actions/`. A dry run at 08:00 ET suggested
+   `thin_oi`: OI 52 + 191 at the 115 strike, and only a monthly expiry. Tue Sep 22 is DRI and BB.
+2. External evaluation. Every accepted change becomes a new rule version.
+3. Freeze D003 v2 before 2026-10-08 16:00 ET. With it: early-close window code, crons at 16:40 and
+   17:10 UTC, and version selection per season in `due.py`, `s2_gate.py` and `s1_screen.py`.
+4. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET. The Alpha Vantage calendar is saved by
+   hand through the MCP tool, unless the secret exists and `s1_screen.py` is taught to pull it.
+5. History study → rule v0, frozen before Oct 12. It may use only source-matched factors (D005 §5).
+6. Register Season A's confirmatory file? No: Season A is exploratory by D005. The first confirmatory
+   file is for Season B.
 
 ## Watch-outs
 
