@@ -165,25 +165,31 @@ def stage_block(sheet, ticker, snapshot_date):
         """{(fy_end_label, fp, end): value} for ~3-month facts, plus annual facts, filed before the snapshot."""
         units = facts.get(tag, {}).get("units", {}).get("USD", [])
         q, a = {}, {}
-        for u in units:
+        # A restated period appears once per filing. Keep the most recently filed value that was
+        # public before the snapshot - what the market knew - not whichever row comes last.
+        for u in sorted(units, key=lambda u: u.get("filed", "")):
             if u.get("form") not in ("10-Q", "10-K", "10-Q/A", "10-K/A") or u["filed"] > snapshot_date or "start" not in u:
                 continue
             days = (datetime.date.fromisoformat(u["end"]) - datetime.date.fromisoformat(u["start"])).days
             if 80 <= days <= 100:
-                q[u["end"]] = (u["start"], u["val"])
+                q[u["end"]] = (u["start"], u["val"], False)
             elif 350 <= days <= 380:
                 a[u["end"]] = (u["start"], u["val"])
-        # derive Q4 = annual - three quarters inside that year, where the 3-month fact is missing
-        for end, (start, val) in a.items():
-            inside = [v for e, (s, v) in q.items() if start <= s and e < end]
+        # derive Q4 = annual - three quarters inside that year, where the 3-month fact is missing.
+        # A derived quarter keeps a real start date (the day after Q3 ends) so a later year's
+        # "inside" test cannot count it by mistake; the third field marks it derived.
+        for end, (start, val) in sorted(a.items()):
+            inside = sorted((e, v) for e, (s, v, _) in q.items() if start <= s and e < end)
             if end not in q and len(inside) == 3:
-                q[end] = ("derived", val - sum(inside))
+                q4_start = (datetime.date.fromisoformat(inside[-1][0]) + datetime.timedelta(days=1)).isoformat()
+                q[end] = (q4_start, val - sum(v for _, v in inside), True)
         return q
 
-    rev = {}
+    rev, rev_tag = {}, {}
     for tag in ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"):
         for end, v in quarters(tag).items():
-            rev.setdefault(end, v)  # per quarter, the first tag in priority order that has a value
+            if end not in rev:  # per quarter, the first tag in priority order that has a value
+                rev[end], rev_tag[end] = v, tag
     op = quarters("OperatingIncomeLoss")
     if not rev or not op:
         put(sheet, "K_stage", "unknown", src, "revenue or operating income missing")
@@ -200,14 +206,15 @@ def stage_block(sheet, ticker, snapshot_date):
     prior = [e for e in rev if 350 <= (le - datetime.date.fromisoformat(e)).days <= 380]
     growth = rev[latest][1] / rev[prior[0]][1] - 1 if prior and rev[prior[0]][1] else None
     margin = op[latest][1] / rev[latest][1] if latest in op and rev[latest][1] else None
-    flags = [f for f, cond in [("q4_derived", rev[latest][0] == "derived" or op.get(latest, ("",))[0] == "derived")] if cond]
+    flags = ["q4_derived"] if rev[latest][2] or op[latest][2] else []
     if growth is None or margin is None:
         stage = "unknown"
     elif growth >= 0.20:
         stage = "unprofitable_growth" if margin < 0 else "profitable_growth"
     else:
         stage = "mature"
-    put(sheet, "K_stage", stage, src, f"quarter ending {latest}; flags {flags}")
+    tags = f"revenue tag {rev_tag[latest]}" + (f", year-ago {rev_tag[prior[0]]}" if prior and rev_tag[prior[0]] != rev_tag[latest] else "")
+    put(sheet, "K_stage", stage, src, f"quarter ending {latest}; flags {flags}; {tags}")
     put(sheet, "K_rev_growth_yoy_q", growth, src, f"quarter ending {latest}")
     put(sheet, "K_op_margin_q", margin, src, f"quarter ending {latest}")
 

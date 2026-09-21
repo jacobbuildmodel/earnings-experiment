@@ -1,34 +1,47 @@
-# Per-event S2 gate + T2 decision, run by GitHub Actions.
+# Per-event S2 gate, factor snapshot, T2 decision and freeze - run by GitHub Actions.
 #
-# Why here and not a claude.ai routine: the cloud routine environment blocks outbound traffic to
-# SEC EDGAR, Nasdaq, NYSE and Yahoo (proxy 403, reproduced twice on 2026-09-17 - see the probe
-# commits). GitHub-hosted runners have open egress, and the laptop cannot be awake at 02:35 SGT.
+# Why here and not a claude.ai routine: that environment blocks SEC, Nasdaq, NYSE and Yahoo at its
+# proxy (403, reproduced twice on 2026-09-17). GitHub-hosted runners have open egress, and the laptop
+# cannot be awake at 02:30 SGT.
 #
-# Two fires a day: 18:35 and 19:35 UTC = 14:35 and 15:35 ET on US daylight time, 13:35 and 14:35 ET
-# after Nov 1. At least one always lands inside the 14:30-15:50 ET window, and a second fire inside
-# the window is a no-op for events already gated. GitHub can start a scheduled run late, which is
-# why there are two.
+# Since 2026-09-21 the run is split: CODE gates, snapshots and freezes (pipeline/due.py); the AI step
+# only writes T2 decisions and does the daily housekeeping (ops/actions_prompt.md). A failed AI step can
+# no longer lose an event: code still gates it, a later run retries T2, and the day's last run freezes
+# T2 as MISSING so T0 keeps the event.
+#
+# Schedule (UTC, Mon-Fri). The S2 window is 14:30-15:50 ET = 18:30-19:50 UTC on daylight time and
+# 19:30-20:50 UTC after Nov 1. Three fires land inside it in BOTH regimes:
+#   18:40, 19:10, 19:40  -> 14:40, 15:10, 15:40 EDT  (13:40, 14:10 EST: before the window, no-op)
+#   20:10, 20:40         -> 15:10, 15:40 EST         (16:10, 16:40 EDT: after it - marks missed_window)
+#   23:00                -> housekeeping + last chance (19:00 EDT / 18:00 EST), still hours before
+#                           the next entry open, so a T2 retry is legitimate
+# GitHub can start a scheduled run late or drop one; that is why there are three.
 name: Earnings experiment - S2 window
 
 on:
   schedule:
-    - cron: "35 18 * * 1-5"
-    - cron: "35 19 * * 1-5"
-  workflow_dispatch:        # lets a run be started by hand from the Actions tab
+    - cron: "40 18 * * 1-5"
+    - cron: "10,40 19 * * 1-5"
+    - cron: "10,40 20 * * 1-5"
+    - cron: "0 23 * * 1-5"
+  workflow_dispatch:        # a run started by hand counts as a housekeeping run
 
 jobs:
   s2:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     concurrency:
       group: s2-window      # never two runs at once - they would both commit
       cancel-in-progress: false
     permissions:
-      contents: write       # the freeze commit is pushed to main
+      contents: write       # freeze and capture commits are pushed to main
       id-token: write
     steps:
+      # ref: main, not the SHA that triggered the run: a run that waited in the queue behind another
+      # must see that run's commits, or it would gate the same event twice.
       - uses: actions/checkout@v6
         with:
+          ref: main
           fetch-depth: 0
 
       - uses: actions/setup-python@v5
@@ -42,70 +55,92 @@ jobs:
           git config user.name "Earnings Experiment (GitHub Actions)"
           git config user.email "actions@github.com"
 
-      - name: Is an authentication secret set?
-        id: auth
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Gate and snapshot every event due now (code, no AI)
+        continue-on-error: true
+        run: python pipeline/due.py gate
+
+      - name: Plan the AI step
+        id: plan
         run: |
-          echo "oauth=${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
-          echo "apikey=${{ secrets.ANTHROPIC_API_KEY != '' }}" >> "$GITHUB_OUTPUT"
+          python pipeline/due.py plan --schedule "${{ github.event.schedule }}" | tee -a "$GITHUB_OUTPUT"
+          echo "auth=${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
 
       - name: No secret set
-        if: steps.auth.outputs.oauth != 'true' && steps.auth.outputs.apikey != 'true'
+        if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth != 'true'
         run: |
-          echo "::error::No CLAUDE_CODE_OAUTH_TOKEN or ANTHROPIC_API_KEY secret. Add one in"
-          echo "::error::Settings > Secrets and variables > Actions. Nothing was gated this run."
-          exit 1
+          echo "::error::No CLAUDE_CODE_OAUTH_TOKEN secret. T2 cannot run; code will freeze T2 as MISSING."
 
-      - name: Run the S2 window
-        if: steps.auth.outputs.oauth == 'true' || steps.auth.outputs.apikey == 'true'
+      # Rules 9-10 and D004 by construction: the AI's checkout has no archive/ and no outcomes/.
+      - name: Hide archive/ and outcomes/ from the AI
+        if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true'
+        run: |
+          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/'
+          test ! -e outcomes && test ! -e archive/PRE_v1_closed && echo "fenced: archive/ and outcomes/ are not on disk"
+
+      - name: T2 decisions and housekeeping (AI)
+        id: ai
+        if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true'
+        continue-on-error: true
+        timeout-minutes: 40
         uses: anthropics/claude-code-action@v1
         with:
-          # Pass ONLY the token that is set. An empty `anthropic_api_key` alongside the OAuth token
-          # sends the action down the API-key path with no key.
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
-          # Without this the action hides Claude's own output, so a failure gives no reason at all.
-          # The repository is private and GitHub masks secrets in logs.
           show_full_output: true
           prompt: |
-            Open ops/cloud_routine.md, read the PART 2 production prompt in full, and follow it
-            exactly for the season named in STATE.md. The repository is already checked out and
-            its dependencies are installed, so skip PART 2's SETUP pip/pull steps; everything
-            else applies unchanged, including the hard rules.
+            Open ops/actions_prompt.md and follow the instructions below its horizontal rule exactly.
+            The repository is checked out and its dependencies are installed. Code has already run
+            the health check and the S2 gate for this run.
 
-            This runner is GitHub Actions, not a claude.ai routine: the remote is `origin`, pushes
-            go to `origin HEAD:main`, and there is no `local` remote (freeze.py handles that).
-            Outbound network access is open here.
+            Events awaiting a T2 decision (season TICKER date): ${{ steps.plan.outputs.t2_events || 'none' }}
+            Housekeeping run: ${{ steps.plan.outputs.housekeeping }}
 
-            End with the short plain-English report PART 2 asks for. It appears in this run's log.
+            End with the short plain-English report section C asks for.
           claude_args: |
             --model claude-opus-5
-            --max-turns 120
+            --max-turns 150
             --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"
 
-      # Runs even when the step above fails: the action's own log buries the reason hundreds of
-      # lines up, so print the tail of its output file and keep the whole thing as an artifact.
-      - name: Why it failed (or what it did)
+      - name: Restore the full checkout
+        if: always()
+        run: git sparse-checkout disable
+
+      - name: Finalize - freeze what the AI left, sync statuses (code, no AI)
         if: always()
         run: |
+          git pull -q --no-rebase origin main || true
+          if [ "${{ steps.plan.outputs.last_chance }}" = "true" ]; then
+            python pipeline/due.py finalize --last-chance
+          else
+            python pipeline/due.py finalize
+          fi
+
+      - name: Log every AI tool call to the repository
+        if: always() && steps.plan.outputs.claude == 'true'
+        run: python pipeline/runlog.py /home/runner/work/_temp/claude-execution-output.json "${{ github.run_id }}"
+
+      - name: Health check after the run
+        if: always()
+        run: python check.py
+
+      - name: What the AI step did
+        if: always() && steps.plan.outputs.claude == 'true'
+        run: |
           f=/home/runner/work/_temp/claude-execution-output.json
-          echo "=============== the result record ==============="
           if [ -f "$f" ]; then
-            jq -r '[.[] | select(.type=="result")] | .[-1] | "subtype=\(.subtype) is_error=\(.is_error) turns=\(.num_turns)\nresult:\n\(.result)\nerror:\n\(.error // "none")"' "$f" 2>/dev/null \
-              || echo "(jq could not read it - raw tail below)"
-            echo "=============== last assistant text ==============="
-            jq -r '[.[] | select(.type=="assistant") | .message.content[]? | select(.type=="text") | .text] | .[-3:][]?' "$f" 2>/dev/null
-            echo "=============== raw tail ==============="
-            tail -c 3000 "$f"
+            jq -r '[.[] | select(.type=="result")] | .[-1] | "subtype=\(.subtype) is_error=\(.is_error) turns=\(.num_turns)\nresult:\n\(.result)"' "$f" 2>/dev/null || tail -c 3000 "$f"
           else
             echo "no output file at $f"
           fi
-          echo "=============== repository state ==============="
-          git log --oneline -3 || true
-          git status --porcelain || true
+          git log --oneline -8
 
-      - name: Keep the full Claude output
-        if: always()
+      - name: Keep the full AI output
+        if: always() && steps.plan.outputs.claude == 'true'
         uses: actions/upload-artifact@v4
         with:
           name: claude-execution-output
           path: /home/runner/work/_temp/claude-execution-output.json
           if-no-files-found: warn
+          retention-days: 90

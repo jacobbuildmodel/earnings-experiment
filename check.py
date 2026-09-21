@@ -130,18 +130,69 @@ else:
 import json
 import glob
 manifests = glob.glob(os.path.join(ROOT, "events", "*", "*", "manifest.json"))
-changed = []
+changed, readable = [], []
 for m in manifests:
     edir = os.path.dirname(m)
-    for name, digest in json.load(open(m, encoding="utf-8"))["sha256"].items():
+    try:
+        man = json.load(open(m, encoding="utf-8"))
+        listed, _ = man["sha256"], man["entry_open_et"]
+    except (ValueError, KeyError) as exc:
+        changed.append(f"{os.path.relpath(m, ROOT)} (unreadable: {type(exc).__name__})")
+        continue
+    readable.append(m)
+    for name, digest in listed.items():
         path = os.path.join(edir, name)
         data = open(path, "rb").read().replace(b"\r\n", b"\n") if os.path.exists(path) else b""
         if hashlib.sha256(data).hexdigest() != digest:
             changed.append(os.path.relpath(path, ROOT))
+    # No commit after the freeze may touch a frozen file - that is an edit, even if the manifest was
+    # rewritten to match. (Commits BEFORE the freeze, e.g. the capture commit, are expected.)
+    mrel = os.path.relpath(m, ROOT).replace(os.sep, "/")
+    _, fz = git("log", "--diff-filter=A", "--format=%H", "--", mrel)
+    if fz:
+        for name in list(listed) + ["manifest.json"]:
+            rel = os.path.relpath(os.path.join(edir, name), ROOT).replace(os.sep, "/")
+            _, later = git("log", "--format=%h", f"{fz.split()[-1]}..HEAD", "--", rel)
+            if later:
+                changed.append(f"{rel} (changed after its freeze, in {later.split()})")
+manifests = readable
 if changed:
     bad(f"frozen event file(s) changed: {changed} - a frozen decision can never be edited")
 else:
     ok(f"events: {len(manifests)} frozen event(s) match their hashes")
+
+# RFC 3161 timestamp tokens (freeze.py): each must cover the manifest's hash and pre-date the entry open.
+# This reads the token's imprint and time; it does not walk the authority's certificate chain.
+import re
+tok_bad, tok_ok, untimed = [], 0, []
+for m in manifests:
+    edir = os.path.dirname(m)
+    digest = hashlib.sha256(open(m, "rb").read().replace(b"\r\n", b"\n")).hexdigest()
+    entry_open = datetime.datetime.fromisoformat(json.load(open(m, encoding="utf-8"))["entry_open_et"])
+    tokens = glob.glob(os.path.join(edir, "manifest.tsr_*"))
+    if not tokens:
+        untimed.append(os.path.basename(edir))
+    for t in tokens:
+        r = subprocess.run(["openssl", "ts", "-reply", "-in", t, "-text"], capture_output=True, text=True)
+        imprint = "".join(re.findall(r"^\s*[0-9a-f]{4} - ([0-9a-f -]+?)\s{2,}", r.stdout, re.M)).replace(" ", "").replace("-", "")
+        when = re.search(r"Time stamp: (.+?) GMT", r.stdout)
+        if r.returncode or not when:
+            tok_bad.append(f"{os.path.relpath(t, ROOT)} (unreadable)")
+            continue
+        ts = datetime.datetime.strptime(" ".join(when.group(1).split()).split(".")[0], "%b %d %H:%M:%S %Y")
+        ts = ts.replace(tzinfo=datetime.timezone.utc)
+        if imprint != digest:
+            tok_bad.append(f"{os.path.relpath(t, ROOT)} (does not cover the manifest)")
+        elif ts >= entry_open:
+            tok_bad.append(f"{os.path.relpath(t, ROOT)} (timestamped at/after the entry open)")
+        else:
+            tok_ok += 1
+if tok_bad:
+    bad(f"timestamp token(s) fail: {tok_bad}")
+elif manifests:
+    ok(f"timestamps: {tok_ok} token(s) cover their manifests and pre-date entry")
+if untimed:
+    warn(f"{len(untimed)} frozen event(s) have no timestamp token - their proof of time is the git commit alone: {untimed}")
 
 try:
     from zoneinfo import ZoneInfo

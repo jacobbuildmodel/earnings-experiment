@@ -81,6 +81,11 @@ def chain_gate(ticker, reaction_day, dry=False):
 
     calls, puts = fetch()
     strikes = sorted(set(calls.strike) & set(puts.strike))
+    if not strikes or spot is None:
+        full = {"expiry": expiry, "calls": calls.to_dict("records"), "puts": puts.to_dict("records"),
+                "all_expiries": list(tk.options)}
+        return {"status": "INELIGIBLE", "reason": "no_quote", "spot": spot, "expiry": expiry,
+                "detail": "no spot price" if spot is None else "no strike listed for both calls and puts"}, full
     strike = min(strikes, key=lambda k: (abs(k - spot), k))
 
     def legs(calls, puts):

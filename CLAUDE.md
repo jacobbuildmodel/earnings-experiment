@@ -10,8 +10,9 @@ the result — and does the answer differ by type of business?
 When Jacob starts a new chat **in this folder** and types **`pre earnings model`** (or "PRE", "earnings
 experiment", "where we left off"), read up and continue exactly where the last chat stopped. Silently:
 
-0. `git pull --ff-only github main`, then `git push local main`. The per-event runs happen in a cloud
-   routine that commits to GitHub (`ops/cloud_routine.md`), so the laptop copy is behind until pulled.
+0. `git pull --ff-only github main`, then `git push local main`. The per-event runs happen in GitHub
+   Actions (`.github/workflows/s2-window.yml`: code gates and freezes via `pipeline/due.py`, the AI step
+   follows `ops/actions_prompt.md`) and commit to GitHub, so the laptop copy is behind until pulled.
    Don't commit here during 14:30–15:50 ET on a snapshot day.
 1. `python check.py` — **PASS, or stop** and say what failed. A FAIL means the record may be damaged.
 2. Read `STATE.md` in full.

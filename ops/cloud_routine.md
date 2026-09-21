@@ -1,5 +1,9 @@
 # Cloud routine setup — for the Claude account that is linked to GitHub
 
+> **SUPERSEDED 2026-09-21.** The Actions workflow no longer runs PART 2 below. Code gates and freezes
+> (`pipeline/due.py`); the AI step follows `ops/actions_prompt.md`. Kept as the record of how the
+> runner was chosen.
+
 > ⚠ **PART 1 was run on 2026-09-17 and PART 2 was NOT created.** The claude.ai cloud environment
 > blocks outbound traffic to SEC EDGAR, Nasdaq, NYSE and Yahoo — proxy `403 Forbidden`, reproduced on
 > two independent runs (see `ops/cloud_probe.md` and the two `Cloud readiness probe` commits). Git,
