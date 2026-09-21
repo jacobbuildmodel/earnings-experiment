@@ -44,3 +44,19 @@ def timing(report_date, session, rule):
         out[key] = {"price": kind, "session": shift(report_date, offset).isoformat()}
     out["reaction_day"] = shift(report_date, 0 if session == "BMO" else 1).isoformat()
     return out
+
+
+def close_time(d):
+    """Official close: 13:00 ET on NYSE early-close days, 16:00 otherwise."""
+    return datetime.time(13, 0) if d in EARLY_CLOSE else datetime.time(16, 0)
+
+
+def s2_window(d, s2):
+    """The S2 window on session d. D003 v1: fixed `window_et`. v2+: `window_rule` minutes before the
+    close, so an early-close day still has a window."""
+    if "window_et" in s2:
+        return tuple(datetime.time.fromisoformat(x) for x in s2["window_et"])
+    close = datetime.datetime.combine(d, close_time(d))
+    r = s2["window_rule"]
+    return ((close - datetime.timedelta(minutes=r["start_min_before_close"])).time(),
+            (close - datetime.timedelta(minutes=r["end_min_before_close"])).time())

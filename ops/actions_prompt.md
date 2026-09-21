@@ -59,8 +59,13 @@ For each:
      **BUY if and only if confidence > 0.5.** `freeze.py` refuses a decision that breaks this.
    - The bar is the buy-everything hit rate, not 50%. Confidence is scored by a proper scoring rule
      (D005), so report your honest probability — do not push it towards 0 or 1 to look decisive.
-   - Every `inputs_read` item must carry `published`; anything published after the snapshot date is
-     refused by `freeze.py`.
+   - Every `inputs_read` item must carry `published`. An item from before the snapshot day may give a
+     date; an item from the snapshot day itself must give its exact time (ISO with offset), and it
+     must be before `captured_et`. `freeze.py` refuses anything else.
+   - A live web page shows its content as of now, not as of its date line. Prefer primary sources
+     with fixed publication times (SEC filings, company releases). Do not use a page that has been
+     updated after `captured_et`, and never a page about the print itself. What each fetch returned
+     is logged, so a claimed time can be checked.
 4. Write `thesis.md` — FRAMEWORK.md §4 items 1–6: identity, cluster and stage (`K_stage` in
    factors.json); the factor snapshot by reference; three theses, each *expected · mechanism · what
    proves it wrong*; key observations to capture; the predicted deciding variable; the decisions.

@@ -28,11 +28,10 @@ import subprocess
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import ET, ROOT, now_et, registry, write_json  # noqa: E402
+from common import ET, ROOT, now_et, rule_for, write_json  # noqa: E402
+from sessions import s2_window  # noqa: E402
 from freeze import decision_problems, git, push_all  # noqa: E402
 
-D003 = registry("D003_universe_screen_v1.json")
-WINDOW = [datetime.time.fromisoformat(x) for x in D003["s2"]["window_et"]]
 PY = sys.executable
 # UTC cron of the day's housekeeping + last-chance run (see .github/workflows/s2-window.yml).
 HOUSEKEEPING_CRON = "0 23 * * 1-5"
@@ -81,11 +80,12 @@ def commit(paths, message):
 def gate():
     now = now_et()
     today = now.date().isoformat()
-    lo, hi = (datetime.datetime.combine(now.date(), t, ET) for t in WINDOW)
     for sf in status_files():
         st = load(sf)
         season = st["season"]
         changed = False
+        rule = rule_for("D003_universe_screen", season)
+        lo, hi = (datetime.datetime.combine(now.date(), t, ET) for t in s2_window(now.date(), rule["s2"]))
         for key, ev in st["events"].items():
             if ev.get("status") != "CONFIRMED" or ev.get("snapshot_session") != today:
                 continue
@@ -162,6 +162,16 @@ def finalize(last_chance):
             sh("pipeline/freeze.py", season, t, date, "--t2-missing", why)
         else:
             print(f"--- {t} {date}: awaiting T2 - a later run will decide")
+    # A systemic AI failure must not hide behind the T2-MISSING fallback (external review 2026-09-21).
+    recent = []
+    for m in sorted(glob.glob(os.path.join(ROOT, "events", "*", "*", "manifest.json")),
+                    key=lambda p: load(p)["frozen_et"])[-5:]:
+        man = load(m)
+        if man["status"] == "PASS":
+            dec = load(os.path.join(os.path.dirname(m), "decision.json"))
+            recent.append(dec["t2"].get("decision") is None)
+    if len(recent) >= 2 and sum(recent) >= 2:
+        print(f"::warning::T2 was MISSING on {sum(recent)} of the last {len(recent)} eligible events - check the AI step")
     # bring every status file in line with the frozen record
     for sf in status_files():
         st = load(sf)

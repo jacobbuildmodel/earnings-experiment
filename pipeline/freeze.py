@@ -95,11 +95,25 @@ def decision_problems(d, gate, entry_open):
             p.append("T2 decided_et is before the snapshot was captured")
         elif decided and decided >= entry_open:
             p.append("T2 decided_et is at or after the entry open")
-        # D004: T2 may read nothing published after the snapshot. Dates only - a same-day item is allowed.
+        # D004: T2 may read nothing published after the snapshot time. An item dated before the snapshot
+        # day may give a date only; an item from the snapshot day itself must give its time, and that
+        # time must precede captured_et (external review 2026-09-21: a day-level check let same-day,
+        # post-snapshot news through).
         for item in t2.get("inputs_read") or []:
-            pub = parse_et(item.get("published")) if isinstance(item, dict) else None
-            if pub and captured and pub.date() > captured.date():
+            if not isinstance(item, dict) or not item.get("published"):
+                p.append(f"input without a published date: {item}")
+                continue
+            raw = str(item["published"]).strip()
+            pub = parse_et(raw)
+            if pub is None:
+                p.append(f"input published date is unreadable: {item}")
+            elif captured and pub.date() > captured.date():
                 p.append(f"input published after the snapshot: {item}")
+            elif captured and pub.date() == captured.date():
+                if len(raw) <= 10:
+                    p.append(f"input from the snapshot day needs a time, not just a date: {item}")
+                elif pub >= captured:
+                    p.append(f"input published after the snapshot time: {item}")
     except (KeyError, TypeError, ValueError) as exc:
         p.append(f"decision.json is malformed: {type(exc).__name__}: {exc}")
     return p

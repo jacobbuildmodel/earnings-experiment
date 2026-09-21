@@ -8,6 +8,7 @@ that touches archive/, outcomes/ or the DRIVE folder is listed under `fence_brea
 evaluator needs to check that T2 was blind (rules 9-10, D004 §3).
 """
 import datetime
+import hashlib
 import json
 import os
 import re
@@ -28,16 +29,33 @@ def main(path, run_id):
         print(f"no AI output at {path} - nothing to log")
         return
     msgs = json.load(open(path, encoding="utf-8"))
-    calls, breaches, result = [], [], None
+    calls, breaches, result, by_id = [], [], None, {}
     for m in msgs:
         if m.get("type") == "assistant":
             for c in (m.get("message") or {}).get("content") or []:
                 if c.get("type") == "tool_use":
                     inp = json.dumps(c.get("input"), ensure_ascii=False)
-                    calls.append({"tool": c.get("name"), "input": inp[:600]})
+                    call = {"tool": c.get("name"), "input": inp[:600]}
+                    calls.append(call)
+                    by_id[c.get("id")] = call
                     for rx, what in FENCES:
                         if rx.search(inp):
                             breaches.append({"fence": what, "tool": c.get("name"), "input": inp[:600]})
+        elif m.get("type") == "user":
+            # What a web fetch actually returned (external review 2026-09-21): the hash and opening of
+            # the content, so a reviewer can check a claimed publish time against what T2 really saw.
+            for c in (m.get("message") or {}).get("content") or []:
+                if not isinstance(c, dict) or c.get("type") != "tool_result":
+                    continue
+                call = by_id.get(c.get("tool_use_id"))
+                if not call or call["tool"] not in ("WebFetch", "WebSearch"):
+                    continue
+                body = c.get("content")
+                if isinstance(body, list):
+                    body = " ".join(x.get("text", "") for x in body if isinstance(x, dict))
+                body = str(body or "")
+                call["result_sha256"] = hashlib.sha256(body.encode("utf-8")).hexdigest()
+                call["result_head"] = body[:500]
         elif m.get("type") == "result":
             result = {k: m.get(k) for k in ("subtype", "is_error", "num_turns", "total_cost_usd")}
             result["text"] = (m.get("result") or "")[:4000]

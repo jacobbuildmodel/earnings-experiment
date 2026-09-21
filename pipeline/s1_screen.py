@@ -1,7 +1,7 @@
 """D003 S1 - the season screen.
 
     python pipeline/s1_screen.py <season> nasdaq     # capture slot only: pull the Nasdaq calendar
-    (Alpha Vantage calendar is saved by hand from the MCP tool to universe/<season>/raw/av_calendar.csv)
+    python pipeline/s1_screen.py <season> av         # capture slot only: Alpha Vantage calendar (needs the key)
     python pipeline/s1_screen.py <season> market     # capture slot only: yfinance quote data for the union
     python pipeline/s1_screen.py <season> screen     # any time after: SEC + filing tests -> candidates.json
     python pipeline/s1_screen.py <season>|active midseason   # Fridays (D003 §7): new calendar names through S1
@@ -20,9 +20,9 @@ import time
 import requests
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import ROOT, WEB_HEADERS, Sec, now_et, registry, write_json, write_once  # noqa: E402
+from common import ROOT, WEB_HEADERS, Sec, now_et, registry, rule_for, write_json, write_once  # noqa: E402
 
-RULE = registry("D003_universe_screen_v1.json")
+RULE = registry("D003_universe_screen_v1.json")  # replaced in __main__ by the version governing the season
 EXCHANGES = {"NMS": "Nasdaq", "NGM": "Nasdaq", "NCM": "Nasdaq", "NYQ": "NYSE", "ASE": "NYSE American"}
 PERIODIC = {"10-K", "10-Q", "10-K/A", "10-Q/A", "20-F", "40-F", "20-F/A", "40-F/A"}
 DOMESTIC = {"10-K", "10-Q", "10-K/A", "10-Q/A"}
@@ -66,6 +66,30 @@ def capture_nasdaq(season):
     print(f"nasdaq: {sum(len(v) for v in out['days'].values())} rows over {len(out['days'])} days")
 
 
+def capture_av(season):
+    """The Alpha Vantage EARNINGS_CALENDAR, pulled in the capture slot with ALPHAVANTAGE_API_KEY (before
+    2026-09-21 this was saved by hand from the MCP tool)."""
+    now = in_slot(season)
+    _, raw = dirs(season)
+    key = os.environ.get("ALPHAVANTAGE_API_KEY")
+    if not key:
+        raise SystemExit("no ALPHAVANTAGE_API_KEY - the Alpha Vantage calendar cannot be pulled")
+    r = requests.get("https://www.alphavantage.co/query", timeout=60,
+                     params={"function": "EARNINGS_CALENDAR", "horizon": "3month", "apikey": key})
+    r.raise_for_status()
+    if not r.text.startswith("symbol,"):
+        raise SystemExit(f"Alpha Vantage did not return a calendar: {r.text[:200]}")
+    path = os.path.join(raw, "av_calendar.csv")
+    if os.path.exists(path):
+        raise SystemExit(f"{path} already exists - raw captures are never overwritten")
+    os.makedirs(raw, exist_ok=True)
+    open(path, "w", encoding="utf-8", newline="").write(r.text)
+    write_once(os.path.join(raw, "av_calendar.meta.json"),
+               {"source": "alphavantage EARNINGS_CALENDAR horizon=3month", "captured_et": now.isoformat(),
+                "rows": len(r.text.splitlines()) - 1})
+    print(f"alphavantage: calendar saved, captured {now:%H:%M} ET")
+
+
 def calendar_union(season):
     _, raw = dirs(season)
     lo, hi = span(season)
@@ -76,7 +100,12 @@ def calendar_union(season):
             t = it["symbol"].strip().upper()
             rows.setdefault(t, {"ticker": t, "sources": {}})["sources"].setdefault("nasdaq", []).append(
                 {"date": day, "time": it.get("time"), "marketCap": it.get("marketCap"), "name": it.get("name")})
-    text = open(os.path.join(raw, "av_calendar.csv"), encoding="utf-8").read()
+    av_path = os.path.join(raw, "av_calendar.csv")
+    if not os.path.exists(av_path):
+        if not RULE.get("s1_alphavantage_optional"):
+            raise SystemExit("no Alpha Vantage calendar - D003 v1 requires it")
+        return rows  # D003 v2: Nasdaq alone, the screen is flagged single_calendar
+    text = open(av_path, encoding="utf-8").read()
     for it in csv.DictReader(io.StringIO(text)):
         d = datetime.date.fromisoformat(it["reportDate"])
         if lo <= d <= hi:
@@ -165,6 +194,8 @@ def screen_one(t, sources, m, sec, screen_date, base):
     industry = m.get("industry")
     if industry in s1["exclude_industries"]:
         return out("shell_company")
+    if t in RULE.get("named_exclude", {}):
+        return out("named_exclude", detail=RULE["named_exclude"][t])
     named = RULE["named"].get(t)
     mapping = named or RULE["industry_map"].get(industry)
     if not mapping:
@@ -190,6 +221,13 @@ def screen_one(t, sources, m, sec, screen_date, base):
     if not cik:
         return out("no_sec_cik")
     rec["cik"] = cik
+    sic_rule = RULE.get("sic_filter")
+    if sic_rule and industry in sic_rule["industries"]:
+        sic = sec.submission(cik).get("sic")
+        rec["sic"] = sic
+        ok = sic and any(lo <= int(sic) <= hi for lo, hi in sic_rule["allowed_ranges"])
+        if not ok:
+            return out("sic_out", detail=f"SIC {sic} outside {sic_rule['allowed_ranges']}")
     fil = [f for f in sec.filings(cik) if f["filingDate"] <= screen_date.isoformat()]
     periodic = [f for f in fil if f["form"] in PERIODIC]
     if not periodic:
@@ -235,7 +273,8 @@ def screen(season, only=None):
             print(f"  IN  {t:6} {rec['cluster']:30} {rec['industry']}")
 
     result = {
-        "season": season, "rule": "D003_universe_screen_v1", "screen_date": screen_date.isoformat(),
+        "season": season, "rule": RULE["id"], "screen_date": screen_date.isoformat(),
+        "flags": [] if os.path.exists(os.path.join(raw, "av_calendar.csv")) else ["single_calendar"],
         "window": RULE["seasons"][season]["window"], "screened_et": now_et().isoformat(),
         "market_captured_et": market["captured_et"], "calendar_names": len(union),
         "n_candidates": len(candidates), "candidates": candidates,
@@ -306,7 +345,7 @@ def midseason(season):
         (excluded if reason else added).append(rec)
         time.sleep(0.3)
     write_once(os.path.join(mdir, f"{now.date().isoformat()}.json"),
-               {"season": season, "rule": "D003_universe_screen_v1 §7", "captured_et": now.isoformat(),
+               {"season": season, "rule": f"{RULE['id']} §7", "captured_et": now.isoformat(),
                 "alphavantage": av_note, "calendar_names": len(rows), "tested": new,
                 "added": added, "excluded": excluded})
     if added:
@@ -330,8 +369,8 @@ if __name__ == "__main__":
     season, step = sys.argv[1], sys.argv[2]
     if step == "midseason":
         for s in (active_seasons(now_et().date()) if season == "active" else [season]):
+            RULE = rule_for("D003_universe_screen", s)
             midseason(s)
         raise SystemExit(0)
-    if season not in RULE["seasons"]:
-        raise SystemExit(f"unknown season {season}")
-    {"nasdaq": capture_nasdaq, "market": capture_market, "screen": screen}[step](season)
+    RULE = rule_for("D003_universe_screen", season)
+    {"nasdaq": capture_nasdaq, "av": capture_av, "market": capture_market, "screen": screen}[step](season)

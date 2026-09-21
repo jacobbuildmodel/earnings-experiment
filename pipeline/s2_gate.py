@@ -17,11 +17,11 @@ import time
 import requests
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from common import ET, ROOT, WEB_HEADERS, now_et, registry, write_json, write_once  # noqa: E402
-from sessions import shift, timing  # noqa: E402
+from common import ET, ROOT, WEB_HEADERS, now_et, registry, rule_for, write_json, write_once  # noqa: E402
+from sessions import s2_window, shift, timing  # noqa: E402
 
 D001 = registry("D001_outcome_v1.json")
-D003 = registry("D003_universe_screen_v1.json")
+D003 = registry("D003_universe_screen_v1.json")  # replaced in run() by the version that governs the season
 S2 = D003["s2"]
 
 
@@ -132,6 +132,9 @@ def chain_gate(ticker, reaction_day, dry=False):
 
 
 def run(season, ticker, report_date, dry=False):
+    global D003, S2
+    D003 = rule_for("D003_universe_screen", season)
+    S2 = D003["s2"]
     ticker = ticker.upper()
     edir = os.path.join(ROOT, "events", season, f"{ticker}_{report_date.isoformat()}")
     cdir = os.path.join(ROOT, "cache", "dry", f"{ticker}_{report_date}") if dry else edir
@@ -140,7 +143,7 @@ def run(season, ticker, report_date, dry=False):
     tm = timing(report_date, session, D001)
     snap_session = shift(report_date, S2["snapshot_session"][session])
     now = now_et()
-    lo, hi = (datetime.datetime.combine(snap_session, datetime.time.fromisoformat(x), ET) for x in S2["window_et"])
+    lo, hi = (datetime.datetime.combine(snap_session, t, ET) for t in s2_window(snap_session, S2))
     in_window = lo <= now <= hi
     if not in_window and not dry:
         raise SystemExit(f"ET {now:%Y-%m-%d %H:%M} is outside the S2 window {lo:%Y-%m-%d %H:%M}-{hi:%H:%M}")
@@ -148,7 +151,7 @@ def run(season, ticker, report_date, dry=False):
     window = D003["seasons"][season]["window"]
     gate = {"season": season, "ticker": ticker, "report_date": report_date.isoformat(), "session": session,
             "timing": tm, "snapshot_session": snap_session.isoformat(), "captured_et": now.isoformat(),
-            "in_s2_window": in_window, "dry": dry, "rule": "D003_universe_screen_v1 §6",
+            "in_s2_window": in_window, "dry": dry, "rule": f"{D003['id']} §6",
             "company_source": confirm["company_source"], "flags": []}
     if confirm.get("session_from_call_time"):
         gate["flags"].append("session_from_call_time")

@@ -80,9 +80,16 @@ class Sec:
         t = ticker.upper()
         return self._tickers.get(t) or self._tickers.get(t.replace("-", ".")) or self._tickers.get(t.replace(".", "-"))
 
+    def submission(self, cik):
+        if not hasattr(self, "_subs"):
+            self._subs = {}
+        if cik not in self._subs:
+            self._subs[cik] = json.loads(self.get(f"https://data.sec.gov/submissions/CIK{cik:010d}.json"))
+        return self._subs[cik]
+
     def filings(self, cik):
         """All filings (recent block) as a list of dicts, newest first."""
-        sub = json.loads(self.get(f"https://data.sec.gov/submissions/CIK{cik:010d}.json"))
+        sub = self.submission(cik)
         rec = sub["filings"]["recent"]
         keys = ["form", "filingDate", "accessionNumber", "primaryDocument"]
         return [dict(zip(keys, vals)) for vals in zip(*(rec[k] for k in keys))]
@@ -97,3 +104,25 @@ class Sec:
         os.makedirs(self.cache_dir, exist_ok=True)
         open(path, "wb").write(body)
         return body
+
+
+def rule_for(base, season):
+    """The frozen rule version that governs a season (rule 5: a new version never touches the seasons
+    before it). Scans FROZEN.sha256 for <base>_vN.json; a version applies to the seasons in its
+    `applies_to_seasons` list (v1, which has none, to its own `seasons`). The highest N that applies wins.
+    Every candidate is loaded through registry(), so an unfrozen or altered file is refused."""
+    best = None
+    for line in open(os.path.join(REGISTRY, "FROZEN.sha256"), encoding="utf-8"):
+        if not line.strip():
+            continue
+        name = line.split(maxsplit=1)[1].strip().lstrip("*")
+        if not (name.startswith(base + "_v") and name.endswith(".json")):
+            continue
+        n = int(name[len(base) + 2:-5])
+        data = registry(name)
+        applies = data.get("applies_to_seasons") or list(data.get("seasons", {}))
+        if season in applies and (best is None or n > best[0]):
+            best = (n, data)
+    if best is None:
+        raise SystemExit(f"no frozen {base} version covers season {season!r}")
+    return best[1]
