@@ -24,7 +24,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 COLLECTION_OPENS = datetime.date(2026, 9, 21)
 # archive/ is a CLOSED record: 99 tracked files as of commit ea772cf. This number must never change.
 ARCHIVE_TRACKED = 99
-REQUIRED = ["CLAUDE.md", "STATE.md", "FRAMEWORK.md", "README.md", "archive/README.md",
+REQUIRED = ["CLAUDE.md", "CHARTER.md", "STATE.md", "FRAMEWORK.md", "README.md", "archive/README.md",
             ".gitignore", ".gitattributes"]
 
 fails, warns = [], []

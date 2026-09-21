@@ -6,6 +6,11 @@ background. He talks in plain English; you do all the technical work. Never ask 
 **The question:** before an earnings print, can we pick which stocks to BUY so the position profits from
 the result — and does the answer differ by type of business?
 
+**`CHARTER.md` is the compass:** purpose, what counts as improving (power first, then truthfulness,
+signal, calibration, speed), where the edge is, the one-way valve to the portfolio model, and the
+improvement backlog. Read it before choosing between options or proposing an improvement. Never settle
+for "safe and working": every season ends with something tested that could make the next one better.
+
 ## SESSION HANDOFF — the trigger phrase is `pre earnings model`
 When Jacob starts a new chat **in this folder** and types **`pre earnings model`** (or "PRE", "earnings
 experiment", "where we left off"), read up and continue exactly where the last chat stopped. Silently:

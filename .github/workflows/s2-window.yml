@@ -125,10 +125,10 @@ jobs:
         if: always() && steps.pre.outputs.sha != ''
         run: |
           PRE=${{ steps.pre.outputs.sha }}
-          CHANGED=$(git diff --name-only "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md)
+          CHANGED=$(git diff --name-only "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md CLAUDE.md CHARTER.md)
           if [ -n "$CHANGED" ]; then
             echo "::error::The AI step changed protected files: $CHANGED - restored from $PRE; review the run"
-            git checkout "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md
+            git checkout "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md CLAUDE.md CHARTER.md
             echo "guard_tripped=true" >> "$GITHUB_ENV"
           else
             echo "protected files unchanged since $PRE"

@@ -10,6 +10,7 @@ Started 2026-09-13 · collection opens 2026-09-21.
 | file | what it is |
 |---|---|
 | `STATE.md` | where we left off, and the next action |
+| `CHARTER.md` | why it exists, what counts as improving, where the edge is, the improvement backlog |
 | `FRAMEWORK.md` | the full design — outputs first, then inputs, then the rules |
 | `CLAUDE.md` | the operating rules the AI follows every session |
 | `check.py` | the health check — run first every session; PASS, or stop |
