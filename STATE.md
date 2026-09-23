@@ -1,8 +1,9 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-22 21:04 ET · pipeline hardened, D005 frozen, external
-evaluation done — but **3 of 9 confirmed events have been lost to missed S2 windows and nothing has
-been gated yet**. See the Cloud run log.
+**Phase 1 · Pilot (live)** · updated 2026-09-23 09:45 ET · pipeline hardened, D005 frozen, external
+evaluation done — **3 of 10 confirmed events have been lost to missed S2 windows and nothing has been
+gated yet**, but the cause is now settled and fixed: the runner waits for the window instead of
+relying on a scheduled fire landing in it. First test Mon Sep 28. See the Cloud run log.
 
 ## Where things are
 
@@ -113,11 +114,14 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   | Tue Sep 29 | MU AMC Sep 30 (from call time) | Sep 30 open |
   | Wed Sep 30 | NKE AMC Oct 1 | Oct 1 open |
   | Mon Oct 5 | PENG AMC Oct 6 (from call time) | Oct 6 open |
+  | Tue Oct 6 | LEVI AMC Oct 7 (from call time, confirmed 2026-09-23) | Oct 7 open |
 
   - **CHRN:** INELIGIBLE, unconfirmed. Its 10-K was already filed Aug 19; there is no company date and
     no yfinance date.
   - **PENDING:** AEHR (calendars say Oct 5, yfinance Nov 2), LEVI (calendars Oct 8, yfinance Sep 30),
     APLD (Oct 8). None of the three had announced a date as of Sep 17. Re-check before their S2 windows.
+    **LEVI resolved 2026-09-23:** the company announced an Oct 7 call at 17:00 ET → AMC Oct 7, snapshot
+    Oct 6. AEHR and APLD are still PENDING.
 - **How company sources were found:** many IR sites are JavaScript-rendered, but their Q4 feed works:
   `https://<ir-host>/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3&pageSize=8&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`
   and `/feed/Event.svc/GetEventList?...`. BlackBerry puts its events in a script block on
@@ -181,12 +185,33 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   - **APLD** — stockpr RSS newest item still 2026-07-27 16:05 ET; no FY27 Q1 date. The ~2026-09-26 date
     expected from its 12-day lead has not arrived. yfinance unchanged at 2026-10-08 16:00.
 
-### 🔴 The scheduler is losing the pilot — 3 of 9 confirmed events gone in two days
+- **2026-09-23 09:45 ET — housekeeping (this run).** The fire arrived early and the pre-check found
+  nothing due, so this is housekeeping only: `check.py` PASS, `due.py t2-list` empty, no event has a
+  snapshot session of 2026-09-23, nothing gated, nothing frozen, no decision written. The two scheduler
+  commits of this morning (`0eb3314` six fires per window, `f70ab06` `due.py wait`) are on main.
+  - **LEVI is CONFIRMED — the first PENDING name to resolve.** Its IR feed published
+    "Levi Strauss & Co. to Webcast Third Quarter 2026 Earnings Conference Call" at **2026-09-23 09:00 ET**:
+    the call for the quarter ended Aug 30 is "Wednesday, October 7, 2026, at 2 p.m. Pacific Time /
+    5 p.m. Eastern Time". A 17:00 ET call with no session wording → **AMC Oct 7** (`session_from_call_time`),
+    inside the pilot window; snapshot session **Tue Oct 6**, entry Oct 7 open.
+    `events/pilot/LEVI_2026-10-07/confirm.json` written.
+    ⚠ **Neither second source agrees yet:** yfinance still returns the stale 2026-09-30 16:00, and the
+    Nasdaq calendar lists LEVI on 2026-10-08 `time-not-supplied`. `s2_gate.py` re-reads both inside the
+    window on Oct 6 and marks the event INELIGIBLE `unconfirmed` if neither shows Oct 7 AMC by then.
+    That call belongs to code, not to this step — but expect it to be close.
+  - **AEHR** — aehr.com/newsroom (HTTP 200) newest item still 2026-09-03 (Lake Street conference); no
+    FY27 Q1 date. The ~2026-09-28 announcement expected from its own ~7-day lead has not arrived.
+    yfinance unchanged at 2026-11-02 15:00 ET, intraday. Earliest possible snapshot session 2026-10-01.
+  - **APLD** — stockpr RSS (HTTP 200) newest item still 2026-07-27 16:05 ET; no FY27 Q1 date. The
+    ~2026-09-26 date expected from its 12-day lead has not arrived; Nasdaq still says Oct 8
+    `time-not-supplied`. Earliest possible snapshot session 2026-10-06.
+
+### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days
 
 No pilot event has ever been gated. `find events -name gate.json` returns nothing; PAYX, DRI and BB are
-all `missed_window`. Six confirmed events remain: **AIR and JBL (snapshot Mon Sep 28) · MU (Tue Sep 29) ·
-NKE (Wed Sep 30) · PENG (Mon Oct 5)**. On this trend the pilot ends with zero snapshots and D005's power
-problem becomes moot — there is nothing to evaluate.
+all `missed_window`. Seven confirmed events remain: **AIR and JBL (snapshot Mon Sep 28) · MU (Tue Sep 29) ·
+NKE (Wed Sep 30) · PENG (Mon Oct 5) · LEVI (Tue Oct 6, confirmed 2026-09-23)**. On this trend the pilot
+ends with zero snapshots and D005's power problem becomes moot — there is nothing to evaluate.
 
 What the evidence shows, and what it does not:
 - **Scheduled runs start late.** Measured: the 23:00 UTC fire of 09-21 began ~01:25 UTC (+2 h 25 m); the
@@ -211,11 +236,12 @@ What the evidence shows, and what it does not:
 - The design assumed "three fires land inside the window" makes a miss unlikely. It does not, if the
   early fires are dropped and the late ones are delayed past 15:50 ET.
 
-**For Jacob — this is the one thing that needs a human, and it needs one before Mon Sep 28.** Open the
-Actions tab and look at 18:40 and 19:10 UTC on Sep 21 and Sep 22: if the runs are absent, the fix is
-more fires and an earlier first fire; if they are present and green, the fix is to stop
-`continue-on-error` from hiding a gate failure. The AI step is forbidden from editing `.github/` — the
-workflow guard restores any such edit and fails the run — so this cannot be self-healed from the cloud.
+**Done 2026-09-23 (was: the one thing that needed a human).** Jacob read the Actions API outside the
+runner; the in-window fires were absent, not failing. Two commits followed, both infrastructure only:
+`0eb3314` six fires per window on odd minutes, then `f70ab06` — **`due.py wait` holds a runner that
+arrives up to 4 h early until the window opens**, so any fire landing in that five-hour span produces a
+gate, and a stdlib-only pre-check ends a fire in seconds on a day with nothing due. The AI step remains
+forbidden from editing `.github/`. **First real test: Mon 2026-09-28, AIR and JBL.**
 
 ## Hardening before evaluation — 2026-09-21 (laptop session, ~07:50–09:15 ET)
 
@@ -320,9 +346,10 @@ should no longer be `single_source`).
 
 ## Next actions
 
-1. 🔴 **Fix the scheduler before Mon Sep 28** — PAYX, DRI and BB were all lost to `missed_window` and
-   nothing has ever been gated. Needs Jacob at the Actions tab; the AI step cannot edit `.github/`.
-   Six events are left: AIR + JBL (Sep 28) · MU (Sep 29) · NKE (Sep 30) · PENG (Oct 5).
+1. 🔴 **Watch Mon Sep 28 (AIR + JBL) — the first test of the wait-for-the-window fix.** The scheduler
+   change is in (`0eb3314`, `f70ab06`); nothing has ever been gated, so it is unproven. Seven events
+   are left: AIR + JBL (Sep 28) · MU (Sep 29) · NKE (Sep 30) · PENG (Oct 5) · LEVI (Oct 6).
+   LEVI also needs a second source to catch up to Oct 7 AMC, or code marks it `unconfirmed`.
 2. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
    Note there is nothing to grade yet — no event has reached entry with a frozen snapshot.
 3. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
