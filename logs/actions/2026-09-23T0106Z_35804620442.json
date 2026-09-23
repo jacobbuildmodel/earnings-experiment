@@ -1,0 +1,132 @@
+{
+ "run_id": "35804620442",
+ "logged_utc": "2026-09-23T0106Z",
+ "tool_calls": 29,
+ "fence_breaches": [],
+ "review_flags": [],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 30,
+  "total_cost_usd": 1.4037455,
+  "text": "Committed and pushed as `9a34fbb`.\n\n---\n\n## Report\n\n**T2 decisions:** none. `due.py t2-list` was empty — no event was awaiting a decision, so nothing was decided and nothing was frozen. No freeze commits, no VOID.\n\n**PENDING re-checks — all three unchanged, all three stay PENDING:**\n\n| name | company source | newest item | yfinance | earliest snapshot |\n|---|---|---|---|---|\n| AEHR | aehr.com/newsroom | 2026-09-03 (conference) — no FY27 Q1 date | 2026-11-02 15:00 ET, intraday | 2026-10-01 |\n| LEVI | Q4 press-release feed | 2026-07-08 16:10 ET (Q2 results) — no Q3 webcast release | 2026-09-30 16:00 | 2026-09-29 |\n| APLD | stockpr RSS | 2026-07-27 16:05 ET (Q4 results) — no FY27 Q1 date | 2026-10-08 16:00 | 2026-10-06 |\n\nBoth LEVI (~Sep 24 expected) and APLD (~Sep 26 expected) are now at or near the date their own lead time predicts, so an announcement should appear within the next few runs. `investors.aehr.com` does not resolve at all — the newsroom page is AEHR's working source, and AEHR announces only ~7 days ahead.\n\n**What went wrong — this is the finding, and it needs you:**\n\nThe pilot has **never gated a single event**. There is no `gate.json`, no `factors.json`, no `decision.json` anywhere under `events/`. Three of the nine confirmed events are already gone:\n\n- **PAYX** — marked `missed_window` at 16:34 ET on Sep 21\n- **DRI** and **BB** — both marked `missed_window` at 15:52 ET on Sep 22, three minutes after the window closed\n\nThe cause is timing. Scheduled runs are starting late: the gate step ran 13 minutes behind its 19:40 UTC cron on Sep 22, and the 23:00 UTC housekeeping fires ran 2h25m late on Sep 21 and 2h02m late tonight. Separately, the 18:40 and 19:10 UTC fires left **no trace at all** on either day — no commit, no runlog. Two explanations fit and I cannot tell them apart from inside the runner: GitHub dropped those runs, or they ran and `due.py gate` failed under `continue-on-error: true`, which exits green and commits nothing. `gh run list` returns HTTP 403 for this token, so I can't read the run history to settle it.\n\nAlso on the record: the Sep 21 housekeeping AI step died on `API Error: 529 Overloaded` with 0 tool calls, which is why that day had no PENDING re-check and no log line until now.\n\n**Six events remain: AIR and JBL (snapshot Mon Sep 28), MU (Tue Sep 29), NKE (Wed Sep 30), PENG (Mon Oct 5).** On the current trend the pilot finishes with zero snapshots. The fix has to come from you — open the Actions tab and check 18:40 and 19:10 UTC on Sep 21 and 22. If those runs are absent, the schedule needs more fires and an earlier first one; if they're present and green, `continue-on-error` is hiding a gate crash. I can't touch it: the workflow guard restores any AI edit to `.github/` and fails the run."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python pipeline/due.py t2-list; echo \\\"---exit:$?---\\\"; ls\", \"description\": \"Confirm T2 list and list repo contents\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"date && TZ=America/New_York date && git log --oneline -20\", \"description\": \"Check current time and recent commits\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/universe/pilot/event_status.json\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git log --since=\\\"2026-09-22 00:00 -0400\\\" --format=\\\"%h %ad %s\\\" --date=iso-local | head -40 && echo \\\"=== logs/actions ===\\\" && ls -la logs/actions/ | tail -20\", \"description\": \"Check today's commits and action logs\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git log -12 --format=\\\"%h %ad %s\\\" --date=iso-local && echo \\\"=== log file ===\\\" && cat logs/actions/2026-09-22T0125Z_35675414876.json\", \"description\": \"Check commit dates and action log\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls events/pilot/ && echo \\\"===\\\" && for d in events/pilot/*/; do echo \\\"$d: $(ls $d | tr '\\\\n' ' ')\\\"; done\", \"description\": \"List event directories and their files\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '1,60p' .github/workflows/s2-window.yml\", \"description\": \"Read workflow schedule\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"gh run list --limit 25 --json databaseId,name,status,conclusion,createdAt,event --jq '.[] | \\\"\\\\(.createdAt) \\\\(.databaseId) \\\\(.name) \\\\(.status)/\\\\(.conclusion)\\\"' 2>&1 | head -30\", \"description\": \"List recent workflow runs\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"missed_window\\\\|WINDOW\\\\|14:30\\\\|15:50\\\\|def cmd_gate\\\\|def cmd_finalize\\\\|housekeep\\\" pipeline/due.py | head -40\", \"description\": \"Inspect gate window logic in due.py\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '60,140p' .github/workflows/s2-window.yml\", \"description\": \"Read rest of workflow\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"HEADERS\\\\|User-Agent\\\\|USER_AGENT\\\" pipeline/common.py | head -20\", \"description\": \"Check HTTP headers in common.py\"}"
+  },
+  {
+   "tool": "ToolSearch",
+   "input": "{\"query\": \"select:WebFetch\", \"max_results\": 1}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cat > /tmp/recheck.py <<'PY'\\nimport sys, requests, re\\nsys.path.insert(0, \\\"pipeline\\\")\\nfrom common import WEB_HEADERS\\n\\ndef get(url, **kw):\\n    try:\\n        r = requests.get(url, headers=WEB_HEADERS, timeout=60, **kw)\\n        return r.status_code, r.text\\n    except Exception as e:\\n        return None, f\\\"FETCH FAILED: {e!r}\\\"\\n\\n# APLD - stockpr RSS (the working company source per the 09-20 recheck)\\ncode, txt = get(\\\"https://ir.applieddigital.com/news-events/press-releases/rss\\\")\\nprint(\\\"=== APLD rss\\\", code, len(txt))\\nfor m in re.findall(r\\\"<item>(.*?)</item>\\\", txt, "
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cat > /tmp/recheck2.py <<'PY'\\nimport sys, requests, re\\nsys.path.insert(0, \\\"pipeline\\\")\\nfrom common import WEB_HEADERS\\nfor url in [\\\"https://www.aehr.com/newsroom/\\\", \\\"https://investors.aehr.com/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3&pageSize=8&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1\\\"]:\\n    try:\\n        r = requests.get(url, headers=WEB_HEADERS, timeout=60)\\n        print(\\\"===\\\", url, r.status_code, len(r.text))\\n        txt = re.sub(r\\\"<script.*?</script>\\\", \\\" \\\", r.text, flags=re.S)\\n        "
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cat > /tmp/yf.py <<'PY'\\nimport yfinance as yf\\nfor t in [\\\"AEHR\\\",\\\"LEVI\\\",\\\"APLD\\\"]:\\n    try:\\n        df = yf.Ticker(t).get_earnings_dates(limit=8)\\n        fut = [i for i in df.index if str(i) > \\\"2026-09-22\\\"]\\n        print(t, \\\"->\\\", [str(i) for i in sorted(fut)][:3] or \\\"no future date\\\")\\n    except Exception as e:\\n        print(t, \\\"FETCH FAILED\\\", repr(e))\\nPY\\npython /tmp/yf.py 2>&1 | tail -10\", \"description\": \"Re-check yfinance earnings dates for pending names\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls universe/pilot/ && grep -rn \\\"window\\\" universe/pilot/*.json | head -10\", \"description\": \"Check pilot season window definition\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nfrom datetime import datetime\\nfrom zoneinfo import ZoneInfo\\nprint(datetime.now(ZoneInfo('America/New_York')).isoformat(timespec='seconds'))\\\"\", \"description\": \"Get current Eastern time\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/universe/pilot/event_status.json\", \"old_string\": \"   \\\"rechecks\\\": [\\n    \\\"2026-09-20T02:56:08-04:00: aehr.com/newsroom newest item is 2026-09-03 (Lake Street conference) - still no FY27 Q1 results date. yfinance get_earnings_dates still 2026-11-02 15:00:00-05:00, intraday, which is 'unconfirmed' under D003 v1 section 6 and also outside the pilot window. Stays PENDING; earliest possible snapshot session is 2026-10-01, the D-2 case if the 2026-10-05 calendar date turns out to be BMO.\\\"\\n   ]\", \"new_s"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/universe/pilot/event_status.json\", \"old_string\": \"Stays PENDING; earliest possible snapshot session is 2026-09-29, the D-1 case for a 2026-09-30 AMC print.\\\"\\n   ]\", \"new_string\": \"Stays PENDING; earliest possible snapshot session is 2026-09-29, the D-1 case for a 2026-09-30 AMC print.\\\",\\n    \\\"2026-09-22T21:04:41-04:00: investors.levistrauss.com/feed/PressRelease.svc/GetPressReleaseList (12 newest items, HTTP 200) - newest is still 2026-07-08 16:10 ET (Q2 results); no Q3 2026 webcast announcement y"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/universe/pilot/event_status.json\", \"old_string\": \"Note the host's Q4 /feed/PressRelease.svc endpoint 404s - APLD is on stockpr, and its RSS feed is the working company source.\\\"\\n   ]\", \"new_string\": \"Note the host's Q4 /feed/PressRelease.svc endpoint 404s - APLD is on stockpr, and its RSS feed is the working company source.\\\",\\n    \\\"2026-09-22T21:04:41-04:00: ir.applieddigital.com/news-events/press-releases/rss (8 newest items, HTTP 200) - newest is still 2026-07-27 16:05 ET (Q4 FY2026 results); no"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"import json;d=json.load(open('universe/pilot/event_status.json'));print('JSON OK');print({k:(v.get('status'),v.get('reason'),len(v.get('rechecks',[]))) for k,v in d['events'].items()})\\\" && echo \\\"=== any gate.json? ===\\\" && find events -name 'gate.json' -o -name 'factors.json' -o -name 'decision.json' | head\", \"description\": \"Validate JSON and confirm no gate artefacts exist\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '85,115p' pipeline/due.py\", \"description\": \"Read gate window handling in due.py\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"  - The Actions environment reaches Yahoo, the IR hosts and PyPI — the egress block that stopped the\\n    claude.ai cloud environment does not apply here.\\n\", \"new_string\": \"  - The Actions environment reaches Yahoo, the IR hosts and PyPI — the egress block that stopped the\\n    claude.ai cloud environment does not apply here.\\n\\n- **2026-09-21 (Mon) — PAYX lost.** PAYX's snapshot session. No `gate.json`, no `factors.json`, no\\n  freeze commit was produced. The only commit o"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-21 09:15 ET · pipeline hardened, D005 frozen, ready for the external evaluation\", \"new_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-22 21:04 ET · pipeline hardened, D005 frozen, external\\nevaluation done — but **3 of 9 confirmed events have been lost to missed S2 windows and nothing has\\nbeen gated yet**. See the Cloud run log.\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"1. **Check today's first automated run:** PAYX (snapshot today, 14:40 ET fire = 02:40 SGT). Look for a\\n   `Freeze PAYX …` or `Capture PAYX …` commit and `logs/actions/`. The dry run suggested `thin_oi`.\\n   Tue Sep 22 is DRI and BB.\\n2. First grading run after an exit, and the first `report.py pilot`. Descriptive only; \\\"insufficient\\\".\", \"new_string\": \"1. 🔴 **Fix the scheduler before Mon Sep 28** — PAYX, DRI and BB were all lost to `missed_window` and\\n   nothing has ever "
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py; echo \\\"exit:$?\\\"; git status --short\", \"description\": \"Run health check and show changed files\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git add STATE.md universe/pilot/event_status.json && git commit -q -m \\\"$(cat <<'EOF'\\nCloud run 2026-09-22: nothing due; PENDING re-checks; 3 events lost to missed S2 windows\\n\\nNothing awaiting T2 and nothing gated. AEHR, LEVI and APLD re-checked against\\ntheir own company sources - no announcement from any of the three, all stay\\nPENDING.\\n\\nLogs the untracked failure: PAYX (09-21), DRI and BB (09-22) were all marked\\nINELIGIBLE missed_window, and no pilot event has ever been gated. Scheduled\\nruns are starting 13 min to 2 h 25 min late and the 18:40/19:10 UTC fires left\\nno tr"
+  }
+ ]
+}
