@@ -10,23 +10,28 @@
 # T2 as MISSING so T0 keeps the event.
 #
 # Schedule (UTC, Mon-Fri). The S2 window is 14:30-15:50 ET = 18:30-19:50 UTC on daylight time and
-# 19:30-20:50 UTC after Nov 1. Three fires land inside it in BOTH regimes:
-#   18:40, 19:10, 19:40  -> 14:40, 15:10, 15:40 EDT  (13:40, 14:10 EST: before the window, no-op)
-#   20:10, 20:40         -> 15:10, 15:40 EST         (16:10, 16:40 EDT: after it - marks missed_window)
-#   23:00                -> housekeeping + last chance (19:00 EDT / 18:00 EST), still hours before
-#                           the next entry open, so a T2 retry is legitimate
-# GitHub can start a scheduled run late or drop one; that is why there are three.
+# 19:30-20:50 UTC after Nov 1.
+#
+# 🔴 WHY THERE ARE SIX FIRES PER WINDOW, NOT THREE. PAYX (09-21) and DRI+BB (09-22) were lost, and the
+# run history settles why: on BOTH days the two in-window fires (18:40 and 19:10 UTC) produced NO RUN
+# AT ALL - GitHub dropped them - while the out-of-window fires ran 20 to 145 minutes late. Measured
+# from the Actions API on 2026-09-23, every run of those two days:
+#   Mon: 20:33, 21:00, 22:10, 22:33, 23:14, 01:20(+1) UTC   Tue: 19:52, 20:08, 21:38, 22:01, 22:54, 01:02(+1)
+# Nothing ran between 18:30 and 19:50 UTC on either day. GitHub's own docs warn that scheduled runs can
+# be delayed or dropped under load, and the effect is worst on round minutes.
+# So: SIX fires inside each window, at deliberately odd minutes, instead of three on round ones. All but
+# one exit in about a minute (`due.py plan` starts the AI step only when a decision is actually due).
 # 16:40 and 17:10 UTC cover the early-close window (11:30-12:50 ET on 2026-11-27) under D003 v2.
 name: Earnings experiment - S2 window
 
 on:
   schedule:
-    - cron: "40 16 * * 1-5"   # early-close days only (D003 v2 window 11:30-12:50 EST); a no-op otherwise
-    - cron: "10 17 * * 1-5"   # early-close days only
-    - cron: "40 18 * * 1-5"
-    - cron: "10,40 19 * * 1-5"
-    - cron: "10,40 20 * * 1-5"
-    - cron: "0 23 * * 1-5"
+    - cron: "40 16 * * 1-5"          # early-close days only (D003 v2 window 11:30-12:50 EST)
+    - cron: "10 17 * * 1-5"          # early-close days only
+    - cron: "33,47 18 * * 1-5"       # EDT window 18:30-19:50 UTC
+    - cron: "1,15,29,33,43,47 19 * * 1-5"   # 19:01-19:29 EDT window · 19:33,19:47 EST window
+    - cron: "1,15,29,43 20 * * 1-5"  # EST window 19:30-20:50 UTC
+    - cron: "0 23 * * 1-5"           # housekeeping + last chance
   workflow_dispatch:        # a run started by hand counts as a housekeeping run
 
 jobs:

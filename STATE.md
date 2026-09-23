@@ -197,6 +197,17 @@ What the evidence shows, and what it does not:
   scheduled runs, **or** they ran and `due.py gate` failed under `continue-on-error: true`, which exits
   green and commits nothing. `gh run list` returns **HTTP 403 Resource not accessible by integration**,
   so the AI step cannot read run history to settle it.
+
+- **SETTLED 2026-09-23, from the Actions API (read outside the runner, in the DRIVE-folder chat at
+  Jacob's request): the in-window fires NEVER RAN.** Every run on those two days, UTC:
+  Mon 20:33 · 21:00 · 22:10 · 22:33 · 23:14 · 01:20(+1); Tue 19:52 · 20:08 · 21:38 · 22:01 · 22:54 ·
+  01:02(+1). Nothing between 18:30 and 19:50 UTC on either day, and no cancelled or skipped run in
+  the list. So GitHub dropped the 18:40 and 19:10 fires outright; `due.py` did not silently fail.
+  **Fix applied the same day (infrastructure only, no rule touched): six fires inside each window at
+  odd minutes** - 18:33, 18:47, 19:01, 19:15, 19:29, 19:43 UTC on daylight time, and 19:33, 19:47,
+  20:01, 20:15, 20:29, 20:43 after Nov 1. Round minutes are the worst-hit. Nothing else changed: the
+  window, D003 and `due.py` are untouched, and a run that arrives after 15:50 ET still marks
+  `missed_window`. **Next test: Mon 2026-09-28, AIR and JBL.**
 - The design assumed "three fires land inside the window" makes a miss unlikely. It does not, if the
   early fires are dropped and the late ones are delayed past 15:50 ET.
 
