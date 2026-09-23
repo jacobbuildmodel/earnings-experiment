@@ -27,6 +27,7 @@ import json
 import os
 import subprocess
 import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et, rule_for, write_json  # noqa: E402
@@ -76,6 +77,64 @@ def commit(paths, message):
     git("commit", "-q", "-m", message + "\n\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>")
     print(f"pushed: {push_all()}")
     return True
+
+
+def due_today():
+    """Every ungated CONFIRMED event whose snapshot session is today, with its S2 window."""
+    now = now_et()
+    today = now.date().isoformat()
+    out = []
+    for sf in status_files():
+        st = load(sf)
+        season = st["season"]
+        rule = rule_for("D003_universe_screen", season)
+        lo, hi = (datetime.datetime.combine(now.date(), t, ET) for t in s2_window(now.date(), rule["s2"]))
+        for key, ev in st["events"].items():
+            if ev.get("status") != "CONFIRMED" or ev.get("snapshot_session") != today:
+                continue
+            d, date = edir(season, key, ev)
+            if os.path.exists(os.path.join(d, "gate.json")):
+                continue
+            out.append((lo, hi, key, date))
+    return out
+
+
+# A run that arrives this long before the window opens holds the runner until it does.
+MAX_WAIT_MINUTES = 240
+
+
+def wait_for_window(max_minutes=MAX_WAIT_MINUTES):
+    """Sleep until the S2 window opens, when an ungated event is due today.
+
+    THE TRIGGER CANNOT BE TRUSTED TO LAND INSIDE THE WINDOW. On 2026-09-21 and 09-22 GitHub produced
+    no run at all between 18:30 and 19:50 UTC - it dropped both in-window fires on both days - and ran
+    the remaining fires 20 to 145 minutes late. PAYX, DRI and BB were lost that way, with nothing
+    wrong in this pipeline. Waiting changes the requirement from "a fire must land inside an 80-minute
+    window" to "a fire must land somewhere in the four hours before it", which the same run history
+    shows is reliable. It costs runner minutes only on days when an event is actually due.
+    """
+    due = due_today()
+    if not due:
+        print("wait: nothing ungated is due today")
+        return
+    lo, hi = min(d[0] for d in due), max(d[1] for d in due)
+    names = ", ".join(f"{k} {d}" for _, _, k, d in due)
+    now = now_et()
+    if now >= hi:
+        print(f"wait: the window ({lo:%H:%M}-{hi:%H:%M} ET) has closed - gate() will record missed_window")
+        return
+    if now >= lo:
+        print(f"wait: window already open ({lo:%H:%M}-{hi:%H:%M} ET), gating {names} now")
+        return
+    seconds = (lo - now).total_seconds() + 60
+    if seconds > max_minutes * 60:
+        print(f"wait: window opens {lo:%H:%M} ET in {seconds / 60:.0f} min - beyond the {max_minutes} min "
+              f"cap, leaving it to a later fire")
+        return
+    print(f"wait: holding this runner {seconds / 60:.1f} min, until {lo:%H:%M} ET + 1 min, to gate {names}",
+          flush=True)
+    time.sleep(seconds)
+    print(f"wait: window open at {now_et():%H:%M:%S} ET - continuing", flush=True)
 
 
 def gate():
@@ -231,6 +290,11 @@ if __name__ == "__main__":
     cmd = a[0] if a else ""
     if cmd == "gate":
         gate()
+    elif cmd == "wait":
+        wait_for_window(int(a[a.index("--max-minutes") + 1]) if "--max-minutes" in a else MAX_WAIT_MINUTES)
+    elif cmd == "due-today":
+        for lo, hi, key, date in due_today():
+            print(f"{key} {date} window {lo:%H:%M}-{hi:%H:%M} ET")
     elif cmd == "plan":
         plan(a[a.index("--schedule") + 1] if "--schedule" in a and len(a) > a.index("--schedule") + 1 else "")
     elif cmd == "t2-list":

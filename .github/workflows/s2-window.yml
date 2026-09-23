@@ -12,32 +12,88 @@
 # Schedule (UTC, Mon-Fri). The S2 window is 14:30-15:50 ET = 18:30-19:50 UTC on daylight time and
 # 19:30-20:50 UTC after Nov 1.
 #
-# 🔴 WHY THERE ARE SIX FIRES PER WINDOW, NOT THREE. PAYX (09-21) and DRI+BB (09-22) were lost, and the
-# run history settles why: on BOTH days the two in-window fires (18:40 and 19:10 UTC) produced NO RUN
-# AT ALL - GitHub dropped them - while the out-of-window fires ran 20 to 145 minutes late. Measured
-# from the Actions API on 2026-09-23, every run of those two days:
-#   Mon: 20:33, 21:00, 22:10, 22:33, 23:14, 01:20(+1) UTC   Tue: 19:52, 20:08, 21:38, 22:01, 22:54, 01:02(+1)
-# Nothing ran between 18:30 and 19:50 UTC on either day. GitHub's own docs warn that scheduled runs can
-# be delayed or dropped under load, and the effect is worst on round minutes.
-# So: SIX fires inside each window, at deliberately odd minutes, instead of three on round ones. All but
-# one exit in about a minute (`due.py plan` starts the AI step only when a decision is actually due).
-# 16:40 and 17:10 UTC cover the early-close window (11:30-12:50 ET on 2026-11-27) under D003 v2.
+# 🔴 THE RUN WAITS FOR THE WINDOW; IT DOES NOT RELY ON LANDING IN IT.
+# PAYX (09-21) and DRI+BB (09-22) were lost, and the Actions API settles why: on BOTH days NO RUN AT
+# ALL existed between 18:30 and 19:50 UTC - GitHub dropped both in-window fires - while the rest ran 20
+# to 145 minutes late. Every run of those two days, UTC:
+#   Mon 20:33 · 21:00 · 22:10 · 22:33 · 23:14 · 01:20(+1)   Tue 19:52 · 20:08 · 21:38 · 22:01 · 22:54 · 01:02(+1)
+# Nothing in this pipeline failed. The design was wrong: it required a precise trigger from a scheduler
+# that documents itself as best-effort, and more fires only shorten the odds.
+# So the runner now does the waiting. `due.py wait` holds a run that arrives up to 4 h early until the
+# window opens, so ANY fire landing in that five-hour span produces a gate - dropped fires and 2.5-hour
+# delays both survive. It sleeps only when an ungated event is actually due today.
+# Cheap by default: a stdlib-only pre-check ends the job in seconds on a day with nothing to do, before
+# pip install or any network call.
 name: Earnings experiment - S2 window
 
 on:
   schedule:
-    - cron: "40 16 * * 1-5"          # early-close days only (D003 v2 window 11:30-12:50 EST)
-    - cron: "10 17 * * 1-5"          # early-close days only
+    # Early fires: these WAIT for the window (pipeline/due.py wait) instead of needing to land in it.
+    - cron: "7,37 15 * * 1-5"        # 11:07, 11:37 EDT
+    - cron: "7,37 16 * * 1-5"        # 12:07, 12:37 EDT · 11:07, 11:37 EST
+    - cron: "7,37 17 * * 1-5"        # 13:07, 13:37 EDT · 12:07, 12:37 EST
+    - cron: "3,19 18 * * 1-5"        # 14:03, 14:19 EDT · 13:03, 13:19 EST
+    # Fires already inside a window, on odd minutes:
     - cron: "33,47 18 * * 1-5"       # EDT window 18:30-19:50 UTC
-    - cron: "1,15,29,33,43,47 19 * * 1-5"   # 19:01-19:29 EDT window · 19:33,19:47 EST window
+    - cron: "1,15,29,33,43,47 19 * * 1-5"   # 19:01-19:29 EDT · 19:33,19:47 EST
     - cron: "1,15,29,43 20 * * 1-5"  # EST window 19:30-20:50 UTC
     - cron: "0 23 * * 1-5"           # housekeeping + last chance
   workflow_dispatch:        # a run started by hand counts as a housekeeping run
 
 jobs:
-  s2:
+  # Cheap gatekeeper: stdlib only, no installs, no network. Most fires have nothing to do, and this
+  # ends them in seconds instead of paying for a full environment.
+  precheck:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 5
+    outputs:
+      work: ${{ steps.todo.outputs.work }}
+      why: ${{ steps.todo.outputs.why }}
+      housekeeping: ${{ steps.todo.outputs.housekeeping }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Anything to do at all?
+        id: todo
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import glob, json, os
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          today = datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+          work = []
+          for sf in sorted(glob.glob("universe/*/event_status.json")):
+              st = json.load(open(sf, encoding="utf-8"))
+              for key, ev in st["events"].items():
+                  if ev.get("status") != "CONFIRMED" or ev.get("snapshot_session") != today:
+                      continue
+                  d = f"events/{st['season']}/{key}_{ev.get('calendar_date') or ev.get('report_date')}"
+                  if not os.path.exists(f"{d}/gate.json"):
+                      work.append(f"gate:{key}")
+          for g in sorted(glob.glob("events/*/*/gate.json")):
+              d = os.path.dirname(g)
+              if not os.path.exists(f"{d}/manifest.json"):
+                  gj = json.load(open(g, encoding="utf-8"))
+                  if gj.get("status") == "PASS" and not gj.get("dry"):
+                      work.append(f"t2:{gj['ticker']}")
+          print("work=" + ("true" if work else "false"))
+          print("why=" + (", ".join(work) if work else "nothing due today"))
+          PY
+          echo "housekeeping=${{ github.event.schedule == '0 23 * * 1-5' || github.event_name == 'workflow_dispatch' }}" >> "$GITHUB_OUTPUT"
+      - name: Say what was decided
+        run: echo "::notice::${{ steps.todo.outputs.why }} (housekeeping=${{ steps.todo.outputs.housekeeping }})"
+
+  s2:
+    needs: precheck
+    if: needs.precheck.outputs.work == 'true' || needs.precheck.outputs.housekeeping == 'true'
+    runs-on: ubuntu-latest
+    # Long enough to wait up to 4 h for the window, then do the full gate + T2 + freeze.
+    timeout-minutes: 330
     concurrency:
       group: s2-window      # never two runs at once - they would both commit
       cancel-in-progress: false
@@ -65,6 +121,12 @@ jobs:
 
       - name: Health check - PASS, or stop
         run: python check.py
+
+      # The root fix for the lost events: if this fire arrived before the window, hold the runner
+      # until the window opens rather than hoping a later fire lands inside it. No-op when nothing
+      # is due, when the window is already open, or when it has closed.
+      - name: Wait for the S2 window if it has not opened yet
+        run: python pipeline/due.py wait
 
       - name: Gate and snapshot every event due now (code, no AI)
         continue-on-error: true
