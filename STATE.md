@@ -228,11 +228,19 @@ What the evidence shows, and what it does not:
   Mon 20:33 · 21:00 · 22:10 · 22:33 · 23:14 · 01:20(+1); Tue 19:52 · 20:08 · 21:38 · 22:01 · 22:54 ·
   01:02(+1). Nothing between 18:30 and 19:50 UTC on either day, and no cancelled or skipped run in
   the list. So GitHub dropped the 18:40 and 19:10 fires outright; `due.py` did not silently fail.
-  **Fix applied the same day (infrastructure only, no rule touched): six fires inside each window at
-  odd minutes** - 18:33, 18:47, 19:01, 19:15, 19:29, 19:43 UTC on daylight time, and 19:33, 19:47,
-  20:01, 20:15, 20:29, 20:43 after Nov 1. Round minutes are the worst-hit. Nothing else changed: the
-  window, D003 and `due.py` are untouched, and a run that arrives after 15:50 ET still marks
-  `missed_window`. **Next test: Mon 2026-09-28, AIR and JBL.**
+  **ROOT FIX, same day (infrastructure only, no rule touched): the runner now WAITS for the window.**
+  `due.py wait` holds a run that arrives up to 4 h early until the window opens, so any fire landing
+  anywhere in that five-hour span produces a gate - a dropped fire and a 2.5-hour delay both survive.
+  Fires now start at 11:07 ET to give that span room. More fires alone were only shorter odds on the
+  same broken dependency; this removes the dependency on trigger precision. It sleeps only when an
+  ungated event is due, and a stdlib-only precheck job ends a fire in seconds when nothing is due.
+  Tested on all four arrival times and live on Actions run 35868728963 (green).
+  **Next test: Mon 2026-09-28, AIR and JBL.**
+
+- **Nightly grade job was failing every night since 09-21** and nobody saw it: `grade.py --commit` ran
+  `git add outcomes` before any outcome existed, which is fatal, so the job exited 1 on a pure no-op.
+  Fixed 09-23: no `outcomes/` means nothing to commit, exit 0. A no-op must never look like a failure,
+  or a real failure stops standing out.
 - The design assumed "three fires land inside the window" makes a miss unlikely. It does not, if the
   early fires are dropped and the late ones are delayed past 15:50 ET.
 

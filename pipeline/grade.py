@@ -400,6 +400,12 @@ def run(fetch=True):
 
 def commit_outcomes():
     from freeze import git, push_all
+    # Nothing graded yet is the normal state before the first exit settles - `git add` on a path that
+    # does not exist is fatal, and the nightly grade job failed on it every night from 2026-09-21.
+    # A no-op must not look like a failure, or a real failure stops standing out.
+    if not os.path.isdir(os.path.join(ROOT, "outcomes")):
+        print("no outcomes/ yet - nothing has been graded, nothing to commit")
+        return
     git("add", "outcomes")
     if not git("diff", "--cached", "--name-only"):
         print("nothing new to commit")
