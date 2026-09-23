@@ -1,6 +1,8 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-21 09:15 ET · pipeline hardened, D005 frozen, ready for the external evaluation
+**Phase 1 · Pilot (live)** · updated 2026-09-22 21:04 ET · pipeline hardened, D005 frozen, external
+evaluation done — but **3 of 9 confirmed events have been lost to missed S2 windows and nothing has
+been gated yet**. See the Cloud run log.
 
 ## Where things are
 
@@ -157,6 +159,53 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   - The Actions environment reaches Yahoo, the IR hosts and PyPI — the egress block that stopped the
     claude.ai cloud environment does not apply here.
 
+- **2026-09-21 (Mon) — PAYX lost.** PAYX's snapshot session. No `gate.json`, no `factors.json`, no
+  freeze commit was produced. The only commit of the day is `7613757` at **16:34:01 ET**, where
+  `due.py gate` found `now > hi` and marked PAYX **INELIGIBLE `missed_window`**. The 23:00 UTC
+  housekeeping run started **2 h 25 min late** (runlog `2026-09-22T0125Z_35675414876.json`) and its AI
+  step died on `API Error: 529 Overloaded` — 0 tool calls, so no PENDING re-check and no log line that
+  day. Both failures are recorded here, not fixed: the AI step may not edit the workflow.
+- **2026-09-22 (Tue) — DRI and BB lost.** Same pattern. No `gate.json` for either; the only commit is
+  `e714bfb` at **15:52:46 ET**, marking both **INELIGIBLE `missed_window`**. 15:52 is three minutes
+  after the 15:50 ET window closes.
+- **2026-09-22 21:04 ET — housekeeping (this run).** `check.py` PASS. `due.py t2-list` empty; nothing
+  awaiting T2, nothing gated, nothing frozen. All three PENDING names re-checked against their own
+  company source and all three stay PENDING (detail in `event_status.json` → `rechecks`):
+  - **AEHR** — aehr.com/newsroom newest item still 2026-09-03; no FY27 Q1 date. `investors.aehr.com`
+    does not resolve (NXDOMAIN) — the newsroom page is the company source. Its own lead time is ~7 days
+    (2026-07-07 release for the 2026-07-14 print), so expect an announcement ~2026-09-28.
+    yfinance unchanged at 2026-11-02 15:00 ET, intraday.
+  - **LEVI** — Q4 press-release feed newest item still 2026-07-08 16:10 ET; no Q3 webcast release. The
+    ~2026-09-24 date expected from last year's 14-day lead has not arrived. yfinance unchanged at
+    2026-09-30 16:00. Earliest possible snapshot session **2026-09-29**.
+  - **APLD** — stockpr RSS newest item still 2026-07-27 16:05 ET; no FY27 Q1 date. The ~2026-09-26 date
+    expected from its 12-day lead has not arrived. yfinance unchanged at 2026-10-08 16:00.
+
+### 🔴 The scheduler is losing the pilot — 3 of 9 confirmed events gone in two days
+
+No pilot event has ever been gated. `find events -name gate.json` returns nothing; PAYX, DRI and BB are
+all `missed_window`. Six confirmed events remain: **AIR and JBL (snapshot Mon Sep 28) · MU (Tue Sep 29) ·
+NKE (Wed Sep 30) · PENG (Mon Oct 5)**. On this trend the pilot ends with zero snapshots and D005's power
+problem becomes moot — there is nothing to evaluate.
+
+What the evidence shows, and what it does not:
+- **Scheduled runs start late.** Measured: the 23:00 UTC fire of 09-21 began ~01:25 UTC (+2 h 25 m); the
+  23:00 UTC fire of 09-22 began ~01:02 UTC (+2 h 02 m); the gate step of 09-22 ran at 19:52 UTC against
+  a 19:40 cron (+~13 m, and that alone was enough to miss by 3 minutes).
+- **The 18:40 and 19:10 UTC fires left no trace at all** on either day — no commit, no runlog. Two
+  explanations fit equally and cannot be told apart from inside the runner: GitHub dropped the
+  scheduled runs, **or** they ran and `due.py gate` failed under `continue-on-error: true`, which exits
+  green and commits nothing. `gh run list` returns **HTTP 403 Resource not accessible by integration**,
+  so the AI step cannot read run history to settle it.
+- The design assumed "three fires land inside the window" makes a miss unlikely. It does not, if the
+  early fires are dropped and the late ones are delayed past 15:50 ET.
+
+**For Jacob — this is the one thing that needs a human, and it needs one before Mon Sep 28.** Open the
+Actions tab and look at 18:40 and 19:10 UTC on Sep 21 and Sep 22: if the runs are absent, the fix is
+more fires and an earlier first fire; if they are present and green, the fix is to stop
+`continue-on-error` from hiding a gate failure. The AI step is forbidden from editing `.github/` — the
+workflow guard restores any such edit and fails the run — so this cannot be self-healed from the cloud.
+
 ## Hardening before evaluation — 2026-09-21 (laptop session, ~07:50–09:15 ET)
 
 Everything below is committed: `c781a26` · `c5f8c6a` · `e61e01c`. Two independent reviews by a second
@@ -260,10 +309,11 @@ should no longer be `single_source`).
 
 ## Next actions
 
-1. **Check today's first automated run:** PAYX (snapshot today, 14:40 ET fire = 02:40 SGT). Look for a
-   `Freeze PAYX …` or `Capture PAYX …` commit and `logs/actions/`. The dry run suggested `thin_oi`.
-   Tue Sep 22 is DRI and BB.
+1. 🔴 **Fix the scheduler before Mon Sep 28** — PAYX, DRI and BB were all lost to `missed_window` and
+   nothing has ever been gated. Needs Jacob at the Actions tab; the AI step cannot edit `.github/`.
+   Six events are left: AIR + JBL (Sep 28) · MU (Sep 29) · NKE (Sep 30) · PENG (Oct 5).
 2. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
+   Note there is nothing to grade yet — no event has reached entry with a frozen snapshot.
 3. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
    one-off workflow that runs `nasdaq`, `av`, `market`, `screen`, or run it in a laptop session.
 4. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any
