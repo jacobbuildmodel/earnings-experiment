@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-23 09:45 ET · pipeline hardened, D005 frozen, external
+**Phase 1 · Pilot (live)** · updated 2026-09-23 21:00 ET · pipeline hardened, D005 frozen, external
 evaluation done — **3 of 10 confirmed events have been lost to missed S2 windows and nothing has been
 gated yet**, but the cause is now settled and fixed: the runner waits for the window instead of
 relying on a scheduled fire landing in it. First test Mon Sep 28. See the Cloud run log.
@@ -205,6 +205,22 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   - **APLD** — stockpr RSS (HTTP 200) newest item still 2026-07-27 16:05 ET; no FY27 Q1 date. The
     ~2026-09-26 date expected from its 12-day lead has not arrived; Nasdaq still says Oct 8
     `time-not-supplied`. Earliest possible snapshot session 2026-10-06.
+
+- **2026-09-23 21:00 ET — housekeeping (this run, Actions run 35940775870).** The second run of the same
+  ET day: the 23:00 UTC fire arrived ~2 h late again (19:00 ET due, 21:00 ET started), the same delay
+  measured on 09-21 and 09-22. Nothing was due — no event has a snapshot session of 2026-09-23 —
+  `check.py` PASS, `due.py t2-list` empty, no gate, no freeze, no decision. `find events -name gate.json`
+  still returns nothing: **no pilot event has ever been gated.** Both remaining PENDING names re-checked
+  against their own company source; both stay PENDING (detail in `event_status.json` → `rechecks`):
+  - **AEHR** — aehr.com/newsroom (HTTP 200) newest item still 2026-09-03 (Lake Street conference); no
+    FY27 Q1 results date. yfinance unchanged at 2026-11-02 15:00 ET, intraday. The ~2026-09-28
+    announcement expected from its ~7-day lead has not arrived. Earliest possible snapshot session
+    2026-10-01, so ~4 housekeeping runs remain before it must resolve.
+  - **APLD** — stockpr RSS (HTTP 200) newest item still 2026-07-27 16:05 ET; no FY27 Q1 date. yfinance
+    unchanged at 2026-10-08 16:00. The ~2026-09-26 date expected from its 12-day lead has not arrived.
+    Earliest possible snapshot session 2026-10-06.
+  - LEVI is no longer PENDING (CONFIRMED 09-23 09:45 ET); nothing new on its second-source conflict,
+    which code resolves inside the Oct 6 window.
 
 ### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days
 
