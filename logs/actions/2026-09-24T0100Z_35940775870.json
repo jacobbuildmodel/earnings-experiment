@@ -1,0 +1,76 @@
+{
+ "run_id": "35940775870",
+ "logged_utc": "2026-09-24T0100Z",
+ "tool_calls": 15,
+ "fence_breaches": [],
+ "review_flags": [],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 16,
+  "total_cost_usd": 0.8685569999999999,
+  "text": "**Report — 2026-09-23, ~21:00 ET (Actions run 35940775870)**\n\n**T2 decisions:** none. Nothing was awaiting a decision — `due.py t2-list` is empty and no event has a snapshot session of 2026-09-23. No gate, no freeze, no decision written. No pilot event has ever been gated yet.\n\n**Housekeeping — the two PENDING names, both re-checked against the company's own source, both still PENDING:**\n\n| name | company source | newest item | yfinance | earliest snapshot session |\n|---|---|---|---|---|\n| AEHR | aehr.com/newsroom (HTTP 200) | 2026-09-03, Lake Street conference — no FY27 Q1 date | 2026-11-02 15:00 ET, intraday (unchanged) | 2026-10-01 |\n| APLD | ir.applieddigital.com RSS (HTTP 200) | 2026-07-27 16:05 ET, Q4 FY26 results — no FY27 Q1 date | 2026-10-08 16:00 (unchanged) | 2026-10-06 |\n\nBoth are now past the announcement date their own lead times implied (AEHR ~Sep 28 is still ahead; APLD's ~Sep 26 has not arrived yet either — neither is overdue, but APLD is the closer call). LEVI is no longer PENDING — it was confirmed AMC Oct 7 this morning.\n\n**What went wrong:** the 23:00 UTC housekeeping fire started ~2 hours late again (19:00 ET due, 21:00 ET actual) — the same delay measured on 09-21 and 09-22. It does not matter for a housekeeping run, but it is the delay that killed PAYX, DRI and BB, and the `due.py wait` fix has not yet been tested on a real gate.\n\n**Commits:** `26a21a8` — STATE.md cloud run log line and the two re-checks in `event_status.json`, pushed to main. No freeze commit this run, so no BLIND/VOID to report.\n\n**Next:** Mon 2026-09-28 — AIR and JBL, the first live test of the wait-for-the-window fix."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python pipeline/due.py t2-list; echo \\\"---exit:$?\\\"; ls\", \"description\": \"Confirm T2 list and list repo root\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"TZ=America/New_York date -Is && git log --oneline -15 --date=iso-local --pretty='%h %ad %s' && echo \\\"--- events ---\\\" && find events -name gate.json -o -name factors.json | head -20 && echo \\\"(none above = no gates)\\\"\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/universe/pilot/event_status.json\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport urllib.request, re, html\\nUA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36'}\\nfor name,url in [(\\\"AEHR\\\",\\\"https://www.aehr.com/newsroom/\\\"),\\n                 (\\\"APLD\\\",\\\"https://ir.applieddigital.com/news-events/press-releases/rss\\\")]:\\n    try:\\n        r=urllib.request.urlopen(urllib.request.Request(url,headers=UA),timeout=60)\\n        b=r.read().decode('utf-8','replace')\\n        print(f\\\"=== {name} {url} HTTP {r.status} len {len(b)}\\\")\\n        if name==\\\"APLD\\\":\\n           "
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport urllib.request, re, html\\nUA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36'}\\nr=urllib.request.urlopen(urllib.request.Request(\\\"https://www.aehr.com/newsroom/\\\",headers=UA),timeout=60)\\nb=r.read().decode('utf-8','replace')\\nprint(\\\"HTTP\\\",r.status)\\nbody=b\\n# find links to press releases with titles\\nfor m in re.finditer(r'<(?:h2|h3)[^>]*>(.*?)</(?:h2|h3)>', body, re.S):\\n    t=html.unescape(re.sub(r'<[^>]+>','',m.group(1))).strip()\\n    if t: print(\\\"H:\\\",t[:160])\\nprint(\\\"---date"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport urllib.request, re, html\\nUA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36'}\\nb=urllib.request.urlopen(urllib.request.Request(\\\"https://www.aehr.com/newsroom/\\\",headers=UA),timeout=60).read().decode('utf-8','replace')\\ntxt=re.sub(r'<(script|style).*?</\\\\1>','',b,flags=re.S)\\ntxt=re.sub(r'<[^>]+>',' | ',txt)\\ntxt=html.unescape(re.sub(r'(\\\\s*\\\\|\\\\s*)+',' | ',txt))\\ntxt=re.sub(r'[ \\\\t]+',' ',txt)\\nfor kw in [\\\"September 18, 2026\\\",\\\"September 3, 2026\\\",\\\"First Quarter\\\",\\\"Fiscal 2027\\"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport yfinance as yf\\nfor t in [\\\"AEHR\\\",\\\"APLD\\\"]:\\n    try:\\n        d=yf.Ticker(t).get_earnings_dates(limit=8)\\n        print(\\\"==\\\",t)\\n        print(d.index.tolist()[:8])\\n    except Exception as e:\\n        print(\\\"==\\\",t,\\\"FAILED\\\",repr(e))\\nPY\", \"description\": \"Check yfinance earnings dates for AEHR and APLD\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"env | grep -i -E '^GITHUB_(RUN_ID|RUN_NUMBER|EVENT_NAME|WORKFLOW|RUN_ATTEMPT)=' ; ls logs/actions | tail -5\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport json, datetime\\nfrom zoneinfo import ZoneInfo\\np=\\\"universe/pilot/event_status.json\\\"\\nd=json.load(open(p,encoding=\\\"utf-8\\\"))\\nnow=datetime.datetime.now(ZoneInfo(\\\"America/New_York\\\")).replace(microsecond=0).isoformat()\\nd[\\\"events\\\"][\\\"AEHR\\\"][\\\"rechecks\\\"].append(\\n f\\\"{now}: www.aehr.com/newsroom re-read (HTTP 200); newest item is still 2026-09-03 (Lake Street Best Ideas Growth Conference) - no FY27 Q1 results date announced. yfinance get_earnings_dates unchanged at 2026-11-02 15:00:00-05:00, intraday (unconfirmed under D003 v1 section 6) and outside th"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days\", \"new_string\": \"- **2026-09-23 21:00 ET — housekeeping (this run, Actions run 35940775870).** The second run of the same\\n  ET day: the 23:00 UTC fire arrived ~2 h late again (19:00 ET due, 21:00 ET started), the same delay\\n  measured on 09-21 and 09-22. Nothing was due — no event has a snapshot session of 2026-09-23 —\\n  `check.py` PASS, `due.py t2-list` empty, no gate, no freeze, no decis"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-23 09:45 ET · pipeline hardened\", \"new_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-23 21:00 ET · pipeline hardened\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py; echo \\\"check exit: $?\\\"; git status --short\", \"description\": \"Run health check and show status\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git add STATE.md universe/pilot/event_status.json && git commit -q -m \\\"Cloud run 2026-09-23 evening: nothing due; AEHR and APLD still PENDING\\n\\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\\\" && git push origin HEAD:main && git log --oneline -1\", \"description\": \"Commit and push housekeeping update\"}"
+  }
+ ]
+}
