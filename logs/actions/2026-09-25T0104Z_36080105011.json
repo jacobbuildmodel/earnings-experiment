@@ -1,0 +1,113 @@
+{
+ "run_id": "36080105011",
+ "logged_utc": "2026-09-25T0104Z",
+ "tool_calls": 23,
+ "fence_breaches": [],
+ "review_flags": [
+  {
+   "flag": "git content read",
+   "input": "{\"command\": \"git diff --stat && git diff universe/pilot/event_status.json | head -30\", \"description\": \"Review status file diff\"}"
+  }
+ ],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 24,
+  "total_cost_usd": 1.12093,
+  "text": "## Report — housekeeping run, 2026-09-24 21:02 ET\n\n**T2 decisions:** none. Nothing was due — no pilot event has a snapshot session of 2026-09-24, `due.py t2-list` was empty, and `find events -name gate.json` still returns nothing. No gate, no freeze, no decision, so no freeze commit hashes this run.\n\n**PENDING re-checks — both unchanged, both still PENDING:**\n\n| name | company source | newest item | yfinance | earliest snapshot |\n|---|---|---|---|---|\n| AEHR | aehr.com/newsroom (HTTP 200) | 2026-09-03, Lake Street conference — no FY27 Q1 date | 2026-11-02 15:00 ET, intraday (unchanged) | 2026-10-01 |\n| APLD | ir.applieddigital.com press-release RSS (HTTP 200) | 2026-07-27 16:05 ET, Q4 FY2026 results — no FY27 Q1 date | 2026-10-08 16:00 ET (unchanged) | 2026-10-06 |\n\nNeither is late yet: AEHR's ~7-day lead points to an announcement around Sep 28 (four days out), APLD's 12-day lead to around Sep 26 (two days out). I corrected the framing carried in the last two log entries, which described those dates as already missed.\n\n**What went wrong:** the 23:00 UTC fire started ~2 hours late again (19:00 ET due, 21:02 ET actual) — the fourth consecutive day. It cost nothing today because nothing was due, but the same delay is what lost PAYX, DRI and BB. The `due.py wait` fix covers early arrivals, not late ones; a fire this late on a snapshot day would still miss the window. That remains untested until Mon Sep 28 (AIR + JBL).\n\n`check.py` PASS, working tree clean. Committed and pushed as `427c98a` (STATE.md cloud run log + `event_status.json` re-checks)."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python pipeline/due.py t2-list; echo \\\"---exit $?---\\\"; date; TZ=America/New_York date\", \"description\": \"List events awaiting T2 and show times\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git log --oneline -12 --date=iso-local --pretty='%h %ad %s' && echo \\\"--- gate files ---\\\" && find events -name gate.json | head -20 && echo \\\"--- none above means no gate ---\\\"\", \"description\": \"Check recent commits and gate files\"}"
+  },
+  {
+   "tool": "ToolSearch",
+   "input": "{\"query\": \"select:WebFetch,WebSearch\", \"max_results\": 2}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nfor k,v in (d.items() if isinstance(d,dict) else []):\\n    print(k, json.dumps(v)[:400] if not isinstance(v,str) else v)\\n\\\" 2>&1 | head -40\", \"description\": \"Inspect pilot event status file\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nfor t in ['AEHR','APLD']:\\n    e=d['events'][t]\\n    print('=====',t)\\n    for k,v in e.items():\\n        if k=='rechecks':\\n            print(' rechecks:',len(v))\\n            for r in v[-2:]: print('   ',json.dumps(r))\\n        else:\\n            print(' ',k,'=',json.dumps(v)[:500])\\n\\\"\", \"description\": \"Show AEHR and APLD status details\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport urllib.request\\nUA={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36'}\\nfor name,url in [('AEHR newsroom','https://www.aehr.com/newsroom/'),\\n                 ('APLD rss','https://ir.applieddigital.com/news-events/press-releases/rss')]:\\n    try:\\n        r=urllib.request.urlopen(urllib.request.Request(url,headers=UA),timeout=60)\\n        b=r.read().decode('utf-8','replace')\\n        print('=====',name,url,'HTTP',r.status,'len',len(b))\\n        open('/tmp/'+name.split()[0]+'.txt','w')"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /tmp && python - <<'EOF'\\nimport re\\nb=open('/tmp/APLD.txt').read()\\nitems=re.findall(r'<item>(.*?)</item>', b, re.S)\\nprint('APLD items:',len(items))\\nfor it in items[:8]:\\n    t=re.search(r'<title>(?:<!\\\\[CDATA\\\\[)?(.*?)(?:\\\\]\\\\]>)?</title>',it,re.S)\\n    d=re.search(r'<pubDate>(.*?)</pubDate>',it,re.S)\\n    print(' -',(d.group(1) if d else '?'),'|',(t.group(1).strip() if t else '?')[:120])\\nEOF\", \"description\": \"Parse APLD RSS items\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport re,html\\nb=open('/tmp/AEHR.txt').read()\\ntxt=re.sub(r'<script.*?</script>','',b,flags=re.S)\\ntxt=re.sub(r'<style.*?</style>','',txt,flags=re.S)\\ntxt=re.sub(r'<[^>]+>','\\\\n',txt)\\ntxt=html.unescape(txt)\\nlines=[l.strip() for l in txt.split('\\\\n') if l.strip()]\\n# print first 60 meaningful lines after 'Newsroom'\\nout=[]\\nfor l in lines:\\n    out.append(l)\\nprint('\\\\n'.join(out[:90]))\\nEOF\", \"description\": \"Parse AEHR newsroom page text\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport yfinance as yf, pandas as pd\\nfor t in ['AEHR','APLD']:\\n    try:\\n        d=yf.Ticker(t).get_earnings_dates(limit=8)\\n        print('=====',t)\\n        print(d.index.tolist()[:8] if d is not None else None)\\n    except Exception as e:\\n        print('=====',t,'FAILED',repr(e))\\nEOF\", \"description\": \"Check yfinance earnings dates for AEHR and APLD\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | tail -5; echo \\\"=== due.py help ===\\\"; python pipeline/due.py --help 2>&1 | head -30\", \"description\": \"Run health check and show due.py commands\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json, datetime\\nfrom zoneinfo import ZoneInfo\\np='universe/pilot/event_status.json'\\nd=json.load(open(p))\\nnow=datetime.datetime.now(ZoneInfo(\\\"America/New_York\\\")).replace(microsecond=0).isoformat()\\nstamp=now\\naehr=(f\\\"{stamp}: www.aehr.com/newsroom re-read (HTTP 200); newest item is still 2026-09-03 \\\"\\n \\\"(Lake Street Best Ideas Growth Conference) - no FY27 Q1 results date announced. yfinance \\\"\\n \\\"get_earnings_dates unchanged at 2026-11-02 15:00:00-05:00, intraday (unconfirmed under D003 v1 \\\"\\n \\\"section 6) and outside the pilot window. The ~2026-09"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git diff --stat && git diff universe/pilot/event_status.json | head -30\", \"description\": \"Review status file diff\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git checkout universe/pilot/event_status.json && python - <<'EOF'\\nimport json, datetime\\nfrom zoneinfo import ZoneInfo\\np='universe/pilot/event_status.json'\\nraw=open(p,encoding='utf-8').read()\\nd=json.loads(raw)\\nnow=datetime.datetime.now(ZoneInfo(\\\"America/New_York\\\")).replace(microsecond=0).isoformat()\\naehr=(f\\\"{now}: www.aehr.com/newsroom re-read (HTTP 200); newest item is still 2026-09-03 \\\"\\n \\\"(Lake Street Best Ideas Growth Conference) - no FY27 Q1 results date announced. yfinance \\\"\\n \\\"get_earnings_dates unchanged at 2026-11-02 15:00:00-05:00, intraday (unconfirmed unde"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days\", \"new_string\": \"- **2026-09-24 21:02 ET — housekeeping (this run).** Nothing was due: no pilot event has a snapshot\\n  session of 2026-09-24 (the next is Mon 2026-09-28, AIR + JBL). `check.py` PASS, `due.py t2-list`\\n  empty, no gate, no freeze, no decision written, and `find events -name gate.json` still returns\\n  nothing. No commit was made on this ET day before this one — the 23:00 UTC f"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\np='universe/pilot/event_status.json'\\nraw=open(p,encoding='utf-8').read()\\nd=json.loads(raw)\\nr=d['events']['APLD']['rechecks']\\nold=r[-1]\\nnew=old.replace(\\\"has not arrived; it is now two days past that lead. \\\",\\n                \\\"is still two days away, so it is not yet late. \\\")\\nassert new!=old\\nr[-1]=new\\na=d['events']['AEHR']['rechecks']\\na[-1]=a[-1].replace(\\\"expected from its ~7-day lead has not arrived.\\\",\\n                    \\\"expected from its ~7-day lead is still four days away, so it is not yet late.\\\")\\nout=json.dumps(d,indent=1,ensur"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"    Conference); no FY27 Q1 results date. yfinance unchanged at 2026-11-02 15:00 ET, intraday. The\\n    ~2026-09-28 announcement expected from its ~7-day lead has not arrived. Earliest possible snapshot\\n    session 2026-10-01.\\n  - **APLD** — stockpr RSS (HTTP 200) newest item still 2026-07-27 16:05 ET; no FY27 Q1 date. yfinance\\n    unchanged at 2026-10-08 16:00. Its 12-day lead implied ~2026-09-26 and that has now passed without\\n    an announcement — it is two days overd"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-23 21:00 ET · pipeline hardened, D005 frozen, external\", \"new_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-24 21:02 ET · pipeline hardened, D005 frozen, external\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | tail -3 && git add STATE.md universe/pilot/event_status.json && git status --short\", \"description\": \"Re-run health check and stage the two files\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | grep -i -n \\\"warn\\\" \", \"description\": \"Show the health-check warning\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git commit -q -m \\\"Cloud run 2026-09-24: nothing due; AEHR and APLD still PENDING, neither yet late\\n\\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\\\" && git push origin HEAD:main && git log --oneline -1\", \"description\": \"Commit and push housekeeping update\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | tail -2 && git status --short && echo \\\"clean-if-blank\\\"\", \"description\": \"Final health check and working tree status\"}"
+  }
+ ]
+}
