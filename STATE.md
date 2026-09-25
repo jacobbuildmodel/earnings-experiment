@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-23 21:00 ET · pipeline hardened, D005 frozen, external
+**Phase 1 · Pilot (live)** · updated 2026-09-24 21:02 ET · pipeline hardened, D005 frozen, external
 evaluation done — **3 of 10 confirmed events have been lost to missed S2 windows and nothing has been
 gated yet**, but the cause is now settled and fixed: the runner waits for the window instead of
 relying on a scheduled fire landing in it. First test Mon Sep 28. See the Cloud run log.
@@ -221,6 +221,20 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
     Earliest possible snapshot session 2026-10-06.
   - LEVI is no longer PENDING (CONFIRMED 09-23 09:45 ET); nothing new on its second-source conflict,
     which code resolves inside the Oct 6 window.
+
+- **2026-09-24 21:02 ET — housekeeping (this run).** Nothing was due: no pilot event has a snapshot
+  session of 2026-09-24 (the next is Mon 2026-09-28, AIR + JBL). `check.py` PASS, `due.py t2-list`
+  empty, no gate, no freeze, no decision written, and `find events -name gate.json` still returns
+  nothing. No commit was made on this ET day before this one — the 23:00 UTC fire again arrived ~2 h
+  late (19:00 ET due, 21:02 ET started), the fourth day running. Both PENDING names re-checked against
+  their own company source; both stay PENDING (detail in `event_status.json` → `rechecks`):
+  - **AEHR** — aehr.com/newsroom (HTTP 200) newest item still 2026-09-03 (Lake Street Best Ideas Growth
+    Conference); no FY27 Q1 results date. yfinance unchanged at 2026-11-02 15:00 ET, intraday. The
+    ~2026-09-28 announcement its ~7-day lead implies is still four days out, so it is not yet late.
+    Earliest possible snapshot session 2026-10-01.
+  - **APLD** — stockpr RSS (HTTP 200) newest item still 2026-07-27 16:05 ET; no FY27 Q1 date. yfinance
+    unchanged at 2026-10-08 16:00. The ~2026-09-26 announcement its 12-day lead implies is still two
+    days out, so it is not yet late either. Earliest possible snapshot session 2026-10-06.
 
 ### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days
 
