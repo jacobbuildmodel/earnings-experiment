@@ -1,0 +1,127 @@
+{
+ "run_id": "36207061490",
+ "logged_utc": "2026-09-26T0107Z",
+ "tool_calls": 26,
+ "fence_breaches": [],
+ "review_flags": [
+  {
+   "flag": "git content read",
+   "input": "{\"command\": \"git show --stat 7e9484e | head -20 && echo \\\"=== body ===\\\" && git show -s --format=%B 7e9484e && echo \\\"=== files ===\\\" && git show 7e9484e --name-only --pretty=format: | sed '/^$/d'\"}"
+  }
+ ],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 27,
+  "total_cost_usd": 1.2555084999999995,
+  "text": "Pushed as `08f7bd4`.\n\n## Report — Friday 2026-09-25, 21:06 ET\n\n**T2 decisions: none.** Nothing was awaiting a decision — `due.py t2-list` is empty and no pilot event has a snapshot session of 2026-09-25. No gate, no freeze, no decision written. `find events -name gate.json` still returns nothing: no pilot event has ever been gated. `check.py` PASS.\n\n**What code did today:** the Friday mid-season screen (D003 §7), commit `7e9484e` at 21:03 ET — 125 calendar names, 18 tested, **0 added** (12 `industry_out`, 6 `size`). The pilot's 12 candidates are unchanged.\n\n**The uncomfortable finding:** that screen ran **without Alpha Vantage**. The capture records `alphavantage: not pulled - no ALPHAVANTAGE_API_KEY`. The secret does exist — `grade.yml` and `s1-screen.yml` both pass it — but `s2-window.yml` never puts it in the job env, so every mid-season screen so far has been Nasdaq-calendar only. That is a D003 §7 deviation, now recorded in STATE.md under Recorded deviations and as next action 2. This step is forbidden from editing `.github/`, so it needs a laptop session — ideally before the Season A screen on Oct 9.\n\n**PENDING changes: none.** Both re-checked against their own company source and, as a second company source, SEC EDGAR:\n\n| name | company source | EDGAR | yfinance | verdict |\n|---|---|---|---|---|\n| AEHR | aehr.com/newsroom (200), newest still 2026-09-03 Lake Street — no FY27 Q1 date | ARS 09-10, DEF 14A 09-09 — annual-meeting material only | 2026-11-02 15:00 ET, intraday (unchanged) | PENDING; ~09-28 announcement is 3 days out, not late. Earliest snapshot Oct 1 |\n| APLD | stockpr RSS (200), newest still 2026-07-27 16:05 ET — no FY27 Q1 call release | four filings 09-25 (POSASR, DEF 14A, DEFA14A, ARS) — proxy/shelf, no earnings date | 2026-10-08 16:00 ET (unchanged) | PENDING; ~09-26 announcement is 1 day out, not late. Earliest snapshot Oct 6 |\n\n**Nothing else failed.** The real test is Monday Sep 28 (AIR + JBL) — the first live run of the wait-for-the-window fix, and the first chance to produce a gate at all."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python pipeline/due.py t2-list; echo \\\"---exit $?---\\\"; git log --oneline -12\", \"description\": \"Confirm T2 list and recent commits\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nfrom datetime import datetime\\nfrom zoneinfo import ZoneInfo\\nprint('ET now:', datetime.now(ZoneInfo('America/New_York')).isoformat())\\n\\\" && echo \\\"--- commits today (ET) ---\\\" && git log --since=\\\"2026-09-25 20:00\\\" --date=iso-local --pretty='%h %ad %s' && echo \\\"--- gate.json files ---\\\" && find events -name gate.json\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nfor k,v in (d.items() if isinstance(d,dict) else []):\\n    print(k, type(v))\\n\\\" ; echo ---; python - <<'EOF'\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(json.dumps({k:(v if not isinstance(v,(dict,list)) else '...') for k,v in d.items()}, indent=1)[:2000])\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nfor t,e in d['events'].items():\\n    st=e.get('status')\\n    print('==',t,st, e.get('calendar_date'), e.get('session'), e.get('snapshot_session'), e.get('entry'))\\n    if st=='PENDING':\\n        print(json.dumps({k:v for k,v in e.items() if k!='rechecks'}, indent=1))\\n        rc=e.get('rechecks',[])\\n        print('rechecks:',len(rc))\\n        print(json.dumps(rc[-1], indent=1))\\nEOF\"}"
+  },
+  {
+   "tool": "ToolSearch",
+   "input": "{\"query\": \"select:WebFetch,WebSearch\", \"max_results\": 2}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport yfinance as yf\\nfor t in ['AEHR','APLD']:\\n    try:\\n        df = yf.Ticker(t).get_earnings_dates(limit=8)\\n        print('==',t)\\n        print(df.head(8).to_string())\\n    except Exception as e:\\n        print(t,'ERROR',type(e).__name__,e)\\nEOF\"}"
+  },
+  {
+   "tool": "WebFetch",
+   "input": "{\"url\": \"https://www.aehr.com/newsroom/\", \"prompt\": \"List every press release / news item shown with its exact date and headline, newest first. Is there any announcement of a first quarter fiscal 2027 financial results date or earnings conference call date? Quote it verbatim if present.\"}",
+   "result_sha256": "0996d2c7fbd06dbba51c52b5b654c1fd22dff2e08fbe13ae9ef6eff324660ba0",
+   "result_head": "# Aehr Test Systems Press Releases and News Items (Newest First)\n\n1. **September 3, 2026** — Aehr Test Systems to Participate in the 10th Annual Lake Street Capital Markets Best Ideas Growth Conference on September 10\n\n2. **August 23, 2026** — Aehr Test Systems to Participate in the Jefferies Semiconductor, IT Hardware & Communications Technology Conference on August 25, 2026\n\n3. **August 13, 2026** — Aehr Test Systems to Participate in the Needham Virtual Semiconductor and SemiCap 1×1 Conferenc"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport urllib.request\\nurl='https://ir.applieddigital.com/news-events/press-releases/rss'\\nreq=urllib.request.Request(url, headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125 Safari/537.36'})\\ntry:\\n    r=urllib.request.urlopen(req, timeout=45)\\n    print('HTTP', r.status)\\n    body=r.read().decode('utf-8','replace')\\nexcept Exception as e:\\n    print('ERROR', type(e).__name__, e); raise SystemExit\\nimport re\\nitems=re.findall(r'<item>(.*?)</item>', body, re.S)\\nprint('items:', len(items))\\nfor it in "
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json, urllib.request\\nfrom pipeline.common import SEC_HEADERS\\nfor t,cik in [('AEHR','0000870748'),('APLD','0001144879')]:\\n    url=f'https://data.sec.gov/submissions/CIK{cik}.json'\\n    try:\\n        req=urllib.request.Request(url, headers=SEC_HEADERS)\\n        d=json.load(urllib.request.urlopen(req, timeout=45))\\n    except Exception as e:\\n        print(t,'ERROR',type(e).__name__,e); continue\\n    r=d['filings']['recent']\\n    print('==',t,d.get('name'))\\n    for i in range(min(6,len(r['form']))):\\n        print('  ',r['filingDate'][i], r['form'][i], r["
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"def \\\\|SEC_HEADERS\\\" pipeline/common.py | head -40\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n 50,110p pipeline/common.py\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nfrom pipeline.common import Sec\\ns=Sec('/tmp/seccache')\\nfor t in ['AEHR','APLD']:\\n    cik=s.cik(t)\\n    print('==',t,'CIK',cik)\\n    for f in s.filings(cik)[:6]:\\n        print('  ',f['filingDate'], f['form'], f['primaryDocument'])\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nfrom pipeline.common import now_et, write_json\\nts = now_et().replace(microsecond=0).isoformat()\\np='universe/pilot/event_status.json'\\nd=json.load(open(p))\\n\\naehr = (f\\\"{ts}: www.aehr.com/newsroom re-read (HTTP 200); newest item is still 2026-09-03 \\\"\\n        \\\"(Lake Street Best Ideas Growth Conference) - no FY27 Q1 results date announced. SEC EDGAR \\\"\\n        \\\"submissions checked as a second company source: newest filings are ARS 2026-09-10 and \\\"\\n        \\\"DEF 14A 2026-09-09 (annual-meeting materials), no 8-K or release carrying an earnings d"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git show --stat 7e9484e | head -20 && echo \\\"=== body ===\\\" && git show -s --format=%B 7e9484e && echo \\\"=== files ===\\\" && git show 7e9484e --name-only --pretty=format: | sed '/^$/d'\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nd=json.load(open('universe/pilot/midseason/2026-09-25.json'))\\ndef brief(o, depth=0):\\n    if isinstance(o, dict):\\n        for k,v in o.items():\\n            if isinstance(v,(dict,list)):\\n                print(' '*depth+k, f'[{type(v).__name__} len={len(v)}]')\\n                if depth<1: brief(v, depth+2)\\n            else:\\n                print(' '*depth+f'{k}: {v}')\\n    elif isinstance(o,list):\\n        print(' '*depth+f'first: {json.dumps(o[0])[:300]}' if o else ' '*depth+'empty')\\nbrief(d)\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json, collections\\nd=json.load(open('universe/pilot/midseason/2026-09-25.json'))\\nc=collections.Counter()\\nfor e in d['excluded']:\\n    r=e.get('reason') or e.get('reasons') or e.get('fail') or [k for k in e if k not in ('ticker','calendar','yfinance')]\\n    c[str(r)]+=1\\nprint(json.dumps(c, indent=1))\\nprint([e['ticker'] for e in d['excluded']])\\nEOF\\necho \\\"=== AV secret in workflows ===\\\"\\ncd /home/runner/work/earnings-experiment/earnings-experiment && grep -rn \\\"ALPHAVANTAGE\\\" .github/workflows/ | head -20\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-24 21:02 ET · pipeline hardened, D005 frozen, external\", \"new_string\": \"**Phase 1 · Pilot (live)** · updated 2026-09-25 21:06 ET · pipeline hardened, D005 frozen, external\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days\", \"new_string\": \"- **2026-09-25 21:06 ET (Fri) — housekeeping (this run).** Nothing was due: no pilot event has a\\n  snapshot session of 2026-09-25 (the next is Mon 2026-09-28, AIR + JBL). `check.py` PASS, `due.py\\n  t2-list` empty, no gate, no freeze, no decision written, and `find events -name gate.json` still\\n  returns nothing. Code ran the **Friday mid-season screen** (D003 §7) and commi"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"- The 2026-09-18 Friday mid-season re-pull (D003 §7) was never run; no code existed. The 09-25\\n  dry run found only BSET and GNS as new names, both industry_out.\", \"new_string\": \"- The 2026-09-18 Friday mid-season re-pull (D003 §7) was never run; no code existed. The 09-25\\n  dry run found only BSET and GNS as new names, both industry_out.\\n- **Mid-season screens run without the Alpha Vantage calendar** (Nasdaq only): `s2-window.yml` does not\\n  pass `ALPHAVANTAGE_API_KEY` "
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"2. First grading run after an exit, and the first `report.py pilot`.\", \"new_string\": \"2. **Laptop session:** add `ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}` to the env of\\n   `.github/workflows/s2-window.yml`, so the Friday mid-season screen stops running Nasdaq-only.\\n3. First grading run after an exit, and the first `report.py pilot`.\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '/^## Next actions/,/^## Watch-outs/p' STATE.md\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"3. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a\\n   one-off workflow that runs `nasdaq`, `av`, `market`, `screen`, or run it in a laptop session.\\n4. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any\\n   surprise factor.\\n5. Before Season B's screening date:\", \"new_string\": \"4. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a\\n   one-off"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py; echo \\\"---exit $?---\\\"; git status --short\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git add STATE.md universe/pilot/event_status.json && git commit -q -F - <<'EOF' && git push origin HEAD:main\\nCloud run 2026-09-25: nothing due; mid-season screen added 0 names; AV key missing in s2-window\\n\\nAEHR and APLD re-checked against company sources and SEC EDGAR; both stay PENDING and\\nneither is late yet. Recorded that .github/workflows/s2-window.yml does not pass\\nALPHAVANTAGE_API_KEY, so every mid-season screen so far is Nasdaq-calendar only.\\n\\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\\nEOF\"}"
+  }
+ ]
+}
