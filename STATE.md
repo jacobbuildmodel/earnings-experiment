@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-24 21:02 ET · pipeline hardened, D005 frozen, external
+**Phase 1 · Pilot (live)** · updated 2026-09-25 21:06 ET · pipeline hardened, D005 frozen, external
 evaluation done — **3 of 10 confirmed events have been lost to missed S2 windows and nothing has been
 gated yet**, but the cause is now settled and fixed: the runner waits for the window instead of
 relying on a scheduled fire landing in it. First test Mon Sep 28. See the Cloud run log.
@@ -236,6 +236,31 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
     unchanged at 2026-10-08 16:00. The ~2026-09-26 announcement its 12-day lead implies is still two
     days out, so it is not yet late either. Earliest possible snapshot session 2026-10-06.
 
+- **2026-09-25 21:06 ET (Fri) — housekeeping (this run).** Nothing was due: no pilot event has a
+  snapshot session of 2026-09-25 (the next is Mon 2026-09-28, AIR + JBL). `check.py` PASS, `due.py
+  t2-list` empty, no gate, no freeze, no decision written, and `find events -name gate.json` still
+  returns nothing. Code ran the **Friday mid-season screen** (D003 §7) and committed
+  `universe/pilot/midseason/2026-09-25.json` (`7e9484e`, 21:03:28 ET): 125 calendar names, 18 tested,
+  **0 added** — 12 `industry_out`, 6 `size`. The pilot's 12 candidates are unchanged.
+  - ⚠ **The mid-season screen ran without Alpha Vantage.** The capture records
+    `"alphavantage": "not pulled - no ALPHAVANTAGE_API_KEY"`. The secret exists (added 09-21) but
+    `.github/workflows/s2-window.yml` never passes it into the job env — `grade.yml` and
+    `s1-screen.yml` both do. So every mid-season screen so far is **Nasdaq-calendar only**, a D003 §7
+    deviation. The AI step may not edit `.github/`; this needs a laptop session, ideally before the
+    Season A screen on Oct 9.
+  - Both PENDING names re-checked against their own company source **and** SEC EDGAR as a second
+    company source; both stay PENDING (detail in `event_status.json` → `rechecks`):
+    - **AEHR** — aehr.com/newsroom (HTTP 200) newest item still 2026-09-03 (Lake Street); no FY27 Q1
+      results date. EDGAR newest filings are ARS 09-10 and DEF 14A 09-09 — annual-meeting material, no
+      8-K or release with an earnings date. yfinance unchanged at 2026-11-02 15:00 ET, intraday. The
+      ~2026-09-28 announcement its ~7-day lead implies is three days out, so it is not yet late.
+      Earliest possible snapshot session 2026-10-01.
+    - **APLD** — stockpr RSS (HTTP 200) newest item still 2026-07-27 16:05 ET; no FY27 Q1 call
+      announcement. EDGAR shows four filings dated 2026-09-25 (POSASR, DEF 14A, DEFA14A, ARS) —
+      annual-meeting and shelf material, none carrying an earnings date. yfinance unchanged at
+      2026-10-08 16:00 ET. The ~2026-09-26 announcement its 12-day lead implies is one day out, so it
+      is not yet late either. Earliest possible snapshot session 2026-10-06.
+
 ### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days
 
 No pilot event has ever been gated. `find events -name gate.json` returns nothing; PAYX, DRI and BB are
@@ -335,6 +360,10 @@ can be known. Implementation hashes are in `D005_implementation_v1.sha256`.
 **Recorded deviations:**
 - The 2026-09-18 Friday mid-season re-pull (D003 §7) was never run; no code existed. The 09-25
   dry run found only BSET and GNS as new names, both industry_out.
+- **Mid-season screens run without the Alpha Vantage calendar** (Nasdaq only): `s2-window.yml` does not
+  pass `ALPHAVANTAGE_API_KEY` into the job env, so `due.py midseason` records
+  `alphavantage: not pulled`. First seen in the live 2026-09-25 screen. Needs a workflow edit from a
+  laptop session — the AI step is forbidden from touching `.github/`.
 - The leave-one-out benchmark is not implemented, because issuer holdings files are not fetchable.
   Every WIN_excess is flagged `bench_weight_missing`.
 - Until the `ALPHAVANTAGE_API_KEY` secret exists, every graded price is `single_source`.
@@ -388,13 +417,15 @@ should no longer be `single_source`).
    change is in (`0eb3314`, `f70ab06`); nothing has ever been gated, so it is unproven. Seven events
    are left: AIR + JBL (Sep 28) · MU (Sep 29) · NKE (Sep 30) · PENG (Oct 5) · LEVI (Oct 6).
    LEVI also needs a second source to catch up to Oct 7 AMC, or code marks it `unconfirmed`.
-2. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
+2. **Laptop session:** add `ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}` to the env of
+   `.github/workflows/s2-window.yml`, so the Friday mid-season screen stops running Nasdaq-only.
+3. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
    Note there is nothing to grade yet — no event has reached entry with a frozen snapshot.
-3. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
+4. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
    one-off workflow that runs `nasdaq`, `av`, `market`, `screen`, or run it in a laptop session.
-4. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any
+5. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any
    surprise factor.
-5. Before Season B's screening date: register `D005_confirmatory_seasonB.json`, including
+6. Before Season B's screening date: register `D005_confirmatory_seasonB.json`, including
    `T2_confidence`.
 
 ## Watch-outs
