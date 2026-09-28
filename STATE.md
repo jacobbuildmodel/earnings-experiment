@@ -411,6 +411,41 @@ experiment specifics) to carry into a CLAUDE-folder chat himself. Nothing was wr
 Nothing blocking. The Alpha Vantage secret was added 2026-09-21 (confirm on the first grading run: prices
 should no longer be `single_source`).
 
+## 🔴 Laptop session 2026-09-28 (~07:50–08:35 ET): Season A capacity — handoff
+
+**On main (`330b82f`):** the season screen now fires 8× across the Oct 8–9 slot, is allowed 300 min
+and checkpoints its capture. The Season A calendar holds ~4,300 names, about 70 min of Yahoo calls, so
+under the old 60-minute limit the screen could never have finished.
+
+**Season A preview (not the screen): 317 candidates, 165 prints on Nov 3–5.** At that volume the
+current pipeline loses events three ways:
+- sequential gating overruns the 80-minute window
+- one AI step cannot decide ~80 T2s before the 16:00 deadline
+- the AI cannot confirm ~300 company dates by hand
+
+**Branch `season-a-readiness` (`7f943e1`) — NOT merged; test before merging:**
+- `find_dates.py`: code confirms dates from company IR feeds (5/5 pilot names correct)
+- parallel gate in `due.py`, which now also commits missed-window statuses itself
+- `s2-window.yml`: T2 as a per-event matrix + finalize job, whole workflow under one concurrency group
+- D006 history study: draft + independent review (13 findings, all addressed) + code. `history.py
+  build` computes events and PIT factors only; `study` refuses until D006 is frozen.
+
+**Next, in order:**
+1. After today's 15:50 ET window: confirm AIR/JBL `gate.json`. A dry run at 08:00 ET worked end to
+   end, but pre-market quotes were blank, so the option gate itself is untested live.
+2. Finish the history build (`python pipeline/history.py build`, ~2 h; no outcomes). Publish the counts
+   into the D006 draft §5.1, then freeze D006 → `registry/`.
+3. `history.py study` → freeze `T1_rule_v0.json` before Oct 12. Then wire T1-by-code into
+   `factors.py`/`freeze.py`, and draft D004 v3: T1 by code; T2 in a hash-random order when capacity
+   runs short (missing at random); stage revenue tag `...IncludingAssessedTax` (AIR and NKE read
+   `unknown` today); a base-rate card before T2's research; a leak probe.
+4. Test the branch on a pilot event (e.g. dispatch after an evening gate), then merge before Oct 8.
+   Do NOT merge during 14:30–15:50 ET.
+5. Rerun the `find_dates` hit-rate test (a 60-name sample was cut off).
+
+Jacob asked for the ORCL/CPRT/ADBE read-throughs from the CLAUDE folder: declined (rule 9). Nothing is
+needed from the evaluation model.
+
 ## Next actions
 
 1. 🔴 **Watch Mon Sep 28 (AIR + JBL) — the first test of the wait-for-the-window fix.** The scheduler
