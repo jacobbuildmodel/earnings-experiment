@@ -100,6 +100,11 @@ jobs:
     permissions:
       contents: write       # freeze and capture commits are pushed to main
       id-token: write
+    env:
+      # The mid-season screen (due.py midseason -> s1_screen) pulls the Alpha Vantage calendar, and
+      # without this it records "not pulled - no ALPHAVANTAGE_API_KEY" as a deviation from D003 §7.
+      # That is what the 2026-09-25 run reported. grade.yml already had it; this job did not.
+      ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
     steps:
       # ref: main, not the SHA that triggered the run: a run that waited in the queue behind another
       # must see that run's commits, or it would gate the same event twice.
