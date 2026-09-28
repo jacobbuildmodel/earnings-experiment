@@ -75,7 +75,17 @@ class Sec:
 
     def cik(self, ticker):
         if self._tickers is None:
-            rows = json.loads(self.get("https://www.sec.gov/files/company_tickers.json")).values()
+            # cached on disk for 12 hours: parallel gate processes would otherwise each fetch it
+            path = os.path.join(self.cache_dir, "company_tickers.json")
+            if os.path.exists(path) and time.time() - os.path.getmtime(path) < 12 * 3600:
+                body = open(path, encoding="utf-8").read()
+            else:
+                body = self.get("https://www.sec.gov/files/company_tickers.json")
+                os.makedirs(self.cache_dir, exist_ok=True)
+                tmp = f"{path}.{os.getpid()}"
+                open(tmp, "w", encoding="utf-8").write(body)
+                os.replace(tmp, path)
+            rows = json.loads(body).values()
             self._tickers = {row["ticker"].upper(): int(row["cik_str"]) for row in rows}
         t = ticker.upper()
         return self._tickers.get(t) or self._tickers.get(t.replace("-", ".")) or self._tickers.get(t.replace(".", "-"))

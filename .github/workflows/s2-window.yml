@@ -40,9 +40,15 @@ on:
     - cron: "0 23 * * 1-5"           # housekeeping + last chance
   workflow_dispatch:        # a run started by hand counts as a housekeeping run
 
+
+# ONE run at a time, for the whole workflow: the waiting gate run, its per-event T2 jobs and finalize must
+# never overlap another run, or two AIs could decide the same event. A fire that arrives meanwhile queues
+# (GitHub keeps one pending run and cancels older pending ones - harmless, the running one does the work).
+concurrency:
+  group: s2-window
+  cancel-in-progress: false
+
 jobs:
-  # Cheap gatekeeper: stdlib only, no installs, no network. Most fires have nothing to do, and this
-  # ends them in seconds instead of paying for a full environment.
   precheck:
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -92,11 +98,12 @@ jobs:
     needs: precheck
     if: needs.precheck.outputs.work == 'true' || needs.precheck.outputs.housekeeping == 'true'
     runs-on: ubuntu-latest
-    # Long enough to wait up to 4 h for the window, then do the full gate + T2 + freeze.
+    # Long enough to wait up to 4 h for the window, then gate; T2 runs in the `t2` jobs below.
     timeout-minutes: 330
-    concurrency:
-      group: s2-window      # never two runs at once - they would both commit
-      cancel-in-progress: false
+    outputs:
+      t2: ${{ steps.plan.outputs.t2 }}
+      t2_json: ${{ steps.plan.outputs.t2_json }}
+      last_chance: ${{ steps.plan.outputs.last_chance }}
     permissions:
       contents: write       # freeze and capture commits are pushed to main
       id-token: write
@@ -142,6 +149,18 @@ jobs:
         continue-on-error: true
         run: python pipeline/due.py midseason
 
+      # Code reads the company IR feeds first and confirms the clear cases (pipeline/find_dates.py);
+      # the AI housekeeping step handles what it leaves PENDING. A Season A preview had ~250 names.
+      - name: Company dates found by code - housekeeping run only
+        if: github.event.schedule == '0 23 * * 1-5' || github.event_name == 'workflow_dispatch'
+        continue-on-error: true
+        timeout-minutes: 90
+        run: |
+          for sf in universe/*/event_status.json; do
+            season=$(basename "$(dirname "$sf")")
+            python pipeline/find_dates.py apply "$season" --commit
+          done
+
       - name: Plan the AI step
         id: plan
         run: |
@@ -164,7 +183,7 @@ jobs:
           git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/'
           test ! -e outcomes && test ! -e archive/PRE_v1_closed && echo "fenced: archive/ and outcomes/ are not on disk"
 
-      - name: T2 decisions and housekeeping (AI)
+      - name: Housekeeping (AI) - PENDING date re-checks and the STATE.md log
         id: ai
         if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true'
         continue-on-error: true
@@ -178,8 +197,9 @@ jobs:
             The repository is checked out and its dependencies are installed. Code has already run
             the health check and the S2 gate for this run.
 
-            Events awaiting a T2 decision (season TICKER date): ${{ steps.plan.outputs.t2_events || 'none' }}
-            Housekeeping run: ${{ steps.plan.outputs.housekeeping }}
+            This is the HOUSEKEEPING run: do section B only. T2 decisions are made by separate per-event
+            jobs of this workflow (the `t2` job); do not write any decision.json.
+            Events awaiting a T2 decision (for your log only): ${{ steps.plan.outputs.t2_events || 'none' }}
 
             End with the short plain-English report section C asks for.
           claude_args: |
@@ -206,19 +226,9 @@ jobs:
             echo "protected files unchanged since $PRE"
           fi
 
-      - name: Finalize - freeze what the AI left, sync statuses (code, no AI)
-        if: always()
-        run: |
-          git pull -q --no-rebase origin main || true
-          if [ "${{ steps.plan.outputs.last_chance }}" = "true" ]; then
-            python pipeline/due.py finalize --last-chance
-          else
-            python pipeline/due.py finalize
-          fi
-
       - name: Log every AI tool call to the repository
         if: always() && steps.plan.outputs.claude == 'true'
-        run: python pipeline/runlog.py /home/runner/work/_temp/claude-execution-output.json "${{ github.run_id }}"
+        run: python pipeline/runlog.py /home/runner/work/_temp/claude-execution-output.json "${{ github.run_id }}_housekeeping"
 
       - name: Health check after the run
         if: always()
@@ -245,3 +255,149 @@ jobs:
           path: /home/runner/work/_temp/claude-execution-output.json
           if-no-files-found: warn
           retention-days: 90
+
+  # One job per event awaiting T2, in parallel. A Season A day can bring 10+ eligible events, and D004 v2
+  # wants every T2 decided by the snapshot-session close; one AI step deciding them in turn could not.
+  # Each job decides and freezes ONE event, in its own fenced checkout, with its own tool-call log.
+  t2:
+    needs: s2
+    if: needs.s2.outputs.t2 == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      max-parallel: 5
+      matrix:
+        event: ${{ fromJSON(needs.s2.outputs.t2_json) }}
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Secret present?
+        run: |
+          if [ "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" != "true" ]; then
+            echo "::error::No CLAUDE_CODE_OAUTH_TOKEN secret. T2 cannot run; finalize will freeze T2 as MISSING."
+          fi
+
+      - name: Remember the code the AI step must not change
+        id: pre
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      # Rules 9-10 and D004 by construction: the AI's checkout has no archive/ and no outcomes/.
+      - name: Hide archive/ and outcomes/ from the AI
+        run: |
+          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/'
+          test ! -e outcomes && test ! -e archive/PRE_v1_closed && echo "fenced: archive/ and outcomes/ are not on disk"
+
+      - name: T2 decision for ${{ matrix.event.ticker }} ${{ matrix.event.date }} (AI)
+        continue-on-error: true
+        timeout-minutes: 45
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          show_full_output: true
+          prompt: |
+            Open ops/actions_prompt.md and follow the instructions below its horizontal rule exactly.
+            The repository is checked out and its dependencies are installed. Code has already run
+            the health check and the S2 gate.
+
+            Decide ONLY this event, then freeze it (section A): ${{ matrix.event.season }} ${{ matrix.event.ticker }} ${{ matrix.event.date }}
+            Other events are decided by parallel jobs - do not touch them. This is not a housekeeping run.
+
+            End with the short plain-English report section C asks for.
+          claude_args: |
+            --model claude-opus-5
+            --max-turns 120
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"
+
+      - name: Restore the full checkout
+        if: always()
+        run: git sparse-checkout disable
+
+      # External review (2026-09-21): the code that freezes, logs and checks must not run from a tree the
+      # AI could have edited. Any change to it - committed or not - is restored and the run fails loudly.
+      - name: Guard - the AI step changed no code, rule or workflow
+        if: always() && steps.pre.outputs.sha != ''
+        run: |
+          PRE=${{ steps.pre.outputs.sha }}
+          CHANGED=$(git diff --name-only "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md CLAUDE.md CHARTER.md)
+          if [ -n "$CHANGED" ]; then
+            echo "::error::The AI step changed protected files: $CHANGED - restored from $PRE; review the run"
+            git checkout "$PRE" -- pipeline check.py .github registry requirements.txt ops/actions_prompt.md CLAUDE.md CHARTER.md
+            echo "guard_tripped=true" >> "$GITHUB_ENV"
+          else
+            echo "protected files unchanged since $PRE"
+          fi
+
+      - name: Log every AI tool call to the repository
+        if: always()
+        run: python pipeline/runlog.py /home/runner/work/_temp/claude-execution-output.json "${{ github.run_id }}_${{ matrix.event.ticker }}"
+
+      - name: Health check after the decision
+        if: always()
+        run: |
+          python check.py
+          if [ "$guard_tripped" = "true" ]; then echo "::error::protected files were changed by the AI step"; exit 1; fi
+
+      - name: Keep the full AI output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-output-${{ matrix.event.ticker }}-${{ matrix.event.date }}
+          path: /home/runner/work/_temp/claude-execution-output.json
+          if-no-files-found: warn
+          retention-days: 90
+
+  # Code, after every T2 job: freeze a valid decision an AI left unfrozen, freeze T2 as MISSING where its
+  # deadline has passed (or on the day's last run), and bring the status files in line with the record.
+  finalize:
+    needs: [s2, t2]
+    if: always() && needs.s2.result != 'skipped' && needs.s2.result != 'cancelled'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Finalize - freeze what the AI left, sync statuses (code, no AI)
+        run: |
+          if [ "${{ needs.s2.outputs.last_chance }}" = "true" ]; then
+            python pipeline/due.py finalize --last-chance
+          else
+            python pipeline/due.py finalize
+          fi
+
+      - name: Health check after the run
+        if: always()
+        run: python check.py

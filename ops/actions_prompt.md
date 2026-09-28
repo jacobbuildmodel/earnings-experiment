@@ -30,10 +30,13 @@ Never:
 The run tells you, in the workflow's prompt, two things: the events awaiting T2, and whether this
 is the housekeeping run.
 
-## A. T2 — for each event awaiting a decision
+## A. T2 — the ONE event this job was given
 
-Confirm the list yourself with `python pipeline/due.py t2-list` (prints `<season> <TICKER> <date>`).
-For each:
+Since 2026-09-28 every event awaiting T2 gets its own parallel job, and the workflow's prompt names
+exactly one event. **Decide only that event.** Other events are handled by other jobs at the same
+time; never write a decision for them. Check that your event is still awaiting T2 with
+`python pipeline/due.py t2-list` (prints `<season> <TICKER> <date>`); if it is not listed, stop and
+report why. For your event:
 
 1. Read the event's `confirm.json`, `gate.json`, `factors.json`, `option_chain.json`, and
    `registry/D004_decision_protocol_v1.md` §3 (and any newer D004 version).
@@ -81,6 +84,13 @@ For each:
 
 1. PENDING events in `universe/<season>/event_status.json`: look for a **company** announcement of
    the report date and session.
+   - **Code went first.** `pipeline/find_dates.py apply` ran just before you. It read the company IR
+     feeds and confirmed the clear cases (flag `confirmed_by_code`). Its note on each event that is
+     still PENDING says what it saw. Do not redo what it did.
+   - **Work in order of urgency:** the earliest possible snapshot session first. A name whose print
+     is weeks away can wait for another night; a name whose snapshot could be tomorrow cannot.
+   - `python pipeline/find_dates.py probe <TICKER>` shows what the company feed says, without
+     writing anything.
    - Where: the IR press-release feed
      `https://<ir-host>/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3&pageSize=8&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`
      (browser User-Agent), or the company source recorded in STATE.md / the status file.

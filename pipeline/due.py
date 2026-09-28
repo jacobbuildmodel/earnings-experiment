@@ -2,7 +2,7 @@
 an agent following a prompt.
 
     python pipeline/due.py gate                 # gate + factor snapshot for every event due now
-    python pipeline/due.py plan [--schedule S]  # prints GitHub step outputs: claude=, housekeeping=, last_chance=
+    python pipeline/due.py plan [--schedule S]  # GitHub step outputs: claude=, t2=, housekeeping=, last_chance=, t2_json=
     python pipeline/due.py t2-list              # events awaiting a T2 decision, one "<season> <TICKER> <date>" per line
     python pipeline/due.py finalize [--last-chance]
     python pipeline/due.py midseason            # Fridays: D003 §7 mid-season screen, committed
@@ -140,6 +140,7 @@ def wait_for_window(max_minutes=MAX_WAIT_MINUTES):
 def gate():
     now = now_et()
     today = now.date().isoformat()
+    todo = []
     for sf in status_files():
         st = load(sf)
         season = st["season"]
@@ -164,26 +165,48 @@ def gate():
             if not os.path.exists(os.path.join(d, "confirm.json")):
                 print(f"{key} {date}: CONFIRMED but no confirm.json - cannot gate")
                 continue
-            print(f"--- gating {key} {date}")
-            if sh("pipeline/s2_gate.py", season, key, date) or not os.path.exists(os.path.join(d, "gate.json")):
-                print(f"{key} {date}: s2_gate.py failed - a later run in the window will retry")
+            todo.append((season, key, date, d))
+        if changed:  # T2 and finalize run in other jobs on a fresh checkout, so commit it here
+            write_json(sf, st)
+            commit([sf], f"Status: {season} missed S2 windows marked (code)")
+    # Gate in parallel. A Season A preview (2026-09-28) puts ~165 prints on Nov 3-5: gated one by one at
+    # ~1 min each, the tail of a busy day would fall past the window's end and be lost as missed_window.
+    # The fetches run in parallel processes; git (commit, freeze) stays in this one thread, in turn.
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    with ThreadPoolExecutor(max_workers=GATE_WORKERS) as pool:
+        futures = {pool.submit(capture, *job): job for job in todo}
+        for fut in as_completed(futures):
+            season, key, date, d = futures[fut]
+            if not fut.result():
                 continue
-            if sh("pipeline/factors.py", season, key, date) or not os.path.exists(os.path.join(d, "factors.json")):
-                # factors.py records failed blocks itself; a crash of the whole script leaves a stub so
-                # the event can still be frozen, with the failure on the record.
-                write_json(os.path.join(d, "factors.json"),
-                           {"meta": {"ticker": key, "report_date": date, "captured_et": now_et().isoformat()},
-                            "error": "factors.py crashed - no factor snapshot", "factors": {}})
-            if not os.path.exists(os.path.join(d, "option_chain.json")):
-                write_json(os.path.join(d, "option_chain.json"), {"error": "s2_gate.py wrote no chain"})
             g = load(os.path.join(d, "gate.json"))
             files = [os.path.join(d, f) for f in ("confirm.json", "gate.json", "option_chain.json", "factors.json")]
             if g["status"] != "PASS":
                 sh("pipeline/freeze.py", season, key, date)
             else:
                 commit(files, f"Capture {key} {date}: S2 gate PASS and factor snapshot - awaiting T2")
-        if changed:  # committed by finalize, which always runs after this step
-            write_json(sf, st)
+
+
+# SEC's fair-access limit is 10 requests a second and each process allows itself 5; four keeps a burst
+# of first calls under it, and the ticker map is cached on disk so most processes never ask for it.
+GATE_WORKERS = 4
+
+
+def capture(season, key, date, d):
+    """s2_gate.py then factors.py for one event. No git here - the caller commits. True if gated."""
+    print(f"--- gating {key} {date}", flush=True)
+    if sh("pipeline/s2_gate.py", season, key, date) or not os.path.exists(os.path.join(d, "gate.json")):
+        print(f"{key} {date}: s2_gate.py failed - a later run in the window will retry")
+        return False
+    if sh("pipeline/factors.py", season, key, date) or not os.path.exists(os.path.join(d, "factors.json")):
+        # factors.py records failed blocks itself; a crash of the whole script leaves a stub so
+        # the event can still be frozen, with the failure on the record.
+        write_json(os.path.join(d, "factors.json"),
+                   {"meta": {"ticker": key, "report_date": date, "captured_et": now_et().isoformat()},
+                    "error": "factors.py crashed - no factor snapshot", "factors": {}})
+    if not os.path.exists(os.path.join(d, "option_chain.json")):
+        write_json(os.path.join(d, "option_chain.json"), {"error": "s2_gate.py wrote no chain"})
+    return True
 
 
 def awaiting_t2():
@@ -203,10 +226,14 @@ def awaiting_t2():
 def plan(schedule):
     t2 = [e for e in awaiting_t2() if now_et() < t2_deadline(e[0], e[4])]  # only events T2 may still decide
     housekeeping = schedule in ("", HOUSEKEEPING_CRON)  # "" = started by hand
-    print(f"claude={'true' if (t2 or housekeeping) else 'false'}")
+    print(f"claude={'true' if housekeeping else 'false'}")  # the housekeeping AI step; T2 runs per event
+    print(f"t2={'true' if t2 else 'false'}")
     print(f"housekeeping={'true' if housekeeping else 'false'}")
     print(f"last_chance={'true' if schedule == HOUSEKEEPING_CRON else 'false'}")
     print(f"t2_events={' ; '.join(f'{s} {t} {d}' for s, t, d, _, _ in t2)}")
+    # one matrix job per event (s2-window.yml `t2`): a Season A day can bring 10+ events, which one AI
+    # step could not decide before the D004 v2 deadline (the snapshot-session close)
+    print("t2_json=" + json.dumps([{"season": s, "ticker": t, "date": d} for s, t, d, _, _ in t2]))
 
 
 def finalize(last_chance):
