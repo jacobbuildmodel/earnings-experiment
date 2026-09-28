@@ -48,6 +48,21 @@ def span(season):
     return start - datetime.timedelta(days=3), end + datetime.timedelta(days=3)
 
 
+def nasdaq_day(d, attempts=4):
+    """One day of the Nasdaq earnings calendar. A transient failure is retried; a persistent one raises,
+    because a calendar with a silently missing day would drop that day's reporters from the season."""
+    for i in range(attempts):
+        try:
+            r = requests.get("https://api.nasdaq.com/api/calendar/earnings",
+                             params={"date": d.isoformat()}, headers=WEB_HEADERS, timeout=30)
+            r.raise_for_status()
+            return (r.json().get("data") or {}).get("rows") or []
+        except (requests.RequestException, ValueError):
+            if i == attempts - 1:
+                raise
+            time.sleep(10 * (i + 1))
+
+
 def capture_nasdaq(season):
     now = in_slot(season)
     _, raw = dirs(season)
@@ -56,10 +71,7 @@ def capture_nasdaq(season):
     d = lo
     while d <= hi:
         if d.weekday() < 5:
-            r = requests.get("https://api.nasdaq.com/api/calendar/earnings",
-                             params={"date": d.isoformat()}, headers=WEB_HEADERS, timeout=30)
-            r.raise_for_status()
-            out["days"][d.isoformat()] = (r.json().get("data") or {}).get("rows") or []
+            out["days"][d.isoformat()] = nasdaq_day(d)
             time.sleep(1)
         d += datetime.timedelta(days=1)
     write_once(os.path.join(raw, "nasdaq_calendar.json"), out)
@@ -121,18 +133,37 @@ def capture_market(season):
     _, raw = dirs(season)
     union = calendar_union(season)
     keep = ["quoteType", "exchange", "marketCap", "industry", "sector", "longName", "shortName", "currency"]
-    out = {"source": "yfinance Ticker.info", "captured_et": now.isoformat(), "tickers": {}}
-    for i, t in enumerate(sorted(union)):
-        try:
-            info = yf.Ticker(t).info or {}
-            out["tickers"][t] = {k: info.get(k) for k in keep}
-        except Exception as exc:  # recorded, never fabricated
-            out["tickers"][t] = {"error": f"{type(exc).__name__}: {exc}"}
-        if i % 25 == 24:
-            print(f"  {i + 1}/{len(union)}")
+    # A season calendar holds ~4,300 names (Season A preview, 2026-09-28): about 70 minutes of Yahoo
+    # calls. Progress is checkpointed so a runner that dies part-way resumes instead of starting over,
+    # and a name that fails is retried before it is recorded as an error.
+    part = os.path.join(ROOT, "cache", f"s1_{season}_market_partial.json")
+    out = (json.load(open(part, encoding="utf-8")) if os.path.exists(part)
+           else {"source": "yfinance Ticker.info", "captured_et": now.isoformat(), "tickers": {}})
+    todo = [t for t in sorted(union) if t not in out["tickers"] or "error" in out["tickers"][t]]
+    print(f"market: {len(union)} names, {len(todo)} to fetch")
+    for i, t in enumerate(todo):
+        if ticker_excluded(t):  # screen_one drops these before it reads market data
+            out["tickers"][t] = {"skipped": "ticker_suffix"}
+            continue
+        for attempt in range(3):
+            try:
+                info = yf.Ticker(t).info or {}
+                out["tickers"][t] = {k: info.get(k) for k in keep}
+                break
+            except Exception as exc:  # recorded, never fabricated
+                out["tickers"][t] = {"error": f"{type(exc).__name__}: {exc}"}
+                if "404" in str(exc) or "Not Found" in str(exc):
+                    break
+                time.sleep(60 if "Too Many Requests" in str(exc) or "429" in str(exc) else 5)
+        if i % 100 == 99:
+            print(f"  {i + 1}/{len(todo)}", flush=True)
+            write_json(part, out)
         time.sleep(0.3)
+    in_slot(season)  # the capture must also END inside the slot
+    out["finished_et"] = now_et().isoformat()
     write_once(os.path.join(raw, "yfinance_market.json"), out)
-    print(f"market: {len(out['tickers'])} tickers, captured {now:%H:%M} ET")
+    errors = sum(1 for v in out["tickers"].values() if "error" in v)
+    print(f"market: {len(out['tickers'])} tickers ({errors} errors), captured {now:%H:%M} ET")
 
 
 def ticker_excluded(t):

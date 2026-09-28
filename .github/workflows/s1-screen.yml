@@ -1,15 +1,20 @@
 # Season screen (D003 S1) - code only, no AI.
 #
-# Season A's capture slot is 2026-10-08 16:00 ET -> 2026-10-09 09:30 ET (D003 §2). This fires at
-# 05:00 and 07:00 UTC on 9 October (01:00 and 03:00 ET), inside the slot; the second fire is a no-op if
-# the first already captured (raw captures are write-once). s1_screen.py refuses to capture outside the
-# slot, so a stray yearly fire does nothing. Later seasons get their own dates when their D003 version
-# registers them.
+# Season A's capture slot is 2026-10-08 16:00 ET -> 2026-10-09 09:30 ET (D003 §2) = 20:00 UTC Oct 8 ->
+# 13:30 UTC Oct 9. s1_screen.py refuses to capture outside the slot, so a stray yearly fire does nothing.
+# Later seasons get their own dates when their D003 version registers them.
+#
+# 2026-09-28: was two fires (05:00 and 07:00 UTC Oct 9). GitHub DROPPED both in-window S2 fires on
+# 09-21 and 09-22 (see s2-window.yml), so two fires is not enough for a once-a-season capture. It now
+# fires every two hours across the slot; each step is skipped once its raw file exists, a capture that
+# dies part-way resumes from a checkpoint, and the job is allowed 300 minutes: a Season A calendar holds
+# ~4,300 names, about 70 minutes of Yahoo calls, which the old 60-minute limit could never finish.
 name: Earnings experiment - season screen
 
 on:
   schedule:
-    - cron: "0 5,7 9 10 *"
+    - cron: "7 20,22 8 10 *"          # 16:07, 18:07 ET Oct 8
+    - cron: "7 0,2,4,6,8,10 9 10 *"   # 20:07 ET Oct 8 ... 06:07 ET Oct 9
   workflow_dispatch:
     inputs:
       season:
@@ -20,7 +25,7 @@ on:
 jobs:
   s1:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 300
     concurrency:
       group: s1-screen
       cancel-in-progress: false
@@ -54,12 +59,29 @@ jobs:
         run: |
           if [ -f "universe/$SEASON/candidates.json" ]; then echo "yes=true" >> "$GITHUB_OUTPUT"; echo "already screened"; fi
 
+      # The market capture checkpoints to cache/; carry it between fires so a killed run resumes.
+      - name: Restore a part-finished market capture
+        if: steps.done.outputs.yes != 'true'
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/s1_${{ env.SEASON }}_market_partial.json
+          key: s1-market-${{ env.SEASON }}-${{ github.run_id }}
+          restore-keys: s1-market-${{ env.SEASON }}-
+
       - name: Capture calendars and market data (inside the slot only)
         if: steps.done.outputs.yes != 'true'
         run: |
           [ -f "universe/$SEASON/raw/nasdaq_calendar.json" ] || python pipeline/s1_screen.py "$SEASON" nasdaq
           [ -f "universe/$SEASON/raw/av_calendar.csv" ] || python pipeline/s1_screen.py "$SEASON" av || echo "::warning::Alpha Vantage calendar not captured - the screen runs on Nasdaq alone (D003 v2, flagged single_calendar)"
           [ -f "universe/$SEASON/raw/yfinance_market.json" ] || python pipeline/s1_screen.py "$SEASON" market
+
+      - name: Keep the market checkpoint for the next fire
+        if: always() && steps.done.outputs.yes != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: cache/s1_${{ env.SEASON }}_market_partial.json
+          key: s1-market-${{ env.SEASON }}-${{ github.run_id }}
+        continue-on-error: true
 
       - name: Screen, commit, and initialise event statuses
         if: steps.done.outputs.yes != 'true'
