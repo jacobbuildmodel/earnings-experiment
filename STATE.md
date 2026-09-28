@@ -417,8 +417,12 @@ should no longer be `single_source`).
    change is in (`0eb3314`, `f70ab06`); nothing has ever been gated, so it is unproven. Seven events
    are left: AIR + JBL (Sep 28) · MU (Sep 29) · NKE (Sep 30) · PENG (Oct 5) · LEVI (Oct 6).
    LEVI also needs a second source to catch up to Oct 7 AMC, or code marks it `unconfirmed`.
-2. **Laptop session:** add `ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}` to the env of
-   `.github/workflows/s2-window.yml`, so the Friday mid-season screen stops running Nasdaq-only.
+2. ~~Pass `ALPHAVANTAGE_API_KEY` into `s2-window.yml`~~ — **done `420cb29` (2026-09-28).** Confirm on
+   Fri Oct 2: the mid-season capture should no longer say `alphavantage: not pulled`.
+   - 2026-09-28 laptop session: Jacob asked for the ORCL / CPRT / ADBE correction read-throughs in the
+     CLAUDE folder. **Declined under rule 9** — nothing in `..\CLAUDE\` was opened. If a data-source
+     fact is in there, it comes in by Jacob pasting only that fact, and it is re-verified against a
+     primary source before it is used.
 3. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
    Note there is nothing to grade yet — no event has reached entry with a frozen snapshot.
 4. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
