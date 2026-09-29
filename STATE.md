@@ -1,11 +1,13 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-28 22:29 ET · pipeline hardened, D005 frozen, external
-evaluation done — **5 of 10 confirmed events are now lost to missed S2 windows and nothing has ever been
-gated.** 🔴 **The wait-for-the-window fix FAILED its first live test: AIR and JBL were lost on Mon Sep 28,
-the same way as PAYX, DRI and BB.** Five events are left (MU Sep 29 · NKE Sep 30 · PENG Oct 5 · LEVI and
-APLD Oct 6) and the next one is tomorrow. See the Cloud run log for what can and cannot be told from
-inside the runner.
+**Phase 1 · Pilot (live)** · updated 2026-09-29 14:36 ET · pipeline hardened, D005 frozen, external
+evaluation done — **the pipeline gated an event for the first time today: MU, inside the window, frozen
+INELIGIBLE `thin_oi`.** The scheduler problem is over (the wait held); a **rule** problem replaced it.
+MU's Oct 2 expiry carries **309,771 contracts of open interest**, and the gate rejected it on **260 at
+one strike** — D003's floor is measured at the single nearest strike, which scales wrongly with share
+price. That floor is unchanged in D003 v2, so Season A inherits it. Five of ten confirmed events were
+lost to missed windows (PAYX · DRI · BB · AIR · JBL) and MU is out by rule, leaving **four live events**:
+NKE Sep 30 · PENG Oct 5 · LEVI and APLD Oct 6.
 
 ## Where things are
 
@@ -321,6 +323,42 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
     LEVI on 2026-10-07 `time-after-hours`; both agree with the company's AMC Oct 7, so the 09-23 warning
     that LEVI would be marked `unconfirmed` no longer applies.
 
+- **2026-09-29 14:31 ET (Tue) — 🟢 THE FIRST GATE EVER, and 🔴 MU is out by rule, not by scheduler.**
+  `check.py` PASS. Code gated MU **inside the window** and froze it in the same minute:
+  `gate.json` `captured_et` **14:31:00 ET**, `in_s2_window` true, freeze commit **`6da4a56`** at
+  **14:31:08 ET**, entry open 2026-09-30 09:30 ET → **BLIND**, with both RFC 3161 tokens. `find events
+  -name gate.json` now returns **1**. The four-hour `wait` did what the six extra fires could not.
+  - **Status INELIGIBLE, reason `thin_oi`.** Everything else passed: date and session confirmed by the
+    company (a 14:30 MT = 16:30 ET call, `session_from_call_time`) with yfinance 2026-09-30 16:00 and
+    the Nasdaq calendar `time-after-hours` both agreeing; spot 1072.66; expiry 2026-10-02, one session
+    after the reaction day; implied move **7.69%** (floor 4%); relative spreads **0.85%** call and
+    0.85% put (ceiling 10%). It failed only `OI(call) + OI(put) ≥ 500` at the nearest strike: **211 +
+    49 = 260**.
+  - 🔴 **That is a defect in the liquidity test, not an illiquid stock.** The captured 2026-10-02 chain
+    holds **309,771 contracts** of open interest across 240 call and 252 put strikes — 10,884 at the
+    1100 call alone. At a $1,072 share price the strike grid is $2.50–$5 wide, so one contract is
+    ~$107k of notional and per-strike OI is naturally small; a fixed 500-contract floor at **one**
+    strike therefore rejects the most liquid names hardest. Everything the experiment needs — a tight
+    two-sided quote and a real implied move — was there. **D003 v2 keeps `min_oi_call_plus_put: 500`
+    at the same single nearest strike**, so Season A inherits it. Rule 5: MU stays INELIGIBLE and v1
+    and v2 stay untouched; this goes to D003 v3 as a pre-registered change (candidates: OI summed over
+    the strikes within ±1 implied move, or a notional floor, or dollar volume instead of OI).
+  - The option gate had never run live against real quotes before today (the 09-28 dry run had blank
+    pre-market quotes). It ran clean, retried nothing, and stored the full chain.
+  - `due.py t2-list` empty — MU is INELIGIBLE, so **no T2 decision was due and none was written**. This
+    step gated nothing and froze nothing; code did both.
+  - **AEHR stays PENDING and is now late against its own pattern.** aehr.com/newsroom (HTTP 200) newest
+    item is still 2026-09-28, the CEO Investor Summit release — an investor conference, not an earnings
+    date; the newest financial-news item is still the 2026-07-14 FY26 Q4 results release. SEC EDGAR as
+    the second company source: newest filings ARS 2026-09-10 and DEF 14A 2026-09-09, annual-meeting
+    material, **no 8-K carrying a date**. yfinance unchanged at 2026-11-02 15:00 ET, intraday and
+    outside the window; Nasdaq unchanged at 2026-10-05 `time-not-supplied` (fiscal quarter ending
+    Aug/2026), and AEHR is on no Oct 6 or Oct 7 calendar row. Its ~7-day lead implied an announcement
+    **yesterday**. Earliest possible snapshot session **2026-10-01** — two housekeeping runs left before
+    code marks it INELIGIBLE `unconfirmed`. Expect that.
+  - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** and is the first event that can actually reach
+    a T2 decision.
+
 ### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
 
 **Updated 2026-09-28: AIR and JBL make it five (PAYX · DRI · BB · AIR · JBL).** The section below is the
@@ -514,32 +552,40 @@ needed from the evaluation model.
 
 ## Next actions
 
-1. 🔴 **The wait-for-the-window fix did not hold: AIR and JBL were lost on Mon Sep 28** (`0eb3314`,
-   `f70ab06` were in). Five of ten confirmed events are gone and nothing has ever been gated. **MU is
-   tomorrow, Tue Sep 29**; then NKE Sep 30 · PENG Oct 5 · LEVI + APLD Oct 6. Two things a laptop session
-   must do, in this order, before Tue's window:
-   - **Read the Actions run list and step logs for 2026-09-28** — that alone separates "GitHub dropped
-     every fire in the five-hour span" from "`s2_gate.py` crashed inside the window under
-     `continue-on-error: true`". Both fit the evidence visible in the repo.
-   - **Give the `s2` job `actions: read`** so the AI step can read its own run history instead of getting
-     HTTP 403, and **wrap the `chain_gate` call at `s2_gate.py:200`** the way the fallback at :206 already
-     is, so a yfinance error writes an INELIGIBLE gate instead of silently losing the event. The AI step
-     may not touch `.github/` or `pipeline/`.
+1. 🔴 **The single-strike open-interest floor is throwing away good events — fix it in D003 v3 before
+   the Season A screen (Oct 9).** MU was gated cleanly on 2026-09-29 and rejected `thin_oi` on 260
+   contracts at the nearest strike while its captured expiry held **309,771**. The floor is
+   `min_oi_call_plus_put: 500` at the **one** nearest strike in **both** D003 v1 and v2, so it is a
+   live Season A defect, not a pilot curiosity, and it bites hardest on the highest-priced, most liquid
+   names. Rule 5: **do not edit v1 or v2, and do not re-gate MU** — write v3, pre-registered, with a
+   measure that does not scale with share price (OI summed over strikes within ±1 implied move · a
+   notional floor · dollar option volume · or drop the OI test and keep the spread test, which MU
+   passed at 0.85%). Check the same arithmetic against the other high-priced Season A names before
+   choosing the number.
+2. 🟢 **The scheduler problem looks solved — confirm it holds.** `due.py wait` (`f70ab06`) produced the
+   first gate in the pilot's history on 2026-09-29 at 14:31 ET, after failing on 09-28. Two clean
+   in-window gates in a row (NKE Sep 30, then PENG Oct 5) would settle it. Still worth doing from a
+   laptop session, because neither is fixed and both would have hidden today's success or tomorrow's
+   failure: **give the `s2` job `actions: read`** (the AI step gets HTTP 403 on its own run history),
+   and **wrap the `chain_gate` call at `pipeline/s2_gate.py:200`** the way the fallback at :206 already
+   is, so a yfinance error writes an INELIGIBLE gate instead of silently losing the event. The AI step
+   may not touch `.github/` or `pipeline/`.
    - LEVI's second sources caught up on 09-28 (yfinance Oct 7 16:00, Nasdaq Oct 7 `time-after-hours`), so
      the `unconfirmed` risk flagged on 09-23 has cleared. AEHR must announce by Oct 1 or it is INELIGIBLE.
-2. ~~Pass `ALPHAVANTAGE_API_KEY` into `s2-window.yml`~~ — **done `420cb29` (2026-09-28).** Confirm on
+3. ~~Pass `ALPHAVANTAGE_API_KEY` into `s2-window.yml`~~ — **done `420cb29` (2026-09-28).** Confirm on
    Fri Oct 2: the mid-season capture should no longer say `alphavantage: not pulled`.
    - 2026-09-28 laptop session: Jacob asked for the ORCL / CPRT / ADBE correction read-throughs in the
      CLAUDE folder. **Declined under rule 9** — nothing in `..\CLAUDE\` was opened. If a data-source
      fact is in there, it comes in by Jacob pasting only that fact, and it is re-verified against a
      primary source before it is used.
-3. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
-   Note there is nothing to grade yet — no event has reached entry with a frozen snapshot.
-4. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
+4. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
+   Note there is still nothing to grade — MU is frozen INELIGIBLE, so no event has yet reached entry
+   with a PASS snapshot.
+5. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
    one-off workflow that runs `nasdaq`, `av`, `market`, `screen`, or run it in a laptop session.
-5. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any
+6. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any
    surprise factor.
-6. Before Season B's screening date: register `D005_confirmatory_seasonB.json`, including
+7. Before Season B's screening date: register `D005_confirmatory_seasonB.json`, including
    `T2_confidence`.
 
 ## Watch-outs
