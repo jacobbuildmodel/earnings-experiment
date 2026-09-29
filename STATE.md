@@ -359,6 +359,25 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** and is the first event that can actually reach
     a T2 decision.
 
+- **2026-09-29 14:36 ET — housekeeping (this run, the second fire of the same ET day; the first was the
+  14:31–14:35 gate-and-housekeeping run above).** `check.py` PASS. `due.py t2-list` empty — MU is frozen
+  INELIGIBLE and no other event has a snapshot session of 2026-09-29, so nothing was awaiting T2, no
+  decision was written, and this step gated nothing and froze nothing. Today's four commits are all from
+  the earlier run: `6da4a56` (Freeze MU) · `ed76268` (housekeeping) · `6b5feb1` (status sync) · `ba0e8b3`
+  (AI tool log). Not a Friday, so no mid-season screen.
+  - **AEHR stays PENDING** — re-checked again two minutes after the last re-check, and nothing had moved.
+    aehr.com/newsroom (HTTP 200) newest item still 2026-09-28, the CEO Investor Summit release — an
+    investor conference, not an earnings date; newest Financial News item still the 2026-07-14 FY26 Q4
+    results release. SEC EDGAR (CIK 0001040470) as the second company source: newest filings ARS
+    2026-09-10 and DEF 14A 2026-09-09, annual-meeting material, **no 8-K carrying a date**. yfinance
+    unchanged at 2026-11-02 15:00 ET, intraday and outside the window. Nasdaq unchanged at 2026-10-05
+    `time-not-supplied` (fiscal quarter ending Aug/2026), and AEHR is on no Oct 1, Oct 6 or Oct 7 row.
+    Earliest possible snapshot session **2026-10-01** — one housekeeping run left before code marks it
+    INELIGIBLE `unconfirmed`. Expect that.
+  - Two fires per ET day means the second one duplicates the first one's re-check. That is cheap, but the
+    re-check list is now mostly repetition; worth collapsing to one PENDING re-check per ET day when the
+    workflow is next edited from a laptop session.
+
 ### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
 
 **Updated 2026-09-28: AIR and JBL make it five (PAYX · DRI · BB · AIR · JBL).** The section below is the
