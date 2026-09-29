@@ -33,7 +33,7 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et, rule_for, write_json  # noqa: E402
 from sessions import s2_window  # noqa: E402
-from freeze import decision_problems, git, push_all, t2_deadline  # noqa: E402
+from freeze import decision_problems, fill_t1, git, push_all, t2_deadline  # noqa: E402
 
 PY = sys.executable
 # UTC cron of the day's housekeeping + last-chance run (see .github/workflows/s2-window.yml).
@@ -178,14 +178,23 @@ def gate():
         futures = {pool.submit(capture, *job): job for job in todo}
         for fut in as_completed(futures):
             season, key, date, d = futures[fut]
-            if not fut.result():
-                continue
-            g = load(os.path.join(d, "gate.json"))
-            files = [os.path.join(d, f) for f in ("confirm.json", "gate.json", "option_chain.json", "factors.json")]
-            if g["status"] != "PASS":
-                sh("pipeline/freeze.py", season, key, date)
-            else:
-                commit(files, f"Capture {key} {date}: S2 gate PASS and factor snapshot - awaiting T2")
+            try:  # one event's failure must never stop the others being committed (review 2026-09-29)
+                if not fut.result():
+                    continue
+                g = load(os.path.join(d, "gate.json"))
+                files = [os.path.join(d, f) for f in ("confirm.json", "gate.json", "option_chain.json", "factors.json")]
+                if g["status"] != "PASS":
+                    sh("pipeline/freeze.py", season, key, date)
+                else:
+                    commit(files, f"Capture {key} {date}: S2 gate PASS and factor snapshot - awaiting T2")
+            except BaseException as exc:  # noqa: BLE001 - includes SystemExit from git()
+                print(f"::error::{key} {date}: {type(exc).__name__}: {exc} - swept up below")
+    # sweep: anything captured but not committed (a crash above) is committed now, so the T2 jobs'
+    # fresh checkouts see it
+    status = git("status", "--porcelain", "--untracked-files=all", "--", "events")
+    left = [os.path.join(ROOT, ln[3:].strip('"')) for ln in status.splitlines() if ln.strip()]
+    if left:
+        commit(left, "Capture sweep: gate files left uncommitted by a failed step (code)")
 
 
 # SEC's fair-access limit is 10 requests a second and each process allows itself 5; four keeps a burst
@@ -239,10 +248,45 @@ def plan(schedule):
     print("t2_json=" + json.dumps([{"season": s, "ticker": t, "date": d} for s, t, d, _, _ in t2]))
 
 
+def t2_open(season, ticker, date):
+    """True while T2 may still decide this event (runner clock, not the AI's own timestamp)."""
+    d = os.path.join(ROOT, "events", season, f"{ticker}_{date}")
+    if os.path.exists(os.path.join(d, "manifest.json")) or not os.path.exists(os.path.join(d, "gate.json")):
+        return False
+    gj = load(os.path.join(d, "gate.json"))
+    return now_et() < min(entry_open(gj), t2_deadline(season, gj))
+
+
+# the code freeze runs seconds after the AI step ends; allow that much between them
+FREEZE_SLACK = datetime.timedelta(minutes=3)
+
+
+def freeze_one(season, ticker, date):
+    """The T2 job's code step, in the full checkout, right after the AI: freeze a valid decision, or a
+    late one as T2 MISSING (judged by the runner clock); an invalid one is left for finalize."""
+    d = os.path.join(ROOT, "events", season, f"{ticker}_{date}")
+    if os.path.exists(os.path.join(d, "manifest.json")):
+        print(f"{ticker} {date}: already frozen")
+        return
+    gj = load(os.path.join(d, "gate.json"))
+    deadline = min(entry_open(gj), t2_deadline(season, gj))
+    if now_et() > deadline + FREEZE_SLACK:
+        sh("pipeline/freeze.py", season, ticker, date, "--t2-missing",
+           f"T2 step ended after its deadline {deadline:%Y-%m-%d %H:%M} ET (runner clock {now_et():%H:%M:%S} ET)")
+        return
+    fill_t1(season, d)
+    dp = os.path.join(d, "decision.json")
+    if os.path.exists(dp) and not decision_problems(load(dp), gj, deadline):
+        sh("pipeline/freeze.py", season, ticker, date)
+    else:
+        print(f"{ticker} {date}: no valid decision - left for finalize")
+
+
 def finalize(last_chance):
     for season, t, date, d, gj in awaiting_t2():
         dp = os.path.join(d, "decision.json")
         deadline = min(entry_open(gj), t2_deadline(season, gj))
+        fill_t1(season, d)  # D004 v3: T1 is code's; a decision without one must not be judged invalid
         valid = os.path.exists(dp) and not decision_problems(load(dp), gj, deadline)
         if valid:
             print(f"--- {t} {date}: valid decision, not frozen - freezing")
@@ -336,5 +380,9 @@ if __name__ == "__main__":
         midseason()
     elif cmd == "finalize":
         finalize("--last-chance" in a)
+    elif cmd == "t2-open":
+        print("open=" + ("true" if t2_open(a[1], a[2], a[3]) else "false"))
+    elif cmd == "freeze-one":
+        freeze_one(a[1], a[2], a[3])
     else:
         raise SystemExit(__doc__)

@@ -73,8 +73,8 @@ def decide(h_values, season):
     """T1 for one event from its live H factors. Returns the decision.json t1 block."""
     try:
         rule = registry(RULE_FILE)
-    except SystemExit:
-        return {"decision": None, "note": "rule v0 not frozen"}
+    except (SystemExit, OSError):  # not frozen yet, or not on disk (the T2 job's fenced checkout)
+        return {"decision": None, "note": "rule v0 not frozen or not on disk"}
     if season not in rule["applies_to_seasons"]:
         return {"decision": None, "note": f"{rule['id']} does not apply to {season}"}
     c, missing = composite(h_values or {}, rule["reference"], rule["factors"])

@@ -46,7 +46,7 @@ TITLE_RESULTS = re.compile(r"(result|earnings|quarter)", re.I)
 MONTHS = {m: i + 1 for i, m in enumerate(
     ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"])}
 # "." or DOT: sentences() swaps an abbreviation's period for DOT while it splits
-DATE_RE = re.compile(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*[.․]?\s+(\d{1,2})"
+DATE_RE = re.compile(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*[.․]?\s+(\d{1,2})(?!\d)"
                      r"(?:st|nd|rd|th)?(?:,?\s+(20\d\d))?", re.I)
 US = r"(u[.․]s[.․] )?"
 BMO_RE = re.compile(rf"before (the )?{US}(stock )?market(s)? open|prior to (the )?{US}(stock )?market(s)?"
@@ -188,6 +188,10 @@ def parse_page(text, window, published):
                 continue
             if not lo <= d <= hi:
                 continue
+            before = s[max(0, m.start() - 40): m.start()].lower()
+            if re.search(r"(ended|ending|end of|as of|through|until|replay|period)\W+(\w+\W+){0,2}$", before):
+                continue  # a quarter end, a replay window - not the report date
+            hedged = bool(re.search(r"on or about|tentative|subject to change|expected to be on|around\W*$", before + " "))
             session, from_call = None, False
             bmo, amc = BMO_RE.search(clause), AMC_RE.search(clause)
             if bmo and not amc:
@@ -203,7 +207,7 @@ def parse_page(text, window, published):
             # verbatim: the page's own words around the date, abbreviation periods restored
             quote = s[max(0, m.start() - 350): m.end() + 250].replace(DOT, ".").strip()
             found.append({"date": d.isoformat(), "session": session, "session_from_call_time": from_call,
-                          "sentence": quote})
+                          "hedged": hedged, "sentence": quote})
     return found
 
 
@@ -234,8 +238,15 @@ def probe(ticker, window, since_days=75):
     use = explicit or by_call
     dates = sorted({s["date"] for s in use})
     sessions = sorted({s["session"] for s in use})
+    all_dates = sorted({s["date"] for s in statements})
     if not statements:
         res["outcome"] = "no_date_announced"
+    elif any(s["hedged"] for s in statements):
+        res["outcome"] = f"hedged_date {all_dates}"
+    elif len(all_dates) > 1:
+        # e.g. results on Oct 22 (no session given) and a call on Oct 23 at 8:30 a.m.: taking the call's
+        # date would confirm the wrong day, and yfinance often stamps the call - leave it to the AI step
+        res["outcome"] = f"ambiguous_dates {all_dates}"
     elif not use:
         res["outcome"] = f"no_session_stated {sorted({s['date'] for s in statements})}"
     elif len(dates) > 1:
@@ -264,16 +275,55 @@ def apply(season, do_commit=False):
     snap = rule["s2"]["snapshot_session"]
     today = now_et().date()
     confirmed, paths = [], [sp]
-    for key, ev in sorted(st["events"].items()):
-        if ev.get("status") != "PENDING":
-            continue
+    started = time.time()
+
+    def earliest(item):  # most urgent first: the earliest calendar date any source gives
+        ev = item[1]
+        dates = ev.get("calendar_dates") or re.findall(r"20\d\d-\d\d-\d\d", ev.get("note", "")) or ["9999"]
+        return (min(dates), item[0])
+
+    pending = sorted(((k, e) for k, e in st["events"].items() if e.get("status") == "PENDING"), key=earliest)
+    for n, (key, ev) in enumerate(pending):
+        if time.time() - started > BUDGET_SECONDS:
+            print(f"budget of {BUDGET_SECONDS // 60} min used - {len(pending) - n} names left for the next run / AI step")
+            break
+        try:
+            confirm_one(season, key, ev, window, snap, today, confirmed, paths)
+        except Exception as exc:  # one bad page must not cost the rest
+            ev.setdefault("rechecks", []).append(f"{now_et().isoformat()}: {VERSION} - error {type(exc).__name__}: {exc}")
+        if do_commit and (n + 1) % 20 == 0:
+            st["updated_et"] = now_et().isoformat()
+            write_json(sp, st)
+            from due import commit
+            commit(paths, f"{season}: company dates found by code (batch) - {confirmed}")
+        time.sleep(0.5)
+    st["updated_et"] = now_et().isoformat()
+    write_json(sp, st)
+    print(f"{season}: confirmed by code {confirmed}")
+    if do_commit:
+        from due import commit
+        commit(paths, f"{season}: company dates found by code - {len(confirmed)} confirmed {confirmed}")
+    return confirmed
+
+
+BUDGET_SECONDS = 75 * 60
+
+
+def confirm_one(season, key, ev, window, snap, today, confirmed, paths):
+    from sessions import shift
+    if ev.get("status") == "PENDING":
         res = probe(key, window)
         note = f"{res['checked_et']}: {VERSION} - {res['outcome']}"
         if res.get("newest_item"):
             note += f"; feed {res['feed']}, newest item {res['newest_item']['published'][:16]} '{res['newest_item']['title'][:80]}'"
         if res["outcome"] == "found":
             date, session = res["date"], res["session"]
-            snap_session = shift(datetime.date.fromisoformat(date), snap[session])
+            try:
+                snap_session = shift(datetime.date.fromisoformat(date), snap[session])
+                shift(datetime.date.fromisoformat(date), 0)  # the report date must itself be a session
+            except ValueError as exc:
+                ev.setdefault("rechecks", []).append(f"{res['checked_et']}: {VERSION} - found {date} {session}, not a session: {exc}")
+                return
             ok, seconds = second_source_agrees(key, date, session)
             if snap_session <= today:
                 note += f"; found {date} {session} but its snapshot session {snap_session} has passed - left for the AI step"
@@ -302,14 +352,6 @@ def apply(season, do_commit=False):
                 confirmed.append(key)
         ev.setdefault("rechecks", []).append(note)
         print(note)
-        time.sleep(0.5)
-    st["updated_et"] = now_et().isoformat()
-    write_json(sp, st)
-    print(f"{season}: confirmed by code {confirmed}")
-    if do_commit:
-        from due import commit
-        commit(paths, f"{season}: company dates found by code - {len(confirmed)} confirmed {confirmed}")
-    return confirmed
 
 
 if __name__ == "__main__":

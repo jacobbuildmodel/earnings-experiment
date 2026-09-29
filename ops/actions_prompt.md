@@ -61,11 +61,13 @@ report why. For your event:
 
    ```json
    {"t0": {"decision": "BUY"},
-    "t1": {"decision": null, "note": "rule v0 not frozen - pilot"},
+    "t1": {"decision": null, "note": "rule v0 not frozen - pilot"},   // pilot only; from Season A omit t1 - code writes it
     "t2": {"decision": "BUY or NO_BUY", "confidence": 0.00,
            "thesis": "one sentence", "reasons": ["2-5 items"], "deciding_variable": "...",
            "inputs_read": [{"what": "...", "url_or_file": "...", "published": "YYYY-MM-DD or ISO time"}],
-           "decided_et": "ISO time with offset, now"}}
+           "decided_et": "ISO time with offset, now",
+           "prior": {"p": 0.54, "from": "which base rate, and why"},      // Season A on (D004 v3)
+           "leak_probe": "your from-memory answer, verbatim"}}          // Season A on (D004 v3)
    ```
 
    - **Deadline.** Pilot (D004 v1): before the entry open. From Season A (D004 v2): `decided_et` must
@@ -85,10 +87,11 @@ report why. For your event:
 4. Write `thesis.md` — FRAMEWORK.md §4 items 1–6: identity, cluster and stage (`K_stage` in
    factors.json); the factor snapshot by reference; three theses, each *expected · mechanism · what
    proves it wrong*; key observations to capture; the predicted deciding variable; the decisions.
-5. Run `python pipeline/freeze.py <season> <T> <date>`. It must print `BLIND (before open)` and a
-   successful push. If it refuses the decision, fix what it names and run it again. If you cannot
-   produce a valid decision, leave it: code freezes T2 as MISSING on the day's last run.
-   Never rebase, amend or re-commit a freeze commit.
+5. **Stop. Do not run `pipeline/freeze.py`, and do not commit.** Since 2026-09-29 code freezes the
+   event in the full checkout straight after you, judged by the runner clock. It needs the T1 rule,
+   which is not in your checkout. Before you stop, check `decision.json` against step 3: confidence
+   and decision must agree, and every input must carry `published`. From Season A it also needs
+   `prior` and `leak_probe`. A decision code finds invalid is frozen as T2 MISSING.
 
 ## B. Housekeeping — only when the workflow says this is the housekeeping run
 

@@ -59,7 +59,8 @@ class Sec:
         self._tickers = None
 
     def get(self, url, binary=False):
-        wait = 0.2 - (time.time() - self.last)
+        # 0.45 s per process: four parallel gate workers stay under SEC's 10 requests/second
+        wait = 0.45 - (time.time() - self.last)
         if wait > 0:
             time.sleep(wait)
         for attempt in range(3):
@@ -72,6 +73,18 @@ class Sec:
                 continue
             r.raise_for_status()
         r.raise_for_status()
+
+    def facts(self, cik):
+        """XBRL companyfacts, cached on disk for 12 hours (stage and H factors both read it)."""
+        path = os.path.join(self.cache_dir, f"companyfacts_{cik}.json")
+        if os.path.exists(path) and time.time() - os.path.getmtime(path) < 12 * 3600:
+            return json.load(open(path, encoding="utf-8"))
+        body = self.get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json")
+        os.makedirs(self.cache_dir, exist_ok=True)
+        tmp = f"{path}.{os.getpid()}"
+        open(tmp, "w", encoding="utf-8").write(body)
+        os.replace(tmp, path)
+        return json.loads(body)
 
     def cik(self, ticker):
         if self._tickers is None:

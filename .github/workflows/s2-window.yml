@@ -94,7 +94,8 @@ jobs:
               d = os.path.dirname(g)
               if not os.path.exists(f"{d}/manifest.json"):
                   gj = json.load(open(g, encoding="utf-8"))
-                  if gj.get("status") == "PASS" and not gj.get("dry"):
+                  entry = gj.get("timing", {}).get("entry", {}).get("session", "")
+                  if gj.get("status") == "PASS" and not gj.get("dry") and today <= entry:
                       work.append(f"t2:{gj['ticker']}")
           print("work=" + ("true" if work else "false"))
           print("why=" + (", ".join(work) if work else "nothing due today"))
@@ -167,12 +168,13 @@ jobs:
         run: |
           for sf in universe/*/event_status.json; do
             season=$(basename "$(dirname "$sf")")
-            python pipeline/find_dates.py apply "$season" --commit
+            python pipeline/find_dates.py apply "$season" --commit || echo "::warning::find_dates failed for $season"
           done
 
       - name: Plan the AI step
         id: plan
         run: |
+          set -o pipefail
           python pipeline/due.py plan --schedule "${{ github.event.schedule || (inputs.purpose == 'gate' && 'dispatch-gate' || '') }}" | tee -a "$GITHUB_OUTPUT"
           echo "auth=${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
 
@@ -189,7 +191,7 @@ jobs:
       - name: Hide archive/ and outcomes/ from the AI
         if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true'
         run: |
-          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/registry/T1_rule_v0.json'
+          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md'
           test ! -e outcomes && test ! -e archive/PRE_v1_closed && test ! -e analysis/history && test ! -e registry/T1_rule_v0.json && echo "fenced: archive/, outcomes/, analysis/history/ and the T1 rule are not on disk"
 
       - name: Housekeeping (AI) - PENDING date re-checks and the STATE.md log
@@ -270,7 +272,8 @@ jobs:
   # Each job decides and freezes ONE event, in its own fenced checkout, with its own tool-call log.
   t2:
     needs: s2
-    if: needs.s2.outputs.t2 == 'true'
+    # not skipped when s2 failed AFTER gating (a late check or guard): the gates are already on main
+    if: ${{ !cancelled() && needs.s2.outputs.t2 == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 60
     strategy:
@@ -298,6 +301,12 @@ jobs:
           git config user.name "Earnings Experiment (GitHub Actions)"
           git config user.email "actions@github.com"
 
+      # The event list was fixed at plan time; a job that starts after the deadline must not let an AI
+      # read post-deadline news. Judged by the runner clock, not by the AI's own timestamp.
+      - name: Is T2 still open for this event?
+        id: open
+        run: python pipeline/due.py t2-open ${{ matrix.event.season }} ${{ matrix.event.ticker }} ${{ matrix.event.date }} | tee -a "$GITHUB_OUTPUT"
+
       - name: Secret present?
         run: |
           if [ "${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" != "true" ]; then
@@ -311,10 +320,11 @@ jobs:
       # Rules 9-10 and D004 by construction: the AI's checkout has no archive/ and no outcomes/.
       - name: Hide archive/ and outcomes/ from the AI
         run: |
-          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/registry/T1_rule_v0.json'
+          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md'
           test ! -e outcomes && test ! -e archive/PRE_v1_closed && test ! -e analysis/history && test ! -e registry/T1_rule_v0.json && echo "fenced: archive/, outcomes/, analysis/history/ and the T1 rule are not on disk"
 
       - name: T2 decision for ${{ matrix.event.ticker }} ${{ matrix.event.date }} (AI)
+        if: steps.open.outputs.open == 'true'
         continue-on-error: true
         timeout-minutes: 45
         uses: anthropics/claude-code-action@v1
@@ -326,8 +336,10 @@ jobs:
             The repository is checked out and its dependencies are installed. Code has already run
             the health check and the S2 gate.
 
-            Decide ONLY this event, then freeze it (section A): ${{ matrix.event.season }} ${{ matrix.event.ticker }} ${{ matrix.event.date }}
-            Other events are decided by parallel jobs - do not touch them. This is not a housekeeping run.
+            Decide ONLY this event (section A): ${{ matrix.event.season }} ${{ matrix.event.ticker }} ${{ matrix.event.date }}
+            Write decision.json and thesis.md, then STOP: do NOT run pipeline/freeze.py and do not commit -
+            code freezes the event right after you, in the full checkout. Other events are decided by
+            parallel jobs - do not touch them. This is not a housekeeping run.
 
             End with the short plain-English report section C asks for.
           claude_args: |
@@ -354,9 +366,25 @@ jobs:
             echo "protected files unchanged since $PRE"
           fi
 
+      - name: Freeze this event (code, full checkout, runner clock)
+        if: always() && steps.open.outputs.open == 'true'
+        run: |
+          git pull -q --no-rebase --no-edit origin main || true
+          python pipeline/due.py freeze-one ${{ matrix.event.season }} ${{ matrix.event.ticker }} ${{ matrix.event.date }}
+
       - name: Log every AI tool call to the repository
-        if: always()
+        if: always() && steps.open.outputs.open == 'true'
         run: python pipeline/runlog.py /home/runner/work/_temp/claude-execution-output.json "${{ github.run_id }}_${{ matrix.event.ticker }}"
+
+      - name: Nothing left unpushed
+        if: always()
+        run: |
+          git fetch -q origin main
+          if [ -n "$(git rev-list origin/main..HEAD)" ]; then
+            python -c "import sys; sys.path.insert(0, 'pipeline'); from freeze import push_all; print(push_all())"
+            git fetch -q origin main
+            test -z "$(git rev-list origin/main..HEAD)" || { echo "::error::commits exist only on this runner"; exit 1; }
+          fi
 
       - name: Health check after the decision
         if: always()

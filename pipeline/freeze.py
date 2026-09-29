@@ -169,16 +169,22 @@ def timestamp(digest_hex, edir):
     return got, errors
 
 
-def push_all():
-    """Push HEAD to every remote. On a non-fast-forward, MERGE the remote in and push again. Never rebase:
-    a rebase rewrites the freeze commit and its timestamp, which is the thing being proven."""
+def push_all(attempts=8):
+    """Push HEAD to every remote. On a non-fast-forward, MERGE the remote in and push again - in a loop
+    with jitter, because up to five T2 jobs, their logs and the grader can push at the same moment
+    (code review 2026-09-29). Never rebase: a rebase rewrites the freeze commit and its timestamp,
+    which is the thing being proven."""
+    import random
+    import time
     results = {}
     for remote in git("remote").split():
-        ok = subprocess.run(["git", "push", "-q", remote, "HEAD:main"], cwd=ROOT).returncode == 0
-        if not ok:
-            merged = subprocess.run(["git", "pull", "-q", "--no-rebase", "--no-edit", remote, "main"],
-                                    cwd=ROOT).returncode == 0
-            ok = merged and subprocess.run(["git", "push", "-q", remote, "HEAD:main"], cwd=ROOT).returncode == 0
+        ok = False
+        for i in range(attempts):
+            if subprocess.run(["git", "push", "-q", remote, "HEAD:main"], cwd=ROOT).returncode == 0:
+                ok = True
+                break
+            time.sleep(random.uniform(2, 6) * (i + 1))
+            subprocess.run(["git", "pull", "-q", "--no-rebase", "--no-edit", remote, "main"], cwd=ROOT)
         results[remote] = ok
     return results
 
@@ -186,13 +192,33 @@ def push_all():
 def t1_by_code(season, edir):
     """T1 from the frozen rule for this season, computed from the event's own factors.json; None where no
     rule applies (the pilot), so pilot decisions are untouched."""
-    from t1_rule import FACTORS, decide
+    from t1_rule import FACTORS, RULE_FILE, decide
+    listed = any(line.strip().endswith(RULE_FILE) for line in open(os.path.join(ROOT, "registry", "FROZEN.sha256"), encoding="utf-8"))
+    if listed and not os.path.exists(os.path.join(ROOT, "registry", RULE_FILE)):
+        # the T2 job's fenced checkout: freezing here would record T1 as missing - refuse
+        raise SystemExit(f"registry/{RULE_FILE} is frozen but not on disk - freeze from the full checkout")
     probe = decide({}, season)
     if probe.get("decision") is None and "rule_version" not in probe:
         return None  # no frozen rule covers this season
     f = json.load(open(os.path.join(edir, "factors.json"), encoding="utf-8"))
     sheet = f.get("factors") or {}
     return decide({k: (sheet.get(k) or {}).get("value") for k in FACTORS}, season)
+
+
+def fill_t1(season, edir, notes=None):
+    """D004 v3: write code's T1 into decision.json (before it is validated), replacing whatever the AI
+    wrote. Shared by run() and due.py finalize, so a decision without a t1 is never rejected."""
+    t1 = t1_by_code(season, edir)
+    dpath = os.path.join(edir, "decision.json")
+    if not t1 or not os.path.exists(dpath):
+        return t1
+    d = json.load(open(dpath, encoding="utf-8"))
+    if d.get("t1") != t1:
+        if notes is not None:
+            notes.append(f"t1 set by code (t1_rule.py); the AI's t1 was {d.get('t1')!r}")
+        d["t1"] = t1
+        write_json(dpath, d)
+    return t1
 
 
 def run(season, ticker, report_date, t2_missing=None):
@@ -217,20 +243,13 @@ def run(season, ticker, report_date, t2_missing=None):
     dpath = os.path.join(edir, "decision.json")
     rejected = os.path.join(edir, "decision_rejected.json")
     notes = []
-    t1_code = t1_by_code(season, edir)
+    t1_code = fill_t1(season, edir, notes) if gate["status"] == "PASS" else None
     if gate["status"] != "PASS":
         if os.path.exists(dpath):  # D004: never a decision for an event that failed the gate
             shutil.move(dpath, rejected)
             notes.append("decision.json written for an INELIGIBLE event - kept as decision_rejected.json")
     else:
         deadline = min(entry_open, t2_deadline(season, gate))
-        if t1_code and os.path.exists(dpath):
-            # D004 v3: T1 is code's, never the AI's. Whatever the AI wrote for t1 is replaced, and noted.
-            d = json.load(open(dpath, encoding="utf-8"))
-            if d.get("t1") != t1_code:
-                notes.append(f"t1 set by code (t1_rule.py); the AI's t1 was {d.get('t1')!r}")
-                d["t1"] = t1_code
-                write_json(dpath, d)
         problems = decision_problems(json.load(open(dpath, encoding="utf-8")), gate, deadline) \
             if os.path.exists(dpath) else ["no decision.json"]
         if problems and not t2_missing:
