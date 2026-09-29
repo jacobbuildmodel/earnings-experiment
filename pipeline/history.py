@@ -89,12 +89,45 @@ def build_one(t, sec, cal, clusters):
     return events, excluded
 
 
+def one_per_issuer(tickers, sec):
+    """D006 §2: one event per company per print. Share classes of one issuer (GOOG/GOOGL, Z/ZG) are one
+    print; the alphabetically first ticker is kept - a mechanical choice, fixed before any outcome."""
+    seen, keep = set(), []
+    for t in sorted(tickers):
+        cik = sec.cik(t)
+        if cik and cik in seen:
+            continue
+        seen.add(cik)
+        keep.append(t)
+    return keep
+
+
+def dedupe_built():
+    """Apply one_per_issuer to an events.json already built (no refetch)."""
+    sec = Sec(os.path.join(ROOT, "cache", "sec"))
+    p = os.path.join(OUT, "events.json")
+    b = json.load(open(p, encoding="utf-8"))
+    keep = set(one_per_issuer({e["ticker"] for e in b["events"]} | {x["ticker"] for x in b["excluded"]}, sec))
+    dropped = sorted({e["ticker"] for e in b["events"]} - keep)
+    b["events"] = [e for e in b["events"] if e["ticker"] in keep]
+    b["excluded"] = [x for x in b["excluded"] if x["ticker"] in keep]
+    b["n_events"] = len(b["events"])
+    b["dropped_share_classes"] = dropped
+    counts = {}
+    for e in b["excluded"]:
+        k = e["why"].split(" ")[0]
+        counts[k] = counts.get(k, 0) + 1
+    b["excluded_counts"] = counts
+    write_json(p, b)
+    print(f"dropped duplicate share classes {dropped}; {b['n_events']} events")
+
+
 def build(only=None):
     sec = Sec(os.path.join(ROOT, "cache", "sec"))
     cal = spy_calendar()
     u = json.load(open(os.path.join(OUT, "universe.json"), encoding="utf-8"))
     clusters = u.get("clusters", {})
-    tickers = only or u["tickers"]
+    tickers = only or one_per_issuer(u["tickers"], sec)
     events, excluded = [], []
     for n, t in enumerate(tickers):
         try:
@@ -119,7 +152,9 @@ def build(only=None):
 
 if __name__ == "__main__":
     a = sys.argv[1:]
-    if a and a[0] == "build":
+    if a and a[0] == "dedupe":
+        dedupe_built()
+    elif a and a[0] == "build":
         build(a[1:] or None)
     elif a and a[0] == "study":
         if not d006_frozen():

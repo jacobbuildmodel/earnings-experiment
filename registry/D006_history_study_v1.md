@@ -1,8 +1,9 @@
-# D006 · History study procedure — how T1 rule v0 is built · DRAFT 2026-09-28
+# D006 · History study procedure — how T1 rule v0 is built · v1 — FROZEN 2026-09-29 (ET)
 
 > The procedure, the factor list and the search log are fixed **before any history outcome is
-> computed** (D005 v2 §7.1). When frozen this file moves to `registry/D006_history_study_v1.md`. The
-> rule it produces is frozen separately as `registry/T1_rule_v0.json`, before 2026-10-12.
+> computed** (D005 v2 §7.1). The rule it produces is frozen separately as `registry/T1_rule_v0.json`,
+> before 2026-10-12. Code: `pipeline/history.py`, `history_factors.py`, `history_study.py`.
+> `history.py study` refuses to run until this file is in `FROZEN.sha256`.
 >
 > Written 2026-09-28. At writing, no history return, hit rate or factor/return relation has been
 > computed in this project. The retired model's archive was not read (rule 10). Reviewed the same day
@@ -44,6 +45,9 @@ sources for date and session:
   trade → excluded (`no_yfinance_same_trade`). This also drops Item 2.02 8-Ks that are not the
   quarterly print, such as preliminary results. Counted by reason.
 - Requiring yfinance to agree is also the guard against a late 8-K. Disclosed.
+
+**One event per company.** Share classes of one issuer are one print. The alphabetically first
+ticker is kept: GOOG over GOOGL, Z over ZG. BELFA and BELFB are both excluded on size anyway.
 
 **Size, as of the event.** Shares outstanding × the actual traded close of the snapshot session
 (yfinance's split back-adjustment undone) ≥ $2B (the D003 v2 floor). The $10B healthcare floor and
@@ -180,6 +184,26 @@ reported it (`filed`, `accn`), including the prior-year comparatives that later 
    - exclusion counts and missingness by cluster and stage
    - the rule 7 verdict wording: "insufficient" wherever a cell has under 30 events or 10 dates
    - the disclosures of §2 and §3
+
+### Pre-freeze counts — build of 2026-09-29, events and factors only, no outcome computed
+
+| segment | events | entry dates | companies | not scored (> 5 of 10 missing) |
+|---|---|---|---|---|
+| reference (2022-09-01 → 2023-08-31) | 765 | 124 | 217 | 2 |
+| **TRAIN** (2023-09-01 → 2025-08-31) | **1,712** | **250** | 259 | 28 |
+| **VALIDATION** (2025-09-01 → 2026-09-18) | **1,059** | **135** | 305 | 25 |
+
+- **Excluded before these counts:**
+  - 806 below the size floor as of the event
+  - 402 with no yfinance print for the same trade
+  - 261 with no fresh share count
+  - 69 whose 8-K was accepted during the session
+  - GOOGL and ZG dropped as second share classes
+- **Missing, % of events:** H1 1.4 · H2 0 · H3 0 · H4 0.1 · H5 3.1 · H6 6.8 · H7 10.6 · H8 2.6 ·
+  H9 4.4 · H10 4.4.
+- **Power:** at ~1,700 TRAIN events over 250 dates, a univariate lift of ~4–5 points is roughly the
+  detectable size. VALIDATION's 1,059 events over 135 dates detect ~6 points. The D005 table scales by
+  √n; this is an approximation, not a computed power.
 
 ## 6. Search log and test count (rule 7)
 
