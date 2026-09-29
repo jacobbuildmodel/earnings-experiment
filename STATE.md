@@ -1,11 +1,12 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-28 22:29 ET · pipeline hardened, D005 frozen, external
-evaluation done — **5 of 10 confirmed events are now lost to missed S2 windows and nothing has ever been
-gated.** 🔴 **The wait-for-the-window fix FAILED its first live test: AIR and JBL were lost on Mon Sep 28,
-the same way as PAYX, DRI and BB.** Five events are left (MU Sep 29 · NKE Sep 30 · PENG Oct 5 · LEVI and
-APLD Oct 6) and the next one is tomorrow. See the Cloud run log for what can and cannot be told from
-inside the runner.
+**Phase 1 · Pilot (live) → Season A built** · updated 2026-09-29 ET.
+- 5 of 10 pilot events were lost because **GitHub's cron never fired inside the window** (settled
+  09-29). The trigger is now a laptop dispatch.
+- The history study is done; **T1 rule v0 is frozen and failed validation**.
+- D003 v3 and D004 v3 are frozen for Season A.
+- The per-event T2 workflow is merged. First live test: NKE, Wed Sep 30.
+- Read the section "Laptop sessions 2026-09-28/29" first.
 
 ## Where things are
 
@@ -474,73 +475,75 @@ experiment specifics) to carry into a CLAUDE-folder chat himself. Nothing was wr
 
 ## Waiting on Jacob
 
-Nothing blocking. The Alpha Vantage secret was added 2026-09-21 (confirm on the first grading run: prices
-should no longer be `single_source`).
+- **Recommended, 1 minute:** connect GitHub to your Claude account at https://claude.ai/connect-github.
+  A cloud routine can then trigger the daily gate without depending on the laptop being awake. Until
+  then, the laptop task `earnings-s2-dispatch` does it at 22:45/23:45 SGT on weekdays.
+- The Alpha Vantage secret was added 2026-09-21. Confirm on the first grading run: prices should no
+  longer be `single_source`.
 
-## 🔴 Laptop session 2026-09-28 (~07:50–08:35 ET): Season A capacity — handoff
+## 🔴 Laptop sessions 2026-09-28/29 — the cause is settled, Season A is built (branch → main)
 
-**On main (`330b82f`):** the season screen now fires 8× across the Oct 8–9 slot, is allowed 300 min
-and checkpoints its capture. The Season A calendar holds ~4,300 names, about 70 min of Yahoo calls, so
-under the old 60-minute limit the screen could never have finished.
+**Why AIR and JBL were lost (settled from the Actions API, 2026-09-29):**
+- On Mon Sep 28 the **first scheduled run of the day began at 21:11 UTC (17:11 ET)**. Every fire from
+  15:07 UTC onward was dropped or delayed past the window.
+- Earlier days' first runs were no better: 09-23 18:58 · 09-24 19:00 · 09-25 19:12 UTC.
+- Waiting only helps a run that arrives early, and none do. **GitHub's cron is not a usable trigger
+  for this repository.**
+- A `workflow_dispatch` starts within seconds (09-23: 13:40 UTC, ran at once).
 
-**Season A preview (not the screen): 317 candidates, 165 prints on Nov 3–5.** At that volume the
-current pipeline loses events three ways:
-- sequential gating overruns the 80-minute window
-- one AI step cannot decide ~80 T2s before the 16:00 deadline
-- the AI cannot confirm ~300 company dates by hand
+**The trigger now:**
+- **Windows task `earnings-s2-dispatch`** on the laptop, weekdays 22:45 and 23:45 SGT, set to wake the
+  computer. It runs `ops/dispatch_s2.ps1`: one `gh workflow run … -f purpose=gate`. The run then waits
+  for the window.
+  - 22:45 SGT = 10:45 ET until Nov 1; after Nov 1 the 23:45 fire does it.
+  - Needs the laptop on, or asleep with wake timers allowed. A closed lid on battery may not wake.
+- **MU on 09-29** was dispatched from the session (10:36 and 14:33 ET).
+- The cron stays as a backup.
+- **More robust (needs Jacob):** connect GitHub to Claude at https://claude.ai/connect-github. A cloud
+  routine can then push a trigger at 14:33 ET with no laptop at all.
 
-**Branch `season-a-readiness` (`7f943e1`) — NOT merged; test before merging:**
-- `find_dates.py`: code confirms dates from company IR feeds (5/5 pilot names correct)
-- parallel gate in `due.py`, which now also commits missed-window statuses itself
-- `s2-window.yml`: T2 as a per-event matrix + finalize job, whole workflow under one concurrency group
-- D006 history study: draft + independent review (13 findings, all addressed) + code. `history.py
-  build` computes events and PIT factors only; `study` refuses until D006 is frozen.
+**Frozen 2026-09-29 (all before any Season A data exists):**
 
-**Next, in order:**
-1. After today's 15:50 ET window: confirm AIR/JBL `gate.json`. A dry run at 08:00 ET worked end to
-   end, but pre-market quotes were blank, so the option gate itself is untested live.
-2. Finish the history build (`python pipeline/history.py build`, ~2 h; no outcomes). Publish the counts
-   into the D006 draft §5.1, then freeze D006 → `registry/`.
-3. `history.py study` → freeze `T1_rule_v0.json` before Oct 12. Then wire T1-by-code into
-   `factors.py`/`freeze.py`, and draft D004 v3: T1 by code; T2 in a hash-random order when capacity
-   runs short (missing at random); stage revenue tag `...IncludingAssessedTax` (AIR and NKE read
-   `unknown` today); a base-rate card before T2's research; a leak probe.
-4. Test the branch on a pilot event (e.g. dispatch after an evening gate), then merge before Oct 8.
-   Do NOT merge during 14:30–15:50 ET.
-5. Rerun the `find_dates` hit-rate test (a 60-name sample was cut off).
+| file | what |
+|---|---|
+| `D006_history_study_v1` | the procedure, frozen 09:12 ET before any history outcome was computed (commit `6c5a22f`) |
+| `T1_rule_v0.json` | R-LIT, **FAILED VALIDATION**. No factor cleared t > 3 / BH q < 0.10 on TRAIN; best was H1 (12-month winner, lift +3.0 pts, t 2.56, q 0.063). Composite lift −0.2 pts TRAIN, −0.7 pts VALIDATION, against buy-everything at 54.1% / 54.2%. Frozen anyway, as pre-committed. See `analysis/history/report.md` |
+| `D003 v3` | one event per issuer (GOOG/GOOGL, Z/ZG) |
+| `D004 v3` | T1 by code · T2 fenced from T1 · hash-random T2 order under capacity · outside-view `prior` + `leak_probe` required · stage revenue tag · base-rate card `D004_base_rates_v3.json` |
 
-Jacob asked for the ORCL/CPRT/ADBE read-throughs from the CLAUDE folder: declined (rule 9). Nothing is
-needed from the evaluation model.
+**Uncomfortable findings:**
+- Buying every event won ~54% of the time with a mean exit-A return of +0.7% to +1.2% before costs.
+  That is the opponent.
+- In history, **semis were the one cluster where buying everything lost (47.9%)**. Descriptive, a
+  candidate only.
 
-## Next actions
+**Branch `season-a-readiness` → merged to main after the 09-29 window.**
+- An independent code review found 2 critical and 11 other defects, all fixed:
+  - T2 freezes would have crashed inside the fenced checkout
+  - parallel pushes could lose freezes
+  - `find_dates` could confirm a wrong date in some phrasings
+- An end-to-end rehearsal in a scratch clone passed: a decision without a prior was held back, and a
+  valid one froze with T1 by code, two timestamps and a push.
+- **First live test of the new workflow: NKE, snapshot Wed Sep 30**, dispatched by the laptop task.
 
-1. 🔴 **The wait-for-the-window fix did not hold: AIR and JBL were lost on Mon Sep 28** (`0eb3314`,
-   `f70ab06` were in). Five of ten confirmed events are gone and nothing has ever been gated. **MU is
-   tomorrow, Tue Sep 29**; then NKE Sep 30 · PENG Oct 5 · LEVI + APLD Oct 6. Two things a laptop session
-   must do, in this order, before Tue's window:
-   - **Read the Actions run list and step logs for 2026-09-28** — that alone separates "GitHub dropped
-     every fire in the five-hour span" from "`s2_gate.py` crashed inside the window under
-     `continue-on-error: true`". Both fit the evidence visible in the repo.
-   - **Give the `s2` job `actions: read`** so the AI step can read its own run history instead of getting
-     HTTP 403, and **wrap the `chain_gate` call at `s2_gate.py:200`** the way the fallback at :206 already
-     is, so a yfinance error writes an INELIGIBLE gate instead of silently losing the event. The AI step
-     may not touch `.github/` or `pipeline/`.
-   - LEVI's second sources caught up on 09-28 (yfinance Oct 7 16:00, Nasdaq Oct 7 `time-after-hours`), so
-     the `unconfirmed` risk flagged on 09-23 has cleared. AEHR must announce by Oct 1 or it is INELIGIBLE.
-2. ~~Pass `ALPHAVANTAGE_API_KEY` into `s2-window.yml`~~ — **done `420cb29` (2026-09-28).** Confirm on
-   Fri Oct 2: the mid-season capture should no longer say `alphavantage: not pulled`.
-   - 2026-09-28 laptop session: Jacob asked for the ORCL / CPRT / ADBE correction read-throughs in the
-     CLAUDE folder. **Declined under rule 9** — nothing in `..\CLAUDE\` was opened. If a data-source
-     fact is in there, it comes in by Jacob pasting only that fact, and it is re-verified against a
-     primary source before it is used.
-3. First grading run after an exit, and the first `report.py pilot`. Descriptive only; "insufficient".
-   Note there is nothing to grade yet — no event has reached entry with a frozen snapshot.
-4. **Season A S1 capture:** 2026-10-08 16:00 → 10-09 09:30 ET, under D003 v2. Automate it with a
-   one-off workflow that runs `nasdaq`, `av`, `market`, `screen`, or run it in a laptop session.
-5. History study → rule v0, frozen before Oct 12, meeting D005 v2 §7. Pin the EPS basis before any
-   surprise factor.
-6. Before Season B's screening date: register `D005_confirmatory_seasonB.json`, including
-   `T2_confidence`.
+**Next actions:**
+1. **Wed/Thu:** confirm MU (09-29) and NKE (09-30) have `gate.json` and a manifest. Read the Actions
+   logs of the new `t2` and `finalize` jobs.
+2. Decide on the durable trigger (Jacob: connect GitHub to Claude; recommended).
+3. `find_dates` coverage is ~50% of feeds, because many IR sites return HTTP 403 to scripts. The AI
+   housekeeping step covers the rest, most urgent first. Watch the PENDING backlog after the Oct 9
+   screen; if it grows, add newswire sources.
+4. **Season A screen:** the slot opens Oct 8 16:00 ET, with 8 fires plus a manual dispatch from the
+   laptop as backup (`gh workflow run s1-screen.yml`). The cron will likely be late; the slot is 17.5 h.
+5. Known limitations, disclosed:
+   - live H1–H5 use the intraday snapshot bar
+   - the T1 reference median is scored in-sample on its own four quarters (history used prior-quarter
+     references)
+   - companies with no fresh share count (NKE) miss H8
+   - git history still contains the T1 rule (a read is flagged in the run log, not blocked)
+6. Before Season B's screening date: register `D005_confirmatory_seasonB.json` with `T2_confidence`.
+
+Jacob asked for the ORCL/CPRT/ADBE read-throughs from the CLAUDE folder: declined (rule 9).
 
 ## Watch-outs
 
