@@ -1,9 +1,11 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live)** · updated 2026-09-25 21:06 ET · pipeline hardened, D005 frozen, external
-evaluation done — **3 of 10 confirmed events have been lost to missed S2 windows and nothing has been
-gated yet**, but the cause is now settled and fixed: the runner waits for the window instead of
-relying on a scheduled fire landing in it. First test Mon Sep 28. See the Cloud run log.
+**Phase 1 · Pilot (live)** · updated 2026-09-28 22:29 ET · pipeline hardened, D005 frozen, external
+evaluation done — **5 of 10 confirmed events are now lost to missed S2 windows and nothing has ever been
+gated.** 🔴 **The wait-for-the-window fix FAILED its first live test: AIR and JBL were lost on Mon Sep 28,
+the same way as PAYX, DRI and BB.** Five events are left (MU Sep 29 · NKE Sep 30 · PENG Oct 5 · LEVI and
+APLD Oct 6) and the next one is tomorrow. See the Cloud run log for what can and cannot be told from
+inside the runner.
 
 ## Where things are
 
@@ -114,14 +116,16 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   | Tue Sep 29 | MU AMC Sep 30 (from call time) | Sep 30 open |
   | Wed Sep 30 | NKE AMC Oct 1 | Oct 1 open |
   | Mon Oct 5 | PENG AMC Oct 6 (from call time) | Oct 6 open |
-  | Tue Oct 6 | LEVI AMC Oct 7 (from call time, confirmed 2026-09-23) | Oct 7 open |
+  | Tue Oct 6 | LEVI AMC Oct 7 (from call time, confirmed 2026-09-23) · APLD AMC Oct 7 (session stated, confirmed 2026-09-28) | Oct 7 open |
 
   - **CHRN:** INELIGIBLE, unconfirmed. Its 10-K was already filed Aug 19; there is no company date and
     no yfinance date.
   - **PENDING:** AEHR (calendars say Oct 5, yfinance Nov 2), LEVI (calendars Oct 8, yfinance Sep 30),
     APLD (Oct 8). None of the three had announced a date as of Sep 17. Re-check before their S2 windows.
     **LEVI resolved 2026-09-23:** the company announced an Oct 7 call at 17:00 ET → AMC Oct 7, snapshot
-    Oct 6. AEHR and APLD are still PENDING.
+    Oct 6. **APLD resolved 2026-09-28:** an Oct 7 17:00 ET call with the results release stated for after
+    that day's close → AMC Oct 7, snapshot Oct 6. **AEHR is the last one PENDING**, and must resolve by
+    its earliest possible snapshot session, 2026-10-01, or code marks it INELIGIBLE `unconfirmed`.
 - **How company sources were found:** many IR sites are JavaScript-rendered, but their Q4 feed works:
   `https://<ir-host>/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3&pageSize=8&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`
   and `/feed/Event.svc/GetEventList?...`. BlackBerry puts its events in a script block on
@@ -261,7 +265,69 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
       2026-10-08 16:00 ET. The ~2026-09-26 announcement its 12-day lead implies is one day out, so it
       is not yet late either. Earliest possible snapshot session 2026-10-06.
 
-### 🔴 The scheduler is losing the pilot — 3 of 10 confirmed events gone in two days
+- **2026-09-28 (Mon) — 🔴 AIR AND JBL LOST. The wait-for-the-window fix failed its first live test.**
+  This was the day the fix of 09-23 (`f70ab06`, `due.py wait`) was supposed to prove itself. It did not.
+  - **What is on the record.** The only runner commit of the ET day is `b2e0e21` at **17:11:54 ET**
+    (21:11:54 UTC) — the `finalize` status sync — recording both **AIR** (AMC Sep 29) and **JBL** (BMO
+    Sep 30) as **INELIGIBLE `missed_window`**, checked 17:11:53 ET. That is 81 minutes after the
+    14:30–15:50 ET window closed. No `Capture …` commit, no `Freeze …` commit, no `gate.json` anywhere:
+    `find events -name gate.json` returns **0**, so **no pilot event has ever been gated**. No runlog for
+    09-28 in `logs/actions/` (newest is `2026-09-26T0107Z`), which is expected — `due.py plan` does not
+    call the AI on a non-housekeeping fire with no PASS event.
+  - **Two causes still fit, and this step cannot tell them apart:**
+    1. **Every fire from 10:30 ET (window − 4 h, the earliest `wait` will hold a runner) through
+       15:50 ET was dropped or delayed past the close**, so no run ever reached `gate()` inside the
+       window and the 17:11 run was the first to arrive. Mildly favoured: 17:11 ET is ~28 min after the
+       20:43 UTC fire, the same 20–145 min lateness measured on 09-21 and 09-22.
+    2. **A run did arrive in time and `s2_gate.py` crashed**, under `continue-on-error: true`, leaving
+       no `gate.json`, no commit and no visible failure. The specific exposure: `opt, full =
+       chain_gate(...)` at `pipeline/s2_gate.py:200` is **not** wrapped in try/except, unlike the
+       fallback chain capture at :206, so any yfinance error in the option gate kills the script before
+       either file is written — and the 09-28 laptop note says the option gate had never run live
+       against real quotes.
+    Nothing in the event directories separates them: `gate.json` is written before `option_chain.json`,
+    so a crash anywhere earlier leaves exactly the empty directory we see.
+  - **What would settle it, and why the AI cannot:** the Actions run list for 2026-09-28 plus the
+    "Gate and snapshot every event due now" step log. `gh run list` returns **HTTP 403 Resource not
+    accessible by integration** — the `s2` job grants only `contents: write` and `id-token: write`, with
+    no `actions: read`. That is a one-line workflow change, and **the AI step is forbidden from editing
+    `.github/`**. Until it is made, every future loss will be as undiagnosable as this one. Jacob read
+    the API from outside on 09-23; that is the route again.
+  - **MU's snapshot session is tomorrow, Tue 2026-09-29**, then NKE Sep 30. Whatever is wrong is still
+    wrong.
+
+- **2026-09-28 22:29 ET — housekeeping (this run).** `check.py` PASS. `due.py t2-list` empty — nothing
+  awaiting T2, so no decision was written; nothing was gated or frozen by this run. Not a Friday, so no
+  mid-season screen. Both PENDING names re-checked against their own company source, and **one resolved**:
+  - **APLD is CONFIRMED — the last PENDING name to resolve, announced today.** Its press-release RSS
+    published, at **2026-09-28 16:05 ET**, "Applied Digital Sets Fiscal First Quarter 2027 Conference
+    Call for Wednesday, October 7, 2026, at 5:00 p.m. Eastern Time". The detail page states the session
+    outright — the quarter ended Aug 31, 2026, a 17:00 ET call, and "A press release detailing these
+    results will be issued after the market closes on the same day" — so **AMC Oct 7 is stated, not
+    inferred** (`session_from_call_time` false), inside the pilot window; snapshot session **Tue Oct 6**,
+    entry Oct 7 open. `events/pilot/APLD_2026-10-07/confirm.json` written.
+    Second sources: **yfinance now agrees** (2026-10-07 16:00 ET, was the stale 2026-10-08 16:00); the
+    Nasdaq calendar still lists APLD on 2026-10-08 `time-not-supplied` and has no Oct 7 row, so it
+    neither agrees nor disagrees. `s2_gate.py` needs one agreeing second source, and has one.
+  - **AEHR stays PENDING, and is now late against its own pattern.** aehr.com/newsroom (HTTP 200) does
+    have a new item — 2026-09-28, "Aehr Test Systems to Participate in 18th Annual CEO Investor Summit
+    2026 in San Francisco" — but it is an investor-conference release, **not** an earnings date; no FY27
+    Q1 results date. yfinance unchanged at 2026-11-02 15:00 ET, intraday (unconfirmed under D003 §6) and
+    outside the pilot window; Nasdaq unchanged at 2026-10-05 `time-not-supplied`. The ~2026-09-28
+    announcement its own ~7-day lead implies was due **today** and did not come. Earliest possible
+    snapshot session **2026-10-01**, after which code marks it INELIGIBLE `unconfirmed`. Expect that.
+  - **LEVI's second-source conflict has cleared** (recorded under its `rechecks`, informational — code
+    re-reads both inside the Oct 6 window). yfinance now gives 2026-10-07 16:00 ET and Nasdaq now lists
+    LEVI on 2026-10-07 `time-after-hours`; both agree with the company's AMC Oct 7, so the 09-23 warning
+    that LEVI would be marked `unconfirmed` no longer applies.
+
+### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
+
+**Updated 2026-09-28: AIR and JBL make it five (PAYX · DRI · BB · AIR · JBL).** The section below is the
+09-23 diagnosis and fix, kept as written; the 09-28 log entry above records that the fix did not work and
+what still cannot be seen from inside the runner.
+
+#### The original diagnosis — 3 of 10 confirmed events gone in two days
 
 No pilot event has ever been gated. `find events -name gate.json` returns nothing; PAYX, DRI and BB are
 all `missed_window`. Seven confirmed events remain: **AIR and JBL (snapshot Mon Sep 28) · MU (Tue Sep 29) ·
@@ -411,12 +477,56 @@ experiment specifics) to carry into a CLAUDE-folder chat himself. Nothing was wr
 Nothing blocking. The Alpha Vantage secret was added 2026-09-21 (confirm on the first grading run: prices
 should no longer be `single_source`).
 
+## 🔴 Laptop session 2026-09-28 (~07:50–08:35 ET): Season A capacity — handoff
+
+**On main (`330b82f`):** the season screen now fires 8× across the Oct 8–9 slot, is allowed 300 min
+and checkpoints its capture. The Season A calendar holds ~4,300 names, about 70 min of Yahoo calls, so
+under the old 60-minute limit the screen could never have finished.
+
+**Season A preview (not the screen): 317 candidates, 165 prints on Nov 3–5.** At that volume the
+current pipeline loses events three ways:
+- sequential gating overruns the 80-minute window
+- one AI step cannot decide ~80 T2s before the 16:00 deadline
+- the AI cannot confirm ~300 company dates by hand
+
+**Branch `season-a-readiness` (`7f943e1`) — NOT merged; test before merging:**
+- `find_dates.py`: code confirms dates from company IR feeds (5/5 pilot names correct)
+- parallel gate in `due.py`, which now also commits missed-window statuses itself
+- `s2-window.yml`: T2 as a per-event matrix + finalize job, whole workflow under one concurrency group
+- D006 history study: draft + independent review (13 findings, all addressed) + code. `history.py
+  build` computes events and PIT factors only; `study` refuses until D006 is frozen.
+
+**Next, in order:**
+1. After today's 15:50 ET window: confirm AIR/JBL `gate.json`. A dry run at 08:00 ET worked end to
+   end, but pre-market quotes were blank, so the option gate itself is untested live.
+2. Finish the history build (`python pipeline/history.py build`, ~2 h; no outcomes). Publish the counts
+   into the D006 draft §5.1, then freeze D006 → `registry/`.
+3. `history.py study` → freeze `T1_rule_v0.json` before Oct 12. Then wire T1-by-code into
+   `factors.py`/`freeze.py`, and draft D004 v3: T1 by code; T2 in a hash-random order when capacity
+   runs short (missing at random); stage revenue tag `...IncludingAssessedTax` (AIR and NKE read
+   `unknown` today); a base-rate card before T2's research; a leak probe.
+4. Test the branch on a pilot event (e.g. dispatch after an evening gate), then merge before Oct 8.
+   Do NOT merge during 14:30–15:50 ET.
+5. Rerun the `find_dates` hit-rate test (a 60-name sample was cut off).
+
+Jacob asked for the ORCL/CPRT/ADBE read-throughs from the CLAUDE folder: declined (rule 9). Nothing is
+needed from the evaluation model.
+
 ## Next actions
 
-1. 🔴 **Watch Mon Sep 28 (AIR + JBL) — the first test of the wait-for-the-window fix.** The scheduler
-   change is in (`0eb3314`, `f70ab06`); nothing has ever been gated, so it is unproven. Seven events
-   are left: AIR + JBL (Sep 28) · MU (Sep 29) · NKE (Sep 30) · PENG (Oct 5) · LEVI (Oct 6).
-   LEVI also needs a second source to catch up to Oct 7 AMC, or code marks it `unconfirmed`.
+1. 🔴 **The wait-for-the-window fix did not hold: AIR and JBL were lost on Mon Sep 28** (`0eb3314`,
+   `f70ab06` were in). Five of ten confirmed events are gone and nothing has ever been gated. **MU is
+   tomorrow, Tue Sep 29**; then NKE Sep 30 · PENG Oct 5 · LEVI + APLD Oct 6. Two things a laptop session
+   must do, in this order, before Tue's window:
+   - **Read the Actions run list and step logs for 2026-09-28** — that alone separates "GitHub dropped
+     every fire in the five-hour span" from "`s2_gate.py` crashed inside the window under
+     `continue-on-error: true`". Both fit the evidence visible in the repo.
+   - **Give the `s2` job `actions: read`** so the AI step can read its own run history instead of getting
+     HTTP 403, and **wrap the `chain_gate` call at `s2_gate.py:200`** the way the fallback at :206 already
+     is, so a yfinance error writes an INELIGIBLE gate instead of silently losing the event. The AI step
+     may not touch `.github/` or `pipeline/`.
+   - LEVI's second sources caught up on 09-28 (yfinance Oct 7 16:00, Nasdaq Oct 7 `time-after-hours`), so
+     the `unconfirmed` risk flagged on 09-23 has cleared. AEHR must announce by Oct 1 or it is INELIGIBLE.
 2. ~~Pass `ALPHAVANTAGE_API_KEY` into `s2-window.yml`~~ — **done `420cb29` (2026-09-28).** Confirm on
    Fri Oct 2: the mid-season capture should no longer say `alphavantage: not pulled`.
    - 2026-09-28 laptop session: Jacob asked for the ORCL / CPRT / ADBE correction read-throughs in the
