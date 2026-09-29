@@ -1,0 +1,96 @@
+{
+ "run_id": "36585003091",
+ "logged_utc": "2026-09-29T1837Z",
+ "tool_calls": 20,
+ "fence_breaches": [],
+ "review_flags": [],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 21,
+  "total_cost_usd": 1.0872620000000002,
+  "text": "# Report — 2026-09-29, 14:37 ET\n\n**T2 decisions: none.** `python pipeline/due.py t2-list` returned nothing. MU was gated by code earlier today and frozen INELIGIBLE (`thin_oi`), so no decision was due; no other pilot event has a snapshot session of 2026-09-29. This step gated nothing and froze nothing.\n\n**Freeze commits: none from this run.** Today's freeze already happened in the earlier run — `6da4a56`, MU 2026-09-30, INELIGIBLE, **BLIND** (committed 14:31:08 ET against a 2026-09-30 09:30 ET entry open). This was the second fire of the same ET day; the first ran 14:31–14:35 ET.\n\n**PENDING changes: none. AEHR stays PENDING.**\n- aehr.com/newsroom (HTTP 200): newest item still 2026-09-28, the CEO Investor Summit release — an investor conference, not an earnings date. Newest financial-results item is still 2026-07-14.\n- SEC EDGAR (CIK 0001040470) as the second company source: newest filings ARS 2026-09-10 and DEF 14A 2026-09-09, annual-meeting material. No 8-K carrying a date.\n- yfinance unchanged at 2026-11-02 15:00 ET (intraday, and outside the pilot window). Nasdaq unchanged at 2026-10-05 `time-not-supplied`; AEHR is on no Oct 1, Oct 6 or Oct 7 row.\n- AEHR's own ~7-day lead implied an announcement on Sep 28. It did not come. Its earliest possible snapshot session is **2026-10-01** — one housekeeping run left before code marks it INELIGIBLE `unconfirmed`. Expect that.\n\n**Nothing went wrong.** `check.py` PASS before and after. Health check, re-check and STATE.md log committed as `3df2ac6` and pushed to `origin/main`.\n\n**One thing worth saying plainly:** running two fires per ET day means the second one repeats the first one's PENDING re-check verbatim — this one re-checked AEHR two minutes after the last check. It costs almost nothing, but the re-check list is filling with repetition. Worth collapsing to one PENDING re-check per ET day next time the workflow is edited from a laptop session; this step may not touch `.github/`. Noted in STATE.md.\n\n**Next:** NKE's snapshot session is tomorrow (Wed Sep 30, AMC Oct 1) — the first pilot event that can actually reach a T2 decision."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python pipeline/due.py t2-list; echo \\\"---exit:$?---\\\"; date; TZ=America/New_York date\", \"description\": \"List events awaiting T2 and show times\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls && echo \\\"--- universe ---\\\" && ls universe/*/ && echo \\\"--- events ---\\\" && ls events/*/\", \"description\": \"List repository layout\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls universe/ && echo \\\"=== event_status.json ===\\\" && cat universe/*/event_status.json 2>/dev/null | head -5; find universe -name event_status.json\", \"description\": \"Locate the event status file\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint('updated:',d['updated_et'])\\nfor t,e in d['events'].items():\\n    print(t, e.get('status'), e.get('reason',''), e.get('calendar_date',''), e.get('session',''), e.get('snapshot_session',''), e.get('entry',''), 'rechecks:', len(e.get('rechecks',[])))\\n\\\"\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git log --oneline --since=\\\"2026-09-29 00:00\\\" --date=iso-local --pretty=\\\"%h %ad %s\\\" | head -30; echo \\\"--- files present ---\\\"; ls logs/actions/ | tail -5; ls events/pilot/*/ -d 2>/dev/null\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(json.dumps(d['events']['AEHR'], indent=1)[:4000])\\n\\\"\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '1,40p' pipeline/common.py\", \"description\": \"Read common.py headers\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport re, sys, json, datetime\\nsys.path.insert(0,'pipeline')\\nimport requests\\nfrom common import SEC_HEADERS, WEB_HEADERS, now_et\\nprint(\\\"NOW ET:\\\", now_et().isoformat())\\n\\n# 1. Company newsroom\\ntry:\\n    r = requests.get(\\\"https://www.aehr.com/newsroom/\\\", headers={\\\"User-Agent\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) EarningsExperiment research\\\"}, timeout=60)\\n    print(\\\"NEWSROOM HTTP\\\", r.status_code, len(r.text))\\n    txt = re.sub(r'<[^>]+>',' ', r.text)\\n    txt = re.sub(r'\\\\s+',' ', txt)\\n    # find date-like items\\n    for m in re.finditer(r'(Ja"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport sys, json\\nsys.path.insert(0,'pipeline')\\nimport requests\\nfrom common import SEC_HEADERS\\n# AEHR CIK\\ntry:\\n    r = requests.get(\\\"https://data.sec.gov/submissions/CIK0001040470.json\\\", headers=SEC_HEADERS, timeout=60)\\n    print(\\\"EDGAR HTTP\\\", r.status_code)\\n    d = r.json()\\n    print(\\\"name:\\\", d.get(\\\"name\\\"), \\\"cik:\\\", d.get(\\\"cik\\\"))\\n    rec = d[\\\"filings\\\"][\\\"recent\\\"]\\n    for i in range(min(10, len(rec[\\\"form\\\"]))):\\n        print(\\\"  \\\", rec[\\\"filingDate\\\"][i], rec[\\\"form\\\"][i], rec[\\\"primaryDocDescription\\\"][i], rec[\\\"accessionNumber\\\"][i])\\n"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport sys\\nsys.path.insert(0,'pipeline')\\ntry:\\n    import yfinance as yf\\n    t = yf.Ticker(\\\"AEHR\\\")\\n    df = t.get_earnings_dates(limit=8)\\n    print(\\\"YF get_earnings_dates:\\\")\\n    print(df.index.tolist() if df is not None else None)\\nexcept Exception as e:\\n    print(\\\"YF FAILED:\\\", repr(e))\\nPY\", \"description\": \"Check AEHR yfinance earnings dates\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport sys, json\\nsys.path.insert(0,'pipeline')\\nimport requests\\nH={\\\"User-Agent\\\":\\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64)\\\",\\\"Accept\\\":\\\"application/json\\\"}\\nfor d in [\\\"2026-10-01\\\",\\\"2026-10-05\\\",\\\"2026-10-06\\\",\\\"2026-10-07\\\"]:\\n    try:\\n        r=requests.get(f\\\"https://api.nasdaq.com/api/calendar/earnings?date={d}\\\", headers=H, timeout=60)\\n        rows=(r.json().get(\\\"data\\\") or {}).get(\\\"rows\\\") or []\\n        hit=[x for x in rows if x.get(\\\"symbol\\\")==\\\"AEHR\\\"]\\n        print(d, \\\"HTTP\\\", r.status_code, \\\"rows\\\", len(rows), \\\"AEHR:\\\", hit if hit else"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | tail -20; echo \\\"=== today ET commits ===\\\"; TZ=America/New_York git log --since=\\\"2026-09-29 00:00\\\" --date=iso-local --pretty=\\\"%h %ad %s\\\"; echo \\\"=== latest ===\\\"; git log -1 --pretty=%H; git status --porcelain\", \"description\": \"Run health check and list today's commits\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '38,60p' pipeline/common.py\", \"description\": \"Check write_json formatting\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport sys, json\\nsys.path.insert(0,'pipeline')\\nfrom common import write_json, now_et\\np='universe/pilot/event_status.json'\\nd=json.load(open(p, encoding='utf-8'))\\nts=now_et().isoformat()\\nnote=(f\\\"{ts}: second housekeeping run of the same ET day (the first was 14:34 ET), so this is a \\\"\\n      \\\"re-check on top of one two minutes old; nothing had changed and nothing does now. \\\"\\n      \\\"www.aehr.com/newsroom (HTTP 200): newest item still 2026-09-28, 'Aehr Test Systems to Participate \\\"\\n      \\\"in 18th Annual CEO Investor Summit 2026 in San Francisco' - an inv"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"NKE is tomorrow\\\" -A 4 STATE.md\", \"description\": \"Find insertion point in STATE.md\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"  - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** and is the first event that can actually reach\\n    a T2 decision.\\n\\n### 🔴 The scheduler is losing the pilot\", \"new_string\": \"  - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** and is the first event that can actually reach\\n    a T2 decision.\\n\\n- **2026-09-29 14:36 ET — housekeeping (this run, the second fire of the same ET day; the first was the\\n  14:31–14:35 gate-and-housekeeping run above).** `check.py` PA"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git add STATE.md universe/pilot/event_status.json && git commit -q -F - <<'MSG'\\nHousekeeping 2026-09-29 (second run): nothing due; AEHR still PENDING\\n\\ncheck.py PASS. due.py t2-list empty - MU is frozen INELIGIBLE and no other\\nevent has a snapshot session of 2026-09-29, so no T2 was due and none was\\nwritten. Nothing gated or frozen by this step.\\n\\nAEHR re-checked against aehr.com/newsroom (HTTP 200) and SEC EDGAR as the\\nsecond company source: no FY27 Q1 earnings date in either. yfinance and the\\nNasdaq calendar unchanged. Stays PENDING; must resolve by its earliest\\npossible"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | tail -4\", \"description\": \"Re-run health check after commit\"}"
+  }
+ ]
+}
