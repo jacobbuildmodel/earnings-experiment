@@ -23,6 +23,7 @@ day's last run can still finish an event.
 """
 import datetime
 import glob
+import hashlib
 import json
 import os
 import subprocess
@@ -225,6 +226,8 @@ def awaiting_t2():
 
 def plan(schedule):
     t2 = [e for e in awaiting_t2() if now_et() < t2_deadline(e[0], e[4])]  # only events T2 may still decide
+    # D004 v3 change 3: a fixed order no one chose, so events T2 cannot reach are missing at random
+    t2.sort(key=lambda e: hashlib.sha256(f"{e[0]}|{e[1]}|{e[2]}".encode()).hexdigest())
     housekeeping = schedule in ("", HOUSEKEEPING_CRON)  # "" = started by hand
     print(f"claude={'true' if housekeeping else 'false'}")  # the housekeeping AI step; T2 runs per event
     print(f"t2={'true' if t2 else 'false'}")

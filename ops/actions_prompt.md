@@ -26,6 +26,8 @@ Never:
 - run `pipeline/s2_gate.py` or `pipeline/factors.py` — code already did that
 - edit `gate.json`, `factors.json`, `option_chain.json` or `confirm.json` of a gated event
 - ask anyone to run a command
+- read `registry/T1_rule_v0.json` or `analysis/history/` (D004 v3: T2 is judged against T1, so it
+  may not see or recompute it) — both are absent from the T2 checkout; do not fetch them by any route
 
 The run tells you, in the workflow's prompt, two things: the events awaiting T2, and whether this
 is the housekeeping run.
@@ -38,6 +40,14 @@ time; never write a decision for them. Check that your event is still awaiting T
 `python pipeline/due.py t2-list` (prints `<season> <TICKER> <date>`); if it is not listed, stop and
 report why. For your event:
 
+0. **Season A onwards (D004 v3), before anything else:**
+   - **Leak probe.** From memory alone, before opening any file about the event, answer: "What did
+     <TICKER>'s stock do after its earnings report of <date>?" Keep the answer for
+     `t2.leak_probe`, verbatim. "I don't know" is the expected answer; never look it up.
+   - **Outside view.** Read `registry/D004_base_rates_v3.json`. Write down `t2.prior`: an object
+     `{"p": <probability>, "from": "<which base rate and why>"}` — where you start before anything
+     about this company. `thesis.md` must say what moved you from the prior to your final confidence.
+   - Do not write any `t1` — code computes T1 at the freeze.
 1. Read the event's `confirm.json`, `gate.json`, `factors.json`, `option_chain.json`, and
    `registry/D004_decision_protocol_v1.md` §3 (and any newer D004 version).
 2. Research, reading only what D004 allows, published before `gate.json` → `captured_et`:

@@ -103,6 +103,13 @@ def decision_problems(d, gate, entry_open):
         for k in ("thesis", "reasons", "inputs_read", "deciding_variable", "decided_et"):
             if not t2.get(k):
                 p.append(f"T2 is missing {k}")
+        try:  # D004 v3+: the outside-view prior and the leak probe are required
+            required = rule_for("D004_decision_protocol", gate.get("season", "")).get("t2_requires") or []
+        except SystemExit:
+            required = []
+        for k in required:
+            if t2.get(k) in (None, "", [], {}):
+                p.append(f"T2 is missing {k} (D004 v3)")
         decided = parse_et(t2.get("decided_et"))
         captured = parse_et(gate.get("captured_et"))
         if t2.get("decided_et") and decided is None:
@@ -176,6 +183,18 @@ def push_all():
     return results
 
 
+def t1_by_code(season, edir):
+    """T1 from the frozen rule for this season, computed from the event's own factors.json; None where no
+    rule applies (the pilot), so pilot decisions are untouched."""
+    from t1_rule import FACTORS, decide
+    probe = decide({}, season)
+    if probe.get("decision") is None and "rule_version" not in probe:
+        return None  # no frozen rule covers this season
+    f = json.load(open(os.path.join(edir, "factors.json"), encoding="utf-8"))
+    sheet = f.get("factors") or {}
+    return decide({k: (sheet.get(k) or {}).get("value") for k in FACTORS}, season)
+
+
 def run(season, ticker, report_date, t2_missing=None):
     ticker = ticker.upper()
     rel = os.path.join("events", season, f"{ticker}_{report_date}").replace("\\", "/")
@@ -198,12 +217,20 @@ def run(season, ticker, report_date, t2_missing=None):
     dpath = os.path.join(edir, "decision.json")
     rejected = os.path.join(edir, "decision_rejected.json")
     notes = []
+    t1_code = t1_by_code(season, edir)
     if gate["status"] != "PASS":
         if os.path.exists(dpath):  # D004: never a decision for an event that failed the gate
             shutil.move(dpath, rejected)
             notes.append("decision.json written for an INELIGIBLE event - kept as decision_rejected.json")
     else:
         deadline = min(entry_open, t2_deadline(season, gate))
+        if t1_code and os.path.exists(dpath):
+            # D004 v3: T1 is code's, never the AI's. Whatever the AI wrote for t1 is replaced, and noted.
+            d = json.load(open(dpath, encoding="utf-8"))
+            if d.get("t1") != t1_code:
+                notes.append(f"t1 set by code (t1_rule.py); the AI's t1 was {d.get('t1')!r}")
+                d["t1"] = t1_code
+                write_json(dpath, d)
         problems = decision_problems(json.load(open(dpath, encoding="utf-8")), gate, deadline) \
             if os.path.exists(dpath) else ["no decision.json"]
         if problems and not t2_missing:
@@ -214,7 +241,7 @@ def run(season, ticker, report_date, t2_missing=None):
                 shutil.move(dpath, rejected)
             reason = t2_missing or "; ".join(problems)
             write_json(dpath, {"t0": {"decision": "BUY"},
-                               "t1": {"decision": None, "note": "rule v0 not frozen - pilot"},
+                               "t1": t1_code or {"decision": None, "note": "rule v0 not frozen - pilot"},
                                "t2": {"decision": None, "missing_reason": reason, "recorded_et": now_et().isoformat()}})
             notes.append(f"T2 frozen as MISSING: {reason}")
         files.append("decision.json")
