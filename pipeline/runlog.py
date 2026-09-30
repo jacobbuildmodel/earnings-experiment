@@ -43,8 +43,13 @@ def main(path, run_id):
                     call = {"tool": c.get("name"), "input": inp[:600]}
                     calls.append(call)
                     by_id[c.get("id")] = call
+                    # an Edit/Write is judged by the file it touches, not by the words it writes: a STATE.md
+                    # note that MENTIONS analysis/history is not a read of it (false breach, 2026-09-29)
+                    scope = inp
+                    if c.get("name") in ("Edit", "Write", "NotebookEdit", "MultiEdit"):
+                        scope = str((c.get("input") or {}).get("file_path", ""))
                     for rx, what in FENCES:
-                        if rx.search(inp):
+                        if rx.search(scope):
                             breaches.append({"fence": what, "tool": c.get("name"), "input": inp[:600]})
                     if c.get("name") == "Bash" and GIT_CONTENT.search(inp):
                         review.append({"flag": "git content read", "input": inp[:600]})

@@ -116,6 +116,16 @@ else:
         path = os.path.join(ROOT, "registry", name)
         count += 1
         if not os.path.exists(path):
+            # hidden on purpose by the AI step's sparse checkout (D004 v3 fence): tracked with the
+            # skip-worktree flag "S", so its committed copy is checked instead of the disk
+            import subprocess
+            flag = subprocess.run(["git", "ls-files", "-t", "--", f"registry/{name}"], cwd=ROOT,
+                                  capture_output=True, text=True).stdout.strip()
+            if flag.startswith("S "):
+                blob = subprocess.run(["git", "show", f"HEAD:registry/{name}"], cwd=ROOT, capture_output=True).stdout
+                if hashlib.sha256(blob.replace(b"\r\n", b"\n")).hexdigest() != digest:
+                    changed.append(f"{name} (fenced; committed copy differs)")
+                continue
             changed.append(f"{name} (missing)")
             continue
         data = open(path, "rb").read().replace(b"\r\n", b"\n")
