@@ -26,6 +26,9 @@ experiment", "where we left off"), read up and continue exactly where the last c
 4. Reply with a 4–6 line **WHERE WE ARE**: phase · what's done · what's waiting on Jacob · the single
    next action. Don't re-ask what he wants.
 
+🔴 **A cloud session started by the routine `earnings-s2-trigger` does only what its prompt says** (push
+one empty trigger commit to `claude/s2-trigger`). It never runs, reads or changes the experiment.
+
 🔴 **A chat that did not START in this folder must not run the experiment.** If this chat began in the
 DRIVE repo and moved here, it has already loaded the portfolio's rules and memory. Say so, and ask Jacob
 to start a fresh chat in `Earnings Experiment`.

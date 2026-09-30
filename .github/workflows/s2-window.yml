@@ -42,6 +42,11 @@ on:
   # of the day began at 21:11 UTC, after the window). ops/dispatch_s2.ps1 on the laptop dispatches with
   # purpose=gate at ~10:45 ET; the run then waits for the window. A dispatch by hand defaults to
   # housekeeping, as before.
+  # The cloud routine "earnings-s2-trigger" (claude.ai, weekdays 14:45 15:45 18:45 19:45 UTC) pushes an
+  # empty commit to this branch; a push starts the run within seconds, with no laptop. The run always
+  # works on main (checkout ref: main); the branch only carries the trigger.
+  push:
+    branches: ["claude/s2-trigger"]
   workflow_dispatch:
     inputs:
       purpose:
@@ -176,7 +181,7 @@ jobs:
         id: plan
         run: |
           set -o pipefail
-          python pipeline/due.py plan --schedule "${{ github.event.schedule || (inputs.purpose == 'gate' && 'dispatch-gate' || '') }}" | tee -a "$GITHUB_OUTPUT"
+          python pipeline/due.py plan --schedule "${{ github.event.schedule || (github.event_name == 'push' && 'push-gate') || (inputs.purpose == 'gate' && 'dispatch-gate') || '' }}" | tee -a "$GITHUB_OUTPUT"
           echo "auth=${{ secrets.CLAUDE_CODE_OAUTH_TOKEN != '' }}" >> "$GITHUB_OUTPUT"
 
       - name: No secret set
