@@ -629,8 +629,15 @@ experiment specifics) to carry into a CLAUDE-folder chat himself. Nothing was wr
   valid one froze with T1 by code, two timestamps and a push.
 - **First live test of the new workflow: NKE, snapshot Wed Sep 30**, dispatched by the laptop task.
 
+**The roadmap is `RESEARCH_PLAN.md` (2026-09-30):** the end goal, research questions RQ1–RQ6, gates to
+real money (Gate 2, Mar 2027), draft graduation criteria (D008), and the asks of Jacob. Phase 1, due by
+Oct 11, before any Season A outcome:
+- pre-register D007 and run it on history
+- freeze D008
+- add the T0-wide shadow, the live option features and the straddle shadow
+
 **Next actions:**
-1. 🔴 **D003 v4 before the Oct 9 screen:** replace the single-strike open-interest floor with one that
+1. ~~D003 v4~~ done 2026-09-29. **D003 v4 before the Oct 9 screen:** replace the single-strike open-interest floor with one that
    does not scale with share price. The MU case: 260 contracts at one strike, 309,771 on the expiry,
    spread 0.85%. Rule 5: v1, v2 and MU's record stay untouched.
 2. **Wed/Thu:** confirm NKE (snapshot 09-30) has `gate.json` and a manifest. Read the logs of the new
