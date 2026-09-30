@@ -1,0 +1,60 @@
+# Paper trading (Alpaca paper) - code only, no AI. RESEARCH_PLAN RQ6.
+#
+# Market-on-open orders are accepted only 19:00 ET -> 09:28 ET, so this runs in the evening and before
+# the open. Started by the cloud routine "earnings-paper-trigger" (a push to claude/paper-trigger, which
+# starts a run within seconds), by the cron below as a backup (GitHub's cron is late and drops fires),
+# or by hand. pipeline/paper.py submits nothing outside the window and never resubmits an order.
+name: Earnings experiment - paper trading
+
+on:
+  push:
+    branches: ["claude/paper-trigger"]
+  schedule:
+    - cron: "15 0 * * 2-6"     # 20:15 EDT / 19:15 EST, the evening after each session
+    - cron: "15 11 * * 1-5"    # 07:15 EDT / 06:15 EST, before the open
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "sync (default) or check"
+        required: false
+        default: "sync"
+
+concurrency:
+  group: paper
+  cancel-in-progress: false
+
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Paper account
+        run: python pipeline/paper.py check
+
+      - name: Submit due orders, record fills, commit the ledger
+        if: github.event_name != 'workflow_dispatch' || inputs.command != 'check'
+        run: python pipeline/paper.py sync --commit
