@@ -1,0 +1,126 @@
+{
+ "run_id": "36656505056_housekeeping",
+ "logged_utc": "2026-09-30T0148Z",
+ "tool_calls": 26,
+ "fence_breaches": [
+  {
+   "fence": "T1 rule / history study (D004 v3: T2 may not see T1)",
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"  - Two fires per ET day means the second one duplicates the first one's re-check. That is cheap, but the\\n    re-check list is now mostly repetition; worth collapsing to one PENDING re-check per ET day when the\\n    workflow is next edited from a laptop session.\\n\\n### 🔴 The scheduler is losing the pilot\", \"new_string\": \"  - Two fires per ET day means the second one duplicates the first one's re-check. That is cheap, but the\\n    re-check list is now mostly repetition; wort"
+  }
+ ],
+ "review_flags": [],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 27,
+  "total_cost_usd": 1.6194890000000002,
+  "text": "Pushed as `6f105c6`.\n\n## Report — housekeeping, 2026-09-29 21:45 ET\n\n**Nothing was due.** `due.py t2-list` was empty, no event has an open snapshot session for this ET day, and this step gated nothing, froze nothing and wrote no decision. No T2 decisions to report. MU (frozen INELIGIBLE `thin_oi` at 14:31 ET by the first fire of the day) is still the only gate in the pilot's history.\n\n**Freezes today:** one, from the earlier run — `6da4a56` MU 2026-09-30, **BLIND** (committed 14:31:08 ET, entry open 2026-09-30 09:30 ET). Nothing new from this run.\n\n**PENDING changes: none.** AEHR is the last PENDING name and stays PENDING — and it is now two days late against its own pattern. The newsroom's newest item is still the Sep 28 CEO Investor Summit release, which is a conference, not an earnings date; EDGAR's newest filings are annual-meeting material with no 8-K carrying a date; yfinance still says Nov 2 intraday and Nasdaq still says Oct 5 with no time. Its earliest possible snapshot session is Thu Oct 1, so **one housekeeping run remains** (Wed Sep 30) before code marks it INELIGIBLE `unconfirmed`. Expect that. Code's `find_dates` ran first and recorded `no_feed` — AEHR has no machine-readable IR feed, so this name will always need the AI leg.\n\n**Two things went wrong, both infrastructure, both needing a laptop session:**\n\n1. **`check.py` now FAILS inside this checkout** — it reports `T1_rule_v0.json` and `D006_history_study_v1.md` as \"missing frozen registry files\". They are missing on purpose: the sparse-checkout fence removes them so T2 cannot see the T1 rule. `check.py` can't tell \"fenced out\" from \"deleted\", so every T2 and housekeeping run from here on will read FAIL. The record is intact — `git ls-files` shows all three files still tracked, and code ran the real health check in the full checkout before this step. It needs a fence-aware skip, or the AI step should stop running it, because a health check that cries wolf every run is worse than none.\n2. **`actions: read` didn't take effect.** `gh run list` still returns HTTP 403 even though `c2853d6` added the grant three hours before this run — the token was minted from the workflow definition in force at run start. It should work on the next run; until it does, the 09-28-style question \"did the fire arrive, or did the code crash silently\" still can't be answered from inside the runner.\n\n**Tomorrow:** NKE, snapshot Wed Sep 30, AMC Oct 1 — the first event that can reach a T2 decision, and the first live test of the per-event `t2` job."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"date -u && TZ=America/New_York date && echo \\\"--- t2-list ---\\\" && python pipeline/due.py t2-list; echo \\\"--- recent commits ---\\\" && git log --oneline -20 --date=format-local:'%Y-%m-%d %H:%M' --pretty='%h %ad %s' \", \"description\": \"Check time, t2 list, recent commits\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(json.dumps({k:v for k,v in d.items() if k!='events'}, indent=1)[:800])\\nfor e in d.get('events',d if isinstance(d,list) else []):\\n    pass\\n\\\" 2>/dev/null || python -c \\\"\\nimport json;d=json.load(open('universe/pilot/event_status.json'));print(type(d));print(json.dumps(d)[:1500])\\\"\", \"description\": \"Inspect event status file structure\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nfor e in d['events']:\\n    print(e.get('ticker'), e.get('status'), e.get('reason',''), e.get('calendar_date',''), e.get('session',''), e.get('snapshot_session',''), '| rechecks:', len(e.get('rechecks',[])))\\n\\\"\", \"description\": \"List event statuses\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(list(d.keys()))\\nev=d['events']\\nprint(type(ev), list(ev)[:20] if isinstance(ev,dict) else ev[:3])\\n\\\"\", \"description\": \"Inspect events key\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nfor t,e in d['events'].items():\\n    print(t, '|', e.get('status'), '|', e.get('reason',''), '|', e.get('calendar_date',''), e.get('session',''), '| snap', e.get('snapshot_session',''), '| rechecks', len(e.get('rechecks',[])))\\n\\\"\", \"description\": \"List event statuses\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\ne=d['events']['AEHR']\\nprint(json.dumps(e, indent=1)[:4000])\\n\\\"\", \"description\": \"Show AEHR record\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\ne=d['events']['AEHR']\\nfor r in e['rechecks'][7:]:\\n    print('---'); print(r)\\nprint('=== keys:', list(e.keys()))\\nprint('confirmed_by_code:', e.get('confirmed_by_code'))\\n\\\"\", \"description\": \"Show latest AEHR rechecks\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 180 python pipeline/find_dates.py probe AEHR 2>&1 | head -40\", \"description\": \"Probe AEHR company feed\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"gh run list --limit 15 --json databaseId,createdAt,startedAt,event,status,conclusion,displayTitle 2>&1 | head -60\", \"description\": \"List recent workflow runs\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"curl -s -o /tmp/aehr_news.html -w \\\"HTTP %{http_code}  bytes %{size_download}\\\\n\\\" -A \\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36\\\" \\\"https://www.aehr.com/newsroom/\\\"\", \"description\": \"Fetch AEHR newsroom page\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json,urllib.request\\nfrom pipeline.common import SEC_HEADERS\\nreq=urllib.request.Request(\\\"https://data.sec.gov/submissions/CIK0001040470.json\\\", headers=SEC_HEADERS)\\nd=json.load(urllib.request.urlopen(req, timeout=60))\\nr=d[\\\"filings\\\"][\\\"recent\\\"]\\nprint(d[\\\"name\\\"], d[\\\"cik\\\"])\\nfor i in range(12):\\n    print(r[\\\"filingDate\\\"][i], r[\\\"form\\\"][i], r[\\\"primaryDocument\\\"][i], r.get(\\\"items\\\",[\\\"\\\"]*99)[i], r[\\\"reportDate\\\"][i])\\nEOF\", \"description\": \"Check AEHR SEC EDGAR recent filings\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport re,html\\nh=open('/tmp/aehr_news.html',encoding='utf-8',errors='replace').read()\\n# strip tags, collapse\\nt=re.sub(r'<script.*?</script>','',h,flags=re.S|re.I)\\nt=re.sub(r'<style.*?</style>','',t,flags=re.S|re.I)\\nt=re.sub(r'<[^>]+>','\\\\n',t)\\nt=html.unescape(t)\\nlines=[l.strip() for l in t.split('\\\\n')]\\nlines=[l for l in lines if l]\\n# print first 120 meaningful lines\\nfor l in lines[:140]: print(l)\\nEOF\", \"description\": \"Extract text from AEHR newsroom page\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json,urllib.request,gzip,io\\nfrom pipeline.common import SEC_HEADERS\\nh=dict(SEC_HEADERS); print(\\\"UA:\\\", h.get(\\\"User-Agent\\\"))\\nreq=urllib.request.Request(\\\"https://data.sec.gov/submissions/CIK0001040470.json\\\", headers=h)\\nraw=urllib.request.urlopen(req, timeout=60).read()\\nif raw[:2]==b'\\\\x1f\\\\x8b': raw=gzip.decompress(raw)\\nd=json.loads(raw)\\nr=d[\\\"filings\\\"][\\\"recent\\\"]\\nprint(d[\\\"name\\\"], \\\"CIK\\\", d[\\\"cik\\\"])\\nitems=r.get(\\\"items\\\",[\\\"\\\"]*len(r[\\\"form\\\"]))\\nfor i in range(14):\\n    print(r[\\\"filingDate\\\"][i], r[\\\"form\\\"][i].ljust(9), (items[i] or \\\""
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 240 python - <<'EOF' 2>&1 | tail -20\\nimport yfinance as yf\\nt=yf.Ticker(\\\"AEHR\\\")\\ntry:\\n    df=t.get_earnings_dates(limit=8)\\n    print(df.index.tolist()[:8])\\nexcept Exception as e:\\n    print(\\\"get_earnings_dates FAILED:\\\", type(e).__name__, e)\\nEOF\", \"description\": \"Check yfinance earnings dates for AEHR\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"for d in 2026-10-01 2026-10-02 2026-10-05 2026-10-06 2026-10-07; do echo \\\"== $d\\\"; curl -s -A \\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0 Safari/537.36\\\" \\\"https://api.nasdaq.com/api/calendar/earnings?date=$d\\\" | python -c \\\"\\nimport sys,json\\ntry:\\n  d=json.load(sys.stdin)\\n  rows=(d.get('data') or {}).get('rows') or []\\n  hits=[r for r in rows if r.get('symbol')=='AEHR']\\n  print(len(rows),'rows;','AEHR:',hits if hits else 'absent')\\nexcept Exception as e: print('parse fail',e)\\n\\\"; done\", \"description\": \"Check Nasdaq earnings"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"echo \\\"=== commits on ET day 2026-09-29 ===\\\" && TZ=America/New_York git log --since='2026-09-29 00:00' --until='2026-09-30 00:00' --date=format-local:'%Y-%m-%d %H:%M:%S' --pretty='%h %ad %s' && echo && echo \\\"=== gate.json files ===\\\" && find events -name gate.json && echo \\\"=== decision.json files ===\\\" && find events -name decision.json && echo \\\"=== manifests ===\\\" && find events -name 'manifest*' | head && echo \\\"=== git status ===\\\" && git status --porcelain && echo \\\"=== newest runlogs ===\\\" && ls -t logs/actions | head -5\", \"description\": \"Gather today's commits and event "
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | tail -15 && echo \\\"=== workflow permissions ===\\\" && grep -n -A4 'permissions' .github/workflows/s2-window.yml\", \"description\": \"Run health check and inspect workflow permissions\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls registry/ && echo \\\"--- sparse config ---\\\" && git config core.sparseCheckout; cat .git/info/sparse-checkout 2>/dev/null | head -30; echo \\\"--- are they tracked? ---\\\" && git ls-files registry/ | grep -E 'T1_rule|D006' \", \"description\": \"Check registry contents and sparse checkout config\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"head -8 universe/pilot/event_status.json && echo \\\"...\\\" && grep -c '' universe/pilot/event_status.json && grep -n 'json.dump' pipeline/*.py | head\", \"description\": \"Check status file formatting convention\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport datetime, json\\nfrom zoneinfo import ZoneInfo\\nfrom pipeline.common import write_json  # keeps indent=1 convention\\np = \\\"universe/pilot/event_status.json\\\"\\nst = json.load(open(p, encoding=\\\"utf-8\\\"))\\nnow = datetime.datetime.now(ZoneInfo(\\\"America/New_York\\\")).isoformat()\\nnote = (\\n now + \\\": third run of the ET day (the 23:00 UTC housekeeping fire, which arrived 2 h 45 min late again). \\\"\\n \\\"Code's find_dates ran first at 21:44 ET and recorded 'no_feed' - AEHR has no Q4-style IR feed and \\\"\\n \\\"investors.aehr.com does not resolve - so this re-check is"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"offset\": 378, \"limit\": 10}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"  - Two fires per ET day means the second one duplicates the first one's re-check. That is cheap, but the\\n    re-check list is now mostly repetition; worth collapsing to one PENDING re-check per ET day when the\\n    workflow is next edited from a laptop session.\\n\\n### 🔴 The scheduler is losing the pilot\", \"new_string\": \"  - Two fires per ET day means the second one duplicates the first one's re-check. That is cheap, but the\\n    re-check list is now mostly repetition; wort"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git add STATE.md universe/pilot/event_status.json && git -c user.name='claude[bot]' -c user.email='noreply@anthropic.com' commit -q -F - <<'EOF' && git log --oneline -1\\nHousekeeping 2026-09-29 (third run): nothing due; AEHR still PENDING; check.py FAILs inside the fence\\n\\nCo-Authored-By: Claude Opus 5 <noreply@anthropic.com>\\nEOF\", \"description\": \"Commit housekeeping changes\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git push origin HEAD:main 2>&1 | tail -5 || (git pull --no-rebase origin main 2>&1 | tail -5 && git push origin HEAD:main 2>&1 | tail -5)\", \"description\": \"Push to main\"}"
+  }
+ ]
+}
