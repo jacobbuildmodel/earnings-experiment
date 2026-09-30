@@ -79,7 +79,7 @@ its way on top of that base.
 |---|---|---|
 | **T0-wide shadow** | grade every S1 candidate with a confirmed date, gate or no gate, as a secondary track. Doubles RQ1's power | free |
 | **D007 exploration** | pre-register, then test on history: FINRA 5-day short-sale pressure · peer read-through (same-cluster reactions in the prior 10 days) · regime (VIX level/trend, S&P 20-day) · Wikipedia attention spike · early vs late reporter · busy-day effect · semis mechanism. BH + t > 3; survivors become Season B hypotheses | free |
-| **Options** | at every snapshot, record the implied/realised volatility ratio, term-structure slope, call−put implied-volatility spread, skew, and the **short-straddle shadow P&L** (implied move vs realised move) | free (forward) or ~$40 (history, §7) |
+| **Options** | history: DoltHub factors in the D007 batch. Live: at every snapshot, record the implied/realised volatility ratio, term-structure slope, call−put IV spread, skew, and the **short-straddle shadow P&L** (implied move vs realised move) | free |
 | **T2 (AI)** | D004 v3 is live: base-rate prior, leak probe. Next: a T2 ensemble shadow (CHARTER I2), once cost is known | model usage |
 | **Execution** | a paper-trading ledger: market-on-open buy on the entry day, market-on-open sell at exit A; equal-risk sizing = risk budget ÷ implied move | free |
 | **Infrastructure** | cloud trigger (done), health numbers every season: missed windows 0 · T2 missing < 5% · VOID < 5% | credits |
@@ -109,8 +109,8 @@ its way on top of that base.
 
 | ask | why | when |
 |---|---|---|
-| **~$40 for one month of historical option chains** (ThetaData; pricing to be re-checked) | turns RQ4 from "wait a year" into a backtest of 3 years of pre-earnings chains for our universe; the single highest-leverage spend | before Gate 1 |
-| **A paper-trading account that supports market-on-open orders** (e.g. Interactive Brokers paper) | RQ6: real order mechanics before real money | before Season B (Jan 2027) |
+| ~~$40 for historical option chains~~ **not needed (2026-09-30).** DoltHub `post-no-preference/options` is free, needs no signup, and has daily implied and historical volatility for 2,331 stocks from 2019 to date, plus chains (bid, ask, IV, greeks) on three monthly expiries | RQ4 becomes a backtest now: call−put IV spread, skew, the IV run-up into the print, IV/HV, and the implied "crush". Limits: no weekly expiries, so no exact overnight straddle; no volume or open interest | — |
+| **A paper-trading account that supports market-on-open orders.** Jacob agreed 2026-09-30. Recommended: **Alpaca paper** (free, email only, API, market-on-open via `opg`). Jacob stores the API keys as GitHub secrets himself | RQ6: real order mechanics before real money. Jacob will take recommendations from the paper record | set up now; live orders from Season A as a shadow, formal from Season B |
 | **The real-money sleeve and loss limit** | D008 must fix them before the first live trade | before Gate 2 (Mar 2027) |
 | **Widen the universe? (CHARTER I1)** | power | before the Season B screen |
 | **Ideas and attention** | each idea becomes a registered test, never an ad-hoc look | always |
