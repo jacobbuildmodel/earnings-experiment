@@ -573,9 +573,14 @@ experiment specifics) to carry into a CLAUDE-folder chat himself. Nothing was wr
 
 ## Waiting on Jacob
 
-- **Recommended, 1 minute:** connect GitHub to your Claude account at https://claude.ai/connect-github.
-  A cloud routine can then trigger the daily gate without depending on the laptop being awake. Until
-  then, the laptop task `earnings-s2-dispatch` does it at 22:45/23:45 SGT on weekdays.
+- ~~Connect GitHub to Claude~~ **done 2026-09-30.** The cloud routine `earnings-s2-trigger`
+  (`trig_01QDoKoFrXFk2siYQpqNwDnZ`, https://claude.ai/code/routines/trig_01QDoKoFrXFk2siYQpqNwDnZ):
+  - weekdays at 14:45, 15:45, 18:45 and 19:45 UTC; model Haiku; Bash only; no connectors
+  - it pushes one empty commit to `claude/s2-trigger`, and a push starts `s2-window.yml` within seconds
+  - test fire 2026-09-30 13:43 UTC: pushed `49c87fb`, the run started 6 s later, one Bash call and no
+    file reads
+  - the laptop task `earnings-s2-dispatch` stays as a backup. Duplicate starts queue behind the
+    workflow lock and find nothing to do.
 - The Alpha Vantage secret was added 2026-09-21. Confirm on the first grading run: prices should no
   longer be `single_source`.
 
@@ -630,7 +635,7 @@ experiment specifics) to carry into a CLAUDE-folder chat himself. Nothing was wr
    spread 0.85%. Rule 5: v1, v2 and MU's record stay untouched.
 2. **Wed/Thu:** confirm NKE (snapshot 09-30) has `gate.json` and a manifest. Read the logs of the new
    `t2` and `finalize` jobs.
-3. Decide on the durable trigger (Jacob: connect GitHub to Claude; recommended).
+3. ~~Durable trigger~~ done: cloud routine `earnings-s2-trigger` (2026-09-30). Check its first scheduled fires today (14:45 UTC) gate NKE.
 4. `find_dates` coverage is ~50% of feeds, because many IR sites return HTTP 403 to scripts. The AI
    housekeeping step covers the rest, most urgent first. Watch the PENDING backlog after the Oct 9
    screen.
