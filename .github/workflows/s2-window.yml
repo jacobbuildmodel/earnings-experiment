@@ -117,6 +117,7 @@ jobs:
     permissions:
       contents: write       # freeze and capture commits are pushed to main
       id-token: write
+      actions: read         # lets the housekeeping step read its own run history (was HTTP 403)
     env:
       # The mid-season screen (due.py midseason -> s1_screen) pulls the Alpha Vantage calendar, and
       # without this it records "not pulled - no ALPHAVANTAGE_API_KEY" as a deviation from D003 §7.
