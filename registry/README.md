@@ -21,3 +21,4 @@ same commit that adds the file. Lines are only ever appended.
 | T1 rule v0 | R-LIT: mean of 10 signed PIT factor ranks vs a frozen reference (2025Q4-2026Q3), BUY iff above the reference median. **FAILED VALIDATION** (lift -0.7 pts); scored live as a zero-snooping track | 2026-09-29 ET | LIVE for seasonA |
 | D003 v3 | one event per issuer (share classes: alphabetically first ticker) | 2026-09-29 ET | LIVE from seasonA (replaces v2 before first use) |
 | D004 v3 | T1 = rule v0 by code; T2 fenced from T1; hash-random T2 order under capacity; outside-view prior + leak probe required; stage revenue tag; base-rate card `D004_base_rates_v3.json` | 2026-09-29 ET | LIVE from seasonA (replaces v2 before first use) |
+| D003 v4 | S2 open-interest floor over strikes within +-2% of spot (always incl. the nearest), not one strike; single-strike sum still recorded | 2026-09-29 ET | LIVE from seasonA (replaces v3 before first use) |

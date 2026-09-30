@@ -140,7 +140,14 @@ def chain_gate(ticker, reaction_day, dry=False):
         mid = lambda l: (l["bid"] + l["ask"]) / 2  # noqa: E731
         rec["implied_move"] = (mid(call) + mid(put)) / spot
         rec["rel_spread"] = {"call": (call["ask"] - call["bid"]) / mid(call), "put": (put["ask"] - put["bid"]) / mid(put)}
-        rec["oi_sum"] = (call["openInterest"] or 0) + (put["openInterest"] or 0)
+        rec["oi_atm"] = (call["openInterest"] or 0) + (put["openInterest"] or 0)
+        band = S2.get("oi_band_pct")
+        if band:  # D003 v4: open interest over a +-band around spot, never less than the nearest strike's
+            near = lambda df: df[((df.strike / spot - 1).abs() <= band) | (df.strike == strike)]  # noqa: E731
+            rec["oi_sum"] = float(near(calls).openInterest.fillna(0).sum() + near(puts).openInterest.fillna(0).sum())
+            rec["oi_band_pct"] = band
+        else:
+            rec["oi_sum"] = rec["oi_atm"]
         if rec["implied_move"] < S2["implied_move_min"]:
             rec.update(status="INELIGIBLE", reason="low_implied_move")
         elif max(rec["rel_spread"].values()) > S2["max_rel_spread_each_leg"]:
