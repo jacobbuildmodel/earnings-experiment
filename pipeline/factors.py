@@ -206,12 +206,21 @@ def calendar_block(sheet, ticker, report_date):
     put(sheet, "L_weekday_LR07", report_date.strftime("%A"), "report date")
 
 
-def stage_block(sheet, ticker, snapshot_date):
+def stage_revenue_tags(season):
+    """D004 §4 revenue tags; D004 v3 (Season A on) adds the "including assessed tax" tag (AIR read unknown)."""
+    try:
+        from common import rule_for
+        return tuple(rule_for("D004_decision_protocol", season).get("stage_revenue_tags") or ()) or None
+    except SystemExit:
+        return None
+
+
+def stage_block(sheet, ticker, snapshot_date, season="pilot"):
     """D004 §4: business stage from SEC XBRL companyfacts, facts filed before the snapshot."""
     from common import Sec
     sec = Sec(os.path.join(ROOT, "cache", "sec"))
     cik = sec.cik(ticker)
-    facts = json.loads(sec.get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik:010d}.json"))["facts"].get("us-gaap", {})
+    facts = sec.facts(cik)["facts"].get("us-gaap", {})
     src = "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
 
     def quarters(tag):
@@ -239,7 +248,7 @@ def stage_block(sheet, ticker, snapshot_date):
         return q
 
     rev, rev_tag = {}, {}
-    for tag in ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"):
+    for tag in stage_revenue_tags(season) or ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"):
         for end, v in quarters(tag).items():
             if end not in rev:  # per quarter, the first tag in priority order that has a value
                 rev[end], rev_tag[end] = v, tag
@@ -272,6 +281,37 @@ def stage_block(sheet, ticker, snapshot_date):
     put(sheet, "K_op_margin_q", margin, src, f"quarter ending {latest}")
 
 
+def t1_applies(season):
+    try:
+        rule = registry("T1_rule_v0.json")
+    except (SystemExit, OSError):
+        return False
+    return season in rule.get("applies_to_seasons", [])
+
+
+def h_block(sheet, tk, ticker, snap_session, report_date):
+    """The ten D006 factors, by the SAME code as the history study (pipeline/history_factors.py), so T1
+    rule v0 sees live exactly what it was built on. Stored as H1..H10; T1 is computed from them by code
+    at the freeze (pipeline/t1_rule.py), never by the AI."""
+    import yfinance as yf
+    import history_factors as hf
+    from common import Sec
+    sec = Sec(os.path.join(ROOT, "cache", "sec"))
+    cik = sec.cik(ticker)
+    spy = yf.Ticker("SPY").history(period="3y", auto_adjust=False).tz_convert(ET)
+    cal = hf.Calendar([x.date() for x in spy.index if x.date() <= snap_session])
+    agreed, _ = hf.agreed_prints(hf.sec_prints(sec, cik, cal), hf.yf_prints(tk, 28, cal), cal)
+    past = [p for p in agreed if p["date"] < report_date.isoformat()]
+    facts = sec.facts(cik)["facts"]
+    adj = tk.history(period="3y", auto_adjust=True).tz_convert(ET)
+    raw = tk.history(period="3y", auto_adjust=False).tz_convert(ET)
+    adj, raw = adj[adj.index.date <= snap_session], raw[raw.index.date <= snap_session]
+    vals = hf.compute(snap_session, past, facts, adj, raw, tk.splits, report_date, cal)
+    src = "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    for k, v in vals.items():
+        put(sheet, k if k.startswith("H") else f"H_{k}", v, src)
+
+
 def run(season, ticker, report_date, dry=False):
     import yfinance as yf
     ticker = ticker.upper()
@@ -293,7 +333,14 @@ def run(season, ticker, report_date, dry=False):
     safely(sheet, "options", lambda: options_block(sheet, chain, gate))
     safely(sheet, "term_structure", lambda: term_structure_block(sheet, tk, gate, snap_session))
     safely(sheet, "calendar", lambda: calendar_block(sheet, ticker, report_date))
-    safely(sheet, "stage", lambda: stage_block(sheet, ticker, meta["captured_et"][:10]))
+    safely(sheet, "stage", lambda: stage_block(sheet, ticker, meta["captured_et"][:10], season))
+    if t1_applies(season):  # the pilot has no T1 rule: its snapshot is unchanged (review 2026-09-29)
+        safely(sheet, "H_block", lambda: h_block(sheet, tk, ticker, snap_session, report_date))
+        if sheet.get("H_block", {}).get("error"):  # one retry: a transient 403/429 must not null T1
+            import time
+            time.sleep(20)
+            sheet.pop("H_block")
+            safely(sheet, "H_block", lambda: h_block(sheet, tk, ticker, snap_session, report_date))
     out = {"meta": meta, "factors": sheet}
     (write_json if dry else write_once)(os.path.join(base, "factors.json"), out)
     print(json.dumps({k: v.get("value") for k, v in sheet.items() if k != "E_last4_prints"}, indent=1, default=str))

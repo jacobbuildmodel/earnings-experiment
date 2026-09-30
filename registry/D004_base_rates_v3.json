@@ -1,0 +1,74 @@
+{
+ "id": "D004_base_rates_v3",
+ "source": "D006 history study (pre-pilot, 2023-09 -> 2026-09-18), analysis/history/report.md",
+ "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+ "overall": {
+  "train_2023_09_2025_08": {
+   "n": 1684,
+   "t0_hit": 0.541,
+   "mean_return": 0.0066
+  },
+  "validation_2025_09_2026_09": {
+   "n": 1034,
+   "t0_hit": 0.542,
+   "mean_return": 0.0116
+  }
+ },
+ "by_cluster": {
+  "ai_infra": {
+   "n": 43,
+   "t0_hit": 0.558,
+   "sufficient": true
+  },
+  "consumer": {
+   "n": 436,
+   "t0_hit": 0.555,
+   "sufficient": true
+  },
+  "crypto_proxy": {
+   "n": 8,
+   "t0_hit": 0.25,
+   "sufficient": false
+  },
+  "drones_robotics_space_defense": {
+   "n": 278,
+   "t0_hit": 0.586,
+   "sufficient": true
+  },
+  "hardware_networking": {
+   "n": 348,
+   "t0_hit": 0.586,
+   "sufficient": true
+  },
+  "healthcare_growth": {
+   "n": 252,
+   "t0_hit": 0.52,
+   "sufficient": true
+  },
+  "semis": {
+   "n": 434,
+   "t0_hit": 0.479,
+   "sufficient": true
+  },
+  "software_internet": {
+   "n": 919,
+   "t0_hit": 0.541,
+   "sufficient": true
+  }
+ },
+ "by_session": {
+  "AMC": {
+   "n": 1820,
+   "t0_hit": 0.538
+  },
+  "BMO": {
+   "n": 898,
+   "t0_hit": 0.548
+  }
+ },
+ "caveats": [
+  "survivorship: today's listed companies",
+  "no option gate: a superset of live events",
+  "descriptive; cluster differences are candidates, not findings"
+ ]
+}

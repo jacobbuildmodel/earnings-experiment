@@ -26,15 +26,28 @@ Never:
 - run `pipeline/s2_gate.py` or `pipeline/factors.py` — code already did that
 - edit `gate.json`, `factors.json`, `option_chain.json` or `confirm.json` of a gated event
 - ask anyone to run a command
+- read `registry/T1_rule_v0.json` or `analysis/history/` (D004 v3: T2 is judged against T1, so it
+  may not see or recompute it) — both are absent from the T2 checkout; do not fetch them by any route
 
 The run tells you, in the workflow's prompt, two things: the events awaiting T2, and whether this
 is the housekeeping run.
 
-## A. T2 — for each event awaiting a decision
+## A. T2 — the ONE event this job was given
 
-Confirm the list yourself with `python pipeline/due.py t2-list` (prints `<season> <TICKER> <date>`).
-For each:
+Since 2026-09-28 every event awaiting T2 gets its own parallel job, and the workflow's prompt names
+exactly one event. **Decide only that event.** Other events are handled by other jobs at the same
+time; never write a decision for them. Check that your event is still awaiting T2 with
+`python pipeline/due.py t2-list` (prints `<season> <TICKER> <date>`); if it is not listed, stop and
+report why. For your event:
 
+0. **Season A onwards (D004 v3), before anything else:**
+   - **Leak probe.** From memory alone, before opening any file about the event, answer: "What did
+     <TICKER>'s stock do after its earnings report of <date>?" Keep the answer for
+     `t2.leak_probe`, verbatim. "I don't know" is the expected answer; never look it up.
+   - **Outside view.** Read `registry/D004_base_rates_v3.json`. Write down `t2.prior`: an object
+     `{"p": <probability>, "from": "<which base rate and why>"}` — where you start before anything
+     about this company. `thesis.md` must say what moved you from the prior to your final confidence.
+   - Do not write any `t1` — code computes T1 at the freeze.
 1. Read the event's `confirm.json`, `gate.json`, `factors.json`, `option_chain.json`, and
    `registry/D004_decision_protocol_v1.md` §3 (and any newer D004 version).
 2. Research, reading only what D004 allows, published before `gate.json` → `captured_et`:
@@ -48,11 +61,13 @@ For each:
 
    ```json
    {"t0": {"decision": "BUY"},
-    "t1": {"decision": null, "note": "rule v0 not frozen - pilot"},
+    "t1": {"decision": null, "note": "rule v0 not frozen - pilot"},   // pilot only; from Season A omit t1 - code writes it
     "t2": {"decision": "BUY or NO_BUY", "confidence": 0.00,
            "thesis": "one sentence", "reasons": ["2-5 items"], "deciding_variable": "...",
            "inputs_read": [{"what": "...", "url_or_file": "...", "published": "YYYY-MM-DD or ISO time"}],
-           "decided_et": "ISO time with offset, now"}}
+           "decided_et": "ISO time with offset, now",
+           "prior": {"p": 0.54, "from": "which base rate, and why"},      // Season A on (D004 v3)
+           "leak_probe": "your from-memory answer, verbatim"}}          // Season A on (D004 v3)
    ```
 
    - **Deadline.** Pilot (D004 v1): before the entry open. From Season A (D004 v2): `decided_et` must
@@ -72,15 +87,23 @@ For each:
 4. Write `thesis.md` — FRAMEWORK.md §4 items 1–6: identity, cluster and stage (`K_stage` in
    factors.json); the factor snapshot by reference; three theses, each *expected · mechanism · what
    proves it wrong*; key observations to capture; the predicted deciding variable; the decisions.
-5. Run `python pipeline/freeze.py <season> <T> <date>`. It must print `BLIND (before open)` and a
-   successful push. If it refuses the decision, fix what it names and run it again. If you cannot
-   produce a valid decision, leave it: code freezes T2 as MISSING on the day's last run.
-   Never rebase, amend or re-commit a freeze commit.
+5. **Stop. Do not run `pipeline/freeze.py`, and do not commit.** Since 2026-09-29 code freezes the
+   event in the full checkout straight after you, judged by the runner clock. It needs the T1 rule,
+   which is not in your checkout. Before you stop, check `decision.json` against step 3: confidence
+   and decision must agree, and every input must carry `published`. From Season A it also needs
+   `prior` and `leak_probe`. A decision code finds invalid is frozen as T2 MISSING.
 
 ## B. Housekeeping — only when the workflow says this is the housekeeping run
 
 1. PENDING events in `universe/<season>/event_status.json`: look for a **company** announcement of
    the report date and session.
+   - **Code went first.** `pipeline/find_dates.py apply` ran just before you. It read the company IR
+     feeds and confirmed the clear cases (flag `confirmed_by_code`). Its note on each event that is
+     still PENDING says what it saw. Do not redo what it did.
+   - **Work in order of urgency:** the earliest possible snapshot session first. A name whose print
+     is weeks away can wait for another night; a name whose snapshot could be tomorrow cannot.
+   - `python pipeline/find_dates.py probe <TICKER>` shows what the company feed says, without
+     writing anything.
    - Where: the IR press-release feed
      `https://<ir-host>/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3&pageSize=8&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`
      (browser User-Agent), or the company source recorded in STATE.md / the status file.

@@ -125,11 +125,11 @@ what we are measuring.
 |---|---|---|---|---|
 | I1 | **Grow the sample**: widen the D002 allowlist (e.g. Consumer Electronics, Scientific & Technical Instruments, Diagnostics) and/or lower the implied-move gate to 3% | power is the binding constraint; one season detects only ~12 pts | 1 | **Decision for Jacob before the Season B screen**, using Season A's event *count* (not outcomes) |
 | I2 | **T2 ensemble shadow track (T2e):** 3–5 independent runs or models, trimmed mean | ensembles rival human crowds and improve calibration (Schoenegger 2024; Halawi 2024) | 4, 3 | register for Season A if run cost allows; watch account rate limits |
-| I3 | **Outside view first:** give T2 the stock's own past earnings reactions and the season base rate before any story | superforecasting practice; LLMs improve when shown a base rate (+17–28% in Schoenegger) | 4 | candidate D004 v3 |
+| I3 | **Outside view first:** give T2 the stock's own past earnings reactions and the season base rate before any story | superforecasting practice; LLMs improve when shown a base rate (+17–28% in Schoenegger) | 4 | **done: D004 v3 change 4** (frozen 2026-09-29) |
 | I4 | **Structured bull/bear debate inside T2** (multi-role agents) | TradingAgents-style role debate; our three theses are a start | 3, 4 | shadow candidate |
 | I5 | **Implied move vs own history (B3), concave IV curve** as factors | concave IV predicts larger moves (Review of Finance 2025); the straddle premium is documented | 3 | add to factors before rule v0 |
-| I6 | **Point-in-time history store** for the rule v0 study (Qlib-style PIT data) | D005 v2 §7 requires point-in-time factors | 2, 3 | build with the history study |
-| I7 | **Leak test for T2:** a date-only recall probe on each event (Lookahead Propensity) | Gao, Jiang & Yan 2025 | 2 | our events are post-cutoff, so the probe should read ~0; cheap proof |
+| I6 | **Point-in-time history store** for the rule v0 study (Qlib-style PIT data) | D005 v2 §7 requires point-in-time factors | 2, 3 | **done: `pipeline/history_factors.py`**, SEC `filed` dates + bar calendar (D006) |
+| I7 | **Leak test for T2:** a date-only recall probe on each event (Lookahead Propensity) | Gao, Jiang & Yan 2025 | 2 | **done: D004 v3 change 5** — `t2.leak_probe` on every Season A event |
 | I8 | **Rate-limit resilience:** API-key fallback for the AI step | the account hit its session limit on 2026-09-21; peak weeks could starve T2 | 2 | watch in Season A |
 | I9 | **OpenBB** as a second data layer for estimates and calendars | one interface to many free providers; a second source for fields where we have one | 2 | probe when a factor needs it |
 

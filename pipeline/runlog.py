@@ -21,7 +21,8 @@ from due import commit  # noqa: E402
 SEP = r"[/\x5c]"  # a forward or back slash
 FENCES = [(re.compile(r"(^|[\s'\":/\x5c])archive" + SEP, re.I), "archive/ (rule 10)"),
           (re.compile(r"(^|[\s'\":/\x5c])outcomes" + SEP, re.I), "outcomes/ (D004: no graded outcomes)"),
-          (re.compile(r"\.\." + SEP + r"CLAUDE\b|\bDRIVE\b"), "DRIVE repo (rule 9)")]
+          (re.compile(r"\.\." + SEP + r"CLAUDE\b|\bDRIVE\b"), "DRIVE repo (rule 9)"),
+          (re.compile(r"T1_rule_v\d|analysis" + SEP + r"history", re.I), "T1 rule / history study (D004 v3: T2 may not see T1)")]
 
 # git commands that can print file contents from history (external review 2026-09-21: `git log -p` or
 # `git show <commit>` reads a graded outcome without naming outcomes/). Listed for review, not as breaches.

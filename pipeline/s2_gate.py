@@ -197,7 +197,17 @@ def run(season, ticker, report_date, dry=False):
         gate.update(status="INELIGIBLE", reason="printed_before_entry")
     else:
         gate["second_source_used"] = agree[0]
-        opt, full = chain_gate(ticker, datetime.date.fromisoformat(tm["reaction_day"]), dry)
+        # a yfinance hiccup must not crash the gate: retry, then record it (review of 2026-09-28)
+        for attempt in range(3):
+            try:
+                opt, full = chain_gate(ticker, datetime.date.fromisoformat(tm["reaction_day"]), dry)
+                break
+            except Exception as exc:  # recorded, never fabricated
+                if attempt == 2:
+                    opt, full = {"status": "INELIGIBLE", "reason": "chain_error",
+                                 "detail": f"{type(exc).__name__}: {exc}"}, {"error": f"{type(exc).__name__}: {exc}"}
+                else:
+                    time.sleep(0 if dry else 20)
         gate["options"] = opt
         gate["flags"] += opt.pop("flags", [])
         gate.update(status=opt.pop("status"), reason=opt.pop("reason", None))

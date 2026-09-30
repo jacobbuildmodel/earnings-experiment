@@ -286,6 +286,21 @@ def screen_one(t, sources, m, sec, screen_date, base):
     return rec, None
 
 
+def one_per_issuer(candidates, taken=()):
+    """D003 v3: share classes of one issuer (same SEC CIK) are one event; the alphabetically first ticker
+    is kept, the others are excluded as second_share_class. `taken`: CIKs already in the season."""
+    if not RULE.get("one_per_issuer"):
+        return candidates, []
+    seen, keep, drop = set(taken), [], []
+    for rec in sorted(candidates, key=lambda r: r["ticker"]):
+        if rec.get("cik") in seen:
+            drop.append(dict(rec, reason="second_share_class"))
+        else:
+            seen.add(rec.get("cik"))
+            keep.append(rec)
+    return keep, drop
+
+
 def screen(season, only=None):
     base, raw = dirs(season)
     screen_date = datetime.date.fromisoformat(RULE["seasons"][season]["screen_date"])
@@ -302,6 +317,9 @@ def screen(season, only=None):
         else:
             candidates.append(rec)
             print(f"  IN  {t:6} {rec['cluster']:30} {rec['industry']}")
+
+    candidates, extra = one_per_issuer(candidates)
+    excluded += extra
 
     result = {
         "season": season, "rule": RULE["id"], "screen_date": screen_date.isoformat(),
@@ -385,6 +403,13 @@ def midseason(season):
         rec["flags"] = ["added_midseason"]
         (excluded if reason else added).append(rec)
         time.sleep(0.3)
+    taken = set()
+    for name in ("candidates.json", "candidates_midseason.json"):
+        cp = os.path.join(base, name)
+        if os.path.exists(cp):
+            taken |= {c.get("cik") for c in json.load(open(cp, encoding="utf-8"))["candidates"]}
+    added, extra = one_per_issuer(added, taken)
+    excluded += extra
     write_once(os.path.join(mdir, f"{now.date().isoformat()}.json"),
                {"season": season, "rule": f"{RULE['id']} §7", "captured_et": now.isoformat(),
                 "alphavantage": av_note, "calendar_names": len(rows), "tested": new,
