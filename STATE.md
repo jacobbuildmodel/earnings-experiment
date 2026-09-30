@@ -637,9 +637,7 @@ Oct 11, before any Season A outcome:
 - add the T0-wide shadow, the live option features and the straddle shadow
 
 **Next actions:**
-1. ~~D003 v4~~ done 2026-09-29. **D003 v4 before the Oct 9 screen:** replace the single-strike open-interest floor with one that
-   does not scale with share price. The MU case: 260 contracts at one strike, 309,771 on the expiry,
-   spread 0.85%. Rule 5: v1, v2 and MU's record stay untouched.
+1. ~~D003 v4: replace the single-strike open-interest floor~~ **done 2026-09-29** (`e3f0d7a`): ±2% band, frozen before the Oct 9 screen.
 2. **Wed/Thu:** confirm NKE (snapshot 09-30) has `gate.json` and a manifest. Read the logs of the new
    `t2` and `finalize` jobs.
 3. ~~Durable trigger~~ done: cloud routine `earnings-s2-trigger` (2026-09-30). Check its first scheduled fires today (14:45 UTC) gate NKE.
