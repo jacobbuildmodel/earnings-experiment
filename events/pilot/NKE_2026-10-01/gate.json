@@ -1,0 +1,88 @@
+{
+ "season": "pilot",
+ "ticker": "NKE",
+ "report_date": "2026-10-01",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-01"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-02"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-02"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-09"
+  },
+  "reaction_day": "2026-10-02"
+ },
+ "snapshot_session": "2026-09-30",
+ "captured_et": "2026-09-30T14:31:00.220160-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v1 §6",
+ "company_source": {
+  "url": "https://investors.nike.com/investors/news-events-and-reports/investor-news/investor-news-details/2026/NIKE-Inc--Announces-First-Quarter-Fiscal-2027-Earnings-and-Conference-Call/default.aspx",
+  "published_et": "2026-08-28 17:00",
+  "quote": "NIKE, Inc. plans to release its first quarter fiscal 2027 financial results on Thursday, October 1, 2026, at approximately 1:15 p.m. PT, following the close of regular stock market trading hours.",
+  "detail": "call 2:00 p.m. PT",
+  "retrieved_et": "2026-09-17T08:13:04-04:00",
+  "how": "quote extracted from the company page by the fetch tool on retrieved_et; page listed in the company's IR press-release feed"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-01T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-01T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 35.494998931884766,
+  "expiry": "2026-10-02",
+  "strike": 35.5,
+  "call": {
+   "bid": 1.5,
+   "ask": 1.54,
+   "openInterest": 971.0,
+   "lastPrice": 1.52,
+   "impliedVolatility": 1.1865275048828123,
+   "lastTradeDate": "2026-09-30T18:15:50+00:00"
+  },
+  "put": {
+   "bid": 1.49,
+   "ask": 1.54,
+   "openInterest": 3066.0,
+   "lastPrice": 1.49,
+   "impliedVolatility": 1.1787150439453122,
+   "lastTradeDate": "2026-09-30T18:12:47+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.08550500327734038,
+  "rel_spread": {
+   "call": 0.026315789473684233,
+   "put": 0.03300330033003303
+  },
+  "oi_atm": 4037.0,
+  "oi_sum": 4037.0
+ },
+ "status": "PASS",
+ "reason": null
+}

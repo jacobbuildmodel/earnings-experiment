@@ -151,6 +151,11 @@ def options_block(sheet, chain, gate):
     put(sheet, "B_put_call_volume_LR14", pv / cv if cv else None, src, "plain volume, gate expiry only")
     put(sheet, "B_put_call_oi", poi / coi if coi else None, src, "gate expiry only")
     put(sheet, "B_option_volume_gate_expiry", cv + pv, src)
+    # implied vs realised (the vol-selling filters, repos reviewed 2026-09-30; D007 E7 in history)
+    ivs = [x for x in (o["call"].get("impliedVolatility"), o["put"].get("impliedVolatility")) if x]
+    rv = (sheet.get("A_vol_60d_ann") or {}).get("value")
+    put(sheet, "B_atm_iv_over_rv60", (sum(ivs) / len(ivs)) / rv if ivs and rv else None, src,
+        "mean ATM IV of the gate expiry / 60-session realised vol (A_vol_60d_ann)")
 
 
 def term_structure_block(sheet, tk, gate, snap_session):

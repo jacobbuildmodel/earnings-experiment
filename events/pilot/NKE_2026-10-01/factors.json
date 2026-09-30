@@ -1,0 +1,201 @@
+{
+ "meta": {
+  "ticker": "NKE",
+  "report_date": "2026-10-01",
+  "session": "AMC",
+  "captured_et": "2026-09-30T14:31:04.387670-04:00",
+  "snapshot_session": "2026-09-30",
+  "dry": false
+ },
+ "factors": {
+  "A_ret_12m_LR01": {
+   "value": -0.4728205265924532,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_ret_1m": {
+   "value": -0.08163007682888823,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_ret_5d_LR10": {
+   "value": -0.015395293118487086,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_max_daily_ret_21d_LR11": {
+   "value": 0.017902080829326872,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_vol_60d_ann": {
+   "value": 0.2885006502336168,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_volume_20d_vs_250d": {
+   "value": 1.5328973145704343,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_dist_from_52w_high": {
+   "value": -0.5083098210040375,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "E_last4_prints": {
+   "value": [
+    {
+     "date": "2026-06-30",
+     "session": "AMC",
+     "raw_return_A": 0.00048331940717472044,
+     "eps_est": 0.13,
+     "eps_rep": 0.72,
+     "surprise_pct": 466.13,
+     "reaction_volume_ratio": 3.426445725483778
+    },
+    {
+     "date": "2026-03-31",
+     "session": "AMC",
+     "raw_return_A": -0.1034084022721895,
+     "eps_est": 0.28,
+     "eps_rep": 0.35,
+     "surprise_pct": 24.31,
+     "reaction_volume_ratio": 7.237341857367106
+    },
+    {
+     "date": "2025-12-18",
+     "session": "AMC",
+     "raw_return_A": -0.10316622710617851,
+     "eps_est": 0.38,
+     "eps_rep": 0.53,
+     "surprise_pct": 41.33,
+     "reaction_volume_ratio": 8.421935865432204
+    },
+    {
+     "date": "2025-09-30",
+     "session": "AMC",
+     "raw_return_A": 0.06108168405567871,
+     "eps_est": 0.27,
+     "eps_rep": 0.49,
+     "surprise_pct": 81.32,
+     "reaction_volume_ratio": 4.416611924689781
+    }
+   ],
+   "source": "yfinance get_earnings_dates + history (adjusted opens)",
+   "note": "EPS basis NOT pinned (STATE #2) - surprise is vendor-defined"
+  },
+  "E_last4_win_rate_A": {
+   "value": 0.5,
+   "source": "yfinance get_earnings_dates + history (adjusted opens)"
+  },
+  "E_past_reaction_volume_LR02": {
+   "value": 5.875583843243217,
+   "source": "yfinance get_earnings_dates + history (adjusted opens)"
+  },
+  "E_last_surprise_pct_LR17": {
+   "value": 466.13,
+   "source": "yfinance get_earnings_dates + history (adjusted opens)",
+   "note": "EPS basis NOT pinned"
+  },
+  "L_report_date_shift_days": {
+   "value": 2,
+   "source": "yfinance get_earnings_dates",
+   "note": "vs 2025-09-30; positive = later than the same quarter last year"
+  },
+  "D_eps_trend_current_q": {
+   "value": {
+    "current": 0.43689,
+    "7daysAgo": 0.44529,
+    "30daysAgo": 0.45371,
+    "60daysAgo": 0.45236,
+    "90daysAgo": 0.4486,
+    "currency": "USD"
+   },
+   "source": "yfinance eps_trend / earnings_estimate / info"
+  },
+  "D_eps_revision_90d_LR19": {
+   "value": -0.026103432902362902,
+   "source": "yfinance eps_trend / earnings_estimate / info"
+  },
+  "D_eps_est_current_q": {
+   "value": {
+    "avg": 0.43689,
+    "low": 0.38,
+    "high": 0.5,
+    "yearAgoEps": 0.49,
+    "numberOfAnalysts": 24,
+    "growth": -0.1084,
+    "currency": "USD"
+   },
+   "source": "yfinance eps_trend / earnings_estimate / info"
+  },
+  "C_analyst_dispersion_LR08": {
+   "value": 0.2746686809036599,
+   "source": "yfinance eps_trend / earnings_estimate / info",
+   "note": "(high-low)/|avg| - a crude dispersion proxy"
+  },
+  "C_short_pct_float": {
+   "value": 0.08979999,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "J_forward_pe_LR20": {
+   "value": 16.455725,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "J_price_to_sales_LR20": {
+   "value": 1.1348934,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "J_revenue_growth": {
+   "value": -0.011,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "K_market_cap": {
+   "value": 52656787456,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "C_analyst_rec_mean": {
+   "value": 2.7619,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "B_implied_move": {
+   "value": 0.08550500327734038,
+   "source": "own option-chain capture (gate step, yfinance)"
+  },
+  "B_iv_spread_call_minus_put_atm_LR12": {
+   "value": 0.007812460937500099,
+   "source": "own option-chain capture (gate step, yfinance)"
+  },
+  "B_put_skew_90_LR13": {
+   "value": -0.038085747070312426,
+   "source": "own option-chain capture (gate step, yfinance)",
+   "note": "IV(put nearest 0.9*spot) - IV(ATM call), same expiry"
+  },
+  "B_put_call_volume_LR14": {
+   "value": 0.8244634533627004,
+   "source": "own option-chain capture (gate step, yfinance)",
+   "note": "plain volume, gate expiry only"
+  },
+  "B_put_call_oi": {
+   "value": 0.7687345190948656,
+   "source": "own option-chain capture (gate step, yfinance)",
+   "note": "gate expiry only"
+  },
+  "B_option_volume_gate_expiry": {
+   "value": 35619.0,
+   "source": "own option-chain capture (gate step, yfinance)"
+  },
+  "B_event_move_term_structure": {
+   "value": 0.09973506606659598,
+   "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry",
+   "note": "std of the event-day return; iv1=1.1826 (2026-10-02), iv2=0.7095 (2026-10-09)"
+  },
+  "L_same_day_reporters_LR06": {
+   "value": 16,
+   "source": "nasdaq calendar (all caps)"
+  },
+  "L_weekday_LR07": {
+   "value": "Thursday",
+   "source": "report date"
+  },
+  "K_stage": {
+   "value": "unknown",
+   "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)",
+   "note": "revenue or operating income missing"
+  }
+ }
+}
