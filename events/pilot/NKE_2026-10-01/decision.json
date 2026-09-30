@@ -1,0 +1,115 @@
+{
+ "t0": {
+  "decision": "BUY"
+ },
+ "t1": {
+  "decision": null,
+  "note": "rule v0 not frozen - pilot"
+ },
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "NIKE goes into this print already washed out - down 47% in twelve months, 51% below its 52-week high, on a consensus bar that has been walked down to $0.44 - so the consumer-cluster base rate broadly holds, but its own 10-K warning that Greater China and Converse drag all through fiscal 2027, and an incoming CFO's first call, pull it back to barely better than a coin flip.",
+  "reasons": [
+   "Outside view first: the history study's buy-everything hit rate is 0.555 for the consumer cluster (n=436) and 0.538 for AMC reporters, so the honest starting point is about 0.55, not 0.50, and the entry open is a full session before an after-close print - the part of the window where the announcement premium sits.",
+   "The bar is low and has already been cut: consensus is $0.437 against $0.49 a year ago (-10.8%), walked down 2.6% over 90 days (D_eps_revision_90d_LR19), and NIKE beat consensus in each of the last four quarters (+81%, +41%, +24%, +466% vendor surprise).",
+   "This is a washed-out name, not a glamour one, so the LR20 growth-torpedo risk is largely spent: A_ret_12m_LR01 -47.3%, A_dist_from_52w_high -50.8%, forward P/E 16.5, P/S 1.13. Option positioning is mildly call-side on all three B-family signs - put/call volume 0.82, put/call OI 0.77, ATM call IV 0.78 vol points above the ATM put (LR12 +), and the 90%-strike put trades 3.8 vol points BELOW the ATM call, the opposite of the steep bearish smirk LR13 penalises. The literature review flags B-family priors as weak in today's retail-dominated weekly market, so this is a light thumb on the scale.",
+   "Against that, the downside is concrete and company-stated: the FY2026 10-K (filed 2026-07-15) says 'We expect negative impacts from Greater China and Converse to continue throughout fiscal 2027', and Q4's headline $0.72 EPS contained $0.52 of one-off IEEPA tariff recovery ($986m booked in cost of sales), so the underlying run-rate is far weaker than the print implied. Two of the last four reactions on this exact entry-open-to-exit-A-open window were -10.3%.",
+   "Name-specific left tail this window cannot hedge: David Denton became CFO on 2026-08-17 and delivers his first NIKE call, while the Chief Accounting Officer resigned effective 2026-09-04. An incoming CFO has the standard incentive to reset expectations; high analyst dispersion (0.275) and 9.0% short interest are the Berkman/Miller disagreement setup that LR08 scores negative."
+  ],
+  "deciding_variable": "The forward commentary on Greater China and the fiscal-2027 revenue and gross-margin trajectory given by the incoming CFO on the call - not the EPS surprise, which NIKE has beaten four quarters running while the stock still fell 10% twice.",
+  "inputs_read": [
+   {
+    "what": "event confirm.json - AMC session confirmed from NIKE's own 2026-08-28 scheduling release",
+    "url_or_file": "events/pilot/NKE_2026-10-01/confirm.json",
+    "published": "2026-09-30T14:31:00-04:00"
+   },
+   {
+    "what": "event gate.json - S2 gate PASS, timing, ATM option quotes, implied move 8.55%",
+    "url_or_file": "events/pilot/NKE_2026-10-01/gate.json",
+    "published": "2026-09-30T14:31:00-04:00"
+   },
+   {
+    "what": "event factors.json - the frozen factor snapshot (capture instant 14:31:04.387670-04:00)",
+    "url_or_file": "events/pilot/NKE_2026-10-01/factors.json",
+    "published": "2026-09-30T14:31:00-04:00"
+   },
+   {
+    "what": "event option_chain.json - full 2026-10-02 chain captured at the gate",
+    "url_or_file": "events/pilot/NKE_2026-10-01/option_chain.json",
+    "published": "2026-09-30T14:31:00-04:00"
+   },
+   {
+    "what": "D004 base rates v3 - buy-everything hit rates overall, by cluster and by session",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29"
+   },
+   {
+    "what": "D004 decision protocol v1 section 3 - what T2 may read and must write (pilot)",
+    "url_or_file": "registry/D004_decision_protocol_v1.md",
+    "published": "2026-09-16"
+   },
+   {
+    "what": "D004 decision protocol v3 - outside view and leak probe, adopted here voluntarily for a pilot event",
+    "url_or_file": "registry/D004_decision_protocol_v3.md",
+    "published": "2026-09-29"
+   },
+   {
+    "what": "literature review - mechanism background for LR01, LR08, LR10, LR12-14, LR19, LR20, LR23",
+    "url_or_file": "reviews/literature_review.md",
+    "published": "2026-09-17"
+   },
+   {
+    "what": "universe screen record - NKE cluster 'consumer', Footwear & Accessories, market cap $53.1bn",
+    "url_or_file": "universe/pilot/candidates.json",
+    "published": "2026-09-17"
+   },
+   {
+    "what": "NIKE FY2026 Form 10-K - MD&A, Greater China and Converse outlook for fiscal 2027, IEEPA tariff recovery of $986m, $385m FY26 severance",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000088/nke-20260531.htm",
+    "published": "2026-07-15"
+   },
+   {
+    "what": "8-K Item 2.02 Ex-99.1 - NIKE Q4 and full year FY2026 results release",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000076/q4fy26exhibit991er.htm",
+    "published": "2026-06-30"
+   },
+   {
+    "what": "8-K Items 2.02/5.02 Ex-99.1 - CFO transition to David Denton and preliminary Q4 FY2026 update (tariff-refund benefit, otherwise in line)",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000070/pressrelease062326.htm",
+    "published": "2026-06-23"
+   },
+   {
+    "what": "8-K Item 5.02 - Chief Accounting Officer and Corporate Controller Johanna Nielsen resigns effective 2026-09-04",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000112/nke-20260804.htm",
+    "published": "2026-08-10"
+   },
+   {
+    "what": "8-K Item 5.02 - Alexandre Arnault appointed to the Board, effective 2026-09-15",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000170/nke-20260915.htm",
+    "published": "2026-09-16"
+   },
+   {
+    "what": "8-K Items 5.02/5.07 - 2026 annual meeting results and amended Employee Stock Purchase Plan",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000143/nke-20260908.htm",
+    "published": "2026-09-10"
+   },
+   {
+    "what": "8-K Item 5.02 - director John W. Rogers, Jr. not standing for re-election",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/320187/000032018726000068/nke-20260615.htm",
+    "published": "2026-06-18"
+   },
+   {
+    "what": "NIKE IR press-release feed - full release list to 2026-08-28; no company release after the 2026-08-06 dividend other than the earnings scheduling notice",
+    "url_or_file": "https://investors.nike.com/feed/PressRelease.svc/GetPressReleaseList",
+    "published": "2026-08-28"
+   }
+  ],
+  "decided_et": "2026-09-30T14:38:03-04:00",
+  "prior": {
+   "p": 0.55,
+   "from": "D004_base_rates_v3 by_cluster.consumer t0_hit 0.555 (n=436, sufficient), nudged down by by_session.AMC 0.538; NKE is a consumer-cluster AMC reporter, and the cluster cell is the more specific of the two, so ~0.55 before anything about NIKE itself."
+  },
+  "leak_probe": "I don't know. NKE's earnings report of 2026-10-01 is after my knowledge cutoff (May 2026); I have no memory of the print or of the stock's reaction to it."
+ }
+}
