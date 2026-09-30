@@ -382,6 +382,44 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
     re-check list is now mostly repetition; worth collapsing to one PENDING re-check per ET day when the
     workflow is next edited from a laptop session.
 
+- **2026-09-29 21:45 ET — housekeeping (this run, the third fire of the same ET day).** The 23:00 UTC fire
+  arrived **2 h 45 min late** (19:00 ET due, 21:45 ET started) — the same lateness measured every day since
+  09-21. Nothing was due: `due.py t2-list` empty, no event has a snapshot session of 2026-09-29 still open
+  (MU was gated and frozen at 14:31 ET by the first fire), so this step gated nothing, froze nothing and
+  wrote no decision. `find events -name gate.json` returns **1** — MU is still the only gate in the pilot's
+  history. Not a Friday, so no mid-season screen. Today's later commits are all from the laptop session and
+  from code, none from this step: `ef0d148` grade run (20:40 ET) · `e2f0f12` the `season-a-readiness` merge
+  (20:41) · `e3f0d7a` **D003 v4** (20:42) · `c2853d6` `actions: read` (20:42) · `6d3cff5` S2 also starts on
+  a push to `claude/s2-trigger` (20:44) · `4131ed7` code's `find_dates apply`, **0 confirmed** (21:44).
+  - 🔴 **`check.py` cannot be used as the health check inside the fenced AI checkout — it reports FAIL.**
+    Run here it says `frozen registry file(s) changed: ['D006_history_study_v1.md (missing)',
+    'T1_rule_v0.json (missing)']`. Both are *deliberately* absent: `.git/info/sparse-checkout` excludes
+    `registry/T1_rule_v0.json`, `registry/D006_history_study_v1.md`, `registry/D006_implementation_v1.sha256`,
+    `registry/README.md`, `analysis/history/`, `outcomes/` and `archive/` (D004 v3's T1 fence). `check.py`
+    cannot tell "fenced out" from "deleted", so it will FAIL on every T2 and housekeeping run from now on.
+    **The record is not damaged** — code ran the real health check in the full checkout before this step, and
+    `git ls-files` confirms all three files are still tracked. Fix from a laptop session: make `check.py`
+    skip a frozen file that sparse-checkout excludes (and say so), or stop the AI step running it at all.
+  - 🔴 **`actions: read` did not take effect on this run.** `gh run list` still returns **HTTP 403 Resource
+    not accessible by integration**, although `c2853d6` added the grant to the `s2` job three hours earlier.
+    The token was minted from the workflow definition in force when the run started, so the grant should
+    apply on the next run — re-test then. Until it does, the 09-28-style "did the fire arrive or did the code
+    crash" question still cannot be answered from inside the runner.
+  - **AEHR stays PENDING, now two days late against its own pattern.** Code went first and recorded
+    `no_feed` — AEHR has no Q4-style IR feed and `investors.aehr.com` does not resolve — so this re-check is
+    the AI's, as on every previous day. `www.aehr.com/newsroom` (HTTP 200): newest item still 2026-09-28,
+    the CEO Investor Summit release — an investor conference, **not** an earnings date; the newest Financial
+    News item is still the 2026-07-14 FY26 Q4 results release and the newest "to Announce … Financial
+    Results" item is still 2026-07-07. SEC EDGAR (CIK 0001040470) as the second company source: newest
+    filings ARS 2026-09-10 and DEF 14A 2026-09-09, annual-meeting material, then Forms 4/144 — **no 8-K
+    carrying a date**. yfinance unchanged at 2026-11-02 15:00 ET, intraday and outside the window; Nasdaq
+    unchanged at 2026-10-05 `time-not-supplied` (fiscalQuarterEnding Aug/2026, epsForecast $0.05) and absent
+    from the Oct 1, Oct 2, Oct 6 and Oct 7 rows. Its ~7-day lead implied an announcement on 2026-09-28.
+    Earliest possible snapshot session **2026-10-01** — **one housekeeping run left** (Wed 2026-09-30) before
+    code marks it INELIGIBLE `unconfirmed`. Expect that.
+  - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** — the first event that can reach a T2 decision, and
+    the first live test of the per-event `t2` job and the laptop dispatch trigger.
+
 ### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
 
 **Updated 2026-09-28: AIR and JBL make it five (PAYX · DRI · BB · AIR · JBL).** The section below is the
