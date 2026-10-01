@@ -1,0 +1,165 @@
+{
+ "run_id": "36802227081_housekeeping",
+ "logged_utc": "2026-10-01T0146Z",
+ "tool_calls": 36,
+ "fence_breaches": [],
+ "review_flags": [
+  {
+   "flag": "git content read",
+   "input": "{\"command\": \"cd /home/runner/work/earnings-experiment/earnings-experiment && git diff --stat && git diff universe/pilot/event_status.json | head -20\"}"
+  }
+ ],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 37,
+  "total_cost_usd": 2.345399,
+  "text": "Pushed as `0ebb542`.\n\n## Report — housekeeping, 2026-09-30 21:42 ET\n\n**T2 decisions: none.** The prompt named no event awaiting T2 and `due.py t2-list` is empty, so no `decision.json` was written. This step gated nothing and froze nothing.\n\n**Freezes today (by code, not by this step):** `a2f6a47` — NKE 2026-10-01, PASS, **BLIND**. The manifest freezes at 14:40:04 ET against an entry open of 2026-10-01 09:30 ET, with both RFC 3161 tokens and six hashed files. It was captured at 14:31 ET (`075ddb7`) and decided by the per-event `t2` job of run 36731470987. That is the first complete chain in the pilot's history; `find events -name gate.json` now returns 2 (MU, NKE).\n\n**PENDING changes: none — AEHR stays PENDING, and tonight was its last housekeeping run.** Code's probe returned `no_feed` (AEHR has no Q4-style IR feed and `investors.aehr.com` does not resolve), so I checked by hand:\n\n| source | what it showed |\n|---|---|\n| `www.aehr.com/newsroom` (200) | newest item still 2026-09-28, the CEO Investor Summit release — a conference, not an earnings date |\n| `www.aehr.com/events/` (200, **first time read**) | trade shows and conferences only, no earnings call |\n| SEC EDGAR, CIK 0001040470 | newest are ARS 09-10 and DEF 14A 09-09, then Forms 4/144 — no 8-K carrying a date |\n| yfinance | unchanged: 2026-11-02 15:00 ET, intraday and outside the window |\n| Nasdaq | unchanged: 2026-10-05 `time-not-supplied`; absent from the Oct 1 and Oct 2 rows |\n\nIts own ~7-day lead implied an announcement on 2026-09-28; it is two days late. Its earliest possible snapshot session is **tomorrow, 2026-10-01**, so once that window closes code marks AEHR INELIGIBLE `unconfirmed`. The pilot ends with no AEHR event.\n\n**What went wrong:**\n\n- **`actions: read` still does not reach this step.** Re-tested as the 09-29 log asked. `gh run list` and a raw `curl` on `/actions/runs` both return 403 with `x-accepted-github-permissions: actions=read`, although the grant is correctly declared on the `s2` job (`.github/workflows/s2-window.yml:125`). The token in the step env is scoped to this repo alone and does have contents read (`/repos/…` → 200), so a working token is present but is missing exactly the scope that was added. Most likely cause: `claude-code-action@v1` gets no `github_token:` input (lines 208–210), mints its own App token and overwrites `GITHUB_TOKEN`/`GH_TOKEN`, which a job-level `permissions:` block cannot touch. Fix needs a laptop session — pass `github_token: ${{ github.token }}`, or expose the job token under another name. Until then, \"did the fire arrive or did the code crash\" stays unanswerable from inside the runner.\n- **The 23:00 UTC fire arrived 2 h 42 min late** (19:00 ET due, 21:42 ET started) — the same lateness as every day since 09-21. It cost nothing tonight; the cloud routine's earlier fire is what produced the in-window gate.\n- Not a failure, but noted: the `ALPHAVANTAGE_API_KEY` gap is now closed in the workflow file (`s2` job `env:`, lines 126–130). Wednesday runs no mid-season screen, so it can only be confirmed on **Fri Oct 2**."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls && echo \\\"---SEASONS---\\\" && ls universe/ && echo \\\"---GIT---\\\" && git log --oneline -12 && echo \\\"---DATE---\\\" && python -c \\\"from datetime import datetime; from zoneinfo import ZoneInfo; print(datetime.now(ZoneInfo('America/New_York')).isoformat())\\\"\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(json.dumps({k:(v if not isinstance(v,dict) else {kk:vv for kk,vv in v.items() if kk!='rechecks'}) for k,v in d.items()}, indent=1)[:4000])\\n\\\" 2>&1 | head -120\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))['events']\\nfor k,v in d.items():\\n    print(k, v.get('status'), v.get('reason',''), v.get('calendar_date',''), v.get('session',''), 'snap=',v.get('snapshot_session',''))\\n\\\" && echo \\\"=== t2-list ===\\\" && python pipeline/due.py t2-list; echo \\\"=== today's commits ===\\\" && git log --since=\\\"2026-09-30T00:00:00-04:00\\\" --format=\\\"%h %ad %s\\\" --date=iso-local\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 300 python pipeline/find_dates.py probe AEHR 2>&1 | tail -40\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /tmp && curl -sS -D /tmp/h_aehr.txt -A \\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36\\\" \\\"https://www.aehr.com/newsroom/\\\" -o /tmp/aehr_newsroom.html --max-time 60 ; head -1 /tmp/h_aehr.txt; wc -c /tmp/aehr_newsroom.html\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /tmp && python - <<'EOF'\\nimport re,html\\nt=open('/tmp/aehr_newsroom.html',encoding='utf-8',errors='replace').read()\\nt=re.sub(r'<script.*?</script>','',t,flags=re.S|re.I)\\nt=re.sub(r'<style.*?</style>','',t,flags=re.S|re.I)\\ntxt=html.unescape(re.sub(r'<[^>]+>','\\\\n',t))\\nlines=[l.strip() for l in txt.split('\\\\n') if l.strip()]\\nout=[]\\nfor l in lines:\\n    out.append(l)\\nprint('\\\\n'.join(out[:200]))\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /tmp && curl -sS -H \\\"User-Agent: EarningsExperiment/1.0 (jacob@example.com)\\\" \\\"https://data.sec.gov/submissions/CIK0001040470.json\\\" --max-time 60 -o /tmp/aehr_sec.json; python - <<'EOF'\\nimport json\\nd=json.load(open('/tmp/aehr_sec.json'))\\nr=d['filings']['recent']\\nfor i in range(12):\\n    print(r['filingDate'][i], r['form'][i], r['primaryDocDescription'][i], r['items'][i] if 'items' in r else '')\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 180 python - <<'EOF' 2>&1 | grep -v Warning\\nimport yfinance as yf\\nt=yf.Ticker(\\\"AEHR\\\")\\ntry:\\n    df=t.get_earnings_dates(limit=8)\\n    print(df.to_string())\\nexcept Exception as e:\\n    print(\\\"ERR\\\", type(e).__name__, e)\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /tmp && for d in 2026-10-01 2026-10-02 2026-10-05; do echo \\\"=== $d ===\\\"; curl -sS -A \\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36\\\" \\\"https://api.nasdaq.com/api/calendar/earnings?date=$d\\\" --max-time 60 | python -c \\\"\\nimport sys,json\\nd=json.load(sys.stdin)\\nrows=(d.get('data') or {}).get('rows') or []\\nprint(len(rows),'rows')\\nfor r in rows:\\n    if r.get('symbol')=='AEHR': print(json.dumps(r))\\n\\\"; done\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /tmp && curl -sS -D - -A \\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36\\\" \\\"https://www.aehr.com/newsroom/category/events/\\\" --max-time 60 -o /tmp/aehr_ev.html | head -1; python - <<'EOF'\\nimport re,html\\ntry:\\n    t=open('/tmp/aehr_ev.html',encoding='utf-8',errors='replace').read()\\nexcept Exception as e:\\n    print(\\\"no file\\\",e); raise SystemExit\\nt=re.sub(r'<script.*?</script>|<style.*?</style>','',t,flags=re.S|re.I)\\ntxt=html.unescape(re.sub(r'<[^>]+>','\\\\n',t))\\nlines=[l.strip() for l in txt.split('\\\\n') if l."
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /tmp && curl -sSL -w \\\"\\\\nFINAL:%{http_code} %{url_effective}\\\\n\\\" -A \\\"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36\\\" \\\"https://www.aehr.com/newsroom/category/events/\\\" --max-time 60 -o /tmp/aehr_ev.html | tail -2; python - <<'EOF'\\nimport re,html\\nt=open('/tmp/aehr_ev.html',encoding='utf-8',errors='replace').read()\\nt=re.sub(r'<script.*?</script>|<style.*?</style>','',t,flags=re.S|re.I)\\ntxt=html.unescape(re.sub(r'<[^>]+>','\\\\n',t))\\nlines=[l.strip() for l in txt.split('\\\\n') if l.strip()]\\ni=lines.index('Show All"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"head -5 universe/pilot/event_status.json | cat -A | head -5 | cut -c1-80 && grep -rn \\\"event_status\\\" pipeline/*.py | head -20\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n 265,285p pipeline/find_dates.py\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"json.dump\\\" pipeline/find_dates.py pipeline/due.py | head\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -rn \\\"write_json\\\\|def save_status\\\\|indent=1\\\" pipeline/common.py pipeline/find_dates.py | head\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /home/runner/work/earnings-experiment/earnings-experiment/pipeline && python - <<'EOF'\\nimport json, sys, os\\nsys.path.insert(0, '.')\\nfrom common import write_json, now_et, ROOT\\nsp = os.path.join(ROOT, \\\"universe\\\", \\\"pilot\\\", \\\"event_status.json\\\")\\nst = json.load(open(sp, encoding=\\\"utf-8\\\"))\\nev = st[\\\"events\\\"][\\\"AEHR\\\"]\\nt = \\\"2026-09-30T21:42:00-04:00\\\"\\nnote = (\\n t + \\\": code went first and recorded no_feed (find_dates probe AEHR, 21:42:00 ET: no Q4-style IR feed, \\\"\\n \\\"investors.aehr.com does not resolve), so this is the AI re-check. www.aehr.com/newsroom (HTTP 200)"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cd /home/runner/work/earnings-experiment/earnings-experiment && git diff --stat && git diff universe/pilot/event_status.json | head -20\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls events/pilot/NKE_2026-10-01/ 2>&1 && python -c \\\"\\nimport json\\nm=json.load(open('events/pilot/NKE_2026-10-01/manifest.json'))\\nprint({k:v for k,v in m.items() if k!='files'})\\n\\\" 2>&1 | head -20\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 90 gh run list --limit 8 2>&1 | head -15; echo \\\"---weekday---\\\"; python -c \\\"import datetime;print(datetime.date(2026,9,30).strftime('%A'))\\\"\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"permissions\\\\|^  [a-z0-9_-]*:\\\\|actions: read\\\\|contents: write\\\" .github/workflows/s2-window.yml | head -40\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"env | grep -iE \\\"^GITHUB_(JOB|RUN_ID|RUN_ATTEMPT|WORKFLOW|EVENT_NAME|ACTOR)=\\\" ; echo \\\"---\\\"; timeout 60 gh api \\\"repos/jacobbuildmodel/earnings-experiment/actions/runs/${GITHUB_RUN_ID}\\\" --jq '.id,.name,.event,.created_at,.run_started_at' 2>&1 | head -5\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"for v in GITHUB_TOKEN GH_TOKEN; do python -c \\\"\\nimport os,sys\\nv='$v'\\nt=os.environ.get(v)\\nprint(v, 'present' if t else 'absent', (t[:4]+'...' if t else ''))\\n\\\"; done; echo \\\"--- direct call with GITHUB_TOKEN ---\\\"; timeout 60 bash -c 'curl -sS -o /dev/null -w \\\"%{http_code}\\\\n\\\" -H \\\"Authorization: Bearer $GITHUB_TOKEN\\\" -H \\\"Accept: application/vnd.github+json\\\" \\\"https://api.github.com/repos/jacobbuildmodel/earnings-experiment/actions/runs?per_page=1\\\"' 2>&1 | tail -2\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 60 bash -c 'curl -sS -D - -o /dev/null -H \\\"Authorization: Bearer $GITHUB_TOKEN\\\" -H \\\"Accept: application/vnd.github+json\\\" \\\"https://api.github.com/repos/jacobbuildmodel/earnings-experiment/actions/runs?per_page=1\\\" 2>&1 | grep -iE \\\"^(HTTP|x-accepted-github-permissions|x-github-request-id)\\\"' ; echo \\\"--- contents read test ---\\\"; timeout 60 bash -c 'curl -sS -o /dev/null -w \\\"%{http_code}\\\\n\\\" -H \\\"Authorization: Bearer $GITHUB_TOKEN\\\" \\\"https://api.github.com/repos/jacobbuildmodel/earnings-experiment\\\"'\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n 108,135p .github/workflows/s2-window.yml\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"claude\\\\|github_token\\\\|GITHUB_TOKEN\\\\|GH_TOKEN\\\\|anthropics/\\\" .github/workflows/s2-window.yml | head -30\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 60 bash -c 'curl -sS -H \\\"Authorization: Bearer $GITHUB_TOKEN\\\" \\\"https://api.github.com/repos/jacobbuildmodel/earnings-experiment\\\" | python -c \\\"import sys,json; d=json.load(sys.stdin); print(d.get(\\\\\\\"permissions\\\\\\\"))\\\"' ; timeout 60 bash -c 'curl -sS -D - -o /dev/null -H \\\"Authorization: Bearer $GITHUB_TOKEN\\\" \\\"https://api.github.com/installation/repositories\\\" | grep -iE \\\"^HTTP|x-accepted\\\"'\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 60 bash -c 'curl -sS -H \\\"Authorization: Bearer $GITHUB_TOKEN\\\" \\\"https://api.github.com/installation/repositories?per_page=100\\\" | python -c \\\"\\nimport sys,json\\nd=json.load(sys.stdin)\\nprint(\\\\\\\"total\\\\\\\",d.get(\\\\\\\"total_count\\\\\\\"))\\nprint([r[\\\\\\\"full_name\\\\\\\"] for r in d.get(\\\\\\\"repositories\\\\\\\",[])][:10])\\n\\\"'\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git log --since=\\\"2026-09-30T00:00:00-04:00\\\" --format=\\\"%h|%ad|%an|%s\\\" --date=format-local:\\\"%H:%M\\\" | cat\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"offset\": 420, \"limit\": 12}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"  - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** — the first event that can reach a T2 decision, and\\n    the first live test of the per-event `t2` job and the laptop dispatch trigger.\\n\\n### 🔴 The scheduler is losing the pilot\", \"new_string\": \"  - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** — the first event that can reach a T2 decision, and\\n    the first live test of the per-event `t2` job and the laptop dispatch trigger.\\n\\n- **2026-09-30 21:42 ET (Wed) "
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n 126,135p .github/workflows/s2-window.yml | cat -n\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"    `env:` (lines 131–134), so the next Friday mid-season screen\", \"new_string\": \"    `env:` (lines 126–130), so the next Friday mid-season screen\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git status --porcelain && git add STATE.md universe/pilot/event_status.json && git -c user.name=\\\"claude[bot]\\\" -c user.email=\\\"noreply@anthropic.com\\\" commit -q -F - <<'EOF'\\nHousekeeping 2026-09-30 21:42 ET: AEHR re-check (last run before its deadline), cloud log\\n\\nNothing was awaiting T2. AEHR stays PENDING: newsroom, the events page (read for the\\nfirst time) and EDGAR show no FY27 Q1 date; yfinance 2026-11-02 intraday and Nasdaq\\n2026-10-05 time-not-supplied unchanged. Its earliest possible snapshot session is\\n2026-10-01, so code marks it INELIGIBLE unconfirmed once that wi"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git push origin HEAD:main 2>&1 | tail -5 || { git pull --no-rebase origin main && git push origin HEAD:main; }\"}"
+  }
+ ]
+}
