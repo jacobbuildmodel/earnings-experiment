@@ -25,6 +25,12 @@ UA = {"User-Agent": "EarningsExperiment research jacobong999@gmail.com"}
 DOLT = "https://www.dolthub.com/api/v1alpha1/post-no-preference/options/master"
 SIGNS = {"E1": -1, "E2": -1, "E3": 0, "E4": 0, "E5": 1, "E6": -1, "E7": 0, "E8": 0, "E9": 1, "E10": -1}
 TRAIN, VALID = ("2023-09-01", "2025-08-31"), ("2025-09-01", "2026-09-18")
+STARTED = time.time()
+BUDGET = float(os.environ.get("D007_BUDGET_MIN", "100000")) * 60  # Actions: stop before the job limit
+
+
+def over_budget():
+    return time.time() - STARTED > BUDGET
 
 
 def events():
@@ -128,25 +134,65 @@ def dolt(q, tries=3):
 
 
 def collect_dolthub_iv():
-    for t in sorted({e["ticker"] for e in all_built_events()}):
+    """One query per snapshot date (the table's key starts with the date; a per-ticker scan times out).
+    Saved per ticker, as {date: row}, so signals() reads one file per ticker."""
+    evs = all_built_events()
+    by_date = {}
+    for e in evs:
+        by_date.setdefault(e["snapshot"], set()).add(e["ticker"])
+    store = {}
+    done_path = cpath("dolt_iv_dates.json")
+    done = set(json.load(open(done_path))) if os.path.exists(done_path) else set()
+    for t in {e["ticker"] for e in evs}:
         p = cpath("dolt_iv", f"{t}.json")
-        if os.path.exists(p):
+        store[t] = json.load(open(p)) if os.path.exists(p) else {}
+    for i, (d, ts) in enumerate(sorted(by_date.items())):
+        if d in done:
             continue
-        rows = dolt(f"SELECT date, hv_current, iv_current, iv_month_ago FROM volatility_history "
-                    f"WHERE act_symbol='{t}' AND date BETWEEN '2022-06-01' AND '2026-09-18'")
-        json.dump(rows, open(p, "w"))
-    print("dolthub_iv: done")
+        if over_budget():
+            break
+        syms = ",".join(f"'{t}'" for t in sorted(ts))
+        rows = dolt(f"SELECT date, act_symbol, hv_current, iv_current, iv_month_ago FROM volatility_history "
+                    f"WHERE date='{d}' AND act_symbol IN ({syms})")
+        if isinstance(rows, dict):  # error: retried next run, never filled
+            continue
+        for r in rows:
+            store[r["act_symbol"]][d] = r
+        done.add(d)
+        if i % 25 == 0:
+            for t, v in store.items():
+                json.dump(v, open(cpath("dolt_iv", f"{t}.json"), "w"))
+            json.dump(sorted(done), open(done_path, "w"))
+    for t, v in store.items():
+        json.dump(v, open(cpath("dolt_iv", f"{t}.json"), "w"))
+    json.dump(sorted(done), open(done_path, "w"))
+    print(f"dolthub_iv: {len(done)} of {len(by_date)} snapshot dates")
+    return len(done) == len(by_date)
 
 
 def collect_dolthub_chain():
+    """One query per snapshot date for all that date's tickers (key-ordered by date), saved per event."""
+    by_date = {}
     for e in all_built_events():
-        p = cpath("dolt_chain", f"{e['ticker']}_{e['snapshot']}.json")
-        if os.path.exists(p):
+        by_date.setdefault(e["snapshot"], set()).add(e["ticker"])
+    n = 0
+    for d, ts in sorted(by_date.items()):
+        todo = [t for t in sorted(ts) if not os.path.exists(cpath("dolt_chain", f"{t}_{d}.json"))]
+        if not todo:
             continue
-        rows = dolt(f"SELECT expiration, strike, call_put, vol FROM option_chain WHERE date='{e['snapshot']}' "
-                    f"AND act_symbol='{e['ticker']}'")
-        json.dump(rows, open(p, "w"))
-    print("dolthub_chain: done")
+        if over_budget():
+            break
+        syms = ",".join(f"'{t}'" for t in todo)
+        rows = dolt(f"SELECT act_symbol, expiration, strike, call_put, vol FROM option_chain "
+                    f"WHERE date='{d}' AND act_symbol IN ({syms})")
+        if isinstance(rows, dict):  # error: retried next run, never filled
+            continue
+        for t in todo:
+            json.dump([r for r in rows if r["act_symbol"] == t], open(cpath("dolt_chain", f"{t}_{d}.json"), "w"))
+        n += 1
+    left = sum(1 for d, ts in by_date.items() for t in ts if not os.path.exists(cpath("dolt_chain", f"{t}_{d}.json")))
+    print(f"dolthub_chain: {n} dates fetched now, {left} events still to fetch")
+    return left == 0
 
 
 # ------------------------------------------------------------------ signals
@@ -211,8 +257,8 @@ def signals(evs, sess):
         ip = cpath("dolt_iv", f"{e['ticker']}.json")
         if os.path.exists(ip):
             rows = json.load(open(ip))
-            if isinstance(rows, list):
-                row = next((r for r in rows if r["date"] == e["snapshot"]), None)
+            if isinstance(rows, dict):
+                row = rows.get(e["snapshot"])
                 if row:
                     iv, hv, im = (float(row[x]) if row.get(x) else None for x in ("iv_current", "hv_current", "iv_month_ago"))
                     s["E7"] = iv / hv if iv and hv else None
@@ -321,8 +367,10 @@ def test():
 if __name__ == "__main__":
     a = sys.argv[1:]
     if a[:1] == ["collect"]:
-        {"finra": collect_finra, "market": collect_market, "wiki": collect_wiki,
-         "dolthub_iv": collect_dolthub_iv, "dolthub_chain": collect_dolthub_chain}[a[1]]()
+        ok = {"finra": collect_finra, "market": collect_market, "wiki": collect_wiki,
+              "dolthub_iv": collect_dolthub_iv, "dolthub_chain": collect_dolthub_chain}[a[1]]()
+        if ok is False:
+            open(cpath("INCOMPLETE"), "a").write(a[1] + chr(10))
     elif a[:1] == ["test"]:
         test()
     else:
