@@ -426,6 +426,51 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   - **NKE is tomorrow (snapshot Wed Sep 30, AMC Oct 1)** — the first event that can reach a T2 decision, and
     the first live test of the per-event `t2` job and the laptop dispatch trigger.
 
+- **2026-09-30 21:42 ET (Wed) — housekeeping (this run, Actions run 36802227081, `schedule`).** The 23:00 UTC
+  fire arrived **2 h 42 min late** again (19:00 ET due, 21:42 ET started). `due.py t2-list` **empty** — the
+  workflow's prompt names no event awaiting T2, so this step wrote no `decision.json`, gated nothing and froze
+  nothing. Not a Friday, so no mid-season screen.
+  - **What code did on this ET day — the first complete chain:** `075ddb7` **14:31 ET** `Capture NKE
+    2026-10-01: S2 gate PASS and factor snapshot - awaiting T2` → the per-event `t2` job (run 36731470987)
+    decided it → `a2f6a47` **14:40 ET** `Freeze NKE 2026-10-01 (PASS)`, manifest `frozen_et`
+    2026-09-30T14:40:04 ET against `entry_open_et` 2026-10-01T09:30 ET → **BLIND**, with both RFC 3161 tokens
+    (`manifest.tsr_digicert`, `manifest.tsr_freetsa`) and six hashed files. Then `4eb0b96` the AI tool log
+    (49 calls, 0 fence breaches) and `868f8a1` the status sync — NKE now reads `FROZEN`. Code also ran the
+    nightly grade job (`94e6491`, 20:41 ET) and two paper-ledger runs (`3fe0fb8` 10:41 ET, `6e1f35e`
+    20:17 ET); no outcome figure is read or written here (rule 4). `find_dates apply` ran just before this
+    step (`e8ab482`, 21:41 ET) and confirmed **0** dates. `find events -name gate.json` now returns **2**
+    (MU, NKE).
+  - **AEHR stays PENDING — and this was the last housekeeping run before its deadline.** Code went first and
+    recorded `no_feed` (`find_dates probe AEHR`, 21:42 ET: no Q4-style IR feed, `investors.aehr.com` does not
+    resolve), so the re-check is the AI's, as on every previous day. `www.aehr.com/newsroom` (HTTP 200):
+    newest item still 2026-09-28, the CEO Investor Summit release — an investor conference, **not** an
+    earnings date; newest Financial News item still the 2026-07-14 FY26 Q4 results release, newest "to
+    Announce … Financial Results" item still 2026-07-07. **`www.aehr.com/events/` read for the first time**
+    (HTTP 200, redirected from `/newsroom/category/events/`): trade-show and conference listings only, no
+    earnings call. SEC EDGAR (CIK 0001040470) as the second company source: newest filings ARS 2026-09-10 and
+    DEF 14A 2026-09-09, then Forms 4/144 — **no 8-K carrying a date**. Second sources unchanged: yfinance
+    2026-11-02 15:00 ET, intraday and outside the window; Nasdaq 2026-10-05 `time-not-supplied`
+    (fiscalQuarterEnding Aug/2026, epsForecast $0.05), and AEHR is on no Oct 1 or Oct 2 row. Its ~7-day lead
+    implied an announcement on 2026-09-28; it is two days late. **Earliest possible snapshot session is
+    2026-10-01 (tomorrow)**, so once that window closes code marks AEHR INELIGIBLE `unconfirmed`. Expect that,
+    and expect the pilot to end with no AEHR event.
+  - 🔴 **`actions: read` still does not reach the AI step — re-tested as the 09-29 entry asked, and it failed.**
+    `gh run list` and a raw `curl` on `/actions/runs` both return **HTTP 403**, with
+    `x-accepted-github-permissions: actions=read`. The grant is correctly declared on the `s2` job
+    (`.github/workflows/s2-window.yml:125`) and the YAML is at the right level. The token in this step's
+    environment is a `ghs_` token scoped to this repository alone, and it **does** have contents read
+    (`/repos/…` returns 200) — so a working token is present but is missing exactly the one scope that was
+    added. Most likely cause: `anthropics/claude-code-action@v1` is given no `github_token:` input
+    (lines 208–210), so it mints its own GitHub App token and overwrites `GITHUB_TOKEN`/`GH_TOKEN` in the
+    step env; a job-level `permissions:` block cannot change that token's scopes. Fix from a laptop session
+    (the AI step may not edit `.github/`): pass `github_token: ${{ github.token }}` to the action, **or**
+    expose the job token under another name in the step env (e.g. `RUN_HISTORY_TOKEN: ${{ github.token }}`),
+    which `permissions` does govern. Until then the 09-28-style question "did the fire arrive, or did the code
+    crash" still cannot be answered from inside the runner.
+  - ✅ **The `ALPHAVANTAGE_API_KEY` gap in this workflow is closed in the file** — the `s2` job now sets it in
+    `env:` (lines 126–130), so the next Friday mid-season screen should stop recording `alphavantage: not
+    pulled`. Nothing to verify tonight: Wednesday runs no mid-season screen. **Confirm it on Fri Oct 2.**
+
 ### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
 
 **Updated 2026-09-28: AIR and JBL make it five (PAYX · DRI · BB · AIR · JBL).** The section below is the
