@@ -1,17 +1,23 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live) → Season A built** · updated 2026-09-29 20:45 ET.
-- **First gate in the pilot's history: MU, 2026-09-29 14:31 ET, inside the window.** It was frozen
-  INELIGIBLE `thin_oi`: 260 contracts at the single nearest strike, although the expiry held 309,771.
-  The trigger that worked was a **laptop dispatch** at 10:36 ET, whose run then waited for the window.
-  GitHub's cron never fires in time.
-- **A rule problem replaced the scheduler problem.** The single-strike open-interest floor rejects
-  high-priced, liquid names. The fix is D003 v4 for Season A; v1 and the MU record stay untouched.
-- The history study is done; **T1 rule v0 is frozen and failed validation**.
-- D003 v3 and D004 v3 are frozen for Season A. The per-event T2 workflow is merged.
-- Four live pilot events are left: NKE Sep 30 (the first test of the new workflow) · PENG Oct 5 ·
-  LEVI and APLD Oct 6.
-- Read the section "Laptop sessions 2026-09-28/29" first.
+**Phase 1 · Pilot (live) → Season A built** · updated 2026-09-30 20:40 ET · roadmap: `RESEARCH_PLAN.md`.
+- 🟢 **The first full chain worked: NKE (AMC Oct 1).**
+  - Gated PASS at 14:31 ET (implied move 8.6%).
+  - T2 in its own per-event job: **BUY at 0.52**, anchored on the 55.5% consumer base rate.
+  - Frozen at 14:40 ET with two timestamps.
+  - **Paper market-on-open buy of 164 NKE** accepted at 20:17 ET (Alpaca paper, $100k).
+  - Exit at the Oct 2 open; the sell order goes in at ~20:15 ET Oct 1.
+- **Triggers:** the cloud routines `earnings-s2-trigger` (gate, weekdays 10:45 ET and after) and
+  `earnings-paper-trigger` (20:15 and 07:15 ET); the laptop task is a backup. GitHub's cron is only a
+  fallback.
+- **Frozen 2026-09-30:**
+  - D007, exploration batch 1 (10 signals), frozen before its data was pulled. Collection is running;
+    the test is not run yet.
+  - D008, the graduation criteria. H-S0, the premium harvest, is confirmatory from Season A.
+- Pilot left: PENG (Oct 5), LEVI and APLD (Oct 6). MU was out on the old one-strike open-interest test
+  (fixed in D003 v4). Five events were lost to GitHub's cron.
+- Jacob: Alpaca paper is configured, and live verification is done but unused until Gate 2. D008 v2
+  needs his sleeve and loss limit before Gate 2.
 
 ## Where things are
 
