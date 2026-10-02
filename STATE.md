@@ -5,8 +5,11 @@
   - Gated PASS at 14:31 ET (implied move 8.6%).
   - T2 in its own per-event job: **BUY at 0.52**, anchored on the 55.5% consumer base rate.
   - Frozen at 14:40 ET with two timestamps.
-  - **Paper market-on-open buy of 164 NKE** accepted at 20:17 ET (Alpaca paper, $100k).
-  - Exit at the Oct 2 open; the sell order goes in at ~20:15 ET Oct 1.
+  - **Paper buy of 164 NKE EXPIRED UNFILLED at the 09:30:37 ET open on Oct 1.** Alpaca's paper simulator
+    does not fill opening-auction (`opg`) orders. Fixed in `31d56f1`: paper now queues market DAY
+    orders while the market is closed (16:00–09:25 ET); they execute at the next open, and each fill is
+    compared with the official open (D008 §3). NKE has no paper position.
+  - **First paper test of the fix: PENG**, queued ~20:15 ET Mon Oct 5 for the Oct 6 open.
 - **Triggers:** the cloud routines `earnings-s2-trigger` (gate, weekdays 10:45 ET and after) and
   `earnings-paper-trigger` (20:15 and 07:15 ET); the laptop task is a backup. GitHub's cron is only a
   fallback.
@@ -18,6 +21,13 @@
       complete (~1 query/min, about 509 snapshot dates).
     - It then runs the pre-registered test and commits `analysis/d007/result.json`.
     - Read that file next session. Candidates only (rules 6–7).
+    - 10-01: implied-volatility collection is complete (509/509 dates). The chain collector stalled:
+      58-ticker IN lists timed out. Fixed to groups of 3 (~20 s each), with a stall guard that stops the
+      re-dispatch loop. Restarted as run 36947155201.
+- **Season A screen pre-flight passed (2026-10-01, scratch clone):** D003 v4 one-per-issuer
+  (GOOGL/ZG out, GOOG/Z in), foreign filer out, resumable capture, init-status.
+- **Still to do before Oct 8:** a parallel-gate load test of 10–20 names with live quotes. It needs
+  market hours, so the next weekday session does it.
   - D008, the graduation criteria. H-S0, the premium harvest, is confirmatory from Season A.
 - Pilot left: PENG (Oct 5), LEVI and APLD (Oct 6). MU was out on the old one-strike open-interest test
   (fixed in D003 v4). Five events were lost to GitHub's cron.
