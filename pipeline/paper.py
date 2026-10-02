@@ -167,9 +167,23 @@ def sync(do_commit=False):
         commit([LEDGER], f"Paper ledger {now:%Y-%m-%d %H:%M} ET (Alpaca paper, code)")
 
 
+def orders():
+    """Read-only: the account's recent orders with every status field (diagnosis)."""
+    got = api("GET", "/orders", params={"status": "all", "limit": 20, "direction": "desc"})
+    if isinstance(got, dict) and "_error" in got:
+        raise SystemExit(f"orders: HTTP {got['_error']} {got['_body']}")
+    keep = ("client_order_id", "symbol", "side", "qty", "type", "time_in_force", "status", "submitted_at",
+            "updated_at", "expired_at", "canceled_at", "failed_at", "filled_at", "filled_qty", "filled_avg_price",
+            "extended_hours", "order_class")
+    for o in got:
+        print(json.dumps({k: o.get(k) for k in keep}))
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
-    if a and a[0] == "check":
+    if a and a[0] == "orders":
+        orders()
+    elif a and a[0] == "check":
         check()
     elif a and a[0] == "sync":
         sync("--commit" in a)

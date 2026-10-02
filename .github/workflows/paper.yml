@@ -15,7 +15,7 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "sync (default) or check"
+        description: "sync (default), check, or orders"
         required: false
         default: "sync"
 
@@ -55,6 +55,10 @@ jobs:
       - name: Paper account
         run: python pipeline/paper.py check
 
+      - name: Recent orders (read-only diagnosis)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'orders'
+        run: python pipeline/paper.py orders
+
       - name: Submit due orders, record fills, commit the ledger
-        if: github.event_name != 'workflow_dispatch' || inputs.command != 'check'
+        if: github.event_name != 'workflow_dispatch' || inputs.command == 'sync' || inputs.command == ''
         run: python pipeline/paper.py sync --commit
