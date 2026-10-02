@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live) → Season A built** · updated 2026-09-30 20:40 ET · roadmap: `RESEARCH_PLAN.md`.
+**Phase 1 · Pilot (live) → Season A built** · updated 2026-10-01 21:10 ET · roadmap: `RESEARCH_PLAN.md` · lab notebook: `JOURNAL.md`.
 - 🟢 **The first full chain worked: NKE (AMC Oct 1).**
   - Gated PASS at 14:31 ET (implied move 8.6%).
   - T2 in its own per-event job: **BUY at 0.52**, anchored on the 55.5% consumer base rate.

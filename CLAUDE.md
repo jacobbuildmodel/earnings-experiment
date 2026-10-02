@@ -33,7 +33,8 @@ one empty trigger commit to `claude/s2-trigger`). It never runs, reads or change
 DRIVE repo and moved here, it has already loaded the portfolio's rules and memory. Say so, and ask Jacob
 to start a fresh chat in `Earnings Experiment`.
 
-**End of every session:** update `STATE.md` so the next chat resumes cleanly, then commit it.
+**End of every session:** update `STATE.md` so the next chat resumes cleanly, add the day's observations to
+`JOURNAL.md` (the lab notebook: what happened, what it taught, what changed), then commit both.
 
 ## 🔴 THE RULES THAT STOP THIS EXPERIMENT LYING — never relax them
 1. **Freeze before entry.** Factor snapshot, theses and all three decisions (T0 buy-all · T1 rule · T2 AI)
