@@ -1,38 +1,23 @@
 # STATE — Earnings Experiment
 
-**Phase 1 · Pilot (live) → Season A built** · updated 2026-09-30 20:40 ET · roadmap: `RESEARCH_PLAN.md`.
-- 🟢 **The first full chain worked: NKE (AMC Oct 1).**
-  - Gated PASS at 14:31 ET (implied move 8.6%).
-  - T2 in its own per-event job: **BUY at 0.52**, anchored on the 55.5% consumer base rate.
-  - Frozen at 14:40 ET with two timestamps.
-  - **Paper buy of 164 NKE EXPIRED UNFILLED at the 09:30:37 ET open on Oct 1.** Alpaca's paper simulator
-    does not fill opening-auction (`opg`) orders. Fixed in `31d56f1`: paper now queues market DAY
-    orders while the market is closed (16:00–09:25 ET); they execute at the next open, and each fill is
-    compared with the official open (D008 §3). NKE has no paper position.
-  - **First paper test of the fix: PENG**, queued ~20:15 ET Mon Oct 5 for the Oct 6 open.
-- **Triggers:** the cloud routines `earnings-s2-trigger` (gate, weekdays 10:45 ET and after) and
-  `earnings-paper-trigger` (20:15 and 07:15 ET); the laptop task is a backup. GitHub's cron is only a
-  fallback.
-- **Frozen 2026-09-30:**
-  - D007, exploration batch 1 (10 signals), frozen before its data was pulled.
-    - **Collection runs on GitHub Actions**, workflow `d007.yml`, started 2026-10-01 08:55 ET. Laptop
-      background jobs died with the session twice.
-    - Each run gets 300 minutes and caches its progress, then re-dispatches itself until DoltHub is
-      complete (~1 query/min, about 509 snapshot dates).
-    - It then runs the pre-registered test and commits `analysis/d007/result.json`.
-    - Read that file next session. Candidates only (rules 6–7).
-    - 10-01: implied-volatility collection is complete (509/509 dates). The chain collector stalled:
-      58-ticker IN lists timed out. Fixed to groups of 3 (~20 s each), with a stall guard that stops the
-      re-dispatch loop. Restarted as run 36947155201.
-- **Season A screen pre-flight passed (2026-10-01, scratch clone):** D003 v4 one-per-issuer
-  (GOOGL/ZG out, GOOG/Z in), foreign filer out, resumable capture, init-status.
-- **Still to do before Oct 8:** a parallel-gate load test of 10–20 names with live quotes. It needs
-  market hours, so the next weekday session does it.
-  - D008, the graduation criteria. H-S0, the premium harvest, is confirmatory from Season A.
-- Pilot left: PENG (Oct 5), LEVI and APLD (Oct 6). MU was out on the old one-strike open-interest test
-  (fixed in D003 v4). Five events were lost to GitHub's cron.
-- Jacob: Alpaca paper is configured, and live verification is done but unused until Gate 2. D008 v2
-  needs his sleeve and loss limit before Gate 2.
+**Phase 1 DONE → Season A next** · updated 2026-10-02 14:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (read its newest entries).
+- **D007: no candidates.** 20 point-in-time signals tested on 2,771 prints (D006's 10 + D007's 10);
+  none beats buying everything. The likely graduate is S0, the premium harvest (D008, H-S0
+  confirmatory from Season A). Selection can now only come from the live weekly-option capture and T2.
+- **NKE, the first live outcome: −8.2%** (official open $35.45 → $32.55); T0 and T2 (BUY 0.52) both lose.
+  - Paper: the market-on-open order expired, because Alpaca paper does not fill `opg` orders.
+  - It is booked as **simulated** at the official opens: −$475 (Jacob's rule: a platform failure is
+    booked at the official open, labelled simulated).
+  - Paper now queues DAY market orders while the market is closed.
+- **Parallel-gate load test passed:** 16 events in 48 s with 4 workers, live quotes, 2026-10-02.
+- **Triggers:** cloud routines `earnings-s2-trigger` (gate) and `earnings-paper-trigger` (paper);
+  the laptop task is a backup.
+- **Next:**
+  - Mon Oct 5 PENG: the first real queued paper fill. Check `paper/ledger.json`.
+  - Tue Oct 6 LEVI + APLD: the first two-event day. Check both `t2` jobs and both freezes.
+  - Oct 8–9 Season A screen (automatic + laptop backups). Then watch the PENDING date backlog daily.
+  - During Season A: daily health checks; build the Season A report for Gate 1 (early Dec).
+- **Nothing waits on Jacob** until Gate 2 (Mar 2027): the real-money sleeve and loss limit, D008 v2.
 
 ## Where things are
 
