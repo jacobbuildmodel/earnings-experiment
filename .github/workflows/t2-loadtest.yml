@@ -1,0 +1,129 @@
+# T2 capacity load test - manual only. Runs N T2-shaped AI jobs IN PARALLEL on the same token and model as
+# the real t2 job, on companies that report later in October, and records how long each takes, how many
+# turns, the cost, and any rate-limit error. Nothing is written to the repository (contents: read); every
+# output goes to /tmp and the run's artifacts. It is NOT an experiment decision and is never graded.
+#
+# Why: on a peak Season A snapshot day ~80 events await T2 between the gate (~14:31 ET) and the 16:00 ET
+# deadline. At 5 in parallel and ~9 minutes a job that is ~50 decisions; the rest would be T2 MISSING.
+name: T2 capacity load test
+
+on:
+  workflow_dispatch:
+    inputs:
+      tickers:
+        description: "space-separated tickers (one parallel job each)"
+        required: true
+        default: "JPM NFLX TSLA INTC IBM NOW ISRG TXN LRCX KLAC MSFT META"
+      parallel:
+        description: "max parallel jobs"
+        required: true
+        default: "12"
+      model:
+        description: "model"
+        required: true
+        default: "claude-opus-5"
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      list: ${{ steps.p.outputs.list }}
+    steps:
+      - id: p
+        run: |
+          python3 -c "import json,sys; print('list=' + json.dumps(sys.argv[1].split()))" "${{ inputs.tickers }}" >> "$GITHUB_OUTPUT"
+          echo "planned at $(TZ=America/New_York date -Iseconds)"
+
+  t2:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      max-parallel: ${{ fromJSON(inputs.parallel) }}
+      matrix:
+        ticker: ${{ fromJSON(needs.plan.outputs.list) }}
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Start time
+        id: t0
+        run: echo "start=$(date +%s)" >> "$GITHUB_OUTPUT"
+
+      - name: Hide outcomes, history and the archive (same fence as T2)
+        run: git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/registry/T1_rule_v0.json'
+
+      - name: T2-shaped research for ${{ matrix.ticker }} (AI, load test only)
+        id: ai
+        continue-on-error: true
+        timeout-minutes: 45
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          show_full_output: true
+          prompt: |
+            LOAD TEST ONLY - this is not an experiment decision, nothing is graded, and you must not write
+            anything inside the repository or commit. Write files only under /tmp/loadtest/.
+
+            Do the research a T2 decision needs, at the same depth, for ${{ matrix.ticker }}'s next quarterly
+            earnings report (expected later in October 2026):
+            1. Read registry/D004_base_rates_v3.json and pick a prior probability that the stock's open after
+               the report is above its open before it.
+            2. From SEC EDGAR (send the User-Agent in pipeline/common.py SEC_HEADERS): the latest 10-Q or 10-K
+               and the 8-Ks of the last 90 days; the company's latest earnings release and guidance.
+            3. Read reviews/literature_review.md for mechanisms.
+            4. Write /tmp/loadtest/decision.json with {"ticker", "prior", "confidence", "thesis",
+               "reasons", "inputs_read": [{"what","url_or_file","published"}]} and /tmp/loadtest/thesis.md with
+               three theses (expected · mechanism · what proves it wrong).
+            Stop after writing both files. End with one line: the confidence and the number of sources read.
+          claude_args: |
+            --model ${{ inputs.model }}
+            --max-turns 120
+            --allowedTools "Bash,Read,Write,Glob,Grep,WebFetch"
+
+      - name: Measure
+        if: always()
+        run: |
+          END=$(date +%s); START=${{ steps.t0.outputs.start }}
+          python3 - "$END" "$START" <<'EOF' | tee -a "$GITHUB_STEP_SUMMARY"
+          import json, os, sys
+          end, start = int(sys.argv[1]), int(sys.argv[2])
+          p = "/home/runner/work/_temp/claude-execution-output.json"
+          res = {}
+          if os.path.exists(p):
+              data = json.load(open(p))
+              for x in (data if isinstance(data, list) else [data]):
+                  if isinstance(x, dict) and x.get("type") == "result":
+                      res = x
+          errs = []
+          if os.path.exists(p):
+              txt = open(p).read()
+              for k in ("rate_limit", "429", "529", "Overloaded", "usage limit", "quota"):
+                  if k in txt:
+                      errs.append(k)
+          print(json.dumps({"ticker": "${{ matrix.ticker }}", "outcome": "${{ steps.ai.outcome }}",
+                            "seconds_ai_step_to_end": end - start, "num_turns": res.get("num_turns"),
+                            "duration_ms": res.get("duration_ms"), "cost_usd": res.get("total_cost_usd"),
+                            "is_error": res.get("is_error"), "subtype": res.get("subtype"),
+                            "error_markers": errs}))
+          EOF
+          mkdir -p /tmp/loadtest && cp /home/runner/work/_temp/claude-execution-output.json /tmp/loadtest/ 2>/dev/null || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: loadtest-${{ matrix.ticker }}
+          path: /tmp/loadtest/
+          if-no-files-found: warn
+          retention-days: 14
