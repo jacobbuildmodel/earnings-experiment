@@ -1,0 +1,89 @@
+# D007 exploration batch 1 - collect the signals on GitHub's runners (laptop jobs die with the session),
+# then run the pre-registered test. Code only, no AI.
+#
+# DoltHub answers ~1 query a minute, so collection takes several hours. Each run works for at most
+# D007_BUDGET_MIN minutes, saves its progress in the Actions cache, and re-dispatches itself until every
+# source is complete. Then `explore_d007.py test` runs once and commits analysis/d007/result.json.
+name: Earnings experiment - D007 exploration
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: d007
+  cancel-in-progress: false
+
+jobs:
+  d007:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    permissions:
+      contents: write
+      actions: write          # to re-dispatch itself while collection is incomplete
+    env:
+      D007_BUDGET_MIN: "300"
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Restore collected data
+        uses: actions/cache/restore@v4
+        with:
+          path: cache/d007
+          key: d007-${{ github.run_id }}
+          restore-keys: d007-
+
+      - name: Collect (budgeted; DoltHub sources in parallel)
+        run: |
+          rm -f cache/d007/INCOMPLETE
+          python pipeline/explore_d007.py collect market
+          python pipeline/explore_d007.py collect wiki
+          python pipeline/explore_d007.py collect finra
+          python pipeline/explore_d007.py collect dolthub_iv & P1=$!
+          python pipeline/explore_d007.py collect dolthub_chain & P2=$!
+          wait $P1; wait $P2
+          if [ -f cache/d007/INCOMPLETE ]; then echo "incomplete: $(cat cache/d007/INCOMPLETE | tr '\n' ' ')"; fi
+
+      - name: Save collected data
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: cache/d007
+          key: d007-${{ github.run_id }}
+
+      - name: Not finished - run again
+        if: hashFiles('cache/d007/INCOMPLETE') != ''
+        run: gh workflow run d007.yml -R "${{ github.repository }}" --ref main
+
+      - name: Test (D007 §2) and commit the result
+        if: hashFiles('cache/d007/INCOMPLETE') == ''
+        run: |
+          python pipeline/explore_d007.py test | tee analysis_d007.txt
+          python - <<'EOF'
+          import hashlib, os, sys
+          sys.path.insert(0, "pipeline")
+          from due import commit
+          files = ["pipeline/explore_d007.py", "analysis/d007/result.json"]
+          lines = ["# D007 implementation at the run (registry/D007 header: hash appended at the run)"]
+          lines += [hashlib.sha256(open(f, "rb").read().replace(b"\r\n", b"\n")).hexdigest() + " " + f for f in files]
+          open("registry/D007_implementation_v1.sha256", "w").write("\n".join(lines) + "\n")
+          commit(["analysis/d007/result.json", "registry/D007_implementation_v1.sha256"],
+                 "D007 exploration batch 1: pre-registered test run (code, candidates only)")
+          EOF

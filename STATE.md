@@ -11,8 +11,13 @@
   `earnings-paper-trigger` (20:15 and 07:15 ET); the laptop task is a backup. GitHub's cron is only a
   fallback.
 - **Frozen 2026-09-30:**
-  - D007, exploration batch 1 (10 signals), frozen before its data was pulled. Collection is running;
-    the test is not run yet.
+  - D007, exploration batch 1 (10 signals), frozen before its data was pulled.
+    - **Collection runs on GitHub Actions**, workflow `d007.yml`, started 2026-10-01 08:55 ET. Laptop
+      background jobs died with the session twice.
+    - Each run gets 300 minutes and caches its progress, then re-dispatches itself until DoltHub is
+      complete (~1 query/min, about 509 snapshot dates).
+    - It then runs the pre-registered test and commits `analysis/d007/result.json`.
+    - Read that file next session. Candidates only (rules 6–7).
   - D008, the graduation criteria. H-S0, the premium harvest, is confirmatory from Season A.
 - Pilot left: PENG (Oct 5), LEVI and APLD (Oct 6). MU was out on the old one-strike open-interest test
   (fixed in D003 v4). Five events were lost to GitHub's cron.
