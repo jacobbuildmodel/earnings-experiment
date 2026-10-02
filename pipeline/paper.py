@@ -10,8 +10,11 @@ ledger carries their frozen decisions, so each track's paper P&L is the subset i
 Rules, all mechanical:
 - only events frozen BEFORE their entry open (manifest.json exists, status PASS) - rule 1
 - sizing: notional = equity x RISK_PER_EVENT / implied move, capped at equity x MAX_POSITION; whole shares
-- market-on-open (time_in_force "opg") is accepted only 19:00 ET -> 09:28 ET (docs.alpaca.markets, checked
-  2026-09-30); outside that window this script submits nothing
+- orders are market DAY orders submitted while the market is CLOSED (16:00 -> 09:25 ET); Alpaca queues
+  them and executes them at the next open. NOT "opg": the paper simulator expired NKE's market-on-open buy
+  unfilled at 09:30:37 ET on 2026-10-01 (status expired, filled_qty 0) - it does not fill auction orders.
+  Real money would use a true opening-auction order; the paper fill is compared with the official open
+  (D008 §3), and the difference is disclosed
 - idempotent: client_order_id = <season>-<TICKER>-<date>-<buy|sell>; an existing id is never resubmitted
 - every fill is compared later with the official open (grade.py) - the slippage test of D008 §3
 Keys come from APCA_API_KEY_ID / APCA_API_SECRET_KEY (GitHub secrets); they are never printed or stored.
@@ -33,7 +36,7 @@ BASE = "https://paper-api.alpaca.markets/v2"
 LEDGER = os.path.join(ROOT, "paper", "ledger.json")
 RISK_PER_EVENT = 0.005   # 0.5% of equity at risk per event, where "risk" = one implied move
 MAX_POSITION = 0.10      # never more than 10% of equity in one name
-OPG_OPEN, OPG_CLOSE = datetime.time(19, 0), datetime.time(9, 28)
+OPG_OPEN, OPG_CLOSE = datetime.time(16, 0), datetime.time(9, 25)  # the queue-for-the-open window
 
 
 def headers():
@@ -52,7 +55,7 @@ def api(method, path, **kw):
 
 def opg_window(now):
     t = now.time()
-    return t >= OPG_OPEN or t < OPG_CLOSE
+    return t >= OPG_OPEN or t < OPG_CLOSE or not is_session(now.date())
 
 
 def next_open_session(now):
@@ -107,13 +110,13 @@ def order_status(tr, side):
 
 
 def submit(tr, side, symbol, qty, cid):
-    body = {"symbol": symbol, "qty": str(qty), "side": side, "type": "market", "time_in_force": "opg",
+    body = {"symbol": symbol, "qty": str(qty), "side": side, "type": "market", "time_in_force": "day",
             "client_order_id": cid}
     got = api("POST", "/orders", json=body)
     tr[side] = {"client_order_id": cid, "qty": qty, "submitted_et": now_et().isoformat(),
                 "status": got.get("status") if "_error" not in got else "rejected",
                 "error": None if "_error" not in got else f"HTTP {got['_error']} {got['_body']}"}
-    print(f"{side} {qty} {symbol} opg -> {tr[side]['status']}{' ' + tr[side]['error'] if tr[side]['error'] else ''}")
+    print(f"{side} {qty} {symbol} day (queued for the open) -> {tr[side]['status']}{' ' + tr[side]['error'] if tr[side]['error'] else ''}")
 
 
 def sync(do_commit=False):
@@ -128,7 +131,8 @@ def sync(do_commit=False):
     equity = float(acct.get("equity") or 0) if "_error" not in acct else 0.0
     target = next_open_session(now)
     if not opg_window(now):
-        print(f"{now:%H:%M} ET is outside the market-on-open window (19:00-09:28 ET) - statuses refreshed only")
+        print(f"{now:%H:%M} ET: the market is open - orders are only queued while it is closed "
+              "(16:00-09:25 ET); statuses refreshed only")
     elif not equity:
         print(f"no account equity readable ({acct.get('_error')}) - nothing submitted")
     else:

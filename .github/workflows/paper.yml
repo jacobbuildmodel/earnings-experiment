@@ -1,7 +1,8 @@
 # Paper trading (Alpaca paper) - code only, no AI. RESEARCH_PLAN RQ6.
 #
-# Market-on-open orders are accepted only 19:00 ET -> 09:28 ET, so this runs in the evening and before
-# the open. Started by the cloud routine "earnings-paper-trigger" (a push to claude/paper-trigger, which
+# Orders are queued while the market is closed (16:00 -> 09:25 ET) and execute at the next open (market
+# DAY orders - the paper simulator does not fill opening-auction "opg" orders), so this runs in the evening
+# and before the open. Started by the cloud routine "earnings-paper-trigger" (a push to claude/paper-trigger, which
 # starts a run within seconds), by the cron below as a backup (GitHub's cron is late and drops fires),
 # or by hand. pipeline/paper.py submits nothing outside the window and never resubmits an order.
 name: Earnings experiment - paper trading
