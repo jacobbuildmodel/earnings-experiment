@@ -175,23 +175,32 @@ def collect_dolthub_chain():
     by_date = {}
     for e in all_built_events():
         by_date.setdefault(e["snapshot"], set()).add(e["ticker"])
-    n = 0
+    n, errors = 0, 0
+    before = sum(1 for d, ts in by_date.items() for t in ts if not os.path.exists(cpath("dolt_chain", f"{t}_{d}.json")))
     for d, ts in sorted(by_date.items()):
         todo = [t for t in sorted(ts) if not os.path.exists(cpath("dolt_chain", f"{t}_{d}.json"))]
         if not todo:
             continue
         if over_budget():
             break
-        syms = ",".join(f"'{t}'" for t in todo)
-        rows = dolt(f"SELECT act_symbol, expiration, strike, call_put, vol FROM option_chain "
-                    f"WHERE date='{d}' AND act_symbol IN ({syms})")
-        if isinstance(rows, dict):  # error: retried next run, never filled
-            continue
-        for t in todo:
-            json.dump([r for r in rows if r["act_symbol"] == t], open(cpath("dolt_chain", f"{t}_{d}.json"), "w"))
+        # small groups: a 58-ticker IN list times out on DoltHub; 3 tickers return in ~20 s
+        for k in range(0, len(todo), 3):
+            grp = todo[k:k + 3]
+            syms = ",".join(f"'{t}'" for t in grp)
+            rows = dolt(f"SELECT act_symbol, expiration, strike, call_put, vol FROM option_chain "
+                        f"WHERE date='{d}' AND act_symbol IN ({syms})")
+            if isinstance(rows, dict):  # error: retried next run, never filled
+                errors += 1
+                continue
+            for t in grp:
+                json.dump([r for r in rows if r["act_symbol"] == t], open(cpath("dolt_chain", f"{t}_{d}.json"), "w"))
+            if over_budget():
+                break
         n += 1
     left = sum(1 for d, ts in by_date.items() for t in ts if not os.path.exists(cpath("dolt_chain", f"{t}_{d}.json")))
-    print(f"dolthub_chain: {n} dates fetched now, {left} events still to fetch")
+    if left and left == before:  # nothing fetched this run: stop the re-dispatch loop, say so
+        open(cpath("STALLED"), "w").write(f"dolthub_chain made no progress ({errors} errors)")
+    print(f"dolthub_chain: {n} dates worked now, {errors} query errors, {left} events still to fetch")
     return left == 0
 
 
