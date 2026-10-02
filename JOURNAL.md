@@ -9,6 +9,42 @@
 
 ---
 
+## 2026-10-02 (Fri)
+
+**D007 exploration batch 1: NO candidates (RQ2/RQ3, negative knowledge).**
+
+| signal | lift, pts | t | note |
+|---|---|---|---|
+| E1 short-selling pressure (5d vs 60d) | +1.7 | +1.61 | closest; same sign in both halves; far below t 3 |
+| E2 peer read-through | −1.5 | −1.29 | wrong way vs the literature, weak |
+| E3 VIX · E4 SPY trend | +0.8 · +0.1 | 0.7 · 0.1 | no regime effect on the hit rate |
+| E5 Wikipedia attention | −1.4 | −1.23 | wrong way, weak |
+| E6 early vs late reporter | −0.4 | −0.40 | nothing |
+| E7 IV/HV · E9 call−put IV | −0.5 · −0.1 | ~0 | nothing |
+| **E10 put skew** | **−2.4** | **−2.12** | **opposite** to Xing-Zhang-Zhao: steep put skew did slightly *better*. Weak, but a surprise worth one line |
+| E8 IV run-up | +5.0 | +3.91 | **insufficient**: DoltHub's `iv_month_ago` is mostly empty, so only 76 events over 14 dates |
+
+- *What it taught us:* none of the free, point-in-time signals, from the literature plus the
+  vol-selling repos, selects within the earnings premium on 2,771 prints. With the 10 D006 factors,
+  **20 ideas have now been tested; none survives.** The likely graduate is the plain premium harvest
+  (S0), not selection.
+- *What it leaves:* the live weekly-option capture (exact straddle, open interest, volume), which no free
+  history has, and T2. Both are measured only in Season A onward.
+
+**NKE (pilot), the first live outcome: −8.2%.**
+- The official opens: $35.45 (Oct 1) → $32.55 (Oct 2).
+- T0 BUY and T2 BUY (0.52) both lose. Paper: −$475 on simulated legs (the order had expired).
+- *Observation:* the loss was inside the 8.6% implied move: a normal-sized miss, not a tail.
+- T2's stated deciding variable was the China / fiscal-2027 commentary; grading the reason is not
+  done (rule 4), only the outcome.
+- One event says nothing (pilot = bugs, not findings).
+
+**Parallel-gate load test (live quotes, 14:15 ET): 16 events through 4 workers in 48 s**, no errors, no
+rate limits. That projects to ~80 events in ~4 minutes, inside the 80-minute window. The empty T1
+factors in the test are an artifact: the dry run used future snapshot dates.
+
+---
+
 ## 2026-10-01 (Thu)
 
 **NKE paper buy expired unfilled (RQ6, execution).**
