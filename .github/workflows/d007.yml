@@ -52,7 +52,7 @@ jobs:
 
       - name: Collect (budgeted; DoltHub sources in parallel)
         run: |
-          rm -f cache/d007/INCOMPLETE
+          rm -f cache/d007/INCOMPLETE cache/d007/STALLED
           python pipeline/explore_d007.py collect market
           python pipeline/explore_d007.py collect wiki
           python pipeline/explore_d007.py collect finra
@@ -68,9 +68,15 @@ jobs:
           path: cache/d007
           key: d007-${{ github.run_id }}
 
-      - name: Not finished - run again
-        if: hashFiles('cache/d007/INCOMPLETE') != ''
+      - name: Not finished - run again (unless the last run made no progress)
+        if: hashFiles('cache/d007/INCOMPLETE') != '' && hashFiles('cache/d007/STALLED') == ''
         run: gh workflow run d007.yml -R "${{ github.repository }}" --ref main
+
+      - name: Stalled - stop and say so
+        if: hashFiles('cache/d007/STALLED') != ''
+        run: |
+          echo "::error::$(cat cache/d007/STALLED) - not re-dispatched; needs a look"
+          exit 1
 
       - name: Test (D007 §2) and commit the result
         if: hashFiles('cache/d007/INCOMPLETE') == ''
