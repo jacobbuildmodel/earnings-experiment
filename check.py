@@ -138,12 +138,18 @@ else:
 
 # Nothing frozen may be removed, and the hash lists only ever grow (external review 2026-09-21: deleting
 # an event folder, or editing a rule together with its hash line, would otherwise pass).
-_, gone = git("log", "--diff-filter=D", "--name-only", "--format=", "--", "events", "universe", "registry")
+_, gone = git("log", "--diff-filter=D", "--name-only", "--format=", "--", "events", "universe", "registry", "shadow")
 gone = sorted({g for g in gone.splitlines() if g.strip()})
 if gone:
-    bad(f"file(s) under events/, universe/ or registry/ were deleted in history: {gone[:10]}")
+    bad(f"file(s) under events/, universe/, registry/ or shadow/ were deleted in history: {gone[:10]}")
 else:
-    ok("nothing under events/, universe/ or registry/ has ever been deleted")
+    ok("nothing under events/, universe/, registry/ or shadow/ has ever been deleted")
+# D009 §3.2: a shadow calendar capture is write-once - the capture in force is the one first committed.
+_, edited = git("log", "--diff-filter=M", "--name-only", "--format=", "--", "shadow/calendar")
+_, dirty = git("diff", "HEAD", "--name-only", "--", "shadow/calendar")
+edited = sorted({g for g in (edited + chr(10) + dirty).splitlines() if g.strip()})
+if edited:
+    bad(f"shadow calendar capture(s) changed after their first commit: {edited[:10]}")
 APPEND_ONLY = ["registry/FROZEN.sha256", "registry/D005_implementation_v1.sha256"]
 _, hist = git("log", "--format=", "-p", "--", *APPEND_ONLY)
 _, work = git("diff", "HEAD", "--", *APPEND_ONLY)

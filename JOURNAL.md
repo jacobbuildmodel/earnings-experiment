@@ -9,6 +9,98 @@
 
 ---
 
+## 2026-10-02 (Fri, afternoon) — "too passive": a push for power
+
+Jacob: "we too passive in experimenting and not hungry enough for results"; also asked why the
+cloud/tokens weren't being used.
+
+**Phase 1 was reported done; it wasn't (truthfulness).**
+- RESEARCH_PLAN Phase 1 required the T0-wide shadow, the straddle shadow and the live option features.
+  None was in code.
+- D008's H-S0, the graduation hypothesis, was frozen on 09-30 but computed nowhere.
+- grade.py had changed on 09-23 without its implementation hash being appended.
+- *Lesson:* verify in code before reporting a phase complete.
+
+**Two shortcuts to power tested on history (RQ1); both negative.**
+
+| test | clustered t, net premium |
+|---|---|
+| equal weight (as D008 tests it) | 2.76 |
+| sized 1/volatility | 2.11 |
+| minus SPY | 2.25 |
+| minus sector ETF | 2.57 |
+
+- *Why both fail:* the premium sits in the volatile names, and each stock's own move dominates.
+- *By-product:* paper.py sizes S0 by 1/implied move, so the paper P&L will understate the premium S0
+  harvests. Its job is risk control, not the test.
+
+**The binding constraint is entry sessions, not events (power).**
+- Variance splits into ~1.8–1.9% shared by a session and ~9.2–9.6% per stock.
+- Expected one-season t at the history premium:
+
+| track | events / season | expected t |
+|---|---|---|
+| gated | ~150 | ~0.8 |
+| T0-wide | ~250 | ~1.0 |
+| market-wide | ~1,300 | ~1.5 (ceiling ~1.8) |
+
+- *Uncomfortable:* **D008's Gate 2 test on gated events has expected t ~1.1 after A+B.** It will most
+  likely read "no evidence" even if the premium is real. → CHARTER I12, a decision for Gate 1.
+- Last year's same six weeks: 1,776 Nasdaq-calendar prints ≥ $2B. Off-season: ~60% of weekdays carry one.
+
+**Built and frozen: D009 shadow tracks** (`pipeline/shadow.py`, `shadow.yml`).
+
+| track | what it is |
+|---|---|
+| SH-W | T0-wide: every company-confirmed allowlist date, gate or not |
+| SH-M | market-wide, ≥ $2B, any industry, dated by a write-once daily Nasdaq capture taken on the snapshot session |
+| SH-X | the exact short straddle: the gate's bid quotes held to expiry, intrinsic value paid at the expiry close |
+
+- Family: H-M, H-X, H-VOL. Holm m = 3; MDE on every result; verdict on A+B pooled.
+- **Pilot functional test, SH-W: 0 wins in 5 graded** (PAYX, DRI, JBL, MU, BB). Mean −3.7% net, −3.2%
+  over SPY. Pilot = bugs, not findings.
+
+**The SEC timing check caught a wrong company date.**
+- AAR (AIR) told us "after the close on Tuesday, September 29".
+- Its results 8-K (Item 2.02) was accepted at **20:58 ET on Sep 28**, a day early.
+- A 1.01/3.02 8-K (a material agreement and an unregistered sale of shares) followed at 01:13 ET.
+- A company-confirmed date can still move. The 8-K check is what catches it.
+
+**Independent review (Sonnet, adversarial, 2026-10-02).** No leakage. Fixed before the freeze:
+- a failed capture would have been locked in for the day
+- SH-X skipped the timing void (a late print would hand it a free premium)
+- Holm ran over whichever tests produced a p, not over the fixed family
+- the `late` rule voided an 8-K that merely lagged its release
+- SEC errors became final
+- splits were not handled
+- the universe file's commit time was not checked
+- vol60 did not match H4
+- the fallback lacked provenance
+- H-W was power-free inside the family → made descriptive
+- The reviewer corrected an overstatement: "the only lever is more events" holds only up to ~25
+  events per session.
+
+**The tokens: the weekly limit was exhausted (RQ5 / infrastructure).**
+- A 12-way T2 load test on the Actions token: **all 12 refused at the first call, $0 spent.**
+- The message: "You've hit your weekly limit · resets 12am (UTC)". It was the same for Sonnet 5.5,
+  Opus 5.5 and Haiku 4.5.
+- The subscription token that T2 uses shares one weekly budget with Jacob's own chats, and this week's
+  chats used it up.
+- *Consequences:*
+  - tonight's 23:00 UTC housekeeping AI step will fail (before the reset)
+  - if this happens in a Season A peak week, T2 goes MISSING for the rest of the week
+  - the claude.ai trigger routines are on the same account, so the laptop and cron backups matter
+- *Changed:*
+  - the `t2` job retries a 429-refused decision once on `ANTHROPIC_API_KEY` (inert until Jacob adds one)
+  - the retry clears the partial files first; its log is marked `_apikey`
+  - `max-parallel` 5 → 10 (~50 → ~100 decisions before the 16:00 deadline; D004 v3's hash order unchanged)
+  - a one-off Haiku 10-way concurrency test is scheduled for 01:15 UTC Oct 3, after the reset
+
+**T2 ensemble (CHARTER I2): deferred.** With the weekly budget binding, extra AI runs would take
+capacity from T2 itself.
+
+---
+
 ## 2026-10-02 (Fri)
 
 **D007 exploration batch 1: NO candidates (RQ2/RQ3, negative knowledge).**

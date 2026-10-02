@@ -130,8 +130,11 @@ what we are measuring.
 | I5 | **Implied move vs own history (B3), concave IV curve** as factors | concave IV predicts larger moves (Review of Finance 2025); the straddle premium is documented | 3 | add to factors before rule v0 |
 | I6 | **Point-in-time history store** for the rule v0 study (Qlib-style PIT data) | D005 v2 §7 requires point-in-time factors | 2, 3 | **done: `pipeline/history_factors.py`**, SEC `filed` dates + bar calendar (D006) |
 | I7 | **Leak test for T2:** a date-only recall probe on each event (Lookahead Propensity) | Gao, Jiang & Yan 2025 | 2 | **done: D004 v3 change 5** — `t2.leak_probe` on every Season A event |
-| I8 | **Rate-limit resilience:** API-key fallback for the AI step | the account hit its session limit on 2026-09-21; peak weeks could starve T2 | 2 | watch in Season A |
+| I8 | **Rate-limit resilience:** API-key fallback for the AI step | the account hit its session limit on 2026-09-21; **on 2026-10-02 the subscription's WEEKLY limit was exhausted (HTTP 429, every model) by Jacob's own chats**, so T2 shares a budget with them | 2 | **fallback wired 2026-10-02** (`s2-window.yml`: on a 429 with no decision, retry once on `ANTHROPIC_API_KEY`); inert until Jacob adds the key; untested |
 | I9 | **OpenBB** as a second data layer for estimates and calendars | one interface to many free providers; a second source for fields where we have one | 2 | probe when a factor needs it |
+| I10 | **Shadow tracks for power** (D009): T0-wide, market-wide (~1,300 events/season), exact short straddle | entry sessions, not events, bind power above ~25 events/session; the gated track alone has expected t ~0.8 a season | 1, 5 | **done: D009 v1** (2026-10-02) |
+| I11 | **Year-round market-wide shadow**: grade off-season sessions too | ~60% of off-season weekdays carry a print >= $2B; ~+25% information a year | 1 | candidate for D009 v2 (before Season B) |
+| I12 | **Gate 2 on a powered sample**: D008's H-S0 on gated events has expected t ~1.1 after A+B | power analysis 2026-10-02 | 1 | decide at Gate 1 whether D008 v2 pools SH-W/SH-M evidence (registered before Season B) |
 
 ## 7. How this charter decides things — worked example
 

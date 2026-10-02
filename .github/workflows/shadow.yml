@@ -1,0 +1,100 @@
+# D009 shadow tracks - code only, no AI (registry/D009_shadow_tracks_v1.md).
+#
+# Each session day: capture the Nasdaq earnings calendar once (shadow/calendar/<date>.json, write-once; the
+# SH-M track dates its events from the capture taken on their snapshot session). A capture with a failed
+# day is not written, so a later fire retries; the evening fire writes whatever it has (flagged) as the
+# last chance. The evening fire also grades every shadow event whose prices have settled
+# (outcomes/shadow/, which the T2 step never has on disk) and commits.
+#
+# It never runs inside the S2 window (from 90 min before the NYSE close to 30 min after it, early closes
+# included), so it cannot race a freeze for the push.
+# Triggers: the cloud-routine push that also starts s2-window.yml (its 10:45 / 11:45 ET fires capture;
+# the in-window fires exit at once), GitHub cron as a fallback, and a manual dispatch.
+name: Earnings experiment - shadow tracks
+
+on:
+  push:
+    branches: ["claude/s2-trigger"]
+  schedule:
+    - cron: "20 15 * * 1-5"   # 11:20 EDT · 10:20 EST - capture
+    - cron: "50 16 * * 1-5"   # 12:50 EDT · 11:50 EST - capture
+    - cron: "40 22 * * 1-5"   # 18:40 EDT · 17:40 EST - last-chance capture + daily grade
+  workflow_dispatch:
+
+concurrency:
+  group: shadow
+  cancel-in-progress: false
+
+jobs:
+  shadow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Outside the S2 window? Evening run?
+        id: when
+        run: |
+          python3 - <<'EOF' >> "$GITHUB_OUTPUT"
+          import datetime, sys
+          sys.path.insert(0, "pipeline")
+          from zoneinfo import ZoneInfo
+          from sessions import close_time, is_session
+          et = ZoneInfo("America/New_York")
+          now = datetime.datetime.now(et)
+          d = now.date()
+          busy = False
+          if is_session(d):
+              close = datetime.datetime.combine(d, close_time(d), et)
+              busy = close - datetime.timedelta(minutes=90) <= now < close + datetime.timedelta(minutes=30)
+          print(f"run={'false' if busy else 'true'}")
+          print(f"evening={'true' if now.hour >= 17 else 'false'}")
+          EOF
+          cat "$GITHUB_OUTPUT"
+
+      - if: steps.when.outputs.run == 'true'
+        run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        if: steps.when.outputs.run == 'true'
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      # Capture first: it is a write-once file that touches nothing else, so an unrelated health-check
+      # failure must not cost the day's capture.
+      - name: Capture today's calendar (write-once)
+        if: steps.when.outputs.run == 'true'
+        continue-on-error: true
+        timeout-minutes: 20
+        run: |
+          if [ "${{ steps.when.outputs.evening }}" = "true" ]; then
+            python pipeline/shadow.py capture --commit --last-chance
+          else
+            python pipeline/shadow.py capture --commit
+          fi
+
+      - name: Health check - PASS, or stop
+        if: steps.when.outputs.run == 'true'
+        run: python check.py
+
+      - name: Grade every season (evening run or manual dispatch only)
+        if: steps.when.outputs.run == 'true' && (steps.when.outputs.evening == 'true' || github.event_name == 'workflow_dispatch')
+        run: |
+          for s in $(ls universe); do
+            python pipeline/shadow.py grade "$s" || echo "::warning::shadow grade $s failed"
+          done
+          python pipeline/shadow.py commit-grade
+
+      - name: Health check after
+        if: always() && steps.when.outputs.run == 'true'
+        run: python check.py
