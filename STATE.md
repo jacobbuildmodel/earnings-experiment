@@ -1,23 +1,58 @@
 # STATE — Earnings Experiment
 
-**Phase 1 DONE → Season A next** · updated 2026-10-02 14:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (read its newest entries).
-- **D007: no candidates.** 20 point-in-time signals tested on 2,771 prints (D006's 10 + D007's 10);
-  none beats buying everything. The likely graduate is S0, the premium harvest (D008, H-S0
-  confirmatory from Season A). Selection can now only come from the live weekly-option capture and T2.
-- **NKE, the first live outcome: −8.2%** (official open $35.45 → $32.55); T0 and T2 (BUY 0.52) both lose.
-  - Paper: the market-on-open order expired, because Alpaca paper does not fill `opg` orders.
-  - It is booked as **simulated** at the official opens: −$475 (Jacob's rule: a platform failure is
-    booked at the official open, labelled simulated).
-  - Paper now queues DAY market orders while the market is closed.
-- **Parallel-gate load test passed:** 16 events in 48 s with 4 workers, live quotes, 2026-10-02.
-- **Triggers:** cloud routines `earnings-s2-trigger` (gate) and `earnings-paper-trigger` (paper);
-  the laptop task is a backup.
-- **Next:**
-  - Mon Oct 5 PENG: the first real queued paper fill. Check `paper/ledger.json`.
-  - Tue Oct 6 LEVI + APLD: the first two-event day. Check both `t2` jobs and both freezes.
-  - Oct 8–9 Season A screen (automatic + laptop backups). Then watch the PENDING date backlog daily.
-  - During Season A: daily health checks; build the Season A report for Gate 1 (early Dec).
-- **Nothing waits on Jacob** until Gate 2 (Mar 2027): the real-money sleeve and loss limit, D008 v2.
+**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-02 15:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-02 afternoon** (Jacob: "too passive, not hungry enough"). Details in JOURNAL.
+- **The earlier "Phase 1 done" was false.** The T0-wide shadow, the straddle shadow and the H-S0 test
+  were not in code. They are now.
+- **D009 frozen** (`registry/D009_shadow_tracks_v1.md`, `pipeline/shadow.py`, `.github/workflows/shadow.yml`):
+  - **SH-W**, T0-wide: every company-confirmed allowlist date. Descriptive.
+  - **SH-M**, market-wide: ≥ $2B, any industry, ~1,300 events a season. Dated by a write-once daily
+    Nasdaq capture in `shadow/calendar/`.
+  - **SH-X**: the exact short straddle from the gate's quotes.
+  - Tests: H-M, H-X, H-VOL, Holm m = 3; verdict on A+B pooled.
+  - The first capture is 2026-10-02.
+  - Outcomes go to `outcomes/shadow/` (fenced from T2).
+- **Power finding:** entry sessions bind, not events. The gated track's expected t is ~0.8 a season and
+  ~1.1 after A+B, so **D008's Gate 2 is very likely underpowered.** CHARTER I12: decide at Gate 1.
+- **H-S0 now in `report.py`** (D005 implementation v3, registered together with the unregistered 09-23
+  grade.py change).
+- **🔴 The token's weekly limit was exhausted on 2026-10-02.** It is shared with Jacob's chats; every model
+  was refused, "resets 12am (UTC)".
+  - The `t2` job now retries a refused decision on `ANTHROPIC_API_KEY` if that secret exists. It does
+    not exist yet: **a question for Jacob.**
+  - `max-parallel` 5 → 10.
+  - A Haiku 10-way concurrency test runs from cron at 01:15 UTC Oct 3. **Read its results:**
+    `gh run list --workflow t2-loadtest.yml`.
+  - The 23:00 UTC housekeeping AI step will likely fail tonight; code steps still run.
+- **Independent review** (Sonnet, read-only): no leak; 16 fixes applied before the freeze. Still open:
+  - the fallback path has never run, so test it once a key exists
+  - a pooled A+B report for D009 must be written before Season B's end
+  - SH-X dependence between overlapping straddles is understated (disclosed)
+
+**Earlier, 10-02:**
+- **D007: no candidates.** 20 signals on 2,771 prints; none beats buying everything. The likely graduate
+  is S0, the premium harvest (D008, H-S0).
+- **NKE: −8.2%.** T0 and T2 (BUY 0.52) both lose. Paper −$475 booked as **simulated**: Alpaca paper does
+  not fill `opg` orders, so paper now queues DAY market orders.
+- **Parallel-gate load test passed:** 16 events in 48 s.
+- **Triggers:** cloud routines `earnings-s2-trigger` (gate) and `earnings-paper-trigger` (paper); the
+  laptop task is a backup. The routines run on the same weekly-limited account.
+
+**Next:**
+- Sat Oct 3: read the Haiku load test. Confirm `shadow.yml` ran its first evening grade (22:40 UTC Fri) and
+  that the capture/grade commits look right.
+- Mon Oct 5 PENG: the first real queued paper fill (`paper/ledger.json`), and the first live shadow
+  capture by Actions (10:45 ET fire).
+- Tue Oct 6 LEVI + APLD: the first two-event day; check both `t2` jobs and both freezes.
+- Oct 8–9 Season A screen. Once its `raw/yfinance_market.json` is committed, check the SH-M universe:
+  `python pipeline/shadow.py grade seasonA --no-fetch`.
+- During Season A: daily health checks; the shadow report `python pipeline/shadow.py report seasonA`.
+
+**Waiting on Jacob:**
+1. **An Anthropic API key with a monthly spend cap**, as GitHub secret `ANTHROPIC_API_KEY`. It takes T2
+   off the shared weekly budget. ~$3.1 per T2 decision at API prices (NKE) → ~$450–950 a season.
+2. The real-money sleeve and loss limit (D008 v2), before Gate 2.
 
 ## Where things are
 
