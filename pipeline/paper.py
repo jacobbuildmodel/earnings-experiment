@@ -119,6 +119,53 @@ def submit(tr, side, symbol, qty, cid):
     print(f"{side} {qty} {symbol} day (queued for the open) -> {tr[side]['status']}{' ' + tr[side]['error'] if tr[side]['error'] else ''}")
 
 
+FAILED = ("expired", "rejected", "canceled")
+
+
+def official_open(symbol, session):
+    """The official daily Open of a past session (yfinance, auto_adjust=False - the price grade.py uses)."""
+    import yfinance as yf
+    d = datetime.date.fromisoformat(session)
+    h = yf.Ticker(symbol).history(start=session, end=(d + datetime.timedelta(days=5)).isoformat(),
+                                  auto_adjust=False).tz_convert(ET)
+    row = h[h.index.date == d]
+    return float(row["Open"].iloc[0]) if len(row) else None
+
+
+def after_open(session, now):
+    """True once the session's opening print is in (a few minutes after 09:30 ET)."""
+    return now >= datetime.datetime.combine(datetime.date.fromisoformat(session), datetime.time(9, 35), ET)
+
+
+def simulate(tr, now):
+    """Jacob, 2026-10-02: an order that fails for a platform reason is booked as executed at the official
+    open of its session, labelled simulated. Simulated fills never enter the execution test (D008 §3)."""
+    buy, sell = tr.get("buy") or {}, tr.get("sell") or {}
+    sim = tr.setdefault("simulated", {})
+    if buy.get("status") in FAILED and "buy" not in sim and after_open(tr["entry_session"], now):
+        px = official_open(tr["ticker"], tr["entry_session"])
+        if px:
+            sim["buy"] = {"price": px, "qty": buy.get("qty"), "reason": f"paper order {buy.get('status')} unfilled",
+                          "source": "yfinance daily Open (official open), auto_adjust=False"}
+    holding = buy.get("status") == "filled" or "buy" in sim
+    sell_failed = sell.get("status") in FAILED or ("buy" in sim and not sell)  # no real position to sell
+    if holding and sell_failed and "sell" not in sim and after_open(tr["exit_session"], now):
+        px = official_open(tr["ticker"], tr["exit_session"])
+        if px:
+            sim["sell"] = {"price": px, "qty": buy.get("filled_qty") if buy.get("status") == "filled" else buy.get("qty"),
+                           "reason": "no real position (buy simulated)" if "buy" in sim else f"paper order {sell.get('status')}",
+                           "source": "yfinance daily Open (official open), auto_adjust=False"}
+    if not sim:
+        tr.pop("simulated")
+    # P&L once both legs exist, real or simulated
+    bp = (sim.get("buy") or {}).get("price") or (float(buy["filled_avg_price"]) if buy.get("filled_avg_price") else None)
+    sp = (sim.get("sell") or {}).get("price") or (float(sell["filled_avg_price"]) if sell.get("filled_avg_price") else None)
+    if bp and sp:
+        qty = float((sim.get("buy") or {}).get("qty") or buy.get("filled_qty") or 0)
+        tr["result"] = {"entry_price": bp, "exit_price": sp, "return": sp / bp - 1, "pnl": round((sp - bp) * qty, 2),
+                        "simulated_legs": sorted(sim)}
+
+
 def sync(do_commit=False):
     now = now_et()
     led = load_ledger()
@@ -127,6 +174,8 @@ def sync(do_commit=False):
     for tr in trades.values():
         order_status(tr, "buy")
         order_status(tr, "sell")
+        if "ticker" in tr and "entry_session" in tr:
+            simulate(tr, now)
     acct = api("GET", "/account")
     equity = float(acct.get("equity") or 0) if "_error" not in acct else 0.0
     target = next_open_session(now)
