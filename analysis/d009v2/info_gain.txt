@@ -1,0 +1,32 @@
+events with return 3536 of 3536
+all {'N': 3536, 'G': 509, 'mean': 0.0055, 'sd_session': 0.0176, 'sd_stock': 0.0919, 'k_mean': 6.947, 'k_median': 3.0, 'frac_k_le3': 0.5206}
+in-season {'N': 3141, 'G': 345, 'mean': 0.0059, 'sd_session': 0.018, 'sd_stock': 0.0914, 'k_mean': 9.1043, 'k_median': 7.0, 'frac_k_le3': 0.3565}
+off-season {'N': 395, 'G': 164, 'mean': 0.0027, 'sd_session': 0.0, 'sd_stock': 0.0974, 'k_mean': 2.4085, 'k_median': 1.0, 'frac_k_le3': 0.8659}
+off-season weekdays 555 with >=1 allowlist entry 160 0.288
+date range 2022-09-21 2026-09-01
+
+--- information model ---
+scale c=4.94; info per season: flat 29x45 = 56903; empirical shape = 34551
+per-session info relative to an in-season session (flat 45): {1: 0.059, 2: 0.113, 3: 0.164, 5: 0.255, 8: 0.372, 15: 0.579}
+
+yearly gain (off-season info / in-season info, flat 45 in-season, 4 seasons):
+share_with_print  k=2  k=3  k=5  k=8
+0.4               +5%  +7%  +11%  +16%
+0.6               +7%  +11%  +17%  +24%
+0.8               +10%  +14%  +22%  +33%
+
+same with the empirical in-season shape:
+0.4               +8%  +12%  +18%  +27%
+0.6               +12%  +18%  +28%  +40%
+0.8               +16%  +24%  +37%  +54%
+
+empirical off-season (allowlist sessions x c=4.9): 42 sessions/yr, mean k 11.9, gain +25% (empirical in-season) / +15% (flat)
+A+B (v1): expected t at +0.65% = 2.19; at +0.30% = 1.01
+A+B + off-season between, 60% x k=3: expected t at +0.65% = 2.26; at +0.30% = 1.04
+A+B + off-season between, 60% x k=8: expected t at +0.65% = 2.34; at +0.30% = 1.08
+
+off minus in-season net mean: -0.32 pts, clustered se 0.56, t -0.56
+in: n 3141 sessions 345 mean +0.59% se 0.22 t 2.69 hit 0.538
+off: n 395 sessions 164 mean +0.27% se 0.52 t 0.51 hit 0.504
+
+off-season prints whose ticker printed in the PRECEDING season window: 5/389 = 1%
