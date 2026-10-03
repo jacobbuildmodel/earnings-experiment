@@ -57,6 +57,30 @@ temp path) and on a synthetic season.
 
 ---
 
+## 2026-10-02 (Fri, late) — the first cloud session, reviewed
+
+- **What happened:** Jacob's $100 claude.ai credit pays for cloud sessions only, not for Actions,
+  Routines or an API key. A session briefed by `ops/cloud_session_prompt.md` opened PR #1:
+  - the pooled D009 report
+  - a draft of the year-round shadow
+  - the Gate 1 report builder
+  - 30 tests
+- **Its uncomfortable findings, which hold:**
+  - Off-season reporters are a separate population: only 1% printed in the preceding season. A
+    season's own universe cannot cover the off-season.
+  - The off-season premium in history is +0.27% net (t 0.5), against +0.59% in-season.
+- **Laptop review:**
+  - the tests pass, and there is no look-ahead
+  - the Nasdaq screener works (7,073 listings)
+  - last year's off-season averaged ~8 prints ≥ $2B on days with any, so the gain is about +24–40%
+    of information a year
+- **What changed:** **D009 v2 frozen before Season A's first entry**, clock 2026-10-05, so all of Season
+  A's market-wide events count toward H-MY.
+- **What it taught:** cloud sessions are a good fit for no-network build and analysis work. With
+  network access set to Full, they could take data work off Jacob's weekly limit.
+
+---
+
 ## 2026-10-02 (Fri, afternoon) — "too passive": a push for power
 
 Jacob: "we too passive in experimenting and not hungry enough for results"; also asked why the

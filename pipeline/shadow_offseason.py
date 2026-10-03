@@ -7,6 +7,7 @@ reviews/proposals/D009_v2_yearround_DRAFT.md / .json). It never changes a v1 tra
     python pipeline/shadow_offseason.py screen <window>              # the window's fixed-date universe capture
     python pipeline/shadow_offseason.py grade <window> [--no-fetch]  # SH-MO events, prices once, recompute
     python pipeline/shadow_offseason.py report <window> [--with seasonA seasonB] [--write] [--final]
+    python pipeline/shadow_offseason.py due [--commit]                # evening workflow: screen what is due, grade the rest
 
 Universe (rule 8): one screen per off-season window on its registered screen date - Nasdaq's stock screener
 (every NYSE / Nasdaq / NYSE American listing with its market cap) united with the Nasdaq calendar for every
@@ -365,8 +366,30 @@ def report_(wids, seasons=(), write=False, final=False):
     return out
 
 
+def due(do_commit=False):
+    """The evening workflow step (laptop review 2026-10-02): for each registered window, run its screen once
+    its screen date has come (write-once; commit at once, so the commit time is as early as possible), and
+    grade every window that has a screen. A window whose screen date has not come does nothing."""
+    rule = load_rule()
+    today = now_et().date().isoformat()
+    for wid, wr in rule["windows"].items():
+        path = os.path.join(screen_dir(wid), "market.json")
+        if not os.path.exists(path):
+            if today >= wr["screen_date"] and today <= wr["window"][1]:
+                screen(wid)
+                if do_commit:
+                    shadow.commit(f"Shadow off-season screen {wid} {now_et():%Y-%m-%d %H:%M} ET (code, D009 v2)")
+            continue
+        grade(wid)
+    if do_commit:
+        shadow.commit(f"Shadow off-season grade as of {now_et():%Y-%m-%d %H:%M} ET (code, D009 v2)")
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
+    if a[:1] == ["due"]:
+        due("--commit" in a)
+        raise SystemExit(0)
     if a[:1] == ["windows"]:
         r = load_rule()
         for wid in r["windows"]:

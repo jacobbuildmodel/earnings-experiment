@@ -30,6 +30,24 @@
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
 
+**2026-10-02 late — the cloud session (PR #1, $100 cloud credit, expires 11-05) merged; D009 v2 frozen.**
+- **Cloud work, merged:**
+  - `shadow.py report-pooled` (D009 §5's A+B verdict; tests: ~5% size, 93% power at +2%)
+  - `pipeline/gate1.py` (the Gate 1 report builder)
+  - `tests/`: 30 tests, all pass on the laptop
+- **D009 v2 frozen** (`registry/D009_shadow_tracks_v2.md`):
+  - **SH-MO**, the off-season market-wide shadow. First window: Nov 23 → Jan 8, screened Nov 18 from the
+    Nasdaq screener (probed: 7,073 listings).
+  - **H-MY**: its own test over every market-wide event from clock **2026-10-05**.
+  - About +24–40% information a year. Not a fix for Gate 1 or Gate 2.
+  - It runs from the `shadow.yml` evening step `shadow_offseason.py due`.
+- **Cloud environment:** SEC, Nasdaq, NYSE, Yahoo and DoltHub are still blocked (`ops/cloud_probe_2026-10.md`).
+  Jacob can set **Network access: Full** in the cloud environment settings; a cloud session can then do
+  data work. Brief: `ops/cloud_session_prompt.md`.
+- **The pilot "fence breach"** (housekeeping 2026-09-30) is a **false positive**: a STATE.md edit whose text
+  named the T1 rule. It was not a T2 run, and no T1 file was read. Cleared.
+- **Not done** (network): D010, exploration batch 2. Pre-register it before any data is pulled.
+
 **Earlier, 10-02:**
 - **D007: no candidates.** 20 signals on 2,771 prints; none beats buying everything. The likely graduate
   is S0, the premium harvest (D008, H-S0).
