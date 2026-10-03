@@ -1,7 +1,7 @@
 {
  "season": "pilot",
  "rule": "D003_universe_screen_v1",
- "updated_et": "2026-10-02T21:33:50.408424-04:00",
+ "updated_et": "2026-10-02T21:36:09.814198-04:00",
  "events": {
   "CHRN": {
    "calendar_date": "2026-09-21",
@@ -35,7 +35,7 @@
    "missed_note": "no gate.json by the end of the S2 window; checked 2026-09-28T17:11:53.141704-04:00"
   },
   "AEHR": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "note": "calendars 2026-10-05; yfinance 2026-11-02 15:00 (intraday) - conflict; company newsroom (aehr.com/news) shows no FY27 Q1 date as of 2026-09-17T08:14:57-04:00",
    "rechecks": [
     "2026-09-20T02:56:08-04:00: aehr.com/newsroom newest item is 2026-09-03 (Lake Street conference) - still no FY27 Q1 results date. yfinance get_earnings_dates still 2026-11-02 15:00:00-05:00, intraday, which is 'unconfirmed' under D003 v1 section 6 and also outside the pilot window. Stays PENDING; earliest possible snapshot session is 2026-10-01, the D-2 case if the 2026-10-05 calendar date turns out to be BMO.",
@@ -52,8 +52,20 @@
     "2026-09-30T21:41:09.180693-04:00: find_dates v1 (2026-09-28) - no_feed",
     "2026-09-30T21:42:00-04:00: code went first and recorded no_feed (find_dates probe AEHR, 21:42:00 ET: no Q4-style IR feed, investors.aehr.com does not resolve), so this is the AI re-check. www.aehr.com/newsroom (HTTP 200): newest item still 2026-09-28, 'Aehr Test Systems to Participate in 18th Annual CEO Investor Summit 2026 in San Francisco' - an investor conference, NOT an earnings date; newest Financial News item still the 2026-07-14 FY26 Q4 results release, and the newest 'to Announce ... Financial Results' item still 2026-07-07. www.aehr.com/events/ (HTTP 200, redirected from /newsroom/category/events/) read for the first time: trade-show and conference listings only, no earnings call. SEC EDGAR (CIK 0001040470) as the second company source: newest filings ARS 2026-09-10 and DEF 14A 2026-09-09, then Forms 4/144 - no 8-K carrying a results date. Second sources unchanged: yfinance get_earnings_dates 2026-11-02 15:00:00-05:00, intraday (unconfirmed under D003 section 6) and outside the pilot window; Nasdaq calendar 2026-10-05 time-not-supplied (fiscalQuarterEnding Aug/2026, epsForecast $0.05), and AEHR is on no 2026-10-01 or 2026-10-02 row. Its own ~7-day lead implied an announcement on 2026-09-28; it is now two days late. Stays PENDING. Earliest possible snapshot session 2026-10-01 (the D-2 case if the Oct 5 calendar date is BMO) - this was the last housekeeping run before it, so expect code to mark AEHR INELIGIBLE unconfirmed once the 2026-10-01 window closes.",
     "2026-10-01T21:52:51.454395-04:00: find_dates v1 (2026-09-28) - no_feed",
-    "2026-10-02T21:33:49.908217-04:00: find_dates v1 (2026-09-28) - no_feed"
-   ]
+    "2026-10-02T21:33:49.908217-04:00: find_dates v1 (2026-09-28) - no_feed",
+    "2026-10-02T21:36:09.814198-04:00: FINAL re-check, and the retirement. Code went first (find_dates probe AEHR 2026-10-02T21:34:57-04:00: no_feed - AEHR has no Q4-style IR feed and investors.aehr.com does not resolve), so this is the AI's. www.aehr.com/newsroom (HTTP 200, 143,812 bytes): newest item still 2026-09-28 'Aehr Test Systems to Participate in 18th Annual CEO Investor Summit 2026 in San Francisco' - an investor conference, NOT an earnings date; the newest Financial News item is still the 2026-07-14 FY26 Q4 results release and the newest 'to Announce ... Financial Results' item is still 2026-07-07. SEC EDGAR (CIK 0001040470) as the second company source: the newest filings are seven Forms 4 dated 2026-10-02 and one 2026-10-01 (insider/grant filings, consistent with the 2026-09-09 DEF 14A annual meeting) - no 8-K and no release carrying a results date. Nasdaq calendar unchanged: AEHR on 2026-10-05 with time-not-supplied (fiscalQuarterEnding Aug/2026, epsForecast $0.05, lastYearRptDt 10/06/2025), and AEHR is absent from every remaining in-window row 2026-10-06 through 2026-10-09. yfinance still 2026-11-02, intraday and outside the pilot window. Both possible snapshot sessions for the 2026-10-05 calendar date have now passed unconfirmed: 2026-10-01 (D-2, the BMO case) and 2026-10-02 (D-1, the AMC case, which closed this afternoon). Under D003 v1 section 6 a time-not-supplied calendar date is not a confirmation, and the company announced nothing - its own ~7-day lead (2026-07-07 release for the 2026-07-14 print) implied 2026-09-28, four days ago. No eligible snapshot session remains inside the pilot window, so AEHR is retired INELIGIBLE unconfirmed. Code could not do this itself: pipeline/s2_gate.py only reaches the unconfirmed branch for an event the gate actually fires on, and the gate never fires on an event with no confirmed snapshot date, so a PENDING name with no date is retired by housekeeping."
+   ],
+   "reason": "unconfirmed",
+   "calendar_date": "2026-10-05",
+   "evidence": [
+    "Nasdaq calendar lists 2026-10-05 with time-not-supplied on every pull from 2026-09-17 to 2026-10-02 21:35 ET; a time-not-supplied date is 'unconfirmed' under D003 v1 section 6",
+    "company source: www.aehr.com/newsroom re-read on 15 occasions 2026-09-17 -> 2026-10-02; no FY27 Q1 results date was ever announced. www.aehr.com/events/ holds conferences only; investors.aehr.com does not resolve (NXDOMAIN) and there is no Q4-style IR press-release feed (find_dates: no_feed)",
+    "SEC EDGAR CIK 0001040470 as the second company source: no 8-K or release carrying a results date through 2026-10-02 (newest substantive filings ARS 2026-09-10, DEF 14A 2026-09-09; then Forms 4/144)",
+    "yfinance get_earnings_dates gave 2026-11-02 15:00:00-05:00 throughout - intraday (unconfirmed) and outside the pilot window 2026-09-21 -> 2026-10-09",
+    "AEHR's own announcement lead is ~7 days (2026-07-07 release for the 2026-07-14 print), so a 2026-10-05 print implied an announcement by 2026-09-28; none came",
+    "both possible snapshot sessions for 2026-10-05 have passed unconfirmed: 2026-10-01 (BMO case, D-2) and 2026-10-02 (AMC case, D-1); AEHR appears on no Nasdaq row 2026-10-06..2026-10-09, so no eligible snapshot session remains in the window"
+   ],
+   "recheck": "Retired by the 2026-10-02 housekeeping run after its last possible snapshot session closed unconfirmed. No further re-checks; the pilot window ends 2026-10-09."
   },
   "LEVI": {
    "status": "CONFIRMED",
