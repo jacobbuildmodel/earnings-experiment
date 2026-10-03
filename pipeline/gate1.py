@@ -172,7 +172,7 @@ def d005_section(rep):
                 f"{f(pr.get('brier_skill'), 3)}** · log loss {f(pr.get('log_loss'), 3)} · AUC {f(pr.get('auc'), 3)} "
                 f"(90% cluster CI {pr.get('auc_ci90_cluster') and ' – '.join(f(x, 3) for x in pr['auc_ci90_cluster']) or '–'})",
                 f"- Share of confidences in 0.45–0.55 (coin-flip calls): {pct(pr.get('share_conf_0.45_0.55'), 0)}",
-                f"- **Confidence test (D005 v2, WIN = a + b·confidence):** "
+                "- **Confidence test (D005 v2, WIN = a + b·confidence):** "
                 + (f"slope {f(ct.get('slope'), 3)}, se {f(ct.get('se_cr1'), 3)}, t {f(ct.get('t_cr1'))}, one-sided p {p3(ct.get('p_one_sided'))}"
                    if ct else "not run (under the rule 7 minimum, or no spread in confidence)"), "",
                 "| confidence bin | n | mean confidence | hit rate |", "|---|---|---|---|"]
