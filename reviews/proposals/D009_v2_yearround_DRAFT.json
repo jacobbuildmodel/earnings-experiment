@@ -1,0 +1,36 @@
+{
+ "id": "D009_shadow_tracks_v2",
+ "status": "DRAFT 2026-10-03 (cloud session) - NOT FROZEN. The laptop session reviews it, sets clock_start_entry_session, and freezes it as registry/D009_shadow_tracks_v2.json.",
+ "extends": "D009_shadow_tracks_v1",
+ "changes_v1": "nothing - v1's tracks, family (H-M, H-X, H-VOL; Holm m = 3) and verdict are scored untouched",
+ "track": "SH-MO",
+ "clock_start_entry_session": null,
+ "clock_rule": "the first session whose 09:30 ET open is after the commit that freezes this file; v1 SH-M events enter H-MY only from that entry session on",
+ "windows": {
+  "off_seasonA": {
+   "after_season": "seasonA",
+   "window": ["2026-11-23", "2027-01-08"],
+   "screen_date": "2026-11-18"
+  }
+ },
+ "screen": {
+  "sources": ["api.nasdaq.com/api/screener/stocks (every listing, Nasdaq market cap)", "api.nasdaq.com/api/calendar/earnings for every weekday of the window"],
+  "pre_filter_market_cap_min": 1500000000,
+  "market_data": "yfinance Ticker.info, fields as the S1 yfinance_market.json",
+  "filters": "D003 s1 block of after_season, verbatim (as D009 v1 §3.1)"
+ },
+ "dating": "D009 v1 §3.2 verbatim: the capture taken on the snapshot session (D003 s2 snapshot offsets of after_season)",
+ "grading": "D009 v1 §1 verbatim, as SH-M (domestic test, timing check, splits, dividends, existence before entry)",
+ "hypotheses": {
+  "H-MY": {
+   "statement": "mean net return (raw - 0.20%) of all market-wide events from the clock - v1 SH-M of seasonA and seasonB plus SH-MO of off_seasonA - is > 0 (one-sided)",
+   "family": "v2's own; m = 1",
+   "test": "cluster-robust t by entry session + D005 restricted wild cluster bootstrap, 9,999 draws, seed report.R('H-MY')",
+   "minimum": "rule 7: 30 events and 10 entry sessions, else insufficient",
+   "verdict_at": "the same date as D009 v1's pooled verdict: Season B's last report date + 10 days",
+   "also_reported": ["without timing_unverified and late_8k events", "MDE = 2.487 x clustered se"]
+  }
+ },
+ "descriptive": ["H-MO: SH-MO alone", "MO-minus-M: off-season minus in-season, OLS dummy, same bootstrap"],
+ "code": "pipeline/shadow_offseason.py (hash registered with the freeze)"
+}

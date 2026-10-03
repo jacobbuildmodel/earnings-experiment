@@ -4,6 +4,7 @@ SHADOW, and never allowed to touch them (CHARTER §3.8; registry/D009_shadow_tra
     python pipeline/shadow.py capture                 # the session's Nasdaq calendar -> shadow/calendar/<date>.json
     python pipeline/shadow.py grade <season> [--no-fetch]   # build the events, fetch settled prices once, recompute
     python pipeline/shadow.py report <season> [--write]     # the D009 statistics
+    python pipeline/shadow.py report-pooled <seasonA> <seasonB> [--write] [--final]  # D009 §5 pooled verdict
     python pipeline/shadow.py commit                  # stage shadow/ and outcomes/shadow/, commit, push
 
 Tracks (D009 §2-§4):
@@ -592,12 +593,11 @@ def mde(res):
     return None if se is None or se != se else 2.487 * se
 
 
-def report_(season, write=False, final=False):
-    """D009 §5. Interim runs are monitoring only; a verdict is printed with --final (season end = the
-    season's last report date + 10 days, when every timing check is final)."""
+def stats_(allrows, final=False):
+    """D009 §5 over one list of shadow rows: the H-M / H-X / H-VOL family (Holm, m = 3), the
+    sensitivity without unverified timing, and the descriptive block. Shared by report_ (one season) and
+    report_pooled (Seasons A + B, D009 §5's registered verdict)."""
     import report
-    path = os.path.join(ROOT, "outcomes", "shadow", season, "graded.json")
-    allrows = load(path)["events"]
     rows = [e for e in allrows if e.get("graded")]
     W = [e for e in rows if e["track"] == "SH-W"]
     M = [e for e in rows if e["track"] == "SH-M"]
@@ -647,9 +647,10 @@ def report_(season, write=False, final=False):
                             "void": {v: sum(1 for e in allrows if e["track"] == tr and e.get("void") == v)
                                      for v in sorted({e.get("void") for e in allrows if e["track"] == tr and e.get("void")})}}
                        for tr in ("SH-W", "SH-M", "SH-X")}}
-    out = {"season": season, "rule": "D009_shadow_tracks_v1 §5", "run_et": now_et().isoformat(timespec="seconds"),
-           "label": "SHADOW - secondary; never a scored track" + ("" if final else "; INTERIM - no verdict"),
-           "tests": res, "sensitivity": sens, "descriptive": desc}
+    return res, sens, desc
+
+
+def print_(res, desc):
     for k, v in res.items():
         print(f"{k:6} n={v.get('n')} dates={v.get('dates')} "
               + (f"mean={v['mean'] * 100:+.2f}% " if v.get("mean") is not None else "")
@@ -657,8 +658,67 @@ def report_(season, write=False, final=False):
               + (f"t={v['t']:.2f} p={v['p_one_sided']:.3f} " if v.get("t") is not None and v["t"] == v["t"] else "")
               + f"holm={v['p_holm']:.3f} {v['status']}")
     print(json.dumps(desc, default=str))
+
+
+def report_(season, write=False, final=False):
+    """D009 §5. Interim runs are monitoring only; a verdict is printed with --final (season end = the
+    season's last report date + 10 days, when every timing check is final)."""
+    path = os.path.join(ROOT, "outcomes", "shadow", season, "graded.json")
+    allrows = load(path)["events"]
+    res, sens, desc = stats_(allrows, final)
+    out = {"season": season, "rule": "D009_shadow_tracks_v1 §5", "run_et": now_et().isoformat(timespec="seconds"),
+           "label": "SHADOW - secondary; never a scored track" + ("" if final else "; INTERIM - no verdict"),
+           "tests": res, "sensitivity": sens, "descriptive": desc}
+    print_(res, desc)
     if write:
         write_json(os.path.join(ROOT, "outcomes", "shadow", "reports", f"{season}_{now_et():%Y-%m-%d}.json"), out)
+    return out
+
+
+def pool(seasons_rows):
+    """Concatenate seasons' shadow rows for the pooled report, each tagged with its season. Entry
+    sessions are calendar dates, so clusters never merge across seasons. A (track, ticker, date, session)
+    seen in an earlier season is dropped and counted - season windows do not overlap, so this is a guard,
+    not a rule."""
+    rows, seen, dropped = [], set(), []
+    for season, srows in seasons_rows:
+        for e in srows:
+            key = (e["track"], e["ticker"], e["date"], e.get("session"))
+            if key in seen:
+                dropped.append({"season": season, "track": e["track"], "ticker": e["ticker"], "date": e["date"]})
+                continue
+            seen.add(key)
+            rows.append({**e, "season": season})
+    return rows, dropped
+
+
+def report_pooled(seasons, write=False, final=False):
+    """D009 §5's registered verdict: Seasons A and B POOLED - the same three tests, the same Holm m = 3,
+    the same seeds by test name, the MDE and the sensitivity, over both seasons' graded events. H-VOL's
+    median split is taken over the pooled sample. --final only at Season B's end (its last report date +
+    10 days). The pilot is never pooled (D009 §6)."""
+    if any(s.lower().startswith("pilot") for s in seasons):
+        raise SystemExit("D009 §6: pilot numbers are never pooled into any season result")
+    if len(set(seasons)) != len(seasons) or len(seasons) < 2:
+        raise SystemExit("report-pooled needs two or more different seasons, e.g. seasonA seasonB")
+    loaded = [(s, load(os.path.join(ROOT, "outcomes", "shadow", s, "graded.json"))["events"]) for s in seasons]
+    allrows, dropped = pool(loaded)
+    res, sens, desc = stats_(allrows, final)
+    per = {s: {tr: {"total": sum(1 for e in allrows if e["season"] == s and e["track"] == tr),
+                    "graded": sum(1 for e in allrows if e["season"] == s and e["track"] == tr and e.get("graded"))}
+               for tr in ("SH-W", "SH-M", "SH-X")} for s in seasons}
+    out = {"seasons": list(seasons), "pooled": True, "rule": "D009_shadow_tracks_v1 §5 (pooled verdict)",
+           "run_et": now_et().isoformat(timespec="seconds"),
+           "label": "SHADOW - secondary; never a scored track" + ("" if final else "; INTERIM - no verdict"),
+           "tests": res, "sensitivity": sens, "descriptive": desc, "by_season": per,
+           "duplicates_dropped": dropped}
+    print(f"POOLED {' + '.join(seasons)}" + ("" if final else " (interim)"))
+    print_(res, desc)
+    if dropped:
+        print(f"{len(dropped)} duplicate event(s) dropped: {dropped}")
+    if write:
+        write_json(os.path.join(ROOT, "outcomes", "shadow", "reports",
+                                f"pooled_{'+'.join(seasons)}_{now_et():%Y-%m-%d}.json"), out)
     return out
 
 
@@ -690,5 +750,7 @@ if __name__ == "__main__":
         commit(f"Shadow grade as of {now_et():%Y-%m-%d %H:%M} ET (code, D009)")
     elif a[:1] == ["report"]:
         report_(a[1], write="--write" in a, final="--final" in a)
+    elif a[:1] == ["report-pooled"]:
+        report_pooled([x for x in a[1:] if not x.startswith("--")], write="--write" in a, final="--final" in a)
     else:
         raise SystemExit(__doc__)
