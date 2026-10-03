@@ -284,12 +284,17 @@ jobs:
     timeout-minutes: 60
     strategy:
       fail-fast: false
-      max-parallel: 5
+      # 10, not 5 (2026-10-02): NKE's T2 took ~7 min + ~2 min job start, so 5 in parallel decide ~50 events
+      # between the gate and the 16:00 ET deadline; a peak Season A day brings ~80. D004 v3's hash order and
+      # MISSING(capacity) rule are unchanged. GitHub allows 20 concurrent jobs on this plan.
+      max-parallel: 10
       matrix:
         event: ${{ fromJSON(needs.s2.outputs.t2_json) }}
     permissions:
       contents: write
       id-token: write
+    env:
+      HAS_API_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -353,6 +358,69 @@ jobs:
             --max-turns 120
             --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"
 
+      # CHARTER I8 (2026-10-02): the subscription token has a WEEKLY cap shared with Jacob's own chats. On
+      # 2026-10-02 it was exhausted ("You've hit your weekly limit", HTTP 429, every model). If the first
+      # attempt was refused with a 429 and left no decision, the same job retries ONCE on a pay-as-you-go
+      # API key - only if the ANTHROPIC_API_KEY secret exists, and only while T2 is still open.
+      - name: Was the AI step refused by a usage limit? (code)
+        id: rl
+        if: always() && steps.open.outputs.open == 'true'
+        run: |
+          python3 - <<'EOF' | tee -a "$GITHUB_OUTPUT"
+          import glob, json, os
+          p = "/home/runner/work/_temp/claude-execution-output.json"
+          res = {}
+          if os.path.exists(p):
+              d = json.load(open(p))
+              for x in (d if isinstance(d, list) else [d]):
+                  if isinstance(x, dict) and x.get("type") == "result":
+                      res = x
+          refused = res.get("api_error_status") == 429 or "limit" in str(res.get("result", "")).lower() and bool(res.get("is_error"))
+          wrote = bool(glob.glob("events/${{ matrix.event.season }}/${{ matrix.event.ticker }}_${{ matrix.event.date }}/decision.json"))
+          print(f"limited={'true' if refused and not wrote else 'false'}")
+          print(f"why={str(res.get('result',''))[:120]!r}")
+          EOF
+          if [ -f /home/runner/work/_temp/claude-execution-output.json ]; then cp /home/runner/work/_temp/claude-execution-output.json /home/runner/work/_temp/claude-execution-output.first.json; fi
+
+      - name: Is T2 still open for the fallback?
+        id: open2
+        if: always() && steps.rl.outputs.limited == 'true'
+        run: python pipeline/due.py t2-open ${{ matrix.event.season }} ${{ matrix.event.ticker }} ${{ matrix.event.date }} | tee -a "$GITHUB_OUTPUT"
+
+      # The refused attempt may have left partial, uncommitted files; the retry starts from the gated record.
+      - name: Clear the refused attempt's partial files
+        if: always() && steps.rl.outputs.limited == 'true' && steps.open2.outputs.open == 'true' && env.HAS_API_KEY == 'true'
+        run: git clean -fdq -- "events/${{ matrix.event.season }}/${{ matrix.event.ticker }}_${{ matrix.event.date }}" && git status --short
+
+      - name: T2 decision for ${{ matrix.event.ticker }} ${{ matrix.event.date }} (AI, API-key fallback)
+        id: fb
+        if: always() && steps.rl.outputs.limited == 'true' && steps.open2.outputs.open == 'true' && env.HAS_API_KEY == 'true'
+        continue-on-error: true
+        timeout-minutes: 45
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          show_full_output: true
+          prompt: |
+            Open ops/actions_prompt.md and follow the instructions below its horizontal rule exactly.
+            The repository is checked out and its dependencies are installed. Code has already run
+            the health check and the S2 gate.
+
+            Decide ONLY this event (section A): ${{ matrix.event.season }} ${{ matrix.event.ticker }} ${{ matrix.event.date }}
+            Write decision.json and thesis.md, then STOP: do NOT run pipeline/freeze.py and do not commit -
+            code freezes the event right after you, in the full checkout. Other events are decided by
+            parallel jobs - do not touch them. This is not a housekeeping run.
+
+            End with the short plain-English report section C asks for.
+          claude_args: |
+            --model claude-opus-5
+            --max-turns 120
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"
+
+      - name: No fallback possible
+        if: always() && steps.rl.outputs.limited == 'true' && (steps.open2.outputs.open != 'true' || env.HAS_API_KEY != 'true')
+        run: echo "::error::T2 refused by a usage limit (${{ steps.rl.outputs.why }}); no ANTHROPIC_API_KEY secret or T2 closed - finalize freezes T2 as MISSING"
+
       - name: Restore the full checkout
         if: always()
         run: git sparse-checkout disable
@@ -380,7 +448,8 @@ jobs:
 
       - name: Log every AI tool call to the repository
         if: always() && steps.open.outputs.open == 'true'
-        run: python pipeline/runlog.py /home/runner/work/_temp/claude-execution-output.json "${{ github.run_id }}_${{ matrix.event.ticker }}"
+        # "_apikey" in the log name records that this decision came from the API-key fallback (provenance)
+        run: python pipeline/runlog.py /home/runner/work/_temp/claude-execution-output.json "${{ github.run_id }}_${{ matrix.event.ticker }}${{ steps.fb.outcome != 'skipped' && steps.fb.outcome != '' && '_apikey' || '' }}"
 
       - name: Nothing left unpushed
         if: always()
@@ -403,7 +472,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: claude-execution-output-${{ matrix.event.ticker }}-${{ matrix.event.date }}
-          path: /home/runner/work/_temp/claude-execution-output.json
+          path: |
+            /home/runner/work/_temp/claude-execution-output.json
+            /home/runner/work/_temp/claude-execution-output.first.json
           if-no-files-found: warn
           retention-days: 90
 

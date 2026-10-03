@@ -416,6 +416,26 @@ def confirmatory(season, tracks, stacked):
     return {"registered": True, "alpha": 0.05, "raw_p": raw, "holm_p": adj, "return_lift": rl, "verdicts": verdicts}
 
 
+def h_s0(rows):
+    """D008 §2 H-S0 (implementation v3, 2026-10-02): S0's mean exit-A raw return net of the 0.20% round
+    trip is > 0. Sample: graded PASS events (S0 buys every one). One-sided, the D005 restricted wild
+    cluster bootstrap by entry session on an intercept-only model. Interim runs are monitoring; the
+    registered test is on Seasons A + B pooled (D008 §2)."""
+    rr = [r for r in rows if "raw_return" in r["exits"]["exit_A"]]
+    y = np.array([r["exits"]["exit_A"]["raw_return"] - 0.002 for r in rr], float)
+    g = np.array([r["entry_session"] for r in rr])
+    out = {"hypothesis": "D008 H-S0: mean net exit-A return > 0", "n": len(rr), "dates": len(set(g)),
+           "net_mean": float(y.mean()) if len(y) else None}
+    if len(y) < 3 or len(set(g)) < 2:
+        return {**out, "verdict": "insufficient"}
+    X = np.ones((len(y), 1))
+    b, se, t = ols_k(y, X, g, 0)
+    p = wild_p_k(y, X, g, 0, R("H-S0"))
+    v = "insufficient" if not sufficient(len(y), len(set(g))) else (
+        f"net mean > 0 at p={p:.3f} (this season alone; Gate 2 pools A + B)" if p < 0.05 else f"no evidence (p={p:.3f})")
+    return {**out, "se": se, "t": t, "p_one_sided": p, "verdict": v}
+
+
 def by_cluster(rows, track):
     """Every cluster is listed; under the rule 7 minimum it is 'insufficient' whatever its estimate."""
     est, listing = {}, {}
@@ -588,6 +608,7 @@ def run(season, write=False):
                         "mean_raw_return": float(np.mean([e["raw_return"] for e in rr])),
                         "label": "PRIMARY outcome" if key == "exit_A" else "secondary"}
     rep["T0_by_exit"] = sec
+    rep["H_S0"] = h_s0(rows)
     rep["findings"] = factor_table(season, rows)
     summary = {k: v for k, v in rep.items() if k != "findings"}
     summary["findings"] = {k: v for k, v in rep["findings"].items() if k != "tests"}
