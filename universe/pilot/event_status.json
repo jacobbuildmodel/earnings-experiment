@@ -1,7 +1,7 @@
 {
  "season": "pilot",
  "rule": "D003_universe_screen_v1",
- "updated_et": "2026-10-01T21:52:51.954584-04:00",
+ "updated_et": "2026-10-02T21:33:50.408424-04:00",
  "events": {
   "CHRN": {
    "calendar_date": "2026-09-21",
@@ -51,7 +51,8 @@
     "2026-09-29T21:47:39.193189-04:00: third run of the ET day (the 23:00 UTC housekeeping fire, which arrived 2 h 45 min late again). Code's find_dates ran first at 21:44 ET and recorded 'no_feed' - AEHR has no Q4-style IR feed and investors.aehr.com does not resolve - so this re-check is the AI's, as on every previous day. www.aehr.com/newsroom (HTTP 200, 152,389 bytes): newest item still 2026-09-28, 'Aehr Test Systems to Participate in 18th Annual CEO Investor Summit 2026 in San Francisco' - an investor-conference release, NOT an earnings date; the newest Financial News item is still the 2026-07-14 FY26 Q4 results release and the newest 'to Announce ... Financial Results' item is still 2026-07-07. No FY27 Q1 results date. SEC EDGAR (CIK 0001040470) as the second company source: newest filings are ARS 2026-09-10 and DEF 14A 2026-09-09 (annual-meeting material), then Forms 4/144 - no 8-K carrying an earnings date. yfinance get_earnings_dates unchanged at 2026-11-02 15:00:00-05:00, intraday (unconfirmed under D003 v1 section 6) and outside the pilot window. Nasdaq calendar unchanged: AEHR on 2026-10-05 time-not-supplied, fiscalQuarterEnding Aug/2026, epsForecast $0.05, and absent from the 2026-10-01, 2026-10-02, 2026-10-06 and 2026-10-07 rows. Its own ~7-day lead implied an announcement on 2026-09-28; it is now two days late against that pattern. Stays PENDING; earliest possible snapshot session 2026-10-01 (the D-2 case if the 2026-10-05 calendar date is BMO). ONE housekeeping run remains (Wed 2026-09-30) before code marks it INELIGIBLE unconfirmed. Expect that.",
     "2026-09-30T21:41:09.180693-04:00: find_dates v1 (2026-09-28) - no_feed",
     "2026-09-30T21:42:00-04:00: code went first and recorded no_feed (find_dates probe AEHR, 21:42:00 ET: no Q4-style IR feed, investors.aehr.com does not resolve), so this is the AI re-check. www.aehr.com/newsroom (HTTP 200): newest item still 2026-09-28, 'Aehr Test Systems to Participate in 18th Annual CEO Investor Summit 2026 in San Francisco' - an investor conference, NOT an earnings date; newest Financial News item still the 2026-07-14 FY26 Q4 results release, and the newest 'to Announce ... Financial Results' item still 2026-07-07. www.aehr.com/events/ (HTTP 200, redirected from /newsroom/category/events/) read for the first time: trade-show and conference listings only, no earnings call. SEC EDGAR (CIK 0001040470) as the second company source: newest filings ARS 2026-09-10 and DEF 14A 2026-09-09, then Forms 4/144 - no 8-K carrying a results date. Second sources unchanged: yfinance get_earnings_dates 2026-11-02 15:00:00-05:00, intraday (unconfirmed under D003 section 6) and outside the pilot window; Nasdaq calendar 2026-10-05 time-not-supplied (fiscalQuarterEnding Aug/2026, epsForecast $0.05), and AEHR is on no 2026-10-01 or 2026-10-02 row. Its own ~7-day lead implied an announcement on 2026-09-28; it is now two days late. Stays PENDING. Earliest possible snapshot session 2026-10-01 (the D-2 case if the Oct 5 calendar date is BMO) - this was the last housekeeping run before it, so expect code to mark AEHR INELIGIBLE unconfirmed once the 2026-10-01 window closes.",
-    "2026-10-01T21:52:51.454395-04:00: find_dates v1 (2026-09-28) - no_feed"
+    "2026-10-01T21:52:51.454395-04:00: find_dates v1 (2026-09-28) - no_feed",
+    "2026-10-02T21:33:49.908217-04:00: find_dates v1 (2026-09-28) - no_feed"
    ]
   },
   "LEVI": {
