@@ -1,0 +1,197 @@
+{
+ "run_id": "37086503215_housekeeping",
+ "logged_utc": "2026-10-03T0138Z",
+ "tool_calls": 41,
+ "fence_breaches": [],
+ "review_flags": [
+  {
+   "flag": "git content read",
+   "input": "{\"command\": \"git show --stat 030cb15 | cat && echo \\\"=== \\\" && git show --stat 1d525bb | cat\"}"
+  },
+  {
+   "flag": "git content read",
+   "input": "{\"command\": \"git diff universe/pilot/event_status.json | head -40\"}"
+  },
+  {
+   "flag": "git content read",
+   "input": "{\"command\": \"python - <<'PY'\\nimport json, collections\\nfrom pipeline.common import write_json\\np='universe/pilot/event_status.json'\\nd=json.load(open(p), object_pairs_hook=collections.OrderedDict)\\nwrite_json(p, d)\\nPY\\ngit diff --stat && echo \\\"---\\\" && git diff universe/pilot/event_status.json | grep -c \\\"^[-+]\\\"\"}"
+  },
+  {
+   "flag": "git content read",
+   "input": "{\"command\": \"git diff universe/pilot/event_status.json | cut -c1-200\"}"
+  }
+ ],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 42,
+  "total_cost_usd": 1.8454169999999999,
+  "text": "## Report — housekeeping run, 2026-10-02 21:34 ET (Fri)\n\n**T2 decisions: none.** `due.py t2-list` is empty, the prompt named no event, so no `decision.json` was written. Nothing was gated or frozen by this step.\n\n**Freeze commits today: none, and that is correct** — no snapshot session was due (the next is PENG, Mon Oct 5). No `Capture …` or `Freeze …` commit exists for the ET day, so there is no BLIND/VOID to report.\n\n**PENDING change — AEHR is retired: INELIGIBLE, reason `unconfirmed`.** Both snapshot sessions its 2026-10-05 calendar date allowed have now closed with no company confirmation: Oct 1 (the BMO case) and Oct 2 (the AMC case, this afternoon). Tonight's final re-check found the newsroom's newest item still the 2026-09-28 investor-conference release, EDGAR holding only Forms 4 since the Sep 9 proxy, Nasdaq still `time-not-supplied` on Oct 5 with AEHR on no row Oct 6–9, and yfinance still Nov 2 (intraday, outside the window). Fifteen company re-checks over 16 days; the company never announced a date. **The pilot universe is now final at 12 events: 2 FROZEN (MU, NKE) · 3 CONFIRMED ahead (PENG Mon Oct 5; LEVI + APLD Tue Oct 6) · 7 INELIGIBLE. Nothing is PENDING.**\n\n**Two things that went wrong, both logged in STATE.md:**\n- **Code cannot retire a dateless PENDING name.** `s2_gate.py` only reaches its `unconfirmed` branch for an event the gate fires on, and the gate only fires on an event with a confirmed snapshot session — so a name that never gets a date sits PENDING past every deadline until a housekeeping AI step retires it by hand. Three nights of log entries predicted code would do it; it never could. Candidate fix for Season A (a laptop change, not mine): `due.py` retires a PENDING event once the latest snapshot session its calendar date allows has closed.\n- **The 10-01 housekeeping AI step died on the weekly token limit** (run 36952974201: 0 tool calls, \"You've hit your weekly limit · resets 12am UTC\"), which is why there is no log line for that day and why AEHR was still PENDING tonight. The limit had reset by this run.\n\n**One thing confirmed fixed:** the Friday mid-season screen (`030cb15`) records `alphavantage: \"pulled: 38 rows in window\"` — the `ALPHAVANTAGE_API_KEY` gap the Sep 30 entry flagged is closed. It tested one new name (RELL), excluded on size, 0 added.\n\nCommit `5ea95af`, pushed to `origin/main`."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls && echo \\\"---\\\" && ls universe/ && echo \\\"---\\\" && git log --oneline -15\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"TZ=America/New_York date && echo \\\"---\\\" && python pipeline/due.py t2-list; echo \\\"exit=$?\\\"\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(type(d), list(d)[:10] if isinstance(d,dict) else len(d))\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(d['season'], d['rule'], d['updated_et'])\\nev=d['events']\\nprint('n events', len(ev))\\nfrom collections import Counter\\nprint(Counter(e.get('status') for e in (ev.values() if isinstance(ev,dict) else ev)))\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nev=d['events']\\nitems = ev.items() if isinstance(ev,dict) else [(e.get('ticker'),e) for e in ev]\\nfor k,e in items:\\n    if e.get('status')=='PENDING':\\n        print(k, json.dumps(e, indent=2))\\n    else:\\n        print(k, e.get('status'), e.get('calendar_date'), e.get('session'), e.get('snapshot_session'), e.get('reason',''))\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"wc -l STATE.md FRAMEWORK.md CHARTER.md && echo \\\"--- season window ---\\\" && grep -rn -i \\\"window\\\" registry/D003*.md 2>/dev/null | head -30 && ls registry/\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 300 python pipeline/find_dates.py probe AEHR 2>&1 | tail -40\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n 15,35p registry/D003_universe_screen_v1.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"SEC_HEADERS\\\\|BROWSER\\\\|User-Agent\\\\|HEADERS\\\" pipeline/common.py | head -20\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 180 python - <<'EOF' 2>&1 | tail -40\\nimport re, requests\\nfrom pipeline.common import WEB_HEADERS, SEC_HEADERS\\nr = requests.get(\\\"https://www.aehr.com/newsroom/\\\", headers=WEB_HEADERS, timeout=60)\\nprint(\\\"newsroom\\\", r.status_code, len(r.content))\\ntxt = re.sub(r\\\"<[^>]+>\\\", \\\" \\\", r.text)\\ntxt = re.sub(r\\\"\\\\s+\\\", \\\" \\\", txt)\\n# find date-like items\\nfor m in re.finditer(r\\\"(January|February|March|April|May|June|July|August|September|October|November|December)\\\\s+\\\\d{1,2},\\\\s+20\\\\d\\\\d\\\", txt):\\n    print(\\\" ITEM:\\\", txt[m.start():m.start()+180])\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"timeout 240 python - <<'EOF' 2>&1 | tail -30\\nimport requests, time, json\\nfrom pipeline.common import SEC_HEADERS, WEB_HEADERS\\nr = requests.get(\\\"https://data.sec.gov/submissions/CIK0001040470.json\\\", headers=SEC_HEADERS, timeout=60)\\nprint(\\\"edgar\\\", r.status_code)\\nd = r.json()[\\\"filings\\\"][\\\"recent\\\"]\\nfor i in range(min(8, len(d[\\\"form\\\"]))):\\n    print(\\\"  \\\", d[\\\"filingDate\\\"][i], d[\\\"form\\\"][i], d[\\\"primaryDocDescription\\\"][i])\\nprint(\\\"--- nasdaq ---\\\")\\nfor day in [\\\"2026-10-05\\\",\\\"2026-10-06\\\",\\\"2026-10-07\\\",\\\"2026-10-08\\\",\\\"2026-10-09\\\"]:\\n    try:\\n        rr = reque"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(json.dumps(d['events']['CHRN'], indent=2)[:2500])\\nEOF\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"unconfirmed\\\" pipeline/*.py | head -20\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport json, collections\\nfrom datetime import datetime\\nfrom zoneinfo import ZoneInfo\\n\\np = 'universe/pilot/event_status.json'\\nd = json.load(open(p), object_pairs_hook=collections.OrderedDict)\\nnow = datetime.now(ZoneInfo(\\\"America/New_York\\\")).isoformat()\\n\\ne = d['events']['AEHR']\\nrecheck = (\\n    f\\\"{now}: FINAL re-check, and the retirement. Code went first (find_dates probe AEHR \\\"\\n    \\\"2026-10-02T21:34:57-04:00: no_feed - AEHR has no Q4-style IR feed and investors.aehr.com does not \\\"\\n    \\\"resolve), so this is the AI's. www.aehr.com/newsroom (HTTP 200"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git diff --stat && python check.py 2>&1 | grep -i warn\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"Cloud run log\\\" -A 40 STATE.md | tail -45\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"awk 'NR>=198' STATE.md | grep -n \\\"^- \\\\*\\\\*\\\" | tail -8 && echo \\\"=== tail ===\\\" && sed -n '320,400p' STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"^## \\\" STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '520,559p' STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"^- \\\\*\\\\*2026-10\\\" STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"2026-10-0\\\" STATE.md | head -40\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '460,500p' STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '500,520p' STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git log --since=\\\"2026-10-01 22:00\\\" --date=format-local:'%m-%d %H:%M' --pretty='%h %ad %s' | cat\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git show --stat 030cb15 | cat && echo \\\"=== \\\" && git show --stat 1d525bb | cat\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"cat universe/pilot/midseason/2026-10-02.json\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls -t logs/actions | head -8\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json;d=json.load(open('logs/actions/2026-10-02T0153Z_36952974201_housekeeping.json'));print(json.dumps(d)[:800])\\\"\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '505,509p' STATE.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nentry = \\\"\\\"\\\"\\n- **2026-10-01 21:53 ET (Thu) — no housekeeping log line: the AI step hit the weekly token limit.** Run\\n  36952974201's runlog records `tool_calls: 0`, `is_error: true`, text \\\"You've hit your weekly limit ·\\n  resets 12am (UTC)\\\". So no PENDING re-check and no log line for that ET day; code's own commits that day\\n  were unaffected (`a0a1a8a` find_dates, 0 confirmed). The limit had reset by tonight's run.\\n\\n- **2026-10-02 21:34 ET (Fri) — housekeeping (this run). AEHR retired: the pilot's last PENDING name is\\n  gone, and the pilot universe is n"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\np='STATE.md'\\ns=open(p).read()\\ns=s.replace(\\\"\\\"\\\"    pulled`. Nothing to verify tonight: Wednesday runs no mid-season screen. **Confirm it on Fri Oct 2.**\\n- **2026-10-01 21:53 ET (Thu)\\\"\\\"\\\",\\\"\\\"\\\"    pulled`. Nothing to verify tonight: Wednesday runs no mid-season screen. **Confirm it on Fri Oct 2.**\\n\\n- **2026-10-01 21:53 ET (Thu)\\\"\\\"\\\")\\nopen(p,'w').write(s)\\nPY\\nsed -n '165,182p' STATE.md\"}"
+  },
+  {
+   "tool": "Edit",
+   "input": "{\"replace_all\": false, \"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/STATE.md\", \"old_string\": \"that day's close → AMC Oct 7, snapshot Oct 6. **AEHR is the last one PENDING**, and must resolve by\\n    its earliest possible snapshot session, 2026-10-01, or code marks it INELIGIBLE `unconfirmed`.\", \"new_string\": \"that day's close → AMC Oct 7, snapshot Oct 6. **AEHR never resolved — retired INELIGIBLE\\n    `unconfirmed` by the 2026-10-02 housekeeping run**, after both snapshot sessions its Oct 5 calendar\\n    date allowed (Oct 1 BMO, Oct 2 AMC) closed with no company anno"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python check.py 2>&1 | tail -3 && git diff --stat && git status --porcelain\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git diff universe/pilot/event_status.json | head -40\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -rn \\\"indent=\\\" pipeline/common.py | head\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"sed -n '35,48p' pipeline/common.py\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'PY'\\nimport json, collections\\nfrom pipeline.common import write_json\\np='universe/pilot/event_status.json'\\nd=json.load(open(p), object_pairs_hook=collections.OrderedDict)\\nwrite_json(p, d)\\nPY\\ngit diff --stat && echo \\\"---\\\" && git diff universe/pilot/event_status.json | grep -c \\\"^[-+]\\\"\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git diff universe/pilot/event_status.json | cut -c1-200\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git add STATE.md universe/pilot/event_status.json && git commit -q -F - <<'MSG' && git log --oneline -1 | cat\\nHousekeeping 2026-10-02: AEHR retired INELIGIBLE unconfirmed; pilot universe final\\n\\nBoth snapshot sessions its 2026-10-05 calendar date allowed (Oct 1 BMO,\\nOct 2 AMC) have closed with no company announcement, and AEHR is on no\\nin-window Nasdaq row after Oct 5, so no eligible snapshot session remains.\\nFifteen company re-checks over 16 days found no FY27 Q1 date.\\n\\nLogged in STATE.md: code gated and froze nothing today (no snapshot session\\ndue); Friday mid-season scr"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"git push origin HEAD:main 2>&1 | tail -3\"}"
+  }
+ ]
+}

@@ -9,6 +9,78 @@
 
 ---
 
+## 2026-10-03 (Sat, early UTC) — cloud session: pooled D009 report, D009 v2 draft, Gate 1 builder
+
+A claude.ai cloud session (`ops/cloud_session_prompt.md`), on branch `claude/great-lamport-tor2q4`.
+Nothing on `main`, nothing under events/ universe/ outcomes/ shadow/ paper/ or workflows touched.
+
+**Network still blocked (infrastructure).** SEC, Nasdaq, NYSE, Yahoo and DoltHub all return a proxy 403
+(`ops/cloud_probe_2026-10.md`). That is the same as 09-17. The fix is Jacob's: set the environment's
+network access to Full. T4 (D010 exploration batch 2) and the off-season print count were not done.
+
+**T1 — `shadow.py report-pooled seasonA seasonB` (D009 §5's registered verdict).**
+- The statistics core was moved into `stats_()`. The single-season report on the pilot is
+  byte-identical before and after.
+- `tests/test_shadow_stats.py`: the intercept-only wild bootstrap holds its size at **3.95–5.4% at 8,
+  10, 12, 30 and 40 clusters** (2,000 replications each), including fat-tailed noise. It has 93% power
+  at a +2% true mean on 30 × 10.
+- Holm stays m = 3 with a missing or NaN test counted as p = 1.
+- *Lesson:* an early 400-rep run showed 7.5% at 8 clusters; at 2,000 reps it was 5.2%. Check a size
+  test's own noise before calling the test oversized.
+
+**T2 — D009 v2 DRAFT, the year-round market-wide shadow (RQ1, power).**
+`reviews/proposals/D009_v2_yearround_DRAFT.md`; analysis in `analysis/d009v2/`.
+- **Off-season sessions add ~+10–25% information a year**, but only **+0.07 to +0.15 expected t** to
+  the A+B verdict (2.19 → 2.26–2.34 at +0.65%). An accumulator, not a power fix.
+- **Off-season reporters are another population:** net +0.27% (t 0.5) against +0.59% in-season; the
+  difference has t −0.56.
+- **The suggested universe (last season's S1 capture) would miss ~99% of off-season prints.** Only 5 of
+  389 came from a ticker that printed in the preceding season. Firms report on a fixed lag from their
+  own quarter end, so off-season reporters stay off-season.
+  → The draft uses a fixed-date screen: the Nasdaq stock screener plus the window's calendar, then v1's
+  S1 filters.
+- The code (`pipeline/shadow_offseason.py`) refuses to run until v2 is frozen.
+- **Clock:** Season A's SH-M enters H-MY only if v2 is frozen before Oct 12's open.
+
+**T3 — `pipeline/gate1.py`.** It assembles D005 (T1, T2, the confidence test, calibration), H-S0, D009
+and the CHARTER §6 health numbers, then lists the Gate 1 decisions. It was tested on the pilot (to a
+temp path) and on a synthetic season.
+- *Surfaced on the pilot:* 5 missed windows (known), and **1 runlog fence flag** on 09-30 housekeeping.
+  It is a pattern match on a STATE.md edit, so a false positive, but the health line reads 1 until a
+  human clears it.
+
+**For the laptop session:**
+- review the PR
+- register the new `shadow.py` hash (D009 implementation v2)
+- probe the Nasdaq screener, then decide and freeze D009 v2 (before Oct 12 to include Season A)
+- add the off-season steps to `shadow.yml`
+
+---
+
+## 2026-10-02 (Fri, late) — the first cloud session, reviewed
+
+- **What happened:** Jacob's $100 claude.ai credit pays for cloud sessions only, not for Actions,
+  Routines or an API key. A session briefed by `ops/cloud_session_prompt.md` opened PR #1:
+  - the pooled D009 report
+  - a draft of the year-round shadow
+  - the Gate 1 report builder
+  - 30 tests
+- **Its uncomfortable findings, which hold:**
+  - Off-season reporters are a separate population: only 1% printed in the preceding season. A
+    season's own universe cannot cover the off-season.
+  - The off-season premium in history is +0.27% net (t 0.5), against +0.59% in-season.
+- **Laptop review:**
+  - the tests pass, and there is no look-ahead
+  - the Nasdaq screener works (7,073 listings)
+  - last year's off-season averaged ~8 prints ≥ $2B on days with any, so the gain is about +24–40%
+    of information a year
+- **What changed:** **D009 v2 frozen before Season A's first entry**, clock 2026-10-05, so all of Season
+  A's market-wide events count toward H-MY.
+- **What it taught:** cloud sessions are a good fit for no-network build and analysis work. With
+  network access set to Full, they could take data work off Jacob's weekly limit.
+
+---
+
 ## 2026-10-02 (Fri, afternoon) — "too passive": a push for power
 
 Jacob: "we too passive in experimenting and not hungry enough for results"; also asked why the

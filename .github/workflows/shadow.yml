@@ -28,7 +28,8 @@ concurrency:
 jobs:
   shadow:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    # 150: on and after an off-season screen date (D009 v2) the screen alone takes ~40 min of Yahoo calls
+    timeout-minutes: 150
     permissions:
       contents: write
     steps:
@@ -94,6 +95,13 @@ jobs:
             python pipeline/shadow.py grade "$s" || echo "::warning::shadow grade $s failed"
           done
           python pipeline/shadow.py commit-grade
+
+      # D009 v2 (frozen 2026-10-02): off-season windows - screen once on/after the screen date, then grade
+      - name: Off-season windows (evening run or manual dispatch only)
+        if: steps.when.outputs.run == 'true' && (steps.when.outputs.evening == 'true' || github.event_name == 'workflow_dispatch')
+        continue-on-error: true
+        timeout-minutes: 100
+        run: python pipeline/shadow_offseason.py due --commit
 
       - name: Health check after
         if: always() && steps.when.outputs.run == 'true'

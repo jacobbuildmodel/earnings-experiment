@@ -30,6 +30,24 @@
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
 
+**2026-10-02 late — the cloud session (PR #1, $100 cloud credit, expires 11-05) merged; D009 v2 frozen.**
+- **Cloud work, merged:**
+  - `shadow.py report-pooled` (D009 §5's A+B verdict; tests: ~5% size, 93% power at +2%)
+  - `pipeline/gate1.py` (the Gate 1 report builder)
+  - `tests/`: 30 tests, all pass on the laptop
+- **D009 v2 frozen** (`registry/D009_shadow_tracks_v2.md`):
+  - **SH-MO**, the off-season market-wide shadow. First window: Nov 23 → Jan 8, screened Nov 18 from the
+    Nasdaq screener (probed: 7,073 listings).
+  - **H-MY**: its own test over every market-wide event from clock **2026-10-05**.
+  - About +24–40% information a year. Not a fix for Gate 1 or Gate 2.
+  - It runs from the `shadow.yml` evening step `shadow_offseason.py due`.
+- **Cloud environment:** SEC, Nasdaq, NYSE, Yahoo and DoltHub are still blocked (`ops/cloud_probe_2026-10.md`).
+  Jacob can set **Network access: Full** in the cloud environment settings; a cloud session can then do
+  data work. Brief: `ops/cloud_session_prompt.md`.
+- **The pilot "fence breach"** (housekeeping 2026-09-30) is a **false positive**: a STATE.md edit whose text
+  named the T1 rule. It was not a T2 run, and no T1 file was read. Cleared.
+- **Not done** (network): D010, exploration batch 2. Pre-register it before any data is pulled.
+
 **Earlier, 10-02:**
 - **D007: no candidates.** 20 signals on 2,771 prints; none beats buying everything. The likely graduate
   is S0, the premium harvest (D008, H-S0).
@@ -171,8 +189,10 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
     APLD (Oct 8). None of the three had announced a date as of Sep 17. Re-check before their S2 windows.
     **LEVI resolved 2026-09-23:** the company announced an Oct 7 call at 17:00 ET → AMC Oct 7, snapshot
     Oct 6. **APLD resolved 2026-09-28:** an Oct 7 17:00 ET call with the results release stated for after
-    that day's close → AMC Oct 7, snapshot Oct 6. **AEHR is the last one PENDING**, and must resolve by
-    its earliest possible snapshot session, 2026-10-01, or code marks it INELIGIBLE `unconfirmed`.
+    that day's close → AMC Oct 7, snapshot Oct 6. **AEHR never resolved — retired INELIGIBLE
+    `unconfirmed` by the 2026-10-02 housekeeping run**, after both snapshot sessions its Oct 5 calendar
+    date allowed (Oct 1 BMO, Oct 2 AMC) closed with no company announcement, and with no in-window
+    calendar row left. Nothing is PENDING; the pilot universe is final at 12 events.
 - **How company sources were found:** many IR sites are JavaScript-rendered, but their Q4 feed works:
   `https://<ir-host>/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3&pageSize=8&pageNumber=0&tagList=&includeTags=true&year=-1&excludeSelection=1`
   and `/feed/Event.svc/GetEventList?...`. BlackBerry puts its events in a script block on
@@ -505,6 +525,49 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
   - ✅ **The `ALPHAVANTAGE_API_KEY` gap in this workflow is closed in the file** — the `s2` job now sets it in
     `env:` (lines 126–130), so the next Friday mid-season screen should stop recording `alphavantage: not
     pulled`. Nothing to verify tonight: Wednesday runs no mid-season screen. **Confirm it on Fri Oct 2.**
+
+- **2026-10-01 21:53 ET (Thu) — no housekeeping log line: the AI step hit the weekly token limit.** Run
+  36952974201's runlog records `tool_calls: 0`, `is_error: true`, text "You've hit your weekly limit ·
+  resets 12am (UTC)". So no PENDING re-check and no log line for that ET day; code's own commits that day
+  were unaffected (`a0a1a8a` find_dates, 0 confirmed). The limit had reset by tonight's run.
+
+- **2026-10-02 21:34 ET (Fri) — housekeeping (this run). AEHR retired: the pilot's last PENDING name is
+  gone, and the pilot universe is now final.** `check.py` PASS. `due.py t2-list` **empty** — the workflow's
+  prompt names no event awaiting T2, so this step wrote no `decision.json`, gated nothing and froze nothing.
+  - **What code did on this ET day:** no snapshot session was due (the next is PENG, Mon Oct 5), so there is
+    **no `Capture …` and no `Freeze …` commit** — correct, not a miss. Friday, so the **mid-season screen
+    ran**: `030cb15` 21:33 ET, `universe/pilot/midseason/2026-10-02.json` — 44 calendar names, one new name
+    tested (**RELL**, Nasdaq 2026-10-07 `time-after-hours`), excluded on `size` ($282M market cap), **0
+    added**. Then `find_dates apply` (`1d525bb` 21:33 ET) confirmed **0** dates. Code also ran the nightly
+    grade (`9b570da` 20:37 ET), the D009 shadow grade (`f526a7f` 21:23 ET) and four paper-ledger runs
+    (01:40, 07:17, 12:39, 20:16 ET). No outcome figure is read or written here (rule 4).
+  - ✅ **The `ALPHAVANTAGE_API_KEY` gap is confirmed closed**, as the 09-30 entry asked: tonight's screen
+    records `"alphavantage": "pulled: 38 rows in window"`, not `not pulled`. The mid-season screen now sees
+    both calendar sources again.
+  - 🔴 **AEHR → INELIGIBLE `unconfirmed`, written by this step, because code cannot do it.** Both possible
+    snapshot sessions for its 2026-10-05 calendar date have now passed with no company confirmation:
+    **2026-10-01** (D−2, the BMO case) and **2026-10-02** (D−1, the AMC case, which closed this afternoon).
+    AEHR is on no Nasdaq row 2026-10-06 → 2026-10-09, so **no eligible snapshot session remains inside the
+    pilot window** (ends 2026-10-09). Tonight's final re-check: `www.aehr.com/newsroom` HTTP 200, newest item
+    still 2026-09-28 (CEO Investor Summit — a conference, not an earnings date), newest Financial News item
+    still the 2026-07-14 FY26 Q4 release, newest "to Announce … Financial Results" item still 2026-07-07;
+    SEC EDGAR CIK 0001040470 newest filings are seven Forms 4 of 2026-10-02 plus one 2026-10-01
+    (insider/grant filings after the 2026-09-09 DEF 14A) — **no 8-K carrying a date**; Nasdaq unchanged at
+    2026-10-05 `time-not-supplied`; yfinance unchanged at 2026-11-02, intraday and outside the window. Code
+    went first and recorded `no_feed` (`find_dates probe AEHR`, 21:34:57 ET), as on every night since 09-29.
+    Fifteen company re-checks over 16 days, and the company never announced a date.
+  - 🔴 **The gap this exposes, for Season A:** `pipeline/s2_gate.py` reaches the `unconfirmed` branch only
+    for an event the **gate actually fires on**, and the gate only fires on an event with a confirmed
+    snapshot session. **A PENDING name that never gets a date is therefore never retired by code** — it sits
+    PENDING past every deadline until a housekeeping AI step retires it by hand, which is exactly what the
+    09-28 → 09-30 entries kept predicting code would do and it never did. One missed AI run (as on 10-01,
+    the weekly limit) leaves a stale PENDING row in the universe. **Candidate for Season A: `due.py` marks a
+    PENDING event INELIGIBLE `unconfirmed` once the latest snapshot session consistent with its calendar
+    date has closed.** The AI step may not edit `pipeline/`'s rule surface here; this is a laptop change.
+  - **Pilot universe final: 12 events — 2 FROZEN (MU, NKE) · 3 CONFIRMED still ahead (PENG snapshot Mon
+    Oct 5 · LEVI and APLD snapshot Tue Oct 6) · 7 INELIGIBLE** (5 `missed_window`: PAYX, DRI, BB, AIR, JBL ·
+    2 `unconfirmed`: CHRN, AEHR). Nothing is PENDING. The pilot can add no further events; the Season A
+    screen is 2026-10-09.
 
 ### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
 
