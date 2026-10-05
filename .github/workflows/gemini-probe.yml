@@ -22,4 +22,5 @@ jobs:
       - name: Probe
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          T2G_PROBE_ALSO: "gemini-3.7-flash gemini-3.5-flash gemini-2.5-pro gemini-2.5-flash"
         run: python pipeline/t2_stage2.py gemini-probe

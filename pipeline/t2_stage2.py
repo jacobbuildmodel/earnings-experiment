@@ -434,8 +434,12 @@ def gemini_probe():
     r = requests.get("https://generativelanguage.googleapis.com/v1beta/models", params={"key": key, "pageSize": 200}, timeout=60)
     names = [m["name"].split("/")[-1] for m in r.json().get("models", [])] if r.status_code == 200 else []
     print(f"models endpoint HTTP {r.status_code}; {len(names)} models; flash/pro: {[n for n in names if 'flash' in n or 'pro' in n][:40]}")
-    res = call_gemini(rule, PROBE_SYSTEM, "Reply with the single word OK.", json_mode=False)
-    print(f"registered model {rule['t2g']['model']}: ok={res.get('ok')} limited={res.get('limited')} error={res.get('error')} text={str(res.get('text'))[:40]!r}")
+    for model in [rule["t2g"]["model"]] + [m for m in os.environ.get("T2G_PROBE_ALSO", "").split() if m]:
+        for attempt in range(3):
+            res = call_gemini({**rule, "t2g": {**rule["t2g"], "model": model}}, PROBE_SYSTEM, "Reply with the single word OK.", json_mode=False)
+            print(f"{model} try {attempt + 1}: ok={res.get('ok')} limited={res.get('limited')} error={str(res.get('error'))[:160]} text={str(res.get('text'))[:20]!r}")
+            if res.get("ok"):
+                break
 
 
 if __name__ == "__main__":
