@@ -1,0 +1,99 @@
+# D004 v4 stage 2: T2 (and the T2G shadow) decide from each frozen dossier in ONE call with no tools,
+# then each decision is frozen on its own before the entry open (pipeline/t2_stage2.py).
+#
+# Why a queue that runs all night: the subscription token carries only so much usage per 5-hour window.
+# A v4 T2 may decide until 15 minutes before the entry open, so whatever one window cannot finish, the
+# next run finishes. A usage-limit refusal stops that backend for this run only. Order: the D004 hash order.
+name: Earnings experiment - T2 queue (D004 v4)
+
+on:
+  workflow_run:
+    workflows: ["Earnings experiment - S2 window"]
+    types: [completed]
+  push:
+    branches: ["claude/s2-trigger"]
+  schedule:
+    - cron: "10,40 20-23 * * 1-5"   # 16:10-19:40 EDT (15:10-18:40 EST)
+    - cron: "10,40 0-14 * * 2-6"    # to 09:40 EST / 10:40 EDT next morning (the deadline is open - 15 min)
+  workflow_dispatch:
+
+concurrency:
+  group: t2-queue
+  cancel-in-progress: false
+
+jobs:
+  queue:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Anything waiting? (stdlib only - most runs end here in seconds)
+        id: any
+        env:
+          HAS_GEMINI: ${{ secrets.GEMINI_API_KEY != '' }}
+        run: |
+          python3 - <<'EOF' >> "$GITHUB_OUTPUT"
+          import datetime, glob, json, os
+          from zoneinfo import ZoneInfo
+          now = datetime.datetime.now(ZoneInfo("America/New_York"))
+          n = 0
+          for m in glob.glob("events/*/*/manifest.json"):
+              d = os.path.dirname(m)
+              try:
+                  dec = json.load(open(os.path.join(d, "decision.json"), encoding="utf-8"))
+                  gate = json.load(open(os.path.join(d, "gate.json"), encoding="utf-8"))
+              except Exception:
+                  continue
+              entry = datetime.datetime.combine(datetime.date.fromisoformat(gate["timing"]["entry"]["session"]),
+                                                datetime.time(9, 15), ZoneInfo("America/New_York"))
+              if now >= entry:
+                  continue
+              need = ["manifest_t2.json"] + (["manifest_t2g.json"] if os.environ.get("HAS_GEMINI") == "true" else [])
+              if dec.get("t2", {}).get("stage2") and not all(os.path.exists(os.path.join(d, x)) for x in need):
+                  n += 1
+          print(f"waiting={'true' if n else 'false'}")
+          EOF
+          cat "$GITHUB_OUTPUT"
+
+      - if: steps.any.outputs.waiting == 'true'
+        run: pip install -r requirements.txt
+
+      - uses: actions/setup-node@v4
+        if: steps.any.outputs.waiting == 'true'
+        with:
+          node-version: "22"
+
+      - name: Claude Code CLI
+        if: steps.any.outputs.waiting == 'true'
+        run: npm install -g @anthropic-ai/claude-code && claude --version
+
+      - name: Identify the committer
+        if: steps.any.outputs.waiting == 'true'
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        if: steps.any.outputs.waiting == 'true'
+        run: python check.py
+
+      - name: Decide and freeze what is waiting (code + one model call per event)
+        if: steps.any.outputs.waiting == 'true'
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python pipeline/t2_stage2.py run --backend all
+
+      - name: Health check after
+        if: always() && steps.any.outputs.waiting == 'true'
+        run: python check.py

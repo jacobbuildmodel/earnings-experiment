@@ -1,0 +1,45 @@
+# One-off smoke test of the D004 v4 stage-2 call ON THE ACTIONS RUNNER (the CLI install, the OAuth token, the
+# isolation flags), on a scratch copy of a past pilot event. Nothing is written to the repository; the output
+# is in the run log. Scheduled after PENG's pilot T2 (2026-10-05 ~14:31 ET) so it cannot take its allowance.
+name: T2 v4 smoke test
+
+on:
+  schedule:
+    - cron: "0 21 5 10 *"    # 2026-10-05 17:00 EDT
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm install -g @anthropic-ai/claude-code && claude --version
+      - name: Dry decision on a scratch copy of NKE (claude, then gemini)
+        env:
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          mkdir -p /tmp/ev && cp -r events/pilot/NKE_2026-10-01 /tmp/ev/
+          python - <<'EOF'
+          import sys, os; sys.path.insert(0, "pipeline")
+          import dossier
+          dossier.ROOT = "/tmp/root"; os.makedirs("/tmp/root/events/pilot", exist_ok=True)
+          os.system("cp -r /tmp/ev/NKE_2026-10-01 /tmp/root/events/pilot/")
+          dossier.build("pilot", "NKE", "2026-10-01")
+          EOF
+          for b in claude gemini; do
+            python pipeline/t2_stage2.py dry pilot NKE 2026-10-01 --backend $b --edir /tmp/root/events/pilot/NKE_2026-10-01 \
+              | python -c "import sys,json; t=sys.stdin.read(); d=json.loads(t) if t.strip().startswith('{') else None; print(t[:600] if d is None else json.dumps({k: d['t2'].get(k) for k in ('decision','confidence','leak_probe','isolation','model','cost_usd_equiv')}, indent=1))"
+          done
