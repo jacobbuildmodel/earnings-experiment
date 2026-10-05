@@ -150,7 +150,8 @@ _, dirty = git("diff", "HEAD", "--name-only", "--", "shadow/calendar")
 edited = sorted({g for g in (edited + chr(10) + dirty).splitlines() if g.strip()})
 if edited:
     bad(f"shadow calendar capture(s) changed after their first commit: {edited[:10]}")
-APPEND_ONLY = ["registry/FROZEN.sha256", "registry/D005_implementation_v1.sha256"]
+APPEND_ONLY = ["registry/FROZEN.sha256", "registry/D005_implementation_v1.sha256",
+               "registry/D004_implementation_v4.sha256"]
 _, hist = git("log", "--format=", "-p", "--", *APPEND_ONLY)
 _, work = git("diff", "HEAD", "--", *APPEND_ONLY)
 removed = [ln for ln in (hist + "\n" + work).splitlines() if ln.startswith("-") and not ln.startswith("---")]
@@ -158,6 +159,28 @@ if removed:
     bad(f"an append-only hash list lost or changed a line: {removed[:5]}")
 else:
     ok("hash lists are append-only (no line ever removed or changed)")
+
+# D004 v4 (review 2026-10-05, finding 1): the T2 METHOD is frozen, not only its description. Every file in
+# registry/D004_implementation_v4.sha256 must match its latest registered hash; a change is a new line
+# with a date and reason (append-only), never a silent edit of the live T2.
+_impl = os.path.join(ROOT, "registry", "D004_implementation_v4.sha256")
+if os.path.exists(_impl):
+    _want = {}
+    for _ln in open(_impl, encoding="utf-8"):
+        if _ln.strip() and not _ln.startswith("#"):
+            _h, _n = _ln.split(maxsplit=1)
+            _want[_n.strip()] = _h
+    _drift = []
+    for _n, _h in _want.items():
+        _p = os.path.join(ROOT, _n)
+        _d = hashlib.sha256(open(_p, "rb").read().replace(b"\r\n", b"\n")).hexdigest() if os.path.exists(_p) else "missing"
+        if _d != _h:
+            _drift.append(_n)
+    if _drift:
+        bad(f"D004 v4 implementation changed without a registered hash: {_drift} - append a dated line to "
+            "registry/D004_implementation_v4.sha256 (rule 5: never a silent edit of the live T2)")
+    else:
+        ok(f"D004 v4 implementation: {len(_want)} file(s) match their registered hashes")
 
 # Frozen events: every file listed in an event's manifest must still match its hash.
 import json
@@ -190,6 +213,23 @@ for m in manifests:
             _, later = git("log", "--format=%h", f"{fz.split()[-1]}..HEAD", "--", rel)
             if later:
                 changed.append(f"{rel} (changed after its freeze, in {later.split()})")
+for m in readable:
+    b = os.path.basename(m)
+    if not b.startswith("manifest_t2"):
+        continue
+    edir = os.path.dirname(m)
+    s2 = json.load(open(m, encoding="utf-8"))
+    s1p = os.path.join(edir, "manifest.json")
+    s1 = json.load(open(s1p, encoding="utf-8")) if os.path.exists(s1p) else {}
+    if s1.get("sha256", {}).get("dossier.json") != s2.get("dossier_sha256"):
+        changed.append(f"{os.path.relpath(m, ROOT)} (decided on a dossier that is not the stage-1 frozen one)")
+    _, when = git("log", "--diff-filter=A", "--format=%cI", "--", os.path.relpath(m, ROOT).replace(os.sep, "/"))
+    if when and datetime.datetime.fromisoformat(when.split()[-1]) >= datetime.datetime.fromisoformat(s2["entry_open_et"]):
+        changed.append(f"{os.path.relpath(m, ROOT)} (committed at/after the entry open)")
+for f in glob.glob(os.path.join(ROOT, "events", "*", "*", "t2*.json")):
+    stem = os.path.basename(f)
+    if stem in ("t2.json", "t2g.json") and not os.path.exists(os.path.join(os.path.dirname(f), "manifest_" + stem)):
+        warn(f"{os.path.relpath(f, ROOT)} has no stage-2 manifest - not a frozen decision")
 manifests = readable
 if changed:
     bad(f"frozen event file(s) changed: {changed} - a frozen decision can never be edited")

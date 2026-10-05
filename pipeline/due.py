@@ -44,8 +44,17 @@ def v4(season):
     """D004 v4 governs this season: T2 decides from a frozen dossier in stage 2 (pipeline/t2_stage2.py)."""
     try:
         return rule_for("D004_decision_protocol", season).get("t2_mode") == "dossier_oneshot"
-    except SystemExit:
-        return False
+    except SystemExit as exc:  # only "no version covers the season" means v1; a damaged rule must fail loudly
+        if str(exc).startswith("no frozen"):
+            return False
+        raise
+
+
+def dossier_ok(d):
+    """A dossier exists and none of its fetches failed transiently (SEC 429/503, network): such a dossier
+    is rebuilt, not frozen, until the evening last chance (review 2026-10-05, finding 5)."""
+    p = os.path.join(d, "dossier.json")
+    return os.path.exists(p) and not load(p).get("transient")
 
 
 def status_files():
@@ -193,8 +202,12 @@ def gate():
                 files = [os.path.join(d, f) for f in ("confirm.json", "gate.json", "option_chain.json", "factors.json")]
                 if g["status"] != "PASS":
                     sh("pipeline/freeze.py", season, key, date)
-                elif v4(season) and os.path.exists(os.path.join(d, "dossier.json")):
-                    sh("pipeline/freeze.py", season, key, date, "--t2-stage2")  # stage 1: T0, T1, dossier
+                elif v4(season):
+                    if dossier_ok(d):
+                        sh("pipeline/freeze.py", season, key, date, "--t2-stage2")  # stage 1: T0, T1, dossier
+                    else:
+                        commit(files + [os.path.join(d, "dossier.json")],
+                               f"Capture {key} {date}: S2 gate PASS - dossier incomplete, rebuilt by finalize (D004 v4)")
                 else:
                     commit(files, f"Capture {key} {date}: S2 gate PASS and factor snapshot - awaiting T2")
             except BaseException as exc:  # noqa: BLE001 - includes SystemExit from git()
@@ -248,8 +261,10 @@ def awaiting_t2():
     return out
 
 
-def v4_unfrozen():
-    """v4 PASS events whose stage 1 is not frozen yet (a crash after capture): build the dossier, freeze."""
+def v4_unfrozen(last_chance=False):
+    """v4 PASS events whose stage 1 is not frozen yet (a crash, or a dossier with transient fetch failures):
+    rebuild the dossier, then freeze. A still-incomplete dossier is frozen as it is only at the last chance
+    (the evening run) or from 18:00 ET of the snapshot session, so the entry open is never at risk."""
     for g in sorted(glob.glob(os.path.join(ROOT, "events", "*", "*", "gate.json"))):
         d = os.path.dirname(g)
         season = os.path.basename(os.path.dirname(d))
@@ -258,10 +273,15 @@ def v4_unfrozen():
         gj = load(g)
         if gj.get("dry") or gj["status"] != "PASS" or now_et() >= entry_open(gj):
             continue
-        if not os.path.exists(os.path.join(d, "dossier.json")):
+        if not dossier_ok(d):
             sh("pipeline/dossier.py", season, gj["ticker"], gj["report_date"])
-        if os.path.exists(os.path.join(d, "dossier.json")):
+        late = last_chance or now_et() >= datetime.datetime.combine(
+            datetime.date.fromisoformat(gj["snapshot_session"]), datetime.time(18, 0), ET)
+        if dossier_ok(d) or (late and os.path.exists(os.path.join(d, "dossier.json"))):
             sh("pipeline/freeze.py", season, gj["ticker"], gj["report_date"], "--t2-stage2")
+        elif not late:
+            print(f"{gj['ticker']} {gj['report_date']}: dossier still incomplete - a later run retries before freezing")
+            continue
         else:
             sh("pipeline/freeze.py", season, gj["ticker"], gj["report_date"], "--t2-missing",
                "D004 v4: no dossier could be built, so T2 cannot decide")
@@ -317,7 +337,7 @@ def freeze_one(season, ticker, date):
 
 
 def finalize(last_chance):
-    v4_unfrozen()
+    v4_unfrozen(last_chance)
     for season, t, date, d, gj in awaiting_t2():
         dp = os.path.join(d, "decision.json")
         deadline = min(entry_open(gj), t2_deadline(season, gj))

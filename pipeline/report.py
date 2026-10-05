@@ -325,8 +325,8 @@ def evaluate(rows, track, variant="all"):
                                  "overstates the true edge (D005 v1 §7, v2 §5)")
     else:
         out["verdict"] = "robustness cut - descriptive, no verdict"
-    if track == "T2":
-        conf_all = [r.get("t2_confidence") for r in rs]
+    if track in ("T2", "T2G"):
+        conf_all = [r.get("t2_confidence" if track == "T2" else "t2g_confidence") for r in rs]
         ok = np.array([c is not None and isinstance(c, (int, float)) and math.isfinite(c) for c in conf_all])
         conf = np.array([float(c) for c, k in zip(conf_all, ok) if k])
         yy, gg = y[ok], g[ok]

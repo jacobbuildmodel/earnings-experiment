@@ -373,7 +373,7 @@ def grade_event(season, edir, fetch, av):
                      "entry_close": ec, "label": "secondary"}
     dec = load(os.path.join(edir, "decision.json"))
     tracks = {"T0": dec["t0"]["decision"], "T1": dec["t1"].get("decision"), "T2": dec["t2"].get("decision")}
-    t2_conf = dec["t2"].get("confidence")
+    t2_conf, t2g_conf = dec["t2"].get("confidence"), None
     # D004 v4 (implementation v4): T2 - and the shadow T2G - decide in stage 2, each frozen in its own
     # manifest. A stage-2 decision counts only if that manifest's commit precedes the entry open (rule 1).
     stage2 = {}
@@ -395,12 +395,12 @@ def grade_event(season, edir, fetch, av):
         if track == "T2":
             t2_conf = t["confidence"]
         else:
-            stage2["T2G_confidence"] = t["confidence"]
+            t2g_conf = t["confidence"]
     graded = "raw_return" in a and void is None
     out = {**base, "graded": graded, "void": void, "ticker": sym, "report_date": gate["report_date"],
            "session": gate["session"], "entry_session": tm["entry"]["session"], "cluster": cand.get(sym, {}).get("cluster"),
            "flags": sorted(set(flags)), "timing_check": timing, "timing_evidence": hits, "exits": exits,
-           "decisions": tracks, "t2_confidence": t2_conf, "stage2": stage2 or None}
+           "decisions": tracks, "t2_confidence": t2_conf, "t2g_confidence": t2g_conf, "stage2": stage2 or None}
     if graded:
         out["correct"] = {t: (d == "BUY") == a["WIN_raw"] for t, d in tracks.items() if d in ("BUY", "NO_BUY")}
     write_json(out_path, out)

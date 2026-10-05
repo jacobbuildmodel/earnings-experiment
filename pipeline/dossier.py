@@ -18,6 +18,7 @@ Items (each: id, kind, source, published, text or data):
 A failed fetch is recorded under "missing", never filled (CLAUDE.md).
 """
 import datetime
+import hashlib
 import json
 import os
 import re
@@ -29,7 +30,8 @@ from common import ET, REGISTRY, ROOT, Sec, now_et, write_json  # noqa: E402
 
 RELEASE_CHARS = 14000
 MDA_CHARS = 12000
-EIGHTK_CHARS = 1500
+EIGHTK_CHARS = 2500
+HEADLINE_MARGIN_MIN = 15
 MAX_8K = 6
 MAX_HEADLINES = 20
 
@@ -88,25 +90,49 @@ def exhibit_991(sec, cik, accession):
 
 
 def mda(text, form):
-    """The MD&A section: the last 'Management's Discussion' heading that is followed by real text (the
-    first hit is usually the table of contents)."""
-    hits = [m.start() for m in re.finditer(r"management(?:.s|s)?\s+discussion\s+and\s+analysis", text, re.I)]
-    for h in reversed(hits):
-        chunk = text[h:h + MDA_CHARS]
-        if len(chunk) > 3000 and not re.search(r"item\s+\d", chunk[200:1200], re.I):
-            return chunk, "MD&A"
-    return text[:MDA_CHARS], "opening of the filing (MD&A heading not found)"
+    """The MD&A section, anchored on its item heading - 10-Q 'Item 2.', 10-K 'Item 7.' - followed by
+    'Management's Discussion'. PDF-made filings split words ('It em 7', 'M anagement'), so letters may be
+    separated by one space. Cross-references ('... under Item 2 - Management's Discussion ...', a quoted
+    heading) are skipped. Of the rest, the heading followed by the most text before the next item heading
+    is the section (review 2026-10-05: the old rule picked cross-references in 6 of 10 filings).
+    None when no heading qualifies - recorded as missing, never guessed."""
+    num = "7" if form.startswith("10-K") else "2"
+    item = r"i\s?t\s?e\s?m\s+"
+    # the next real heading (not a cross-reference such as "see Part II, Item 8 of this Form 10-K")
+    sep = r"\s*[.:\-–—,]?\s*"
+    nxt = (rf"{item}(?:7a{sep}q\s?u\s?a\s?n\s?t|8{sep}f\s?i\s?n\s?a\s?n\s?c)" if num == "7"
+           else rf"{item}(?:3{sep}q\s?u\s?a\s?n\s?t|4{sep}c\s?o\s?n\s?t\s?r\s?o\s?l)")
+    best = None
+    pat = rf"{item}{num}\s*[.:\-\u2013\u2014,]?\s*m\s?a\s?n\s?a\s?g\s?e\s?m\s?e\s?n\s?t.{{0,4}}\s*discussion\s+and\s+analysis"
+    for m in re.finditer(pat, text, re.I):
+        before = text[max(0, m.start() - 40):m.start()]
+        if re.search(r"(under|in|refer to|see|described in|captioned|part ii,)\s*[\"\u201c\u201d']?\s*$", before, re.I):
+            continue
+        end = re.search(nxt, text[m.end():], re.I)
+        length = end.start() if end else len(text) - m.end()
+        if best is None or length > best[1]:
+            best = (m.start(), length)
+    if best is None or best[1] < 2000:
+        return None
+    return text[best[0]:best[0] + min(MDA_CHARS, best[1] + 40)]
+
+
+def retry(fn, tries=4):
+    """SEC returns 429/503 under load (four parallel gate workers): back off and retry before giving up."""
+    for k in range(tries):
+        try:
+            return fn()
+        except Exception:
+            if k == tries - 1:
+                raise
+            time.sleep(3 * (k + 1))
 
 
 def build(season, ticker, date):
     edir = os.path.join(ROOT, "events", season, f"{ticker}_{date}")
     gate = json.load(open(os.path.join(edir, "gate.json"), encoding="utf-8"))
     cutoff = parse_ts(gate["captured_et"])
-    snap_day = cutoff.date()
-    items, missing = [], []
-
-    def ok_date_only(d):
-        return datetime.date.fromisoformat(d[:10]) < snap_day
+    items, missing, transient = [], [], []
 
     def add(**kw):
         items.append({"id": f"I{len(items) + 1}", **kw})
@@ -117,47 +143,62 @@ def build(season, ticker, date):
         data={k: gate.get(k) for k in ("ticker", "report_date", "session", "timing", "snapshot_session",
                                        "captured_et", "options", "status")})
     add(kind="factors", source=f"events/{season}/{ticker}_{date}/factors.json", published=gate["captured_et"],
-        data={k: (v.get("value") if isinstance(v, dict) else v) for k, v in (fac.get("factors") or {}).items()})
+        data={k: ({"value": v.get("value"), "source": v.get("source")} if isinstance(v, dict) else v)
+              for k, v in (fac.get("factors") or {}).items()})
     add(kind="base_rates", source="registry/D004_base_rates_v3.json", published="2026-09-29",
         data={k: base[k] for k in ("what", "overall", "by_cluster", "by_session", "caveats") if k in base})
 
     sec = Sec(os.path.join(ROOT, "cache", "sec"))
-    cik = sec.cik(ticker)
-    if not cik:
-        missing.append("SEC: no CIK for the ticker")
-    else:
-        try:
-            rec = sec.submission(cik)["filings"]["recent"]
+    try:
+        cik = retry(lambda: sec.cik(ticker))
+        if not cik:
+            missing.append("SEC: no CIK for the ticker")
+        else:
+            rec = retry(lambda: sec.submission(cik))["filings"]["recent"]
             rows = [dict(zip(("form", "filingDate", "acceptanceDateTime", "accessionNumber", "primaryDocument", "items"),
                              vals)) for vals in zip(rec["form"], rec["filingDate"], rec["acceptanceDateTime"],
                                                     rec["accessionNumber"], rec["primaryDocument"], rec["items"])]
             for r in rows:
                 r["accepted"] = parse_ts(r["acceptanceDateTime"])
+            # acceptance time, not filing date: a filing accepted after the snapshot can never get in
             before = [r for r in rows if r["accepted"] and r["accepted"] < cutoff]
+
+            def doc(r, name=None):
+                acc = r["accessionNumber"].replace("-", "")
+                name = name or r["primaryDocument"]
+                body = retry(lambda: sec.get(f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{name}", binary=True))
+                return f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{name}", to_text(body)
+
             # the latest earnings release: EX-99.1 of the newest Item 2.02 8-K
             rel = next((r for r in before if r["form"].startswith("8-K") and "2.02" in r["items"].split(",")), None)
             if rel:
-                acc = rel["accessionNumber"].replace("-", "")
                 try:
-                    name = exhibit_991(sec, cik, rel["accessionNumber"]) or rel["primaryDocument"]
-                    body = sec.get(f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{name}", binary=True)
-                    add(kind="release", source=f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{name}",
-                        published=rel["accepted"].isoformat(), form=rel["form"],
-                        text=to_text(body)[:RELEASE_CHARS])
+                    ex = exhibit_991(sec, cik, rel["accessionNumber"])
+                    if ex:
+                        src, text = doc(rel, ex)
+                        add(kind="release", source=src, published=rel["accepted"].isoformat(), form=rel["form"],
+                            text=text[:RELEASE_CHARS], truncated_at=RELEASE_CHARS if len(text) > RELEASE_CHARS else None)
+                    else:
+                        src, text = doc(rel)
+                        add(kind="8k", source=src, published=rel["accepted"].isoformat(), form=rel["form"],
+                            items=rel["items"], text=eightk_body(text)[:EIGHTK_CHARS])
+                        missing.append(f"earnings release: no EX-99.1 found in {rel['accessionNumber']} - its 8-K body is given instead")
                 except Exception as exc:
-                    missing.append(f"earnings release {rel['accessionNumber']}: {type(exc).__name__}: {exc}")
+                    transient.append(f"earnings release {rel['accessionNumber']}: {type(exc).__name__}: {exc}")
             else:
                 missing.append("no Item 2.02 8-K before the snapshot in the SEC recent-filings block")
             per = next((r for r in before if r["form"] in ("10-Q", "10-K", "10-Q/A", "10-K/A")), None)
             if per:
                 try:
-                    body = sec.document(cik, {"accessionNumber": per["accessionNumber"], "primaryDocument": per["primaryDocument"]})
-                    chunk, what = mda(to_text(body), per["form"])
-                    acc = per["accessionNumber"].replace("-", "")
-                    add(kind="periodic", source=f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{per['primaryDocument']}",
-                        published=per["accepted"].isoformat(), form=per["form"], section=what, text=chunk)
+                    src, text = doc(per)
+                    chunk = mda(text, per["form"])
+                    if chunk:
+                        add(kind="periodic", source=src, published=per["accepted"].isoformat(), form=per["form"],
+                            section="MD&A", text=chunk, truncated_at=MDA_CHARS)
+                    else:
+                        missing.append(f"{per['form']} {per['accessionNumber']}: MD&A heading not found - section not given")
                 except Exception as exc:
-                    missing.append(f"{per['form']} {per['accessionNumber']}: {type(exc).__name__}: {exc}")
+                    transient.append(f"{per['form']} {per['accessionNumber']}: {type(exc).__name__}: {exc}")
             else:
                 missing.append("no 10-Q / 10-K before the snapshot")
             lo = cutoff - datetime.timedelta(days=90)
@@ -166,27 +207,34 @@ def build(season, ticker, date):
                 if not r["form"].startswith("8-K") or r["accepted"] < lo or r is rel or n8 >= MAX_8K:
                     continue
                 try:
-                    body = sec.document(cik, {"accessionNumber": r["accessionNumber"], "primaryDocument": r["primaryDocument"]})
-                    acc = r["accessionNumber"].replace("-", "")
-                    add(kind="8k", source=f"https://www.sec.gov/Archives/edgar/data/{cik}/{acc}/{r['primaryDocument']}",
-                        published=r["accepted"].isoformat(), form=r["form"], items=r["items"],
-                        text=eightk_body(to_text(body))[:EIGHTK_CHARS])
+                    src, text = doc(r)
+                    item = {"kind": "8k", "source": src, "published": r["accepted"].isoformat(), "form": r["form"],
+                            "items": r["items"], "text": eightk_body(text)[:EIGHTK_CHARS]}
+                    if "9.01" in r["items"].split(","):  # the substance of a non-earnings 8-K is often its EX-99
+                        ex = exhibit_991(sec, cik, r["accessionNumber"])
+                        if ex:
+                            _, extext = doc(r, ex)
+                            item["exhibit_99_1"] = extext[:EIGHTK_CHARS]
+                    add(**item)
                     n8 += 1
                 except Exception as exc:
-                    missing.append(f"8-K {r['accessionNumber']}: {type(exc).__name__}: {exc}")
-        except Exception as exc:
-            missing.append(f"SEC submissions: {type(exc).__name__}: {exc}")
+                    transient.append(f"8-K {r['accessionNumber']}: {type(exc).__name__}: {exc}")
+    except Exception as exc:
+        transient.append(f"SEC: {type(exc).__name__}: {exc}")
 
-    # headlines: Yahoo Finance's RSS headline feed (yfinance .news returned nothing on 2026-10-05) - the
-    # title and the feed's one-line summary, each with its own publication time, strictly before the snapshot
+    # headlines: Yahoo Finance's RSS headline feed (yfinance .news returned nothing on 2026-10-05) - title and
+    # the feed's one-line summary, each with its own publication time. A 15-minute margin before the snapshot
+    # guards against syndication timestamps; the raw feed's hash and fetch time are kept (review finding 11).
     try:
         import email.utils
         import xml.etree.ElementTree as ET_
         import requests
         from common import WEB_HEADERS
+        fetched = now_et()
         r = requests.get("https://feeds.finance.yahoo.com/rss/2.0/headline",
                          params={"s": ticker, "region": "US", "lang": "en-US"}, headers=WEB_HEADERS, timeout=30)
         r.raise_for_status()
+        feed = {"fetched_et": fetched.isoformat(timespec="seconds"), "sha256": hashlib.sha256(r.content).hexdigest()}
         kept = []
         for it in ET_.fromstring(r.content).iter("item"):
             title = (it.findtext("title") or "").strip()
@@ -195,31 +243,33 @@ def build(season, ticker, date):
                 pub = email.utils.parsedate_to_datetime(when).astimezone(ET) if when else None
             except (TypeError, ValueError):
                 pub = None
-            if not pub or not title or pub >= cutoff:
+            if not pub or not title or pub >= cutoff - datetime.timedelta(minutes=HEADLINE_MARGIN_MIN):
                 continue
             summ = re.sub(r"\s+", " ", (it.findtext("description") or "")).strip()[:300]
             kept.append((pub, title, summ, (it.findtext("link") or "").strip()))
         for pub, title, summ, link in sorted(kept, reverse=True)[:MAX_HEADLINES]:
             add(kind="headline", source=link or "feeds.finance.yahoo.com/rss/2.0/headline", published=pub.isoformat(),
-                text=title + (f" - {summ}" if summ else ""))
+                text=title + (f" - {summ}" if summ else ""), feed=feed)
         if not kept:
-            missing.append("headlines: none dated before the snapshot")
+            missing.append("headlines: none dated at least 15 minutes before the snapshot")
     except Exception as exc:
-        missing.append(f"headlines: {type(exc).__name__}: {exc}")
+        transient.append(f"headlines: {type(exc).__name__}: {exc}")
 
-    # Code's own check, the same rule freeze.py applies to an agentic T2 (D004 v2 change 2)
+    # Code's own check, the same rule freeze.py applies (D004 v2 change 2): the gate and factor items carry
+    # the snapshot time itself; everything else must precede it.
     for it in items:
-        pub = it.get("published")
-        p = parse_ts(pub)
-        if p is None or (len(str(pub)) <= 10 and not ok_date_only(pub)) or (len(str(pub)) > 10 and p >= cutoff):
-            if it["kind"] not in ("gate", "factors"):
-                raise SystemExit(f"dossier item {it['id']} {it['kind']} published {pub} is not before {cutoff} - refusing")
+        p = parse_ts(it.get("published"))
+        if it["kind"] in ("gate", "factors"):
+            continue
+        if p is None or (len(str(it["published"])) <= 10 and p.date() >= cutoff.date()) or (len(str(it["published"])) > 10 and p >= cutoff):
+            raise SystemExit(f"dossier item {it['id']} {it['kind']} published {it.get('published')} is not before {cutoff} - refusing")
     out = {"event": f"{ticker}_{date}", "season": season, "built_et": now_et().isoformat(timespec="seconds"),
            "cutoff_et": cutoff.isoformat(), "rule": "D004_decision_protocol_v4 §1 (stage 1)",
-           "items": items, "missing": missing,
+           "items": items, "missing": missing + transient, "transient": transient,
            "chars": sum(len(json.dumps(i)) for i in items)}
     write_json(os.path.join(edir, "dossier.json"), out)
-    print(f"{ticker} {date}: dossier {len(items)} items, {out['chars']} chars; missing: {missing or 'none'}")
+    print(f"{ticker} {date}: dossier {len(items)} items, {out['chars']} chars; missing: {missing or 'none'}"
+          + (f"; TRANSIENT failures: {transient}" if transient else ""))
     return out
 
 

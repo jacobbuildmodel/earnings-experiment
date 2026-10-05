@@ -14,7 +14,7 @@ on:
     branches: ["claude/s2-trigger"]
   schedule:
     - cron: "10,40 20-23 * * 1-5"   # 16:10-19:40 EDT (15:10-18:40 EST)
-    - cron: "10,40 0-13 * * 2-6"    # 20:10 EDT - 09:40 EDT next morning
+    - cron: "10,40 0-14 * * 2-6"    # to 09:40 EST / 10:40 EDT next morning (the deadline is open - 15 min)
   workflow_dispatch:
 
 concurrency:
@@ -39,6 +39,8 @@ jobs:
 
       - name: Anything waiting? (stdlib only - most runs end here in seconds)
         id: any
+        env:
+          HAS_GEMINI: ${{ secrets.GEMINI_API_KEY != '' }}
         run: |
           python3 - <<'EOF' >> "$GITHUB_OUTPUT"
           import datetime, glob, json, os
@@ -56,8 +58,8 @@ jobs:
                                                 datetime.time(9, 15), ZoneInfo("America/New_York"))
               if now >= entry:
                   continue
-              if dec.get("t2", {}).get("stage2") and not (os.path.exists(os.path.join(d, "manifest_t2.json"))
-                                                         and os.path.exists(os.path.join(d, "manifest_t2g.json"))):
+              need = ["manifest_t2.json"] + (["manifest_t2g.json"] if os.environ.get("HAS_GEMINI") == "true" else [])
+              if dec.get("t2", {}).get("stage2") and not all(os.path.exists(os.path.join(d, x)) for x in need):
                   n += 1
           print(f"waiting={'true' if n else 'false'}")
           EOF
