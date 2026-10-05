@@ -373,11 +373,34 @@ def grade_event(season, edir, fetch, av):
                      "entry_close": ec, "label": "secondary"}
     dec = load(os.path.join(edir, "decision.json"))
     tracks = {"T0": dec["t0"]["decision"], "T1": dec["t1"].get("decision"), "T2": dec["t2"].get("decision")}
+    t2_conf = dec["t2"].get("confidence")
+    # D004 v4 (implementation v4): T2 - and the shadow T2G - decide in stage 2, each frozen in its own
+    # manifest. A stage-2 decision counts only if that manifest's commit precedes the entry open (rule 1).
+    stage2 = {}
+    for track, fname, mname in (("T2", "t2.json", "manifest_t2.json"), ("T2G", "t2g.json", "manifest_t2g.json")):
+        mp = os.path.join(edir, mname)
+        if not dec["t2"].get("stage2"):
+            break
+        if not os.path.exists(mp):
+            stage2[track] = "no stage-2 decision frozen"
+            continue
+        when = subprocess.run(["git", "log", "--diff-filter=A", "--format=%cI", "--",
+                               os.path.relpath(mp, ROOT).replace(os.sep, "/")], cwd=ROOT, capture_output=True, text=True).stdout.split()
+        if not when or datetime.datetime.fromisoformat(when[-1]) >= entry_open:
+            stage2[track] = "stage-2 freeze not committed before the entry open - VOID for this track"
+            continue
+        t = load(os.path.join(edir, fname))["t2"]
+        tracks[track] = t["decision"]
+        stage2[track] = "frozen before the entry open"
+        if track == "T2":
+            t2_conf = t["confidence"]
+        else:
+            stage2["T2G_confidence"] = t["confidence"]
     graded = "raw_return" in a and void is None
     out = {**base, "graded": graded, "void": void, "ticker": sym, "report_date": gate["report_date"],
            "session": gate["session"], "entry_session": tm["entry"]["session"], "cluster": cand.get(sym, {}).get("cluster"),
            "flags": sorted(set(flags)), "timing_check": timing, "timing_evidence": hits, "exits": exits,
-           "decisions": tracks, "t2_confidence": dec["t2"].get("confidence")}
+           "decisions": tracks, "t2_confidence": t2_conf, "stage2": stage2 or None}
     if graded:
         out["correct"] = {t: (d == "BUY") == a["WIN_raw"] for t, d in tracks.items() if d in ("BUY", "NO_BUY")}
     write_json(out_path, out)

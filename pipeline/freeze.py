@@ -72,6 +72,8 @@ def t2_deadline(season, gate):
     if rule.get("t2_deadline") == "snapshot_session_close":
         snap = datetime.date.fromisoformat(gate["snapshot_session"])
         return datetime.datetime.combine(snap, close_time(snap), ET)
+    if rule.get("t2_deadline") == "entry_open_minus":  # D004 v4: the frozen dossier fixes the information set
+        return entry_open - datetime.timedelta(minutes=int(rule["t2_deadline_minutes_before_entry_open"]))
     return entry_open
 
 
@@ -133,19 +135,22 @@ def decision_problems(d, gate, entry_open):
             elif captured and pub.date() > captured.date():
                 p.append(f"input published after the snapshot: {item}")
             elif captured and pub.date() == captured.date():
+                # D004 v4: the gate and factor items of the frozen dossier ARE the snapshot - stamped with
+                # its own time, never later
+                snapshot_item = bool(item.get("dossier_item")) and item.get("what") in ("gate", "factors") and pub == captured
                 if len(raw) <= 10:
                     p.append(f"input from the snapshot day needs a time, not just a date: {item}")
-                elif pub >= captured:
+                elif pub >= captured and not snapshot_item:
                     p.append(f"input published after the snapshot time: {item}")
     except (KeyError, TypeError, ValueError) as exc:
         p.append(f"decision.json is malformed: {type(exc).__name__}: {exc}")
     return p
 
 
-def timestamp(digest_hex, edir):
+def timestamp(digest_hex, edir, stem="manifest"):
     """RFC 3161 tokens over the manifest digest. Best effort: a failed authority is reported, never fatal."""
     got, errors = [], []
-    q = os.path.join(edir, "manifest.tsq")
+    q = os.path.join(edir, f"{stem}.tsq")  # stem: D004 v4 stage 2 uses manifest_t2 / manifest_t2g
     r = subprocess.run(["openssl", "ts", "-query", "-digest", digest_hex, "-sha256", "-cert", "-out", q],
                        capture_output=True, text=True)
     if r.returncode:
@@ -161,7 +166,7 @@ def timestamp(digest_hex, edir):
             if resp.status_code != 200 or len(resp.content) < 100:
                 errors.append(f"{name}: HTTP {resp.status_code}")
                 continue
-            fname = f"manifest.tsr_{name}"
+            fname = f"{stem}.tsr_{name}"
             open(os.path.join(edir, fname), "wb").write(resp.content)
             got.append(fname)
         except requests.RequestException as exc:
@@ -221,7 +226,7 @@ def fill_t1(season, edir, notes=None):
     return t1
 
 
-def run(season, ticker, report_date, t2_missing=None):
+def run(season, ticker, report_date, t2_missing=None, t2_stage2=False):
     ticker = ticker.upper()
     rel = os.path.join("events", season, f"{ticker}_{report_date}").replace("\\", "/")
     edir = os.path.join(ROOT, rel)
@@ -233,6 +238,10 @@ def run(season, ticker, report_date, t2_missing=None):
     gate = json.load(open(os.path.join(edir, "gate.json"), encoding="utf-8"))
     if gate.get("dry"):
         raise SystemExit("a dry-run gate can never be frozen")
+    if t2_stage2:
+        if not os.path.exists(os.path.join(edir, "dossier.json")):
+            raise SystemExit("--t2-stage2 needs dossier.json (D004 v4 stage 1) - nothing is frozen")
+        t2_missing = t2_missing or "D004 v4: T2 decides from this frozen dossier in stage 2 (t2.json), before the entry open"
 
     entry = gate["timing"]["entry"]["session"]
     entry_open = datetime.datetime.combine(datetime.date.fromisoformat(entry), datetime.time(9, 30), ET)
@@ -259,12 +268,15 @@ def run(season, ticker, report_date, t2_missing=None):
             if os.path.exists(dpath):
                 shutil.move(dpath, rejected)
             reason = t2_missing or "; ".join(problems)
+            t2rec = {"decision": None, "missing_reason": reason, "recorded_et": now_et().isoformat()}
+            if t2_stage2:
+                t2rec["stage2"] = "t2.json"  # D004 v4: decided from the frozen dossier, frozen on its own
             write_json(dpath, {"t0": {"decision": "BUY"},
                                "t1": t1_code or {"decision": None, "note": "rule v0 not frozen - pilot"},
-                               "t2": {"decision": None, "missing_reason": reason, "recorded_et": now_et().isoformat()}})
-            notes.append(f"T2 frozen as MISSING: {reason}")
+                               "t2": t2rec})
+            notes.append(("T2 decided in stage 2 (D004 v4): " if t2_stage2 else "T2 frozen as MISSING: ") + reason)
         files.append("decision.json")
-    for extra in ("thesis.md", "decision_rejected.json"):
+    for extra in ("thesis.md", "decision_rejected.json", "dossier.json"):
         if os.path.exists(os.path.join(edir, extra)):
             files.append(extra)
 
@@ -303,4 +315,4 @@ def run(season, ticker, report_date, t2_missing=None):
 if __name__ == "__main__":
     a = sys.argv[1:]
     why = a[a.index("--t2-missing") + 1] if "--t2-missing" in a else None
-    run(a[0], a[1], a[2], t2_missing=why)
+    run(a[0], a[1], a[2], t2_missing=why, t2_stage2="--t2-stage2" in a)

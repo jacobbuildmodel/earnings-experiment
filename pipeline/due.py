@@ -40,6 +40,14 @@ PY = sys.executable
 HOUSEKEEPING_CRON = "0 23 * * 1-5"
 
 
+def v4(season):
+    """D004 v4 governs this season: T2 decides from a frozen dossier in stage 2 (pipeline/t2_stage2.py)."""
+    try:
+        return rule_for("D004_decision_protocol", season).get("t2_mode") == "dossier_oneshot"
+    except SystemExit:
+        return False
+
+
 def status_files():
     return sorted(glob.glob(os.path.join(ROOT, "universe", "*", "event_status.json")))
 
@@ -185,6 +193,8 @@ def gate():
                 files = [os.path.join(d, f) for f in ("confirm.json", "gate.json", "option_chain.json", "factors.json")]
                 if g["status"] != "PASS":
                     sh("pipeline/freeze.py", season, key, date)
+                elif v4(season) and os.path.exists(os.path.join(d, "dossier.json")):
+                    sh("pipeline/freeze.py", season, key, date, "--t2-stage2")  # stage 1: T0, T1, dossier
                 else:
                     commit(files, f"Capture {key} {date}: S2 gate PASS and factor snapshot - awaiting T2")
             except BaseException as exc:  # noqa: BLE001 - includes SystemExit from git()
@@ -216,6 +226,9 @@ def capture(season, key, date, d):
                     "error": "factors.py crashed - no factor snapshot", "factors": {}})
     if not os.path.exists(os.path.join(d, "option_chain.json")):
         write_json(os.path.join(d, "option_chain.json"), {"error": "s2_gate.py wrote no chain"})
+    if v4(season) and load(os.path.join(d, "gate.json"))["status"] == "PASS":
+        if sh("pipeline/dossier.py", season, key, date) or not os.path.exists(os.path.join(d, "dossier.json")):
+            print(f"{key} {date}: dossier.py failed - finalize retries; T2 cannot run without it")
     return True
 
 
@@ -229,8 +242,29 @@ def awaiting_t2():
         if gj.get("dry") or gj["status"] != "PASS" or now_et() >= entry_open(gj):
             continue
         season = os.path.basename(os.path.dirname(d))
+        if v4(season):
+            continue  # D004 v4: stage 1 is frozen by gate()/finalize, T2 by t2_stage2.py
         out.append((season, gj["ticker"], gj["report_date"], d, gj))
     return out
+
+
+def v4_unfrozen():
+    """v4 PASS events whose stage 1 is not frozen yet (a crash after capture): build the dossier, freeze."""
+    for g in sorted(glob.glob(os.path.join(ROOT, "events", "*", "*", "gate.json"))):
+        d = os.path.dirname(g)
+        season = os.path.basename(os.path.dirname(d))
+        if os.path.exists(os.path.join(d, "manifest.json")) or not v4(season):
+            continue
+        gj = load(g)
+        if gj.get("dry") or gj["status"] != "PASS" or now_et() >= entry_open(gj):
+            continue
+        if not os.path.exists(os.path.join(d, "dossier.json")):
+            sh("pipeline/dossier.py", season, gj["ticker"], gj["report_date"])
+        if os.path.exists(os.path.join(d, "dossier.json")):
+            sh("pipeline/freeze.py", season, gj["ticker"], gj["report_date"], "--t2-stage2")
+        else:
+            sh("pipeline/freeze.py", season, gj["ticker"], gj["report_date"], "--t2-missing",
+               "D004 v4: no dossier could be built, so T2 cannot decide")
 
 
 def plan(schedule):
@@ -283,6 +317,7 @@ def freeze_one(season, ticker, date):
 
 
 def finalize(last_chance):
+    v4_unfrozen()
     for season, t, date, d, gj in awaiting_t2():
         dp = os.path.join(d, "decision.json")
         deadline = min(entry_open(gj), t2_deadline(season, gj))
@@ -305,6 +340,8 @@ def finalize(last_chance):
         man = load(m)
         if man["status"] == "PASS":
             dec = load(os.path.join(os.path.dirname(m), "decision.json"))
+            if dec["t2"].get("stage2"):
+                continue
             recent.append(dec["t2"].get("decision") is None)
     if len(recent) >= 2 and sum(recent) >= 2:
         print(f"::warning::T2 was MISSING on {sum(recent)} of the last {len(recent)} eligible events - check the AI step")
@@ -320,6 +357,8 @@ def finalize(last_chance):
                 continue
             man = load(mp)
             dec = load(os.path.join(d, "decision.json")).get("t2", {}) if "decision.json" in man["sha256"] else {}
+            if dec.get("stage2") and os.path.exists(os.path.join(d, "manifest_t2.json")):
+                dec = load(os.path.join(d, "t2.json"))["t2"]
             ev.update(status="FROZEN", gate_status=man["status"], gate_reason=man.get("reason"),
                       frozen_et=man["frozen_et"], t2_decision=dec.get("decision"), t2_confidence=dec.get("confidence"),
                       freeze_commit=git("log", "--diff-filter=A", "--format=%h", "--", rel(mp)))

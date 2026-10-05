@@ -219,8 +219,9 @@ jobs:
             Events awaiting a T2 decision (for your log only): ${{ steps.plan.outputs.t2_events || 'none' }}
 
             End with the short plain-English report section C asks for.
+          # housekeeping on Sonnet (2026-10-05): one Opus housekeeping run used most of a 5-hour allowance
           claude_args: |
-            --model claude-opus-5
+            --model claude-sonnet-5-5
             --max-turns 150
             --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"
 

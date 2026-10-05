@@ -595,6 +595,9 @@ def run(season, write=False):
     for track in ("T1", "T2"):
         rep["tracks"][track] = {v: evaluate(rs, track, v) for v, rs in variants.items()}
         rep["tracks"][track]["by_cluster_partial_pooling"] = by_cluster(rows, track)
+    # D004 v4: the Gemini shadow (T2G) is evaluated like a track but labelled SHADOW; never in the confirmatory family
+    if any(r["decisions"].get("T2G") for r in rows):
+        rep["tracks_shadow"] = {"T2G": {"all": evaluate(rows, "T2G", "all"), "label": "SHADOW (D004 v4 T2G)"}}
     rep["T2_vs_T1"] = t2_vs_t1(rows)
     rep["gate_selectivity"] = gate_selectivity(season)
     rep["confirmatory"] = confirmatory(season, rep["tracks"], rep["T2_vs_T1"])

@@ -162,7 +162,9 @@ else:
 # Frozen events: every file listed in an event's manifest must still match its hash.
 import json
 import glob
-manifests = glob.glob(os.path.join(ROOT, "events", "*", "*", "manifest.json"))
+# D004 v4: a stage-2 decision has its own manifest (manifest_t2.json, manifest_t2g.json), checked the same way
+manifests = (glob.glob(os.path.join(ROOT, "events", "*", "*", "manifest.json"))
+             + glob.glob(os.path.join(ROOT, "events", "*", "*", "manifest_t2*.json")))
 changed, readable = [], []
 for m in manifests:
     edir = os.path.dirname(m)
@@ -183,7 +185,7 @@ for m in manifests:
     mrel = os.path.relpath(m, ROOT).replace(os.sep, "/")
     _, fz = git("log", "--diff-filter=A", "--format=%H", "--", mrel)
     if fz:
-        for name in list(listed) + ["manifest.json"]:
+        for name in list(listed) + [os.path.basename(m)]:
             rel = os.path.relpath(os.path.join(edir, name), ROOT).replace(os.sep, "/")
             _, later = git("log", "--format=%h", f"{fz.split()[-1]}..HEAD", "--", rel)
             if later:
@@ -192,7 +194,7 @@ manifests = readable
 if changed:
     bad(f"frozen event file(s) changed: {changed} - a frozen decision can never be edited")
 else:
-    ok(f"events: {len(manifests)} frozen event(s) match their hashes")
+    ok(f"events: {len(manifests)} frozen manifest(s) match their hashes")
 
 # RFC 3161 timestamp tokens (freeze.py): each must cover the manifest's hash and pre-date the entry open.
 # This reads the token's imprint and time; it does not walk the authority's certificate chain.
@@ -202,7 +204,7 @@ for m in manifests:
     edir = os.path.dirname(m)
     digest = hashlib.sha256(open(m, "rb").read().replace(b"\r\n", b"\n")).hexdigest()
     entry_open = datetime.datetime.fromisoformat(json.load(open(m, encoding="utf-8"))["entry_open_et"])
-    tokens = glob.glob(os.path.join(edir, "manifest.tsr_*"))
+    tokens = glob.glob(os.path.join(edir, os.path.basename(m).replace(".json", "") + ".tsr_*"))
     if not tokens:
         untimed.append(os.path.basename(edir))
     for t in tokens:
