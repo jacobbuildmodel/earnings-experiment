@@ -1,0 +1,91 @@
+{
+ "season": "pilot",
+ "ticker": "PENG",
+ "report_date": "2026-10-06",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-06"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-07"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-07"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-14"
+  },
+  "reaction_day": "2026-10-07"
+ },
+ "snapshot_session": "2026-10-05",
+ "captured_et": "2026-10-05T14:31:00.265425-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v1 §6",
+ "company_source": {
+  "url": "https://ir.penguinsolutions.com/news/news-details/2026/Penguin-Solutions-Sets-Conference-Call-for-Fourth-Quarter-and-Fiscal-2026-Results/default.aspx",
+  "published_et": "2026-09-15 16:05",
+  "quote": "Tuesday, October 6, 2026, at 1:30 p.m. Pacific Daylight Time (PDT) / 4:30 p.m. Eastern Daylight Time (EDT)",
+  "detail": "release 'will be posted prior to the conference call' - no session wording, so session is from the 16:30 ET call time",
+  "retrieved_et": "2026-09-17T08:13:04-04:00",
+  "how": "quote extracted from the company page by the fetch tool on retrieved_et; page listed in the company's IR press-release feed"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-06T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-06T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 61.36000061035156,
+  "expiry": "2026-10-16",
+  "strike": 60.0,
+  "call": {
+   "bid": 6.7,
+   "ask": 7.0,
+   "openInterest": 2401.0,
+   "lastPrice": 6.8,
+   "impliedVolatility": 1.4040557141113283,
+   "lastTradeDate": "2026-10-05T18:12:24+00:00"
+  },
+  "put": {
+   "bid": 5.0,
+   "ask": 5.2,
+   "openInterest": 441.0,
+   "lastPrice": 5.19,
+   "impliedVolatility": 1.3139682739257812,
+   "lastTradeDate": "2026-10-05T18:12:24+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 7,
+  "implied_move": 0.1947522796794759,
+  "rel_spread": {
+   "call": 0.04379562043795618,
+   "put": 0.03921568627450984
+  },
+  "oi_atm": 2842.0,
+  "oi_sum": 2842.0
+ },
+ "status": "PASS",
+ "reason": null
+}

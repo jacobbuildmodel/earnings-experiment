@@ -1,0 +1,168 @@
+{
+ "run_id": "37327226983_PENG",
+ "logged_utc": "2026-10-05T1842Z",
+ "tool_calls": 38,
+ "fence_breaches": [],
+ "review_flags": [],
+ "result": {
+  "subtype": "success",
+  "is_error": false,
+  "num_turns": 39,
+  "total_cost_usd": 3.3415014999999997,
+  "text": "Validated clean against `freeze.decision_problems` (16/16 inputs carry `published`, confidence and decision agree, `prior` and `leak_probe` present). Stopping here as instructed — no freeze, no commit.\n\n---\n\n## Report\n\n**PENG · 2026-10-06 (AMC) · pilot · T2 = NO_BUY · confidence 0.45**\n\nOne line: the quarter is already pre-announced, so the whole print is Penguin's first FY2027 guide — set by an interim CFO off a low-margin memory upcycle — into a stock up 11.6% in five sessions with a 19.5% implied move.\n\n**What decided it.** Prior 0.55 (ai_infra base rate 0.558, n=43, shrunk toward the 0.542 overall and 0.538 AMC rates), moved down to 0.45:\n\n- **No surprise left in the quarter.** On 2026-07-07 management guided FY26 to +22% ±2% sales and $2.60 ±$0.05 non-GAAP EPS and said both would land *above the high end*. That implies FQ4 sales ≈ $505M and FQ4 non-GAAP EPS ≈ $0.75 — below Q3's $0.84 — against consensus $0.772. Analysts sit in the upper half of the company's own implied range; the bar was raised, not walked down. Penguin guides annually, so the news is entirely FY2027.\n- **The growth is the wrong kind, and the company says so.** Integrated Memory +111% y/y to $275.1M; Advanced Computing — the AI Factory Platform the multiple is paid for — +3.8% to $137.6M. Non-GAAP gross margin 28.1% vs 31.7% a year ago (−360bp) on 48% revenue growth. The 10-Q states both risks itself.\n- **Record earnings, no cash.** AR $703.0M vs $307.9M (+128%), inventory $498.3M vs $255.2M (+95%), cash *down* to $440.3M. AR ≈ 134 days. The $750M 0.00% convert of 2026-07-17 was a working-capital need, not a war chest.\n- **An interim CFO gives the guide.** Olmstead left 2026-07-08; Aaron Johnson interim since 2026-07-09, permanent search still open at the snapshot. Plus Penguin Edge winding down as a stated FY27 headwind.\n- **Against it (why 0.45, not lower):** the $60 call is ~$0.32 rich to put-call parity (+9.0 vol points over the put) *despite* expensive borrow — a genuine LR12 positive — with call-heavy OI, 6.1× past announcement volume, and a forward P/E of 18 that leaves no glamour multiple to de-rate. I deliberately halved the weight on the fundamental arguments: nothing here has yet shown earnings quality predicts *direction* over one open-to-open.\n\n**Deciding variable:** the FY2027 outlook, specifically its gross-margin line and whether Advanced Computing is guided to reaccelerate.\n\n**Files written:** `events/pilot/PENG_2026-10-06/decision.json` and `thesis.md`. Freeze hash: not mine to report — code freezes next in the full checkout.\n\n**Disclosed gaps:** no FQ3 call transcript (no Alpha Vantage key here, and web transcript pages are live pages whose update time can't be checked against `captured_et` — so none was used); the implied FQ4 EPS is approximate while the share count is rising; the vendor EPS basis is unpinned; the 19.7% short interest is partly mechanical convert-arb hedging and is **not** treated as informed bearish positioning.\n\n**Nothing went wrong.** No filing between 2026-07-17 and the snapshot could confound the reaction — the only later filings are Form 4s (all code-A grants dated 2026-09-29, no insider selling), Form 144s and 13G/13D amendments.\n\n**One uncomfortable note, flagged in the card and deliberately not used as a statistic:** the same fiscal quarter a year earlier (2025-10-07) opened −25.5% on an 18.5% EPS beat. One observation is not evidence (rule 6). The structural fact it illustrates — FQ4 is the annual-guidance print, and beating the reported quarter has no claim on the reaction — is what the filings support and what the decision rests on."
+ },
+ "calls": [
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/ops/actions_prompt.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python pipeline/due.py t2-list\", \"description\": \"List events awaiting T2\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls && echo \\\"---\\\" && ls events/ && echo \\\"---\\\" && ls events/pilot/ 2>/dev/null && echo \\\"--- registry\\\" && ls registry/\", \"description\": \"List repo and event dirs\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/registry/D004_base_rates_v3.json\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"ls events/pilot/PENG_2026-10-06/\", \"description\": \"List PENG event files\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/events/pilot/PENG_2026-10-06/confirm.json\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/events/pilot/PENG_2026-10-06/gate.json\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/events/pilot/PENG_2026-10-06/factors.json\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('events/pilot/PENG_2026-10-06/option_chain.json'))\\nprint(json.dumps(d)[:3000])\\nprint('...')\\nprint('keys:', list(d.keys()) if isinstance(d,dict) else type(d))\\n\\\"\", \"description\": \"Read factors and option chain\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/registry/D004_decision_protocol_v4.md\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/registry/D004_decision_protocol_v1.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"def decision_problems\\\" -A 90 pipeline/freeze.py\", \"description\": \"Inspect decision validation rules\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json,glob\\nfor f in glob.glob('universe/*/*.json'):\\n    print(f)\\n\\\" && echo \\\"---\\\" && python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nimport sys\\nk=[x for x in (d if isinstance(d,list) else d.get('events',d)) ]\\nprint(type(d))\\nprint(json.dumps(d)[:200])\\n\\\"\", \"description\": \"Find universe cluster info\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/event_status.json'))\\nprint(json.dumps(d['events']['PENG'],indent=1))\\n\\\" && echo \\\"=== candidates ===\\\" && python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/candidates.json'))\\nprint(list(d.keys())[:10] if isinstance(d,dict) else type(d))\\nimport re\\ns=json.dumps(d)\\ni=s.find('PENG')\\nprint(s[max(0,i-400):i+600])\\n\\\"\", \"description\": \"Read PENG universe entry and candidate record\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport json\\nd=json.load(open('universe/pilot/candidates.json'))\\nfor c in d['candidates']:\\n    if c['ticker']=='PENG':\\n        print(json.dumps(c,indent=1))\\n\\\"\", \"description\": \"Print full PENG candidate record\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nfrom datetime import datetime\\nfrom zoneinfo import ZoneInfo\\nprint('now ET:', datetime.now(ZoneInfo('America/New_York')).isoformat())\\n\\\" && grep -n \\\"SEC_HEADERS\\\" pipeline/common.py && wc -l reviews/literature_review.md\", \"description\": \"Check ET time, SEC headers, review length\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/reviews/literature_review.md\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport requests, json\\nfrom pipeline.common import SEC_HEADERS\\nr = requests.get('https://data.sec.gov/submissions/CIK0001616533.json', headers=SEC_HEADERS, timeout=60)\\nprint(r.status_code)\\nd = r.json()\\nrec = d['filings']['recent']\\nrows = list(zip(rec['form'], rec['filingDate'], rec['acceptanceDateTime'], rec['accessionNumber'], rec['primaryDocument'], rec['items']))\\nfor f,fd,acc,an,pd_,it in rows[:35]:\\n    print(f'{f:8} {fd} {acc} {an} {pd_} items={it}')\\n\\\"\", \"description\": \"Fetch PENG SEC filing index\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nimport requests\\nfrom pipeline.common import SEC_HEADERS\\nfor acc in ['0001616533-26-000041','0001193125-26-307989']:\\n    a=acc.replace('-','')\\n    url=f'https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany'  # not used\\n    idx=f'https://www.sec.gov/Archives/edgar/data/1616533/{a}/'\\n    r=requests.get(idx+'index.json', headers=SEC_HEADERS, timeout=60)\\n    print(acc, r.status_code)\\n    for it in r.json()['directory']['item']:\\n        print('  ', it['name'], it['size'])\\n\\\"\", \"description\": \"List documents in two 8-K filings\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\ndef text(url):\\n    r = requests.get(url, headers=SEC_HEADERS, timeout=90)\\n    s = r.text\\n    s = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', s)\\n    s = re.sub(r'(?i)<br\\\\s*/?>', '\\\\n', s)\\n    s = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\n    s = re.sub(r'<[^>]+>', ' ', s)\\n    s = html.unescape(s)\\n    s = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s)\\n    s = re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s)\\n    return s.strip()\\nt = text('https://www.sec.gov/Archives/edgar/data/1616533/00016165332600004"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, json\\nfrom pipeline.common import SEC_HEADERS\\nr = requests.get('https://data.sec.gov/api/xbrl/companyconcept/CIK0001616533/us-gaap/RevenueFromContractWithCustomerExcludingAssessedTax.json', headers=SEC_HEADERS, timeout=90)\\nprint(r.status_code)\\nd=r.json()\\nrows=[u for u in d['units']['USD'] if u.get('form') in ('10-Q','10-K')]\\nseen=set()\\nfor u in rows:\\n    k=(u['start'],u['end'])\\n    if k in seen: continue\\n    seen.add(k)\\n    from datetime import date\\n    s=date.fromisoformat(u['start']); e=date.fromisoformat(u['end'])\\n    dur=(e-s).day"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\ndef text(url):\\n    r = requests.get(url, headers=SEC_HEADERS, timeout=90)\\n    s = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\n    s = re.sub(r'(?i)<br\\\\s*/?>', '\\\\n', s)\\n    s = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\n    s = re.sub(r'<[^>]+>', ' ', s)\\n    s = html.unescape(s)\\n    s = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s)\\n    return re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\nb='https://www.sec.gov/Archives/edgar/data/1616533/000119312526307989/'\\nt=text(b+'d103073d8k.htm"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\ndef text(url):\\n    r = requests.get(url, headers=SEC_HEADERS, timeout=90)\\n    s = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\n    s = re.sub(r'(?i)<br\\\\s*/?>', '\\\\n', s)\\n    s = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\n    s = re.sub(r'<[^>]+>', ' ', s)\\n    s = html.unescape(s)\\n    s = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s)\\n    return re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\nb='https://www.sec.gov/Archives/edgar/data/1616533/000119312526307989/'\\nt=text(b+'d103073d8k.htm"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport os, requests, re, html, json\\nfrom pipeline.common import SEC_HEADERS\\nprint('AV key set:', bool(os.environ.get('ALPHAVANTAGE_API_KEY') or os.environ.get('AV_API_KEY')))\\nprint([k for k in os.environ if 'ALPHA' in k.upper() or 'AV_' in k.upper() or 'GEMINI' in k.upper()])\\ndef text(url):\\n    r = requests.get(url, headers=SEC_HEADERS, timeout=90)\\n    s = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\n    s = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\n    s = re.sub(r'<[^>]+>', ' ', s); s = html.unescape(s)\\n    s = re.sub(r'[ \\\\t\\\\xa0"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\ndef text(url):\\n    r = requests.get(url, headers=SEC_HEADERS, timeout=90)\\n    s = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\n    s = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\n    s = re.sub(r'<[^>]+>', ' ', s); s = html.unescape(s)\\n    s = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s)\\n    return re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\nr=requests.get('https://www.sec.gov/Archives/edgar/data/1616533/000119312526251467/index.json',headers=SEC_HEADERS,timeout=60)\\nprint([i['name'] f"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\ndef text(url):\\n    r = requests.get(url, headers=SEC_HEADERS, timeout=90)\\n    s = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\n    s = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\n    s = re.sub(r'<[^>]+>', ' ', s); s = html.unescape(s)\\n    s = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s)\\n    return re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\nt=text('https://www.sec.gov/Archives/edgar/data/1616533/000119312526251467/d104493dex991.htm')\\nprint(t[:4500])\\nEOF\", \"description\": \"Read June 1"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\naccs=['0002108723-26-000008','0001855880-26-000018','0002083595-26-000008','0001944970-26-000025']\\nfor acc in accs:\\n    a=acc.replace('-','')\\n    r=requests.get(f'https://www.sec.gov/Archives/edgar/data/1616533/{a}/index.json',headers=SEC_HEADERS,timeout=60)\\n    xml=[i['name'] for i in r.json()['directory']['item'] if i['name'].endswith('.xml') and 'form4' in i['name']]\\n    for x in xml:\\n        t=requests.get(f'https://www.sec.gov/Archives/edgar/data/1616533/{a}/{x}',headers=SEC_HEADERS,ti"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\nr = requests.get('https://www.sec.gov/Archives/edgar/data/1616533/000161653326000043/peng-20260529.htm', headers=SEC_HEADERS, timeout=120)\\ns = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\ns = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\ns = re.sub(r'<[^>]+>', ' ', s); s = html.unescape(s)\\ns = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s); t = re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\ni = t.find(\\\"Management's Discussion and Analysis\\\", 20000)\\nprint('MDA at', i, 'len', len(t))\\nmda = t[i"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\nr = requests.get('https://www.sec.gov/Archives/edgar/data/1616533/000161653326000043/peng-20260529.htm', headers=SEC_HEADERS, timeout=120)\\ns = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\ns = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\ns = re.sub(r'<[^>]+>', ' ', s); s = html.unescape(s)\\ns = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s); t = re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\nfor m in re.finditer(r'(?i)item\\\\s*2', t):\\n    print(m.start(), repr(t[m.start():m.start()+120].replace("
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\nr = requests.get('https://www.sec.gov/Archives/edgar/data/1616533/000161653326000043/peng-20260529.htm', headers=SEC_HEADERS, timeout=120)\\ns = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\ns = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\ns = re.sub(r'<[^>]+>', ' ', s); s = html.unescape(s)\\ns = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s); t = re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\nmda = t[108954:132000]\\nprint(mda[:7000])\\nEOF\", \"description\": \"Read the start of the FQ3 MD&A\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport requests, re, html\\nfrom pipeline.common import SEC_HEADERS\\nr = requests.get('https://www.sec.gov/Archives/edgar/data/1616533/000161653326000041/pengq3-26form8xkxex991.htm', headers=SEC_HEADERS, timeout=90)\\ns = re.sub(r'(?is)<(script|style).*?</\\\\1>', ' ', r.text)\\ns = re.sub(r'(?i)</(p|div|tr|td|th|li|h[1-6])>', '\\\\n', s)\\ns = re.sub(r'<[^>]+>', ' ', s); s = html.unescape(s)\\ns = re.sub(r'[ \\\\t\\\\xa0]+', ' ', s); t = re.sub(r'\\\\n\\\\s*\\\\n+', '\\\\n', s).strip()\\nfor kw in ['Cash and cash equivalents','Total current liabilities','Operating cash','Inventories'"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json, glob\\nfor f in sorted(glob.glob('events/pilot/*/decision.json')):\\n    d=json.load(open(f))\\n    ir=(d.get('t2') or {}).get('inputs_read') or []\\n    print('===',f)\\n    for it in ir[:6]:\\n        if isinstance(it,dict) and any(k in str(it.get('url_or_file','')) for k in ('gate.json','factors.json','confirm.json','option_chain')):\\n            print('   ',json.dumps(it))\\n    break\\nEOF\", \"description\": \"Check how an existing pilot decision lists snapshot files\"}"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python -c \\\"\\nfrom datetime import datetime\\nfrom zoneinfo import ZoneInfo\\nprint(datetime.now(ZoneInfo('America/New_York')).replace(microsecond=0).isoformat())\\n\\\"\", \"description\": \"Get current ET timestamp\"}"
+  },
+  {
+   "tool": "Write",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/events/pilot/PENG_2026-10-06/decision.json\", \"content\": \"{\\n \\\"t0\\\": {\\\"decision\\\": \\\"BUY\\\"},\\n \\\"t1\\\": {\\\"decision\\\": null, \\\"note\\\": \\\"rule v0 not frozen - pilot\\\"},\\n \\\"t2\\\": {\\n  \\\"decision\\\": \\\"NO_BUY\\\",\\n  \\\"confidence\\\": 0.45,\\n  \\\"thesis\\\": \\\"The quarter is already pre-announced above the high end, so the entire print is the first FY2027 guide - delivered by an interim CFO off a low-margin, working-capital-hungry memory upcycle while the AI-infrastructure segment the multiple is paid for is flat - into a stock tha"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"grep -n \\\"^## 4\\\\|^## 5\\\" FRAMEWORK.md | head -5\", \"description\": \"Locate FRAMEWORK section 4\"}"
+  },
+  {
+   "tool": "Read",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/FRAMEWORK.md\", \"offset\": 117, \"limit\": 22}"
+  },
+  {
+   "tool": "Write",
+   "input": "{\"file_path\": \"/home/runner/work/earnings-experiment/earnings-experiment/events/pilot/PENG_2026-10-06/thesis.md\", \"content\": \"# Thesis card — PENG · 2026-10-06 (AMC) · pilot\\n\\nWritten before the entry open. FRAMEWORK §4 items 1–6. Never edited after the freeze.\\n\\n## 1. Identity\\n\\n| field | value |\\n|---|---|\\n| ticker | PENG — Penguin Solutions, Inc. (Nasdaq; formerly SMART Global Holdings; US-domesticated from Cayman 2025-06-30) |\\n| cluster | `ai_infra` (D003 screen; filing test AI_HOSTING, 34 hits) |\\n| stage | `profitable_growth` — rev growth +47.6% y/y, op margin +10.6% for the quarter"
+  },
+  {
+   "tool": "Bash",
+   "input": "{\"command\": \"python - <<'EOF'\\nimport json\\nfrom datetime import datetime\\nfrom zoneinfo import ZoneInfo\\nfrom pipeline.freeze import decision_problems\\ned='events/pilot/PENG_2026-10-06/'\\nd=json.load(open(ed+'decision.json')); g=json.load(open(ed+'gate.json'))\\nentry_open=datetime(2026,10,6,9,30,tzinfo=ZoneInfo('America/New_York'))\\np=decision_problems(d,g,entry_open)\\nprint('PROBLEMS:', p if p else 'none - valid')\\nt2=d['t2']\\nprint('decision', t2['decision'], '| confidence', t2['confidence'], '| agree:', t2['decision']==('BUY' if t2['confidence']>0.5 else 'NO_BUY'))\\nprint('inputs with publ"
+  }
+ ]
+}
