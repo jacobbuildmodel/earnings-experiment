@@ -30,6 +30,18 @@
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
 
+**🔴 2026-10-05 07:40 ET — the weekend Haiku load test (Sat 06:28 UTC):**
+- 8 of 10 jobs were refused: "You've hit your **session** limit · resets 6:30am (UTC)". 2 ran: ~$0.15
+  and ~70 s each.
+- That 5-hour window began at ~01:30 UTC, when Friday's housekeeping run (one Opus run, 41 tool calls)
+  started. **One Opus run nearly used up a whole 5-hour session allowance.**
+- The account behind `CLAUDE_CODE_OAUTH_TOKEN` can therefore carry about 1–2 Opus T2 decisions per
+  5 hours. **Season A's ~50 a day on peak days are impossible on it**, and `max-parallel` does not matter.
+- Before the first Season A snapshot (~Oct 9), one of these must happen:
+  - an `ANTHROPIC_API_KEY` secret (the fallback is wired)
+  - a token from an account with much larger limits
+- The pilot (1–2 events a day) is fine.
+
 **2026-10-02 late — the cloud session (PR #1, $100 cloud credit, expires 11-05) merged; D009 v2 frozen.**
 - **Cloud work, merged:**
   - `shadow.py report-pooled` (D009 §5's A+B verdict; tests: ~5% size, 93% power at +2%)
