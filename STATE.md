@@ -30,6 +30,40 @@
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
 
+**✅ 2026-10-05 ~10:45 ET — D004 v4 FROZEN: the free capacity fix** (`registry/D004_decision_protocol_v4.md`).
+Jacob: no paid API for now.
+- **Stage 1, at the snapshot:** code builds `dossier.json`:
+  - the EX-99.1 earnings release
+  - the MD&A, correct on 18/18 filings
+  - 8-Ks with their EX-99.1
+  - Yahoo RSS headlines at least 15 min before the snapshot
+  - the gate, factors and base rates
+
+  Every item is timestamped before `captured_et`, and the event is frozen at once (T0, T1, dossier).
+- **Stage 2:** a leak-probe call with nothing in context, then ONE isolated decision call
+  (`claude-sonnet-5-5`; `--safe-mode --tools ""`, with a no-tools/no-MCP check). Code sets BUY ⇔ > 0.50.
+  - `t2.json` + `manifest_t2.json` + RFC 3161 tokens, frozen before entry open − 15 min.
+  - The queue is `.github/workflows/t2-queue.yml`, every 30 min overnight.
+  - About $0.08–0.10 a decision, against $3.14 for the agentic run.
+- **The method is hashed:** `registry/D004_implementation_v4.sha256` lists `dossier.py`, `t2_stage2.py`,
+  `freeze.py`, `due.py`, `grade.py` and `t2-queue.yml`. **check.py FAILS on any edit without a new dated
+  line.** Remember this when touching those files.
+- **Shadows:**
+  - **T2G:** Gemini `gemini-3.8-flash`, free. `GEMINI_API_KEY` was set by Jacob on 10-05. The key
+    works, but the free tier answered **503 "high demand"** all morning, so it retries each run.
+  - **T2E:** the mean of T2 and T2G.
+- **Independent review** (Sonnet): no look-ahead. Its findings 1–15 are fixed or disclosed. Rehearsed
+  end to end twice in scratch clones: stage 1 and 2 BLIND, 8 tokens, check PASS, the laptop guard
+  refuses. **The pilot path is unchanged:** PENG, LEVI and APLD run agentic Opus under v1.
+- **Housekeeping AI moved to Sonnet**, to save allowance.
+- **Watch:**
+  1. `T2 v4 smoke test` at 17:00 ET today (21:00 UTC): the stage-2 call on the Actions runner itself,
+     with the npm CLI, the OAuth token and the flags. Read its log.
+  2. The first real Season A snapshot (BMO Oct 12 → snapshot Thu Oct 8): the stage-1 freeze, then
+     `t2-queue` decisions overnight.
+  3. A known gap: `paper.py` records T2 as None for stage-2 events (the paper ledger trades S0, so it
+     is cosmetic).
+
 **🔴 2026-10-05 07:40 ET — the weekend Haiku load test (Sat 06:28 UTC):**
 - 8 of 10 jobs were refused: "You've hit your **session** limit · resets 6:30am (UTC)". 2 ran: ~$0.15
   and ~70 s each.

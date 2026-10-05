@@ -396,11 +396,17 @@ def grade_event(season, edir, fetch, av):
             t2_conf = t["confidence"]
         else:
             t2g_conf = t["confidence"]
+    # D004 v4 change 4: T2E, the pre-registered SHADOW ensemble - mean of T2 and T2G where both were frozen
+    t2e_conf = None
+    if stage2.get("T2") == "frozen before the entry open" and stage2.get("T2G") == "frozen before the entry open":
+        t2e_conf = round((float(t2_conf) + float(t2g_conf)) / 2, 4)
+        tracks["T2E"] = "BUY" if t2e_conf > 0.5 else "NO_BUY"
     graded = "raw_return" in a and void is None
     out = {**base, "graded": graded, "void": void, "ticker": sym, "report_date": gate["report_date"],
            "session": gate["session"], "entry_session": tm["entry"]["session"], "cluster": cand.get(sym, {}).get("cluster"),
            "flags": sorted(set(flags)), "timing_check": timing, "timing_evidence": hits, "exits": exits,
-           "decisions": tracks, "t2_confidence": t2_conf, "t2g_confidence": t2g_conf, "stage2": stage2 or None}
+           "decisions": tracks, "t2_confidence": t2_conf, "t2g_confidence": t2g_conf, "t2e_confidence": t2e_conf,
+           "stage2": stage2 or None}
     if graded:
         out["correct"] = {t: (d == "BUY") == a["WIN_raw"] for t, d in tracks.items() if d in ("BUY", "NO_BUY")}
     write_json(out_path, out)

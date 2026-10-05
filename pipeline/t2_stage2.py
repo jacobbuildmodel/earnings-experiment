@@ -167,8 +167,8 @@ def call_gemini(rule, sys_prompt, user, json_mode=True):
     try:
         r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
                           params={"key": key}, json=body, timeout=600)
-        if r.status_code == 429:
-            return {"ok": False, "limited": True, "error": "HTTP 429 (free-tier quota)"}
+        if r.status_code in (429, 503):  # quota, or the free tier's "high demand" (seen 2026-10-05): retry next run
+            return {"ok": False, "limited": True, "error": f"HTTP {r.status_code}: {r.text[:200]}"}
         if r.status_code != 200:
             return {"ok": False, "limited": False, "error": f"HTTP {r.status_code}: {r.text[:300]}"}
         d = r.json()

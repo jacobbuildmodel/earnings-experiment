@@ -1,0 +1,52 @@
+{
+ "id": "D004_decision_protocol_v4",
+ "frozen_on_et": "2026-10-05",
+ "authority": "D004_decision_protocol_v4.md wins on any disagreement",
+ "supersedes": "D004_decision_protocol_v3 (seasonA onwards; v3 never governed a decision)",
+ "applies_to_seasons": [
+  "seasonA",
+  "seasonB",
+  "seasonC",
+  "seasonD"
+ ],
+ "t2_mode": "dossier_oneshot",
+ "t2_deadline": "entry_open_minus",
+ "t2_deadline_minutes_before_entry_open": 15,
+ "t2_inputs": "exactly the frozen dossier.json (pipeline/dossier.py): every item published before gate captured_et; the gate and factor items carry captured_et itself",
+ "t2_model": "claude-sonnet-5-5",
+ "t2_call": "pipeline/t2_stage2.py on the Actions runner only: a leak-probe call with nothing in context, then one decision call on the frozen dossier; claude -p --safe-mode --strict-mcp-config --setting-sources '' --disable-slash-commands --tools '' --max-turns 1 --system-prompt, scratch cwd; the CLI init line must show no tools and no MCP servers, the result one turn and no server tool use; auth CLAUDE_CODE_OAUTH_TOKEN",
+ "t2_order": "earliest deadline first, then sha256('<season>|<TICKER>|<date>') ascending; no frozen t2.json by the deadline = T2 MISSING",
+ "t2_requires": [
+  "prior",
+  "leak_probe"
+ ],
+ "t2_forbidden_files": [
+  "registry/T1_rule_v0.json",
+  "analysis/history/"
+ ],
+ "t2g": {
+  "status": "SHADOW - never scored as T2, never in a confirmatory family",
+  "model": "gemini-3.8-flash",
+  "call": "Gemini API generateContent, same system prompt and dossier, no tools, no grounding; GEMINI_API_KEY",
+  "files": "t2g.json + manifest_t2g.json",
+  "on_503_or_429": "a usage limit: this run stops for T2G, a later run retries; not a failed attempt"
+ },
+ "freeze": "stage 1 (snapshot day): gate, factors, option chain, dossier, T0, T1, decision.json with t2.stage2; stage 2: t2.json + t2_thesis.md + manifest_t2.json + RFC 3161 tokens, committed before the entry open",
+ "buy_rule": "BUY iff confidence > 0.5 (unchanged from v1)",
+ "t1": "code only: pipeline/t1_rule.py decide() on factors.json H1..H10 with registry/T1_rule_v0.json, written by freeze.py",
+ "base_rates": "registry/D004_base_rates_v3.json",
+ "stage_revenue_tags": [
+  "Revenues",
+  "RevenueFromContractWithCustomerExcludingAssessedTax",
+  "SalesRevenueNet",
+  "RevenueFromContractWithCustomerIncludingAssessedTax"
+ ],
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "decision_by_code": "BUY iff round(confidence, 2) > 0.50; the model only estimates",
+ "max_failed_attempts": 3,
+ "t2e": {
+  "status": "SHADOW, descriptive",
+  "rule": "mean of T2 and T2G confidence where both were frozen before the entry open; BUY iff > 0.50"
+ },
+ "implementation": "registry/D004_implementation_v4.sha256 (check.py fails on drift)"
+}
