@@ -57,6 +57,30 @@
     no hash list).
   - **Watch Fri Oct 9 10:45 ET:** the first live urgent pass on Season A.
 
+**✅ 2026-10-06 ~09:10 ET — D005 v3 FROZEN: H-T2C, T2's confidence tested on Seasons A + B pooled**
+(`registry/D005_evaluation_v3.md` + `D005_confirmatory_pooled_AB.json`). It is frozen before any Season A
+data exist.
+- **Why:** v1 §7 pre-commits to pooling via a new version, and the confidence test is the one that keeps
+  its power (~40% a season). Registered for Season B alone, it would discard Season A's decisions.
+- **The rule:**
+  - a family of one, at one-sided α 0.05
+  - `wild_p_k` with season intercepts kept
+  - per-season minimums of 10 events and 5 sessions
+  - a DEGENERATE rule if SD(confidence) < 0.05
+  - a `no_price` VOID sensitivity run
+  - "same protocol" means model, system prompt, `dossier.py` and `t2_stage2.py` hashes, and call
+    parameters
+  - a change keeps the old protocol running as a shadow; if no track can run in Season B, H-T2C is
+    UNTESTABLE and is never tested on Season A alone
+- **Review:** Sonnet said FREEZE WITH FIXES. Its 2 critical and 8 other findings are all applied.
+- 🔴 **This binds T2 for Season B.** Changing `dossier.py` or `t2_stage2.py`, even as a bug fix, ends
+  pooling and obliges the v4 shadow. The Season B confirmatory file must NOT register `T2_confidence`.
+- **To do before Season B's screen:** write the pooled run, test it on synthetic data, review it, and
+  register its hash.
+- **Also today:** `s1-screen.yml` now also starts on the cloud routine's 18:45 and 19:45 UTC pushes on
+  Oct 8 and waits for the slot (`acbd9f9`). **Check at 10:45 ET today** that the routine's push ran
+  s1-screen's `when` job and skipped cleanly.
+
 **✅ 2026-10-05 ~10:45 ET — D004 v4 FROZEN: the free capacity fix** (`registry/D004_decision_protocol_v4.md`).
 Jacob: no paid API for now.
 - **Stage 1, at the snapshot:** code builds `dossier.json`:
@@ -881,7 +905,7 @@ Oct 11, before any Season A outcome:
    - companies with no fresh share count (NKE) miss H8
    - git history still contains the T1 rule (a read is flagged in the run log, not blocked)
 7. Confirm on Fri Oct 2 that the mid-season capture no longer says `alphavantage: not pulled`.
-8. Before Season B's screening date: register `D005_confirmatory_seasonB.json` with `T2_confidence`.
+8. Before Season B's screening date: register `D005_confirmatory_seasonB.json` **without** `T2_confidence` (D005 v3 owns it, pooled A+B), and write and review the pooled H-T2C code.
 
 Jacob asked for the ORCL/CPRT/ADBE read-throughs from the CLAUDE folder: declined (rule 9).
 
