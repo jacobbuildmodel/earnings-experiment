@@ -57,6 +57,42 @@ temp path) and on a synthetic season.
 
 ---
 
+## 2026-10-05 (Mon) — D004 v4: the AI's capacity problem, solved without paying
+
+- **What happened:**
+  - The weekend Haiku load test: 8/10 refused with "session limit". One Opus housekeeping run had used
+    up the 5-hour allowance.
+  - Jacob declined a paid API key and asked for a free workaround.
+  - The GitHub research found:
+    - GitHub Models **retired 2026-07-30** (search results were stale)
+    - Gemini CLI personal use retired
+    - OpenRouter's free tier is 50 requests a day
+    - the Gemini API free tier is alive
+- **What it taught:** the cost was the *method*, not the model. An agent re-reads its growing context
+  on every one of ~50 turns. Code gathering the inputs and ONE call costs about 38× less ($0.08 against
+  $3.14). It also makes T2's information set exactly reproducible and timestamp-verified, which is
+  stronger than v3 for truthfulness.
+- **What changed:** D004 v4 frozen. Stage 1 freezes a code-built dossier at the snapshot; stage 2 makes
+  one isolated no-tools call; the deadline moves to entry open − 15 min; the queue runs overnight; and
+  Gemini (T2G) and the mean of the two (T2E) are free shadows.
+- **The process worked:**
+  - The rehearsal caught stage 2 overwriting stage 1's timestamp tokens.
+  - The independent review caught:
+    - an unfrozen method
+    - laptop settings leaking into the call
+    - MD&A extraction wrong on 6 of 10 filings
+    - transient SEC errors being frozen in
+    - a queue that one bad reply could stall
+
+  All are fixed before the freeze.
+- **Uncomfortable:**
+  - T2 is now Sonnet with a fixed dossier, not Opus doing its own research. Pilot T2 is not comparable
+    and is never pooled with Season A.
+  - Gemini's free tier said "high demand" (503) for every 3.x Flash model all morning, so T2G coverage
+    may be patchy.
+
+---
+
 ## 2026-10-02 (Fri, late) — the first cloud session, reviewed
 
 - **What happened:** Jacob's $100 claude.ai credit pays for cloud sessions only, not for Actions,

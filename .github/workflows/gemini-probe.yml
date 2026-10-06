@@ -1,0 +1,26 @@
+# Manual: is the T2G model (D004 v4) reachable with GEMINI_API_KEY? Lists the models the key can use and
+# makes one one-word call. Writes nothing to the repository.
+name: Gemini probe (T2G)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Probe
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          T2G_PROBE_ALSO: "gemini-3.7-flash gemini-3.5-flash gemini-2.5-pro gemini-2.5-flash"
+        run: python pipeline/t2_stage2.py gemini-probe

@@ -325,8 +325,8 @@ def evaluate(rows, track, variant="all"):
                                  "overstates the true edge (D005 v1 §7, v2 §5)")
     else:
         out["verdict"] = "robustness cut - descriptive, no verdict"
-    if track == "T2":
-        conf_all = [r.get("t2_confidence") for r in rs]
+    if track in ("T2", "T2G", "T2E"):
+        conf_all = [r.get({"T2": "t2_confidence", "T2G": "t2g_confidence", "T2E": "t2e_confidence"}[track]) for r in rs]
         ok = np.array([c is not None and isinstance(c, (int, float)) and math.isfinite(c) for c in conf_all])
         conf = np.array([float(c) for c, k in zip(conf_all, ok) if k])
         yy, gg = y[ok], g[ok]
@@ -595,6 +595,11 @@ def run(season, write=False):
     for track in ("T1", "T2"):
         rep["tracks"][track] = {v: evaluate(rs, track, v) for v, rs in variants.items()}
         rep["tracks"][track]["by_cluster_partial_pooling"] = by_cluster(rows, track)
+    # D004 v4: the Gemini shadow (T2G) is evaluated like a track but labelled SHADOW; never in the confirmatory family
+    shadow = {tr: {"all": evaluate(rows, tr, "all"), "label": f"SHADOW (D004 v4 {tr})"}
+              for tr in ("T2G", "T2E") if any(r["decisions"].get(tr) for r in rows)}
+    if shadow:
+        rep["tracks_shadow"] = shadow
     rep["T2_vs_T1"] = t2_vs_t1(rows)
     rep["gate_selectivity"] = gate_selectivity(season)
     rep["confirmatory"] = confirmatory(season, rep["tracks"], rep["T2_vs_T1"])
