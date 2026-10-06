@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-02 15:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-06 07:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
 **2026-10-02 afternoon** (Jacob: "too passive, not hungry enough"). Details in JOURNAL.
 - **The earlier "Phase 1 done" was false.** The T0-wide shadow, the straddle shadow and the H-S0 test
@@ -29,6 +29,21 @@
   - the fallback path has never run, so test it once a key exists
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
+
+**2026-10-06 07:45 ET (Tue) — laptop check.** `check.py` PASS (1 warning: the untracked
+`analysis/history/legs_exploratory.json`, written 09-30, referenced by nothing; left uncommitted).
+- ✅ **The `T2 v4 smoke test` passed on the Actions runner** (run 37400449552; it fired 01:41 UTC, ~4 h 40 m
+  late). On NKE: the Sonnet stage-2 call ran isolated (`tools: []`, `mcp_servers: []`, 1 turn, no web use),
+  leak probe "I don't know", $0.085 equivalent. Gemini `gemini-3.8-flash` also answered this time (no 503).
+  NKE's dossier had no headline dated ≥ 15 min before the snapshot; it was recorded as missing, as designed.
+- **Today: LEVI and APLD, snapshot 14:30–15:50 ET.** These are the pilot's last two events. Both run agentic
+  Opus under D004 v1, in parallel, on the shared token. One Opus run nearly used a whole 5-hour session in
+  the load test, so **the second T2 may be refused** and frozen as T2 MISSING. T0 still counts it. This is
+  disclosed, not fixed: the pilot rule stays as it is (rule 5).
+- 🔴 **Correction to the 10-05 note: BMO Oct 12 reporters cannot enter Season A.** Their snapshot session
+  is Thu Oct 8, but the screen is captured after the Oct 8 close. The first Season A snapshot is
+  **Fri Oct 9** (AMC Oct 12 and BMO Oct 13). This is a structural loss of the BMO Oct 12 names. The SH-M
+  shadow still sees them. Fix the next season's screen date, so the first print-day BMO is reachable.
 
 **✅ 2026-10-05 ~10:45 ET — D004 v4 FROZEN: the free capacity fix** (`registry/D004_decision_protocol_v4.md`).
 Jacob: no paid API for now.

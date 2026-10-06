@@ -9,6 +9,19 @@
 
 ---
 
+## 2026-10-06 (Tue, 07:45 ET) — v4 stage 2 works on the runner; a structural hole at Season A's start
+
+- **The D004 v4 stage-2 call works where it has to.** The smoke test on the Actions runner used the real
+  CLI, the token and the flags. It returned an isolated one-turn decision for $0.085 equivalent, about
+  1/37 of the agentic Opus run. That is the capacity fix in practice (RQ1, power: more decided events per
+  season).
+- **The cron is still late:** it fired 4 h 40 m after 21:00 UTC. That cost nothing here, because the queue
+  is the trigger for real decisions. It is one more reason never to rely on GitHub cron timing.
+- **Lesson: check the first day of a season against the screen date.** Season A's screen is captured
+  after the Oct 8 close. A BMO reporter on Mon Oct 12 needs its snapshot on Thu Oct 8, so it can never be
+  gated. Nobody noticed until this check. The next season's screen date should sit two sessions before
+  its first print day.
+
 ## 2026-10-03 (Sat, early UTC) — cloud session: pooled D009 report, D009 v2 draft, Gate 1 builder
 
 A claude.ai cloud session (`ops/cloud_session_prompt.md`), on branch `claude/great-lamport-tor2q4`.
