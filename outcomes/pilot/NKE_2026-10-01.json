@@ -3,24 +3,75 @@
  "season": "pilot",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-02T20:37:12-04:00",
+ "graded_et": "2026-10-05T21:50:01-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "NKE",
  "report_date": "2026-10-01",
  "session": "AMC",
  "entry_session": "2026-10-01",
  "cluster": "consumer",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-01T16:15:15-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 35.45,
+   "entry_session": "2026-10-01",
+   "exit": 32.55,
+   "exit_session": "2026-10-02",
+   "dividends": 0,
+   "raw_return": -0.08180535966149527,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLY",
+    "beta": 0.787561,
+    "bench_return": 0.00622653603149903,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.08670913660499868,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.008462623413258208,
+    "print_gap": -0.073968705547653,
+    "entry_close": 35.15,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 35.45,
+   "entry_session": "2026-10-01",
+   "exit": 33.87,
+   "exit_session": "2026-10-02",
+   "dividends": 0,
+   "raw_return": -0.04456981664315951,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLY",
+    "beta": 0.787561,
+    "bench_return": 0.007600036626682627,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.050555309088906306,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -31,5 +82,12 @@
   "T1": null,
   "T2": "BUY"
  },
- "t2_confidence": 0.52
+ "t2_confidence": 0.52,
+ "t2g_confidence": null,
+ "t2e_confidence": null,
+ "stage2": null,
+ "correct": {
+  "T0": false,
+  "T2": false
+ }
 }

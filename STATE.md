@@ -615,6 +615,13 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
     2 `unconfirmed`: CHRN, AEHR). Nothing is PENDING. The pilot can add no further events; the Season A
     screen is 2026-10-09.
 
+- **2026-10-05 22:36 ET (Mon) — housekeeping.** `due.py t2-list` empty for this run, so no `decision.json`
+  written by this step. Nothing is PENDING (pilot universe final: MU, NKE, PENG FROZEN · LEVI, APLD
+  CONFIRMED for snapshot Tue Oct 6 · 7 INELIGIBLE), so there was no date re-check to do; `find_dates apply`
+  (`4a95c1c`) confirmed 0. Code today: `985a1e2` Capture PENG (gate PASS) → `9b72921` Freeze PENG before
+  entry open 2026-10-06, plus grade, D009 shadow grade and paper-ledger runs. Nothing failed. No outcome
+  figure is read or written here (rule 4).
+
 ### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
 
 **Updated 2026-09-28: AIR and JBL make it five (PAYX · DRI · BB · AIR · JBL).** The section below is the
