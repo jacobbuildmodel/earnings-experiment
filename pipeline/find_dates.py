@@ -2,6 +2,8 @@
 
     python pipeline/find_dates.py probe <TICKER> [<TICKER> ...]    # print what the company says; writes nothing
     python pipeline/find_dates.py apply <season> [--commit]         # every PENDING event: confirm where it is clear
+    python pipeline/find_dates.py apply <season> --urgent [--commit]  # snapshot-day morning: only names whose
+                                                                      # calendar date is within two sessions
 
 Why: the pilot had 12 candidates and the AI step confirmed them one by one. A Season A preview on
 2026-09-28 found ~250 candidates. The AI step cannot read ~250 IR sites a night, so unconfirmed names
@@ -34,7 +36,7 @@ import requests
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et, rule_for, write_json  # noqa: E402
 
-VERSION = "find_dates v1 (2026-09-28)"
+VERSION = "find_dates v2 (2026-10-06)"
 BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                          "Chrome/126.0 Safari/537.36", "Accept": "*/*"}
 Q4_PRESS = ("/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3"
@@ -266,7 +268,18 @@ def second_source_agrees(ticker, date, session):
     return bool(agree) and not disagree, seconds
 
 
-def apply(season, do_commit=False):
+def window_open(day, rule):
+    """Today's S2 window open (ET). A confirmation is usable for a snapshot session that is today only
+    if it lands before the gate can fire."""
+    from sessions import s2_window
+    return datetime.datetime.combine(day, s2_window(day, rule["s2"])[0], ET)
+
+
+def apply(season, do_commit=False, urgent=False):
+    """Every PENDING event, most urgent first (the evening run). urgent=True is the snapshot-day morning
+    pass (2026-10-06): only names with a calendar date within two sessions, and only until the window
+    opens, so a date announced late, or a season screen that finished after the evening run, still
+    reaches that day's gate. Before v2 a confirmation never counted for a snapshot session of today."""
     from sessions import shift
     sp = os.path.join(ROOT, "universe", season, "event_status.json")
     st = json.load(open(sp, encoding="utf-8"))
@@ -283,9 +296,26 @@ def apply(season, do_commit=False):
         return (min(dates), item[0])
 
     pending = sorted(((k, e) for k, e in st["events"].items() if e.get("status") == "PENDING"), key=earliest)
+    budget = BUDGET_SECONDS
+    if urgent:
+        try:
+            shift(today, 0)  # raises unless today is a session
+            horizon = shift(today, -min(snap.values())).isoformat()  # snapshot today <=> BMO up to two sessions out
+            budget = min(URGENT_BUDGET_SECONDS, (window_open(today, rule) - now_et()).total_seconds() - 300)
+        except ValueError:  # today is not a session: no snapshot today
+            print(f"{season}: {today} is not a session - no urgent pass")
+            return []
+        pending = [(k, e) for k, e in pending if earliest((k, e))[0] <= horizon]
+        if not pending:
+            print(f"{season}: urgent pass - nothing PENDING dated on or before {horizon}")
+            return []
+        print(f"{season}: urgent pass - {len(pending)} PENDING name(s) dated on or before {horizon}, "
+              f"{max(budget, 0) / 60:.0f} min before the window opens")
+        if budget <= 0:
+            return []
     for n, (key, ev) in enumerate(pending):
-        if time.time() - started > BUDGET_SECONDS:
-            print(f"budget of {BUDGET_SECONDS // 60} min used - {len(pending) - n} names left for the next run / AI step")
+        if time.time() - started > budget:
+            print(f"budget of {budget / 60:.0f} min used - {len(pending) - n} names left for the next run / AI step")
             break
         try:
             confirm_one(season, key, ev, window, snap, today, confirmed, paths)
@@ -307,6 +337,7 @@ def apply(season, do_commit=False):
 
 
 BUDGET_SECONDS = 75 * 60
+URGENT_BUDGET_SECONDS = 20 * 60
 
 
 def confirm_one(season, key, ev, window, snap, today, confirmed, paths):
@@ -325,7 +356,7 @@ def confirm_one(season, key, ev, window, snap, today, confirmed, paths):
                 ev.setdefault("rechecks", []).append(f"{res['checked_et']}: {VERSION} - found {date} {session}, not a session: {exc}")
                 return
             ok, seconds = second_source_agrees(key, date, session)
-            if snap_session <= today:
+            if snap_session < today or (snap_session == today and now_et() >= window_open(today, rule_for("D003_universe_screen", season)) - datetime.timedelta(minutes=5)):
                 note += f"; found {date} {session} but its snapshot session {snap_session} has passed - left for the AI step"
             elif not ok:
                 note += f"; found {date} {session} but no second source agrees yet ({seconds}) - left PENDING"
@@ -361,6 +392,6 @@ if __name__ == "__main__":
         for t in a[1:]:
             print(json.dumps(probe(t.upper(), (lo, lo + datetime.timedelta(days=90))), indent=1, default=str))
     elif a and a[0] == "apply":
-        apply(a[1], "--commit" in a)
+        apply(a[1], "--commit" in a, "--urgent" in a)
     else:
         raise SystemExit(__doc__)

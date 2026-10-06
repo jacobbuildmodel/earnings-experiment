@@ -1,0 +1,91 @@
+{
+ "season": "pilot",
+ "ticker": "LEVI",
+ "report_date": "2026-10-07",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-07"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-08"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-08"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-15"
+  },
+  "reaction_day": "2026-10-08"
+ },
+ "snapshot_session": "2026-10-06",
+ "captured_et": "2026-10-06T14:31:00.312964-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v1 §6",
+ "company_source": {
+  "url": "https://investors.levistrauss.com/news/financial-news/news-details/2026/Levi-Strauss--Co--to-Webcast-Third-Quarter-2026-Earnings-Conference-Call/default.aspx",
+  "published_et": "2026-09-23 09:00",
+  "quote": "Levi Strauss & Co. (NYSE: LEVI) will host a conference call to discuss the company's financial results for the third quarter ended August 30, 2026. The call will be held on Wednesday, October 7, 2026, at 2 p.m. Pacific Time / 5 p.m. Eastern Time",
+  "detail": "the release gives no session wording for the results themselves - only 'To access the company's related press release on October 7, 2026' - so the session is taken from the 17:00 ET call time (>= 16:00 -> AMC)",
+  "retrieved_et": "2026-09-23T09:43:35.398590-04:00",
+  "how": "company Q4 press-release feed investors.levistrauss.com/feed/PressRelease.svc/GetPressReleaseList (HTTP 200, item dated 09/23/2026 09:00:00) and the detail page itself (HTTP 200, dated September 23, 2026)"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-07T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-07T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 20.524999618530273,
+  "expiry": "2026-10-16",
+  "strike": 21.0,
+  "call": {
+   "bid": 0.75,
+   "ask": 0.85,
+   "openInterest": 1289.0,
+   "lastPrice": 0.81,
+   "impliedVolatility": 0.709963837890625,
+   "lastTradeDate": "2026-10-06T18:09:42+00:00"
+  },
+  "put": {
+   "bid": 1.15,
+   "ask": 1.25,
+   "openInterest": 184.0,
+   "lastPrice": 1.19,
+   "impliedVolatility": 0.6562534375000001,
+   "lastTradeDate": "2026-10-06T18:08:11+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 6,
+  "implied_move": 0.0974421455381841,
+  "rel_spread": {
+   "call": 0.12499999999999997,
+   "put": 0.08333333333333341
+  },
+  "oi_atm": 1473.0,
+  "oi_sum": 1473.0
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

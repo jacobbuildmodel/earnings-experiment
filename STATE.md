@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-02 15:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-06 08:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
 **2026-10-02 afternoon** (Jacob: "too passive, not hungry enough"). Details in JOURNAL.
 - **The earlier "Phase 1 done" was false.** The T0-wide shadow, the straddle shadow and the H-S0 test
@@ -29,6 +29,57 @@
   - the fallback path has never run, so test it once a key exists
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
+
+**2026-10-06 07:45 ET (Tue) — laptop check.** `check.py` PASS (1 warning: the untracked
+`analysis/history/legs_exploratory.json`, written 09-30, referenced by nothing; left uncommitted).
+- ✅ **The `T2 v4 smoke test` passed on the Actions runner** (run 37400449552; it fired 01:41 UTC, ~4 h 40 m
+  late). On NKE: the Sonnet stage-2 call ran isolated (`tools: []`, `mcp_servers: []`, 1 turn, no web use),
+  leak probe "I don't know", $0.085 equivalent. Gemini `gemini-3.8-flash` also answered this time (no 503).
+  NKE's dossier had no headline dated ≥ 15 min before the snapshot; it was recorded as missing, as designed.
+- **Today: LEVI and APLD, snapshot 14:30–15:50 ET.** These are the pilot's last two events. Both run agentic
+  Opus under D004 v1, in parallel, on the shared token, so the second may be refused by the 5-hour limit.
+  **That is not fatal.** The pilot T2 deadline is the entry open (Oct 7 09:30 ET). The evening
+  housekeeping run, which usually arrives 01:00–02:40 UTC after the limit has reset, plans T2 again and
+  runs it before `finalize --last-chance`. T2 MISSING only follows if that retry is refused too.
+- **Season A's first day: the "BMO Oct 12" hole is empty.** Oct 12 is Columbus Day, and the Nasdaq
+  calendar lists one reporter that day (RMCF, $8M). No rule change is needed.
+- 🔴→✅ **The real gap, fixed 08:30 ET: dates confirmed too late.** Code confirmed company dates only in
+  the evening run (`find_dates apply`), and refused any date whose snapshot session was that same day.
+  Season A's screen slot runs 16:00 ET Oct 8 → 09:30 ET Oct 9. If the screen finished after Oct 8's
+  evening run, **no Oct 9 snapshot event (AMC Oct 12, BMO Oct 13) could be confirmed in time**, so the
+  first day would be lost. The same was true all season for a company that announced its date late.
+  - **`find_dates` v2 adds `--urgent`:** names dated within two sessions, run 10:00–12:00 ET, stopping
+    5 min before the window opens. A date found then counts for today's gate. The evening run is unchanged.
+  - **`s2-window.yml`:** the precheck wakes a morning run when an urgent PENDING name exists, and a
+    code-only step runs the pass before `due.py wait`, with `continue-on-error`.
+  - Tested: `tests/test_find_dates_urgent.py` (4 cases), all 39 tests pass, and the pilot is a no-op
+    (nothing written). No rule and no hashed file was touched (`find_dates.py` and `s2-window.yml` are in
+    no hash list).
+  - **Watch Fri Oct 9 10:45 ET:** the first live urgent pass on Season A.
+
+**✅ 2026-10-06 ~09:10 ET — D005 v3 FROZEN: H-T2C, T2's confidence tested on Seasons A + B pooled**
+(`registry/D005_evaluation_v3.md` + `D005_confirmatory_pooled_AB.json`). It is frozen before any Season A
+data exist.
+- **Why:** v1 §7 pre-commits to pooling via a new version, and the confidence test is the one that keeps
+  its power (~40% a season). Registered for Season B alone, it would discard Season A's decisions.
+- **The rule:**
+  - a family of one, at one-sided α 0.05
+  - `wild_p_k` with season intercepts kept
+  - per-season minimums of 10 events and 5 sessions
+  - a DEGENERATE rule if SD(confidence) < 0.05
+  - a `no_price` VOID sensitivity run
+  - "same protocol" means model, system prompt, `dossier.py` and `t2_stage2.py` hashes, and call
+    parameters
+  - a change keeps the old protocol running as a shadow; if no track can run in Season B, H-T2C is
+    UNTESTABLE and is never tested on Season A alone
+- **Review:** Sonnet said FREEZE WITH FIXES. Its 2 critical and 8 other findings are all applied.
+- 🔴 **This binds T2 for Season B.** Changing `dossier.py` or `t2_stage2.py`, even as a bug fix, ends
+  pooling and obliges the v4 shadow. The Season B confirmatory file must NOT register `T2_confidence`.
+- **To do before Season B's screen:** write the pooled run, test it on synthetic data, review it, and
+  register its hash.
+- **Also today:** `s1-screen.yml` now also starts on the cloud routine's 18:45 and 19:45 UTC pushes on
+  Oct 8 and waits for the slot (`acbd9f9`). **Check at 10:45 ET today** that the routine's push ran
+  s1-screen's `when` job and skipped cleanly.
 
 **✅ 2026-10-05 ~10:45 ET — D004 v4 FROZEN: the free capacity fix** (`registry/D004_decision_protocol_v4.md`).
 Jacob: no paid API for now.
@@ -615,6 +666,13 @@ a retail-attention source (default: leave it out of v0) · real trades, paper, o
     2 `unconfirmed`: CHRN, AEHR). Nothing is PENDING. The pilot can add no further events; the Season A
     screen is 2026-10-09.
 
+- **2026-10-05 22:36 ET (Mon) — housekeeping.** `due.py t2-list` empty for this run, so no `decision.json`
+  written by this step. Nothing is PENDING (pilot universe final: MU, NKE, PENG FROZEN · LEVI, APLD
+  CONFIRMED for snapshot Tue Oct 6 · 7 INELIGIBLE), so there was no date re-check to do; `find_dates apply`
+  (`4a95c1c`) confirmed 0. Code today: `985a1e2` Capture PENG (gate PASS) → `9b72921` Freeze PENG before
+  entry open 2026-10-06, plus grade, D009 shadow grade and paper-ledger runs. Nothing failed. No outcome
+  figure is read or written here (rule 4).
+
 ### 🔴 The scheduler is losing the pilot — 5 of 10 confirmed events gone, and the fix did not hold
 
 **Updated 2026-09-28: AIR and JBL make it five (PAYX · DRI · BB · AIR · JBL).** The section below is the
@@ -847,7 +905,7 @@ Oct 11, before any Season A outcome:
    - companies with no fresh share count (NKE) miss H8
    - git history still contains the T1 rule (a read is flagged in the run log, not blocked)
 7. Confirm on Fri Oct 2 that the mid-season capture no longer says `alphavantage: not pulled`.
-8. Before Season B's screening date: register `D005_confirmatory_seasonB.json` with `T2_confidence`.
+8. Before Season B's screening date: register `D005_confirmatory_seasonB.json` **without** `T2_confidence` (D005 v3 owns it, pooled A+B), and write and review the pooled H-T2C code.
 
 Jacob asked for the ORCL/CPRT/ADBE read-throughs from the CLAUDE folder: declined (rule 9).
 

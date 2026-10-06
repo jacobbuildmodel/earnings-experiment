@@ -15,6 +15,12 @@ on:
   schedule:
     - cron: "7 20,22 8 10 *"          # 16:07, 18:07 ET Oct 8
     - cron: "7 0,2,4,6,8,10 9 10 *"   # 20:07 ET Oct 8 ... 06:07 ET Oct 9
+  # 2026-10-06: GitHub's cron is not a reliable trigger here (STATE, 09-21 to 09-28), and the laptop task
+  # needs the laptop awake. The cloud routine `earnings-s2-trigger` pushes to this branch on weekdays at
+  # 18:45 and 19:45 UTC; the 19:45 push on Oct 8 lands 15 min before the slot, and the job waits for it.
+  # On every other day the `when` job finds no slot near and nothing runs.
+  push:
+    branches: [claude/s2-trigger]
   workflow_dispatch:
     inputs:
       season:
@@ -23,7 +29,42 @@ on:
         default: "seasonA"
 
 jobs:
+  when:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      go: ${{ steps.slot.outputs.go }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      # v1's capture slot for seasonA is the governing one (v2-v4 change nothing in it; checked 2026-10-06)
+      - name: Is a capture slot open, or opening within 75 minutes? (push triggers only)
+        id: slot
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          from datetime import datetime, timedelta
+          from zoneinfo import ZoneInfo
+          if "${{ github.event_name }}" != "push":
+              print("go=true"); raise SystemExit
+          et = ZoneInfo("America/New_York")
+          now = datetime.now(et)
+          season = "${{ github.event.inputs.season || 'seasonA' }}"
+          rule = json.load(open("registry/D003_universe_screen_v1.json", encoding="utf-8"))
+          lo, hi = (datetime.fromisoformat(x).replace(tzinfo=et) for x in rule["seasons"][season]["capture_et"])
+          done = os.path.exists(f"universe/{season}/candidates.json")
+          print("go=" + ("true" if lo - timedelta(minutes=75) <= now < hi and not done else "false"))
+          PY
+          cat "$GITHUB_OUTPUT"
+
   s1:
+    needs: when
+    if: needs.when.outputs.go == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 300
     concurrency:
@@ -53,6 +94,22 @@ jobs:
 
       - name: Health check - PASS, or stop
         run: python check.py
+
+      # A push-triggered run may arrive up to 75 min before the slot opens: hold it until then.
+      - name: Wait for the capture slot to open
+        run: |
+          python - <<'PY'
+          import json, os, time
+          from datetime import datetime
+          from zoneinfo import ZoneInfo
+          et = ZoneInfo("America/New_York")
+          rule = json.load(open("registry/D003_universe_screen_v1.json", encoding="utf-8"))
+          lo = datetime.fromisoformat(rule["seasons"][os.environ["SEASON"]]["capture_et"][0]).replace(tzinfo=et)
+          wait = (lo - datetime.now(et)).total_seconds() + 60
+          if 0 < wait <= 80 * 60:
+              print(f"slot opens {lo:%Y-%m-%d %H:%M} ET - waiting {wait / 60:.0f} min", flush=True)
+              time.sleep(wait)
+          PY
 
       - name: Already screened?
         id: done

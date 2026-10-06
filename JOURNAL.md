@@ -9,6 +9,26 @@
 
 ---
 
+## 2026-10-06 (Tue, 07:45 ET) — v4 stage 2 works on the runner; a structural hole at Season A's start
+
+- **The D004 v4 stage-2 call works where it has to.** The smoke test on the Actions runner used the real
+  CLI, the token and the flags. It returned an isolated one-turn decision for $0.085 equivalent, about
+  1/37 of the agentic Opus run. That is the capacity fix in practice (RQ1, power: more decided events per
+  season).
+- **The cron is still late:** it fired 4 h 40 m after 21:00 UTC. That cost nothing here, because the queue
+  is the trigger for real decisions. It is one more reason never to rely on GitHub cron timing.
+- **Check the first day of a season against the screen date, then count what is actually there.** A BMO
+  reporter on Mon Oct 12 can never be gated, because its snapshot is Thu Oct 8, before the screen. But
+  Oct 12 is Columbus Day and lists one micro-cap. A structural hole with nothing in it needs no rule.
+- **The real hole was one level down: *when* code confirms dates.** Confirmation ran only in the evening
+  run and never counted for a same-day snapshot. So a screen that finished late on Oct 8 would have
+  silently cost the whole first snapshot day. The same was true of any company that announced late.
+  Fixed with a code-only morning pass (`find_dates --urgent`), before the gate window. The lesson for
+  every pipeline step: trace the *latest* time each input can arrive, not the usual one (RQ1: events lost
+  to plumbing are power lost).
+- Correction to this morning's note: a refused pilot T2 is retried by the evening run before the
+  last-chance freeze, so "the second may be MISSING" was too pessimistic.
+
 ## 2026-10-03 (Sat, early UTC) — cloud session: pooled D009 report, D009 v2 draft, Gate 1 builder
 
 A claude.ai cloud session (`ops/cloud_session_prompt.md`), on branch `claude/great-lamport-tor2q4`.
