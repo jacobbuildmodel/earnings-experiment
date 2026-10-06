@@ -17,10 +17,17 @@
   season).
 - **The cron is still late:** it fired 4 h 40 m after 21:00 UTC. That cost nothing here, because the queue
   is the trigger for real decisions. It is one more reason never to rely on GitHub cron timing.
-- **Lesson: check the first day of a season against the screen date.** Season A's screen is captured
-  after the Oct 8 close. A BMO reporter on Mon Oct 12 needs its snapshot on Thu Oct 8, so it can never be
-  gated. Nobody noticed until this check. The next season's screen date should sit two sessions before
-  its first print day.
+- **Check the first day of a season against the screen date, then count what is actually there.** A BMO
+  reporter on Mon Oct 12 can never be gated, because its snapshot is Thu Oct 8, before the screen. But
+  Oct 12 is Columbus Day and lists one micro-cap. A structural hole with nothing in it needs no rule.
+- **The real hole was one level down: *when* code confirms dates.** Confirmation ran only in the evening
+  run and never counted for a same-day snapshot. So a screen that finished late on Oct 8 would have
+  silently cost the whole first snapshot day. The same was true of any company that announced late.
+  Fixed with a code-only morning pass (`find_dates --urgent`), before the gate window. The lesson for
+  every pipeline step: trace the *latest* time each input can arrive, not the usual one (RQ1: events lost
+  to plumbing are power lost).
+- Correction to this morning's note: a refused pilot T2 is retried by the evening run before the
+  last-chance freeze, so "the second may be MISSING" was too pessimistic.
 
 ## 2026-10-03 (Sat, early UTC) — cloud session: pooled D009 report, D009 v2 draft, Gate 1 builder
 
