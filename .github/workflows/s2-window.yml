@@ -83,13 +83,18 @@ jobs:
         run: |
           python - <<'PY' >> "$GITHUB_OUTPUT"
           import glob, json, os
-          from datetime import datetime
+          from datetime import datetime, timedelta
           from zoneinfo import ZoneInfo
-          today = datetime.now(ZoneInfo("America/New_York")).date().isoformat()
+          now = datetime.now(ZoneInfo("America/New_York"))
+          today = now.date().isoformat()
+          soon = (now.date() + timedelta(days=4)).isoformat()   # BMO two sessions out, across a weekend
+          morning = now.weekday() < 5 and 10 <= now.hour < 12   # the urgent date pass (find_dates --urgent)
           work = []
           for sf in sorted(glob.glob("universe/*/event_status.json")):
               st = json.load(open(sf, encoding="utf-8"))
               for key, ev in st["events"].items():
+                  if morning and ev.get("status") == "PENDING" and any(today <= x <= soon for x in ev.get("calendar_dates", [])):
+                      work.append(f"dates:{key}")
                   if ev.get("status") != "CONFIRMED" or ev.get("snapshot_session") != today:
                       continue
                   d = f"events/{st['season']}/{key}_{ev.get('calendar_date') or ev.get('report_date')}"
@@ -149,6 +154,25 @@ jobs:
 
       - name: Health check - PASS, or stop
         run: python check.py
+
+      # 2026-10-06: code used to confirm company dates only in the evening run, so a date announced late,
+      # or a season screen that finished after that run (Season A: slot 16:00 ET Oct 8 -> 09:30 Oct 9),
+      # could never reach the next day's gate. A morning pass (10:00-12:00 ET, before the wait) checks only
+      # names dated within two sessions, and stops 5 minutes before the window opens. Code only, no AI.
+      - name: Company dates for today's snapshot - mornings, before the window (code)
+        if: github.event.schedule != '0 23 * * 1-5'
+        continue-on-error: true
+        timeout-minutes: 30
+        run: |
+          h=$(TZ=America/New_York date +%H)
+          if [ "$h" -ge 10 ] && [ "$h" -lt 12 ]; then
+            for sf in universe/*/event_status.json; do
+              season=$(basename "$(dirname "$sf")")
+              python pipeline/find_dates.py apply "$season" --urgent --commit || echo "::warning::urgent find_dates failed for $season"
+            done
+          else
+            echo "not 10:00-12:00 ET - no urgent date pass"
+          fi
 
       # The root fix for the lost events: if this fire arrived before the window, hold the runner
       # until the window opens rather than hoping a later fire lands inside it. No-op when nothing

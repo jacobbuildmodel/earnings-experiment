@@ -1,0 +1,36 @@
+{
+  "id": "D005_confirmatory_pooled_AB_v1",
+  "rule": "D005_evaluation_v3",
+  "frozen_et": "2026-10-06",
+  "family": {"holm_m": 1, "alpha": 0.05, "note": "H-T2C is a family of one, fixed now; D005_confirmatory_seasonB.json runs a separate family and must not register T2_confidence again"},
+  "hypotheses": [
+    {
+      "id": "H-T2C",
+      "test": "T2_confidence",
+      "seasons": ["seasonA", "seasonB"],
+      "pooled": true,
+      "model": "WIN_raw ~ season intercepts (A, B) + b * confidence; claim b > 0, sign only",
+      "estimator": "pipeline/report.py wild_p_k: restricted wild cluster bootstrap-t, null drops confidence and keeps both season intercepts; Rademacher >= 12 clusters else Webb; B = 9999",
+      "cluster": "entry_session",
+      "sided": "greater",
+      "alpha": 0.05,
+      "two_sided_ci_printed": true,
+      "negative_label": "anti-informative",
+      "sample": "seasonA + seasonB events: S2 PASS AND stage-2 T2 frozen under the H-T2C protocol before entry open - 15 min AND graded exit A, not VOID",
+      "protocol": {
+        "model": "claude-sonnet-5-5",
+        "system_prompt": "system_sha256 of D004 v4",
+        "code": "pipeline/dossier.py and pipeline/t2_stage2.py at the hashes of registry/D004_implementation_v4.sha256 as frozen 2026-10-05",
+        "call_parameters": "as fixed in D004 v4",
+        "on_change": "pooling ends for later events; the H-T2C protocol continues as a shadow on every PASS event (same freeze rule, never shown to live T2)",
+        "if_no_track_in_seasonB": "UNTESTABLE - never tested on Season A alone"
+      },
+      "minimums": {"pooled_events": 30, "pooled_sessions": 10, "per_season_events": 10, "per_season_sessions": 5, "else": "insufficient"},
+      "degenerate": {"sd_below": 0.05, "distinct_values_below": 5, "verdict": "DEGENERATE (p = 1)"},
+      "missing": {"caveat_if_share_above": 0.20, "compare_on": ["cluster", "entry_session", "implied_move"]},
+      "sensitivity": "no_price VOID coded WIN = 0, reported beside the verdict; disagreement is a stated threat",
+      "size_disclosure": "if one entry session holds > 25% of the pooled sample, carry v2's 6.5% unequal-cluster size",
+      "verdict_at": "Gate 2, after Season B grading; Season A interim descriptive only, never used to choose Season B's screen, universe or BUY rule"
+    }
+  ]
+}
