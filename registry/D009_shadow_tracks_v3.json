@@ -1,0 +1,21 @@
+{
+  "id": "D009_shadow_tracks_v3",
+  "frozen_et": "2026-10-07",
+  "adds_track": "SH-RU",
+  "seasons": ["seasonA", "seasonB"],
+  "universe": "S1 candidates.json; one event per issuer per season; mid-season additions excluded (descriptive)",
+  "d_exp": "from the season's S1 raw/nasdaq_calendar.json and raw/av_calendar.csv only; earliest in-window Nasdaq date, else earliest AV date; if both and they differ, the earlier",
+  "entry": "close of E = shift(D_exp, -21); E's date must be strictly later than this file's freeze-commit ET date and the S1 capture commit date, else VOID window_not_open",
+  "d_act": "company-confirmed date (confirm.json / event_status.json), else first Item 2.02 8-K accepted on/after shift(E,2); earlier if both",
+  "exit": "close of X = min(shift(E,20), shift(D_act,-1)); VOID print_before_window if D_act <= shift(E,1); no D_act by shift(D_exp,30) -> X = shift(E,20), flag print_date_unknown",
+  "prices": "yfinance adjusted close (auto_adjust=True), stock + SPY + D003 s8 ETF, fetched once >= 06:00 ET the session after X, write-once",
+  "excess_primary": "r - beta*r_SPY; beta = OLS on 250 daily returns to close shift(E,-1), shrunk 0.67*beta+0.33; < 120 returns -> beta 1, flag beta_short",
+  "excess_secondary": ["r - r_SPY", "r - r_ETF (D003 s8)"],
+  "ai_hardware_clusters": ["semis", "hardware_networking", "ai_infra"],
+  "family": {"holm_m": 2, "alpha": 0.05, "sided": "greater", "hypotheses": ["H-RU", "H-RU-AIH"]},
+  "test": "calendar-time equal-weight daily beta-adjusted excess series; circular block bootstrap, block 20, 9999 draws, demeaned null, seed sha256(test id); size gate <= 7% at 30/45/60 synthetic events else KV fixed-b NW lag 20 becomes primary",
+  "significance_requires": "Holm p < 0.05 AND beta-1 and ETF point estimates not negative",
+  "minimums": {"events": 30, "portfolio_sessions": 40, "distinct_E_dates": 10, "aih_events_per_season": 10},
+  "verdict": "once, A+B pooled, at the later of D009 v1 s5 Season B end and last SH-RU exit + 2 sessions; 'late-window reporters only'",
+  "implementation": "hash + golden fixture + size-gate result registered in D009_implementation_v3.sha256 before the first X; no change after"
+}
