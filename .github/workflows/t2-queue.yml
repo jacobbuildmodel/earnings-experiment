@@ -27,6 +27,8 @@ jobs:
     timeout-minutes: 120
     permissions:
       contents: write
+    env:
+      HAS_API_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
     steps:
       - uses: actions/checkout@v6
         with:
@@ -93,6 +95,17 @@ jobs:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python pipeline/t2_stage2.py run --backend all
+
+      # 2026-10-07: the subscription behind CLAUDE_CODE_OAUTH_TOKEN hit its WEEKLY limit on 2026-10-06 after
+      # ~$5.5 of logged work (APLD's pilot T2 refused 10 times, "resets Oct 10"). Season A's peak (~165
+      # prints Nov 3-5) cannot fit in it. If the ANTHROPIC_API_KEY secret exists, whatever the subscription
+      # left undecided is decided now on the pay-as-you-go key: the same CLI, model, flags, prompt and code
+      # (D004 v4; D005 v3 H-T2C protocol unchanged - only the account that pays differs). Inert without it.
+      - name: Pay-as-you-go fallback for what the subscription could not decide
+        if: always() && steps.any.outputs.waiting == 'true' && env.HAS_API_KEY == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python pipeline/t2_stage2.py run --backend claude
 
       - name: Health check after
         if: always() && steps.any.outputs.waiting == 'true'

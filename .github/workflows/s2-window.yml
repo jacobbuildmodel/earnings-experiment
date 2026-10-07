@@ -129,6 +129,7 @@ jobs:
       id-token: write
       actions: read         # lets the housekeeping step read its own run history (was HTTP 403)
     env:
+      HAS_API_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
       # The mid-season screen (due.py midseason -> s1_screen) pulls the Alpha Vantage calendar, and
       # without this it records "not pulled - no ALPHAVANTAGE_API_KEY" as a deviation from D003 §7.
       # That is what the 2026-09-25 run reported. grade.yml already had it; this job did not.
@@ -232,6 +233,51 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          show_full_output: true
+          prompt: |
+            Open ops/actions_prompt.md and follow the instructions below its horizontal rule exactly.
+            The repository is checked out and its dependencies are installed. Code has already run
+            the health check and the S2 gate for this run.
+
+            This is the HOUSEKEEPING run: do section B only. T2 decisions are made by separate per-event
+            jobs of this workflow (the `t2` job); do not write any decision.json.
+            Events awaiting a T2 decision (for your log only): ${{ steps.plan.outputs.t2_events || 'none' }}
+
+            End with the short plain-English report section C asks for.
+          # housekeeping on Sonnet (2026-10-05): one Opus housekeeping run used most of a 5-hour allowance
+          claude_args: |
+            --model claude-sonnet-5-5
+            --max-turns 150
+            --allowedTools "Bash,Read,Write,Edit,Glob,Grep,WebFetch"
+
+      # 2026-10-07: the subscription's WEEKLY limit refused every AI step from 2026-10-06 18:32 UTC to its
+      # reset (Oct 10), so no PENDING date was re-checked by the AI. If the ANTHROPIC_API_KEY secret exists,
+      # a refused housekeeping run is repeated once on that key, with the same prompt, model and fence.
+      - name: Was housekeeping refused by a usage limit? (code)
+        id: hk_rl
+        if: always() && steps.ai.outcome != 'skipped' && steps.plan.outputs.claude == 'true'
+        run: |
+          python3 - <<'EOF' | tee -a "$GITHUB_OUTPUT"
+          import json, os
+          p = "/home/runner/work/_temp/claude-execution-output.json"
+          res = {}
+          if os.path.exists(p):
+              d = json.load(open(p))
+              for x in (d if isinstance(d, list) else [d]):
+                  if isinstance(x, dict) and x.get("type") == "result":
+                      res = x
+          refused = res.get("api_error_status") == 429 or ("limit" in str(res.get("result", "")).lower() and bool(res.get("is_error")))
+          print(f"limited={'true' if refused else 'false'}")
+          EOF
+
+      - name: Housekeeping (AI) - repeated on the pay-as-you-go key after a usage-limit refusal
+        id: ai2
+        if: always() && steps.hk_rl.outputs.limited == 'true' && env.HAS_API_KEY == 'true'
+        continue-on-error: true
+        timeout-minutes: 40
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           show_full_output: true
           prompt: |
             Open ops/actions_prompt.md and follow the instructions below its horizontal rule exactly.
