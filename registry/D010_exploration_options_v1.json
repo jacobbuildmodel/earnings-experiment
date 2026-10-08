@@ -1,0 +1,20 @@
+{
+  "id": "D010_exploration_options_v1",
+  "frozen_et": "2026-10-08",
+  "kind": "exploration (rule 6) - cannot confirm; confirmation is D009 H-X live",
+  "data": {"chain": "dolthub post-no-preference/options option_chain", "calendar": "dolthub post-no-preference/earnings earnings_calendar", "spot": "yfinance unadjusted Close"},
+  "universe": "analysis/history/universe.json tickers (329; survivorship disclosed)",
+  "period": ["2019-01-01", "2026-09-18"],
+  "event": {"when": ["Before market open", "After market close"], "R": "BMO -> D; AMC -> next NYSE session", "P": "last NYSE session before R", "Q": "R"},
+  "expiry": "first listed expiration strictly after R in P's chain, else VOID no_expiry",
+  "strike": "call delta closest to +0.50 in P's chain at that expiry; tie -> lower; same strike for the put",
+  "voids": ["no_expiry", "no_quote (missing quote on P or Q, or bid <= 0 on P)", "crossed (ask < bid)", "split (P..Q)"],
+  "primary": "short_exec = (callbid_P + putbid_P - callask_Q - putask_Q) / S_P",
+  "also": ["long_exec", "short_mid", "implied = mid_P/S_P", "realized = |S_Q-S_P|/S_P", "ratio"],
+  "inference": "mean with t clustered by R date; BH-FDR over 22 tests; finding = q < 0.10 AND |t| > 3 AND same sign in 2019-2022 and 2023-2026",
+  "tests": ["X1 all short_exec > 0", "X2 all long_exec > 0", "X3a-h 8 D006 clusters short_exec > 0", "X4a-c implied terciles short_exec > 0", "X5 top-minus-bottom implied tercile, two-sided", "X6a-h years 2019-2026 short_exec > 0"],
+  "n_tests": 22,
+  "report_always": ["n", "R dates", "hit rate", "median", "worst 1%", "CVaR 5%", "largest loss", "short_mid", "ratio", "without top 1% abs returns"],
+  "output": "analysis/d010/ (fenced from T2)",
+  "runner": "claude.ai cloud session on branch claude/d010-backtest; laptop review before merge"
+}
