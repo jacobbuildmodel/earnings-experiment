@@ -2,14 +2,15 @@
  "season": "pilot",
  "rule": "D009_shadow_tracks_v1",
  "graded_by": "pipeline/shadow.py",
- "graded_et": "2026-10-06T21:46:41-04:00",
+ "graded_et": "2026-10-07T17:36:57-04:00",
  "sh_m_universe": 46,
  "sh_m_stats": {
   "rows_without_session": 1,
   "capture_days": [
    "2026-10-02",
    "2026-10-05",
-   "2026-10-06"
+   "2026-10-06",
+   "2026-10-07"
   ]
  },
  "events": [
@@ -83,13 +84,13 @@
     "reaction_day": "2026-10-08"
    },
    "confirm_committed": "2026-09-29T02:30:42+00:00",
-   "gate_status": null,
+   "gate_status": "PASS",
    "exists_before_entry": true,
    "void": null,
    "timing_check": "pending",
    "timing_final": false,
    "exit_A": null,
-   "vol60": null,
+   "vol60": 0.880636,
    "graded": false,
    "flags": []
   },
@@ -259,7 +260,7 @@
    "timing_check": "pending",
    "timing_final": false,
    "exit_A": null,
-   "vol60": null,
+   "vol60": 0.281481,
    "graded": false,
    "flags": []
   },
@@ -467,12 +468,24 @@
    "marketCap": 6534574080,
    "universe_committed": "2026-09-17T20:07:12+08:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 43.9,
+    "exit": 47.03,
+    "dividends": 0.0,
+    "raw_return": 0.07129840546697053,
+    "net_return": 0.06929840546697053,
+    "WIN_raw": true,
+    "splits_in_window": [],
+    "spy_return": 0.010991438111447316,
+    "excess_spy": 0.06030696735552321
+   },
    "vol60": 0.331962,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -590,12 +603,24 @@
    "marketCap": 12736218112,
    "universe_committed": "2026-09-17T20:07:12+08:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 99.14,
+    "exit": 96.25,
+    "dividends": 0.0,
+    "raw_return": -0.02915069598547504,
+    "net_return": -0.03115069598547504,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": 0.010991438111447316,
+    "excess_spy": -0.040142134096922355
+   },
    "vol60": 0.294198,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -675,7 +700,7 @@
    "timing_check": "pending",
    "timing_final": false,
    "exit_A": null,
-   "vol60": null,
+   "vol60": 0.880636,
    "graded": false,
    "flags": []
   },
@@ -716,7 +741,7 @@
    "timing_check": "pending",
    "timing_final": false,
    "exit_A": null,
-   "vol60": null,
+   "vol60": 0.281481,
    "graded": false,
    "flags": []
   },
@@ -752,6 +777,47 @@
    "industry": "Gold",
    "sector": "Basic Materials",
    "marketCap": 3067076352,
+   "universe_committed": "2026-09-17T20:07:12+08:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": 0.713731,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "NRIX",
+   "date": "2026-10-08",
+   "session": "AMC",
+   "session_source": "yfinance get_earnings_dates",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-08"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-09"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-09"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-16"
+    },
+    "reaction_day": "2026-10-09"
+   },
+   "snapshot": "2026-10-07",
+   "capture": "shadow/calendar/2026-10-07.json",
+   "capture_committed": "2026-10-07T20:38:59+00:00",
+   "exists_before_entry": true,
+   "industry": "Biotechnology",
+   "sector": "Healthcare",
+   "marketCap": 2610109184,
    "universe_committed": "2026-09-17T20:07:12+08:00",
    "void": null,
    "timing_check": "pending",
@@ -793,6 +859,47 @@
    "industry": "Beverages - Non-Alcoholic",
    "sector": "Consumer Defensive",
    "marketCap": 183508434944,
+   "universe_committed": "2026-09-17T20:07:12+08:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": 0.180344,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "DAL",
+   "date": "2026-10-09",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-08"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-09"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-09"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-16"
+    },
+    "reaction_day": "2026-10-09"
+   },
+   "snapshot": "2026-10-07",
+   "capture": "shadow/calendar/2026-10-07.json",
+   "capture_committed": "2026-10-07T20:38:59+00:00",
+   "exists_before_entry": true,
+   "industry": "Airlines",
+   "sector": "Industrials",
+   "marketCap": 51209109504,
    "universe_committed": "2026-09-17T20:07:12+08:00",
    "void": null,
    "timing_check": "pending",

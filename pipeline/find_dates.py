@@ -36,7 +36,7 @@ import requests
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et, rule_for, write_json  # noqa: E402
 
-VERSION = "find_dates v2 (2026-10-06)"
+VERSION = "find_dates v3 (2026-10-07)"
 BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                          "Chrome/126.0 Safari/537.36", "Accept": "*/*"}
 Q4_PRESS = ("/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3"
@@ -143,6 +143,53 @@ def items_rss(host):
     return []
 
 
+# v3 (2026-10-07): 167 of 329 Season A preview names had no IR feed code could read (403 bot walls, JS
+# sites). Nasdaq carries the company's own releases as distributed by its wire (Business Wire, GlobeNewswire,
+# PR Newswire) - the company's words, with a publish time. Used only when the company's own feed is not.
+NASDAQ_PR = "https://api.nasdaq.com/api/news/topic/press_release?q=symbol:{t}|assetclass:stocks&limit=30&offset=0"
+WIRE = re.compile(r"--\s*\(\s*(business wire|globe newswire|accesswire|prnewswire|pr newswire)|/prnewswire/|globe newswire\)|"
+                  r"\((business wire|globe newswire|accesswire)\)", re.I)
+PUBLISHED = re.compile(r"Published\s+([A-Z][a-z]{2,8}\.? \d{1,2}, 20\d\d \d{1,2}:\d{2}\s*[ap]m)\s+(E[SD]T)", re.I)
+
+
+def items_nasdaq(ticker):
+    r = get(NASDAQ_PR.format(t=ticker.lower()))
+    if not r:
+        return []
+    try:
+        rows = (r.json().get("data") or {}).get("rows") or []
+    except ValueError:
+        return []
+    out = []
+    for it in rows:
+        try:  # the list gives a day only; the page gives the minute (nasdaq_body)
+            pub = datetime.datetime.strptime(it["created"], "%b %d, %Y").replace(tzinfo=ET)
+        except (KeyError, ValueError):
+            continue
+        out.append({"title": it.get("title", ""), "published": pub, "url": urljoin("https://www.nasdaq.com/", it.get("url", "")),
+                    "feed": "https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release)",
+                    "nasdaq": True})
+    return out
+
+
+def nasdaq_body(text):
+    """The release itself: from after the page's 'Published <time>' line, and only if it carries a wire
+    dateline (so it is the company's release, not an article). Returns (body, published) or (None, None)."""
+    m = PUBLISHED.search(text)
+    if not m or not WIRE.search(text[m.end():m.end() + 600]):
+        return None, None
+    stamp = re.sub(r"\s+", " ", m.group(1).replace(".", "")).replace("Sept ", "Sep ")
+    for fmt in ("%b %d, %Y %I:%M%p", "%B %d, %Y %I:%M%p"):
+        try:
+            pub = datetime.datetime.strptime(re.sub(r"\s+([ap]m)$", r"", stamp, flags=re.I), fmt)
+            break
+        except ValueError:
+            pub = None
+    if pub is None:
+        return None, None
+    return text[m.end():], pub.replace(tzinfo=ET)
+
+
 def feed_items(ticker):
     seen = []
     for host in hosts_for(ticker):
@@ -216,6 +263,8 @@ def parse_page(text, window, published):
 def probe(ticker, window, since_days=75):
     """What the company's own feed says about the next results date. Returns a dict; writes nothing."""
     items, host = feed_items(ticker)
+    if not items:
+        items, host = items_nasdaq(ticker), "www.nasdaq.com"
     res = {"ticker": ticker, "host": host, "checked_et": now_et().isoformat(), "version": VERSION}
     if not items:
         res["outcome"] = "no_feed"
@@ -229,7 +278,13 @@ def probe(ticker, window, since_days=75):
         r = get(it["url"])
         if not r:
             continue
-        for st in parse_page(text_of(r.content), window, it["published"]):
+        text = text_of(r.content)
+        if it.get("nasdaq"):
+            text, pub = nasdaq_body(text)
+            if text is None:
+                continue  # no wire dateline: an article about the company, not its release
+            it["published"] = pub
+        for st in parse_page(text, window, it["published"]):
             st.update(url=it["url"], title=it["title"], published_et=it["published"].isoformat(timespec="minutes"))
             statements.append(st)
         time.sleep(0.3)

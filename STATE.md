@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-06 08:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-07 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
 **2026-10-02 afternoon** (Jacob: "too passive, not hungry enough"). Details in JOURNAL.
 - **The earlier "Phase 1 done" was false.** The T0-wide shadow, the straddle shadow and the H-S0 test
@@ -30,6 +30,60 @@
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
 
+**2026-10-07 (Wed) — laptop session: the pilot ended, and four pre-Season-A fixes. Details in JOURNAL.**
+- **Pilot, final two events.**
+  - LEVI: INELIGIBLE `wide_spread` at its 14:31 ET gate (a rule outcome).
+  - 🔴 **APLD: PASS, but T2 MISSING.** All 10 attempts were refused with "You've hit your weekly limit ·
+    resets Oct 10, 12am (UTC)". It froze at 21:55 ET with T0 and T1 intact.
+  - The housekeeping AI was refused too, so no PENDING re-checks ran. Nothing was PENDING in the pilot.
+- 🔴 **Capacity, the binding risk for Season A.**
+  - The account behind `CLAUDE_CODE_OAUTH_TOKEN` ran out of its WEEKLY limit on ~$5.5 of logged work:
+    PENG's Opus T2 ≈ $3.3 plus 3 housekeeping runs ≈ $2.0, and small tests.
+  - It is **not** the account of the laptop chats: that one is Pro, 38% used, resetting Oct 12.
+  - The cloud routines kept firing after the limit, so they draw on another allowance.
+  - **Season A needs:** ~$0.085 a T2 decision (×~150–300 PASS events) plus ~$0.66 a housekeeping run.
+    The Nov 3–5 peak alone (~165 prints) cannot fit this token's week.
+  - **Fix wired, inert** (`2dbde27`). If the GitHub secret `ANTHROPIC_API_KEY` exists:
+    - `t2-queue.yml` re-runs what the subscription left undecided on that key
+    - a refused housekeeping run is repeated once on it
+    - Same model, flags, prompt and code, so the H-T2C protocol is unchanged. New dated hash line for
+      `t2-queue.yml`.
+  - **Decision for Jacob:** create the key with a monthly spend limit (~$50). The estimate is ~$20–50 a
+    season, against the $450–950 quoted for agentic Opus on 10-02.
+- ✅ **find_dates v3 (`1a0ef26`):** the Nasdaq copy of the company's own wire release is now a fallback
+  company source.
+  - Measured on the 329 preview names: IR feeds readable for 162 (49%) → **326 (99%)** with the fallback.
+  - 32 more names already give a confirmable date and session.
+  - Wire-dateline pages only, with the header cut. It agrees with the IR feed on all 4 overlaps, and a
+    second source must still agree.
+  - Tests: `tests/test_find_dates_nasdaq.py`.
+- ✅ **Busy-day rehearsal** (scratch clone, 40 real names, 4 workers): **9.0 min** wall, 0 crashes, 40/40
+  dossiers built (1 missing MD&A heading), no SEC refusals.
+  - Median per event: gate 11 s, factors 14 s, dossier 24.5 s (max 87 s).
+  - A ~55-event day takes ~12–15 min of the 80-min window.
+  - (38 gates said `no_quote` only because they ran at 09:37 ET, before quotes fill; real gates run
+    14:30–15:50.)
+  - The first run once lost LRCX's gate under load; it did not recur in 40 more. **Watch** for a PASS-day
+    capture with no `gate.json`.
+- ✅ **D009 v3 FROZEN (`513cd9b`): SH-RU, the 20-session run-up into the print.**
+  - Candidate relayed by Jacob from the DRIVE chat (AI-hardware +3.4% vs SPY, t 2.7; disclosed, not
+    evidence), plus LR01.
+  - Beta-adjusted, with a pre-window shrunk β; calendar-time portfolio with a circular block bootstrap
+    (block 20); Holm m = 2 (H-RU, H-RU-AIH); verdict on A + B pooled.
+  - Only windows with E after this commit count, so only Season A prints from about Nov 9.
+  - Sonnet review: FREEZE WITH FIXES, all applied.
+  - **"Insufficient" is the stated expected result for AI hardware.**
+  - 🔴 **TO DO before the first exit (~Nov 9):** write `shadow.py runup`, a golden fixture and the
+    size gate (≤ 7% at 30/45/60 events). Register them in `D009_implementation_v3.sha256`, or the
+    completed windows become descriptive only.
+- **Jacob's other two DRIVE points:**
+  - DoltHub options: already planned as D010. Pre-register it, then run it from the laptop during
+    Season A (not a blocker).
+  - de Silva, Smith & So, *Review of Finance* 2025: verified bibliographically. The 5–14% loss figure
+    is from secondary summaries only (V2). It supports H-X's side; no change.
+- `s1-screen.yml`'s new push trigger was verified: the 18:45 and 19:45 UTC pushes on 10-06 ran `when`
+  and skipped cleanly. On Oct 8 they will start the screen.
+
 **2026-10-06 07:45 ET (Tue) — laptop check.** `check.py` PASS (1 warning: the untracked
 `analysis/history/legs_exploratory.json`, written 09-30, referenced by nothing; left uncommitted).
 - ✅ **The `T2 v4 smoke test` passed on the Actions runner** (run 37400449552; it fired 01:41 UTC, ~4 h 40 m
@@ -57,7 +111,7 @@
     no hash list).
   - **Watch Fri Oct 9 10:45 ET:** the first live urgent pass on Season A.
 
-**✅ 2026-10-06 ~09:10 ET — D005 v3 FROZEN: H-T2C, T2's confidence tested on Seasons A + B pooled**
+**✅ 2026-10-06 ~08:10 ET — D005 v3 FROZEN: H-T2C, T2's confidence tested on Seasons A + B pooled**
 (`registry/D005_evaluation_v3.md` + `D005_confirmatory_pooled_AB.json`). It is frozen before any Season A
 data exist.
 - **Why:** v1 §7 pre-commits to pooling via a new version, and the confidence test is the one that keeps
@@ -165,8 +219,8 @@ Jacob: no paid API for now.
 - During Season A: daily health checks; the shadow report `python pipeline/shadow.py report seasonA`.
 
 **Waiting on Jacob:**
-1. **An Anthropic API key with a monthly spend cap**, as GitHub secret `ANTHROPIC_API_KEY`. It takes T2
-   off the shared weekly budget. ~$3.1 per T2 decision at API prices (NKE) → ~$450–950 a season.
+1. **An Anthropic API key with a monthly spend limit (~$50)**, as GitHub secret `ANTHROPIC_API_KEY`. Under D004 v4
+   it costs ~$0.085 per T2 decision → ~$20–50 a season. The fallback is wired and inert until it exists (2026-10-07).
 2. The real-money sleeve and loss limit (D008 v2), before Gate 2.
 
 ## Where things are

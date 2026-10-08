@@ -9,6 +9,27 @@
 
 ---
 
+## 2026-10-07 (Wed) — the pilot ends on a capacity refusal; four fixes before Season A
+
+- **APLD lost its T2 to a WEEKLY limit on a separate, small account.** It froze with T0 and T1 intact.
+  - The decisive measurement was the reset time. The token's account resets Oct 10, but the laptop
+    chat's account is at 38% and resets Oct 12. They are different pools.
+  - Only ~$5.5 of logged work emptied the token's pool, so **Season A cannot run on it.**
+  - A workflow-only API-key fallback is now wired. The money decision is Jacob's.
+  - Lesson: "the queue spreads work over 5-hour windows" solved the wrong limit. The weekly one binds
+    (RQ1).
+- **Date coverage was the biggest silent leak, and it was half the universe.**
+  - Code could read only 49% of the companies' own IR feeds: 403 bot walls, JS sites, wrong hosts.
+  - The same releases are on Nasdaq as wire copies, and with that fallback coverage is 99%.
+  - Lesson: measure a pipeline step's coverage on the real universe before the season, not from a
+    pilot of 12.
+- **The busy-day rehearsal passed:** 40 events in 9 minutes. Gate capacity is not the constraint.
+- **Jacob relayed a run-up finding from the DRIVE chat.** It was registered as a shadow (D009 v3, SH-RU),
+  never as evidence.
+  - The reviewer's main catch: a beta-1 SPY benchmark in a rally year turns high-beta names into a
+    "run-up". The primary is now a pre-window shrunk beta.
+  - The honest expectation: the AI-hardware subset will be "insufficient".
+
 ## 2026-10-06 (Tue, 07:45 ET) — v4 stage 2 works on the runner; a structural hole at Season A's start
 
 - **The D004 v4 stage-2 call works where it has to.** The smoke test on the Actions runner used the real
