@@ -222,7 +222,7 @@ jobs:
       - name: Hide archive/ and outcomes/ from the AI
         if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true'
         run: |
-          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md'
+          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/analysis/d010/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md'
           test ! -e outcomes && test ! -e archive/PRE_v1_closed && test ! -e analysis/history && test ! -e registry/T1_rule_v0.json && echo "fenced: archive/, outcomes/, analysis/history/ and the T1 rule are not on disk"
 
       - name: Housekeeping (AI) - PENDING date re-checks and the STATE.md log
@@ -402,7 +402,7 @@ jobs:
       # Rules 9-10 and D004 by construction: the AI's checkout has no archive/ and no outcomes/.
       - name: Hide archive/ and outcomes/ from the AI
         run: |
-          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md'
+          git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/analysis/d010/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md'
           test ! -e outcomes && test ! -e archive/PRE_v1_closed && test ! -e analysis/history && test ! -e registry/T1_rule_v0.json && echo "fenced: archive/, outcomes/, analysis/history/ and the T1 rule are not on disk"
 
       - name: T2 decision for ${{ matrix.event.ticker }} ${{ matrix.event.date }} (AI)
