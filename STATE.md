@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-08 09:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-08 20:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
 **2026-10-02 afternoon** (Jacob: "too passive, not hungry enough"). Details in JOURNAL.
 - **The earlier "Phase 1 done" was false.** The T0-wide shadow, the straddle shadow and the H-S0 test
@@ -29,6 +29,24 @@
   - the fallback path has never run, so test it once a key exists
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
+
+**2026-10-08 20:40 ET — D010 running in the cloud; cloud runs share the Pro plan's limits.**
+- **D010 v1 frozen** (`4f80f9a`) before any price was pulled: the earnings straddle on 2019–2026
+  history, 22 tests.
+  - It runs as cloud routine `earnings-d010-backtest` (`trig_01DvnwRbtgYR6Y2kjPQzTdjx`, session
+    `cse_01XFhj9Lk7PHfY5fWA5t4m61`).
+  - It cloned DoltHub `options` (8.2 GB) and `earnings` (1.8 GB) with `dolt clone`, and is computing.
+  - Output goes to branch `claude/d010-backtest` → `analysis/d010/REPORT.md`, `results.json`. **Review it
+    on the laptop before merging** (check the code against D010 §3–§5, determinism, void counts).
+- 🔴 **Cloud sessions use the SAME Pro plan limits as the laptop chats**, not a separate $100 pool. The
+  backtest was stopped at 14:20 UTC by "session limit, resets 4:10pm (UTC)", the laptop chat's window.
+  It resumed at 00:37 UTC when Jacob typed "Try again" in it.
+  - Weekly was 66% used at 00:40 UTC Oct 9, resetting **Oct 12 06:00 UTC**.
+  - T2 for the Oct 9 snapshots (deadline Oct 12 09:15 ET) is covered even if the week runs out: the
+    05:20 and 10:20 UTC cloud runs on Oct 12 fall after the reset, and the token fallback runs from
+    11:00 UTC (its week resets Oct 10).
+  - **Keep laptop chats short until Oct 12.**
+- **Season A screen done** (`93f106d`): 318 names PENDING. First snapshots Fri Oct 9, 14:30 ET.
 
 **2026-10-08 (Thu) 09:40 ET — T2 now runs free on Jacob's cloud allowance. No API key (Jacob: no new money
 until results).**

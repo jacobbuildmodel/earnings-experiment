@@ -1,0 +1,24 @@
+{
+ "session": "BMO",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/dominosr-announces-q3-2026-earnings-webcast-2026-09-10",
+  "published_et": "2026-09-10T16:05-04:00",
+  "quote": "Results and supplemental material will be distributed at 6:05 a.m. ET on October 13, 2026 , and will be available on our website.",
+  "title": "Domino's® Announces Q3 2026 Earnings Webcast",
+  "retrieved_et": "2026-10-08T22:39:53.187901-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-13T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ]
+}

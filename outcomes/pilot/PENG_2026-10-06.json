@@ -3,24 +3,79 @@
  "season": "pilot",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-07T21:11:16-04:00",
+ "graded_et": "2026-10-08T21:20:10-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "PENG",
  "report_date": "2026-10-06",
  "session": "AMC",
  "entry_session": "2026-10-06",
  "cluster": "ai_infra",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-06T20:34:08-04:00",
+   "window": "AMC"
+  },
+  {
+   "accepted_et": "2026-10-06T20:27:15-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 61.6,
+   "entry_session": "2026-10-06",
+   "exit": 67.33,
+   "exit_session": "2026-10-07",
+   "dividends": 0,
+   "raw_return": 0.09301948051948039,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.069413,
+    "bench_return": -0.010865270644014213,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.11550421283872178,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.04237012987012978,
+    "print_gap": 0.04859056221772318,
+    "entry_close": 64.21,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 61.6,
+   "entry_session": "2026-10-06",
+   "exit": 72.61,
+   "exit_session": "2026-10-07",
+   "dividends": 0,
+   "raw_return": 0.17873376623376624,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.069413,
+    "bench_return": -0.00538324772817067,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.1898739290646631,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -34,5 +89,9 @@
  "t2_confidence": 0.45,
  "t2g_confidence": null,
  "t2e_confidence": null,
- "stage2": null
+ "stage2": null,
+ "correct": {
+  "T0": true,
+  "T2": false
+ }
 }

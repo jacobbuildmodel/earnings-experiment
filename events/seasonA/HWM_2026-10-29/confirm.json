@@ -1,0 +1,24 @@
+{
+ "session": "BMO",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/howmet-aerospace-host-webcast-and-announce-third-quarter-2026-results-2026-10-01",
+  "published_et": "2026-10-01T08:00-04:00",
+  "quote": "The press release and presentation materials will be available at approximately 7:00 AM ET on October 29, 2026 , via the \"Investors\" section of the Howmet Aerospace website.",
+  "title": "Howmet Aerospace to Host Webcast and Announce Third Quarter 2026 Results",
+  "retrieved_et": "2026-10-08T23:02:43.918485-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ]
+}

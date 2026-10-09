@@ -1,0 +1,24 @@
+{
+ "session": "BMO",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/boston-scientific-announces-participation-wells-fargo-21st-annual-healthcare",
+  "published_et": "2026-08-10T08:00-04:00",
+  "quote": "Additionally, the company will webcast its conference call discussing financial results and business highlights for the third quarter ended September 30, 2026 , on Wednesday, October 28, 2026 , at 8:00 a.m. ET .",
+  "title": "Boston Scientific announces participation in Wells Fargo 21st Annual Healthcare Conference and conference call discussing third quarter 2026 results",
+  "retrieved_et": "2026-10-08T22:52:38.464715-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ]
+}
