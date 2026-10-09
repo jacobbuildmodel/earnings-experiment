@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "sync (default), check, or orders"
+        description: "sync (default), check, orders, or options-probe"
         required: false
         default: "sync"
 
@@ -59,6 +59,14 @@ jobs:
       - name: Recent orders (read-only diagnosis)
         if: github.event_name == 'workflow_dispatch' && inputs.command == 'orders'
         run: python pipeline/paper.py orders
+
+      - name: Options permissions and data (read-only probe)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'options-probe'
+        run: python pipeline/paper.py options-probe
+
+      - name: Options order mechanics (orders placed while closed, then cancelled)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'options-orders-probe'
+        run: python pipeline/paper_options_probe.py
 
       - name: Submit due orders, record fills, commit the ledger
         if: github.event_name != 'workflow_dispatch' || inputs.command == 'sync' || inputs.command == ''

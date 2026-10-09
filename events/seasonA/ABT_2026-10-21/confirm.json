@@ -1,0 +1,24 @@
+{
+ "session": "BMO",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/abbott-hosts-conference-call-third-quarter-earnings-2026-09-30",
+  "published_et": "2026-09-30T09:00-04:00",
+  "quote": "linkedin facebook x email reddit ABBOTT PARK , Ill. , Sept. 30, 2026 /PRNewswire/ -- Abbott (NYSE: ABT) will announce its third-quarter 2026 financial results on Wednesday, Oct. 21 , before the market opens.",
+  "title": "Abbott hosts conference call for third-quarter earnings",
+  "retrieved_et": "2026-10-08T22:42:36.175548-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-21T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ]
+}
