@@ -1,0 +1,24 @@
+{
+ "session": "BMO",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/lockheed-martin-announces-third-quarter-2026-earnings-results-webcast-2026-10-01",
+  "published_et": "2026-10-01T09:00-04:00",
+  "quote": "Third quarter 2026 earnings results will be published prior to the market opening on Oct. 22 .",
+  "title": "Lockheed Martin Announces Third Quarter 2026 Earnings Results Webcast",
+  "retrieved_et": "2026-10-08T22:44:02.533060-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ]
+}

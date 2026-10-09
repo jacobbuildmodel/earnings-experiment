@@ -1,0 +1,24 @@
+{
+ "session": "AMC",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/texas-instruments-webcast-q3-2026-earnings-conference-call-2026-10-01",
+  "published_et": "2026-10-01T10:55-04:00",
+  "quote": "linkedin facebook x email reddit DALLAS , Oct. 1, 2026 /PRNewswire/ -- Texas Instruments Incorporated (TI) (Nasdaq: TXN) will webcast its third quarter earnings conference call on Wednesday, Oct. 21 , at 3:30 p.m. Central time .",
+  "title": "Texas Instruments to webcast Q3 2026 earnings conference call",
+  "retrieved_et": "2026-10-08T22:43:24.150083-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-21T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
