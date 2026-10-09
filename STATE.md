@@ -1,6 +1,24 @@
 # STATE — Earnings Experiment
 
-**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-08 20:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live from Fri Oct 9 · D011 paper options frozen** · updated 2026-10-09 11:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-09 (Fri) 11:45 ET — D011 FROZEN: paper straddles on Alpaca (`f84849d`). Details in JOURNAL.**
+- **Jacob asked for paper straddles.** Alpaca paper refuses naked short calls, so the traded form is the
+  **short iron butterfly** (SH-X + wings at ±2 straddle prices).
+  - Opened on the snapshot session right after the gate; closed on the reaction session from 14:30 ET.
+  - Every live-season gate SH-X takes, any gate status. Descriptive; no new test.
+  - Ledger `paper/options_ledger.json`; workflow `paper-options.yml` (every 10 min 18–20 UTC, after each
+    S2-window run, 14:40/15:40 UTC).
+- **The long straddle is NOT traded:** one account nets the same contracts and refuses the second order.
+  **Question for Jacob:** open a second Alpaca paper account (free) for the long side? Not a blocker.
+- **Sign guard:** only 3 trades get orders until one real fill proves the mleg limit-price sign. A bad
+  fill sets `halt` in the ledger: new opens stop, exits continue, the run goes red.
+- 🔴 **Watch today:**
+  - DPZ (BMO Oct 13) gates 14:30 ET. Its butterfly should open by ~15:55 ET.
+  - Check `paper/options_ledger.json` for `convention_verified`, and for any `alerts` or `halt`.
+  - Exit Tue Oct 13 from 14:30 ET.
+- **TO DO before the 10th round trip:** `paper_options.py report` (D011 §8), registered as impl v2.
+- The probes (`paper.py options-probe`, `pipeline/paper_options_probe.py`) stay. They only run by hand.
 
 **2026-10-02 afternoon** (Jacob: "too passive, not hungry enough"). Details in JOURNAL.
 - **The earlier "Phase 1 done" was false.** The T0-wide shadow, the straddle shadow and the H-S0 test
