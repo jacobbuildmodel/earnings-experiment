@@ -64,6 +64,10 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.command == 'options-probe'
         run: python pipeline/paper.py options-probe
 
+      - name: Options order mechanics (orders placed while closed, then cancelled)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'options-orders-probe'
+        run: python pipeline/paper_options_probe.py
+
       - name: Submit due orders, record fills, commit the ledger
         if: github.event_name != 'workflow_dispatch' || inputs.command == 'sync' || inputs.command == ''
         run: python pipeline/paper.py sync --commit
