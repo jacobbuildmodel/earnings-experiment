@@ -232,9 +232,27 @@ def orders():
         print(json.dumps({k: o.get(k) for k in keep}))
 
 
+def options_probe():
+    """Read-only: what the paper account allows for options, and whether chains and quotes are readable."""
+    a = api("GET", "/account")
+    keep = ("options_approved_level", "options_trading_level", "options_buying_power", "buying_power",
+            "regt_buying_power", "multiplier", "shorting_enabled", "equity")
+    print("account:", json.dumps({k: a.get(k) for k in keep}))
+    c = api("GET", "/options/contracts", params={"underlying_symbols": "AAPL", "limit": 3})
+    print("contracts:", json.dumps(c)[:600])
+    sym = ((c.get("option_contracts") or [{}])[0]).get("symbol") if isinstance(c, dict) else None
+    if sym:
+        r = requests.get("https://data.alpaca.markets/v1beta1/options/snapshots",
+                         params={"symbols": sym, "feed": "indicative"}, headers=headers(), timeout=30)
+        print("snapshot:", r.status_code, r.text[:500])
+    print("clock:", json.dumps(api("GET", "/clock")))
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
-    if a and a[0] == "orders":
+    if a and a[0] == "options-probe":
+        options_probe()
+    elif a and a[0] == "orders":
         orders()
     elif a and a[0] == "check":
         check()
