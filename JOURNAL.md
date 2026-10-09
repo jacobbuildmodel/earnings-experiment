@@ -9,6 +9,18 @@
 
 ---
 
+## 2026-10-08 (Thu) — free capacity found: the cloud session runs the decision call
+
+- Jacob: no new money until there are results.
+- The hint was in the logs: the cloud trigger routines kept firing after the decision token's weekly
+  limit, so they draw on another allowance.
+- **Probe, then the real code:** a claude.ai cloud session can run the same isolated `claude -p` call.
+  It passed every isolation check, matched the Actions answer, and cost $0.09.
+- T2 now runs there four times a night. The token stays as a last resort.
+- Lesson: before asking for money, inventory every allowance the person already has. The $100 cloud
+  credit was noted in STATE on 10-02 and never used for capacity.
+- **Open:** whether the cloud runs bill the credit or the Pro plan. Measure it on the first real batch.
+
 ## 2026-10-07 (Wed) — the pilot ends on a capacity refusal; four fixes before Season A
 
 - **APLD lost its T2 to a WEEKLY limit on a separate, small account.** It froze with T0 and T1 intact.

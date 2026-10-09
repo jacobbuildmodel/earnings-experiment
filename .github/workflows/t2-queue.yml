@@ -94,7 +94,15 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python pipeline/t2_stage2.py run --backend all
+        # 2026-10-08: T2 (claude) is decided primarily by the cloud routine `earnings-t2-cloud` (claude.ai cloud
+        # session, a separate allowance; probed: same code, isolation passed, $0.09 a decision). Here the
+        # subscription token decides only as a last resort from 11:00 UTC (07:00 EDT), so the two never race.
+        # T2G (Gemini, free) still runs on every pass.
+        run: |
+          rc=0
+          python pipeline/t2_stage2.py run --backend gemini || rc=$?
+          if [ "$(date -u +%H)" -ge 11 ]; then python pipeline/t2_stage2.py run --backend claude || rc=$?; else echo "claude backend: left to the cloud routine before 11:00 UTC"; fi
+          exit $rc
 
       # 2026-10-07: the subscription behind CLAUDE_CODE_OAUTH_TOKEN hit its WEEKLY limit on 2026-10-06 after
       # ~$5.5 of logged work (APLD's pilot T2 refused 10 times, "resets Oct 10"). Season A's peak (~165

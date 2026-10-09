@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-07 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Phase 1 now really done (D009 shadow tracks frozen) → Season A next** · updated 2026-10-08 09:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
 **2026-10-02 afternoon** (Jacob: "too passive, not hungry enough"). Details in JOURNAL.
 - **The earlier "Phase 1 done" was false.** The T0-wide shadow, the straddle shadow and the H-S0 test
@@ -29,6 +29,31 @@
   - the fallback path has never run, so test it once a key exists
   - a pooled A+B report for D009 must be written before Season B's end
   - SH-X dependence between overlapping straddles is understated (disclosed)
+
+**2026-10-08 (Thu) 09:40 ET — T2 now runs free on Jacob's cloud allowance. No API key (Jacob: no new money
+until results).**
+- **Cloud routine `earnings-t2-cloud`** (`trig_01H4HJJ2uPLZXUwfi7q5fXr3`, env `env_01JfLgj93yjfX4k198b7durh`):
+  - cron `20 1,5,10,21 * * *` UTC; outer model Haiku, Bash only
+  - runs `T2_ALLOW_LOCAL=1 python3 pipeline/t2_stage2.py run --backend claude`, the same code (D004 v4 and
+    the H-T2C protocol are unchanged)
+- **Probed 10-08:** the real code on a scratch NKE dossier passed isolation (no tools, no MCP, 1 turn).
+  - It gave the Actions answer (NO_BUY 0.50) for $0.09.
+  - GitHub, PyPI and the TSAs (DigiCert, Sectigo) are reachable; FreeTSA 403 and Nasdaq time out (not
+    needed).
+  - A no-op run: check PASS in the cloud, 0 waiting.
+  - CLAUDE.md now has a guard line for this routine.
+- **`t2-queue.yml`:** Gemini (T2G) every pass; the subscription token decides T2 only from 11:00 UTC, as a
+  last resort, so the two never race. New dated hash line.
+- **The API-key fallback stays wired and inert.**
+- **Which allowance pays is unknown:** the $100 cloud credit, or the Pro plan of the laptop chats.
+  - The Pro plan was 38% → 56% weekly from 10-07 to 10-08, mostly this long laptop chat.
+  - **Check `get_usage` after the first real batch** (Oct 9 night). Keep laptop chats short in season.
+- **Watch Fri Oct 9:** the gate at 14:30 ET, then `earnings-t2-cloud` at 21:20 UTC. Check `list_runs` and
+  the `manifest_t2.json` commits.
+- **Results Jacob can see before funding:** live samples are tiny (pilot SH-W 6 graded, 0 wins, −4.5% net;
+  SH-X 2 graded, +5.6%). The fastest large-sample answer is D010 on DoltHub's 2019–2026 options history,
+  pre-registered first. **Cloud sessions are blocked from DoltHub, SEC, Nasdaq and Yahoo unless Jacob
+  sets the cloud environment's Network access to Full.**
 
 **2026-10-07 (Wed) — laptop session: the pilot ended, and four pre-Season-A fixes. Details in JOURNAL.**
 - **Pilot, final two events.**
@@ -219,7 +244,7 @@ Jacob: no paid API for now.
 - During Season A: daily health checks; the shadow report `python pipeline/shadow.py report seasonA`.
 
 **Waiting on Jacob:**
-1. **An Anthropic API key with a monthly spend limit (~$50)**, as GitHub secret `ANTHROPIC_API_KEY`. Under D004 v4
+1. ~~An Anthropic API key~~ **declined 2026-10-08 (no new money until results); T2 runs on the cloud routine instead.** Was: an Anthropic API key with a monthly spend limit (~$50), as GitHub secret `ANTHROPIC_API_KEY`. Under D004 v4
    it costs ~$0.085 per T2 decision → ~$20–50 a season. The fallback is wired and inert until it exists (2026-10-07).
 2. The real-money sleeve and loss limit (D008 v2), before Gate 2.
 
