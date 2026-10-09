@@ -1,10 +1,10 @@
 # Paper options (Alpaca paper, D011) - code only, no AI.
 #
 # The short iron butterfly on every live-season gate SH-X takes: opened on the snapshot session right after the
-# gate is committed, closed on the reaction session from 14:30 ET. Options orders must be sent while the market
-# is OPEN (limit orders queue, but entry is defined as the snapshot session), so this runs after every S2-window
-# run (which fires through the window and on every claude/s2-trigger push) and on a backup cron.
-# pipeline/paper_options.py sends nothing while the market is closed and never resends an order id.
+# gate is committed, closed on the reaction session from 14:30 ET (registry/D011_paper_options_v1.md). Orders are
+# only sent while the market is open, so this runs every 10 minutes through the gate window and the exit window
+# (EDT and EST), after every S2-window run (which the claude/s2-trigger routine starts), and mid-morning.
+# pipeline/paper_options.py adopts an existing order id instead of resending it, so overlapping starts are safe.
 name: Earnings experiment - paper options
 
 on:
@@ -12,8 +12,8 @@ on:
     workflows: ["Earnings experiment - S2 window"]
     types: [completed]
   schedule:
-    - cron: "40,55 18,19 * * 1-5"   # 14:40-15:55 EDT / 13:40-14:55 EST backups
-    - cron: "40 14 * * 1-5"         # 10:40 EDT: fill and late-exit refresh
+    - cron: "*/10 18-20 * * 1-5"    # 14:00-16:50 EDT / 13:00-15:50 EST
+    - cron: "40 14,15 * * 1-5"      # mid-morning: fills and late exits
   workflow_dispatch:
     inputs:
       command:
@@ -55,7 +55,9 @@ jobs:
           git config user.name "Earnings Experiment (GitHub Actions)"
           git config user.email "actions@github.com"
 
-      - name: Health check - PASS, or stop
+      - name: Health check - a FAIL stops new opens, never the exits
+        id: health
+        continue-on-error: true
         run: python check.py
 
       - name: Dry build (read-only, nothing sent)
@@ -66,4 +68,6 @@ jobs:
 
       - name: Send due orders, record fills, commit the ledger
         if: github.event_name != 'workflow_dispatch' || inputs.command == 'sync' || inputs.command == ''
-        run: python pipeline/paper_options.py sync --commit
+        env:
+          EXITS_ONLY: ${{ steps.health.outcome == 'failure' && '--exits-only' || '' }}
+        run: python pipeline/paper_options.py sync --commit $EXITS_ONLY
