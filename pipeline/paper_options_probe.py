@@ -27,23 +27,33 @@ k = strikes[len(strikes) // 2]
 C = {float(c["strike_price"]): c["symbol"] for c in calls}
 P = {float(p["strike_price"]): p["symbol"] for p in puts}
 lo, hi = strikes[len(strikes) // 2 - 4], strikes[len(strikes) // 2 + 4]
-ids = []
 leg = lambda s, side, pi: {"symbol": s, "ratio_qty": "1", "side": side, "position_intent": pi}
-ids.append(place({"order_class": "mleg", "qty": "1", "type": "limit", "limit_price": "0.01", "time_in_force": "day",
-                  "legs": [leg(C[k], "buy", "buy_to_open"), leg(P[k], "buy", "buy_to_open")]},
-                 "long straddle +0.01:"))
-for lp in ("-0.01", "0.01"):
-    ids.append(place({"order_class": "mleg", "qty": "1", "type": "limit", "limit_price": lp, "time_in_force": "day",
-                      "legs": [leg(C[k], "sell", "sell_to_open"), leg(P[k], "sell", "sell_to_open"),
-                               leg(C[hi], "buy", "buy_to_open"), leg(P[lo], "buy", "buy_to_open")]},
-                     f"iron butterfly {lp}:"))
-ids.append(place({"order_class": "mleg", "qty": "1", "type": "limit", "limit_price": "-0.01", "time_in_force": "day",
-                  "legs": [leg(C[k], "sell", "sell_to_open"), leg(P[k], "sell", "sell_to_open")]},
-                 "naked short straddle -0.01:"))
-ids.append(place({"symbol": C[k], "qty": "1", "side": "buy", "type": "limit", "limit_price": "0.01",
-                  "time_in_force": "day"}, "single-leg call buy 0.01:"))
-ids.append(place({"symbol": C[k], "qty": "1", "side": "buy", "type": "market", "time_in_force": "day"},
-                 "single-leg call MARKET (closed):"))
+
+
+def one(body, label):
+    """Place, read back, cancel - one at a time, so no order trips the wash-trade check of the next."""
+    i = place(body, label)
+    if i:
+        time.sleep(1)
+        o = api("GET", f"/orders/{i}")
+        print("   read back:", o.get("status"), "limit", o.get("limit_price"), "legs",
+              [(x.get("side"), x.get("position_intent")) for x in o.get("legs") or []])
+        print("   cancel:", api("DELETE", f"/orders/{i}") or "ok")
+        time.sleep(1)
+
+
+fly = [leg(C[k], "sell", "sell_to_open"), leg(P[k], "sell", "sell_to_open"),
+       leg(C[hi], "buy", "buy_to_open"), leg(P[lo], "buy", "buy_to_open")]
+for lp in ("-0.01", "0.01", "-50", "50"):
+    one({"order_class": "mleg", "qty": "1", "type": "limit", "limit_price": lp, "time_in_force": "day", "legs": fly},
+        f"iron butterfly K={k} wings {lo}/{hi} limit {lp}:")
+one({"order_class": "mleg", "qty": "1", "type": "limit", "limit_price": "-50", "time_in_force": "day",
+     "legs": [leg(C[k], "sell", "sell_to_open"), leg(P[k], "sell", "sell_to_open")]}, "naked short straddle -50:")
+one({"order_class": "mleg", "qty": "1", "type": "limit", "limit_price": "50", "time_in_force": "day",
+     "legs": [leg(C[k], "sell", "sell_to_open"), leg(P[k], "sell", "sell_to_open")]}, "naked short straddle 50:")
+one({"order_class": "mleg", "qty": "1", "type": "limit", "limit_price": "-0.01", "time_in_force": "day",
+     "legs": [leg(C[k], "buy", "buy_to_open"), leg(P[k], "buy", "buy_to_open")]}, "long straddle -0.01:")
+ids = []
 time.sleep(2)
 for i in filter(None, ids):
     o = api("GET", f"/orders/{i}")
