@@ -1,6 +1,36 @@
 # STATE — Earnings Experiment
 
-**Season A live from Fri Oct 9 · D011 paper options frozen** · updated 2026-10-09 11:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · repo now PUBLIC (Actions minutes) · D011 v1 + v2 frozen** · updated 2026-10-09 20:50 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-09 (Fri) 20:50 ET — Actions was blocked; the repo is now PUBLIC. D011 v2 (long straddle) frozen.**
+- 🔴 **From 16:03 ET Fri, GitHub refused to start ANY job**: "recent account payments have failed or your
+  spending limit needs to be increased". The private repo had used its 2,000 free minutes for October
+  (~2,500 by wall time).
+  - S2 window: 1,338 min. Its early fires WAIT up to ~3.5 h for the window, billed throughout.
+  - D007 exploration: 762 min (one-off). Season screen: 196.
+  - Lost: Fri evening grade, shadow, housekeeping and paper runs only. Nothing frozen was lost; DPZ had
+    frozen INELIGIBLE at 14:3x ET.
+- **Jacob chose: make the repo public** (offered: a $15/mo cap, or cut waste and wait for the reset).
+  - Public repos get Actions free on standard runners.
+  - Scanned the full history first: no keys or tokens, no holdings or account data. What is public: the
+    code, the record, and Jacob's name and email in commits. Secrets stay secret. No workflow has a
+    pull_request trigger.
+  - `gh repo edit --visibility public` at 20:39 ET. Every re-run passed (grade, shadow, paper, paper
+    options); S2 housekeeping re-dispatched.
+  - If it is ever made private again, the S2 waiting design will exhaust the minutes again. Move the gate
+    trigger to the routine pushes only.
+- ✅ **D011 v1, first trade: DPZ** (gate INELIGIBLE; v1 trades any status).
+  - Butterfly 310 / wings 260–360 Oct 16, n = 1. Filled −17.60 vs natural −17.56 (4¢ better).
+  - **`convention_verified`**: the mleg sign is right, so the 3-trade cap is lifted.
+  - Exit Tue Oct 13 from 14:30 ET.
+- **D011 v2 FROZEN (`be337fd`): the LONG straddle on a SECOND paper account.**
+  - `pipeline/paper_long.py` runs v1's frozen code with structure L, its own ledger
+    `paper/long_ledger.json` and workflow `paper-long.yml`, paired event by event with v1.
+  - It counts from gates snapshotting 2026-10-12 on.
+  - ✅ **LIVE since 21:27 ET Fri.** Jacob added the `APCA_L_*` secrets. The second account is ACTIVE, options
+    level 3, equity $100,000, separate from the first. A first sync ran clean and the ledger is created.
+    The first eligible gates are Fri Oct 16 (3 names).
+  - No second-model review: it is a 60-line wrapper over reviewed code, with 5 tests. Disclosed in JOURNAL.
 
 **2026-10-09 (Fri) 11:45 ET — D011 FROZEN: paper straddles on Alpaca (`f84849d`). Details in JOURNAL.**
 - **Jacob asked for paper straddles.** Alpaca paper refuses naked short calls, so the traded form is the
