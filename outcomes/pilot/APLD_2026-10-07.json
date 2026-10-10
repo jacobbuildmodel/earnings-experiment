@@ -3,9 +3,9 @@
  "season": "pilot",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-08T21:20:07-04:00",
+ "graded_et": "2026-10-09T20:40:31-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "APLD",
  "report_date": "2026-10-07",
@@ -13,14 +13,63 @@
  "entry_session": "2026-10-07",
  "cluster": "ai_infra",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-07T20:43:31-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 24.55,
+   "entry_session": "2026-10-07",
+   "exit": 24.35,
+   "exit_session": "2026-10-08",
+   "dividends": 0,
+   "raw_return": -0.008146639511201648,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.130934,
+    "bench_return": -0.0026462951867385343,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.002507559123744156,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.030142566191446063,
+    "print_gap": 0.022679546409071882,
+    "entry_close": 23.81,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 24.55,
+   "entry_session": "2026-10-07",
+   "exit": 23.85,
+   "exit_session": "2026-10-08",
+   "dividends": 0,
+   "raw_return": -0.02851323828920571,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.130934,
+    "bench_return": -0.012482524465747935,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.0019138024993116017,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -34,5 +83,8 @@
  "t2_confidence": null,
  "t2g_confidence": null,
  "t2e_confidence": null,
- "stage2": null
+ "stage2": null,
+ "correct": {
+  "T0": false
+ }
 }
