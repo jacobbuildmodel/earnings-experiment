@@ -27,8 +27,9 @@
   - `pipeline/paper_long.py` runs v1's frozen code with structure L, its own ledger
     `paper/long_ledger.json` and workflow `paper-long.yml`, paired event by event with v1.
   - It counts from gates snapshotting 2026-10-12 on.
-  - **Inert until Jacob adds the GitHub secrets `APCA_L_API_KEY_ID` / `APCA_L_API_SECRET_KEY`** (steps
-    given in chat). Then run `gh workflow run paper-long.yml -f command=check` to see its options level.
+  - ✅ **LIVE since 21:27 ET Fri.** Jacob added the `APCA_L_*` secrets. The second account is ACTIVE, options
+    level 3, equity $100,000, separate from the first. A first sync ran clean and the ledger is created.
+    The first eligible gates are Fri Oct 16 (3 names).
   - No second-model review: it is a 60-line wrapper over reviewed code, with 5 tests. Disclosed in JOURNAL.
 
 **2026-10-09 (Fri) 11:45 ET — D011 FROZEN: paper straddles on Alpaca (`f84849d`). Details in JOURNAL.**
