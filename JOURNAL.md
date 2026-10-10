@@ -9,6 +9,33 @@
 
 ---
 
+## 2026-10-08/09 — paper straddles: the account cannot hold the trade we test (RQ4, RQ6)
+
+- Jacob: "add paper straddles now".
+- **Probe first, build second.** Read-only checks plus orders placed while the market was closed, each
+  one cancelled.
+  - The Alpaca paper account is options level 3, but it **refuses a naked short call**. So SH-X's exact
+    trade, a naked short straddle, cannot be placed there.
+  - It also refuses an order against an opposite open order ("wash trade"). A long and a short straddle
+    on the same contracts cannot coexist in one account.
+  - It accepted both signs of an `mleg` limit, so the price convention is unproven.
+- **What we built:** D011, the short iron butterfly, which is SH-X plus wings at ±2 straddle prices.
+  - It is placed minutes after each gate and closed on the reaction session from 14:30 ET.
+  - It is descriptive and adds no test. It measures whether SH-X's bid fills are real, the tradeable
+    P&L, and capacity.
+- **First number, a dry build on live AAPL quotes:** opening and closing at the same quotes costs $0.57 of
+  a $9.60 credit (~6%). That is the spread toll on every round trip, before any edge.
+- **The review earned its cost.** An independent reviewer (Sonnet) said DO NOT FREEZE, with three
+  blockers:
+  - a cancel racing a fill could double a position
+  - a lost ledger push would resend the same order
+  - a failed exit would strand a real position
+  - **Lesson:** an order-sending loop must treat the broker, not our file, as the source of truth.
+  - The rewrite looks up every client id before sending. The re-review said FREEZE WITH FIXES, the fixes
+    are in, and 20 offline tests pass.
+- **Frozen 11:39 ET Fri (`f84849d`)**, before the first Season A gate. DPZ, at 14:30 ET today, is the
+  first candidate trade.
+
 ## 2026-10-08 (Thu) — free capacity found: the cloud session runs the decision call
 
 - Jacob: no new money until there are results.
