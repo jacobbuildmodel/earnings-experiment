@@ -1,0 +1,70 @@
+# Paper LONG straddle (a second Alpaca paper account, D011 v2) - code only, no AI. A copy of paper-options.yml
+# (D011 v1, frozen) pointed at pipeline/paper_long.py and the APCA_L_* secrets; inert until those exist.
+#
+# Below, v1's own description applies unchanged to the long straddle.
+#
+# The short iron butterfly on every live-season gate SH-X takes: opened on the snapshot session right after the
+# gate is committed, closed on the reaction session from 14:30 ET (registry/D011_paper_options_v1.md). Orders are
+# only sent while the market is open, so this runs every 10 minutes through the gate window and the exit window
+# (EDT and EST), after every S2-window run (which the claude/s2-trigger routine starts), and mid-morning.
+# pipeline/paper_options.py adopts an existing order id instead of resending it, so overlapping starts are safe.
+name: Earnings experiment - paper long straddle
+
+on:
+  workflow_run:
+    workflows: ["Earnings experiment - S2 window"]
+    types: [completed]
+  schedule:
+    - cron: "*/10 18-20 * * 1-5"    # 14:00-16:50 EDT / 13:00-15:50 EST
+    - cron: "40 14,15 * * 1-5"      # mid-morning: fills and late exits
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "sync (default) or check"
+        required: false
+        default: "sync"
+
+concurrency:
+  group: paper-long
+  cancel-in-progress: false
+
+jobs:
+  paper-long:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    env:
+      APCA_L_API_KEY_ID: ${{ secrets.APCA_L_API_KEY_ID }}
+      APCA_L_API_SECRET_KEY: ${{ secrets.APCA_L_API_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - a FAIL stops new opens, never the exits
+        id: health
+        continue-on-error: true
+        run: python check.py
+
+      - name: Second account (read-only)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'check'
+        run: python pipeline/paper_long.py check
+
+      - name: Send due orders, record fills, commit the ledger
+        if: github.event_name != 'workflow_dispatch' || inputs.command == 'sync' || inputs.command == ''
+        env:
+          EXITS_ONLY: ${{ steps.health.outcome == 'failure' && '--exits-only' || '' }}
+        run: python pipeline/paper_long.py sync --commit $EXITS_ONLY
