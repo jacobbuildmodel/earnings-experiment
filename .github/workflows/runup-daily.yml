@@ -1,0 +1,53 @@
+# SH-RU (D009 v3): the 20-session run-up into the print - code only, no AI.
+# OPERATIONAL COPY of the registered runup.yml (registry/D009_implementation_v3_addendum.md): identical except the
+# season-list shell line, which in runup.yml exits 1 under `bash -e` while universe/seasonB does not exist.
+#
+# Every weekday morning after 06:00 ET it grades each SH-RU event whose window has closed (pipeline/shadow_runup.py
+# grade): D_act from the company confirmation or the first Item 2.02 8-K, X = min(E + 20, D_act - 1), prices
+# fetched once and stored write-once. Outcomes go to outcomes/shadow/<season>/runup*.jsonl, fenced from T2.
+name: Earnings experiment - SH-RU run-up (daily)
+
+on:
+  schedule:
+    - cron: "30 10,11 * * 1-5"      # 06:30 / 07:30 EDT · 05:30 / 06:30 EST (the code waits for 06:00 ET)
+  workflow_dispatch:
+
+concurrency:
+  group: runup-daily
+  cancel-in-progress: false
+
+jobs:
+  runup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Grade every live season's due SH-RU windows, commit
+        run: |
+          seasons=$(for s in seasonA seasonB; do if [ -f "universe/$s/candidates.json" ]; then echo "$s"; fi; done)   # A and B only
+          python pipeline/shadow_runup.py grade $seasons --commit
+
+      - name: Interim report (printed, not written)
+        run: |
+          seasons=$(for s in seasonA seasonB; do if [ -f "universe/$s/candidates.json" ]; then echo "$s"; fi; done)   # A and B only
+          python pipeline/shadow_runup.py report $seasons || true
