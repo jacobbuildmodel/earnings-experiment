@@ -1,0 +1,15 @@
+# D009 implementation v3 (2026-10-12 ET): SH-RU (D009 v3 §2-§3), registered before the first X (~2026-11-06).
+# D009 v3 §6 says "shadow.py runup"; it is pipeline/shadow_runup.py so the frozen SH-W/M/X code is not edited.
+# Size gate (§3): CBB size 11-16% > 7% -> KV fixed-b NW (lag 20) is primary (KV size 4.2-5.1%), decided on
+# synthetic data only. Independent review (Sonnet): REGISTER WITH FIXES; all fixes applied before this hash.
+# sessions/common/report/freeze are pinned because SH-RU results depend on them; a change to any is a v4.
+3246ab4def7a3b45da0da81407c6d760b4d8d22273a6be310b52c207fab8fdac pipeline/shadow_runup.py
+3244fcc2315be836dbe4536b74aba6256ff7c1ad5af82d063e4112f32d9a3996 tests/test_shadow_runup.py
+45a71b12ca7aad69edca9a02b41e9ea18cf66c00c83443ec54be60543cb51dc0 tests/fixtures/runup_calendar.json
+75276e60eb290aa077a5572715cf85522c246620c0db74320400af5ca8b89790 tests/fixtures/runup_prices.json
+4333900ea07f7bb77e1b21794c77db81e99bc436da1d5235faadaf42cc7d98ef registry/D009_v3_size_gate.json
+cc22ab6f5a56cbec8c75b4b8257bf015ab6e678fc71089a569705b24236fc14a .github/workflows/runup.yml
+cad558e909a00094d24e7c69748a5b747b51af4d65a22cda1e95975af88a6d61 pipeline/sessions.py
+0a8d40790140faaa59bb492e7fb64aa411213d9a84565de864cb3c2a0bda1fd2 pipeline/common.py
+a6c046c7ce991f8ed137bd49f918a9a91d9438292f890ebe3a42de79a25f48e3 pipeline/report.py
+bf6e31c960ff40bcd073e482fa4a6d68c402c7231cc9cc53d23e26c0cb8d69ab pipeline/freeze.py
