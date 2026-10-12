@@ -9,6 +9,20 @@
 
 ---
 
+## 2026-10-12 (Mon) — D010: the straddle's edge is the size of its spread (RQ4)
+
+- **The headline was misleading until I asked why the costs were so large.** Both sides lose 3–4% of spot
+  after costs. But DoltHub's end-of-day legs have a median spread of 21–31% of the option price, against
+  ~4% at our live 14:30 gates. D010 traded every name, including ones our gate refuses.
+- **Restricted to the gate's ≤ 10% spread rule:**
+  - selling earns +1.13% at mid (t 3.44) and ~0 after paying the spread twice
+  - buying loses 2.2% (t −6.4)
+  - The cut was chosen after looking, so it is a candidate, now **D012 H-XT** for Season A + B.
+- **Lesson: read a backtest's cost line against live quotes before reading its verdict.** A cost
+  assumption can be the whole result.
+- **What it changes:** execution is the strategy. SH-X holding to expiry skips the second spread, and
+  D011's real fills will show what is really paid. The buy side looks structurally bad.
+
 ## 2026-10-09 (Fri) evening — the free minutes ran out; the repo went public
 
 - **What happened:** from 16:03 ET every GitHub Actions job was refused before it started. The private

@@ -1,6 +1,22 @@
 # STATE — Earnings Experiment
 
-**Season A live · repo now PUBLIC (Actions minutes) · D011 v1 + v2 frozen** · updated 2026-10-09 20:50 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D010 reviewed → D012 H-XT frozen · repo PUBLIC** · updated 2026-10-12 12:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-12 (Mon) 12:40 ET — D010 reviewed and merged; D012 (H-XT) frozen (`9bef05d`).**
+- **D010 verified:** 200 sampled events re-derived from `raw/` (0 mismatches); a deterministic rerun.
+  Review: `analysis/d010/REVIEW_2026-10-12.md`.
+- **Result, all 1,249 valid events (2025–26-heavy; 2019 has no calendar rows):** neither side pays after
+  costs. Short −3.22% (t −19), long −4.03% (t −20), short at mid +0.40% (t 2.95). No finding.
+- **But the costs are illiquid names:** the median leg spread is 21% (P) and 31% (Q) of the option price.
+  Post-hoc, on the gate's own ≤ 10% spread rule (n 168, 114 dates): short at mid **+1.13% (t 3.44)**,
+  short after both spreads +0.05%, **long −2.20% (t −6.4)**.
+- **D012 v1 FROZEN: H-XT** = SH-X on gates with both legs `rel_spread` ≤ 0.10. Confirmatory, own family
+  m = 1, verdict on A + B pooled.
+  - 🔴 **TO DO before the first report showing H-XT (and before Season A's end):** the code path in D009's
+    report code, registered as `D012_implementation_v1.sha256`.
+- **Next automatic events:**
+  - Tue Oct 13: DPZ butterfly exit from 14:30 ET.
+  - Fri Oct 16: first 3 Season A gates, and the first PX-L long straddles.
 
 **2026-10-09 (Fri) 20:50 ET — Actions was blocked; the repo is now PUBLIC. D011 v2 (long straddle) frozen.**
 - 🔴 **From 16:03 ET Fri, GitHub refused to start ANY job**: "recent account payments have failed or your
