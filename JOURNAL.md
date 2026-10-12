@@ -9,6 +9,23 @@
 
 ---
 
+## 2026-10-12 (Mon) afternoon — the size gate earned its keep (RQ1, SH-RU)
+
+- **The registered primary test failed its own pre-check.** With 20-session windows and a season of ~30
+  portfolio sessions, a block bootstrap with block 20 has only 2–3 blocks. Under a true null it rejects
+  11–16% of the time at a nominal 5%.
+- The rule (written 10-07) said: check the size on synthetic data first, and switch to KV fixed-b if it
+  fails. Fixed-b's size is 4–5%. **Without the gate, SH-RU would have run at roughly 2.5× its stated false-
+  positive rate.**
+- **Lesson:** a resampling test on short overlapping series needs its size measured, not assumed. Write
+  the fallback into the rule before any data exists.
+- **Second lesson, smaller:** the registered workflow failed on its first CI run, a bash `-e` trap on a
+  season that does not exist yet. A test of the workflow before hashing it would have caught it. It is
+  now fixed by an addendum and a disabled original; nothing had run.
+- An independent review caught that a failed price download would have permanently voided an event. That
+  failure is correlated with delisting, so it would have been a survivorship bias. It is fixed before
+  registration.
+
 ## 2026-10-12 (Mon) — D010: the straddle's edge is the size of its spread (RQ4)
 
 - **The headline was misleading until I asked why the costs were so large.** Both sides lose 3–4% of spot
