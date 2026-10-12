@@ -9,6 +9,26 @@
 
 ---
 
+## 2026-10-09 (Fri) evening — the free minutes ran out; the repo went public
+
+- **What happened:** from 16:03 ET every GitHub Actions job was refused before it started. The private
+  repo had spent its 2,000 free minutes for the month by the 9th.
+- **Where they went:** the S2 window's "wait for the window" design.
+  - It was the right fix for dropped cron fires (PAYX, DRI and BB, Sep 21–22), but a waiting runner bills
+    every minute it sleeps: 1,338 min in 9 days.
+  - Add the one-off D007 batch (762 min).
+- **Lesson: every reliability fix has a meter.** Nobody had counted runner minutes as a budget, and the
+  failure was silent: a 3-second "failure" with the reason only in a check-run annotation, not the log.
+  **Check annotations whenever a run fails in under 10 seconds.**
+- **Jacob chose public over a $15 cap.** Public Actions minutes are free. Side benefit: the
+  pre-registrations and their commit timestamps are now publicly checkable.
+  - The history was scanned first: no secrets, no portfolio data.
+- **DPZ, D011's first fill:** the butterfly filled 4¢ better than the far-side quotes, which verifies the
+  limit-price sign. One fill says nothing about edge.
+- **D011 v2 (the long straddle on a second account) frozen.** It waits for Jacob's keys.
+  - Not sent to a second-model review: it is a thin wrapper over the reviewed v1 code, and that wrapper is
+    covered by tests. The risk is accepted and written down here.
+
 ## 2026-10-08/09 — paper straddles: the account cannot hold the trade we test (RQ4, RQ6)
 
 - Jacob: "add paper straddles now".
