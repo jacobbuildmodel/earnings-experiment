@@ -2,6 +2,21 @@
 
 **Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
+**2026-10-13 (Tue) ~08:30 ET — paper-options report frozen (D011 impl v3, `fc0ba41`); daily health check live.**
+- `pipeline/paper_options_report.py`: D011 §8 + v2 §3. Run it: `python pipeline/paper_options_report.py seasonA
+  --write`. Opus review: FREEZE after fixes. (It is v3: v2's name was already the long straddle's.)
+- **Health check** (`pipeline/health.py`, `.github/workflows/health.yml`), code only, no AI:
+  - GREEN, AMBER or RED goes to `ops/health/latest.md` (plus one file a day).
+  - RED opens or comments on ONE GitHub issue, "Health RED", which GitHub e-mails to Jacob. It closes on
+    GREEN.
+  - Checks: check.py, missed snapshot windows, stage 1 not frozen, T2 missing or **at risk (< 14 h)**, D013
+    shadows, Actions failures, paper halts and alerts, the SH-M capture.
+  - Runs at 23:30, 03:30, 11:30, 13:30 and 21:15 UTC.
+  - The first CI run passed (AMBER: the old 10-12 runup.yml failure, which ages out in 24 h).
+- **New test:** every workflow YAML must parse. Two YAML/escaping slips today; GitHub fails such a file
+  silently.
+- 🔴 **Next session, start with `ops/health/latest.md`.**
+
 **2026-10-13 (Tue) ~08:00 ET — Jacob upgraded to Max; D013 FROZEN (`3e5f47f`): T2 model shadows.**
 - **Tracks**, on every T2 dossier, exactly D004 v4 stage 2 (`pipeline/t2_models.py`; `t2_stage2.py` is not
   edited):

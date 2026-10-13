@@ -9,6 +9,17 @@
 
 ---
 
+## 2026-10-13 (Tue) morning — making failure loud (health check) and the report frozen
+
+- **The health check exists because of Friday.** The billing outage stopped every job for hours, and
+  nothing said so. It is now a free code-only job that reads the record and emails Jacob (via one GitHub
+  issue) only when an event or a T2 decision is being lost, or is about to be.
+- **The review's best catch:** "T2 missing" only after the deadline is an obituary, not an alarm. It now
+  fires "AT RISK" within 14 hours of the deadline, while the loss can still be prevented.
+- **Second catch:** a committed status file could stand in for a crashed run, a false GREEN.
+- **Process lesson:** two invalid workflow files in one day, both from escaping layers (Python inside bash
+  heredocs). GitHub fails such a file silently. A test now parses every workflow.
+
 ## 2026-10-13 (Tue) — Max plan: capacity spent on the core asset (RQ5, CHARTER I2)
 
 - Jacob moved to Max and asked that it be used well. The constraint that had shaped T2 was capacity, which
