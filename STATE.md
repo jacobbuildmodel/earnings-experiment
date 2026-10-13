@@ -17,6 +17,20 @@
   DRIVE note's ideas: 5-day washout (≤ −8%) vs run-up (≥ +8%) before the print, and the sector ETF's week vs
   SPY, among gap-ups, at 5, 30 and 60 minutes (18 tests). Plus 13 bp small-ticket costs as a secondary.
   - **Order:** v1 `fetch` → v1 `analyse` → `d014-v2.yml` `fetch` → v2 `analyse`.
+- **D014 v3 FROZEN** (retail entry, no new test). moomoo SG documents no opening-auction order (DRIVE
+  checked moomoo's pages), so v1/v2 survivors are re-priced at the first minute's VWAP worsened by half the
+  first post-open spread. Labels: executable (retail), executable at small tickets, or auction-only (that
+  needs a broker with MOO, e.g. POEMS or IBKR: Jacob's call, no new money before paper results).
+  - **Full order:** v1 analyse → v2 fetch + analyse → v3 fetch + analyse.
+  - **Confirmed by Jacob's own app (screenshots, 2026-10-14 00:57 SGT):** his moomoo SG account offers
+    Limit, Market and Market On Close; Stop, Limit-If-Touched, Market-If-Touched, Trailing Stop and
+    Trailing Stop Limit; OCO; TWAP, VWAP and POV algos; Grid and Martingale. **There is no Market-On-Open or
+    Limit-On-Open order.** v3's retail entry is his real entry. The VWAP algo sits near v3's plain-VWAP
+    variant (b), which is descriptive only.
+  - **DST:** 09:30 ET = 22:30 SGT from 2 Nov.
+  - **Idea:** a verifiable customer→supplier map from 10-K "10% customer" sentences that name the customer
+    (EDGAR full-text search). DRIVE may build one and pass the edges on as ideas. DRIVE's own hyperscaler
+    basket is judgment, not disclosure; not used (rule 9 spirit).
   - **Customer → supplier read-across deferred:** there is no verifiable map. It goes to the backlog
     beside FRAMEWORK F4.
 
