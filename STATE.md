@@ -2,6 +2,18 @@
 
 **Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
+**2026-10-13 (Tue) ~10:45 ET — D014 FROZEN (`b5e081b`): the first hour after the print, on history.**
+- Jacob's post-print idea, passed on from the DRIVE chat (no holdings in it; rule 9 intact). Spec
+  `registry/D014_exploration_postprint_v1.md`, code `analysis/d014/`, implementation hashes
+  `registry/D014_implementation_v1.sha256` (the workflow checks them). Opus pre-freeze review: FREEZE WITH
+  FIXES, all applied.
+- **Fetch running** in Actions (`d014.yml`, step `fetch`, run 38415697890, ~2.5 h, resumable). Then run it
+  with step `analyse`. A month that failed is retried by a rerun of `fetch`.
+- **Then:** read `analysis/d014/REPORT.md`. Any CANDIDATE → propose a live paper track in shares (Alpaca
+  paper, automatic at the open), registered before its first reaction day. Otherwise it is negative
+  knowledge for the charter.
+- **Owed to the DRIVE chat via Jacob:** a short note on what D014 found, dead ends included.
+
 **2026-10-13 (Tue) ~08:30 ET — paper-options report frozen (D011 impl v3, `fc0ba41`); daily health check live.**
 - `pipeline/paper_options_report.py`: D011 §8 + v2 §3. Run it: `python pipeline/paper_options_report.py seasonA
   --write`. Opus review: FREEZE after fixes. (It is v3: v2's name was already the long straddle's.)
