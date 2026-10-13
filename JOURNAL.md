@@ -9,6 +9,25 @@
 
 ---
 
+## 2026-10-13 — D010 v2: a units bug hiding in "unadjusted" prices (RQ1, RQ4)
+
+- **The surprise was the size.** Liquid short straddles held to expiry came out at −12.9% of spot, and the
+  long side at +12.2%: impossible magnitudes.
+  - Cause: yfinance `auto_adjust=False` still rewrites history for later splits and spin-offs. KLAC's $690
+    strike sat against a "close" of $69.
+  - v1 survived because it only used ratios of option quotes. Any formula mixing a stock price level with
+    a strike breaks.
+- **Lesson: "unadjusted" from a vendor is a claim to verify. Before trusting any price-level formula,
+  check strike / spot ≈ 1 on every row.** 16 of 1,249 events failed that check.
+- **Handling:** v2 is reported exactly as frozen (Y invalid), plus a disclosed outcome-free correction. Not
+  a silent fix.
+- **Findings:**
+  - Holding to expiry doesn't save the short side.
+  - Buyers keep losing.
+  - The famous call–put IV spread adds little as a selector.
+  - The one "finding" under the frozen rule (Z4) is mostly the average earnings-session premium. The
+    frozen rule can certify a test whose interpretation is still mundane.
+
 ## 2026-10-12 (Mon) afternoon — the size gate earned its keep (RQ1, SH-RU)
 
 - **The registered primary test failed its own pre-check.** With 20-session windows and a season of ~30

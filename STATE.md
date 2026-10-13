@@ -1,6 +1,26 @@
 # STATE — Earnings Experiment
 
-**Season A live · H-XT + SH-RU code registered · repo PUBLIC** · updated 2026-10-12 13:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D010 v2 done (hold-to-expiry ✗, IV spread ✗) · repo PUBLIC** · updated 2026-10-13 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-13 — D010 v2 (pre-registered `458cd3f`, results `a39a7df`, `analysis/d010/REPORT_v2.md`).**
+- 🔴 **Data defect found:** yfinance's "unadjusted" Close is retroactively split- and spin-off-adjusted. 16 of
+  1,249 events have spot and strike on different scales (KLAC, APH, WDC, ANET), so the as-frozen
+  hold-to-expiry results are invalid. A disclosed, outcome-free fix drops strike / spot outside
+  [0.8, 1.25]. v1 is barely affected (−3.22% → −3.27%), and the live pipeline is not.
+- **Hold to expiry (fixed):**
+  - short −0.80% (t −2.9); liquid −0.51% (n 160); at mid +1.03% all / −0.17% liquid
+  - long −2.85% (t −9.3)
+  - **The edge sits in the crush at the print.** Exit at the R close, liquid, at mid: +1.13% (review). Holding
+    the median 15 days to expiry gives it back.
+  - Expiry ≤ 7 d with liquid: only 12 events, insufficient. The live H-XT and SH-X structure cannot be priced
+    on history.
+- **IV spread (LR12) as a selector:** slope and T3−T1 are not significant.
+  - Z4 (rich-call third, +1.98%, t 4.15) passes the frozen finding rule, but the average event rose
+    +1.46% vs SPY in the reaction session (survivor sample, 2024–26). So it is mostly the premium, not the
+    signal.
+  - **Keep LR12 live. Do not make it Season B's best option signal.**
+- **Gate 1 idea:** an SH-X variant exiting at the R close (D011's paper butterfly already does this) as a
+  registered shadow statistic.
 
 **2026-10-12 (Mon) 13:00 ET — both owed code paths written and registered (Jacob: "write now").**
 - **H-XT (D012 impl v1, `8698ccf`):** `pipeline/shadow_xt.py` filters D009's graded SH-X rows to gates with
