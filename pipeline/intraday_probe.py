@@ -45,8 +45,20 @@ def main():
     q = (js.get("quotes") or {}).get("AAPL", []) if code == 200 else []
     print(f"[quotes sip 2025-03-04 09:30] HTTP {code}, {len(q)} quotes",
           (q[0].get("bp"), q[0].get("ap")) if q else str(js)[:200])
-    code, js = get("auctions", symbols="AAPL", start="2025-03-04", end="2025-03-04")
-    print(f"[auctions 2025-03-04] HTTP {code}", str(js)[:300])
+    code, js = get("auctions", symbols="AAPL,SPY,NOC", start="2025-03-03", end="2025-03-04")
+    for s, days in ((js.get("auctions") or {}) if code == 200 else {}).items():
+        for d in days:
+            print(f"[auctions {s} {d.get('d')}] open prints {[(x.get('x'), x.get('c'), x.get('p'), x.get('s')) for x in d.get('o') or []]}"
+                  f" close prints {len(d.get('c') or [])}")
+    if code != 200:
+        print(f"[auctions] HTTP {code}", str(js)[:300])
+    code, js = get("AAPL/quotes", feed="sip", limit=1, sort="desc", start="2025-03-04T14:30:00Z",
+                   end="2025-03-04T14:35:00Z")
+    print(f"[quotes sort=desc, last before 09:35] HTTP {code}", str(js)[:300])
+    code, js = get("bars", symbols="SPY", timeframe="1Day", feed="sip", adjustment="split", start="2022-07-01",
+                   end="2022-09-10", limit=10000)
+    print(f"[daily SPY 2022-07-01..09-10] HTTP {code}", [b["t"] for b in (js.get("bars") or {}).get("SPY", [])][-6:]
+          if code == 200 else str(js)[:200])
 
 
 if __name__ == "__main__":
