@@ -9,6 +9,37 @@
 
 ---
 
+## 2026-10-12 (Mon) afternoon — the size gate earned its keep (RQ1, SH-RU)
+
+- **The registered primary test failed its own pre-check.** With 20-session windows and a season of ~30
+  portfolio sessions, a block bootstrap with block 20 has only 2–3 blocks. Under a true null it rejects
+  11–16% of the time at a nominal 5%.
+- The rule (written 10-07) said: check the size on synthetic data first, and switch to KV fixed-b if it
+  fails. Fixed-b's size is 4–5%. **Without the gate, SH-RU would have run at roughly 2.5× its stated false-
+  positive rate.**
+- **Lesson:** a resampling test on short overlapping series needs its size measured, not assumed. Write
+  the fallback into the rule before any data exists.
+- **Second lesson, smaller:** the registered workflow failed on its first CI run, a bash `-e` trap on a
+  season that does not exist yet. A test of the workflow before hashing it would have caught it. It is
+  now fixed by an addendum and a disabled original; nothing had run.
+- An independent review caught that a failed price download would have permanently voided an event. That
+  failure is correlated with delisting, so it would have been a survivorship bias. It is fixed before
+  registration.
+
+## 2026-10-12 (Mon) — D010: the straddle's edge is the size of its spread (RQ4)
+
+- **The headline was misleading until I asked why the costs were so large.** Both sides lose 3–4% of spot
+  after costs. But DoltHub's end-of-day legs have a median spread of 21–31% of the option price, against
+  ~4% at our live 14:30 gates. D010 traded every name, including ones our gate refuses.
+- **Restricted to the gate's ≤ 10% spread rule:**
+  - selling earns +1.13% at mid (t 3.44) and ~0 after paying the spread twice
+  - buying loses 2.2% (t −6.4)
+  - The cut was chosen after looking, so it is a candidate, now **D012 H-XT** for Season A + B.
+- **Lesson: read a backtest's cost line against live quotes before reading its verdict.** A cost
+  assumption can be the whole result.
+- **What it changes:** execution is the strategy. SH-X holding to expiry skips the second spread, and
+  D011's real fills will show what is really paid. The buy side looks structurally bad.
+
 ## 2026-10-09 (Fri) evening — the free minutes ran out; the repo went public
 
 - **What happened:** from 16:03 ET every GitHub Actions job was refused before it started. The private

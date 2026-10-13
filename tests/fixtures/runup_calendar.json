@@ -1,0 +1,122 @@
+{
+ "candidates": {
+  "season": "seasonZ",
+  "window": [
+   "2026-10-12",
+   "2026-11-20"
+  ],
+  "candidates": [
+   {
+    "ticker": "GOLD",
+    "cluster": "semis",
+    "etf": "SMH",
+    "cik": 1
+   },
+   {
+    "ticker": "AVONLY",
+    "cluster": "consumer",
+    "etf": "XLY",
+    "cik": 2
+   },
+   {
+    "ticker": "EARLY",
+    "cluster": "consumer",
+    "etf": "XLY",
+    "cik": 3
+   },
+   {
+    "ticker": "TRUNC",
+    "cluster": "software_internet",
+    "etf": "IGV",
+    "cik": 4
+   },
+   {
+    "ticker": "OLD",
+    "cluster": "consumer",
+    "etf": "XLY",
+    "cik": 5
+   },
+   {
+    "ticker": "NONE",
+    "cluster": "consumer",
+    "etf": "XLY",
+    "cik": 6
+   },
+   {
+    "ticker": "GOLD",
+    "cluster": "semis",
+    "etf": "SMH",
+    "cik": 1
+   }
+  ]
+ },
+ "nasdaq": {
+  "days": {
+   "2026-11-12": [
+    {
+     "symbol": "GOLD"
+    },
+    {
+     "symbol": "EARLY"
+    },
+    {
+     "symbol": "TRUNC"
+    }
+   ],
+   "2026-10-20": [
+    {
+     "symbol": "OLD"
+    }
+   ],
+   "2026-11-25": [
+    {
+     "symbol": "NONE"
+    }
+   ]
+  }
+ },
+ "av_csv": "symbol,name,reportDate\nGOLD,G,2026-11-13\nAVONLY,A,2026-11-16\nAVONLY,A,2026-11-18\nNONE,N,2026-12-01\n",
+ "freeze_date": "2026-10-07",
+ "capture_date": "2026-10-08",
+ "company_dates": {
+  "EARLY": "2026-10-15",
+  "TRUNC": "2026-11-05",
+  "GOLD": "2026-11-12"
+ },
+ "expected": {
+  "GOLD": {
+   "D_exp": "2026-11-12",
+   "E": "2026-10-14",
+   "void": null,
+   "D_act": "2026-11-12",
+   "X": "2026-11-11"
+  },
+  "AVONLY": {
+   "D_exp": "2026-11-16",
+   "E": "2026-10-16",
+   "void": null
+  },
+  "EARLY": {
+   "D_exp": "2026-11-12",
+   "E": "2026-10-14",
+   "void": "print_before_window",
+   "D_act": "2026-10-15"
+  },
+  "TRUNC": {
+   "D_exp": "2026-11-12",
+   "E": "2026-10-14",
+   "void": null,
+   "D_act": "2026-11-05",
+   "X": "2026-11-04"
+  },
+  "OLD": {
+   "D_exp": "2026-10-20",
+   "E": "2026-09-21",
+   "void": "window_not_open"
+  },
+  "NONE": {
+   "D_exp": null,
+   "void": "no_expected_date"
+  }
+ }
+}

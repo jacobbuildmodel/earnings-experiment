@@ -1,0 +1,35 @@
+{
+ "rule": "D009 v3 §3 size gate",
+ "run_et": "2026-10-12T12:29:24-04:00",
+ "season_pattern": "seasonA",
+ "open_E_dates": [
+  "2026-10-09",
+  "2026-10-12",
+  "2026-10-13",
+  "2026-10-14",
+  "2026-10-15",
+  "2026-10-19",
+  "2026-10-20",
+  "2026-10-21",
+  "2026-10-22"
+ ],
+ "sims_per_n": 2000,
+ "bootstrap_draws_per_sim": 9999,
+ "design": "E dates resampled from the season's open windows; pooled = two seasons, the second offset by 65 sessions; daily excess = common N(0, 1%) + idiosyncratic t(5) scaled to 2.5%, mean 0. Disclosed: iid noise, no volatility clustering or autocorrelation",
+ "size_at_nominal_5pct": {
+  "30": 0.1275,
+  "45": 0.1145,
+  "60": 0.1205,
+  "30_one_season": 0.158
+ },
+ "threshold": 0.07,
+ "passed": false,
+ "kv_fixed_b_size_at_nominal_5pct": {
+  "30": 0.051,
+  "45": 0.044,
+  "60": 0.046,
+  "30_one_season": 0.0415
+ },
+ "kv_null": "simulated fixed-b, T 1000, 20000 draws, seed by b",
+ "primary": "KV fixed-b NW (lag 20)"
+}
