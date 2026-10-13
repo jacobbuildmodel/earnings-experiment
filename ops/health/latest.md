@@ -1,13 +1,12 @@
-# Health 2026-10-13 08:24 ET - **AMBER**
+# Health 2026-10-13 15:55 ET - **AMBER**
 
-check.py: PASS - 0 warning(s)
+check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
 - none
 
 ## AMBER - look at
 - Actions failure: .github/workflows/health.yml at 2026-10-13T12:22:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/38396861350
-- Actions failure: Earnings experiment - SH-RU run-up at 2026-10-12T16:29:51Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/38277793447
 
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F']
