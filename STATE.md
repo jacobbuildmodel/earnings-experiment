@@ -921,6 +921,7 @@ runner; the in-window fires were absent, not failing. Two commits followed, both
 arrives up to 4 h early until the window opens**, so any fire landing in that five-hour span produces a
 gate, and a stdlib-only pre-check ends a fire in seconds on a day with nothing due. The AI step remains
 forbidden from editing `.github/`. **First real test: Mon 2026-09-28, AIR and JBL.**
+- **2026-10-13 (Tue) housekeeping run:** nothing gated or frozen by this run; no T2 decision awaited. Season A status: 246 PENDING, 71 CONFIRMED, 1 FROZEN (DPZ, ineligible: wide_spread). Probed the six most urgent PENDING names (SMMT, GE, GLXY, PEGA, HXL, DECK): none confirmable (no date announced, no session stated, or ambiguous dates for PEGA/HXL); earliest snapshot sessions have not yet passed, so all stay PENDING. Nothing failed.
 
 ## Hardening before evaluation — 2026-09-21 (laptop session, ~07:50–09:15 ET)
 
