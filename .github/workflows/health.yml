@@ -55,10 +55,8 @@ jobs:
           if [ ! -f ops/health/status.txt ]; then
             mkdir -p ops/health
             echo RED > ops/health/status.txt
-            printf '# Health check CRASHED
-
-See the workflow run: %s/%s/actions/runs/%s
-' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" > ops/health/latest.md
+            echo "# Health check CRASHED" > ops/health/latest.md
+            echo "See the workflow run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> ops/health/latest.md
           fi
           status=$(cat ops/health/status.txt)
           n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "Health RED in:title" --json number -q '.[0].number // empty')
