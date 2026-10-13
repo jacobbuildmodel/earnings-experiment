@@ -1,6 +1,27 @@
 # STATE — Earnings Experiment
 
-**Season A live · D010 v2 done (hold-to-expiry ✗, IV spread ✗) · repo PUBLIC** · updated 2026-10-13 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-13 (Tue) ~08:00 ET — Jacob upgraded to Max; D013 FROZEN (`3e5f47f`): T2 model shadows.**
+- **Tracks**, on every T2 dossier, exactly D004 v4 stage 2 (`pipeline/t2_models.py`; `t2_stage2.py` is not
+  edited):
+  - **T2O** = Opus 5.5
+  - **T2R** = a second Sonnet 5.5 run, T2's test–retest
+  - **T2M** = the mean of T2, T2R and T2O when all three froze
+  - SHADOW only. T2 is untouched.
+- **Fable 5.1 refused** by the account through the isolated CLI: "requires usage credits" (paid extra usage).
+  **A question for Jacob** whether to enable it; adding it would be D013 v2.
+- **Guards:** T2 first, then a code budget (12 a run, 80 per 7 days per backend), a model check and a drift
+  check (refuses if `t2_models.py` or `t2_stage2.py` change). `check.py` now WARNs (never FAILs) on D013
+  shadow files.
+- **Opus 5.5 review:** FREEZE WITH FIXES; all fixes applied. 88 repo tests pass.
+- **Cloud routine `earnings-t2-models`** (`trig_017LGhgRnK6WZ3SwHFNK4Gyb`), cron `50 1,5,10,21 * * *` UTC,
+  Haiku outer and Bash only. Its guard line is in CLAUDE.md. Test-fired 2026-10-13 11:46 UTC.
+- 🔴 **The app still reports the plan as "Pro"** (get_usage, 2026-10-13). Jacob may need to restart or
+  sign in again.
+- **Watch Fri Oct 16 night:** the first Season A T2, then T2R and T2O. Check `manifest_t2r.json` and
+  `manifest_t2o.json` commits, and `list_runs` of both routines.
+- **To do:** `t2_models.py report seasonA` once events are graded (descriptive).
 
 **2026-10-13 — D010 v2 (pre-registered `458cd3f`, results `a39a7df`, `analysis/d010/REPORT_v2.md`).**
 - 🔴 **Data defect found:** yfinance's "unadjusted" Close is retroactively split- and spin-off-adjusted. 16 of

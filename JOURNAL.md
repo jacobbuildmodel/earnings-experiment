@@ -9,6 +9,20 @@
 
 ---
 
+## 2026-10-13 (Tue) — Max plan: capacity spent on the core asset (RQ5, CHARTER I2)
+
+- Jacob moved to Max and asked that it be used well. The constraint that had shaped T2 was capacity, which
+  is why D004 v4 chose Sonnet over Opus and deferred the ensemble. **T2 itself cannot switch models without
+  ending its pooled A + B record**, so the capacity went to shadows: Opus on the identical dossier, a second
+  Sonnet run (T2's test–retest), and their ensemble.
+- **The probe mattered:** Fable 5.1 is refused without paid credits, which a spec written from memory would
+  have missed.
+- **The review mattered more:** the real risk to T2 was never shared code. It was a shared *allowance*. A
+  peak night of Opus shadows could exhaust the weekly cap and leave T2 MISSING the next morning, as with APLD
+  on 10-07. Now there is a code budget, not "an operator may pause".
+- Smaller catches: a silent model substitution, a hash lock nothing enforced, and a shadow file able to fail
+  the health check that gates T2's own queue.
+
 ## 2026-10-13 — D010 v2: a units bug hiding in "unadjusted" prices (RQ1, RQ4)
 
 - **The surprise was the size.** Liquid short straddles held to expiry came out at −12.9% of spot, and the
