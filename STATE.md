@@ -22,6 +22,11 @@
   first post-open spread. Labels: executable (retail), executable at small tickets, or auction-only (that
   needs a broker with MOO, e.g. POEMS or IBKR: Jacob's call, no new money before paper results).
   - **Full order:** v1 analyse → v2 fetch + analyse → v3 fetch + analyse.
+  - **Confirmed by Jacob's own app (screenshots, 2026-10-14 00:57 SGT):** his moomoo SG account offers
+    Limit, Market and Market On Close; Stop, Limit-If-Touched, Market-If-Touched, Trailing Stop and
+    Trailing Stop Limit; OCO; TWAP, VWAP and POV algos; Grid and Martingale. **There is no Market-On-Open or
+    Limit-On-Open order.** v3's retail entry is his real entry. The VWAP algo sits near v3's plain-VWAP
+    variant (b), which is descriptive only.
   - **DST:** 09:30 ET = 22:30 SGT from 2 Nov.
   - **Idea:** a verifiable customer→supplier map from 10-K "10% customer" sentences that name the customer
     (EDGAR full-text search). DRIVE may build one and pass the edges on as ideas. DRIVE's own hyperscaler
