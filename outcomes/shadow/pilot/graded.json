@@ -2,7 +2,7 @@
  "season": "pilot",
  "rule": "D009_shadow_tracks_v1",
  "graded_by": "pipeline/shadow.py",
- "graded_et": "2026-10-09T21:53:54-04:00",
+ "graded_et": "2026-10-12T23:08:51-04:00",
  "sh_m_universe": 46,
  "sh_m_stats": {
   "rows_without_session": 1,
@@ -12,7 +12,8 @@
    "2026-10-06",
    "2026-10-07",
    "2026-10-08",
-   "2026-10-09"
+   "2026-10-09",
+   "2026-10-12"
   ]
  },
  "events": [
@@ -45,7 +46,7 @@
    "exists_before_entry": true,
    "void": "print_contradicted",
    "timing_check": "contradicted",
-   "timing_final": false,
+   "timing_final": true,
    "exit_A": {
     "entry": 116.5,
     "exit": 107.2,
@@ -225,7 +226,7 @@
    "exists_before_entry": true,
    "void": null,
    "timing_check": "verified",
-   "timing_final": false,
+   "timing_final": true,
    "exit_A": {
     "entry": 323.35,
     "exit": 306.0,
@@ -315,7 +316,7 @@
    "exists_before_entry": true,
    "void": null,
    "timing_check": "verified",
-   "timing_final": false,
+   "timing_final": true,
    "exit_A": {
     "entry": 1076.76,
     "exit": 1054.08,
@@ -360,7 +361,7 @@
    "exists_before_entry": true,
    "void": null,
    "timing_check": "verified",
-   "timing_final": false,
+   "timing_final": true,
    "exit_A": {
     "entry": 35.45,
     "exit": 32.55,
@@ -914,12 +915,24 @@
    "marketCap": 2610109184,
    "universe_committed": "2026-09-17T20:07:12+08:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 22.49,
+    "exit": 22.04,
+    "dividends": 0.0,
+    "raw_return": -0.020008892841262726,
+    "net_return": -0.02200889284126273,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": 0.0017809668843404847,
+    "excess_spy": -0.02178985972560321
+   },
    "vol60": 0.33995,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -1006,12 +1019,24 @@
    "marketCap": 51209109504,
    "universe_committed": "2026-09-17T20:07:12+08:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 81.71,
+    "exit": 79.68,
+    "dividends": 0.0,
+    "raw_return": -0.024843960347570526,
+    "net_return": -0.026843960347570528,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": 0.0017809668843404847,
+    "excess_spy": -0.02662492723191101
+   },
    "vol60": 0.30252,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-X",
@@ -1050,8 +1075,15 @@
    "void": null,
    "timing_check": "verified",
    "timing_final": false,
-   "straddle": null,
-   "graded": false,
+   "straddle": {
+    "expiry_close": 23.68,
+    "premium_bid": 2.8,
+    "payoff": 1.3200000000000003,
+    "pnl_on_spot": 0.058788482417161954,
+    "pnl_on_spot_mid": 0.06037736032032851,
+    "realised_move": 0.05938428132540852
+   },
+   "graded": true,
    "flags": []
   },
   {
@@ -1131,7 +1163,7 @@
    "exists_before_entry": true,
    "void": null,
    "timing_check": "verified",
-   "timing_final": false,
+   "timing_final": true,
    "straddle": {
     "expiry_close": 1074.89,
     "premium_bid": 82.1,
@@ -1179,7 +1211,7 @@
    "exists_before_entry": true,
    "void": null,
    "timing_check": "verified",
-   "timing_final": false,
+   "timing_final": true,
    "straddle": {
     "expiry_close": 33.87,
     "premium_bid": 2.99,

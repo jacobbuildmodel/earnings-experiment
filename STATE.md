@@ -1,6 +1,74 @@
 # STATE — Earnings Experiment
 
-**Season A live · H-XT + SH-RU code registered · repo PUBLIC** · updated 2026-10-12 13:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-13 (Tue) ~10:45 ET — D014 FROZEN (`b5e081b`): the first hour after the print, on history.**
+- Jacob's post-print idea, passed on from the DRIVE chat (no holdings in it; rule 9 intact). Spec
+  `registry/D014_exploration_postprint_v1.md`, code `analysis/d014/`, implementation hashes
+  `registry/D014_implementation_v1.sha256` (the workflow checks them). Opus pre-freeze review: FREEZE WITH
+  FIXES, all applied.
+- **Fetch running** in Actions (`d014.yml`, step `fetch`, run 38415697890, ~2.5 h, resumable). Then run it
+  with step `analyse`. A month that failed is retried by a rerun of `fetch`.
+- **Then:** read `analysis/d014/REPORT.md`. Any CANDIDATE → propose a live paper track in shares (Alpaca
+  paper, automatic at the open), registered before its first reaction day. Otherwise it is negative
+  knowledge for the charter.
+- **Owed to the DRIVE chat via Jacob:** a short note on what D014 found, dead ends included.
+
+**2026-10-13 (Tue) ~08:30 ET — paper-options report frozen (D011 impl v3, `fc0ba41`); daily health check live.**
+- `pipeline/paper_options_report.py`: D011 §8 + v2 §3. Run it: `python pipeline/paper_options_report.py seasonA
+  --write`. Opus review: FREEZE after fixes. (It is v3: v2's name was already the long straddle's.)
+- **Health check** (`pipeline/health.py`, `.github/workflows/health.yml`), code only, no AI:
+  - GREEN, AMBER or RED goes to `ops/health/latest.md` (plus one file a day).
+  - RED opens or comments on ONE GitHub issue, "Health RED", which GitHub e-mails to Jacob. It closes on
+    GREEN.
+  - Checks: check.py, missed snapshot windows, stage 1 not frozen, T2 missing or **at risk (< 14 h)**, D013
+    shadows, Actions failures, paper halts and alerts, the SH-M capture.
+  - Runs at 23:30, 03:30, 11:30, 13:30 and 21:15 UTC.
+  - The first CI run passed (AMBER: the old 10-12 runup.yml failure, which ages out in 24 h).
+- **New test:** every workflow YAML must parse. Two YAML/escaping slips today; GitHub fails such a file
+  silently.
+- 🔴 **Next session, start with `ops/health/latest.md`.**
+
+**2026-10-13 (Tue) ~08:00 ET — Jacob upgraded to Max; D013 FROZEN (`3e5f47f`): T2 model shadows.**
+- **Tracks**, on every T2 dossier, exactly D004 v4 stage 2 (`pipeline/t2_models.py`; `t2_stage2.py` is not
+  edited):
+  - **T2O** = Opus 5.5
+  - **T2R** = a second Sonnet 5.5 run, T2's test–retest
+  - **T2M** = the mean of T2, T2R and T2O when all three froze
+  - SHADOW only. T2 is untouched.
+- **Fable 5.1 refused** by the account through the isolated CLI: "requires usage credits" (paid extra usage).
+  **A question for Jacob** whether to enable it; adding it would be D013 v2.
+- **Guards:** T2 first, then a code budget (12 a run, 80 per 7 days per backend), a model check and a drift
+  check (refuses if `t2_models.py` or `t2_stage2.py` change). `check.py` now WARNs (never FAILs) on D013
+  shadow files.
+- **Opus 5.5 review:** FREEZE WITH FIXES; all fixes applied. 88 repo tests pass.
+- **Cloud routine `earnings-t2-models`** (`trig_017LGhgRnK6WZ3SwHFNK4Gyb`), cron `50 1,5,10,21 * * *` UTC,
+  Haiku outer and Bash only. Its guard line is in CLAUDE.md. Test-fired 2026-10-13 11:46 UTC.
+- 🔴 **The app still reports the plan as "Pro"** (get_usage, 2026-10-13). Jacob may need to restart or
+  sign in again.
+- **Watch Fri Oct 16 night:** the first Season A T2, then T2R and T2O. Check `manifest_t2r.json` and
+  `manifest_t2o.json` commits, and `list_runs` of both routines.
+- **To do:** `t2_models.py report seasonA` once events are graded (descriptive).
+
+**2026-10-13 — D010 v2 (pre-registered `458cd3f`, results `a39a7df`, `analysis/d010/REPORT_v2.md`).**
+- 🔴 **Data defect found:** yfinance's "unadjusted" Close is retroactively split- and spin-off-adjusted. 16 of
+  1,249 events have spot and strike on different scales (KLAC, APH, WDC, ANET), so the as-frozen
+  hold-to-expiry results are invalid. A disclosed, outcome-free fix drops strike / spot outside
+  [0.8, 1.25]. v1 is barely affected (−3.22% → −3.27%), and the live pipeline is not.
+- **Hold to expiry (fixed):**
+  - short −0.80% (t −2.9); liquid −0.51% (n 160); at mid +1.03% all / −0.17% liquid
+  - long −2.85% (t −9.3)
+  - **The edge sits in the crush at the print.** Exit at the R close, liquid, at mid: +1.13% (review). Holding
+    the median 15 days to expiry gives it back.
+  - Expiry ≤ 7 d with liquid: only 12 events, insufficient. The live H-XT and SH-X structure cannot be priced
+    on history.
+- **IV spread (LR12) as a selector:** slope and T3−T1 are not significant.
+  - Z4 (rich-call third, +1.98%, t 4.15) passes the frozen finding rule, but the average event rose
+    +1.46% vs SPY in the reaction session (survivor sample, 2024–26). So it is mostly the premium, not the
+    signal.
+  - **Keep LR12 live. Do not make it Season B's best option signal.**
+- **Gate 1 idea:** an SH-X variant exiting at the R close (D011's paper butterfly already does this) as a
+  registered shadow statistic.
 
 **2026-10-12 (Mon) 13:00 ET — both owed code paths written and registered (Jacob: "write now").**
 - **H-XT (D012 impl v1, `8698ccf`):** `pipeline/shadow_xt.py` filters D009's graded SH-X rows to gates with
@@ -901,6 +969,7 @@ runner; the in-window fires were absent, not failing. Two commits followed, both
 arrives up to 4 h early until the window opens**, so any fire landing in that five-hour span produces a
 gate, and a stdlib-only pre-check ends a fire in seconds on a day with nothing due. The AI step remains
 forbidden from editing `.github/`. **First real test: Mon 2026-09-28, AIR and JBL.**
+- **2026-10-13 (Tue) housekeeping run:** nothing gated or frozen by this run; no T2 decision awaited. Season A status: 246 PENDING, 71 CONFIRMED, 1 FROZEN (DPZ, ineligible: wide_spread). Probed the six most urgent PENDING names (SMMT, GE, GLXY, PEGA, HXL, DECK): none confirmable (no date announced, no session stated, or ambiguous dates for PEGA/HXL); earliest snapshot sessions have not yet passed, so all stay PENDING. Nothing failed.
 
 ## Hardening before evaluation — 2026-09-21 (laptop session, ~07:50–09:15 ET)
 

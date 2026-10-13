@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "sync (default), check, orders, or options-probe"
+        description: "sync (default), check, orders, options-probe, options-orders-probe or intraday-probe"
         required: false
         default: "sync"
 
@@ -67,6 +67,10 @@ jobs:
       - name: Options order mechanics (orders placed while closed, then cancelled)
         if: github.event_name == 'workflow_dispatch' && inputs.command == 'options-orders-probe'
         run: python pipeline/paper_options_probe.py
+
+      - name: Stock minute-bar history (read-only probe, non-event days)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'intraday-probe'
+        run: python pipeline/intraday_probe.py
 
       - name: Submit due orders, record fills, commit the ledger
         if: github.event_name != 'workflow_dispatch' || inputs.command == 'sync' || inputs.command == ''

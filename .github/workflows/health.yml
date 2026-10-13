@@ -1,0 +1,71 @@
+# Daily health check - code only, no AI (pipeline/health.py). Writes ops/health/latest.md and, when the status is
+# RED (an event or a decision is being lost), opens or comments on one GitHub issue titled "Health RED" so GitHub
+# e-mails the repo owner. Runs at 07:30 Singapore (23:30 UTC) and mid-morning US Eastern on weekdays.
+name: Earnings experiment - health
+
+on:
+  schedule:
+    - cron: "30 23 * * *"        # 07:30 SGT, after the US evening jobs
+    - cron: "30 3 * * *"         # 23:30 EDT / 22:30 EST, overnight T2 coverage
+    - cron: "30 11 * * 1-5"      # 07:30 EDT / 06:30 EST, ahead of the 09:15 T2 deadline
+    - cron: "30 13 * * 1-5"      # 09:30 EDT / 08:30 EST, before the open
+    - cron: "15 21 * * 1-5"      # 17:15 EDT / 16:15 EST, after the snapshot window
+  workflow_dispatch:
+
+concurrency:
+  group: health
+  cancel-in-progress: false
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      issues: write
+      actions: read
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check, write and commit
+        run: |
+          rm -f ops/health/status.txt   # a stale committed status must never stand in for a crashed run
+          python pipeline/health.py --write --commit
+
+      - name: Alert on RED, close on GREEN (one issue)
+        if: always()
+        run: |
+          if [ ! -f ops/health/status.txt ]; then
+            mkdir -p ops/health
+            echo RED > ops/health/status.txt
+            echo "# Health check CRASHED" > ops/health/latest.md
+            echo "See the workflow run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" >> ops/health/latest.md
+          fi
+          status=$(cat ops/health/status.txt)
+          n=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "Health RED in:title" --json number -q '.[0].number // empty')
+          if [ "$status" = "RED" ]; then
+            if [ -n "$n" ]; then
+              gh issue comment "$n" --repo "$GITHUB_REPOSITORY" --body-file ops/health/latest.md
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" --title "Health RED" --body-file ops/health/latest.md
+            fi
+          elif [ "$status" = "GREEN" ] && [ -n "$n" ]; then
+            gh issue close "$n" --repo "$GITHUB_REPOSITORY" --comment "Back to GREEN."
+          fi

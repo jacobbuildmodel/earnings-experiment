@@ -231,6 +231,13 @@ for f in glob.glob(os.path.join(ROOT, "events", "*", "*", "t2*.json")):
     if stem in ("t2.json", "t2g.json") and not os.path.exists(os.path.join(os.path.dirname(f), "manifest_" + stem)):
         warn(f"{os.path.relpath(f, ROOT)} has no stage-2 manifest - not a frozen decision")
 manifests = readable
+# D013 shadows (T2O, T2R): their integrity problems WARN, labelled, and never FAIL the check - a FAIL would stop
+# T2's own queue (t2-queue.yml gates on check.py). The D013 grader excludes any shadow not frozen in time.
+D013_STEMS = ("t2o.json", "t2o_thesis", "manifest_t2o", "t2r.json", "t2r_thesis", "manifest_t2r")
+d013 = [x for x in changed if any(s_ in x for s_ in D013_STEMS)]
+changed = [x for x in changed if x not in d013]
+if d013:
+    warn(f"D013 SHADOW file problem(s), T2 unaffected: {d013}")
 if changed:
     bad(f"frozen event file(s) changed: {changed} - a frozen decision can never be edited")
 else:
@@ -262,6 +269,10 @@ for m in manifests:
             tok_bad.append(f"{os.path.relpath(t, ROOT)} (timestamped at/after the entry open)")
         else:
             tok_ok += 1
+d013_tok = [x for x in tok_bad if any(s_ in x for s_ in D013_STEMS)]
+tok_bad = [x for x in tok_bad if x not in d013_tok]
+if d013_tok:
+    warn(f"D013 SHADOW timestamp token problem(s), T2 unaffected: {d013_tok}")
 if tok_bad:
     bad(f"timestamp token(s) fail: {tok_bad}")
 elif manifests:
