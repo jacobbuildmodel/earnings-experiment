@@ -13,6 +13,12 @@
   paper, automatic at the open), registered before its first reaction day. Otherwise it is negative
   knowledge for the charter.
 - **Owed to the DRIVE chat via Jacob:** a short note on what D014 found, dead ends included.
+- **D014 v2 FROZEN (`640ad4b`)** while v1's fetch ran, before any D014 number was seen. It covers the second
+  DRIVE note's ideas: 5-day washout (≤ −8%) vs run-up (≥ +8%) before the print, and the sector ETF's week vs
+  SPY, among gap-ups, at 5, 30 and 60 minutes (18 tests). Plus 13 bp small-ticket costs as a secondary.
+  - **Order:** v1 `fetch` → v1 `analyse` → `d014-v2.yml` `fetch` → v2 `analyse`.
+  - **Customer → supplier read-across deferred:** there is no verifiable map. It goes to the backlog
+    beside FRAMEWORK F4.
 
 **2026-10-13 (Tue) ~08:30 ET — paper-options report frozen (D011 impl v3, `fc0ba41`); daily health check live.**
 - `pipeline/paper_options_report.py`: D011 §8 + v2 §3. Run it: `python pipeline/paper_options_report.py seasonA
