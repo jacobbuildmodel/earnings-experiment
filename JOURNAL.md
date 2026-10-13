@@ -9,6 +9,36 @@
 
 ---
 
+## 2026-10-13 (Tue) late morning — D014: after the print, not before (new question; CHARTER negative-knowledge)
+
+- **Origin:** Jacob, through a note from the DRIVE portfolio chat (ideas and public papers only, no holdings,
+  so rule 9 holds; no DRIVE file read). His question: when a stock spikes or flushes after results, is it
+  justified, and can the first half hour capture it? Our primary exit A *is* the post-print open, so this
+  starts exactly where the experiment's measurement stops.
+- **Data probe (non-event days only):** the Alpaca free plan serves SIP 1-minute bars back to 2022-09,
+  pre-market included, NBBO quotes and the official opening and closing auction prints. Free, and enough for
+  all 3,536 D006 history events.
+- **D014 frozen (`b5e081b`) before any reaction-day price was pulled.** 42 tests on TRAIN (2022-09 → 2025-08):
+  continuation vs reversal at 5, 10, 30 and 60 minutes and the close, unconditional and inside six groups.
+  The groups are big gap vs the implied move, surprise disagreeing with the gap, market against, bad news,
+  mid-cap and high pre-market attention. The bar is |t| > 3 and BH q < 0.10, then one Holm-corrected look at
+  VALIDATION (2025-09 → 2026-09), net of spreads.
+- **The review's best catch (Opus, pre-freeze):** I had defined the gap's direction from the opening
+  auction price, which is also the entry. That can't be known when a market-on-open order must be sent, and
+  noise in that one price would push the result toward "reversal" by construction, a fake fade. The signal
+  now comes from pre-market trades before 09:27, after the release's SEC acceptance time.
+- **Other fixes:**
+  - date-only `end=` parameters would have silently dropped the reaction day's auctions
+  - a 1e-6 split tolerance would have voided rounding noise
+  - delayed NYSE openings now blank the horizons before the open
+  - a failed request no longer poisons a month for good
+  - exits use quote mids, avoiding bid-ask bounce
+- **Rule 10 note:** a repo-wide grep surfaced two fenced-archive lines about "intraday alpha". They were
+  excluded and shaped nothing. Disclosed in D014 §0.
+- **Prior (stated before the result):** the large-cap literature says most of the reaction lands within
+  minutes. If there is anything, I expect it in mid-caps and big gaps, and I expect costs at the open to
+  eat a lot of it. A clean "nothing capturable" is a real result.
+
 ## 2026-10-13 (Tue) morning — making failure loud (health check) and the report frozen
 
 - **The health check exists because of Friday.** The billing outage stopped every job for hours, and
