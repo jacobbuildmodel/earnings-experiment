@@ -1,6 +1,46 @@
 # STATE — Earnings Experiment
 
-**Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-14 12:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-14 12:15 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-14 (Wed) 12:09 ET — D015 v1 FROZEN (`bd67722`): C1 live, the confirmatory test of D014's one survivor.**
+- **What:** `registry/D015_c1_live_v1.md`. C1 is "fade a pre-market gap bigger than the options-implied move". It
+  is tested on fresh data, graded after the fact from Alpaca history with D014's own code (imported unchanged).
+  No order is sent.
+  - **Population:** every SH-M event (market-wide, ≥ $2B) of Season A + B whose reaction session opens after
+    `bd67722`. The first is Thu Oct 15.
+  - **The live implied move:** written once to `shadow/c1/im/<P>.json`, 15:25–15:55 ET on the session before the
+    reaction. Contract: the first **monthly** expiry strictly after R, nearest strike, mid / spot. That is D014's
+    instrument: 82% of its implied moves were third-Friday monthlies. The nearest expiry is a secondary.
+    AAPL today: 6.6% monthly vs 2.5% weekly.
+  - **H-C1:** mean y_30 < 0 in the C1 group, CR1 by R date, Student t with G − 1 df.
+    - **Look 1:** Season A alone, from 2026-12-07, at p < 0.005.
+    - **Final:** A + B pooled, at p < 0.045.
+    - Power at VALIDATION's −0.9%: ~20% at look 1, ~85% final.
+  - 🔴 **BLIND until a look:** `status` shows counts and coverage only. Never print a C1 mean, t or p before the
+    look; looks are written once by code.
+- **Guards:**
+  - `check.py` verifies the 12-file `D015_implementation_v1.sha256`. That includes `shadow.py`, `sessions.py`,
+    `common.py` and `s1_screen.py`, so **an edit to those now needs a dated line in that list**.
+  - Captures are write-once. The code refuses to run on drift. Health is AMBER if the latest session has no C1
+    capture.
+- **Review:** Opus 5.5 said FREEZE WITH FIXES, 11 findings, all applied. Critical: the monthly expiry. Major:
+  blinding; Student t; SEC failures can't block a date; the sample-defining code is now hash-checked. 171 tests
+  pass.
+- **Workflow:** `c1-shadow.yml`.
+  - **Capture:** the routine pushes plus 5 cron backups; one job waits for the window.
+  - **Grade:** 18:50 EDT plus a 21:20 backup.
+  - **Probe:** manual, a pre-registration R only.
+  - Today's capture was dispatched by hand at 12:09 ET (run 38595673105) and waits for 15:25.
+- 🔴 **Watch:**
+  - Today ~15:57 ET: the commit of `shadow/c1/im/2026-10-14.json` (12 names due).
+  - Thu Oct 15 18:50 ET: the first grade, with `outcomes/shadow/seasonA/c1.json` counts only.
+  - ✅ **Probe run 38595680182 (R = Oct 13, pre-registration, coverage only):**
+    - 9 SH-M events, 45 requests, 0 failures. Opens and closes are auction prints. Pre-market prices are at
+      09:25–09:26. Quotes 4/4, retail entry ok.
+    - FBK is void `no_premarket`.
+    - **All 9 timing `unverified`:** big banks and others file the 2.02 8-K at 10:28–11:32 ET, after the open; the
+      wire release is ~07:00. So: no acceptance floor, kept and flagged. D014 had 1 such event in 3,536. The
+      "timing verified" secondary will be thin among large financials.
 
 **2026-10-14 (Wed) ~12:30 ET: the DPZ incident; D011 v3 FROZEN (paper closes); the window runner; exit alarms.**
 - **The incident:** `ops/incidents/2026-10-13_DPZ_exit.md`. Expectations were committed before the outcome
@@ -44,8 +84,8 @@ pattern validated.
 - **v2:** nothing.
 - **Retail market order at the open:** costs about 0.8% vs the auction. The first-minute VWAP is about the
   auction price.
-- 🔴 **Next action:** register C1 as a history-graded live shadow on Season A + B. Freeze it before the
-  first Season A reaction day (NOC/RTX/VICR, the week of Oct 19). The implied move comes from the S2 gate.
+- ✅ **Next action, done 2026-10-14 as D015** (`bd67722`): C1 is registered as a history-graded live shadow,
+  market-wide (not gated-only), with its own monthly-expiry implied-move capture (not the S2 gate's).
 - **Owed:** the note to DRIVE via Jacob (given in chat 2026-10-14).
 
 **2026-10-13 (Tue) ~10:45 ET — D014 FROZEN (`b5e081b`): the first hour after the print, on history.**
