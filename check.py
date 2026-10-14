@@ -144,14 +144,15 @@ if gone:
     bad(f"file(s) under events/, universe/, registry/ or shadow/ were deleted in history: {gone[:10]}")
 else:
     ok("nothing under events/, universe/, registry/ or shadow/ has ever been deleted")
-# D009 §3.2: a shadow calendar capture is write-once - the capture in force is the one first committed.
-_, edited = git("log", "--diff-filter=M", "--name-only", "--format=", "--", "shadow/calendar")
-_, dirty = git("diff", "HEAD", "--name-only", "--", "shadow/calendar")
+# D009 §3.2 / D015 §3: shadow calendar and C1 implied-move captures are write-once - the capture in force is the
+# one first committed.
+_, edited = git("log", "--diff-filter=M", "--name-only", "--format=", "--", "shadow/calendar", "shadow/c1/im")
+_, dirty = git("diff", "HEAD", "--name-only", "--", "shadow/calendar", "shadow/c1/im")
 edited = sorted({g for g in (edited + chr(10) + dirty).splitlines() if g.strip()})
 if edited:
-    bad(f"shadow calendar capture(s) changed after their first commit: {edited[:10]}")
+    bad(f"shadow capture(s) changed after their first commit: {edited[:10]}")
 APPEND_ONLY = ["registry/FROZEN.sha256", "registry/D005_implementation_v1.sha256",
-               "registry/D004_implementation_v4.sha256"]
+               "registry/D004_implementation_v4.sha256", "registry/D015_implementation_v1.sha256"]
 _, hist = git("log", "--format=", "-p", "--", *APPEND_ONLY)
 _, work = git("diff", "HEAD", "--", *APPEND_ONLY)
 removed = [ln for ln in (hist + "\n" + work).splitlines() if ln.startswith("-") and not ln.startswith("---")]
@@ -181,6 +182,28 @@ if os.path.exists(_impl):
             "registry/D004_implementation_v4.sha256 (rule 5: never a silent edit of the live T2)")
     else:
         ok(f"D004 v4 implementation: {len(_want)} file(s) match their registered hashes")
+
+# D015 v1 (review 2026-10-14, finding 5): the C1 shadow's code AND the shared code that defines its sample
+# (shadow.py's SH-M events and SEC timing, sessions, common, s1_screen) must match their latest registered line.
+_impl = os.path.join(ROOT, "registry", "D015_implementation_v1.sha256")
+if os.path.exists(_impl):
+    _want = {}
+    for _ln in open(_impl, encoding="utf-8"):
+        if _ln.strip() and not _ln.startswith("#"):
+            _h, _n = _ln.split(maxsplit=1)
+            _want[_n.strip()] = _h
+    _drift = []
+    for _n, _h in _want.items():
+        _p = os.path.join(ROOT, _n)
+        _d = hashlib.sha256(open(_p, "rb").read().replace(b"\r\n", b"\n")).hexdigest() if os.path.exists(_p) else "missing"
+        if _d != _h:
+            _drift.append(_n)
+    if _drift:
+        bad(f"D015 v1 implementation changed without a registered hash: {_drift} - a change to the C1 code is D015 "
+            "v2; a change to shared code needs a dated line in registry/D015_implementation_v1.sha256 saying why the "
+            "C1 sample is unaffected (rule 5)")
+    else:
+        ok(f"D015 v1 implementation: {len(_want)} file(s) match their registered hashes")
 
 # Frozen events: every file listed in an event's manifest must still match its hash.
 import json

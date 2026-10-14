@@ -19,6 +19,7 @@ Checks, each mechanical (reviewed by Opus 5.5, 2026-10-13, fixes applied):
   paper exits        a filled position still open on its reaction session 15:15-15:55 ET -> RED (still savable);
                      still open after that -> AMBER (added after the DPZ incident)
   SH-M capture       no shadow/calendar/<today>.json after 12:00 ET on a session -> AMBER
+  C1 capture         no shadow/c1/im/<P>.json for the latest session whose close has passed (D015) -> AMBER
 Information: upcoming snapshots, PENDING date confirmations, open paper positions.
 """
 import datetime
@@ -30,7 +31,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et  # noqa: E402
-from sessions import is_session, shift  # noqa: E402
+from sessions import close_time, is_session, shift  # noqa: E402
 
 D = datetime.date.fromisoformat
 REPO = os.environ.get("GITHUB_REPOSITORY", "jacobbuildmodel/earnings-experiment")
@@ -38,6 +39,7 @@ CRITICAL_WORKFLOWS = ("Earnings experiment - S2 window", "Earnings experiment - 
 D013_START = datetime.date(2026, 10, 14)
 AT_RISK = datetime.timedelta(hours=14)
 LOOKBACK = datetime.timedelta(days=5)
+D015_START = datetime.date(2026, 10, 14)
 
 
 def load(p):
@@ -222,6 +224,18 @@ def capture_check(now):
         f"no SH-M calendar capture for {d} yet"
 
 
+def c1_capture_check(now):
+    """D015 §3: the C1 implied-move capture of the latest session whose close has passed. A missing one means that
+    session's SH-M events can never be C1. Silent until D015 is registered."""
+    if not os.path.exists(os.path.join(ROOT, "registry", "D015_implementation_v1.sha256")):
+        return None
+    d = now.date()
+    p = d if is_session(d) and now >= datetime.datetime.combine(d, close_time(d), ET) else shift(d, -1)
+    if p < D015_START:
+        return None
+    return None if os.path.exists(os.path.join(ROOT, "shadow", "c1", "im", f"{p.isoformat()}.json")) else         f"no C1 implied-move capture for {p} (D015): that session's events can never be C1"
+
+
 def upcoming(now, n=5):
     out = []
     d = now.date()
@@ -256,9 +270,9 @@ def run(write=False, commit=False, now=None):
             (red if name in CRITICAL_WORKFLOWS else amber).append(f"Actions {st}: {name} at {when} {url}")
     r, a, i = ledgers(now)
     red, amber, info = red + r, amber + a, info + i
-    c = capture_check(now)
-    if c:
-        amber.append(c)
+    for c in (capture_check(now), c1_capture_check(now)):
+        if c:
+            amber.append(c)
     info += upcoming(now)
     status = "RED" if red else "AMBER" if amber else "GREEN"
     md = [f"# Health {now:%Y-%m-%d %H:%M} ET - **{status}**", "", f"check.py: {last}", ""]
