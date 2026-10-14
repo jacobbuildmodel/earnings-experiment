@@ -1,4 +1,4 @@
-# Health 2026-10-14 14:07 ET - **AMBER**
+# Health 2026-10-14 18:20 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,7 +6,7 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
-- EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 6 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
+- EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 8 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
 
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F']
