@@ -1002,6 +1002,7 @@ arrives up to 4 h early until the window opens**, so any fire landing in that fi
 gate, and a stdlib-only pre-check ends a fire in seconds on a day with nothing due. The AI step remains
 forbidden from editing `.github/`. **First real test: Mon 2026-09-28, AIR and JBL.**
 - **2026-10-13 (Tue) housekeeping run:** nothing gated or frozen by this run; no T2 decision awaited. Season A status: 246 PENDING, 71 CONFIRMED, 1 FROZEN (DPZ, ineligible: wide_spread). Probed the six most urgent PENDING names (SMMT, GE, GLXY, PEGA, HXL, DECK): none confirmable (no date announced, no session stated, or ambiguous dates for PEGA/HXL); earliest snapshot sessions have not yet passed, so all stay PENDING. Nothing failed.
+- **2026-10-14 (Wed) housekeeping run:** nothing gated or frozen by this run; no T2 decision awaited. Code's overnight `find_dates` batches confirmed 0. AI step resolved three names code had left ambiguous, each on an explicit company statement plus two agreeing second sources: **PEGA** 2026-10-20 AMC (release after close; the 10-21 08:00 call is the follow-up), **HXL** 2026-10-21 AMC (release after close; call next morning), **DECK** 2026-10-22 AMC (call 4:30pm ET, `session_from_call_time`; yfinance 16:00 agrees, Nasdaq gives no session). **GLXY** states 2026-10-27 BMO but neither yfinance nor Nasdaq gives a session yet, so it stays PENDING (snapshot would be 10-23). SMMT, GE, CORZ still no date announced. Nothing failed.
 
 ## Hardening before evaluation — 2026-09-21 (laptop session, ~07:50–09:15 ET)
 
