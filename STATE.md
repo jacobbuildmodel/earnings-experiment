@@ -2,6 +2,18 @@
 
 **Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
+**2026-10-13 (Tue) ~13:30 ET — D014 v1/v2/v3 RESULTS** (`analysis/d014/REPORT*.md`). Verdict: no first-hour
+pattern validated.
+- **C1, fade a gap beyond the implied move:** −2.0% on TRAIN (t −4.7, n 70). The VALIDATION sign holds at
+  −0.8%, but n is 62 and Holm p 0.3–0.5, so it **failed validation**. Under the retail entry it is
+  auction-only.
+- **v2:** nothing.
+- **Retail market order at the open:** costs about 0.8% vs the auction. The first-minute VWAP is about the
+  auction price.
+- 🔴 **Next action:** register C1 as a history-graded live shadow on Season A + B. Freeze it before the
+  first Season A reaction day (NOC/RTX/VICR, the week of Oct 19). The implied move comes from the S2 gate.
+- **Owed:** the note to DRIVE via Jacob (given in chat 2026-10-14).
+
 **2026-10-13 (Tue) ~10:45 ET — D014 FROZEN (`b5e081b`): the first hour after the print, on history.**
 - Jacob's post-print idea, passed on from the DRIVE chat (no holdings in it; rule 9 intact). Spec
   `registry/D014_exploration_postprint_v1.md`, code `analysis/d014/`, implementation hashes
