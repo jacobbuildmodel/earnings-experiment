@@ -1,4 +1,4 @@
-# Health 2026-10-14 04:58 ET - **AMBER**
+# Health 2026-10-14 11:52 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,7 +6,7 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
-- Actions failure: .github/workflows/health.yml at 2026-10-13T12:22:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/38396861350
+- EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 5 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
 
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F']
