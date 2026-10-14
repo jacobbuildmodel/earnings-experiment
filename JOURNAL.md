@@ -9,6 +9,41 @@
 
 ---
 
+## 2026-10-13 (Tue) afternoon ET — D014 v1/v2/v3 results: the first hour after the print (exploration)
+
+- **Run cleanly:** 3,536 events, 15,715 requests, 0 failures. 2,885 had a pre-market gap of at least 1%
+  (TRAIN 1,973 on 351 dates, VALIDATION 912 on 132 dates). 222 were void, all `no_premarket`.
+- **Unconditional: no continuation and no reversal.** At 5 minutes the mean is −0.13% (t −1.9); at 30
+  minutes −0.02%; at the close +0.16% (t 1.2). By minute 5 the median stock has made 87% of its whole
+  reaction-day move (vs the prior close). The literature's "it lands within minutes" holds here.
+- **One TRAIN signal, which failed validation: fade a gap bigger than the options-implied move (C1).**
+  - TRAIN: −2.0% at every horizon, t −4.7 to −3.2, n 70 on 45 dates.
+  - VALIDATION: the same sign, −0.7% to −0.9%, but n 62 on 36 dates, Holm p 0.31–0.48. **Failed
+    validation.**
+  - **It is thin:** the implied move exists for only 868 events (D010's straddle coverage).
+- **C6** (heavy pre-market volume, fade at 5 minutes): failed.
+- **v2** (washout vs run-up, sector week): nothing. Every |t| < 2. The washout and run-up groups have only
+  about 75 events each.
+- **v3, the retail entry: every survivor is auction-only.**
+  - A market order at the open meets a median half-spread of **0.45%** on the first quote after the
+    cross, about twice the 0.25% at 09:35.
+  - Pricing the entry at the first minute's VWAP plus that half-spread costs about **0.8%** against the
+    auction.
+  - The first minute's plain VWAP sits within about 0.05% of the auction. That points to the moomoo VWAP
+    algo, or a limit order, not a market order.
+  - **Post-hoc, descriptive, not a test:** C1's fade at plain VWAP: TRAIN +1.2% to +1.7% net (t 2.9–3.6),
+    VALIDATION +0.2% to +0.7% (t 0.5–1.0).
+- **What it taught:**
+  1. The post-print open is efficient on average in this universe.
+  2. Only the extreme overshoot (beyond what options priced) shows a reversal, and it is too rare to
+     confirm on one year.
+  3. For a retail account, **how** you enter matters more than the signal: a market order at 09:30 gives
+     away about 0.8%.
+- **Next:** register C1 ("fade a pre-market gap beyond the implied move") as a live, history-graded
+  shadow on Season A + B before Season A's first reaction day. Entry is the auction and the first-minute
+  VWAP; Alpaca history grades it after the fact, so no live orders are needed. It needs a live implied
+  move (the S2 gate's straddle quotes).
+
 ## 2026-10-13 (Tue) late morning — D014: after the print, not before (new question; CHARTER negative-knowledge)
 
 - **Origin:** Jacob, through a note from the DRIVE portfolio chat (ideas and public papers only, no holdings,

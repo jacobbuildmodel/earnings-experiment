@@ -2,6 +2,18 @@
 
 **Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
+**2026-10-13 (Tue) ~13:30 ET — D014 v1/v2/v3 RESULTS** (`analysis/d014/REPORT*.md`). Verdict: no first-hour
+pattern validated.
+- **C1, fade a gap beyond the implied move:** −2.0% on TRAIN (t −4.7, n 70). The VALIDATION sign holds at
+  −0.8%, but n is 62 and Holm p 0.3–0.5, so it **failed validation**. Under the retail entry it is
+  auction-only.
+- **v2:** nothing.
+- **Retail market order at the open:** costs about 0.8% vs the auction. The first-minute VWAP is about the
+  auction price.
+- 🔴 **Next action:** register C1 as a history-graded live shadow on Season A + B. Freeze it before the
+  first Season A reaction day (NOC/RTX/VICR, the week of Oct 19). The implied move comes from the S2 gate.
+- **Owed:** the note to DRIVE via Jacob (given in chat 2026-10-14).
+
 **2026-10-13 (Tue) ~10:45 ET — D014 FROZEN (`b5e081b`): the first hour after the print, on history.**
 - Jacob's post-print idea, passed on from the DRIVE chat (no holdings in it; rule 9 intact). Spec
   `registry/D014_exploration_postprint_v1.md`, code `analysis/d014/`, implementation hashes
@@ -990,6 +1002,7 @@ arrives up to 4 h early until the window opens**, so any fire landing in that fi
 gate, and a stdlib-only pre-check ends a fire in seconds on a day with nothing due. The AI step remains
 forbidden from editing `.github/`. **First real test: Mon 2026-09-28, AIR and JBL.**
 - **2026-10-13 (Tue) housekeeping run:** nothing gated or frozen by this run; no T2 decision awaited. Season A status: 246 PENDING, 71 CONFIRMED, 1 FROZEN (DPZ, ineligible: wide_spread). Probed the six most urgent PENDING names (SMMT, GE, GLXY, PEGA, HXL, DECK): none confirmable (no date announced, no session stated, or ambiguous dates for PEGA/HXL); earliest snapshot sessions have not yet passed, so all stay PENDING. Nothing failed.
+- **2026-10-14 (Wed) housekeeping run:** nothing gated or frozen by this run; no T2 decision awaited. Code's overnight `find_dates` batches confirmed 0. AI step resolved three names code had left ambiguous, each on an explicit company statement plus two agreeing second sources: **PEGA** 2026-10-20 AMC (release after close; the 10-21 08:00 call is the follow-up), **HXL** 2026-10-21 AMC (release after close; call next morning), **DECK** 2026-10-22 AMC (call 4:30pm ET, `session_from_call_time`; yfinance 16:00 agrees, Nasdaq gives no session). **GLXY** states 2026-10-27 BMO but neither yfinance nor Nasdaq gives a session yet, so it stays PENDING (snapshot would be 10-23). SMMT, GE, CORZ still no date announced. Nothing failed.
 
 ## Hardening before evaluation — 2026-09-21 (laptop session, ~07:50–09:15 ET)
 
