@@ -1,0 +1,42 @@
+# D014 descriptive control: open costs on ordinary days (analysis/d014/control_days.py). No test, no rule.
+# Code only, no AI. Run by hand; it measures the control days and commits control_days.json and CONTROL.md.
+name: Earnings experiment - D014 control days
+
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: d014
+  cancel-in-progress: false
+
+jobs:
+  d014control:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Measure and commit
+        run: python analysis/d014/control_days.py --commit
