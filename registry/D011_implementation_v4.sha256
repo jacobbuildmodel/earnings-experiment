@@ -1,0 +1,16 @@
+# D011 implementation v4 (2026-10-14 ET): pipeline/paper_options.py with D011 v3's version-gated close
+# (registry/D011_paper_options_v3.md). Trades without "exec": "v3" run v1's code paths; v1's tests
+# (tests/test_paper_options.py, unchanged since commit f84849d, hash e9bd7116...) pass. The v1 file itself is
+# preserved at commit f84849d (registry/D011_implementation_v1.sha256). The window runner is listed because it
+# sets the cadence the 2-minute cancel relies on.
+9fd6367270d014a117ef8038792ae4f6c604dd4637c8ba970d01a1e1b2054e16  registry/D011_paper_options_v3.md
+a907de8b8a85e5e10400cedd6850eeb09ede4035d0ef5fa5303a924bfdfebf66  pipeline/paper_options.py
+98dea2ff7f093514ec2693075aabed1527e0c14b90ccc72589e8317025dfd687  pipeline/paper.py
+5cdacda7df9dcb1c4da1bb77b88fc871b4477844536fdf54ad7437e732466bca  pipeline/paper_long.py
+e9bd7116d48da4a622e1719ab706908840222f572f0ccb329408e93595acab94  tests/test_paper_options.py
+5ec382d280c4f7829883ed8f0efe80d681c7ad53c5811211c8193e3f3db26ee6  tests/test_paper_options_v3.py
+08c4003dd16dcc98fa5290cae814492f9f2a3fbb2e69fc77da1899465ff5cfb3  tests/test_paper_long.py
+14e9e4c59025ae46e52ee5f6605394ca8951b53850076647ff7995e85317667d  pipeline/paper_window.py
+d9caa19177581d89682dc2b9bfd81755beec1137d20460c30927e9cd48398c70  .github/workflows/paper-window.yml
+5289ebfde9aa7324ff7e9aac8470aaa7ac22dfb81f4cd47bcaee2044ab7e2aea  .github/workflows/paper-options.yml
+2aa8dcf737960c68ce3a6a8fb742e75ae76d0295448d5ead1499161fe6daa551  .github/workflows/paper-long.yml

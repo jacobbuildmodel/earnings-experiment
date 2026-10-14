@@ -12,6 +12,12 @@ Alpaca refuses an order against an opposite open order ("potential wash trade").
 
 State lives in Alpaca, not only in the ledger: before any order is sent its client_order_id is looked up, and an
 existing order is adopted, never resent. The ledger is written after every send.
+
+D011 v3 (registry/D011_paper_options_v3.md, implementation v4): trades whose snapshot session is on or after
+V3_FROM are stamped "exec": "v3". Their CLOSE drops long legs with no bid (left to expire, valued at 0), prices at
+the natural plus a growing concession (0%, 5% ... 25% of |natural|), cancels a live close after 2 minutes, sends a
+one remaining leg as a simple order, records a dropped leg's value at expiry (an alert if in the money), and sends no
+close at or after 15:10 ET on the expiry date. Every other trade, and every opening order, follows v1 unchanged.
 Keys come from APCA_API_KEY_ID / APCA_API_SECRET_KEY (GitHub secrets); they are never printed or stored.
 """
 import datetime
@@ -42,6 +48,10 @@ MAX_OPEN_ATTEMPTS = 2                         # the opening order is sent at mos
 UNVERIFIED_OPEN_CAP = 3                       # opens allowed before the first real fill passes the sanity check
 SEASONS_EXCLUDED = ("pilot",)
 STRUCTURES = "F"
+V3_FROM = "2026-10-15"                        # D011 v3: snapshot sessions on or after this date
+V3_RETRY_AFTER_MIN = 2                        # v3: a live close this old is cancelled; a later run resends
+V3_CONCESSIONS = (0.0, 0.05, 0.10, 0.15, 0.20, 0.25)   # v3: close attempt k pays natural + c_k * |natural|
+V3_EXPIRY_LAST_SEND = datetime.time(15, 10)   # v3: no close at or after this on the expiry date (Alpaca 15:15)
 TERMINAL = ("filled", "canceled", "expired", "rejected", "done_for_day", "replaced")
 LIVE_WAIT = ("pending_cancel", "pending_new", "accepted", "new", "partially_filled", "pending_replace",
              "accepted_for_bidding", "calculated", "held")
@@ -179,6 +189,9 @@ def to_rec(o, sent_sides):
         legs.append({"symbol": lg.get("symbol"), "side": sent_sides.get(lg.get("symbol")),
                      "qty": float(lg.get("filled_qty") or 0),
                      "price": float(lg["filled_avg_price"]) if lg.get("filled_avg_price") else None})
+    if not o.get("legs") and o.get("symbol") in sent_sides:     # a simple one-leg order (v3 closes only)
+        legs.append({"symbol": o["symbol"], "side": sent_sides[o["symbol"]], "qty": float(o.get("filled_qty") or 0),
+                     "price": float(o["filled_avg_price"]) if o.get("filled_avg_price") else None})
     return {"id": o.get("id"), "status": o.get("status"), "filled_qty": float(o.get("filled_qty") or 0),
             "filled_at": o.get("filled_at"), "legs_filled": legs}
 
@@ -188,33 +201,73 @@ def lookup(cid):
     return o if code == 200 and o.get("id") else None
 
 
+def is_v3(tr):
+    return tr.get("exec") == "v3"
+
+
+def quote_age(qq, now):
+    try:
+        return round((now - datetime.datetime.fromisoformat(qq["t"].replace("Z", "+00:00"))).total_seconds())
+    except (KeyError, TypeError, ValueError, AttributeError):
+        return None
+
+
 def send(tr, which, legs, qty, cid, now):
     """Send one mleg order, or adopt the existing order with this id. Returns the attempt record (or None when
     no order could be built: no id is consumed and the next run tries again)."""
-    sides = {lg["symbol"]: lg["side"] for lg in legs}
+    v3_close = which == "close" and is_v3(tr)
+    all_sides = {lg["symbol"]: lg["side"] for lg in legs}
     existing = lookup(cid)
     q = quotes([lg["symbol"] for lg in legs])
+    dropped = []
+    if v3_close:
+        # v3: a long leg whose quote is PRESENT with a zero bid and an ask is left to expire, valued at 0.
+        # A missing quote is never read as worthless: natural() is then None and nothing is sent this run.
+        for lg in legs:
+            qq = q.get(lg["symbol"]) or {}
+            if lg["side"] == "sell" and qq.get("bid") is not None and qq["bid"] <= 0 and qq.get("ask"):
+                dropped.append({"symbol": lg["symbol"], "bid": qq["bid"], "ask": qq["ask"]})
+        if len(dropped) < len(legs):
+            legs = [lg for lg in legs if lg["symbol"] not in {d["symbol"] for d in dropped}]
+        else:
+            dropped = []                          # every leg would go: a data problem, so send the full close
+    sides = {lg["symbol"]: lg["side"] for lg in legs}
     net = natural(legs, q)
     rec = {"client_order_id": cid, "sent_et": now.isoformat(), "qty": qty, "natural": net, "sides": sides,
            "quotes": {lg["symbol"]: q.get(lg["symbol"]) for lg in legs}}
+    limit = None if net is None else limit_of(net)
+    if v3_close:
+        k = sum(1 for r in (tr.get("orders") or {}).get("close", []) if r.get("id"))
+        c = V3_CONCESSIONS[min(k, len(V3_CONCESSIONS) - 1)]
+        if net is not None:
+            limit = limit_of(net + c * abs(net))
+        rec.update(exec="v3", concession=c, dropped_legs=dropped, all_sides=all_sides,
+                   quote_age_s={s: quote_age(q.get(s) or {}, now) for s in sides})
     if existing:
-        rec.update(to_rec(existing, sides), adopted=True)
+        rec.update(to_rec(existing, all_sides), adopted=True)
     elif net is None:
         tr.setdefault("not_sent", []).append({"which": which, "at": now.isoformat(),
                                               "why": "a needed quote is missing or a sold leg has no bid"})
         print(f"{tr['key']} {which}: not sent (quote missing) - retried next run")
         return None
     else:
-        body = {"order_class": "mleg", "qty": str(qty), "type": "limit", "limit_price": f"{limit_of(net):.2f}",
-                "time_in_force": "day", "client_order_id": cid, "legs": legs}
+        if len(legs) == 1 and v3_close:           # v3: one leg left -> a simple limit order, positive price
+            lg = legs[0]
+            body = {"symbol": lg["symbol"], "qty": str(qty), "side": lg["side"], "type": "limit",
+                    "limit_price": f"{abs(limit):.2f}", "time_in_force": "day", "client_order_id": cid,
+                    "position_intent": lg["position_intent"]}
+            rec["order_class"] = "simple"
+        else:
+            body = {"order_class": "mleg", "qty": str(qty), "type": "limit", "limit_price": f"{limit:.2f}",
+                    "time_in_force": "day", "client_order_id": cid, "legs": legs}
         code, got = call("POST", "/orders", json=body)
         rec["limit_price"] = body["limit_price"]
         if code < 300:
-            rec.update(to_rec(got, sides))
+            rec.update(to_rec(got, all_sides))
         else:
             again = lookup(cid)                   # a duplicate-id refusal means the order exists: adopt it
             if again:
-                rec.update(to_rec(again, sides), adopted=True)
+                rec.update(to_rec(again, all_sides), adopted=True)
             else:
                 msg = json.dumps(got)[:300]
                 kind = "capacity" if "buying power" in msg.lower() else "rejected_code"
@@ -231,7 +284,7 @@ def refresh(rec):
         return
     code, o = call("GET", f"/orders/{rec['id']}")
     if code == 200:
-        rec.update(to_rec(o, rec.get("sides") or {}))
+        rec.update(to_rec(o, rec.get("all_sides") or rec.get("sides") or {}))
 
 
 def chain_state(tr, which):
@@ -257,11 +310,12 @@ def fill_net(recs):
     return total / qty if qty else None
 
 
-def maybe_cancel_stale(rec, now):
-    """A live order RETRY_AFTER_MIN old is cancelled. The resend happens on a LATER run, once Alpaca reports the
-    cancel as final - so a cancel that loses the race with a fill can never double the position."""
+def maybe_cancel_stale(rec, now, minutes=None):
+    """A live order RETRY_AFTER_MIN old (v3 closes: V3_RETRY_AFTER_MIN) is cancelled. The resend happens on a LATER
+    run, once Alpaca reports the cancel as final - so a cancel that loses the race with a fill can never double the
+    position."""
     age = (now - datetime.datetime.fromisoformat(rec["sent_et"])).total_seconds() / 60
-    if age >= RETRY_AFTER_MIN and not rec.get("cancel_requested"):
+    if age >= (RETRY_AFTER_MIN if minutes is None else minutes) and not rec.get("cancel_requested"):
         call("DELETE", f"/orders/{rec['id']}")
         rec["cancel_requested"] = now.isoformat()
 
@@ -307,6 +361,8 @@ def open_event(trades, season, g, equity, now):
               "gate_bid_sum": o["call"]["bid"] + o["put"]["bid"],
               "n": max(1, math.floor(equity * RISK_PER_EVENT / (100 * mid))), "equity": equity,
               "created_et": now.isoformat()}
+    if g["snapshot_session"] >= V3_FROM:
+        common["exec"] = "v3"
     for s in STRUCTURES:
         key = f"{base}-{s}"
         if o["expiry"] < g["timing"]["reaction_day"]:
@@ -445,9 +501,11 @@ def step(tr, led, now, today, market_open, exits_only, opens_left):
     # ---- closing chain (reaction session from 14:30 ET; a missed exit closes on any later run before expiry)
     due = (tr["reaction_session"] == today and t >= EXIT_FROM) or (tr["reaction_session"] < today <= tr["expiry"])
     c_f, c_live, c_n, c_recs = chain_state(tr, "close")
-    if due and can_send and o_f and c_f < o_f:
+    v3 = is_v3(tr)
+    can_close = can_send and not (v3 and today == tr["expiry"] and t >= V3_EXPIRY_LAST_SEND)
+    if due and can_close and o_f and c_f < o_f and "close_sim" not in tr:
         if c_live:
-            maybe_cancel_stale(c_live, now)
+            maybe_cancel_stale(c_live, now, V3_RETRY_AFTER_MIN if v3 else None)
         elif sum(1 for r in c_recs if r.get("reject_kind")) >= 3:
             tr["close_rejected"] = [r.get("error") for r in c_recs if r.get("reject_kind")][-1]
         else:
@@ -473,6 +531,19 @@ def step(tr, led, now, today, market_open, exits_only, opens_left):
             lo, hi = tr["wings"]
             tr["close_sim"] = {"net": fly_payoff(s, tr["strike"], lo, hi), "at": now.isoformat(),
                                "why": f"held past expiry; settled at intrinsic on the expiry close {s}"}
+    # ---- v3: a long leg left out of the close is valued at 0; its value at expiry is recorded (an alert if > 0,
+    # because Alpaca exercises an in-the-money long option into shares)
+    dropped = [d for r in (tr.get("orders") or {}).get("close", []) for d in (r.get("dropped_legs") or [])]
+    if v3 and dropped and today > tr["expiry"] and "dropped_at_expiry" not in tr:
+        s = expiry_close(tr["ticker"], tr["expiry"])
+        if s is not None:
+            vals = {}
+            for sym in sorted({d["symbol"] for d in dropped}):
+                k, kind = int(sym[-8:]) / 1000, sym[-9]
+                vals[sym] = max(0.0, s - k) if kind == "C" else max(0.0, k - s)
+            tr["dropped_at_expiry"] = {"expiry_close": s, "intrinsic": vals}
+            if any(v > 0 for v in vals.values()):
+                tr["dropped_itm"] = True
     sanity(tr, led)
     settle(tr)
     return sent
@@ -541,7 +612,7 @@ def sync(do_commit=False, exits_only=False):
     alerts = [t["key"] for t in trades.values()
               if t.get("open_failed") in ("rejected_code", "held_by_cap", "halt") or t.get("flag")
               or t.get("partial_open") or t.get("close_rejected") or t.get("orphan_order")
-              or t.get("fill_unreadable")
+              or t.get("fill_unreadable") or t.get("dropped_itm")
               or any(r.get("reject_kind") for r in (t.get("orders") or {}).get("close") or [])]
     led["alerts"] = alerts or None
     done = sum(1 for t in trades.values() if "result" in t)

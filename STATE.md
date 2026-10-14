@@ -1,6 +1,40 @@
 # STATE — Earnings Experiment
 
-**Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-14 12:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-14 (Wed) ~12:30 ET: the DPZ incident; D011 v3 FROZEN (paper closes); the window runner; exit alarms.**
+- **The incident:** `ops/incidents/2026-10-13_DPZ_exit.md`. Expectations were committed before the outcome
+  (`27c1109`).
+  - DPZ's on-time exit would have been +$32 (natural) or +$328 (mid). The missed exit stands at about −$770
+    (natural, Oct 14).
+  - Three v1 closes at the indicative natural went unfilled. DPZ stays v1: it is retried until expiry on Oct 16,
+    then settled at intrinsic.
+- **D011 v3** (`registry/D011_paper_options_v3.md`, implementation v4; Opus review FREEZE WITH FIXES, all
+  applied): every trade with a snapshot on or after 2026-10-15.
+  - Long legs with a zero bid are dropped from the close.
+  - The concession steps 0%, 5% … 25%.
+  - A live close is cancelled after 2 minutes.
+  - A single remaining leg goes as a simple order.
+  - On expiry day the last close is sent at 15:10.
+  - Dropped legs' value at expiry is recorded, with an alert if in the money.
+  - **Report every D011 number twice: all trades, and v3 only.**
+- **Ops:**
+  - `paper-window.yml` (every 2 minutes, 14:27–15:56 ET; mornings while live). Tested live: it resent DPZ at
+    11:07 ET.
+  - `health.py` raises EXIT NOT FILLED as RED from 15:15 ET.
+  - D011 exit audit v1 (`pipeline/paper_exit_audit.py`).
+  - CLAUDE.md: the cron and indicative-feed facts.
+- **D014 control days:** the cost at the open is mostly the open itself, not the print (`analysis/d014/CONTROL.md`).
+- 🔴 **Watch Fri Oct 16:**
+  - the first Season A gates (NOC, RTX, VICR), the first v3 trades
+  - opening fill rate: v1's 15-minute open cancel now really happens
+  - Mon Oct 19 onward: the first v3 closes. Do they fill at attempt 0, which tests the zero-bid hypothesis,
+    or only after concessions, which tests the indicative-feed hypothesis?
+- **Backlog from the research:**
+  - re-grade paper fills against free OPRA bars after the fact
+  - P&L at three cost levels
+  - fill rate as an outcome
+  - a positions-vs-ledger health check
 
 **2026-10-13 (Tue) ~13:30 ET — D014 v1/v2/v3 RESULTS** (`analysis/d014/REPORT*.md`). Verdict: no first-hour
 pattern validated.
