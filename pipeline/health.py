@@ -171,17 +171,22 @@ def exits(name, led, now):
     red, amber = [], []
     today = now.date().isoformat()
     for k, t in led.get("trades", {}).items():
-        if "result" in t or t.get("skipped") or not t.get("reaction_session"):
+        if "result" in t or t.get("skipped") or t.get("close_sim") or not t.get("reaction_session"):
             continue
         o = (t.get("orders") or {}).get("open", [])
         c = (t.get("orders") or {}).get("close", [])
-        if not sum(r.get("filled_qty") or 0 for r in o) or sum(r.get("filled_qty") or 0 for r in c):
+        o_f = sum(r.get("filled_qty") or 0 for r in o)        # a refused attempt has filled_qty 0
+        c_f = sum(r.get("filled_qty") or 0 for r in c)
+        if not o_f or c_f >= o_f:
             continue
-        tries = f"{len(c)} close order(s) sent, none filled"
+        tries = f"{len(c)} close order(s) sent, {c_f:g} of {o_f:g} closed"
         same_day = t["reaction_session"] == today
-        if same_day and datetime.time(15, 15) <= now.time() < datetime.time(15, 55):
-            red.append(f"EXIT NOT FILLED: paper/{name} {k} - {tries}; the window closes 15:55 ET")
-        elif t["reaction_session"] < today or (same_day and now.time() >= datetime.time(15, 55)):
+        # the last send: 15:55 ET; a D011 v3 trade on its expiry date: 15:10 ET (Alpaca's 15:15 cut-off)
+        last = datetime.time(15, 10) if t.get("exec") == "v3" and t.get("expiry") == today else datetime.time(15, 55)
+        if same_day and datetime.time(15, 15) <= now.time() < last:
+            red.append(f"EXIT NOT FILLED: paper/{name} {k} - {tries}; the last send is {last:%H:%M} ET "
+                       "(the ledger can lag the broker by one run)")
+        elif t["reaction_session"] < today or (same_day and now.time() >= last):
             amber.append(f"EXIT MISSED: paper/{name} {k} still open after its reaction session "
                          f"{t['reaction_session']} - {tries}; expiry {t.get('expiry')}")
     return red, amber

@@ -5,10 +5,13 @@ drops fires: on 2026-10-13 the DPZ close was sent at 14:46 ET, the next runs cam
 cancelled close was never resent (ops/incidents/2026-10-13_DPZ_exit.md).
 - `pipeline/paper_options.py` and `pipeline/paper_long.py` run exactly as their own workflows run them: `sync
   --commit`, with `--exits-only` when check.py fails.
-- Only the cadence becomes reliable. The frozen code's own rules decide everything else: the 15-minute cancel,
-  the resend on a later run, the windows and the cut-offs.
+- Only the cadence becomes reliable. The frozen code's own rules decide everything else: the cancel (v1: 15
+  minutes; D011 v3 closes: 2 minutes), the resend on a later run, the windows and the cut-offs.
+- It exits 1 if any sync returned non-zero (alerts, a halt, a failed push), so a problem shows in Actions.
 
     python pipeline/paper_window.py options|long [--start HH:MM] [--end HH:MM] [--step MIN] [--only-if-active]
+
+The default step is 2 minutes, so a D011 v3 close is cancelled at about 2-3 minutes and resent a run later.
 
 --only-if-active  exit at once unless the ledger has a filled position not yet closed, or a live order.
                   Morning windows use it; the afternoon window always runs, because a gate may appear at any time.
@@ -58,7 +61,7 @@ def run(cmd):
     return r.returncode
 
 
-def main(which, start="14:27", end="15:56", step=3, only_if_active=False, sleep=time.sleep, clock=now_et):
+def main(which, start="14:27", end="15:56", step=2, only_if_active=False, sleep=time.sleep, clock=now_et):
     script, ledger = SCRIPTS[which]
     now = clock()
     if not is_session(now.date()):
@@ -75,25 +78,25 @@ def main(which, start="14:27", end="15:56", step=3, only_if_active=False, sleep=
     if now < t0:
         print(f"waiting until {start} ET", flush=True)
         sleep((t0 - now).total_seconds())
-    runs = 0
+    runs, bad = 0, 0
     while clock() < t1:
         subprocess.run(["git", "pull", "-q", "--no-rebase", "--no-edit", "origin", "main"], cwd=ROOT)
         if only_if_active and not active(ledger):
             print("nothing active in the ledger - done")
             break
         ok = run([sys.executable, "check.py"]) == 0
-        run([sys.executable, script, "sync", "--commit"] + ([] if ok else ["--exits-only"]))
+        bad += run([sys.executable, script, "sync", "--commit"] + ([] if ok else ["--exits-only"])) != 0
         runs += 1
         left = (t1 - clock()).total_seconds()
         if left <= 0:
             break
         sleep(min(step * 60, left))
-    print(f"window done: {runs} run(s)")
-    return 0
+    print(f"window done: {runs} run(s), {bad} with a non-zero exit")
+    return 1 if bad else 0
 
 
 if __name__ == "__main__":
     a = sys.argv[1:]
     opt = lambda k, d: a[a.index(k) + 1] if k in a else d
-    sys.exit(main(a[0], opt("--start", "14:27"), opt("--end", "15:56"), int(opt("--step", "3")),
+    sys.exit(main(a[0], opt("--start", "14:27"), opt("--end", "15:56"), int(opt("--step", "2")),
                   "--only-if-active" in a))

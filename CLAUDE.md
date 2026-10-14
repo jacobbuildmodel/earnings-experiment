@@ -79,13 +79,18 @@ to start a fresh chat in `Earnings Experiment`.
 - **Read every filing in the event window** before attributing a reaction to the print. A same-evening
   8-K (an acquisition, a CEO change) confounds it.
 - **yfinance's daily Open can differ from the 09:30 one-minute bar** (CPRT 2026-09-11: 32.01 vs 31.76).
+- **GitHub's `schedule` is best-effort.** Fires are dropped or arrive hours late (lost PAYX, DRI and BB in Sep;
+  stranded the DPZ exit on 2026-10-13). Anything that must act inside a time window starts early and waits or
+  loops inside ONE job (S2: `due.py wait`; paper exits: `paper_window.py`). Never rely on a cron landing.
+- **Alpaca's free options quotes are the "indicative" feed, randomized**; paper fills are judged against real
+  quotes. A limit at the indicative natural may never fill (D011 v3, ops/incidents/2026-10-13_DPZ_exit.md).
 - **Alpha Vantage transcripts use fiscal quarters** (ORCL's Sep 2026 call is `2027Q1`) and can lag by
   days. Returning nothing is not proof the call didn't happen.
 
 ## GIT
 This is its own repo. Stage explicit paths only. New files are LF; `archive/**` is committed byte-exact
 (`-text`) and never renormalised. **Commit every freeze before the entry open — the commit timestamp is
-the proof the decision was blind.** After every commit, push to both remotes: `git push github main` (the private GitHub copy
+the proof the decision was blind.** After every commit, push to both remotes: `git push github main` (the GitHub copy, public since 2026-10-12 by Jacob's choice for free Actions minutes,
 the cloud routine works from) and `git push local main` (the backup at `C:\repos\earnings-experiment.git`,
 off OneDrive).
 

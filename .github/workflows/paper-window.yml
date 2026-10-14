@@ -1,5 +1,5 @@
 # Paper window runner. Infrastructure, no rule (pipeline/paper_window.py, ops/incidents/2026-10-13_DPZ_exit.md).
-# One job per account runs the FROZEN paper code every 3 minutes through a window:
+# One job per account runs the FROZEN paper code every 2 minutes through a window:
 # - afternoon 14:27-15:56 ET: the D011 exit window and the gate window; always runs
 # - morning 09:35-12:00 ET: missed exits, only while a position or order is live
 # GitHub's "*/10" cron drops fires, so a single long job is more reliable than many short ones. The frozen
@@ -10,7 +10,8 @@ name: Earnings experiment - paper window runner
 
 on:
   schedule:
-    - cron: "15 18 * * 1-5"    # 14:15 EDT / 13:15 EST  -> afternoon
+    - cron: "55 17 * * 1-5"    # 13:55 EDT / 12:55 EST  -> afternoon (before the frozen */10 crons start)
+    - cron: "15 18 * * 1-5"    # backup
     - cron: "45 18 * * 1-5"    # backup
     - cron: "15 19 * * 1-5"    # backup (15:15 EDT / 14:15 EST)
     - cron: "35 13 * * 1-5"    # 09:35 EDT / 08:35 EST  -> morning
@@ -61,5 +62,5 @@ jobs:
           git config user.name "Earnings Experiment (GitHub Actions)"
           git config user.email "actions@github.com"
 
-      - name: Run the frozen paper code every 3 minutes through the window
+      - name: Run the frozen paper code every 2 minutes through the window
         run: python pipeline/paper_window.py ${{ matrix.account }} $WINDOW_ARGS
