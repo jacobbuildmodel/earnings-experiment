@@ -1,0 +1,65 @@
+# Paper window runner. Infrastructure, no rule (pipeline/paper_window.py, ops/incidents/2026-10-13_DPZ_exit.md).
+# One job per account runs the FROZEN paper code every 3 minutes through a window:
+# - afternoon 14:27-15:56 ET: the D011 exit window and the gate window; always runs
+# - morning 09:35-12:00 ET: missed exits, only while a position or order is live
+# GitHub's "*/10" cron drops fires, so a single long job is more reliable than many short ones. The frozen
+# workflows' own crons stay as a second layer. Each job uses that account's concurrency group, so it never runs
+# beside the frozen workflow. Several start times are listed because any one fire may be dropped; a start that
+# finds the window over exits at once.
+name: Earnings experiment - paper window runner
+
+on:
+  schedule:
+    - cron: "15 18 * * 1-5"    # 14:15 EDT / 13:15 EST  -> afternoon
+    - cron: "45 18 * * 1-5"    # backup
+    - cron: "15 19 * * 1-5"    # backup (15:15 EDT / 14:15 EST)
+    - cron: "35 13 * * 1-5"    # 09:35 EDT / 08:35 EST  -> morning
+    - cron: "5 14 * * 1-5"     # backup
+  workflow_dispatch:
+    inputs:
+      window:
+        description: "afternoon or morning"
+        required: false
+        default: "afternoon"
+
+jobs:
+  window:
+    strategy:
+      fail-fast: false
+      matrix:
+        account: [options, long]
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    concurrency:
+      group: ${{ matrix.account == 'options' && 'paper-options' || 'paper-long' }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+      APCA_L_API_KEY_ID: ${{ secrets.APCA_L_API_KEY_ID }}
+      APCA_L_API_SECRET_KEY: ${{ secrets.APCA_L_API_SECRET_KEY }}
+      WINDOW_ARGS: >-
+        ${{ (github.event.schedule == '35 13 * * 1-5' || github.event.schedule == '5 14 * * 1-5'
+             || inputs.window == 'morning')
+            && '--start 09:35 --end 12:00 --only-if-active' || '--start 14:27 --end 15:56' }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Run the frozen paper code every 3 minutes through the window
+        run: python pipeline/paper_window.py ${{ matrix.account }} $WINDOW_ARGS
