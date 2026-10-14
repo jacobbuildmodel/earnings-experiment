@@ -16,6 +16,8 @@ Checks, each mechanical (reviewed by Opus 5.5, 2026-10-13, fixes applied):
   D013 shadows       T2R / T2O missing after the deadline, events entering after 2026-10-13 with a dossier -> AMBER
   Actions            failed / timed-out / startup-failure runs in the last 24 h; S2 window or T2 queue -> RED, else AMBER
   paper ledgers      a halt -> RED; alerts or errors on the last run -> AMBER
+  paper exits        a filled position still open on its reaction session 15:15-15:55 ET -> RED (still savable);
+                     still open after that -> AMBER (added after the DPZ incident)
   SH-M capture       no shadow/calendar/<today>.json after 12:00 ET on a session -> AMBER
 Information: upcoming snapshots, PENDING date confirmations, open paper positions.
 """
@@ -162,13 +164,38 @@ def actions_failures(now):
     return out
 
 
-def ledgers():
+def exits(name, led, now):
+    """D011 exits (added 2026-10-14 after the DPZ incident). A filled position still open on its reaction session
+    between 15:15 and 15:55 ET is RED, while it can still be saved. One still open later is AMBER: the primary exit
+    is already lost, and the frozen code keeps retrying until expiry."""
+    red, amber = [], []
+    today = now.date().isoformat()
+    for k, t in led.get("trades", {}).items():
+        if "result" in t or t.get("skipped") or not t.get("reaction_session"):
+            continue
+        o = (t.get("orders") or {}).get("open", [])
+        c = (t.get("orders") or {}).get("close", [])
+        if not sum(r.get("filled_qty") or 0 for r in o) or sum(r.get("filled_qty") or 0 for r in c):
+            continue
+        tries = f"{len(c)} close order(s) sent, none filled"
+        same_day = t["reaction_session"] == today
+        if same_day and datetime.time(15, 15) <= now.time() < datetime.time(15, 55):
+            red.append(f"EXIT NOT FILLED: paper/{name} {k} - {tries}; the window closes 15:55 ET")
+        elif t["reaction_session"] < today or (same_day and now.time() >= datetime.time(15, 55)):
+            amber.append(f"EXIT MISSED: paper/{name} {k} still open after its reaction session "
+                         f"{t['reaction_session']} - {tries}; expiry {t.get('expiry')}")
+    return red, amber
+
+
+def ledgers(now):
     red, amber, info = [], [], []
     for name in ("options_ledger.json", "long_ledger.json"):
         p = os.path.join(ROOT, "paper", name)
         if not os.path.exists(p):
             continue
         led = load(p)
+        r, a = exits(name, led, now)
+        red, amber = red + r, amber + a
         if led.get("halt"):
             red.append(f"paper/{name}: HALT - {led['halt'].get('why')}")
         if led.get("alerts"):
@@ -222,7 +249,7 @@ def run(write=False, commit=False, now=None):
     else:
         for name, when, url, st in fl:
             (red if name in CRITICAL_WORKFLOWS else amber).append(f"Actions {st}: {name} at {when} {url}")
-    r, a, i = ledgers()
+    r, a, i = ledgers(now)
     red, amber, info = red + r, amber + a, info + i
     c = capture_check(now)
     if c:
