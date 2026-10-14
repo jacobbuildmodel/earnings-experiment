@@ -1,6 +1,74 @@
 # STATE — Earnings Experiment
 
-**Season A live · D010 v2 done (hold-to-expiry ✗, IV spread ✗) · repo PUBLIC** · updated 2026-10-13 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D013 (Opus / Sonnet-replicate shadows) frozen · Max plan** · updated 2026-10-13 08:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-13 (Tue) ~10:45 ET — D014 FROZEN (`b5e081b`): the first hour after the print, on history.**
+- Jacob's post-print idea, passed on from the DRIVE chat (no holdings in it; rule 9 intact). Spec
+  `registry/D014_exploration_postprint_v1.md`, code `analysis/d014/`, implementation hashes
+  `registry/D014_implementation_v1.sha256` (the workflow checks them). Opus pre-freeze review: FREEZE WITH
+  FIXES, all applied.
+- **Fetch running** in Actions (`d014.yml`, step `fetch`, run 38415697890, ~2.5 h, resumable). Then run it
+  with step `analyse`. A month that failed is retried by a rerun of `fetch`.
+- **Then:** read `analysis/d014/REPORT.md`. Any CANDIDATE → propose a live paper track in shares (Alpaca
+  paper, automatic at the open), registered before its first reaction day. Otherwise it is negative
+  knowledge for the charter.
+- **Owed to the DRIVE chat via Jacob:** a short note on what D014 found, dead ends included.
+- **D014 v2 FROZEN (`640ad4b`)** while v1's fetch ran, before any D014 number was seen. It covers the second
+  DRIVE note's ideas: 5-day washout (≤ −8%) vs run-up (≥ +8%) before the print, and the sector ETF's week vs
+  SPY, among gap-ups, at 5, 30 and 60 minutes (18 tests). Plus 13 bp small-ticket costs as a secondary.
+  - **Order:** v1 `fetch` → v1 `analyse` → `d014-v2.yml` `fetch` → v2 `analyse`.
+- **D014 v3 FROZEN** (retail entry, no new test). moomoo SG documents no opening-auction order (DRIVE
+  checked moomoo's pages), so v1/v2 survivors are re-priced at the first minute's VWAP worsened by half the
+  first post-open spread. Labels: executable (retail), executable at small tickets, or auction-only (that
+  needs a broker with MOO, e.g. POEMS or IBKR: Jacob's call, no new money before paper results).
+  - **Full order:** v1 analyse → v2 fetch + analyse → v3 fetch + analyse.
+  - **Confirmed by Jacob's own app (screenshots, 2026-10-14 00:57 SGT):** his moomoo SG account offers
+    Limit, Market and Market On Close; Stop, Limit-If-Touched, Market-If-Touched, Trailing Stop and
+    Trailing Stop Limit; OCO; TWAP, VWAP and POV algos; Grid and Martingale. **There is no Market-On-Open or
+    Limit-On-Open order.** v3's retail entry is his real entry. The VWAP algo sits near v3's plain-VWAP
+    variant (b), which is descriptive only.
+  - **DST:** 09:30 ET = 22:30 SGT from 2 Nov.
+  - **Idea:** a verifiable customer→supplier map from 10-K "10% customer" sentences that name the customer
+    (EDGAR full-text search). DRIVE may build one and pass the edges on as ideas. DRIVE's own hyperscaler
+    basket is judgment, not disclosure; not used (rule 9 spirit).
+  - **Customer → supplier read-across deferred:** there is no verifiable map. It goes to the backlog
+    beside FRAMEWORK F4.
+
+**2026-10-13 (Tue) ~08:30 ET — paper-options report frozen (D011 impl v3, `fc0ba41`); daily health check live.**
+- `pipeline/paper_options_report.py`: D011 §8 + v2 §3. Run it: `python pipeline/paper_options_report.py seasonA
+  --write`. Opus review: FREEZE after fixes. (It is v3: v2's name was already the long straddle's.)
+- **Health check** (`pipeline/health.py`, `.github/workflows/health.yml`), code only, no AI:
+  - GREEN, AMBER or RED goes to `ops/health/latest.md` (plus one file a day).
+  - RED opens or comments on ONE GitHub issue, "Health RED", which GitHub e-mails to Jacob. It closes on
+    GREEN.
+  - Checks: check.py, missed snapshot windows, stage 1 not frozen, T2 missing or **at risk (< 14 h)**, D013
+    shadows, Actions failures, paper halts and alerts, the SH-M capture.
+  - Runs at 23:30, 03:30, 11:30, 13:30 and 21:15 UTC.
+  - The first CI run passed (AMBER: the old 10-12 runup.yml failure, which ages out in 24 h).
+- **New test:** every workflow YAML must parse. Two YAML/escaping slips today; GitHub fails such a file
+  silently.
+- 🔴 **Next session, start with `ops/health/latest.md`.**
+
+**2026-10-13 (Tue) ~08:00 ET — Jacob upgraded to Max; D013 FROZEN (`3e5f47f`): T2 model shadows.**
+- **Tracks**, on every T2 dossier, exactly D004 v4 stage 2 (`pipeline/t2_models.py`; `t2_stage2.py` is not
+  edited):
+  - **T2O** = Opus 5.5
+  - **T2R** = a second Sonnet 5.5 run, T2's test–retest
+  - **T2M** = the mean of T2, T2R and T2O when all three froze
+  - SHADOW only. T2 is untouched.
+- **Fable 5.1 refused** by the account through the isolated CLI: "requires usage credits" (paid extra usage).
+  **A question for Jacob** whether to enable it; adding it would be D013 v2.
+- **Guards:** T2 first, then a code budget (12 a run, 80 per 7 days per backend), a model check and a drift
+  check (refuses if `t2_models.py` or `t2_stage2.py` change). `check.py` now WARNs (never FAILs) on D013
+  shadow files.
+- **Opus 5.5 review:** FREEZE WITH FIXES; all fixes applied. 88 repo tests pass.
+- **Cloud routine `earnings-t2-models`** (`trig_017LGhgRnK6WZ3SwHFNK4Gyb`), cron `50 1,5,10,21 * * *` UTC,
+  Haiku outer and Bash only. Its guard line is in CLAUDE.md. Test-fired 2026-10-13 11:46 UTC.
+- 🔴 **The app still reports the plan as "Pro"** (get_usage, 2026-10-13). Jacob may need to restart or
+  sign in again.
+- **Watch Fri Oct 16 night:** the first Season A T2, then T2R and T2O. Check `manifest_t2r.json` and
+  `manifest_t2o.json` commits, and `list_runs` of both routines.
+- **To do:** `t2_models.py report seasonA` once events are graded (descriptive).
 
 **2026-10-13 — D010 v2 (pre-registered `458cd3f`, results `a39a7df`, `analysis/d010/REPORT_v2.md`).**
 - 🔴 **Data defect found:** yfinance's "unadjusted" Close is retroactively split- and spin-off-adjusted. 16 of

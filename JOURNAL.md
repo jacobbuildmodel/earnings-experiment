@@ -9,6 +9,61 @@
 
 ---
 
+## 2026-10-13 (Tue) late morning — D014: after the print, not before (new question; CHARTER negative-knowledge)
+
+- **Origin:** Jacob, through a note from the DRIVE portfolio chat (ideas and public papers only, no holdings,
+  so rule 9 holds; no DRIVE file read). His question: when a stock spikes or flushes after results, is it
+  justified, and can the first half hour capture it? Our primary exit A *is* the post-print open, so this
+  starts exactly where the experiment's measurement stops.
+- **Data probe (non-event days only):** the Alpaca free plan serves SIP 1-minute bars back to 2022-09,
+  pre-market included, NBBO quotes and the official opening and closing auction prints. Free, and enough for
+  all 3,536 D006 history events.
+- **D014 frozen (`b5e081b`) before any reaction-day price was pulled.** 42 tests on TRAIN (2022-09 → 2025-08):
+  continuation vs reversal at 5, 10, 30 and 60 minutes and the close, unconditional and inside six groups.
+  The groups are big gap vs the implied move, surprise disagreeing with the gap, market against, bad news,
+  mid-cap and high pre-market attention. The bar is |t| > 3 and BH q < 0.10, then one Holm-corrected look at
+  VALIDATION (2025-09 → 2026-09), net of spreads.
+- **The review's best catch (Opus, pre-freeze):** I had defined the gap's direction from the opening
+  auction price, which is also the entry. That can't be known when a market-on-open order must be sent, and
+  noise in that one price would push the result toward "reversal" by construction, a fake fade. The signal
+  now comes from pre-market trades before 09:27, after the release's SEC acceptance time.
+- **Other fixes:**
+  - date-only `end=` parameters would have silently dropped the reaction day's auctions
+  - a 1e-6 split tolerance would have voided rounding noise
+  - delayed NYSE openings now blank the horizons before the open
+  - a failed request no longer poisons a month for good
+  - exits use quote mids, avoiding bid-ask bounce
+- **Rule 10 note:** a repo-wide grep surfaced two fenced-archive lines about "intraday alpha". They were
+  excluded and shaped nothing. Disclosed in D014 §0.
+- **Prior (stated before the result):** the large-cap literature says most of the reaction lands within
+  minutes. If there is anything, I expect it in mid-caps and big gaps, and I expect costs at the open to
+  eat a lot of it. A clean "nothing capturable" is a real result.
+
+## 2026-10-13 (Tue) morning — making failure loud (health check) and the report frozen
+
+- **The health check exists because of Friday.** The billing outage stopped every job for hours, and
+  nothing said so. It is now a free code-only job that reads the record and emails Jacob (via one GitHub
+  issue) only when an event or a T2 decision is being lost, or is about to be.
+- **The review's best catch:** "T2 missing" only after the deadline is an obituary, not an alarm. It now
+  fires "AT RISK" within 14 hours of the deadline, while the loss can still be prevented.
+- **Second catch:** a committed status file could stand in for a crashed run, a false GREEN.
+- **Process lesson:** two invalid workflow files in one day, both from escaping layers (Python inside bash
+  heredocs). GitHub fails such a file silently. A test now parses every workflow.
+
+## 2026-10-13 (Tue) — Max plan: capacity spent on the core asset (RQ5, CHARTER I2)
+
+- Jacob moved to Max and asked that it be used well. The constraint that had shaped T2 was capacity, which
+  is why D004 v4 chose Sonnet over Opus and deferred the ensemble. **T2 itself cannot switch models without
+  ending its pooled A + B record**, so the capacity went to shadows: Opus on the identical dossier, a second
+  Sonnet run (T2's test–retest), and their ensemble.
+- **The probe mattered:** Fable 5.1 is refused without paid credits, which a spec written from memory would
+  have missed.
+- **The review mattered more:** the real risk to T2 was never shared code. It was a shared *allowance*. A
+  peak night of Opus shadows could exhaust the weekly cap and leave T2 MISSING the next morning, as with APLD
+  on 10-07. Now there is a code budget, not "an operator may pause".
+- Smaller catches: a silent model substitution, a hash lock nothing enforced, and a shadow file able to fail
+  the health check that gates T2's own queue.
+
 ## 2026-10-13 — D010 v2: a units bug hiding in "unadjusted" prices (RQ1, RQ4)
 
 - **The surprise was the size.** Liquid short straddles held to expiry came out at −12.9% of spot, and the

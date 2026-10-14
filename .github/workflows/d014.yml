@@ -1,0 +1,60 @@
+# D014 exploration: the first hour after the print, on history (registry/D014_exploration_postprint_v1.md).
+# Code only, no AI. Run by hand. "fetch" builds analysis/d014/raw (resumable; a rerun skips finished months);
+# "analyse" runs the frozen procedure and commits results.json and REPORT.md.
+name: Earnings experiment - D014 post-print exploration
+
+on:
+  workflow_dispatch:
+    inputs:
+      step:
+        description: "fetch or analyse"
+        required: true
+        default: "fetch"
+
+concurrency:
+  group: d014
+  cancel-in-progress: false
+
+jobs:
+  d014:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    permissions:
+      contents: write
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Implementation hash - the frozen code, or stop
+        run: sha256sum -c registry/D014_implementation_v1.sha256
+
+      - name: Fetch
+        if: inputs.step == 'fetch'
+        run: python analysis/d014/fetch.py --commit
+
+      - name: Analyse and commit
+        if: inputs.step == 'analyse'
+        run: |
+          python analysis/d014/run_d014.py
+          git add analysis/d014/results.json analysis/d014/REPORT.md
+          git commit -q -m "D014 results (code, frozen procedure)" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+          python -c "import sys; sys.path.insert(0, 'pipeline'); from freeze import push_all; print(push_all())"
