@@ -33,8 +33,12 @@
     run that matters. Inside the window only a running step counts now.
   - **Lesson: every excuse in an alarm needs an expiry, and every "close enough" needs a test at the run that
     decides.**
-- **Not yet verified:** Alpaca's real shape for open multi-leg orders with `nested=true`. Handled defensively
-  (children skipped). The first dry dispatch prints the real shape before any alarm can fire on it.
+- **Verified live** (dry dispatch, run 38762134094, 11:38 ET):
+  - Alpaca returns an open multi-leg order as one top-level `mleg` order with its legs nested. Shorts come back
+    as `qty -1, side short`.
+  - Both accounts match their ledgers: the options account holds DPZ's 4 legs plus close r12, and the long account
+    is flat.
+  - The shape is now a test fixture.
 
 ## 2026-10-15 (Thu) morning ET — the paper runner's cron never landed; it now rides the routine push (ops, Gate 1)
 

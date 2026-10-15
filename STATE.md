@@ -2,7 +2,7 @@
 
 **Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-15 11:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
 
-**2026-10-15 (Thu) ~11:45 ET — two new health alarms: paper window coverage, and Alpaca positions vs the ledgers.**
+**2026-10-15 (Thu) ~11:45 ET — two new health alarms: paper window coverage, and Alpaca positions vs the ledgers (`169530a`).**
 - **Why:** nothing alarmed on 10-14 when every cron start of the window runner landed after the window. The paper
   ledgers had never been checked against the accounts' real positions (backlog item, 10-14 research).
 - **Paper window coverage** (`pipeline/health.py` `paper_window`). Full sessions only, from 14:40 ET. Per account
@@ -51,9 +51,11 @@
 - **Tests:** 49 health tests on recorded Actions fixtures (10-14 and 10-15) and the real DPZ trade record. Full
   suite 210 passed, 1 skipped. `check.py` PASS.
 - 🔴 **Watch:**
-  - **The first dry dispatch** (see the JOURNAL entry and the commit after this one): confirm Alpaca's real
-    multi-leg open-order shape and that both accounts "match the ledgers". A leftover probe position or order
-    would show as RED there.
+  - ✅ **First dry dispatch, run 38762134094 (11:38 ET): both accounts match the ledgers.**
+    - Options: 4 DPZ legs and open close r12, one rolled-up `mleg` order with its legs nested.
+    - Long: flat.
+    - No leftover probe positions.
+    - The shape is recorded in `tests/fixtures/health_alpaca_shapes_2026-10-15.json` and tested.
   - **Fri Oct 16, 14:45 ET push run:** paper window GREEN.
   - **Fri Oct 16 evening, DPZ expiry:** if the short 310 put is assigned, the next health run is RED, showing DPZ
     shares no ledger holds. That is correct; a person has to close them.

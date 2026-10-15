@@ -446,3 +446,17 @@ def test_a_crashing_check_is_amber_and_run_still_reports(tmp_path, monkeypatch):
     status, red, amber, info = health.run(now=at(OCT16, 15, 20))
     assert status == "RED" and sum("PAPER WINDOW NOT COVERED" in x for x in red) == 2      # window: RED end to end
     assert any(x.startswith("positions_check crashed: ValueError") for x in amber)
+
+
+def test_recorded_live_shape_matches_the_ledger():
+    """The real account at 10-15 11:38 ET (dry dispatch run 38762134094): one rolled-up mleg close, four legs held.
+    The DPZ fixture's ledger stops at close r8, so r12 is added as the ledger had it then (live, status new)."""
+    live = json.load(open(os.path.join(FIX, "health_alpaca_shapes_2026-10-15.json"), encoding="utf-8"))
+    t = dpz()
+    t["orders"]["close"][-1]["status"] = "canceled"
+    t["orders"]["close"].append({"client_order_id": "seasonA-DPZ-2026-10-13-F-close-r12", "id": "fa4322ae",
+                                 "sent_et": "2026-10-15T11:37:09-04:00", "status": "new", "filled_qty": 0.0,
+                                 "sides": {C310: "buy", P310: "buy", C360: "sell", P260: "sell"}, "legs_filled": []})
+    red, amber, info = health.reconcile("options", (live["positions"], live["open_orders"]),
+                                        options_only(ledger(t)), at(OCT15, 11, 38))
+    assert not red and not amber and any("4 position(s), 1 open order(s) - they match" in x for x in info)
