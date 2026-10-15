@@ -20,14 +20,33 @@ Checks, each mechanical (reviewed by Opus 5.5, 2026-10-13, fixes applied):
                      still open after that -> AMBER (added after the DPZ incident)
   SH-M capture       no shadow/calendar/<today>.json after 12:00 ET on a session -> AMBER
   C1 capture         no shadow/c1/im/<P>.json for the latest session whose close has passed (D015) -> AMBER
+  paper window       a full session from 14:40 ET, per account (options, long): no afternoon window step of
+                     paper-window-push.yml or paper-window.yml running now (once over: one that ran to 15:56) and no
+                     frozen paper-options.yml / paper-long.yml run in the last 25 min -> RED while the window is open,
+                     AMBER once over; only those frozen runs -> AMBER; a window step that started after 14:45 -> AMBER
+                     (added 2026-10-15: on 10-14 every cron start of the window runner landed after the window, and
+                     nothing alarmed)
+  positions          each Alpaca paper account (read-only GETs) against its ledgers - options account:
+                     options_ledger.json + ledger.json (paper.py's shares share the account); long account:
+                     long_ledger.json. A position or open order the ledgers do not show as live, or a live ledger
+                     position the account does not hold, seen again on a second look 2 minutes later -> RED. A mismatch
+                     on a symbol with a live ledger order: information while that order is young (options 30 min,
+                     shares 26 h), AMBER up to 24 h, then RED "LEDGER STALE". An unknown open order under 15 min old ->
+                     information; an option still listed after its expiry day, or an unreadable account -> AMBER
+                     (both added 2026-10-15; Sonnet review SHIP WITH FIXES, fixes applied; either check crashing -> AMBER)
 Information: upcoming snapshots, PENDING date confirmations, open paper positions.
+
+    python pipeline/health.py --shapes     # also print each account's open orders and positions (compact, read-only)
 """
+import collections
 import datetime
 import glob
 import json
 import os
+import re
 import subprocess
 import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et  # noqa: E402
@@ -40,6 +59,25 @@ D013_START = datetime.date(2026, 10, 14)
 AT_RISK = datetime.timedelta(hours=14)
 LOOKBACK = datetime.timedelta(days=5)
 D015_START = datetime.date(2026, 10, 14)
+# paper window coverage: paper_window.py's afternoon window is 14:27-15:56 ET (paper-window*.yml)
+WIN_START, WIN_CHECK, WIN_DEADLINE, WIN_END = (datetime.time(14, 27), datetime.time(14, 40), datetime.time(14, 45),
+                                               datetime.time(15, 56))
+WIN_SLACK = datetime.timedelta(minutes=3)        # a step that ended this close to 15:56 covered the window
+FROZEN_GAP = datetime.timedelta(minutes=25)      # frozen 10-minute runs: one dropped fire tolerated, not two
+WINDOW_STEPS = {"paper-window-push.yml": r"Afternoon window\b",             # the step that runs paper_window.py
+                "paper-window.yml": r"Run the frozen paper code every \d+ minutes"}   # "3 minutes" before ec2bdee
+FROZEN_PAPER = {"options": "paper-options.yml", "long": "paper-long.yml"}
+# positions vs ledgers: account -> (key env vars, ledgers in paper/)
+ACCOUNTS = {"options": (("APCA_API_KEY_ID", "APCA_API_SECRET_KEY"), ("options_ledger.json", "ledger.json")),
+            "long": (("APCA_L_API_KEY_ID", "APCA_L_API_SECRET_KEY"), ("long_ledger.json",))}
+SECOND_LOOK = 120                                # seconds; a RED mismatch must still be there on a second look
+# a live ledger order excuses a mismatch on its symbols while it is this young (info), then AMBER, then RED: options
+# ledgers are refreshed every 2 minutes in the windows; paper.py (shares) syncs only at 20:15 and 07:15 ET
+LAG = {"options": (datetime.timedelta(minutes=30), datetime.timedelta(hours=24)),
+       "shares": (datetime.timedelta(hours=26), datetime.timedelta(hours=26))}
+NEW_ORDER = datetime.timedelta(minutes=15)       # an open order this young may not be committed to a ledger yet
+OCC = re.compile(r"^[A-Z.]+(\d{2})(\d{2})(\d{2})[CP]\d{8}$")
+TERMINAL = ("filled", "canceled", "expired", "rejected", "done_for_day", "replaced")   # paper_options.TERMINAL
 
 
 def load(p):
@@ -236,6 +274,342 @@ def c1_capture_check(now):
     return None if os.path.exists(os.path.join(ROOT, "shadow", "c1", "im", f"{p.isoformat()}.json")) else         f"no C1 implied-move capture for {p} (D015): that session's events can never be C1"
 
 
+# ---------------------------------------------------------------- paper window coverage
+def ts(s):
+    """An API timestamp (Z or offset) as an aware ET datetime; None if absent or unreadable."""
+    try:
+        return datetime.datetime.fromisoformat(str(s).replace("Z", "+00:00")).astimezone(ET) if s else None
+    except ValueError:
+        return None
+
+
+def gh_get(path, params=None):
+    import requests
+    h = {"Accept": "application/vnd.github+json"}
+    if os.environ.get("GITHUB_TOKEN"):
+        h["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
+    for attempt in (1, 2):                     # one retry: a single 502 must not blind the 14:45 run
+        try:
+            r = requests.get(f"https://api.github.com/repos/{REPO}/{path}", params=params, headers=h, timeout=30)
+            if r.status_code == 200:
+                return r.json()
+            err = f"HTTP {r.status_code}"
+        except requests.RequestException as e:
+            err = type(e).__name__
+        if attempt == 1:
+            time.sleep(2)
+    raise OSError(f"GitHub API {path}: {err}")
+
+
+def window_jobs(now):
+    """Today's paper window steps and frozen paper runs, from the Actions API (actions: read). None if unreadable.
+    steps:  [{account, workflow, url, job_status, status, started, completed}] - the afternoon step of every
+            window job ("window (options)" / "window (long)"); a job still waiting for its group has no step yet
+    frozen: [(account, when)] - frozen paper-options.yml / paper-long.yml runs that ran: when = completion time
+            (updated_at; they take 20-35 s), or now while one runs. Pending runs that a window job's group
+            cancelled never ran and are left out."""
+    day0 = datetime.datetime.combine(now.date(), datetime.time(0), ET).astimezone(datetime.timezone.utc)
+    q = {"created": f">={day0:%Y-%m-%dT%H:%M:%SZ}", "per_page": 100}
+    steps, frozen = [], []
+    try:
+        for wf, step_name in WINDOW_STEPS.items():
+            for run in gh_get(f"actions/workflows/{wf}/runs", q).get("workflow_runs", []):
+                for j in gh_get(f"actions/runs/{run['id']}/jobs", {"per_page": 100}).get("jobs", []):
+                    m = re.fullmatch(r"window \((\w+)\)", j.get("name") or "")
+                    if not m or m[1] not in ACCOUNTS:
+                        continue
+                    st = next((s for s in j.get("steps") or [] if re.match(step_name, s.get("name") or "")), {})
+                    steps.append({"account": m[1], "workflow": wf, "url": run.get("html_url"),
+                                  "job_status": j.get("status"), "status": st.get("status"),
+                                  "started": ts(st.get("started_at")), "completed": ts(st.get("completed_at"))})
+        for acct, wf in FROZEN_PAPER.items():
+            for run in gh_get(f"actions/workflows/{wf}/runs", q).get("workflow_runs", []):
+                if run.get("status") == "in_progress":
+                    frozen.append((acct, now))
+                elif run.get("conclusion") in ("success", "failure"):
+                    frozen.append((acct, ts(run.get("updated_at"))))
+    except Exception:
+        return None
+    return steps, frozen
+
+
+def full_session_afternoon(now):
+    d = now.date()
+    return is_session(d) and close_time(d) == datetime.time(16, 0) and now.time() >= WIN_CHECK
+
+
+def window_coverage(now, steps, frozen):
+    """Is each paper account's afternoon window (14:27-15:56 ET) worked by a window job? Silent before 14:40 ET and
+    on days that are not full sessions (paper_window.py's window is fixed; an early close ends trading at 13:00)."""
+    red, amber, info = [], [], []
+    if not full_session_afternoon(now):
+        return red, amber, info
+    d = now.date()
+    at = lambda t: datetime.datetime.combine(d, t, ET)  # noqa: E731
+    upto = min(now, at(WIN_END))
+    over = now >= at(WIN_END)
+    for acct in ACCOUNTS:
+        # a step covers the window if it started today and is running now; once the window is over, if it started by
+        # 15:56 and ran to within 3 minutes of it. A step that already ended inside the window (a crash, a cancel, a
+        # late morning-mode start that exits at once) does not. (A completion after `now` only happens when a recorded
+        # day is replayed, as the tests do: it reads as running at `now`.)
+        mine = sorted((s for s in steps if s["account"] == acct and s["started"] and s["started"].date() == d
+                       and s["started"] <= now), key=lambda s: s["started"])
+        running = lambda s: (s["completed"] is None and s["status"] == "in_progress") or             (s["completed"] is not None and s["completed"] > now)  # noqa: E731
+        live = [s for s in mine if s["started"] <= upto and (
+            (running(s) or (s["completed"] is not None and s["completed"] >= at(WIN_END) - WIN_SLACK))
+            if over else running(s))]
+        if live and live[0]["started"] <= at(WIN_DEADLINE):
+            info.append(f"paper window ({acct}): {live[0]['workflow']} afternoon step since "
+                        f"{live[0]['started']:%H:%M} ET{' (done)' if over else ''}")
+            continue
+        if live:
+            amber.append(f"PAPER WINDOW LATE ({acct}): the window job's afternoon step started "
+                         f"{live[0]['started']:%H:%M} ET, after 14:45 - before that only the frozen 10-minute runs "
+                         f"could work the exit and gate window {live[0]['url']}")
+            continue
+        ran = [f"{s['started']:%H:%M}-{s['completed']:%H:%M}" if s["completed"] and s["completed"] <= now
+               else f"{s['started']:%H:%M}-" for s in mine]
+        waiting = sum(1 for s in steps if s["account"] == acct and s["job_status"] != "completed"
+                      and s["status"] != "in_progress")
+        facts = "; ".join(filter(None, [
+            f"window steps today ran {', '.join(ran)} ET" if ran else "no window step ran today",
+            f"{waiting} window job(s) not yet in their afternoon step" if waiting else ""]))
+        todo = "the window is over" if over else \
+            "dispatch paper-window-push.yml now (first cancel any paper run holding the group)"
+        recent = [t for a, t in frozen if a == acct and t and at(WIN_START) <= t <= min(now, upto + WIN_SLACK)
+                  and t >= upto - FROZEN_GAP]
+        if recent:
+            amber.append(f"PAPER WINDOW NOT RUNNING ({acct}): {facts}; only the frozen {FROZEN_PAPER[acct]} runs "
+                         f"work the window (last {max(recent):%H:%M} ET) - {todo}")
+        else:                                  # RED while it can still be saved, AMBER once over (as exits() does)
+            (amber if over else red).append(
+                f"PAPER WINDOW NOT COVERED ({acct}): {facts}; no frozen {FROZEN_PAPER[acct]} run either in the 25 "
+                f"minutes to {upto:%H:%M} ET - exits and gates {'were' if over else 'are'} not being worked - {todo}")
+    return red, amber, info
+
+
+def paper_window(now):
+    if not full_session_afternoon(now):
+        return [], [], []
+    got = window_jobs(now)
+    if got is None:
+        return [], ["paper window coverage unreadable (GitHub Actions API)"], []
+    return window_coverage(now, *got)
+
+
+# ---------------------------------------------------------------- Alpaca positions vs the paper ledgers
+def alpaca_state(acct):
+    """(positions, open orders) of one Alpaca paper account: read-only GETs. "unconfigured" without its keys,
+    None if unreadable. The keys are never printed or stored."""
+    import requests
+    from paper import BASE
+    k, s = (os.environ.get(x) for x in ACCOUNTS[acct][0])
+    if not k or not s:
+        return "unconfigured"
+    h = {"APCA-API-KEY-ID": k, "APCA-API-SECRET-KEY": s}
+    try:
+        p = requests.get(f"{BASE}/positions", headers=h, timeout=30)
+        o = requests.get(f"{BASE}/orders", params={"status": "open", "limit": 500, "nested": "true"}, headers=h,
+                         timeout=30)
+        if p.status_code != 200 or o.status_code != 200:
+            return None
+        pos, orders = p.json(), o.json()
+    except Exception:
+        return None
+    return (pos, orders) if isinstance(pos, list) and isinstance(orders, list) else None
+
+
+def read_ledgers(names):
+    """The ledgers as committed on GitHub NOW (git fetch), so a paper run that committed after this checkout is
+    seen; the working copy where git cannot say. {name: ledger; None if absent; "unreadable" if not JSON}."""
+    fetched = subprocess.run(["git", "fetch", "-q", "origin", "main"], cwd=ROOT, capture_output=True).returncode == 0
+    out = {}
+    for n in names:
+        txt = None
+        if fetched:
+            r = subprocess.run(["git", "show", f"origin/main:paper/{n}"], cwd=ROOT, capture_output=True)
+            txt = r.stdout.decode("utf-8") if r.returncode == 0 else None
+        if txt is None and os.path.exists(os.path.join(ROOT, "paper", n)):
+            txt = open(os.path.join(ROOT, "paper", n), encoding="utf-8").read()
+        try:
+            out[n] = json.loads(txt) if txt else None
+        except ValueError:
+            out[n] = "unreadable"
+    return out
+
+
+def norm(symbol):
+    return (symbol or "").upper().replace("-", ".")
+
+
+def option_expiry(symbol):
+    m = OCC.match(symbol)
+    return datetime.date(2000 + int(m[1]), int(m[2]), int(m[3])) if m else None
+
+
+def ledger_book(ledgers):
+    """What the ledgers say one account holds and has working. Returns (held {symbol: signed qty}, orders [(ids,
+    status, symbols)], busy {symbol: (newest live ledger order's send time, ledger kind)}, unsure {symbols whose fill
+    cannot be read}, notes).
+    Options ledgers (paper_options.py): every filled order's legs_filled, buy +, sell -; a v3 close that dropped a
+    long leg leaves that leg held, as the account does. Shares (paper.py, ledger.json): buy - sell filled_qty."""
+    held, orders, busy, unsure, notes = collections.defaultdict(float), [], {}, set(), []
+
+    def order(rec, symbols, kind="options"):
+        ids = tuple(x for x in (rec.get("client_order_id"), rec.get("id")) if x)
+        if ids:
+            orders.append((ids, rec.get("status"), symbols))
+        if rec.get("status") and rec["status"] not in TERMINAL:
+            sent = ts(rec.get("sent_et") or rec.get("submitted_et"))     # None (an orphan): treated as old
+            for x in symbols:
+                old = busy.get(x)
+                if old is None or (sent and (old[0] is None or sent > old[0])):
+                    busy[x] = (sent, kind)
+
+    for name, led in ledgers.items():
+        if led == "unreadable":
+            notes.append(f"paper/{name} is not readable JSON")
+            continue
+        for key, t in (led or {}).get("trades", {}).items():
+            if name == "ledger.json":
+                s = norm(t.get("ticker"))
+                for side, sign in (("buy", 1), ("sell", -1)):
+                    if t.get(side):
+                        held[s] += sign * float(t[side].get("filled_qty") or 0)
+                        order(t[side], {s}, "shares")
+                continue
+            legs = {lg.get("symbol") for lg in t.get("legs") or []}
+            for r in (t.get("orders") or {}).get("open", []) + (t.get("orders") or {}).get("close", []):
+                lf, q = r.get("legs_filled") or [], float(r.get("filled_qty") or 0)
+                syms = (set(r.get("all_sides") or r.get("sides") or {}) | {lg.get("symbol") for lg in lf}) or legs
+                order(r, syms)
+                if not q:
+                    continue
+                # paper_options.fill_net's rule: every leg's quantity equals its order's filled quantity
+                if not lf or any(lg.get("side") not in ("buy", "sell") or not lg.get("symbol")
+                                 or abs(float(lg.get("qty") or 0) - q) > 1e-9 for lg in lf):
+                    unsure.update(syms)
+                    notes.append(f"{key} {r.get('client_order_id')}: filled, but its legs cannot be read")
+                    continue
+                for lg in lf:
+                    held[lg["symbol"]] += q if lg["side"] == "buy" else -q
+            if t.get("orphan_order"):
+                order(dict(t["orphan_order"], client_order_id=f"{key}-open"), legs)
+    return dict(held), orders, busy, unsure, notes
+
+
+def reconcile(acct, state, ledgers, now):
+    """One look at one account at `now`. Returns (red {stable key: message}, amber, info)."""
+    positions, open_orders = state
+    held, orders, busy, unsure, notes = ledger_book(ledgers)
+    red, amber, info = {}, [f"paper/{acct}: {n}" for n in notes], []
+    today = now.date()
+    closed = is_session(today) and now.time() >= close_time(today)
+    have = collections.defaultdict(float)
+    for p in positions:
+        q = abs(float(p.get("qty") or 0))
+        have[norm(p.get("symbol"))] += -q if p.get("side") == "short" else q
+    for s in sorted(set(have) | set(held)):
+        a, e = have.get(s, 0.0), held.get(s, 0.0)
+        exp = option_expiry(s)
+        # an option past its expiry close is no longer expected: Alpaca removes it, or exercises / assigns it into
+        # shares (which then show as shares no ledger holds); the ledger settles it at intrinsic
+        if exp and exp < today:
+            if a:
+                amber.append(f"paper/{acct}: {s} {a:+g} still listed after its expiry {exp} "
+                             "(awaiting Alpaca's expiry processing)")
+            continue
+        if exp == today and closed:
+            continue
+        if abs(a - e) < 1e-9:
+            continue
+        what = f"{s}: the account holds {a:+g}, the ledgers show {e:+g}"
+        if s in unsure:
+            amber.append(f"paper/{acct}: {what} - a fill in the ledger cannot be read")
+        elif s in busy and (busy[s][0] is not None and now - busy[s][0] < LAG[busy[s][1]][0]):
+            info.append(f"paper/{acct}: {what} - a ledger order on it is still live (the ledger lags the broker "
+                        "by one run)")
+        elif s in busy and (busy[s][0] is None or now - busy[s][0] < LAG[busy[s][1]][1]):
+            sent = f"sent {busy[s][0]:%a %H:%M} ET" if busy[s][0] else "no send time"
+            amber.append(f"paper/{acct}: {what} - its ledger order ({sent}) still reads live: the paper runs have "
+                         "not refreshed the ledger since")
+        elif s in busy:
+            red[(acct, "position", s)] = (f"LEDGER STALE: paper/{acct} {what} - its ledger order (sent "
+                                          f"{busy[s][0]:%a %d %b %H:%M} ET) still reads live: no paper run has "
+                                          "refreshed the ledger")
+        else:
+            kind = "POSITION NOT IN LEDGER" if not e else "LEDGER POSITION NOT IN ACCOUNT" if not a else \
+                "POSITION MISMATCH"
+            red[(acct, "position", s)] = f"{kind}: paper/{acct} {what}"
+    index = {i: n for n, (ids, _, _) in enumerate(orders) for i in ids}
+    seen = set()
+    children = {x.get("id") for o in open_orders for x in o.get("legs") or [] if x.get("id")}
+    for o in open_orders:
+        if o.get("id") in children:                # a multi-leg order's leg listed on its own: the parent counts
+            continue
+        n = next((index[x] for x in (o.get("client_order_id"), o.get("id")) if x in index), None)
+        syms = sorted({norm(x.get("symbol")) for x in o.get("legs") or []}
+                      | ({norm(o["symbol"])} if o.get("symbol") else set()))
+        desc = f"{o.get('client_order_id') or o.get('id')} ({', '.join(syms)}; {o.get('status')})"
+        if n is None:
+            made = ts(o.get("submitted_at") or o.get("created_at"))
+            if made and now - made < NEW_ORDER:    # sent moments ago; the sending run commits its ledger next
+                info.append(f"paper/{acct}: open order {desc} sent {made:%H:%M} ET, not in a committed ledger yet")
+            else:
+                red[(acct, "order", o.get("id"))] = f"OPEN ORDER NOT IN LEDGER: paper/{acct} {desc}"
+            continue
+        seen.add(n)
+        if not orders[n][1] or orders[n][1] in TERMINAL:
+            red[(acct, "order", o.get("id"))] = (f"OPEN ORDER THE LEDGER SHOWS AS ENDED: paper/{acct} {desc}; "
+                                                 f"ledger status {orders[n][1]}")
+    lag = [ids[0] for n, (ids, st, _) in enumerate(orders) if st and st not in TERMINAL and n not in seen]
+    if lag:
+        info.append(f"paper/{acct}: {lag} live in the ledger, no longer open at Alpaca (the next paper run records "
+                    "how they ended)")
+    if not red:
+        info.append(f"paper/{acct}: {sum(1 for v in have.values() if v)} position(s), {len(open_orders)} open "
+                    "order(s) - they match the ledgers")
+    return red, amber, info
+
+
+def positions_check(now, state=None, read=None, sleep=time.sleep, wait=SECOND_LOOK):
+    """Every account reconciled. A RED needs the same mismatch on a second look `wait` seconds later, with the
+    account and the committed ledgers read again: a paper run may have sent an order and not yet pushed."""
+    state, read = state or alpaca_state, read or read_ledgers
+
+    def look():
+        out, amber, info, seen = {}, [], [], set()
+        for acct, (_, names) in ACCOUNTS.items():
+            st = state(acct)                      # the account first, then the ledgers: never older than it
+            if st == "unconfigured":
+                (amber if os.environ.get("GITHUB_ACTIONS") == "true" else info).append(
+                    f"paper/{acct}: no Alpaca keys here - positions not reconciled")
+                continue
+            if st is None:
+                amber.append(f"paper/{acct}: Alpaca positions / orders unreadable - not reconciled")
+                continue
+            seen.add(acct)
+            r, a, i = reconcile(acct, st, read(names), now)
+            out.update(r)
+            amber += a
+            info += i
+        return out, amber, info, seen
+
+    first, amber, info, _ = look()
+    if not first:
+        return [], amber, info
+    sleep(wait)
+    second, amber, info, seen = look()
+    red = [m for k, m in second.items() if k in first]
+    amber += [f"seen once, the account was unreadable on the second look: {m}" for k, m in first.items()
+              if k[0] not in seen]
+    info += [f"cleared on a second look {wait} s later: {m}" for k, m in first.items()
+             if k[0] in seen and k not in second]
+    info += [f"seen once, checked again next run: {m}" for k, m in second.items() if k not in first]
+    return red, amber, info
+
+
 def upcoming(now, n=5):
     out = []
     d = now.date()
@@ -270,6 +644,12 @@ def run(write=False, commit=False, now=None):
             (red if name in CRITICAL_WORKFLOWS else amber).append(f"Actions {st}: {name} at {when} {url}")
     r, a, i = ledgers(now)
     red, amber, info = red + r, amber + a, info + i
+    for check in (paper_window, positions_check):     # they parse outside JSON: a surprise is AMBER, not a crash
+        try:
+            r, a, i = check(now)
+        except Exception as e:
+            r, a, i = [], [f"{check.__name__} crashed: {type(e).__name__}: {str(e)[:200]}"], []
+        red, amber, info = red + r, amber + a, info + i
     for c in (capture_check(now), c1_capture_check(now)):
         if c:
             amber.append(c)
@@ -299,6 +679,23 @@ def run(write=False, commit=False, now=None):
     return status, red, amber, info
 
 
+def shapes():
+    """Each configured account's open orders and positions, compact (the fields reconcile() reads)."""
+    for acct in ACCOUNTS:
+        st = alpaca_state(acct)
+        if not isinstance(st, tuple):
+            print(f"{acct}: {st}")
+            continue
+        for p in st[0]:
+            print(f"{acct} position: {p.get('symbol')} qty {p.get('qty')} side {p.get('side')} {p.get('asset_class')}")
+        for o in st[1]:
+            legs = [(x.get('id', '')[:8], x.get('symbol'), x.get('status')) for x in o.get('legs') or []]
+            print(f"{acct} open order: {str(o.get('id'))[:8]} {o.get('client_order_id')} class {o.get('order_class')!r} "
+                  f"{o.get('status')} symbol {o.get('symbol')!r} submitted {o.get('submitted_at')} legs {legs}")
+
+
 if __name__ == "__main__":
     a = sys.argv[1:]
+    if "--shapes" in a:
+        shapes()
     run("--write" in a, "--commit" in a)
