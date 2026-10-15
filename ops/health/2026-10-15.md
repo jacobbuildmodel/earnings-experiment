@@ -1,4 +1,4 @@
-# Health 2026-10-15 13:51 ET - **AMBER**
+# Health 2026-10-15 18:24 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,11 +6,13 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
-- EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 14 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
+- EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 19 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
 
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F']
-- paper/options: 4 position(s), 1 open order(s) - they match the ledgers
+- paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
+- paper window (long): paper-window-push.yml afternoon step since 10:48 ET (done)
+- paper/options: 4 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 0 position(s), 0 open order(s) - they match the ledgers
 - Fri 16 Oct: 3 snapshot(s) - NOC, RTX, VICR
 - Mon 19 Oct: 2 snapshot(s) - ABT, PEGA
