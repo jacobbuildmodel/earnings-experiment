@@ -1,6 +1,32 @@
 # STATE — Earnings Experiment
 
-**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-14 12:15 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-15 10:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-15 (Thu) ~10:40 ET — the paper window runner now starts from the routine push (`f4f3c20`).**
+- **Why:** `paper-window.yml` starts only from GitHub cron, and its fires never landed in time.
+  - 10-14: the 4 afternoon fires began 21:00–22:18 UTC, after the 15:56 ET end.
+  - 10-15: neither morning fire had started by 10:23 ET.
+  - DPZ's v1 close was retried only by the frozen 10-minute crons and by hand.
+- **Today, by hand:**
+  - The morning window was dispatched at 10:23 ET (run 38750990764). DPZ's 9th close went out at 10:24 ET at a
+    10.73 natural debit, against 15.60 at 15:46 yesterday.
+  - A laptop background job dispatches `paper-window.yml` afternoon at 12:05 ET, as a backup. It dies if the app
+    closes.
+- **The fix:** `.github/workflows/paper-window-push.yml`, registered as `registry/D011_implementation_v4_addendum1.md`
+  (frozen). `paper-window.yml` and every D011 v4 file are byte-identical.
+  - It starts on the `earnings-s2-trigger` pushes (14:45, 15:45, 18:45, 19:45 UTC) and picks the window by the ET
+    clock: morning before 12:00, and afternoon from a 10:30 start, waiting inside the job.
+  - In EDT the 10:45 push covers both windows. In EST the 09:45 push covers the morning and the 13:45 push the
+    afternoon.
+  - A 150 s settle job comes first, so the push's own frozen paper run (queued ~17 s after the push, 20–35 s long)
+    cannot evict it from the one-pending-per-group queue.
+  - Sonnet review: SHIP WITH FIXES, all applied.
+- 🔴 **Ops rule:** before hand-dispatching any paper workflow while a window job runs, `gh run cancel` it.
+  Otherwise the dispatch waits hours behind it, or is cancelled.
+- 🔴 **Watch:**
+  - the 10:45 ET push today (the long account should start; options waits behind the hand dispatch)
+  - Fri Oct 16: the 10:45 push should hold `paper-options` through 15:56. That day has DPZ's expiry (v1, last
+    resend), NOC/RTX/VICR gates and the first v3 opens.
 
 **2026-10-14 (Wed) 12:09 ET — D015 v1 FROZEN (`bd67722`): C1 live, the confirmatory test of D014's one survivor.**
 - **What:** `registry/D015_c1_live_v1.md`. C1 is "fade a pre-market gap bigger than the options-implied move". It
