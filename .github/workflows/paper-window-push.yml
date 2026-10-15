@@ -1,0 +1,91 @@
+# Paper window runner, started by the cloud routine's pushes. Infrastructure, no rule
+# (registry/D011_implementation_v4_addendum1.md).
+# paper-window.yml (hashed in D011_implementation_v4.sha256, left byte-identical) starts only from GitHub's cron, and
+# its fires never landed in time: on 2026-10-14 its four afternoon fires (17:55-19:15 UTC) began 21:00-22:18 UTC,
+# after the 15:56 ET window end, and on 2026-10-15 neither morning fire (13:35, 14:05 UTC) had started by 10:23 ET. The routine
+# earnings-s2-trigger merges main into claude/s2-trigger and pushes at 14:45, 15:45, 18:45 and 19:45 UTC, and a push
+# starts a workflow within seconds (the S2 gate and the C1 capture already start this way).
+# This file runs the same pipeline/paper_window.py with the same two windows, chosen by the ET clock when the job
+# starts, so one start covers the day where it can:
+# - before 12:00 ET: the morning window (09:35-12:00, only while a position or order is live);
+# - at or after 10:30 ET: the afternoon window (14:27-15:56), waiting for it inside the same job. 10:30 -> 15:56 is
+#   326 minutes, inside the 345-minute timeout. A start before 10:30 (the 09:45 EST push after Nov 1) stops after
+#   the morning, and a later push covers the afternoon.
+# It uses the same per-account concurrency groups as paper-window.yml and the frozen workflows, so it never runs
+# beside them. GitHub keeps ONE pending run per group and cancels the older pending run when another queues
+# (independent review 2026-10-15, finding 1). Each push also starts s2-window.yml, whose completion queues the frozen
+# paper-options.yml / paper-long.yml about 17 s later; those take 20-35 s. So the window job waits behind a 150 s
+# settle job: it queues after that short frozen run has finished, not ahead of it, where it would be cancelled.
+# If a long window job already holds the group, this start can still be cancelled while it waits; the running job
+# covers its own window and a later push covers the rest. Before dispatching any paper workflow by hand while this
+# job runs, cancel it (gh run cancel), or the dispatch waits hours behind it or is cancelled.
+name: Earnings experiment - paper window runner (routine push)
+
+on:
+  push:
+    branches: ["claude/s2-trigger"]
+  workflow_dispatch:
+
+jobs:
+  settle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Let the push's own short frozen paper runs queue and finish first
+        run: sleep 150
+
+  window:
+    needs: settle
+    strategy:
+      fail-fast: false
+      matrix:
+        account: [options, long]
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    concurrency:
+      group: ${{ matrix.account == 'options' && 'paper-options' || 'paper-long' }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+      APCA_L_API_KEY_ID: ${{ secrets.APCA_L_API_KEY_ID }}
+      APCA_L_API_SECRET_KEY: ${{ secrets.APCA_L_API_SECRET_KEY }}
+    steps:
+      - name: Note when the job started (ET, HHMM as a plain integer)
+        run: echo "START_HM=$((10#$(TZ=America/New_York date +%H%M)))" >> "$GITHUB_ENV"
+
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Morning window - missed exits, only while something is live
+        id: morning
+        run: |
+          if [ "$START_HM" -ge 700 ] && [ "$START_HM" -lt 1200 ]; then
+            python pipeline/paper_window.py ${{ matrix.account }} --start 09:35 --end 12:00 --only-if-active
+          else
+            echo "started $START_HM ET - outside 07:00-12:00, no morning window"
+          fi
+
+      - name: Afternoon window - exits and gates
+        if: ${{ !cancelled() && steps.morning.conclusion != 'skipped' }}
+        run: |
+          if [ "$START_HM" -ge 1030 ]; then
+            python pipeline/paper_window.py ${{ matrix.account }} --start 14:27 --end 15:56
+          else
+            echo "started $START_HM ET - too early to wait for the afternoon inside the timeout; a later push covers it"
+          fi
