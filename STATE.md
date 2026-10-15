@@ -32,7 +32,10 @@
   - **Probe:** manual, a pre-registration R only.
   - Today's capture was dispatched by hand at 12:09 ET (run 38595673105) and waits for 15:25.
 - 🔴 **Watch:**
-  - Today ~15:57 ET: the commit of `shadow/c1/im/2026-10-14.json` (12 names due).
+  - ✅ **First capture landed:** `shadow/c1/im/2026-10-14.json`, commit `441fd49` at 15:54 ET Oct 14 (run
+    38595673105 green).
+    - 10/12 implied moves, at 15:25 ET. HOMB `no_strike` (no puts listed) and WIT `no_quote`, after 30 retry passes.
+    - Committed after `bd67722` and before Oct 15 09:27, so its events count.
   - Thu Oct 15 18:50 ET: the first grade, with `outcomes/shadow/seasonA/c1.json` counts only.
   - ✅ **Probe run 38595680182 (R = Oct 13, pre-registration, coverage only):**
     - 9 SH-M events, 45 requests, 0 failures. Opens and closes are auction prints. Pre-market prices are at
