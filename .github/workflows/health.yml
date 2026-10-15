@@ -10,6 +10,8 @@ on:
     - cron: "30 11 * * 1-5"      # 07:30 EDT / 06:30 EST, ahead of the 09:15 T2 deadline
     - cron: "30 13 * * 1-5"      # 09:30 EDT / 08:30 EST, before the open
     - cron: "15 21 * * 1-5"      # 17:15 EDT / 16:15 EST, after the snapshot window
+    - cron: "20 19 * * 1-5"      # 15:20 EDT / 14:20 EST, inside the D011 exit window (DPZ incident)
+    - cron: "20 20 * * 1-5"      # 16:20 EDT / 15:20 EST, the same for EST
   workflow_dispatch:
 
 concurrency:

@@ -9,6 +9,83 @@
 
 ---
 
+## 2026-10-14 (Wed) midday ET — D015: C1 goes live as a market-wide confirmatory shadow (RQ1, Gate 1)
+
+- **What:** D014's one TRAIN survivor, C1 (fade a pre-market gap bigger than the options-implied move), failed
+  VALIDATION (−0.90%, n 62, Holm p 0.48). Rule 6 leaves it a hunch until it holds on fresh data. D015 v1 is that
+  test, frozen at 12:09 ET (`bd67722`), before the first reaction session it counts (Oct 15).
+- **The power decision:** C1 flags ~15% of events with an implied move.
+  - On the ~300 gated events a season that is ~35 C1 events a season, and ~35% power even pooled with Season B.
+  - On the market-wide SH-M set (~1,300 a season) it is ~130 a season, and ~85% power pooled.
+  - So the live implied move is captured for every SH-M event, not read from the S2 gate.
+- **The instrument almost went wrong, and the review caught it.** My first draft took D010's rule text
+  literally: the first expiry after R. But D010's DoltHub chains held mostly monthlies. I checked: 82% of D014's
+  868 implied moves used a third-Friday expiry, a median 15 days out.
+  - Live yfinance chains carry weeklies. For AAPL today, the weekly 1 day after R prices 2.5% and the monthly
+    6.6%.
+  - The draft would have tripled C1's rate among large caps only, and diluted the test with D014's complement
+    (mean ≈ 0).
+  - **Lesson: replicate the instrument's behaviour, not its rule text.** The primary is now the monthly; the
+    weekly is a secondary.
+- **Other review fixes (Opus 5.5, FREEZE WITH FIXES, 11 findings, all applied):**
+  - **Blind until a look.** Nightly reports would have printed "CONFIRMED" on interim data. Now no C1 return is
+    shown before 2026-12-07, and each look is written once.
+  - **Student t with G − 1 df.** With ~27 dates, the normal is too liberal at p < 0.005.
+  - **SEC failures can't block a date.** One failing lookup could have frozen a whole reaction date (the
+    clustering unit). Now it waits 10 days, then voids that event only.
+  - **The sample-defining code is hash-checked.** A D009-side edit to `sh_m_events` could have silently changed
+    D015's sample. `check.py` now verifies `shadow.py`, `sessions.py`, `common.py` and `s1_screen.py` too.
+  - **No escape hatch.** "If Season B doesn't run, the final look is Season A at 0.045" was an optional-stopping
+    door; it is closed.
+- **Dry capture (real chains, 12:08 ET):** 10 of 12 due names gave an implied move in 2 s. HOMB lists no puts;
+  WIT's call bid is zero. Today's capture job was dispatched at 12:09 and waits for 15:25.
+- **Ops lessons carried over:** one job waits inside the window (cron is best-effort); health is AMBER on a
+  missing capture; `check.py` fails on an edited capture; a failed push fails the job.
+- **Probe of the Alpaca path (R = Oct 13, before registration, coverage only):** clean.
+  - 9 events, 45 requests, 0 failures, auction opens and closes, every quote. FBK has no pre-market trade (void).
+  - Surprise: every event's SEC timing was `unverified`. JPM, GS and WFC file their 2.02 8-K at 10:28–11:32 ET,
+    hours after their ~07:00 wire release.
+  - D014's allowlist history had 1 such case in 3,536, so its "floor at the acceptance minute" never bit. Live,
+    flooring at a 10:30 filing would void every big bank. The registered rule floors only on an acceptance
+    inside the session window, which is the sensible reading.
+  - **Lesson: the market-wide set has filing habits the allowlist never showed.** Watch the `unverified` share.
+
+## 2026-10-14 (Wed) — the DPZ exit that didn't happen, scored blind; D011 v3; the open's cost is the open
+
+- **Expectations first.** Before reading Oct 14's ledger I wrote and committed what I expected
+  (`ops/incidents/2026-10-13_DPZ_exit.md`, commit `27c1109` at 10:57 ET): a fill by the close with
+  P = 0.65, and P&L +1.0 per unit (80% range −2 to +4).
+- **What happened:** DPZ fell another 4% on day 2. The retry's natural implied **−7.7 per unit**, against
+  +0.32 on time (natural) or +3.29 (mid). **Outside my 80% range.**
+  - My error: I priced a missed exit as a day of time decay. It is an unhedged directional position after
+    the event.
+  - Three closes at v1's natural have now gone unfilled (14:46 Oct 13; 10:45 and 11:07 Oct 14).
+- **Root causes:**
+  1. **GitHub's cron dropped the fires** that should have resent the close.
+  2. **v1 prices from Alpaca's free "indicative" feed**, which Alpaca says is randomized. Paper fills are
+     judged against real quotes, so a limit at the indicative natural may never be marketable.
+  3. **The alarm and the accounting were blind:** health ran outside the exit window, and `exit_late` is set
+     at send, not at fill.
+- **Fixes:**
+  - `paper-window.yml` runs the frozen code every 2 minutes through the window. Tested live today: the
+    morning window resent DPZ's close at 11:07.
+  - Health raises EXIT NOT FILLED as RED at 15:15–15:55 ET.
+  - D011 exit audit v1 (descriptive): the on-time counterfactual next to every trade.
+  - **D011 v3** (closes only, Season A trades from the first gate): drop no-bid long legs, a concession walk
+    from 0% to 25%, a 2-minute cancel, a simple order when one leg is left, and a 15:10 cut-off on expiry day.
+    Opus review: FREEZE WITH FIXES, all applied (a missing quote had been read as a worthless leg).
+  - A background agent searched GitHub and the web. The evidence and the borrowed ideas are in the incident
+    file.
+- **D014 control days (descriptive, DRIVE's question):** is the open's cost the print or the open?
+  - **Mostly the open.** The first post-open quote's median half-spread is 0.52% on ordinary days and 0.45%
+    on print days (0.75% in mid-caps on both).
+  - What the print adds is movement: the first minute's VWAP sits a median 0.25% from the official open on
+    print days, against 0.03% on ordinary days.
+  - By 09:35 the half-spread is 0.20% (ordinary) and 0.25% (print).
+  - **For anyone trading at moomoo: never use a market order in the first minute, on any day.**
+- **Lesson for the operator:** write the expectation before the outcome, every time. It turned a lost exit
+  into a measured miss, and showed that my mental model of a failed exit was wrong.
+
 ## 2026-10-13 (Tue) afternoon ET — D014 v1/v2/v3 results: the first hour after the print (exploration)
 
 - **Run cleanly:** 3,536 events, 15,715 requests, 0 failures. 2,885 had a pre-market gap of at least 1%

@@ -16,7 +16,10 @@ Checks, each mechanical (reviewed by Opus 5.5, 2026-10-13, fixes applied):
   D013 shadows       T2R / T2O missing after the deadline, events entering after 2026-10-13 with a dossier -> AMBER
   Actions            failed / timed-out / startup-failure runs in the last 24 h; S2 window or T2 queue -> RED, else AMBER
   paper ledgers      a halt -> RED; alerts or errors on the last run -> AMBER
+  paper exits        a filled position still open on its reaction session 15:15-15:55 ET -> RED (still savable);
+                     still open after that -> AMBER (added after the DPZ incident)
   SH-M capture       no shadow/calendar/<today>.json after 12:00 ET on a session -> AMBER
+  C1 capture         no shadow/c1/im/<P>.json for the latest session whose close has passed (D015) -> AMBER
 Information: upcoming snapshots, PENDING date confirmations, open paper positions.
 """
 import datetime
@@ -28,7 +31,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et  # noqa: E402
-from sessions import is_session, shift  # noqa: E402
+from sessions import close_time, is_session, shift  # noqa: E402
 
 D = datetime.date.fromisoformat
 REPO = os.environ.get("GITHUB_REPOSITORY", "jacobbuildmodel/earnings-experiment")
@@ -36,6 +39,7 @@ CRITICAL_WORKFLOWS = ("Earnings experiment - S2 window", "Earnings experiment - 
 D013_START = datetime.date(2026, 10, 14)
 AT_RISK = datetime.timedelta(hours=14)
 LOOKBACK = datetime.timedelta(days=5)
+D015_START = datetime.date(2026, 10, 14)
 
 
 def load(p):
@@ -162,13 +166,43 @@ def actions_failures(now):
     return out
 
 
-def ledgers():
+def exits(name, led, now):
+    """D011 exits (added 2026-10-14 after the DPZ incident). A filled position still open on its reaction session
+    between 15:15 and 15:55 ET is RED, while it can still be saved. One still open later is AMBER: the primary exit
+    is already lost, and the frozen code keeps retrying until expiry."""
+    red, amber = [], []
+    today = now.date().isoformat()
+    for k, t in led.get("trades", {}).items():
+        if "result" in t or t.get("skipped") or t.get("close_sim") or not t.get("reaction_session"):
+            continue
+        o = (t.get("orders") or {}).get("open", [])
+        c = (t.get("orders") or {}).get("close", [])
+        o_f = sum(r.get("filled_qty") or 0 for r in o)        # a refused attempt has filled_qty 0
+        c_f = sum(r.get("filled_qty") or 0 for r in c)
+        if not o_f or c_f >= o_f:
+            continue
+        tries = f"{len(c)} close order(s) sent, {c_f:g} of {o_f:g} closed"
+        same_day = t["reaction_session"] == today
+        # the last send: 15:55 ET; a D011 v3 trade on its expiry date: 15:10 ET (Alpaca's 15:15 cut-off)
+        last = datetime.time(15, 10) if t.get("exec") == "v3" and t.get("expiry") == today else datetime.time(15, 55)
+        if same_day and datetime.time(15, 15) <= now.time() < last:
+            red.append(f"EXIT NOT FILLED: paper/{name} {k} - {tries}; the last send is {last:%H:%M} ET "
+                       "(the ledger can lag the broker by one run)")
+        elif t["reaction_session"] < today or (same_day and now.time() >= last):
+            amber.append(f"EXIT MISSED: paper/{name} {k} still open after its reaction session "
+                         f"{t['reaction_session']} - {tries}; expiry {t.get('expiry')}")
+    return red, amber
+
+
+def ledgers(now):
     red, amber, info = [], [], []
     for name in ("options_ledger.json", "long_ledger.json"):
         p = os.path.join(ROOT, "paper", name)
         if not os.path.exists(p):
             continue
         led = load(p)
+        r, a = exits(name, led, now)
+        red, amber = red + r, amber + a
         if led.get("halt"):
             red.append(f"paper/{name}: HALT - {led['halt'].get('why')}")
         if led.get("alerts"):
@@ -188,6 +222,18 @@ def capture_check(now):
         return None
     return None if os.path.exists(os.path.join(ROOT, "shadow", "calendar", f"{d.isoformat()}.json")) else \
         f"no SH-M calendar capture for {d} yet"
+
+
+def c1_capture_check(now):
+    """D015 §3: the C1 implied-move capture of the latest session whose close has passed. A missing one means that
+    session's SH-M events can never be C1. Silent until D015 is registered."""
+    if not os.path.exists(os.path.join(ROOT, "registry", "D015_implementation_v1.sha256")):
+        return None
+    d = now.date()
+    p = d if is_session(d) and now >= datetime.datetime.combine(d, close_time(d), ET) else shift(d, -1)
+    if p < D015_START:
+        return None
+    return None if os.path.exists(os.path.join(ROOT, "shadow", "c1", "im", f"{p.isoformat()}.json")) else         f"no C1 implied-move capture for {p} (D015): that session's events can never be C1"
 
 
 def upcoming(now, n=5):
@@ -222,11 +268,11 @@ def run(write=False, commit=False, now=None):
     else:
         for name, when, url, st in fl:
             (red if name in CRITICAL_WORKFLOWS else amber).append(f"Actions {st}: {name} at {when} {url}")
-    r, a, i = ledgers()
+    r, a, i = ledgers(now)
     red, amber, info = red + r, amber + a, info + i
-    c = capture_check(now)
-    if c:
-        amber.append(c)
+    for c in (capture_check(now), c1_capture_check(now)):
+        if c:
+            amber.append(c)
     info += upcoming(now)
     status = "RED" if red else "AMBER" if amber else "GREEN"
     md = [f"# Health {now:%Y-%m-%d %H:%M} ET - **{status}**", "", f"check.py: {last}", ""]

@@ -1,0 +1,149 @@
+# D015 C1 live shadow - code only, no AI (registry/D015_c1_live_v1.md, pipeline/shadow_c1.py).
+#
+# capture: on each session P, the implied move of every SH-M event whose entry session is P (so it reacts on the
+#   next session), from 35 to 5 minutes before P's close, write-once to shadow/c1/im/<P>.json, committed at once.
+#   GitHub's cron drops fires (CLAUDE.md), so every trigger that lands before the window starts ONE job that waits
+#   inside it: the cloud routine's pushes to claude/s2-trigger (the same pushes that start s2-window.yml) and
+#   several cron backups. A start that finds today's capture already written exits at once.
+# grade: each evening, every SH-M event whose reaction session has settled is priced once from Alpaca history
+#   (analysis/d014/fetch.py and fetch_v3.py, unchanged) and graded to outcomes/shadow/<season>/c1*.json, which the
+#   T2 step never has on disk. No order is ever sent.
+name: Earnings experiment - C1 live shadow (D015)
+
+on:
+  push:
+    branches: ["claude/s2-trigger"]
+  schedule:
+    - cron: "0 17 * * 1-5"     # 13:00 EDT · 12:00 EST - capture (waits for the window)
+    - cron: "40 17 * * 1-5"    # capture backup
+    - cron: "20 18 * * 1-5"    # capture backup
+    - cron: "0 19 * * 1-5"     # capture backup (15:00 EDT · 14:00 EST)
+    - cron: "50 19 * * 1-5"    # capture backup (15:50 EDT, inside the window · 14:50 EST)
+    - cron: "50 22 * * 1-5"    # 18:50 EDT · 17:50 EST - grade
+    - cron: "20 1 * * 2-6"     # 21:20 EDT · 20:20 EST - grade backup
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "capture, grade or probe"
+        required: false
+        default: "grade"
+      r:
+        description: "probe only: a reaction session before the registration (YYYY-MM-DD)"
+        required: false
+        default: ""
+
+jobs:
+  capture:
+    if: >-
+      github.event_name == 'push'
+      || (github.event_name == 'schedule' && github.event.schedule != '50 22 * * 1-5' && github.event.schedule != '20 1 * * 2-6')
+      || (github.event_name == 'workflow_dispatch' && inputs.mode == 'capture')
+    runs-on: ubuntu-latest
+    timeout-minutes: 345
+    concurrency:
+      group: c1-capture
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      # Capture first: a write-once file that touches nothing else, so an unrelated health-check failure must
+      # not cost the day's capture.
+      - name: Capture the implied moves (waits for the window, write-once, commits at once)
+        run: python pipeline/shadow_c1.py capture --wait --commit
+
+      - name: Health check after
+        if: always()
+        run: python check.py
+
+  grade:
+    if: >-
+      (github.event_name == 'schedule' && (github.event.schedule == '50 22 * * 1-5' || github.event.schedule == '20 1 * * 2-6'))
+      || (github.event_name == 'workflow_dispatch' && inputs.mode == 'grade')
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    concurrency:
+      group: c1-grade
+      cancel-in-progress: false
+    permissions:
+      contents: write
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Grade every live season, commit
+        run: |
+          for s in seasonA seasonB; do
+            if [ -f "universe/$s/raw/yfinance_market.json" ]; then
+              python pipeline/shadow_c1.py grade "$s" --commit || echo "::warning::C1 grade $s failed"
+            fi
+          done
+
+      - name: Blind status (counts and coverage only, never a return - D015 §6)
+        run: |
+          for s in seasonA seasonB; do
+            if [ -f "outcomes/shadow/$s/c1.json" ]; then python pipeline/shadow_c1.py status "$s" || true; fi
+          done
+
+      - name: Health check after
+        if: always()
+        run: python check.py
+
+  probe:
+    if: github.event_name == 'workflow_dispatch' && inputs.mode == 'probe'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+      PROBE_R: ${{ inputs.r }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Price one pre-registration reaction session, print coverage, write nothing
+        run: python pipeline/shadow_c1.py probe "$PROBE_R"
