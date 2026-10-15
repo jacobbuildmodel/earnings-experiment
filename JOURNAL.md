@@ -9,6 +9,37 @@
 
 ---
 
+## 2026-10-15 (Thu) late morning ET — alarms for an unworked paper window and for a ledger that disagrees with the broker (ops, RQ6)
+
+- **What:** two code-only checks in `health.py`.
+  - One asks the Actions API whether a window job is really running through the afternoon window.
+  - The other reconciles both Alpaca paper accounts, position by position and open order by open order, against
+    the ledgers.
+  - The workflow now also runs on the routine push, so a health run lands at 14:45 ET. A cron alarm about crons
+    being late would itself be late.
+- **What the record showed when replayed:**
+  - 10-14 reads RED at 14:46: nothing had worked the window since 14:27.
+  - It reads AMBER from 15:20, once the frozen paper-options runs landed (14:46, 14:52, 15:16, 15:46).
+  - The frozen workflow's own `*/10` cron fired once in the window. Almost all its runs come from S2 completions, and
+    while a window job holds the group they are cancelled pending (both of today's were).
+- **Found while reading the frozen code:** paper.py's T0 share trades use the same Alpaca account as the
+  butterflies. A reconciliation against `options_ledger.json` alone would have raised RED on the first share fill.
+  The check reads `ledger.json` too.
+- **What the review taught** (Sonnet, SHIP WITH FIXES):
+  - My lag excuse ("a live ledger order on the symbol explains the mismatch") had no age limit. A ledger that
+    stopped being refreshed would have hidden every mismatch forever, which is exactly what the check exists to
+    catch. Now it is information for 30 minutes, AMBER to 24 h, then RED.
+  - "Ended within 3 minutes of now" counted a 2-second morning-mode step at 14:44 as afternoon coverage at the one
+    run that matters. Inside the window only a running step counts now.
+  - **Lesson: every excuse in an alarm needs an expiry, and every "close enough" needs a test at the run that
+    decides.**
+- **Verified live** (dry dispatch, run 38762134094, 11:38 ET):
+  - Alpaca returns an open multi-leg order as one top-level `mleg` order with its legs nested. Shorts come back
+    as `qty -1, side short`.
+  - Both accounts match their ledgers: the options account holds DPZ's 4 legs plus close r12, and the long account
+    is flat.
+  - The shape is now a test fixture.
+
 ## 2026-10-15 (Thu) morning ET — the paper runner's cron never landed; it now rides the routine push (ops, Gate 1)
 
 - **What happened:** the window runner built yesterday for the DPZ incident starts only from GitHub's cron.

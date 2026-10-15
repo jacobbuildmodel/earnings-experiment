@@ -18,6 +18,13 @@ def root(tmp_path, monkeypatch):
     monkeypatch.setattr(health, "check_py", lambda: ("PASS - 0 warning(s)", [], 0))
     monkeypatch.setattr(health, "actions_failures", lambda now: [])
     monkeypatch.setattr(health, "v4_rule", lambda season: {"t2_deadline_minutes_before_entry_open": 15})
+    # no network: both paper window jobs live since 12:00 ET; both Alpaca accounts flat (the ledgers are absent)
+    monkeypatch.setattr(health, "window_jobs", lambda now: ([
+        {"account": a, "workflow": "paper-window-push.yml", "url": "u", "job_status": "in_progress",
+         "status": "in_progress", "started": datetime.datetime.combine(now.date(), datetime.time(12, 0), ET),
+         "completed": None} for a in ("options", "long")], []))
+    monkeypatch.setattr(health, "alpaca_state", lambda acct: ([], []))
+    monkeypatch.setattr(health, "read_ledgers", lambda names: {n: None for n in names})
     u = tmp_path / "universe" / "seasonA"
     u.mkdir(parents=True)
     (u / "event_status.json").write_text(json.dumps({"events": {
