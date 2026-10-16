@@ -40,6 +40,29 @@
     is flat.
   - The shape is now a test fixture.
 
+## 2026-10-15 (Thu) evening ET — the push runner held; the first C1 grade needed a hand (ops, RQ1)
+
+- **The runner worked as designed, including the part the review warned about.**
+  - The options account's 10:45 start waited behind this morning's hand dispatch. It was cancelled at 11:46 by a
+    later waiting run. The 11:45 start then ran 12:00–15:56.
+  - So a waiting start really is disposable. Coverage came from the next push, not from the queue.
+  - The long account ran the whole day from the 10:45 push.
+  - Every `paper-window.yml` cron start again landed after the window, or was cancelled while waiting.
+- **The laptop is not a backup.** The 12:05 ET background dispatch died with exit 4 after its sleep and sent
+  nothing. It wasn't needed, but anything that must happen belongs in Actions or a cloud routine.
+- **C1's first grade also waited on a cron.** The 18:50 ET grade fire had not started by 20:35, so it was
+  dispatched by hand.
+  - Unlike the paper exits, nothing is lost by a late grade. Prices come from Alpaca history and are written once
+    per R, and the SEC timing check has 10 days of patience.
+  - So no fix, only a note. A push-started grade would mean editing a D015-hashed workflow, for no gain in truth.
+- **The first C1 day, blind counts only:** 12 events reacted on Oct 15. 4 were voided by rule (3 foreign filers,
+  1 SEC timing contradicting the stated session), 8 were graded, and 2 flagged C1.
+  - One date says nothing. The cluster is the date, and look 1 needs about 27 of them.
+- **DPZ is heading for assignment.** 19 v1 closes at the indicative natural, none filled. The stock closed at
+  303.09 against the 310 short put. The rule's answer, settled at intrinsic and labelled simulated, is fixed. The
+  account's answer is 100 shares that no code will sell, and the new positions check is built to catch exactly
+  that.
+
 ## 2026-10-15 (Thu) morning ET — the paper runner's cron never landed; it now rides the routine push (ops, Gate 1)
 
 - **What happened:** the window runner built yesterday for the DPZ incident starts only from GitHub's cron.
