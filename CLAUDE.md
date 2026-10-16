@@ -82,6 +82,11 @@ to start a fresh chat in `Earnings Experiment`.
 - **GitHub's `schedule` is best-effort.** Fires are dropped or arrive hours late (lost PAYX, DRI and BB in Sep;
   stranded the DPZ exit on 2026-10-13). Anything that must act inside a time window starts early and waits or
   loops inside ONE job (S2: `due.py wait`; paper exits: `paper_window.py`). Never rely on a cron landing.
+  Start it from the routine's `claude/s2-trigger` pushes (they land in seconds), with cron only as a backup.
+- **GitHub keeps ONE waiting run per concurrency group; a newer one cancels it.** A run that must happen never
+  waits in a busy group: `paper-window-push.yml`'s settle job (D011 impl v4 addendum 1).
+- **The laptop's `gh` drops while it sleeps**: background jobs died with exit 4 on 10-14 and 10-15. Nothing
+  that must happen runs as a laptop background job.
 - **Alpaca's free options quotes are the "indicative" feed, randomized**; paper fills are judged against real
   quotes. A limit at the indicative natural may never fill (D011 v3, ops/incidents/2026-10-13_DPZ_exit.md).
 - **Alpha Vantage transcripts use fiscal quarters** (ORCL's Sep 2026 call is `2027Q1`) and can lag by
