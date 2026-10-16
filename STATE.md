@@ -1,6 +1,46 @@
 # STATE — Earnings Experiment
 
-**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-15 11:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-15 20:50 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-15 (Thu) ~20:50 ET — evening check: the push runner covered both accounts; the first C1 grade (blind counts).**
+- **Paper window, first live day of `paper-window-push.yml`:**
+  - **long:** the 10:45 push's job ran 10:48–15:56.
+  - **options:** the 10:45 push's job waited behind the 10:23 hand dispatch and was cancelled at 11:46, exactly as
+    the review predicted. The 11:45 push's job ran 12:00–15:56.
+  - Health at 19:41: both "done". The "cancelled" runs in Actions are those waiting starts, not failures.
+  - `paper-window.yml`'s crons: 2 waiting starts were cancelled, and 4 began 16:34–18:19 ET, after the window.
+  - The laptop's 12:05 backup dispatch failed (exit 4 after its sleep; nothing sent). Laptop background jobs are
+    no backup.
+- **DPZ (v1):** 19 closes sent, none filled. At 19:41 it had 4 legs and no open order.
+  - DPZ closed at 303.09, so the short 310 put is ~$7 in the money.
+  - Fri Oct 16 is expiry, and closes continue all day.
+  - **If it never fills:** the ledger settles it at intrinsic on the expiry close, labelled simulated (D011 v1 rule).
+    Alpaca will likely assign the put, so expect **+100 DPZ shares in the options account Mon Oct 19**, and health
+    RED "assigned shares".
+  - Then flatten the shares on the paper account with one market sell, recorded in JOURNAL. That has no effect on
+    any result.
+- **C1 (D015), first grade:** the 18:50 grade cron had not landed by 20:35. It was dispatched by hand (run
+  38830571544). Grading is retry-safe: any later run grades every settled R.
+  - **R = Oct 15:** 12 events. 8 graded, 3 void `not_domestic_foreign`, 1 void `print_contradicted`.
+  - Blind counts only: 6 with |gap| ≥ 1%, 5 with an implied move, **2 C1 events, on 1 date**.
+  - **Capture 10-15 (for R = Oct 16): 9/12.** INDB and WAFD `no_quote`, SFNC `no_strike`.
+- 🔴 **Watch Fri Oct 16:**
+  - the 10:45 push should hold both accounts 10:48–15:56; the 14:45 health run checks it
+  - DPZ's last resends
+  - NOC/RTX/VICR gates from 14:30, then the first v3 opens
+  - the C1 capture for R = Mon Oct 19
+  - Mon: DPZ assignment, shares to flatten
+- **~21:15 ET, refinements from a review of the Experiment sessions (`4cb5ec4`):**
+  - **Opening fills now have a pre-committed trigger** (`registry/D011_open_fill_trigger_v1.md`, frozen). Count each
+    account's first 6 opens from snapshot 10-16 as filled at attempt 0, filled at attempt 1, or
+    `open_failed: platform`. 2+ failures on an account → draft D011 v4 (v3's close ladder for opens). Fill counts
+    only, never P&L. 🔴 **Count them each session until 6 per account.**
+  - **CLAUDE.md:** start must-happen jobs from the routine push; one waiting run per concurrency group; the laptop's
+    `gh` drops while it sleeps.
+  - **`legs_exploratory.json` committed** (D007's input), so check.py runs with 0 warnings.
+  - 🔴 **Promised on 10-14 and not built:** the paper report's three prices (mid, halfway, far side), with and
+    without DPZ, v3-only, fill rate as an outcome, and a re-check of fills against real exchange data. Needed
+    before the first v3 numbers are reported (closes from Mon Oct 19).
 
 **2026-10-15 (Thu) ~11:45 ET — two new health alarms: paper window coverage, and Alpaca positions vs the ledgers (`169530a`).**
 - **Why:** nothing alarmed on 10-14 when every cron start of the window runner landed after the window. The paper
