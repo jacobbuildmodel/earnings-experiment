@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "NOC",
+ "report_date": "2026-10-20",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-19"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-20"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-20"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-27"
+  },
+  "reaction_day": "2026-10-20"
+ },
+ "snapshot_session": "2026-10-16",
+ "captured_et": "2026-10-16T14:31:00.353829-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/northrop-grumman-announces-date-third-quarter-2026-financial-results-and-webcast-2026",
+  "published_et": "2026-09-17T09:00-04:00",
+  "quote": "linkedin facebook x email reddit FALLS CHURCH, Va. , Sept. 17, 2026 (GLOBE NEWSWIRE) -- Northrop Grumman Corporation (NYSE: NOC) announced today that its third quarter 2026 financial results will be released on Tuesday, October 20, 2026 , prior to the market opening.",
+  "title": "Northrop Grumman Announces Date for Third Quarter 2026 Financial Results and Webcast",
+  "retrieved_et": "2026-10-08T22:40:59.460412-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-20T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-20T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 514.280029296875,
+  "expiry": "2026-11-20",
+  "strike": 515.0,
+  "call": {
+   "bid": 18.5,
+   "ask": 22.7,
+   "openInterest": 57.0,
+   "lastPrice": 20.0,
+   "impliedVolatility": 0.35776399078369137,
+   "lastTradeDate": "2026-10-16T16:54:52+00:00"
+  },
+  "put": {
+   "bid": 18.2,
+   "ask": 20.5,
+   "openInterest": 17.0,
+   "lastPrice": 20.84,
+   "impliedVolatility": 0.31247635772705074,
+   "lastTradeDate": "2026-10-16T14:59:10+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 23,
+  "implied_move": 0.07768141425716987,
+  "rel_spread": {
+   "call": 0.20388349514563103,
+   "put": 0.11886304909560726
+  },
+  "oi_atm": 74.0,
+  "oi_sum": 552.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
