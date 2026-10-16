@@ -1,6 +1,90 @@
 # STATE — Earnings Experiment
 
-**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-14 12:15 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-15 11:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-15 (Thu) ~11:45 ET — two new health alarms: paper window coverage, and Alpaca positions vs the ledgers (`169530a`).**
+- **Why:** nothing alarmed on 10-14 when every cron start of the window runner landed after the window. The paper
+  ledgers had never been checked against the accounts' real positions (backlog item, 10-14 research).
+- **Paper window coverage** (`pipeline/health.py` `paper_window`). Full sessions only, from 14:40 ET. Per account
+  (options and long), it reads today's runs and job steps from the Actions API.
+  - **GREEN:** a `paper-window-push.yml` or `paper-window.yml` afternoon step started by 14:45 and is running (once
+    the window is over: it ran to 15:56).
+  - **AMBER LATE:** the step started after 14:45.
+  - **AMBER NOT RUNNING:** no window step, but a frozen `paper-options.yml` / `paper-long.yml` run completed in the
+    last 25 minutes.
+  - **RED NOT COVERED:** neither, while the window is open. The message says to dispatch `paper-window-push.yml`.
+    Once the window is over, the same finding is AMBER.
+  - **Replay of the real 10-14 record:** RED at 14:46, AMBER at 15:20 and 16:20. The frozen runs landed 14:46,
+    14:52, 15:16 and 15:46, and the spec makes frozen-only coverage AMBER.
+- **Positions vs ledgers** (`positions_check`). Read-only GET `/v2/positions` and `/v2/orders?status=open&nested=true`.
+  - **Options account** (`APCA_*`): `options_ledger.json` **plus `ledger.json`**, because paper.py's T0 shares trade
+    on the same account.
+  - **Long account** (`APCA_L_*`): `long_ledger.json`.
+  - Holdings are computed per contract from every filled order's `legs_filled`, so a v3 close's dropped long leg
+    stays expected.
+  - **RED** needs the same mismatch on a second look 2 minutes later, with the account and the git-fetched ledgers
+    re-read:
+    - a position or open order no ledger shows live
+    - a live ledger position the account lacks
+    - an open order the ledger records as ended
+  - **A live ledger order on the symbol** makes a mismatch information while the order is young (options 30 min,
+    shares 26 h), AMBER up to 24 h, then RED "LEDGER STALE".
+  - **Smaller cases:**
+    - an unknown open order under 15 minutes old is information
+    - options are no longer expected after their expiry-day close; one still listed the next day is AMBER
+    - assigned shares are RED: real stock exposure that no code will close
+- **`health.yml`:**
+  - The Alpaca paper keys are on the health step only.
+  - It now also runs on the routine's `claude/s2-trigger` pushes, so one health run lands at 14:45 ET in EDT and
+    EST, inside the window.
+  - `workflow_dispatch` takes `dry: true`: it prints the report plus `--shapes` (each account's open orders and
+    positions) in the log, with no commit and no issue.
+- **Review:** Sonnet (independent, read-only) said SHIP WITH FIXES. Applied:
+  - age-bounded lag (a frozen ledger was excused forever)
+  - a crashing check becomes AMBER
+  - AMBER once the window is over
+  - nested multi-leg children skipped
+  - only running steps count inside the window (a 2-second step at 14:44 had read as coverage)
+  - one API retry
+  - step names bound to the YAML by a test
+  - young unknown orders are information
+- **Tests:** 49 health tests on recorded Actions fixtures (10-14 and 10-15) and the real DPZ trade record. Full
+  suite 210 passed, 1 skipped. `check.py` PASS.
+- 🔴 **Watch:**
+  - ✅ **First dry dispatch, run 38762134094 (11:38 ET): both accounts match the ledgers.**
+    - Options: 4 DPZ legs and open close r12, one rolled-up `mleg` order with its legs nested.
+    - Long: flat.
+    - No leftover probe positions.
+    - The shape is recorded in `tests/fixtures/health_alpaca_shapes_2026-10-15.json` and tested.
+  - **Fri Oct 16, 14:45 ET push run:** paper window GREEN.
+  - **Fri Oct 16 evening, DPZ expiry:** if the short 310 put is assigned, the next health run is RED, showing DPZ
+    shares no ledger holds. That is correct; a person has to close them.
+
+**2026-10-15 (Thu) ~10:40 ET — the paper window runner now starts from the routine push (`f4f3c20`).**
+- **Why:** `paper-window.yml` starts only from GitHub cron, and its fires never landed in time.
+  - 10-14: the 4 afternoon fires began 21:00–22:18 UTC, after the 15:56 ET end.
+  - 10-15: neither morning fire had started by 10:23 ET.
+  - DPZ's v1 close was retried only by the frozen 10-minute crons and by hand.
+- **Today, by hand:**
+  - The morning window was dispatched at 10:23 ET (run 38750990764). DPZ's 9th close went out at 10:24 ET at a
+    10.73 natural debit, against 15.60 at 15:46 yesterday.
+  - A laptop background job dispatches `paper-window.yml` afternoon at 12:05 ET, as a backup. It dies if the app
+    closes.
+- **The fix:** `.github/workflows/paper-window-push.yml`, registered as `registry/D011_implementation_v4_addendum1.md`
+  (frozen). `paper-window.yml` and every D011 v4 file are byte-identical.
+  - It starts on the `earnings-s2-trigger` pushes (14:45, 15:45, 18:45, 19:45 UTC) and picks the window by the ET
+    clock: morning before 12:00, and afternoon from a 10:30 start, waiting inside the job.
+  - In EDT the 10:45 push covers both windows. In EST the 09:45 push covers the morning and the 13:45 push the
+    afternoon.
+  - A 150 s settle job comes first, so the push's own frozen paper run (queued ~17 s after the push, 20–35 s long)
+    cannot evict it from the one-pending-per-group queue.
+  - Sonnet review: SHIP WITH FIXES, all applied.
+- 🔴 **Ops rule:** before hand-dispatching any paper workflow while a window job runs, `gh run cancel` it.
+  Otherwise the dispatch waits hours behind it, or is cancelled.
+- 🔴 **Watch:**
+  - the 10:45 ET push today (the long account should start; options waits behind the hand dispatch)
+  - Fri Oct 16: the 10:45 push should hold `paper-options` through 15:56. That day has DPZ's expiry (v1, last
+    resend), NOC/RTX/VICR gates and the first v3 opens.
 
 **2026-10-14 (Wed) 12:09 ET — D015 v1 FROZEN (`bd67722`): C1 live, the confirmatory test of D014's one survivor.**
 - **What:** `registry/D015_c1_live_v1.md`. C1 is "fade a pre-market gap bigger than the options-implied move". It
@@ -32,7 +116,10 @@
   - **Probe:** manual, a pre-registration R only.
   - Today's capture was dispatched by hand at 12:09 ET (run 38595673105) and waits for 15:25.
 - 🔴 **Watch:**
-  - Today ~15:57 ET: the commit of `shadow/c1/im/2026-10-14.json` (12 names due).
+  - ✅ **First capture landed:** `shadow/c1/im/2026-10-14.json`, commit `441fd49` at 15:54 ET Oct 14 (run
+    38595673105 green).
+    - 10/12 implied moves, at 15:25 ET. HOMB `no_strike` (no puts listed) and WIT `no_quote`, after 30 retry passes.
+    - Committed after `bd67722` and before Oct 15 09:27, so its events count.
   - Thu Oct 15 18:50 ET: the first grade, with `outcomes/shadow/seasonA/c1.json` counts only.
   - ✅ **Probe run 38595680182 (R = Oct 13, pre-registration, coverage only):**
     - 9 SH-M events, 45 requests, 0 failures. Opens and closes are auction prints. Pre-market prices are at
@@ -74,7 +161,7 @@
   - re-grade paper fills against free OPRA bars after the fact
   - P&L at three cost levels
   - fill rate as an outcome
-  - a positions-vs-ledger health check
+  - ✅ a positions-vs-ledger health check (done 2026-10-15, `health.py` `positions_check`)
 
 **2026-10-13 (Tue) ~13:30 ET — D014 v1/v2/v3 RESULTS** (`analysis/d014/REPORT*.md`). Verdict: no first-hour
 pattern validated.

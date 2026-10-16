@@ -1,9 +1,15 @@
 # Daily health check - code only, no AI (pipeline/health.py). Writes ops/health/latest.md and, when the status is
 # RED (an event or a decision is being lost), opens or comments on one GitHub issue titled "Health RED" so GitHub
 # e-mails the repo owner. Runs at 07:30 Singapore (23:30 UTC) and mid-morning US Eastern on weekdays.
+# Also on every push of the routine earnings-s2-trigger (14:45, 15:45, 18:45, 19:45 UTC): a push starts a run within
+# seconds, where the cron is late or dropped, so one health run lands at 14:45 ET in EDT and in EST, inside the paper
+# window (the paper window coverage check starts at 14:40 ET). The Alpaca paper keys are given to the health step for
+# the positions-vs-ledger check, which only reads (GET /v2/positions, /v2/orders).
 name: Earnings experiment - health
 
 on:
+  push:
+    branches: ["claude/s2-trigger"]
   schedule:
     - cron: "30 23 * * *"        # 07:30 SGT, after the US evening jobs
     - cron: "30 3 * * *"         # 23:30 EDT / 22:30 EST, overnight T2 coverage
@@ -13,6 +19,11 @@ on:
     - cron: "20 19 * * 1-5"      # 15:20 EDT / 14:20 EST, inside the D011 exit window (DPZ incident)
     - cron: "20 20 * * 1-5"      # 16:20 EDT / 15:20 EST, the same for EST
   workflow_dispatch:
+    inputs:
+      dry:
+        description: "true = print the report in the log only: no commit, no issue (a first look at a new check)"
+        required: false
+        default: "false"
 
 concurrency:
   group: health
@@ -47,12 +58,19 @@ jobs:
           git config user.email "actions@github.com"
 
       - name: Health check, write and commit
+        env:
+          APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+          APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+          APCA_L_API_KEY_ID: ${{ secrets.APCA_L_API_KEY_ID }}
+          APCA_L_API_SECRET_KEY: ${{ secrets.APCA_L_API_SECRET_KEY }}
+          DRY: ${{ inputs.dry }}
         run: |
           rm -f ops/health/status.txt   # a stale committed status must never stand in for a crashed run
+          if [ "$DRY" = "true" ]; then python pipeline/health.py --shapes; exit 0; fi
           python pipeline/health.py --write --commit
 
       - name: Alert on RED, close on GREEN (one issue)
-        if: always()
+        if: always() && inputs.dry != 'true'
         run: |
           if [ ! -f ops/health/status.txt ]; then
             mkdir -p ops/health
