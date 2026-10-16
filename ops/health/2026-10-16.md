@@ -1,4 +1,4 @@
-# Health 2026-10-16 15:46 ET - **AMBER**
+# Health 2026-10-16 18:07 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,15 +6,15 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-16T14:46:38Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/38918509966
 - EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 28 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
 
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F', 'seasonA-NOC-2026-10-20-F', 'seasonA-RTX-2026-10-20-F', 'seasonA-VICR-2026-10-20-F']
-- paper/long_ledger.json: open ['seasonA-NOC-2026-10-20-L', 'seasonA-RTX-2026-10-20-L', 'seasonA-VICR-2026-10-20-L']
-- paper window (options): paper-window-push.yml afternoon step since 12:00 ET
-- paper window (long): paper-window-push.yml afternoon step since 10:49 ET
-- paper/options: 16 position(s), 1 open order(s) - they match the ledgers
-- paper/long: ['seasonA-NOC-2026-10-20-L-open-r1'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
+- paper/long_ledger.json: open ['seasonA-RTX-2026-10-20-L', 'seasonA-VICR-2026-10-20-L']
+- paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
+- paper window (long): paper-window-push.yml afternoon step since 10:49 ET (done)
+- paper/options: 15 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 4 position(s), 0 open order(s) - they match the ledgers
 - Fri 16 Oct: 3 snapshot(s) - NOC, RTX, VICR
 - Mon 19 Oct: 2 snapshot(s) - ABT, PEGA
