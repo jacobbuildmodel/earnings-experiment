@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "RTX",
+ "report_date": "2026-10-20",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-19"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-20"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-20"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-27"
+  },
+  "reaction_day": "2026-10-20"
+ },
+ "snapshot_session": "2026-10-16",
+ "captured_et": "2026-10-16T14:31:00.313299-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/rtx-release-third-quarter-earnings-results-october-20-2026-2026-09-29",
+  "published_et": "2026-09-29T08:00-04:00",
+  "quote": "linkedin facebook x email reddit ARLINGTON, Va. , Sept 29, 2026 /PRNewswire/ -- RTX (NYSE: RTX ) will issue its third quarter 2026 earnings results on Tuesday, October 20 , prior to the stock market opening.",
+  "title": "RTX to release third quarter earnings results on October 20, 2026",
+  "retrieved_et": "2026-10-08T22:41:37.734378-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-20T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-20T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 192.27000427246094,
+  "expiry": "2026-10-23",
+  "strike": 192.5,
+  "call": {
+   "bid": 5.15,
+   "ask": 5.4,
+   "openInterest": 515.0,
+   "lastPrice": 5.22,
+   "impliedVolatility": 0.485356708984375,
+   "lastTradeDate": "2026-10-16T18:12:13+00:00"
+  },
+  "put": {
+   "bid": 4.4,
+   "ask": 5.0,
+   "openInterest": 6.0,
+   "lastPrice": 4.56,
+   "impliedVolatility": 0.4299373413085938,
+   "lastTradeDate": "2026-10-16T17:31:22+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.051880167360191465,
+  "rel_spread": {
+   "call": 0.04739336492890995,
+   "put": 0.127659574468085
+  },
+  "oi_atm": 521.0,
+  "oi_sum": 1291.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
