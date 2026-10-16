@@ -30,6 +30,17 @@
   - NOC/RTX/VICR gates from 14:30, then the first v3 opens
   - the C1 capture for R = Mon Oct 19
   - Mon: DPZ assignment, shares to flatten
+- **~21:15 ET, refinements from a review of the Experiment sessions (`4cb5ec4`):**
+  - **Opening fills now have a pre-committed trigger** (`registry/D011_open_fill_trigger_v1.md`, frozen). Count each
+    account's first 6 opens from snapshot 10-16 as filled at attempt 0, filled at attempt 1, or
+    `open_failed: platform`. 2+ failures on an account → draft D011 v4 (v3's close ladder for opens). Fill counts
+    only, never P&L. 🔴 **Count them each session until 6 per account.**
+  - **CLAUDE.md:** start must-happen jobs from the routine push; one waiting run per concurrency group; the laptop's
+    `gh` drops while it sleeps.
+  - **`legs_exploratory.json` committed** (D007's input), so check.py runs with 0 warnings.
+  - 🔴 **Promised on 10-14 and not built:** the paper report's three prices (mid, halfway, far side), with and
+    without DPZ, v3-only, fill rate as an outcome, and a re-check of fills against real exchange data. Needed
+    before the first v3 numbers are reported (closes from Mon Oct 19).
 
 **2026-10-15 (Thu) ~11:45 ET — two new health alarms: paper window coverage, and Alpaca positions vs the ledgers (`169530a`).**
 - **Why:** nothing alarmed on 10-14 when every cron start of the window runner landed after the window. The paper
