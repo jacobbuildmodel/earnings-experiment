@@ -1,4 +1,4 @@
-# Health 2026-10-15 21:32 ET - **AMBER**
+# Health 2026-10-16 04:27 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -10,8 +10,6 @@ check.py: PASS - 1 warning(s)
 
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F']
-- paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
-- paper window (long): paper-window-push.yml afternoon step since 10:48 ET (done)
 - paper/options: 4 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 0 position(s), 0 open order(s) - they match the ledgers
 - Fri 16 Oct: 3 snapshot(s) - NOC, RTX, VICR
