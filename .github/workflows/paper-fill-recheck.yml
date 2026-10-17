@@ -1,0 +1,76 @@
+# Paper orders re-checked against real exchange prints (registry/D011_report_views_v1.md) - code only, no AI.
+#
+# Descriptive: it decides nothing and sends no order. It stores, write-once, Alpaca's historical OPRA bars and trades
+# around every paper order (pipeline/paper_fill_recheck.py fetch), for pipeline/paper_options_report_v2.py.
+# Read-only market data; the options account's keys are used only to read it, and only on the steps that do.
+name: Earnings experiment - paper fill re-check
+
+on:
+  # 16:50 EST / 17:50 EDT, and 07:30 EST / 08:30 EDT: never inside the 14:27-15:56 ET paper window in either
+  # clock. A window is fetched 12 h after it ends, so the morning run does most of the work. Not time-critical: each
+  # run catches up on every order not yet stored (history is kept after expiry), so a dropped fire only delays.
+  schedule:
+    - cron: "50 21 * * 1-5"
+    - cron: "30 12 * * 2-6"
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "fetch (default), probe, or dry (fetch + report in the runner; nothing committed)"
+        required: false
+        default: "fetch"
+
+concurrency:
+  group: paper-fill-recheck
+  cancel-in-progress: false
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Implementation hashes - the registered code, or stop
+        run: sha256sum -c registry/D011_report_views_implementation_v1.sha256
+
+      - name: Probe (records what the plan returns)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'probe'
+        env:
+          APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+          APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+        run: python pipeline/paper_fill_recheck.py probe --commit
+
+      - name: Dry run (fetch and report in the runner; nothing is committed)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'dry'
+        env:
+          APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+          APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+        run: |
+          python pipeline/paper_fill_recheck.py fetch seasonA
+          python pipeline/paper_options_report_v2.py seasonA
+
+      - name: Fetch real prints around new orders, commit them
+        if: github.event_name != 'workflow_dispatch' || (inputs.command != 'probe' && inputs.command != 'dry')
+        env:
+          APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+          APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+        run: python pipeline/paper_fill_recheck.py fetch seasonA --commit

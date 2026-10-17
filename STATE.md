@@ -1,6 +1,49 @@
 # STATE — Earnings Experiment
 
-**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-15 20:50 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+**Season A live · D015 (C1 live, market-wide) frozen · Max plan** · updated 2026-10-16 21:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest entries first).
+
+**2026-10-16 (Fri) ~21:30 ET — the promised paper report views are built, reviewed and FROZEN (`d424bca`).**
+- **What:** `registry/D011_report_views_v1.md` and `pipeline/paper_options_report_v2.py`.
+  - Run: `python pipeline/paper_options_report_v2.py seasonA --write`. It writes
+    `outcomes/paper/options_report_v2_seasonA_<date>.md` and `.json`. The first is the 10-16 one.
+  - The frozen report (`paper_options_report.py`, implementation v3) is byte-identical and stays the report of
+    record. A test guards it.
+  - **Views:**
+    - every P&L figure at the fill, mid, halfway and far side; the headline is the trades priced at all four;
+    - all trades, v3 only, and without DPZ;
+    - fill rate from order records only: opens at attempt 0 / attempt 1 / platform, v3 closes by concession step;
+    - the open-fill trigger's counts (ties within one run go by the order the frozen code sent them);
+    - execution against each order's own quotes;
+    - each order against real exchange prints.
+  - **Real prints:** `pipeline/paper_fill_recheck.py` and `.github/workflows/paper-fill-recheck.yml`.
+    - Runs at 07:30 EST / 08:30 EDT and 16:50 EST / 17:50 EDT; never in the paper window.
+    - Fetches each order 12 h after its window ends. Raw and write-once in `paper/fill_recheck/seasonA/`.
+    - It checks its own hashes (`registry/D011_report_views_implementation_v1.sha256`) before fetching.
+    - **First live fetch (run 38990228211):** 20 DPZ orders stored and pushed. The 16 orders of 10-16 wait for the
+      12 h rule.
+- **Probe (free plan; `ops/probes/alpaca_options_history_2026-10-16.json`):**
+  - Historical 1-minute bars and trades answer, also for expired contracts.
+  - There is no historical quotes endpoint (404). **What the real quote was can never be checked after the fact.**
+  - The latest OPRA trade, and a daily range ending today, return 403 "OPRA agreement is not signed".
+- **First look (descriptive; 6 real opens, one day):** every open filled 3–56¢ better than its limit (the indicative
+  far side), and paid 91–99% of the half-spread. **The mid column will flatter every result.**
+- **DPZ's failed v1 exit against real prints** (19 closes, Oct 13–15; one trade, descriptive):
+  - Of the 30 legs that printed while a close was live, 29 printed at or through our recorded far side.
+  - No close ever had prints on all four legs, so whether the whole order was marketable is unknown.
+  - So no leg's price looks to have been the obstacle.
+- **Open-fill trigger tonight:**
+  - options: 3 of 6 counted, all filled at attempt 0;
+  - long: 3 of 6, 2 at attempt 0 and NOC `open_failed: platform`.
+  - Neither has fired; 2 platform failures among an account's first 6 fire it.
+- **Review:** Sonnet, read-only, two passes. Both SHIP WITH FIXES, all applied (listed in the spec). The tie rule was
+  checked by brute force on 4,000 random ledgers.
+- **Tests:** 261 passed, 1 skipped. `check.py` PASS.
+- 🔴 **From Mon 10-19:**
+  - Every D011 P&L number goes out at fill / mid / halfway / natural, all vs v3 only, with DPZ in and out. Run the
+    report with `--write` when reporting, and commit its outputs.
+  - Count the trigger from its table each session until 6 per account.
+- 🔴 **Watch Sat 10-17 08:30 ET:** the scheduled fetch should store the 16 orders of 10-16. If it drops, dispatch
+  `paper-fill-recheck.yml` (it catches up).
 
 **2026-10-15 (Thu) ~20:50 ET — evening check: the push runner covered both accounts; the first C1 grade (blind counts).**
 - **Paper window, first live day of `paper-window-push.yml`:**
@@ -38,7 +81,7 @@
   - **CLAUDE.md:** start must-happen jobs from the routine push; one waiting run per concurrency group; the laptop's
     `gh` drops while it sleeps.
   - **`legs_exploratory.json` committed** (D007's input), so check.py runs with 0 warnings.
-  - 🔴 **Promised on 10-14 and not built:** the paper report's three prices (mid, halfway, far side), with and
+  - ✅ **Built and frozen 10-16 (`d424bca`, entry above). Promised on 10-14 and not built:** the paper report's three prices (mid, halfway, far side), with and
     without DPZ, v3-only, fill rate as an outcome, and a re-check of fills against real exchange data. Needed
     before the first v3 numbers are reported (closes from Mon Oct 19).
 

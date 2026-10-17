@@ -1,0 +1,540 @@
+{
+ "what": "probe of Alpaca's options market-data history on this account's (free) plan",
+ "run_et": "2026-10-16T20:38:06-04:00",
+ "results": [
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "bars 1Min +-15 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-16T18:28:32Z",
+    "end": "2026-10-16T18:58:32Z",
+    "timeframe": "1Min"
+   },
+   "http": 200,
+   "rows": 1,
+   "first_row": {
+    "c": 24.7,
+    "h": 24.7,
+    "l": 24.7,
+    "n": 1,
+    "o": 24.7,
+    "t": "2026-10-16T18:48:00Z",
+    "v": 1,
+    "vw": 24.7
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "trades +-5 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades",
+   "params": {
+    "start": "2026-10-16T18:38:32Z",
+    "end": "2026-10-16T18:48:32Z"
+   },
+   "http": 200,
+   "rows": 1,
+   "first_row": {
+    "c": "f",
+    "p": 24.7,
+    "s": 1,
+    "t": "2026-10-16T18:48:05.614670775Z",
+    "x": "A"
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "quotes (historical) +-5 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/quotes",
+   "params": {
+    "start": "2026-10-16T18:38:32Z",
+    "end": "2026-10-16T18:48:32Z"
+   },
+   "http": 404,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"Not Found\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "bars 1Day, 10 days to the fill",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-06",
+    "end": "2026-10-16",
+    "timeframe": "1Day"
+   },
+   "http": 403,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"OPRA agreement is not signed\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "bars 1Min feed=opra",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-16T18:28:32Z",
+    "end": "2026-10-16T18:58:32Z",
+    "timeframe": "1Min",
+    "feed": "opra"
+   },
+   "http": 400,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"unexpected query parameter(s): feed\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "bars 1Min feed=indicative",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-16T18:28:32Z",
+    "end": "2026-10-16T18:58:32Z",
+    "timeframe": "1Min",
+    "feed": "indicative"
+   },
+   "http": 400,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"unexpected query parameter(s): feed\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "latest trade feed=opra",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades/latest",
+   "params": {
+    "feed": "opra"
+   },
+   "http": 403,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"OPRA agreement is not signed\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-VICR-2026-10-20-F-open",
+   "symbol": "VICR261120C00195000",
+   "expiry": "2026-11-20",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:43:32Z",
+   "call": "latest trade feed=indicative",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades/latest",
+   "params": {
+    "feed": "indicative"
+   },
+   "http": 200,
+   "rows": 1,
+   "first_row": {
+    "c": "I",
+    "p": 22,
+    "s": 1,
+    "t": "2026-10-16T19:53:32.197884364Z",
+    "x": "I"
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "bars 1Min +-15 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-16T18:18:15Z",
+    "end": "2026-10-16T18:48:15Z",
+    "timeframe": "1Min"
+   },
+   "http": 200,
+   "rows": 3,
+   "first_row": {
+    "c": 4.93,
+    "h": 4.93,
+    "l": 4.93,
+    "n": 1,
+    "o": 4.93,
+    "t": "2026-10-16T18:31:00Z",
+    "v": 2,
+    "vw": 4.93
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "trades +-5 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades",
+   "params": {
+    "start": "2026-10-16T18:28:15Z",
+    "end": "2026-10-16T18:38:15Z"
+   },
+   "http": 200,
+   "rows": 3,
+   "first_row": {
+    "c": "a",
+    "p": 4.93,
+    "s": 2,
+    "t": "2026-10-16T18:31:47.239389597Z",
+    "x": "I"
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "quotes (historical) +-5 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/quotes",
+   "params": {
+    "start": "2026-10-16T18:28:15Z",
+    "end": "2026-10-16T18:38:15Z"
+   },
+   "http": 404,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"Not Found\"}\n"
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "bars 1Day, 10 days to the fill",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-06",
+    "end": "2026-10-16",
+    "timeframe": "1Day"
+   },
+   "http": 403,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"OPRA agreement is not signed\"}\n"
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "bars 1Min feed=opra",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-16T18:18:15Z",
+    "end": "2026-10-16T18:48:15Z",
+    "timeframe": "1Min",
+    "feed": "opra"
+   },
+   "http": 400,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"unexpected query parameter(s): feed\"}\n"
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "bars 1Min feed=indicative",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-16T18:18:15Z",
+    "end": "2026-10-16T18:48:15Z",
+    "timeframe": "1Min",
+    "feed": "indicative"
+   },
+   "http": 400,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"unexpected query parameter(s): feed\"}\n"
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "latest trade feed=opra",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades/latest",
+   "params": {
+    "feed": "opra"
+   },
+   "http": 403,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"OPRA agreement is not signed\"}\n"
+  },
+  {
+   "account": "PX-L",
+   "order": "seasonA-RTX-2026-10-20-L-open",
+   "symbol": "RTX261023C00192500",
+   "expiry": "2026-10-23",
+   "expired": false,
+   "fill_utc": "2026-10-16T18:33:15Z",
+   "call": "latest trade feed=indicative",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades/latest",
+   "params": {
+    "feed": "indicative"
+   },
+   "http": 200,
+   "rows": 1,
+   "first_row": {
+    "c": "I",
+    "p": 6.1,
+    "s": 4,
+    "t": "2026-10-16T19:52:22.246409266Z",
+    "x": "N"
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "bars 1Min +-15 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-09T18:49:02Z",
+    "end": "2026-10-09T19:19:02Z",
+    "timeframe": "1Min"
+   },
+   "http": 200,
+   "rows": 2,
+   "first_row": {
+    "c": 9.45,
+    "h": 9.45,
+    "l": 9.45,
+    "n": 1,
+    "o": 9.45,
+    "t": "2026-10-09T19:12:00Z",
+    "v": 6,
+    "vw": 9.45
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "trades +-5 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades",
+   "params": {
+    "start": "2026-10-09T18:59:02Z",
+    "end": "2026-10-09T19:09:02Z"
+   },
+   "http": 200,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "quotes (historical) +-5 min",
+   "url": "https://data.alpaca.markets/v1beta1/options/quotes",
+   "params": {
+    "start": "2026-10-09T18:59:02Z",
+    "end": "2026-10-09T19:09:02Z"
+   },
+   "http": 404,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"Not Found\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "bars 1Day, 10 days to the fill",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-09-29",
+    "end": "2026-10-09",
+    "timeframe": "1Day"
+   },
+   "http": 200,
+   "rows": 7,
+   "first_row": {
+    "c": 9,
+    "h": 9,
+    "l": 7.1,
+    "n": 14,
+    "o": 7.5,
+    "t": "2026-09-29T04:00:00Z",
+    "v": 19,
+    "vw": 8.258421
+   },
+   "next_page_token": false,
+   "error": null
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "bars 1Min feed=opra",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-09T18:49:02Z",
+    "end": "2026-10-09T19:19:02Z",
+    "timeframe": "1Min",
+    "feed": "opra"
+   },
+   "http": 400,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"unexpected query parameter(s): feed\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "bars 1Min feed=indicative",
+   "url": "https://data.alpaca.markets/v1beta1/options/bars",
+   "params": {
+    "start": "2026-10-09T18:49:02Z",
+    "end": "2026-10-09T19:19:02Z",
+    "timeframe": "1Min",
+    "feed": "indicative"
+   },
+   "http": 400,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"unexpected query parameter(s): feed\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "latest trade feed=opra",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades/latest",
+   "params": {
+    "feed": "opra"
+   },
+   "http": 403,
+   "rows": 0,
+   "first_row": null,
+   "next_page_token": false,
+   "error": "{\"message\":\"OPRA agreement is not signed\"}\n"
+  },
+  {
+   "account": "PX-F",
+   "order": "seasonA-DPZ-2026-10-13-F-open",
+   "symbol": "DPZ261016C00310000",
+   "expiry": "2026-10-16",
+   "expired": true,
+   "fill_utc": "2026-10-09T19:04:02Z",
+   "call": "latest trade feed=indicative",
+   "url": "https://data.alpaca.markets/v1beta1/options/trades/latest",
+   "params": {
+    "feed": "indicative"
+   },
+   "http": 200,
+   "rows": 1,
+   "first_row": {
+    "c": "a",
+    "p": 0.07,
+    "s": 1,
+    "t": "2026-10-16T19:49:58.704707018Z",
+    "x": "B"
+   },
+   "next_page_token": false,
+   "error": null
+  }
+ ]
+}
