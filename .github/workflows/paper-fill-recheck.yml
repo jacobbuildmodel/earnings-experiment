@@ -1,0 +1,55 @@
+# Paper fills re-checked against real exchange prints (registry/D011_report_views_v1.md) - code only, no AI.
+#
+# Descriptive: it decides nothing and sends no order. It stores, write-once, Alpaca's historical OPRA bars and trades
+# around every filled paper order (pipeline/paper_fill_recheck.py fetch), for pipeline/paper_options_report_v2.py.
+# Read-only market data; the options account's keys are used only to read it.
+name: Earnings experiment - paper fill re-check
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "fetch (default) or probe"
+        required: false
+        default: "fetch"
+
+concurrency:
+  group: paper-fill-recheck
+  cancel-in-progress: false
+
+jobs:
+  recheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+      APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Probe (records what the plan returns)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'probe'
+        run: python pipeline/paper_fill_recheck.py probe --commit
+
+      - name: Fetch real prints around new fills, commit them
+        if: github.event_name != 'workflow_dispatch' || inputs.command != 'probe'
+        run: python pipeline/paper_fill_recheck.py fetch seasonA --commit
