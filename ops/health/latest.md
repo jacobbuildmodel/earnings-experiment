@@ -1,4 +1,4 @@
-# Health 2026-10-16 21:23 ET - **RED**
+# Health 2026-10-17 03:59 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -12,12 +12,10 @@ check.py: PASS - 1 warning(s)
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F', 'seasonA-NOC-2026-10-20-F', 'seasonA-RTX-2026-10-20-F', 'seasonA-VICR-2026-10-20-F']
 - paper/long_ledger.json: open ['seasonA-RTX-2026-10-20-L', 'seasonA-VICR-2026-10-20-L']
-- paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
-- paper window (long): paper-window-push.yml afternoon step since 10:49 ET (done)
 - paper/long: 4 position(s), 0 open order(s) - they match the ledgers
-- Fri 16 Oct: 3 snapshot(s) - NOC, RTX, VICR
 - Mon 19 Oct: 2 snapshot(s) - ABT, PEGA
 - Tue 20 Oct: 6 snapshot(s) - HXL, LMT, LRCX, ROP, TSCO, TXN
 - Wed 21 Oct: 8 snapshot(s) - APPF, DECK, KN, MXL, RNG, SSNC, VRSN, WDC
+- Fri 23 Oct: 5 snapshot(s) - AGYS, AMKR, CDNS, CVLT, RMBS
 - seasonA: 238 name(s) still PENDING a confirmed date
 
