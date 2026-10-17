@@ -9,19 +9,24 @@ straddle, paper/long_ledger.json). Every block is shown three times: all trades,
 trades without DPZ (seasonA-DPZ-2026-10-13-F, the v1 trade whose exit failed).
 1. Fill rate as an outcome, read from ORDER RECORDS only (no result, P&L or grade is read for it):
    - opens: filled at attempt 0, filled at attempt 1, open_failed: platform, other failures, pending; and the counts
-     of registry/D011_open_fill_trigger_v1.md (first 6 trades per account from snapshot 2026-10-16).
-   - closes: for v3, the concession step of the order that completed the fill (0% ... 25%), or unfilled by expiry.
+     of registry/D011_open_fill_trigger_v1.md (first 6 trades per account from snapshot 2026-10-16, by first send,
+     ties by the ledger order the frozen sync() sent in; a tie at the 6th place shows the admissible range).
+   - closes: for v3, the concession step of the order that completed the fill (0% ... 25%; 25% = the 6th order sent and
+     later), step unknown, unfilled by expiry, rejected or pending. Every real trade lands in one bucket.
 2. P&L at three prices next to the actual fill: mid, halfway (half-way from the mid to the far side) and far side
-   (natural), each from the quotes the frozen code recorded on the orders that filled, quantity-weighted. Real round
-   trips and all trades with a result (simulated legs labelled), each with and without exit_late; the frozen
-   report's splits and pairings at each price.
+   (natural), each from the quotes the frozen code recorded on the orders that filled, quantity-weighted. Headline =
+   the common set (trades priced at all four); each_price keeps every trade priced at one price. Real round trips and
+   all trades with a result (simulated legs labelled), each with and without exit_late, with the frozen report's
+   splits and pairings at each price.
 3. Execution: each filled order's fill against its mid, natural and limit, and the share of the half-spread paid.
 4. Each order against real OPRA prints (pipeline/paper_fill_recheck.py), where they were fetched.
 Rule 7 on every P&L block: under 30 trades or 10 entry dates -> "insufficient".
 
 Pricing (D011 conventions: per unit, debit +, credit -, P&L = -(open net + close net)):
 - leg mid = (bid + ask) / 2, needing a bid, a positive ask and ask >= bid; far side = ask to buy, bid to sell (the
-  frozen natural()); halfway = (mid + far side) / 2. A missing quote is never priced: that price is missing.
+  frozen natural() on every order that was sent); halfway = (mid + far side) / 2. A missing quote is never priced:
+  that price is missing. The quotes are those recorded when each order was SENT, so an order that rested before
+  filling is compared with older quotes (minutes to fill are shown per order).
 - A v3 close's dropped legs (zero bid) are outside the order and valued at 0 at every price (v3 §1); their mid at
   the close is shown separately.
 - Simulated legs: an entry simulated for a platform reason is priced from the first opening record with a natural
@@ -179,13 +184,15 @@ def three_prices(t):
 
 
 # ---------------------------------------------------------------- fill rate (order records only)
-def orders_view(t):
-    """The fields the fill-rate views may read: never result, P&L or grade."""
+def orders_view(t, ledger_index=None):
+    """The fields the fill-rate views may read: never result, P&L or grade. ledger_index = the trade's place in its
+    ledger, which is the order the frozen sync() walks and sends in (one run stamps every send with the same time)."""
     keep = ("key", "ticker", "exec", "snapshot_session", "reaction_session", "expiry", "n", "skipped", "open_failed",
             "open_blocked", "close_rejected", "close_sim", "flag", "exit_late", "orders")
     v = {k: t[k] for k in keep if k in t}
     if "close_sim" in v:
         v["close_sim"] = True                          # only whether one exists, never its price
+    v["ledger_index"] = ledger_index
     return v
 
 
@@ -202,13 +209,16 @@ def minutes(a, b):
 
 
 def attempts(rs, which):
-    out = []
+    """Each order record: attempt = the client_order_id suffix (-open = 0, -open-r1 = 1, ...); sent_before = how many
+    earlier records carry an Alpaca id (the k the frozen send() uses to pick a v3 concession)."""
+    out, k = [], 0
     for i, r in enumerate(rs):
         end = r.get("filled_at") if r.get("filled_qty") else r.get("cancel_requested")
-        out.append({"attempt": attempt_of(r, i, which), "client_order_id": r.get("client_order_id"),
+        out.append({"attempt": attempt_of(r, i, which), "sent_before": k, "client_order_id": r.get("client_order_id"),
                     "status": r.get("status"), "filled_qty": r.get("filled_qty"), "concession": r.get("concession"),
                     "minutes_live": minutes(r.get("sent_et"), end) if end else None,
                     "adopted": bool(r.get("adopted")), "reject_kind": r.get("reject_kind")})
+        k += 1 if r.get("id") else 0
     return out
 
 
@@ -230,8 +240,10 @@ def open_outcome(v):
         row["outcome"] = f"open_failed: {v['open_failed']}"
     elif not rs:
         row["outcome"] = "pending: no opening order yet"
-    else:
+    elif any(r.get("id") and r.get("status") not in recheck.TERMINAL for r in rs):
         row["outcome"] = "pending: an opening order is live"
+    else:
+        row["outcome"] = "pending: no order live; the next run decides"
     return row
 
 
@@ -254,13 +266,14 @@ def close_outcome(v, now):
     row = {"real": True, "v3": v3, "attempts": attempts(c, "close"), "attempts_sent": len(with_id)}
     if c_f >= o_f:
         done = [(k, r) for k, r in enumerate(with_id) if r.get("filled_qty")]
-        k, r = done[-1]
-        row["attempt_at_fill"] = k
+        k, r = done[-1]                                  # the record that completed the fill
+        row["attempt_at_fill"] = attempt_of(r, c.index(r), "close")
+        row["sent_before_fill"] = k
         row["minutes_first_send_to_fill"] = minutes(c[0].get("sent_et"), r.get("filled_at"))
         if v3:
             cc = r.get("concession")
             row["concession_at_fill"] = cc
-            row["outcome"] = f"filled at {round(cc * 100):d}%" if cc is not None else "filled (concession not recorded)"
+            row["outcome"] = f"filled at {round(cc * 100):d}%" if cc is not None else "filled, step unknown"
             if len(done) > 1:
                 row["concessions_of_partial_fills"] = [x.get("concession") for _, x in done]
         else:
@@ -300,57 +313,95 @@ def open_counts(rows):
 
 
 def close_counts(rows):
+    """Every trade with a real opening fill lands in exactly one bucket."""
     out = {f"{round(c * 100):d}%": 0 for c in CONCESSIONS}
-    out.update({"unfilled by expiry": 0, "close_rejected": 0, "pending": 0, "v1: filled": 0, "v1: unfilled by expiry": 0})
+    out.update({"filled, step unknown": 0, "unfilled by expiry": 0, "close_rejected": 0, "pending": 0,
+                "v1: filled": 0, "v1: unfilled by expiry": 0, "other": 0})
     for r in rows:
         if not r.get("real"):
             continue
         o = r["outcome"]
-        if r.get("v3"):
-            if r.get("concession_at_fill") is not None:
-                key = f"{round(r['concession_at_fill'] * 100):d}%"
-                out[key] = out.get(key, 0) + 1
-            elif o.startswith("unfilled"):
-                out["unfilled by expiry"] += 1
-            elif o == "close_rejected":
-                out[o] += 1
-            elif o.startswith("pending"):
-                out["pending"] += 1
+        if r.get("v3") and r.get("concession_at_fill") is not None:
+            key = f"{round(r['concession_at_fill'] * 100):d}%"
+            key = key if key in out else "other"                # a step outside the frozen ladder
+        elif r.get("v3") and o.startswith("filled"):
+            key = "filled, step unknown"
+        elif o.startswith("unfilled"):
+            key = "unfilled by expiry" if r.get("v3") else "v1: unfilled by expiry"
+        elif o.startswith("filled"):
+            key = "v1: filled"
+        elif o == "close_rejected" or o.startswith("pending"):
+            key = "pending" if o.startswith("pending") else o
         else:
-            if o.startswith("filled"):
-                out["v1: filled"] += 1
-            elif o.startswith("unfilled"):
-                out["v1: unfilled by expiry"] += 1
-            elif o.startswith("pending"):
-                out["pending"] += 1
+            key = "other"
+        out[key] = out.get(key, 0) + 1
     return out
+
+
+def trigger_class(outcome):
+    if outcome in ("filled_attempt_0", "filled_attempt_1", "open_failed: platform"):
+        return outcome
+    return "pending" if outcome.startswith("pending") else "other (counted, never triggers)"
 
 
 def open_fill_trigger(views):
     """registry/D011_open_fill_trigger_v1.md on one account: its first 6 trades with snapshot_session >= 2026-10-16
-    that sent at least one opening order, in the order of their first opening send (ties: by key)."""
+    that sent at least one opening order. Order: the first opening send (UTC); within one run every send carries the
+    same time, so ties go by the trade's place in the ledger, the order the frozen sync() walked and sent them.
+    If the 6th place falls inside such a tie, the platform failures over every admissible choice of 6 are shown too
+    (tie_at_cut, platform_failures_range), so the sensitivity is visible."""
     pop = [v for v in views if (v.get("snapshot_session") or "") >= TRIGGER_FROM and recs(v, "open")]
-    pop.sort(key=lambda v: (recheck.utc(recs(v, "open")[0]["sent_et"]), v.get("key") or ""))
+    no_order = {}
+    for v in views:
+        if (v.get("snapshot_session") or "") >= TRIGGER_FROM and not recs(v, "open"):
+            lab = v.get("skipped") and f"skipped: {v['skipped']}" or v.get("open_failed") or v.get("open_blocked") \
+                or "no order yet"
+            no_order[lab] = no_order.get(lab, 0) + 1
+
+    def first_send(v):
+        return recheck.utc(recs(v, "open")[0]["sent_et"])
+    pop.sort(key=lambda v: (first_send(v), v.get("ledger_index") if v.get("ledger_index") is not None else 1e9,
+                            v.get("key") or ""))
     first = pop[:TRIGGER_N]
-    rows = [{"key": v.get("key"), "outcome": open_outcome(v)["outcome"]} for v in first]
+    rows = []
+    for v in first:
+        o = open_outcome(v)
+        rows.append({"key": v.get("key"), "first_send_utc": recheck.z(first_send(v)), "outcome": o["outcome"],
+                     "attempts": [{k: a[k] for k in ("attempt", "status", "filled_qty", "reject_kind", "minutes_live")}
+                                  for a in o.get("attempts", [])]})
     n = {"filled_attempt_0": 0, "filled_attempt_1": 0, "open_failed: platform": 0, "other (counted, never triggers)": 0,
          "pending": 0}
     for r in rows:
-        o = r["outcome"]
-        if o in n:
-            n[o] += 1
-        elif o.startswith("pending"):
-            n["pending"] += 1
-        else:
-            n["other (counted, never triggers)"] += 1
+        n[trigger_class(r["outcome"])] += 1
+    out = {"rule": "registry/D011_open_fill_trigger_v1.md", "counted": len(rows), "counts": n, "trades": rows,
+           "order": "first opening send (UTC), then the ledger order the frozen sync() sent in",
+           "not_in_population (sent no opening order)": no_order, "tie_at_cut": False}
+    lo = hi = n["open_failed: platform"]
+    if len(pop) > TRIGGER_N and first_send(pop[TRIGGER_N - 1]) == first_send(pop[TRIGGER_N]):
+        cut = first_send(pop[TRIGGER_N - 1])
+        fixed = [v for v in first if first_send(v) != cut]
+        group = [v for v in pop if first_send(v) == cut]
+        slots = TRIGGER_N - len(fixed)
+        cls = [trigger_class(open_outcome(v)["outcome"]) for v in group]
+        base = sum(1 for v in fixed if trigger_class(open_outcome(v)["outcome"]) == "open_failed: platform")
+        plat = cls.count("open_failed: platform")
+        lo, hi = base + max(0, slots - (len(group) - plat)), base + min(slots, plat)
+        out.update(tie_at_cut=True, platform_failures_range=[lo, hi],      # pending counted as not failed
+                   pending_in_tie=cls.count("pending"))
     if n["open_failed: platform"] >= TRIGGER_FAILS:
         state = "FIRED: draft D011 v4 for this account's opens (the v3 close ladder), with an independent review"
     elif len(rows) == TRIGGER_N and not n["pending"]:
         state = "not fired: v1 opens stay; close the note with these counts"
     else:
         state = f"open: {len(rows) - n['pending']} of {TRIGGER_N} decided"
-    return {"rule": "registry/D011_open_fill_trigger_v1.md", "counted": len(rows), "counts": n, "state": state,
-            "trades": rows, "order": "first opening send (UTC), ties by key"}
+    if out["tie_at_cut"]:
+        if (lo >= TRIGGER_FAILS) != (hi >= TRIGGER_FAILS):
+            state += (f" (the 6th place falls in a tie of one run's sends; another choice gives {lo}-{hi} platform "
+                      f"failures)")
+        if out["pending_in_tie"]:
+            state += f" ({out['pending_in_tie']} trade(s) tied at the cut still pending)"
+    out["state"] = state
+    return out
 
 
 # ---------------------------------------------------------------- execution and real prints
@@ -360,7 +411,8 @@ def order_execution(r, which):
     lim = recheck.limit_net(r)
     out = {"client_order_id": r.get("client_order_id"), "which": which, "concession": r.get("concession"),
            "adopted": bool(r.get("adopted")), "fill_net": fill, "mid": mid, "halfway": half, "natural": nat,
-           "limit": lim, "recorded_natural": r.get("natural")}
+           "limit": lim, "recorded_natural": r.get("natural"),
+           "minutes_send_to_fill (the quotes are from the send)": minutes(r.get("sent_et"), r.get("filled_at"))}
     if nat is not None and r.get("natural") is not None and abs(nat - r["natural"]) > 1e-6:
         out["natural_mismatch"] = True
     for k, x in (("mid", mid), ("natural", nat), ("limit", lim)):
@@ -402,12 +454,16 @@ def recheck_rows(trades, season, cache):
             for r in recs(t, which):
                 if not r.get("id") or not r.get("client_order_id"):
                     continue
+                base = {"key": t.get("key"), "exec": t.get("exec"), "which": which,
+                        "client_order_id": r["client_order_id"]}
+                if recheck.fill_time_unknown(r):
+                    out.append(dict(base, kind="filled, fill time unknown (not fetched)", fetched=False))
+                    continue
                 filled = recheck.is_filled(r)
                 if not filled and r.get("status") not in recheck.TERMINAL:
                     continue
                 c = cache(season, r["client_order_id"])
-                row = {"key": t.get("key"), "exec": t.get("exec"), "which": which,
-                       "client_order_id": r["client_order_id"], "fetched": c is not None}
+                row = dict(base, fetched=c is not None)
                 if c is not None:
                     row.update(recheck.compare_filled(r, c) if filled else recheck.compare_unfilled(r, c))
                 else:
@@ -416,20 +472,34 @@ def recheck_rows(trades, season, cache):
     return out
 
 
+def near(lg):
+    dt = lg.get("nearest_trade_dt_s")
+    return dt is not None and dt <= recheck.NEAR_S
+
+
 def recheck_summary(rows):
+    """Headline: legs with a real trade within NEAR_S of the fill. Prints further away are shown apart."""
     f = [r for r in rows if r["kind"] == "filled"]
     u = [r for r in rows if r["kind"] == "unfilled"]
     legs = [lg for r in f if r["fetched"] for lg in r["legs"].values()]
     worse = [lg["worse_by_vs_nearest_trade"] for lg in legs if lg.get("worse_by_vs_nearest_trade") is not None]
+    worse_near = [lg["worse_by_vs_nearest_trade"] for lg in legs
+                  if lg.get("worse_by_vs_nearest_trade") is not None and near(lg)]
     ulegs = [lg for r in u if r["fetched"] for lg in r["legs"].values()]
     return {"filled_orders": len(f), "filled_fetched": sum(1 for r in f if r["fetched"]),
+            "filled_fill_time_unknown": sum(1 for r in rows if r["kind"].startswith("filled, fill time unknown")),
             "filled_legs": len(legs),
-            "legs_with_a_real_trade_nearby": sum(1 for lg in legs if lg.get("nearest_trade") is not None),
-            "legs_with_a_trade_within_60s": sum(1 for lg in legs if (lg.get("nearest_trade_dt_s") or 1e9) <= 60),
+            f"legs_with_a_trade_within_{recheck.NEAR_S}s": sum(1 for lg in legs if near(lg)),
+            f"mean_leg_worse_by_vs_trade_within_{recheck.NEAR_S}s": mean(worse_near),
+            f"legs_with_a_trade_within_{recheck.TRADE_MIN}min": sum(1 for lg in legs
+                                                                    if lg.get("nearest_trade") is not None),
+            f"mean_leg_worse_by_vs_nearest_trade_within_{recheck.TRADE_MIN}min (not at the fill)": mean(worse),
             "legs_paper_inside_bar_range": sum(1 for lg in legs if lg.get("paper_inside_range") is True),
             "legs_paper_outside_bar_range": sum(1 for lg in legs if lg.get("paper_inside_range") is False),
-            "mean_leg_worse_by_vs_nearest_trade": mean(worse),
-            "orders_with_every_leg_traded": sum(1 for r in f if r.get("net_at_nearest_trades") is not None),
+            f"orders_every_leg_traded_within_{recheck.NEAR_S}s":
+                sum(1 for r in f if r.get(f"net_at_trades_within_{recheck.NEAR_S}s") is not None),
+            "orders_every_leg_traded_within_15min (not simultaneous)":
+                sum(1 for r in f if r.get("net_at_nearest_trades") is not None),
             "unfilled_orders": len(u), "unfilled_fetched": sum(1 for r in u if r["fetched"]),
             "unfilled_legs_with_prints_while_live": sum(1 for lg in ulegs if lg.get("bars_while_live")),
             "unfilled_legs_whose_print_reached_far_side": sum(1 for lg in ulegs if lg.get("print_reached_far_side")),
@@ -449,7 +519,12 @@ def summary_at(rows, price):
 
 
 def at_prices(rows):
-    return {p: summary_at(rows, p) for p in PRICES}
+    """common_set: every price over the same trades (those priced at all four), so the columns compare like with
+    like; each_price: every price over all the trades priced at it (n differs where a quote is missing)."""
+    common = [x for x in rows if all((x[1].get(p) or {}).get("pnl_on_spot") is not None for p in PRICES)]
+    return {"common_set": {p: summary_at(common, p) for p in PRICES},
+            "each_price": {p: summary_at(rows, p) for p in PRICES},
+            "not_priced_at_all_four": len(rows) - len(common)}
 
 
 def splits_at(rows):
@@ -483,7 +558,9 @@ def pnl_block(rows, shx, structure):
                      "paired_with_SH_X": {"all": paired_shx_at(real, shx, structure),
                                           "without_exit_late": paired_shx_at(no_late(real), shx, structure)}},
             "all_with_result (simulated legs labelled)": {"all": at_prices(rows),
-                                                          "without_exit_late": at_prices(no_late(rows))}}
+                                                          "without_exit_late": at_prices(no_late(rows)),
+                                                          "splits": splits_at(rows),
+                                                          "splits_without_exit_late": splits_at(no_late(rows))}}
 
 
 def both_sides_at(F, L, keep, late_cut):
@@ -504,7 +581,8 @@ def both_sides_at(F, L, keep, late_cut):
 
 # ---------------------------------------------------------------- the report
 def build(ledgers, shx, season, now, cache):
-    """ledgers: {"PX-F": ledger dict or None, "PX-L": ...}; cache(season, client_order_id) -> stored prints or None."""
+    """ledgers: {"PX-F": ledger dict or None, "PX-L": ...}; cache(season, client_order_id) -> stored prints or None.
+    Trades stay in ledger order: the order the frozen sync() walks and sends in."""
     out = {"season": season, "rule": "registry/D011_report_views_v1.md (descriptive; the frozen D011 report is "
            "pipeline/paper_options_report.py)", "run_et": now.isoformat(timespec="seconds"),
            "label": "PAPER - descriptive execution views; adds no test, changes no rule",
@@ -516,10 +594,10 @@ def build(ledgers, shx, season, now, cache):
         if not led:
             out[s] = {"note": f"no ledger {LEDGERS[s]}"}
             continue
-        trades = [t for k, t in sorted((led.get("trades") or {}).items()) if season_of(k, t) == season]
+        trades = [t for k, t in (led.get("trades") or {}).items() if season_of(k, t) == season]
         rows = [(t, three_prices(t)) for t in trades if "result" in t]
         priced[s] = {event_of(t): (t, p) for t, p in rows if t.get("ticker")}
-        views = [orders_view(t) for t in trades]
+        views = [orders_view(t, i) for i, t in enumerate(trades)]
         per_trade = []
         for t, v in zip(trades, views):
             p = next((p for tt, p in rows if tt is t), None)
@@ -532,10 +610,9 @@ def build(ledgers, shx, season, now, cache):
         acct = {"records": len(trades), "per_trade": per_trade,
                 "open_fill_trigger_v1": open_fill_trigger(views), "by_subset": {}}
         for name, keep in SUBSETS.items():
-            kt = [t for t in trades if keep(t)]
-            kv = [orders_view(t) for t in kt]
+            kv = [v for t, v in zip(trades, views) if keep(t)]
             acct["by_subset"][name] = {
-                "trades": len(kt),
+                "trades": len(kv),
                 "fill_rate": {"opens": open_counts([open_outcome(v) for v in kv]),
                               "closes": close_counts([close_outcome(v, now) for v in kv])},
                 "pnl": pnl_block([x for x in rows if keep(x[0])], shx, s),
@@ -561,10 +638,12 @@ def num(x, d=2):
 
 
 def markdown(r):
+    """The headline tables. The JSON holds everything: the each-price blocks, the gate-status and session splits,
+    exit_late cuts of every sample, every order's execution and real-print rows."""
     L = [f"# D011 paper report views - {r['season']} - {r['run_et'][:16]} ET", "",
          "Descriptive, from `registry/D011_report_views_v1.md`. It adds no test and changes no rule. The D011 report "
          "of record stays `pipeline/paper_options_report.py`. Every number below is computed by code from the two "
-         "paper ledgers and the stored real prints.", "",
+         "paper ledgers and the stored real prints; the JSON beside this file holds the splits and every order.", "",
          "Subsets: **all** = every trade; **v3 only** = `\"exec\": \"v3\"`; **without DPZ** = every trade except "
          f"`{DPZ}`. Status follows rule 7 (under 30 trades or 10 entry dates = insufficient).", ""]
     accts = [s for s in LEDGERS if "by_subset" in r.get(s, {})]
@@ -578,39 +657,61 @@ def markdown(r):
                      f"{o['filled_attempt_1']} | {o['open_failed: platform']} | {o['open_failed: other']} | "
                      f"{o['pending']} |")
     L += ["", "### Open-fill trigger v1 (first 6 trades per account from snapshot 2026-10-16)", "",
-          "| account | counted | attempt 0 | attempt 1 | platform failures | other | pending | state |",
-          "|---|---|---|---|---|---|---|---|"]
+          "Order: first opening send, then the ledger order the frozen code sent in (one run stamps one time).", "",
+          "| account | counted | attempt 0 | attempt 1 | platform failures | other | pending | sent no order | state |",
+          "|---|---|---|---|---|---|---|---|---|"]
     for s in accts:
         g = r[s]["open_fill_trigger_v1"]
         n = g["counts"]
+        no = sum(g["not_in_population (sent no opening order)"].values())
         L.append(f"| {s} | {g['counted']} of 6 | {n['filled_attempt_0']} | {n['filled_attempt_1']} | "
-                 f"{n['open_failed: platform']} | {n['other (counted, never triggers)']} | {n['pending']} | "
+                 f"{n['open_failed: platform']} | {n['other (counted, never triggers)']} | {n['pending']} | {no} | "
                  f"{g['state']} |")
     L += ["", "### Closes: the concession step at fill (v3), or unfilled by expiry", "",
-          "| account | subset | 0% | 5% | 10% | 15% | 20% | 25% | unfilled by expiry | rejected | pending | "
-          "v1 filled | v1 unfilled |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
+          "The 25% step covers the 6th order sent and every later one (the frozen ladder counts sent orders).", "",
+          "| account | subset | 0% | 5% | 10% | 15% | 20% | 25% | step unknown | unfilled by expiry | rejected | "
+          "pending | v1 filled | v1 unfilled | other |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in accts:
         for name, b in r[s]["by_subset"].items():
             c = b["fill_rate"]["closes"]
             L.append(f"| {s} | {name} | " + " | ".join(str(c[f"{round(x * 100):d}%"]) for x in CONCESSIONS)
-                     + f" | {c['unfilled by expiry']} | {c['close_rejected']} | {c['pending']} | {c['v1: filled']} | "
-                       f"{c['v1: unfilled by expiry']} |")
+                     + f" | {c['filled, step unknown']} | {c['unfilled by expiry']} | {c['close_rejected']} | "
+                       f"{c['pending']} | {c['v1: filled']} | {c['v1: unfilled by expiry']} | {c['other']} |")
     L += ["", "## 2. P&L per $1 of spot at the fill and at three prices", "",
-          "Mean (n). Mid = the middle of each recorded quote; halfway = half-way from the mid to the far side; "
-          "natural = the far side.", "",
-          "| account | subset | sample | fill | mid | halfway | natural | entry dates | status |",
-          "|---|---|---|---|---|---|---|---|---|"]
+          "Mean, every column over the same trades (those priced at all four). Mid = the middle of each recorded "
+          "quote; halfway = half-way from the mid to the far side; natural = the far side. The quotes are those "
+          "recorded when each order was sent.", "",
+          "| account | subset | sample | n | fill | mid | halfway | natural | $ at fill | $ at natural | not priced at "
+          "all four | entry dates | status |", "|---|---|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in accts:
         for name, b in r[s]["by_subset"].items():
             for samp, blk in (("real round trips", b["pnl"]["real"]["all"]),
                               ("real, without exit_late", b["pnl"]["real"]["without_exit_late"]),
                               ("all with a result (simulated labelled)",
                                b["pnl"]["all_with_result (simulated legs labelled)"]["all"])):
-                cells = " | ".join(f"{pct(blk[p]['mean_pnl_on_spot'])} ({blk[p]['n']})" for p in PRICES)
-                L.append(f"| {s} | {name} | {samp} | {cells} | {blk['fill']['entry_dates']} | "
-                         f"{blk['fill']['status']} |")
+                cs = blk["common_set"]
+                cells = " | ".join(pct(cs[p]["mean_pnl_on_spot"]) for p in PRICES)
+                usd = [num(cs[p]["pnl_usd"]) if cs[p]["n"] else "-" for p in ("fill", "natural")]
+                L.append(f"| {s} | {name} | {samp} | {cs['fill']['n']} | {cells} | {usd[0]} | "
+                         f"{usd[1]} | {blk['not_priced_at_all_four']} | "
+                         f"{cs['fill']['entry_dates']} | {cs['fill']['status']} |")
+    L += ["", "### Paired (real round trips): each price on both sides", "",
+          "PX-F vs SH-X = paper - SH-X; PX-L vs SH-X = paper + SH-X (opposite sides); PX-F + PX-L = the same event "
+          "on both accounts. Mean (n).", "",
+          "| pairing | subset | fill | mid | halfway | natural | status |", "|---|---|---|---|---|---|---|"]
+    for s in accts:
+        key = "mean_paper_minus_SH_X" if s == "PX-F" else "mean_paper_plus_SH_X (opposite sides)"
+        for name, b in r[s]["by_subset"].items():
+            pr = b["pnl"]["real"]["paired_with_SH_X"]["all"]
+            cells = " | ".join(f"{pct(pr[p][key])} ({pr[p]['n']})" for p in PRICES)
+            L.append(f"| {s} vs SH-X | {name} | {cells} | {pr['fill']['status']} |")
+    for name, b in r.get("PX-L_and_PX-F_paired", {}).items():
+        pr = b["all"]
+        cells = " | ".join(f"{pct(pr[p]['mean_sum'])} ({pr[p]['n']})" for p in PRICES)
+        L.append(f"| PX-F + PX-L | {name} | {cells} | {pr['fill']['status']} |")
     L += ["", "## 3. Execution: each filled order against its own quotes", "",
-          "Share of the half-spread paid: 0 = filled at the mid, 1 = at the far side, above 1 = worse than the far side.",
+          "Share of the half-spread paid: 0 = filled at the mid, 1 = at the far side, above 1 = worse than the far side. "
+          "The quotes are from the send; an order that rested before filling is compared with older quotes.",
           "", "| account | subset | orders | mean share of half-spread paid | median | mean fill - natural | "
               "mean fill - limit |", "|---|---|---|---|---|---|---|"]
     for s in accts:
@@ -620,19 +721,23 @@ def markdown(r):
                 L.append(f"| {s} | {name} ({which}) | {e['orders']} | {num(e['mean_share_of_half_spread_paid'])} | "
                          f"{num(e['median_share_of_half_spread_paid'])} | {num(e['mean_fill_minus_natural'], 3)} | "
                          f"{num(e['mean_fill_minus_limit'], 3)} |")
+    ns, tm = recheck.NEAR_S, recheck.TRADE_MIN
     L += ["", "## 4. Orders against real OPRA prints (Alpaca historical bars and trades)", "",
-          "Trades, not quotes: a check, not a fill model. Missing prints stay missing.", "",
-          "| account | subset | filled orders (fetched) | legs | real trade nearby | within 60 s | inside bar range "
-          "| outside | mean leg fill worse than nearest trade | unfilled orders (fetched) | prints reached the limit "
-          "(not simultaneous) |", "|---|---|---|---|---|---|---|---|---|---|---|"]
+          f"Trades, not quotes: a check, not a fill model. Missing prints stay missing. Headline = legs with a real "
+          f"trade within {ns} s of the fill; prints up to {tm} min away are shown apart and are not simultaneous. "
+          "Worse = the paper fill was worse for us than the print (+).", "",
+          f"| account | subset | filled orders (fetched) | legs | trade within {ns} s | mean worse, within {ns} s | "
+          f"trade within {tm} min | mean worse, within {tm} min | outside the bars' range | unfilled orders (fetched) "
+          "| prints reached the limit (not simultaneous) |", "|---|---|---|---|---|---|---|---|---|---|---|"]
     for s in accts:
         for name, b in r[s]["by_subset"].items():
             x = b["real_prints"]
             L.append(f"| {s} | {name} | {x['filled_orders']} ({x['filled_fetched']}) | {x['filled_legs']} | "
-                     f"{x['legs_with_a_real_trade_nearby']} | {x['legs_with_a_trade_within_60s']} | "
-                     f"{x['legs_paper_inside_bar_range']} | {x['legs_paper_outside_bar_range']} | "
-                     f"{num(x['mean_leg_worse_by_vs_nearest_trade'], 3)} | {x['unfilled_orders']} "
-                     f"({x['unfilled_fetched']}) | {x['unfilled_orders_prints_reached_limit (not simultaneous)']} |")
+                     f"{x[f'legs_with_a_trade_within_{ns}s']} | {num(x[f'mean_leg_worse_by_vs_trade_within_{ns}s'], 3)}"
+                     f" | {x[f'legs_with_a_trade_within_{tm}min']} | "
+                     f"{num(x[f'mean_leg_worse_by_vs_nearest_trade_within_{tm}min (not at the fill)'], 3)} | "
+                     f"{x['legs_paper_outside_bar_range']} | {x['unfilled_orders']} ({x['unfilled_fetched']}) | "
+                     f"{x['unfilled_orders_prints_reached_limit (not simultaneous)']} |")
     L += ["", "## 5. Per trade", "",
           "| account | trade | exec | open | close | P&L/spot fill | mid | halfway | natural | simulated |",
           "|---|---|---|---|---|---|---|---|---|---|"]
