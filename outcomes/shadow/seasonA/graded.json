@@ -2,10 +2,10 @@
  "season": "seasonA",
  "rule": "D009_shadow_tracks_v1",
  "graded_by": "pipeline/shadow.py",
- "graded_et": "2026-10-15T20:41:28-04:00",
+ "graded_et": "2026-10-16T20:45:10-04:00",
  "sh_m_universe": 1825,
  "sh_m_stats": {
-  "rows_without_session": 45,
+  "rows_without_session": 51,
   "capture_days": [
    "2026-10-02",
    "2026-10-05",
@@ -16,7 +16,8 @@
    "2026-10-12",
    "2026-10-13",
    "2026-10-14",
-   "2026-10-15"
+   "2026-10-15",
+   "2026-10-16"
   ]
  },
  "events": [
@@ -92,6 +93,41 @@
   },
   {
    "track": "SH-W",
+   "ticker": "ALNY",
+   "date": "2026-10-29",
+   "session": "BMO",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-28"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-29"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-29"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-11-05"
+    },
+    "reaction_day": "2026-10-29"
+   },
+   "confirm_committed": "2026-10-16T01:01:15+00:00",
+   "gate_status": null,
+   "exists_before_entry": true,
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-W",
    "ticker": "AMKR",
    "date": "2026-10-26",
    "session": "AMC",
@@ -115,6 +151,41 @@
     "reaction_day": "2026-10-27"
    },
    "confirm_committed": "2026-10-09T02:50:49+00:00",
+   "gate_status": null,
+   "exists_before_entry": true,
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-W",
+   "ticker": "AMZN",
+   "date": "2026-10-29",
+   "session": "AMC",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-29"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-30"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-30"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-11-06"
+    },
+    "reaction_day": "2026-10-30"
+   },
+   "confirm_committed": "2026-10-16T01:01:15+00:00",
    "gate_status": null,
    "exists_before_entry": true,
    "void": null,
@@ -652,6 +723,41 @@
     "reaction_day": "2026-10-29"
    },
    "confirm_committed": "2026-10-09T03:02:32+00:00",
+   "gate_status": null,
+   "exists_before_entry": true,
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-W",
+   "ticker": "EXEL",
+   "date": "2026-10-29",
+   "session": "AMC",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-29"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-30"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-30"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-11-06"
+    },
+    "reaction_day": "2026-10-30"
+   },
+   "confirm_committed": "2026-10-16T01:11:32+00:00",
    "gate_status": null,
    "exists_before_entry": true,
    "void": null,
@@ -1632,7 +1738,7 @@
     "reaction_day": "2026-10-20"
    },
    "confirm_committed": "2026-10-09T02:44:46+00:00",
-   "gate_status": null,
+   "gate_status": "INELIGIBLE",
    "exists_before_entry": true,
    "void": null,
    "timing_check": "pending",
@@ -2087,7 +2193,7 @@
     "reaction_day": "2026-10-20"
    },
    "confirm_committed": "2026-10-09T02:44:46+00:00",
-   "gate_status": null,
+   "gate_status": "INELIGIBLE",
    "exists_before_entry": true,
    "void": null,
    "timing_check": "pending",
@@ -2542,7 +2648,7 @@
     "reaction_day": "2026-10-20"
    },
    "confirm_committed": "2026-10-09T02:44:46+00:00",
-   "gate_status": null,
+   "gate_status": "INELIGIBLE",
    "exists_before_entry": true,
    "void": null,
    "timing_check": "pending",
@@ -3499,11 +3605,21 @@
    "marketCap": 5697413632,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "verified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 28.0,
+    "exit": 27.75,
+    "dividends": 0.0,
+    "raw_return": -0.008928571428571397,
+    "net_return": -0.010928571428571397,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": 0.0022596802619256895
+   },
    "vol60": 0.13648,
-   "graded": false,
+   "graded": true,
    "flags": []
   },
   {
@@ -3740,12 +3856,24 @@
    "marketCap": 97439981568,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 138.92,
+    "exit": 139.81,
+    "dividends": 0.0,
+    "raw_return": 0.006406564929456016,
+    "net_return": 0.004406564929456016,
+    "WIN_raw": true,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": 0.017594816619953102
+   },
    "vol60": 0.177495,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -3821,10 +3949,20 @@
    "sector": "Technology",
    "marketCap": 30907899904,
    "universe_committed": "2026-10-08T20:46:55+00:00",
-   "void": null,
-   "timing_check": "pending",
+   "void": "not_domestic_foreign",
+   "timing_check": "foreign",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 9.63,
+    "exit": 10.65,
+    "dividends": 0.0,
+    "raw_return": 0.10591900311526481,
+    "net_return": 0.10391900311526481,
+    "WIN_raw": true,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": 0.1171072548057619
+   },
    "vol60": 0.255051,
    "graded": false,
    "flags": []
@@ -3863,12 +4001,24 @@
    "marketCap": 11043744768,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 22.45,
+    "exit": 22.34,
+    "dividends": 0.0,
+    "raw_return": -0.004899777282850737,
+    "net_return": -0.006899777282850737,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": 0.0062884744076463495
+   },
    "vol60": 0.182606,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -4027,12 +4177,24 @@
    "marketCap": 2528042752,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 52.16,
+    "exit": 45.08,
+    "dividends": 0.0,
+    "raw_return": -0.13573619631901834,
+    "net_return": -0.13773619631901834,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": -0.12454794462852126
+   },
    "vol60": 0.390624,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -4068,12 +4230,24 @@
    "marketCap": 84308910080,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 178.52,
+    "exit": 182.8,
+    "dividends": 0.0,
+    "raw_return": 0.02397490477257458,
+    "net_return": 0.021974904772574577,
+    "WIN_raw": true,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": 0.035163156463071665
+   },
    "vol60": 0.230193,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -4109,12 +4283,24 @@
    "marketCap": 125681688576,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 133.66,
+    "exit": 132.04,
+    "dividends": 0.0,
+    "raw_return": -0.012120305252132257,
+    "net_return": -0.014120305252132257,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": -0.0009320535616351711
+   },
    "vol60": 0.182527,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -4150,12 +4336,24 @@
    "marketCap": 87639941120,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 214.67,
+    "exit": 208.49,
+    "dividends": 0.0,
+    "raw_return": -0.02878837285135316,
+    "net_return": -0.030788372851353163,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": -0.017600121160856075
+   },
    "vol60": 0.166332,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -4190,10 +4388,20 @@
    "sector": "Financial Services",
    "marketCap": 167520747520,
    "universe_committed": "2026-10-08T20:46:55+00:00",
-   "void": null,
-   "timing_check": "pending",
+   "void": "print_contradicted",
+   "timing_check": "contradicted",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 95.75,
+    "exit": 93.4,
+    "dividends": 0.0,
+    "raw_return": -0.024543080939947726,
+    "net_return": -0.026543080939947727,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": -0.01335482924945064
+   },
    "vol60": 0.228593,
    "graded": false,
    "flags": []
@@ -4272,10 +4480,20 @@
    "sector": "Technology",
    "marketCap": 2375353106432,
    "universe_committed": "2026-10-08T20:46:55+00:00",
-   "void": null,
-   "timing_check": "pending",
+   "void": "not_domestic_foreign",
+   "timing_check": "foreign",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 436.25,
+    "exit": 415.17,
+    "dividends": 0.0,
+    "raw_return": -0.048320916905444045,
+    "net_return": -0.050320916905444046,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": -0.03713266521494696
+   },
    "vol60": 0.336782,
    "graded": false,
    "flags": []
@@ -4314,12 +4532,24 @@
    "marketCap": 88855674880,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
-   "timing_check": "pending",
+   "timing_check": "unverified",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 56.06,
+    "exit": 56.14,
+    "dividends": 0.0,
+    "raw_return": 0.0014270424545130833,
+    "net_return": -0.0005729575454869167,
+    "WIN_raw": true,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": 0.01261529414501017
+   },
    "vol60": 0.187181,
-   "graded": false,
-   "flags": []
+   "graded": true,
+   "flags": [
+    "timing_unverified"
+   ]
   },
   {
    "track": "SH-M",
@@ -4395,10 +4625,20 @@
    "sector": "Technology",
    "marketCap": 16522040320,
    "universe_committed": "2026-10-08T20:46:55+00:00",
-   "void": null,
-   "timing_check": "pending",
+   "void": "not_domestic_foreign",
+   "timing_check": "foreign",
    "timing_final": false,
-   "exit_A": null,
+   "exit_A": {
+    "entry": 1.8,
+    "exit": 1.8,
+    "dividends": 0.0,
+    "raw_return": 0.0,
+    "net_return": -0.002,
+    "WIN_raw": false,
+    "splits_in_window": [],
+    "spy_return": -0.011188251690497086,
+    "excess_spy": 0.011188251690497086
+   },
    "vol60": 0.357723,
    "graded": false,
    "flags": []
@@ -4440,7 +4680,7 @@
    "timing_check": "pending",
    "timing_final": false,
    "exit_A": null,
-   "vol60": null,
+   "vol60": 0.156986,
    "graded": false,
    "flags": []
   },
@@ -4651,6 +4891,170 @@
   },
   {
    "track": "SH-M",
+   "ticker": "AERO",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Airlines",
+   "sector": "Industrials",
+   "marketCap": 2308191744,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "AGNC",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "REIT - Mortgage",
+   "sector": "Real Estate",
+   "marketCap": 10289979392,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "BOKF",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 7682147328,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "CCK",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Packaging & Containers",
+   "sector": "Consumer Cyclical",
+   "marketCap": 11841844224,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
    "ticker": "CLF",
    "date": "2026-10-19",
    "session": "BMO",
@@ -4686,7 +5090,7 @@
    "timing_check": "pending",
    "timing_final": false,
    "exit_A": null,
-   "vol60": null,
+   "vol60": 0.650019,
    "graded": false,
    "flags": []
   },
@@ -4727,7 +5131,7 @@
    "timing_check": "pending",
    "timing_final": false,
    "exit_A": null,
-   "vol60": null,
+   "vol60": 0.177404,
    "graded": false,
    "flags": []
   },
@@ -4763,6 +5167,47 @@
    "industry": "Banks - Regional",
    "sector": "Financial Services",
    "marketCap": 45979451392,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": 0.190071,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "FNB",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 6099856896,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
    "timing_check": "pending",
@@ -4804,6 +5249,1113 @@
    "industry": "Airports & Air Services",
    "sector": "Industrials",
    "marketCap": 11703412736,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": 0.291296,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "RLI",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Insurance - Property & Casualty",
+   "sector": "Financial Services",
+   "marketCap": 5166817792,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "SFBS",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 4220717824,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "SMMT",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "yfinance get_earnings_dates",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Biotechnology",
+   "sector": "Healthcare",
+   "marketCap": 13697360896,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "STLD",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Steel",
+   "sector": "Basic Materials",
+   "marketCap": 33563140096,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "WAL",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 8237115392,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "WRB",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Insurance - Property & Casualty",
+   "sector": "Financial Services",
+   "marketCap": 26746943488,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "WTFC",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 9727071232,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "ZION",
+   "date": "2026-10-19",
+   "session": "AMC",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 9155654656,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "ALLY",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Credit Services",
+   "sector": "Financial Services",
+   "marketCap": 11501790208,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "AUB",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 5415540736,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "CBSH",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 7832830976,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "EFX",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Consulting Services",
+   "sector": "Industrials",
+   "marketCap": 17089353728,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "GE",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Aerospace & Defense",
+   "sector": "Industrials",
+   "marketCap": 317099835392,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "GM",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Auto Manufacturers",
+   "sector": "Consumer Cyclical",
+   "marketCap": 72170389504,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "GPC",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Auto Parts",
+   "sector": "Consumer Cyclical",
+   "marketCap": 17669484544,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "HAL",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Oil & Gas Equipment & Services",
+   "sector": "Energy",
+   "marketCap": 27135055872,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "HAS",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Leisure",
+   "sector": "Consumer Cyclical",
+   "marketCap": 13046612992,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "KEY",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 21449285632,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "MLI",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "yfinance get_earnings_dates",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Metal Fabrication",
+   "sector": "Industrials",
+   "marketCap": 13379262464,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "MMM",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Conglomerates",
+   "sector": "Industrials",
+   "marketCap": 84361879552,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "MSCI",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Financial Data & Stock Exchanges",
+   "sector": "Financial Services",
+   "marketCap": 40833409024,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "NOC",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Aerospace & Defense",
+   "sector": "Industrials",
+   "marketCap": 68826693632,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "RTX",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Aerospace & Defense",
+   "sector": "Industrials",
+   "marketCap": 248418779136,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "SYF",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Credit Services",
+   "sector": "Financial Services",
+   "marketCap": 23986339840,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "UCB",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Banks - Regional",
+   "sector": "Financial Services",
+   "marketCap": 4021669376,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "VICR",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Electronic Components",
+   "sector": "Technology",
+   "marketCap": 12094717952,
+   "universe_committed": "2026-10-08T20:46:55+00:00",
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "exit_A": null,
+   "vol60": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-M",
+   "ticker": "VMI",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "session_source": "nasdaq",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "snapshot": "2026-10-16",
+   "capture": "shadow/calendar/2026-10-16.json",
+   "capture_committed": "2026-10-16T14:47:41+00:00",
+   "exists_before_entry": true,
+   "industry": "Conglomerates",
+   "sector": "Industrials",
+   "marketCap": 9048186880,
    "universe_committed": "2026-10-08T20:46:55+00:00",
    "void": null,
    "timing_check": "pending",
@@ -4855,6 +6407,129 @@
    "flags": [
     "timing_unverified"
    ]
+  },
+  {
+   "track": "SH-X",
+   "ticker": "NOC",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "gate_status": "INELIGIBLE",
+   "expiry": "2026-11-20",
+   "strike": 515.0,
+   "spot": 514.280029296875,
+   "call_bid": 18.5,
+   "put_bid": 18.2,
+   "call_ask": 22.7,
+   "put_ask": 20.5,
+   "implied_move": 0.07768141425716987,
+   "exists_before_entry": true,
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "straddle": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-X",
+   "ticker": "RTX",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "gate_status": "INELIGIBLE",
+   "expiry": "2026-10-23",
+   "strike": 192.5,
+   "spot": 192.27000427246094,
+   "call_bid": 5.15,
+   "put_bid": 4.4,
+   "call_ask": 5.4,
+   "put_ask": 5.0,
+   "implied_move": 0.051880167360191465,
+   "exists_before_entry": true,
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "straddle": null,
+   "graded": false,
+   "flags": []
+  },
+  {
+   "track": "SH-X",
+   "ticker": "VICR",
+   "date": "2026-10-20",
+   "session": "BMO",
+   "timing": {
+    "entry": {
+     "price": "open",
+     "session": "2026-10-19"
+    },
+    "exit_A": {
+     "price": "open",
+     "session": "2026-10-20"
+    },
+    "exit_B": {
+     "price": "close",
+     "session": "2026-10-20"
+    },
+    "exit_C": {
+     "price": "close",
+     "session": "2026-10-27"
+    },
+    "reaction_day": "2026-10-20"
+   },
+   "gate_status": "INELIGIBLE",
+   "expiry": "2026-11-20",
+   "strike": 195.0,
+   "spot": 195.97999572753906,
+   "call_bid": 23.3,
+   "put_bid": 22.0,
+   "call_ask": 28.6,
+   "put_ask": 23.4,
+   "implied_move": 0.24823962169912284,
+   "exists_before_entry": true,
+   "void": null,
+   "timing_check": "pending",
+   "timing_final": false,
+   "straddle": null,
+   "graded": false,
+   "flags": []
   }
  ]
 }
