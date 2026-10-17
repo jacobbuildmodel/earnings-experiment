@@ -8,18 +8,23 @@ Why: the paper orders are priced from Alpaca's free "indicative" feed (randomise
 fills them against real quotes we never see. Alpaca's historical options BARS and TRADES are real OPRA prints: trades,
 not quotes. They can check an order after the fact. They cannot say what the quote was.
 Probed 2026-10-16 (ops/probes/alpaca_options_history_2026-10-16.json): 1-minute bars and trades answer on this plan,
-also for an expired contract; there is no historical quotes endpoint (404); data from the last 15 minutes and the
-latest OPRA trade are refused ("OPRA agreement is not signed"); the bars endpoint takes no feed parameter.
+also for an expired contract; there is no historical quotes endpoint (404); a daily range ending on the current date
+and the latest OPRA trade were refused ("OPRA agreement is not signed"); the bars endpoint takes no feed parameter.
 
-fetch, per order record that reached Alpaca (it has an order id), per leg, raw and write-once in
+fetch, per order record that reached Alpaca (it has an order id) and is final, per leg, raw and write-once in
 paper/fill_recheck/<season>/<client_order_id>.json:
 - a FILLED order: the 1-minute bars from BAR_MIN before to BAR_MIN after the fill, and every trade from TRADE_MIN
   before to TRADE_MIN after it;
-- an order that ended UNFILLED: the 1-minute bars while it was live (sent -> cancel requested + 2 min, else the
-  session's 16:00 ET close).
-A window is fetched once it ended at least SETTLE_MIN ago. A request that fails (network, or any answer other than
-200) leaves the whole file unwritten, so a later run retries. An answer with no prints is stored as an empty list: no
-real trade, which the report shows as missing. Nothing is ever filled in.
+- an order that ended UNFILLED: the 1-minute bars while it was live (sent -> cancel requested + 2 min, never past the
+  session's 16:00 ET close; with no cancel request, to that close);
+- an order with a filled quantity but no fill time is not fetched (the report says so).
+A window is fetched once it ended SETTLE_H hours ago, so a same-day answer that had not settled is never stored.
+A request that fails leaves the whole file unwritten and a later run retries. The one exception: a request error
+about the contract or window itself (400, 404, 422) for a window older than GIVE_UP_DAYS is stored as that leg's
+error, so one bad contract cannot turn every run red. Auth, plan and rate answers (401, 403, 408, 429) and 5xx are
+never stored: the run stays red until a person looks. An answer with no prints is stored as an empty list: no real
+trade, which the report shows as missing. Nothing is ever filled in. With --commit, neither fetch nor probe runs
+from 14:00 to 16:05 ET on a weekday (the paper window's commits).
 The report (pipeline/paper_options_report_v2.py) compares each order with these prints (compare_filled(),
 compare_unfilled()).
 """
@@ -38,12 +43,16 @@ DATA = "https://data.alpaca.markets/v1beta1/options"
 BARS, TRADES, QUOTES = DATA + "/bars", DATA + "/trades", DATA + "/quotes"
 LATEST_TRADES = DATA + "/trades/latest"
 LEDGERS = {"PX-F": os.path.join("paper", "options_ledger.json"), "PX-L": os.path.join("paper", "long_ledger.json")}
-CACHE = os.path.join(ROOT, "paper", "fill_recheck")
 BAR_MIN = 30            # filled: 1-minute bars from 30 min before to 30 min after the fill
 TRADE_MIN = 15          # filled: trade prints from 15 min before to 15 min after (thin contracts print rarely)
-SETTLE_MIN = 20         # a window is fetched once it ended this long ago (the free plan refuses the last 15 minutes)
+NEAR_S = 60             # a print this close to the fill counts as "at the fill" in the headline comparisons
+SETTLE_H = 12           # a window is fetched once it ended this long ago (the probe only saw data hours old)
+GIVE_UP_DAYS = 3        # a request error for a window older than this is stored as the leg's error
+PERMANENT = (400, 404, 422)   # request errors about this contract or window; 401/403/408/429/5xx are about the
+                              # account or the moment (403 = "OPRA agreement is not signed"): never stored, run red
 CANCEL_GRACE_MIN = 2    # unfilled: an order counts as live until its cancel request + this
 SESSION_END = datetime.time(16, 0)
+QUIET = (datetime.time(14, 0), datetime.time(16, 5))   # no committing fetch inside the paper window (weekdays)
 PAUSE_S = 0.35          # between requests (the free plan allows 200 a minute)
 TERMINAL = ("filled", "canceled", "expired", "rejected", "done_for_day", "replaced")   # paper_options.TERMINAL
 
@@ -72,7 +81,7 @@ def default_get(url, params):
 
 
 def paged(get, url, params, field, sym):
-    """Every row for one symbol across pages; (rows, None) or (None, failure text)."""
+    """Every row for one symbol across pages: (rows, None, 200) or (None, failure text, status)."""
     rows, token = [], None
     for _ in range(50):
         p = dict(params, symbols=sym, limit=10000, sort="asc")
@@ -81,21 +90,25 @@ def paged(get, url, params, field, sym):
         code, body, text = get(url, p)
         time.sleep(PAUSE_S)
         if code != 200 or not isinstance(body, dict):
-            return None, f"HTTP {code}: {text}"
+            return None, f"HTTP {code}: {text}", code
         rows += (body.get(field) or {}).get(sym) or []
         token = body.get("next_page_token")
         if not token:
-            return rows, None
-    return None, "more than 50 pages"
+            return rows, None, 200
+    return None, "more than 50 pages", None
 
 
 def is_filled(rec):
     return bool(rec.get("filled_qty") and rec.get("filled_at"))
 
 
+def fill_time_unknown(rec):
+    return bool(rec.get("filled_qty")) and not rec.get("filled_at")
+
+
 def order_records(season, root=ROOT):
     """(account, trade, which, record) for every order record of the season that reached Alpaca and is final:
-    filled (any quantity), or ended unfilled. Both ledgers."""
+    filled with a fill time, or ended unfilled. Both ledgers."""
     out = []
     for acct, rel in LEDGERS.items():
         p = os.path.join(root, rel)
@@ -105,7 +118,9 @@ def order_records(season, root=ROOT):
                 continue
             for which in ("open", "close"):
                 for r in (t.get("orders") or {}).get(which) or []:
-                    if r.get("client_order_id") and r.get("id") and (is_filled(r) or r.get("status") in TERMINAL):
+                    if not (r.get("client_order_id") and r.get("id")) or fill_time_unknown(r):
+                        continue
+                    if is_filled(r) or r.get("status") in TERMINAL:
                         out.append((acct, t, which, r))
     return out
 
@@ -129,6 +144,10 @@ def windows(rec):
     return {"bars": live_window(rec), "trades": None}
 
 
+def window_end(rec):
+    return max(v[1] for v in windows(rec).values() if v)
+
+
 def leg_symbols(rec):
     if is_filled(rec):
         return [lg["symbol"] for lg in rec.get("legs_filled") or [] if lg.get("symbol") and lg.get("qty")]
@@ -145,45 +164,58 @@ def load_cached(season, cid, root=ROOT):
 
 
 def fetch_one(acct, t, which, rec, get=default_get, now=None):
-    """The raw record for one order, or None if any request failed (nothing is written; a later run retries)."""
+    """The raw record for one order, or None if a request failed (nothing is written; a later run retries)."""
+    now = now or now_et()
     w = windows(rec)
+    old = now - window_end(rec) >= datetime.timedelta(days=GIVE_UP_DAYS)
     legs = {}
     for sym in leg_symbols(rec):
-        bars, err = paged(get, BARS, {"timeframe": "1Min", "start": z(w["bars"][0]), "end": z(w["bars"][1])},
-                          "bars", sym)
-        if err:
-            print(f"{rec['client_order_id']} {sym} bars: {err} - not written, retried next run")
-            return None
-        legs[sym] = {"bars": bars}
-        if w["trades"]:
-            trades, err = paged(get, TRADES, {"start": z(w["trades"][0]), "end": z(w["trades"][1])}, "trades", sym)
-            if err:
-                print(f"{rec['client_order_id']} {sym} trades: {err} - not written, retried next run")
+        legs[sym] = {}
+        for name, url, win in (("bars", BARS, w["bars"]), ("trades", TRADES, w["trades"])):
+            if not win:
+                continue
+            params = {"start": z(win[0]), "end": z(win[1])}
+            if name == "bars":
+                params["timeframe"] = "1Min"
+            rows, err, code = paged(get, url, params, name, sym)
+            if err is None:
+                legs[sym][name] = rows
+            elif old and code in PERMANENT:
+                legs[sym][name] = None
+                legs[sym]["error"] = err                  # refused for good: stored, shown as missing with its reason
+            else:
+                print(f"{rec['client_order_id']} {sym} {name}: {err} - not written, retried next run")
                 return None
-            legs[sym]["trades"] = trades
     if not legs:
         return None
     return {"rule": "D011 report views v1: paper order re-check (descriptive, decides nothing)",
             "account": acct, "key": t.get("key"), "which": which, "client_order_id": rec["client_order_id"],
             "order_id": rec.get("id"), "kind": "filled" if is_filled(rec) else "unfilled",
             "filled_at": rec.get("filled_at"), "sent_et": rec.get("sent_et"),
-            "fetched_et": (now or now_et()).isoformat(timespec="seconds"),
+            "fetched_et": now.isoformat(timespec="seconds"),
             "source": {"bars": BARS + " timeframe=1Min", "trades": TRADES,
                        "what": "OPRA trade prints via Alpaca market data (free plan); trades, not quotes"},
             "window_utc": {k: ([z(v[0]), z(v[1])] if v else None) for k, v in w.items()},
             "legs": legs}
 
 
+def in_quiet(now):
+    et = now.astimezone(ET)
+    return et.weekday() < 5 and QUIET[0] <= et.time() < QUIET[1]
+
+
 def fetch(season="seasonA", commit=False, get=default_get, now=None, root=ROOT):
+    """0 = nothing failed; 1 = a request or a push failed (the run goes red; a later run retries)."""
     now = now or now_et()
+    if commit and in_quiet(now):
+        print("14:00-16:05 ET on a weekday: the paper window commits now - nothing fetched, a later run catches up")
+        return 0
     wrote, waiting, failed = [], 0, 0
     for acct, t, which, rec in order_records(season, root):
         p = cache_path(season, rec["client_order_id"], root)
         if os.path.exists(p):
             continue
-        w = windows(rec)
-        end = max(v[1] for v in w.values() if v)
-        if now - end < datetime.timedelta(minutes=SETTLE_MIN):
+        if now - window_end(rec) < datetime.timedelta(hours=SETTLE_H):
             waiting += 1
             continue
         got = fetch_one(acct, t, which, rec, get, now)
@@ -193,16 +225,19 @@ def fetch(season="seasonA", commit=False, get=default_get, now=None, root=ROOT):
         write_once(p, got)
         wrote.append(os.path.relpath(p, root).replace(os.sep, "/"))
         n_tr = sum(len(v.get("trades") or []) for v in got["legs"].values())
-        n_b = sum(len(v["bars"]) for v in got["legs"].values())
+        n_b = sum(len(v.get("bars") or []) for v in got["legs"].values())
         print(f"{rec['client_order_id']} ({got['kind']}): {len(got['legs'])} leg(s), {n_b} bar(s), {n_tr} trade(s)")
     print(f"order re-check {season}: wrote {len(wrote)}, waiting {waiting}, failed {failed}")
+    pushed = True
     if commit and wrote:
         from freeze import git, push_all
         git("add", *wrote)
         git("commit", "-q", "-m", f"Paper order re-check {season}: {len(wrote)} order(s) vs real OPRA prints (code, "
             f"D011 report views v1)\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>")
-        print(f"pushed: {push_all()}")
-    return 1 if failed else 0
+        res = push_all()
+        print(f"pushed: {res}")
+        pushed = all(res.values())
+    return 1 if failed or not pushed else 0
 
 
 # ---------------------------------------------------------------- compare (used by the report; offline)
@@ -224,12 +259,14 @@ def limit_net(rec):
 
 
 def compare_filled(rec, cached):
-    """A filled order against the prints around its fill. Per leg: the real trade nearest the fill, the 1-minute bar
-    holding it, and the low-high of the bars around it. worse_by: + = the paper fill was worse for us than that
-    print (paid more, or received less)."""
+    """A filled order against the prints around its fill. Per leg: the real trade nearest the fill (any distance up
+    to TRADE_MIN), the 1-minute bar holding the fill, and the low-high of the bars around it. worse_by: + = the paper
+    fill was worse for us than that print (paid more, or received less). Per order, two nets: at the nearest prints
+    however far apart (max_leg_dt_s says how far: NOT simultaneous), and at prints within NEAR_S of the fill on every
+    leg, the headline. Condition codes (multi-leg prints included) are recorded, not filtered."""
     f = utc(rec["filled_at"])
     sides = rec.get("all_sides") or rec.get("sides") or {}
-    out, nets, complete = {}, 0.0, True
+    out, nets, complete, near_ok, dts = {}, 0.0, True, True, []
     legs = [lg for lg in rec.get("legs_filled") or [] if lg.get("symbol") and lg.get("qty")]
     for lg in legs:
         sym, px = lg["symbol"], lg.get("price")
@@ -237,23 +274,26 @@ def compare_filled(rec, cached):
         c = ((cached or {}).get("legs") or {}).get(sym)
         row = {"side": side, "paper_price": px}
         out[sym] = row
-        if c is None:
-            row["missing"] = "not fetched"
-            complete = False
+        if c is None or c.get("error"):
+            row["missing"] = "not fetched" if c is None else f"data refused: {c['error']}"
+            complete = near_ok = False
             continue
         trades = [(abs((utc(x["t"]) - f).total_seconds()), x) for x in c.get("trades") or []
                   if x.get("p") is not None and x.get("t")]
         if trades:
             dt, near = min(trades, key=lambda y: y[0])
             row.update(nearest_trade=near["p"], nearest_trade_t=near["t"], nearest_trade_dt_s=round(dt, 1),
+                       nearest_trade_condition=near.get("c"), nearest_trade_exchange=near.get("x"),
                        trades_in_window=len(trades))
             if px is not None:
                 row["worse_by_vs_nearest_trade"] = round(sign_of(side) * (px - near["p"]), 4)
             nets += sign_of(side) * near["p"]
+            dts.append(dt)
+            near_ok = near_ok and dt <= NEAR_S
         else:
             row["nearest_trade"] = None
             row["missing"] = f"no real trade within +-{TRADE_MIN} min"
-            complete = False
+            complete = near_ok = False
         minute = f.replace(second=0, microsecond=0)
         bars = [b for b in c.get("bars") or [] if b.get("t") and b.get("l") is not None and b.get("h") is not None]
         held = next((b for b in bars if utc(b["t"]) == minute), None)
@@ -265,9 +305,13 @@ def compare_filled(rec, cached):
     if legs and all(lg.get("price") is not None for lg in legs):
         paper = sum(lg["price"] * sign_of(sides.get(lg["symbol"]) or lg.get("side")) for lg in legs)
     res = {"kind": "filled", "legs": out, "paper_net": paper,
-           "net_at_nearest_trades": nets if complete and out else None}
+           "net_at_nearest_trades": nets if complete and out else None,
+           "max_leg_dt_s": round(max(dts), 1) if complete and dts else None,
+           f"net_at_trades_within_{NEAR_S}s": nets if complete and near_ok and out else None}
     if res["net_at_nearest_trades"] is not None and paper is not None:
-        res["worse_by_vs_nearest_trades"] = round(paper - res["net_at_nearest_trades"], 4)
+        res["worse_by_vs_nearest_trades (not simultaneous)"] = round(paper - res["net_at_nearest_trades"], 4)
+    if res[f"net_at_trades_within_{NEAR_S}s"] is not None and paper is not None:
+        res[f"worse_by_vs_trades_within_{NEAR_S}s"] = round(paper - nets, 4)
     return res
 
 
@@ -285,8 +329,8 @@ def compare_unfilled(rec, cached):
         c = ((cached or {}).get("legs") or {}).get(sym)
         row = {"side": side, "recorded_far_side": far}
         out[sym] = row
-        if c is None:
-            row["missing"] = "not fetched"
+        if c is None or c.get("error"):
+            row["missing"] = "not fetched" if c is None else f"data refused: {c['error']}"
             complete = False
             continue
         bars = [b for b in c.get("bars") or [] if b.get("l") is not None and b.get("h") is not None]
@@ -313,6 +357,9 @@ def compare_unfilled(rec, cached):
 def probe(commit=False, get=default_get, now=None):
     """What the free plan returns for options history, recorded as found. Uses real fills from the ledgers."""
     now = now or now_et()
+    if commit and in_quiet(now):
+        print("14:00-16:05 ET on a weekday: the paper window commits now - no probe")
+        return None
     recs = [x for x in order_records("seasonA") if is_filled(x[3])]
     picks = []
     for acct in LEDGERS:

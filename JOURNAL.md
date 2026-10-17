@@ -9,6 +9,49 @@
 
 ---
 
+## 2026-10-16 (Fri) evening ET — the paper report's promised views, and what free data can say about a paper fill (RQ6, RQ1)
+
+- **What:** the views promised on 10-14 and found missing on 10-15 now exist and are frozen
+  (`registry/D011_report_views_v1.md`, `pipeline/paper_options_report_v2.py`). They sit beside the frozen report,
+  which is byte-identical:
+  - every P&L figure at the fill, the mid, halfway and the far side;
+  - all trades, v3 only, and without DPZ;
+  - fill rate as an outcome, read from order records only;
+  - the open-fill trigger's counts;
+  - each order against real exchange prints.
+- **The probe: what free data can and cannot say.**
+  - Alpaca's historical options bars and trades answer on the free plan, also for an expired contract.
+  - There is no historical quotes endpoint. **What the real quote was while a paper order sat unfilled can never be
+    checked after the fact.** Only trades can.
+- **The first six real opening fills** (descriptive, one day):
+  - Every one filled 3 to 56 cents BETTER than its limit, the indicative far side. The concession is a ceiling, not a
+    cost, as v3 §2 guessed.
+  - But every one paid 91–99% of the half-spread. **The mid column will flatter every result; read halfway and the
+    far side.**
+- **DPZ's failed exit, against real prints** (one trade, descriptive):
+  - In 19 of its unfilled closes, 29 of the 30 legs that traded while the order was live printed at or through our
+    recorded far side.
+  - No close had prints on all four legs at once, so whether the whole order was marketable cannot be said.
+  - It suggests the per-leg prices were not the obstacle. That fits the zero-bid-wing / multi-leg reading of the
+    incident better than "the indicative prices were unmarketable". It is not proof: trades are not quotes, and n
+    is 1 trade.
+- **Real prints are thin.** In the dry pass (run 38987703855), 4 of the options account's 16 filled legs had a real
+  trade within 15 minutes of the fill, and 1 within 60 seconds. "Missing" will be the common, honest answer.
+- **Seen in passing:** the long NOC open's second attempt stayed live 46 minutes before its cancel (the rule says
+  15). It still did not fill at the indicative ask sum.
+- **What the review taught** (Sonnet, two passes, both SHIP WITH FIXES):
+  - **A schedule written in UTC moves with the clocks.** My "16:45 ET" evening run would have fired at 15:45 EST,
+    inside the paper window, from Nov 2. It is now 16:50 EST / 17:50 EDT, plus a guard that refuses to commit
+    14:00–16:05 ET.
+  - **One run stamps every send with the same time**, so "the first 6" is a tie more often than not. The honest
+    order is the one the frozen code really sent in, which is the ledger order. When the cut falls in a tie, the
+    report also shows the range over every admissible choice.
+  - **"Give up after 3 days" must not swallow an account problem.** Only 400, 404 and 422 are ever stored as a
+    refusal. A 403 ("OPRA agreement is not signed") keeps the run red, because it is about the account, not the
+    contract.
+  - **Lesson: a write-once store makes every "not yet" permanent.** Wait until the data has settled (12 hours here)
+    before writing, and store a refusal only when it is about the thing itself.
+
 ## 2026-10-15 (Thu) late morning ET — alarms for an unworked paper window and for a ledger that disagrees with the broker (ops, RQ6)
 
 - **What:** two code-only checks in `health.py`.
