@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
     inputs:
       command:
-        description: "fetch (default) or probe"
+        description: "fetch (default), probe, or dry (fetch + report in the runner; nothing committed)"
         required: false
         default: "fetch"
 
@@ -50,6 +50,12 @@ jobs:
         if: github.event_name == 'workflow_dispatch' && inputs.command == 'probe'
         run: python pipeline/paper_fill_recheck.py probe --commit
 
-      - name: Fetch real prints around new fills, commit them
-        if: github.event_name != 'workflow_dispatch' || inputs.command != 'probe'
+      - name: Dry run (fetch and report in the runner; nothing is committed)
+        if: github.event_name == 'workflow_dispatch' && inputs.command == 'dry'
+        run: |
+          python pipeline/paper_fill_recheck.py fetch seasonA
+          python pipeline/paper_options_report_v2.py seasonA
+
+      - name: Fetch real prints around new orders, commit them
+        if: github.event_name != 'workflow_dispatch' || (inputs.command != 'probe' && inputs.command != 'dry')
         run: python pipeline/paper_fill_recheck.py fetch seasonA --commit
