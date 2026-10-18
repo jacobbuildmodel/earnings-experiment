@@ -1,4 +1,4 @@
-# Health 2026-10-17 03:59 ET - **RED**
+# Health 2026-10-18 04:17 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,7 +6,6 @@ check.py: PASS - 1 warning(s)
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-16T14:46:38Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/38918509966
 - EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 28 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
 
 ## Information
