@@ -9,6 +9,26 @@
 
 ---
 
+## 2026-10-19 (Mon) late morning ET — the date-finder was blind to its own release format (power, RQ1)
+
+- **What I expected:** the gap was announcements arriving late. **What I found:** code was misreading announcements
+  it already had.
+  - In a read-only recall audit of 10 random peak names, 3 had a company date code missed.
+  - Reading 13 urgent names by hand showed four separate defects. Each one cost confirmations for days:
+    1. a release's own dateline counted as a second date;
+    2. an unrecognised wire format (ACCESS Newswire);
+    3. "US" without full stops;
+    4. an after-close release plus a next-morning call read as "ambiguous".
+- **All four fixed with tests from the real sentences**, re-run live, and 35 names confirmed. Season A went from 80
+  confirmed or frozen events to 115.
+- **The uncomfortable part:** the peak is still dark. 16 of 152 Oct 31–Nov 6 names are confirmed.
+  - 50 PENDING names have a company date and session that code found, but no second source agrees yet.
+  - 132 show nothing on the feed code reads.
+  - That is where Season A's power now sits, and the next session starts there.
+- **Lesson: measure recall, not just precision.** Code's rules were built never to confirm a wrong date. Nothing
+  measured how many right dates it threw away. A 10-name hand audit found it in an hour. It should run every
+  session until the peak passes.
+
 ## 2026-10-19 (Mon) morning ET — three silent failures, and a plan built around power (RQ1–RQ6, Gate 1)
 
 - **The Actions AI step has been refused every night since Oct 15**: "Your organization has disabled Claude

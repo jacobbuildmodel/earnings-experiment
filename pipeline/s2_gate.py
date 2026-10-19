@@ -36,12 +36,34 @@ def num(x):
 
 
 def session_from_ts(ts):
+    """D003 §6: a yfinance timestamp before 09:30 ET is BMO, at/after 16:00 ET is AMC; anything else is INTRADAY,
+    which disagrees with either session - except Yahoo's after-close placeholder (below), which is no session."""
     t = ts.astimezone(ET).time()
     if t < datetime.time(9, 30):
         return "BMO"
     if t >= datetime.time(16, 0):
         return "AMC"
+    if amc_placeholder(ts):
+        return None
     return "INTRADAY"
+
+
+def amc_placeholder(ts):
+    """2026-10-19 (D003 v4 addendum 1): yfinance writes an UPCOMING date with the UTC offset in force when the record
+    was made, so an after-close placeholder made in daylight time (20:00 UTC) reads 15:00 on a standard-time date.
+    AMD, NET, EW: the upcoming Nov 3-5 stamps are 20:00 UTC; every past November print is 21:00 UTC (16:00 EST).
+    All 235 INTRADAY stamps on record were exactly this. It is narrowed to that signature on purpose."""
+    t = ts.astimezone(ET)
+    return t.utcoffset() == datetime.timedelta(hours=-5) and t.hour == 15
+
+
+def votes(seconds, session):
+    """(agree, disagree) for a company session, shared by the gate and find_dates. The AMC placeholder never
+    agrees, and it still disagrees with a company BMO (review 2026-10-19, finding 3)."""
+    agree = [s for s in seconds if s.get("session") == session]
+    disagree = [s for s in seconds if (s.get("session") and s.get("session") != session)
+                or (s.get("artifact") == "amc_placeholder" and session == "BMO")]
+    return agree, disagree
 
 
 def second_sources(ticker, report_date):
@@ -51,8 +73,12 @@ def second_sources(ticker, report_date):
         ed = yf.Ticker(ticker).get_earnings_dates(limit=12)
         for ts in ed.index:
             if ts.astimezone(ET).date() == report_date:
-                found.append({"source": "yfinance get_earnings_dates", "timestamp": ts.isoformat(),
-                              "session": session_from_ts(ts)})
+                rec = {"source": "yfinance get_earnings_dates", "timestamp": ts.isoformat(), "session": session_from_ts(ts)}
+                if amc_placeholder(ts):
+                    rec.update(artifact="amc_placeholder",
+                               note="15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, "
+                                    "disagrees with BMO (D003 v4 addendum 1)")
+                found.append(rec)
     except Exception as exc:
         found.append({"source": "yfinance get_earnings_dates", "error": f"{type(exc).__name__}: {exc}"})
     try:
@@ -188,8 +214,7 @@ def run(season, ticker, report_date, dry=False):
 
     seconds = second_sources(ticker, report_date)
     gate["second_sources"] = seconds
-    agree = [s for s in seconds if s.get("session") == session]
-    disagree = [s for s in seconds if s.get("session") and s.get("session") != session]
+    agree, disagree = votes(seconds, session)
     in_season = window[0] <= report_date.isoformat() <= window[1]
 
     full = None
