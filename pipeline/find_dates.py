@@ -342,10 +342,9 @@ def probe(ticker, window, since_days=75):
 
 
 def second_source_agrees(ticker, date, session):
-    from s2_gate import second_sources
-    seconds = second_sources(ticker, datetime.date.fromisoformat(date))
-    agree = [s for s in seconds if s.get("session") == session]
-    disagree = [s for s in seconds if s.get("session") and s.get("session") != session]
+    import s2_gate
+    seconds = s2_gate.second_sources(ticker, datetime.date.fromisoformat(date))
+    agree, disagree = s2_gate.votes(seconds, session)
     return bool(agree) and not disagree, seconds
 
 
