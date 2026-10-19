@@ -148,7 +148,10 @@ def items_rss(host):
 # PR Newswire) - the company's words, with a publish time. Used only when the company's own feed is not.
 NASDAQ_PR = "https://api.nasdaq.com/api/news/topic/press_release?q=symbol:{t}|assetclass:stocks&limit=30&offset=0"
 WIRE = re.compile(r"--\s*\(\s*(business wire|globe newswire|accesswire|prnewswire|pr newswire)|/prnewswire/|globe newswire\)|"
-                  r"\((business wire|globe newswire|accesswire)\)", re.I)
+                  r"\((business wire|globe newswire|accesswire)\)|"
+                  # 2026-10-19 recall audit: ACCESS Newswire writes "CAMBRIDGE, MA / ACCESS Newswire / October 13, 2026 /",
+                  # so Moderna's own release was skipped as "not a release" and MRNA read no_date_announced
+                  r"/\s*(access\s*newswire|accesswire)\s*/", re.I)
 PUBLISHED = re.compile(r"Published\s+([A-Z][a-z]{2,8}\.? \d{1,2}, 20\d\d \d{1,2}:\d{2}\s*[ap]m)\s+(E[SD]T)", re.I)
 
 

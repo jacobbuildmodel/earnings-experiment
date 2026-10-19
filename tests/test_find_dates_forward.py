@@ -42,3 +42,22 @@ def test_confirm_one_probes_from_today(tmp_path, monkeypatch):
     assert windows == [(datetime.date(2026, 10, 19), datetime.date(2026, 11, 20))]
     assert confirmed == ["GLXY"] and ev["status"] == "CONFIRMED" and ev["snapshot_session"] == "2026-10-23"
     assert json.loads((tmp_path / "events" / "seasonA" / "GLXY_2026-10-27" / "confirm.json").read_text())["session"] == "BMO"
+
+
+MRNA_PAGE = ("Moderna to Report Third Quarter 2026 Financial Results on Friday, November 6, 2026 | Nasdaq Skip to main content "
+             "Moderna to Report Third Quarter 2026 Financial Results on Friday, November 6, 2026 Published Oct 13, 2026 7:00am EDT "
+             "linkedin facebook x email reddit CAMBRIDGE, MA / ACCESS Newswire / October 13, 2026 / Moderna, Inc. (NASDAQ:MRNA), "
+             "today announced that it will host a live conference call and webcast at 8:00 a.m. ET on Friday, November 6, 2026 to "
+             "report its third quarter 2026 financial results, and provide a corporate update.")
+
+
+def test_access_newswire_dateline_is_a_release():
+    body, pub = fd.nasdaq_body(MRNA_PAGE)
+    assert body is not None and pub == datetime.datetime(2026, 10, 13, 7, 0, tzinfo=ET)
+    st = fd.parse_page(body, (datetime.date(2026, 10, 19), datetime.date(2026, 11, 20)), pub)
+    assert [(s["date"], s["session"], s["session_from_call_time"]) for s in st] == [("2026-11-06", "BMO", True)]
+
+
+def test_an_article_without_a_dateline_is_still_skipped():
+    article = MRNA_PAGE.replace("/ ACCESS Newswire / October 13, 2026 /", "- Moderna said on")
+    assert fd.nasdaq_body(article) == (None, None)
