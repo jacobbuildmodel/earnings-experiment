@@ -152,7 +152,8 @@ edited = sorted({g for g in (edited + chr(10) + dirty).splitlines() if g.strip()
 if edited:
     bad(f"shadow capture(s) changed after their first commit: {edited[:10]}")
 APPEND_ONLY = ["registry/FROZEN.sha256", "registry/D005_implementation_v1.sha256",
-               "registry/D004_implementation_v4.sha256", "registry/D015_implementation_v1.sha256"]
+               "registry/D004_implementation_v4.sha256", "registry/D015_implementation_v1.sha256",
+               "registry/D003_implementation_v4.sha256"]
 _, hist = git("log", "--format=", "-p", "--", *APPEND_ONLY)
 _, work = git("diff", "HEAD", "--", *APPEND_ONLY)
 removed = [ln for ln in (hist + "\n" + work).splitlines() if ln.startswith("-") and not ln.startswith("---")]
@@ -204,6 +205,27 @@ if os.path.exists(_impl):
             "C1 sample is unaffected (rule 5)")
     else:
         ok(f"D015 v1 implementation: {len(_want)} file(s) match their registered hashes")
+
+# D003 v4 addendum 1 (review 2026-10-19, finding 1): the S2 gate's code must match its latest registered line, so a
+# change to how the gate reads its sources is never silent (rule 5). A change appends a dated line with its reason.
+_impl = os.path.join(ROOT, "registry", "D003_implementation_v4.sha256")
+if os.path.exists(_impl):
+    _want = {}
+    for _ln in open(_impl, encoding="utf-8"):
+        if _ln.strip() and not _ln.startswith("#"):
+            _h, _n = _ln.split(maxsplit=1)
+            _want[_n.strip()] = _h
+    _drift = []
+    for _n, _h in _want.items():
+        _p = os.path.join(ROOT, _n)
+        _d = hashlib.sha256(open(_p, "rb").read().replace(b"\r\n", b"\n")).hexdigest() if os.path.exists(_p) else "missing"
+        if _d != _h:
+            _drift.append(_n)
+    if _drift:
+        bad(f"D003 v4 implementation changed without a registered hash: {_drift} - append a dated line to "
+            "registry/D003_implementation_v4.sha256 (rule 5: never a silent edit of the live gate)")
+    else:
+        ok(f"D003 v4 implementation: {len(_want)} file(s) match their registered hashes")
 
 # Frozen events: every file listed in an event's manifest must still match its hash.
 import json
