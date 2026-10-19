@@ -1,4 +1,4 @@
-# Health 2026-10-19 05:14 ET - **RED**
+# Health 2026-10-19 11:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,8 @@ check.py: PASS - 1 warning(s)
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - runner image probe at 2026-10-19T12:26:20Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39252055540
+- Actions failure: Earnings experiment - runner image probe at 2026-10-19T12:26:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39252049895
 - EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 28 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
 
 ## Information
@@ -15,6 +17,6 @@ check.py: PASS - 1 warning(s)
 - Mon 19 Oct: 2 snapshot(s) - ABT, PEGA
 - Tue 20 Oct: 6 snapshot(s) - HXL, LMT, LRCX, ROP, TSCO, TXN
 - Wed 21 Oct: 8 snapshot(s) - APPF, DECK, KN, MXL, RNG, SSNC, VRSN, WDC
-- Fri 23 Oct: 5 snapshot(s) - AGYS, AMKR, CDNS, CVLT, RMBS
-- seasonA: 238 name(s) still PENDING a confirmed date
+- Fri 23 Oct: 6 snapshot(s) - AGYS, AMKR, CDNS, CVLT, GLXY, RMBS
+- seasonA: 237 name(s) still PENDING a confirmed date
 
