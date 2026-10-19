@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-19 09:20 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
+**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-19 12:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
 
@@ -165,6 +165,34 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-19 (Mon) ~12:00 ET — date detection: a recall audit, four `find_dates` defects fixed, 35 names confirmed.**
+- **Recall audit** (10 random PENDING names dated Oct 31–Nov 6, read-only): **3 had a company date that code missed**,
+  over the plan's 2/10 limit. So it was a defect, fixed the same morning. The 13 urgent names read by hand showed
+  more.
+  - **Fixes** (all tested; `find_dates.py` is in no hash list; D003 §6 unchanged):
+    1. `0fa8506`: only dates from today on count. A release's own dateline counted as a second date → "ambiguous"
+       (GLXY, CORZ, EEFT, BDC, IDCC, YUMC, LYFT).
+    2. `48f00db`: the ACCESS Newswire dateline (MRNA's own release was skipped as "not a release").
+    3. `33cf370`: "US" / "U.S ." in after-close wording (STX, GDDY); "before trading begins" (TEL).
+    4. `33cf370`: release wording on one date outranks the next session's call (CLS, TER, PLXS, MUSA, VSEC). A
+       results date with no wording plus a call stays ambiguous.
+- **Confirmed (`5d88d4f`):** 32 by code with the fixes, plus 3 by hand from the company's words (FTAI, LOGI,
+  JMKE). SMMT retired `unconfirmed`. GE has no company date (its second sources say BMO Oct 20, snapshot passed);
+  it stays PENDING until today's window closes.
+  - **Season A: 111 CONFIRMED + 4 FROZEN (was 76 + 4), 202 PENDING (was 238).**
+- 🔴 **The peak is still dark:** 16 of 152 names dated Oct 31–Nov 6 are confirmed (11%), against the plan's ≥ 70% by
+  Oct 22. The 202 PENDING:
+  - **132 `no_date_announced`** on the feed code reads (not yet audited against the company sites);
+  - **50 `found`**, where the company states date and session but no second source agrees yet (e.g. EW and NET:
+    yfinance stamps 15:00, Nasdaq after-hours, which counts as a disagreement);
+  - 10 no session, 5 ambiguous, 3 no feed, 2 intraday call.
+  - **Next session's first power task: the 50 `found`.** Are the second sources lagging (they confirm themselves),
+    or is yfinance's stamp wrong (a rule question for the second-source check)? Then a hand audit of 10
+    `no_date_announced` names against the company IR sites.
+- Today's evening run (Actions, 23:00 UTC) has all four fixes and takes the 32 names this pass left.
+- **Jacob, today:** selling DPZ's 100 paper shares; re-issuing `CLAUDE_CODE_OAUTH_TOKEN` (the sign-in is open in the
+  Terminal tab "Claude token for GitHub"). After the token: dispatch one housekeeping run to prove it.
 
 **2026-10-16 (Fri) ~21:30 ET — the promised paper report views are built, reviewed and FROZEN (`d424bca`).**
 - **What:** `registry/D011_report_views_v1.md` and `pipeline/paper_options_report_v2.py`.
@@ -415,3 +443,4 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 The Actions AI step (`ops/actions_prompt.md`) appends one line per ET day here. Lines from 2026-09-20 to 2026-10-14
 are in the history file. 🔴 Since 2026-10-15 the step has been refused ("organization has disabled Claude
 subscription access for Claude Code"), so laptop sessions add the line by hand until it runs again.
+- **2026-10-19 (Mon), by hand (laptop):** the AI step was refused again overnight. 35 dates confirmed (32 by code with four `find_dates` fixes, 3 by hand: FTAI, LOGI, JMKE), SMMT retired `unconfirmed`, GE re-checked (no company date). Nothing gated or frozen before 12:00 ET; ABT and PEGA gate from 14:30.
