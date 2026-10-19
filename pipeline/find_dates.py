@@ -398,7 +398,10 @@ URGENT_BUDGET_SECONDS = 20 * 60
 def confirm_one(season, key, ev, window, snap, today, confirmed, paths):
     from sessions import shift
     if ev.get("status") == "PENDING":
-        res = probe(key, window)
+        # only dates from today on can be the coming report (2026-10-19): with the whole season window, a release's
+        # own dateline ("NEW YORK, Oct. 13, 2026 ... will report ... on October 27") counted as a second date and
+        # left GLXY, CORZ and EEFT "ambiguous" for days with both second sources agreeing
+        res = probe(key, (max(window[0], today), window[1]))
         note = f"{res['checked_et']}: {VERSION} - {res['outcome']}"
         if res.get("newest_item"):
             note += f"; feed {res['feed']}, newest item {res['newest_item']['published'][:16]} '{res['newest_item']['title'][:80]}'"

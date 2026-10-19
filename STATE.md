@@ -1,8 +1,8 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-19 09:45 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
+**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-19 09:20 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
 
-## PLAN — Mon 2026-10-19 (today) and the next session · 09:35 ET · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
+## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
 
 **Purpose this fortnight.** Season A is in week 2 of 6, and its power is decided now:
 - 238 of 318 names have no confirmed date, and 153 of them are dated Oct 31–Nov 6.
@@ -16,7 +16,7 @@ then truthfulness**, as CHARTER §6 ranks them.
 
 | area | now | why it matters |
 |---|---|---|
-| Season A dates | 318 names: 80 confirmed, **238 PENDING** (4 dated ≤ Oct 23, 41 Oct 24–30, **153 Oct 31–Nov 6**, 40 later) | 🔴 **a detection gap, not the companies.** Confirmed names were announced a median 21 days ahead (p10 14, min 10), yet only 9 names dated Nov 3–6 are confirmed (n = 80, checked 09:40 ET) |
+| Season A dates | 318 names: 80 confirmed, **238 PENDING** (4 dated ≤ Oct 23, 41 Oct 24–30, **153 Oct 31–Nov 6**, 40 later) | 🔴 **a detection gap, not the companies.** Confirmed names were announced a median 21 days ahead (p10 14, min 10), yet only 9 names dated Nov 3–6 are confirmed (n = 80, checked 09:00 ET) |
 | S2 gates | 4 run, **0 PASS**, all `wide_spread`; the pilot had 3 PASS of 5. `gate.json` records only the first failing check. DPZ (OI 248) and VICR (28) would also fail `thin_oi`. **Only RTX was a near-miss** (put 12.8%). NOC and VICR were gated on the Nov 20 monthly | 🔴 0 T2 decisions in Season A. H-T2C needs ≥ 10 PASS-with-T2 events and ≥ 5 sessions in Season A (D005 v3) |
 | snapshots ahead | this week 21 (Mon 2 · Tue 6 · Wed 8 · Fri 5); Oct 26–30: 44; the first peak snapshots are Thu Oct 29 | the projected PASS count becomes measurable |
 | C1 (D015) | 78 events, 19 graded, 2 C1 on 1 date (blind) | look 1 from Dec 7 needs ~27 C1 dates |
