@@ -61,3 +61,37 @@ def test_access_newswire_dateline_is_a_release():
 def test_an_article_without_a_dateline_is_still_skipped():
     article = MRNA_PAGE.replace("/ ACCESS Newswire / October 13, 2026 /", "- Moderna said on")
     assert fd.nasdaq_body(article) == (None, None)
+
+
+W = (datetime.date(2026, 10, 19), datetime.date(2026, 11, 20))
+PUB = datetime.datetime(2026, 10, 13, 16, 5, tzinfo=ET)
+
+
+def sessions_of(text):
+    return sorted({(s["date"], s["session"]) for s in fd.parse_page(text, W, PUB)})
+
+
+def test_us_without_periods_and_spaced_periods_read_as_after_close():
+    stx = ("Seagate Technology Holdings plc (NASDAQ: STX), a leading innovator of mass-capacity data storage, will report "
+           "fiscal first quarter 2027 financial results after the US market closes on Tuesday, October 27, 2026.")
+    gddy = ("GoDaddy Inc. (NYSE: GDDY) will release financial results for the third quarter of 2026 on Thursday, October 29, "
+            "2026, after the U.S. stock market closes.")
+    assert sessions_of(stx) == [("2026-10-27", "AMC")]
+    assert sessions_of(gddy) == [("2026-10-29", "AMC")]
+
+
+def test_before_trading_begins_reads_as_before_open():
+    tel = ("TE Connectivity plc (NYSE: TEL) will report financial results for the fourth quarter and full year of fiscal "
+           "2026 before trading begins on October 28, 2026.")
+    assert sessions_of(tel) == [("2026-10-28", "BMO")]
+
+
+def test_release_wording_outranks_the_next_sessions_call():
+    cls = [{"date": "2026-10-26", "session": "AMC", "session_from_call_time": False}]
+    assert fd.release_then_call(cls, ["2026-10-26", "2026-10-27"])                 # CLS: release Mon AMC, call Tue
+    assert fd.release_then_call(cls[:0] or [{"date": "2026-10-27", "session": "AMC", "session_from_call_time": False}],
+                                ["2026-10-27", "2026-10-28"])                       # TER: release Tue 16:30, call Wed
+    assert not fd.release_then_call([], ["2026-10-22", "2026-10-23"])               # results date with no wording + call
+    assert not fd.release_then_call(cls, ["2026-10-26", "2026-10-29"])              # the other date is not the next session
+    assert not fd.release_then_call(cls + [{"date": "2026-10-27", "session": "BMO", "session_from_call_time": False}],
+                                    ["2026-10-26", "2026-10-27"])                   # two dates with release wording
