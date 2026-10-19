@@ -1,0 +1,601 @@
+{
+ "event": "SPCX_2026-10-20",
+ "season": "seasonA",
+ "built_et": "2026-10-19T14:32:36-04:00",
+ "cutoff_et": "2026-10-19T14:32:22.943493-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/SPCX_2026-10-20/gate.json",
+   "published": "2026-10-19T14:32:22.943493-04:00",
+   "data": {
+    "ticker": "SPCX",
+    "report_date": "2026-10-20",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-20"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-21"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-21"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-10-28"
+     },
+     "reaction_day": "2026-10-21"
+    },
+    "snapshot_session": "2026-10-19",
+    "captured_et": "2026-10-19T14:32:22.943493-04:00",
+    "options": {
+     "spot": 147.23500061035156,
+     "expiry": "2026-10-21",
+     "strike": 147.0,
+     "call": {
+      "bid": 5.8,
+      "ask": 5.95,
+      "openInterest": 753.0,
+      "lastPrice": 5.8,
+      "impliedVolatility": 1.081791700439453,
+      "lastTradeDate": "2026-10-19T18:12:17+00:00"
+     },
+     "put": {
+      "bid": 5.1,
+      "ask": 5.2,
+      "openInterest": 1649.0,
+      "lastPrice": 5.1,
+      "impliedVolatility": 0.9907227490234375,
+      "lastTradeDate": "2026-10-19T18:17:21+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.07488029309808603,
+     "rel_spread": {
+      "call": 0.025531914893617082,
+      "put": 0.019417475728155442
+     },
+     "oi_atm": 2402.0,
+     "oi_sum": 14324.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/SPCX_2026-10-20/factors.json",
+   "published": "2026-10-19T14:32:22.943493-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": null,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.03581953362723811,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.09900864555789679,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.07630843678723398,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.7006341849308778,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7774059097105396,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.3034674964837799,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-04",
+       "session": "AMC",
+       "raw_return_A": -0.042273919773858304,
+       "eps_est": -0.29,
+       "eps_rep": -0.09,
+       "surprise_pct": 68.89,
+       "reaction_volume_ratio": 3.1974654420638404
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.0,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.1974654420638404,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 68.89,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": null,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.16471,
+      "7daysAgo": 0.16749,
+      "30daysAgo": 0.14416,
+      "60daysAgo": 0.13999,
+      "90daysAgo": 0.09171,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.7959873514338676,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.16471,
+      "low": -0.11,
+      "high": 0.43,
+      "numberOfAnalysts": 17,
+      "yearAgoEps": null,
+      "growth": null,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 3.2784894663347703,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0271,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 71.98416,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 84.17668,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.919,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 1939767427072,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.78947,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.07488029309808603,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.09106895141601556,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0388181652832027,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.5663366336633663,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.9967312858021296,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 89383.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.4790274968294315,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.06367227746325163,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 55,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unprofitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.9194301154507492,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -0.018300486306629126,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.09903927144743652,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.07630843678723398,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.7006335143215735,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 863386043579.1016,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052515/earningsreleaseq22608042.htm",
+   "published": "2026-08-04T16:01:05-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 earningsreleaseq22608042.htm EX-99.1 earningsreleaseq22608042 SpaceX Reports Second Quarter 2026 Results • Demonstrated the power of extreme vertical integration, delivering revenue growth of 92% year-over-year across Space, Connectivity and AI • Completed two successful Starship V3 flight tests in the past 90 days, advancing towards full and rapid reusability • Closed multiple industry-leading Cloud Services Agreements resulting in $14.1 billion of contracted sales • Announced agreement to acquire Cursor for $60 billion to accelerate the AI enterprise opportunity • Released our most powerful AI model yet with Grok 4.5 in July • Delivered 66% revenue and 79% income from operations growth year-over-year for the Connectivity segment, driven by a doubling of Starlink Subscribers and continued momentum in Enterprise & Government • Awarded over $6 billion in multi-year U.S. government contracts for Starshield SpaceX (Nasdaq: SPCX) announced the following financial results for the quarter ended June 30, 2026, as compared to the prior year quarter: • Revenues of $7.8 billion, up 92% from $4.1 billion • Net loss of $541 million, an improvement of $467 million from net loss of $1.0 billion • Adjusted EBITDA of $3.5 billion, up 191% from $1.2 billion CFO Commentary: 2026 has been a momentous year so far, and the second quarter demonstrated the true power of SpaceX. Revenue growth accelerated across all our business segments and we delivered strong operating leverage, with significant margin expansion led by our new AI compute agreements. Our unparalleled leadership in launch, Starlink subscriber growth, new enterprise and government partnerships, and best-in-class AI infrastructure underscore our ability to drive meaningful scale and deliver attractive returns. As a newly public company, we are delighted to welcome our broad base of shareholders and bondholders. We ended the second quarter with $100 billion of cash, cash equivalents, and marketable securities, and $47.5 billion in backlog. This financial strength gives us substantial capacity to invest in Starship, Starlink Broadband and Mobile satellites, and our AI platform, while maintaining a disciplined long-term capital allocation framework. Note: Adjusted EBITDA is a non-GAAP financial measure. See Note 1 for additional information regarding Adjusted EBITDA. A reconciliation to the most comparable GAAP financial measure is provided under “Reconciliation of Net Loss to Adjusted EBITDA.” 1 2 Second Quarter Financial Highlights $, in millions Three Months Ended Six Months Ended June 30, 2026 March 31, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Revenue Space $962 $619 $746 $1,581 $1,611 Connectivity 4,291 3,257 2,588 7,548 5,062 AI 2,561 818 737 3,379 1,465 Total $7,814 $4,694 $4,071 $12,508 $8,138 Income (Loss) from Operations Space $(542) $(662) $(369) $(1,204) $(439) Connectivity 1,656 1,188 923 2,844 1,956 AI (1,257) (2,469) (1,524) (3,726) (2,460) Total $(143) $(1,943) $(970) $(2,086) $(943) Segment Adjusted EBITDA Space $(205) $(351) $(93) $(556) $131 Connectivity 2,597 2,087 1,583 4,684 3,200 AI 1,146 (609) (276) 537 (387) Total $3,538 $1,127 $1,214 $4,665 $2,944 Capex Space $1,174 $1,052 $946 $2,226 $1,705 Connectivity 1,367 1,332 1,130 2,699 1,944 AI 15,828 7,723 749 23,551 3,316 Total $18,369 $10,107 $2,825 $28,476 $6,965 Note: Segment Adjusted EBITDA is a non-GAAP financial measure. A reconciliation to the most comparable GAAP financial measure is provided elsewhere in this release. 3 Space Segment Operating and Financial Data $, in millions (except where noted) Three Months Ended Six Months Ended June 30, 2026 March 31, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Customer launches (#) 10 7 9 17 21 Internal launches (#) 28 33 37 61 63 Total launches (#) 38 40 46 78 84 Customer payloads (in metric tons) 87 45 88 132 163 Internal payloads (in metric tons) 397 511 563 908 938 Mass to orbit (in metric tons) 485 556 652 1,041 1,102 Launch services revenues $648 $330 $490 $978 $1,056 Launch & development revenues 314 289 256 603 555 Space revenues $962 $619 $746 $1,581 $1,611 Less: Cost of revenue $329 $281 $330 $610 $627 Research and development 1,076 930 693 2,006 1,219 Selling, general, and administrative 99 70 87 169 175 Impairment — — 5 — 29 Loss from operations $(542) $(662) $(369) $(1,204) $(439) Segment Adjusted EBITDA reconciliation Loss from operations $(542) $(662) $(369) $(1,204) $(439) Depreciation & amortization 158 166 146 324 308 Share-based compensation 179 145 125 324 233 Impairment — — 5 — 29 Space Adjusted EBITDA $(205) $(351) $(93) $(556) $131 Space Capex $1,174 $1,052 $946 $2,226 $1,705 Space Business Highlights • Space revenues grew 55% sequentially and 29% year-over-year to $962 million, driven by a higher number of large customer launches and a favorable customer shift compared to the prior year • Total costs and expenses for the Space segment were up by $389 million year-over-year, as we continued to accelerate R&D investments in our Starship program, which we believe will reduce the cost to orbit by 99% or more relative to the historical average, and unlock significant revenue potential across all business segments • Leading launch provider for the world with 78 launches and 1,041 metric tons of mass to orbit deployed over the six months ended June 30, 2026, primarily allocated to Connectivity for the deployment of our Starlink constellation • Starship V3 development continued to advance towards full and rapid reusability: • Completed Starship V3’s first suborbital mission in May, Flight 12, which achieved a successful lift off from our new Starbase pad, a precision landing of Starship’s upper stage, and deployment of modified V2 Starlink satellites • Subsequent to the second quarter, completed Starship Flight 13 in July, which achieved all flight objectives including deploying 20 production V3 satellites, demonstrating in-space relight of a Raptor engine, and executing the softest ever splashdown of Starship, providing critical views of an intact heatshield 4 Connectivity Segment Operating and Financial Data $, in millions (except where noted) Three Months Ended Six Months Ended June 30, 2026 March 31, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Starlink Subscribers (#, in millions, as of period end) 12.0 10.3 6.0 12.0 6.0 Starlink ARPU ($ per month) $66 $66 $85 $66 $85 Consumer revenues $2,485 $2,148 $1,721 $4,633 $3,213 Enterprise & government revenues 1,806 1,109 867 2,915 1,849 Connectivity revenues $4,291 $3,257 $2,588 $7,548 $5,062 Less: Cost of revenue $2,060 $1,651 $1,401 $3,711 $2,615 Research and development 294 205 143 499 266 Selling, general, and administrative 281 213 121 494 225 Income from operations $1,656 $1,188 $923 $2,844 $1,956 Segment Adjusted EBITDA reconciliation Income from operations $1,656 $1,188 $923 $2,844 $1,956 Depreciation & amortization 805 783 569 1,588 1,078 Share-based compensation 136 116 91 252 166 Connectivity Adjusted EBITDA $2,597 $2,087 $1,583 $4,684 $3,200 Connectivity Capex $1,367 $1,332 $1,130 $2,699 $1,944 Connectivity Business Highlights • Connectivity revenues were up 32% sequentially and 66% year-over-year to $4.3 billion, driven by strong Starlink subscriber growth, with Consumer revenues up 16% sequentially and 44% year-over-year, and an increase in Enterprise & Government revenues, up 63% sequentially and 108% year-over-year • Total costs and expenses for the Connectivity segment were up $970 million year-over-year, driven primarily by increased spend to support revenue growth, as well as higher R&D expenses for our next-generation V3 satellites, which we expect to deliver meaningful increases in broadband capacity and data density • Drove income from operations for the Connectivity segment up 79% year-over-year to $1.7 billion, and improved Connectivity Adjusted EBITDA by 64% year-over-year to $2.6 billion • Reached 12.0 million Starlink Subscribers as of the end of Q2 2026, doubling year-over-year and up 1.7 million sequentially, while maintaining ARPU at $66, in line with Q1 2026 • Demonstrated traction across our enterprise business: signed a major agreement with American Airlines; activated our service on a number of new airlines including Southwest, Virgin Atlantic, Iberia and Aer Lingus; and launched new Starlink Mobile partnerships with international carriers, including SoftBank, NTT Docomo and Spark NZ • Awarded over $6 billion in multi-year U.S. government contracts for Starshield, our secure satellite network designed specifically for government customers and national security applications, primarily from two major Space Force contracts for LEO-based communications and sensing constellations • Received FCC approval of the EchoStar license transfer for 65 MHz of spectrum in the U.S. and certain global Mobile Satellite Service spectrum licenses 5 AI Segment Operating and Financial Data $, in millions (except where noted) Three Months Ended Six Months Ended June 30, 2026 March 31, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Nameplate compute (in GW) 1.4 1.0 0.4 1.4 0.4 Advertising revenues $367 $343 $426 $710 $870 AI solutions & infrastructure revenues 2,194 475 311 2,669 595 AI revenues $2,561 $818 $737 $3,379 $1,465 Less: Cost of revenue $1,106 $456 $551 $1,562 $1,002 Research and development 2,178 2,379 1,122 4,557 2,030 Selling, general, and administrative 532 463 398 995 699 Restructuring charges (credits) 2 (11) 190 (9) 194 Loss from operations $(1,257) $(2,469) $(1,524) $(3,726) $(2,460) Segment Adjusted EBITDA reconciliation Loss from operations $(1,257) $(2,469) $(1,524) $(3,726) $(2,460) Depreciation & amortization 1,885 1,493 811 3,378 1,584 Share-based compensation 516 378 247 894 295 Restructuring charges (credits) 2 (11) 190 (9) 194 AI Adjusted EBITDA $1,146 $(609) $(276) $537 $(387) AI Capex $15,828 $7,723 $749 $23,551 $3,316 AI Business Highlights • AI revenues were up 213% sequentially and 247% year-over-year to $2.6 billion, primarily driven by an increase in AI solutions and infrastructure revenues from new Cloud Service Agreements, as well as an increase in Grok and X subscription revenues • Total costs and expenses for the AI segment were up $1.6 billion year-over-year, driven by increased R&D investment, primarily due to higher infrastructure spend as we accelerated compute deployment • Cut operating loss by 49% compared to Q1 2026 to a loss of $1.3 billion and achieved positive AI Adjusted EBITDA of $1.1 billion • Expanded compute capacity to 1.4 GW, up from 1.0 GW in Q1 2026 and 0.4 GW in Q2 2026, with the continued build-out of Colossus II and with significant incremental capacity under construction • Entered into several Cloud Services Agreements totaling $14.1 billion in contracted sales to provide customers with access to compute capacity, which resulted in $1.6 billion in incremental AI infrastructure revenues for the second quarter • Announced an agreement to acquire Cursor for $60 billion to accelerate our AI enterprise offerings with one of the most advanced AI coding tools available. We expect to close the deal in the third quarter of 2026 • Subsequent to the second quarter, released Grok 4.5 in July, our largest and smartest model yet, built to excel at coding, agentic tasks, and knowledge work. The model was trained alongside Cursor and incorporates our 1.5 trillion-parameter V9 foundation model 6 Other Key Business Developments On June 15, 2026, SpaceX announced the closing of our historic initial public offering of an aggregate 638,888,888 shares of Class A common stock, bringing net proceeds of approximately $85.7 billion. The shares of Class A common stock began trading on the Nasdaq Global Select Market and Nasdaq Texas on June 12, 2026, under the ticker symbol “SPCX.” On June 26, 2026, SpaceX closed a $25 billion inaugural bond issuance of investment-grade senior notes, strengthening the balance sheet and funding long-term growth initiatives. The notes have five tranches maturing on July 15, 2031, July 15, 2033, July 15, 2036, July 15, 2046, and July 15, 2056, with annual interest rates between 5.35% and 6.65% with a weighted average interest rate of 5.855%. Conference Call and Livestream Information SpaceX will discuss its financial and operational results in a live audio-only webcast beginning at 3:30 p.m. CT / 4:30 p.m. ET on August 4, 2026. The webcast and replay can be accessed at ir.spacex.com. The event will also be livestreamed on X @SpaceX. The day after the call, a transcript will also be available at ir.spacex.com. Notes Note 1. Non-GAAP Financial Measures Management believes that certain financial measures that are not presented in accordance with GAAP provide management and investors with useful supplemental information that provides a meaningful view of our financial condition and results of operations across periods by removing the impact of items that management believes do not directly reflect our ongoing operating performance. Adjusted EBITDA and Segment Adjusted EBITDA are supplemental measures that are not required by or presented in accordance with GAAP. In evaluating our performance as measured by Adjusted EBITDA and Segment Adjusted EBITDA, management recognizes and considers the limitations of these measures. Other companies in our industry may calculate Adjusted EBITDA and Segment Adjusted EBITDA differently than we do or may not calculate them at all, limiting their usefulness as comparative measures. Because of these limitations, Adjusted EBITDA and Segment Adjusted EBITDA should not be considered in isolation or as a substitute for net income (loss), income (loss) from operations, or any other measure calculated in accordance with GAAP, and should be considered together with our GAAP financial measures and the reconciliations to the corresponding most directly comparable GAAP financial measures set forth under “Reconciliation of Net Loss to Adjusted EBITDA” and elsewhere in this release. Adjusted EBITDA is",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026052535/spcx-20260630.htm",
+   "published": "2026-08-04T16:05:48-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our consolidated financial statements and the related notes and other financial information included elsewhere in this Quarterly Report on Form 10-Q and our final prospectus filed with the Securities and Exchange Commission (the “SEC”) pursuant to Rule 424(b)(4) under the Securities Act of 1933 (the “Prospectus”) on June 12, 2026 in c onnection with our initial public offering, and “Business” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” in the Prospectus. In addition to historical consolidated financial information, the following discussion contains forward-looking statements that reflect our plans, estimates, and beliefs. Our actual results or outcomes could differ materially from those discussed in the forward-looking statements. You should review the section titled “Forward-Looking Statements” and “Risk Factors” in this Quarterly Report on Form 10-Q, as well as the section titled “Risk Factors” in the Prospectus for a discussion of factors that could cause actual results or outcomes to differ materially from the results described in or implied by the forward-looking statements contained in the following discussion and analysis and elsewhere in this Quarterly Report on Form 10-Q . Overview We design, manufacture, launch, and operate products and services built on cutting-edge technologies, including the world’s most advanced rockets and spacecraft. We safely and reliably transport astronauts, satellites, and other payloads on missions that benefit life on Earth. We have three reportable segments in our vertically integrated innovation engine: Space, Connectivity, and AI. In our Space segment, we design, manufacture, and launch reusable rockets to provide high cadence, reliable, and affordable access to space at scale. In our Connectivity segment, we operate a worldwide high-speed, low-latency broadband data and communications network powered by over 10,200 Starlink broadband and mobile satellites in Low-Earth Orbit, delivering connectivity to millions of consumer, enterprise, and government customers across 167 countries, territories, and other markets. In our AI segment, we operate a highly vertically integrated AI platform spanning our truth-seeking frontier model Grok, AI solutions for consumer and enterprise customers, X—our real-time information, entertainment, and free speech platform—and AI computational infrastructure. Initial Public Offering In June 2026, the Company completed its initial public offering (“IPO”), in which the Company issued and sold 638.9 million shares of its Class A common stock at a public offering price of $135.00 per share, including the full exercise of the underwriters’ over-allotment option, which resulted in net proceeds of $85,675 million after deducting the underwriting commissions and offering costs of $575 million. The underwriting commissions and offering costs are presented in shareholders’ equity as a reduction of the net proceeds received from the IPO. Cursor Merger In April 2026, the Company entered into an option agreement (“Cursor Option Agreement”) providing for the right, but not the obligation, to acquire Anysphere, Inc., a San Francisco-based private software company doing business as Cursor (“Cursor”). The Cursor Option Agreement generally provided that the Company may exercise the call option at any time during the 30-day period following the earlier of (i) seven trading days following the completion of the Company’s IPO and (ii) September 30, 2026. Exercise of the call option was in the Company’s sole discretion and subject to further approval by the board of directors. Cursor was also subject to certain exclusivity obligations under the option agreement. The consideration for the acquisition of Cursor would consist of shares of Class A common stock based on an implied equity value of Cursor of $60 billion, and the price of Class A common stock that equals the volume-weighted average closing price thereof over the seven consecutive trading days immediately preceding the closing of the acquisition. In June 2026, the Company exercised the call option and entered into an Agreement and Plan of Merger (the “Cursor Merger Agreement”) with Cursor to acquire Cursor (the “Cursor Merger”). The consummation of the Cursor Merger is subject to the satisfaction or waiver of the closing conditions set forth in the Cursor Merger Agreement, including, but not limited to, receipt of requisite regulatory approvals. The Company currently expects the Cursor Merger to close during the third quarter of 2026. 34 Table of Contents Key Business Metrics We use the following key business metrics to evaluate our business, measure our performance, identify trends, formulate business plans, and make strategic decisions. Space In our Space segment, we use mass to orbit and launches as key business metrics to measure our scale and throughput. Mass to orbit and launches generally grow more rapidly than Space segment revenue because these metrics include our internal constellation deployments from which we do not recognize inter-segment revenue. Mass to Orbit : Mass to orbit is the total kilograms of payload that we deploy to orbit in a given period, and is a key indicator of SpaceX’s capacity and scalability that supports Space revenue and drives expansion across our Connectivity and AI segments. We calculate this metric by summing verified mass, including Starlink satellites, customer payloads, and development cargo, from all successful orbital and flight tests. This measure excludes failed or scrubbed attempts. Three Months Ended Six Months Ended (in metric tons) June 30, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Mass to orbit (1) 485 652 1,041 1,102 of which, attributable to customer payloads 87 88 132 163 of which, attributable to internal payloads 397 563 908 938 __________________ (1) Amounts presented may not add up to the corresponding totals due to rounding. Launches : Launches are a key measure of our operational scale, which in turn supports our revenue growth and mission to expand humanity’s presence in space. Launches in a period represent the sum of all successful orbital and flight tests across our rockets, including internal Starlink deployments, development tests, and launches for our third-party customers, and excluding any cancellations or scrubs that occurred in that period. We allocate a significant amount of launch capacity to our Connectivity segment, and expect to allocate a significant amount to our AI segment in the future. Our Space segment revenue only reflects our customer launches and customer activities. Three Months Ended Six Months Ended (number) June 30, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Falcon launches (1) 37 45 77 81 of which, customer launches 10 9 17 21 of which, internal launches 27 36 60 60 Starship launches (1) 1 1 1 3 __________________ (1) We designate a launch as a “customer launch” if an external customer payload constitutes the primary payload (i.e., where the principal objective is to deliver the customer payload) and the mission parameters (e.g., launch window, orbital parameters, mission profile) are designed around the primary payload’s requirements. To date, all Starship launches have been classified as internal. Connectivity In our Connectivity segment, we view Starlink subscribers and Starlink Subscriber ARPU as key business metrics to evaluate our growth and monetization. Starlink Subscribers : We define a Starlink subscriber as a unique service line that is directly assigned to a Starlink.com account registered to a person or entity that does not have a direct, negotiated agreement with the Starlink sales team. A service line is an individual instance of Starlink broadband internet service provisioned under a subscription plan, generally associated with a specific Starlink terminal or group of terminals, and billed according to Starlink’s service plans and terms of service. The number of service lines is distinct from the number of unique devices, account holders, end users or physical persons. An individual, household, or business may share a single service line among multiple end-users. Likewise, an individual, household, or business may maintain multiple service lines (e.g., both a residential service line and a separate roam service line, which would be defined as two separate service lines and therefore two Starlink subscribers). We use this measure to assess the adoption of Starlink as we expand within and across geographies and business segments. Starlink subscribers includes both personal (e.g., residential and roam) and business (e.g., local priority and global priority) subscription plans, but does not include managed enterprise and government customers with contracts in domains including aviation, maritime, land 35 Table of Contents mobility, fixed sites, and government entities. We calculate Starlink subscribers for a period as the number of unique service lines at the end of the period. As of (in millions) June 30, 2026 June 30, 2025 Starlink subscribers 12.0 6.0 Starlink Subscriber ARPU : We calculate ARPU as service revenue generated from Starlink subscribers during the period divided by (i) the average number of Starlink subscribers during the period and by (ii) the number of months in the period. Three Months Ended Six Months Ended (dollars per month) June 30, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Starlink ARPU $66 $85 $66 $85 AI Nameplate Compute Draw : We calculate nameplate compute draw for a period as the number of GPUs installed in our data centers at the end of the period multiplied by their respective all-in power draw. Nameplate compute draw reflects installed capacity and does not represent actual power consumption or utilization. It does not include power we install and use for our supporting infrastructure such as cooling systems, power distribution losses, lighting, security systems, or facility-level overhead. We use this metric to assess our ability to deploy, scale, and monetize compute capacity. As of (in gigawatts) June 30, 2026 June 30, 2025 Nameplate compute draw 1.4 0.4 Components of Results of Operations Description of Our Segments Space Revenue - Space Space segment generates revenue primarily through (i) Launch Services for the deployment of payloads to their intended orbits for both commercial and government customers utilizing Falcon 9 and Falcon Heavy, and (ii) Launch and Development for the development of spacecraft and provision of launch and mission services for government agency space programs utilizing Falcon 9, Falcon Heavy, Starship, and Dragon. Launch Services revenue is derived from fixed-price contracts that range from one to five years. Launch and Development revenue is derived from fixed-price contracts that can range from one to fourteen years. The Company recognizes Launch Services revenue at a point in time, due to the interchangeability of flight hardware and minimal unique engineering costs. Revenue and costs are deferred and not recognized until upon the launch or deployment of the customer’s payload to their intended orbit. The Company recognizes Launch and Development revenue over time as the Company’s performance on the contract creates an asset with no alternative use and the Company has an enforceable right to payment for performance to date. The Company measures progress on these contracts using the cost-to-cost input method, which the Company believes represents the most appropriate measure towards satisfaction of its performance obligation. For launches of our Starlink satellites, the Company does not recognize any inter-segment revenue, rather those laun",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026056945/spcx-20260814.htm",
+   "published": "2026-08-14T08:23:02-04:00",
+   "form": "8-K",
+   "items": "2.01,3.02,9.01",
+   "text": "Item 2.01 Completion of Acquisition or Disposition of Assets. As previously announced, on June 16, 2026, Space Exploration Technologies Corp. (the “Company”), X67 Inc., a wholly owned subsidiary of the Company (“Merger Sub”), and Anysphere, Inc. (“Cursor”) entered into an Agreement and Plan of Merger (the “Merger Agreement”), which provided for, among other things, the merger of Merger Sub with and into Cursor, with Cursor surviving the merger as a wholly owned subsidiary of the Company (the “Merger”). Pursuant to the Merger Agreement, on August 14, 2026 (the “Effective Time”), the Merger became effective, and (i) the shares of Cursor’s common stock and the shares of Cursor’s preferred stock outstanding immediately prior to the Effective Time were automatically converted into the right to receive an aggregate of 389,289,254 shares of the Company’s Class A common stock, based on an implied equity value of Cursor of $60.0 billion and a price per share of the Company’s Class A common stock equal to the volume-weighted average closing price over the seven consecutive trading days immediately preceding the closing of the Merger, (ii) the vested Cursor restricted stock units outstanding immediately prior to the Effective Time were automatically converted into the right to receive, prior to giving effect to any withholding for applicable taxes, an aggregate of 1,752,426 shares of the Company’s Class A common stock (collectively, with the consideration received under (i) and cash received in lieu of fractional shares, the “Merger Consideration”), and (iii) the unvested Cursor restricted stock units and Cursor stock options outstanding immediately prior to the Effective Time were assumed and converted into an aggregate of approximately 29,128,326 Company restricted stock units with respect to the Company’s Class A common stock and approximately 44,365,047 stock options to purchase the Company’s Class A common stock, respectively. The foregoing summary of the Merger Agreement does not purport to be complete and is qualified in its entirety by reference to the full text of the Merger Agreement, a copy of which has been filed as Exhibit 10.1 to the Current Report on Form 8-K filed on June 16, 2026, and is incorporated herein by reference. Item 3.02 Unregistered Sales of Equity Securities. The information set forth in Item 2.01 of this Current Report on Form 8-K is incorporated by reference into this Item 3.02. The issuance of the Merger Consideration to Cursor was com"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/article/tesla-spacex-merger-is-not-so-easy-analyst-181019482.html?.tsrc=rss",
+   "published": "2026-10-19T14:10:19-04:00",
+   "text": "Tesla-SpaceX merger is 'not so easy': Analyst - Speculation about a potential merger between SpaceX and Tesla is intensifying, with Wall Street analysts outlining how a deal could take shape.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/buying-dip-in-tech-market-anthropics-public-benefit-fund-and-musks-spacex-pledge-174544378.html?.tsrc=rss",
+   "published": "2026-10-19T13:45:44-04:00",
+   "text": "Buying dip in tech market, Anthropic's \"Public Benefit\" fund, and Musk's SpaceX pledge - Market Hang's panel discusses all things AI, including how and when to buy a dip in the market, Anthropic's (ANTH.PVT) \"Public Benefit\" fund, and even the dating landscape. Plus, the panel's take on Elon Musk's pledge of SpaceX (SPCX) stock to American children. Today's Market Hang panel consists of",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/19/5-dividend-stocks-for-investors-who-want-income-without-the-markets-wild-swings/?.tsrc=rss",
+   "published": "2026-10-19T13:45:10-04:00",
+   "text": "5 Dividend Stocks for Investors Who Want Income Without the Market’s Wild Swings - Soda, toothpaste, phone service, electricity, and prescription drugs all share one trait: people keep buying them when the economy turns ugly. Five companies built their businesses around that reality, and the way they protect their dividends says more than the yield numbers do.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/elon-musks-spacex-stock-giveaway-wealth-building-or-political-play-174444888.html?.tsrc=rss",
+   "published": "2026-10-19T13:44:44-04:00",
+   "text": "Elon Musk's SpaceX stock giveaway: Wealth building or political play? - Could giving away SpaceX (SPCX) stock help American families build wealth and narrow the wealth gap, or would that capital be better spent funding Elon Musk's ambitious plans for space exploration and Mars? The panel debates the potential economic impact of Musk's stock giveaway proposal. Today's pa",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/us-airlines-plan-4q-capacity-174323255.html?.tsrc=rss",
+   "published": "2026-10-19T13:43:23-04:00",
+   "text": "US Airlines Plan 4Q Capacity Growth in Key Markets - Bloomberg Intelligence Senior Aerospace, Defense, & Airlines Analyst, George Ferguson discusses the outlook for US airlines as they aim to boost capacity into Q4. He also looks ahead to SpaceX earnings this week.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://uk.finance.yahoo.com/news/europe-telecoms-starlink-ukraine-internet-173646063.html?.tsrc=rss",
+   "published": "2026-10-19T13:36:46-04:00",
+   "text": "Europe’s telecoms take on Starlink after Ukraine internet slowdown - Europe’s biggest telecoms companies are teaming up for a new satellite mobile venture to challenge the dominance of Elon Musk’s Starlink.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/telecom-analyst-slams-verizon-vs-spacex-what-is-verizons-differentiation-they-have-none?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-19T13:34:30-04:00",
+   "text": "Telecom Analyst Slams Verizon vs SpaceX: “What Is Verizon’s Differentiation? They Have None” - Key TakeawaysSpaceX agreed on Oct. 8 to buy Grain Management’s 800 MHz spectrum for a reported $8 billion, and Verizon, AT&T and T-Mobile US each fell more than 10% the next day.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/sector-tech-stocks-gain-monday-173338881.html?.tsrc=rss",
+   "published": "2026-10-19T13:33:38-04:00",
+   "text": "Sector Update: Tech Stocks Gain Monday Afternoon - Tech stocks were higher Monday afternoon, with the State Street Technology Select Sector SPDR ETF (X",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/how-anthropics-5-public-benefit-fund-could-reshape-its-ipo-172547871.html?.tsrc=rss",
+   "published": "2026-10-19T13:25:47-04:00",
+   "text": "How Anthropic's 5% public benefit fund could reshape its IPO - Anthropic (ANTH.PVT) plans to commit 5% of its total shares as part of its Public Benefit Fund ahead of the company's IPO planned for November. Alongside their expert panel, The Wall Street Skinny co-founders Jen Saarbach and Kristen Kelly explore what Anthropic's Public Benefit Fund could be spent ",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/81a4deae-1e16-3913-a37f-3c4abe680ee4/datadog%2C-intel%2C-coreweave%2C.html?.tsrc=rss",
+   "published": "2026-10-19T13:14:00-04:00",
+   "text": "Datadog, Intel, CoreWeave, Tesla, Amazon, Cleveland-Cliffs, and More Stocks That Explain Today’s Market - Datadog stock is the best performer in the S&P 500 following an upgrade to Outperform at Bernstein.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/spacex-continue-sharing-apos-ambitious-164616965.html?.tsrc=rss",
+   "published": "2026-10-19T12:46:16-04:00",
+   "text": "SpaceX to Continue Sharing 'Ambitious' Updates as Interest Around Potential Tesla Merger Grows, RBC Says - SpaceX (SPCX) is likely to continue sharing \"ambitious\" updates across the business with its upcomin",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/09846e36-2ac5-354a-ba60-fe373a5d1095/spacex-stock-climbs-after.html?.tsrc=rss",
+   "published": "2026-10-19T12:40:34-04:00",
+   "text": "SpaceX Stock Climbs After Musk Gift Pledge; Analysts Predict Tesla Merger Price - Elon Musk pledged to give a share of his SpaceX stock to \"every kid in America.\" SpaceX stock is up about 2% on Monday.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/elon-musk-challenges-jeff-bezos-163022174.html?.tsrc=rss",
+   "published": "2026-10-19T12:30:22-04:00",
+   "text": "Elon Musk Challenges Jeff Bezos' Blue Origin and Other SpaceX Rivals, Says They Still Can’t Catch Starship — ‘Even Their Future Plans Are Behind’ - As Space Exploration Technologies Corp. gears up to report its third-quarter 2026 earnings on Tuesday after market close, CEO Elon Musk backed the commercial spaceflight giant ahead of its rivals. Starship Ahead of the Future On Saturday, user James Cat...",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/19/rocket-lab-delays-neutron-again-is-the-stock-in-trouble/?.tsrc=rss",
+   "published": "2026-10-19T12:30:02-04:00",
+   "text": "Rocket Lab Delays Neutron Again. Is the Stock in Trouble? - The company now projects that Neutron's inaugural launch will take place next year.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.investopedia.com/market-update-elon-musk-is-everywhere-get-ready-for-more-spcx-tsla-12182141?.tsrc=rss",
+   "published": "2026-10-19T12:28:58-04:00",
+   "text": "Elon Musk Is Everywhere. Get Ready for More. - The gravitational pull around the world’s wealthiest person feels especially powerful this week.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/teslaspacex-merger-what-is-the-roadsters-bigger-strategic-play-162800863.html?.tsrc=rss",
+   "published": "2026-10-19T12:28:00-04:00",
+   "text": "Tesla–SpaceX merger: What is the Roadster's bigger strategic play? - In the Loop host Ejaaz Ahamadeen discusses what the technology behind the \"flying\" Tesla (TSLA) Roadster represents in a possible future merger between the EV company and Elon Musk's other company SpaceX (SPCX).",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/article/spacex-earnings-preview-ai-spending-annual-recurring-revenue-now-becoming-the-bigger-story-162610825.html?.tsrc=rss",
+   "published": "2026-10-19T12:26:10-04:00",
+   "text": "SpaceX earnings preview: AI spending, annual recurring revenue now becoming the bigger story - SpaceX will report highly anticipated third quarter results on Tuesday after the bell, only its second report as a public company.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://www.benzinga.com/markets/prediction-markets/26/10/62445058/spacex-tesla-merger-480-rbc?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+   "published": "2026-10-19T12:21:11-04:00",
+   "text": "SpaceX Could Buy Tesla for $480 Per Share in $3.74 Trillion Merger, RBC Says - SpaceX (NASDAQ:SPCX) could acquire Tesla (NASDAQ:TSLA) for $480 per share, creating a combined company worth $3.74 trillion, according to RBC Capital Markets. But Tesla shareholders would receive just 48% of the merged business, down from 54% in the bank’s July...",
+   "feed": {
+    "fetched_et": "2026-10-19T14:32:36-04:00",
+    "sha256": "ecdd5054fd4f2e9b88cb60a1a1651ad5dc778287b8fd83234e2174ba8ec3fc64"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 49757
+}
