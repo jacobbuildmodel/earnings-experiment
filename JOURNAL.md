@@ -9,6 +9,35 @@
 
 ---
 
+## 2026-10-19 (Mon) morning ET — three silent failures, and a plan built around power (RQ1–RQ6, Gate 1)
+
+- **The Actions AI step has been refused every night since Oct 15**: "Your organization has disabled Claude
+  subscription access for Claude Code". The job exits green and health never looked inside the runlog. Three
+  nights of PENDING re-checks never happened.
+  - **Lesson: a green job is not a working step.** The alarm must read what the step produced, not the job's
+    colour.
+- **A dead runner looks alive.** On Fri, GitHub's "hosted runner lost communication" killed the long account's
+  window job. The step stayed "in progress" ~40 minutes. NOC's second long open sat live 46 minutes against a
+  15-minute rule. The coverage alarm built on Oct 15 trusts "in progress", so it could not see this.
+  - The fix should check the broker, not the commit stream. The reviewer showed healthy ledger commits cluster
+    ~18 minutes apart, so my first "8 minutes without a commit" idea would have alarmed all day.
+- **Ubuntu 26 retired as a risk.** GitHub moves `ubuntu-latest` there from today. A probe (`runner-probe.yml`) ran
+  our full setup on 26.04: Python 3.11.17, check.py PASS, 262 tests pass.
+- **The power finding.**
+  - Season A's first four gates all failed `wide_spread`, so there is no T2 decision yet. Only RTX was a near-miss;
+    DPZ and VICR would also fail open interest.
+  - More urgent: **238 of 318 names have no confirmed date.** Confirmed names were announced a median 21 days ahead
+    (n = 80, p10 14), yet only 9 of the Nov 3–6 names are confirmed. That is a detection gap in our date-finding,
+    not company behaviour, and it gates every track at the peak.
+- **The plan** (STATE.md, top) puts date detection first. Next: the T2 deadline owned by a person and a time, three
+  health alarms, and D016, a counts-only gate audit frozen before any NOC/RTX/VICR paper P&L is read.
+  - A Sonnet review changed ten things: the T2 deadline owner, the heartbeat design, the audit's computable scope
+    and its leak-safe sequence, thresholds tied to H-T2C's real minimum, earlier confirmation checkpoints, DST and
+    margin numbers, and expectations committed before Tuesday's first v3 closes.
+- **Consolidation:** STATE.md went from 1,442 to 417 lines. Everything before 2026-10-14 moved verbatim to
+  `ops/state_history/`, checked character for character. A new session can now read it in full, as CLAUDE.md
+  requires.
+
 ## 2026-10-16 (Fri) evening ET — the paper report's promised views, and what free data can say about a paper fill (RQ6, RQ1)
 
 - **What:** the views promised on 10-14 and found missing on 10-15 now exist and are frozen
