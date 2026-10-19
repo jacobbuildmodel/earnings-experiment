@@ -1,0 +1,43 @@
+# Runner image probe. Infrastructure only: it reads the repo and writes nothing back.
+# GitHub moves the ubuntu-latest label to Ubuntu 26 from 2026-10-19 (actions/runner-images#14748). Every workflow
+# here runs on ubuntu-latest with Python 3.11. This runs the same setup on a named image, by hand, so a break is
+# found before a live gate or paper window lands on the new image.
+name: Earnings experiment - runner image probe
+
+on:
+  workflow_dispatch:
+    inputs:
+      image:
+        description: "runner label, e.g. ubuntu-26.04 or ubuntu-24.04"
+        required: false
+        default: "ubuntu-26.04"
+
+jobs:
+  probe:
+    runs-on: ${{ inputs.image }}
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Image, clock and imports
+        run: |
+          cat /etc/os-release | head -3
+          TZ=America/New_York date
+          echo "10# check: $((10#$(TZ=America/New_York date +%H%M)))"
+          python -c "import sys, yfinance, pandas, yaml; from zoneinfo import ZoneInfo; print(sys.version, yfinance.__version__, pandas.__version__)"
+
+      - name: check.py
+        run: python check.py
+
+      - name: Tests (offline)
+        run: python -m pytest -q -x
