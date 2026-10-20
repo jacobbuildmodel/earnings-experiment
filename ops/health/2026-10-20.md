@@ -1,4 +1,4 @@
-# Health 2026-10-20 11:42 ET - **RED**
+# Health 2026-10-20 11:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -18,7 +18,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-19T20:59:14Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39323849258
 - Actions failure: Earnings experiment - paper options at 2026-10-19T20:31:08Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39319974813
 - Actions failure: Earnings experiment - paper options at 2026-10-19T20:11:14Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39317202382
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-19T15:46:16Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39280479975
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 
 ## Information
