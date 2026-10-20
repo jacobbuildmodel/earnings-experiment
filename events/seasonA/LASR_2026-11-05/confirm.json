@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://investors.nlight.net/news-releases/news-details/2026/nLIGHT-to-Announce-Third-Quarter-2026-Financial-Results-on-November-5th/default.aspx",
+  "published_et": "2026-10-12T08:05-04:00",
+  "quote": "A webcast to discuss the third quarter results will be held on Thursday, November 5, 2026, at 2:00 p.m. Pacific Time (5:00 p.m. Eastern Time).",
+  "title": "nLIGHT to Announce Third Quarter 2026 Financial Results on November 5th",
+  "retrieved_et": "2026-10-19T21:55:47.447952-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.nlight.net/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
