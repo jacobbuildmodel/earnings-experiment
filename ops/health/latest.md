@@ -1,10 +1,13 @@
-# Health 2026-10-20 19:14 ET - **RED**
+# Health 2026-10-20 19:52 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
+- T2 AT RISK: TXN_2026-10-21 - not frozen, deadline Wed 21 Oct 09:15 ET
 - T2 MISSING: ABT_2026-10-21 (deadline Tue 20 Oct 09:15 ET)
+- T2 AT RISK: LRCX_2026-10-21 - not frozen, deadline Wed 21 Oct 09:15 ET
 - T2 MISSING: SPCX_2026-10-20 (deadline Tue 20 Oct 09:15 ET)
+- T2 AT RISK: META_2026-10-21 - not frozen, deadline Wed 21 Oct 09:15 ET
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
@@ -17,7 +20,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-20T19:58:01Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39487932144
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-20T15:46:17Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39451480323
 - Actions failure: Earnings experiment - paper options at 2026-10-20T02:11:30Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39357570449
-- Actions failure: Earnings experiment - paper options at 2026-10-19T23:23:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39341305298
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 
 ## Information
