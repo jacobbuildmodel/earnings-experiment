@@ -1,4 +1,4 @@
-# Health 2026-10-20 18:21 ET - **RED**
+# Health 2026-10-20 19:14 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -8,6 +8,7 @@ check.py: PASS - 1 warning(s)
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-20T22:58:44Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39511892091
 - Actions failure: Earnings experiment - paper options at 2026-10-20T21:59:55Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39504774746
 - Actions failure: Earnings experiment - paper options at 2026-10-20T21:46:50Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39503108047
 - Actions failure: Earnings experiment - paper options at 2026-10-20T21:30:00Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39500847950
@@ -17,14 +18,12 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-20T15:46:17Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39451480323
 - Actions failure: Earnings experiment - paper options at 2026-10-20T02:11:30Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39357570449
 - Actions failure: Earnings experiment - paper options at 2026-10-19T23:23:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39341305298
-- Actions failure: Earnings experiment - paper options at 2026-10-19T22:42:38Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39336839247
-- Actions failure: Earnings experiment - paper options at 2026-10-19T22:32:11Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39335636822
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 
 ## Information
-- META_2026-10-21: T2 deadline Wed 21 Oct 09:15 ET - frozen so far: T2G
-- LRCX_2026-10-21: T2 deadline Wed 21 Oct 09:15 ET - frozen so far: T2G
 - TXN_2026-10-21: T2 deadline Wed 21 Oct 09:15 ET - frozen so far: T2G
+- LRCX_2026-10-21: T2 deadline Wed 21 Oct 09:15 ET - frozen so far: T2G
+- META_2026-10-21: T2 deadline Wed 21 Oct 09:15 ET - frozen so far: T2G
 - paper/options_ledger.json: open ['seasonA-ABT-2026-10-21-F', 'seasonA-PEGA-2026-10-20-F', 'seasonA-SPCX-2026-10-20-F', 'seasonA-HXL-2026-10-21-F', 'seasonA-LMT-2026-10-22-F', 'seasonA-LRCX-2026-10-21-F', 'seasonA-META-2026-10-21-F', 'seasonA-ROP-2026-10-22-F', 'seasonA-TSCO-2026-10-22-F', 'seasonA-TXN-2026-10-21-F']
 - paper/long_ledger.json: open ['seasonA-ABT-2026-10-21-L', 'seasonA-PEGA-2026-10-20-L', 'seasonA-SPCX-2026-10-20-L', 'seasonA-HXL-2026-10-21-L', 'seasonA-LMT-2026-10-22-L', 'seasonA-LRCX-2026-10-21-L', 'seasonA-META-2026-10-21-L', 'seasonA-TSCO-2026-10-22-L', 'seasonA-TXN-2026-10-21-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
