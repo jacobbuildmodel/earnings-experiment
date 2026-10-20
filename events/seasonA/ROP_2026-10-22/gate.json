@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "ROP",
+ "report_date": "2026-10-22",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-22"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "reaction_day": "2026-10-22"
+ },
+ "snapshot_session": "2026-10-20",
+ "captured_et": "2026-10-20T14:31:10.999718-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/roper-technologies-schedules-third-quarter-2026-financial-results-conference-call",
+  "published_et": "2026-10-01T08:30-04:00",
+  "quote": "linkedin facebook x email reddit SARASOTA, Fla. , Oct. 01, 2026 (GLOBE NEWSWIRE) -- Roper Technologies, Inc. (Nasdaq: ROP) announced that its financial results for the third quarter of 2026, ended September 30, 2026 , will be released before the market opens on Thursday, October 22, 2026 .",
+  "title": "Roper Technologies schedules third quarter 2026 financial results conference call",
+  "retrieved_et": "2026-10-08T22:44:24.812646-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-22T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 395.1700134277344,
+  "expiry": "2026-11-20",
+  "strike": 400.0,
+  "call": {
+   "bid": 11.5,
+   "ask": 13.4,
+   "openInterest": 324.0,
+   "lastPrice": 11.5,
+   "impliedVolatility": 0.3343572424316406,
+   "lastTradeDate": "2026-10-20T15:09:07+00:00"
+  },
+  "put": {
+   "bid": 16.1,
+   "ask": 20.1,
+   "openInterest": 61.0,
+   "lastPrice": 18.3,
+   "impliedVolatility": 0.3745484909057617,
+   "lastTradeDate": "2026-10-20T15:59:06+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 21,
+  "implied_move": 0.07730849751226569,
+  "rel_spread": {
+   "call": 0.1526104417670683,
+   "put": 0.22099447513812154
+  },
+  "oi_atm": 385.0,
+  "oi_sum": 516.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
