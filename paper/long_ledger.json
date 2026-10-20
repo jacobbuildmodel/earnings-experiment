@@ -1170,7 +1170,7 @@
       },
       "limit_price": "50.55",
       "id": "fc49ee2f-06a2-4a73-a0de-20f5784206e4",
-      "status": "new",
+      "status": "canceled",
       "filled_qty": 0.0,
       "filled_at": null,
       "legs_filled": [
@@ -1186,10 +1186,53 @@
         "qty": 0.0,
         "price": null
        }
+      ],
+      "cancel_requested": "2026-10-20T14:50:05.433052-04:00"
+     },
+     {
+      "client_order_id": "seasonA-META-2026-10-21-L-open-r1",
+      "sent_et": "2026-10-20T14:52:10.525876-04:00",
+      "qty": 1,
+      "natural": 50.51,
+      "sides": {
+       "META261023C00690000": "buy",
+       "META261023P00690000": "buy"
+      },
+      "quotes": {
+       "META261023C00690000": {
+        "bid": 25.2,
+        "ask": 25.36,
+        "t": "2026-10-20T18:52:06.147087991Z"
+       },
+       "META261023P00690000": {
+        "bid": 24.86,
+        "ask": 25.15,
+        "t": "2026-10-20T18:52:08.162930995Z"
+       }
+      },
+      "limit_price": "50.51",
+      "id": "ab23c778-bd00-4b3e-b815-c72345b09b80",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-20T18:57:49.629648909Z",
+      "legs_filled": [
+       {
+        "symbol": "META261023C00690000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 25.05
+       },
+       {
+        "symbol": "META261023P00690000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 25.35
+       }
       ]
      }
     ]
-   }
+   },
+   "sanity_checked": true
   },
   "seasonA-ROP-2026-10-22-L": {
    "season": "seasonA",
@@ -1254,7 +1297,7 @@
       },
       "limit_price": "33.01",
       "id": "da4c06e2-f926-4da7-ab06-688defae2748",
-      "status": "new",
+      "status": "canceled",
       "filled_qty": 0.0,
       "filled_at": null,
       "legs_filled": [
@@ -1270,10 +1313,54 @@
         "qty": 0.0,
         "price": null
        }
-      ]
+      ],
+      "cancel_requested": "2026-10-20T14:50:05.433052-04:00"
+     },
+     {
+      "client_order_id": "seasonA-ROP-2026-10-22-L-open-r1",
+      "sent_et": "2026-10-20T14:52:10.525876-04:00",
+      "qty": 1,
+      "natural": 33.25,
+      "sides": {
+       "ROP261120C00400000": "buy",
+       "ROP261120P00400000": "buy"
+      },
+      "quotes": {
+       "ROP261120C00400000": {
+        "bid": 11.51,
+        "ask": 13.49,
+        "t": "2026-10-20T18:50:12.440469416Z"
+       },
+       "ROP261120P00400000": {
+        "bid": 15.79,
+        "ask": 19.76,
+        "t": "2026-10-20T18:50:12.530389496Z"
+       }
+      },
+      "limit_price": "33.25",
+      "id": "0eccb3c8-d0ae-4cd0-b179-35ff832f40a4",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "ROP261120C00400000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "ROP261120P00400000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-20T15:08:40.326756-04:00"
      }
     ]
-   }
+   },
+   "open_failed": "platform"
   },
   "seasonA-TSCO-2026-10-22-L": {
    "season": "seasonA",
@@ -1445,31 +1532,32 @@
       },
       "limit_price": "21.91",
       "id": "64ed26ca-3a05-45a0-9b33-fea7052ae22b",
-      "status": "new",
-      "filled_qty": 0.0,
-      "filled_at": null,
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-20T18:46:19.513566263Z",
       "legs_filled": [
        {
         "symbol": "TXN261023C00280000",
         "side": "buy",
-        "qty": 0.0,
-        "price": null
+        "qty": 1.0,
+        "price": 10.85
        },
        {
         "symbol": "TXN261023P00280000",
         "side": "buy",
-        "qty": 0.0,
-        "price": null
+        "qty": 1.0,
+        "price": 11.0
        }
       ]
      }
     ]
-   }
+   },
+   "sanity_checked": true
   }
  },
  "errors_last_run": null,
  "alerts": null,
- "updated_et": "2026-10-20T14:37:38.171188-04:00",
+ "updated_et": "2026-10-20T15:10:44.960827-04:00",
  "convention_verified": {
   "trade": "seasonA-RTX-2026-10-20-L",
   "fill_net": 10.25,
