@@ -166,6 +166,20 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 
 ## Log — newest first (2026-10-14 onward)
 
+**2026-10-20 (Tue) ~07:40 ET — housekeeping moved to a cloud routine (Jacob's choice).**
+- **Routine `earnings-housekeeping-cloud`** (`trig_01BBhNYApu8UtK2cfYysh6U5`): weekdays 12:30 UTC (08:30 EDT / 07:30 EST),
+  Sonnet, Bash only, environment `env_01JfLgj93yjfX4k198b7durh` (the same as T2). Its prompt is
+  `ops/cloud_housekeeping_prompt.md`. The guard line is in CLAUDE.md.
+  - The AI only reads company pages. `pipeline/hk.py` (`724b207`, 5 tests) writes every record and refuses what
+    D003 §6 refuses.
+  - check.py runs before the fence and again after lifting it. The fence is the same sparse checkout as Actions.
+- **Actions' AI housekeeping step is off** unless the variable `ACTIONS_HOUSEKEEPING_AI` is "on", so two writers
+  never race. Actions' claude T2 is off unless `T2_ACTIONS_CLAUDE` is "on".
+- 🔴 **Needs Jacob:** the cloud environment's **Network access: Full**. Without it, company IR sites, Nasdaq and Yahoo
+  are blocked, and the routine can only note failures.
+- **Watch:** the first run (~08:37 ET today). Read it with RemoteTrigger `list_runs` / `get_run_log`; it should
+  leave a "housekeeping" line in the Cloud run log.
+
 **2026-10-20 (Tue) ~07:30 ET — overnight: two PASS events lost T2, a gate-killing DST bug fixed, peak dates 11% → 40%.**
 - 🔴 **ABT and SPCX, Season A's first two PASS events: T2 MISSING** (`ops/incidents/2026-10-19_ABT_T2_missing.md`).
   - Actions' `t2-queue.yml` tried claude with the refused token at 14:37, 14:38 and 16:31 ET. Each refusal
