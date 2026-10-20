@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/ouster-announces-date-third-quarter-2026-earnings-call-2026-10-13",
+  "published_et": "2026-10-13T07:00-04:00",
+  "quote": "ok x email reddit Company to Report Q3 2026 Results on November 3, 2026 SAN FRANCISCO --(BUSINESS WIRE)-- Ouster, Inc. (Nasdaq: OUST) (“Ouster” or the “Company”), a leader in sensing and perception for Physical AI, today announced that it will report its financial results for the quarter ended September 30, 2026 after the market closes on Tuesday, November 3, 2026 and host a conference call that day at 5:00 p.m. ET to discuss its results.",
+  "title": "Ouster Announces Date for Third Quarter 2026 Earnings Call",
+  "retrieved_et": "2026-10-19T21:35:40.546014-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}

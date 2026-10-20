@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/vse-corporation-announces-third-quarter-2026-results-conference-call-date-2026-10-13",
+  "published_et": "2026-10-13T07:00-04:00",
+  "quote": "linkedin facebook x email reddit MIRAMAR, Fla. --(BUSINESS WIRE)-- VSE Corporation (“VSE” or the “Company”) (NASDAQ: VSEC, VSECU), a leading provider of aviation aftermarket distribution and repair services, announced today that it will issue third quarter 2026 results after the market close on Wednesday, November 4, 2026 .",
+  "title": "VSE Corporation Announces Third Quarter 2026 Results Conference Call Date",
+  "retrieved_et": "2026-10-19T21:22:04.841803-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}

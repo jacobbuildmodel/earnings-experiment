@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/diodes-incorporated-announce-third-quarter-2026-financial-results-november-5-2026",
+  "published_et": "2026-10-15T17:00-04:00",
+  "quote": "linkedin facebook x email reddit PLANO, Texas --(BUSINESS WIRE)-- Diodes Incorporated (Nasdaq: DIOD) will host a conference call on Thursday, November 5, 2026 , 4:00 p.m. Central Time ( 5:00 p.m. Eastern Time ) to discuss its third quarter 2026 financial results.",
+  "title": "Diodes Incorporated to Announce Third Quarter 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-19T21:54:32.878505-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
