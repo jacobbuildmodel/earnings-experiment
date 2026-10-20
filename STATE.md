@@ -160,6 +160,7 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | backup | `C:\repos\earnings-experiment.git`, remote `local` — push after every commit |
 | GitHub | `jacobbuildmodel/earnings-experiment` (public); per-event runs in Actions; routines push `claude/s2-trigger` |
 | cloud routines | `earnings-s2-trigger` (pushes 14:45, 15:45, 18:45, 19:45 UTC) · `earnings-t2-cloud` (`trig_01H4HJJ2uPLZXUwfi7q5fXr3`, 01:20, 05:20, 10:20, 21:20 UTC) · `earnings-t2-models` (`trig_017LGhgRnK6WZ3SwHFNK4Gyb`) |
+| every hypothesis and track | `HYPOTHESES.md` (the map: confirmatory, descriptive, closed, candidates) |
 | history before 2026-10-14 | `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (verbatim) |
 | PRE v1 | `archive/PRE_v1_closed/`, byte-exact and fenced — never read it while designing (`archive/README.md`) |
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
