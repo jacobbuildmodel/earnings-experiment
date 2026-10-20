@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/dutch-bros-inc-host-third-quarter-2026-conference-call-and-webcast-november-4-2026-10",
+  "published_et": "2026-10-14T09:00-04:00",
+  "quote": "The conference call and webcast will take place on Wednesday, November 4, 2026 at 5:00 p.m. Eastern Time (ET).",
+  "title": "Dutch Bros Inc. to Host Third Quarter 2026 Conference Call and Webcast on November 4",
+  "retrieved_et": "2026-10-19T21:42:25.356905-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
