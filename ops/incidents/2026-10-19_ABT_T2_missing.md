@@ -1,4 +1,4 @@
-# Incident 2026-10-19 — ABT 2026-10-21: T2 MISSING on Season A's first PASS
+# Incident 2026-10-19 — ABT 2026-10-21 and SPCX 2026-10-20: T2 MISSING on Season A's first two PASS events
 
 Written 2026-10-20 ~07:40 ET. That is after the T2 deadline became unreachable, but **before ABT's outcome exists**
 (BMO Oct 21; exit A = the Oct 21 open). Nothing here reads or predicts a graded result.
@@ -14,6 +14,10 @@ Written 2026-10-20 ~07:40 ET. That is after the T2 deadline became unreachable, 
   (D004 v4, hashed). So the cloud routine `earnings-t2-cloud`, whose claude calls work, found "0 event(s) waiting"
   at 17:20, 21:20, 01:20 and 06:20 ET.
   - The proof the cloud path works: the D013 shadows that run there decided ABT at 17:52 and 17:53 ET.
+
+**SPCX 2026-10-20 (AMC Oct 20, entry Oct 20 open) is the same case.** Its claude attempts were refused at 14:37, 14:38 and
+16:31 ET; the T2R, T2O and T2G shadows froze. It was confirmed on 10-19 by the fixed `find_dates`, and gated PASS at
+14:30 ET that day. Health raised both as T2 AT RISK at 04:50 ET on 10-20; neither can be decided within the protocol.
 
 ## What is NOT done, and why
 - **T2 stays MISSING.** Retrying would need either an edit to `t2_stage2.py` or a relabelled attempt log.

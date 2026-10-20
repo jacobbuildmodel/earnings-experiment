@@ -9,6 +9,27 @@
 
 ---
 
+## 2026-10-20 (Tue) early ET — the first two PASS events lost T2 to a fallback that was never a fallback (RQ5)
+
+- **What happened:** ABT and SPCX, Season A's first PASS events, lost T2.
+  - A "last resort" path in Actions fired minutes after the gate, not on the entry morning.
+  - It spent all three of T2's attempts on a token that is refused, which left the working cloud path nothing to do.
+- **Two lessons:**
+  - **A fallback that runs first is not a fallback.** `hour >= 11` read as "the morning" but meant "any time after
+    7 a.m.".
+  - **A refusal that is about the account must not count as a model failure.** The protocol's attempt cap was built
+    for bad replies. It cannot be changed mid-season, because `t2_stage2.py` is the protocol's hash, so the fix
+    sits outside it: the workflow no longer attempts at all while the token is refused.
+- **Honest cost:** two events of T2 calibration data. The shadow that re-runs the same model said NO_BUY 0.50 on ABT,
+  a coin flip. The incident file states that before the outcome exists.
+- **Also overnight:** a second DST trap. Yahoo's upcoming after-close stamps carry the summer offset, so they read
+  15:00 in November, and the gate counted that as a disagreement. It would have failed most of the peak from Oct 30.
+  It is fixed and frozen as a clarification, with the gate's code now hash-locked. With it and yesterday's four
+  date-finder fixes, the peak went from 11% to 40% confirmed.
+- **And a cost I caused:** this laptop session's heavy use spent the shared 5-hour allowance. The routine's 10:45 ET
+  push on 10-19 was refused, so that day's paper window never started from it. In season, the laptop must stay
+  light.
+
 ## 2026-10-19 (Mon) late morning ET — the date-finder was blind to its own release format (power, RQ1)
 
 - **What I expected:** the gap was announcements arriving late. **What I found:** code was misreading announcements

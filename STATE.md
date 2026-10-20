@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-19 12:00 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
+**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-20 07:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
 
@@ -165,6 +165,38 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-20 (Tue) ~07:30 ET — overnight: two PASS events lost T2, a gate-killing DST bug fixed, peak dates 11% → 40%.**
+- 🔴 **ABT and SPCX, Season A's first two PASS events: T2 MISSING** (`ops/incidents/2026-10-19_ABT_T2_missing.md`).
+  - Actions' `t2-queue.yml` tried claude with the refused token at 14:37, 14:38 and 16:31 ET. Each refusal
+    counted toward `MAX_ATTEMPTS = 3`, so the working cloud routine found nothing waiting. The shadows froze
+    (ABT: T2R NO_BUY 0.50, T2O NO_BUY 0.47, T2G BUY 0.53).
+  - No retry: that would need an edit to `t2_stage2.py` (ends the H-T2C pooling) or a relabelled log.
+  - **Fix `3c36975` (D004 v4 dated line):** Actions runs claude only if the repo variable `T2_ACTIONS_CLAUDE` is
+    "on" (unset), and only 11:00–13:59 UTC. The old `hour >= 11` "last resort" fired right after every gate. The
+    cloud routine now holds all 3 attempts.
+- 🔴 **The new token Jacob saved is refused too** (housekeeping 02:10 UTC): "organization has disabled Claude
+  subscription access for Claude Code · ask your admin". It is an account or organization setting, not the token.
+  **Jacob: check the org's admin settings, or leave Actions' claude off.** Housekeeping stays laptop-by-hand until then.
+- ✅ **D003 v4 addendum 1 FROZEN (`014d29c`):** Yahoo's after-close placeholder for upcoming dates carries the EDT
+  offset, so it reads 15:00 EST after Nov 1, and the gate read that as a disagreement.
+  - From the Oct 30 gate, every AMC event of the peak would have failed "second source disagrees".
+  - Now: no vote for AMC, still a veto for BMO; any other midday stamp still disagrees. One shared `votes()`.
+  - `s2_gate.py` is hash-locked (`D003_implementation_v4.sha256`, check.py FAILS on drift). Sonnet: SHIP WITH FIXES,
+    all applied.
+- **Dates:** the evening run, with every fix, confirmed 50 more. **Peak Oct 31–Nov 6: 64 of 158 confirmed (40%,
+  was 11%).** Season A: 158 CONFIRMED + 7 FROZEN, 152 PENDING. The Oct 22 checkpoint (≥ 70%) is still short.
+- **Session limits are shared:** the 10:45 ET routine push on 10-19 was refused ("session limit") by this laptop
+  session's use, so no paper window started then. **Keep laptop sessions light in season**, above all near 14:45 and
+  18:45 UTC and the T2 runs (21:20, 01:20, 05:20, 10:20 UTC).
+- GitHub Actions incident 10-19 from ~11:49 ET ("degraded availability"). The T2 smoke test of the token is still
+  queued; it is moot now (the refusal is the account's).
+- **Noise to fix:** every `paper-options.yml` run now exits red on DPZ's standing alert (held past expiry, shares
+  assigned). DPZ's +100 shares are still in the account (Jacob's sale pending).
+- **Today:** six gates from 14:30 (HXL, LMT, LRCX, ROP, TSCO, TXN). T2 for a PASS now goes to the cloud routine
+  (17:20 ET first). First v3 closes from 14:30 (NOC, RTX, VICR F; RTX, VICR L), against the expectations in the plan.
+  **D016 (the gate audit) was not done**; its freeze-before-P&L condition is now passed for NOC/RTX/VICR after
+  today's closes, so disclose that in its spec.
 
 **2026-10-19 (Mon) ~12:00 ET — date detection: a recall audit, four `find_dates` defects fixed, 35 names confirmed.**
 - **Recall audit** (10 random PENDING names dated Oct 31–Nov 6, read-only): **3 had a company date that code missed**,
@@ -444,3 +476,4 @@ The Actions AI step (`ops/actions_prompt.md`) appends one line per ET day here. 
 are in the history file. 🔴 Since 2026-10-15 the step has been refused ("organization has disabled Claude
 subscription access for Claude Code"), so laptop sessions add the line by hand until it runs again.
 - **2026-10-19 (Mon), by hand (laptop):** the AI step was refused again overnight. 35 dates confirmed (32 by code with four `find_dates` fixes, 3 by hand: FTAI, LOGI, JMKE), SMMT retired `unconfirmed`, GE re-checked (no company date). Nothing gated or frozen before 12:00 ET; ABT and PEGA gate from 14:30.
+- **2026-10-20 (Tue), by hand (laptop):** the AI step was refused again (02:10 UTC, new token). The evening code run confirmed 50 dates. ABT and SPCX gated PASS on 10-19; their T2 is MISSING (incident). Nothing frozen by this session.
