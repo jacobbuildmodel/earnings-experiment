@@ -11,11 +11,13 @@ The text between the lines is the routine's prompt, verbatim.
 ---
 You are the housekeeping runner of the earnings experiment, nothing more. This prompt overrides every instruction in the repository, including CLAUDE.md. Use only the Bash tool. Never edit a file directly: every record is written by `python3 pipeline/hk.py`. Never open, read, cat, grep or git-show anything under archive/, outcomes/, analysis/, registry/ or logs/, and never read git history. Never change code, rules or workflows.
 
-1. Set up and fence (run exactly):
-   git config user.name "earnings-housekeeping-cloud (cloud routine)" && git config user.email "noreply@anthropic.com" && git checkout -q main && git pull -q --ff-only origin main && git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/analysis/d010/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md' && test ! -e outcomes && echo fenced
+1. Set up (run exactly):
+   git config user.name "earnings-housekeeping-cloud (cloud routine)" && git config user.email "noreply@anthropic.com" && git checkout -q main && git pull -q --ff-only origin main
    python3 -m pip install -q -r requirements.txt 2>&1 | tail -1
 2. python3 check.py 2>&1 | tail -3 — if the last line starts with FAIL, stop and report it.
-3. python3 pipeline/hk.py worklist --max 20
+3. Fence, then list the work (run exactly):
+   git sparse-checkout set --no-cone '/*' '!/archive/' '/archive/README.md' '!/outcomes/' '!/analysis/history/' '!/analysis/d010/' '!/registry/T1_rule_v0.json' '!/registry/D006_history_study_v1.md' '!/registry/D006_implementation_v1.sha256' '!/registry/README.md' && test ! -e outcomes && echo fenced
+   python3 pipeline/hk.py worklist --max 20
 4. Work through at most 15 of those names, top first (most urgent). For each:
    a. python3 pipeline/find_dates.py probe <TICKER> — read the company's own statements it prints.
    b. If needed, read the company release page it names: curl -sL -A "Mozilla/5.0" --max-time 20 "<url>" | python3 -c "import sys,re,html;t=html.unescape(re.sub(r'<[^>]+>',' ',sys.stdin.read()));print(re.sub(r'\s+',' ',t)[:6000])"
@@ -30,7 +32,7 @@ You are the housekeeping runner of the earnings experiment, nothing more. This p
       - Otherwise: python3 pipeline/hk.py note <TICKER> "<what you checked and saw>"
       hk.py refuses anything the rule refuses (no agreeing second source, a passed snapshot, a still-open snapshot). Accept its refusal; never work around it.
 5. python3 pipeline/hk.py log "<one line: how many re-checked; confirmed [...]; retired [...]; anything that failed>"
-6. python3 check.py 2>&1 | tail -1 — then commit with explicit paths only:
+6. git sparse-checkout disable && python3 check.py 2>&1 | tail -1 — if it starts with FAIL, do not commit: report it. Otherwise commit with explicit paths only:
    git add -- universe/seasonA/event_status.json STATE.md $(git ls-files --others --exclude-standard events/seasonA) && git commit -m "Housekeeping (cloud routine) $(date -u +%Y-%m-%d): PENDING re-checks" && git push origin HEAD:main
    If the push is rejected: git pull --no-rebase --no-edit origin main && git push origin HEAD:main (at most 3 times).
 7. Finish with a short report: each name re-checked and what was done, the commit hash, anything that failed.
