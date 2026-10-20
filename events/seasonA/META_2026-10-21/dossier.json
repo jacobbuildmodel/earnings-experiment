@@ -1,0 +1,564 @@
+{
+ "event": "META_2026-10-21",
+ "season": "seasonA",
+ "built_et": "2026-10-20T14:31:12-04:00",
+ "cutoff_et": "2026-10-20T14:31:00.318721-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/META_2026-10-21/gate.json",
+   "published": "2026-10-20T14:31:00.318721-04:00",
+   "data": {
+    "ticker": "META",
+    "report_date": "2026-10-21",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-21"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-22"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-22"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "reaction_day": "2026-10-22"
+    },
+    "snapshot_session": "2026-10-20",
+    "captured_et": "2026-10-20T14:31:00.318721-04:00",
+    "options": {
+     "spot": 690.0,
+     "expiry": "2026-10-23",
+     "strike": 690.0,
+     "call": {
+      "bid": 25.6,
+      "ask": 25.95,
+      "openInterest": 266.0,
+      "lastPrice": 25.8,
+      "impliedVolatility": 0.8947764428710936,
+      "lastTradeDate": "2026-10-20T18:14:59+00:00"
+     },
+     "put": {
+      "bid": 24.9,
+      "ask": 25.4,
+      "openInterest": 975.0,
+      "lastPrice": 25.1,
+      "impliedVolatility": 0.8730481445312499,
+      "lastTradeDate": "2026-10-20T18:13:05+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.07380434782608696,
+     "rel_spread": {
+      "call": 0.013579049466537261,
+      "put": 0.019880715705765408
+     },
+     "oi_atm": 1241.0,
+     "oi_sum": 13565.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/META_2026-10-21/factors.json",
+   "published": "2026-10-20T14:31:00.318721-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.03428476339423159,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.06913996627318719,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.09508196721311479,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.045007461857742515,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.4660122047499508,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.0747585449465658,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.11264294014890852,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-29",
+       "session": "AMC",
+       "raw_return_A": -0.11335859835039597,
+       "eps_est": 7.22,
+       "eps_rep": 6.18,
+       "surprise_pct": -14.42,
+       "reaction_volume_ratio": 2.244617450206121
+      },
+      {
+       "date": "2026-04-29",
+       "session": "AMC",
+       "raw_return_A": -0.0741355210871486,
+       "eps_est": 6.66,
+       "eps_rep": 10.44,
+       "surprise_pct": 56.79,
+       "reaction_volume_ratio": 3.512509132423891
+      },
+      {
+       "date": "2026-01-28",
+       "session": "AMC",
+       "raw_return_A": 0.09329885494623147,
+       "eps_est": 8.22,
+       "eps_rep": 8.88,
+       "surprise_pct": 8.0,
+       "reaction_volume_ratio": 4.260334012509898
+      },
+      {
+       "date": "2025-10-29",
+       "session": "AMC",
+       "raw_return_A": -0.11341500590298248,
+       "eps_est": 6.71,
+       "eps_rep": 1.05,
+       "surprise_pct": -84.34,
+       "reaction_volume_ratio": 7.383030152765273
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 4.350122686976296,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -14.42,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": -7,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 5.5366,
+      "7daysAgo": 6.25307,
+      "30daysAgo": 6.53036,
+      "60daysAgo": 6.76256,
+      "90daysAgo": 7.06163,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.21596005454831252,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 5.5366,
+      "low": 2.61,
+      "high": 7.64,
+      "yearAgoEps": 1.05,
+      "numberOfAnalysts": 44,
+      "growth": 4.273,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.908499801322111,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0152,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 19.91298,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 7.7012153,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.28,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 1757779197952,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.4127,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.07380434782608696,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.021728298339843688,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.015136567382812438,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.6913218004360495,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7968544283528449,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 83005.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.89675782027094,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.12006056361193572,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 91,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.27959003283104633,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.3087942632522491,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.03417277249154904,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.09497702676741804,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.045007461857742515,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.46598645636389496,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 3.387603080266568,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.35811494572243546,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 1770745323852.539,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.12889939446707674,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": -7,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.19319000080007823,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm",
+   "published": "2026-07-29T20:03:23-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 meta-06302026xexhibit991.htm EX-99.1 Document Meta Reports Second Quarter 2026 Results MENLO PARK, Calif. – July 29, 2026 – Meta Platforms, Inc. (Nasdaq: META) today reported financial results for the quarter ended June 30, 2026. \"AI is accelerating our core business today, powering our next generation of products, and opening the door to entirely new enterprise opportunities,\" said Mark Zuckerberg, Meta founder and CEO. \"The results are already showing, and I'm optimistic about the potential ahead.\" Second Quarter 2026 Financial Highlights Three Months Ended June 30, % Change In millions, except percentages and per share amounts 2026 2025 Revenue $ 60,801 $ 47,516 28 % Costs and expenses 42,026 27,075 55 % Income from operations $ 18,775 $ 20,441 (8) % Operating margin 31 % 43 % Provision for income taxes $ 2,908 $ 2,197 32 % Effective tax rate 16 % 11 % Net income $ 15,848 $ 18,337 (14) % Diluted earnings per share (EPS) $ 6.18 $ 7.14 (13) % Second Quarter 2026 Operational and Other Financial Highlights • Family daily active people (DAP) – DAP was 3.60 billion on average for June 2026, an increase of 3% year-over-year. • Ad impressions – Ad impressions delivered across our Family of Apps increased by 14% year-over-year. • Average price per ad – Average price per ad increased by 12% year-over-year. • Revenue – Revenue was $60.80 billion, an increase of 28% year-over-year. Revenue on a constant currency basis would have increased by 27% year-over-year. • Costs and expenses – Total costs and expenses were $42.03 billion, an increase of 55% year-over-year. This includes $2.40 billion of charges related to legal proceedings and $1.18 billion of severance expenses in connection with the May 2026 headcount reduction. • Capital expenditures – Capital expenditures, including principal payments on finance leases, were $31.08 billion. • Capital return program – Dividend and dividend equivalent payments were $1.35 billion. • Cash, cash equivalents, and marketable securities – Cash, cash equivalents, and marketable securities were $90.26 billion as of June 30, 2026. • Long-term debt – Long-term debt was $83.66 billion as of June 30, 2026. • Cash flow – Cash flow from operating activities was $31.86 billion, and free cash flow was $784 million. (1) • Headcount – Headcount was 75,472 as of June 30, 2026, a decrease of 1% year-over-year. Our reported headcount includes approximately 8,000 employees impacted by the May 2026 headcount reduction, the majority of whom will no longer be reflected in our headcount by the end of the third quarter of 2026. ____________________________________ (1) For more information on our free cash flow non-GAAP financial measure, see the sections entitled \"Non-GAAP Financial Measures\" and \"Reconciliation of GAAP to Non-GAAP Results\" in this press release. 1 CFO Outlook Commentary We expect third quarter 2026 total revenue to be in the range of $61-64 billion. Our guidance assumes foreign currency is an approximately 1% headwind to year-over-year total revenue growth, based on current exchange rates. We are raising the lower-end of our expense outlook to incorporate the $2.4 billion charges related to legal proceedings recognized in the second quarter. We now expect full year 2026 total expenses to be in the range of $165-169 billion. We continue to expect to deliver operating income this year that is above 2025 operating income. We anticipate 2026 capital expenditures, including principal payments on finance leases, to be in the range of $130-145 billion, narrowed from our prior outlook of $125-145 billion. Absent any changes to our tax landscape, we expect our tax rate for the remaining quarters of 2026 to be between 15-17%, an increase from our prior outlook of 13-16%. Finally, we continue to monitor active legal and regulatory matters that could significantly impact our business and financial results. For example, we continue to see scrutiny on youth-related issues in several markets and have a number of youth-related trials scheduled for this year in the U.S., which may ultimately result in a material loss. 2 Webcast and Conference Call Information Meta will host a conference call to discuss its results at 1:30 p.m. PT / 4:30 p.m. ET today. The live webcast of the call can be accessed at the Meta Investor Relations website at investor.atmeta.com, along with the company's earnings press release, financial tables, and slide presentation. Following the call, a replay will be available at the same website. Transcripts of conference calls with publishing equity research analysts held today will also be posted to the investor.atmeta.com website. Disclosure Information Meta uses the investor.atmeta.com and meta.com/news websites as well as Mark Zuckerberg's Facebook profile (facebook.com/zuck), Instagram account (instagram.com/zuck) and Threads profile (threads.net/zuck) as means of disclosing material non-public information and for complying with its disclosure obligations under Regulation FD. About Meta Meta is building the future of human connection, powered by artificial intelligence and immersive technologies. When Facebook launched in 2004, it changed the way people connect. Apps like Messenger, Instagram, and WhatsApp further empowered billions around the world. Now, Meta is moving beyond 2D screens toward experiences that foster deeper connections and unlock new possibilities. Contacts Investors: Chad Heaton investor@meta.com / investor.atmeta.com Press: Matt Tye press@meta.com / meta.com/news 3 Forward-Looking Statements This press release contains forward-looking statements regarding our future business plans and expectations. These forward-looking statements are only predictions and may differ materially from actual results due to a variety of factors including: the impact of macroeconomic conditions on our business and financial results, including as a result of geopolitical events; our ability to retain or increase users and engagement levels; our reliance on advertising revenue; our dependency on data signals and mobile operating systems, networks, and standards that we do not control; changes to the content or application of third-party policies that impact our advertising practices; risks associated with new products and changes to existing products as well as other new business initiatives, including our artificial intelligence initiatives and Reality Labs efforts; our emphasis on community growth and engagement and the user experience over short-term financial results; maintaining and enhancing our brand and reputation; our ongoing privacy, safety, security, and content and advertising review and enforcement efforts; competition; risks associated with government actions that could restrict access to our products or impair our ability to sell advertising in certain countries; litigation and government inquiries; privacy, legislative, and regulatory concerns or developments; risks associated with acquisitions; security breaches; our ability to manage our scale and geographically-dispersed operations; and market conditions or other factors affecting capital return to stockholders. These and other potential risks and uncertainties that could cause actual results to differ from the results predicted are more fully detailed under the caption \"Risk Factors\" in our Quarterly Report on Form 10-Q filed with the SEC on April 30, 2026, which is available on our Investor Relations website at investor.atmeta.com and on the SEC website at www.sec.gov. Additional information will also be set forth in our Quarterly Report on Form 10-Q for the quarter ended June 30, 2026. In addition, please note that the date of this press release is July 29, 2026, and any forward-looking statements contained herein are based on assumptions that we believe to be reasonable as of this date. We undertake no obligation to update these statements as a result of new information or future events. For a discussion of limitations in the measurement of certain of our community metrics, see the section entitled \"Limitations of Key Metrics and Other Data\" in our most recent quarterly or annual report filed with the SEC. Non-GAAP Financial Measures To supplement our condensed consolidated financial statements, which are prepared and presented in accordance with generally accepted accounting principles in the United States (GAAP), we use the following non-GAAP financial measures: revenue excluding foreign exchange effect, advertising revenue excluding foreign exchange effect, and free cash flow. The presentation of these financial measures is not intended to be considered in isolation or as a substitute for, or superior to, financial information prepared and presented in accordance with GAAP. Investors are cautioned that there are material limitations associated with the use of non-GAAP financial measures as an analytical tool. In addition, these measures may be different from non-GAAP financial measures used by other companies, limiting their usefulness for comparison purposes. We compensate for these limitations by providing specific information regarding the GAAP amounts excluded from these non-GAAP financial measures. We believe these non-GAAP financial measures provide investors with useful supplemental information about the financial performance of our business, enable comparison of financial results between periods where certain items may vary independent of business performance, and allow for greater transparency with respect to key metrics used by management in operating our business. Our non-GAAP financial measures are adjusted for the following items: Foreign exchange effect on revenue . To calculate revenue on a constant currency basis, we translate current period revenue using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar, which we believe is a useful metric that facilitates comparison to our historical performance. Purchases of property and equipment; Principal payments on finance leases. We subtract both purchases of property and equipment, and principal payments on finance leases in our calculation of free cash flow because we believe that these two items collectively represent the amount of property and equipment we need to procure to support our business, regardless of whether we procure such property or equipment with a finance lease. We believe that this methodology can provide useful supplemental information to help investors better understand underlying trends in our business. Free cash flow is not intended to represent our residual cash flow available for discretionary expenditures. For more information on our non-GAAP financial measures and a reconciliation of GAAP to non-GAAP measures, see the \"Reconciliation of GAAP to Non-GAAP Results\" table in this press release. 4 META PLATFORMS, INC. CONDENSED CONSOLIDATED STATEMENTS OF INCOME (In millions, except per share amounts) (Unaudited) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Revenue $ 60,801 $ 47,516 $ 117,111 $ 89,830 Costs and expenses: Cost of revenue 11,330 8,491 21,549 16,063 Research and development 21,656 12,942 39,354 25,092 Marketing and sales 3,431 2,979 6,339 5,735 General and administrative (1) 5,609 2,663 8,222 4,943 Total costs and expenses 42,026 27,075 75,464 51,833 Income from operations 18,775 20,441 41,647 37,997 Interest and other income (expense), net (19) 93 (1,139) 919 Income before income taxes 18,756 20,534 40,508 38,916 Provision (benefit) for income taxes 2,908 2,197 (2,113) 3,935 Net income $ 15,848 $ 18,337 $ 42,621 $ 34,981 Earnings per share: Basic $ 6.23 $ 7.28 $ 16.79 $ 13.87 Diluted $ 6.18 $ 7.14 $ 16.62 $ 13.56 Weighted-average shares used to compute earnings per share: Basic 2,543 2,518 2,538 2,522 Diluted 2,566 2,570 2,565 2,580 ____________________________________ (1) The second quarter 2026 general and administrative expenses include $2.40 billion of charges related to legal proceedings. 5 META PLATFORMS, INC. CONDENSED CONSOLIDATED BALANCE SHEETS (In millions) (Unaudited) June 30, 2026 December 31, 2025 Assets Current assets: Cash and cash equivalents $ 15,462 $ 35,873 Marketable securities 74,798 45,719 Accounts receivable, net 21,752 19,769 Prepaid expenses and other current assets 13,463 7,361 Total current assets 125,475 108,722 Non-marketable equity investments 30,157 27,524 Property and equipment, net 225,724 176,400 Operating lease right-of-use assets 23,985 20,404 Goodwill 23,406 24,534 Other assets 21,209 8,437 Total assets $ 449,956 $ 366,021 Liabilities and stockholders' equity Current liabilities: Accounts payable $ 15,889 $ 8,894 Operating lease liabilities, current 2,425 2,213 Accrued expenses and other current liabilities 38,065 30,729 Total current liabilities 56,379 41,836 Operating lease liabilities, non-current 26,229 22,940 Long-term debt 83,664 58,744 Long-term income taxes 18,326 21,005 Other liabilities 4,137 4,253 Total liabilities 188,735 148,778 Commitments and contingencies Stockholders' equity: Common stock and additional paid-in capital 103,981 95,793 Accumulated other comprehensive income (loss) (603) 271 Retained earnings 157,843 121,179 Total stockholders' equity 261,221 217,243 Total liabilities and stockholders' equity $ 449,956 $ 366,021 6 META PLATFORMS, INC. CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (In millions) (Unaudited) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Cash flows from operating activities Net income $ 15,848 $ 18,337 $ 42,621 $ 34,981 Adjustments to reconcile net income to net cash provided by operating activities: Depreciation and amortization 6,356 4,342 12,355 8,242 Share-based compensation 7,658 4,834 13,690 8,981 Deferred income taxes 1,445 (1,170) 1,568 (2,163) Unrealized loss on equity investments 111 455 1,185 320 Other (56) (280) (73) (376) Changes in assets and liabilities: Accounts receivable (4,401) (1,338) (2,273) 1,466 Prepaid expe",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+   "published": "2026-07-29T22:58:51-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations You should read the following discussion of our financial condition and results of operations in conjunction with our condensed consolidated financial statements and the related notes included elsewhere in this Quarterly Report on Form 10-Q and with our audited consolidated financial statements included in our Annual Report on Form 10-K for the year ended December 31, 2025, as filed with the Securities and Exchange Commission. In addition to our historical condensed consolidated financial information, the following discussion contains forward-looking statements that reflect our plans, estimates, and beliefs. Our actual results could differ materially from those discussed in the forward-looking statements. Factors that could cause or contribute to these differences include those discussed below and elsewhere in this Quarterly Report on Form 10-Q, particularly in Part II, Item 1A, \"Risk Factors.\" For a discussion of limitations in the measurement of our Family metrics, see the section entitled \"Limitations of Key Metrics and Other Data\" in this Quarterly Report on Form 10-Q. To supplement our condensed consolidated financial statements, which are prepared and presented in accordance with generally accepted accounting principles in the United States (GAAP), we present revenue on a constant currency basis, which is a non-GAAP financial measure. Revenue on a constant currency basis is presented in the section entitled \"—Revenue—Foreign Exchange Impact on Revenue.\" To calculate revenue on a constant currency basis, we translated revenue for the three and six months ended June 30, 2026 using the prior year's monthly exchange rates for our settlement or billing currencies other than the U.S. dollar. This non-GAAP financial measure is not intended to be considered in isolation or as a substitute for, or superior to, financial information prepared and presented in accordance with GAAP. This measure may be different from non-GAAP financial measures used by other companies, limiting its usefulness for comparison purposes. Moreover, presentation of revenue on a constant currency basis is provided for year-over-year comparison purposes, and investors should be cautioned that the effect of changing foreign currency exchange rates has an actual effect on our operating results. We believe this non-GAAP financial measure provides investors with useful supplemental information about the financial performance of our business, enables comparison of financial results between periods where certain items may vary independent of business performance, and allows for greater transparency with respect to key metrics used by management in operating our business. Executive Overview of Second Quarter Results Our mission is to build the future of human connection and the technology that makes it possible. Our financial results and key Family metrics for the second quarter of 2026 are set forth below. Total revenue for the second quarter of 2026 was $60.80 billion, an increase of 28% compared to the second quarter of 2025, due to an increase in advertising revenue. Revenue on a constant currency basis would have increased 27% compared to the second quarter of 2025. Ad impressions delivered across our Family of Apps in the second quarter of 2026 increased 14% year-over-year, and our average price per ad in the second quarter of 2026 increased 12% year-over-year. Income from operations for the second quarter of 2026 was $18.78 billion, a decrease of $1.67 billion, or 8%, compared to the second quarter of 2025, driven by higher costs and expenses. The increase in costs and expenses was primarily due to increases in employee compensation, including severance expenses; infrastructure expenses related to our data centers, technical infrastructure, and third-party cloud services; legal-related costs; and third-party AI token costs. 31 Table of Contents Consolidated and Segment Results We report our financial results for our two reportable segments: Family of Apps (FoA) and Reality Labs (RL). FoA includes Facebook, Instagram, Messenger, WhatsApp, and other services. RL includes our virtual and augmented reality related consumer hardware, software, and content. Family of Apps Reality Labs Total Three Months Ended June 30, % change Three Months Ended June 30, % change Three Months Ended June 30, % change 2026 2025 2026 2025 2026 2025 (in millions, except percentages) Revenue $ 60,370 $ 47,146 28% $ 431 $ 370 16% $ 60,801 $ 47,516 28% Costs and expenses 36,976 22,175 67% 5,050 4,900 3% 42,026 27,075 55% Income (loss) from operations $ 23,394 $ 24,971 (6)% $ (4,619) $ (4,530) (2)% $ 18,775 $ 20,441 (8)% Operating margin 39 % 53 % (1,072) % (1,224) % 31 % 43 % • Net income was $15.85 billion, with diluted earnings per share (EPS) of $6.18 for the three months ended June 30, 2026. • Capital expenditures, including principal payments on finance leases, were $31.08 billion for the three months ended June 30, 2026. • Dividend and dividend equivalent payments were $1.35 billion for the three months ended June 30, 2026. • Cash, cash equivalents, and marketable securities were $90.26 billion as of June 30, 2026. • Long-term debt was $83.66 billion as of June 30, 2026. • Effective tax rate was 16% for the three months ended June 30, 2026. • Headcount was 75,472 as of June 30, 2026, a decrease of 1% year-over-year. Our reported headcount includes approximately 8,000 employees impacted by the May 2026 headcount reduction, the majority of whom will no longer be reflected in our headcount by the end of the third quarter of 2026. Family of Apps Metrics • Family daily active people (DAP) was 3.60 billion on average for June 2026, an increase of 3% year-over-year. • Ad impressions delivered across our Family of Apps in the second quarter of 2026 increased by 14% year-over-year. • Average price per ad in the second quarter of 2026 increased by 12% year-over-year. Developments in Advertising Substantially all of our revenue is currently generated from advertising on Facebook and Instagram. We rely on targeting and measurement tools that incorporate data signals from user activity on websites and services that we do not control, as well as signals generated within our products, in order to deliver relevant and effective ads to our users. Our advertising revenue has been, and we expect will continue to be, adversely affected by reduced marketer spending as a result of limitations on our ad targeting and measurement tools arising from changes to the regulatory environment and third-party mobile operating systems and browsers. In particular, legislative and regulatory developments such as the General Data Protection Regulation, including its evolving interpretation through decisions of the Court of Justice of the European Union, ePrivacy Directive, European Digital Services Act, Digital Markets Act, and U.S. state privacy laws have impacted our ability to use data signals in our ad products, and an increasing number of laws have been introduced limiting or prohibiting the provision of our services to younger users. We expect these and other developments will have further impact in the future. As a result, we have implemented, and we will continue to implement, whether voluntarily or otherwise, changes to our products and user data practices, which reduce our ability to effectively target and measure ads and may negatively impact our advertising revenue and user engagement. For example, in response to regulatory developments in Europe, we announced our plans to change the legal basis for behavioral advertising on Facebook and Instagram in the European Union, European Economic Area, and Switzerland from \"legitimate interests\" to \"consent,\" and began offering users in the region a \"subscription for no ads\" alternative. We subsequently began offering users in the region who elect to continue using our services free-of-charge, 32 Table of Contents supported by ads, an option to see less personalized ads, which are less relevant and effective than our premium ad offerings. We are engaging with regulators on our consent model. In addition, mobile operating system and browser providers, such as Apple and Google, have implemented product changes and/or announced plans to limit the ability of websites and application developers to collect and use these signals to target and measure advertising. For example, in 2021, Apple made certain changes to its products and data use policies in connection with changes to its iOS operating system that reduce our and other iOS developers' ability to target and measure advertising, which has negatively impacted, and we expect will continue to negatively impact, the size of the budgets marketers are willing to commit to us and other advertising platforms. To mitigate these developments, we are continually working to evolve our advertising systems to improve the performance of our ad products. We are developing privacy enhancing technologies to deliver relevant ads and measurement capabilities while reducing the amount of personal information we process, including by relying more on anonymized or aggregated third-party data. In addition, we are developing tools that enable marketers to share their data into our systems, as well as ad products that generate more valuable signals within our apps. More broadly, we also continue to innovate our advertising tools to help marketers prepare campaigns and connect with consumers, including developing growing formats such as Reels ads and our business messaging ad products. Across all of these efforts, we are making significant investments in artificial intelligence (AI), including generative AI, to improve our delivery, targeting, and measurement capabilities. Further, we are focused on driving onsite conversions in our business messaging ad products by developing new features and scaling existing features. We are also engaging with others across our industry to explore the possibility of new open standards for the private and secure processing of data for advertising purposes. We believe our ongoing improvements to ad targeting and measurement are continuing to drive improved results for advertisers. However, we expect that some of these efforts will be long-term initiatives, and that the legislative, regulatory and platform developments described above will continue to adversely impact our advertising revenue for the foreseeable future. In addition, we maintain advertising policies to protect the security and integrity of our platform and comply with global content, security, and integrity obligations. Our ongoing efforts to enhance enforcement against ads and marketers which violate our advertising policies adversely affect our revenue, and we expect that the continued enhancement of such efforts will have an impact on our revenue in the future, which may be material. Other Business and Macroeconomic Conditions Other global and regional business, macroeconomic, and geopolitical conditions also have had, and we believe will continue to have, an impact on our user growth and engagement and advertising revenue. In particular, we believe advertising budgets have been pressured from time to time by factors such as inflation, economic policies and international trade, high interest rates, and related market uncertainty, which has led to reduced marketer spending. We are currently subject to increased business, macroeconomic, and geopolitical uncertainty, including as a result of the conflict in the Middle East and volatility around international trade, which has impacted and could continue to impact our financial results. In addition, competitive products and services have reduced some users' engagement with our products and services. We are investing in Reels and in AI initiatives across our products, including our AI-powered discovery engine to recommend relevant content, which w",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619370/what-could-surprise-vistra-stock-investors-on-the-upside/2026-10-20?.tsrc=rss",
+   "published": "2026-10-20T13:56:13-04:00",
+   "text": "What Could Surprise Vistra Stock Investors On The Upside? - Vistra (VST) stock lost 28.4% over the past year, while the S&P 500 returned 17.4%. Yet the power producer has continued signing long contracts with some of the largest electricity users, ranging from Meta to a closely watched Texas data center project. Management expects those agreements to yield m",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/meta-policy-chief-joel-kaplan-reportedly-to-leave-in-2027-leadership-transition-comes-amid-zuckerberg-s-ai-push/cZxARJrRBH5?.tsrc=rss",
+   "published": "2026-10-20T13:08:57-04:00",
+   "text": "Meta Policy Chief Joel Kaplan Reportedly To Leave In 2027 — Leadership Transition Comes Amid Zuckerberg's AI Push - According to a report by Axios, Meta President Dina Powell McCormick will take on external affairs responsibilities as the company expands its artificial intelligence infrastructure and investments.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/amazon-pops-on-a-target-raise-59-analysts-zero-sells/?.tsrc=rss",
+   "published": "2026-10-20T13:00:55-04:00",
+   "text": "Amazon Pops on a Target Raise. 59 Analysts, Zero Sells - Morgan Stanley just called Amazon a top pick and lifted its price target, but with negative free cash flow and $200 billion in planned spending ahead, the real question is whether AWS momentum can turn that mountain of capex into lasting gains.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/20/meta-stock-climbed-25-in-september-here-s-why-there-s-more-upside-ahead/?.tsrc=rss",
+   "published": "2026-10-20T12:55:02-04:00",
+   "text": "Meta Stock Climbed 25% in September. Here’s Why There’s More Upside Ahead - Meta is proving the doubters wrong.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/what-metas-quarter-has-to-show-to-justify-wall-streets-highest-targets/?.tsrc=rss",
+   "published": "2026-10-20T12:30:30-04:00",
+   "text": "What Meta’s Quarter Has to Show to Justify Wall Street’s Highest Targets - Meta reports Q3 earnings on October 21 with its stock sitting 9% below its 52-week high, and three specific numbers will determine whether Wall Street's most aggressive price targets hold or collapse under the weight of surging capex and mounting legal exposure.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/article/metas-muse-ai-agent-hits-109-million-downloads-as-chatgpt-slides-25-153532560.html?.tsrc=rss",
+   "published": "2026-10-20T11:35:32-04:00",
+   "text": "Meta's Muse AI agent hits 10.9 million downloads as ChatGPT slides 25% - Muse downloads continue to move in the right direction for Meta.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/four-labs-converged-20m-revenue-153310293.html?.tsrc=rss",
+   "published": "2026-10-20T11:33:10-04:00",
+   "text": "Four Labs Converged on a $20M Revenue Gate. For Agent Builders, That Is a Deployment Ceiling - Four license files, three jurisdictions, one number. In eleven weeks, StepFun, Meta, Moonshot AI, and Mistral each began gating commercial deployment of open-weight models at $20 million in revenue. For agent builders that figure is not a price. It is a ceiling. Our 24-hour open-weight taxonomy sort",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/alphabet-apos-cloud-growth-tpu-151007904.html?.tsrc=rss",
+   "published": "2026-10-20T11:10:07-04:00",
+   "text": "Alphabet's Cloud Growth, TPU Sales Could Drive Q3 Upside, BofA Says - Alphabet's (GOOG) Cloud business could offer Q3 upside, driven by capacity growth and incremental te",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/mark-zuckerberg-once-trashed-apple-150000909.html?.tsrc=rss",
+   "published": "2026-10-20T11:00:00-04:00",
+   "text": "Mark Zuckerberg once trashed Apple. Now he’s thanking its new CEO — and had to do it on Elon Musk’s X, not Threads - The Facebook founder tagged John Ternus on his rival’s social platform as Meta released an AI model built to run on Apple’s Mac Studios.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/mongodb-mdb-hold-guidance-losing-145042146.html?.tsrc=rss",
+   "published": "2026-10-20T10:50:42-04:00",
+   "text": "Can MongoDB (MDB) Hold Its Guidance After Losing Its Chief Executive? - MongoDB, Inc. (NASDAQ:MDB) closed at $348.69 on October 19. The stock returned 32% over the last 6 months, compared with an 11.6% return for the Insider Monkey Billionaire Index and 8.7% for the State Street SPDR S&P 500 ETF Trust. MongoDB lost its chief executive on September 28. Chirantan Desai le",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/amd-stock-price-prediction-is-the-ai-chip-opportunity-bigger-than-wall-street-thinks/?.tsrc=rss",
+   "published": "2026-10-20T10:30:19-04:00",
+   "text": "AMD Stock Price Prediction: Is the AI Chip Opportunity Bigger Than Wall Street Thinks? - AMD has surged over 155% this year while a brutal week-long selloff raises a critical question: does the stock price already capture the full AI opportunity, or is Wall Street still sleeping on what comes next?",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/anthropic-will-be-the-last-ai-ipo-of-2026-as-industry-collapses/?.tsrc=rss",
+   "published": "2026-10-20T09:55:20-04:00",
+   "text": "Anthropic Will Be The Last AI IPO Of 2026, As Industry Collapses - AI funding is drying up faster than anyone expected, and the race to go public before the window slams shut has turned desperate. One company stands between a potential $2 trillion valuation and a collapsing market, but a secretive trust may complicate everything.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/meta-meta-whatsapp-become-meaningful-134325729.html?.tsrc=rss",
+   "published": "2026-10-20T09:43:25-04:00",
+   "text": "Meta (META): Can WhatsApp Become a Meaningful Business Beyond Advertising? - Meta Platforms, Inc. (NASDAQ:META) is turning business conversations into revenue. Paid WhatsApp messaging helped Family of Apps other revenue grow 73% to $1.01 billion in the second quarter of 2026, following 74% growth in the first. That category includes subscriptions and other services and repre",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "eb856c34490aeb3d4f4381d0a5aa94713046346a3cd0ea6241117f7e8e65d704"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 44568
+}
