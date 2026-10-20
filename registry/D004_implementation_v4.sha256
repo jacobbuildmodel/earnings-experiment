@@ -10,3 +10,5 @@ acc334fdf36a2c0df3e2b547886f848e9af0a7069ca8b83736ac84389ac436a8 pipeline/grade.
 4241f8778c6ca9542139e29225533f30cad4d7f6b0b1159743f22f569000a9a9 .github/workflows/t2-queue.yml
 # 2026-10-08 ET: t2-queue.yml - claude backend only from 11:00 UTC (last resort); T2 primary moves to the cloud routine earnings-t2-cloud running the same t2_stage2.py; no change to model, flags, prompt, dossier.py or t2_stage2.py
 6b46149866bb65c9f00d7fc02f85ba8d6444770cb765524b9e728f5bbb3df4b9 .github/workflows/t2-queue.yml
+# 2026-10-20 ET: t2-queue.yml - claude backend runs in Actions only if repository variable T2_ACTIONS_CLAUDE is "on" (the token is refused since 2026-10-15 and each refusal used one of T2's 3 attempts: ABT 2026-10-21 left MISSING), and only 11:00-13:59 UTC (the old "hour >= 11" also fired right after afternoon gates); no change to model, flags, prompt, dossier.py or t2_stage2.py
+0cb5c757a44002ffab612903b467899b047e5759409d2e253d95a6c7180e2f99 .github/workflows/t2-queue.yml

@@ -94,14 +94,22 @@ jobs:
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          T2_ACTIONS_CLAUDE: ${{ vars.T2_ACTIONS_CLAUDE }}
         # 2026-10-08: T2 (claude) is decided primarily by the cloud routine `earnings-t2-cloud` (claude.ai cloud
         # session, a separate allowance; probed: same code, isolation passed, $0.09 a decision). Here the
-        # subscription token decides only as a last resort from 11:00 UTC (07:00 EDT), so the two never race.
-        # T2G (Gemini, free) still runs on every pass.
+        # subscription token decides only as a last resort, so the two never race. T2G (Gemini, free) still runs on
+        # every pass.
+        # 2026-10-20: (1) the token is refused since 2026-10-15 ("organization has disabled Claude subscription
+        # access for Claude Code"), and each refusal counted as one of T2's 3 attempts, so ABT's T2 was left MISSING
+        # by 16:31 ET while the cloud routine still could decide. Actions now runs claude only if the repository
+        # variable T2_ACTIONS_CLAUDE is "on". (2) "last resort" was `hour >= 11`, also true right after an afternoon
+        # gate. It is now 11:00-13:59 UTC only, the entry morning before the deadline. No change to model, flags,
+        # prompt, dossier.py or t2_stage2.py.
         run: |
           rc=0
           python pipeline/t2_stage2.py run --backend gemini || rc=$?
-          if [ "$(date -u +%H)" -ge 11 ]; then python pipeline/t2_stage2.py run --backend claude || rc=$?; else echo "claude backend: left to the cloud routine before 11:00 UTC"; fi
+          h=$((10#$(date -u +%H)))
+          if [ "$T2_ACTIONS_CLAUDE" = "on" ] && [ "$h" -ge 11 ] && [ "$h" -lt 14 ]; then python pipeline/t2_stage2.py run --backend claude || rc=$?; else echo "claude backend: left to the cloud routine (T2_ACTIONS_CLAUDE='$T2_ACTIONS_CLAUDE', UTC hour $h)"; fi
           exit $rc
 
       # 2026-10-07: the subscription behind CLAUDE_CODE_OAUTH_TOKEN hit its WEEKLY limit on 2026-10-06 after
