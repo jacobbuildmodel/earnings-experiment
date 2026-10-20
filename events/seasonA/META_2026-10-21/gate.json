@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "META",
+ "report_date": "2026-10-21",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-22"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "reaction_day": "2026-10-22"
+ },
+ "snapshot_session": "2026-10-20",
+ "captured_et": "2026-10-20T14:31:00.318721-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/meta-announce-third-quarter-2026-results-2026-10-12",
+  "published_et": "2026-10-12T16:36-04:00",
+  "quote": "linkedin facebook x email reddit MENLO PARK, Calif. , Oct. 12, 2026 /PRNewswire/ -- Meta Platforms, Inc. (NASDAQ: META ) announced today that the company's third quarter 2026 financial results will be released after market close on Wednesday, October 21st, 2026 .",
+  "title": "Meta to Announce Third Quarter 2026 Results",
+  "retrieved_et": "2026-10-19T10:16:32.505276-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-21T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-21T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 690.0,
+  "expiry": "2026-10-23",
+  "strike": 690.0,
+  "call": {
+   "bid": 25.6,
+   "ask": 25.95,
+   "openInterest": 266.0,
+   "lastPrice": 25.8,
+   "impliedVolatility": 0.8947764428710936,
+   "lastTradeDate": "2026-10-20T18:14:59+00:00"
+  },
+  "put": {
+   "bid": 24.9,
+   "ask": 25.4,
+   "openInterest": 975.0,
+   "lastPrice": 25.1,
+   "impliedVolatility": 0.8730481445312499,
+   "lastTradeDate": "2026-10-20T18:13:05+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.07380434782608696,
+  "rel_spread": {
+   "call": 0.013579049466537261,
+   "put": 0.019880715705765408
+  },
+  "oi_atm": 1241.0,
+  "oi_sum": 13565.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

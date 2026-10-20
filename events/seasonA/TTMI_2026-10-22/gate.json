@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "TTMI",
+ "report_date": "2026-10-22",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-22"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "reaction_day": "2026-10-22"
+ },
+ "snapshot_session": "2026-10-20",
+ "captured_et": "2026-10-20T14:31:12.595573-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.ttm.com/news-events/press-releases/detail/418/ttm-technologies-inc-to-conduct-third-quarter-2026",
+  "published_et": "2026-10-14T07:17-04:00",
+  "quote": "TTM Technologies, Inc. will release its third quarter 2026 financial results before the market opens on Thursday, October 22, 2026.",
+  "title": "TTM Technologies, Inc. to Conduct Third Quarter 2026 Conference Call on October 22, 2026",
+  "retrieved_et": "2026-10-19T10:27:40.428014-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.ttm.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-22T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 95.83999633789062,
+  "expiry": "2026-11-20",
+  "strike": 95.0,
+  "call": {
+   "bid": 10.0,
+   "ask": 11.2,
+   "openInterest": 232.0,
+   "lastPrice": 11.2,
+   "impliedVolatility": 0.905274384765625,
+   "lastTradeDate": "2026-10-20T17:52:40+00:00"
+  },
+  "put": {
+   "bid": 9.4,
+   "ask": 10.0,
+   "openInterest": 482.0,
+   "lastPrice": 9.66,
+   "impliedVolatility": 0.9000254138183592,
+   "lastTradeDate": "2026-10-20T17:30:14+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 21,
+  "implied_move": 0.2118113603472075,
+  "rel_spread": {
+   "call": 0.11320754716981125,
+   "put": 0.06185567010309275
+  },
+  "oi_atm": 714.0,
+  "oi_sum": 714.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
