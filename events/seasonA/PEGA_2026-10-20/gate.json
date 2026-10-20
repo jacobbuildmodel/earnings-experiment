@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "PEGA",
+ "report_date": "2026-10-20",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-20"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-21"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "reaction_day": "2026-10-21"
+ },
+ "snapshot_session": "2026-10-19",
+ "captured_et": "2026-10-19T14:31:00.262139-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/pega-announce-financial-results-third-quarter-2026-and-host-conference-call-and",
+  "published_et": "2026-10-07T16:05-04:00",
+  "quote": "linkedin facebook x email reddit WALTHAM, Mass. --(BUSINESS WIRE)-- Pegasystems Inc. (NASDAQ: PEGA), the enterprise AI software company for mission-critical work, today announced it will report financial results for the third quarter of 2026 on Tuesday, October 20, 2026 , after market close.",
+  "title": "Pega to Announce Financial Results for the Third Quarter of 2026 and Host Conference Call and Webcast",
+  "retrieved_et": "2026-10-13T22:34:52.334339-04:00",
+  "how": "AI housekeeping, find_dates v3 (2026-10-07) probe of https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); code left it ambiguous (other dates on the page: publication date, call/replay dates); the quote is the sentence stating date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-20T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-20T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 35.18000030517578,
+  "expiry": "2026-11-20",
+  "strike": 35.0,
+  "call": {
+   "bid": 3.1,
+   "ask": 3.4,
+   "openInterest": 63.0,
+   "lastPrice": 3.3,
+   "impliedVolatility": 0.75195560546875,
+   "lastTradeDate": "2026-10-19T17:25:18+00:00"
+  },
+  "put": {
+   "bid": 2.85,
+   "ask": 3.1,
+   "openInterest": 434.0,
+   "lastPrice": 2.97,
+   "impliedVolatility": 0.729494892578125,
+   "lastTradeDate": "2026-10-19T17:25:09+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 22,
+  "implied_move": 0.1769471275156345,
+  "rel_spread": {
+   "call": 0.09230769230769226,
+   "put": 0.08403361344537814
+  },
+  "oi_atm": 497.0,
+  "oi_sum": 497.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "thin_oi"
+}

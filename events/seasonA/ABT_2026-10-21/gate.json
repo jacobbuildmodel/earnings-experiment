@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "ABT",
+ "report_date": "2026-10-21",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-20"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-21"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "reaction_day": "2026-10-21"
+ },
+ "snapshot_session": "2026-10-19",
+ "captured_et": "2026-10-19T14:31:00.262208-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/abbott-hosts-conference-call-third-quarter-earnings-2026-09-30",
+  "published_et": "2026-09-30T09:00-04:00",
+  "quote": "linkedin facebook x email reddit ABBOTT PARK , Ill. , Sept. 30, 2026 /PRNewswire/ -- Abbott (NYSE: ABT) will announce its third-quarter 2026 financial results on Wednesday, Oct. 21 , before the market opens.",
+  "title": "Abbott hosts conference call for third-quarter earnings",
+  "retrieved_et": "2026-10-08T22:42:36.175548-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-21T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-21T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 104.36000061035156,
+  "expiry": "2026-10-23",
+  "strike": 104.0,
+  "call": {
+   "bid": 2.9,
+   "ask": 3.2,
+   "openInterest": 56.0,
+   "lastPrice": 2.77,
+   "impliedVolatility": 0.5893595751953126,
+   "lastTradeDate": "2026-10-19T16:43:35+00:00"
+  },
+  "put": {
+   "bid": 2.55,
+   "ask": 2.8,
+   "openInterest": 187.0,
+   "lastPrice": 2.7,
+   "impliedVolatility": 0.5864299169921875,
+   "lastTradeDate": "2026-10-19T18:10:42+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.05485818289111941,
+  "rel_spread": {
+   "call": 0.09836065573770501,
+   "put": 0.09345794392523366
+  },
+  "oi_atm": 243.0,
+  "oi_sum": 1835.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

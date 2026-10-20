@@ -1,0 +1,632 @@
+{
+ "event": "ABT_2026-10-21",
+ "season": "seasonA",
+ "built_et": "2026-10-19T14:31:14-04:00",
+ "cutoff_et": "2026-10-19T14:31:00.262208-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/ABT_2026-10-21/gate.json",
+   "published": "2026-10-19T14:31:00.262208-04:00",
+   "data": {
+    "ticker": "ABT",
+    "report_date": "2026-10-21",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-20"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-21"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-21"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-10-28"
+     },
+     "reaction_day": "2026-10-21"
+    },
+    "snapshot_session": "2026-10-19",
+    "captured_et": "2026-10-19T14:31:00.262208-04:00",
+    "options": {
+     "spot": 104.36000061035156,
+     "expiry": "2026-10-23",
+     "strike": 104.0,
+     "call": {
+      "bid": 2.9,
+      "ask": 3.2,
+      "openInterest": 56.0,
+      "lastPrice": 2.77,
+      "impliedVolatility": 0.5893595751953126,
+      "lastTradeDate": "2026-10-19T16:43:35+00:00"
+     },
+     "put": {
+      "bid": 2.55,
+      "ask": 2.8,
+      "openInterest": 187.0,
+      "lastPrice": 2.7,
+      "impliedVolatility": 0.5864299169921875,
+      "lastTradeDate": "2026-10-19T18:10:42+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 2,
+     "implied_move": 0.05485818289111941,
+     "rel_spread": {
+      "call": 0.09836065573770501,
+      "put": 0.09345794392523366
+     },
+     "oi_atm": 243.0,
+     "oi_sum": 1835.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/ABT_2026-10-21/factors.json",
+   "published": "2026-10-19T14:31:00.262208-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.16200071873981114,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.023315833285391996,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.0312554988661875,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.0266666540695617,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.21759261861221516,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.8678131957326272,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.18099511315637362,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-16",
+       "session": "BMO",
+       "raw_return_A": 0.08296405455570355,
+       "eps_est": 1.28,
+       "eps_rep": 1.31,
+       "surprise_pct": 2.61,
+       "reaction_volume_ratio": 2.4373679450227157
+      },
+      {
+       "date": "2026-04-16",
+       "session": "BMO",
+       "raw_return_A": -0.03612186662933281,
+       "eps_est": 1.15,
+       "eps_rep": 1.15,
+       "surprise_pct": 0.33,
+       "reaction_volume_ratio": 2.14082293716852
+      },
+      {
+       "date": "2026-01-22",
+       "session": "BMO",
+       "raw_return_A": -0.11650648848981449,
+       "eps_est": 1.49,
+       "eps_rep": 1.5,
+       "surprise_pct": 0.34,
+       "reaction_volume_ratio": 5.831556461304011
+      },
+      {
+       "date": "2025-10-15",
+       "session": "BMO",
+       "raw_return_A": -0.021913777082472996,
+       "eps_est": 1.3,
+       "eps_rep": 1.3,
+       "surprise_pct": 0.05,
+       "reaction_volume_ratio": 2.5721777077586885
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.245481262813484,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 2.61,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 7,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.41481,
+      "7daysAgo": 1.41524,
+      "30daysAgo": 1.41953,
+      "60daysAgo": 1.41953,
+      "90daysAgo": 1.41767,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.0020173947392553167,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.41481,
+      "low": 1.31,
+      "high": 1.44,
+      "yearAgoEps": 1.3,
+      "numberOfAnalysts": 23,
+      "growth": 0.0883,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.09188512945201116,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0088,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 17.20457,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 3.8764153,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.13,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 180582809600,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.46429,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.05485818289111941,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.002929658203125074,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.036620727539062536,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.0059790732436473,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.3566843427295563,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 2684.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.7018138291789784,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.06819364321679539,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 91,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unknown",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.16200071873981114,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.0312554988661875,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.0266666540695617,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.21759261861221516,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.7554680742257194,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.06519666301138183,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 7,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.06977333852520624,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1800/000162828026048377/abt-2026q2xexhibitx991.htm",
+   "published": "2026-07-16T07:36:19-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 abt-2026q2xexhibitx991.htm EX-99.1 Document Exhibit 99.1 News Release Abbott Reports Second-Quarter 2026 Results and Raises Full-Year EPS Guidance – Second-quarter reported sales growth of 13.0 percent; comparable sales growth of 4.8 percent – Second-quarter GAAP diluted EPS of $0.53; adjusted diluted EPS of $1.31 – Abbott reaffirms full-year 2026 comparable sales growth guidance of 6.5% to 7.5% 1 – Abbott raises full-year 2026 adjusted diluted EPS guidance range to $5.45 to $5.60, compared to previous range of $5.38 to $5.58 – Abbott returned $2.1 billion to shareholders in the second quarter in the form of dividends and share repurchases ABBOTT PARK, Ill., July 16, 2026 — Abbott today announced financial results for the second quarter ended June 30, 2026. • Second-quarter sales increased 13.0 percent on a reported basis and 4.8 percent on a comparable basis. • Second-quarter GAAP diluted EPS of $0.53 and adjusted diluted EPS of $1.31, which excludes specified items. • Abbott reaffirms full-year 2026 comparable sales growth guidance of 6.5% to 7.5% 1 . • Abbott raises full-year 2026 adjusted diluted EPS guidance range to $5.45 to $5.60, compared to previous range of $5.38 to $5.58. • In April, Abbott completed enrollment in its TECTONIC U.S. pivotal trial. This trial is designed to evaluate Abbott's investigational Coronary Intravascular Lithotripsy (IVL) System for treating severe calcification in coronary arteries prior to stent implantation. • In April, at the Heart Rhythm Society (HRS) conference, Abbott presented new late-breaking data from four clinical trials that demonstrated strong clinical outcomes across the company's pulsed field ablation (PFA) and conduction system pacing (CSP) portfolios. • In May, Abbott announced it secured CE Mark for Libre® Duo, the world's first dual glucose-ketone biowearable sensor. By providing real-time visibility into glucose and ketone levels, this new technology helps optimize the management of diabetes by detecting rising ketone levels, which can lead to diabetic ketoacidosis, a serious health condition for people with diabetes. • In May, Abbott completed its submission to the U.S. Food and Drug Administration (FDA) seeking approval for the company's Amulet™ 360 left atrial appendage (LAA) device. • In May, the American Cancer Society (ACS) issued updated colorectal cancer (CRC) screening guidelines that reaffirmed Cologuard® and Cologuard Plus® as preferred screening options for adults age 45 and older who are at average risk for CRC. \"Our second-quarter results reflect the momentum we are building,\" said Robert B. Ford, chairman and chief executive officer, Abbott. \"We expect this momentum to continue and drive accelerating sales and earnings growth in the second half of the year.\" Page 1 of 21 SECOND-QUARTER BUSINESS OVERVIEW Comparable sales growth: Management believes that measuring sales growth on a comparable basis is an appropriate way for investors to best understand the underlying performance of the business. Comparable sales growth includes the prior and current year sales of Exact Sciences, a cancer diagnostics company that Abbott acquired on March 23, 2026. Comparable sales growth excludes the impact of foreign exchange and revenue in both the prior and current year related to compensation payments that Abbott's Structural Heart business received as part of a multi-year agreement with a competitor. The final payment under this agreement was recognized in the first quarter of 2026. Note: In order to compute results excluding the impact of exchange rates, current year U.S. dollar sales are multiplied or divided, as appropriate, by the current year average foreign exchange rates and then those amounts are multiplied or divided, as appropriate, by the prior year average foreign exchange rates. Second Quarter 2026 Results (2Q26) Sales 2Q26 ($ in millions) Total Company Nutrition Diagnostics Established Pharmaceuticals Medical Devices U.S. 5,216 871 1,660 — 2,680 International 7,377 1,273 1,432 1,499 3,173 Total reported 12,593 2,144 3,092 1,499 5,853 % Change vs. 2Q25 U.S. 22.0 (9.0) 104.8 n/a 7.0 International 7.5 1.4 5.1 8.4 10.7 Total reported 13.0 (3.1) 42.3 8.4 9.0 Total reported excl. foreign exchange impact 12.2 (3.6) 41.3 8.7 7.9 Comparable sales growth 4.8 (3.6) 2.9 8.7 8.4 U.S. 3.5 (9.0) 4.0 n/a 8.0 International 5.8 0.6 1.6 8.7 8.7 First Half 2026 Results (1H26) Sales 1H26 ($ in millions) Total Company Nutrition Diagnostics Established Pharmaceuticals Medical Devices U.S. 9,490 1,715 2,565 — 5,203 International 14,267 2,446 2,707 2,925 6,189 Total reported 23,757 4,161 5,272 2,925 11,392 % Change vs. 1H25 U.S. 12.4 (10.3) 52.5 n/a 7.4 International 9.3 — 6.4 10.7 14.2 Total reported 10.5 (4.5) 24.7 10.7 11.0 Total reported excl. foreign exchange impact 8.2 (5.6) 22.4 8.9 8.0 Comparable sales growth 4.3 (5.6) 2.4 8.9 8.4 U.S. 3.0 (10.3) 3.0 n/a 8.3 International 5.3 (1.9) 1.6 8.9 8.5 Refer to pages 16 and 17 for a reconciliation of comparable sales growth. Page 2 of 21 Nutrition Second Quarter 2026 Results (2Q26) Sales 2Q26 ($ in millions) Total Pediatric Adult U.S. 871 525 346 International 1,273 500 773 Total reported 2,144 1,025 1,119 % Change vs. 2Q25 U.S. (9.0) (10.7) (6.4) International 1.4 7.3 (2.0) Total reported (3.1) (2.7) (3.4) Total reported excl. foreign exchange impact (3.6) (3.1) (4.0) Comparable sales growth (3.6) (3.1) (4.0) U.S. (9.0) (10.7) (6.4) International 0.6 6.4 (2.8) Worldwide Nutrition sales decreased 3.1 percent on a reported basis and 3.6 percent on a comparable basis in the second quarter. Results in the quarter reflect the impact of lower sales volumes compared to the prior year and the effect of strategic pricing actions implemented in the fourth quarter of 2025. These pricing actions, together with the launch of new products, are contributing to improving performance. Nutrition sales increased $127 million on a sequential basis compared to the first quarter of 2026. First Half 2026 Results (1H26) Sales 1H26 ($ in millions) Total Pediatric Adult U.S. 1,715 1,036 679 International 2,446 942 1,504 Total reported 4,161 1,978 2,183 % Change vs. 1H25 U.S. (10.3) (11.9) (7.8) International — 2.4 (1.5) Total reported (4.5) (5.6) (3.5) Total reported excl. foreign exchange impact (5.6) (6.4) (4.9) Comparable sales growth (5.6) (6.4) (4.9) U.S. (10.3) (11.9) (7.8) International (1.9) 0.7 (3.5) Page 3 of 21 Diagnostics* Second Quarter 2026 Results (2Q26) Sales 2Q26 ($ in millions) Total Core Laboratory Cancer Diagnostics Rapid/Molecular Diagnostics U.S. 1,660 377 890 393 International 1,432 1,041 29 362 Total reported 3,092 1,418 919 755 % Change vs. 2Q25 U.S. 104.8 7.5 n/a (14.5) International 5.1 3.4 n/a 2.0 Total reported 42.3 4.4 n/a (7.3) Total reported excl. foreign exchange impact 41.3 3.2 n/a (8.0) Comparable sales growth 2.9 3.2 13.3 (8.0) U.S. 4.0 7.5 13.3 (14.5) International 1.6 1.7 13.8 0.5 Worldwide Diagnostics sales increased 42.3 percent on a reported basis and 2.9 percent on a comparable basis in the second quarter. Worldwide Core Laboratory Diagnostics results were driven by strong growth in the U.S. and Latin America. Rapid and Molecular Diagnostics results reflect lower sales of respiratory virus tests compared to the prior year. Cancer Diagnostics results were driven by mid-teens growth of Cologuard, which is benefiting from a growing base of both new and repeat users. Results in the quarter also reflect contributions to growth from the precision oncology and international businesses. First Half 2026 Results (1H26) Sales 1H26 ($ in millions) Total Core Laboratory Cancer Diagnostics Rapid/Molecular Diagnostics U.S. 2,565 724 983 858 International 2,707 1,966 32 709 Total reported 5,272 2,690 1,015 1,567 % Change vs. 1H25 U.S. 52.5 6.0 n/a (14.1) International 6.4 6.1 n/a 2.4 Total reported 24.7 6.1 n/a (7.4) Total reported excl. foreign exchange impact 22.4 3.2 n/a (8.8) Comparable sales growth 2.4 3.2 13.3 (8.8) U.S. 3.0 6.0 13.2 (14.1) International 1.6 2.2 16.5 (1.1) *Beginning in 2026, Abbott aggregated its previously reported Rapid Diagnostics, Molecular Diagnostics, and Point of Care businesses into the Rapid and Molecular Diagnostics business. On March 23, 2026, Abbott completed the acquisition of Exact Sciences. Following the acquisition, the sales of Exact Sciences are presented as Abbott's Cancer Diagnostics business. Refer to pages 16 and 17 for a reconciliation of comparable sales growth. Page 4 of 21 Established Pharmaceuticals Second Quarter 2026 Results (2Q26) Sales 2Q26 ($ in millions) Total Key Emerging Markets Other U.S. — — — International 1,499 1,164 335 Total reported 1,499 1,164 335 % Change vs. 2Q25 U.S. n/a n/a n/a International 8.4 9.8 3.7 Total reported 8.4 9.8 3.7 Total reported excl. foreign exchange impact 8.7 10.7 2.1 Comparable sales growth 8.7 10.7 2.1 U.S. n/a n/a n/a International 8.7 10.7 2.1 Established Pharmaceuticals sales increased 8.4 percent on a reported basis and 8.7 percent on a comparable basis in the second quarter. Key Emerging Markets include several emerging countries that represent the most attractive long-term growth opportunities for Abbott's branded generics product portfolio. Sales in these geographies increased 9.8 percent on a reported basis and 10.7 percent on a comparable basis, led by double-digit growth in several countries across the Latin America and Asia Pacific regions. First Half 2026 Results (1H26) Sales 1H26 ($ in millions) Total Key Emerging Markets Other U.S. — — — International 2,925 2,253 672 Total reported 2,925 2,253 672 % Change vs. 1H25 U.S. n/a n/a n/a International 10.7 11.3 8.6 Total reported 10.7 11.3 8.6 Total reported excl. foreign exchange impact 8.9 10.1 4.9 Comparable sales growth 8.9 10.1 4.9 U.S. n/a n/a n/a International 8.9 10.1 4.9 Page 5 of 21 Medical Devices Second Quarter 2026 Results (2Q26) Sales 2Q26 ($ in millions) Total Rhythm Management Electro-physiology* Heart Failure Vascular Structural Heart* Neuro-modulation Diabetes Care U.S. 2,680 377 420 313 294 225 189 862 International 3,173 366 441 88 509 372 71 1,326 Total reported 5,853 743 861 401 803 597 260 2,188 % Change vs. 2Q25 U.S. 7.0 10.7 15.9 10.9 3.9 (9.8) (2.1) 8.6 International 10.7 10.0 12.3 3.0 7.5 12.1 14.7 11.7 Total reported 9.0 10.4 14.0 9.0 6.1 2.7 2.0 10.5 Total reported excl. foreign exchange impact 7.9 9.5 13.4 8.7 5.1 1.7 1.2 9.0 Comparable sales growth 8.4 9.5 13.4 8.7 5.1 5.7 1.2 9.0 U.S. 8.0 10.7 15.9 10.9 3.9 (0.9) (2.1) 8.6 International 8.7 8.3 11.1 1.3 5.8 10.2 11.3 9.2 Worldwide Medical Devices sales increased 9.0 percent on a reported basis and 8.4 percent on a comparable basis in the second quarter. Sales growth in the quarter was led by low-teens growth in Electrophysiology and high-single-digit growth in Rhythm Management, Diabetes Care, and Heart Failure. In Diabetes Care, sales of continuous glucose monitors grew 11.0 percent on a reported basis and 9.5 percent on a comparable basis. First Half 2026 Results (1H26) Sales 1H26 ($ in millions) Total Rhythm Management Electro-physiology* Heart Failure Vascular Structural Heart* Neuro-modulation Diabetes Care U.S. 5,203 716 798 605 585 449 366 1,684 International 6,189 711 851 185 995 726 137 2,584 Total reported 11,392 1,427 1,649 790 1,580 1,175 503 4,268 % Change vs. 1H25 U.S. 7.4 11.1 14.8 11.1 6.2 (9.6) (0.7) 9.2 International 14.2 15.9 15.7 13.5 8.7 18.1 20.4 14.0 Total reported 11.0 13.4 15.3 11.7 7.7 5.7 4.3 12.1 Total reported excl. foreign exchange impact 8.0 10.9 13.0 10.4 5.0 2.6 2.6 8.2 Comparable sales growth 8.4 10.9 13.0 10.4 5.0 6.2 2.6 8.2 U.S. 8.3 11.1 14.8 11.1 6.2 (2.2) (0.7) 9.2 International 8.5 10.7 11.2 7.8 4.3 12.4 13.2 7.5 *Abbott's Amplatzer Amulet Left Atrial Appendage Occluder device and related accessories were transferred from Structural Heart to Electrophysiology on January 1, 2026. As a result, $55 million of sales in the second quarter of 2025 and $101 million of sales in the first half of 2025 were moved from Structural Heart to Electrophysiology. Refer to pages 16 and 17 for a reconciliation of comparable sales growth. Page 6 of 21 Abbott's Financial Guidance Abbott projects full-year 2026 comparable sales growth of 6.5% to 7.5% 1 . Abbott projects full-year 2026 adjusted diluted earnings per share of $5.45 to $5.60. Abbott projects third-quarter 2026 adjusted diluted earnings per share of $1.38 to $1.46 . Abbott has not provided the related GAAP financial measures on a forward-looking basis for these forward-looking non-GAAP financial measures because the company is unable to predict with reasonable certainty and without unreasonable effort the timing and impact of certain items such as restructuring and cost reduction initiatives, charges for intangible asset impairments, acquisition-related expenses, and foreign exchange, which could significantly impact Abbott's results in accordance with GAAP. Abbott Declares 410 th Consecutive Quarterly Dividend On June 12, 2026, the board of directors of Abbott declared the company's quarterly dividend of $0.63 per share. Abbott's cash dividend is payable Aug. 17, 2026, to shareholders of record at the close of business on July 15, 2026. Abbott has increased its dividend payout for 54 consecutive years and is a member of the S&P 500 Dividend Aristocrats Index, which tracks companies that have annually increased their dividend for at least 25 consecutive years. About Abbott: Abbott is a global healthcare leader that helps people live more fully at all stages of life. Our portfolio of life-changing technologies spans the spectrum of healthcare, with leading businesses and products in diagnostics, medical devices, nutritionals and branded generic medicines. Our 122,000 colleagues serve people in more than 160 countries. Connect with us at www.abbott.com and on LinkedIn , Facebook , Instagram , X and YouTube . Abbott will live-webcast its second-quarter earnings conference call through its Investor Relations website at ww",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1800/000162828026050134/abt-20260630.htm",
+   "published": "2026-07-28T16:02:56-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations Financial Review — Results of Operations Abbott’s revenues are derived primarily from the sale of a broad portfolio of healthcare products under short-term receivable arrangements. Patent protection and licenses, technological and performance features, and inclusion of Abbott’s products under a contract most significantly impact which products are sold; price controls, competition, and rebates most significantly impact the net selling prices of products; and foreign currency translation impacts the measurement of net sales and costs. Abbott’s primary products are medical devices, diagnostic testing products, nutritional products, and branded generic pharmaceuticals. The following tables detail sales by reportable segment for the three and six months ended June 30. Percent changes are versus the prior year and are based on unrounded numbers. Net Sales to External Customers (in millions) Three Months Ended June 30, 2026 Three Months Ended June 30, 2025 Total Change Impact of Foreign Exchange Total Change Excl. Foreign Exchange Established Pharmaceutical Products $ 1,499 $ 1,383 8.4 % (0.3) % 8.7 % Nutritional Products 2,144 2,212 (3.1) 0.5 (3.6) Diagnostic Products 3,092 2,173 42.3 1.0 41.3 Medical Devices 5,853 5,369 9.0 1.1 7.9 Total Reportable Segments 12,588 11,137 13.0 0.8 12.2 Other 5 5 n/m n/m n/m Net Sales $ 12,593 $ 11,142 13.0 0.8 12.2 Total U.S. $ 5,216 $ 4,276 22.0 — 22.0 Total International $ 7,377 $ 6,866 7.5 1.3 6.2 Net Sales to External Customers (in millions) Six Months Ended June 30, 2026 Six Months Ended June 30, 2025 Total Change Impact of Foreign Exchange Total Change Excl. Foreign Exchange Established Pharmaceutical Products $ 2,925 $ 2,643 10.7 % 1.8 % 8.9 % Nutritional Products 4,161 4,358 (4.5) 1.1 (5.6) Diagnostic Products 5,272 4,227 24.7 2.3 22.4 Medical Devices 11,392 10,264 11.0 3.0 8.0 Total Reportable Segments 23,750 21,492 10.5 2.3 8.2 Other 7 8 n/m n/m n/m Net Sales $ 23,757 $ 21,500 10.5 2.3 8.2 Total U.S. $ 9,490 $ 8,444 12.4 — 12.4 Total International $ 14,267 $ 13,056 9.3 3.8 5.5 ___________________________________ Notes: In order to compute results excluding the impact of exchange rates, current year U.S. dollar sales are multiplied or divided, as appropriate, by the current year average foreign exchange rates and then those amounts are multiplied or divided, as appropriate, by the prior year average foreign exchange rates. n/m = Percent change is not meaningful 26 Table of Contents The 12.2 percent increase in total net sales during the second quarter of 2026, excluding the impact of foreign exchange, was driven by the acquisition of Exact Sciences Corporation (Exact Sciences) and high single-digit growth in Medical Devices and Established Pharmaceutical Products, partially offset by lower sales in Nutritional Products. The Exact Sciences acquisition was completed on March 23, 2026, and its results are reported within the Diagnostic Products segment as Cancer Diagnostics from the date of acquisition. On a reported basis, net sales were favorably impacted by foreign exchange as the relatively weaker U.S. dollar increased total international sales by 1.3 percent and total sales by 0.8 percent. The 8.2 percent increase in total net sales during the first six months of 2026, excluding the impact of foreign exchange, reflected higher sales in Diagnostic Products, Medical Devices, and Established Pharmaceutical Products, partially offset by lower sales in Nutritional Products. Diagnostic Products sales increased as a result of the acquisition of Exact Sciences, while sales in Medical Devices and Established Pharmaceutical Products were driven by higher sales of existing products. Abbott’s net sales were favorably impacted by changes in foreign exchange rates in the first six months as the relatively weaker U.S. dollar increased total international sales by 3.8 percent and total sales by 2.3 percent. The table below provides detail by sales category for the six months ended June 30. Percent changes are versus the prior year and are based on unrounded numbers. (in millions) Six Months Ended June 30, 2026 Six Months Ended June 30, 2025 Total Change Impact of Foreign Exchange Total Change Excl. Foreign Exchange Established Pharmaceutical Products — Key Emerging Markets $ 2,253 $ 2,024 11.3 % 1.2 % 10.1 % Other Emerging Markets 672 619 8.6 3.7 4.9 Nutritional Products — International Pediatric Nutritionals 942 920 2.4 1.7 0.7 U.S. Pediatric Nutritionals 1,036 1,175 (11.9) — (11.9) International Adult Nutritionals 1,504 1,526 (1.5) 2.0 (3.5) U.S. Adult Nutritionals 679 737 (7.8) — (7.8) Diagnostic Products — Core Laboratory 2,690 2,535 6.1 2.9 3.2 Rapid and Molecular 1,567 1,692 (7.4) 1.4 (8.8) Cancer Diagnostics 1,015 — n/a n/a n/a Medical Devices — Rhythm Management 1,427 1,258 13.4 2.5 10.9 Electrophysiology 1,649 1,430 15.3 2.3 13.0 Heart Failure 790 707 11.7 1.3 10.4 Vascular 1,580 1,467 7.7 2.7 5.0 Structural Heart 1,175 1,112 5.7 3.1 2.6 Neuromodulation 503 482 4.3 1.7 2.6 Diabetes Care 4,268 3,808 12.1 3.9 8.2 ___________________________________ Notes: Abbott's Amplatzer Amulet Left Atrial Appendage Occluder device and related accessories were transferred from Structural Heart to Electrophysiology on January 1, 2026. As a result, $101 million of sales in the first six months of 2025 were moved from Structural Heart to Electrophysiology. Beginning in 2026, Abbott aggregated its previously reported Rapid Diagnostics, Molecular Diagnostics, and Point of Care businesses into the Rapid and Molecular Diagnostics business. On March 23, 2026, Abbott completed the acquisition of Exact Sciences. Following the acquisition, the sales of Exact Sciences are presented as Cancer Diagnostics. 27 Table of Contents In the first six months of 2026, total Established Pharmaceutical Products sales, excluding the impact of foreign exchange, increased 8.9 percent. Excluding the favorable effect of foreign exchange, sales in Key Emerging Markets for Established Pharmaceutical Products increased 10.1 percent in the first six months of 2026, led by double-digit growth in several countries across the Latin America and Asia Pacific regions. Other Emerging Markets, excluding the effect of foreign exchange, increased 4.9 percent in the first six months of 2026. Excluding the impact of foreign exchange, total Nutritional Products sales in the first six months of 2026 decreased 5.6 percent, reflecting lower sales volumes across the adult nutritional and U.S. pediatric product portfolios. In the first six months of 2026, Diagnostic Products sales increased 22.4 percent, excluding the impact of foreign exchange. The inclusion of Exact Sciences and growth in Core Laboratory were partially offset by a decline in Rapid and Molecular Diagnostics. From the acquisition date of March 23, 2026, Diagnostic Products results included approximately $1.0 billion of sales from Exact Sciences, which are reported as Cancer Diagnostics. In Core Laboratory, sales increased 3.2 percent in the first six months of 2026, excluding the impact of foreign exchange, reflecting continued growth of diagnostic test sales on the Alinity ® platform across the U.S. and Latin America, partially offset by lower sales in China due to continued challenging market conditions. In Rapid and Molecular Diagnostics, sales decreased 8.8 percent in the first six months of 2026, excluding the impact of foreign exchange, primarily reflecting lower demand for respiratory virus tests due to a weaker respiratory virus season compared to the prior year. Excluding the impact of foreign exchange, total Medical Devices sales increased 8.0 percent in the first six months of 2026, led by double‑digit growth in Electrophysiology, Rhythm Management, and Heart Failure. Diabetes Care sales increased 8.2 percent, excluding the impact of foreign exchange, driven by continued growth in Abbott’s continuous glucose monitoring (CGM) systems in the U.S. and internationally. CGM systems sales totaled $4.1 billion and $3.6 billion in the first six months of 2026 and 2025, respectively, and increased 8.6 percent excluding the impact of foreign exchange. In Rhythm Management, sales increased 10.9 percent in the first six months of 2026, excluding the impact of foreign exchange, primarily due to growth in Aveir ® leadless pacemakers. In Electrophysiology, sales increased 13.0 percent, excluding the impact of foreign exchange, primarily reflecting increased sales of ablation catheters and related portfolio products. In Heart Failure, sales increased 10.4 percent, excluding the impact of foreign exchange, primarily reflecting growth across the portfolio of ventricular assist devices and related accessories. In Vascular, sales increased 5.0 percent, excluding the impact of foreign exchange, primarily reflecting growth in endovascular products. In May 2026, Abbott announced it secured CE Mark for Libre ® Duo, its dual glucose-ketone biowearable sensor. The gross profit margin percentage was 52.5 percent for the second quarter of 2026 and the first six months of 2026, compared to 52.7 percent for the second quarter and the first six months of 2025. The decrease in the second quarter and the first six months of 2026 primarily reflects higher intangible amortization expense related to the Exact Sciences acquisition and the unfavorable impact of higher costs, partially offset by favorable business mix, including the addition of Exact Sciences, continued margin improvement initiatives, and foreign exchange. Research and development (R&D) expenses increased $167 million to $892 million, or 22.9 percent, in the second quarter of 2026 compared to the prior year, and increased $218 million to $1.7 billion, or 15.1 percent, in the first six months of 2026 compared to the prior year. The increase in R&D expenses in the second quarter and the first six months of 2026 primarily reflects the addition of the Exact Sciences business, as well as continued investment in development programs across multiple businesses. Selling, general, and administrative (SG&A) expenses increased $934 million to $4.0 billion in the second quarter, or 30.3 percent, and increased $1.6 billion to $7.8 billion, or 26.2 percent, in the first six months of 2026, primarily due to the addition of the Exact Sciences business and related integration expenses, as well as higher legal reserves, increased selling and marketing spend to drive growth across various businesses, and the unfavorable impact of foreign exchange. Business Acquisition On March 23, 2026, Abbott completed the acquisition of Exact Sciences for approximately $20.6 billion. The acquisition was funded primarily through the issuance of $20.0 billion of long-term debt in March 2026, with the remainder funded by cash on hand. Under the terms of the agreement, Abbott paid $105 per common share in cash. As part of the acquisition, Abbott assumed approximately $2.8 billion of Exact Sciences’ debt, nearly all of which was repaid as of June 30, 2026. The acquisition of Exact Sciences has established Abbott's position in the cancer diagnostics market and expands its portfolio to include products such as Cologuard ® , Oncotype DX ® , and Cancerguard ® . 28 Table of Contents The preliminary allocation of the fair value of the Exact Sciences acquisition is shown in the table below. Allocation of the purchase price of the acquisition will be finalized when the valuation of assets and liabilities is completed and differences between the preliminary and final allocation could be material. (in billions) Acquired intangible assets, non-deductible $ 12.8 Goodwill, non-deductible 11.4 Acquired net tangible assets 0.4 Deferred income taxes recorded at acquisition (2.0) Net debt (2.0) Total preliminary allocation of fair value $ 20.6 The goodwill is primarily attributable to future growth opportunities, assembled workforce, potential future technologi",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1800/000110465926099247/tm2623675d1_8k.htm",
+   "published": "2026-08-20T16:33:15-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01,9.01",
+   "text": "Item 7.01 Regulation FD Disclosure. On August 20, 2026, Abbott issued a press release announcing the settlement of a portion of its litigation involving its specialty formulas for preterm infants. A copy of the press release is furnished hereto as Exhibit 99.1 and is incorporated herein by reference. The information contained in this Item 7.01, including Exhibit 99.1, is being furnished and shall not be deemed “filed” for the purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference into any registration statement or other filing under the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference to such filing. Item 8.01 Other Events. As previously reported in Abbott’s Annual Report on Form 10-K for the fiscal year ended December 31, 2025 and its Quarterly Report on Form 10-Q for the quarterly period ended June 30, 2026, Abbott is a defendant in numerous lawsuits alleging that preterm infants developed necrotizing enterocolitis (“NEC”) as a result of being administered certain of Abbott’s preterm infant formula products. In a July 2024 Missouri state court trial, a jury awarded a plaintiff (“ Gill ”) $495 million in damages, which Abbott appealed to the Missouri Court of Appeals in December 2024. The Missouri Court of Appeals affirmed the Gill verdict in May 2026. On August 20, 2026, rather than continuing to appeal or paying approximately $600 million (representing the Gill judgment plus accrued interest to date), Abbott entered into agreements to resolve the Gill lawsuit as well as NEC claims asserted on behalf of approximately 2,000 additional infants for an aggregate amount of approximately $670 million. These agreements are a compromise of disputed claims and not in any way an admission of liability. While Abbott remains confident in the safety of these products and the science supporting them, the company believes these agreements are in its best long-term interest and represent a constructive step toward substantially resolving the overall litigation. Following these agreements, there are approximately 1,700 lawsuits pending in federal and state courts involving claims on behalf of approximately 12,700 individual infants. That population includes claims on behalf of individuals who named both Abbott and Mead Johnson as defendants without identifying which manufacturer’s formula was adminis",
+   "exhibit_99_1": "EX-99.1 2 tm2623675d1_ex99-1.htm EXHIBIT 99.1 Exhibit 99.1 Abbott reaches agreements to resolve a portion of litigation involving its specialty formulas for preterm infants · Agreements will resolve the Gill case and claims involving approximately 2,000 other individuals · Abbott and the medical community stand by the safety of preterm infant formulas · Regulators and medical professionals recognize that these products are safe and necessary, and there is no reliable scientific evidence that they cause necrotizing enterocolitis ABBOTT PARK, Ill., Aug. 20, 2026 — Abbott has reached agreements with three law firms to resolve the Gill case and claims involving approximately 2,000 other individuals relating to the company’s specialty formulas for preterm infants. In July 2024, a St. Louis jury awarded the plaintiff in the Gill case $495 million in damages. Abbott appealed the verdict to the Missouri Court of Appeals in December 2024, but the appeal was denied. Rather than continuing to appeal or paying approximately $600 million, representing the Gill judgment plus accrued interest to date, Abbott entered into agreements to resolve the Gill case as well as necrotizing enterocolitis (NEC) claims asserted on behalf of approximately 2,000 additional infants for an aggregate amount of approximately $670 million. These agreements are a compromise of disputed claims and not in any way an admission of liability. Abbott stands by the safety of these products and the essential role they play in helping the medical community care for preterm infants. The Food and Drug Administration, National Institutes of Health, Centers for Disease Control and Prevention, American Academy of Pediatrics, NEC Society, neonatologists and other medical professionals recognize that these products are safe and necessary, and that there is no reliable scientific evidence that they cause NEC. 1 The agreements follow a series of favorable rulings for preterm formula manufacturers in federal and state courts, including victories in all three federal Multidistrict Litigation (MDL) bellwether cases. In July 2026, the U.S. Court of Appeals for the Seventh Circuit affirmed a pretrial judgment for Abbott in the first federal MDL bellwether case involving the company's preterm infant formulas. In June 2026, the Illinois Appellate Court reversed a $60 million verdict against Mead Johnson, finding that the trial court failed to properly apply the learned intermediary doctrine governing a manufacturer's"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/global-wearable-electronics-market-report-092900162.html?.tsrc=rss",
+   "published": "2026-10-19T05:29:00-04:00",
+   "text": "Global Wearable Electronics Market Report 2026-2036 | AI, Extended Reality, and Digital Health Drive New Growth and Investment Opportunities - Dublin, Oct. 19, 2026 (GLOBE NEWSWIRE) -- \"The Global Wearable Electronics Market 2026-2036\" has been added to ResearchAndMarkets.com's offering. The global wearable electronics market is undergoing a structural transformation as the industry expands beyond wrist-worn fitness trackers and smartwatch",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.proactiveinvestors.com/companies/news/1100264/tamboran-resources-appoints-todd-abbott-managing-director-as-beetaloo-moves-into-development-1100264.html?.tsrc=rss",
+   "published": "2026-10-18T18:52:00-04:00",
+   "text": "Tamboran Resources appoints Todd Abbott managing director as Beetaloo moves into development - Tamboran Resources Corporation (NYSE:TBN, ASX:TBN, OTC:TBNRL, FRA:O8R) has appointed chief executive officer (CEO) Todd Abbott as managing director as the company moves from appraisal into development of its Beetaloo Basin gas assets in the Northern Territory. The appointment takes effect on...",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/17/i-just-invested-usd4-600-across-3-top-dividend-stocks-here-s-what-i-m-loading-up-on-right-now/?.tsrc=rss",
+   "published": "2026-10-17T11:20:02-04:00",
+   "text": "I Just Invested $4,600 Across 3 Top Dividend Stocks. Here’s What I’m Loading Up on Right Now. - These companies pay durable and growing dividends.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/17/abbvies-dividend-keeps-climbing-is-it-still-a-buy-for-income-investors/?.tsrc=rss",
+   "published": "2026-10-17T08:00:20-04:00",
+   "text": "AbbVie’s Dividend Keeps Climbing. Is It Still a Buy for Income Investors? - AbbVie's stock has surged nearly 29% this year, but a rising share price compresses the yield even as the dividend keeps growing. Before adding shares for income, consider what the pending Apogee deal and lingering debt load could mean for the payout's future.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/1b30f58f-c6f1-3c9e-a7a3-eebb1dcf0764/berkshire%E2%80%99s-mind-bender.html?.tsrc=rss",
+   "published": "2026-10-16T19:29:00-04:00",
+   "text": "Berkshire’s Mind-Bender - Why is Berkshire Hathaway betting on richly valued Bending Spoons?",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/abbott-laboratories-abt-launches-ensure-140937143.html?.tsrc=rss",
+   "published": "2026-10-16T10:09:37-04:00",
+   "text": "Abbott Laboratories (ABT) Launches Ensure Max Protein As Undervalued View Faces A Fresh Test - Abbott Laboratories (ABT) just introduced Ensure Max Protein 3-in-1 Muscle Support, a powder that combines protein, creatine and HMB in a single product, putting its nutrition business back in focus for investors. Recent trading suggests interest in Abbott Laboratories is picking up again, with a 7-",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/countdown-abbott-abt-q3-earnings-121527686.html?.tsrc=rss",
+   "published": "2026-10-16T08:15:27-04:00",
+   "text": "Countdown to Abbott (ABT) Q3 Earnings: A Look at Estimates Beyond Revenue and EPS - Beyond analysts' top-and-bottom-line estimates for Abbott (ABT), evaluate projections for some of its key metrics to gain a better insight into how the business might have performed for the quarter ended September 2026.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/etf/2026/10/16/why-schds-income-is-unshakable-this-year-6-dividend-aristocrats-doing-the-heavy-lifting/?.tsrc=rss",
+   "published": "2026-10-16T07:50:38-04:00",
+   "text": "Why SCHD’s Income Is Unshakable This Year: 6 Dividend Aristocrats Doing the Heavy Lifting - Six Dividend Aristocrats shoulder a big chunk of SCHD's 3.8% yield, but two of them are paying dividends that their earnings barely cover. Here is how close to the edge each one actually sits.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/reasons-add-ste-stock-portfolio-111400860.html?.tsrc=rss",
+   "published": "2026-10-16T07:14:00-04:00",
+   "text": "Reasons to Add STE Stock to Your Portfolio Right Now - STERIS' strong Healthcare growth, improving AST prospects and rising Life Sciences demand bolster its outlook, despite tariff and inflationary pressures.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/haemonetics-gains-149-3-whats-111400608.html?.tsrc=rss",
+   "published": "2026-10-16T07:14:00-04:00",
+   "text": "Haemonetics Gains 149.3% in a Year: What's Driving the Rally? - HAE shares surged 149.3% in a year, fueled by strong Plasma and MedSurg growth, rising product demand and an upbeat fiscal 2027 revenue outlook.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/apt-retain-medtronic-stock-portfolio-105600631.html?.tsrc=rss",
+   "published": "2026-10-16T06:56:00-04:00",
+   "text": "Is it Apt to Retain Medtronic Stock in Your Portfolio Now? - MDT expands in cardiac ablation, robotics, hypertension and digital surgery, but tariff, inflation and currency risks are likely to pressure margins.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618844/is-medtronic-stock-a-buy-now-that-sales-growth-has-picked-up/2026-10-15?.tsrc=rss",
+   "published": "2026-10-15T17:01:11-04:00",
+   "text": "Is Medtronic Stock A Buy Now That Sales Growth Has Picked Up? - Investors considering Medtronic (MDT) stock face an immediate concern: the shares returned 1.9% over the past year, trailing the 17.3% gain for the S&P 500. Yet Medtronic raised its outlook for the year in September, following higher fiscal first-quarter profit and sales. The company is also splitti",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618866/is-boston-scientific-stock-riskier-than-it-was-a-year-ago/2026-10-15?.tsrc=rss",
+   "published": "2026-10-15T15:18:07-04:00",
+   "text": "Is Boston Scientific Stock Riskier Than It Was A Year Ago? - Investors in Boston Scientific (BSX) hold stakes in a medical device maker that grew revenue 13.5% over the twelve months to June 2026. Yet the shares have lost 54.7% over the past year, trailing a 17.3% gain for the S&P 500. In August, a cyberattack disrupted the company's manufacturing and order s",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/15/3-overlooked-healthcare-dividend-stocks-that-could-keep-paying-for-decades/?.tsrc=rss",
+   "published": "2026-10-15T11:45:58-04:00",
+   "text": "3 Overlooked Healthcare Dividend Stocks That Could Keep Paying for Decades - Most income investors chase flashy yields and overlook the quiet compounders that have raised their dividends through recessions, rate shocks, and global pandemics. Three healthcare stocks prove that the most reliable paycheck in a portfolio is often the one nobody talks about.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/apt-retain-prestige-consumer-stock-132300027.html?.tsrc=rss",
+   "published": "2026-10-15T09:23:00-04:00",
+   "text": "Is it Apt to Retain Prestige Consumer Stock in Your Portfolio Now? - PBH's brand-building, acquisitions and e-commerce growth support fiscal 2027 revenue gains, but competition and currency risks remain key challenges.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/apt-retain-haemonetics-stock-portfolio-122800826.html?.tsrc=rss",
+   "published": "2026-10-15T08:28:00-04:00",
+   "text": "Is it Apt to Retain Haemonetics Stock in Your Portfolio for Now? - HAE's MedSurg growth and NexSys PCS adoption support its prospects, but competitive pressures and unfavorable currency movements pose risks.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618679/what-could-bsx-stock-be-worth-in-three-years/2026-10-14?.tsrc=rss",
+   "published": "2026-10-14T16:55:29-04:00",
+   "text": "What Could BSX Stock Be Worth In Three Years? - Boston Scientific (BSX) stock currently trades at 17.2 times earnings. This compares to an average multiple of 55.9 over the last twelve quarter-ends, excluding readings above a hundred. Investors evaluating the stock must look ahead to model potential returns. So what might a share bought at $43.31",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/14/medtronic-pays-more-today-abbott-raises-its-dividend-faster-which-stock-wins/?.tsrc=rss",
+   "published": "2026-10-14T08:15:16-04:00",
+   "text": "Medtronic Pays More Today. Abbott Raises Its Dividend Faster. Which Stock Wins? - Both are Dividend Kings with decades of consecutive raises, but Medtronic and Abbott reward income investors in fundamentally different ways, and choosing the wrong one in retirement could cost you more than you expect.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/bet-healthcare-etfs-benefit-aging-120900374.html?.tsrc=rss",
+   "published": "2026-10-14T08:09:00-04:00",
+   "text": "Bet on These Healthcare ETFs to Benefit From the Aging US Population - With the US population aging rapidly, three healthcare ETFs offer exposure to companies developing treatments, drugs and medical devices for age-related conditions.",
+   "feed": {
+    "fetched_et": "2026-10-19T14:31:14-04:00",
+    "sha256": "2615874f75636805f3e79aaf866c25250caebe9fc94de61c47a0dc6b35b1a886"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 53282
+}

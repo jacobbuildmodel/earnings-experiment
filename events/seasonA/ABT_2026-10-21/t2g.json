@@ -1,0 +1,107 @@
+{
+ "track": "T2G",
+ "event": "ABT_2026-10-21",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.53,
+  "thesis": "Abbott enters Q3 with strong Medical Devices momentum and reduced infant-formula litigation overhang following its August settlement, but soft Nutrition sales and a cautious 1-in-4 past earnings win rate temper the upside.",
+  "reasons": [
+   "Core medical device franchise (Electrophysiology, Libre continuous glucose monitoring) and Exact Sciences integration delivered strong Q2 momentum and guidance raises.",
+   "August 2026 NEC formula litigation settlement of $670M cleared a massive catastrophic legal cloud that weighed heavily on 12-month share performance (-16.2%).",
+   "Valuation at 17.2x forward P/E is historically modest, though three out of the last four earnings releases resulted in negative open-to-open moves."
+  ],
+  "deciding_variable": "Q3 organic Medical Device sales growth (particularly Libre and Electrophysiology) and full-year EPS guidance reiteration or raise.",
+  "prior": {
+   "p": 0.55,
+   "from": "Dossier base rates for BMO sessions (0.548 across 898 events) and overall validation rate (0.542)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down 2 percentage points from the 0.55 BMO prior to 0.53, balancing constructive device momentum and legal relief against the poor historical 4-quarter reaction track record (25% win rate) and ongoing pediatric nutrition volume declines.",
+  "theses": [
+   {
+    "expected": "Abbott beats Q3 EPS consensus of $1.41 and nudges the full-year adjusted EPS floor toward the upper half of its $5.45-$5.60 range, driving an opening gain.",
+    "mechanism": "Double-digit organic growth in Diabetes Care and Electrophysiology offsets lingering weakness in Nutrition and legacy diagnostics.",
+    "wrong_if": "Pediatric nutrition margins contract further or Exact Sciences integration costs suppress operating margins below consensus."
+   },
+   {
+    "expected": "Guidance is merely reaffirmed at current midpoint with no upward revision, causing the stock to open flat to slightly negative.",
+    "mechanism": "Conservative management guidance heading into Q4 leaves short-term momentum traders disappointed after a recent +3.1% 5-day run-up.",
+    "wrong_if": "Strong cash generation and positive pipeline catalysts (such as Libre Duo or IVL pivotal updates) trigger institutional re-rating."
+   },
+   {
+    "expected": "Unexpected legal accruals or foreign exchange drag erode earnings quality, causing an opening decline.",
+    "mechanism": "Remaining NEC claims (approx. 12,700 infant cases) force additional unexpected reserve build.",
+    "wrong_if": "The August settlement has established an acceptable liability ceiling in the eyes of institutional investors."
+   }
+  ],
+  "key_observations": [
+   "Adjusted diluted EPS vs consensus estimate of $1.41 (guidance was $1.38-$1.46)",
+   "Full-year 2026 adjusted EPS guidance (previously $5.45 to $5.60)",
+   "Diabetes Care / FreeStyle Libre sales growth rate (was +11.0% reported in Q2)",
+   "Worldwide Nutrition segment sales and whether volume declines in pediatric formulas show stabilization",
+   "Updates on remaining NEC preterm infant formula litigation exposure"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/ABT_2026-10-21/gate.json",
+    "published": "2026-10-19T14:31:00.262208-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/ABT_2026-10-21/factors.json",
+    "published": "2026-10-19T14:31:00.262208-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1800/000162828026048377/abt-2026q2xexhibitx991.htm",
+    "published": "2026-07-16T07:36:19-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1800/000162828026050134/abt-20260630.htm",
+    "published": "2026-07-28T16:02:56-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1800/000110465926099247/tm2623675d1_8k.htm",
+    "published": "2026-08-20T16:33:15-04:00",
+    "dossier_item": "I6"
+   }
+  ],
+  "decided_et": "2026-10-19T18:17:32-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 19127,
+   "candidatesTokenCount": 806,
+   "totalTokenCount": 21099,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 19127
+    }
+   ],
+   "thoughtsTokenCount": 1166,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
