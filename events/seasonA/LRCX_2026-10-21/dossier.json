@@ -1,0 +1,628 @@
+{
+ "event": "LRCX_2026-10-21",
+ "season": "seasonA",
+ "built_et": "2026-10-20T14:31:12-04:00",
+ "cutoff_et": "2026-10-20T14:31:00.318234-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/LRCX_2026-10-21/gate.json",
+   "published": "2026-10-20T14:31:00.318234-04:00",
+   "data": {
+    "ticker": "LRCX",
+    "report_date": "2026-10-21",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-21"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-22"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-22"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "reaction_day": "2026-10-22"
+    },
+    "snapshot_session": "2026-10-20",
+    "captured_et": "2026-10-20T14:31:00.318234-04:00",
+    "options": {
+     "spot": 265.29998779296875,
+     "expiry": "2026-10-23",
+     "strike": 265.0,
+     "call": {
+      "bid": 10.0,
+      "ask": 10.45,
+      "openInterest": 121.0,
+      "lastPrice": 10.25,
+      "impliedVolatility": 0.9101571484375,
+      "lastTradeDate": "2026-10-20T18:15:44+00:00"
+     },
+     "put": {
+      "bid": 9.7,
+      "ask": 10.2,
+      "openInterest": 363.0,
+      "lastPrice": 9.8,
+      "impliedVolatility": 0.9123543920898438,
+      "lastTradeDate": "2026-10-20T18:09:20+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.07604598917563424,
+     "rel_spread": {
+      "call": 0.04400977995110018,
+      "put": 0.05025125628140704
+     },
+     "oi_atm": 484.0,
+     "oi_sum": 2611.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/LRCX_2026-10-21/factors.json",
+   "published": "2026-10-20T14:31:00.318234-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.8834386265945646,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.12140460453176483,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.11892663578321261,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.03528049676830092,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.6672715563506878,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7727054602441602,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.3871141514389618,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-29",
+       "session": "AMC",
+       "raw_return_A": 0.203319290707763,
+       "eps_est": 1.68,
+       "eps_rep": 1.82,
+       "surprise_pct": 8.1,
+       "reaction_volume_ratio": 1.8495654704455
+      },
+      {
+       "date": "2026-04-22",
+       "session": "AMC",
+       "raw_return_A": 0.012762188306392197,
+       "eps_est": 1.36,
+       "eps_rep": 1.47,
+       "surprise_pct": 7.87,
+       "reaction_volume_ratio": 1.376231843091331
+      },
+      {
+       "date": "2026-01-28",
+       "session": "AMC",
+       "raw_return_A": 0.017988115459216747,
+       "eps_est": 1.17,
+       "eps_rep": 1.27,
+       "surprise_pct": 8.7,
+       "reaction_volume_ratio": 1.3429971963606644
+      },
+      {
+       "date": "2025-10-22",
+       "session": "AMC",
+       "raw_return_A": -0.04761897972315332,
+       "eps_est": 1.22,
+       "eps_rep": 1.26,
+       "surprise_pct": 3.27,
+       "reaction_volume_ratio": 1.172257183553803
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.4352629233628247,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 8.1,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 2.17953,
+      "7daysAgo": 2.17706,
+      "30daysAgo": 2.17786,
+      "60daysAgo": 2.17786,
+      "90daysAgo": 1.8282,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.19217262881522817,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 2.17953,
+      "low": 2.09,
+      "high": 2.28,
+      "yearAgoEps": 1.26,
+      "numberOfAnalysts": 25,
+      "growth": 0.72980005,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.08717475786063965,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0207,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 22.548613,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 14.290334,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.3,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 332002885632,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.45714,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.07604598917563424,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.002197243652343861,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.014648291015625148,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.0436941410129097,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.609617394940414,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 6174.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.365644558936897,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.07817730397333075,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 91,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.29988921747003183,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.3739064281865652,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.8833144845396561,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.1189847094875609,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.03528049676830092,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.6672817003914236,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.5097538143200409,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.05472663944067539,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 331953564709.99146,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.06998777079046298,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.34848638168296187,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000033/lrcx_exhibitx991xq4x2026.htm",
+   "published": "2026-07-29T16:07:10-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 lrcx_exhibitx991xq4x2026.htm EX-99.1 Document Exhibit 99.1 FOR IMMEDIATE RELEASE Lam Research Corporation Reports Financial Results for the Quarter Ended June 28, 2026 FREMONT, Calif., July 29, 2026 - Lam Research Corporation (the \"Company,\" \"Lam,\" \"Lam Research\") today announced financial results for the quarter ended June 28, 2026 (the “June 2026 quarter”). Highlights for the June 2026 quarter were as follows: • Revenue of $6.72 billion. • U.S. GAAP gross margin as a percent of revenue of 51.7%, U.S. GAAP operating margin as a percent of revenue of 37.4%, and U.S. GAAP diluted EPS of $1.81. • Non-GAAP gross margin as a percent of revenue of 52.0%, non-GAAP operating margin as a percent of revenue of 38.4%, and non-GAAP diluted EPS of $1.82. Key Financial Data for the Quarters Ended June 28, 2026 and March 29, 2026 (in thousands, except per-share data, percentages, and basis points) U.S. GAAP June 2026 March 2026 Change Q/Q Revenue $ 6,722,238 $ 5,841,488 +15.1% Gross margin 51.7 % 49.8 % + 190 bps Operating margin 37.4 % 35.0 % + 240 bps Diluted EPS $ 1.81 $ 1.45 +24.8% Non-GAAP June 2026 March 2026 Change Q/Q Revenue $ 6,722,238 $ 5,841,488 +15.1% Gross margin 52.0 % 49.9 % + 210 bps Operating margin 38.4 % 35.0 % + 340 bps Diluted EPS $ 1.82 $ 1.47 +23.8% U.S. GAAP Financial Results For the June 2026 quarter, revenue was $6.72 billion, gross margin was $3.48 billion, or 51.7% of revenue, operating expenses were $965.3 million, operating margin was 37.4% of revenue, and net income was $2.28 billion, or $1.81 per diluted share on a U.S. GAAP basis. This compares to revenue of $5.84 billion, gross margin of $2.91 billion, or 49.8% of revenue, operating expenses of $863.5 million, operating margin of 35.0% of revenue, and net income of $1.83 billion, or $1.45 per diluted share, for the quarter ended March 29, 2026 (the “March 2026 quarter”). Non-GAAP Financial Results For the June 2026 quarter, non-GAAP gross margin was $3.50 billion, or 52.0% of revenue, non-GAAP operating expenses were $916.4 million, non-GAAP operating margin was 38.4% of revenue, and non-GAAP net income was $2.28 billion, or $1.82 per diluted share. This compares to non-GAAP gross margin of $2.91 billion, or 49.9% of revenue, non-GAAP operating expenses of $866.2 million, non-GAAP operating margin of 35.0% of revenue, and non-GAAP net income of $1.85 billion, or $1.47 per diluted share, for the March 2026 quarter. “Lam delivered record revenue, operating margin and earnings per share in the June quarter as AI-driven demand continues to reshape the semiconductor industry,” said Tim Archer, Lam Research's President and Chief Executive Officer. “Our strategic investments and technology leadership are helping customers accelerate through rising manufacturing complexity, positioning Lam for a third consecutive year of outperformance in 2026.” Balance Sheet and Cash Flow Results Cash, cash equivalents, and restricted cash balances increased to $5.60 billion at the end of the June 2026 quarter compared to $4.77 billion at the end of the March 2026 quarter. The increase was primarily driven by cash generated from operating activities, partially offset by cash deployed for capital return activities during the quarter. Deferred revenue at the end of the June 2026 quarter increased to $2.43 billion compared to $2.22 billion as of the end of the March 2026 quarter. Lam's deferred revenue balance does not include shipments to customers in Japan, to whom title does not transfer until customer acceptance. Shipments to customers in Japan are classified as inventory at cost until the time of acceptance. The estimated future revenue from shipments to customers in Japan was approximately $490.2 million as of June 28, 2026 and $434.3 million as of March 29, 2026. Revenue The geographic distribution of revenue during the June 2026 quarter is shown in the following table: Region Revenue Taiwan 27% China 26% Korea 20% Japan 9% United States 9% Southeast Asia 5% Europe 4% The following table presents revenue disaggregated between systems and customer support-related revenue: Three Months Ended June 28, 2026 March 29, 2026 June 29, 2025 (In thousands) Systems revenue $ 4,249,848 $ 3,730,582 $ 3,437,625 Customer support-related revenue and other 2,472,390 2,110,906 1,733,768 $ 6,722,238 $ 5,841,488 $ 5,171,393 Systems revenue includes sales of new leading-edge equipment in deposition, etch and other wafer fabrication markets. Customer support-related revenue includes sales of customer service, spares, upgrades, and non-leading-edge equipment from our Reliant® product line. Outlook For the quarter ended September 27, 2026, Lam is providing the following guidance: U.S. GAAP Reconciling Items Non-GAAP Revenue $8.10 Billion +/- $400 Million — $8.10 Billion +/- $400 Million Gross margin 52.0% +/- 1% $ 2.7 Million 52.0% +/- 1% Operating margin 39.5% +/- 1% $ 3.0 Million 39.5% +/- 1% Net income per diluted share $2.15 +/- $0.15 $ 3.3 Million $2.15 +/- $0.15 Diluted share count 1.255 Billion — 1.255 Billion The information provided above is only an estimate of what the Company believes is realizable as of the date of this release and does not incorporate the potential impact of any business combinations, asset acquisitions, divestitures, restructuring, balance sheet valuation adjustments, financing arrangements, other investments, or other items that may be completed or realized after the date of this release, except as described below. U.S. GAAP to non-GAAP reconciling items provided include only those items that are known and can be estimated as of the date of this release. Actual results will vary from this model and the variations may be material. Reconciling items included above are as follows: • Gross margin - amortization related to intangible assets acquired through business combinations, $2.7 million. • Operating margin - amortization related to intangible assets acquired through business combinations, $3.0 million. • Net income per diluted share - amortization related to intangible assets acquired though business combinations, $3.0 million; amortization of debt discounts, $0.5 million; and associated tax benefit for non-GAAP items ($0.2 million); totaling $3.3 million. Use of Non-GAAP Financial Results In addition to U.S. GAAP results, this press release also contains non-GAAP financial results. The Company’s non-GAAP results for both the June 2026 and March 2026 quarters exclude amortization related to intangible assets acquired through business combinations, the effects of elective deferred compensation-related assets and liabilities, amortization of note discounts, workforce optimization charges, and the net income tax effect of non-GAAP items. Management uses non-GAAP gross margin, operating expense, operating income, operating margin, net income, and net income per diluted share to evaluate the Company’s operating and financial results. The Company believes the presentation of non-GAAP results is useful to investors for analyzing business trends and comparing performance to prior periods, along with enhancing investors’ ability to view the Company’s results from management’s perspective. Tables presenting reconciliations of non-GAAP results to U.S. GAAP results are included at the end of this press release and on the Company’s website at https://investor.lamresearch.com . Caution Regarding Forward-Looking Statements Statements made in this press release that are not of historical fact are forward-looking statements and are subject to the safe harbor provisions created by the Private Securities Litigation Reform Act of 1995. Such forward-looking statements relate to, but are not limited to: our outlook and guidance for future financial results, including revenue, gross margin, operating margin, net income per diluted share, and diluted share count; the effect of AI-driven demand on the semiconductor industry; the rising complexity of semiconductor manufacturing and the extent to which our investments and technology leadership help customers; and our positioning for outperformance. Some factors that may affect these forward-looking statements include: business, economic, political and/or regulatory conditions in the consumer electronics industry, the semiconductor industry and the overall economy may deteriorate or change; the actions of our customers and competitors may be inconsistent with our expectations; trade regulations, export controls, tariffs, trade disputes, and other geopolitical tensions may inhibit our ability to sell our products; supply chain cost increases, tariffs, export controls and other inflationary pressures have impacted and may continue to impact our profitability; supply chain disruptions, export controls or manufacturing capacity constraints may limit our ability to manufacture and sell our products; and natural and human-caused disasters, disease outbreaks, war, terrorism, political or governmental unrest or instability, or other events beyond our control may impact our operations and revenue in affected areas; as well as the other risks and uncertainties that are described in the documents filed or furnished by us with the Securities and Exchange Commission, including specifically the Risk Factors described in our most recently filed periodic reports on Form 10-K and Form 10-Q and subsequent filings. These uncertainties and changes could materially affect the forward-looking statements and cause actual results to vary from expectations in a material way. The Company undertakes no obligation to update the information or statements made in this release. Lam Research Corporation is a global supplier of innovative wafer fabrication equipment and services to the semiconductor industry. Lam's equipment and services allow customers to build smaller and better performing devices. In fact, today, nearly every advanced chip is built with Lam technology. We combine superior systems engineering, technology leadership, and a strong values-based culture, with an unwavering commitment to our customers. Lam Research (Nasdaq: LRCX) is a FORTUNE 500® company headquartered in Fremont, Calif., with operations around the globe. Learn more at www.lamresearch.com. (LRCX) Consolidated Financial Tables Follow. ### LAM RESEARCH CORPORATION CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (in thousands, except per share data and percentages) Three Months Ended Twelve Months Ended June 28, 2026 March 29, 2026 June 29, 2025 June 28, 2026 June 29, 2025 (unaudited) (unaudited) (unaudited) (unaudited) (1) Revenue $ 6,722,238 $ 5,841,488 $ 5,171,393 $ 23,232,690 $ 18,435,591 Cost of goods sold 3,243,498 2,930,961 2,581,684 11,507,382 9,456,532 Gross margin 3,478,740 2,910,527 2,589,709 11,725,308 8,979,059 Gross margin as a percent of revenue 51.7 % 49.8 % 50.1 % 50.5 % 48.7 % Research and development 642,922 583,200 580,178 2,375,873 2,096,387 Selling, general and administrative 322,330 280,311 268,403 1,149,640 981,704 Total operating expenses 965,252 863,511 848,581 3,525,513 3,078,091 Operating income 2,513,488 2,047,016 1,741,128 8,199,795 5,900,968 Operating margin 37.4 % 35.0 % 33.7 % 35.3 % 32.0 % Other income (expense), net 41,654 (35,460) 37,853 62,678 57,161 Income before income taxes 2,555,142 2,011,556 1,778,981 8,262,473 5,958,129 Income tax expense (277,860) (186,096) (58,893) (997,077) (599,912) Net income $ 2,277,282 $ 1,825,460 $ 1,720,088 $ 7,265,396 $ 5,358,217 Net income per share: Basic $ 1.82 $ 1.46 $ 1.35 $ 5.79 $ 4.17 Diluted $ 1.81 $ 1.45 $ 1.35 $ 5.76 $ 4.15 Number of shares used in per share calculations: Basic 1,251,286 1,249,728 1,274,279 1,255,079 1,286,101 Diluted 1,256,032 1,257,325 1,276,933 1,261,102 1,290,142 Cash dividend declared per common share $ 0.26 $ 0.26 $ 0.23 $ 1.04 $ 0.92 (1) Derived from audited financial statements LAM RESEARCH CORPORATION CONDENSED CONSOLIDATED BALANCE SHEETS (in thousands) June 28, 2026 March 29, 2026 June 29, 2025 (unaudited) (unaudited) (1) ASSETS Cash and cash equivalents $ 5,579,171 $ 4,750,936 $ 6,390,659 Accounts receivable, net 5,339,682 4,132,890 3,378,071 Inventories 4,276,111 3,999,992 4,307,991 Prepaid expenses and other current assets 415,741 413,099 440,274 Total current assets 15,610,705 13,296,917 14,516,995 Property and equipment, net 2,956,472 2,853,614 2,428,744 Goodwill and intangible assets 1,895,859 1,882,017 1,808,685 Other assets 3,066,707 2,759,362 2,590,836 Total assets $ 23,529,743 $ 20,791,910 $ 21,345,260 LIABILITIES AND STOCKHOLDERS’ EQUITY Current portion of long-term debt and finance lease obligations $ 4,073 $ 4,095 $ 754,311 Other current liabilities 5,933,176 5,238,303 5,814,114 Total current liabilities 5,937,249 5,242,398 6,568,425 Long-term debt and finance lease obligations 3,730,490 3,730,384 3,730,194 Income taxes payable 681,197 621,572 603,412 Other long-term liabilities 709,886 612,777 581,610 Total liabilities 11,058,822 10,207,131 11,483,641 Stockholders’ equity (2) 12,470,921 10,584,779 9,861,619 Total liabilities and stockholders’ equity $ 23,529,743 $ 20,791,910 $ 21,345,260 (1) Derived from audited financial statements (2) Common shares issued and outstanding were 1,251,278 as of June 28, 2026, 1,250,539 as of March 29, 2026, and 1,268,740 as of June 29, 2025 LAM RESEARCH CORPORATION CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (in thousands) Three Months Ended Twelve Months Ended June 28, 2026 March 29, 2026 June 29, 2025 June 28, 2026 June 29, 2025 (unaudited) (unaudited) (unaudited) (unaudited) (1) CASH FLOWS FROM OPERATING ACTIVITIES: Net income $ 2,277,282 $ 1,825,460 $ 1,720,088 $ 7,265,396 $ 5,358,217 Adjustments to reconcile net income to net cash provided by operating activities: Depreciation and amortization 119,642 116,322 98,439 441,533 386,277 Deferred income taxes (175,752) (19,478) (151,679) (289,062) (363,247) Equity-based compensation expense 103,985 96,616 94,286 386,381 343,371 Other, net (8,006) (2,855) 14,240 (32,712) 6,845 Changes in op",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000037/lrcx-20260628.htm",
+   "published": "2026-08-07T16:06:32-04:00",
+   "form": "10-K",
+   "section": "MD&A",
+   "text": "Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following Management’s Discussion and Analysis of Financial Condition and Results of Operations (“MD&A”) generally discusses fiscal year 2026 and 2025 items and year-to-year comparisons between fiscal year 2026 and 2025 and should be read in conjunction with our Consolidated Financial Statements and accompanying Notes to Consolidated Financial Statements included in Part II, Item 8 of this 2026 Form 10-K. A discussion of fiscal year 2024 items and year-to-year comparisons between fiscal year 2025 and 2024 that are not included in this 2026 Form 10-K can be found in “Management’s Discussion and Analysis of Financial Condition and Results of Operations” in Part II, Item 7 of our Annual Report on Form 10-K for the fiscal year ended June 29, 2025. Executive Summary Lam Research Corporation is a global supplier of innovative wafer fabrication equipment and services to the semiconductor industry. We have built a strong global presence with core competencies in areas like nanoscale manufacturing enablement, chemistry, plasma and fluidics, advanced systems engineering and a broad range of operational disciplines. Our products and services are designed to help our customers build smaller and better performing devices that are used in a variety of electronic products, including mobile phones, personal computers, cloud and enterprise servers, wearables, automotive vehicles, and data storage devices. Our customer base includes leading semiconductor memory, foundry, and integrated device manufacturers that make products such as NVM, DRAM, and logic devices. Their continued success is part of our commitment to driving semiconductor breakthroughs that define the next generation. Our core technical competency is integrating hardware, process, materials, software, and process control, enabling results on the wafer. Semiconductor manufacturing, our customers’ business, involves the fabrication of multiple dies or integrated circuits on a wafer. This involves the repetition of a set of core processes and can require hundreds of individual steps. Fabricating these devices requires a sequence of highly sophisticated process technologies to integrate an increasing array of new materials with precise control at the atomic scale. Along with meeting technical requirements, wafer processing equipment must deliver high productivity and be cost-effective. Demand for electronic systems supporting artificial intelligence, cloud infrastructure, communications, automotive, industrial and other intelligent systems is driving the need for high performance, energy efficient and highly integrated semiconductor devices. To meet these requirements, semiconductor manufacturers are adopting vertical scaling approaches, including three-dimensional (“3D”) architecture, more sophisticated patterning schemes, new materials, and advanced integration approaches, as traditional two-dimensional scaling is becoming more challenging. These technology inflections are increasing manufacturing complexity and precision requirements in the production of semiconductors driving demand for our advanced semiconductor fabrication technologies and services. We believe we are in a strong position with our leadership and expertise in deposition , etch, and clean markets to facilitate some of the most significant innovations in semiconductor device manufacturing. Our Customer Support Business Group provides products and services to maximize installed equipment performance, predictability, and operational efficiency. Several factors create opportunities for sustainable differentiation for us: (i) our focus on research and development, with several ongoing programs relating to sustaining engineering, product and process development, and concept and feasibility; (ii) our ability to effectively leverage cycles of learning from our broad installed base; (iii) our collaborative focus with semi-ecosystem partners, including our close-to-customer focus; (iv) our ability to identify and invest in the breadth of our product portfolio to meet technology inflections; and (v) our focus on delivering our multi-product solutions with a goal to enhance the value of Lam’s solutions to our customers. Wafer fabrication equipment investments were strong in the 2025 calendar year, and have continued to grow in 2026 with the AI market driving higher semiconductor industry spending across both the memory and non-memory market segments. In the short term, volatility in the semiconductor industry environment from trade restrictions, tariffs, as well as other direct and indirect risks and uncertainties discussed in Part I, Item 1A, “Risk Factors, ” have had, and in the future may have, a negative impact on our revenue and operating margin. Over the longer term, we believe that secular demand for semiconductors, combined with technology inflections in our industry, including 3D device scaling, multiple patterning, process flow, and advanced packaging chip integration, will drive sustainable growth and lead to an increase in the served available market for our products and services in the deposition, etch, and clean businesses. Lam Research Corporation 2026 10-K 32 Tab le o f Content s The following table summarizes certain key financial information for the periods indicated below: Year Ended Change June 28, 2026 June 29, 2025 FY26 vs. FY25 (in thousands, except per share data, percentages and basis points) Revenue $ 23,232,690 $ 18,435,591 $ 4,797,099 26.0 % Gross margin $ 11,725,308 $ 8,979,059 $ 2,746,249 30.6 % Gross margin as a percent of total revenue 50.5 % 48.7 % + 180 bps Total operating expenses $ 3,525,513 $ 3,078,091 $ 447,422 14.5 % Net income $ 7,265,396 $ 5,358,217 $ 1,907,179 35.6 % Net income per diluted share $ 5.76 $ 4.15 $ 1.61 38.8 % Fiscal year 2026 revenue increased 26.0% comp ared to fiscal year 2025, driven by strong customer demand for semiconductor equipment systems, particularly from customers within the foundry market segment, as well as customer support-related revenues. Gross margin as a percentage of revenue increased in fiscal year 2026 compared to fiscal year 2025 largely due to favorable customer mix, partially offset by aluminum and steel tariff-related spend. T he increase in operating expenses in fiscal year 2026 compared to fiscal year 2025 was primarily due to employee-related costs from increased headcoun t a nd higher supplies spending for research and development. Our cash and cash equivalents and restricted cash balances totaled approximately $5.60 billion as of June 28, 2026, compared to $6.41 billion as of June 29, 2025. Cash flows provided from operating activities were $5.86 billion for fiscal year 2026 compared to $6.17 billion for fiscal year 2025. Cash flows provided from operating activities in fiscal year 2026 were primarily used for $3.85 billion in treasury stock purchases, including net share settlement of employee stock-based compensation; $1.27 billion in dividends paid to our stockholders; $966.4 million of capital expenditures; and $755.4 million of principal payment on debt instruments and debt issuance costs. Results of Operations Revenue We generate revenue primarily through the sale and service of semiconductor manufacturing equipment. Demand for our products and services is driven by customers’ investments in wafer fabrication capacity, technology advancement and installed base support. We present revenue on a disaggregated basis to differentiate between systems revenue and customer support-related revenue. Systems revenue includes sales of new leading-edge equipment in deposition, etch, clean and other wafer fabrication markets. Customer support-related revenue includes sales of customer services, spares, upgrades, and non-leading-edge equipment from the Company’s Reliant® product line. Timing of revenue recognition depends on a number of factors, including customer requirements, resource availability, supply-chain conditions, manufacturing capacity, delivery schedules, and other operational considerations. We present our revenues disaggregated by geographic region based on the location of customers’ facilities to which products were shipped and services were rendered. A significant portion of our revenue is generated outside of the United States. The following table presents our total revenue and revenue disaggregated by geographic region: Year Ended June 28, 2026 June 29, 2025 Revenue (in millions) $ 23,233 $ 18,436 China 34 % 34 % Taiwan 22 % 19 % Korea 19 % 22 % Japan 9 % 10 % United States 7 % 7 % Southeast Asia 6 % 5 % Europe 3 % 3 % Lam Research Corporation 2026 10-K 33 Tab le o f Content s The following table presents our revenue disaggregated between system and customer support-related revenue: Year Ended June 28, 2026 June 29, 2025 (in thousands) Systems Revenue $ 14,885,488 $ 11,491,280 Customer support-related revenue and other 8,347,202 6,944,311 $ 23,232,690 $ 18,435,591 Systems revenue increased by $3.39 billion, or 29.5%, in fiscal year 2026 compared to fiscal year 2025 primarily due to foundry equipment customer spending. Customer support-related revenue increased by $1.40 billion, or 20.2%, in fiscal year 2026 compared to fiscal year 2025 mainly due to revenue from spares and non-leading-edge equipment. The percentage of leading- and non-leading-edge equipment and upgrade revenue from each of the markets we serve was as follows: Year Ended June 28, 2026 June 29, 2025 Foundry 54 % 45 % Memory 39 % 42 % Logic/integrated device manufacturing 7 % 13 % The percentage of revenue from the Foundry market segment increased by 900 basis points in fiscal year 2026 compared to fiscal year 2025 due to mature node spending as well as investments in leading-edge equipment. The percentage of revenue from the Memory market segment decreased by 300 basis points in fiscal year 2026 compared to fiscal year 2025 primarily due to timing of customer investments. The deferred revenue balance decreased to $2.43 billion as of June 28, 2026 compared to $2.68 billion as of June 29, 2025 primarily due a decrease in customer down payments, partially offset by an increase in earned system credits. Gross Margin Year Ended Change June 28, 2026 June 29, 2025 FY26 vs. FY25 (in thousands, except percentages and basis points) Gross margin $ 11,725,308 $ 8,979,059 $ 2,746,249 30.6 % Percent of revenue 50.5 % 48.7 % + 180 bps T he increase in gross margin as a percentage of revenue for fiscal year 2026 compared to fiscal year 2025 was largely due to favorable customer mix, partially offset by aluminum and steel tariff-related spend. Research and Development Year Ended Change June 28, 2026 June 29, 2025 FY26 vs. FY25 (in thousands, except percentages and basis points) Research & development $ 2,375,873 $ 2,096,387 $ 279,486 13.3 % Percent of revenue 10.2 % 11.4 % - 120 bps We continued to make significant R&D investments focused on leading-edge deposition, etch, clean, and other semiconductor manufacturing processes. Fiscal year 2026 R&D expense increased versus fiscal year 2025, due to $131.4 million in employee-related costs from increased headcount and $69.8 million in higher engineering supplies expense. Lam Research Corporation 2026 10-K 34 Tab le o f Content s Selling, General, and Administrative Year Ended Change June 28, 2026 June 29, 2025 FY26 vs. FY25 (in thousands, except percentages and basis points) Selling, general, and administrative (\"SG&A\") $ 1,149,640 $ 981,704 $ 167,936 17.1 % Percent of revenue 4.9 % 5.3 % - 40 bps The increase in SG&A expense during fiscal year 2026 compared to fiscal year 2025 was mainly driven by an increa se of $180.0 million in employee-related costs as a result of additional headcount. Other Income (Expense), Net Other income (expense), net, consisted of the following: Year Ended Change June 28, 2026 June 29, 2025 FY26 vs. FY25 (in thousands, except percentages) Interest income ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/707549/000070754926000043/lrcx-20260824.htm",
+   "published": "2026-08-27T17:20:05-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02. Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers 3 SIGNATURES 4 Table of Contents Item 5.02. Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers On August 24, 2026, Sohail U. Ahmed and Michael R. Cannon each notified the Board of Directors (the “Board”) of Lam Research Corporation (the “Company”) of their respective decisions to retire from the Board, effective November 2, 2026. The size of the Board will be reduced from 12 to 10 directors effective upon the retirement of Messrs. Ahmed and Cannon. The Board and the Company’s management express their sincere appreciation to Messrs. Ahmed and Cannon for their dedicated service and many significant contributions to the Company. Mr. Ahmed served on the Board for approximately seven years, including two years on the audit committee, two years on the compensation and human resources committee, and two years on the innovation and technology committee. Mr. Cannon served on the Board for approximately 16 years, including 12 years on the audit committee, four years on the compensation and human resources committee, and 15 years on the nominating and governance committee, including seven years as chair of the nominating and governance committee. On behalf of the entire Company, the Board and the Company’s management would like to thank them for their guidance and support and wish them well in their next endeavors. Table of Contents SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: August 27, 2026 LAM RESEARCH CORPORATION (Registrant) /s/ Ava A. Harter Ava A. Harter Senior Vice President, Chief Legal Officer"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/asmls-dividend-is-the-most-overlooked-part-of-the-ai-chip-trade/?.tsrc=rss",
+   "published": "2026-10-20T12:15:04-04:00",
+   "text": "ASML’s Dividend Is the Most Overlooked Part of the AI Chip Trade - ASML just posted a record quarter and watched its stock drop anyway, but the number most investors ignored tells a quieter story about how the company actually rewards shareholders.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/article/chip-stocks-shrug-off-a-scary-morning-but-history-says-the-shakeout-isnt-over-154222842.html?.tsrc=rss",
+   "published": "2026-10-20T11:42:22-04:00",
+   "text": "Chip stocks shrug off a scary morning, but history says the shakeout isn't over - Chip stocks were in free fall at Tuesday's market open. By midmorning, they were leading a comeback.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/why-lam-research-lrcx-poised-151002491.html?.tsrc=rss",
+   "published": "2026-10-20T11:10:02-04:00",
+   "text": "Why Lam Research (LRCX) is Poised to Beat Earnings Estimates Again - Lam Research (LRCX) has an impressive earnings surprise history and currently possesses the right combination of the two key ingredients for a likely beat in its next quarterly report.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/hedge-funds-dumped-tech-stocks-at-the-fastest-pace-in-a-decade-goldman-says/?.tsrc=rss",
+   "published": "2026-10-20T09:35:27-04:00",
+   "text": "Hedge Funds Dumped Tech Stocks at the Fastest Pace in a Decade, Goldman Says - Goldman's prime brokerage data caught hedge funds slashing chip stocks at a pace not seen in over a decade, and the question now is whether that selling cleared the air or set up a longer retreat for one of the most crowded trades on Wall Street.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/e47e6de4-e781-3181-adf7-c5685c0abf10/ai-stocks%3A-spacex-2027-data.html?.tsrc=rss",
+   "published": "2026-10-20T09:10:47-04:00",
+   "text": "AI Stocks: SpaceX 2027 Data Center Expansion Could Be Game Changer - AI stocks face an earnings test, with SpaceX and Meta due, as investors question massive spending and look for return on investments.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/texas-instruments-and-lam-research-report-earnings-ai-equipment-boom-meets-analog-rebound/?.tsrc=rss",
+   "published": "2026-10-20T07:50:03-04:00",
+   "text": "Texas Instruments and Lam Research Report Earnings: AI Equipment Boom Meets Analog Rebound - Lam Research and Texas Instruments both report after the close on Wednesday, and each faces a different kind of pressure: one must prove AI equipment demand is still accelerating, while the other needs to show its industrial recovery has real staying power.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619448/how-do-you-invest-for-a-crash-and-a-rally/2026-10-20?.tsrc=rss",
+   "published": "2026-10-20T07:49:19-04:00",
+   "text": "How Do You Invest For A Crash And A Rally? - Inflation is back at 3.7%, and we think it is being pushed up by tariffs, war, a shortage of workers, big deficits and an AI spending race. And the AI build-out increasingly runs on borrowed money. That leaves investors with two stories running at once. Which one wins, and how do you invest when you",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-meta-112700586.html?.tsrc=rss",
+   "published": "2026-10-20T07:27:00-04:00",
+   "text": "The Zacks Analyst Blog Highlights Meta Platforms, Lam Research, Texas Instruments, Tesla, Netflix, Procter & Gamble and GE Aerospace - Meta Platforms and other major companies report Q3 results as AI spending, shifting stock-bond correlations, China's economic data and Brazil's election shape global markets.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/global-chip-stocks-tumble-ai-080519366.html?.tsrc=rss",
+   "published": "2026-10-20T04:05:19-04:00",
+   "text": "Global chip stocks tumble on AI investment worries - Investing.com -- U.S. and European chip stocks dipped Tuesday, tracking steep losses among Asian peers amid renewed concerns over the sustainability of the global AI investment boom.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/lam-research-lrcx-q3-earnings-035750379.html?.tsrc=rss",
+   "published": "2026-10-19T23:57:50-04:00",
+   "text": "Lam Research (LRCX) Q3 Earnings: What To Expect - Semiconductor equipment maker Lam Research (NASDAQ:LRCX) will be reporting results this Wednesday after market hours. Here’s what to look for.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/dow-s-and-p-500-nasdaq-edge-higher-amid-tech-rebound-as-q3-earnings-season-forges-ahead-djt-amzn-cbrs-crwv-stocks-in-focus/cZxq0LsRBuB?.tsrc=rss",
+   "published": "2026-10-19T23:31:56-04:00",
+   "text": "Dow, S&P 500, Nasdaq Edge Higher Amid Tech Rebound As Q3 Earnings Season Forges Ahead: DJT, AMZN, CBRS, CRWV Stocks In Focus - Technology and AI stocks rebounded on Monday, reversing a week of steep declines.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/micron-vs-lam-research-does-185704251.html?.tsrc=rss",
+   "published": "2026-10-19T21:57:04-04:00",
+   "text": "Micron vs. Lam Research: Does Buying the Tool Supplier Reduce Memory-Cycle Risk? - Micron Technology, Inc. (NASDAQ:MU) generated $89.68 billion of operating cash in its fiscal year ended September 3. Lam Research Corporation (NASDAQ:LRCX) generated $5.86 billion in its year ended June 28. The relevant question is what remains after investment when those collections weaken. Micron ",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-lam-001923011.html?.tsrc=rss",
+   "published": "2026-10-19T20:19:23-04:00",
+   "text": "Learn Why The Bull Case For Lam Research Stock Could Change Following Earnings Beat - Lam Research recently reported record quarterly revenue of US$6.72b, 30% higher year on year, with earnings per share and forward revenue guidance both ahead of analyst expectations, supported by demand linked to AI, 5G and advanced automotive chips. The same quarter underlined how Lam Research’s to",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/applied-materials-lam-research-marvell-212855831.html?.tsrc=rss",
+   "published": "2026-10-19T17:28:55-04:00",
+   "text": "Applied Materials, Lam Research, Marvell Technology, Micron, and Semtech Shares Skyrocket, What You Need To Know - A number of stocks jumped in the morning session after investors cautiously returned to beaten-down stocks following the previous week's technology retreat, helped by an analyst upgrade for Intel.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/q2-rundown-lam-research-nasdaq-200055316.html?.tsrc=rss",
+   "published": "2026-10-19T16:00:55-04:00",
+   "text": "Q2 Rundown: Lam Research (NASDAQ:LRCX) Vs Other Semiconductor Manufacturing Stocks - Earnings results often indicate what direction a company will take in the months ahead. With Q2 behind us, let’s have a look at Lam Research (NASDAQ:LRCX) and its peers.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/asml-vs-lam-research-much-185650394.html?.tsrc=rss",
+   "published": "2026-10-19T14:56:50-04:00",
+   "text": "ASML vs. Lam Research: How Much Protection Does Service Revenue Really Provide? - ASML Holding N.V. (NASDAQ:ASML) reported about €3.3 billion of installed-base management sales in its September quarter. Lam Research Corporation (NASDAQ:LRCX) reported $2.47 billion of customer-support-related revenue and other in its June quarter. The labels describe different mixtures. ASML and L",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/companies-reducing-ai-spending-chip-153011683.html?.tsrc=rss",
+   "published": "2026-10-19T11:30:11-04:00",
+   "text": "Are Companies Reducing AI Spending? Chip Orders Say Otherwise - Investors keep selling chip stocks. The iShares Semiconductor ETF fell 11.8% last week. It has now declined for nine straight days—its longest losing streak since 2006. The damage was worse among the companies that build chipmaking machines and memory. Applied...",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/tech-stock-rebound-nudges-us-130104078.html?.tsrc=rss",
+   "published": "2026-10-19T09:01:04-04:00",
+   "text": "Update: Tech Stock Rebound Nudges US Equity Futures Mostly Higher Pre-Bell - (Updates with economic data, recent oil price movement, world markets' overview and corporate stock",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:12-04:00",
+    "sha256": "019f0fe9a5288159fa47833ae23d0def19dd644d081852548ccf7625828a73c2"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 49679
+}

@@ -1,4 +1,4 @@
-# Health 2026-10-16 14:45 ET - **AMBER**
+# Health 2026-10-20 14:04 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,7 +6,17 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
-- EXIT MISSED: paper/options_ledger.json seasonA-DPZ-2026-10-13-F still open after its reaction session 2026-10-13 - 24 close order(s) sent, 0 of 1 closed; expiry 2026-10-16
+- Actions failure: Earnings experiment - paper options at 2026-10-20T02:11:30Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39357570449
+- Actions failure: Earnings experiment - paper options at 2026-10-19T23:23:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39341305298
+- Actions failure: Earnings experiment - paper options at 2026-10-19T22:42:38Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39336839247
+- Actions failure: Earnings experiment - paper options at 2026-10-19T22:32:11Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39335636822
+- Actions failure: Earnings experiment - paper options at 2026-10-19T22:15:37Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39333660100
+- Actions failure: Earnings experiment - paper options at 2026-10-19T22:15:02Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39333586978
+- Actions failure: Earnings experiment - paper options at 2026-10-19T21:24:01Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39327179257
+- Actions failure: Earnings experiment - paper options at 2026-10-19T20:59:14Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39323849258
+- Actions failure: Earnings experiment - paper options at 2026-10-19T20:31:08Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39319974813
+- Actions failure: Earnings experiment - paper options at 2026-10-19T20:11:14Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39317202382
+- paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 
 ## Information
 - paper/options_ledger.json: open ['seasonA-DPZ-2026-10-13-F', 'seasonA-NOC-2026-10-20-F', 'seasonA-RTX-2026-10-20-F', 'seasonA-VICR-2026-10-20-F']
