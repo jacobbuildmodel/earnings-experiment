@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/paylocity-announces-q1-fy27-earnings-conference-call-2026-10-13",
+  "published_et": "2026-10-13T16:05-04:00",
+  "quote": "linkedin facebook x email reddit SCHAUMBURG, Ill. , Oct. 13, 2026 (GLOBE NEWSWIRE) -- Paylocity Holding Corporation (Nasdaq: PCTY ), a leading provider of cloud-based HR, Finance, and IT solutions, today announced that it has scheduled a conference call to review its first quarter fiscal 2027 results on Thursday, November 5 th at 4:00 pm Central Time ( 5:00 pm Eastern Time ).",
+  "title": "Paylocity announces Q1 FY27 earnings conference call",
+  "retrieved_et": "2026-10-19T21:35:58.360180-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
