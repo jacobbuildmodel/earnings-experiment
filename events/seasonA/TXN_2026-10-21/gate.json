@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "TXN",
+ "report_date": "2026-10-21",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-22"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "reaction_day": "2026-10-22"
+ },
+ "snapshot_session": "2026-10-20",
+ "captured_et": "2026-10-20T14:31:12.858579-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/texas-instruments-webcast-q3-2026-earnings-conference-call-2026-10-01",
+  "published_et": "2026-10-01T10:55-04:00",
+  "quote": "linkedin facebook x email reddit DALLAS , Oct. 1, 2026 /PRNewswire/ -- Texas Instruments Incorporated (TI) (Nasdaq: TXN) will webcast its third quarter earnings conference call on Wednesday, Oct. 21 , at 3:30 p.m. Central time .",
+  "title": "Texas Instruments to webcast Q3 2026 earnings conference call",
+  "retrieved_et": "2026-10-08T22:43:24.150083-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-21T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-21T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 280.0799865722656,
+  "expiry": "2026-10-23",
+  "strike": 280.0,
+  "call": {
+   "bid": 9.7,
+   "ask": 10.2,
+   "openInterest": 515.0,
+   "lastPrice": 9.94,
+   "impliedVolatility": 0.8476577734374999,
+   "lastTradeDate": "2026-10-20T18:04:06+00:00"
+  },
+  "put": {
+   "bid": 9.95,
+   "ask": 10.6,
+   "openInterest": 114.0,
+   "lastPrice": 11.02,
+   "impliedVolatility": 0.8823253955078124,
+   "lastTradeDate": "2026-10-20T17:13:34+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.0722115144588583,
+  "rel_spread": {
+   "call": 0.05025125628140704,
+   "put": 0.06326034063260345
+  },
+  "oi_atm": 629.0,
+  "oi_sum": 2440.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
