@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "HXL",
+ "report_date": "2026-10-21",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-22"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "reaction_day": "2026-10-22"
+ },
+ "snapshot_session": "2026-10-20",
+ "captured_et": "2026-10-20T14:31:00.318581-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.hexcel.com/investor-relations/news/news-details/2026/Hexcel-Schedules-Third-Quarter-2026-Earnings-Release-and-Conference-Call/default.aspx",
+  "published_et": "2026-10-01T08:30-04:00",
+  "quote": "d Quarter 2026 Earnings Release and Conference Call View All News Hexcel Schedules Third Quarter 2026 Earnings Release and Conference Call October 1, 2026 Download (opens in new window) STAMFORD, Conn.--(BUSINESS WIRE)-- Hexcel Corporation (NYSE: HXL) announced today that it will report financial results for its third quarter of 2026 on Wednesday, October 21 after the market close.",
+  "title": "Hexcel Schedules Third Quarter 2026 Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-13T22:35:01.783486-04:00",
+  "how": "AI housekeeping, find_dates v3 (2026-10-07) probe of https://ir.hexcel.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); code left it ambiguous (other dates on the page: publication date, call/replay dates); the quote is the sentence stating date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-21T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-21T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 92.19999694824219,
+  "expiry": "2026-11-20",
+  "strike": 90.0,
+  "call": {
+   "bid": 4.7,
+   "ask": 5.8,
+   "openInterest": 13.0,
+   "lastPrice": 5.2,
+   "impliedVolatility": 0.4292049267578125,
+   "lastTradeDate": "2026-10-16T14:01:26+00:00"
+  },
+  "put": {
+   "bid": 2.5,
+   "ask": 4.9,
+   "openInterest": 18.0,
+   "lastPrice": 3.25,
+   "impliedVolatility": 0.5522505712890625,
+   "lastTradeDate": "2026-10-19T19:42:24+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 21,
+  "implied_move": 0.09707158672710382,
+  "rel_spread": {
+   "call": 0.20952380952380945,
+   "put": 0.6486486486486487
+  },
+  "oi_atm": 31.0,
+  "oi_sum": 31.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
