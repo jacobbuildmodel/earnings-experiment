@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/aehr-test-systems-announce-first-quarter-fiscal-2027-financial-results-november-2",
+  "published_et": "2026-10-08T07:30-04:00",
+  "quote": "26 / Aehr Test Systems (NASDAQ:AEHR), a leading provider of test and burn-in solutions for semiconductor devices used in artificial intelligence (AI), silicon photonics, data center, automotive, and industrial applications,today announced that it will report financial results for its first quarter of fiscal 2027 ended September 25, 2026 on Monday, November 2, 2026 following the close of the market.",
+  "title": "Aehr Test Systems to Announce First Quarter Fiscal 2027 Financial Results on November 2, 2026",
+  "retrieved_et": "2026-10-19T21:27:04.982844-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
