@@ -1,0 +1,143 @@
+{
+ "track": "T2O",
+ "event": "META_2026-10-21",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.53,
+  "thesis": "Expectations for META have been reset lower by a sharp pre-print selloff and a 22% EPS estimate cut, but the stock has sold off after three of its last four prints on capex and free-cash-flow worries, and the Q3 print is likely to raise the same concerns, so the outcome is close to a coin flip, slightly below the base rate.",
+  "reasons": [
+   "Cluster and session base rates are about 0.54 (I3).",
+   "The bar is lower: the consensus EPS estimate fell about 22% over 90 days, and the stock is down 9.5% over 5 days and 11% below its 52-week high (I2).",
+   "Three of the last four reactions were negative, each about 7-11%, driven by cost and capex growth and by legal charges, even after a large beat (I2, I4).",
+   "Q2 free cash flow was only $0.78B on $31B of capex, the 2026 capex guide is $130-145B, and youth-related trial risk is still open, so 2027 capex commentary could disappoint again (I4, I5).",
+   "Options are balanced: the ATM call IV slightly exceeds the put IV, there is no put skew, and the implied move is about 7.4% (I1, I2)."
+  ],
+  "deciding_variable": "2027 capex and total-expense commentary relative to Q3 revenue and Q4 guidance, i.e. whether ad growth near 28% can justify AI spend that keeps free cash flow near zero.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 software_internet cluster t0_hit 0.541 (AMC session 0.538, overall ~0.54)"
+  },
+  "leak_probe": "I don't know. That report falls after my June 2026 knowledge cutoff (and is today's date), so I have no information on how META's stock reacted.",
+  "moved_from_prior": "From 0.54 down to 0.53 (-0.01). The negative reaction pattern on capex and expense guidance roughly cancels the lowered estimates and the pre-print washout. The wide analyst dispersion adds noise but no direction.",
+  "theses": [
+   {
+    "expected": "up",
+    "mechanism": "Revenue near the top of the $61-64B guide and a solid Q4 guide beat a lowered EPS bar after the 9.5% pre-print selloff, producing a relief rally.",
+    "wrong_if": "Initial 2027 capex or expense guidance is well above the Street, or another large legal charge is taken."
+   },
+   {
+    "expected": "down",
+    "mechanism": "A repeat of Q2 and Q1: an expense and capex step-up plus weak free cash flow overwhelms an ad-revenue beat.",
+    "wrong_if": "Management guides 2027 expense growth materially below revenue growth or signals capex discipline."
+   },
+   {
+    "expected": "roughly flat or noisy",
+    "mechanism": "A mixed print, with an in-line Q4 guide and capex in line with whisper numbers; the overnight move is decided by the tone of the call, within the implied move.",
+    "wrong_if": "There is a clear surprise in the Q4 revenue guide of more than 3% versus consensus."
+   }
+  ],
+  "key_observations": [
+   "Q3 revenue vs the $61-64B guide, and the Q4 revenue guide",
+   "Initial 2027 capex and total-expense outlook, plus any narrowing of the 2026 capex range",
+   "Free cash flow and debt issuance trend",
+   "Size of any new legal or youth-trial charges",
+   "Ad impression and price-per-ad growth; WhatsApp paid messaging and Muse AI monetization",
+   "Severance and headcount savings flowing through operating margin"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/META_2026-10-21/gate.json",
+    "published": "2026-10-20T14:31:00.318721-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/META_2026-10-21/factors.json",
+    "published": "2026-10-20T14:31:00.318721-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm",
+    "published": "2026-07-29T20:03:23-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+    "published": "2026-07-29T22:58:51-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/20/what-metas-quarter-has-to-show-to-justify-wall-streets-highest-targets/?.tsrc=rss",
+    "published": "2026-10-20T12:30:30-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/articles/meta-meta-whatsapp-become-meaningful-134325729.html?.tsrc=rss",
+    "published": "2026-10-20T09:43:25-04:00",
+    "dossier_item": "I18"
+   }
+  ],
+  "decided_et": "2026-10-20T21:52:33-04:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 19251,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1441,
+   "output_tokens_details": {
+    "thinking_tokens": 234
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 19251,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1441,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 19251,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 19251
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1846987
+ }
+}
