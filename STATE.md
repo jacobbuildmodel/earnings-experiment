@@ -1,6 +1,6 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-20 07:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
+**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-20 20:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
 
@@ -166,6 +166,29 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-20 (Tue) 20:40 ET — HANDOFF to a new chat (the fresh-chat rule, now in CLAUDE.md).**
+- **Next chat, in order:**
+  1. Start-up as usual, then check today's automatic events:
+     - the housekeeping routine's first run (`trig_01BBhNYApu8UtK2cfYysh6U5`, ~08:37 ET today: `list_runs`,
+       `get_run_log`; a "housekeeping" line should be in the Cloud run log);
+     - today's six gates (HXL, LMT, LRCX, ROP, TSCO, TXN). **Any PASS is the first T2 on the cloud routine alone**
+       since `3c36975`. Is `manifest_t2.json` there before Wed 09:15 ET?
+     - the first v3 closes (NOC, RTX, VICR F; RTX, VICR L) against the expectations in the plan (≥ 4 of 5 at
+       attempt 0), and the open-fill trigger counts.
+  2. **Jacob's request: a comprehensive brief for an outside AI to evaluate every thesis.** Write
+     `reviews/evaluations/2026-10-21_external_brief.md` and send it to Jacob (SendUserFile).
+     - **Self-contained:** purpose, the rules, each test in `HYPOTHESES.md` with its registry definition, data,
+       statistic, family, power and verdict date; the closed studies' results; the known defects and incidents;
+       the candidates.
+     - It ends with the evaluation request: questions, a rubric and an output format.
+     - 🔴 **Design and history only. No live outcome, no C1 number, nothing a future decision could be fitted to.**
+       Say so in the brief. Precedent: `reviews/evaluations/2026-09-21_external.md`.
+  3. Ideas A (one combined correction across all 10 tests, a registered secondary) and E (capture estimate
+     revisions at every snapshot): **Jacob chose the outside evaluation first.** Hold them, and fold in what the
+     evaluator says. A must still be registered before any outcome is read.
+- **Owed by Jacob:** DPZ's 100 paper shares. Actions' claude stays off unless his organization re-enables
+  subscription access.
 
 **2026-10-20 (Tue) ~07:40 ET — housekeeping moved to a cloud routine (Jacob's choice).**
 - **Routine `earnings-housekeeping-cloud`** (`trig_01BBhNYApu8UtK2cfYysh6U5`): weekdays 12:30 UTC (08:30 EDT / 07:30 EST),
