@@ -37,6 +37,9 @@ WINDOWS = (
     ("the gates and paper exits", time(12, 30), time(14, 30), time(15, 56)),
 )
 RANK = {None: 0, "heads_up": 1, "pre_window": 2, "handoff": 3}
+# The hand-off brief (CLAUDE.md's fresh-chat rule). A brief-less fresh chat re-read ~100k before its first edit.
+BRIEF = ("the brief template in CLAUDE.md's fresh-chat rule: `pre earnings model`, TASK, DONE, DECIDED, "
+         "READ ONLY (path:lines), FACTS, RULES THAT BITE, NEXT STEP, CLOCK")
 
 
 def latest_usage(path, tail=TAIL_BYTES):
@@ -120,14 +123,14 @@ def assess(ctx, now, window=WINDOW, side=False):
     where = "ops/token_efficiency_2026-10.md"
     if side:
         step4 = ("(4) this chat was started by another session, so the app will not start one from here: "
-                 "end your turn with a report saying a fresh chat should continue, with `pre earnings model`, "
-                 "the next task, the files involved and what done looks like")
+                 f"end your turn with a report that holds {BRIEF}, and says a fresh chat should continue from it")
     else:
-        step4 = ("(4) start_session (context \"fresh\") with a prompt that begins `pre earnings model` and names "
-                 "the next task, the files involved and what done looks like, so the new chat re-reads little")
-    steps = ("(1) finish the current step and start no new one; (2) update STATE.md and JOURNAL.md; "
-             "(3) commit explicit paths, then `git push github main` and `git push local main`; "
-             f"{step4}; (5) stop working in this chat, and tell Jacob in one line that you are handing off and why.")
+        step4 = (f"(4) start_session (context \"fresh\") with {BRIEF}, so the new chat runs "
+                 "`python ops/startup.py` and re-reads nothing else")
+    steps = ("(1) finish the current step and start no new one; (2) rewrite STATE.md's NOW block, and add the "
+             "Log and JOURNAL.md entries; (3) commit explicit paths, then `git push github main` and "
+             f"`git push local main`; {step4}; (5) stop working in this chat, and tell Jacob in one line that "
+             "you are handing off and why.")
 
     if phase == "in":
         e = end.strftime("%H:%M")
@@ -151,7 +154,7 @@ def assess(ctx, now, window=WINDOW, side=False):
         return level, text, note
     text = (f"CONTEXT GUARD: heads-up. This chat holds {size}; the hand-off point is {hk}k ({where}). "
             "Finish the current step here, start no new phase in this chat, and plan the hand-off "
-            "(STATE, JOURNAL, commit and push, then a fresh chat with `pre earnings model`).")
+            f"(STATE.md's NOW block, JOURNAL, commit and push, then a fresh chat with {BRIEF}).")
     note = f"Context guard: {k}k tokens. Hand-off at {hk}k."
     return level, text, note
 

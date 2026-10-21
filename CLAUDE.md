@@ -15,12 +15,15 @@ for "safe and working": every season ends with something tested that could make 
 When Jacob starts a new chat **in this folder** and types **`pre earnings model`** (or "PRE", "earnings
 experiment", "where we left off"), read up and continue exactly where the last chat stopped. Silently:
 
-0. `git pull --ff-only github main`, then `git push local main`. The per-event runs happen in GitHub
-   Actions (`.github/workflows/s2-window.yml`: code gates and freezes via `pipeline/due.py`, the AI step
-   follows `ops/actions_prompt.md`) and commit to GitHub, so the laptop copy is behind until pulled.
+0. **One call: `python ops/startup.py`.** It runs `git pull --ff-only github main`, `git push local main` and
+   `check.py`, then prints STATE.md's start-up read: the NOW block, standing rules, Waiting on Jacob, Where
+   things are, and the titles of the newest Log entries. The per-event runs happen in GitHub Actions
+   (`.github/workflows/s2-window.yml`: code gates and freezes via `pipeline/due.py`, the AI step follows
+   `ops/actions_prompt.md`) and commit to GitHub, so the laptop copy is behind until pulled.
    Don't commit here during 14:30–15:50 ET on a snapshot day.
-1. `python check.py` — **PASS, or stop** and say what failed. A FAIL means the record may be damaged.
-2. Read `STATE.md` in full.
+1. check.py — **PASS, or stop** and say what failed. A FAIL means the record may be damaged.
+2. Read the rest of `STATE.md` (the PLAN, a Log entry) only when the brief or the task names it: the full
+   file costs ~20k tokens, the start-up read ~3k. With a hand-off brief, read only its READ ONLY list.
 3. Read only the `FRAMEWORK.md` sections the next action needs — it is long, and this file is re-sent
    every turn.
 4. Reply with a 4–6 line **WHERE WE ARE**: phase · what's done · what's waiting on Jacob · the single
@@ -49,18 +52,27 @@ to start a fresh chat in `Earnings Experiment`.
   the chat is already long. The hook lowers the bar to 200k in the two hours before a window. Mid-window it says
   to finish the window's work and hand off after 15:56 ET, with no commits mid-window.
 
-Why: long chats lose detail, and they spend the 5-hour allowance the cloud routines share. Every call re-reads the
-whole context: a call at 650k costs ~4× one at 125k. On 2026-10-19 one long chat (448k mean context, 62 calls in
-69 min) got the 10:45 ET routine push refused ("session limit"), so no paper window started from it.
+Why: long chats lose detail and spend the 5-hour allowance the cloud routines share. Every call re-reads the whole
+context: a call at 650k costs ~4× one at 125k. On 2026-10-19 a long chat got the 10:45 ET routine push refused.
 
-How: finish the current step, update STATE.md and JOURNAL.md, commit and push. Then start the new chat in this
-folder with `pre earnings model` and the next task (`start_session`, fresh context), and stop working in the old one.
-Write the brief so the new chat need not re-read: name the files, lines and decisions. Today a hand-off costs ~18
-extra calls of re-reading, the biggest waste left. A chat started by another session can't start one: it reports
-back instead.
+How: finish the current step. **Rewrite STATE.md's NOW block** (≤ 25 lines), add the Log and JOURNAL entries, commit
+and push. Then `start_session` (fresh context) with this brief, and stop working in the old chat. A chat started by
+another session can't start one: it ends its turn with the same brief as its report.
 
-**End of every session:** update `STATE.md` so the next chat resumes cleanly, add the day's observations to
-`JOURNAL.md` (the lab notebook: what happened, what it taught, what changed), then commit both.
+    pre earnings model — hand-off from <chat>, <date, time ET>.
+    TASK: <one line>.  DONE = <what exists at the end: files, tests green, pushed, what Jacob sees>.
+    DECIDED: <decision · who · why, one line each; what was tried and failed>.
+    READ ONLY: <path:lines — why>, at most ~6. Nothing else needs re-reading (not STATE's PLAN or Log,
+      CHARTER, JOURNAL).
+    FACTS: <the numbers, IDs, commits and paths the task needs, so they are not re-derived>.
+    RULES THAT BITE: <hash-listed files, freezes, windows this task touches>.
+    NEXT STEP: <the exact first command or edit>.  CLOCK: <deadlines in ET>.
+
+Measured 2026-10-21: a fresh chat without such a brief took ~22 calls and +100k context before its first edit; a full
+STATE.md read alone was ~20k (`ops/token_efficiency_2026-10.md`, "What a fresh chat reads").
+
+**End of every session:** rewrite STATE.md's NOW block and add a Log entry so the next chat resumes cleanly, add the
+day's observations to `JOURNAL.md` (the lab notebook: what happened, what it taught, what changed), then commit both.
 
 ## 🔴 THE RULES THAT STOP THIS EXPERIMENT LYING — never relax them
 1. **Freeze before entry.** Factor snapshot, theses and all three decisions (T0 buy-all · T1 rule · T2 AI)

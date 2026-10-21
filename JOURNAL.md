@@ -9,6 +9,54 @@
 
 ---
 
+## 2026-10-21 (Wed) 13:40 ET — the gate audit: where Season A's names are lost (power, RQ3/RQ5)
+- **What happened.** D016 was frozen at 13:31 ET, before any count was computed and before NOC/RTX/VICR paper P&L.
+  Then an interim run on the 15 gates.
+- **What it taught.**
+  - The spread rule is not a near-miss problem. 9 fail `wide_spread`, but 7 of them fail by far (straddle spread
+    13.8–39%). Only RTX (8.5%) and TTMI (8.9%) are rescued by measuring the spread on the straddle.
+  - The losses cluster in two places: names with only a monthly expiry (0 of 6 PASS) and names under $100 (0 of 4).
+    Those are universe features, not gate settings. The bigger power lever is more liquid names, not a looser gate.
+  - `gate.json` hid 3 double failures (DPZ, HXL, VICR also fail open interest). Recording every check matters.
+- **What changed.** Nothing live. The Fri Oct 23 decision run turns counts into a D003 v5 proposal for Season B.
+
+## 2026-10-21 (Wed) 13:15 ET — describing the experiment to outsiders without leaking it (truthfulness)
+- **What happened.** Jacob asked for a full, candid description of the experiment for his LinkedIn profile and an
+  SMU Economics application, with every claim labelled BUILT, PLANNED or BELIEF.
+- **What it taught.**
+  - The honest track record is mostly *negative knowledge*: 20 history signals tested, none beat buy-everything;
+    straddles lose after costs; the first hour after a print showed nothing that validated. The live record has
+    0 graded Season A events.
+  - Every frozen T2 confidence on the 5 PASS events sits at 0.45–0.54. The AI itself rates these prints near coin
+    flips around the base rate. The model shadows disagree on ABT and META.
+  - An outside write-up is a leak route. It must report counts and closed history, not interim live numbers, or
+    the owner's coming counts-only decisions (D016, D003 v5) stop being blind.
+  - Authorship needs care. Jacob set the question, the outcome, the universe and the rules. AI wrote all the code
+    and the registry texts. 587 of 841 commits are the automation's own.
+- **What changed.** Nothing in the experiment. The brief recommends a one-event "proven blind" page for LRCX
+  2026-10-21, chosen before its grade exists, so the showcase can't be cherry-picked.
+
+## 2026-10-21 (Wed) 11:40 ET — what a fresh chat re-reads, and a leaner hand-off (infra; CHARTER: speed)
+- **What happened.** The token study found the hand-off itself is the biggest waste left: ~18 extra calls of
+  re-reading. I measured what those calls read. Each call's context growth was split into its own output and
+  its tool results, and the results were binned by file or command. Sample: 8 fresh chats, 39 prompts in old chats.
+- **What it taught.**
+  - A fresh chat grows +99k before its first edit, against +13k for a new task in an old chat. 82% of it is
+    three things: its own thinking over ~20 calls (31k), code and registry files (29k), and STATE.md (22k).
+  - STATE.md costs twice what we thought: a full read is 19–22k, because tool output runs ~0.44 tokens per
+    character. Before the Oct 19 move to history, chats read it in two passes, 45–47k.
+  - This chat repeated the pattern, from a good brief: 18 calls and +87k. The brief named files but not lines,
+    and the rule said "read STATE.md in full".
+  - The one chat with a tight brief needed 5 calls. That is a floor, not a typical case.
+- **What changed.**
+  - `python ops/startup.py` does the start-up in one call and prints only STATE's NOW block, standing rules,
+    Waiting on Jacob and Where things are: ~3k tokens.
+  - STATE.md gained a NOW block, which every hand-off rewrites.
+  - CLAUDE.md carries a brief template: TASK, DONE, DECIDED, READ ONLY (`path:lines`), FACTS, RULES THAT BITE,
+    NEXT STEP, CLOCK. The context guard's hand-off text asks for it.
+  - Projected: +30–35k over ~8 calls per hand-off. Not measured yet.
+  - The 300k threshold stays until a re-run about Nov 4 shows the lean hand-offs are real.
+
 ## 2026-10-21 (Wed) 09:36 ET — the fresh-chat rule gets a meter (infra; CHARTER: speed)
 - **What happened.** Jacob asked for the hand-off to be enforced in code, with the threshold measured, not
   guessed. I measured every laptop chat in this project: 9 chats, 1,378 API calls. Claude Code's own docs
