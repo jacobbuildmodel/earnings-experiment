@@ -68,6 +68,20 @@ else:
         bad(f"the git repo root is {top}, not this folder")
     else:
         ok("this folder is its own git repo")
+    # 2026-10-20 ET: the claude.ai cloud routines (earnings-t2-cloud, earnings-t2-models,
+    # earnings-housekeeping-cloud) start from a 1-commit clone. There every file looks first committed at
+    # that commit, so the history checks below misfire: from the 17:20 ET T2 run on, "manifest_t2g.json
+    # committed at/after the entry open" for ABT and SPCX, and the cloud T2 decided nothing. Fetch the full
+    # history first; if that fails, FAIL - the history checks cannot run on a shallow clone.
+    _, _shallow = git("rev-parse", "--is-shallow-repository")
+    if _shallow == "true":
+        git("fetch", "--quiet", "--unshallow")
+        _, _shallow = git("rev-parse", "--is-shallow-repository")
+        if _shallow == "true":
+            bad("shallow clone, and `git fetch --unshallow` failed - the history checks (deletions, append-only "
+                "hash lists, freeze times) cannot run on it")
+        else:
+            ok("shallow clone: full history fetched for the history checks")
 
     _, listing = git("ls-files", "archive")
     n = len([x for x in listing.splitlines() if x.strip()])
