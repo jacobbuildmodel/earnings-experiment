@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "MXL",
+ "report_date": "2026-10-22",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-23"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-23"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "reaction_day": "2026-10-23"
+ },
+ "snapshot_session": "2026-10-21",
+ "captured_et": "2026-10-21T14:31:00.255226-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.maxlinear.com/press-releases/detail/626/maxlinear-inc-announces-conference-call-to-review-third",
+  "published_et": "2026-10-01T16:35-04:00",
+  "quote": "me; 4:30 p.m. Eastern Time Download as PDF October 01, 2026 CARLSBAD, Calif.--(BUSINESS WIRE)-- MaxLinear, Inc. (NASDAQ: MXL), a leading provider of radio frequency (RF), analog, digital and mixed-signal integrated circuits, announced today that it will release its financial results for the third quarter 2026 after the close of market on Thursday, Oct. 22, 2026.",
+  "title": "MaxLinear, Inc. Announces Conference Call to Review Third Quarter 2026 Financial Results Thursday, Oct. 22, 2026 at 1:30 p.m. Pacific Time; 4:30 p.m. Eastern Time",
+  "retrieved_et": "2026-10-08T22:44:11.684180-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.maxlinear.com/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-22T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 75.98500061035156,
+  "expiry": "2026-11-20",
+  "strike": 75.0,
+  "call": {
+   "bid": 10.2,
+   "ask": 10.7,
+   "openInterest": 300.0,
+   "lastPrice": 10.6,
+   "impliedVolatility": 1.1387982513427735,
+   "lastTradeDate": "2026-10-21T18:15:04+00:00"
+  },
+  "put": {
+   "bid": 9.1,
+   "ask": 9.3,
+   "openInterest": 532.0,
+   "lastPrice": 9.5,
+   "impliedVolatility": 1.1081587561035158,
+   "lastTradeDate": "2026-10-21T17:56:54+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 20,
+  "implied_move": 0.2586036697000835,
+  "rel_spread": {
+   "call": 0.04784688995215311,
+   "put": 0.021739130434782726
+  },
+  "oi_atm": 832.0,
+  "oi_sum": 832.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
