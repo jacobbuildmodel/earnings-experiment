@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "DECK",
+ "report_date": "2026-10-22",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-23"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-23"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "reaction_day": "2026-10-23"
+ },
+ "snapshot_session": "2026-10-21",
+ "captured_et": "2026-10-21T14:31:00.317226-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.deckers.com/news-events/press-releases/detail/665/deckers-brands-announces-conference-call-to-review-second-quarter-fiscal-2027-earnings-results",
+  "published_et": "2026-10-12T16:05-04:00",
+  "quote": "nd Quarter Fiscal 2027 Earnings Results October 12, 2026 4:05pm EDT GOLETA, Calif.--(BUSINESS WIRE)-- Deckers Brands (NYSE:DECK), a global leader in designing, marketing and distributing innovative footwear, apparel and accessories, today announced that the Company's conference call to review second quarter fiscal 2027 results will be on Thursday, October 22, 2026 at approximately 4:30 pm Eastern Time.",
+  "title": "Deckers Brands Announces Conference Call to Review Second Quarter Fiscal 2027 Earnings Results",
+  "retrieved_et": "2026-10-13T22:35:09.463614-04:00",
+  "how": "AI housekeeping, find_dates v3 (2026-10-07) probe of https://ir.deckers.com/news-events/press-releases/rss (RSS); code left it ambiguous (other dates on the page: publication date, call/replay dates); the quote is the sentence stating date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-22T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 85.62000274658203,
+  "expiry": "2026-10-23",
+  "strike": 86.0,
+  "call": {
+   "bid": 3.9,
+   "ask": 4.3,
+   "openInterest": 210.0,
+   "lastPrice": 4.1,
+   "impliedVolatility": 1.382327307128906,
+   "lastTradeDate": "2026-10-21T18:11:41+00:00"
+  },
+  "put": {
+   "bid": 4.2,
+   "ask": 4.8,
+   "openInterest": 88.0,
+   "lastPrice": 4.5,
+   "impliedVolatility": 1.3886749316406248,
+   "lastTradeDate": "2026-10-21T17:51:00+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.10044381831491256,
+  "rel_spread": {
+   "call": 0.09756097560975609,
+   "put": 0.13333333333333325
+  },
+  "oi_atm": 298.0,
+  "oi_sum": 1843.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

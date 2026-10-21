@@ -1,0 +1,630 @@
+{
+ "event": "MXL_2026-10-22",
+ "season": "seasonA",
+ "built_et": "2026-10-21T14:31:13-04:00",
+ "cutoff_et": "2026-10-21T14:31:00.255226-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/MXL_2026-10-22/gate.json",
+   "published": "2026-10-21T14:31:00.255226-04:00",
+   "data": {
+    "ticker": "MXL",
+    "report_date": "2026-10-22",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-22"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-23"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-23"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-10-30"
+     },
+     "reaction_day": "2026-10-23"
+    },
+    "snapshot_session": "2026-10-21",
+    "captured_et": "2026-10-21T14:31:00.255226-04:00",
+    "options": {
+     "spot": 75.98500061035156,
+     "expiry": "2026-11-20",
+     "strike": 75.0,
+     "call": {
+      "bid": 10.2,
+      "ask": 10.7,
+      "openInterest": 300.0,
+      "lastPrice": 10.6,
+      "impliedVolatility": 1.1387982513427735,
+      "lastTradeDate": "2026-10-21T18:15:04+00:00"
+     },
+     "put": {
+      "bid": 9.1,
+      "ask": 9.3,
+      "openInterest": 532.0,
+      "lastPrice": 9.5,
+      "impliedVolatility": 1.1081587561035158,
+      "lastTradeDate": "2026-10-21T17:56:54+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 20,
+     "implied_move": 0.2586036697000835,
+     "rel_spread": {
+      "call": 0.04784688995215311,
+      "put": 0.021739130434782726
+     },
+     "oi_atm": 832.0,
+     "oi_sum": 832.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/MXL_2026-10-22/factors.json",
+   "published": "2026-10-21T14:31:00.255226-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 3.3075398661828377,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.13090471983158258,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.03596801694302487,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.14991312577990712,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 1.056199114704113,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.154853606344747,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.4065062771629212,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-23",
+       "session": "AMC",
+       "raw_return_A": -0.03678772468731173,
+       "eps_est": 0.33,
+       "eps_rep": 0.35,
+       "surprise_pct": 6.22,
+       "reaction_volume_ratio": 2.676701779357615
+      },
+      {
+       "date": "2026-04-23",
+       "session": "AMC",
+       "raw_return_A": 0.6023738509639696,
+       "eps_est": 0.18,
+       "eps_rep": 0.22,
+       "surprise_pct": 25.55,
+       "reaction_volume_ratio": 13.623017101473748
+      },
+      {
+       "date": "2026-01-29",
+       "session": "AMC",
+       "raw_return_A": -0.010443804677536028,
+       "eps_est": 0.18,
+       "eps_rep": 0.19,
+       "surprise_pct": 6.29,
+       "reaction_volume_ratio": 3.6921672767523375
+      },
+      {
+       "date": "2025-10-23",
+       "session": "AMC",
+       "raw_return_A": 0.04987980493691535,
+       "eps_est": 0.12,
+       "eps_rep": 0.14,
+       "surprise_pct": 17.55,
+       "reaction_volume_ratio": 4.383873158252136
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 6.093939828958959,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 6.22,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.55778,
+      "7daysAgo": 0.55778,
+      "30daysAgo": 0.55778,
+      "60daysAgo": 0.55778,
+      "90daysAgo": 0.37789,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.4760380004763292,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.55778,
+      "low": 0.54,
+      "high": 0.57,
+      "yearAgoEps": 0.14,
+      "numberOfAnalysts": 9,
+      "growth": 2.9841,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.0537846462763095,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0754,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 28.073032,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 12.112778,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.552,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 6891322368,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.81818,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.2586036697000835,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.030639495239257686,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.004028300170898502,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.15272727272727274,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7700635848083863,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 1268.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.063699531728806,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.21371570900710912,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 138,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unprofitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.5517171661474272,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -0.024785752782104507,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 3.3075398661828377,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.03596801694302487,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.14991312577990712,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 1.056199114704113,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 4.402879776713779,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.9279419184722737,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 6891322173.489731,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.08255745206465898,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.09430796855225872,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1288469/000128846926000050/a06302026exhibit991.htm",
+   "published": "2026-07-23T16:05:46-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 a06302026exhibit991.htm EX-99.1 Document Exhibit 99.1 FOR IMMEDIATE RELEASE MaxLinear, Inc. Announces Second Quarter 2026 Financial Results • Q2 net revenue of $168.8 million, up 23% sequentially and up 55% year over year • Infrastructure business up 145% year over year reflecting accelerated adoption of optical AI data center products Carlsbad, Calif. – July 23, 2026 – MaxLinear, Inc. (Nasdaq: MXL), a leading provider of radio frequency (RF), analog, digital and mixed-signal integrated circuits, today announced financial results for the second quarter ended June 30, 2026. Second Quarter Financial Summary ($ in thousands, except per share amounts) GAAP Three Months Ended June 30, 2026 March 31, 2026 June 30, 2025 Q/Q Y/Y Net revenue $ 168,847 $ 137,188 $ 108,813 23 % 55 % Gross Margin 57.8 % 57.5 % 56.5 % 30 bps 130 bps Operating Expenses $ 101,848 $ 96,093 $ 86,140 6 % 18 % Operating Margin (2.5) % (12.5) % (22.6) % 1,000 bps 2,010 bps Diluted Net Income (Loss) Per Share $ 0.02 $ (0.52) $ (0.31) 104 % 106 % Non-GAAP Three Months Ended June 30, 2026 March 31, 2026 June 30, 2025 Q/Q Y/Y Gross Margin 59.5 % 59.5 % 59.1 % — bps 40 bps Operating Expenses $ 62,798 $ 59,916 $ 56,555 5 % 11 % Operating Margin 22.3 % 15.9 % 7.2 % 640 bps 1,510 bps Diluted Net Income Per Share $ 0.35 $ 0.22 $ 0.02 59 % 1650 % Management Commentary “Q2 results underscore the ongoing significant inflection in MaxLinear’s overall business as we delivered 55% year-over-year revenue growth, including 145% growth year over year in our data center-oriented infrastructure revenue,” said Kishore Seendripu, Chairman and Chief Executive Officer of MaxLinear. “The strong momentum in our optical AI data center business reflects the ramp of our Keystone PAM4 DSP platform for 800G applications, as well as the strength of our expanding infrastructure portfolio and roadmap for 1.6T- capable products. With the convergence of multiple growth drivers over the next two years, and with our continued focus on innovation, operational excellence, and disciplined execution, we believe MaxLinear is well-positioned to deliver sustained growth, expanding profitability, and long-term value for our shareholders.” 1 Third Quarter 2026 Business Outlook The Company estimates the following (in millions): GAAP Non-GAAP (except for revenue) Revenue $210 - $220 $210 - $220 Gross Margin 57.0% - 60.0% 58.5% - 61.5% Operating Expenses $98 - $104 $66 - $71 Interest and Other Expense, Net $3.8 - $4.2 $3.7 - $4.1 Income Tax Provision (Benefit) $1.5 $1.0 Fully Diluted Share Count 99 99 Webcast and Conference Call MaxLinear will host its second quarter financial results conference call today, July 23, 2026 at 1:30 p.m. Pacific Time (4:30 p.m. Eastern Time). To access this call, dial US toll free: 1-877-407-3109 / International: 1-201-493-6798. A live webcast of the conference call will be accessible from the investor relations section of the MaxLinear website at https://investors.maxlinear.com and will be archived and available after the call at https://investors.maxlinear.com until August 6, 2026. A replay of the conference call will also be available until August 6, 2026 by dialing US toll free: 1-877-660-6853 / International: 1-201-612-7415 and Conference ID#: 13761549. 2 Cautionary Note Concerning Forward-Looking Statements This press release contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. Forward-looking statements can be identified by words such as “anticipate,” “believe,” “estimate,” “expect,” “intend,” “plan,” “project,” “target,” “seek,” “may,” “should,” “will” and similar references to future periods. Forward-looking statements include, among others, statements concerning our future financial performance (including our current guidance for third quarter 2026, including net revenue and GAAP and non-GAAP amounts for each of the following: gross margins, operating expenses, interest and other expenses, income tax provision (benefit), and diluted share counts); the start of a multi-year growth phase and our potential for sustained growth and increasing profitability in 2026 and beyond; statements regarding an inflection point in, and anticipated step-function or accelerating revenue growth from, our optical data center and infrastructure businesses; statements regarding the momentum, traction, and production ramps of our optical data center and other connectivity products, including at hyperscale customers and across scale-up and scale-out AI platforms; statements regarding the ramp of our Keystone PAM4 DSP platform for 800G applications and the development, roadmap, and anticipated availability of our 1.6T-capable products; statements regarding momentum and improving visibility throughout our portfolio; statements regarding continued customer engagement and demand in high-value markets; statements relating to the timing of new products ramping into production; statements related to new and increased products; settlement of bonus awards for our 2026 performance period; statements related to growth trends in the markets in which we operate; and statements by our Chairman and CEO. These forward-looking statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to be materially different from any future results expressed or implied by the forward-looking statements and our future financial performance and operating results forecasts generally. Forward-looking statements are based on management’s current, preliminary expectations and are subject to various risks and uncertainties. In particular, our future operating results are substantially dependent on our assumptions about market trends and conditions. Additional risks and uncertainties affecting our business, future operating results and financial condition include, without limitation, risks relating to: our dependence on the ramp of our optical data center and related connectivity products and the concentration of our anticipated growth in a limited number of hyperscale customers and scale-up and scale-out AI-platform programs, and the risk that adoption, program timing, qualification, or demand for AI and data center infrastructure does not develop or continue as anticipated; our terminated merger with Silicon Motion and related arbitration and class action complaint and the risks related to potential payment of damages; the effect of intense and increasing competition; increased tariffs, export controls or imposition of additional trade barriers; impacts of global economic conditions; the cyclical nature of the semiconductor industry; a significant variance in our operating results and impact on volatility in our stock price, and our ability to sustain our current level of revenue, which has previously declined, and/or manage future growth effectively; escalating trade wars, military conflicts and other geopolitical and economic tensions among the countries in which we conduct business; international geopolitical and military conflicts; our ability to obtain or retain government authorization to export certain of our products or technology; the loss of, or a significant reduction in orders from major customers; legal proceedings or potential violations of regulations; information technology failures; a decrease in the average selling prices of our products; failure to penetrate new applications and markets; development delays and consolidation trends in our industry; inability to make substantial and productive research and development investments; delays or expenses caused by undetected defects or bugs in our products; substantial quarterly and annual fluctuations in our revenue and operating results; failure to timely develop and introduce new or enhanced products; order and shipment uncertainties and differences between our estimates of customer demand and product mix and our actual results; failure to accurately predict our future revenue and appropriately budget expenses; lengthy and expensive customer qualification processes; customer product plan cancellations; failure to maintain compliance with government regulations; failure to attract and retain qualified personnel; any adverse impact of rising interest rates on us, our customers, and our distributors and related demand; risks related to compliance with privacy, data protection and cybersecurity laws and regulations; risks related to conforming our products to industry standards; risks related to business acquisitions and investments; claims of intellectual property infringement; our ability to protect our intellectual property; security vulnerabilities of our products; use of open source software in our products; failure to manage our relationships with, or negative impacts from, third parties; and future decisions relating to our stock repurchase program. In addition to these risks and uncertainties, investors should review the risks and uncertainties contained in our filings with the Securities and Exchange Commission (SEC), including the \"Risk Factors\" and \"Management's Discussion and Analysis of Financial Condition and Results of Operations\" sections of our Annual Report on Form 10-K for the fiscal year ended December 31, 2025, and our Current Reports on Form 8-K, as updated (if applicable) in MaxLinear's Quarterly Report on Form 10-Q for the quarter ended June 30, 2026. All forward-looking statements are based on the estimates, projections and assumptions of management as of July 23, 2026, and MaxLinear is under no obligation (and expressly disclaims any such obligation) to update or revise any forward-looking statements whether as a result of new information, future events, or otherwise. 3 Use of Non-GAAP Financial Measures To supplement our unaudited consolidated financial statements presented on a basis consistent with GAAP, we disclose certain non-GAAP financial measures, including, but not limited to, non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP operating expenses as a percentage of net revenue, non-GAAP income (loss) from operations, non-GAAP income (loss) from operations as percentage of revenue, non-GAAP income (loss) before income taxes, non-GAAP interest and other income (expense), non-GAAP income tax provision (benefit), non-GAAP net income (loss), non-GAAP basic and diluted earnings or income (loss) per share, and non-GAAP diluted share count. These supplemental measures exclude the effects of (i) stock-based compensation expense; (ii) accruals related to our performance-based bonus plan for 2026, which we intend to settle in shares of our common stock; (iii) accruals related to our performance-based bonus plan for 2025, which we settled in shares of common stock in February 2026; (iv) amortization of purchased intangible assets; (v) research and development funded by others; (vi) acquisition and integration costs related to our acquisitions, if any, including costs incurred related to the termination of the previously pending (now terminated) merger with Silicon Motion; (vii) impairment losses, if any; (viii) severance and other restructuring charges; (ix) other non-recurring interest and other income (expenses), net, attributable to acquisitions; and (x) non-cash income tax benefits and expenses. Non-GAAP financial measures are not meant to be considered in isolation or as a substitute for the comparable GAAP financial measures. Non-GAAP financial measures are subject to limitations and should be read only in conjunction with the company’s consolidated financial statements prepared in accordance with GAAP. Non-GAAP financial measures do not have any standardized meaning and are therefore unlikely to be comparable to similarly titled measures presented by other companies. We believe that these non-GAAP measures have limitations in that they do not reflect all of the amounts associated with our GAAP results of operations. We compensate for the limitations of non-GAAP financial measures by relying upon GAAP results to gain a complete picture of our performance. We believe that non-GAAP financial measures can provide useful information to both management and investors by excluding certain non-cash and other one-time expenses that we believe are not indicative of our core operating results. Among other uses, our management uses non-GAAP measures to compare our performance relative to forecasts and strategic plans and to benchmark our performance externally against competitors. In addition, management’s incentive compensation will be determined in part using these non-GAAP measures because we believe non-GAAP measures better reflect our core operating performance. The following are explanations of each type of adjustment that we incorporate into non-GAAP financial measures: Stock-based compensation expense relates to equity incentive awards granted to our employees, directors, and consultants. Our equity incentive plans are important components of our employee incentive compensation arrangements and are reflected as expenses in our GAAP results. Stock-based compensation expense has been and will continue to be a significant recurring expense for MaxLinear. While we include the dilutive impact of equity awards in weighted average shares outstanding, the expense associated with stock-based awards reflects a non-cash charge that we exclude from non-GAAP net income or loss. Performance-based equity consists of accruals related to our executive and non-executive bonus programs and have been excluded from our non-GAAP net income or loss for all periods reported. Bonus payments for the 2025 performance periods were settled through the issuance of shares of common stock under our equity incentive plans in February 2026. We currently expect that a substantial portion of bonus awards under our fiscal 2026 program will be settled in common stock in the ",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1288469/000128846926000051/mxl-20260630.htm",
+   "published": "2026-07-23T16:08:52-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS Forward-Looking Statements The following discussion and analysis of the financial condition and results of our operations should be read in conjunction with the consolidated financial statements and related notes included elsewhere in this report. This discussion contains forward-looking statements that involve a number of risks, uncertainties, and assumptions that could cause our actual results to differ materially from those discussed below. Factors that could cause or contribute to such differences include, but are not limited to, those identified below, and those discussed in Part I, Item 1A of our Annual Report on Form 10-K for the fiscal year ended December 31, 2025 (our “2025 Annual Report”) and Part II, Item 1A of our Quarterly Report on Form 10-Q for the quarter ended March 31, 2026 in the section titled “Risk Factors.” Overview We are a provider of communications systems-on-chips, or SoCs, solutions used in broadband, mobile and wireline infrastructure, data center, and industrial and multi-market applications. We are a fabless integrated circuit design company whose products integrate all or substantial portions of a high-speed communication system, including radio frequency, or RF, high-performance analog, mixed-signal, digital signal processing, security engines, data compression and networking layers, and power management. Our ability to design analog and mixed-signal circuits in complementary metal-oxide-semiconductors, or CMOS, allows us to efficiently combine analog functionality and complex digital signal processing logic in the same integrated circuit. As a result, we believe our solutions have exceptional levels of functional integration and performance, low manufacturing cost, and reduced power consumption versus competition. These solutions also enable shorter design cycles, significant design flexibility and low system-level cost across a range of markets. Our customers primarily include electronics distributors, module makers, original equipment manufacturers, or OEMs, and original design manufacturers, or ODMs, which incorporate our products in a wide range of electronic devices. Examples of such devices include radio transceivers and modems for 4G/5G base-station and backhaul infrastructure; optical transceivers targeting hyperscale data centers; Wi-Fi and wireline routers for home networking; broadband modems compliant with Data Over Cable Service Interface Specifications, or DOCSIS, passive optical network, or PON, and digital subscriber line, or DSL; as well as power management and interface products used in these and many other markets. In addition, we generate revenue from certain intellectual property sale agreements. In the six months ended June 30, 2026, net revenue was $306.0 million, which was derived in part from sales of high-speed optical interconnect solutions sold into optical modules for data-center, metro and long-haul networks, RF receivers and RF receiver SoC and connectivity solutions into broadband operator voice and data modems and gateways and connectivity adapters, global analog and digital RF receiver products, radio and modem solutions into wireless carrier access and backhaul infrastructure platforms, and high-performance interface and power management solutions into a broad range of communications, industrial, automotive and multi-market applications. We have experienced growth in sales demand across our infrastructure, connectivity, and industrial and multi-market end markets driven by new product wins and market growth. We continue to develop and innovate with new products for new solutions in advanced semiconductor process nodes such as 16nm and 5nm and beyond, while addressing opportunities capturing and processing high-speed optical interconnect signals and high quality broadband communications. Products shipped to Asia accounted for 81% and 79% of net revenue during the six months ended June 30, 2026 and 2025, respectively, including 48% from products shipped to Hong Kong, 12% from products shipped to mainland China, and 10% from products shipped to Vietnam during the six months ended June 30, 2026 and 49% from products shipped to Hong Kong and 10% from products shipped to Vietnam during the six months ended June 30, 2025. Although a large percentage of our products is shipped to Asia, we believe that a significant number of the systems designed by these customers and incorporating our semiconductor products are then sold outside Asia. For example, revenue generated from sales of our products during the six months ended June 30, 2026 and 2025 related principally to sales to Asian ODMs and contract manufacturers delivering products into European and North American markets. To date, all of our sales have been denominated in United States dollars. A significant portion of our net revenue has historically been generated by a limited number of customers through sales of our products. Sales of products to customers comprise both direct sales to customers and indirect sales through distributors. In the six months ended June 30, 2026, one customer accounted for 11% of our net revenue, and our ten largest customers collectively accounted for 55% of our net revenue. For certain customers, we sell multiple products into disparate end user applications such as PON outdoor units, or PON ODUs, Wi-Fi routers, broadband gateways, and cable modems. 36 Table of Contents Our business depends on winning competitive bid selection processes, known as design wins, to develop integrated circuits for use in our customers’ products. These selection processes are typically lengthy, and as a result, our sales cycles will vary based on the specific market served, whether the design win is with an existing or a new customer and whether our product being designed in our customer’s device is a first generation or subsequent generation product. Our customers’ products can be complex and, if our engagement results in a design win, can require significant time to move into volume production. Because the sales cycle for our products is long, we can incur significant design and development expenditures in circumstances where we do not ultimately recognize any revenue. We do not have any long-term purchase commitments with any of our customers, all of whom purchase our products on a purchase order basis. Once one of our products is incorporated into a customer’s design, however, we believe that our product is likely to remain a component of the customer’s product for its life cycle because of the time and expense associated with redesigning the product or substituting an alternative chip. Product life cycles in our target markets will vary by application. For example, in the broadband data modem and gateway sectors, a design-in can have a product life cycle of 24 to 60 months. In the industrial and wired and wireless infrastructure markets, a design-in can have a product life cycle of 24 to 84 months and beyond. Terminated Silicon Motion Merger On May 5, 2022, we entered into an agreement and plan of merger, or the Merger Agreement, with Silicon Motion Technology Corporation, or Silicon Motion, an exempted company with limited liability incorporated under the Law of the Cayman Islands, pursuant to which, subject to the terms and conditions thereof, we agreed to acquire Silicon Motion pursuant to a statutory merger of Shark Merger Sub, a wholly-owned subsidiary of MaxLinear, with and into Silicon Motion, with Silicon Motion surviving the merger as a wholly-owned subsidiary of MaxLinear. Silicon Motion is a provider of NAND flash controllers for solid state drives and other solid state storage devices. On July 26, 2023, we terminated the Merger Agreement and notified Silicon Motion that we were relieved of our obligations to close because, among other reasons, (i) certain conditions to closing set forth in the Merger Agreement were not satisfied and were incapable of being satisfied, (ii) Silicon Motion had suffered a Material Adverse Effect that was continuing, (iii) Silicon Motion was in material breach of representations, warranties, covenants, and agreements in the Merger Agreement that gave rise to the right of the Company to terminate, and (iv) in any event, the First Extended Outside Date had passed and was not automatically extended because certain conditions in Article 6 of the Merger Agreement were not satisfied or waived as of May 5, 2023. Under the terms of the Merger Agreement, MaxLinear was not required to pay a break-up fee or other fee as a result of the termination of the Merger Agreement on these grounds. On August 16, 2023, Silicon Motion delivered a notice to us, which Silicon Motion publicly disclosed, that it was purporting to terminate the Merger Agreement and that Silicon Motion would be commencing an arbitration to seek damages from us arising from our alleged breaches of the Merger Agreement. Undefined capitalized terms in this paragraph have the same meaning as in the Merger Agreement. On October 5, 2023, Silicon Motion filed a Notice of Arbitration with the Singapore International Arbitration Centre alleging that we breached the Merger Agreement. See Note 14, Commitments and Contingencies of the Notes to Consolidated Financial Statements included in Part I, Item 1 of this Quarterly Report on Form 10-Q for more information on legal proceedings related to the termination of the Merger Agreement. Critical Accounting Policies and Estimates Management’s discussion and analysis of our financial condition and results of operations is based upon our consolidated financial statements which are prepared in accordance with accounting principles that are generally accepted in the United States of America. The preparation of these consolidated financial statements requires us to make estimates and judgments that affect the reported amounts of assets and liabilities, related disclosure of contingent assets and liabilities at the date of the consolidated financial statements, and the reported amounts of revenues and expenses during the reporting period. We continually evaluate our estimates and judgments, the most critical of which are those related to business combinations, revenue recognition, inventory valuation, production masks, goodwill and other intangible assets valuation, and income taxes. We base our estimates and judgments on historical experience and other factors that we believe to be reasonable under the circumstances. Materially different results can occur as circumstances change and additional information becomes known. We believe that the accounting policies and estimates we have identified as critical involve a greater degree of judgment and complexity than our other accounting policies and estimates. Accordingly, those are the policies and estimates we believe are the most critical to understanding and evaluating our consolidated financial condition and results of operations. For a summary of our critical accounting policies and estimates, refer to Management’s Discussion and Analysis section of our Annual Report on Form 10-K for the year ended December 31, 2025, which we filed with the Securities and Exchange 37 Table of Contents Commission, or SEC, on January 29, 2026, or our Annual Report. There have been no material changes to our critical accounting policies and estimates during the six months ended June 30, 2026. Recently Adopted Accounting Pronouncements See Note 1 to our consolidated financial statements included elsewhere in this Quarterly Report on Form 10-Q for recently adopted accounting pronouncements as of the date of this report, if any. Recently Issued Accounting Pronouncements See Note 1 to our consolidated financial statements included elsewhere in this Quarterly Report on Form 10-Q for recently issued accounting pronouncements not yet adopted as of the date of this report, if any. Results of Operations The f",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-mxl-stock-too-stretched-190958529.html?.tsrc=rss",
+   "published": "2026-10-20T15:09:58-04:00",
+   "text": "Is MaxLinear (MXL) Stock Too Stretched After Its 337% Run? - MaxLinear has had a powerful run over the past year, which puts a spotlight on a simple question for you as a shareholder or watcher: Is the current price really supported by the cash the business is expected to generate over time, based on its Discounted Cash Flow (DCF) intrinsic value estimate? Th",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/e0ef6d90-1f3d-3925-9be0-e5d8d98435b3/chip-stocks-tumble-on-ai.html?.tsrc=rss",
+   "published": "2026-10-15T16:31:13-04:00",
+   "text": "Chip Stocks Tumble On AI Investment Worries - A strong earnings report from Taiwan Semiconductor Manufacturing on Thursday wasn't enough to stop a weeklong slide for chip stocks.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-mxl-could-6-below-181711929.html?.tsrc=rss",
+   "published": "2026-10-13T14:17:11-04:00",
+   "text": "MaxLinear (MXL) Could Be 6% Below Fair Value After Topaz AI Gateway Debut - MaxLinear (MXL) has put its new Topaz AI ready PON Home Gateway platform at center stage, using recent industry events to show how it wants AI processing pushed closer to the broadband edge. These product launches come after a significant re-rating in MaxLinear, with the share price up 380.77% year ",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618478/does-the-drop-in-credo-stock-change-anything/2026-10-13?.tsrc=rss",
+   "published": "2026-10-13T14:05:10-04:00",
+   "text": "Does The Drop In Credo Stock Change Anything? - Shares of Credo Technology (CRDO) fell 7.3% on Monday, October 12, 2026, alongside a 0.1% slip in the S&P 500. Astera Labs, a peer, fell 5.3% in the same session. Credo is also showcasing its ZeroFlap Active Light Cable, an optical connection for AI data centers, at the OCP Global Summit, which open",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/maxlinear-accelerates-ai-powered-broadband-063500258.html?.tsrc=rss",
+   "published": "2026-10-13T02:35:00-04:00",
+   "text": "MaxLinear Accelerates AI-Powered Broadband with Topaz™ and Intelligent Network Innovations at Network X 2026 - VIENNA, October 13, 2026--See how Topaz™ and MaxAI™ help service providers bring AI intelligence from the cloud to subscriber networks.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/09/2-semiconductor-stocks-to-buy-and-hold-through-203/?.tsrc=rss",
+   "published": "2026-10-09T07:23:00-04:00",
+   "text": "2 Semiconductor Stocks to Buy and Hold Through 2032 - The semiconductor industry has consistently outperformed the S&P 500 for many years, and these two stocks look like winners.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/maxlinear-mxl-puma-9-platform-170907214.html?.tsrc=rss",
+   "published": "2026-10-06T13:09:07-04:00",
+   "text": "Can MaxLinear’s (MXL) Puma 9 Platform Reframe Its Role In Next‑Gen Connectivity Infrastructure? - In late September 2026, MaxLinear announced Puma 9, a next-generation DOCSIS platform that supports DOCSIS 3.1, 3.1+ and 4.0 on a single SoC, integrates Wi‑Fi 8 and Edge AI processing, and is designed to cut customer premises equipment costs while simplifying operators’ migration to multi-gigabit br",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/maxlinear-introduces-topaz-one-industrys-123500089.html?.tsrc=rss",
+   "published": "2026-10-06T08:35:00-04:00",
+   "text": "MaxLinear Introduces Topaz™, One of the Industry's Most Advanced AI-Ready PON HGU Chips for 10G and Beyond - CARLSBAD, Calif., October 06, 2026--AI-ready Topaz™ PON gateway SoC combines AI acceleration, advanced security, and 10G+ connectivity for next-generation networks",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-mxl-soars-15-ahead-053125899.html?.tsrc=rss",
+   "published": "2026-10-03T01:31:25-04:00",
+   "text": "Maxlinear (MXL) Soars 15% Ahead of Q3 Earnings — Here’s What You Should Expect - Maxlinear Inc. (NASDAQ:MXL) climbed to a three-month high on Friday, adding 15 percent to close at $105.93 apiece, as investors began positioning portfolios ahead of the release of its earnings performance in the third quarter of the year. Week on week, the stock rose by 12.88 percent. The company s",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/02/why-maxlinear-stock-gained-50-7-last-month/?.tsrc=rss",
+   "published": "2026-10-02T16:27:01-04:00",
+   "text": "Why MaxLinear Stock Gained 50.7% Last Month - MaxLinear stock gained more than 50% last month. Here is what powered the surge and what could trip it up.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-inc-announces-conference-call-203500313.html?.tsrc=rss",
+   "published": "2026-10-01T16:35:00-04:00",
+   "text": "MaxLinear, Inc. Announces Conference Call to Review Third Quarter 2026 Financial Results Thursday, Oct. 22, 2026 at 1:30 p.m. Pacific Time; 4:30 p.m. Eastern Time - CARLSBAD, Calif., October 01, 2026--MaxLinear announces earnings conference call to occur on Thursday, October 22, 2026 at 1:30pm PDT/4:30pm EDT",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/maxlinear-launches-puma-9-enabling-123500721.html?.tsrc=rss",
+   "published": "2026-09-28T08:35:00-04:00",
+   "text": "MaxLinear Launches Puma™ 9, Enabling Operators to Accelerate AI-ready DOCSIS® 4.0/3.1+ Multigigabit Services while Slashing Deployment Costs - CARLSBAD, Calif., September 28, 2026--MaxLinear launches Puma™ 9, helping operators accelerate DOCSIS® 4.0 adoption while reducing costs and maximizing existing investments.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/mxl-vs-vicr-better-ai-182600283.html?.tsrc=rss",
+   "published": "2026-08-28T14:26:00-04:00",
+   "text": "MXL vs. VICR: Which Has the Better AI Infrastructure Opportunity? - MaxLinear has the AI infrastructure edge, backed by strong current revenue growth and multiple product ramps through 2027-2028.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/why-nxp-nxpi-down-7-153018859.html?.tsrc=rss",
+   "published": "2026-08-27T11:30:18-04:00",
+   "text": "Why Is NXP (NXPI) Down 7.4% Since Last Earnings Report? - NXP (NXPI) reported earnings 30 days ago. What's next for the stock? We take a look at earnings estimates for some clues.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/mxls-ai-optical-growth-accelerates-171600411.html?.tsrc=rss",
+   "published": "2026-08-26T13:16:00-04:00",
+   "text": "MXL's AI Optical Growth Accelerates: Can It Challenge AVGO & MRVL? - MaxLinear's Keystone ramp, rising 800G demand and next-generation 1.6T pipeline strengthens its AI optical push against larger rivals.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/heres-why-maxlinear-mxl-great-135502364.html?.tsrc=rss",
+   "published": "2026-08-24T09:55:02-04:00",
+   "text": "Here's Why MaxLinear (MXL) Is a Great 'Buy the Bottom' Stock Now - MaxLinear (MXL) witnesses a hammer chart pattern, indicating support found by the stock after losing some value lately. This coupled with an upward trend in earnings estimate revisions could mean a trend reversal for the stock in the near term.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-stock-drops-23-month-182800588.html?.tsrc=rss",
+   "published": "2026-08-20T14:28:00-04:00",
+   "text": "MaxLinear Stock Drops 23% in a Month: Should You Buy it on the Dip? - MXL's 23% monthly slide masks surging AI infrastructure demand, rising earnings estimates and a product pipeline aimed at extending growth into 2028.",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-mxl-stock-looks-pricey-141454833.html?.tsrc=rss",
+   "published": "2026-08-18T10:14:54-04:00",
+   "text": "MaxLinear (MXL) Stock Looks Pricey After Its 450% One Year Run - MaxLinear stock has surged over the past year, yet the valuation signals are split, with the Discounted Cash Flow (DCF) intrinsic value estimate pointing to a premium while market based multiples lean the other way. That mix leaves investors weighing a strong share price run against checks that indi",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/maxlinear-expanded-ai-rack-silicon-081043568.html?.tsrc=rss",
+   "published": "2026-08-18T04:10:43-04:00",
+   "text": "Is MaxLinear’s Expanded AI Rack Silicon Portfolio Quietly Reshaping Its Long‑Term Positioning (MXL)? - In August 2026, MaxLinear expanded its AI data center infrastructure offerings by unveiling the RackCommander rack-management portfolio, new high-speed Carmel USB‑UART console-access silicon, and advanced 16V high‑current eFuse power‑protection devices at the OCP APAC Summit in Taipei. Together with",
+   "feed": {
+    "fetched_et": "2026-10-21T14:31:13-04:00",
+    "sha256": "e88575267182edef4762d3133311e5251c362f47161d546205ee369fd4ef9061"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 48053
+}
