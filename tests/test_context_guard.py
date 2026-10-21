@@ -94,6 +94,30 @@ def test_side_session_is_not_told_to_start_a_session():
     assert "start_session" not in text and "started by another session" in text
 
 
+BRIEF_FIELDS = ("TASK", "DONE", "DECIDED", "READ ONLY (path:lines)", "FACTS", "RULES THAT BITE", "NEXT STEP", "CLOCK")
+
+
+@pytest.mark.parametrize("ctx,now,side", [(312_000, WED(10, 0), False), (312_000, WED(10, 0), True),
+                                          (260_000, WED(10, 0), False), (210_000, WED(13, 30), False),
+                                          (320_000, WED(15, 0), False)])
+def test_every_hand_off_text_asks_for_the_lean_brief(ctx, now, side):
+    text = cg.assess(ctx, now, side=side)[1]
+    assert "CLAUDE.md's fresh-chat rule" in text and "NOW block" in text
+    for field in BRIEF_FIELDS:
+        assert field in text
+
+
+def test_the_new_chat_is_told_to_start_lean():
+    assert "`python ops/startup.py` and re-reads nothing else" in cg.assess(312_000, WED(10, 0))[1]
+
+
+def test_claude_md_holds_the_template_the_hook_names():
+    md = (ROOT / "CLAUDE.md").read_text(encoding="utf-8")
+    for field in ("TASK:", "DONE =", "DECIDED:", "READ ONLY:", "FACTS:", "RULES THAT BITE:", "NEXT STEP:", "CLOCK:"):
+        assert field in md
+    assert "python ops/startup.py" in md and "NOW block" in md
+
+
 def test_lead_up_to_the_gates_lowers_the_bar():
     level, text, note = cg.assess(210_000, WED(13, 30))
     assert level == "pre_window" and "14:30" in text and "60 min" in text

@@ -70,7 +70,8 @@ From a prompt to its first file edit:
 
 So a hand-off costs **about 18 extra calls**, and the fresh chat starts working at **about 182k**, not at
 the 80k floor. The floor is the system prompt, the tool list and CLAUDE.md, about 80k before anything
-is read. STATE.md alone is about 10k tokens.
+is read. A full STATE.md read costs 19–22k tokens, not the ~10k first estimated (measured in "What a fresh chat
+reads" below).
 
 ## The threshold that minimises cost per unit of work
 
@@ -124,6 +125,7 @@ that ended in "You've hit your session limit". Window start = the reset time min
    - a shorter STATE.md read at start-up.
 
    When hand-offs get lean, re-run `ops/token_study.py`: the threshold should then move down toward ~250k.
+   **Done 2026-10-21, measured and built:** see "What a fresh chat reads" below.
 3. **Quality, not measured here.** Long contexts also lose detail (Jacob, 2026-10-20). That argues against
    moving the threshold up.
 
@@ -134,3 +136,90 @@ that ended in "You've hit your session limit". Window start = the reset time min
 - The hand-off overhead comes from 7 new chats, and some of their reading would have been needed anyway.
 - Plan weighting is unknown (above). Cloud and DRIVE use is invisible.
 - US holidays are not modelled: the hook warns on a holiday weekday as if it were a market day.
+
+## What a fresh chat reads (measured 2026-10-21, second pass)
+
+**Answer: three things are 82% of a fresh chat's re-reading.** They are its own thinking over ~20 calls, code
+and registry files, and STATE.md. A full STATE.md read costs 19–22k tokens, twice the first estimate. So the
+fix is a one-call start-up that reads ~3k of STATE, plus a brief that names the exact lines to read.
+
+**Method** (`orientation_reads()` in `ops/token_study.py`; it prints with every run):
+- The window runs from a prompt to its first Edit/Write.
+- A call's growth is the next call's context minus its own. Its output tokens (thinking, text, tool calls) come
+  off first. The rest is split over its tool results by size, and each result is binned by its target (path or
+  command).
+- Sample: 8 fresh chats (this one included) and 39 prompts inside old chats.
+
+| what the context grew by, per prompt (mean) | fresh chat (n = 8, median 20 calls) | inside an old chat (n = 39, median 4 calls) |
+|---|---|---|
+| its own output: thinking, text, tool calls | 30.8k | 7.1k |
+| code, registry, workflows | 28.6k | 2.9k |
+| **STATE.md** | **22.2k** | 0.1k |
+| event and ledger data | 6.3k | 0.6k |
+| project docs (CHARTER, FRAMEWORK, JOURNAL, memory, health) | 5.1k | 0.3k |
+| live status (gh, routines) | 2.7k | 0.6k |
+| start-up (pull, check, clock) | 2.5k | 0.6k |
+| other, subagents, app tools | 1.2k | 1.1k |
+| **total** | **99k** | **13k** |
+
+| chat | first prompt | calls | growth | STATE.md | code etc. | own output |
+|---|---|---|---|---|---|---|
+| d5662dce (Sep 21) | a task | 23 | +95k | 8k | 42k | 24k |
+| 229fc019 (Oct 14) | `pre earnings model` | 28 | +143k | **45k** (two passes) | 48k | 37k |
+| 1ab48b7f (Oct 15) | a side-session brief | 17 | +110k | 12k | 54k | 34k |
+| 8ce6bcd4 (Oct 15) | `pre earnings model` | 19 | +98k | **47k** (two passes) | 10k | 28k |
+| fb52eec7 (Oct 17) | a side-session brief | 21 | +125k | 22k | 47k | 29k |
+| 712202ce (Oct 21) | a brief + `pre earnings model` | 48 | +122k | 19k | 16k | 57k |
+| 86a09d6f (Oct 21) | a tight brief (the token study) | 5 | +15k | 3k | 0 | 6k |
+| e4acb65d (Oct 21) | this brief | 18 | +87k | 22k | 13k | 32k |
+
+**Findings**
+1. **STATE.md is the biggest single file.** A full read costs 19–22k. Before the Oct 19 move to history,
+   chats read it in two passes: 45–47k.
+   - Tool output runs **~0.44 tokens per character** (a fit over 1,317 calls), not the ~0.25 of plain prose.
+     Read adds line numbers, and tables and code tokenise densely.
+   - So a file's cost ≈ its characters × 0.44.
+2. **Own output grows with the number of calls**, at ~1.4k per call: the thinking about what to read next. Fewer
+   calls cut it as much as smaller files do.
+3. **Code and registry reading varies most** (0–54k). It is partly the task's own reading. A brief that names
+   `path:lines` replaces the hunt.
+4. **The one tight brief showed the floor**: 86a09d6f took 5 calls and +15k. That is a lower bound: its "first
+   edit" was a scratch script, and it read more afterwards.
+5. **This chat had the same problem.** A detailed brief, and still 18 calls and +87k, 22k of it STATE.md.
+   The brief named files but no line ranges, and the start-up rule said "STATE.md in full".
+
+**What changed (2026-10-21)**
+- **`python ops/startup.py`** does pull, backup push, check.py and the STATE read in one call (`tests/test_startup.py`).
+  - It prints STATE.md's header, a new **NOW block** (≤ 25 lines, rewritten at every hand-off), the standing
+    rules, Waiting on Jacob and Where things are.
+  - The PLAN and the Log get one line each, plus the titles of the 3 newest Log entries.
+  - Today that is 7.4k characters, ~3k tokens, against 19–22k. A test fails it above 12k characters.
+- **CLAUDE.md:**
+  - start-up steps 0–2 are that one call;
+  - the fresh-chat rule carries the brief template: TASK, DONE, DECIDED, READ ONLY (`path:lines`), FACTS, RULES
+    THAT BITE, NEXT STEP, CLOCK.
+- **The hook** (`ops/hooks/context_guard.py`): every hand-off and heads-up text names the template and the NOW
+  block. A side session is told to put the brief in its report. Tested.
+
+**Projection, not measured.** A lean hand-off would cost:
+- STATE 22k → 3k;
+- start-up 2.5k → 1k;
+- docs 5k → 1k;
+- code ~29k → ~10k (set by READ ONLY);
+- status and data 9k → ~4k;
+- own output ~1.4k × ~8 calls ≈ 11k.
+
+That is about **+30–35k over ~8 calls**, so a fresh chat starts work at ~115k, not ~175k. It is close to the
+"lean hand-off" case above (6 calls, 100k). There the best threshold is 230k price-weighted and 185k raw.
+
+**The threshold stays at 300k for now.**
+- **Re-run `python ops/token_study.py` after ~2 weeks of lean hand-offs, about Nov 4.**
+- If the fresh-chat row is ≤ ~10 calls and ≤ ~40k, lower the hand-off to ~250k (heads-up ~200k).
+  - Make that change after the peak, from Nov 7.
+  - Change the hook's constants and their tests together, with a dated line here.
+- If it is not, the briefs are not lean yet: look at which bin still dominates.
+
+**Limits**
+- The "first edit" can be a scratch file, which cuts a window short (86a09d6f).
+- The bins are regexes over a call's target. One Bash call that reads several files lands in one bin.
+- Part of every fresh chat's reading is the task's own, and an old chat would also have needed it.

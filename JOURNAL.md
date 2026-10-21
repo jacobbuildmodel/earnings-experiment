@@ -9,6 +9,27 @@
 
 ---
 
+## 2026-10-21 (Wed) 11:40 ET — what a fresh chat re-reads, and a leaner hand-off (infra; CHARTER: speed)
+- **What happened.** The token study found the hand-off itself is the biggest waste left: ~18 extra calls of
+  re-reading. I measured what those calls read. Each call's context growth was split into its own output and
+  its tool results, and the results were binned by file or command. Sample: 8 fresh chats, 39 prompts in old chats.
+- **What it taught.**
+  - A fresh chat grows +99k before its first edit, against +13k for a new task in an old chat. 82% of it is
+    three things: its own thinking over ~20 calls (31k), code and registry files (29k), and STATE.md (22k).
+  - STATE.md costs twice what we thought: a full read is 19–22k, because tool output runs ~0.44 tokens per
+    character. Before the Oct 19 move to history, chats read it in two passes, 45–47k.
+  - This chat repeated the pattern, from a good brief: 18 calls and +87k. The brief named files but not lines,
+    and the rule said "read STATE.md in full".
+  - The one chat with a tight brief needed 5 calls. That is a floor, not a typical case.
+- **What changed.**
+  - `python ops/startup.py` does the start-up in one call and prints only STATE's NOW block, standing rules,
+    Waiting on Jacob and Where things are: ~3k tokens.
+  - STATE.md gained a NOW block, which every hand-off rewrites.
+  - CLAUDE.md carries a brief template: TASK, DONE, DECIDED, READ ONLY (`path:lines`), FACTS, RULES THAT BITE,
+    NEXT STEP, CLOCK. The context guard's hand-off text asks for it.
+  - Projected: +30–35k over ~8 calls per hand-off. Not measured yet.
+  - The 300k threshold stays until a re-run about Nov 4 shows the lean hand-offs are real.
+
 ## 2026-10-21 (Wed) 09:36 ET — the fresh-chat rule gets a meter (infra; CHARTER: speed)
 - **What happened.** Jacob asked for the hand-off to be enforced in code, with the threshold measured, not
   guessed. I measured every laptop chat in this project: 9 chats, 1,378 API calls. Claude Code's own docs

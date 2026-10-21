@@ -1,6 +1,23 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-20 20:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19, so this file can be read in full).
+**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-20 20:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+
+## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
+*Seeded Wed 2026-10-21 ~12:00 ET by the hand-off-cost side session, from the Log, health and git log.*
+- **Phase:** Season A, week 2 of 6. The peak (Oct 29–Nov 6) is the power. Code runs gates, freezes, T2, C1, paper.
+- **New since the Mon plan:** Tue's gates gave 3 PASS (LRCX, META, TXN). Their T2 froze on the cloud routine alone
+  by ~21:22 ET Tue, the first time it carried T2 (`4c7331d`, `26302ff`, `fab9777`). check.py shallow-clone fix and
+  incident (`cf151db`). Context guard and lean hand-offs live (`ops/startup.py`, CLAUDE.md brief template).
+- **Health RED (04:49 ET Wed):** ABT and SPCX T2 MISSING (incident filed; no retry by rule) · DPZ +100 shares not in
+  a ledger. Every `paper-options.yml` run exits red on DPZ's standing alert (noise until the shares go).
+- **External evaluation brief:** `reviews/evaluations/2026-10-21_external_brief.md` written by its side session,
+  still uncommitted at 11:30 ET. Ideas A and E wait for the evaluator.
+- **Owed from the Mon plan, not done:** D016 gate audit (no registry file yet; run Fri Oct 23 evening) · three health
+  alarms (AI step refused, dates stale, runner not acting) · Oct 22 checkpoint, ≥ 70% of names dated Oct 31–Nov 6
+  confirmed (40% Tue 07:30) · peak capacity by Oct 27 · DST inventory by Oct 28.
+- **Next action:** D016, then the three alarms. The next hand-off re-ranks this list.
+- **Waiting on Jacob:** DPZ's 100 paper shares · Actions' claude refused by an organization setting (below).
+- **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
 
@@ -166,6 +183,19 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-21 (Wed) 11:40 ET — lean hand-offs: a one-call start-up, a NOW block, a brief template** (side session, after the token study).
+- **Measured** (`ops/token_efficiency_2026-10.md`, "What a fresh chat reads"): a fresh chat grows +99k over ~20 calls
+  before its first edit. 82% is its own thinking (31k), code and registry (29k), and STATE.md (22k). A full STATE.md
+  read costs 19–22k, not 10k: tool output is ~0.44 tokens per character.
+- **Built:**
+  - `python ops/startup.py`: pull, backup push, check.py and STATE's start-up read (~3k tokens) in one call;
+    `tests/test_startup.py`, which also fails if the read passes 12k characters;
+  - the NOW block above, seeded today; every hand-off rewrites it;
+  - CLAUDE.md: start-up steps 0–2 are that call, and the fresh-chat rule carries the brief template;
+  - the hook's texts name the template and the NOW block (`tests/test_context_guard.py`).
+- **Threshold unchanged (300k).** Re-run `python ops/token_study.py` about Nov 4. If fresh chats are ≤ ~10 calls and
+  ≤ ~40k, lower it to ~250k after the peak (from Nov 7).
 
 **2026-10-21 (Wed) 09:36 ET — the fresh-chat rule now has a meter: context guard live** (side session; Jacob: "embed it in the code … study token efficiency").
 - **Study** `ops/token_efficiency_2026-10.md` (re-run `python ops/token_study.py`):
