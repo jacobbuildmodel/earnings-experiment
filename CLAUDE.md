@@ -39,6 +39,18 @@ one empty trigger commit to `claude/s2-trigger`). It never runs, reads or change
 DRIVE repo and moved here, it has already loaded the portfolio's rules and memory. Say so, and ask Jacob
 to start a fresh chat in `Earnings Experiment`.
 
+🔴 **Fresh-chat rule (Jacob, 2026-10-20). Hand off to a new chat at whichever comes first:**
+- the context is about **50% full** (the app's context meter; with no meter, after ~2 large tasks or ~150 tool calls);
+- a work phase ends;
+- **before a time-critical window** (14:30–15:56 ET gates and paper exits; the T2 deadline before 09:15 ET) when
+  the chat is already long.
+
+Why: long chats lose detail, and they spend the 5-hour allowance the cloud routines share. On 2026-10-19 one long
+chat got the 10:45 ET routine push refused ("session limit"), so no paper window started from it.
+
+How: finish the current step, update STATE.md and JOURNAL.md, commit and push. Then start the new chat in this
+folder with `pre earnings model` and the next task (`start_session`, fresh context), and stop working in the old one.
+
 **End of every session:** update `STATE.md` so the next chat resumes cleanly, add the day's observations to
 `JOURNAL.md` (the lab notebook: what happened, what it taught, what changed), then commit both.
 
