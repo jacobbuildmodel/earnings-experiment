@@ -32,6 +32,8 @@ one empty trigger commit to `claude/s2-trigger`). It never runs, reads or change
 `pipeline/t2_stage2.py run --backend claude`, the D004 v4 stage-2 code, and nothing else).
 🔴 **A cloud session started by the routine `earnings-t2-models` does only what its prompt says** (runs
 `pipeline/t2_models.py run --backend all`, the D013 shadow code, and nothing else).
+🔴 **A cloud session started by the routine `earnings-housekeeping-cloud` does only what its prompt says**
+(`ops/cloud_housekeeping_prompt.md`: PENDING date re-checks written through `pipeline/hk.py`, one log line, nothing else).
 
 🔴 **A chat that did not START in this folder must not run the experiment.** If this chat began in the
 DRIVE repo and moved here, it has already loaded the portfolio's rules and memory. Say so, and ask Jacob

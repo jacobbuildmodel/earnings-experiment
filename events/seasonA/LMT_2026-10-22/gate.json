@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "LMT",
+ "report_date": "2026-10-22",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-21"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-22"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "reaction_day": "2026-10-22"
+ },
+ "snapshot_session": "2026-10-20",
+ "captured_et": "2026-10-20T14:31:00.319779-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/lockheed-martin-announces-third-quarter-2026-earnings-results-webcast-2026-10-01",
+  "published_et": "2026-10-01T09:00-04:00",
+  "quote": "Third quarter 2026 earnings results will be published prior to the market opening on Oct. 22 .",
+  "title": "Lockheed Martin Announces Third Quarter 2026 Earnings Results Webcast",
+  "retrieved_et": "2026-10-08T22:44:02.533060-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-22T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 550.2550048828125,
+  "expiry": "2026-10-23",
+  "strike": 550.0,
+  "call": {
+   "bid": 11.1,
+   "ask": 14.1,
+   "openInterest": 537.0,
+   "lastPrice": 12.38,
+   "impliedVolatility": 0.5429122857666018,
+   "lastTradeDate": "2026-10-20T17:59:02+00:00"
+  },
+  "put": {
+   "bid": 11.2,
+   "ask": 14.0,
+   "openInterest": 50.0,
+   "lastPrice": 13.58,
+   "impliedVolatility": 0.5540816076660158,
+   "lastTradeDate": "2026-10-20T17:08:50+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.045796948281037135,
+  "rel_spread": {
+   "call": 0.2380952380952381,
+   "put": 0.2222222222222223
+  },
+  "oi_atm": 587.0,
+  "oi_sum": 1474.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

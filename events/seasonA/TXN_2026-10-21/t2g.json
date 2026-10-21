@@ -1,0 +1,95 @@
+{
+ "track": "T2G",
+ "event": "TXN_2026-10-21",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.46,
+  "thesis": "High cyclical expectations and typical Q4 seasonal guide-downs create an elevated hurdle for Texas Instruments, keeping odds slightly below the cluster base rate.",
+  "reasons": [
+   "The semiconductor cluster carries an underperforming base hit rate of 47.9% across 434 historical events.",
+   "Consensus EPS expectations have been revised up 12.3% over the last 90 days to $2.43 (projecting ~64% YoY growth), setting a strict bar where even Q2's 10.5% beat resulted in a -2.77% opening drop.",
+   "Management explicitly notes Q4 is cyclically and seasonally softer sequentially, making Q4 forward guidance vulnerable to disappointment relative to current valuation multiples (P/S ~13.1, Forward P/E ~26.3).",
+   "Options market exhibits bearish positioning with an elevated put/call volume ratio of 3.17 and negative call-minus-put IV spread (-3.5%)."
+  ],
+  "deciding_variable": "Q4 sequential revenue and gross margin guidance given historical seasonal moderation.",
+  "prior": {
+   "p": 0.48,
+   "from": "semis cluster base rate (0.479 across 434 events)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down from 0.48 prior to 0.46 due to aggressive upward earnings revisions into seasonal headwinds and heavy put skew/hedging.",
+  "theses": [
+   {
+    "expected": "Q3 beat accompanied by conservative Q4 sequential guidance due to typical year-end industrial seasonality.",
+    "mechanism": "High expectations clash with a cautious management outlook, causing multiple compression at open.",
+    "wrong_if": "Automotive and industrial demand rebound faster than anticipated, driving strong above-consensus Q4 guidance."
+   },
+   {
+    "expected": "Broad-based analog acceleration across automotive and data centers exceeding lofty $2.43 consensus.",
+    "mechanism": "300mm manufacturing cost advantages expand gross margins above 62%, fueling a post-earnings opening gap.",
+    "wrong_if": "China industrial demand softens or high inventory loading weighs on free cash flow metrics."
+   },
+   {
+    "expected": "Neutral earnings report with cautious comments regarding the pending $7.5B Silicon Labs acquisition financing.",
+    "mechanism": "Debt financing overhang and muted organic order intake lead to mild selling.",
+    "wrong_if": "Significant capital return announcement or accretive synergies update sparks immediate institutional buying."
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue guidance range midpoint versus analyst consensus",
+   "Analog segment operating margin relative to Q2's 45.6%",
+   "Inventory dollars and days of inventory on hand across the channel",
+   "Factory utilization and progress on 300mm internal transition"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/TXN_2026-10-21/gate.json",
+    "published": "2026-10-20T14:31:12.858579-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/TXN_2026-10-21/factors.json",
+    "published": "2026-10-20T14:31:12.858579-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/97476/000009747626000152/txn-20260630.htm",
+    "published": "2026-07-24T09:33:54-04:00",
+    "dossier_item": "I5"
+   }
+  ],
+  "decided_et": "2026-10-20T16:03:03-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 12875,
+   "candidatesTokenCount": 703,
+   "totalTokenCount": 14687,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 12875
+    }
+   ],
+   "thoughtsTokenCount": 1109,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

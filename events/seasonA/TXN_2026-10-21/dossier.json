@@ -1,0 +1,619 @@
+{
+ "event": "TXN_2026-10-21",
+ "season": "seasonA",
+ "built_et": "2026-10-20T14:31:27-04:00",
+ "cutoff_et": "2026-10-20T14:31:12.858579-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/TXN_2026-10-21/gate.json",
+   "published": "2026-10-20T14:31:12.858579-04:00",
+   "data": {
+    "ticker": "TXN",
+    "report_date": "2026-10-21",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-21"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-22"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-22"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "reaction_day": "2026-10-22"
+    },
+    "snapshot_session": "2026-10-20",
+    "captured_et": "2026-10-20T14:31:12.858579-04:00",
+    "options": {
+     "spot": 280.0799865722656,
+     "expiry": "2026-10-23",
+     "strike": 280.0,
+     "call": {
+      "bid": 9.7,
+      "ask": 10.2,
+      "openInterest": 515.0,
+      "lastPrice": 9.94,
+      "impliedVolatility": 0.8476577734374999,
+      "lastTradeDate": "2026-10-20T18:04:06+00:00"
+     },
+     "put": {
+      "bid": 9.95,
+      "ask": 10.6,
+      "openInterest": 114.0,
+      "lastPrice": 11.02,
+      "impliedVolatility": 0.8823253955078124,
+      "lastTradeDate": "2026-10-20T17:13:34+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.0722115144588583,
+     "rel_spread": {
+      "call": 0.05025125628140704,
+      "put": 0.06326034063260345
+     },
+     "oi_atm": 629.0,
+     "oi_sum": 2440.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/TXN_2026-10-21/factors.json",
+   "published": "2026-10-20T14:31:12.858579-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.6272128332226086,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.03400151962602416,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.026993292918172762,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.04439938268377208,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.30251112737534,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.664580018210102,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.1527807459035787,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-22",
+       "session": "AMC",
+       "raw_return_A": -0.027734033152942317,
+       "eps_est": 1.94,
+       "eps_rep": 2.14,
+       "surprise_pct": 10.48,
+       "reaction_volume_ratio": 1.2866178182565227
+      },
+      {
+       "date": "2026-04-22",
+       "session": "AMC",
+       "raw_return_A": 0.10109548133686075,
+       "eps_est": 1.37,
+       "eps_rep": 1.68,
+       "surprise_pct": 22.76,
+       "reaction_volume_ratio": 4.532220786595743
+      },
+      {
+       "date": "2026-01-27",
+       "session": "AMC",
+       "raw_return_A": 0.047100541902610926,
+       "eps_est": 1.31,
+       "eps_rep": 1.27,
+       "surprise_pct": -2.89,
+       "reaction_volume_ratio": 2.916354564233098
+      },
+      {
+       "date": "2025-10-21",
+       "session": "AMC",
+       "raw_return_A": -0.08642114057970474,
+       "eps_est": 1.49,
+       "eps_rep": 1.48,
+       "surprise_pct": -0.4,
+       "reaction_volume_ratio": 3.9758749672005127
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.177767034071469,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 10.48,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 2.42538,
+      "7daysAgo": 2.41491,
+      "30daysAgo": 2.41539,
+      "60daysAgo": 2.41539,
+      "90daysAgo": 2.15973,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.1230014862968982,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 2.42538,
+      "low": 2.39,
+      "high": 2.51,
+      "yearAgoEps": 1.48,
+      "numberOfAnalysts": 21,
+      "growth": 0.6388,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.04947678301956793,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0249,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 26.290146,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 13.148739,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.228,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 255782404096,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.11111,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.0722115144588583,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.03466762207031249,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.036132451171875024,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 3.172440338722094,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.3378575776019477,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 5420.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.859371131163118,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.08171147947280571,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 91,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.22819244604316546,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.4228445908841296,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.6272128332226086,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.026993292918172762,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.04439938268377208,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.30251112737534,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.738272953893422,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 2.206934223215628,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 255782399632.03265,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.07605292634671108,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.20216264422273006,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/97476/000009747626000148/txn-20260722.htm",
+   "published": "2026-07-22T16:04:06-04:00",
+   "form": "8-K",
+   "items": "2.02,9.01",
+   "text": "ITEM 2.02. Results of Operations and Financial Condition The Registrant’s news release dated July 22, 2026, regarding its second-quarter results of operations and financial condition is attached hereto as Exhibit 99. The attached news release includes references to the following financial measures that were not prepared in accordance with generally accepted accounting principles in the United States (non-GAAP measures): free cash flow and ratios based on free cash flow. The company believes these non-GAAP measures provide insight into its liquidity, cash generating capability and the amount of cash potentially available to return to shareholders, as well as insight into its financial performance. These non-GAAP measures are supplemental to the comparable GAAP measures. Reconciliation to the most directly comparable GAAP measures is included in the “Non-GAAP financial information” section of the news release. ITEM 9.01. Exhibits Designation of Exhibit in this Report Description of Exhibit 99 Registrant’s News Release Dated July 22, 2026 (furnished pursuant to Item 2.02) 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. TEXAS INSTRUMENTS INCORPORATED Date: July 22, 2026 By: /s/ Rafael R. Lizardi Rafael R. Lizardi Senior Vice President and Chief Financial Officer"
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/97476/000009747626000152/txn-20260630.htm",
+   "published": "2026-07-24T09:33:54-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. Management’s discussion and analysis of financial condition and results of operations Overview We design and manufacture semiconductors that we sell to electronics designers and manufacturers all over the world. Technology is the foundation of our company, but ultimately, our objective and the best metric for owners to measure our progress is through the growth of free cash flow per share over the long term. Our strategy to maximize long-term free cash flow per share growth has three elements: 1. A great business model that is focused on analog and embedded processing products and built around four sustainable competitive advantages. The four sustainable competitive advantages are powerful in combination and provide tangible benefits: (a) A strong foundation of manufacturing and technology that provides lower costs and greater control of our supply chain. (b) A broad portfolio of analog and embedded processing products that offers more opportunity per customer and more value for our investments. (c) The reach of our market channels that gives access to more customers and more of their design projects, leading to better insight and knowledge of customer needs and the opportunity to sell more of our products into each design. (d) Diversity and longevity of our products, markets and customer positions that provide less single point dependency and longer returns on our investments. Together, these competitive advantages help position TI in a unique class of companies capable of generating and returning significant amounts of cash for our owners. We make our investments with an eye towards long-term strengthening and leveraging of these advantages. 2. Discipline in allocating capital to the best opportunities. This spans how we select R&D projects, develop new capabilities, invest in manufacturing capacity or how we think about acquisitions and returning cash to our owners. 3. Efficiency, which means constantly striving for more output for every dollar spent. We believe that our business model with the combined effect of our four competitive advantages sets TI apart from our peers and will for a long time to come. We will invest to strengthen our competitive advantages, be disciplined in capital allocation and stay diligent in our pursuit of efficiencies. Finally, we will remain focused on the belief that long-term growth of free cash flow per share is the ultimate measure to generate value. Market and business characteristics Markets for our products The markets for our products are industrial, automotive, data center, personal electronics and communications equipment. See our 2025 Form 10-K for more information. Semiconductor cycle The semiconductor cycle refers to the ebb and flow of supply and demand and the building and depleting of inventories. It has been characterized by periods of tight supply caused by strengthening demand and/or insufficient manufacturing capacity, followed by periods of surplus inventory caused by weakening demand and/or excess manufacturing capacity. These are typically referred to as upturns and downturns in the semiconductor cycle. Semiconductor cycles are affected by the significant time and money required to build and maintain semiconductor manufacturing facilities. Seasonality Our revenue is subject to some seasonal variation. Historically, our sequential revenue growth rate tends to be weaker in the first and fourth quarters when compared with the second and third quarters. 18 Manufacturing We invest to make manufacturing and technology a core competitive advantage. The strategic decision to own our manufacturing, process and packaging technology provides us with tangible benefits of lower manufacturing costs and greater control of our supply chain and provides our customers with geopolitically dependable capacity. We own and operate both wafer fabrication and assembly/test facilities in North America, Asia, Japan and Europe. We have focused on creating a competitive structural cost advantage by investing in our 300mm wafer production, which describes the diameter of the wafer on which our chips are produced, and costs about 40% less than a chip built on a 200mm wafer. In addition, we selectively use capacity of outside suppliers, commonly known as foundries and subcontractors. We continue to invest to strengthen our competitive advantage in manufacturing and technology as part of our long-term capacity plan. We have invested in manufacturing capacity to support customer demand, enable external foundry transfers and prepare new factories to have cleanroom space available to support future growth. These investments have uniquely positioned TI to deliver dependable, low-cost 300mm capacity with the ability to equip and ramp factories to support customer demand. We believe this approach supports free cash flow per share growth across a range of market conditions. With our planned capacity expansions to support demand over time, we expect our internal sourcing to continue to increase. We expect to continue to maintain sufficient internal manufacturing capacity to meet the majority of our production needs and to obtain manufacturing equipment to support new technology developments and revenue growth. Inventory Our objectives for inventory are to maintain high levels of customer service, maintain dependable and competitive lead times, minimize inventory obsolescence and improve manufacturing asset utilization. To meet these objectives and to allow greater flexibility in periods of high demand, our strategy is to build ahead of demand our broad-based products that are used across a diverse set of applications and customers and have low risk of obsolescence. Inventory levels will vary based on market conditions and seasonality. We adjust factory loadings as needed to execute on this inventory strategy. Results of operations Management’s discussion and analysis of financial condition and results of operations (MD&A) should be read in conjunction with the financial statements and the related notes that appear elsewhere in this document. In the following discussion of our results of operations: • Our segments represent groups of similar products that are combined on the basis of similar design and development requirements, product characteristics, manufacturing processes and distribution channels, and how management allocates resources and measures results. See Note 1 to the financial statements for more information regarding our segments. • When we discuss our results: ◦ Unless otherwise noted, changes in our revenue are attributable to changes in customer demand, which are evidenced by fluctuations in shipment volumes. Upturns in the semiconductor cycle are often characterized by rising customer demand, which drives higher revenue, while downturns in the semiconductor cycle are characterized by weakening customer demand, which results in lower revenue. ◦ New products do not tend to have a significant impact on our revenue in any given period because we sell such a large number of products. ◦ From time to time, our revenue and gross profit are affected by changes in demand for higher-priced or lower-priced products, which we refer to as changes in the “mix” of products shipped. 19 ◦ Because we own much of our manufacturing capacity, a significant portion of our operating cost is fixed. When factory loadings decrease, our fixed costs are spread over reduced output and, absent other circumstances, our profit margins decrease. Conversely, as factory loadings increase, our fixed costs are spread over increased output and, absent other circumstances, our profit margins increase. ◦ Our LFAB facility, which primarily supports our Embedded Processing business, was purchased as an operating fab and is continuing to ramp production, so we expect factory loadings to increase over time. As LFAB ramps, we expect Embedded to carry manufacturing costs that disproportionately benefit Embedded Processing operating profit as compared to Analog. • For an explanation of free cash flow, see the Non-GAAP financial information section. • All dollar amounts in the tables are stated in millions of U.S. dollars. Performance summary Our second quarter revenue was $5.46 billion, net income was $1.98 billion and earnings per share (EPS) were $2.14. Revenue increased 13% sequentially and 23% from the same quarter a year ago with broad growth led by industrial, data center and automotive. Our cash flow from operations of $8.7 billion for the trailing 12 months again underscored the strength of our business model, the quality of our product portfolio and the benefit of 300mm production. Free cash flow for the same period was $6.5 billion. Over the past 12 months we invested $3.9 billion in R&D and SG&A, invested $3.3 billion in capital expenditures and returned $5.8 billion to shareholders. Acquisition of Silicon Labs As announced on February 4, 2026, we have entered into a definitive agreement to acquire Silicon Labs for $231.00 per share in an all-cash transaction, representing a total enterprise value of approximately $7.5 billion. Under the terms of the agreement, Silicon Labs stockholders will receive $231.00 in cash for each share of Silicon Labs common stock they hold at the time of closing, which is expected in the first half of 2027, subject to receipt of regulatory approvals and other customary closing conditions. We expect to fund the transaction with a combination of cash on hand and debt financing. In June 2026, we entered into a 364-day delayed draw term loan credit facility for borrowings up to $5 billion to support the Silicon Labs acquisition consideration and related transaction expenses. As of June 30, 2026, there were no outstanding borrowings on the delayed draw term loan credit facility. Details of financial results – second quarter 2026 compared with second quarter 2025 Revenue of $5.46 billion increased $1.02 billion, or 23%, due to increased demand in our Analog segment and, to a lesser extent, in our Embedded Processing segment. Gross profit of $3.35 billion was up $777 million, or 30%, primarily due to higher revenue, partially offset by higher manufacturing costs associated with our planned capacity expansions. As a percentage of revenue, gross profit increased to 61.4% from 57.9%. Operating expenses (R&D and SG&A) were $1.03 billion compared with $1.01 billion. Acquisition charges were $17 million due to transaction-related costs associated with our planned acquisition of Silicon Labs. Operating profit was $2.31 billion, or 42.3% of revenue, compared with $1.56 billion, or 35.1% of revenue. This change was primarily due to higher revenue and associated gross profit. 20 OI&E was $69 million of income compared with $48 million of income. This increase was primarily due to higher interest income. Interest and debt expense of $141 million increased $8 million. See Note 6 to the financial statements. Our provision for income taxes was $258 million compared with $183 million. This increase was primarily due to higher income before income taxes, partially offset by higher discrete tax benefits of $35 million, related to stock-based compensation. Our effective tax rate, which includes discrete tax items, was 12% in both periods. Net income was $1.98 billion compared with $1.30 billion. EPS was $2.14 compared with $1.41. Second quarter 2026 segment results Our segment results compared with the year-ago quarter are as follows: Analog (includes Power and Signal Chain product lines) Q2 2026 Q2 2025 Change Revenue $ 4,365 $ 3,452 26 % Operating profit 1,992 1,325 50 % Operating profit % of revenue 45.6 % 38.4 % Analog revenue increased in both product lines, led by Signal Chain, due to higher demand. Operating profit increased due to higher revenue and associated gross profit. Embedded Processing (includes microcontrollers and processors) Q2 2026 Q2 2025 Change Revenue $ 788 $ 679 16 % Operating profit 168 85 98 % Operating profit % of revenue 21.3 % 12.5 %",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/97476/000095010326014118/dp253473_8k.htm",
+   "published": "2026-09-17T16:11:46-04:00",
+   "form": "8-K",
+   "items": "7.01,9.01",
+   "text": "ITEM 7.01. Regulation FD Disclosures. The Registrant’s news release dated September 17, 2026, regarding a planned dividend increase, attached hereto as Exhibit 99 is incorporated by reference herein. ITEM 9.01. Financial Statements and Exhibits. Designation of Exhibit in this Report Description of Exhibit 99 Registrant’s News Release Dated September 17, 2026 (furnished pursuant to Item 7.01) 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. TEXAS INSTRUMENTS INCORPORATED Date: September 17, 2026 By: /s/ Julie C. Knecht Julie C. Knecht Senior Vice President and Chief Financial Officer"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/e47e6de4-e781-3181-adf7-c5685c0abf10/ai-stocks%3A-spacex-2027-data.html?.tsrc=rss",
+   "published": "2026-10-20T09:10:47-04:00",
+   "text": "AI Stocks: SpaceX 2027 Data Center Expansion Could Be Game Changer - AI stocks face an earnings test, with SpaceX and Meta due, as investors question massive spending and look for return on investments.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/20/texas-instruments-and-lam-research-report-earnings-ai-equipment-boom-meets-analog-rebound/?.tsrc=rss",
+   "published": "2026-10-20T07:50:03-04:00",
+   "text": "Texas Instruments and Lam Research Report Earnings: AI Equipment Boom Meets Analog Rebound - Lam Research and Texas Instruments both report after the close on Wednesday, and each faces a different kind of pressure: one must prove AI equipment demand is still accelerating, while the other needs to show its industrial recovery has real staying power.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/texas-instruments-txn-report-earnings-114950336.html?.tsrc=rss",
+   "published": "2026-10-20T07:49:50-04:00",
+   "text": "Texas Instruments (TXN) To Report Earnings Tomorrow: Here Is What To Expect - Analog chip manufacturer Texas Instruments (NASDAQ:TXN) will be announcing earnings results this Wednesday after the bell. Here’s what you need to know.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-meta-112700586.html?.tsrc=rss",
+   "published": "2026-10-20T07:27:00-04:00",
+   "text": "The Zacks Analyst Blog Highlights Meta Platforms, Lam Research, Texas Instruments, Tesla, Netflix, Procter & Gamble and GE Aerospace - Meta Platforms and other major companies report Q3 results as AI spending, shifting stock-bond correlations, China's economic data and Brazil's election shape global markets.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/spdr-p-semiconductor-etf-xsd-110513330.html?.tsrc=rss",
+   "published": "2026-10-20T07:05:13-04:00",
+   "text": "SPDR S&P Semiconductor ETF (XSD) Sells Synaptics, Analog Devices on Friday - The $2.49 billion fund sold $196.3 million of stock, trimming all 46 holdings and adding none.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/industrial-semiconductors-global-strategic-business-102800770.html?.tsrc=rss",
+   "published": "2026-10-20T06:28:00-04:00",
+   "text": "Industrial Semiconductors - Global Strategic Business Report 2026 | Secure Share of the US$156.1 Billion 2032 Market as Infineon, Intel, STMicroelectronics, NXP, and Texas Instruments Lead - Target automation, IoT, energy-efficient power electronics and resilient supply chains to unlock revenue across smart manufacturing and harsh-environment applicationsDublin, Oct. 20, 2026 (GLOBE NEWSWIRE) -- \"Industrial Semiconductors - Global Strategic Business Report\" has been added to ResearchAnd",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/digital-power-ics-global-strategic-082200945.html?.tsrc=rss",
+   "published": "2026-10-20T04:22:00-04:00",
+   "text": "Digital Power ICs - Global Strategic Business Report: Data Centers' Appetite for Power Drives Digital Power Chips Toward $103 Billion - The global digital power IC market is projected to nearly double from $54.9 billion in 2024 to $103 billion by 2030, a new Research and Markets report finds, as 5G networks, EVs and efficiency rules lift demand for chips from Texas Instruments, Infineon, Analog Devices and NXP.Dublin, Oct. 20, 2026 ",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/dow-s-and-p-500-nasdaq-edge-higher-amid-tech-rebound-as-q3-earnings-season-forges-ahead-djt-amzn-cbrs-crwv-stocks-in-focus/cZxq0LsRBuB?.tsrc=rss",
+   "published": "2026-10-19T23:31:56-04:00",
+   "text": "Dow, S&P 500, Nasdaq Edge Higher Amid Tech Rebound As Q3 Earnings Season Forges Ahead: DJT, AMZN, CBRS, CRWV Stocks In Focus - Technology and AI stocks rebounded on Monday, reversing a week of steep declines.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/texas-instruments-3-things-watch-140900279.html?.tsrc=rss",
+   "published": "2026-10-19T23:27:00-04:00",
+   "text": "Texas Instruments: 3 Things to Watch Before Buying the Dividend Stock - Texas Instruments Incorporated (NASDAQ:TXN) stands out as a favorite among long-term dividend investors. The company’s analog chips and embedded processors power everything from industrial machines and cars to data centers and home electronics. Because these products stick around for years, Texas In",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/sandisk-sndk-vs-texas-instruments-185731846.html?.tsrc=rss",
+   "published": "2026-10-19T21:57:31-04:00",
+   "text": "Sandisk (SNDK)  vs. Texas Instruments (TXN): How Much Cash-Yield Protection Does Memory Offer? - Our 10 Best Semiconductor Stocks to Buy for the Next Decade includes both memory and analog exposure. Sandisk’s strong cash generation creates an apparent valuation advantage over Texas Instruments. The useful question is how much that cash can decline before the advantage disappears, rather than as",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/19/these-3-chip-giants-turn-massive-cash-flow-into-growing-dividends/?.tsrc=rss",
+   "published": "2026-10-19T15:15:33-04:00",
+   "text": "These 3 Chip Giants Turn Massive Cash Flow Into Growing Dividends - Most income investors write off chipmakers the moment they see the yield, but a handful of semiconductor companies have been quietly compounding their payouts through recessions, factory buildouts, and market downturns in ways that reframe what a dividend stock can look like.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/broadcom-avgo-vs-texas-instruments-185756091.html?.tsrc=rss",
+   "published": "2026-10-19T14:57:56-04:00",
+   "text": "Broadcom (AVGO) vs. Texas Instruments (TXN): Higher Income or Stronger Dividend Coverage? - Our 10 Best Semiconductor Stocks to Buy for the Next Decade ranks durable franchises using weighted sentiment, business resilience and valuation. Two names raise a separate income question: how much can shareholders collect without relying on an uninterrupted boom? Broadcom Inc. (NASDAQ:AVGO) has st",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/19/apples-iphone-duo-sold-out-in-minutes-the-last-time-apple-reinvented-the-phone-one-apple-suppliers-stock-soared-about-1200-in-a-decade/?.tsrc=rss",
+   "published": "2026-10-19T11:49:32-04:00",
+   "text": "Apple’s iPhone Duo Sold Out In Minutes. The Last Time Apple Reinvented The Phone, One Apple Supplier’s Stock Soared About 1,200% In A Decade - Apple's first foldable iPhone sold out in minutes and sent investors scrambling to find the supplier that could pull off what one obscure chipmaker did after the original iPhone launched in 2007.",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619192/is-broadcom-stock-cheap-enough-yet/2026-10-19?.tsrc=rss",
+   "published": "2026-10-19T08:55:49-04:00",
+   "text": "Is Broadcom Stock Cheap Enough Yet? - Shares of Broadcom (AVGO) closed at $328.75 on October 16, 2026. That price sits 31.5% below the highest close of the past year, which the stock reached on June 2. Shareholders lost 5.7% over the past twelve months, while the S&P 500 returned 16.2%. Even after that fall, a buyer today is betting tha",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/tech-stock-rebound-nudges-us-120243477.html?.tsrc=rss",
+   "published": "2026-10-19T08:02:43-04:00",
+   "text": "Tech Stock Rebound Nudges US Equity Futures Mostly Higher Pre-Bell - US equity futures were edging mostly higher pre-bell Monday as traders observed technology-related s",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/tech-rebound-lifts-wall-street-111003427.html?.tsrc=rss",
+   "published": "2026-10-19T07:10:03-04:00",
+   "text": "Tech Rebound Lifts Wall Street Pre-Bell; Asia Mixed, Europe Off - Wall Street futures pointed higher pre-bell Monday as traders waded back into tech shares after rece",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/semiconductor-timing-integrated-circuit-ic-105200278.html?.tsrc=rss",
+   "published": "2026-10-19T06:52:00-04:00",
+   "text": "Semiconductor Timing Integrated Circuit (IC) Market Report 2026, Forecast to 2030 | Capture AI, 5G and EV Demand with Texas Instruments, STMicroelectronics, Infineon and SiTime - Boost ROI via low-power, high-precision IC innovation, portfolio expansion, regional fabrication, diversified sourcing and cost-optimized designs for AI, 5G, IoT and EVs.Dublin, Oct. 19, 2026 (GLOBE NEWSWIRE) -- \"Semiconductor Timing Integrated Circuit (IC) Market Report 2026\" has been added to Rese",
+   "feed": {
+    "fetched_et": "2026-10-20T14:31:27-04:00",
+    "sha256": "330b3c48c21cad04d31c6cd2739603164e81c238e70d82a50fa049a1c719ff2c"
+   }
+  }
+ ],
+ "missing": [
+  "earnings release: no EX-99.1 found in 0000097476-26-000148 - its 8-K body is given instead"
+ ],
+ "transient": [],
+ "chars": 35945
+}
