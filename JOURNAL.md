@@ -9,6 +9,22 @@
 
 ---
 
+## 2026-10-21 (Wed) 13:15 ET — describing the experiment to outsiders without leaking it (truthfulness)
+- **What happened.** Jacob asked for a full, candid description of the experiment for his LinkedIn profile and an
+  SMU Economics application, with every claim labelled BUILT, PLANNED or BELIEF.
+- **What it taught.**
+  - The honest track record is mostly *negative knowledge*: 20 history signals tested, none beat buy-everything;
+    straddles lose after costs; the first hour after a print showed nothing that validated. The live record has
+    0 graded Season A events.
+  - Every frozen T2 confidence on the 5 PASS events sits at 0.45–0.54. The AI itself rates these prints near coin
+    flips around the base rate. The model shadows disagree on ABT and META.
+  - An outside write-up is a leak route. It must report counts and closed history, not interim live numbers, or
+    the owner's coming counts-only decisions (D016, D003 v5) stop being blind.
+  - Authorship needs care. Jacob set the question, the outcome, the universe and the rules. AI wrote all the code
+    and the registry texts. 587 of 841 commits are the automation's own.
+- **What changed.** Nothing in the experiment. The brief recommends a one-event "proven blind" page for LRCX
+  2026-10-21, chosen before its grade exists, so the showcase can't be cherry-picked.
+
 ## 2026-10-21 (Wed) 11:40 ET — what a fresh chat re-reads, and a leaner hand-off (infra; CHARTER: speed)
 - **What happened.** The token study found the hand-off itself is the biggest waste left: ~18 extra calls of
   re-reading. I measured what those calls read. Each call's context growth was split into its own output and

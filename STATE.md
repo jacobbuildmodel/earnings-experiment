@@ -3,7 +3,8 @@
 **Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-20 20:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Seeded Wed 2026-10-21 ~12:00 ET by the hand-off-cost side session, from the Log, health and git log.*
+*Seeded Wed 2026-10-21 ~12:00 ET by the hand-off-cost side session; re-checked 13:15 ET by the profile-brief chat
+(read-only: nothing changed but this block, the Log and JOURNAL; no live outcome read).*
 - **Phase:** Season A, week 2 of 6. The peak (Oct 29–Nov 6) is the power. Code runs gates, freezes, T2, C1, paper.
 - **New since the Mon plan:** Tue's gates gave 3 PASS (LRCX, META, TXN). Their T2 froze on the cloud routine alone
   by ~21:22 ET Tue, the first time it carried T2 (`4c7331d`, `26302ff`, `fab9777`). check.py shallow-clone fix and
@@ -183,6 +184,16 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-21 (Wed) 13:15 ET — a profile brief for Jacob (LinkedIn, SMU application); read-only.**
+- Jacob asked for the full, labelled picture (BUILT / PLANNED / BELIEF) for another chat. Written to his
+  scratchpad, not the repo: no experiment file changed.
+- **Read:** frozen calls of the 5 Season A PASS events (all exit A pending, 0 graded), gate reasons (15 gates:
+  5 PASS, 9 `wide_spread`, 1 `thin_oi`), the 3 graded pilot events (already in JOURNAL), shadow and paper **counts**.
+  **Not read:** any SH-M, SH-X, C1 or paper P&L figure (blind or pooled A + B; D016 still to freeze).
+- **Found:** Jacob's Gmail is in the public commit metadata of every laptop commit. It can't be rewritten without
+  breaking the timestamp proof, so future commits could use a GitHub noreply address (his call). CATALYST,
+  EEF v4.4 and POST appear nowhere in this repo; they are DRIVE models, and the brief says so.
 
 **2026-10-21 (Wed) 11:40 ET — lean hand-offs: a one-call start-up, a NOW block, a brief template** (side session, after the token study).
 - **Measured** (`ops/token_efficiency_2026-10.md`, "What a fresh chat reads"): a fresh chat grows +99k over ~20 calls
