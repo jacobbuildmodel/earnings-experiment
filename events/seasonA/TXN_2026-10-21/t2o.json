@@ -1,0 +1,137 @@
+{
+ "track": "T2O",
+ "event": "TXN_2026-10-21",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.45,
+  "thesis": "After a 63% 12-month run and a 12% upward revision to Q3 EPS estimates, TXN's October print mostly comes down to its Q4 guide, which is seasonally soft, so a beat on Q3 may not be enough to lift the next open above the entry open.",
+  "reasons": [
+   "Semis cluster base rate is below 50% (0.479)",
+   "Q3 EPS estimate rose ~12% over 90 days (2.16 to 2.43), so the bar is high",
+   "TXN's own history: Q4 guides are seasonally weaker (I5) and its October reactions have often been negative, e.g. -8.6% in Oct 2025",
+   "Options lean bearish: put/call volume 3.2x and call-minus-put IV of -0.03",
+   "Last print beat EPS by 10% and the stock still fell 2.8%, so beats are already priced in"
+  ],
+  "deciding_variable": "The Q4 revenue guide midpoint versus consensus, and the commentary on whether the industrial and auto recovery is sustained.",
+  "prior": {
+   "p": 0.48,
+   "from": "I3 by_cluster semis t0_hit 0.479 (n=434); overall ~0.54 and AMC 0.538 are higher, but the cluster is the closest reference class"
+  },
+  "leak_probe": "I don't know. That report is from today (2026-10-21), after my training cutoff, so I have no information on how TXN's stock reacted.",
+  "moved_from_prior": "Moved down about 3 points from 0.48. Raised estimates, a seasonally soft Q4 guide, a strong run-up and bearish options flow outweigh the strong fundamental momentum (23% revenue growth, margin expansion) and a recent tech rebound.",
+  "theses": [
+   {
+    "expected": "Down",
+    "mechanism": "Q3 beats, but the Q4 guide midpoint comes in at or below consensus on seasonal softness, and the stock sells off after its run-up.",
+    "wrong_if": "The Q4 guide implies flat-to-up sequential revenue, well above normal seasonality."
+   },
+   {
+    "expected": "Up",
+    "mechanism": "Industrial and data-center strength carries through, and an above-seasonal Q4 guide confirms the recovery has staying power.",
+    "wrong_if": "Management flags distributor inventory builds or slowing orders."
+   },
+   {
+    "expected": "Flat/small move",
+    "mechanism": "An in-line print and guide leave the stock near the entry open, with the result decided by market drift and Lam Research's same-night reaction.",
+    "wrong_if": "Guide or margin surprises exceed the ~7% implied move."
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue and EPS guide midpoints vs ~consensus",
+   "Gross margin trend and capex/depreciation commentary",
+   "Industrial and auto sequential growth; data center commentary",
+   "Distributor and channel inventory levels",
+   "Silicon Labs deal financing or timing updates",
+   "LRCX reaction the same night as sector read-through"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/TXN_2026-10-21/gate.json",
+    "published": "2026-10-20T14:31:12.858579-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/TXN_2026-10-21/factors.json",
+    "published": "2026-10-20T14:31:12.858579-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/97476/000009747626000152/txn-20260630.htm",
+    "published": "2026-07-24T09:33:54-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/20/texas-instruments-and-lam-research-report-earnings-ai-equipment-boom-meets-analog-rebound/?.tsrc=rss",
+    "published": "2026-10-20T07:50:03-04:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://stocktwits.com/news-articles/markets/equity/dow-s-and-p-500-nasdaq-edge-higher-amid-tech-rebound-as-q3-earnings-season-forges-ahead-djt-amzn-cbrs-crwv-stocks-in-focus/cZxq0LsRBuB?.tsrc=rss",
+    "published": "2026-10-19T23:31:56-04:00",
+    "dossier_item": "I14"
+   }
+  ],
+  "decided_et": "2026-10-20T21:53:18-04:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 16148,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1201,
+   "output_tokens_details": {
+    "thinking_tokens": 207
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 16148,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1201,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 16148,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 16148
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1549565
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "event": "TXN_2026-10-21",
+ "backend": "sonnet_r",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "fda57210f54f16543275c77ff82d2208a322f002dba493c6dfa046de83809b7f",
+ "called_et": "2026-10-20T21:52:09-04:00",
+ "prompt_sha256": "4003d08266323bb783c8cb1e30aacede5b1ce50fe67944a830f1b0b604c0ddad",
+ "probe_reply": "I don't know. I don't have information on how TXN's stock moved after its 2026-10-21 earnings report, since that falls after my knowledge cutoff.",
+ "reply": "{\"prior\":{\"p\":0.51,\"from\":\"I3 semis cluster t0_hit 0.479 blended with AMC session 0.538 and overall 0.542; semis is the closest cluster for TXN, so I settle near 0.51\"},\"confidence\":0.50,\"thesis\":\"TXN enters earnings after a strong run, with a large implied move of about 7.2% and estimates already revised up, so the reaction is close to a coin flip with no clear edge.\",\"reasons\":[\"The semis cluster base rate (47.9%) sits below the overall rate (54%), which offsets the generally positive earnings-drift base rate.\",\"Estimates have risen sharply (90-day EPS revision +12%, consensus $2.43 versus $1.48 a year ago), so the bar is high after a 63% 12-month gain.\",\"The stock is 15% below its 52w high, with a recent 5-day dip of -2.7%, which leaves some room for a relief move.\",\"Past reactions are mixed (last 4 win rate 50%), including a drop after a +10% EPS beat in July, which shows how much guidance drives the reaction.\",\"The implied move of 7.2% is large, but the call/put skew is balanced, so options give no directional signal.\"],\"moved_from_prior\":\"Moved from 0.51 to 0.50, a downward nudge of about 0.01 because expectations look elevated after the revisions and the rally; no directional evidence offsets it.\",\"deciding_variable\":\"Q4 revenue guidance versus consensus, especially industrial and data center strength, plus the capex and free cash flow outlook.\",\"theses\":[{\"expected\":\"Stock rises on guidance above consensus\",\"mechanism\":\"Industrial and data center recovery plus 300mm cost benefits lift margins and the outlook\",\"wrong_if\":\"Q4 revenue guidance midpoint comes in below consensus or gross margin guidance disappoints\"},{\"expected\":\"Stock falls despite an EPS beat\",\"mechanism\":\"The high bar after a 63% annual run and upward revisions means a beat is priced in, as in July\",\"wrong_if\":\"Guidance is clearly strong and the stock opens higher\"},{\"expected\":\"Muted or mixed move with an opening gap that fades\",\"mechanism\":\"Peer read-throughs from Lam Research and the wider chip sector dominate the opening\",\"wrong_if\":\"TXN gaps beyond the implied 7% move in either direction\"}],\"key_observations\":[\"Q4 revenue guidance midpoint versus consensus\",\"Gross margin and the opex/capex outlook\",\"Industrial and data center commentary\",\"Free cash flow trajectory and the Silicon Labs deal funding\",\"Lam Research results at the same time and the sector tone\"],\"items_used\":[\"I1\",\"I2\",\"I3\",\"I4\",\"I5\",\"I8\"]}",
+ "error": null,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 16156,
+  "cache_read_input_tokens": 633,
+  "output_tokens": 918,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 16156,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 918,
+    "cache_read_input_tokens": 633,
+    "cache_creation_input_tokens": 16156,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 16156
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model": "claude-sonnet-5-5",
+ "isolation": {
+  "tools": [],
+  "mcp_servers": [],
+  "num_turns": 1,
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "model": "claude-sonnet-5-5"
+ },
+ "outcome": "decided"
+}
