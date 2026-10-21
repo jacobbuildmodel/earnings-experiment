@@ -1,21 +1,19 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-20 20:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-21 13:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Seeded Wed 2026-10-21 ~12:00 ET by the hand-off-cost side session, from the Log, health and git log.*
+*Rewritten Wed 2026-10-21 13:40 ET by the D016 chat (hand-off before the 14:30 window; no outcome or P&L read).*
 - **Phase:** Season A, week 2 of 6. The peak (Oct 29–Nov 6) is the power. Code runs gates, freezes, T2, C1, paper.
-- **New since the Mon plan:** Tue's gates gave 3 PASS (LRCX, META, TXN). Their T2 froze on the cloud routine alone
-  by ~21:22 ET Tue, the first time it carried T2 (`4c7331d`, `26302ff`, `fab9777`). check.py shallow-clone fix and
-  incident (`cf151db`). Context guard and lean hand-offs live (`ops/startup.py`, CLAUDE.md brief template).
+- **D016 frozen 13:31 ET** (`1d77445`, before 14:30 and before any NOC/RTX/VICR paper P&L): `registry/D016_gate_audit_v1.md`,
+  `pipeline/gate_audit.py`, `tests/test_gate_audit.py` (proves it opens only gate.json + option_chain.json). check.py
+  guards the code. **Interim run** (`329f81e`, 15 gates, decides nothing): 15/15 reproduce; A3/A4 add RTX, TTMI
+  (5 → 7). **Decision run: Fri Oct 23 ≥ 16:00 ET**, `python pipeline/gate_audit.py seasonA --decision`, write-once.
 - **Health RED (04:49 ET Wed):** ABT and SPCX T2 MISSING (incident filed; no retry by rule) · DPZ +100 shares not in
   a ledger. Every `paper-options.yml` run exits red on DPZ's standing alert (noise until the shares go).
-- **External evaluation brief:** `reviews/evaluations/2026-10-21_external_brief.md` written by its side session,
-  still uncommitted at 11:30 ET. Ideas A and E wait for the evaluator.
-- **Owed from the Mon plan, not done:** D016 gate audit (no registry file yet; run Fri Oct 23 evening) · three health
-  alarms (AI step refused, dates stale, runner not acting) · Oct 22 checkpoint, ≥ 70% of names dated Oct 31–Nov 6
-  confirmed (40% Tue 07:30) · peak capacity by Oct 27 · DST inventory by Oct 28.
-- **Next action:** D016, then the three alarms. The next hand-off re-ranks this list.
+- **Owed, not done:** the three health alarms (designed, not coded: Log 13:40 ET) · Oct 22 checkpoint, ≥ 70% of names
+  dated Oct 31–Nov 6 confirmed (40% Tue 07:30) · peak capacity by Oct 27 · DST inventory by Oct 28.
+- **Next action:** code the three alarms in `pipeline/health.py` from the Log 13:40 ET design, after 15:56 ET.
 - **Waiting on Jacob:** DPZ's 100 paper shares · Actions' claude refused by an organization setting (below).
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
@@ -183,6 +181,38 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-21 (Wed) 13:40 ET — D016 frozen and run (interim); the three alarms designed; hand-off before 14:30.**
+- **D016 v1 frozen 13:31 ET** (`1d77445`): the full D003 v4 cascade on every gate, buckets by price and expiry gap,
+  alternatives A1 (better of two strikes), A2 ($0.10 floor), A3 (straddle spread ≤ 10%), A4 (A1 + A3), sensitivity caps.
+  Decision rule fixed before any count: an alternative needs ≥ 2 PASS over A0, else keep v4. Read path fenced; the
+  test spies on every `open`. 326 tests pass, check.py PASS.
+- **Interim, 15 gates (`329f81e`):** wide_spread fails 9 (6 alone), thin_oi 4. Monthly-expiry names 0/6 PASS; under
+  $100 0/4. A3 and A4 add RTX and TTMI (5 → 7); A1 adds TTMI; A2 nothing. The rest fail by far (straddle 13.8–39%).
+- **Alarm design (not coded), each a function in `health.py` called from `run()`, with tests in `tests/test_health_alarms.py`:**
+  - *AI step refused:* `logs/actions/*.json` `result.is_error` true (stamp in the file name, UTC), and `logs/t2/*.json`
+    with `error` set that is not a network exception (`^\w+(Error|Exception)\b`), per step (actions suffix; t2 backend).
+    The newest log of a step refused → RED if its refusal streak began < 24 h ago, else AMBER (standing, Waiting on
+    Jacob 2). Message: since when, how many in a row, the text. Today: Actions claude refused since Oct 15.
+  - *Dates stale:* a status change = a `rechecks` line in `universe/<s>/event_status.json` matching
+    `CONFIRMED \d{4}-\d\d-\d\d` or `INELIGIBLE \w+` (timestamp before the first ": "). None in 30 h while a PENDING name
+    has a `calendar_dates` entry within 7 days → AMBER; RED if one is within 3 sessions. Message: the newest re-check
+    time of those names (running-but-finding-nothing vs not running).
+  - *Runner not acting:* afternoon window 14:27–15:56 only; a window step running for the account (`window_jobs`); an
+    Alpaca open order (`alpaca_state`, skip `pending_cancel`) older than its cancel limit + 5 min. Limits: a
+    `<key>-close[-rN]` of a trade with `exec: "v3"` 2 min (`paper_options.V3_RETRY_AFTER_MIN`), any other 15
+    (`RETRY_AFTER_MIN`). → RED, telling the reader to `gh run cancel <run id>` (from the step's url) BEFORE dispatching
+    `paper-window-push.yml` (one waiting run per group). Read-only: it cancels and dispatches nothing itself.
+
+**2026-10-21 (Wed) 13:15 ET — a profile brief for Jacob (LinkedIn, SMU application); read-only.**
+- Jacob asked for the full, labelled picture (BUILT / PLANNED / BELIEF) for another chat. Written to his
+  scratchpad, not the repo: no experiment file changed.
+- **Read:** frozen calls of the 5 Season A PASS events (all exit A pending, 0 graded), gate reasons (15 gates:
+  5 PASS, 9 `wide_spread`, 1 `thin_oi`), the 3 graded pilot events (already in JOURNAL), shadow and paper **counts**.
+  **Not read:** any SH-M, SH-X, C1 or paper P&L figure (blind or pooled A + B; D016 still to freeze).
+- **Found:** Jacob's Gmail is in the public commit metadata of every laptop commit. It can't be rewritten without
+  breaking the timestamp proof, so future commits could use a GitHub noreply address (his call). CATALYST,
+  EEF v4.4 and POST appear nowhere in this repo; they are DRIVE models, and the brief says so.
 
 **2026-10-21 (Wed) 11:40 ET — lean hand-offs: a one-call start-up, a NOW block, a brief template** (side session, after the token study).
 - **Measured** (`ops/token_efficiency_2026-10.md`, "What a fresh chat reads"): a fresh chat grows +99k over ~20 calls
