@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "SSNC",
+ "report_date": "2026-10-22",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-23"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-23"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "reaction_day": "2026-10-23"
+ },
+ "snapshot_session": "2026-10-21",
+ "captured_et": "2026-10-21T14:31:10.485309-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/ssc-release-third-quarter-2026-earnings-2026-10-06",
+  "published_et": "2026-10-06T09:00-04:00",
+  "quote": "linkedin facebook x email reddit WINDSOR, Conn. --(BUSINESS WIRE)-- SS&C Technologies Holdings, Inc. (Nasdaq: SSNC), a global provider of services and technology for the financial services and healthcare industries, will announce its financial results for the third quarter ended September 30, 2026 after the close of the market on Thursday, October 22, 2026 .",
+  "title": "SS&C to Release Third Quarter 2026 Earnings",
+  "retrieved_et": "2026-10-08T22:44:39.767991-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-22T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 87.1500015258789,
+  "expiry": "2026-11-20",
+  "strike": 85.0,
+  "call": {
+   "bid": 3.1,
+   "ask": 5.1,
+   "openInterest": 356.0,
+   "lastPrice": 4.15,
+   "impliedVolatility": 0.3930724755859375,
+   "lastTradeDate": "2026-10-20T19:38:23+00:00"
+  },
+  "put": {
+   "bid": 1.75,
+   "ask": 2.4,
+   "openInterest": 20.0,
+   "lastPrice": 8.13,
+   "impliedVolatility": 0.3365544860839844,
+   "lastTradeDate": "2026-09-28T17:41:24+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 20,
+  "implied_move": 0.07085484672270893,
+  "rel_spread": {
+   "call": 0.4878048780487804,
+   "put": 0.3132530120481927
+  },
+  "oi_atm": 376.0,
+  "oi_sum": 376.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
