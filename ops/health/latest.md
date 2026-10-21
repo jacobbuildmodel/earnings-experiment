@@ -1,4 +1,4 @@
-# Health 2026-10-21 14:46 ET - **RED**
+# Health 2026-10-21 15:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -21,13 +21,13 @@ check.py: PASS - 1 warning(s)
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 
 ## Information
-- WDC_2026-10-22: T2 deadline Thu 22 Oct 09:15 ET - frozen so far: none
 - MXL_2026-10-22: T2 deadline Thu 22 Oct 09:15 ET - frozen so far: none
-- paper/options_ledger.json: open ['seasonA-HXL-2026-10-21-F', 'seasonA-LMT-2026-10-22-F', 'seasonA-LRCX-2026-10-21-F', 'seasonA-META-2026-10-21-F', 'seasonA-ROP-2026-10-22-F', 'seasonA-TSCO-2026-10-22-F', 'seasonA-TXN-2026-10-21-F', 'seasonA-APPF-2026-10-22-F', 'seasonA-DECK-2026-10-22-F', 'seasonA-KN-2026-10-22-F', 'seasonA-SSNC-2026-10-22-F', 'seasonA-VRSN-2026-10-22-F', 'seasonA-WDC-2026-10-22-F']
-- paper/long_ledger.json: open ['seasonA-HXL-2026-10-21-L', 'seasonA-LMT-2026-10-22-L', 'seasonA-LRCX-2026-10-21-L', 'seasonA-META-2026-10-21-L', 'seasonA-TSCO-2026-10-22-L', 'seasonA-TXN-2026-10-21-L', 'seasonA-APPF-2026-10-22-L', 'seasonA-DECK-2026-10-22-L', 'seasonA-KN-2026-10-22-L', 'seasonA-SSNC-2026-10-22-L', 'seasonA-VRSN-2026-10-22-L', 'seasonA-WDC-2026-10-22-L']
+- WDC_2026-10-22: T2 deadline Thu 22 Oct 09:15 ET - frozen so far: none
+- paper/options_ledger.json: open ['seasonA-HXL-2026-10-21-F', 'seasonA-LMT-2026-10-22-F', 'seasonA-LRCX-2026-10-21-F', 'seasonA-META-2026-10-21-F', 'seasonA-ROP-2026-10-22-F', 'seasonA-TSCO-2026-10-22-F', 'seasonA-TXN-2026-10-21-F', 'seasonA-APPF-2026-10-22-F', 'seasonA-DECK-2026-10-22-F', 'seasonA-KN-2026-10-22-F', 'seasonA-VRSN-2026-10-22-F', 'seasonA-WDC-2026-10-22-F']
+- paper/long_ledger.json: open ['seasonA-HXL-2026-10-21-L', 'seasonA-LMT-2026-10-22-L', 'seasonA-LRCX-2026-10-21-L', 'seasonA-META-2026-10-21-L', 'seasonA-TSCO-2026-10-22-L', 'seasonA-TXN-2026-10-21-L', 'seasonA-APPF-2026-10-22-L', 'seasonA-DECK-2026-10-22-L', 'seasonA-KN-2026-10-22-L', 'seasonA-VRSN-2026-10-22-L', 'seasonA-WDC-2026-10-22-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET
-- paper/long: 23 position(s), 1 open order(s) - they match the ledgers
+- paper/long: 23 position(s), 0 open order(s) - they match the ledgers
 - Wed 21 Oct: 8 snapshot(s) - APPF, DECK, KN, MXL, RNG, SSNC, VRSN, WDC
 - Fri 23 Oct: 8 snapshot(s) - AGYS, AMKR, CDNS, CLS, CVLT, EEFT, GLXY, RMBS
 - Mon 26 Oct: 19 snapshot(s) - BLKB, BSX, CAKE, EAT, ETSY, EXTR, FFIV, FLEX, GEHC, JMKE, LFUS, LOGI, MANH, NXPI, STX, TEL, TER, UCTT, VFC
