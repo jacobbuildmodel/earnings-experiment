@@ -1,0 +1,107 @@
+{
+ "track": "T2G",
+ "event": "META_2026-10-21",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.46,
+  "thesis": "Aggressive downward EPS revisions and persistent investor anxiety over surging AI capex and margin compression outweigh the reduced valuation bar, tilting the immediate reaction odds moderately negative.",
+  "reasons": [
+   "META has dropped after 3 of its last 4 earnings prints (win rate 25%), driven by recurrent market pushback on capex guidance.",
+   "Current-quarter EPS estimates have been aggressively slashed by 21.6% over 90 days (from $7.06 to $5.54), including an 11.5% cut in the last 7 days.",
+   "Free cash flow collapsed to $784 million in Q2 2026 as quarterly capex surged to $31.1 billion, leaving little margin for error on 2026/2027 capex commentary."
+  ],
+  "deciding_variable": "FY2026/2027 capex guidance and commentary on AI infrastructure spend relative to ad revenue acceleration.",
+  "prior": {
+   "p": 0.54,
+   "from": "base_rates: cluster software_internet (54.1%)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Lowered 8 percentage points from the 0.54 prior due to poor recent print history (1 of 4 positive), severe late-stage EPS revisions, and high capex drag, partially offset by a deeply oversold 5-day setup (-9.5%) and mild call skew.",
+  "theses": [
+   {
+    "expected": "Capex guidance increases or remains elevated while Q4 revenue outlook merely matches expectations, triggering an open drop.",
+    "mechanism": "Investors remain sensitive to deteriorating free cash flow and margin contraction from unprecedented infrastructure investments.",
+    "wrong_if": "Management demonstrates that AI integration has meaningfully accelerated ad pricing and business messaging monetization enough to exceed elevated expense run-rates."
+   },
+   {
+    "expected": "Relief bounce after recent 9.5% 5-day pre-earnings selloff on meeting newly lowered consensus EPS of $5.54.",
+    "mechanism": "Oversold positioning and low hedge skew allow a standard top-line beat to squeeze short-term bears.",
+    "wrong_if": "Legal reserves or youth litigation developments trigger an additional unexpected GAAP earnings charge."
+   },
+   {
+    "expected": "Family of Apps advertising growth decelerates in Europe and North America under regulatory and platform tracking constraints.",
+    "mechanism": "Weaker ad conversion updates diminish the multiple despite reasonable user growth.",
+    "wrong_if": "WhatsApp monetization and Muse AI commercial uptake show upside surprises that open new revenue avenues."
+   }
+  ],
+  "key_observations": [
+   "Q3 2026 revenue vs guidance range ($61-64B)",
+   "Updated FY2026 total capex range (previously $130-145B)",
+   "FY2026 total expense outlook (previously $165-169B)",
+   "Free cash flow generation relative to quarterly capex spend",
+   "Average price per ad and ad impression growth rates"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/META_2026-10-21/gate.json",
+    "published": "2026-10-20T14:31:00.318721-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/META_2026-10-21/factors.json",
+    "published": "2026-10-20T14:31:00.318721-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050596/meta-06302026xexhibit991.htm",
+    "published": "2026-07-29T20:03:23-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026050705/meta-20260630.htm",
+    "published": "2026-07-29T22:58:51-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/20/what-metas-quarter-has-to-show-to-justify-wall-streets-highest-targets/?.tsrc=rss",
+    "published": "2026-10-20T12:30:30-04:00",
+    "dossier_item": "I10"
+   }
+  ],
+  "decided_et": "2026-10-20T15:49:05-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 14912,
+   "candidatesTokenCount": 770,
+   "totalTokenCount": 17083,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 14912
+    }
+   ],
+   "thoughtsTokenCount": 1401,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

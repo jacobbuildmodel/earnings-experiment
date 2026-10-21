@@ -227,7 +227,9 @@ jobs:
 
       - name: Housekeeping (AI) - PENDING date re-checks and the STATE.md log
         id: ai
-        if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true'
+        # 2026-10-20: off unless the repository variable ACTIONS_HOUSEKEEPING_AI is "on". The token is refused, and the
+        # cloud routine earnings-housekeeping-cloud does this now (ops/cloud_housekeeping_prompt.md); two writers would race.
+        if: steps.plan.outputs.claude == 'true' && steps.plan.outputs.auth == 'true' && vars.ACTIONS_HOUSEKEEPING_AI == 'on'
         continue-on-error: true
         timeout-minutes: 40
         uses: anthropics/claude-code-action@v1

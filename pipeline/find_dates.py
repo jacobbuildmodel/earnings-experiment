@@ -50,10 +50,13 @@ MONTHS = {m: i + 1 for i, m in enumerate(
 # "." or DOT: sentences() swaps an abbreviation's period for DOT while it splits
 DATE_RE = re.compile(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*[.․]?\s+(\d{1,2})(?!\d)"
                      r"(?:st|nd|rd|th)?(?:,?\s+(20\d\d))?", re.I)
-US = r"(u[.․]s[.․] )?"
+# "U.S. ", "US " and the "U.S . " left by abbreviation handling (2026-10-19: STX "after the US market closes",
+# GDDY "after the U.S . stock market closes" read as no session)
+US = r"(u[.․]?s\s?[.․]?\s+)?"
 BMO_RE = re.compile(rf"before (the )?{US}(stock )?market(s)? open|prior to (the )?{US}(stock )?market(s)?"
                     r" open|before the opening of|before the (start|beginning|open) of (the )?(regular )?trading|"
-                    r"pre-market|premarket|before the bell|prior to the opening|before (the )?(nyse|nasdaq) open", re.I)
+                    r"pre-market|premarket|before the bell|prior to the opening|before (the )?(nyse|nasdaq) open|"
+                    r"before trading (begins|opens|starts)", re.I)  # TEL, 2026-10-19
 AMC_RE = re.compile(rf"after (the )?{US}(stock )?market(s)? (close|closes)|after (the )?close|following the close|"
                     r"after the closing|after market hours|after (the )?(nyse|nasdaq)|after-market|after market close|"
                     r"after the bell|post-market|after the end of (the )?(regular )?trading", re.I)
@@ -148,7 +151,10 @@ def items_rss(host):
 # PR Newswire) - the company's words, with a publish time. Used only when the company's own feed is not.
 NASDAQ_PR = "https://api.nasdaq.com/api/news/topic/press_release?q=symbol:{t}|assetclass:stocks&limit=30&offset=0"
 WIRE = re.compile(r"--\s*\(\s*(business wire|globe newswire|accesswire|prnewswire|pr newswire)|/prnewswire/|globe newswire\)|"
-                  r"\((business wire|globe newswire|accesswire)\)", re.I)
+                  r"\((business wire|globe newswire|accesswire)\)|"
+                  # 2026-10-19 recall audit: ACCESS Newswire writes "CAMBRIDGE, MA / ACCESS Newswire / October 13, 2026 /",
+                  # so Moderna's own release was skipped as "not a release" and MRNA read no_date_announced
+                  r"/\s*(access\s*newswire|accesswire)\s*/", re.I)
 PUBLISHED = re.compile(r"Published\s+([A-Z][a-z]{2,8}\.? \d{1,2}, 20\d\d \d{1,2}:\d{2}\s*[ap]m)\s+(E[SD]T)", re.I)
 
 
@@ -260,6 +266,20 @@ def parse_page(text, window, published):
     return found
 
 
+def release_then_call(explicit, all_dates):
+    """True when exactly one date has explicit release wording with one session, and every other stated date is
+    the next session (the call that follows an after-close release, or a pre-market call the next day)."""
+    from sessions import shift
+    ex = sorted({s["date"] for s in explicit})
+    if len(ex) != 1 or len({s["session"] for s in explicit}) != 1 or len(all_dates) != 2:
+        return False
+    try:
+        nxt = shift(datetime.date.fromisoformat(ex[0]), 1).isoformat()
+    except ValueError:
+        return False
+    return [x for x in all_dates if x != ex[0]] == [nxt]
+
+
 def probe(ticker, window, since_days=75):
     """What the company's own feed says about the next results date. Returns a dict; writes nothing."""
     items, host = feed_items(ticker)
@@ -300,6 +320,12 @@ def probe(ticker, window, since_days=75):
         res["outcome"] = "no_date_announced"
     elif any(s["hedged"] for s in statements):
         res["outcome"] = f"hedged_date {all_dates}"
+    elif len(all_dates) > 1 and release_then_call(explicit, all_dates):
+        # 2026-10-19: one date carries the release's own wording ("after market close on Tuesday, October 27")
+        # and the only other date is the next session's call (CLS, TER, PLXS, MUSA, VSEC): the release wording
+        # outranks the call, as it does for a single date
+        res.update(outcome="found", date=explicit[0]["date"], session=explicit[0]["session"], source=explicit[0],
+                   resolved="release wording on one date; the other date is the next session's call")
     elif len(all_dates) > 1:
         # e.g. results on Oct 22 (no session given) and a call on Oct 23 at 8:30 a.m.: taking the call's
         # date would confirm the wrong day, and yfinance often stamps the call - leave it to the AI step
@@ -316,10 +342,9 @@ def probe(ticker, window, since_days=75):
 
 
 def second_source_agrees(ticker, date, session):
-    from s2_gate import second_sources
-    seconds = second_sources(ticker, datetime.date.fromisoformat(date))
-    agree = [s for s in seconds if s.get("session") == session]
-    disagree = [s for s in seconds if s.get("session") and s.get("session") != session]
+    import s2_gate
+    seconds = s2_gate.second_sources(ticker, datetime.date.fromisoformat(date))
+    agree, disagree = s2_gate.votes(seconds, session)
     return bool(agree) and not disagree, seconds
 
 
@@ -398,7 +423,10 @@ URGENT_BUDGET_SECONDS = 20 * 60
 def confirm_one(season, key, ev, window, snap, today, confirmed, paths):
     from sessions import shift
     if ev.get("status") == "PENDING":
-        res = probe(key, window)
+        # only dates from today on can be the coming report (2026-10-19): with the whole season window, a release's
+        # own dateline ("NEW YORK, Oct. 13, 2026 ... will report ... on October 27") counted as a second date and
+        # left GLXY, CORZ and EEFT "ambiguous" for days with both second sources agreeing
+        res = probe(key, (max(window[0], today), window[1]))
         note = f"{res['checked_et']}: {VERSION} - {res['outcome']}"
         if res.get("newest_item"):
             note += f"; feed {res['feed']}, newest item {res['newest_item']['published'][:16]} '{res['newest_item']['title'][:80]}'"
