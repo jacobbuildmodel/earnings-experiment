@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "VRSN",
+ "report_date": "2026-10-22",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-22"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-23"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-23"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "reaction_day": "2026-10-23"
+ },
+ "snapshot_session": "2026-10-21",
+ "captured_et": "2026-10-21T14:31:12.074567-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/verisign-report-third-quarter-2026-financial-results-2026-10-01",
+  "published_et": "2026-10-01T16:05-04:00",
+  "quote": "linkedin facebook x email reddit RESTON, Va. --(BUSINESS WIRE)-- VeriSign, Inc. (NASDAQ: VRSN), a global provider of critical internet infrastructure and domain name registry services, today announced that its live earnings teleconference for the third quarter 2026 will take place on Thursday, Oct. 22, 2026 , at 4:30 p.m. (EDT) .",
+  "title": "Verisign to Report Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T22:47:21.179971-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-22T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-22T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 307.54998779296875,
+  "expiry": "2026-11-20",
+  "strike": 310.0,
+  "call": {
+   "bid": 11.2,
+   "ask": 12.6,
+   "openInterest": 1806.0,
+   "lastPrice": 11.85,
+   "impliedVolatility": 0.3842835009765625,
+   "lastTradeDate": "2026-10-21T17:23:27+00:00"
+  },
+  "put": {
+   "bid": 12.4,
+   "ask": 14.6,
+   "openInterest": 106.0,
+   "lastPrice": 14.05,
+   "impliedVolatility": 0.37177141906738287,
+   "lastTradeDate": "2026-10-20T14:12:17+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 20,
+  "implied_move": 0.08258820031915702,
+  "rel_spread": {
+   "call": 0.11764705882352945,
+   "put": 0.16296296296296292
+  },
+  "oi_atm": 1912.0,
+  "oi_sum": 1912.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
