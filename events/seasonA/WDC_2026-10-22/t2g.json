@@ -1,0 +1,113 @@
+{
+ "track": "T2G",
+ "event": "WDC_2026-10-22",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.49,
+  "thesis": "Despite severe multiple compression and positive option skew, Western Digital's persistent pattern of post-earnings sell-offs on beats and elevated consensus above management guidance tilt the odds slightly against an open-to-open gain.",
+  "reasons": [
+   "WDC has fallen on 3 consecutive earnings releases despite beating EPS each time, including a -21.3% reaction drop last quarter.",
+   "Consensus EPS of $4.08 sits above management's prior Q1 FY27 guidance midpoint of $4.00, creating an elevated bar for upside surprise.",
+   "Recent sector headwinds and Morgan Stanley's price target trim highlight heightened competitive and AI data center spending scrutiny.",
+   "The 49% drawdown from 52-week highs and cheap 11.2x forward P/E limit further multiple collapse, keeping probability close to even."
+  ],
+  "deciding_variable": "Q2 FY27 enterprise nearline HDD demand guidance and gross margin trajectory.",
+  "prior": {
+   "p": 0.586,
+   "from": "cluster: hardware_networking"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Lowered by 9.6 percentage points from the 0.586 hardware_networking prior due to consistent multi-quarter post-earnings fades on beats and consensus drifting above management guidance midpoint.",
+  "theses": [
+   {
+    "expected": "Modest EPS beat around $4.12 but conservative Q2 guidance keeps shares flat to down at the open.",
+    "mechanism": "Hyperscale cloud spending pause or margin digestion overshadows current quarter results as seen in the last three prints.",
+    "wrong_if": "Management delivers blowout Q2 HDD gross margin outlook driven by AI data pipeline storage demand."
+   },
+   {
+    "expected": "Short squeeze and relief rally from deep oversold territory (-49% off highs).",
+    "mechanism": "Positive call skew (+5.6 IV points) triggers sharp mean-reversion if results simply match elevated whisper numbers.",
+    "wrong_if": "Guidance misses consensus or management notes deceleration in enterprise cloud HDD deliveries."
+   },
+   {
+    "expected": "Severe drop similar to Q4FY26 print as gross margins disappoint relative to elevated expectations.",
+    "mechanism": "Cost absorption or competitive HDD pricing pressures compress operating margins below the guided 55-56% range.",
+    "wrong_if": "Gross margins exceed 56.5% and cash flow from operations surpasses $1.5B."
+   }
+  ],
+  "key_observations": [
+   "Non-GAAP gross margin versus guided range of 55% - 56%",
+   "Q2 FY27 revenue and EPS guidance relative to consensus",
+   "Nearline HDD cloud exabyte shipments and average capacity per drive",
+   "Free cash flow generation and convertible notes settlement impact"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/WDC_2026-10-22/gate.json",
+    "published": "2026-10-21T14:31:13.979901-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/WDC_2026-10-22/factors.json",
+    "published": "2026-10-21T14:31:13.979901-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/106040/000162828026053305/a4ex991-pressreleaseq426.htm",
+    "published": "2026-08-05T20:04:35-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/fc01d01f-de26-385c-8e82-e0c52659d3ac/80%25-upside%3F-why-morgan.html?.tsrc=rss",
+    "published": "2026-10-20T13:42:00-04:00",
+    "dossier_item": "I15"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/morgan-stanley-cuts-western-digital-131313137.html?.tsrc=rss",
+    "published": "2026-10-20T09:13:13-04:00",
+    "dossier_item": "I19"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/337ec358-35b1-3b64-8916-559ffc6e89d9/sandisk%2C-datadog%2C-amazon-lead.html?.tsrc=rss",
+    "published": "2026-10-19T16:15:00-04:00",
+    "dossier_item": "I26"
+   }
+  ],
+  "decided_et": "2026-10-21T16:32:26-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 16440,
+   "candidatesTokenCount": 705,
+   "totalTokenCount": 18617,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 16440
+    }
+   ],
+   "thoughtsTokenCount": 1472,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
