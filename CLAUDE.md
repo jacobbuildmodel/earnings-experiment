@@ -39,17 +39,25 @@ one empty trigger commit to `claude/s2-trigger`). It never runs, reads or change
 DRIVE repo and moved here, it has already loaded the portfolio's rules and memory. Say so, and ask Jacob
 to start a fresh chat in `Earnings Experiment`.
 
-🔴 **Fresh-chat rule (Jacob, 2026-10-20). Hand off to a new chat at whichever comes first:**
-- the context is about **50% full** (the app's context meter; with no meter, after ~2 large tasks or ~150 tool calls);
+🔴 **Fresh-chat rule (Jacob, 2026-10-20; threshold measured 2026-10-21). Hand off to a new chat at whichever comes first:**
+- the context reaches **300k tokens** (30% of the 1M window; heads-up at 250k). The threshold is measured, not
+  guessed (`ops/token_efficiency_2026-10.md`; re-run `python ops/token_study.py`). The hook
+  `ops/hooks/context_guard.py` (`.claude/settings.json`, on every prompt and tool call) reads the real count
+  from the transcript. **Obey its CONTEXT GUARD notes;**
 - a work phase ends;
 - **before a time-critical window** (14:30–15:56 ET gates and paper exits; the T2 deadline before 09:15 ET) when
-  the chat is already long.
+  the chat is already long. The hook lowers the bar to 200k in the two hours before a window. Mid-window it says
+  to finish the window's work and hand off after 15:56 ET, with no commits mid-window.
 
-Why: long chats lose detail, and they spend the 5-hour allowance the cloud routines share. On 2026-10-19 one long
-chat got the 10:45 ET routine push refused ("session limit"), so no paper window started from it.
+Why: long chats lose detail, and they spend the 5-hour allowance the cloud routines share. Every call re-reads the
+whole context: a call at 650k costs ~4× one at 125k. On 2026-10-19 one long chat (448k mean context, 62 calls in
+69 min) got the 10:45 ET routine push refused ("session limit"), so no paper window started from it.
 
 How: finish the current step, update STATE.md and JOURNAL.md, commit and push. Then start the new chat in this
 folder with `pre earnings model` and the next task (`start_session`, fresh context), and stop working in the old one.
+Write the brief so the new chat need not re-read: name the files, lines and decisions. Today a hand-off costs ~18
+extra calls of re-reading, the biggest waste left. A chat started by another session can't start one: it reports
+back instead.
 
 **End of every session:** update `STATE.md` so the next chat resumes cleanly, add the day's observations to
 `JOURNAL.md` (the lab notebook: what happened, what it taught, what changed), then commit both.

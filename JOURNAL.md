@@ -9,6 +9,30 @@
 
 ---
 
+## 2026-10-21 (Wed) 09:36 ET — the fresh-chat rule gets a meter (infra; CHARTER: speed)
+- **What happened.** Jacob asked for the hand-off to be enforced in code, with the threshold measured, not
+  guessed. I measured every laptop chat in this project: 9 chats, 1,378 API calls. Claude Code's own docs
+  supplied the facts: a 1M window, auto-compact near 967k, cache reads at 0.05× input, and plan weighting
+  not documented.
+- **What it taught.**
+  - Cache reads are 97% of all tokens, so a call's cost is set by the context it re-reads. A call at 650k
+    costs ~4× one at 125k.
+  - A fresh chat is not free. It takes 22 calls and +110k before its first edit, against 4 calls and +8k for
+    a new task in an old chat.
+  - Trading those off, the best threshold is 327–377k with today's hand-offs, and 185–230k if hand-offs
+    were lean. **300k is never more than 16% from the best**; the old "50%" (500k) is up to 59% off.
+  - The chats actually ran to 490–705k, because "about 50%" had no meter.
+  - Uncomfortable: if the meter is price-weighted, a 300k rule would not have saved Oct 19's session limit.
+    The volume of work and the costly hand-off drove it as much as length did.
+- **What changed.**
+  - `ops/hooks/context_guard.py` runs on every prompt and tool call. It warns at 250k, says hand off at 300k,
+    and lowers the bar to 200k before the 09:15 and 14:30 ET windows. It never blocks, and stays silent in
+    the cloud routines.
+  - CLAUDE.md now names the hook and the 300k threshold.
+  - The study is reproducible: `ops/token_study.py`.
+  - Next: make hand-offs lean (briefs that carry files and decisions, a shorter start-up read), then
+    re-measure.
+
 ## 2026-10-20 (Tue) early ET — the first two PASS events lost T2 to a fallback that was never a fallback (RQ5)
 
 - **What happened:** ABT and SPCX, Season A's first PASS events, lost T2.

@@ -167,6 +167,21 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 
 ## Log — newest first (2026-10-14 onward)
 
+**2026-10-21 (Wed) 09:36 ET — the fresh-chat rule now has a meter: context guard live** (side session; Jacob: "embed it in the code … study token efficiency").
+- **Study** `ops/token_efficiency_2026-10.md` (re-run `python ops/token_study.py`):
+  - 9 chats, 1,378 calls. Cache reads are 97% of all tokens.
+  - A call costs 10.3k + 0.085 × context (price-weighted), so ~4× more at 650k than at 125k.
+  - A hand-off costs ~18 extra calls, and the fresh chat starts working at ~182k.
+  - **Threshold: 300k.** It is never more than +16% from the optimum in any of 4 cases. The old 500k rule is up to +59%; the 705k chat up to 2.06×.
+- **Hook** `ops/hooks/context_guard.py`, on UserPromptSubmit and PostToolUse (`.claude/settings.json`):
+  - heads-up at 250k, hand-off at 300k;
+  - 200k in 07:15–09:15 and 12:30–14:30 ET on weekdays; inside 14:30–15:56 it says to finish, then hand off after 15:56;
+  - silent off Windows (cloud routines, Actions), in subagents and on any error; ~0.25 s per call.
+
+  29 tests in `tests/test_context_guard.py`. Seen firing live at 255k in the side session that built it.
+- 🔴 **Uncomfortable.** If the plan meter is price-weighted, 300k alone would not have saved Oct 19. The bigger waste is the hand-off's re-reading.
+- **Next improvement:** lean hand-off briefs and a shorter start-up read, then re-run the study (the threshold should drop to ~250k). The long Oct 15– chat (705k) gets HAND OFF NOW on its next prompt.
+
 **2026-10-20 (Tue) 20:40 ET — HANDOFF to a new chat (the fresh-chat rule, now in CLAUDE.md).**
 - **Next chat, in order:**
   1. Start-up as usual, then check today's automatic events:
