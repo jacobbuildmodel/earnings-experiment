@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/fabrinet-announce-first-quarter-fiscal-year-2027-financial-results-november-2-2026",
+  "published_et": "2026-10-19T16:15-04:00",
+  "quote": "E: FN), a leading provider of advanced optical packaging and precision optical, electro-mechanical and electronic manufacturing services to original equipment manufacturers of complex products, today announced it will release financial results for the first quarter of fiscal year 2027, which ended September 25, 2026 , after market close on Monday, November 2, 2026 .",
+  "title": "Fabrinet to Announce First Quarter Fiscal Year 2027 Financial Results on November 2, 2026",
+  "retrieved_et": "2026-10-21T21:10:21.624448-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
