@@ -9,7 +9,21 @@
 
 ---
 
+## 2026-10-21 (Wed) 21:05 ET — the alarm was on, and no one could hear it (instrument reliability, all RQs)
+- **What happened:** from 17:21 ET every cloud routine stopped at its first git command. The sandbox's local `main` was
+  a day stale in a shallow clone, and after ~107 commits `git pull --ff-only` could find no common ancestor. WDC and
+  MXL were 12 hours from losing their scored T2. Health saw it ("T2 AT RISK" from 18:24 ET), but the report had been
+  RED since 04:49 ET for standing items, so the new line changed nothing anyone would notice. Found at 20:45 ET by a
+  resuming chat, fixed with Jacob's OK at 20:49 ET, and both T2s were frozen by 20:51 ET.
+- **What it taught:** (1) the cloud copy is not the repo. 10-20 broke on its missing history, and 10-21 on its stale
+  branch. Build from the fetched tip, never from a local branch. (2) An alarm that is always RED carries no
+  information: the status has to say what is NEW. (3) Outcome checks (T2 AT RISK) caught a failure that left no log;
+  process checks (the new "AI step refused") cannot see a run that never reached the code. Both are needed.
+- **What changed:** the step 1 of three routines; three alarms in `health.py` (AI step refused, dates stale, runner
+  not acting). Owed: mark RED lines new since the previous run.
+
 ## 2026-10-21 (Wed) 13:40 ET — the gate audit: where Season A's names are lost (power, RQ3/RQ5)
+
 - **What happened.** D016 was frozen at 13:31 ET, before any count was computed and before NOC/RTX/VICR paper P&L.
   Then an interim run on the 15 gates.
 - **What it taught.**

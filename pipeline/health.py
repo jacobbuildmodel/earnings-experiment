@@ -20,6 +20,15 @@ Checks, each mechanical (reviewed by Opus 5.5, 2026-10-13, fixes applied):
                      still open after that -> AMBER (added after the DPZ incident)
   SH-M capture       no shadow/calendar/<today>.json after 12:00 ET on a session -> AMBER
   C1 capture         no shadow/c1/im/<P>.json for the latest session whose close has passed (D015) -> AMBER
+  AI step refused    per step (logs/actions/ file suffix; logs/t2/ backend), the newest log within 5 days is a
+                     refusal (actions: result.is_error; t2: error set and not a network exception) -> RED if the
+                     refusals in a row began under 24 h ago, else AMBER (standing)
+  dates stale        no date CONFIRMED or retired INELIGIBLE (a `rechecks` line) in 30 h while a PENDING name has a
+                     calendar date within 7 days -> AMBER; RED if one is within 3 sessions
+  runner not acting  14:40-15:56 ET on a full session, a window step running for the account: a ledger order still
+                     open (not pending_cancel) 5 min past its cancel limit (a v3 close 2 min, any other 15) -> RED
+                     with the run to cancel before dispatching paper-window-push.yml (read-only: it cancels nothing)
+                     (the three added 2026-10-22, designed 2026-10-21 13:40 ET: STATE.md Log)
   paper window       a full session from 14:40 ET, per account (options, long): no afternoon window step of
                      paper-window-push.yml or paper-window.yml running now (once over: one that ran to 15:56) and no
                      frozen paper-options.yml / paper-long.yml run in the last 25 min -> RED while the window is open,
@@ -78,6 +87,14 @@ LAG = {"options": (datetime.timedelta(minutes=30), datetime.timedelta(hours=24))
 NEW_ORDER = datetime.timedelta(minutes=15)       # an open order this young may not be committed to a ledger yet
 OCC = re.compile(r"^[A-Z.]+(\d{2})(\d{2})(\d{2})[CP]\d{8}$")
 TERMINAL = ("filled", "canceled", "expired", "rejected", "done_for_day", "replaced")   # paper_options.TERMINAL
+# alarms (designed 2026-10-21 13:40 ET, STATE.md Log)
+NETWORK = re.compile(r"^\w+(Error|Exception)\b")  # a t2 log error like this is the network, not a refusal
+REFUSED_NEW = datetime.timedelta(hours=24)        # refusals in a row that began this recently are RED, older AMBER
+STATUS_CHANGE = re.compile(r"CONFIRMED \d{4}-\d\d-\d\d|INELIGIBLE \w+")
+DATES_QUIET = datetime.timedelta(hours=30)
+CANCEL_AFTER = {"v3_close": 2, "other": 15}      # minutes: paper_options.V3_RETRY_AFTER_MIN / RETRY_AFTER_MIN
+CANCEL_SLACK = datetime.timedelta(minutes=5)
+WINDOW_LEDGER = {"options": "options_ledger.json", "long": "long_ledger.json"}   # the ledgers paper_window.py works
 
 
 def load(p):
@@ -274,6 +291,100 @@ def c1_capture_check(now):
     return None if os.path.exists(os.path.join(ROOT, "shadow", "c1", "im", f"{p.isoformat()}.json")) else         f"no C1 implied-move capture for {p} (D015): that session's events can never be C1"
 
 
+# ---------------------------------------------------------------- alarms: AI step refused, dates stale
+def ai_logs():
+    """[(step, when ET, refused, text)] from logs/actions/ (the Actions AI step; the step is the file-name suffix,
+    stamped UTC) and logs/t2/ (one per T2 call; the step is the backend, stamped ET)."""
+    out = []
+    for p in glob.glob(os.path.join(ROOT, "logs", "actions", "*.json")):
+        m = re.fullmatch(r"(\d{4}-\d\d-\d\dT\d{4}Z)_\d+(?:_(.+))?\.json", os.path.basename(p))
+        if not m:
+            continue
+        when = datetime.datetime.strptime(m[1], "%Y-%m-%dT%H%MZ").replace(tzinfo=datetime.timezone.utc).astimezone(ET)
+        try:
+            res = load(p).get("result") or {}
+        except (OSError, ValueError, AttributeError):
+            continue
+        out.append((f"Actions AI step ({m[2] or 'main'})", when, res.get("is_error") is True, res.get("text")))
+    for p in glob.glob(os.path.join(ROOT, "logs", "t2", "*.json")):
+        m = re.fullmatch(r".+?_\d{4}-\d\d-\d\d_(.+)_(\d{8}T\d{6})\.json", os.path.basename(p))
+        if not m:
+            continue
+        try:
+            d = load(p)
+        except (OSError, ValueError):
+            continue
+        when = ts(d.get("called_et")) or datetime.datetime.strptime(m[2], "%Y%m%dT%H%M%S").replace(tzinfo=ET)
+        err = d.get("error")
+        out.append((f"T2 backend {m[1]}", when, bool(err) and not NETWORK.match(str(err)), err))
+    return out
+
+
+def ai_refusals(now, logs=None):
+    """Alarm 1: the newest log of a step (within LOOKBACK) is a refusal. RED while the refusals in a row began under
+    24 h ago, AMBER after that (a standing refusal is on STATE.md's Waiting on Jacob)."""
+    red, amber = [], []
+    by_step = collections.defaultdict(list)
+    for step, when, refused, text in (ai_logs() if logs is None else logs):
+        by_step[step].append((when, refused, text))
+    for step, xs in sorted(by_step.items()):
+        xs.sort(key=lambda x: x[0])
+        if not xs[-1][1] or now - xs[-1][0] > LOOKBACK:
+            continue
+        n = 0
+        while n < len(xs) and xs[-1 - n][1]:
+            n += 1
+        began = xs[-n][0]
+        text = re.sub(r"\s+", " ", str(xs[-1][2]))[:200]       # not inside the f-string: Python 3.11 refuses "\"
+        msg = (f"AI STEP REFUSED: {step} - {n} refusal(s) in a row since {began:%a %d %b %H:%M} ET, newest "
+               f"{xs[-1][0]:%a %d %b %H:%M} ET: {text}")
+        if now - began < REFUSED_NEW:
+            red.append(msg)
+        else:
+            amber.append(msg + " (standing: STATE.md, Waiting on Jacob)")
+    return red, amber
+
+
+def stamp(line):
+    """The time a `rechecks` line was written: the text before its first ": "."""
+    return ts(line.split(": ", 1)[0])
+
+
+def dates_stale(now):
+    """Alarm 2: no PENDING date confirmed or retired in 30 h while a PENDING name has a calendar date within 7 days.
+    The newest re-check of those names tells "the re-checks run but confirm nothing" from "they are not running"."""
+    red, amber = [], []
+    today = now.date()
+    soon_end = shift(today, 3)
+    for s in seasons():
+        st = load(os.path.join(ROOT, "universe", s, "event_status.json")).get("events", {})
+        changes = [t for ev in st.values() for ln in ev.get("rechecks") or [] if STATUS_CHANGE.search(ln)
+                   for t in [stamp(ln)] if t]
+        last = max(changes, default=None)
+        if last and now - last <= DATES_QUIET:
+            continue
+        near, soon = [], []
+        for t, ev in st.items():
+            if ev.get("status") != "PENDING":
+                continue
+            ds = [D(x) for x in ev.get("calendar_dates") or [] if re.fullmatch(r"\d{4}-\d\d-\d\d", str(x))]
+            if any(today <= x <= today + datetime.timedelta(days=7) for x in ds):
+                near.append(t)
+                if any(today <= x <= soon_end for x in ds):
+                    soon.append(t)
+        if not near:
+            continue
+        seen = max((x for t in near for x in map(stamp, st[t].get("rechecks") or []) if x), default=None)
+        how = ("never re-checked" if seen is None else f"newest re-check {seen:%a %d %b %H:%M} ET - "
+               + ("the re-checks run but confirm nothing" if now - seen <= DATES_QUIET else "the re-checks are not running"))
+        since = f"{last:%a %d %b %H:%M} ET" if last else "the season began"
+        within = f", {len(soon)} within 3 sessions {sorted(soon)}" if soon else ""
+        msg = (f"DATES STALE ({s}): no date confirmed or retired since {since} (over 30 h), while {len(near)} "
+               f"PENDING name(s) have a calendar date within 7 days{within}; {how}")
+        (red if soon else amber).append(msg)
+    return red, amber
+
+
 # ---------------------------------------------------------------- paper window coverage
 def ts(s):
     """An API timestamp (Z or offset) as an aware ET datetime; None if absent or unreadable."""
@@ -389,13 +500,47 @@ def window_coverage(now, steps, frozen):
     return red, amber, info
 
 
+def runner_idle(now, steps, state=None, read=None):
+    """Alarm 3: a window step runs for the account, yet a ledger order is still open 5 min past its cancel limit, so
+    the runner is not acting (10-21: a stuck step). From 14:40 ET, not 14:27: a morning order the runner has not yet
+    reached is not a fault. Read-only: it names the run to cancel and cancels or dispatches nothing."""
+    red = []
+    d = now.date()
+    if not full_session_afternoon(now) or now >= datetime.datetime.combine(d, WIN_END, ET):
+        return red
+    state, read = state or alpaca_state, read or read_ledgers
+    for acct, name in WINDOW_LEDGER.items():
+        live = [s for s in steps if s["account"] == acct and s["started"] and s["started"].date() == d
+                and s["started"] <= now and s["completed"] is None and s["status"] == "in_progress"]
+        st = state(acct) if live else None
+        if not isinstance(st, tuple):                # no step running, or the account unreadable (positions_check)
+            continue
+        led = read([name]).get(name)
+        trades = led.get("trades") or {} if isinstance(led, dict) else {}
+        for o in st[1]:
+            m = re.fullmatch(r"(.+)-(open|close)(?:-r\d+)?", str(o.get("client_order_id")))
+            made = ts(o.get("submitted_at") or o.get("created_at"))
+            if o.get("status") == "pending_cancel" or not m or m[1] not in trades or not made:
+                continue
+            limit = CANCEL_AFTER["v3_close" if m[2] == "close" and trades[m[1]].get("exec") == "v3" else "other"]
+            age = now - made
+            if age > datetime.timedelta(minutes=limit) + CANCEL_SLACK:
+                run_id = str(live[0]["url"]).rstrip("/").rsplit("/", 1)[-1]
+                red.append(f"RUNNER NOT ACTING (paper/{acct}): order {m[0]} ({o.get('status')}) live "
+                           f"{age.total_seconds() / 60:.0f} min, past its {limit}-min cancel limit + 5, while the window "
+                           f"step runs ({live[0]['url']}) - cancel that run FIRST (gh run cancel {run_id}), then dispatch "
+                           "paper-window-push.yml (GitHub keeps one waiting run per group)")
+    return red
+
+
 def paper_window(now):
     if not full_session_afternoon(now):
         return [], [], []
     got = window_jobs(now)
     if got is None:
         return [], ["paper window coverage unreadable (GitHub Actions API)"], []
-    return window_coverage(now, *got)
+    red, amber, info = window_coverage(now, *got)
+    return red + runner_idle(now, got[0]), amber, info
 
 
 # ---------------------------------------------------------------- Alpaca positions vs the paper ledgers
@@ -644,6 +789,12 @@ def run(write=False, commit=False, now=None):
             (red if name in CRITICAL_WORKFLOWS else amber).append(f"Actions {st}: {name} at {when} {url}")
     r, a, i = ledgers(now)
     red, amber, info = red + r, amber + a, info + i
+    for check in (ai_refusals, dates_stale):
+        try:
+            r, a = check(now)
+        except Exception as e:
+            r, a = [], [f"{check.__name__} crashed: {type(e).__name__}: {str(e)[:200]}"]
+        red, amber = red + r, amber + a
     for check in (paper_window, positions_check):     # they parse outside JSON: a surprise is AMBER, not a crash
         try:
             r, a, i = check(now)
