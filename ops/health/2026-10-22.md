@@ -1,4 +1,4 @@
-# Health 2026-10-22 18:23 ET - **RED**
+# Health 2026-10-22 19:27 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -8,6 +8,7 @@ check.py: PASS - 1 warning(s)
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-22T23:01:03Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39868974911
 - Actions failure: Earnings experiment - paper options at 2026-10-22T22:01:16Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39861798241
 - Actions failure: Earnings experiment - paper options at 2026-10-22T21:49:31Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39860322707
 - Actions failure: Earnings experiment - paper options at 2026-10-22T21:27:08Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39857359513
@@ -19,7 +20,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-22T15:46:25Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39807960795
 - Actions failure: Earnings experiment - paper options at 2026-10-22T14:52:16Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39799505571
 - Actions failure: Earnings experiment - paper options at 2026-10-22T01:41:11Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39707109480
-- Actions failure: Earnings experiment - paper options at 2026-10-21T23:02:55Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39690788417
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 - AI STEP REFUSED: Actions AI step (housekeeping) - 4 refusal(s) in a row since Wed 14 Oct 22:07 ET, newest Mon 19 Oct 22:10 ET: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access (standing: STATE.md, Waiting on Jacob)
 
