@@ -3,17 +3,21 @@
 **Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-21 13:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Wed 2026-10-21 13:40 ET by the D016 chat (hand-off before the 14:30 window; no outcome or P&L read).*
+*Rewritten Wed 2026-10-21 21:05 ET by the resume chat (cloud-routine fix + the three alarms; no outcome or P&L read).*
 - **Phase:** Season A, week 2 of 6. The peak (Oct 29–Nov 6) is the power. Code runs gates, freezes, T2, C1, paper.
-- **D016 frozen 13:31 ET** (`1d77445`, before 14:30 and before any NOC/RTX/VICR paper P&L): `registry/D016_gate_audit_v1.md`,
-  `pipeline/gate_audit.py`, `tests/test_gate_audit.py` (proves it opens only gate.json + option_chain.json). check.py
-  guards the code. **Interim run** (`329f81e`, 15 gates, decides nothing): 15/15 reproduce; A3/A4 add RTX, TTMI
-  (5 → 7). **Decision run: Fri Oct 23 ≥ 16:00 ET**, `python pipeline/gate_audit.py seasonA --decision`, write-once.
-- **Health RED (04:49 ET Wed):** ABT and SPCX T2 MISSING (incident filed; no retry by rule) · DPZ +100 shares not in
-  a ledger. Every `paper-options.yml` run exits red on DPZ's standing alert (noise until the shares go).
-- **Owed, not done:** the three health alarms (designed, not coded: Log 13:40 ET) · Oct 22 checkpoint, ≥ 70% of names
-  dated Oct 31–Nov 6 confirmed (40% Tue 07:30) · peak capacity by Oct 27 · DST inventory by Oct 28.
-- **Next action:** code the three alarms in `pipeline/health.py` from the Log 13:40 ET design, after 15:56 ET.
+- **Cloud routines fixed 20:49 ET (Jacob approved):** step 1 of `earnings-t2-cloud`, `-t2-models`, `-housekeeping-cloud`
+  is now `git fetch -q origin main && git checkout -q -B main FETCH_HEAD` (stale local `main` broke `pull --ff-only`
+  from 17:21 ET). Hand-fired: **WDC and MXL T2 frozen 20:50–20:51 ET**, T2R/T2O too. Incident with expectations:
+  `ops/incidents/2026-10-21_cloud_routines_stale_main.md` (`a67f9f8`). **Next chat: score them** (21:20 / 21:50 ET
+  fires: 0 waiting; Thu 08:30 ET housekeeping commits) via RemoteTrigger `list_runs` / `get_run_log`.
+- **Three alarms coded** (`3e0da08`, `pipeline/health.py`, 15 tests in `tests/test_health_alarms.py`, 341 pass): AI step
+  refused (live: Actions AI step AMBER, standing since Oct 14 22:07 ET) · dates stale · runner not acting (14:40–15:56).
+- **D016 decision run: Fri Oct 23 ≥ 16:00 ET**, `python pipeline/gate_audit.py seasonA --decision`, write-once.
+- **Health RED (standing):** ABT and SPCX T2 MISSING · DPZ +100 shares not in a ledger. A standing RED hides a new one
+  (WDC/MXL "AT RISK" sat unseen for 2.5 h): **owed — mark RED lines new since the previous run** (health.py, health.yml).
+- **Owed, not done:** Oct 22 checkpoint, ≥ 70% of names dated Oct 31–Nov 6 confirmed (40% Tue 07:30) · peak capacity
+  by Oct 27 · DST inventory by Oct 28.
+- **Next action:** score the incident's expectations, then the "new RED" marker; the Oct 22 checkpoint count.
 - **Waiting on Jacob:** DPZ's 100 paper shares · Actions' claude refused by an organization setting (below).
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
@@ -181,6 +185,18 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-21 (Wed) 21:05 ET — cloud routines' git step fixed (WDC/MXL T2 saved); the three alarms coded.**
+- **Found at 20:45 ET:** the 17:21 ET T2 and 17:50 ET D013 cloud runs stopped at step 1, "Diverging branches can't be
+  fast-forwarded": the sandbox's local `main` sits at `73e75f6` (10-20 14:41 ET) in a shallow clone, and ~107 commits
+  later the pull finds no merge base. Reproduced locally (exit 128). WDC and MXL had T2G only; deadline Thu 09:15 ET.
+- **Fix (Jacob: "Yes, fix and run", 20:48 ET):** step 1 → `git fetch -q origin main && git checkout -q -B main FETCH_HEAD`
+  in the three routines; nothing else changed. Hand-fired: T2 WDC NO_BUY 0.47 (`f4591d3`), MXL BUY 0.52 (`5f4224f`),
+  then T2R/T2O for both. Incident `a67f9f8` holds the expectations for the next fires.
+- **Alarms (`3e0da08`)** as designed in the 13:40 ET entry, two deviations: the runner check starts 14:40 ET, not 14:27
+  (a morning order the runner has not reached is not a fault), and it reads only the window ledgers
+  (options_ledger, long_ledger; paper.py's shares orders are not the runner's). Refusal steps older than 5 days are left out.
+- Health runs on Python 3.11 in Actions: no backslash inside an f-string expression (the hk.py bug).
 
 **2026-10-21 (Wed) 13:40 ET — D016 frozen and run (interim); the three alarms designed; hand-off before 14:30.**
 - **D016 v1 frozen 13:31 ET** (`1d77445`): the full D003 v4 cascade on every gate, buckets by price and expiry gap,
@@ -591,3 +607,4 @@ subscription access for Claude Code"), so laptop sessions add the line by hand u
 - **2026-10-19 (Mon), by hand (laptop):** the AI step was refused again overnight. 35 dates confirmed (32 by code with four `find_dates` fixes, 3 by hand: FTAI, LOGI, JMKE), SMMT retired `unconfirmed`, GE re-checked (no company date). Nothing gated or frozen before 12:00 ET; ABT and PEGA gate from 14:30.
 - **2026-10-20 (Tue), by hand (laptop):** the AI step was refused again (02:10 UTC, new token). The evening code run confirmed 50 dates. ABT and SPCX gated PASS on 10-19; their T2 is MISSING (incident). Nothing frozen by this session.
 - **2026-10-21 (Wed), housekeeping 08:49 ET:** 19 re-checked (find_dates probes, hk.py run under python3.12 venv because default 3.11 fails on hk.py f-string syntax); confirmed [SWKS 2026-11-03 AMC, OSIS 2026-10-29 AMC]; retired []; RIOT 11-04 BMO (call 8:00 ET) refused - yfinance rate-limited, left PENDING; BA/DRS/MSI no session
+- **2026-10-21 (Wed), by hand (laptop):** the 17:21 ET T2 and 17:50 ET D013 runs failed at git step 1 (stale `main`); step 1 fixed in 3 routines 20:49 ET, hand-fired: WDC/MXL T2, T2R, T2O frozen 20:50–20:55 ET.
