@@ -1,6 +1,6 @@
 # Incident 2026-10-21: every cloud routine stopped at its first git step (stale local `main`); WDC and MXL T2 saved
 
-Written Wed 2026-10-21 ~21:25 ET, after the manual T2 run and before reading the next scheduled fires.
+Written Wed 2026-10-21 ~20:58 ET, after the manual T2 run and before reading the next scheduled fires.
 Follows `2026-10-20_cloud_T2_shallow_clone.md` (same family: the cloud clone is not the repo we think it is).
 
 ## What happened (process only; no outcome or P&L read)
