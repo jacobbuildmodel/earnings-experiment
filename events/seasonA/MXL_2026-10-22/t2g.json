@@ -1,0 +1,113 @@
+{
+ "track": "T2G",
+ "event": "MXL_2026-10-22",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.47,
+  "thesis": "Despite rapid optical AI DSP revenue growth, a demanding multi-quarter valuation re-rating (+330% 12-month run) and recent sector cooling across optical peers leave MaxLinear vulnerable to post-earnings profit-taking even on solid prints.",
+  "reasons": [
+   "Semiconductors have a sub-50% base rate (0.479) for overnight earnings gains.",
+   "In Q2, MXL beat consensus and guided Q3 revenue up 27% sequentially, yet the stock still opened down -3.68%, showing high expectations are already priced in.",
+   "Broader AI connectivity peers (e.g., Credo, Astera Labs) and chipmakers experienced recent volatility and multiple contraction ahead of late October.",
+   "The current quarter EPS estimate ($0.56) represents a near 300% YoY growth hurdle, leaving little margin for error on Q4 guidance."
+  ],
+  "deciding_variable": "Q4 2026 revenue guidance and optical AI DSP (Keystone/800G) trajectory relative to high expectations.",
+  "prior": {
+   "p": 0.479,
+   "from": "registry base rate for the semiconductors ('semis') cluster (n=434, t0_hit=0.479)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Started from the semiconductor cluster base rate of 0.479. Pulled slightly down to 0.47 given tough guidance comps and the prior quarter's negative reaction to a beat-and-raise, partially cushioned by a recent pullback from 52-week highs.",
+  "theses": [
+   {
+    "expected": "Q4 guidance meets but does not meaningfully exceed elevated whisper numbers; stock drifts lower on sell-the-news.",
+    "mechanism": "High multiples (P/S >12x) and massive 12-month gains require aggressive guide-ups to sustain upside momentum.",
+    "wrong_if": "Management guides Q4 far above the implied run-rate driven by accelerated 800G/1.6T hyperscaler design wins."
+   },
+   {
+    "expected": "Core broadband/gateway recovery lags while AI infrastructure carrying the entire quarter leads to mixed margin delivery.",
+    "mechanism": "Negative GAAP operating margins and high R&D/opex dilute non-GAAP upside surprises.",
+    "wrong_if": "Topaz and Puma 9 carrier traction accelerates gross margin expansion above 61%."
+   },
+   {
+    "expected": "Relief bounce after recent 28%+ pullback from October highs.",
+    "mechanism": "Short covering (7.5% float short) and options de-volatility fuel a morning bid if revenue hits high end of $210-220M range.",
+    "wrong_if": "Broad chip market weakness and cautious enterprise spending guidance trigger another post-print gap down."
+   }
+  ],
+  "key_observations": [
+   "Q3 reported net revenue vs guided range ($210M-$220M)",
+   "Q4 net revenue and non-GAAP gross margin outlook",
+   "Keystone 800G optical PAM4 DSP volume commentary and 1.6T customer pipeline milestones",
+   "Progress on broadband/PON gateway products (Puma 9 and Topaz)"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/MXL_2026-10-22/gate.json",
+    "published": "2026-10-21T14:31:00.255226-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/MXL_2026-10-22/factors.json",
+    "published": "2026-10-21T14:31:00.255226-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1288469/000128846926000050/a06302026exhibit991.htm",
+    "published": "2026-07-23T16:05:46-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/e0ef6d90-1f3d-3925-9be0-e5d8d98435b3/chip-stocks-tumble-on-ai.html?.tsrc=rss",
+    "published": "2026-10-15T16:31:13-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.trefis.com/articles/618478/does-the-drop-in-credo-stock-change-anything/2026-10-13?.tsrc=rss",
+    "published": "2026-10-13T14:05:10-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/maxlinear-mxl-soars-15-ahead-053125899.html?.tsrc=rss",
+    "published": "2026-10-03T01:31:25-04:00",
+    "dossier_item": "I14"
+   }
+  ],
+  "decided_et": "2026-10-21T18:04:17-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 15653,
+   "candidatesTokenCount": 810,
+   "totalTokenCount": 18114,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 15653
+    }
+   ],
+   "thoughtsTokenCount": 1651,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

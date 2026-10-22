@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/skyworks-sets-date-fourth-quarter-fiscal-2026-earnings-release-and-conference-call",
+  "published_et": "2026-10-20T08:01-04:00",
+  "quote": "After the close of the market on Nov. 3, and prior to the conference call, Skyworks will issue a copy of the earnings press release via GlobeNewswire.",
+  "title": "Skyworks Sets Date for Fourth Quarter Fiscal 2026 Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-21T08:47:34-04:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
