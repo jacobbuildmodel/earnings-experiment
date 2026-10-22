@@ -1,4 +1,4 @@
-# Health 2026-10-22 14:06 ET - **RED**
+# Health 2026-10-22 14:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -23,9 +23,11 @@ check.py: PASS - 1 warning(s)
 - AI STEP REFUSED: Actions AI step (housekeeping) - 4 refusal(s) in a row since Wed 14 Oct 22:07 ET, newest Mon 19 Oct 22:10 ET: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access (standing: STATE.md, Waiting on Jacob)
 
 ## Information
-- paper/options_ledger.json: open ['seasonA-HXL-2026-10-21-F', 'seasonA-LMT-2026-10-22-F', 'seasonA-LRCX-2026-10-21-F', 'seasonA-META-2026-10-21-F', 'seasonA-ROP-2026-10-22-F', 'seasonA-TSCO-2026-10-22-F', 'seasonA-TXN-2026-10-21-F', 'seasonA-APPF-2026-10-22-F', 'seasonA-DECK-2026-10-22-F', 'seasonA-KN-2026-10-22-F', 'seasonA-VRSN-2026-10-22-F', 'seasonA-WDC-2026-10-22-F']
-- paper/long_ledger.json: open ['seasonA-HXL-2026-10-21-L', 'seasonA-LMT-2026-10-22-L', 'seasonA-LRCX-2026-10-21-L', 'seasonA-META-2026-10-21-L', 'seasonA-TSCO-2026-10-22-L', 'seasonA-TXN-2026-10-21-L', 'seasonA-APPF-2026-10-22-L', 'seasonA-DECK-2026-10-22-L', 'seasonA-KN-2026-10-22-L', 'seasonA-VRSN-2026-10-22-L', 'seasonA-WDC-2026-10-22-L']
-- paper/long: 22 position(s), 0 open order(s) - they match the ledgers
+- paper/options_ledger.json: open ['seasonA-APPF-2026-10-22-F', 'seasonA-DECK-2026-10-22-F', 'seasonA-KN-2026-10-22-F', 'seasonA-VRSN-2026-10-22-F', 'seasonA-WDC-2026-10-22-F']
+- paper/long_ledger.json: open ['seasonA-APPF-2026-10-22-L', 'seasonA-DECK-2026-10-22-L', 'seasonA-KN-2026-10-22-L', 'seasonA-VRSN-2026-10-22-L', 'seasonA-WDC-2026-10-22-L']
+- paper window (options): paper-window-push.yml afternoon step since 12:00 ET
+- paper window (long): paper-window-push.yml afternoon step since 12:00 ET
+- paper/long: 10 position(s), 0 open order(s) - they match the ledgers
 - Fri 23 Oct: 8 snapshot(s) - AGYS, AMKR, CDNS, CLS, CVLT, EEFT, GLXY, RMBS
 - Mon 26 Oct: 19 snapshot(s) - BLKB, BSX, CAKE, EAT, ETSY, EXTR, FFIV, FLEX, GEHC, JMKE, LFUS, LOGI, MANH, NXPI, STX, TEL, TER, UCTT, VFC
 - Tue 27 Oct: 31 snapshot(s) - ALNY, ARXS, BDC, BELFA, BHE, CMG, COHU, CROX, ENTG, FORM, FTAI, FTNT, GEN, GOOG, HONA, HWM, IDCC, INCY, KLAC, LHX, MSFT, MUSA, NOW, OLED, PI, PLXS, QSR, QTWO, TENB, TYL, WEX
