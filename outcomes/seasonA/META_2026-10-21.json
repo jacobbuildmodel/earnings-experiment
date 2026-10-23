@@ -3,24 +3,75 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-22T20:04:54-04:00",
+ "graded_et": "2026-10-23T19:54:56-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "META",
  "report_date": "2026-10-21",
  "session": "AMC",
  "entry_session": "2026-10-21",
  "cluster": "software_internet",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-21T20:03:35-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 697.6,
+   "entry_session": "2026-10-21",
+   "exit": 676.35,
+   "exit_session": "2026-10-22",
+   "dividends": 0,
+   "raw_return": -0.030461582568807377,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.769106,
+    "bench_return": -0.010730991470237594,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.011477321172861227,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.00011467889908267637,
+    "print_gap": -0.03035038421837366,
+    "entry_close": 697.52,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 697.6,
+   "entry_session": "2026-10-21",
+   "exit": 648.85,
+   "exit_session": "2026-10-22",
+   "dividends": 0,
+   "raw_return": -0.06988245412844041,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.769106,
+    "bench_return": -0.01476657800605341,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.04375881237846328,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +90,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2": true,
+  "T2G": true,
+  "T2E": true
  }
 }
