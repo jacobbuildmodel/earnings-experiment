@@ -5501,21 +5501,21 @@
       },
       "limit_price": "6.98",
       "id": "e871c5c3-027f-4482-ae24-ddaa08fdde08",
-      "status": "pending_new",
-      "filled_qty": 0.0,
-      "filled_at": null,
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-23T18:36:03.570448864Z",
       "legs_filled": [
        {
         "symbol": "DECK261023C00086000",
         "side": "buy",
-        "qty": 0.0,
-        "price": null
+        "qty": 1.0,
+        "price": 0.05
        },
        {
         "symbol": "DECK261023P00086000",
         "side": "buy",
-        "qty": 0.0,
-        "price": null
+        "qty": 1.0,
+        "price": 6.6
        }
       ]
      }
@@ -5523,7 +5523,19 @@
    },
    "sanity_checked": true,
    "exit_first_sent_et": "2026-10-23T14:31:09.510448-04:00",
-   "exit_late": false
+   "exit_late": false,
+   "result": {
+    "open_net": -3.95,
+    "close_net": 6.6499999999999995,
+    "pnl_per_unit": -2.6999999999999993,
+    "qty": 1.0,
+    "pnl": -270.0,
+    "pnl_on_spot": -0.03153468714537952,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.050000000000000266,
+    "entry_credit_vs_gate_bid_sum": -4.1499999999999995
+   }
   },
   "seasonA-KN-2026-10-22-F": {
    "season": "seasonA",
@@ -6296,7 +6308,7 @@
       },
       "limit_price": "23.78",
       "id": "e2dec644-63b5-4ae3-9203-844c3beab8e6",
-      "status": "pending_new",
+      "status": "new",
       "filled_qty": 0.0,
       "filled_at": null,
       "legs_filled": [
@@ -6324,7 +6336,8 @@
         "qty": 0.0,
         "price": null
        }
-      ]
+      ],
+      "cancel_requested": "2026-10-23T14:38:09.044613-04:00"
      }
     ]
    },
@@ -7310,7 +7323,7 @@
    }
   }
  },
- "updated_et": "2026-10-23T14:36:00.201276-04:00",
+ "updated_et": "2026-10-23T14:38:09.044613-04:00",
  "errors_last_run": null,
  "alerts": [
   "seasonA-DPZ-2026-10-13-F"
