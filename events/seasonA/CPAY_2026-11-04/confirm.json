@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/corpay-announce-third-quarter-2026-results-november-4-2026-2026-10-21",
+  "published_et": "2026-10-21T09:05-04:00",
+  "quote": "linkedin facebook x email reddit ATLANTA --(BUSINESS WIRE)-- Corpay, Inc. , (NYSE: CPAY) the global spend management company, today announced that the Company will host a conference call to discuss third quarter 2026 financial results on Wednesday, November 4th, 2026 at 5:30 pm ET .",
+  "title": "Corpay to Announce Third Quarter 2026 Results on November 4, 2026",
+  "retrieved_et": "2026-10-22T21:16:55.130458-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
