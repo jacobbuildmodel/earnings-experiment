@@ -3,24 +3,76 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-21T20:06:22-04:00",
+ "graded_et": "2026-10-22T20:04:50-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "ABT",
  "report_date": "2026-10-21",
  "session": "BMO",
  "entry_session": "2026-10-20",
  "cluster": "healthcare_growth",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k",
+  "timing_unverified"
+ ],
+ "timing_check": "unverified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-21T11:36:13-04:00",
+   "window": "other"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 105.53,
+   "entry_session": "2026-10-20",
+   "exit": 101.31,
+   "exit_session": "2026-10-21",
+   "dividends": 0,
+   "raw_return": -0.03998862882592624,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IHI",
+    "beta": 0.939122,
+    "bench_return": -0.01827917282127023,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.022822255487669304,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.029186013455889337,
+    "print_gap": -0.011127379209370458,
+    "entry_close": 102.45,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 105.53,
+   "entry_session": "2026-10-20",
+   "exit": 100.51,
+   "exit_session": "2026-10-21",
+   "dividends": 0,
+   "raw_return": -0.04756941154174166,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IHI",
+    "beta": 0.939122,
+    "bench_return": -0.013663220088626193,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.03473798096567085,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -38,5 +90,10 @@
  "stage2": {
   "T2": "no stage-2 decision frozen",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2G": false
  }
 }
