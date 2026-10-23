@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "CDNS",
+ "report_date": "2026-10-26",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-26"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-27"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "reaction_day": "2026-10-27"
+ },
+ "snapshot_session": "2026-10-23",
+ "captured_et": "2026-10-23T14:31:00.461848-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.cadence.com/news/news-details/2026/Cadence-Announces-Third-Quarter-2026-Financial-Results-Webcast/default.aspx",
+  "published_et": "2026-10-05T16:15-04:00",
+  "quote": "The webcast will begin on Monday, October 26, 2026, at 2:00 p.m. Pacific Time.",
+  "title": "Cadence Announces Third Quarter 2026 Financial Results Webcast",
+  "retrieved_et": "2026-10-08T22:48:33.464446-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.cadence.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-26T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-26T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 316.54998779296875,
+  "expiry": "2026-10-30",
+  "strike": 315.0,
+  "call": {
+   "bid": 12.2,
+   "ask": 13.6,
+   "openInterest": 3.0,
+   "lastPrice": 11.6,
+   "impliedVolatility": 0.6495396374511719,
+   "lastTradeDate": "2026-10-22T17:33:50+00:00"
+  },
+  "put": {
+   "bid": 10.2,
+   "ask": 12.0,
+   "openInterest": 33.0,
+   "lastPrice": 11.5,
+   "impliedVolatility": 0.6361120373535156,
+   "lastTradeDate": "2026-10-23T18:05:07+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.07581740933661502,
+  "rel_spread": {
+   "call": 0.10852713178294578,
+   "put": 0.16216216216216223
+  },
+  "oi_atm": 36.0,
+  "oi_sum": 165.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "CVLT",
+ "report_date": "2026-10-27",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-26"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-27"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "reaction_day": "2026-10-27"
+ },
+ "snapshot_session": "2026-10-23",
+ "captured_et": "2026-10-23T14:31:09.486741-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/commvault-announces-second-quarter-fiscal-year-2027-earnings-release-date-2026-10-06",
+  "published_et": "2026-10-06T08:30-04:00",
+  "quote": "linkedin facebook x email reddit TINTON FALLS, N.J. , Oct. 6, 2026 /PRNewswire/ -- Commvault (NASDAQ: CVLT) - Commvault will webcast a discussion of its second quarter fiscal year 2027 earnings results on Tuesday, October 27, 2026 beginning at 8:30 a.m. EDT at http://ir.commvault.com .",
+  "title": "Commvault Announces Second Quarter Fiscal Year 2027 Earnings Release Date",
+  "retrieved_et": "2026-10-08T22:50:06.832630-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-27T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-27T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 171.10000610351562,
+  "expiry": "2026-11-20",
+  "strike": 180.0,
+  "call": {
+   "bid": 7.7,
+   "ask": 10.0,
+   "openInterest": 31.0,
+   "lastPrice": 7.8,
+   "impliedVolatility": 0.6500279138183593,
+   "lastTradeDate": "2026-10-22T18:55:26+00:00"
+  },
+  "put": {
+   "bid": 15.7,
+   "ask": 18.0,
+   "openInterest": 1.0,
+   "lastPrice": 32.85,
+   "impliedVolatility": 0.6022988989257814,
+   "lastTradeDate": "2026-10-16T16:50:33+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 18,
+  "implied_move": 0.15020455337945157,
+  "rel_spread": {
+   "call": 0.2598870056497175,
+   "put": 0.1364985163204748
+  },
+  "oi_atm": 32.0,
+  "oi_sum": 40.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
