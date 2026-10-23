@@ -1,4 +1,4 @@
-# Health 2026-10-23 04:47 ET - **RED**
+# Health 2026-10-23 13:56 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -16,10 +16,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-22T21:26:29Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39857275169
 - Actions failure: Earnings experiment - paper options at 2026-10-22T20:27:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39849068290
 - Actions failure: Earnings experiment - paper options at 2026-10-22T19:57:45Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39844657319
-- Actions failure: Earnings experiment - paper options at 2026-10-22T15:47:37Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39808142532
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-22T15:46:29Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39807969646
-- Actions failure: Earnings experiment - paper options at 2026-10-22T15:46:25Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39807960795
-- Actions failure: Earnings experiment - paper options at 2026-10-22T14:52:16Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39799505571
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 - AI STEP REFUSED: Actions AI step (housekeeping) - 4 refusal(s) in a row since Wed 14 Oct 22:07 ET, newest Mon 19 Oct 22:10 ET: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access (standing: STATE.md, Waiting on Jacob)
 
