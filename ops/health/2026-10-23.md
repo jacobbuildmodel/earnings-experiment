@@ -1,4 +1,4 @@
-# Health 2026-10-23 14:46 ET - **RED**
+# Health 2026-10-23 15:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -21,12 +21,11 @@ check.py: PASS - 1 warning(s)
 
 ## Information
 - GLXY_2026-10-27: T2 deadline Mon 26 Oct 09:15 ET - frozen so far: none
-- paper/options_ledger.json: open ['seasonA-VRSN-2026-10-22-F', 'seasonA-AGYS-2026-10-26-F', 'seasonA-CDNS-2026-10-26-F', 'seasonA-CLS-2026-10-26-F', 'seasonA-EEFT-2026-10-27-F', 'seasonA-GLXY-2026-10-27-F', 'seasonA-RMBS-2026-10-26-F']
-- paper/long_ledger.json: open ['seasonA-AGYS-2026-10-26-L', 'seasonA-CDNS-2026-10-26-L', 'seasonA-CLS-2026-10-26-L', 'seasonA-EEFT-2026-10-27-L', 'seasonA-GLXY-2026-10-27-L', 'seasonA-RMBS-2026-10-26-L']
+- paper/options_ledger.json: open ['seasonA-AGYS-2026-10-26-F', 'seasonA-CDNS-2026-10-26-F', 'seasonA-CLS-2026-10-26-F', 'seasonA-EEFT-2026-10-27-F', 'seasonA-GLXY-2026-10-27-F', 'seasonA-RMBS-2026-10-26-F']
+- paper/long_ledger.json: open ['seasonA-AGYS-2026-10-26-L', 'seasonA-CDNS-2026-10-26-L', 'seasonA-EEFT-2026-10-27-L', 'seasonA-GLXY-2026-10-27-L', 'seasonA-RMBS-2026-10-26-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET
-- paper/options: ['seasonA-VRSN-2026-10-22-F-close-r3'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
-- paper/long: 11 position(s), 1 open order(s) - they match the ledgers
+- paper/long: 11 position(s), 0 open order(s) - they match the ledgers
 - Fri 23 Oct: 8 snapshot(s) - AGYS, AMKR, CDNS, CLS, CVLT, EEFT, GLXY, RMBS
 - Mon 26 Oct: 19 snapshot(s) - BLKB, BSX, CAKE, EAT, ETSY, EXTR, FFIV, FLEX, GEHC, JMKE, LFUS, LOGI, MANH, NXPI, STX, TEL, TER, UCTT, VFC
 - Tue 27 Oct: 32 snapshot(s) - ALNY, ARXS, BDC, BELFA, BHE, BOOT, CMG, COHU, CROX, ENTG, FORM, FTAI, FTNT, GEN, GOOG, HONA, HWM, IDCC, INCY, KLAC, LHX, MSFT, MUSA, NOW, OLED, PI, PLXS, QSR, QTWO, TENB, TYL, WEX
