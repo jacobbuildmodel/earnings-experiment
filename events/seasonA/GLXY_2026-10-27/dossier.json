@@ -1,0 +1,649 @@
+{
+ "event": "GLXY_2026-10-27",
+ "season": "seasonA",
+ "built_et": "2026-10-23T14:31:23-04:00",
+ "cutoff_et": "2026-10-23T14:31:10.535616-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/GLXY_2026-10-27/gate.json",
+   "published": "2026-10-23T14:31:10.535616-04:00",
+   "data": {
+    "ticker": "GLXY",
+    "report_date": "2026-10-27",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-26"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-27"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-27"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-03"
+     },
+     "reaction_day": "2026-10-27"
+    },
+    "snapshot_session": "2026-10-23",
+    "captured_et": "2026-10-23T14:31:10.535616-04:00",
+    "options": {
+     "spot": 14.71500015258789,
+     "expiry": "2026-10-30",
+     "strike": 15.0,
+     "call": {
+      "bid": 0.89,
+      "ask": 0.98,
+      "openInterest": 56.0,
+      "lastPrice": 0.92,
+      "impliedVolatility": 1.22266013671875,
+      "lastTradeDate": "2026-10-23T18:09:46+00:00"
+     },
+     "put": {
+      "bid": 1.06,
+      "ask": 1.1,
+      "openInterest": 7005.0,
+      "lastPrice": 1.06,
+      "impliedVolatility": 1.0625046875000002,
+      "lastTradeDate": "2026-10-23T18:05:47+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 3,
+     "implied_move": 0.13693509881789753,
+     "rel_spread": {
+      "call": 0.09625668449197856,
+      "put": 0.03703703703703707
+     },
+     "oi_atm": 7061.0,
+     "oi_sum": 7061.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/GLXY_2026-10-27/factors.json",
+   "published": "2026-10-23T14:31:10.535616-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.6059185834907381,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.4158396252237955,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.08828991889395521,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.07423858244302561,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.8187693448025379,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.9551211785792812,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.6371146626523445,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "BMO",
+       "raw_return_A": -0.04921083232298762,
+       "eps_est": -0.28,
+       "eps_rep": -0.09,
+       "surprise_pct": 68.18,
+       "reaction_volume_ratio": 2.702014878173659
+      },
+      {
+       "date": "2026-04-28",
+       "session": "BMO",
+       "raw_return_A": -0.0495373870838971,
+       "eps_est": -0.94,
+       "eps_rep": -0.48,
+       "surprise_pct": 49.14,
+       "reaction_volume_ratio": 1.3053280037207833
+      },
+      {
+       "date": "2026-02-03",
+       "session": "BMO",
+       "raw_return_A": -0.06243033499449624,
+       "eps_est": -1.06,
+       "eps_rep": -1.08,
+       "surprise_pct": -1.57,
+       "reaction_volume_ratio": 2.830231197622328
+      },
+      {
+       "date": "2025-10-21",
+       "session": "BMO",
+       "raw_return_A": 0.1183234635071524,
+       "eps_est": 0.31,
+       "eps_rep": 1.01,
+       "surprise_pct": 223.72,
+       "reaction_volume_ratio": 2.9025329636552963
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.4350267607930167,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 68.18,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 7,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.10786,
+      "7daysAgo": -0.00952,
+      "30daysAgo": -0.08286,
+      "60daysAgo": -0.07867,
+      "90daysAgo": 0.01857,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 4.808292945611201,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.10786,
+      "low": -0.35,
+      "high": 0.49,
+      "yearAgoEps": 1.01,
+      "numberOfAnalysts": 14,
+      "growth": -0.8932,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 7.787873168922677,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.1918,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": -36.4368,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 0.14856897,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": -0.038,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 8671510528,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.4375,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.13693509881789753,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.1601554492187498,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0976557617187499,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.20615006150061502,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.4027857908184291,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 4903,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.3954875318212248,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.08419973464002628,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 178,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unknown",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.6059185834907381,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.08828991889395521,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.07423858244302561,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.8187693448025379,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 2838071352.194515,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 20.21363802416062,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1859392/000185939226000084/glxy-20260630xpressrelease.htm",
+   "published": "2026-08-05T11:02:52-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 glxy-20260630xpressrelease.htm EX-99.1 GLXY-2026.06.30 - Press Release Exhibit 99.1 Galaxy Announces Second Quarter 2026 Financial Results NEW YORK, August 5, 2026 — Galaxy Digital Inc. (Nasdaq: GLXY) (the \"Company\" or \"GDI\") today released financial results for the three and six months ended June 30, 2026 . In this press release, a reference to \"Galaxy,\" \"we,\" \"our\" and similar words refers to GDI, its subsidiaries and affiliates, and, prior to the Reorganization Transactions, refers to Galaxy Digital Holdings LP (the \"Partnership\" or \"GDH LP\"), its subsidiaries and affiliates, or any one of them, as the context requires. 1 — Financial Highlights • Q2 2026 net loss of $(85) million and diluted and adjusted EPS of $(0.09) , driven primarily by the depreciation of digital asset prices in the quarter. 2 • Q2 2026 adjusted gross profit of $43 million and adjusted EBITDA of $(77) million . 2 • Total equity of $2.7 billion and cash and stablecoin holdings of $2.5 billion as of June 30, 2026 . — Corporate Updates • Subsequent to quarter-end, Galaxy substantially expanded its data center footprint with the acquisition of three new sites in Texas for the development of AI data centers, bringing its total power pipeline to over 5.7 GW. ◦ Galaxy executed a development agreement to acquire 500 acres in the McGregor Industrial Park for its Merlin campus, securing an initial agreement to support 74 MW of capacity, with the potential to expand to up to 500 MW. ◦ Galaxy acquired two additional sites for development in Texas, Caspian and Selene, with potential power capacities of approximately 700 MW and 900 MW, respectively, subject to ERCOT’s interconnection process. • Galaxy completed delivery of the first phase of power at its Helios data center campus in West Texas, delivering 200 MW of gross power — 133 MW of critical IT load — to CoreWeave under the Company's 15-year lease agreement. Phase I was delivered on schedule, with rent commencement under the Phase I lease scaling with delivered capacity throughout the second quarter of 2026. • On July 28, Galaxy, through its wholly-owned subsidiary Galaxy Helios Data Centers II LLC, completed a private offering of $3.5 billion of senior secured notes due 2031. Proceeds from the offering will be used to fund construction of Helios I, Phase II. • Galaxy entered a multi-year agreement with BNY, which oversees more than $60 trillion in assets under custody, to further advance its digital asset infrastructure, including support for staking on BNY's Digital Asset Custody platform. Galaxy is also serving as a design partner to support the continued development of BNY's digital asset platform infrastructure. SELECT FINANCIAL METRICS Q2 2026 Q1 2026 Q/Q % Change Total Assets $10,844M $9,992M 9 % Total Equity $2,720M $2,779M (2) % Cash & Stablecoins 3 $2,459M $2,605M (6) % Net Digital Assets and Investments 4 $1,160M $1,362M (15) % Net Income / (Loss) ($85M) ($216M) N.M. Adjusted EBITDA 2 ($77M) ($188M) N.M. Note: Throughout this document, totals may not sum due to rounding. Percentage change calculations are based on unrounded results. N.M. is the abbreviation for \"Not Meaningful\". (1) On May 13, 2025, the Company, Galaxy Digital Holdings Ltd. and GDH LP consummated a series of transactions resulting in the reorganization of the Company’s corporate structure (the “Reorganization Transactions”). (2) Adjusted EPS, Adjusted Gross Profit and Adjusted EBITDA are non-GAAP financial measures. Refer to pages 12 through 14 for more information and a non-GAAP to GAAP reconciliation to the most directly comparable GAAP measure. (3) Includes $896M in Cash and Cash Equivalents and $1,563M in Stablecoins as of the end of Q2 2026 and $911M in Cash and Cash Equivalents and $1,694M in Stablecoins as of the end of Q1 2026. (4) Refer to page 7 of this release for a breakout of Galaxy’s Treasury & Corporate net digital asset and investment exposure. 2 | GLXY • Q2 2026 All figures are in U.S. Dollars unless otherwise noted. — Galaxy Financial Snapshot • Galaxy reported a net loss of $(85) million for Q2 2026 and diluted and adjusted EPS of $(0.09) , driven primarily by the depreciation of digital asset prices during the period. 1 • Digital Assets and Data Centers operating businesses generated $86 million of adjusted gross profit and $1 million of adjusted EBITDA, up $34 million and $21 million QoQ, respectively. 1 • Digital Assets generated adjusted gross profit of $66 million and adjusted EBITDA of $(11) million . Despite the pullback in digital asset prices and activity during the quarter, adjusted gross profit increased by 34% QoQ, reflecting the resilience of our business model and further demonstrating that our earnings are becoming less dependent on the direction of digital asset prices. 1 • Data Centers generated adjusted gross profit of $20 million and adjusted EBITDA of $11 million during the quarter, as capacity delivery to CoreWeave ramped throughout the period, with all 133 MW of critical IT load under the Phase I lease in service by quarter end. With the full 133 MW now delivered, due to contracted payments, Galaxy expects Phase I to generate quarterly leasing revenue of approximately $80 million, and expected quarterly project-level Adjusted EBITDA margin of over 90% beginning in the third quarter of 2026. 1 • Treasury & Corporate generated adjusted gross loss of $(42) million and adjusted EBITDA of $(78) million , driven primarily by unrealized losses on digital assets and investment positions. 1 GAAP Revenues and Transaction Expenses Q2 2026 Q1 2026 Q/Q % Change Gross Revenues & Gains/(Losses) from Operations $8,711M $10,213M (15) % Gross Transaction Expenses $8,486M $10,017M (15) % Segment Reporting Breakdown Q2 2026 Q1 2026 Q/Q % Change Digital Assets Adjusted Gross Profit 1 $66M $49M 34 % Digital Assets Adjusted EBITDA 1 ($11M) ($19M) N.M. Data Centers Adjusted Gross Profit 1 $20M $3M 560 % Data Centers Adjusted EBITDA 1 $11M ($0.9M) N.M. Treasury & Corporate Adjusted Gross Profit 1 ($42M) ($140M) N.M. Treasury & Corporate Adjusted EBITDA 1 ($78M) ($167M) N.M. Adjusted Gross Profit 1 $43M ($88M) N.M. Adjusted EBITDA 1 ($77M) ($188M) N.M. Net Income ($85M) ($216M) N.M. Note: Throughout this document, totals may not sum due to rounding. Percentage change calculations are based on unrounded results. N.M. is the abbreviation for \"Not Meaningful\". (1) Adjusted EPS, Adjusted Gross Profit, Adjusted EBITDA and project-level Adjusted EBITDA margin are non-GAAP financial measures. Please see Non- GAAP Financial Measures below for further information. Refer to pages 12 through 14 for more information and a non-GAAP to GAAP reconciliation to the most directly comparable GAAP measure. 3 | GLXY • Q2 2026 All figures are in U.S. Dollars unless otherwise noted. — Digital Assets Global Markets Global Markets reported adjusted gross profit of $49 million in the second quarter. 1 • Galaxy’s digital asset trading volumes declined 7% QoQ in a period where industry trading volumes were down more than double-digit percentage points sequentially. • Average loan book size of $1.4 billion was up modestly compared to the prior quarter. New loan originations increased QoQ, supported by the successful pre-launch of the Galaxy Onchain Financing Rate (“GOFR”), alongside broader demand from new and existing clients. • Galaxy launched an OTC Prediction Markets offering, enabling institutional clients to implement multi-asset hedging strategies around event-driven markets. KEY PERFORMANCE INDICATORS Q2 2026 Q1 2026 Q/Q % Change Global Markets Adjusted Gross Profit 1 $49M $31M 58 % Loan Book Size (Average) $1,438M $1,427M 1 % Total Trading Counterparties 1,741 1,691 3 % Global Markets Adjusted Gross Profit: Gross Profit from Galaxy trading activity, net of transaction expenses, and fee revenue associated with the Investment Banking business. Loan Book Size (Average) : Average market value of all open loans, excluding uncommitted credit facilities. Asset Management & Infrastructure Solutions Asset Management & Infrastructure Solutions generated $17 million of adjusted gross profit in Q2 2026. 1 • Galaxy ended Q2 with $7.1 billion in combined assets under management and assets under stake, down 12% QoQ, driven primarily by the depreciation of digital asset prices during the period. 3 • Galaxy entered a multi-year agreement with BNY, which oversees more than $60 trillion in assets under custody, to further advance digital asset infrastructure for institutional markets, including support for staking on BNY's Digital Asset Custody platform. In addition to staking, Galaxy is serving as a design partner to further advance BNY's digital asset platform infrastructure. • Galaxy launched the Galaxy Fintech Fund, a long-short hedge fund investing in the convergence of traditional finance, blockchain infrastructure, and emerging technologies. • Galaxy and State Street Investment Management launched the State Street Galaxy Onchain Liquidity Sweep Fund (“SWEEP”), a tokenized private liquidity fund designed to enable 24/7 onchain cash management via stablecoin, subject to availability of stablecoin in the fund’s portfolio. KEY PERFORMANCE INDICATORS Q2 2026 Q1 2026 Q/Q % Change Asset Management & Infrastructure Solutions Adjusted Gross Profit 1 $17M $18M (6) % ETFs $1,805M $2,190M (18) % Alternatives $2,553M $2,757M (7) % Assets Under Stake $2,790M $3,215M (13) % All figures are unaudited. ETFs: Include assets in Galaxy-sponsored and sub-advised exchange-traded funds, including seed investments by affiliates, based on prices as of the end of the specified period. ETF assets include both Galaxy balance sheet and third-party assets. Changes in ETF assets are generally the result of performance, inflows/outflows, and market movements. Alternatives: Includes committed capital closed-end vehicles, fund of fund products, engagements to unwind portfolios, affiliated and unaffiliated separately managed accounts, and seed investments by affiliates, based on prices as of the end of the specified period. For committed capital closed-end funds, Alternatives are reported as Net Asset Value (“NAV”) plus unfunded commitments. Alternatives for quarterly close vehicles are reported as of the most recent quarter available for the applicable period. Assets Under Stake: Represents the total notional value of assets bonded to Galaxy validators, based on prices as of the end of the specified period. These figures include both Galaxy balance sheet and third-party assets. Note: As of the end of Q2 2026, $733M of assets are captured within both Assets Under Stake and Alternatives. (1) Adjusted Gross Profit is a non-GAAP financial measure. Refer to page 12 for more information and a reconciliation to the most directly comparable GAAP measure. (2) Source: The Block. Industry-wide trading volumes defined as spot cryptocurrency monthly exchange volumes, BTC futures, BTC options, and ETH options volumes. (3) Assumes prices for relevant cryptocurrencies as of 6/30/2026. 4 | GLXY • Q2 2026 All figures are in U.S. Dollars unless otherwise noted. — Data Centers Data Centers generated $20 million of adjusted gross profit and $11 million of adjusted EBITDA in Q2 2026. 1 • Q2 marked the segment's first quarter of revenue-generating operations, as Phase I data hall delivery ramped throughout the quarter, with all 133 MW of critical IT load under the Phase I lease in service by quarter end. With the full 133 MW now delivered, due to contracted payments, Galaxy expects Phase I to generate quarterly leasing revenue of approximately $80 million and expected quarterly project-level Adjusted EBITDA margin of over 90% beginning in Q3 2026. 1 KEY PERFORMANCE INDICATORS Q2 2026 Q1 2026 Data Centers Adjusted Gross Profit 1 $20M $3M Data Centers Adjusted EBITDA 1 $11M ($0.9M) Data Centers Total Assets (End of Period) $2,544M $2,104M Data Centers Total Liabilities (End of Period) $1,548M $1,330M Data Centers Quarterly Capital Expenditure $448M $354M Delivered Critical IT Load 2 133 MW - (1) Adjusted Gross Profit, Adjusted EBITDA and project-level Adjusted EBITDA margin are non-GAAP financial measures. Refer to pages 12 - 14 for more information and a reconciliation to the most directly comparable GAAP measure. (2) Represents revenue-generating capacity delivered to tenants, reflecting capacity delivered at quarter end. Helios Data Center Campus: • Galaxy completed delivery of the first phase of power at its Helios data center campus in West Texas, delivering 200 MW of gross power — 133 MW of critical IT load — to CoreWeave under the Company's 15-year lease agreement. Phase I was delivered on schedule, with rent commencement under the Phase I lease scaling with delivered capacity throughout the second quarter of 2026. • Galaxy commenced construction on Phase II of Helios, a 260 MW critical IT capacity expansion, with HITT Contracting serving as general contractor. HITT has been mobilized and on site since April 2026, with earthwork complete and structural foundation work now underway. Data hall deliveries under Phase II are expected to begin in the second quarter of 2027. • On July 28, Galaxy, through its wholly-owned subsidiary Galaxy Helios Data Centers II LLC, completed a private offering of $3.5 billion of senior secured notes due 2031. Proceeds from the offering will be used to fund construction of Helios I, Phase II. • Galaxy continues to advance discussions with prospective tenants for the additional 830 MW of approved capacity at Helios not yet under lease, and has 2 GW of additional power under study at the Helios campus alone to support the rising demand for AI infrastructure. The Helios Campus CoreWeave Leases (Phases I+II+III) 1.63GW 800MW 526MW 15 Years Total Approved Gross Power Capacity Gross Power Capacity Critical IT Load Base Lease Term, Excluding Two 5-Year Extension Options 2,200+ Q2 2026 $1.2B+ 90%+ Campus Acreage 1 Phase I Rent Commencement Date Anticipated Average Annual Rev",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1859392/000185939226000091/glxy-20260630.htm",
+   "published": "2026-08-10T21:03:52-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations Management’s discussion and analysis of our financial condition and results of operations should be read in conjunction with the condensed consolidated interim financial statements and notes thereto included elsewhere in this Quarterly Report on Form 10-Q. Some of the information contained in this Quarterly Report on Form 10-Q includes forward-looking statements that involve risks and uncertainties. You should read the sections titled “Special Note Regarding Forward-Looking Statements” and “Risk Factors” for a discussion of important factors that could cause actual results to differ materially from the results described in or implied by the forward-looking statements contained in the following discussion and analysis. Overview Galaxy is a global financial services and infrastructure company focused on digital assets and high performance computing (“HPC”). We aim to facilitate efficient access and adoption of digital assets by institutional clients through our Global Markets and Asset Management & Infrastructure Solutions businesses within our Digital Assets segment. We also develop and operate HPC data center infrastructure to meet the rising global demand for reliable power and scalable compute capacity driven by accelerated artificial intelligence (“AI”) growth. Our Digital Assets operating business segment provides new products and capabilities such as staking, margin-based financing and active exchange-traded funds. Galaxy has relationships with approximately 1,700 t rading counterparties spanning both crypto-native and traditional finance, with approxi mately $7.6 billion in assets across our platform as of June 30, 2026. Our full suite of services spans across two operating business segments: Digital Assets and Data Centers. Our Digital Assets operating business segment includes: • Our Global Markets business, which provides over-the-counter (“OTC”) spot and derivatives trading, lending, structured products, as well as mergers and acquisitions (“M&A”) advisory and equity and debt capital markets services. • Our Asset Management & Infrastructure Solutions business encompasses our investment management division and blockchain infrastructure products and services, with approximate ly $7.6 billion in assets across the platform as of June 30, 2026. Our Asset Management business manages a diverse suite of ETF and Alternatives strategies, taking the investing DNA that has been core to Galaxy since our founding and externalizing it for institutional allocators and individuals. Our Infrastructure Solutions business enables our clients to participate in an increasingly on-chain and decentralized future through staking, tokenization and custodial technology. Our Data Centers operating business segment develops and operates HPC infrastructure to meet the growing demand for large-scale, power-ready facilities in the AI/HPC industry. Galaxy’s Helios data center campus, located in the panhandle region of West Texas, has developed the first 133 megawatts (“MW”) of critical IT load, utilizing approximately 200 MW of gross power capacity, for CoreWeave, Inc. (“CoreWeave”) under a 15-year lease agreement (the “Lease Agreement”) entered into in April 2025. In total, the Electric Reliability Council of Texas (“ERCOT”) has approved over 1.6 gigawatts (“GW”) of gross power capacity at our Helios campus. In addition to the initial 200 MW described above, 600 MW of this gross power capacity will support the incremental 393 MW of critical IT load leased to CoreWeave under the Phase II (the “Phase II Lease”) and Phase III (the “Phase III Lease”) leases pursuant to the Lease Agreement, and is expected to be delivered starting in the second quarter of 2027. The remaining 830 MW of approved power capacity remains available to be contracted. Our operating business segments are supplemented by our Treasury and Corporate segment, which includes Galaxy’s diversified portfolio of digital assets, venture, private equity, and fund investments. Financial and Operational Highlights • Galaxy generated Net loss of $85.3 million and Net loss of $301.6 million for the three and six months ended June 30, 2026, respectively, compared to Net income of $30.7 million and Net loss of $264.7 million for the three and six months ended June 30, 2025, respectively. 52 Table of Contents • Galaxy generated Adjusted EBITDA of $(77.3) million and $(264.8) million for the three and six months ended June 30, 2026, respectively, compared to Adjusted EBITDA of $211.1 million and $(78.4) million for the three and six months ended June 30, 2025, respectively. • Total equity was $2.7 billion and cash and stablecoin holdings were $2.5 billion as of June 30, 2026. Recent Developments On July 28, 2026, Galaxy, through its wholly-owned subsidiary, Galaxy Helios Data Centers II LLC (“Galaxy Data Centers”), completed the issuance and sale of $3.507 billion aggregate principal amount of 9.875% Senior Secured Notes due in 2031 (the “Notes”) in a private offering exempt from registration under Rule 144A and Regulation S of the Securities Act. In connection with the Notes, Galaxy Data Centers, Galaxy Helios II LLC, a wholly owned direct subsidiary of Galaxy Data Centers (the “Guarantor”), and Galaxy Helios II Qualified Opportunity Zone Business, LLC, the direct parent company of the Company entered into an indenture (the “Indenture”) with The Bank of New York Mellon, as trustee and collateral agent. The proceeds of the Notes will be used to finance the construction of two data center buildings at the Helios campus (the “Project”). The Notes bear interest at a rate of 9.875% per annum, payable semi-annually in cash in arrears on February 1 and August 1 of each year, beginning on February 1, 2027, and will mature on August 1, 2031, unless earlier redeemed or repurchased in accordance with their terms. The Notes will amortize on a semi-annual basis on February 1 and August 1 at the rates specified in the Indenture, with the first payment date to occur at least ten months after the completion of the Project. The Notes are fully and unconditionally guaranteed by the Guarantor, and will constitute the senior secured obligations of Galaxy Data Centers and the Guarantor. The Notes and related note guarantee will be secured by first-priority liens on (i) substantially all assets of Galaxy Data Centers and the Guarantor, other than certain excluded property and (ii) all equity interests of Galaxy Data Centers held by the direct parent company of Galaxy Data Centers. In connection with the Notes, GDH LP provided a customary, uncapped completion guarantee with respect to the Project. Our Business Model Galaxy’s business generates revenue through a variety of channels, creating a diversified and resilient cash flow base that is not directly correlated to any single asset, token, or business line. Within the Digital Assets operating business segment, the Global Markets business earns revenue from spreads on client trades, net interest income from lending activities, and fees from M&A and capital raising transactions. Galaxy’s Asset Management & Infrastructure Solutions business generates management and performance fees on assets under management, fees on assets staked to our validator nodes and licensing fees from institutions who leverage our proprietary self-custody technology. Within our Data Centers operating business segment, we expect the majority of revenue to come from long-term lease agreements with cloud service provider clients that Galaxy may obtain from time to time for HPC. We expect this segment to become a significant and diversified source of long-term, predictable revenue for Galaxy, uncorrelated to the prices of digital assets, particularly as we continue to deliver critical IT load for CoreWeave (and potentially other future tenants). We recognized our first lease revenue from this segment in the second quarter. We also earn revenue by managing a diversified portfolio of digital assets, venture, private equity, and fund investments on our balance sheet, as well as through our bitcoin mining operations, all of which are reported within the Treasury and Corporate segment. Non-GAAP Financial Measures To supplement our condensed consolidated interim financial statements, which are prepared and presented in accordance with GAAP, we use certain non-GAAP financial measures, as described below, to understand and evaluate our business. These non-GAAP financial measures, which may be different than similarly-titled measures used by other companies, are presented to enhance investors’ overall understanding of our financial performance and should not be considered a substitute for, or superior to, the financial information prepared and presented in accordance with GAAP. Adjusted EBITDA is a non-GAAP financial measure that is used by management, in addition to GAAP financial measures, to understand and compare our operating results across accounting periods, for risk management and operational decision-making. We believe Adjusted EBITDA provides investors with additional useful information in evaluating Galaxy’s operating performance, as well as a useful measure for period-to-period comparisons of our business performance. Adjusted EBITDA is defined as Net income / (loss), excluding (i) equity-based compensation, (ii) notes interest and other expense, (iii) tax expense / (benefit), (iv) depreciation and amortization expense, (v) gains and losses on the embedded derivative on our Exchangeable Notes which ceased to exist upon consolidation as a result of the Reorganization 53 Table of Contents Transactions, (vi) mining-related impairment loss / loss on disposal of mining equipment, and (vii) other discrete items which are not individually significant that we believe are not indicative of our ongoing results. The above items are excluded from our Adjusted EBITDA because these items are non-cash in nature, or because the amount and timing of these items are unpredictable, are not driven by core results of operations, and render comparisons with prior periods and competitors less meaningful. This non-GAAP financial measure does not have any standardized meanings prescribed by GAAP and may not be comparable to similar measures presented by other companies in our industry. This non-GAAP financial measure has been prepared by, and is the responsibility of, Galaxy’s management, and has not been audited or reviewed by our independent registered public accounting firm. You should not place undue reliance on this non-GAAP financial measure. The following tables present a reconciliation of Adjusted EBITDA to the most directly comparable GAAP measure, Net income / (loss): (in thousands) Digital Assets Data Centers Treasury and Corporate Three Months Ended June 30, 2026 Net income / (loss) $ (19,048) $ 31,155 $ (97,423) $ (85,316) Add back: Equity based compensation 9,218 657 6,331 16,206 Notes interest and other expense — 7,365 17,732 25,097 Tax expense / (benefit) (1,704) (32,450) (8,717) (42,871) Depreciation and amortization expense 1,650 4,762 2,749 9,161 Other (1) (646) — 1,111 465 Adjusted EBITDA $ (10,530) $ 11,489 $ (78,217) $ (77,258) (in thousands) Digital Assets Data Centers Treasury and Corporate Three Months Ended June 30, 2025 Net income / (loss) $ (2,535) $ — $ 33,226 $ 30,691 Add back: Equity based compensation 11,826 — 6,957 18,783 Notes interest and other expense — — 12,042 12,042 Tax expense / (benefit) — — 11,470 11,470 Depreciation and amortization expense 3,560 — 3,898 7,458 Mining related impairment loss / loss on disposal — — 15 15 Unrealized (gain) / loss on notes payable – derivative — — 125,150 125,150 Other (1) — — 5,506 5,506 Adjusted EBITDA $ 12,851 $ — $ 198,264 $ 211,115 (in thousands) Digital Assets Data Centers Treasury and Corporate Six Months Ended June 30, 2026 Net income / (loss) $ (53,352) $ 29,608 $ (277,883) $ (301,627) Add ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1859392/000185939226000105/glxy-20260922.htm",
+   "published": "2026-09-23T20:06:26-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. As previously announced, on August 5, 2026, Robert Rico notified Galaxy Digital Inc. (the “Company”) of his intention to resign as the Company’s Chief Accounting Officer and principal accounting officer (“PAO”), effective September 30, 2026 (the “Effective Date”), to pursue an opportunity outside of the Company. On September 22, 2026, the board of directors of the Company appointed Dritan Muneka, the Company’s Head of Accounting Policy, to serve as the Company’s PAO with the title Corporate Controller, effective as of the Effective Date, upon Mr. Rico’s departure. Mr. Muneka, 40, has served as the Company’s Head of Accounting Policy since May 2022. Prior to that, he served in various positions, ending with Managing Director, at KPMG LLP, a global accounting and financial services firm, from November 2010 to April 2022. Mr. Muneka holds a bachelor’s degree in economics and a master’s degree in international relations, both from Monash University, and is a certified public accountant. There is no arrangement or understanding between Mr. Muneka and any other persons pursuant to which he was appointed as PAO. There are no family relationships among any of the Company’s directors or executive officers and Mr. Muneka, and Mr. Muneka does not have any direct or indirect material interest in any transaction required to be disclosed pursuant to Item 404(a) of Regulation S-K. Mr. Muneka will enter into the Company’s standard form of Indemnification Agreement, which is attached as Exhibit 10.2 to the Company’s Registration Statement on Form S-4 filed with the SEC on January 28, 2022 (File No. 333-262378) and is incorporated by reference herein. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. GALAXY DIGITAL INC. Date: September 23, 2026 By: /s/ Anthony Paquette Anthony Paquette Chief Financial Officer"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1859392/000185939226000086/glxy-20260805.htm",
+   "published": "2026-08-05T21:01:14-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On August 5, 2026, Robert Rico notified Galaxy Digital Inc. (the “Company”) of his intention to resign as the Company’s Chief Accounting Officer (“CAO”) and principal accounting officer (“PAO”), effective September 30, 2026, to pursue an opportunity outside of the Company. Mr. Rico’s resignation is not a result of any disagreements with the Company or its officers or employees, and the Company thanks him for his many years of service. Mr. Rico will continue to serve as the Company’s CAO and PAO until a permanent replacement is named. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. GALAXY DIGITAL INC. Date: August 5, 2026 By: /s/Anthony Paquette Anthony Paquette Chief Financial Officer"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1859392/000185939226000079/glxy-20260728.htm",
+   "published": "2026-07-28T20:56:58-04:00",
+   "form": "8-K",
+   "items": "1.01,2.03,9.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. Senior Secured Notes Offering General On July 28, 2026, Galaxy Helios Data Centers II LLC (“Issuer”), an indirect wholly owned subsidiary of Galaxy Digital Inc. (the “Company”), completed its previously announced private offering (the “Offering”) of 9.875% Senior Secured Notes due 2031(the “Notes”). The Notes were sold under a purchase agreement, dated as of July 23, 2026, entered into by and among the Issuer, Galaxy Helios II LLC, a wholly owned direct subsidiary of the Issuer (the “Guarantor”), and Morgan Stanley & Co. LLC as the representative of the several initial purchasers, for resale to persons reasonably believed to be qualified institutional buyers in reliance on Rule 144A under the Securities Act of 1933, as amended (the “Securities Act”), and outside the United States to non-U.S. persons in reliance on Regulation S under the Securities Act. The aggregate principal amount of Notes sold in the Offering was $3,507,000,000. The Notes were issued at a price equal to 99.500% of their principal amount. The Issuer intends to use the net proceeds from this Offering to finance a portion of the development and construction of two buildings containing eight data halls with a combined total of 400 megawatts (“MW”) of utility capacity and 260 MW of critical IT capacity (the “Project”) to be built on an approximately 260-acre property in Dickens County, Texas and to fund debt service reserves. Maturity, Amortization and Interest Payments On July 28, 2026, the Issuer, the Guarantor and Galaxy Helios II Qualified Opportunity Zone Business, LLC, the direct parent company of the Issuer (“HoldCo”) entered into an indenture (the “Indenture”) with respect to the Notes with The Bank of New York Mellon, as trustee (the “Trustee”) and collateral agent (the “Collateral Agent”). The Notes are senior secured obligations of the Issuer and bear interest at a rate of 9.875% per annum, payable semi-annually in arrears on February 1 and August 1 of each year, beginning on February 1, 2027. The Notes will mature on August 1, 2031, unless earlier redeemed or repurchased in accordance with their terms. The principal amount of the Notes will amortize on a semi-annual basis on February 1 and August 1 of each year in the amounts set forth in the Indenture. No amortization will be payable prior to the first payment date with respect to the Notes, which is to occur at least ten months after the completion of the Project. Redemption"
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/galaxy-digital-nasdaqgs-glxy-still-111537542.html?.tsrc=rss",
+   "published": "2026-10-22T07:15:37-04:00",
+   "text": "Is Galaxy Digital (NasdaqGS:GLXY) Still Undervalued Despite Debt Risk At Its AI Hub? - Galaxy Digital (NasdaqGS:GLXY) faces fresh scrutiny as CoreWeave's rising debt load raises questions over the Helios AI data center tenant. CoreWeave is the sole tenant at Galaxy's Helios facility, making its borrowing costs and leverage a key issue for that AI infrastructure hub. Some independent a",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/strategy-soars-7-galaxy-up-8-as-crypto-stocks-rally-on-clear-practical-framework-for-stablecoin-rules?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-21T15:17:30-04:00",
+   "text": "Strategy Soars 7%, Galaxy Up 8% as Crypto Stocks Rally on “Clear, Practical Framework” for Stablecoin Rules - Key TakeawaysStrategy rose 7% and Galaxy Digital 8% today as crypto stocks rallied after the OCC finalized its GENIUS Act stablecoin rules, with Strive up 14%, Circle 5% and Coinbase 4%. The rules govern stablecoin issuers like Circle, so Strategy’s jump mostly reflects its leveraged exposure to bit",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.benzinga.com/trading-ideas/movers/26/10/62506620/galaxy-digital-stock-jumps-whats-going-on?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+   "published": "2026-10-21T13:58:19-04:00",
+   "text": "Galaxy Digital Stock Jumps: What's Going On? - Galaxy Digital Inc. (NASDAQ:GLXY) shares are gaining Wednesday, rising in step with Bitcoin as the wider crypto sector trades higher. Galaxy Digital stock is among today’s top performers. Why are GLXY shares rallying? Galaxy Digital Gains as Bitcoin Rises Crypto...",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-newtekone-newt-q3-130021941.html?.tsrc=rss",
+   "published": "2026-10-21T09:00:21-04:00",
+   "text": "Earnings Preview: NewtekOne (NEWT) Q3 Earnings Expected to Decline - NewtekOne (NEWT) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/etf/2026/10/20/leverage-shares-is-shutting-down-13-single-stock-leveraged-etfs-none-drew-enough-money-to-survive/?.tsrc=rss",
+   "published": "2026-10-20T16:03:25-04:00",
+   "text": "Leverage Shares Is Shutting Down 13 Single-Stock Leveraged ETFs. None Drew Enough Money to Survive - Thirteen single-stock leveraged ETFs from Leverage Shares are closing, and holders are about to find out what it costs when a niche fund shuts down on the issuer's schedule instead of yours.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/piper-sandler-cuts-miner-targets/?.tsrc=rss",
+   "published": "2026-10-20T11:16:43-04:00",
+   "text": "Piper Sandler cuts price targets on MARA, Riot, Galaxy and Hut 8, keeps Overweight ratings - Piper Sandler trimmed targets by 14% to 24% across the four operators after a month in which their shares lost a third or more. The new targets still imply 43%…",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/mara-riot-hut-glxy-see-price-cuts-amid-ai-trade-reversal-hotter-inflation-pricier-debt/cZxqwmFRBuv?.tsrc=rss",
+   "published": "2026-10-20T09:36:50-04:00",
+   "text": "MARA, RIOT, HUT, GLXY See Price Cuts From Piper Sandler Amid AI Trade Reversal, Hotter Inflation, Pricier Debt - Analyst Patrick Moley maintained ‘Overweight’ ratings on all four stocks despite reducing his price targets.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/cryptocurrency/2026/10/20/ripples-david-schwartz-thinks-retail-defi-could-get-exciting-in-2027-can-the-xrp-ledger-cash-in/?.tsrc=rss",
+   "published": "2026-10-20T08:53:06-04:00",
+   "text": "Ripple’s David Schwartz Thinks Retail DeFi Could Get Exciting in 2027. Can the XRP Ledger Cash In? - David Schwartz sees retail DeFi exploding by 2027, and the XRP Ledger has the bones to compete, but a handful of missing validator votes stand between ambition and reality.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/19/billionaire-ceo-ai-is-the-biggest-bubble-of-our-lifetime-but-investors-should-keep-buying-during-the-melt-up/?.tsrc=rss",
+   "published": "2026-10-19T10:14:21-04:00",
+   "text": "Billionaire CEO: AI Is “The Biggest Bubble Of Our Lifetime,” But Investors Should Keep Buying During The Melt-Up - A billionaire CEO is openly calling AI the biggest bubble of his lifetime and still urging investors to pile in. His reasoning involves a 1997 comparison, a specific set of warning signals, and a view that the most dangerous part of this rally has not arrived yet.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/plunging-34-6-4-weeks-123502958.html?.tsrc=rss",
+   "published": "2026-10-19T08:35:02-04:00",
+   "text": "After Plunging 34.6% in 4 Weeks, Here's Why the Trend Might Reverse for Galaxy Digital Inc. (GLXY) - Galaxy Digital Inc. (GLXY) is technically in oversold territory now, so the heavy selling pressure might have exhausted. This along with strong agreement among Wall Street analysts in raising earnings estimates could lead to a trend reversal for the stock.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://cryptonews.com/news/btc-exchange-deposits-mara-bitcoin-selling/?.tsrc=rss",
+   "published": "2026-10-19T05:54:22-04:00",
+   "text": "MARA Selling Bitcoin? Exchange Deposits Put 1,000 BTC Under Watch - Is MARA Selling Bitcoin? Wallets linked to MARA Holdings sent 1,000 BTC, worth about $82.8 million, to Binance and Gate over five days, renewing speculation that the miner may sell part of its Bitcoin treasury. Lookonchain flagged the transfers as the second large MARA-linked movement it had identif",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://beincrypto.com/mara-moves-bitcoin-exchanges-october-volatility/?.tsrc=rss",
+   "published": "2026-10-19T04:00:24-04:00",
+   "text": "MARA Sends $82.8 Million in Bitcoin to Exchanges During a Shaky October - MARA-linked wallets moved 1,000 Bitcoin to Binance and Gate in 5 days as the miner keeps drawing on its reserve.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/galaxy-digital-inc-glxy-upgraded-150002384.html?.tsrc=rss",
+   "published": "2026-10-16T11:00:02-04:00",
+   "text": "Galaxy Digital Inc. (GLXY) Upgraded to Buy: What Does It Mean for the Stock? - Galaxy Digital Inc. (GLXY) has been upgraded to a Zacks Rank #2 (Buy), reflecting growing optimism about the company's earnings prospects. This might drive the stock higher in the near term.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/crypto/articles/ibkrs-crypto-staking-product-expansion-134300520.html?.tsrc=rss",
+   "published": "2026-10-14T09:43:00-04:00",
+   "text": "Will IBKR's Crypto Staking and Product Expansion Drive Growth? - Interactive Brokers' crypto staking, AI tools and global reach could boost client engagement, expand its digital-asset offerings and support revenue growth.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/citi-turns-bullish-on-glxy-coin-gemi-stocks-secz/cZxBkpeRBYR?.tsrc=rss",
+   "published": "2026-10-13T10:19:45-04:00",
+   "text": "Citi Turns Bullish On GLXY, COIN, GEMI Stocks – Says Crypto Equities Have A ‘Considerably Stronger Backdrop’ Heading Into Earnings - Citi upgraded Galaxy Digital to ‘Buy’ with a $28 target, about 41% above Monday's close.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/adobe-downgraded-vf-corp-upgraded-134323034.html?.tsrc=rss",
+   "published": "2026-10-13T09:43:23-04:00",
+   "text": "Adobe downgraded, VF Corp. upgraded: Wall Street's top analyst calls - Adobe downgraded, VF Corp. upgraded: Wall Street's top analyst calls",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/crypto/articles/citi-lifts-galaxy-gemini-downgrades-130333690.html?.tsrc=rss",
+   "published": "2026-10-13T09:03:33-04:00",
+   "text": "Citi lifts Galaxy and Gemini, downgrades Securitize as crypto fundamentals improve - Investing.com -- Citi said digital asset companies are entering earnings season with a considerably stronger backdrop than a few months ago, and made several rating changes across the sector in a note Tuesday.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/analysts-estimate-galaxy-digital-inc-130014715.html?.tsrc=rss",
+   "published": "2026-10-13T09:00:14-04:00",
+   "text": "Analysts Estimate Galaxy Digital Inc. (GLXY) to Report a Decline in Earnings: What to Look Out for - Galaxy Digital Inc. (GLXY) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/13/here-are-tuesdays-top-wall-street-analyst-research-calls-att-adobe-albemarle-american-electric-power-pershing-square-rtx-sofi-technologies-technip-fmc-yeti-holdings-and-more/?.tsrc=rss",
+   "published": "2026-10-13T07:53:53-04:00",
+   "text": "Here Are Tuesday’s Top Wall Street Analyst Research Calls: AT&T, Adobe, Albemarle, American Electric Power, Pershing Square, RTX, SoFi Technologies, Technip FMC, YETI Holdings, and More - Wall Street is reshuffling its bets ahead of earnings season, with major analysts cutting targets on AT&T, Adobe, RTX, and Pershing Square while loading up on names you might not expect. Here is what the smart money is watching on Tuesday.",
+   "feed": {
+    "fetched_et": "2026-10-23T14:31:23-04:00",
+    "sha256": "77f682ac61a651cc75a2b39eff87009e040add5c468d67dc0e7a98b0f27e6319"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 55269
+}

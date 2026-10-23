@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "RMBS",
+ "report_date": "2026-10-26",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-26"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-27"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "reaction_day": "2026-10-27"
+ },
+ "snapshot_session": "2026-10-23",
+ "captured_et": "2026-10-23T14:31:10.841930-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.rambus.com/press-releases/press-release-details/2026/Rambus-to-Announce-Third-Quarter-Fiscal-Year-2026-Results/default.aspx",
+  "published_et": "2026-10-05T16:05-04:00",
+  "quote": "me > Press Releases > Press Release Details Press Release Details View All News Rambus to Announce Third Quarter Fiscal Year 2026 Results October 5, 2026 SAN JOSE, Calif.--(BUSINESS WIRE)-- Rambus Inc. (Nasdaq: RMBS), a premier chip and silicon IP provider making data faster and safer, today announced that it will hold a conference call on Monday, October 26, 2026, at 2:00 p.m. Pacific Time to discuss its third quarter fiscal year 2026 results.",
+  "title": "Rambus to Announce Third Quarter Fiscal Year 2026 Results",
+  "retrieved_et": "2026-10-08T22:49:17.514447-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.rambus.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-26T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-26T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 87.0,
+  "expiry": "2026-11-20",
+  "strike": 87.5,
+  "call": {
+   "bid": 8.0,
+   "ask": 8.9,
+   "openInterest": 25.0,
+   "lastPrice": 8.86,
+   "impliedVolatility": 0.8887950573730468,
+   "lastTradeDate": "2026-10-22T14:17:03+00:00"
+  },
+  "put": {
+   "bid": 7.2,
+   "ask": 8.4,
+   "openInterest": 423.0,
+   "lastPrice": 7.9,
+   "impliedVolatility": 0.7707542456054688,
+   "lastTradeDate": "2026-10-23T16:01:25+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 18,
+  "implied_move": 0.1867816091954023,
+  "rel_spread": {
+   "call": 0.10650887573964501,
+   "put": 0.15384615384615385
+  },
+  "oi_atm": 448.0,
+  "oi_sum": 448.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
