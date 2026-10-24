@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/fair-isaac-corporation-announces-date-reporting-fourth-quarter-fiscal-2026-financial",
+  "published_et": "2026-10-21T16:15-04:00",
+  "quote": "linkedin facebook x email reddit BOZEMAN, Mont. --(BUSINESS WIRE)-- Global analytics software leader FICO (NYSE: FICO), will announce its fourth quarter fiscal 2026 results on November 4, 2026 , after the market closes and will host a conference call on November 4 th at 5:00 p.m. Eastern time ( 4:00 p.m. Central/ 2:00 p.m. Pacific).",
+  "title": "Fair Isaac Corporation Announces Date for Reporting of Fourth Quarter Fiscal 2026 Financial Results",
+  "retrieved_et": "2026-10-23T21:25:27.341170-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
