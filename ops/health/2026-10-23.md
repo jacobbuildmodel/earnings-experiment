@@ -1,4 +1,4 @@
-# Health 2026-10-23 19:51 ET - **RED**
+# Health 2026-10-23 21:44 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -16,7 +16,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-23T20:16:31Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40017945988
 - Actions failure: Earnings experiment - paper options at 2026-10-23T19:54:39Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40015107062
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-23T14:46:36Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39972519302
-- Actions failure: Earnings experiment - paper options at 2026-10-23T01:39:41Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39885252914
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 - AI STEP REFUSED: Actions AI step (housekeeping) - 4 refusal(s) in a row since Wed 14 Oct 22:07 ET, newest Mon 19 Oct 22:10 ET: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access (standing: STATE.md, Waiting on Jacob)
 
@@ -26,11 +25,11 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: open ['seasonA-AGYS-2026-10-26-L', 'seasonA-CDNS-2026-10-26-L', 'seasonA-EEFT-2026-10-27-L', 'seasonA-GLXY-2026-10-27-L', 'seasonA-RMBS-2026-10-26-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET (done)
-- paper/long: 11 position(s), 0 open order(s) - they match the ledgers
+- paper/long: 10 position(s), 0 open order(s) - they match the ledgers
 - Fri 23 Oct: 8 snapshot(s) - AGYS, AMKR, CDNS, CLS, CVLT, EEFT, GLXY, RMBS
 - Mon 26 Oct: 19 snapshot(s) - BLKB, BSX, CAKE, EAT, ETSY, EXTR, FFIV, FLEX, GEHC, JMKE, LFUS, LOGI, MANH, NXPI, STX, TEL, TER, UCTT, VFC
 - Tue 27 Oct: 32 snapshot(s) - ALNY, ARXS, BDC, BELFA, BHE, BOOT, CMG, COHU, CROX, ENTG, FORM, FTAI, FTNT, GEN, GOOG, HONA, HWM, IDCC, INCY, KLAC, LHX, MSFT, MUSA, NOW, OLED, PI, PLXS, QSR, QTWO, TENB, TYL, WEX
-- Wed 28 Oct: 18 snapshot(s) - AMZN, AXTI, COLM, DXCM, EXEL, GD, GDDY, INTC, MPWR, MSTR, OSIS, PINS, RDDT, SBUX, SNDK, SPSC, SYK, TWLO
+- Wed 28 Oct: 19 snapshot(s) - AMZN, AXTI, BBIO, COLM, DXCM, EXEL, GD, GDDY, INTC, MPWR, MSTR, OSIS, PINS, RDDT, SBUX, SNDK, SPSC, SYK, TWLO
 - Thu 29 Oct: 1 snapshot(s) - CIFR
-- seasonA: 120 name(s) still PENDING a confirmed date
+- seasonA: 109 name(s) still PENDING a confirmed date
 
