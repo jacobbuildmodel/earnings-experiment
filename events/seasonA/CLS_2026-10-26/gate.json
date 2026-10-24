@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "CLS",
+ "report_date": "2026-10-26",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-26"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-27"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "reaction_day": "2026-10-27"
+ },
+ "snapshot_session": "2026-10-23",
+ "captured_et": "2026-10-23T14:31:00.320688-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/celestica-hold-q3-2026-financial-results-and-2026-investor-and-analyst-day-conference",
+  "published_et": "2026-10-06T16:15-04:00",
+  "quote": "Financial results will be released after market close on Monday, October 26, 2026 .",
+  "title": "Celestica to Hold Q3 2026 Financial Results and 2026 Investor and Analyst Day Conference Call",
+  "retrieved_et": "2026-10-19T09:36:59.264563-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-26T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-26T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 260.9849853515625,
+  "expiry": "2026-10-30",
+  "strike": 260.0,
+  "call": {
+   "bid": 17.5,
+   "ask": 18.2,
+   "openInterest": 7.0,
+   "lastPrice": 18.7,
+   "impliedVolatility": 1.129154744873047,
+   "lastTradeDate": "2026-10-23T18:03:04+00:00"
+  },
+  "put": {
+   "bid": 15.7,
+   "ask": 18.8,
+   "openInterest": 155.0,
+   "lastPrice": 16.7,
+   "impliedVolatility": 1.154301103515625,
+   "lastTradeDate": "2026-10-23T17:33:56+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.13449049550769437,
+  "rel_spread": {
+   "call": 0.03921568627450976,
+   "put": 0.1797101449275363
+  },
+  "oi_atm": 162.0,
+  "oi_sum": 294.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

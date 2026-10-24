@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "GLXY",
+ "report_date": "2026-10-27",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-26"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-27"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "reaction_day": "2026-10-27"
+ },
+ "snapshot_session": "2026-10-23",
+ "captured_et": "2026-10-23T14:31:10.535616-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/galaxy-schedules-webcast-and-investor-call-review-third-quarter-2026-results-october",
+  "published_et": "2026-10-13T16:15-04:00",
+  "quote": "linkedin facebook x email reddit NEW YORK , Oct. 13, 2026 /PRNewswire/ -- Galaxy Digital Inc. (Nasdaq: GLXY) (\"Galaxy\" or the \"Company\") is pleased to announce that it will report third quarter 2026 financial results before the opening of Nasdaq on Tuesday, October 27, 2026.",
+  "title": "Galaxy Schedules Webcast and Investor Call to Review Third Quarter 2026 Results on October 27, 2026",
+  "retrieved_et": "2026-10-19T10:46:11.810224-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-27T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-27T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 14.71500015258789,
+  "expiry": "2026-10-30",
+  "strike": 15.0,
+  "call": {
+   "bid": 0.89,
+   "ask": 0.98,
+   "openInterest": 56.0,
+   "lastPrice": 0.92,
+   "impliedVolatility": 1.22266013671875,
+   "lastTradeDate": "2026-10-23T18:09:46+00:00"
+  },
+  "put": {
+   "bid": 1.06,
+   "ask": 1.1,
+   "openInterest": 7005.0,
+   "lastPrice": 1.06,
+   "impliedVolatility": 1.0625046875000002,
+   "lastTradeDate": "2026-10-23T18:05:47+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.13693509881789753,
+  "rel_spread": {
+   "call": 0.09625668449197856,
+   "put": 0.03703703703703707
+  },
+  "oi_atm": 7061.0,
+  "oi_sum": 7061.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
