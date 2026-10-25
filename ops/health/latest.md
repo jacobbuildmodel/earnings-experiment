@@ -1,25 +1,15 @@
-# Health 2026-10-24 04:21 ET - **RED**
+# Health 2026-10-25 04:40 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
 - T2 MISSING: ABT_2026-10-21 (deadline Tue 20 Oct 09:15 ET)
 - T2 MISSING: SPCX_2026-10-20 (deadline Tue 20 Oct 09:15 ET)
+- DATES STALE (seasonA): no date confirmed or retired since Fri 23 Oct 21:34 ET (over 30 h), while 17 PENDING name(s) have a calendar date within 7 days, 9 within 3 sessions ['APH', 'BA', 'BMRN', 'CHRN', 'DBD', 'GLW', 'QRVO', 'VRNS', 'WING']; newest re-check Fri 23 Oct 21:19 ET - the re-checks are not running
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
-- Actions failure: Earnings experiment - paper options at 2026-10-24T03:24:14Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40058155670
-- Actions failure: Earnings experiment - paper options at 2026-10-24T01:46:14Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40051286417
-- Actions failure: Earnings experiment - paper options at 2026-10-23T22:56:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40036720070
-- Actions failure: Earnings experiment - paper options at 2026-10-23T21:46:31Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40029185946
-- Actions failure: Earnings experiment - paper options at 2026-10-23T21:33:38Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40027657741
-- Actions failure: Earnings experiment - paper options at 2026-10-23T21:18:30Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40025797319
-- Actions failure: Earnings experiment - paper options at 2026-10-23T21:17:50Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40025719278
-- Actions failure: Earnings experiment - paper options at 2026-10-23T20:16:31Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40017945988
-- Actions failure: Earnings experiment - paper options at 2026-10-23T19:54:39Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40015107062
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-23T14:46:36Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/39972519302
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
-- AI STEP REFUSED: Actions AI step (housekeeping) - 4 refusal(s) in a row since Wed 14 Oct 22:07 ET, newest Mon 19 Oct 22:10 ET: Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access (standing: STATE.md, Waiting on Jacob)
 
 ## Information
 - GLXY_2026-10-27: T2 deadline Mon 26 Oct 09:15 ET - frozen so far: T2, T2R, T2O
