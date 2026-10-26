@@ -1,4 +1,4 @@
-# Health 2026-10-26 19:09 ET - **RED**
+# Health 2026-10-26 19:56 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-26T23:36:46Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40420937724
 - Actions failure: Earnings experiment - paper options at 2026-10-26T22:57:55Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40416381330
 - Actions failure: Earnings experiment - paper options at 2026-10-26T22:48:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40415253941
 - Actions failure: Earnings experiment - paper options at 2026-10-26T22:34:45Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40413507050
@@ -19,7 +20,7 @@ check.py: PASS - 1 warning(s)
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']
 
 ## Information
-- CAKE_2026-10-27: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2R, T2O
+- CAKE_2026-10-27: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
 - FFIV_2026-10-27: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2R, T2O
 - FLEX_2026-10-28: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
 - paper/options_ledger.json: open ['seasonA-AGYS-2026-10-26-F', 'seasonA-CDNS-2026-10-26-F', 'seasonA-CLS-2026-10-26-F', 'seasonA-EEFT-2026-10-27-F', 'seasonA-GLXY-2026-10-27-F', 'seasonA-RMBS-2026-10-26-F', 'seasonA-BSX-2026-10-28-F', 'seasonA-CAKE-2026-10-27-F', 'seasonA-EAT-2026-10-28-F', 'seasonA-ETSY-2026-10-28-F', 'seasonA-EXTR-2026-10-28-F', 'seasonA-FFIV-2026-10-27-F', 'seasonA-FLEX-2026-10-28-F', 'seasonA-GEHC-2026-10-28-F', 'seasonA-JMKE-2026-10-28-F', 'seasonA-LFUS-2026-10-28-F', 'seasonA-LOGI-2026-10-27-F', 'seasonA-MANH-2026-10-27-F', 'seasonA-NXPI-2026-10-27-F', 'seasonA-STX-2026-10-27-F', 'seasonA-TEL-2026-10-28-F', 'seasonA-VFC-2026-10-28-F']
