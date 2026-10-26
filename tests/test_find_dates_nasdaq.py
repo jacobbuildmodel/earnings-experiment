@@ -32,3 +32,42 @@ def test_article_without_wire_dateline_is_not_a_company_source():
 
 def test_no_published_line():
     assert fd.nasdaq_body("SAN FRANCISCO --(BUSINESS WIRE)-- Uber will report on November 4.") == (None, None)
+
+
+DBX = ("Dropbox to Announce Third Quarter 2026 Earnings Results | Nasdaq Published Oct 15, 2026 4:04pm EDT linkedin "
+       "SAN FRANCISCO --(BUSINESS WIRE)-- Dropbox, Inc. (NASDAQ: DBX) announced today that it will report financial "
+       "results for the third quarter of 2026 after the market closes on Thursday, November 5, 2026.")
+
+
+class _Page:
+    def __init__(self, text):
+        self.content = text.encode()
+
+
+def _items(nasdaq):
+    pub = datetime.datetime(2026, 10, 15, tzinfo=ET)
+    return [{"title": "Dropbox to Announce Third Quarter 2026 Earnings Results", "published": pub,
+             "url": "https://www.nasdaq.com/x" if nasdaq else "https://dropbox.gcs-web.com/x",
+             "feed": "nasdaq feed" if nasdaq else "company rss", **({"nasdaq": True} if nasdaq else {})}]
+
+
+def test_unreadable_company_page_falls_back_to_the_nasdaq_copy(monkeypatch):
+    # 2026-10-26, DBX: the company's feed lists the release, its page refuses the fetch
+    monkeypatch.setattr(fd, "feed_items", lambda t: (_items(False), "investors.dropbox.com"))
+    monkeypatch.setattr(fd, "items_nasdaq", lambda t: _items(True))
+    monkeypatch.setattr(fd, "get", lambda url, timeout=20: _Page(DBX) if "nasdaq" in url else None)
+    monkeypatch.setattr(fd, "now_et", lambda: datetime.datetime(2026, 10, 26, 9, 0, tzinfo=ET))
+    monkeypatch.setattr(fd.time, "sleep", lambda s: None)
+    res = fd.probe("DBX", WIN)
+    assert (res["outcome"], res["date"], res["session"]) == ("found", "2026-11-05", "AMC")
+    assert res["host"] == "www.nasdaq.com" and "company rss" in res["fallback"]
+
+
+def test_readable_company_page_never_uses_the_fallback(monkeypatch):
+    monkeypatch.setattr(fd, "feed_items", lambda t: (_items(False), "investors.dropbox.com"))
+    monkeypatch.setattr(fd, "items_nasdaq", lambda t: (_ for _ in ()).throw(AssertionError("no fallback")))
+    monkeypatch.setattr(fd, "get", lambda url, timeout=20: _Page(DBX.split("linkedin ")[1]))
+    monkeypatch.setattr(fd, "now_et", lambda: datetime.datetime(2026, 10, 26, 9, 0, tzinfo=ET))
+    monkeypatch.setattr(fd.time, "sleep", lambda s: None)
+    res = fd.probe("DBX", WIN)
+    assert (res["outcome"], res["session"]) == ("found", "AMC") and "fallback" not in res
