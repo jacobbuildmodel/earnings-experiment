@@ -1,0 +1,651 @@
+{
+ "event": "CAKE_2026-10-27",
+ "season": "seasonA",
+ "built_et": "2026-10-26T14:31:11-04:00",
+ "cutoff_et": "2026-10-26T14:31:00.328836-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/CAKE_2026-10-27/gate.json",
+   "published": "2026-10-26T14:31:00.328836-04:00",
+   "data": {
+    "ticker": "CAKE",
+    "report_date": "2026-10-27",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-27"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-28"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-04"
+     },
+     "reaction_day": "2026-10-28"
+    },
+    "snapshot_session": "2026-10-26",
+    "captured_et": "2026-10-26T14:31:00.328836-04:00",
+    "options": {
+     "spot": 108.36000061035156,
+     "expiry": "2026-11-20",
+     "strike": 110.0,
+     "call": {
+      "bid": 5.2,
+      "ask": 5.7,
+      "openInterest": 754.0,
+      "lastPrice": 5.67,
+      "impliedVolatility": 0.5368698657226563,
+      "lastTradeDate": "2026-10-26T18:05:36+00:00"
+     },
+     "put": {
+      "bid": 6.7,
+      "ask": 6.9,
+      "openInterest": 289.0,
+      "lastPrice": 6.6,
+      "impliedVolatility": 0.5117236328125,
+      "lastTradeDate": "2026-10-26T18:08:12+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 17,
+     "implied_move": 0.11304909497047165,
+     "rel_spread": {
+      "call": 0.09174311926605504,
+      "put": 0.029411764705882377
+     },
+     "oi_atm": 1043.0,
+     "oi_sum": 1043.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/CAKE_2026-10-27/factors.json",
+   "published": "2026-10-26T14:31:00.328836-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.973144025103716,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.03703706407983276,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.06730934476057016,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.0331413195776622,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.3875811283075019,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.8800729145980751,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.07613607498909647,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-28",
+       "session": "AMC",
+       "raw_return_A": 0.06011189060445998,
+       "eps_est": 1.18,
+       "eps_rep": 1.44,
+       "surprise_pct": 21.91,
+       "reaction_volume_ratio": 3.7194683411247267
+      },
+      {
+       "date": "2026-04-29",
+       "session": "AMC",
+       "raw_return_A": 0.04113965629591365,
+       "eps_est": 1.01,
+       "eps_rep": 1.05,
+       "surprise_pct": 3.49,
+       "reaction_volume_ratio": 2.605368377305493
+      },
+      {
+       "date": "2026-02-18",
+       "session": "AMC",
+       "raw_return_A": 0.020860135109202593,
+       "eps_est": 0.99,
+       "eps_rep": 1.0,
+       "surprise_pct": 1.47,
+       "reaction_volume_ratio": 1.9711509215889045
+      },
+      {
+       "date": "2025-10-28",
+       "session": "AMC",
+       "raw_return_A": -0.027480355245338206,
+       "eps_est": 0.6,
+       "eps_rep": 0.68,
+       "surprise_pct": 13.04,
+       "reaction_volume_ratio": 3.8785225946306485
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.0436275586624433,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 21.91,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.95187,
+      "7daysAgo": 0.89279,
+      "30daysAgo": 0.8752,
+      "60daysAgo": 0.84409,
+      "90daysAgo": 0.66252,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.4367415323310994,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.95187,
+      "low": 0.83,
+      "high": 1.11457,
+      "yearAgoEps": 0.68,
+      "numberOfAnalysts": 15,
+      "growth": 0.3998,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.2989588914452605,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.39330003,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 20.823925,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 1.3906924,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.077,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 5392061952,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.73684,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.11304909497047165,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.025146232910156274,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0026855200195312623,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.8050847457627118,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7500789889415482,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 426.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.3527406547297312,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.06747654435819925,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 177,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.07721915622629671,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.07634564937215493,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.9746919237574945,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.06657772929965267,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.0331413195776622,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.3875711802821351,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.7892801905151874,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 1.1081566088178625,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 5396291938.94426,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.7185026391953421,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.06197517192473743,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/887596/000110465926087561/tm2621325d1_ex99-1.htm",
+   "published": "2026-07-28T16:30:45-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 tm2621325d1_ex99-1.htm EXHIBIT 99.1 Exhibit 99.1 FOR IMMEDIATE RELEASE Contact: Etienne Marcus (818) 871-3000 investorrelations@thecheesecakefactory.com THE CHEESECAKE FACTORY REPORTS RESULTS FOR SECOND QUARTER OF FISCAL 2026 CALABASAS HILLS, Calif. – July 28, 2026 – The Cheesecake Factory Incorporated (NASDAQ: CA KE) today reported financial results for the second quarter of fiscal 2026, which ended on June 30, 2026. Total revenues were $1,029.6 million in the second quarter of fiscal 2026 compared to $955.8 million in the second quarter of fiscal 2025. Net income and diluted net income per share were $68.4 million and $1.41, respectively, in the second quarter of fiscal 2026. The Company recorded a pre-tax net expense of $1.4 million related to Fox Restaurant Concepts (“FRC”) acquisition-related items, and impairment of assets and lease termination expenses. Excluding the after-tax impact of these items and certain other items, adjusted net income and adjusted diluted net income per share for the second quarter of fiscal 2026 were $69.7 million and $1.44, respectively. Please see the Company’s reconciliation of non-GAAP financial measures at the end of this press release. Comparable restaurant sales at The Cheesecake Factory restaurants increased 5.8% year-over-year in the second quarter of fiscal 2026. “We built on our strong start to the year with another quarter of better-than-expected financial results, as revenue, margins and earnings all exceeded our expectations,” said David Overton, Chairman and Chief Executive Officer. “Our performance was led by The Cheesecake Factory restaurants, with comparable sales and traffic meaningfully outperforming the broader casual dining industry. Continued momentum from our menu innovation, rewards program and marketing efforts strengthened consumer awareness and engagement, contributing to our strong top-line performance. At the same time, our operators remained sharply focused on execution, delivering year-over-year improvements in labor productivity and food efficiency supporting strong profitability.” Mr. Overton continued, \"Our success has long been driven by our commitment to delivering the exceptional hospitality, high-quality food and memorable dining experiences our guests have come to expect. We continue to lean into culinary innovation and our digital capabilities to build on those strengths, ensuring our concepts evolve and resonate with guests in an increasingly competitive environment. Together with our experienced operators, differentiated concepts and strong financial foundation, these efforts position us well to continue executing our strategy, delivering profitable growth and creating shareholder value.\" 26901 Malibu Hills Road, Calabasas Hills, CA 91301 · Telephone (818) 871-3000 Development During the second quarter of fiscal 2026, the Company opened four new restaurants, including two North Italia’s, one Flower Child and one FRC restaurant. Subsequent to quarter-end, the Company opened one The Cheesecake Factory location. The Company continues to expect to open as many as 26 new restaurants in fiscal 2026, including as many as five to six The Cheesecake Factory restaurants, six to seven North Italia locations, seven Flower Child locations and as many as seven FRC restaurants. Liquidity and Capital Allocation As of June 30, 2026, the Company had total available liquidity of $561.7 million, including a cash balance of $195.2 million and $366.5 million of availability on its revolving credit facility with no outstanding balance. During the quarter, the Company repaid the remaining $69.0 million principal amount of 0.375% convertible senior notes due 2026. As of June 30, 2026, total principal amount of debt outstanding was $575 million, representing the principal amount of 2.00% convertible senior notes due 2030. During the second quarter of fiscal 2026, the Company repurchased approximately 158,600 shares of its stock at a cost of $9.3 million. In addition, the Company’s Board of Directors has declared a quarterly dividend of $0.30 per share to be paid on August 25, 2026, to shareholders of record at the close of business on August 11, 2026. Conference Call and Webcast The Company will hold a conference call to review its results for the second quarter of fiscal 2026 today at 2:00 p.m. Pacific Time. The conference call will be webcast live on the Company’s website at investors.thecheesecakefactory.com. About The Cheesecake Factory Incorporated The Cheesecake Factory Incorporated is a leader in experiential dining. We are culinary forward and relentlessly focused on hospitality. Delicious, memorable experiences created by passionate people—this defines who we are and where we are going. We currently own and operate 375 restaurants throughout the United States and Canada under brands including The Cheesecake Factory ® , North Italia ® , Flower Child ® and a collection of other FRC brands. Internationally, 36 The Cheesecake Factory ® restaurants operate under licensing agreements. Our bakery division operates two facilities that produce quality cheesecakes and other baked products for our restaurants, international licensees and third-party bakery customers. In 2026, we were named to the FORTUNE Magazine “100 Best Companies to Work For ® ” list for the thirteenth consecutive year. To learn more, visit www.thecheesecakefactory.com , www.northitalia.com , www.iamaflowerchild.com and www.foxrc.com . From Fortune. ©2026 Fortune Media IP Limited. All rights reserved. Used under license. Fortune® and Fortune 100 Best Companies to Work For® are registered trademarks of Fortune Media IP Limited and are used under license. Fortune and Fortune Media IP Limited are not affiliated with, and do not endorse products or services of, The Cheesecake Factory Incorporated. 26901 Malibu Hills Road, Calabasas Hills, CA 91301 · Telephone (818) 871-3000 Safe Harbor Statement This press release contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995, as codified in Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. These statements include, without limitation, statements regarding the Company’s operations, growth, restaurant development and other objectives. Such forward-looking statements include all other statements that are not historical facts, as well as statements that are preceded by, followed by or that include words or phrases such as “believe,” “plan,” “will likely result,” “expect,” “intend,” “will continue,” “is anticipated,” “estimate,” “project,” “may,” “could,” “would,” “should” and similar expressions. These statements are based on current expectations and involve risks and uncertainties which may cause results to differ materially from those set forth in such statements. Investors are cautioned that forward-looking statements are not guarantees of future performance and that undue reliance should not be placed on such statements. These forward-looking statements may be affected by various factors including: economic, public health and political conditions that impact consumer confidence and spending, including government shutdowns, trade policy, interest rate fluctuations, periods of heightened inflation and market instability, and armed conflicts; supply chain disruptions; demonstrations, political unrest, potential damage to or closure of the Company’s restaurants and potential reputational damage to the Company or any of its brands; pandemics and related containment measures, including the potential for quarantines or restriction on in-person dining; acceptance and success of The Cheesecake Factory in international markets; acceptance and success of North Italia, Flower Child and Other Fox Restaurant Concepts restaurants; the risks of doing business abroad through Company-owned restaurants and/or licensees; foreign exchange rates, tariffs and cross-border taxation; changes in unemployment rates; increases in minimum wages and benefit costs; the economic health of the Company’s landlords and other tenants in retail centers in which its restaurants are located, and the Company’s ability to successfully manage its lease arrangements with landlords; the economic health of suppliers, licensees, vendors and other third parties providing goods or services to the Company; the timing of new unit development and related permitting; compliance with debt covenants; strategic capital allocation decisions including with respect to share repurchases or dividends; the ability to achieve projected financial results; the resolution of uncertain tax positions with the Internal Revenue Service and the impact of changes in tax laws ; changes in laws impacting the Company’s business; adverse weather conditions and natural disasters in regions in which the Company’s restaurants are located; factors that are under the control of government agencies, landlords and other third parties; the risks, costs and uncertainties associated with opening new restaurants; and other risks and uncertainties detailed from time to time in the Company’s filings with the Securities and Exchange Commission (“SEC”). Forward-looking statements speak only as of the dates on which they are made, and the Company undertakes no obligation to publicly update or revise any forward-looking statements or to make any other forward-looking statements, whether as a result of new information, future events or otherwise, unless required to do so by law. Investors are referred to the full discussion of risks and uncertainties associated with forward-looking statements and the discussion of risk factors contained in the Company’s latest Annual Report on Form 10-K, Quarterly Reports on Form 10-Q and Current Reports on Form 8-K as filed with the SEC, which are available at www.sec.gov. 26901 Malibu Hills Road, Calabasas Hills, CA 91301 · Telephone (818) 871-3000 The Cheesecake Factory Incorporated Condensed Consolidated Statements of Income (unaudited; in thousands, except per share data) 13 Weeks Ended June 30, 2026 13 Weeks Ended July 1, 2025 26 Weeks Ended June 30, 2026 26 Weeks Ended July 1, 2025 Consolidated Statements of Income Amount Percent of Revenues Amount Percent of Revenues Amount Percent of Revenues Amount Percent of Revenues Revenues $ 1,029,633 100.0 % $ 955,825 100.0 % $ 2,008,466 100.0 % $ 1,883,022 100.0 % Costs and expenses: Food and beverage costs 223,847 21.8 % 205,843 21.6 % 436,097 21.7 % 408,104 21.7 % Labor expenses 351,475 34.1 % 333,519 34.9 % 699,244 34.8 % 664,594 35.3 % Other operating costs and expenses 272,688 26.5 % 255,722 26.8 % 537,041 26.8 % 502,147 26.7 % General and administrative expenses 65,592 6.4 % 58,778 6.1 % 129,523 6.5 % 118,710 6.3 % Depreciation and amortization expenses 29,103 2.8 % 26,860 2.8 % 57,087 2.8 % 52,942 2.8 % Impairment of assets and lease terminations 124 0.0 % 222 0.0 % 953 0.0 % 600 0.0 % Acquisition-related contingent consideration, compensation and amortization expenses 1,235 0.1 % 1,012 0.1 % 2,437 0.1 % 2,010 0.1 % Preopening costs 6,961 0.7 % 9,047 0.9 % 12,431 0.6 % 17,134 0.9 % Total costs and expenses 951,025 92.4 % 891,003 93.2 % 1,874,813 93.3 % 1,766,241 93.8 % Income from operations 78,608 7.6 % 64,822 6.8 % 133,653 6.7 % 116,781 6.2 % Interest expense, net (2,057 ) (0.1 )% (2,873 ) (0.3 )% (4,052 ) (0.2 )% (5,201 ) (0.3 )% Loss on debt extinguishment - 0.0 % - 0.0 % - 0.0 % (15,891 ) (0.8 )% Other income, net 352 0.0 % 280 0.0 % 653 0.0 % 1,023 0.0 % Income before income taxes 76,903 7.5 % 62,229 6.5 % 130,254 6.5 % 96,712 5.1 % Income tax provision 8,509 0.9 % 7,417 0.8 % 12,312 0.6 % 8,959 0.4 % Net income $ 68,394 6.6 % $ 54,812 5.7 % $ 117,942 5.9 % $ 87,753 4.7 % Basic net income per share $ 1.47 $ 1.18 $ 2.53 $ 1.87 Basic weighted average shares outstanding 46,628 46,391 46,606 46,958 Diluted net income per share $ 1.41 $ 1.14 $ 2.43 $ 1.80 Diluted weighted average shares outstanding 48,490 48,102 48,446 48,679 26901 Malibu Hills Road, Calabasas Hills, CA 91301 · Telephone (818) 871-3000 The Cheesecake Factory Incorporated Selected Segment Information (unaudited; in thousands) For the 13 Weeks Ended June 30, 2026 The Cheesecake Factory North Other restaurants Italia FRC Other Total Revenues $ 729,476 $ 98,440 $ 104,032 $ 97,685 $ 1,029,633 Costs and expenses: Food and beverage costs 158,674 22,301 23,187 19,685 223,847 Labor expenses 237,383 37,134 39,319 37,639 351,475 Other operating costs and expenses 186,371 26,386 31,242 28,689 272,688 General and administrative expenses - - - 65,592 65,592 Depreciation and amortization expenses 17,526 3,624 3,598 4,355 29,103 Impairment of assets and lease terminations expenses 11 - 3 110 124 Acquisition-related contingent consideration, compensation and amortization expenses - - 315 920 1,235 Preopening costs 1,509 2,255 2,412 785 6,961 Total costs and expenses 601,474 91,700 100,076 157,775 951,025 Income/(loss) from operations $ 128,002 $ 6,740 $ 3,956 $ (60,090 ) $ 78,608 For the 13 Weeks Ended July 1, 2025 The Cheesecake Factory North Other restaurants Italia FRC Other Total Revenues $ 683,257 $ 90,830 $ 90,178 $ 91,560 $ 955,825 Costs and expenses: Food and beverage costs 147,377 19,835 19,794 18,837 205,843 Labor expenses 231,241 33,519 33,445 35,314 333,519 Other operating costs and expenses 178,142 24,057 27,229 26,294 255,722 General and administrative expenses - - - 58,778 58,778 Depreciation and amortization expenses 16,196 3,074 3,264 4,326 26,860 Impairment of assets and lease terminations expenses 196 - 15 11 222 Acquisition-related contingent consideration, compensation and amortization expenses - - 315 697 1,012 Preopening costs 3,558 1,946 2,202 1,341 9,047 Total costs and expenses 576,710 82,431 86,264 145,598 891,003 Income/(loss) from operations $ 106,547 $ 8,399 $ 3,914 $ (54,038 ) $ 64,822 For the 26 Weeks Ended June 30, 2026 The Cheesecake Factory North Other re",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/887596/000110465926089840/cake-20260630x10q.htm",
+   "published": "2026-08-03T17:01:13-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations. Forward-Looking Statements Certain information included in this Form 10-Q and other materials we have filed or may file with the Securities and Exchange Commission (“SEC”), as well as information included in oral or written statements made by us or on our behalf, may contain forward-looking statements about our current and presently expected performance trends, growth plans, business goals and other matters. These statements may be contained in our filings with the SEC, in our press releases, in other written communications, and in oral statements made by or with the approval of one of our authorized officers. These statements are forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995, as codified in Section 27A of the Securities Act of 1933, as amended (the “Securities Act”), and Section 21E of the Securities Exchange Act of 1934, as amended (together with the Securities Act, the “Acts”). This includes, without limitation, statements regarding corporate social responsibility (“CSR”), including in our CSR report, the effects of geopolitical and macroeconomic factors, including evolving government policies and global trade dynamics, on our financial condition and our results of operations, financial guidance and projections, as well as expectations of our future financial condition, results of operations, sales, target growth rates, cash flows, quarterly dividends, share repurchases, capital structure and leverage, corporate strategy, potential price increases, plans, targets, goals, objectives, performance, growth potential, competitive position and business, and statements regarding our ability to: leverage our competitive strengths, including developing and investing in new restaurant concepts and expanding The Cheesecake Factory ® brand to other retail opportunities; maintain our aggregate sales volumes; deliver comparable sales growth; provide a differentiated experience to customers; outperform the casual dining industry and increase our market share; leverage sales increases and manage flow through; manage market risks and cost pressures, including increasing wage rates and insurance costs, and increase margins; grow earnings; remain relevant to consumers; attract and retain qualified management and other staff; increase shareholder value; find suitable sites and manage increasing construction costs; profitably expand our concepts domestically and in Canada, and work with our licensees to expand The Cheesecake Factory internationally; support the growth of North Italia, Flower Child and additional brands within our Fox Restaurant Concepts (“Other FRC”) restaurants; and utilize our capital effectively. These forward-looking statements may be affected by various factors including: economic, public health and political conditions that impact consumer confidence and spending, including government shutdowns, trade policy, changes in interest rates, periods of heightened inflation and market instability, and armed conflicts; supply chain disruptions; demonstrations, political unrest, potential damage to or closure of our restaurants and potential reputational damage to us or any of our brands; pandemics and related containment measures, including the potential for quarantines or restriction on in-person dining; acceptance and success of The Cheesecake Factory in international markets; acceptance and success of North Italia, Flower Child and Other FRC restaurants; the risks of doing business abroad through Company-owned restaurants and/or licensees; foreign exchange rates, tariffs and cross border taxation; changes in unemployment rates; increases in minimum wages and benefit costs; the economic health of our landlords and other tenants in retail centers in which our restaurants are located, and our ability to successfully manage our lease arrangements with landlords; the economic health of suppliers, licensees, vendors and other third parties providing goods or services to us; the timing of our new unit development and related permitting; compliance with debt covenants; strategic capital allocation decisions including with respect to share repurchases or dividends; the ability to achieve projected financial results; the resolution of uncertain tax positions with the Internal Revenue Service and the impact of tax reform legislation; changes in laws impacting our business; adverse weather conditions and natural disasters in regions in which our restaurants are located; factors that are under the control of government agencies, landlords and other third parties; the risks, costs and uncertainties associated with opening new restaurants; and other risks and uncertainties detailed from time to time in our filings with the SEC. Such forward-looking statements include all other statements that are not historical facts, as well as statements that are preceded by, followed by or that include words or phrases such as “believe,” “plan,” “will likely result,” “expect,” “intend,” “will continue,” “is anticipated,” “estimate,” “project,” “may,” “could,” “would,” “should” and similar expressions. These statements are based on our current expectations and involve risks and uncertainties that may cause results to differ materially from those set forth in such statements. 20 Table of Contents In connection with the “safe harbor” provisions of the Acts, we have identified and are disclosing important factors, risks and uncertainties that could cause our actual results to differ materially from those projected in forward-looking statements made by us, or on our behalf. (See Part II, Item 1A of this report, “Risk Factors,” and Part I, Item 1A, “Risk Factors,” included in our Annual Report on Form 10-K for the fiscal year ended December 30, 2025.) These cautionary statements are to be used as a reference in connection with any forward-looking statements. The factors, risks and uncertainties identified in these cautionary statements are in addition to those contained in any other cautionary statements, written or oral, which may be made or otherwise addressed in connection with a forward-looking statement or contained in any of our subsequent filings with the SEC. Because of these factors, risks and uncertainties, we caution against placing undue reliance on forward-looking statements. Although we believe that the assumptions underlying forward-looking statements are currently reasonable, any of the assumptions could be incorrect or incomplete, and there can be no assurance that forward-looking statements will prove to be accurate. Forward-looking statements speak only as of the date on which they are made, and we undertake no obligation to publicly update or revise any forward-looking statements or to make any other forward-looking statements, whether as a result of new information, future events or otherwise, unless required to do so by law. The below discussion and analysis, which contains forward-looking statements, should be read in conjunction with our interim unaudited condensed consolidated financial statements and related notes in Part I, Item 1 of this report, Part II, Item 1A of this report, “Risk Factors,” and with the following items included in our Annual Report on Form 10-K for the fiscal year ended December 30, 2025: the audited consolidated financial statements and related notes in Part IV, Item 15; “Risk Factors” included in Part I, Item 1A; “Management’s Discussion and Analysis of Financial Condition and Results of Operations” included in Part II, Item 7; and the cautionary statements included throughout this Form 10-Q. The inclusion of supplementary analytical and related information herein may require us to make estimates and assumptions to enable us to fairly present, in all material respects, our analysis of trends and expectations with respect to our results of operations and financial position. Geopolitical and Other Macroeconomic Impacts to our Operating Environment In recent years, our operating results were impacted by geopolitical and macroeconomic events, causing supply chain challenges and significantly increased commodity and wage inflation. Our commodity and wage inflationary environment began returning to more historical levels in fiscal 2024. The impact of ongoing geopolitical and macroeconomic events, including evolving government policies and global trade and tariff dynamics, could lead to issues such as further wage inflation, product and services cost inflation, disruptions in the supply chain, staffing challenges, shifts in consumer behavior and delays in new restaurant openings. Adverse weather conditions and natural disasters may further exacerbate a number of these factors. For more information regarding the risks to our business relating to the geopolitical and macroeconomic events, see Part II, Item 1A of this report, “Risk Factors,” and “Risk Factors” in Item 1A of our Annual Report on Form 10-K for the fiscal year ended December 30, 2025. General The Cheesecake Factory Incorporated is a leader in experiential dining. We are culinary forward and relentlessly focused on hospitality. We currently own and operate 375 restaurants throughout the United States and Canada under brands including The Cheesecake Factory ® (217 locations), North Italia ® (51 locations), Flower Child ® (44 locations) and additional brands within our FRC portfolio (57 locations). Internationally, 36 The Cheesecake Factory ® restaurants operate under licensing agreements. Our bakery division operates two facilities that produce quality cheesecakes and other baked products for our restaurants, international licensees and third-party bakery customers. Overview Our strategy is driven by our commitment to deliver exceptional food and hospitality, and is centered primarily on menu innovation, service and operational execution to differentiate our concepts and drive competitively strong performance that is sustainable over the long-term. Financially, we are focused on prudently managing expenses at our restaurants, bakery facilities and corporate support center, while leveraging our scale, purchasing power and operational discipline to support financial performance. Our top long-term capital allocation priority is to develop new Company-owned restaurants, with a focus on opening our concepts in premier locations within new and existing markets. We plan to continue expanding The Cheesecake Factory, North Italia and Flower Child concepts. In addition, our FRC subsidiary serves as an incubator, innovating new food, dining and hospitality experiences to create differentiated, high-quality concepts. 21 Table of Contents Our revenue growth is primarily driven by new restaurant openings and increases in comparable restaurant sales. For The Cheesecake Factory concept, our strategy is to increase comparable restaurant sales by growing average check while maintaining customer traffic. We strive to accomplish this by (1) continuing to offer innovative, high quality menu items that offer customers a wide range of options in terms of flavor, price and value, (2) focusing on service and hospitality with the goal of delivering an exceptional dining experience and (3) continuing to provide our customers with convenient options for off-premise dining. We continue to support these efforts through a number of initiatives, including menu innovation, increasing customer throughput in our restaurants, leveraging our gift card program, partnering with a third party to provide delivery services for our restaurants, increasing customer awareness of our online ordering capabilities and improving the pick-up experience, augmenting our marketing programs, including our Cheesecake Rewards ® program, enhancing our training programs and leveraging insights from our customer satisfaction measurement platform. Average check variations are driven by menu price increases and/or ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/887596/000110465926087720/tm2621325d2_8ka.htm",
+   "published": "2026-07-28T21:58:52-04:00",
+   "form": "8-K/A",
+   "items": "7.01,9.01",
+   "text": "Item 7.01 of Form 8-K, “Regulation FD Disclosure” is intended to be furnished. This information shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or incorporated by reference in any filing under the Securities Act of 1933, as amended, or the Exchange Act, whether made before or after the date of this report, regardless of any general incorporation language in the filing. EXPLANATORY NOTE On July 28, 2026, the Company furnished a Current Report on Form 8-K (the “Original Report”) to the Securities and Exchange Commission announcing its financial results for its second quarter of fiscal 2026, ended June 30, 2026, which Original Report included an updated Investor Presentation (the “Original Presentation”) as Exhibit 99.2. This Current Report on Form 8-K/A (this “Amendment”) amends the Original Report to furnish a revised version of the Original Presentation (the “Revised Presentation”). Other than correcting a typographical error in the Revised Presentation, all other information included in the Original Report is unchanged. The Revised Presentation is furnished with this Amendment as Exhibit 99.1 hereto. ITEM 7.01 REGULATION FD DISCLOSURE On July 29, 2026, the Company posted the Revised Presentation on the Company’s Investor Relations website at investors.thecheesecakefactory.com to correct a typographical error on slide 31 where the fiscal year 2026 net income margin target was reported as 5% instead of 5.4%. A copy of the presentation is furnished as Exhibit 99.1 hereto and is incorporated by reference herein. ITEM 9.01 FINANCIAL STATEMENTS AND EXHIBITS (d) Exhibits 99.1 The Cheesecake Factory Investor Presentation dated July 29, 2026 (as revised) 104.1 Cover Page Interactive Data File (embedded within the inline XBRL document) SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: July 29, 2026 THE CHEESECAKE FACTORY INCORPORATED By: /s/ Matthew E. Clark Matthew E. Clark Executive Vice President and Chief Financial Officer",
+   "exhibit_99_1": "EX-99.1 2 tm2621325d2_ex99-1.htm EXHIBIT 99.1 Exhibit 99.1 INVESTOR PRESENTATION July 29, 2026 SAFE HARBOR STATEMENT / NON-GAAP INFORMATION 2 Cautionary Statement Regarding Forward-Looking Statements This presentation contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. This includes, without limitation, financial guidance and projections, including underlying assumptions, and statements with respect to expectations of the Company’s future financial condition, results of operations, cash flows, share repurchases, dividends, objectives, growth potential, engines and opportunities, expected growth rates and targets, market potential and total addressable market runway; growth outlook; industry-leading comparable sales growth, retention and competitive position; quality control and supply chain efficiencies; operational execution and retention; annualized average unit volume; the Company’s differentiation in the off-premise channel; the opportunity for additional domestic and foreign locations and licensees and territories; target returns for new restaurant openings; international expansion; North Italia and Fox Restaurant Concepts (“FRC”) as growth drivers and FRC as an incubation engine; new restaurant targeted ranges and unit growth rates. Such forward-looking statements include all other statements that are not historical facts, as well as statements that are preceded by, followed by or that include words or phrases such as “believe,” “plan,” “will likely result,” “expect,” “intend,” “will continue,” “is anticipated,” “estimate,” “project,” “may,” “could,” “would,” “should” and similar expressions. These statements are based on current expectations and involve risks and uncertainties which may cause results to differ materially from those set forth in such statements. Investors are cautioned that forward-looking statements are not guarantees of future performance and that undue reliance should not be placed on such statements. These forward-looking statements may be affected by various factors including: economic, public health and political conditions that impact consumer confidence and spending, including government shutdowns, trade policy, interest rate fluctuations, periods of heightened inflation and market instability, and armed conflicts; supply chain disruptions; demonstrations, political unrest, potential damage to or cl"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cake-vs-txrh-restaurant-stock-143000503.html?.tsrc=rss",
+   "published": "2026-10-26T10:30:00-04:00",
+   "text": "CAKE vs. TXRH: Which Restaurant Stock Is the Better Buy Now? - Cheesecake Factory outshines Texas Roadhouse with stronger earnings revisions, margin expansion and stock gains, making it the preferred pick in casual dining.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/best-momentum-stocks-buy-october-130000488.html?.tsrc=rss",
+   "published": "2026-10-26T09:00:00-04:00",
+   "text": "Best Momentum Stocks to Buy for October 26th - HIPO, CAKE and MSM made it to the Zacks Rank #1 (Strong Buy) momentum stocks list on October 26th, 2026.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/expect-cheesecake-factory-cake-q3-062247240.html?.tsrc=rss",
+   "published": "2026-10-26T02:22:47-04:00",
+   "text": "What to expect from The Cheesecake Factory’s (CAKE) Q3 earnings - Restaurant company Cheesecake Factory (NASDAQ:CAKE) will be announcing earnings results this Tuesday after the bell. Here’s what investors should know.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-cake-stock-may-110928517.html?.tsrc=rss",
+   "published": "2026-10-25T07:09:28-04:00",
+   "text": "Cheesecake Factory (CAKE) Stock May Be Pricey Following Its 288% Run - Cheesecake Factory has turned into one of the stronger stories in casual dining this year, with the share price moving sharply and expectations around its earnings now carrying much more weight. After a run that has put the stock back near record territory, the live question for investors is whether",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-cake-already-priced-100745964.html?.tsrc=rss",
+   "published": "2026-10-25T06:07:45-04:00",
+   "text": "Is Cheesecake Factory (CAKE) Already Priced In Ahead Of Its October 27 Earnings? - Cheesecake Factory (CAKE) heads into its third quarter 2026 earnings report on October 27, with attention on sales momentum, guest traffic trends, and how new restaurant openings are contributing to overall performance. Recent price action has cooled a little, with Cheesecake Factory’s share price f",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/1-profitable-stock-impressive-fundamentals-164839675.html?.tsrc=rss",
+   "published": "2026-10-23T12:48:39-04:00",
+   "text": "1 profitable stock with impressive fundamentals and 2 facing headwinds - Even if a company is profitable, it doesn’t always mean it’s a great investment. Some struggle to maintain growth, face looming threats, or fail to reinvest wisely, limiting their future potential.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/1bfac5c1-20dd-3946-9b0b-397c60fcd013/wobbly-stock-market-still.html?.tsrc=rss",
+   "published": "2026-10-23T11:59:03-04:00",
+   "text": "Wobbly Stock Market Still Yields A Bumper Crop Of Breakouts - A base-on-base pattern is one way for many stocks to show strength during periods of market chop and back-and-forth action.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-cake-incredible-growth-154501133.html?.tsrc=rss",
+   "published": "2026-10-23T11:45:01-04:00",
+   "text": "Cheesecake Factory (CAKE) is an Incredible Growth Stock: 3 Reasons Why - Cheesecake Factory (CAKE) could produce exceptional returns because of its solid growth attributes.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-post-q3-earnings-134900544.html?.tsrc=rss",
+   "published": "2026-10-23T09:49:00-04:00",
+   "text": "Cheesecake Factory to Post Q3 Earnings: What's in the Cards? - CAKE gears up for Q3 earnings with higher sales, robust guest traffic and expansion, but rising labor and commodity costs may pressure margins.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/brinker-international-eat-reports-next-130009288.html?.tsrc=rss",
+   "published": "2026-10-21T09:00:09-04:00",
+   "text": "Brinker International (EAT) Reports Next Week: Wall Street Expects Earnings Growth - Brinker International (EAT) possesses the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.cryptoprowl.com/releases/pancakeswap-tvl-climbs-19-to-24-billion-ahead-of-vote-on-fee-overhaul-7375?.tsrc=rss",
+   "published": "2026-10-21T08:30:00-04:00",
+   "text": "PancakeSwap TVL Climbs 19% to $2.4 Billion Ahead of Vote on Fee Overhaul - PancakeSwap’s (CRYPTO: $CAKE) total value locked has jumped nearly 19% in a week, adding about $380 million t...",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/2a6a9744-92f6-3eb0-b1ae-6639474e81d3/dow-jones-leader-coca-cola.html?.tsrc=rss",
+   "published": "2026-10-20T15:22:09-04:00",
+   "text": "Dow Jones Leader Coca-Cola Breaks Out As Stock Market Volatility Ramps Up - Dow Jones stock Coca-Cola is breaking out past a new buy point with stock market volatility ramping up in recent sessions.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-cake-earnings-expected-130017874.html?.tsrc=rss",
+   "published": "2026-10-20T09:00:17-04:00",
+   "text": "Cheesecake Factory (CAKE) Earnings Expected to Grow: Should You Buy? - Cheesecake Factory (CAKE) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/looking-top-momentum-pick-why-150003608.html?.tsrc=rss",
+   "published": "2026-10-19T11:00:03-04:00",
+   "text": "Are You Looking for a Top Momentum Pick? Why Cheesecake Factory (CAKE) is a Great Choice - Does Cheesecake Factory (CAKE) have what it takes to be a top stock pick for momentum investors? Let's find out.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-incorporated-cake-hits-121502054.html?.tsrc=rss",
+   "published": "2026-10-19T08:15:02-04:00",
+   "text": "The Cheesecake Factory Incorporated (CAKE) Hits Fresh High: Is There Still Room to Run? - Cheesecake Factory (CAKE) is at a 52-week high, but can investors hope for more gains in the future? We take a look at the company's fundamentals for clues.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/13e48d09-0976-3082-81ba-a828960757d8/stock-market-today%3A-nasdaq.html?.tsrc=rss",
+   "published": "2026-10-16T16:36:33-04:00",
+   "text": "Stock Market Today: Nasdaq Tanks 2%; Palo Alto Leads Slide In Cybersecurity Space - The Dow Jones index rises Friday while the Nasdaq struggles with tech losses.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://app.moby.co/home/news/news-the-cheesecake-factory-stock-has-more-than-doubled-this-year-yes-really?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+   "published": "2026-10-16T15:04:50-04:00",
+   "text": "The Cheesecake Factory Stock Has More Than Doubled This Year - The Bible-length menu is working. Cheesecake Factory just posted its first $1 billion quarter, and shares have more than doubled this year. Now comes the hard part: living up to the hype.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/b0372483-3e01-3d1b-acc1-a606ea89aa43/stock-of-the-day%3A-cheesecake.html?.tsrc=rss",
+   "published": "2026-10-14T12:52:41-04:00",
+   "text": "Stock Of The Day: Cheesecake Factory Already Doubled This Year. It Just Topped A Buy Point. - Cheesecake Factory stock is outperforming all other restaurants. Shares have topped a buy point. Earnings and sales growth are picking up.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cake-stock-gains-17-month-140100977.html?.tsrc=rss",
+   "published": "2026-10-14T10:01:00-04:00",
+   "text": "CAKE Stock Gains 17% in a Month: Should Investors Ride the Rally? - Cheesecake Factory rises 17% in a month, fueled by stronger traffic, margin gains and expansion, while its discounted valuation adds to its investment appeal.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cracker-barrel-old-country-store-121502550.html?.tsrc=rss",
+   "published": "2026-10-14T08:15:02-04:00",
+   "text": "Cracker Barrel Old Country Store, Inc. (CBRL) Hit a 52 Week High, Can the Run Continue? - Cracker Barrel (CBRL) is at a 52-week high, but can investors hope for more gains in the future? We take a look at the company's fundamentals for clues.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:11-04:00",
+    "sha256": "b3cf7d194aa0ea7888a33079f1f3fd624a46818022673a371da08f65b2b4943d"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 53231
+}

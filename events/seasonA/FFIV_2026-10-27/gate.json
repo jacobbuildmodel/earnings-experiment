@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "FFIV",
+ "report_date": "2026-10-27",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:11.464433-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.f5.com/news/news-details/2026/F5-to-Report-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx",
+  "published_et": "2026-10-08T16:05-04:00",
+  "quote": "F5 will host a live webcast to discuss its results with investors and analysts beginning at 4:30 p.m. ET on October 27, 2026.",
+  "title": "F5 to Report Fourth Quarter and Fiscal Year 2026 Financial Results",
+  "retrieved_et": "2026-10-08T22:48:55.577776-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.f5.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-27T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-27T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 463.6600036621094,
+  "expiry": "2026-11-20",
+  "strike": 460.0,
+  "call": {
+   "bid": 27.7,
+   "ask": 30.2,
+   "openInterest": 106.0,
+   "lastPrice": 25.9,
+   "impliedVolatility": 0.5511824667358399,
+   "lastTradeDate": "2026-10-23T19:12:57+00:00"
+  },
+  "put": {
+   "bid": 24.1,
+   "ask": 26.0,
+   "openInterest": 240.0,
+   "lastPrice": 31.4,
+   "impliedVolatility": 0.5463302203369143,
+   "lastTradeDate": "2026-10-23T16:05:28+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 17,
+  "implied_move": 0.11646464990185419,
+  "rel_spread": {
+   "call": 0.08635578583765112,
+   "put": 0.07584830339321351
+  },
+  "oi_atm": 346.0,
+  "oi_sum": 759.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

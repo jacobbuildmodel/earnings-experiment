@@ -1,0 +1,699 @@
+{
+ "event": "FLEX_2026-10-28",
+ "season": "seasonA",
+ "built_et": "2026-10-26T14:31:33-04:00",
+ "cutoff_et": "2026-10-26T14:31:12.029163-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/FLEX_2026-10-28/gate.json",
+   "published": "2026-10-26T14:31:12.029163-04:00",
+   "data": {
+    "ticker": "FLEX",
+    "report_date": "2026-10-28",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-27"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-28"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-04"
+     },
+     "reaction_day": "2026-10-28"
+    },
+    "snapshot_session": "2026-10-26",
+    "captured_et": "2026-10-26T14:31:12.029163-04:00",
+    "options": {
+     "spot": 78.05000305175781,
+     "expiry": "2026-11-20",
+     "strike": 80.0,
+     "call": {
+      "bid": 6.3,
+      "ask": 6.8,
+      "openInterest": 1294.0,
+      "lastPrice": 6.7,
+      "impliedVolatility": 0.8916026464843749,
+      "lastTradeDate": "2026-10-26T17:51:32+00:00"
+     },
+     "put": {
+      "bid": 7.6,
+      "ask": 8.1,
+      "openInterest": 420.0,
+      "lastPrice": 7.8,
+      "impliedVolatility": 0.813478427734375,
+      "lastTradeDate": "2026-10-26T18:02:44+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 17,
+     "implied_move": 0.18449711001869956,
+     "rel_spread": {
+      "call": 0.07633587786259542,
+      "put": 0.06369426751592357
+     },
+     "oi_atm": 1714.0,
+     "oi_sum": 1714.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/FLEX_2026-10-28/factors.json",
+   "published": "2026-10-26T14:31:12.029163-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.22170920411406958,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.31936693322756315,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.10835047419641008,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.04436119977384445,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.594109729829695,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.9327589701865572,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.518387136559895,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-29",
+       "session": "BMO",
+       "raw_return_A": -0.09040468474674779,
+       "eps_est": 0.92,
+       "eps_rep": 1.0,
+       "surprise_pct": 8.9,
+       "reaction_volume_ratio": 2.2886907835105954
+      },
+      {
+       "date": "2026-05-05",
+       "session": "AMC",
+       "raw_return_A": 0.28746377901981157,
+       "eps_est": 0.88,
+       "eps_rep": 0.93,
+       "surprise_pct": 6.07,
+       "reaction_volume_ratio": 5.0783589989791285
+      },
+      {
+       "date": "2026-02-04",
+       "session": "BMO",
+       "raw_return_A": -0.034683885960931304,
+       "eps_est": 0.79,
+       "eps_rep": 0.87,
+       "surprise_pct": 10.54,
+       "reaction_volume_ratio": 3.1223049723551086
+      },
+      {
+       "date": "2025-10-29",
+       "session": "BMO",
+       "raw_return_A": -0.09189437126325928,
+       "eps_est": 0.76,
+       "eps_rep": 0.79,
+       "surprise_pct": 4.35,
+       "reaction_volume_ratio": 1.9837886930184498
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.1182858619658207,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 8.9,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.05827,
+      "7daysAgo": 1.05827,
+      "30daysAgo": 1.05827,
+      "60daysAgo": 1.05827,
+      "90daysAgo": 1.00184,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.056326359498522695,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.05827,
+      "low": 1.04,
+      "high": 1.14,
+      "yearAgoEps": 0.79,
+      "numberOfAnalysts": 10,
+      "growth": 0.3396,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.09449384372608112,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0241,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 10.576558,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 0.98534995,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.206,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 28838236160,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.27273,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.18449711001869956,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.07812421874999997,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.05029246582031244,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.47150610583446406,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.45935346518012216,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 2169.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.4349883435737716,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.14943725058421825,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 227,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.2057794676806084,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.04944500504540868,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.22170920411406958,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.10835047419641008,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.04436119977384445,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.594109729829695,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.311639573146126,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 1.4646434664910588,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 28833749560.522842,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 1.015025809895718,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.057504563854274146,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000086637426000026/flexex991-6262026.htm",
+   "published": "2026-07-29T07:15:54-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 flexex991-6262026.htm EX-99.1 Document P R E S S R E L E A S E EXHIBIT 99.1 FLEX REPORTS FIRST QUARTER FISCAL 2027 RESULTS • Reported Q1 net sales of $7.9 billion, up 21% versus the prior year. • Delivered Q1 GAAP operating margin of 4.9%, and adjusted operating margin of 6.7%. • Reported Q1 GAAP EPS of $0.76, and record adjusted EPS of $1.00. • Announced Investor Day date of November 10th, 2026. Austin, Texas, July 29, 2026 – Flex (NASDAQ: FLEX) today announced results for its first quarter ended June 26, 2026. \"This quarter reflects the continued execution of the strategy we've advanced over the last several years. From joining the S&P 500 to expanding our role in AI infrastructure, we've strengthened our position in attractive growth markets. Looking ahead, we're confident both Flex and SpinCo have the leadership, capabilities, and focus to capitalize on the significant opportunities in front of them,\" said Revathi Advaithi, CEO of Flex. First Qu arter Fiscal Year 2027 GAAP Summary: • Net Sa les: $7.9 billion • GAAP Operating Income: $392 million • GAAP Net Income: $285 million • GAAP Earnings Per Share: $0.76 • Cash provided by Operating Activities: $276 million First Qu arter Fiscal Year 2027 Non-GAAP Summary: • Adjusted Operating Income: $534 million • Adjusted Net Income: $374 million • Adjusted Earnings Per Share: $1.00 • Free Cash Flow: $41 million An explanation and reconciliation of GAAP financial measures to non-GAAP financial measures is presented in Schedules II and V attached to this press release. Second Quarter Fiscal Year 2027 Guidance: • Net Sales: $7.95 billion to $8.25 billion, growth of 19% at the midpoint • Adjusted Operating Income: $535 million to $565 million* • Adjusted EPS: $1.00 to $1.07*, growth of 32% at the midpoint • Interest & Other: approximately $58 million • Adjusted income tax rate: 21%* • Weighted average shares outstanding: approximately 375 million Updated Fiscal Year 2027 Guidance † : • Net Sales: $33.7 billion to $35.2 billion, growth of 23% at the midpoint • Adjusted Operating Margin: 7.0% to 7.2%* • Adjusted EPS: $4.42 to $4.74*, growth of 39% at the midpoint • Adjusted income tax rate: 21%* P R E S S R E L E A S E Fiscal Year 2027 Guidance Prior Updated Net Sales $32.3 - $33.8 billion $33.7 - $35.2 billion Adjusted Operating Margin* 7.0% - 7.1% 7.0% - 7.2% Adjusted EPS* $4.21 - $4.51 $4.42 - $4.74 *This is a forward-looking non-GAAP financial measure that cannot be reconciled to its equivalent GAAP financial measure without unreasonable effort for the reasons set forth in Schedule V attached to this press release. † Reflects expected results for the full fiscal year and does not give effect to the planned spin-off of the Cloud and Power Infrastructure segment Webcast and Conference Call The Flex management team will host a conference call today, July 29, 2026, at 7 :30 AM (CT) / 8:30 AM (ET), to review first quarter fiscal 2027 results. A live webcast of the event and slides will be available on the Flex Investor Relations website at http://investors.flex.com. An audio replay and transcript will also be available after the event on the Flex Investor Relations website. About Flex Flex (Reg. No. 199002645H) is the manufacturing partner of choice that helps leading brands design, build, and manage products that improve the world. With a global footprint spanning 30 countries, Flex delivers advanced manufacturing and supply chain solutions, innovative products and technology, and lifecycle services that support customers from concept to scale. In the AI era, Flex is helping customers accelerate data center deployment by solving power, heat, and scale challenges through cutting-edge power and cooling technology and scalable IT infrastructure solutions. Contacts Investors & Analysts Michelle Simmons Senior Vice President, Global Investor Relations and Public Relations (669) 242-6332 Michelle.Simmons@flex.com Media & Press press@flex.com P R E S S R E L E A S E Forward-Looking Statements This press release contains forward-looking statements within the meaning of U.S. securities laws, including statements related to our future financial results and our guidance for future financial performance (including expected revenues, operating income, margins and earnings per share). These forward-looking statements are based on current expectations, forecasts and assumptions involving risks and uncertainties that could cause the actual outcomes and results to differ materially from those anticipated by these forward-looking statements. Readers are cautioned not to place undue reliance on these forward-looking statements. These risks include: that we may not achieve our expected future operating results; risks related to our ability to successfully execute our strategic priorities, including the planned spin-off of our Cloud and Power Infrastructure segment into an independent, publicly traded company, and to achieve the anticipated benefits of such transaction, including risks that the spin-off may not be completed on the anticipated timeline or at all, that the spin-off may not achieve its intended benefits, that the transaction may have an adverse impact on existing business relationships, and that the costs of the spin-off may be greater than anticipated; the effects that the current and future macroeconomic environment, including inflationary pressures, currency volatility, stagflation, slower economic growth or recession, and high or rising interest rates, could have on our business and demand for our products; geopolitical uncertainties and risks, including impacts from trade conflicts, the termination and renegotiation of international trade agreements and trade policies, a further escalation of sanctions, tariffs or other trade tensions between the U.S. and China or other countries, or the ongoing conflicts between Russia and Ukraine and in the Middle East, including recent developments in Iran, any of which could lead to disruption, instability, and volatility in global markets and negatively impact our operations and financial performance; supply chain disruptions, including those involving suppliers who are sole or primary sources, logistical constraints, manufacturing interruptions or delays, or the failure to accurately forecast customer demand; the impact of fluctuations in the pricing or availability of raw materials and components, including semiconductors, labor and energy; our dependence on industries that continually produce technologically advanced products with short product life cycles; the short-term nature of our customers' commitments and rapid changes in demand may cause supply chain issues, excess and obsolete inventory and other issues which adversely affect our operating results; our dependence on a small number of customers; risks associated with acquisitions and divestitures, including the possibility that we may not fully realize their projected benefits, including the acquisition of Electrical Power Products, Inc., and other events that could adversely impact the anticipated benefits of the acquisition, including industry or economic conditions outside of our control; our industry is extremely competitive; that the expected revenue and margins from recently launched programs may not be realized; the challenges of effectively managing our operations, including our ability to control costs and manage changes in our operations; the possibility that benefits of our restructuring actions may not materialize as expected; a breach of our IT or physical security systems, or violation of data privacy laws, may cause us to incur significant legal and financial exposure and adversely affect our operations; hiring and retaining key personnel; that recent changes or future changes in tax laws in certain jurisdictions where we operate could materially impact our tax expense; litigation and regulatory investigations and proceedings; the impact and effects on our business, results of operations and financial condition of union disputes or other labor disruptions as well as unforeseen or catastrophic events; the effects that current and future credit and market conditions could have on the liquidity and financial condition of our customers and suppliers, including any impact on their ability to meet their contractual obligations to us and our ability to pass through costs to our customers; the success of certain of our activities depends on our ability to protect our intellectual property rights and we may be exposed to claims of infringement, misuse or breach of license agreements; physical and operational risks from natural disasters, severe weather events, or climate change; we may be exposed to product liability and product warranty liability; we may be exposed to financially troubled customers or suppliers; our compliance with legal and regulatory requirements; changes in laws, regulations, or policies that may impact our business, including those related to trade policy and tariffs and climate change; our ability to meet sustainability, including environmental, social and governance, expectations or standards or achieve sustainability goals. Additional information concerning these and other risks is described under \"Risk Factors\" and \"Management's Discussion and Analysis of Financial Condition and Results of Operations\" in our most recent Annual Report on Form 10-K and in our subsequent filings with the U.S. Securities and Exchange Commission. Additional information concerning risks related to the planned spin-off is described in the separate press release issued today. Flex assumes no obligation to update any forward-looking statements, which speak only as of the date they are made. P R E S S R E L E A S E SCHEDULE I FLEX UNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (In millions, except per share amounts) Three-Month Periods Ended June 26, 2026 June 27, 2025 GAAP: Net sales $ 7,928 $ 6,575 Cost of sales 7,177 5,987 Restructuring charges 4 16 Gross profit 747 572 Selling, general and administrative expenses 334 233 Restructuring and impairment charges (reversal) (2) 7 Intangible amortization 23 21 Operating income 392 311 Interest expense 60 51 Interest income 13 13 Other charges (income), net (37) 7 Equity in earnings (losses) of unconsolidated affiliates (5) (20) Income before income taxes 377 246 Provision for income taxes 92 54 Net income $ 285 $ 192 GAAP EPS Diluted earnings per share $ 0.76 $ 0.50 Diluted shares used in computing per share amounts 374 381 See Schedule II for the reconciliation of GAAP to non-GAAP financial measures. See the accompanying notes on Schedule V attached to this press release. P R E S S R E L E A S E SCHEDULE II FLEX RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES (In millions, except per share amounts and percentages) Three-Month Periods Ended June 26, 2026 June 27, 2025 GAAP operating income and margin % $ 392 4.9% $ 311 4.7% Intangible amortization 23 21 Stock-based compensation 51 34 Restructuring and impairment charges 1 23 Legal and other 67 6 Non-GAAP operating income and margin % $ 534 6.7% $ 395 6.0% GAAP provision for income taxes $ 92 $ 54 Intangible amortization benefit 5 5 Other tax related adjustments 2 14 Non-GAAP provision for income taxes $ 99 $ 73 GAAP net income $ 285 $ 192 Intangible amortization 23 21 Stock-based compensation 51 34 Restructuring and impairment charges 1 23 Legal and other 67 6 Equity in losses of unconsolidated affiliates — 17 Interest and other, net (46) — Adjustments for taxes (7) (19) Non-GAAP net income $ 374 $ 274 Diluted earnings per share: GAAP $ 0.76 $ 0.50 Non-GAAP $ 1.00 $ 0.72 Free Cash Flow: Net cash provided by operating activities $ 276 $ 399 Purchases of property and equipment (236) (133) Proceeds from the disposition of property and equipment 1 2 Free Cash Flow $ 41 $ 268 See the accompanying notes on Schedule V attached to this press release. P R E S S R E L E A S E SCHEDULE III FLEX UNAUDITED CONDENSED CONSOLIDATED BALANCE SHEETS (In millions) As of June 26, 2026 As of March 31, 2026 ASSETS Current assets: Cash and cash equivalents $ 2,840 $ 2,389 Accounts receivable, net of allowance for doubtful accounts 5,036 4,679 Contract assets 1,386 1,063 Inventories 6,453 5,845 Other current assets 2,522 2,356 Total current assets 18,237 16,332 Property and equipment, net 2,655 2,505 Operating lease right-of-use assets, net 794 659 Goodwill 1,831 1,369 Other intangible assets, net 736 283 Other non-current assets 945 912 Total assets $ 25,198 $ 22,060 LIABILITIES AND SHAREHOLDERS' EQUITY Current liabilities: Accounts payable $ 9,195 $ 8,055 Accrued payroll and benefits 579 671 Deferred revenue and customer working capital advances 2,053 2,156 Other current liabilities 1,393 1,134 Total current liabilities 13,220 12,016 Long-term debt, net of current portion 5,219 3,751 Operating lease liabilities, non-current 711 565 Other non-current liabilities 548 584 Total liabilities 19,698 16,916 Total shareholders’ equity 5,500 5,144 Total liabilities and shareholders' equity $ 25,198 $ 22,060 P R E S S R E L E A S E SCHEDULE IV FLEX UNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (In millions) Three-Month Periods Ended June 26, 2026 June 27, 2025 CASH FLOWS FROM OPERATING ACTIVITIES: Net income $ 285 $ 192 Depreciation, amortization and other impairment charges 140 142 Changes in working capital and other, net (149) 65 Net cash provided by operating activities 276 399 CASH FLOWS FROM INVESTING ACTIVITIES: Purchases of property and equipment (236) (133) Proceeds from the disposition of property and equipment 1 2 Acquisition of businesses, net of cash acquired (1,134) (41) Proceeds from divestiture of businesses, net of cash held in divested businesses 90 — Other investing activities, net — (7) Net cash used in investing activities (1,279) (179) CASH FLOWS FROM FINANCING ACTIVITIES: Proceeds from bank borrowings and long-term debt 2,830 500 Payments of bank borrowings, long",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000086637426000030/flex-20260626.htm",
+   "published": "2026-07-31T16:16:57-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS Unless otherwise specifically stated, references in this report to “Flex,” “the Company,” “we,” “us,” “our” and similar terms mean Flex Ltd. and its subsidiaries. This report on Form 10-Q contains forward-looking statements within the meaning of Section 21E of the Securities Exchange Act of 1934, as amended, and Section 27A of the Securities Act of 1933, as amended. The words “expects,” “anticipates,” “believes,” “intends,” “plans” and similar expressions identify forward-looking statements. In addition, any statements which refer to expectations, projections or other characterizations of future events or circumstances are forward-looking statements. We undertake no obligation to publicly disclose any revisions to these forward-looking statements to reflect events or circumstances occurring subsequent to filing this Form 10-Q with the Securities and Exchange Commission, except as required by law. These forward-looking statements are subject to risks and uncertainties, including, without limitation, those risks and uncertainties discussed in this section, as well as any risks and uncertainties discussed in Part I, Item 1A, “Risk Factors” and in Part II, Item 7, “Management’s Discussion and Analysis of Financial Condition and Results of Operations” in our Annual Report on Form 10-K for the fiscal year ended March 31, 2026. In addition, new risks emerge from time to time and it is not possible for management to predict all such risk factors or to assess the impact of such risk factors on our business. Accordingly, our future results may differ materially from historical results or from those discussed or implied by these forward-looking statements. Given these risks and uncertainties, the reader should not place undue reliance on these forward-looking statements. OVERVIEW We are the advanced, end-to-end manufacturing partner of choice that helps a diverse customer base design, build, deliver and manage innovative products that improve the world. Through the collective strength of a global workforce across approximately 30 countries with responsible, sustainable operations, we deliver technology innovation, supply chain, and manufacturing solutions to diverse industries and end markets. Our full suite of specialized capabilities includes design and engineering, supply chain, manufacturing, and integrated services, plus a portfolio of power and cooling products. Over time, we have built differentiated scale and expertise across both technology-driven and regulated markets, enabling us to support customers with increasingly complex product, infrastructure, and compliance requirements. We partner with customers across a diverse set of industries including data center, healthcare, industrial, automotive, communications, and lifestyle. As of June 26, 2026, our three operating and reportable segments were as follows: • Integrated Technology Solutions (\"ITS\"), which is comprised of the following end markets: ◦ Communications, high speed networking, enterprise, and satellite communications systems ◦ Lifestyle , premium products across commercial, home and personal product categories • Regulated Manufacturing Solutions (\"RMS\"), which is comprised of the following end markets: ◦ Industrial , mission-critical automation, energy, and industrial infrastructure ◦ Automotive , compute and power electronic platforms, and integrated systems ◦ Healthcare , regulated manufacturing for medical devices, drug delivery and equipment • Cloud and Power Infrastructure (\"CPI\"), which is comprised of the following end markets: ◦ Cloud and Cooling, integrated compute systems supporting power-dense digital infrastructure deployments, and advanced liquid cooling solutions supporting higher-density, power-intensive rack architectures ◦ Power, utility and facility-level electrical infrastructure enabling reliable, scalable power delivery and high-density rack and board-level power systems supporting power-intensive compute workloads Our strategy is to provide customers with a full range of cost competitive, vertically-integrated global supply chain solutions through which we can design, build, ship and service a complete packaged product for our customers. This enables our customers to leverage our supply chain solutions to meet their product requirements throughout the entire product lifecycle. In today’s business landscape, we are witnessing greater product diversification by many companies, primarily in the technology sector, along with increased product complexity. These companies now require unique and customized manufacturing and supply chain solutions that meet their evolving requirements. We use a portfolio approach to manage our extensive service offerings. As our customers change the way they go to market, we have the capability to reorganize and rebalance our business portfolio in order to align with our customers' needs and requirements in an effort to optimize operating results. The objective of our business model is to allow us to be flexible and 25 Table of Contents redeploy and reposition our assets and resources as necessary to meet specific customers' supply chain solution needs across all the markets we serve and earn a return on our invested capital above the weighted average cost of that capital. We believe that our strategy has positioned us to take advantage of the long-term, future growth prospects for outsourcing of advanced manufacturing capabilities, design and engineering services and after-market services. We are continuously evaluating our capital structure in response to the current environment and expect that our current financial condition, including our liquidity sources are adequate to fund future commitments. See additional discussion in the Liquidity and Capital Resources section below. Russian Invasion of Ukraine and Middle East Conflicts We continue to monitor and respond to the conflict in Ukraine and the associated sanctions and other restrictions. We also are monitoring and responding to the Israel-Hamas conflict and recent U.S. and Israel military operations in Iran. The full impact of these conflicts on our business operations and financial performance remains uncertain and will depend on future developments, including the severity and duration of the conflicts and their impact on regional and global economic conditions. We will continue to monitor the conflicts and assess the related restrictions and other effects and pursue prudent decisions for our team members, customers, and business. During the fiscal year ended March 31, 2026, we recognized $51 million in asset impairments, inventory write-downs and other charges as a result of a missile strike on our Mukachevo, Ukraine facility in Western Ukraine on August 21, 2025. The missile strike represents an unusual and infrequent event as hostilities related to the Russian invasion of Ukraine have been primarily focused in Eastern Ukraine. The missile strike caused substantial physical damage and disrupted normal operations at the facility. In response, we activated contingency manufacturing plans and transitioned production to alternative facilities. As restoration activities progress in Mukachevo, we expect to incur additional immaterial near-term inefficiencies. For further information, refer to Item 1A, “Risk Factors - Global economic conditions and geopolitical uncertainty have in the past adversely affected, and could in the future adversely affect, our business, results of operations, financial condition, and access to capital markets. ” in our Annual Report on Form 10-K for the fiscal year ended March 31, 2026. Tariffs The U.S. tariffs initially announced in April 2025, which continue to evolve, and other countries' potential retaliatory tariffs and import/export restrictions may materially increase our product input costs and negatively affect global economic conditions, contracting customer demand. As a contract manufacturer, we expect to recover the cost of tariffs by passing tariff costs to our customers which would increase net sales, decrease operating income margins, and negatively affect operating cash flow timing as we recover paid tariffs from our customers. During the quarter ended June 26, 2026, tariff costs paid and recoveries from our customers impacted our revenues and costs of goods by approximately one percent and had a negligible impact on our profitability. If, in the future, we are no longer able to fully pass through these tariffs, our results from operations and cash flows would be negatively impacted. On February 20, 2026, the U.S. Supreme Court struck down tariffs imposed under the International Emergency Economic Powers Act (\"IEEPA\") and on April 20, 2026 the U.S. government opened a system to facilitate refunds for IEEPA tariffs paid. We have requested and received a portion of our requested IEEPA tariff refunds and do not expect refunds received will have a material effect on our financial performance. We will continue to monitor changes in global trade policy and employ measures to mitigate the impact of tariffs and leverage competitive opportunities. However, despite these efforts, the Company may not be able to fully mitigate the impact of changes in trade policies. For further information, refer to Item 1A, “Risk Factors - Tariffs, trade restrictions, export controls, and changes in trade policy, including heightened trade volatility and uncertainty regarding trade agreements, have in the past adversely affected, and could in the future adversely affect, our business, results of operations, and financial condition ” in our Annual Report on Form 10-K for the fiscal year ended March 31, 2026. Memory Pricing Environment During the first quarter of fiscal 2027, market prices for memory components, including DRAM and NAND products, remained elevated as industry supply continued to be constrained by strong demand from AI and data center applications. The Company generally expects to pass through increases in memory costs to its customers, where contractual mechanisms permit recovery of component cost increases, however, sustained increases in memory pricing could continue to favorably impact net sales, while unfavorably impacting our gross profit percentage and increasing inventory balances and working capital requirements. 26 Table of Contents Business Overview We are one of the world's largest providers of global supply chain solutions, with revenues of $7.9 billion for the three-month period ended June 26, 2026 and $27.9 billion in the fiscal year ended March 31, 2026. We have established an extensive network of manufacturing facilities in the world's major markets (Asia, the Americas, and Europe) to serve the outsourcing needs of both multinational and regional customers. We design, build, ship, and service consumer and enterprise products for our customers through a network of more than 100 facilities across approximately 30 countries on four continents. The following tables set forth the relative percentages and dollar amounts of net sales by region and by country, and net property and equipment by country, based on the location of our manufacturing sites: Three-Month Periods Ended June 26, 2026 June 27, 2025 (In millions) Net sales by region: Americas $ 4,171 53 % $ 3,364 51 % Asia 2,343 30 % 1,870 28 % Europe 1,414 17 % 1,341 21 % $ 7,928 $ 6,575 Net sales by country: Mexico $ 2,201 28 % $ 1,709 26 % U.S. 1,489 19 % 1,283 20 % China 1,118 14 % 1,072 16 % Malaysia 951 12 % 597 9 % Brazil 460 6 % 354 5 % Hungary 294 4 % 346 5 % Other 1,415 17 % 1,214 19 % $ 7,928 $ 6,575 As of As of June 26, 2026 March 31, 2026 Property and equipment, net: (In millions) Mexico $ 970 37 % $ 891 36 % U.S. 485 18 % 443 18 % China 300 11 % 306 12 % Malaysia 215 8 % 191 8 % Hungary 167 6 % 165 7 % Brazil 78 3 % 79 3 % Other 440 17 % 430 16 % $ 2,655 $ 2,505 We believe that the combination of our extensive",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000119312526421058/d147467d8k.htm",
+   "published": "2026-10-14T08:13:15-04:00",
+   "form": "8-K",
+   "items": "1.01,2.01,2.03,8.01,9.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. On October 9, 2026 (the “Bridge Closing Date”), Flex Ltd., a company organized under the laws of Singapore (the “Company” or “Flex”) entered into a Bridge Credit Agreement (the “Bridge Credit Agreement”), by and among the Company, as borrower, the lenders party thereto and Citibank, N.A., as administrative agent, which provides a senior bridge term loan credit facility (the “Bridge Credit Facility”) in an aggregate committed amount of $1.1 billion. In connection with the consummation of the Transaction (as defined below), on October 14, 2026, the Company borrowed $1.1 billion under the Bridge Credit Facility in a single advance. The Bridge Credit Facility will mature on October 13, 2027, the date that is 364 days after the date on which it was funded. Loans under the Bridge Credit Agreement bear interest at a floating rate, which can be, at the Company’s option, either (i) Term SOFR (as defined in the Bridge Credit Agreement) plus an applicable margin or (ii) the Base Rate (as defined in the Bridge Credit Agreement) plus an applicable margin, in each case, with such margin determined based on the Company’s senior unsecured long-term debt ratings. The Bridge Credit Agreement contains various customary covenants, including, but not limited to, restrictions on the ability of the Company and its subsidiaries to incur indebtedness, grant liens, dispose of material assets, merge or consolidate with or into other companies, materially change the nature of their business and make certain accounting changes, in each case, subject to various exceptions. The Bridge Credit Agreement requires the maintenance of (i) a Debt/EBITDA Ratio (as defined in the Bridge Credit Agreement) not to exceed 4.50 to 1.00 as of the last day of any fiscal quarter of the Company and (ii) an Interest Coverage Ratio (as defined in the Bridge Credit Agreement) of not less than 3.00 to 1.00 as of the last day of any fiscal quarter of the Company. The Bridge Credit Agreement also includes various customary events of default. Upon an event of default, commitments under the Bridge Credit Agreement may be terminated and outstanding borrowings may be accelerated. The obligations under the Bridge Credit Agreement are not guaranteed by any subsidiary of the Company. The Company may, at any time after the Bridge Closing Date and upon prior written notice to the administrative agent, cause any of its subsidiaries to become a subsidiary guarantor. T",
+   "exhibit_99_1": "EX-99.1 3 d147467dex991.htm EX-99.1 EX-99.1 Exhibit 99.1 Flex Completes Acquisition of EPC Power, Expanding Power Conversion Capabilities for AI Data Centers and Grid Applications Acquisition strengthens Flex’s Cloud and Power Infrastructure portfolio with differentiated grid-forming and power conversion technology AUSTIN, Texas, October 14, 2026 /PRNewswire/ — Flex (NASDAQ: FLEX) today announced that it has completed its acquisition of EPC Power, a leading provider of intelligent power conversion solutions for data center and grid applications. EPC Power is now part of Flex’s Cloud and Power Infrastructure segment, expanding the company’s capabilities across power, cooling and compute to address growing demand for higher-density AI infrastructure and next-generation 800V data center power architectures. “We are pleased to welcome the EPC Power team to Flex,” said Revathi Advaithi, Chief Executive Officer of Flex. “EPC Power adds differentiated power conversion and grid-forming technology to our capabilities across power, cooling and compute. Together, we can help customers address the growing power demands of AI infrastructure with more efficient, resilient and integrated solutions.” EPC Power combines proprietary hardware, software and controls with U.S.-based engineering and manufacturing. With more than 15 GW deployed, its technology supports grid stabilization and backup power, and its platform is engineered to support next generation 800V data center power architectures. Flex plans to separate its Cloud and Power Infrastructure segment into an independent publicly traded company, Axiom Solutions International, Inc., in the first calendar quarter of 2027. About Flex Flex (Reg. No. 199002645H) is the manufacturing partner of choice that helps leading brands design, build, and manage products that improve the world. With a global footprint spanning 30 countries, Flex delivers advanced manufacturing and supply chain solutions, innovative products and technology, and lifecycle services that support customers from concept to scale. In the AI era, Flex is helping customers accelerate data center deployment by solving power, heat, and scale challenges through cutting-edge power and cooling technology and scalable IT infrastructure solutions. For information about Flex’s intent to spin off its Cloud and Power Infrastructure portfolio, visit: https://flex.com/transaction-resources . Contacts Flex Investors & Analysts Michelle Simmons Senior Vice President, Glo"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000110465926115502/tm2627474d1_8k.htm",
+   "published": "2026-10-13T16:11:21-04:00",
+   "form": "8-K",
+   "items": "3.02,9.01",
+   "text": "Item 3.02 Unregistered Sales of Equity Securities. On October 9, 2026, Flex Ltd. (the “Company” or “Flex”) and Amazon.com NV Investment Holdings LLC (the “Warrantholder”) and Amazon.com Services LLC (the “Assignee”), wholly-owned subsidiaries of Amazon.com, Inc. (the “Parent”), entered into an amendment (the “Warrant Amendment”) to that certain Warrant to Purchase Ordinary Shares (the “Existing Warrant” and, as amended by the Warrant Amendment, the “Amended Warrant”), dated August 15, 2025, to purchase up to an aggregate of 3,859,851 ordinary shares of the Company (the “Warrant Shares”) at an exercise price of $51.29 per share. The Existing Warrant was issued pursuant to a Transaction Agreement, dated as of August 15, 2025 (the “Transaction Agreement”) between the Company and the Parent. The terms of the Warrant, subject to the Warrant Amendment described in this Report, are summarized in the Company’s Current Report on Form 8-K filed with the Securities and Exchange Commission on August 18, 2025 , which description is hereby incorporated by reference. Pursuant to the Warrant Amendment, Section 8(iii) of the Existing Warrant is amended in connection with the Company’s planned separation of its cloud and power infrastructure business into a new publicly traded company, Axiom Solutions International, Inc. (“Spinco”) and the pro rata distribution of between approximately 88.0% and 94.0% of the outstanding shares of Spinco common stock to Flex shareholders (the “Distribution”). Subject to the terms of the Amended Warrant, in lieu of the Warrantholder participating in the Distribution via the receipt of Spinco common stock, the Company shall cause Spinco to issue to the Assignee, in connection with and concurrent with the Distribution, a fully vested warrant to purchase a number of shares of Spinco common stock at an exercise price of $0.01 per share (the “Spinco Warrant”). The number of shares of Spinco common stock subject to the Spinco Warrant will be determined based on the intrinsic value of the Warrant prior to the Distribution . The Warrant Amendment also provides for the transfer and assignment to the Assignee of all of the Warrantholder’s right, title and interest in and to the Existing Warrant. The Warrant Amendment may be deemed to involve the cancellation of the Existing Warrant and the issuance of the Amended Warrant. The issuance of the Amended Warrant and the Warrant Shares have not been registered under the Securities Act of 1933, as amended (th"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000119312526413173/d123485d8k.htm",
+   "published": "2026-10-05T08:07:19-04:00",
+   "form": "8-K",
+   "items": "1.01,2.03,3.02,8.01,9.01",
+   "text": "Item 1.01. Entry into a Material Definitive Agreement Series A Convertible Preferred Stock Investment Agreement As previously announced, Flex Ltd., a company organized under the laws of Singapore (the “Company” or “Flex”), intends to separate its Cloud and Power Infrastructure business into an independent publicly traded company, Axiom Solutions International, Inc., a Texas corporation and currently a wholly owned subsidiary of Flex (“Axiom”), in the first quarter of 2027 (the “Spin-Off”). As also announced, on September 3, 2026, a wholly owned subsidiary of Flex entered into a stock purchase agreement (the “EPC Purchase Agreement”) to acquire all of the equity interests of EPC Power Corp., a Delaware corporation (“EPC Power”), with Flex guaranteeing such subsidiary’s obligations thereunder (such transaction, the “EPC Power Acquisition”). The EPC Power Acquisition is expected to close in the fourth quarter of 2026 and, upon the closing of the EPC Power Acquisition, EPC Power is expected to become part of the Company’s Cloud and Power Infrastructure business prior to the Spin-Off. In connection with the pending EPC Power Acquisition, on October 2, 2026, the Company, Axiom, GC Venture XIII (ASI), L.P., a Delaware limited partnership (“General Catalyst”), and other investors party thereto (together with General Catalyst, the “Investors”), entered into a Series A Convertible Preferred Stock Investment Agreement (the “Preferred Investment Agreement”), pursuant to which the Investors have agreed to collectively purchase 200,000 shares of Axiom’s Series A Convertible Preferred Stock, par value $0.0001 per share (the “Convertible Preferred Stock”), for a per share purchase price of $10,000 (the “Per Share Purchase Price” or “Stated Value”) and an aggregate purchase price of $2,000,000,000 in a private placement (the “Preferred Investment”). The Company is a party to the Preferred Investment Agreement for purposes of, among other things, guaranteeing the full performance and payment by Axiom (at Axiom’s election, in cash or in Flex’s ordinary shares, no par value (“Flex Ordinary Shares”), or a combination thereof (which election is subject to the Company’s approval)) of its obligation to redeem all then-outstanding shares of the Convertible Preferred Stock held by the Investors if the Spin-Off is not consummated on or before December 31, 2027, for a price per share of the Convertible Preferred Stock (the “Redemption Price”) equal to: (i) if paid in cash, 115% of th",
+   "exhibit_99_1": "EX-99.1 3 d123485dex991.htm EX-99.1 EX-99.1 Exhibit 99.1 Flex Announces $2.0 Billion Convertible Preferred Investment into Axiom Led by General Catalyst with Koch Equity Development Transaction Highlights: • Strategic investment from General Catalyst, Koch Equity Development, and co-investors to support long-term growth at Axiom, Flex’s Cloud and Power Infrastructure segment • $2.0 billion convertible preferred equity investment is at an initial enterprise value for Axiom of $37.5 billion • Flex intends to separate Axiom into an independent, publicly traded company in the first quarter of calendar 2027 AUSTIN, Texas, October 5, 2026 /PRNewswire/ — Flex (NASDAQ: FLEX) announced today that it has entered into an agreement to sell $2.0 billion of shares of Series A Convertible Preferred Stock of Axiom Solutions International, Inc. (Axiom), Flex’s Cloud and Power Infrastructure segment, to funds affiliated with General Catalyst, Koch Equity Development, and co-investors. Through this strategic investment, Axiom will be positioned to further capitalize on the growing AI infrastructure demand as it prepares to operate as an independent company. Pro-forma for the separation, the investment will be solely in Axiom. “This investment provides equity funding for our recently announced acquisition of EPC Power and will allow Axiom to have a strong balance sheet as we prepare to stand up as an independent, publicly traded company squarely focused on the power, thermal, and compute infrastructure the AI era demands,” said Revathi Advaithi, Chief Executive Officer of Flex and expected Chief Executive Officer of Axiom. “General Catalyst brings deep conviction in applied AI and a long track record partnering with companies building category-defining leaders, and we’re glad to have them partner with us as Axiom enters its next chapter. We believe this transaction reflects the value we see in Axiom’s business today and will translate into lasting value for Flex shareholders as the separation comes together.” “Axiom sits at the center of the power and infrastructure buildout that AI demands, and we’ve been impressed by the team’s execution and the scale of the opportunity ahead,” said Hemant Taneja, Chief Executive Officer, General Catalyst. “We look forward to partnering with Axiom for the long term as it becomes an independent company and continues to invest in the technology and capacity this next phase of growth requires.” “AI diffusion requires modern power solutions at "
+  },
+  {
+   "id": "I9",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000110465926113282/tm2626870d1_8k.htm",
+   "published": "2026-10-02T16:10:24-04:00",
+   "form": "8-K",
+   "items": "1.01,2.03,9.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. On September 29, 2026 (the “Closing Date”), Flex Ltd. (the “Company” or “Flex”) entered into a Credit Agreement (the “Credit Agreement”), by and among the Company, as borrower, the lenders party thereto, and Citibank, N.A., as administrative agent, which provides a senior term loan credit facility (the “Credit Facility”) in an aggregate committed amount of $3.3 billion. The Credit Facility was not drawn on the Closing Date. Subject to the satisfaction of the conditions set forth in the Credit Agreement, the Company may borrow under the Credit Facility in a single advance during the availability period provided therein. The Credit Facility will mature 364 days after the date on which it is funded. Loans under the Credit Agreement bear interest at a floating rate, which can be, at the Company’s option, either (a) Term SOFR (as defined in the Credit Agreement) plus an applicable margin or (b) the Base Rate (as defined in the Credit Agreement) plus an applicable margin, in each case, with such margin determined based on the Company’s senior unsecured long-term debt ratings. The Credit Agreement contains various customary covenants, including, but not limited to, restrictions on the ability of the Company and its subsidiaries’ to incur indebtedness, grant liens, dispose of material assets, merge or consolidate with or into other companies, materially change the nature of their business, and make certain accounting changes, in each case, subject to various exceptions. The Credit Agreement requires the maintenance of (i) a Debt/EBITDA Ratio (as defined in the Credit Agreement) not to exceed 4.50 to 1.00 as of the last day of any fiscal quarter of the Company and (ii) an Interest Coverage Ratio (as defined in the Credit Agreement) of not less than 3.00 to 1.00 as of the last day of any fiscal quarter of the Company. The Credit Agreement also includes various customary events of default. Upon an event of default, commitments under the Credit Agreement may be terminated and outstanding borrowings may be accelerated. Proceeds of the Credit Facility, together with cash on hand and proceeds of certain other debt or equity issuances or borrowings, are intended to be used to finance a portion of the cash consideration payable in connection with the Company’s acquisition of EPC Power Corp. and related assets, as previously disclosed in the Company’s Current Report on Form 8-K filed on September 4, 2026, to pay related "
+  },
+  {
+   "id": "I10",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000086637426000036/flex-20260911.htm",
+   "published": "2026-09-15T06:10:33-04:00",
+   "form": "8-K",
+   "items": "5.02,8.01,9.01",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On September 11, 2026, the Board of Directors (the “Board”) of Flex Ltd. (the “Company” or “Flex”) appointed each of George R. Oliver and Mark Eubanks as a member of the Board, effective September 24, 2026. Each will join the Board as an independent director. There is no arrangement or understanding between either Mr. Oliver or Mr. Eubanks and any other person pursuant to which such person was appointed as a director. Furthermore, neither Mr. Oliver nor Mr. Eubanks has any related-party transactions reportable under Item 404(a) of Regulation S-K and there are no financial, organizational, or familial affiliations between each of Messrs. Oliver and Eubanks and the Company. Pursuant to the Company’s non-management directors’ compensation programs, Messrs. Oliver and Eubanks will be entitled to receive: (i) annual cash compensation of $90,000, payable quarterly in arrears, for services rendered as a director; (ii) a pro-rated share of the annual restricted stock unit award received by our non-management directors following the last annual general meeting; and (iii) an annual restricted stock unit award following each annual general meeting of shareholders having an aggregate fair market value of $235,000. The foregoing description of the Company’s non-management directors’ compensation program is qualified by reference to the description included in the definitive proxy statement for the Company’s 2026 Annual General Meeting, which was filed with the Securities and Exchange Commission (the “SEC”) on June 24, 2026. The Company’s Constitution provides that, subject to the Singapore Companies Act, every director shall be entitled to be indemnified by the Company against all costs, charges, losses, expenses and liabilities incurred by such person in the execution and discharge of such person’s duties or in relation thereto. Our directors are covered by indemnification agreements with the Company and a wholly-owned subsidiary which provide for indemnification to the maximum extent permitted by applicable law. The Company has also obtained a policy of directors’ and officers’ liability insurance that will insure directors against the costs of defense, settlements and judgments in connection with proceedings in which our directors are involved by reason of having served as directors or agents of the Company. On ",
+   "exhibit_99_1": "EX-99.1 2 axflexx91526_flexxspincoxb.htm EX-99.1 Document EXHIBIT 99.1 PRESS RELEASE Flex Announces Expected Flex CFO and Board Composition for Flex and Axiom Following Separation News summary • Amy B. Schwetz will join Flex as CFO of its RMS and ITS segments and is expected to serve as Flex CFO following the separation • Post-separation board composition announced, including four new directors: George R. Oliver and Brian Yoor to Flex, and Mark Eubanks and David Johnson to Axiom AUSTIN, Texas – September 15, 2026/PRNewswire/ -- Flex (Nasdaq: FLEX) today announced that Amy B. Schwetz will join the company as Chief Financial Officer (CFO) of its Regulated Manufacturing Services (RMS) and Integrated Technology Services (ITS) segments on October 5, 2026, and is expected to serve as Flex CFO following completion of the planned separation of its Cloud and Power Infrastructure segment. Flex also announced the expected post-separation composition of the Boards of Directors of Flex and Axiom Solutions International, Inc. (Axiom), including four new director appointments. As announced separately today, Axiom will be the name of the future independent company. Schwetz brings more than 25 years of finance and accounting experience. She most recently served as CFO of Flowserve and previously served as CFO of Peabody Energy, where she held finance roles of increasing responsibility over 14 years. She began her career at Ernst & Young and brings extensive public company financial leadership and industrial experience to Flex. The Flex Board will bring extensive global manufacturing, technology, financial and public company leadership experience to support the company’s next chapter. The Axiom Board will combine deep electrical industry, technology, global operating and financial expertise to support Axiom’s growth as an independent company. Expected Flex Board Following the Separation • Revathi Advaithi, CEO of Flex; expected CEO of Axiom (Chair) • Michael Hartung, CCO of Flex; expected CEO of Flex • John D. Harris II, former CEO of Raytheon International, Inc. • Erin L. McSweeney, Chief People Officer of UnitedHealth Group • Lay Koon Tan, former CEO of STATS ChipPAC • Patrick J. Ward, former CFO of Cummins • George R. Oliver, former Chair and CEO of Johnson Controls • Brian Yoor, former CFO of Abbott Laboratories Prior to the separation, Flex plans to appoint a Lead Independent Director of the Flex Board, effective upon the separation. Expected Axiom Board Following the "
+  },
+  {
+   "id": "I11",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/866374/000119312526382492/d108491d8k.htm",
+   "published": "2026-09-03T21:40:45-04:00",
+   "form": "8-K",
+   "items": "1.01,8.01,9.01",
+   "text": "Item 1.01. Entry into a Material Definitive Agreement Purchase Agreement On September 3, 2026, Flex Ltd., a company organized under the laws of Singapore (the “Company” or “Flex”), ACS Acquisitions, Inc., a Delaware corporation and wholly owned subsidiary of the Company (the “Purchaser”), EPC Power Corp., a Delaware corporation (the “EPC Power”), and Charge Parent, LLC, a Delaware limited liability company (the “Seller”), entered into a Stock Purchase Agreement (the “Purchase Agreement”), pursuant to which the Purchaser will acquire all of the equity interests (the “Shares”) of EPC Power from the Seller (such transaction, the “Transaction”). EPC Power is expected to become part of the Company’s Cloud and Power Infrastructure business, which, as previously announced, the Company plans to separate into an independent publicly traded company (“SpinCo”) in the first quarter of 2027 (the “Spin-Off”). The Company is a party to the Purchase Agreement solely for purposes of guaranteeing the due and punctual performance of the Purchaser’s obligations thereunder. Purchaser has agreed to acquire the Shares for aggregate cash consideration of $4.4 billion, payable at the closing of the Transaction (the “Closing”), subject to customary adjustments as set forth in the Purchase Agreement (the “Consideration”). The Purchase Agreement contains a “locked box” mechanism in which the enterprise value of EPC Power has been fixed as of June 30, 2026 (the “Locked Box Date”). EPC Power and the Seller have agreed to customary protections against leakage of value from EPC Power between the Locked Box Date and the date of the Closing, subject to customary exceptions for permitted leakage. The Purchase Agreement contains customary representations, warranties and covenants by the parties. The Transaction is expected to close in the fourth quarter of 2026, subject to the satisfaction or waiver of certain customary closing conditions, including, among other things, the expiration or termination of the applicable waiting period (and any extension thereof) under the Hart-Scott-Rodino Antitrust Improvements Act of 1976, as amended. The Purchase Agreement also includes customary termination provisions, including, among others, the ability of Purchaser or the Seller to terminate the Purchase Agreement if the Transaction has not been consummated on or before December 31, 2026, subject to two automatic three-month extensions under certain circumstances. The Purchase Agreement is not intended t",
+   "exhibit_99_1": "EX-99.1 3 d108491dex991.htm EX-99.1 EX-99.1 Exhibit 99.1 Flex to Acquire EPC Power, Adding Leading Power Conversion Capabilities for AI Data Centers and Grid Applications Transaction Highlights: • Adds leading power conversion capabilities, including differentiated grid-forming technology, for data center and utility applications. • Expands Flex’s Cloud and Power Infrastructure business to capitalize on growing AI infrastructure demand and the shift to next generation 800V data center power architectures. • Expected to enhance the growth and EBITDA margin profile of Flex’s Cloud and Power Infrastructure segment. AUSTIN, Texas, September 3, 2026 /PRNewswire/ — Flex (NASDAQ: FLEX) today announced that it has entered into a definitive agreement to acquire EPC Power at a value of $4.4 billion, subject to customary adjustments. The transaction is expected to close in the fourth quarter of calendar 2026, at which time EPC Power is expected to become part of Flex’s Cloud and Power Infrastructure (CPI) segment. Flex plans to separate CPI into an independent publicly traded company in the first calendar quarter of 2027. Founded in 2010 and headquartered in California, EPC Power is a leading provider of intelligent power conversion solutions for data center and grid applications, combining internally developed hardware, software and controls with U.S.-based engineering and manufacturing. The platform is engineered for next-generation 800V data center power architectures, which enables more efficient power delivery for higher-density AI infrastructure, with capabilities across rectifiers, DC-DC conversion and planned development of solid-state transformers. EPC Power has more than 15 GW deployed across 62 countries and annual U.S. manufacturing capacity will surpass 30 GW in 2027. Combined with Flex’s existing power, cooling and compute portfolio, EPC Power’s differentiated power conversion capabilities broaden Flex’s offering across data center and electrical infrastructure, accelerating its position for the transition to next generation 800V data center power architectures as AI workloads drive higher power densities. EPC’s technology will sit at the center of next-generation data center power systems, providing grid stabilization, backup power and clean 800V to drive modern GPUs. “A generational shift in power architecture is underway, driven by rising power density and the changing demands of digital infrastructure,” said Revathi Advaithi, Chief Executive Officer"
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/flex-report-q2-earnings-whats-114900795.html?.tsrc=rss",
+   "published": "2026-10-26T07:49:00-04:00",
+   "text": "Flex to Report Q2 Earnings: What's in the Cards for the Stock? - FLEX is set to report fiscal Q2 results, with AI infrastructure demand and CPI growth driving optimism despite margin pressures and rising investment costs.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/flex-bulls-got-111133901.html?.tsrc=rss",
+   "published": "2026-10-24T07:11:33-04:00",
+   "text": "What Flex Bulls Got Right - If you had focused only on headlines about Flex joining the S&P 500 or spinning off its cloud and power unit, it might be easy to forget what actually showed up in your brokerage account. Holding Flex from the start of the year would have returned 20.2%, including dividends. If that outcome depended",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/cls/articles/620180/is-celestica-stock-safer-or-riskier-than-a-year-ago/2026-10-23?.tsrc=rss",
+   "published": "2026-10-23T16:51:44-04:00",
+   "text": "Is Celestica Stock Safer Or Riskier Than A Year Ago? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8346730/flex-earnings-preview-what-to-expect?.tsrc=rss",
+   "published": "2026-10-22T21:27:52-04:00",
+   "text": "Flex Earnings Preview: What to Expect - Flex is scheduled to announce its second-quarter results next week, with analysts anticipating a double-digit earnings increase.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/epc-power-acquisition-boost-flexs-130400223.html?.tsrc=rss",
+   "published": "2026-10-20T09:04:00-04:00",
+   "text": "Can EPC Power Acquisition Boost Flex's AI Infrastructure Growth? - FLEX's buyout of EPC Power strengthens its AI data center infrastructure portfolio, boosting power capabilities ahead of the planned CPI separation in 2027.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-retail-131411642.html?.tsrc=rss",
+   "published": "2026-10-16T09:14:11-04:00",
+   "text": "3 AI Infrastructure Stocks Retail Investors Are Watching As Rate Signals Shift - AI headlines are colliding with shifting interest rate signals and choppy oil markets, and that mix is quietly reshaping where money flows next. Larger technology groups tied to artificial intelligence and automation could see their plans for borrowing, partnerships and product rollout change as con",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/q3-earnings-season-scorecard-analyst-174100847.html?.tsrc=rss",
+   "published": "2026-10-15T13:41:00-04:00",
+   "text": "Q3 Earnings Season Scorecard and Analyst Reports for NVIDIA, Philip Morris & Home Depot - NVIDIA, Philip Morris and Home Depot headline today's top stock reports, in addition to a real-time update on the Q3 earnings season. Today's note discusses how AI demand, smoke-free growth and retail investments are shaping the outlook and risks for these stocks.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cogent-flex-mirion-netapp-viasat-200407412.html?.tsrc=rss",
+   "published": "2026-10-14T16:04:07-04:00",
+   "text": "Cogent, Flex, Mirion, NetApp, and Viasat Shares Plummet, What You Need To Know - A number of stocks fell in the afternoon session after a broad pickup in energy expenses lifted September inflation to 3.7%, surpassing expectations and driving bond yields higher.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/top-midday-decliners-180859923.html?.tsrc=rss",
+   "published": "2026-10-14T14:08:59-04:00",
+   "text": "Top Midday Decliners - Skydance (SKYD)-owned CNN, Versant Media's MS NOW and Politico secured a court order blocking Presid",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/stocks-making-big-moves-yesterday-172407906.html?.tsrc=rss",
+   "published": "2026-10-14T13:24:07-04:00",
+   "text": "Stocks making big moves yesterday: Bumble, Kontoor Brands, UnitedHealth, SentinelOne, and Flex - Check out the companies making headlines yesterday:",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/flex-completes-acquisition-epc-power-120000018.html?.tsrc=rss",
+   "published": "2026-10-14T08:00:00-04:00",
+   "text": "Flex Completes Acquisition of EPC Power, Expanding Power Conversion Capabilities for AI Data Centers and Grid Applications - Flex (NASDAQ: FLEX) today announced that it has completed its acquisition of EPC Power, a leading provider of intelligent power conversion solutions for data center and grid applications.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/why-flex-flex-shares-getting-185104884.html?.tsrc=rss",
+   "published": "2026-10-13T14:51:04-04:00",
+   "text": "Why Flex (FLEX) Shares Are Getting Obliterated Today - Shares of global manufacturing solutions provider Flex (NASDAQ:FLEX) fell 6.9% in the afternoon session after investors focused on financial risks tied to the planned spin-off of its Cloud and Power Infrastructure unit into Axiom Solutions International. According to TipRanks, the decline is centere",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://www.marketbeat.com/articles/flexs-ai-infrastructure-spin-off-could-unlock-hidden-value/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "published": "2026-10-13T10:30:00-04:00",
+   "text": "Flex's AI Infrastructure Spin-Off Could Unlock Hidden Value - Flex launches modular Axiom AI data center racks ahead of its planned 2027 Axiom Solutions International spin-off, a move designed to separate high-margin AI infrastructure from its legacy manufacturing business.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/jabils-next-generation-automotive-portfolio-153200878.html?.tsrc=rss",
+   "published": "2026-10-12T11:32:00-04:00",
+   "text": "Can Jabil's Next-Generation Automotive Portfolio Drive Future Growth? - JBL is expanding its automotive footprint with EV electrification, ADAS, connectivity and high-performance computing solutions to support next-generation vehicle technologies.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618330/how-much-have-buybacks-lifted-sanminas-earnings-per-share/2026-10-12?.tsrc=rss",
+   "published": "2026-10-12T11:26:13-04:00",
+   "text": "How Much Have Buybacks Lifted Sanmina’s Earnings Per Share? - Shares of Sanmina (SANM) have returned 68% over the past twelve months, easily outpacing the 17.0% return of the S&P 500. Share repurchases may be part of the case for owning the electronics manufacturer, given that the company operates with about 7% fewer shares than it had three years ago. Yet San",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://investorshub.advfn.com/market-news/article/37904/flex-expands-modular-ai-data-centre-portfolio-ahead-of-planned-axiom-spinoff-in-2027?.tsrc=rss",
+   "published": "2026-10-12T10:16:42-04:00",
+   "text": "Flex Expands Modular AI Data Centre Portfolio Ahead of Planned Axiom Spinoff in 2027 - Flex (NASDAQ:FLEX) has introduced an expanded range of prefabricated modular data centre solutions designed to accelerate the deployment of artificial intelligence infrastructure, as the company prepares to separate its Cloud and Power Infrastructure business into an independent publicly traded enti",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I28",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/flex-expands-prefabricated-modular-data-130500089.html?.tsrc=rss",
+   "published": "2026-10-12T09:05:00-04:00",
+   "text": "Flex Expands Prefabricated Modular Data Center Portfolio to Accelerate AI Factory Deployment - Flex (NASDAQ: FLEX) today announced an expanded portfolio of prefabricated modular data center solutions designed to accelerate deployment of next-generation AI factories. The portfolio includes new AI Modules that integrate power, high-density compute and advanced liquid cooling into pre-engineered",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I29",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/usitc-institutes-investigation-vertical-power-120000759.html?.tsrc=rss",
+   "published": "2026-10-12T08:00:00-04:00",
+   "text": "USITC Institutes Investigation of Vertical Power Delivery (VPD) Modules and Computing Systems Infringing a Vicor Patent - ANDOVER, Mass., Oct. 12, 2026 (GLOBE NEWSWIRE) -- On October 9, 2026, the U.S. International Trade Commission (USITC) voted to institute an investigation of Vertical Power Delivery (VPD) systems and computing systems containing the same as described in the USITC’s notice of investigation: https://ww",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I30",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-flex-flex-151333340.html?.tsrc=rss",
+   "published": "2026-10-10T11:13:33-04:00",
+   "text": "How Investors May Respond To Flex (FLEX) Securing New US$3.3 Billion Short-Term Loan For EPC Power Deal - On September 29, 2026, Flex Ltd. entered into a new senior term loan credit facility of up to US$3.30 billion, maturing 364 days after funding, primarily to support its previously announced acquisition of EPC Power Corp. and related costs. This short-dated, ratings-linked facility, which automatical",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  },
+  {
+   "id": "I31",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/flex-flex-moved-higher-behind-131326564.html?.tsrc=rss",
+   "published": "2026-10-10T09:13:26-04:00",
+   "text": "Flex (FLEX) Moved Higher, What Is Behind The Fresh Attention? - Flex (NasdaqGS:FLEX) has secured a new undrawn US$3.3b senior term loan facility with Citibank and other lenders, tied to its planned EPC Power Corp acquisition and subject to rating-based covenants. Flex sits at a very different place in investors’ minds than it did a few years ago, with the latest",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:33-04:00",
+    "sha256": "49479c0dc1bcec79bd18f3b3c509bf94741e67029b9afb11cee137cf2071b410"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 76431
+}

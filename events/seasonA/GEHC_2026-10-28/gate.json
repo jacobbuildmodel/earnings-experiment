@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "GEHC",
+ "report_date": "2026-10-28",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:18.684127-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/ge-healthcare-announce-third-quarter-2026-results-october-28-2026-2026-10-07",
+  "published_et": "2026-10-07T08:00-04:00",
+  "quote": "linkedin facebook x email reddit CHICAGO --(BUSINESS WIRE)-- GE HealthCare (Nasdaq: GEHC) will announce its third quarter 2026 financial results before the market opens on Wednesday, October 28, 2026 .",
+  "title": "GE HealthCare to announce third quarter 2026 results on October 28, 2026",
+  "retrieved_et": "2026-10-08T22:53:57.773535-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 71.83499908447266,
+  "expiry": "2026-10-30",
+  "strike": 72.0,
+  "call": {
+   "bid": 1.95,
+   "ask": 2.2,
+   "openInterest": 2067.0,
+   "lastPrice": 1.94,
+   "impliedVolatility": 0.6425816992187501,
+   "lastTradeDate": "2026-10-26T18:04:36+00:00"
+  },
+  "put": {
+   "bid": 2.35,
+   "ask": 2.7,
+   "openInterest": 3.0,
+   "lastPrice": 4.15,
+   "impliedVolatility": 0.727541787109375,
+   "lastTradeDate": "2026-10-21T17:05:22+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.06403563804031988,
+  "rel_spread": {
+   "call": 0.12048192771084347,
+   "put": 0.13861386138613863
+  },
+  "oi_atm": 2070.0,
+  "oi_sum": 2302.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
