@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "UCTT",
+ "report_date": "2026-10-27",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:43.768227-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.uct.com/investors/news/news-details/2026/Ultra-Clean-Announces-Q3-2026-Earnings-Date-and-Conference-Call/default.aspx",
+  "published_et": "2026-10-05T08:30-04:00",
+  "quote": "erence Call Skip to main content News Details View all news Ultra Clean Announces Q3 2026 Earnings Date and Conference Call 10/05/2026 Download (opens in new window) HAYWARD, Calif. , Oct. 5, 2026 /PRNewswire/ -- Ultra Clean Holdings, Inc. (Nasdaq: UCTT), today announced the Company will release its third quarter 2026 financial results on Tuesday, October 27th, after market close and will host a conference call and webcast the same day.",
+  "title": "Ultra Clean Announces Q3 2026 Earnings Date and Conference Call",
+  "retrieved_et": "2026-10-08T22:51:52.640424-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://www.uct.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-27T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-27T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 47.150001525878906,
+  "expiry": "2026-11-20",
+  "strike": 45.0,
+  "call": {
+   "bid": 6.2,
+   "ask": 6.8,
+   "openInterest": 90.0,
+   "lastPrice": 5.5,
+   "impliedVolatility": 1.0957076464843751,
+   "lastTradeDate": "2026-10-23T17:09:11+00:00"
+  },
+  "put": {
+   "bid": 3.7,
+   "ask": 4.0,
+   "openInterest": 58.0,
+   "lastPrice": 3.91,
+   "impliedVolatility": 0.9916993017578125,
+   "lastTradeDate": "2026-10-26T17:11:57+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 17,
+  "implied_move": 0.2195121880180484,
+  "rel_spread": {
+   "call": 0.09230769230769226,
+   "put": 0.07792207792207788
+  },
+  "oi_atm": 148.0,
+  "oi_sum": 148.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "thin_oi"
+}
