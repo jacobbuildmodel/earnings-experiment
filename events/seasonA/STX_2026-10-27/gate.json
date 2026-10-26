@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "STX",
+ "report_date": "2026-10-27",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:34.291042-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.seagate.com/news/news-details/2026/Seagate-Technology-to-Report-Fiscal-First-Quarter-2027-Financial-Results-on-October-27-2026/default.aspx",
+  "published_et": "2026-10-13T16:05-04:00",
+  "quote": "rch View All News Seagate Technology to Report Fiscal First Quarter 2027 Financial Results on October 27, 2026 October 13, 2026 SINGAPORE--(BUSINESS WIRE)-- Seagate Technology Holdings plc (NASDAQ: STX), a leading innovator of mass-capacity data storage, will report fiscal first quarter 2027 financial results after the US market closes on Tuesday, October 27, 2026.",
+  "title": "Seagate Technology to Report Fiscal First Quarter 2027 Financial Results on October 27, 2026",
+  "retrieved_et": "2026-10-19T09:38:40.702586-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.seagate.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-27T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-27T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 659.8275146484375,
+  "expiry": "2026-10-30",
+  "strike": 660.0,
+  "call": {
+   "bid": 29.8,
+   "ask": 35.0,
+   "openInterest": 405.0,
+   "lastPrice": 34.89,
+   "impliedVolatility": 1.054936365966797,
+   "lastTradeDate": "2026-10-26T17:25:14+00:00"
+  },
+  "put": {
+   "bid": 25.8,
+   "ask": 32.7,
+   "openInterest": 209.0,
+   "lastPrice": 33.33,
+   "impliedVolatility": 0.9469609796142577,
+   "lastTradeDate": "2026-10-26T16:15:56+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.09343350895703056,
+  "rel_spread": {
+   "call": 0.16049382716049382,
+   "put": 0.23589743589743598
+  },
+  "oi_atm": 614.0,
+  "oi_sum": 2109.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

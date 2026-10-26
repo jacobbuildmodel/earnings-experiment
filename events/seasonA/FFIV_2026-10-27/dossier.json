@@ -1,0 +1,641 @@
+{
+ "event": "FFIV_2026-10-27",
+ "season": "seasonA",
+ "built_et": "2026-10-26T14:31:24-04:00",
+ "cutoff_et": "2026-10-26T14:31:11.464433-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/FFIV_2026-10-27/gate.json",
+   "published": "2026-10-26T14:31:11.464433-04:00",
+   "data": {
+    "ticker": "FFIV",
+    "report_date": "2026-10-27",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-27"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-28"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-04"
+     },
+     "reaction_day": "2026-10-28"
+    },
+    "snapshot_session": "2026-10-26",
+    "captured_et": "2026-10-26T14:31:11.464433-04:00",
+    "options": {
+     "spot": 463.6600036621094,
+     "expiry": "2026-11-20",
+     "strike": 460.0,
+     "call": {
+      "bid": 27.7,
+      "ask": 30.2,
+      "openInterest": 106.0,
+      "lastPrice": 25.9,
+      "impliedVolatility": 0.5511824667358399,
+      "lastTradeDate": "2026-10-23T19:12:57+00:00"
+     },
+     "put": {
+      "bid": 24.1,
+      "ask": 26.0,
+      "openInterest": 240.0,
+      "lastPrice": 31.4,
+      "impliedVolatility": 0.5463302203369143,
+      "lastTradeDate": "2026-10-23T16:05:28+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 17,
+     "implied_move": 0.11646464990185419,
+     "rel_spread": {
+      "call": 0.08635578583765112,
+      "put": 0.07584830339321351
+     },
+     "oi_atm": 346.0,
+     "oi_sum": 759.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/FFIV_2026-10-27/factors.json",
+   "published": "2026-10-26T14:31:11.464433-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.536010157563964,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.04649484543183413,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.028527098973761822,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.03935793173769264,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.34287581372800635,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.6470444748833728,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.033699400543240055,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-27",
+       "session": "AMC",
+       "raw_return_A": -0.012061177797956124,
+       "eps_est": 4.0,
+       "eps_rep": 4.73,
+       "surprise_pct": 18.25,
+       "reaction_volume_ratio": 2.8905247397690004
+      },
+      {
+       "date": "2026-04-28",
+       "session": "AMC",
+       "raw_return_A": 0.048214571603406586,
+       "eps_est": 3.46,
+       "eps_rep": 3.9,
+       "surprise_pct": 12.86,
+       "reaction_volume_ratio": 2.54042803010087
+      },
+      {
+       "date": "2026-01-27",
+       "session": "AMC",
+       "raw_return_A": 0.111649084660143,
+       "eps_est": 3.65,
+       "eps_rep": 4.45,
+       "surprise_pct": 21.86,
+       "reaction_volume_ratio": 2.798419203177168
+      },
+      {
+       "date": "2025-10-27",
+       "session": "AMC",
+       "raw_return_A": -0.13586956248589588,
+       "eps_est": 3.97,
+       "eps_rep": 4.39,
+       "surprise_pct": 10.62,
+       "reaction_volume_ratio": 3.3668412336610793
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.8990533016770295,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 18.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 4.25523,
+      "7daysAgo": 4.25523,
+      "30daysAgo": 4.25523,
+      "60daysAgo": 4.25523,
+      "90daysAgo": 4.14198,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.027341995857053835,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 4.25523,
+      "low": 4.2,
+      "high": 4.47,
+      "yearAgoEps": 4.39,
+      "numberOfAnalysts": 12,
+      "growth": -0.0307,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.06345132930534884,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0295,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 25.64951,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 7.9338546,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.109,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 26255759360,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.53846,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.11646464990185419,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.004852246398925675,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.017181224670410056,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.3115942028985508,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.0144673388864534,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 1595.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.6004521799595055,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.08089256470006756,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 177,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.10854722759716551,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.24652949968615512,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.536010157563964,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.028527098973761822,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.03935793173769264,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.34287581372800635,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.7419703372422664,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 1.2933500103634898,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 26255759413.494934,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.12604213604650374,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.11892168689342068,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1048695/000104869526000063/ex991-q326earningsreleasef.htm",
+   "published": "2026-07-27T16:06:52-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 ex991-q326earningsreleasef.htm EX-99.1 Document Q3 FY26 Earnings Release Page 1 of 5 Contacts Investors Suzanne DuLong +1 (206) 272-7049 s.dulong@f5.com Media Rob Gruening +1 (206) 272-6208 r.gruening@f5.com F5 Reports Third Quarter Results with 19% Product Revenue Growth Driving 11% Total Revenue Growth Year Over Year SEATTLE, July 27, 2026 – F5, Inc. (NASDAQ: FFIV), the global leader in delivering and securing every app and API, today announced financial results for its third quarter fiscal year 2026 ended June 30, 2026. “Q3 was another outstanding quarter with 19% product revenue growth driving 11% total revenue growth year over year,” said François Locoh-Donou, F5’s Chairman, President, and CEO. “Eight consecutive quarters of double-digit product growth reflect the mission-critical role F5 plays at the application delivery and security layer of today’s hybrid multicloud and AI-driven enterprise infrastructure.” “The world runs on applications and the threats targeting them have never been more sophisticated. AI has empowered attackers and compressed the time between vulnerability discovery and exploitation. F5’s response is a continuous defense model built for this new reality. We are using AI to empower our customers to stay ahead of threats across every environment they operate in by identifying risk earlier, protecting applications at runtime, and delivering hardened software faster,” continued Locoh-Donou. Third Quarter Performance Summary Third quarter fiscal year 2026 revenue totaled $865 million, representing 11% growth compared with $780 million in the third quarter of fiscal year 2025. Systems revenue of $240 million grew 32% from the year-ago period while software revenue of $223 million grew 7%. Services revenue of $402 million grew 3% from the year-ago period. GAAP gross profit for the third quarter of fiscal year 2026 was $712 million, representing GAAP gross margin of 82.2%. This compares with GAAP gross profit of $632 million in the year-ago period, which represented GAAP gross margin of 81.0%. Non-GAAP gross profit for the third quarter of fiscal year 2026 was $728 million, representing non-GAAP gross margin of 84.2%. This compares with non-GAAP gross profit of $649 million in the year-ago period, which represented non-GAAP gross margin of 83.1%. GAAP income from operations for the third quarter of fiscal year 2026 was $213 million, representing GAAP operating margin of 24.7%. This compares with GAAP income from operations of $196 million in the year-ago period, which represented GAAP operating margin of 25.2%. Non- Q3 FY26 Earnings Release Page 2 of 5 GAAP income from operations for the period was $303 million, representing non-GAAP operating margin of 35.0%. This compares to non-GAAP income from operations of $267 million in the year-ago period, which represented non-GAAP operating margin of 34.3%. GAAP net income for the third quarter of fiscal year 2026 was $208 million, or $3.62 per diluted share compared to $190 million, or $3.25 per diluted share, in the third quarter of fiscal year 2025. Non-GAAP net income for the third quarter of fiscal year 2026 was $272 million, or $4.73 per diluted share, compared to $243 million, or $4.16 per diluted share, in the third quarter of fiscal year 2025. Performance Summary Tables GAAP Measures Non-GAAP Measures ($ in millions except EPS) Q3 FY2026 Q3 FY2025 ($ in millions except EPS) Q3 FY2026 Q3 FY2025 Revenue $865 $780 Revenue $865 $780 Gross profit $712 $632 Gross profit $728 $649 Gross margin 82.2% 81.0% Gross margin 84.2% 83.1% Income from operations $213 $196 Income from operations $303 $267 Operating margin 24.7% 25.2% Operating margin 35.0% 34.3% Net income $208 $190 Net income $272 $243 EPS $3.62 $3.25 EPS $4.73 $4.16 A reconciliation of GAAP to non-GAAP measures is included with the attached financial statements. Additional information about non-GAAP financial information is included in this release. Business Outlook F5 raised its outlook for its fiscal year 2026, guiding for revenue growth of approximately 9% to 10%, up from 7% to 8% previously. F5 expects non-GAAP earnings per share in a range of $17.21 to $17.33, up from $16.25 to $16.55 previously. For the fourth quarter of fiscal year 2026, F5 is guiding to revenue in the range of $870 million to $890 million, with non-GAAP earnings in the range of $4.14 to $4.26 per diluted share. All forward-looking non-GAAP measures included in the Company’s business outlook exclude estimates for amortization of intangible assets, share-based compensation expenses, significant effects of tax legislation and judicial or administrative interpretation of tax regulations (including the impact of income tax reform), non-recurring income tax adjustments, valuation allowance on deferred tax assets, and the income tax effect of non-GAAP exclusions, and do not include the impact of any future acquisitions or divestitures, acquisition-related charges and write-downs, cyber incident costs, insurance recoveries from cyber incident, restructuring charges, facility exit costs, or other non-recurring charges that may occur in the period. F5 is unable to provide a reconciliation of non-GAAP earnings guidance measures to corresponding U.S. generally accepted accounting principles or GAAP measures on a forward-looking basis without unreasonable effort due to the overall high variability and low visibility of most of the foregoing items that have been excluded. Material changes to any one of these items could have a significant effect on our guidance and future GAAP results. Certain exclusions, such as amortization of intangible assets and share-based compensation expenses, are generally incurred each quarter, but the amounts have historically varied and may continue to vary significantly from quarter to quarter. Q3 FY26 Earnings Release Page 3 of 5 Live Webcast and Conference Call F5 will host a live webcast to review its financial results and outlook today, July 27, 2026, at 4:30 pm ET. Open to the public, the live webcast, supplemental financial information, and earnings slides are accessible from the investor relations page of F5.com. To participate in the live call via telephone in the U.S., dial +1 (888) 596-4144; from outside the U.S. dial +1 (646) 968-2525, and reference conference ID 6076834. Please call at least five minutes prior to the call start time. The webcast replay will be archived on the investor relations portion of F5’s website. Forward Looking Statements This press release contains forward-looking statements including, among other things, that F5’s eight consecutive quarters of double-digit product growth reflect the mission-critical role F5 plays at the application delivery and security layer of today’s hybrid multicloud and AI-driven enterprise infrastructure, the world runs on applications and the threats targeting them have never been more sophisticated, AI has empowered attackers and compressed the time between vulnerability discovery and exploitation, F5’s response is a continues defense model built for this new reality, F5 is using AI to empower our customers to stay ahead of threats across every environment they operate in by identifying risk earlier, protecting applications at runtime, and delivering hardened software faster, the Company’s future financial performance including revenue growth, earnings growth, future customer demand, and the performance and benefits of the Company's products. These, and other statements that are not historical facts, are forward-looking statements. These forward-looking statements are subject to the safe harbor provisions created by the Private Securities Litigation Reform Act of 1995. Actual results could differ materially from those projected in the forward-looking statements as a result of certain risk factors. Such forward-looking statements involve risks and uncertainties, as well as assumptions and other factors that, if they do not fully materialize or prove correct, could cause the actual results, performance or achievements of the Company, or industry results, to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements. Such factors include, but are not limited to: customer acceptance of offerings; disruptions to the global supply chain resulting in inability to source required parts for F5’s products or the ability to only do so at greatly increased prices thereby impacting our revenues and/or margins; global economic conditions and uncertainties in the geopolitical environment; overall information technology spending; F5’s ability to successfully integrate acquired businesses’ products with F5 technologies; the ability of F5’s sales professionals and distribution partners to sell new solutions and service offerings; the timely development, introduction and acceptance of additional new products and features by F5 or its competitors; competitive factors, including but not limited to pricing pressures, industry consolidation, entry of new competitors into F5’s markets, and new product and marketing initiatives by our competitors; increased sales discounts; the business impact of the acquisitions and potential adverse reactions or changes to business or employee relationships, including those resulting from the announcement of completion of acquisitions; uncertain global economic conditions which may result in reduced customer demand for our products and services and changes in customer payment patterns; litigation involving patents, intellectual property, shareholder and other matters, and governmental investigations; potential security flaws in the Company’s networks, products or services; cybersecurity attacks on its networks, products or services; natural catastrophic events; a pandemic or epidemic; F5’s ability to sustain, develop and effectively utilize distribution relationships; F5’s ability to attract, train and retain qualified product development, marketing, sales, professional services and customer support personnel; F5’s ability to expand in international markets; the unpredictability of F5’s sales cycle; the ability of F5 to execute on its share repurchase program including the timing of any repurchases; future prices of F5’s common stock; and other risks and uncertainties described more fully in our documents filed with or furnished to the Securities and Exchange Commission, including our most recent reports on Form 10-K and Form 10-Q and current reports on Form 8-K and other documents that we may file or furnish from time to time, which could cause actual results to vary from expectations. The financial information contained in this release should be read in conjunction with the consolidated financial statements and notes thereto included in F5’s most recent reports on Forms 10-Q and 10-K as each may be amended from time to time. All forward-looking statements in this press release are based on information available as of the date hereof and Q3 FY26 Earnings Release Page 4 of 5 qualified in their entirety by this cautionary statement. F5 assumes no obligation to revise or update these forward-looking statements. GAAP to non-GAAP Reconciliation F5’s management evaluates and makes operating decisions using various operating measures. These measures are generally based on the revenues of its products, services operations, and certain costs of those operations, such as cost of revenues, research and development, sales and marketing and general and administrative expenses. One such measure is GAAP net income excluding, as applicable, stock-based compensation, amortization and impairment of purchased intangible assets, facility-exit costs, acquisition-related charges, cyber incident costs, insurance recoveries from cyber incident, restructuring charges, net of tax effects, as well as certain non-recurring tax expenses and benefits, which is a non-GAAP financial measure under Section 101 of Regulation G under the Securities Exchange Act of 1934, as amended. This measure of non-GAAP net income is adjusted by the amount of additional taxes or tax benefit that the Company would accrue if it used non-GAAP results instead of GAAP results to calculate the Company’s tax liability. The non-GAAP adjustments, and F5's basis for excluding them from non-GAAP financial measures, are outlined below: Stock-based compensation . Stock-based compensation consists of expense for stock options, restricted stock, and employee stock purchases through the Company’s Employee Stock Purchase Plan. Although stock-based compensation is an important aspect of the compensation of F5’s employees and executives, management believes it is useful to exclude stock-based compensation expenses to better understand the long-term performance of the Company’s core business and to facilitate comparison of the Company’s results to those of peer companies. Amortization and impairment of purchased intangible assets . Purchased intangible assets are amortized over their estimated useful lives and generally cannot be changed or influenced by management after the acquisition. On a non-recurring basis, when certain events or circumstances are present, management may also be required to write down the carrying value of its purchased intangible assets and recognize impairment charges. Management does not believe these charges accurately reflect the performance of the Company’s ongoing operations; therefore, they are not considered by management in making operating decisions. However, investors should note that the use of intangible assets contributed to F5’s revenues earned during the periods presented and will contribute to F5’s future period revenues as well. Facility-exit costs . F5 has incurred certain non-recurring right-of-use asset impairment charges, and other related recurring costs in connection with the exit of its leased facilities. These charges are not representative of the ongoing activity or costs to the b",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1048695/000104869526000067/ffiv-20260630.htm",
+   "published": "2026-08-06T14:39:25-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations The following discussion of our financial condition and results of operations contains forward-looking statements within the meaning of Section 21E of the Securities Exchange Act of 1934 and Section 27A of the Securities Act of 1933. These statements include, but are not limited to, statements about our plans, objectives, expectations, strategies, intentions or other characterizations of future events or circumstances, such as statements regarding our future operating results and financial position, our business strategy and plans, market growth and trends, our product strategy and anticipated future products and capabilities, our objectives for future operations, and the impact of such assumptions on our financial condition and results of operations, and are generally identified by the words \"expects,\" \"anticipates,\" \"intends,\" \"plans,\" \"believes,\" \"seeks,\" \"estimates,\" and similar expressions. These forward-looking statements are based on current information and expectations and are subject to a number of risks and uncertainties. Our actual results could differ materially from those expressed or implied by these forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, customer acceptance of offerings; disruptions to the global supply chain resulting in inability to source required parts for F5’s products or the ability to only do so at greatly increased prices thereby impacting our revenues and/or margins; global economic conditions and uncertainties in the geopolitical environment; overall information technology spending; F5’s ability to successfully integrate acquired businesses’ products with F5 technologies; the ability of F5’s sales professionals and distribution partners to sell new solutions and service offerings; the timely development, introduction and acceptance of additional new products and features by F5 or competitors; competitive factors, including but not limited to pricing pressures, industry consolidation, entry of new competitors into F5’s markets, and new product and marketing initiatives by our competitors; increased sales discounts; the business impact of the acquisitions and potential adverse reactions or changes to business or employee relationships, including those resulting from the announcement of completion of acquisitions; uncertain global economic conditions which may result in reduced customer demand for our products and services and changes in customer payment patterns; litigation involving patents, intellectual property, shareholder and other matters, and governmental investigations; potential security flaws in networks, products or services; cybersecurity attacks on networks, products or services; natural catastrophic events; a pandemic or epidemic; F5’s ability to sustain, develop and effectively utilize distribution relationships; F5’s ability to attract, train and retain qualified product development, marketing, sales, professional services and customer support personnel; F5’s ability to expand in international markets; the unpredictability of F5’s sales cycle; the ability of F5 to execute on our share repurchase program, including the timing of any repurchases; future prices of F5’s common stock; and other risks and uncertainties described more fully in Part II, Item 1A. \"Risk Factors\" herein, Part I, Item 1A, \"Risk Factors\" of our Annual Report on Form 10-K for the year ended September 30, 2025, and in other documents we file from time to time with the Securities and Exchange Commission. We assume no obligation to revise or update any such forward-looking statements. 22 Table of Contents Overview F5 is a global leader in application delivery and security solutions which enable its customers to deploy, operate, secure, optimize, and govern every application and API across on-premises architectures, in the cloud, and at the network edge. Our cloud, software, and hardware solutions enable our customers to deliver fast, available, and secure digital experiences to their customers at scale. Our enterprise-grade application services are available as hardware, software, and SaaS solutions optimized for hybrid, multicloud environments, with modules that can run independently, or as part of an integrated solution on our high-performance appliances. We market and sell our products primarily through multiple indirect sales channels in our Americas; Europe, the Middle East, and Africa (\"EMEA\"); and Asia Pacific (\"APAC\") regions. Enterprise customers (Fortune 1000 or Business Week Global 1000 companies) in the technology, financial services, transportation, education, manufacturing, and health care industries, along with government customers, and service providers continue to make up the largest percentage of our customer base. Our management team monitors and analyzes a number of key performance indicators in order to manage our business and evaluate our financial and operating performance on a consolidated basis. Those indicators include: • Revenues. Our revenue is derived from the sales of both products and services. The majority of our product revenues are derived from sales of our application delivery and security solutions including our F5 BIG-IP software and systems, F5 NGINX software, and our F5 Distributed Cloud Services offerings. Our F5 BIG-IP software solutions are sold both on a subscription and perpetual license basis. We sell F5 NGINX on a subscription basis as deployable software or SaaS. F5 Distributed Cloud Services are offered on a subscription basis, under a unified SaaS platform and managed service platform. Our services revenue includes annual maintenance contracts, training and consulting services. We monitor the sales mix of our revenues within each reporting period. We believe customer acceptance rates of our new products, feature enhancements, and consumption models are indicators of future trends. We also consider overall revenue concentration by geographic region as an additional indicator of current and future trends. • Cost of revenues and gross margins. Significant items impacting cost of revenues are hardware costs paid to our contract manufacturers, personnel costs, including the salaries, stock-based compensation and related benefits of our personnel, technology costs, including third-party cloud hosting and related services, depreciation of cloud infrastructure costs, software licenses expenses, and amortization expense in connection with developed technology from acquisitions. In addition, factors such as sales price, product and services mix, inventory obsolescence, returns, component price increases, warranty costs, and global supply chain constraints could significantly impact our gross margins. • Operating expenses. Operating expenses are substantially driven by personnel and related overhead expenses. Existing headcount and future hiring plans are the predominant factors in analyzing and forecasting future operating expense trends. Other significant operating expenses that we monitor include costs associated with cyber and enterprise-wide security, marketing and promotions, travel, professional fees, technology costs, including cloud hosting and software licenses expenses, related to the development of new products and provision of services, facilities and depreciation expenses. • Liquidity and cash flows. We continue to maintain a strong financial position, characterized by substantial cash and investment resources, which provide liquidity, support ongoing operations, and enable us to pursue strategic growth opportunities. The increase in cash and investments for the first nine months of fiscal year 2026 was primarily due to cash provided by operating activities of $841.4 million, partially offset by purchases of property and equipment of $63.7 million, cash used to repurchase outstanding common stock under our stock repurchase program, including excise taxes, of $501.1 million, and cash used in acquisition of a business of $47.6 million. Going forward, we believe the primary driver of cash flows will continue to be net income from operations. We will continue to evaluate possible acquisitions of, or investments in businesses, products, or technologies that we believe are strategic, which may require the use of cash. • Balance sheet. We view cash, short-term and long-term investments, deferred revenue, and accounts receivable balances as important indicators of our financial health. Deferred revenues increased to $2.2 billion as of June 30, 2026 from $2.0 billion as of September 30, 2025 primarily due to an increase in maintenance contracts related to strong systems shipments, in addition to an increase in deferred revenue associated with our subscription offerings. 23 Table of Contents Cyber Incident On October 15, 2025, we disclosed a security incident in which a threat actor maintained long-term, persistent access to F5 systems, and exfiltrated certain files, referred to as the \"Cyber Incident.\" For further information about the Cyber Incident, see \"Risk Factors\" included in Item 1A of Part I and \"Management’s Discussion and Analysis of Financial Condition and Results of Operations - Cyber Incident\" included in Item 7 of Part II of the Annual Report on Form 10-K for the fiscal year ended September 30, 2025. Critical Accounting Estimates The preparation of our financial condition and results of operations requires us to make judgments and estimates that may have a significant impact upon our financial results. We believe that, of our significant accounting policies, revenue recognition requires estimates and assumptions that require complex, subjective judgments by management, which can materially impact reported results. Actual results may differ from these estimates under different assumptions or conditions. There were no material changes to our critical accounting policies and estimates compared to the critical accounting policies and estimates described in \"Management's Discussion and Analysis of Financial Condition and Results of Operations\" in the Form 10-K for the fiscal year ended September 30, 2025. Recent Accounting Pronouncements The anticipated impact of recent accounting pronouncements is discussed in Note 1 to the accompanying Notes to Consolidated Financial Statements of this Quarterly Report on Form 10-Q. Impact of Macroeconomic Conditions Our overall performance depends in part on worldwide economic and geopolitical conditions and their impacts on customer behavior. Uncertain economic conditions, including inflation, tariffs and other duties, risks related to global supply chain shortages that may impact sourcing and pricing of components used within our products, including rising costs of memory and storage, higher interest rates, slower growth, fluctuations in foreign exchange rates, ongoing geopolitical conflicts, and other changes in economic conditions, may adversely affect our results of operations and financial performance. For further discussion of the potential impacts of recent macroeconomic events on our business, financial condition, and operating results, see Part I, Item 1A, \"Risk Factors\" of our Annual Report on Form 10-K for the fiscal year ended September 30, 2025. Results of Operations The following discussion and analysis should be read in conjunction with our consolidated financial statements, related notes and risk factors included elsewhere in this Quarterly Report on Form 10-Q. Three Months Ended June 30, Nine Months Ended June 30, 2026 2025 2026 2025 (in thousands, except percentages) Net revenues Products $ 462,829 $ 388,838 $ 1,283,627 $ 1,094,531 Services 402,248 391,532 1,215,615 1,183,451 Total $ 865,077 $ 780,370 $ 2,499,242 $ 2,277,982 Percentage of net revenues Products 53.5 % 49.8 % 51.4 % 48.0 % Services 46.5 50.2 48.6 52.0 Total 100.0 % 100.0 % 100.0 % 100.0 % Net Product Revenues. Net product ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/f5-ffiv-reports-q3-everything-092647386.html?.tsrc=rss",
+   "published": "2026-10-26T05:26:47-04:00",
+   "text": "F5 (FFIV) reports Q3: everything you need to know ahead of earnings - Application security provider F5 (NASDAQ:FFIV) will be announcing earnings results this Tuesday afternoon. Here’s what to expect.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/f5-report-q4-earnings-whats-125400114.html?.tsrc=rss",
+   "published": "2026-10-23T08:54:00-04:00",
+   "text": "F5 to Report Q4 Earnings: What's in the Cards for the Stock? - FFIV heads into its fiscal Q4 earnings report with demand for application security, cloud and AI solutions supporting growth.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619915/should-you-buy-the-dip-in-lumentum-stock/2026-10-22?.tsrc=rss",
+   "published": "2026-10-22T09:24:51-04:00",
+   "text": "Should You Buy The Dip In Lumentum Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/f5-telenor-partner-build-ai-040000756.html?.tsrc=rss",
+   "published": "2026-10-21T00:00:00-04:00",
+   "text": "F5 and Telenor Partner to Build the AI Service Plane for Sovereign AI on NVIDIA-powered AI Factory Infrastructure - SEATTLE, October 21, 2026--F5 (NASDAQ: FFIV), the global leader in delivering and securing every app and API, today announced that Telenor AI Factory has selected F5 BIG-IP Next for Kubernetes as an intelligent AI service plane for its NVIDIA-powered sovereign AI infrastructure. Telenor AI Factory i",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619159/why-did-lumentum-stock-fall/2026-10-19?.tsrc=rss",
+   "published": "2026-10-19T13:32:14-04:00",
+   "text": "Why Did Lumentum Stock Fall? - Shares of Lumentum (LITE) fell 25.3% in the five trading sessions from October 9 to October 16, 2026. The S&P 500 lost 1.9% over the same stretch. Although the company's chief executive stated on Friday, October 9, that AI demand had booked capacity through early 2029—lifting the shares 5.2% that se",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618829/how-risky-is-lumentum-stock/2026-10-15?.tsrc=rss",
+   "published": "2026-10-15T19:06:56-04:00",
+   "text": "How Risky Is Lumentum Stock? - Shares of Lumentum (LITE) fell 19.3% in the week to October 14. The retreat came despite upbeat comments from management earlier in the week, which had briefly sent the stock higher. Even with that drop, the stock remains up 458% over the past year, compared with a 17.3% gain for the S&P 500. Buyers",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/f5-ffiv-application-delivery-rails-122249629.html?.tsrc=rss",
+   "published": "2026-10-15T08:22:49-04:00",
+   "text": "How F5’s (FFIV) Application Delivery Rails Drive Multi-Year Growth - Reaves W H & Co Inc released its third-quarter 2026 investor letter for “Reaves Long-Term Value Strategy”. The letter can be downloaded here. The Reaves Long-Term Value Wrap Composite saw an 11.83% decline before fees in Q3, underperforming the MSCI USA Infrastructure Index’s -5.73%, though it gaine",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/vtex-ffiv-better-value-stock-144005851.html?.tsrc=rss",
+   "published": "2026-10-14T10:40:05-04:00",
+   "text": "VTEX or FFIV: Which Is the Better Value Stock Right Now? - VTEX vs. FFIV: Which Stock Is the Better Value Option?",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-ffiv-risky-1-150704059.html?.tsrc=rss",
+   "published": "2026-10-13T11:07:04-04:00",
+   "text": "3 Reasons FFIV is Risky and 1 Stock to Buy Instead - What a time it’s been for F5. In the past six months alone, the company’s stock price has increased by a massive 59.1%, reaching $474.15 per share. This was partly thanks to its solid quarterly results, and the performance may have investors wondering how to approach the situation.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618485/should-ffiv-stocks-new-high-stop-you-from-buying/2026-10-13?.tsrc=rss",
+   "published": "2026-10-13T10:42:14-04:00",
+   "text": "Should FFIV Stock's New High Stop You From Buying? - Investors are often warned to buy low and avoid purchasing at the top. F5 (FFIV) stock closed at a 52-week high of $479.83 on October 9, 2026. By traditional logic, this is the wrong time to buy. Rather than debate the current share price, historical trading data reveals what happened to investors w",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/618339/what-did-fastly-stock-investors-miss-before-the-run/2026-10-12?.tsrc=rss",
+   "published": "2026-10-12T18:20:09-04:00",
+   "text": "What Did Fastly Stock Investors Miss Before The Run? - Fastly (FSLY) stock returned 241.5% in the twelve months to October 9, 2026, easily outpacing the 17.0% gain for the S&P 500. Buyers appear to have been paying for a clear shift in the underlying business: sales began growing faster again, and losses shrank. Investors stepping in today are betting t",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/617928/what-is-the-true-hidden-price-of-lumentum-stock/2026-10-08?.tsrc=rss",
+   "published": "2026-10-08T20:24:34-04:00",
+   "text": "What Is The True Hidden Price Of Lumentum Stock? - Lumentum (LITE) stock currently trades at 150.5 times its adjusted earnings for the last twelve months, meaning normalized net income with stock-based pay added back. While that is a steep price for one year of profit, Lumentum's sales more than doubled from a year earlier in its latest quarter, shi",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/f5-report-fourth-quarter-fiscal-200500792.html?.tsrc=rss",
+   "published": "2026-10-08T16:05:00-04:00",
+   "text": "F5 to Report Fourth Quarter and Fiscal Year 2026 Financial Results - SEATTLE, October 08, 2026--F5, Inc. (NASDAQ: FFIV), the global leader in delivering and securing every app and API, announced it will report its fourth quarter and fiscal year 2026 financial results on Tuesday, October 27, 2026, following the market close. F5 will host a live webcast to discuss its ",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/2-cash-producing-stocks-exciting-082409662.html?.tsrc=rss",
+   "published": "2026-10-08T04:24:09-04:00",
+   "text": "2 Cash-Producing Stocks with Exciting Potential and 1 We Avoid - Generating cash is essential for any business, but not all cash-rich companies are great investments. Some produce plenty of cash but fail to allocate it effectively, leading to missed opportunities.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://investorshub.advfn.com/market-news/article/37639/f5-cloud-native-network-functions-target-kubernetes-efficiency-for-service-providers?.tsrc=rss",
+   "published": "2026-10-07T10:00:28-04:00",
+   "text": "F5 Cloud-Native Network Functions Target Kubernetes Efficiency for Service Providers - F5 says its enhanced BIG-IP Cloud-Native Edition brings critical networking and security services into Kubernetes, with independent testing showing lower infrastructure requirements for selected DNS and CGNAT workloads. Key Investor TakeawaysF5 (NASDAQ:FFIV) has expanded its cloud-native network fun",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/f5-helps-providers-modernize-critical-130000667.html?.tsrc=rss",
+   "published": "2026-10-07T09:00:00-04:00",
+   "text": "F5 Helps Service Providers Modernize Critical Network Services With Greater Infrastructure Efficiency and Control - SEATTLE, October 07, 2026--F5 (NASDAQ: FFIV), the global leader in delivering and securing every app and API, today announced enhanced cloud-native network functions and new observability capabilities that help service providers modernize critical network services as they move from virtualized infra",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/5000910/what-to-expect-from-f5-inc-s-q4-2026-earnings-report?.tsrc=rss",
+   "published": "2026-10-07T06:00:27-04:00",
+   "text": "What to Expect From F5, Inc.'s Q4 2026 Earnings Report - F5, Inc. is expected to announce its fourth-quarter earnings soon, and Wall Street expects the company’s EPS to decrease by a single-digit percentage.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/article/cybersecurity-stocks-hit-new-highs-as-ai-agents-spark-biggest-risk-today-chart-of-the-day-115446641.html?.tsrc=rss",
+   "published": "2026-10-06T07:54:46-04:00",
+   "text": "Cybersecurity stocks hit new highs as AI agents spark 'biggest risk today': Chart of the Day - Cybersecurity stocks are at all-time highs as agentic AI adoption spurs security spending.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/1-p-500-stock-watchlist-081634736.html?.tsrc=rss",
+   "published": "2026-10-06T04:16:34-04:00",
+   "text": "1 S&P 500 Stock on Our Watchlist and 2 We Avoid - The S&P 500 (^GSPC) is home to the biggest and most well-known companies in the market, making it a go-to index for investors seeking stability. But not all large-cap stocks are created equal - some are struggling with slowing growth, declining margins, or increased competition.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/net-stock-surges-65-6-140700554.html?.tsrc=rss",
+   "published": "2026-10-05T10:07:00-04:00",
+   "text": "NET Stock Surges 65% in 6 Months: Should You Hold or Book Profits? - Cloudflare's 64.8% surge in the past six months reflects strong AI security demand and large-customer growth, but margin pressure and premium valuation warrant caution.",
+   "feed": {
+    "fetched_et": "2026-10-26T14:31:24-04:00",
+    "sha256": "51b956f713719f4b30a8825e657e96870bd27cef22907f2277f9dc59ab4d097f"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 48924
+}
