@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/quantinuum-report-third-quarter-financial-results-november-5-2026-2026-10-22",
+  "published_et": "2026-10-22T16:05-04:00",
+  "quote": "linkedin facebook x email reddit BROOMFIELD, Colo. , Oct. 22, 2026 /PRNewswire/ -- Quantinuum Inc. (NASDAQ: QNT) (\"Quantinuum\") today announced it will release its financial results for the third quarter ended September 30, 2026 , on November 5, 2026 , after market close.",
+  "title": "Quantinuum to Report Third Quarter Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-26T09:41:54.870840-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
