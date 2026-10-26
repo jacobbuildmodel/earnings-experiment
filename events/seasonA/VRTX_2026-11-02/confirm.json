@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/vertex-announce-third-quarter-2026-financial-results-november-2nd-2026-10-07",
+  "published_et": "2026-10-07T16:00-04:00",
+  "quote": "linkedin facebook x email reddit BOSTON --(BUSINESS WIRE)-- Vertex Pharmaceuticals Incorporated (Nasdaq: VRTX) will report its third quarter 2026 financial results on Monday, November 2, 2026 , after the financial markets close.",
+  "title": "Vertex to Announce Third Quarter 2026 Financial Results November 2nd",
+  "retrieved_et": "2026-10-26T09:12:48.743300-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
