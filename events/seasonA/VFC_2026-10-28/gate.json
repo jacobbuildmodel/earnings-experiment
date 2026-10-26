@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "VFC",
+ "report_date": "2026-10-28",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:44.908452-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/vf-corporation-announces-second-quarter-fiscal-2027-earnings-and-conference-call-date",
+  "published_et": "2026-10-07T16:30-04:00",
+  "quote": "linkedin facebook x email reddit DENVER --(BUSINESS WIRE)-- VF Corporation (NYSE: VFC) plans to release its second quarter fiscal 2027 financial results on Wednesday, October 28 th, 2026 at approximately 6:00 a.m. ET .",
+  "title": "VF Corporation Announces Second Quarter Fiscal 2027 Earnings and Conference Call Date",
+  "retrieved_et": "2026-10-08T22:52:05.552789-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 16.780000686645508,
+  "expiry": "2026-10-30",
+  "strike": 17.0,
+  "call": {
+   "bid": 0.68,
+   "ask": 0.78,
+   "openInterest": 1139.0,
+   "lastPrice": 0.83,
+   "impliedVolatility": 1.0605515722656251,
+   "lastTradeDate": "2026-10-26T15:26:39+00:00"
+  },
+  "put": {
+   "bid": 0.91,
+   "ask": 1.03,
+   "openInterest": 106.0,
+   "lastPrice": 1.0,
+   "impliedVolatility": 1.0859420703125,
+   "lastTradeDate": "2026-10-26T17:13:35+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.10131108047885588,
+  "rel_spread": {
+   "call": 0.13698630136986298,
+   "put": 0.12371134020618557
+  },
+  "oi_atm": 1245.0,
+  "oi_sum": 1920.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
