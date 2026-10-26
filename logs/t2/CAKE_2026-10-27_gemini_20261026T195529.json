@@ -1,0 +1,30 @@
+{
+ "event": "CAKE_2026-10-27",
+ "backend": "gemini",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "860b51eb20f25a299585ed62baf360242b8dca4ecd25e1c316116eb4a9710be6",
+ "called_et": "2026-10-26T19:55:29-04:00",
+ "prompt_sha256": "ef0e4f19baf2a5734431fafbc861e69937f07e026cff7030d45a3fd81bd62368",
+ "probe_reply": "I don't know.",
+ "reply": "{\n  \"prior\": {\n    \"p\": 0.55,\n    \"from\": \"consumer cluster base rate of 0.555 (n=436)\"\n  },\n  \"confidence\": 0.60,\n  \"thesis\": \"High short interest combined with strong 90-day earnings revision momentum and positive call skew favors an upside reaction following the recent 5-day consolidation.\",\n  \"reasons\": [\n    \"Short interest stands at an unusually high 39.3% of float, setting up strong short-covering tailwinds on solid results.\",\n    \"EPS consensus has been consistently revised upward (+43.7% over 90 days from $0.66 to $0.95), reflecting strong fundamental execution.\",\n    \"Past three consecutive prints delivered positive overnight returns (average +4.1%), supported by positive call IV skew (+0.025) and a 6.7% 5-day pre-earnings pullback easing short-term froth.\"\n  ],\n  \"moved_from_prior\": \"Moved up from 0.55 to 0.60 (+0.05) due to the combination of extreme short interest (39%), strong EPS estimate upward momentum (+44%), and a healthy pre-earnings pullback.\",\n  \"deciding_variable\": \"Same-store sales comps and restaurant-level operating margin relative to consensus.\",\n  \"theses\": [\n    {\n      \"expected\": \"Comps beat driven by traffic and average check, operating margins hold above 7.6%\",\n      \"mechanism\": \"High short float sparks short covering and buyers step in following the recent pullback\",\n      \"wrong_if\": \"Traffic softens or labor and commodity inflation compresses unit margins below expectations\"\n    },\n    {\n      \"expected\": \"In-line earnings with constructive FY26 unit growth and margin outlook\",\n      \"mechanism\": \"Positive call skew and modest valuation (P/S ~1.4x) keep the post-earnings drift positive into next morning's open\",\n      \"wrong_if\": \"Management guides down Q4 consumer dining traffic amid macro headwinds\"\n    },\n    {\n      \"expected\": \"Guidance cut or margin squeeze triggers aggressive selling\",\n      \"mechanism\": \"Year-to-date doubling in stock price creates vulnerability to profit-taking despite short interest\",\n      \"wrong_if\": \"Short sellers rush to cover any shallow dip, preserving open gains\"\n    }\n  ],\n  \"key_observations\": [\n    \"Cheesecake Factory comparable restaurant sales growth vs. prior quarter's +5.8%\",\n    \"Operating margin performance against 7.6% baseline\",\n    \"Updates on FY26 development cadence across North Italia and Flower Child\",\n    \"Q4 guidance for restaurant-level margins and commodity inflation\"\n  ],\n  \"items_used\": [\n    \"I1\",\n    \"I2\",\n    \"I3\",\n    \"I4\",\n    \"I10\",\n    \"I11\"\n  ]\n}",
+ "error": null,
+ "usage": {
+  "promptTokenCount": 17697,
+  "candidatesTokenCount": 672,
+  "totalTokenCount": 19590,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 17697
+   }
+  ],
+  "thoughtsTokenCount": 1221,
+  "serviceTier": "standard"
+ },
+ "model": "gemini-3.8-flash",
+ "isolation": {
+  "tools": "none sent",
+  "grounding": "none sent"
+ },
+ "outcome": "decided"
+}
