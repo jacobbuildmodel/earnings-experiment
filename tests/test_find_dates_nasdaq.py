@@ -63,6 +63,23 @@ def test_unreadable_company_page_falls_back_to_the_nasdaq_copy(monkeypatch):
     assert res["host"] == "www.nasdaq.com" and "company rss" in res["fallback"]
 
 
+def test_financial_markets_wording_and_a_replay_window():
+    # 2026-10-26: IONQ's release (Business Wire, Oct 22) and ONC's (Oct 22), quoted from the pages
+    ionq = ("IonQ today announced that the company will release its financial results for the quarter ended "
+            "September 30, 2026, on Thursday, Nov. 5, 2026, after the financial markets close. A replay of the "
+            "conference call will be available approximately three hours after its conclusion at 1-855-669-9658 "
+            "(domestic) and will be available until 11:59 PM Eastern Time, November 19, 2026.")
+    onc = ("BeOne Medicines will report its third quarter 2026 financial results on Thursday, November 5, 2026, "
+           "before the financial markets open.")
+    pub = datetime.datetime(2026, 10, 22, 8, 0, tzinfo=ET)
+    assert [(s["date"], s["session"]) for s in fd.parse_page(ionq, WIN, pub)] == [("2026-11-05", "AMC")]
+    assert [(s["date"], s["session"]) for s in fd.parse_page(onc, WIN, pub)] == [("2026-11-05", "BMO")]
+    carg = ("CarGurus will report financial results after the market close on Thursday, November 5, 2026. An audio "
+            "replay of the call will also be available beginning at approximately 8:00 p.m. Eastern Time on "
+            "November 5, 2026, until 11:59 p.m. Eastern Time on November 19, 2026.")
+    assert [(s["date"], s["session"]) for s in fd.parse_page(carg, WIN, pub)] == [("2026-11-05", "AMC")]
+
+
 def test_readable_company_page_never_uses_the_fallback(monkeypatch):
     monkeypatch.setattr(fd, "feed_items", lambda t: (_items(False), "investors.dropbox.com"))
     monkeypatch.setattr(fd, "items_nasdaq", lambda t: (_ for _ in ()).throw(AssertionError("no fallback")))

@@ -53,11 +53,12 @@ DATE_RE = re.compile(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[
 # "U.S. ", "US " and the "U.S . " left by abbreviation handling (2026-10-19: STX "after the US market closes",
 # GDDY "after the U.S . stock market closes" read as no session)
 US = r"(u[.․]?s\s?[.․]?\s+)?"
-BMO_RE = re.compile(rf"before (the )?{US}(stock )?market(s)? open|prior to (the )?{US}(stock )?market(s)?"
+# "(stock |financial )": 2026-10-26, ONC "before the financial markets open", IONQ "after the financial markets close"
+BMO_RE = re.compile(rf"before (the )?{US}(stock |financial )?market(s)? open|prior to (the )?{US}(stock |financial )?market(s)?"
                     r" open|before the opening of|before the (start|beginning|open) of (the )?(regular )?trading|"
                     r"pre-market|premarket|before the bell|prior to the opening|before (the )?(nyse|nasdaq) open|"
                     r"before trading (begins|opens|starts)", re.I)  # TEL, 2026-10-19
-AMC_RE = re.compile(rf"after (the )?{US}(stock )?market(s)? (close|closes)|after (the )?close|following the close|"
+AMC_RE = re.compile(rf"after (the )?{US}(stock |financial )?market(s)? (close|closes)|after (the )?close|following the close|"
                     r"after the closing|after market hours|after (the )?(nyse|nasdaq)|after-market|after market close|"
                     r"after the bell|post-market|after the end of (the )?(regular )?trading", re.I)
 TIME_RE = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*(a[.․]?m[.․]?|p[.․]?m[.․]?)\s*\(?\s*"
@@ -246,6 +247,11 @@ def parse_page(text, window, published):
             before = s[max(0, m.start() - 40): m.start()].lower()
             if re.search(r"(ended|ending|end of|as of|through|until|replay|period)\W+(\w+\W+){0,2}$", before):
                 continue  # a quarter end, a replay window - not the report date
+            # 2026-10-26 (IONQ, CARG): "A replay ... will be available until 11:59 PM Eastern Time, November 19" has
+            # too many words between "until" and the date for the test above; replay wording earlier in the
+            # sentence marks a replay window (CARG: "replay ... beginning ... on November 5, until ... November 19")
+            if re.search(r"\breplay|\barchived?\b", s[:m.start()], re.I):
+                continue
             hedged = bool(re.search(r"on or about|tentative|subject to change|expected to be on|around\W*$", before + " "))
             session, from_call = None, False
             bmo, amc = BMO_RE.search(clause), AMC_RE.search(clause)
