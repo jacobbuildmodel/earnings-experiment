@@ -1,0 +1,2216 @@
+{
+ "rule": "registry/D016_gate_audit_v1.md",
+ "season": "seasonA",
+ "label": "decision",
+ "run_et": "2026-10-26T08:50:16.890275-04:00",
+ "reads_only": [
+  "gate.json",
+  "option_chain.json"
+ ],
+ "events_with_chain": 31,
+ "pre_chain": [],
+ "skipped_not_live": [],
+ "reproduced": 31,
+ "not_reproduced": [],
+ "cascade": {
+  "no_quote": {
+   "failing": 0,
+   "only_failing_check": 0
+  },
+  "low_implied_move": {
+   "failing": 0,
+   "only_failing_check": 0
+  },
+  "wide_spread": {
+   "failing": 22,
+   "only_failing_check": 11
+  },
+  "thin_oi": {
+   "failing": 12,
+   "only_failing_check": 1
+  }
+ },
+ "combinations": {
+  "PASS": 8,
+  "wide_spread + thin_oi": 11,
+  "wide_spread": 11,
+  "thin_oi": 1
+ },
+ "buckets": {
+  "share_price": {
+   "$100-<$300": {
+    "events": 10,
+    "PASS": 4,
+    "no_quote": 0,
+    "low_implied_move": 0,
+    "wide_spread": 6,
+    "thin_oi": 4
+   },
+   "< $100": {
+    "events": 13,
+    "PASS": 2,
+    "no_quote": 0,
+    "low_implied_move": 0,
+    "wide_spread": 10,
+    "thin_oi": 6
+   },
+   ">= $300": {
+    "events": 8,
+    "PASS": 2,
+    "no_quote": 0,
+    "low_implied_move": 0,
+    "wide_spread": 6,
+    "thin_oi": 2
+   }
+  },
+  "expiry_gap": {
+   "<= 5 sessions": {
+    "events": 16,
+    "PASS": 7,
+    "no_quote": 0,
+    "low_implied_move": 0,
+    "wide_spread": 9,
+    "thin_oi": 4
+   },
+   "> 5 sessions (monthly)": {
+    "events": 15,
+    "PASS": 1,
+    "no_quote": 0,
+    "low_implied_move": 0,
+    "wide_spread": 13,
+    "thin_oi": 8
+   }
+  }
+ },
+ "alternatives": {
+  "A0": {
+   "PASS": 8,
+   "adds": [],
+   "drops": [],
+   "median_straddle_spread": 0.052,
+   "max_straddle_spread": 0.0961,
+   "max_leg_spread": 0.0984
+  },
+  "A1": {
+   "PASS": 9,
+   "adds": [
+    "TTMI"
+   ],
+   "drops": [],
+   "median_straddle_spread": 0.052,
+   "max_straddle_spread": 0.0961,
+   "max_leg_spread": 0.0984
+  },
+  "A2": {
+   "PASS": 8,
+   "adds": [],
+   "drops": [],
+   "median_straddle_spread": 0.052,
+   "max_straddle_spread": 0.0961,
+   "max_leg_spread": 0.0984
+  },
+  "A3": {
+   "PASS": 10,
+   "adds": [
+    "RTX",
+    "TTMI"
+   ],
+   "drops": [],
+   "median_straddle_spread": 0.0607,
+   "max_straddle_spread": 0.0961,
+   "max_leg_spread": 0.1277
+  },
+  "A4": {
+   "PASS": 10,
+   "adds": [
+    "RTX",
+    "TTMI"
+   ],
+   "drops": [],
+   "median_straddle_spread": 0.0544,
+   "max_straddle_spread": 0.0961,
+   "max_leg_spread": 0.1277
+  }
+ },
+ "sensitivity": {
+  "leg_0.125": {
+   "PASS": 9,
+   "adds": [
+    "TTMI"
+   ],
+   "median_straddle_spread": 0.0569,
+   "max_straddle_spread": 0.0961,
+   "max_leg_spread": 0.1132
+  },
+  "leg_0.15": {
+   "PASS": 12,
+   "adds": [
+    "APPF",
+    "DECK",
+    "RTX",
+    "TTMI"
+   ],
+   "median_straddle_spread": 0.074,
+   "max_straddle_spread": 0.1163,
+   "max_leg_spread": 0.1442
+  },
+  "leg_0.2": {
+   "PASS": 14,
+   "adds": [
+    "APPF",
+    "DECK",
+    "RTX",
+    "TSCO",
+    "TTMI",
+    "VRSN"
+   ],
+   "median_straddle_spread": 0.0844,
+   "max_straddle_spread": 0.1682,
+   "max_leg_spread": 0.1818
+  },
+  "straddle_0.125": {
+   "PASS": 12,
+   "adds": [
+    "APPF",
+    "DECK",
+    "RTX",
+    "TTMI"
+   ],
+   "median_straddle_spread": 0.074,
+   "max_straddle_spread": 0.1163,
+   "max_leg_spread": 0.1442
+  },
+  "straddle_0.15": {
+   "PASS": 13,
+   "adds": [
+    "APPF",
+    "DECK",
+    "RTX",
+    "TTMI",
+    "VRSN"
+   ],
+   "median_straddle_spread": 0.0835,
+   "max_straddle_spread": 0.1417,
+   "max_leg_spread": 0.163
+  }
+ },
+ "decision": {
+  "recommend": "D003 v5 = A4 from the Season B screen (Jacob's call)",
+  "alternative": "A4",
+  "pass": {
+   "A0": 8,
+   "A1": 9,
+   "A2": 8,
+   "A3": 10,
+   "A4": 10
+  },
+  "gain": {
+   "A0": 0,
+   "A1": 1,
+   "A2": 0,
+   "A3": 2,
+   "A4": 2
+  },
+  "why": "A4 has the most PASS (10 vs A0 8); ties by median straddle spread, then A2, A1, A3, A4 (D016 \u00a75.3)"
+ },
+ "events": [
+  {
+   "ticker": "ABT",
+   "report_date": "2026-10-21",
+   "spot": 104.36000061035156,
+   "expiry": "2026-10-23",
+   "expiry_gap": 2,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 104.0,
+    "quoted": true,
+    "oi_sum": 1835.0,
+    "implied_move": 0.05485818289111941,
+    "leg_spread": {
+     "call": 0.09836065573770501,
+     "put": 0.09345794392523366
+    },
+    "leg_dollar": {
+     "call": 0.30000000000000027,
+     "put": 0.25
+    },
+    "straddle_spread": 0.09606986899563325
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 104.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 104.0,
+     "reading": null
+    },
+    "A2": {
+     "pass": true,
+     "strike": 104.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 104.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 104.0,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "AGYS",
+   "report_date": "2026-10-26",
+   "spot": 121.87999725341797,
+   "expiry": "2026-11-20",
+   "expiry_gap": 18,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 105.0,
+    "quoted": true,
+    "oi_sum": 17.0,
+    "implied_move": 0.19281260690495275,
+    "leg_spread": {
+     "call": 0.18000000000000008,
+     "put": 0.8
+    },
+    "leg_dollar": {
+     "call": 3.6000000000000014,
+     "put": 2.8000000000000003
+    },
+    "straddle_spread": 0.272340425531915
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 105.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 105.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 105.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "AMKR",
+   "report_date": "2026-10-26",
+   "spot": 39.5,
+   "expiry": "2026-10-30",
+   "expiry_gap": 3,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 40.0,
+    "quoted": true,
+    "oi_sum": 381.0,
+    "implied_move": 0.1322784810126582,
+    "leg_spread": {
+     "call": 0.10309278350515465,
+     "put": 0.10714285714285725
+    },
+    "leg_dollar": {
+     "call": 0.25,
+     "put": 0.30000000000000027
+    },
+    "straddle_spread": 0.1052631578947369
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 40.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 40.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 40.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "APPF",
+   "report_date": "2026-10-22",
+   "spot": 223.14999389648438,
+   "expiry": "2026-11-20",
+   "expiry_gap": 20,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 220.0,
+    "quoted": true,
+    "oi_sum": 644.0,
+    "implied_move": 0.15908582106647007,
+    "leg_spread": {
+     "call": 0.0869565217391304,
+     "put": 0.14420062695924768
+    },
+    "leg_dollar": {
+     "call": 1.6999999999999993,
+     "put": 2.3000000000000007
+    },
+    "straddle_spread": 0.11267605633802817
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 220.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 220.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 220.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "CDNS",
+   "report_date": "2026-10-26",
+   "spot": 316.54998779296875,
+   "expiry": "2026-10-30",
+   "expiry_gap": 3,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 315.0,
+    "quoted": true,
+    "oi_sum": 165.0,
+    "implied_move": 0.07581740933661502,
+    "leg_spread": {
+     "call": 0.10852713178294578,
+     "put": 0.16216216216216223
+    },
+    "leg_dollar": {
+     "call": 1.4000000000000004,
+     "put": 1.8000000000000007
+    },
+    "straddle_spread": 0.1333333333333334
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 315.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 315.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 315.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "CLS",
+   "report_date": "2026-10-26",
+   "spot": 260.9849853515625,
+   "expiry": "2026-10-30",
+   "expiry_gap": 3,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 260.0,
+    "quoted": true,
+    "oi_sum": 294.0,
+    "implied_move": 0.13449049550769437,
+    "leg_spread": {
+     "call": 0.03921568627450976,
+     "put": 0.1797101449275363
+    },
+    "leg_dollar": {
+     "call": 0.6999999999999993,
+     "put": 3.1000000000000014
+    },
+    "straddle_spread": 0.10826210826210828
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 260.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 260.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 260.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "CVLT",
+   "report_date": "2026-10-27",
+   "spot": 171.10000610351562,
+   "expiry": "2026-11-20",
+   "expiry_gap": 18,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 180.0,
+    "quoted": true,
+    "oi_sum": 40.0,
+    "implied_move": 0.15020455337945157,
+    "leg_spread": {
+     "call": 0.2598870056497175,
+     "put": 0.1364985163204748
+    },
+    "leg_dollar": {
+     "call": 2.3,
+     "put": 2.3000000000000007
+    },
+    "straddle_spread": 0.17898832684824903
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 180.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 180.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 180.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "DECK",
+   "report_date": "2026-10-22",
+   "spot": 85.62000274658203,
+   "expiry": "2026-10-23",
+   "expiry_gap": 0,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 86.0,
+    "quoted": true,
+    "oi_sum": 1843.0,
+    "implied_move": 0.10044381831491256,
+    "leg_spread": {
+     "call": 0.09756097560975609,
+     "put": 0.13333333333333325
+    },
+    "leg_dollar": {
+     "call": 0.3999999999999999,
+     "put": 0.5999999999999996
+    },
+    "straddle_spread": 0.11627906976744182
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 86.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 86.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 86.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "DPZ",
+   "report_date": "2026-10-13",
+   "spot": 307.385009765625,
+   "expiry": "2026-10-16",
+   "expiry_gap": 3,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 310.0,
+    "quoted": true,
+    "oi_sum": 248.0,
+    "implied_move": 0.07189680465176494,
+    "leg_spread": {
+     "call": 0.18905472636815923,
+     "put": 0.14107883817427394
+    },
+    "leg_dollar": {
+     "call": 1.9000000000000004,
+     "put": 1.700000000000001
+    },
+    "straddle_spread": 0.16289592760181001
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 310.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 310.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 310.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "EEFT",
+   "report_date": "2026-10-27",
+   "spot": 65.625,
+   "expiry": "2026-11-20",
+   "expiry_gap": 18,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 65.0,
+    "quoted": true,
+    "oi_sum": 861.0,
+    "implied_move": 0.0979047619047619,
+    "leg_spread": {
+     "call": 0.24657534246575327,
+     "put": 0.45045045045045046
+    },
+    "leg_dollar": {
+     "call": 0.8999999999999995,
+     "put": 1.25
+    },
+    "straddle_spread": 0.33463035019455245
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 65.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 65.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 65.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "GLXY",
+   "report_date": "2026-10-27",
+   "spot": 14.71500015258789,
+   "expiry": "2026-10-30",
+   "expiry_gap": 3,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 15.0,
+    "quoted": true,
+    "oi_sum": 7061.0,
+    "implied_move": 0.13693509881789753,
+    "leg_spread": {
+     "call": 0.09625668449197856,
+     "put": 0.03703703703703707
+    },
+    "leg_dollar": {
+     "call": 0.08999999999999997,
+     "put": 0.040000000000000036
+    },
+    "straddle_spread": 0.06451612903225806
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 15.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 15.0,
+     "reading": null
+    },
+    "A2": {
+     "pass": true,
+     "strike": 15.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 15.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 15.0,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "HXL",
+   "report_date": "2026-10-21",
+   "spot": 92.19999694824219,
+   "expiry": "2026-11-20",
+   "expiry_gap": 21,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 90.0,
+    "quoted": true,
+    "oi_sum": 31.0,
+    "implied_move": 0.09707158672710382,
+    "leg_spread": {
+     "call": 0.20952380952380945,
+     "put": 0.6486486486486487
+    },
+    "leg_dollar": {
+     "call": 1.0999999999999996,
+     "put": 2.4000000000000004
+    },
+    "straddle_spread": 0.3910614525139665
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 90.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 90.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 90.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "KN",
+   "report_date": "2026-10-22",
+   "spot": 34.93000030517578,
+   "expiry": "2026-11-20",
+   "expiry_gap": 20,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 35.0,
+    "quoted": true,
+    "oi_sum": 5.0,
+    "implied_move": 0.13598625704266498,
+    "leg_spread": {
+     "call": 0.6206896551724139,
+     "put": 0.5631067961165047
+    },
+    "leg_dollar": {
+     "call": 1.35,
+     "put": 1.4499999999999997
+    },
+    "straddle_spread": 0.5894736842105263
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 35.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 35.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 35.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "LMT",
+   "report_date": "2026-10-22",
+   "spot": 550.2550048828125,
+   "expiry": "2026-10-23",
+   "expiry_gap": 1,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 550.0,
+    "quoted": true,
+    "oi_sum": 1474.0,
+    "implied_move": 0.045796948281037135,
+    "leg_spread": {
+     "call": 0.2380952380952381,
+     "put": 0.2222222222222223
+    },
+    "leg_dollar": {
+     "call": 3.0,
+     "put": 2.8000000000000007
+    },
+    "straddle_spread": 0.2301587301587302
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 550.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 550.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 550.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "LRCX",
+   "report_date": "2026-10-21",
+   "spot": 265.29998779296875,
+   "expiry": "2026-10-23",
+   "expiry_gap": 1,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 265.0,
+    "quoted": true,
+    "oi_sum": 2611.0,
+    "implied_move": 0.07604598917563424,
+    "leg_spread": {
+     "call": 0.04400977995110018,
+     "put": 0.05025125628140704
+    },
+    "leg_dollar": {
+     "call": 0.4499999999999993,
+     "put": 0.5
+    },
+    "straddle_spread": 0.047087980173482
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 265.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 265.0,
+     "reading": null
+    },
+    "A2": {
+     "pass": true,
+     "strike": 265.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 265.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 265.0,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "META",
+   "report_date": "2026-10-21",
+   "spot": 690.0,
+   "expiry": "2026-10-23",
+   "expiry_gap": 1,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 690.0,
+    "quoted": true,
+    "oi_sum": 13565.0,
+    "implied_move": 0.07380434782608696,
+    "leg_spread": {
+     "call": 0.013579049466537261,
+     "put": 0.019880715705765408
+    },
+    "leg_dollar": {
+     "call": 0.34999999999999787,
+     "put": 0.5
+    },
+    "straddle_spread": 0.016691212567501185
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 690.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 690.0,
+     "reading": null
+    },
+    "A2": {
+     "pass": true,
+     "strike": 690.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 690.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 690.0,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "MXL",
+   "report_date": "2026-10-22",
+   "spot": 75.98500061035156,
+   "expiry": "2026-11-20",
+   "expiry_gap": 20,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 75.0,
+    "quoted": true,
+    "oi_sum": 832.0,
+    "implied_move": 0.2586036697000835,
+    "leg_spread": {
+     "call": 0.04784688995215311,
+     "put": 0.021739130434782726
+    },
+    "leg_dollar": {
+     "call": 0.5,
+     "put": 0.20000000000000107
+    },
+    "straddle_spread": 0.03562340966921125
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 75.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 80.0,
+     "reading": {
+      "strike": 80.0,
+      "quoted": true,
+      "oi_sum": 1362.0,
+      "implied_move": 0.2691320633774406,
+      "leg_spread": {
+       "call": 0.03592814371257494,
+       "put": 0.016528925619834652
+      },
+      "leg_dollar": {
+       "call": 0.3000000000000007,
+       "put": 0.1999999999999993
+      },
+      "straddle_spread": 0.02444987775061125
+     }
+    },
+    "A2": {
+     "pass": true,
+     "strike": 75.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 75.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 80.0,
+     "reading": {
+      "strike": 80.0,
+      "quoted": true,
+      "oi_sum": 1362.0,
+      "implied_move": 0.2691320633774406,
+      "leg_spread": {
+       "call": 0.03592814371257494,
+       "put": 0.016528925619834652
+      },
+      "leg_dollar": {
+       "call": 0.3000000000000007,
+       "put": 0.1999999999999993
+      },
+      "straddle_spread": 0.02444987775061125
+     }
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "NOC",
+   "report_date": "2026-10-20",
+   "spot": 514.280029296875,
+   "expiry": "2026-11-20",
+   "expiry_gap": 23,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 515.0,
+    "quoted": true,
+    "oi_sum": 552.0,
+    "implied_move": 0.07768141425716987,
+    "leg_spread": {
+     "call": 0.20388349514563103,
+     "put": 0.11886304909560726
+    },
+    "leg_dollar": {
+     "call": 4.199999999999999,
+     "put": 2.3000000000000007
+    },
+    "straddle_spread": 0.16270337922403003
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 515.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 515.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 515.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "PEGA",
+   "report_date": "2026-10-20",
+   "spot": 35.18000030517578,
+   "expiry": "2026-11-20",
+   "expiry_gap": 22,
+   "stored": [
+    "INELIGIBLE",
+    "thin_oi"
+   ],
+   "reading": {
+    "strike": 35.0,
+    "quoted": true,
+    "oi_sum": 497.0,
+    "implied_move": 0.1769471275156345,
+    "leg_spread": {
+     "call": 0.09230769230769226,
+     "put": 0.08403361344537814
+    },
+    "leg_dollar": {
+     "call": 0.2999999999999998,
+     "put": 0.25
+    },
+    "straddle_spread": 0.08835341365461845
+   },
+   "fails": [
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 35.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 35.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 35.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "RMBS",
+   "report_date": "2026-10-26",
+   "spot": 87.0,
+   "expiry": "2026-11-20",
+   "expiry_gap": 18,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 87.5,
+    "quoted": true,
+    "oi_sum": 448.0,
+    "implied_move": 0.1867816091954023,
+    "leg_spread": {
+     "call": 0.10650887573964501,
+     "put": 0.15384615384615385
+    },
+    "leg_dollar": {
+     "call": 0.9000000000000004,
+     "put": 1.2000000000000002
+    },
+    "straddle_spread": 0.12923076923076926
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 87.5
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 87.5
+    },
+    "A3": {
+     "pass": false,
+     "strike": 87.5
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "RNG",
+   "report_date": "2026-10-22",
+   "spot": 83.30000305175781,
+   "expiry": "2026-10-23",
+   "expiry_gap": 0,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 83.0,
+    "quoted": true,
+    "oi_sum": 4794.0,
+    "implied_move": 0.13325329643869402,
+    "leg_spread": {
+     "call": 0.20560747663551412,
+     "put": 0.2608695652173913
+    },
+    "leg_dollar": {
+     "call": 1.1000000000000005,
+     "put": 1.5
+    },
+    "straddle_spread": 0.23423423423423428
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 83.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 83.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 83.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "ROP",
+   "report_date": "2026-10-22",
+   "spot": 395.1700134277344,
+   "expiry": "2026-11-20",
+   "expiry_gap": 21,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 400.0,
+    "quoted": true,
+    "oi_sum": 516.0,
+    "implied_move": 0.07730849751226569,
+    "leg_spread": {
+     "call": 0.1526104417670683,
+     "put": 0.22099447513812154
+    },
+    "leg_dollar": {
+     "call": 1.9000000000000004,
+     "put": 4.0
+    },
+    "straddle_spread": 0.19312602291325695
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 400.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 400.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 400.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "RTX",
+   "report_date": "2026-10-20",
+   "spot": 192.27000427246094,
+   "expiry": "2026-10-23",
+   "expiry_gap": 3,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 192.5,
+    "quoted": true,
+    "oi_sum": 1291.0,
+    "implied_move": 0.051880167360191465,
+    "leg_spread": {
+     "call": 0.04739336492890995,
+     "put": 0.127659574468085
+    },
+    "leg_dollar": {
+     "call": 0.25,
+     "put": 0.5999999999999996
+    },
+    "straddle_spread": 0.08521303258145359
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 192.5
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 192.5
+    },
+    "A3": {
+     "pass": true,
+     "strike": 192.5
+    },
+    "A4": {
+     "pass": true,
+     "strike": 192.5,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "SPCX",
+   "report_date": "2026-10-20",
+   "spot": 147.23500061035156,
+   "expiry": "2026-10-21",
+   "expiry_gap": 0,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 147.0,
+    "quoted": true,
+    "oi_sum": 14324.0,
+    "implied_move": 0.07488029309808603,
+    "leg_spread": {
+     "call": 0.025531914893617082,
+     "put": 0.019417475728155442
+    },
+    "leg_dollar": {
+     "call": 0.15000000000000036,
+     "put": 0.10000000000000053
+    },
+    "straddle_spread": 0.022675736961451327
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 147.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 148.0,
+     "reading": {
+      "strike": 148.0,
+      "quoted": true,
+      "oi_sum": 14324.0,
+      "implied_move": 0.07471049651509717,
+      "leg_spread": {
+       "call": 0.018691588785046828,
+       "put": 0.01769911504424788
+      },
+      "leg_dollar": {
+       "call": 0.10000000000000053,
+       "put": 0.10000000000000053
+      },
+      "straddle_spread": 0.018181818181818278
+     }
+    },
+    "A2": {
+     "pass": true,
+     "strike": 147.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 147.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 148.0,
+     "reading": {
+      "strike": 148.0,
+      "quoted": true,
+      "oi_sum": 14324.0,
+      "implied_move": 0.07471049651509717,
+      "leg_spread": {
+       "call": 0.018691588785046828,
+       "put": 0.01769911504424788
+      },
+      "leg_dollar": {
+       "call": 0.10000000000000053,
+       "put": 0.10000000000000053
+      },
+      "straddle_spread": 0.018181818181818278
+     }
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "SSNC",
+   "report_date": "2026-10-22",
+   "spot": 87.1500015258789,
+   "expiry": "2026-11-20",
+   "expiry_gap": 20,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 85.0,
+    "quoted": true,
+    "oi_sum": 376.0,
+    "implied_move": 0.07085484672270893,
+    "leg_spread": {
+     "call": 0.4878048780487804,
+     "put": 0.3132530120481927
+    },
+    "leg_dollar": {
+     "call": 1.9999999999999996,
+     "put": 0.6499999999999999
+    },
+    "straddle_spread": 0.42914979757085014
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 85.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 85.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 85.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "TSCO",
+   "report_date": "2026-10-22",
+   "spot": 32.974998474121094,
+   "expiry": "2026-10-23",
+   "expiry_gap": 1,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 33.0,
+    "quoted": true,
+    "oi_sum": 3929.0,
+    "implied_move": 0.08112206592213644,
+    "leg_spread": {
+     "call": 0.18181818181818182,
+     "put": 0.15384615384615383
+    },
+    "leg_dollar": {
+     "call": 0.25,
+     "put": 0.19999999999999996
+    },
+    "straddle_spread": 0.16822429906542055
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 33.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 33.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 33.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": true,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "TTMI",
+   "report_date": "2026-10-22",
+   "spot": 95.83999633789062,
+   "expiry": "2026-11-20",
+   "expiry_gap": 21,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 95.0,
+    "quoted": true,
+    "oi_sum": 714.0,
+    "implied_move": 0.2118113603472075,
+    "leg_spread": {
+     "call": 0.11320754716981125,
+     "put": 0.06185567010309275
+    },
+    "leg_dollar": {
+     "call": 1.1999999999999993,
+     "put": 0.5999999999999996
+    },
+    "straddle_spread": 0.08866995073891622
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 95.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 100.0,
+     "reading": {
+      "strike": 100.0,
+      "quoted": true,
+      "oi_sum": 1991.0,
+      "implied_move": 0.2206803089331743,
+      "leg_spread": {
+       "call": 0.04761904761904767,
+       "put": 0.05490196078431367
+      },
+      "leg_dollar": {
+       "call": 0.40000000000000036,
+       "put": 0.6999999999999993
+      },
+      "straddle_spread": 0.0520094562647754
+     }
+    },
+    "A2": {
+     "pass": false,
+     "strike": 95.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 95.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 100.0,
+     "reading": {
+      "strike": 100.0,
+      "quoted": true,
+      "oi_sum": 1991.0,
+      "implied_move": 0.2206803089331743,
+      "leg_spread": {
+       "call": 0.04761904761904767,
+       "put": 0.05490196078431367
+      },
+      "leg_dollar": {
+       "call": 0.40000000000000036,
+       "put": 0.6999999999999993
+      },
+      "straddle_spread": 0.0520094562647754
+     }
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "TXN",
+   "report_date": "2026-10-21",
+   "spot": 280.0799865722656,
+   "expiry": "2026-10-23",
+   "expiry_gap": 1,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 280.0,
+    "quoted": true,
+    "oi_sum": 2440.0,
+    "implied_move": 0.0722115144588583,
+    "leg_spread": {
+     "call": 0.05025125628140704,
+     "put": 0.06326034063260345
+    },
+    "leg_dollar": {
+     "call": 0.5,
+     "put": 0.6500000000000004
+    },
+    "straddle_spread": 0.05686032138442524
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 280.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 280.0,
+     "reading": null
+    },
+    "A2": {
+     "pass": true,
+     "strike": 280.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 280.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 280.0,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "VICR",
+   "report_date": "2026-10-20",
+   "spot": 195.97999572753906,
+   "expiry": "2026-11-20",
+   "expiry_gap": 23,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 195.0,
+    "quoted": true,
+    "oi_sum": 28.0,
+    "implied_move": 0.24823962169912284,
+    "leg_spread": {
+     "call": 0.20423892100192678,
+     "put": 0.061674008810572625
+    },
+    "leg_dollar": {
+     "call": 5.300000000000001,
+     "put": 1.3999999999999986
+    },
+    "straddle_spread": 0.13771839671120242
+   },
+   "fails": [
+    "wide_spread",
+    "thin_oi"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 195.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 195.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 195.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": false,
+    "straddle_0.125": false,
+    "straddle_0.15": false
+   }
+  },
+  {
+   "ticker": "VRSN",
+   "report_date": "2026-10-22",
+   "spot": 307.54998779296875,
+   "expiry": "2026-11-20",
+   "expiry_gap": 20,
+   "stored": [
+    "INELIGIBLE",
+    "wide_spread"
+   ],
+   "reading": {
+    "strike": 310.0,
+    "quoted": true,
+    "oi_sum": 1912.0,
+    "implied_move": 0.08258820031915702,
+    "leg_spread": {
+     "call": 0.11764705882352945,
+     "put": 0.16296296296296292
+    },
+    "leg_dollar": {
+     "call": 1.4000000000000004,
+     "put": 2.1999999999999993
+    },
+    "straddle_spread": 0.14173228346456693
+   },
+   "fails": [
+    "wide_spread"
+   ],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": false,
+     "strike": 310.0
+    },
+    "A1": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    },
+    "A2": {
+     "pass": false,
+     "strike": 310.0
+    },
+    "A3": {
+     "pass": false,
+     "strike": 310.0
+    },
+    "A4": {
+     "pass": false,
+     "strike": null,
+     "reading": null
+    }
+   },
+   "sens": {
+    "leg_0.125": false,
+    "leg_0.15": false,
+    "leg_0.2": true,
+    "straddle_0.125": false,
+    "straddle_0.15": true
+   }
+  },
+  {
+   "ticker": "WDC",
+   "report_date": "2026-10-22",
+   "spot": 379.05999755859375,
+   "expiry": "2026-10-23",
+   "expiry_gap": 0,
+   "stored": [
+    "PASS",
+    null
+   ],
+   "reading": {
+    "strike": 380.0,
+    "quoted": true,
+    "oi_sum": 3840.0,
+    "implied_move": 0.08369387485973395,
+    "leg_spread": {
+     "call": 0.09825673534072904,
+     "put": 0.0689655172413793
+    },
+    "leg_dollar": {
+     "call": 1.5500000000000007,
+     "put": 1.0999999999999996
+    },
+    "straddle_spread": 0.0835303388494878
+   },
+   "fails": [],
+   "reproduced": true,
+   "alt": {
+    "A0": {
+     "pass": true,
+     "strike": 380.0
+    },
+    "A1": {
+     "pass": true,
+     "strike": 377.5,
+     "reading": {
+      "strike": 377.5,
+      "quoted": true,
+      "oi_sum": 3840.0,
+      "implied_move": 0.08375982747979678,
+      "leg_spread": {
+       "call": 0.08849557522123894,
+       "put": 0.060810810810810835
+      },
+      "leg_dollar": {
+       "call": 1.5,
+       "put": 0.9000000000000004
+      },
+      "straddle_spread": 0.07559055118110238
+     }
+    },
+    "A2": {
+     "pass": true,
+     "strike": 380.0
+    },
+    "A3": {
+     "pass": true,
+     "strike": 380.0
+    },
+    "A4": {
+     "pass": true,
+     "strike": 377.5,
+     "reading": {
+      "strike": 377.5,
+      "quoted": true,
+      "oi_sum": 3840.0,
+      "implied_move": 0.08375982747979678,
+      "leg_spread": {
+       "call": 0.08849557522123894,
+       "put": 0.060810810810810835
+      },
+      "leg_dollar": {
+       "call": 1.5,
+       "put": 0.9000000000000004
+      },
+      "straddle_spread": 0.07559055118110238
+     }
+    }
+   },
+   "sens": {
+    "leg_0.125": true,
+    "leg_0.15": true,
+    "leg_0.2": true,
+    "straddle_0.125": true,
+    "straddle_0.15": true
+   }
+  }
+ ]
+}
