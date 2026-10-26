@@ -1,6 +1,6 @@
 # Peak capacity, Nov 2–6 (and this week) — computed Mon 2026-10-26
 
-Written 13:10 ET by the T2-check chat. The numbers come from `python ops/capacity_peak.py --spot`, which reads only
+Written 12:15 ET by the T2-check chat. The numbers come from `python ops/capacity_peak.py --spot`, which reads only
 the calendar, the gate files and the paper ledgers' sizing fields (n, mid, wings, the opening natural, equity). **No
 result, P&L or C1 figure was read.** Re-run it Fri Oct 30, when more dates are confirmed.
 
@@ -117,7 +117,8 @@ order (gate paths, i.e. alphabetical by ticker) until buying power runs out. A r
   other routines draw on the same allowance. One is a weekly Opus 5.5 brief, last fired Sun Oct 25 14:40 UTC,
   inside the Sun 10:22–21:21 UTC window when the limit ran out.
 - **Laptop chats are the largest draw.** The week-plan chat took weekly use from 12% (09:20 ET) to ~20%. This chat
-  took it 20% → 21% (5-hour 49% → 56%) in 42 minutes, ~25 calls at 100–190k context.
+  took it 20% → 21% (5-hour 49% → 56%) in 8 minutes, ~25 calls at 100–190k context: about 1 point of the 5-hour
+  window per minute of active laptop work.
 - **Measured cost of one PASS name:** _filled in after tonight's 17:20 and 17:50 ET fires (5-hour and weekly
   readings before and after, this chat idle)._
 
