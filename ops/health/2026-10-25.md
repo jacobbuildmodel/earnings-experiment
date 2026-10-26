@@ -1,10 +1,8 @@
-# Health 2026-10-25 04:40 ET - **RED**
+# Health 2026-10-25 21:24 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
-- T2 MISSING: ABT_2026-10-21 (deadline Tue 20 Oct 09:15 ET)
-- T2 MISSING: SPCX_2026-10-20 (deadline Tue 20 Oct 09:15 ET)
 - DATES STALE (seasonA): no date confirmed or retired since Fri 23 Oct 21:34 ET (over 30 h), while 17 PENDING name(s) have a calendar date within 7 days, 9 within 3 sessions ['APH', 'BA', 'BMRN', 'CHRN', 'DBD', 'GLW', 'QRVO', 'VRNS', 'WING']; newest re-check Fri 23 Oct 21:19 ET - the re-checks are not running
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
