@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "FLEX",
+ "report_date": "2026-10-28",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:12.029163-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.flex.com/news/news-details/2026/Flex-Announces-Date-for-Second-Quarter-Fiscal-Year-2027-Earnings-Call/default.aspx",
+  "published_et": "2026-10-07T16:05-04:00",
+  "quote": "Flex - Flex Announces Date for Second Quarter Fiscal Year 2027 Earnings Call View All News Flex Announces Date for Second Quarter Fiscal Year 2027 Earnings Call October 07, 2026 AUSTIN, Texas , Oct. 7, 2026 /PRNewswire/ -- Flex (NASDAQ: FLEX) will announce its second quarter fiscal year 2027 financial results before the market opens on Wednesday, October 28, 2026.",
+  "title": "Flex Announces Date for Second Quarter Fiscal Year 2027 Earnings Call",
+  "retrieved_et": "2026-10-08T23:31:57.120771-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.flex.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 78.05000305175781,
+  "expiry": "2026-11-20",
+  "strike": 80.0,
+  "call": {
+   "bid": 6.3,
+   "ask": 6.8,
+   "openInterest": 1294.0,
+   "lastPrice": 6.7,
+   "impliedVolatility": 0.8916026464843749,
+   "lastTradeDate": "2026-10-26T17:51:32+00:00"
+  },
+  "put": {
+   "bid": 7.6,
+   "ask": 8.1,
+   "openInterest": 420.0,
+   "lastPrice": 7.8,
+   "impliedVolatility": 0.813478427734375,
+   "lastTradeDate": "2026-10-26T18:02:44+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 17,
+  "implied_move": 0.18449711001869956,
+  "rel_spread": {
+   "call": 0.07633587786259542,
+   "put": 0.06369426751592357
+  },
+  "oi_atm": 1714.0,
+  "oi_sum": 1714.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
