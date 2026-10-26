@@ -3,13 +3,12 @@
 **Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-26 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Mon 2026-10-26 11:30 ET by the week-plan chat (D016 decision, find_dates v4, the weekly-limit refusals; no
-outcome, P&L or C1 figure read).*
+*Rewritten Mon 2026-10-26 11:30 ET by the week-plan chat (no outcome, P&L or C1 figure read).*
 - **Phase:** Season A, week 3 of 6. Gates: Mon 19 · Tue 32 · Wed 19 · Thu 1 · Fri 14 (the first peak entries). 31
   frozen so far: 8 PASS, 6 with T2.
 - **D016 decision run done** (`82e48d2`, 08:50 ET). It is the first run after Fri 16:00 ET and saw the same 31 gates.
   §5 picks **A4** (the better of the two nearest strikes, plus straddle spread ≤ 10%): 10 PASS vs 8. Jacob's call
-  before the Season B screen. Untested lead: monthly-only expiries pass 1/15, weekly expiries 7/16.
+  before the Season B screen.
 - **Dates:** the recall audit missed 5 of 10 (seed 20261026, independent reader). That led to **find_dates v4**
   (`7fbb7f5`, `74f5a0e`): the Nasdaq fallback, "financial markets" wording, replay windows. The 09:00–10:55 ET run
   confirmed **29** (`ce9f5f6`); housekeeping confirmed HII. **Peak Nov 2–6: 121 of 157 (77%), was 62%.** Both
@@ -18,7 +17,6 @@ outcome, P&L or C1 figure read).*
   to Mon 05:21 UTC) until the Mon 06:00 UTC reset. No T2 was due, and health can't see a refused run.
   `ops/incidents/2026-10-26_weekly_limit.md` has expectations for tonight and Friday. Rule: read `get_usage` at
   session start; no subagents unless needed; stop laptop work at weekly ≥ 60% before a Friday.
-- **Oct 21 incident scored:** E2 and E3 held (GLXY's T2 came from the Fri 17:20 ET fire, not hand-fired); E1 not read.
 - **Health RED (standing):** DPZ +100 not in a ledger. "Dates stale" fires every Monday because the re-checks run on
   weekdays only. Owed: the "new RED" marker; count weekday hours only.
 - **This week:** Tue: peak capacity, including the weekly AI allowance (3 calls per PASS, ~22 PASS), and the new-RED
