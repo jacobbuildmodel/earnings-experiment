@@ -1,9 +1,9 @@
-# Health 2026-10-25 21:24 ET - **RED**
+# Health 2026-10-26 05:17 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
-- DATES STALE (seasonA): no date confirmed or retired since Fri 23 Oct 21:34 ET (over 30 h), while 17 PENDING name(s) have a calendar date within 7 days, 9 within 3 sessions ['APH', 'BA', 'BMRN', 'CHRN', 'DBD', 'GLW', 'QRVO', 'VRNS', 'WING']; newest re-check Fri 23 Oct 21:19 ET - the re-checks are not running
+- DATES STALE (seasonA): no date confirmed or retired since Fri 23 Oct 21:34 ET (over 30 h), while 23 PENDING name(s) have a calendar date within 7 days, 16 within 3 sessions ['ALGM', 'APH', 'BA', 'BMRN', 'CCC', 'CHRN', 'DBD', 'DRS', 'GLW', 'HII', 'INSM', 'MSI', 'QRVO', 'TXT', 'VRNS', 'WING']; newest re-check Fri 23 Oct 21:21 ET - the re-checks are not running
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
