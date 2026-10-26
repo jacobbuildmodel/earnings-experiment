@@ -1,0 +1,112 @@
+{
+ "track": "T2G",
+ "event": "FFIV_2026-10-27",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "Strong momentum and AI infrastructure tailwinds are balanced by demanding valuation near 52-week highs and annual FY27 guidance risk where expectations are already elevated.",
+  "reasons": [
+   "FFIV trades just 3.4% below its 52-week high after a 53.6% 12-month run, leaving little room for error at 25.6x forward P/E and ~8x sales on ~11% top-line growth.",
+   "Q4 prints carry full-year FY27 guidance risk; in the prior Q4 release (Oct 2025), shares dropped 13.6% despite an EPS beat, and last quarter (Q3 2026) shares dropped 1.2% despite an 18% EPS beat.",
+   "Options market signals elevated hedging demand with put/call volume at 1.31 and an implied move of 11.6%, showing market caution ahead of the report."
+  ],
+  "deciding_variable": "Initial FY27 full-year revenue and operating margin guidance relative to consensus expectations.",
+  "prior": {
+   "p": 0.586,
+   "from": "base_rates: hardware_networking cluster (n=348, t0_hit=0.586)"
+  },
+  "leak_probe": "I do not know, as that date is in the future.",
+  "moved_from_prior": "Moved down 6.6 percentage points from the hardware_networking base rate of 0.586 to 0.52, driven by extended valuation near all-time highs, historical Q4 guidance vulnerability, and asymmetric downside if FY27 outlook moderates.",
+  "theses": [
+   {
+    "expected": "FY27 revenue guidance meets or exceeds 8-10% growth and enterprise systems demand remains strong.",
+    "mechanism": "Continued AI data center networking and sovereign AI deployments sustain double-digit product revenue growth, driving multiple stability.",
+    "wrong_if": "Enterprise refresh cycles slow down or FY27 revenue growth guides to mid-single digits."
+   },
+   {
+    "expected": "Conservative FY27 outlook triggers profit-taking after massive multi-month run.",
+    "mechanism": "Management offers cautious annual guidance citing macroeconomic uncertainty and normalization of systems backlog, causing multiple contraction.",
+    "wrong_if": "Management raises FY27 outlook substantially above consensus driven by AI service plane demand."
+   },
+   {
+    "expected": "Q4 revenue and EPS come in slightly above the midpoint of previous guidance.",
+    "mechanism": "Consistent operational execution in software subscriptions and application delivery hardware delivers steady results.",
+    "wrong_if": "Margins compress due to contract manufacturing component cost increases noted in recent 10-Q disclosures."
+   }
+  ],
+  "key_observations": [
+   "Initial FY27 revenue growth guidance range",
+   "Product revenue growth rate (specifically systems vs. software)",
+   "Gross margin and operating margin trajectory relative to Q3's 84.2% non-GAAP gross margin",
+   "Commentary on sovereign AI and Kubernetes-native BIG-IP traction (e.g., Telenor partnership)"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/FFIV_2026-10-27/gate.json",
+    "published": "2026-10-26T14:31:11.464433-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/FFIV_2026-10-27/factors.json",
+    "published": "2026-10-26T14:31:11.464433-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1048695/000104869526000063/ex991-q326earningsreleasef.htm",
+    "published": "2026-07-27T16:06:52-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1048695/000104869526000067/ffiv-20260630.htm",
+    "published": "2026-08-06T14:39:25-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/f5-telenor-partner-build-ai-040000756.html?.tsrc=rss",
+    "published": "2026-10-21T00:00:00-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-ffiv-risky-1-150704059.html?.tsrc=rss",
+    "published": "2026-10-13T11:07:04-04:00",
+    "dossier_item": "I14"
+   }
+  ],
+  "decided_et": "2026-10-26T19:57:27-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 15996,
+   "candidatesTokenCount": 760,
+   "totalTokenCount": 18070,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 15996
+    }
+   ],
+   "thoughtsTokenCount": 1314,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
