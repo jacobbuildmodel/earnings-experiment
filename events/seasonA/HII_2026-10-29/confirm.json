@@ -1,0 +1,24 @@
+{
+ "session": "BMO",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/hii-host-third-quarter-earnings-conference-call-and-webcast-oct-29-2026-10-08",
+  "published_et": "2026-10-08T10:00-04:00",
+  "quote": "HII (NYSE: HII) will release its third quarter 2026 financial results on Thursday, Oct. 29 and host an earnings conference call at 9 a.m. Eastern time the same day.",
+  "title": "HII to Host Third Quarter Earnings Conference Call and Webcast on Oct. 29",
+  "retrieved_et": "2026-10-26T08:55:15-04:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ]
+}
