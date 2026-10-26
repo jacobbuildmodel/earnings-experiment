@@ -28,6 +28,15 @@ Follows `2026-10-20_cloud_T2_shallow_clone.md` (same family: the cloud clone is 
 - Thu 10-22 has no snapshot. Fri 10-23's 8 gates (AGYS, AMKR, CDNS, CLS, CVLT, EEFT, GLXY, RMBS) get T2 for their
   PASS names from the Fri 17:20 ET cloud run, with no hand-firing.
 
+## Scored 2026-10-26 11:25 ET (week-plan chat)
+- E1 (21:20 / 21:50 ET fires the same evening, 0 waiting): **not read.** `list_runs` page 1 reaches back only to
+  10-24, and the older page was not fetched to save the allowance.
+- E2 (Thu housekeeping commits): **held.** `52a8bd0`, Thu 10-22 08:41 ET.
+- E3 (Fri's PASS names get T2 from the 17:20 ET cloud fire, with no hand-firing): **held.** GLXY was the only PASS:
+  T2 `e070afd` at 17:22 ET, T2R `6d3b614` and T2O `9584b08` at 17:53–17:54 ET. No chat was open.
+- Every fire since kept passing step 1. The weekend's refusals were a different cause (the weekly limit):
+  `2026-10-26_weekly_limit.md`.
+
 ## Lessons
 - A routine that never reaches the code leaves no log: only the outcome checks (T2 AT RISK, dates stale) see it.
 - **A standing RED hides a new one.** Owed: health should mark RED lines that are new since the previous run.

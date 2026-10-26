@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/revolution-medicines-report-financial-results-third-quarter-2026-after-market-close",
+  "published_et": "2026-10-21T16:05-04:00",
+  "quote": "OD CITY, Calif. , Oct. 21, 2026 (GLOBE NEWSWIRE) -- Revolution Medicines, Inc. (Nasdaq: RVMD), a global, commercial-stage oncology company dedicated to discovering, developing and delivering innovative medicines for patients with RAS-addicted cancers, today announced that it will report financial results for the third quarter of 2026 on Wednesday, November 4, 2026 , after market close.",
+  "title": "Revolution Medicines to Report Financial Results for Third Quarter 2026 After Market Close on November 4, 2026",
+  "retrieved_et": "2026-10-23T21:28:37.191909-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}

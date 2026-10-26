@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/cargurus-report-third-quarter-2026-financial-results-2026-10-19",
+  "published_et": "2026-10-19T16:05-04:00",
+  "quote": "linkedin facebook x email reddit BOSTON , Oct. 19, 2026 (GLOBE NEWSWIRE) -- CarGurus, Inc. (Nasdaq: CARG), the No. 1 visited automotive shopping site in the U.S .1, today announced that it will report financial results for the third quarter ended September 30, 2026 , after the market close on Thursday, November 5, 2026 .",
+  "title": "CarGurus To Report Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-26T09:33:20.967948-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}

@@ -1,24 +1,31 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 2 of 6) · D015 C1 live (blind) · Max plan** · updated 2026-10-21 13:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-26 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Wed 2026-10-21 21:05 ET by the resume chat (cloud-routine fix + the three alarms; no outcome or P&L read).*
-- **Phase:** Season A, week 2 of 6. The peak (Oct 29–Nov 6) is the power. Code runs gates, freezes, T2, C1, paper.
-- **Cloud routines fixed 20:49 ET (Jacob approved):** step 1 of `earnings-t2-cloud`, `-t2-models`, `-housekeeping-cloud`
-  is now `git fetch -q origin main && git checkout -q -B main FETCH_HEAD` (stale local `main` broke `pull --ff-only`
-  from 17:21 ET). Hand-fired: **WDC and MXL T2 frozen 20:50–20:51 ET**, T2R/T2O too. Incident with expectations:
-  `ops/incidents/2026-10-21_cloud_routines_stale_main.md` (`a67f9f8`). **Next chat: score them** (21:20 / 21:50 ET
-  fires: 0 waiting; Thu 08:30 ET housekeeping commits) via RemoteTrigger `list_runs` / `get_run_log`.
-- **Three alarms coded** (`3e0da08`, `pipeline/health.py`, 15 tests in `tests/test_health_alarms.py`, 341 pass): AI step
-  refused (live: Actions AI step AMBER, standing since Oct 14 22:07 ET) · dates stale · runner not acting (14:40–15:56).
-- **D016 decision run: Fri Oct 23 ≥ 16:00 ET**, `python pipeline/gate_audit.py seasonA --decision`, write-once.
-- **Health RED (standing):** ABT and SPCX T2 MISSING · DPZ +100 shares not in a ledger. A standing RED hides a new one
-  (WDC/MXL "AT RISK" sat unseen for 2.5 h): **owed — mark RED lines new since the previous run** (health.py, health.yml).
-- **Owed, not done:** Oct 22 checkpoint, ≥ 70% of names dated Oct 31–Nov 6 confirmed (40% Tue 07:30) · peak capacity
-  by Oct 27 · DST inventory by Oct 28.
-- **Next action:** score the incident's expectations, then the "new RED" marker; the Oct 22 checkpoint count.
-- **Waiting on Jacob:** DPZ's 100 paper shares · Actions' claude refused by an organization setting (below).
+*Rewritten Mon 2026-10-26 11:30 ET by the week-plan chat (no outcome, P&L or C1 figure read).*
+- **Phase:** Season A, week 3 of 6. Gates: Mon 19 · Tue 32 · Wed 19 · Thu 1 · Fri 14 (the first peak entries). 31
+  frozen so far: 8 PASS, 6 with T2.
+- **D016 decision run done** (`82e48d2`, 08:50 ET). It is the first run after Fri 16:00 ET and saw the same 31 gates.
+  §5 picks **A4** (the better of the two nearest strikes, plus straddle spread ≤ 10%): 10 PASS vs 8. Jacob's call
+  before the Season B screen.
+- **Dates:** the recall audit missed 5 of 10 (seed 20261026, independent reader). That led to **find_dates v4**
+  (`7fbb7f5`, `74f5a0e`): the Nasdaq fallback, "financial markets" wording, replay windows. The 09:00–10:55 ET run
+  confirmed **29** (`ce9f5f6`); housekeeping confirmed HII. **Peak Nov 2–6: 121 of 157 (77%), was 62%.** Both
+  checkpoints were missed. Not read by code: dates that appear only as IR-calendar webcasts (MCHP).
+- 🔴 **The AI allowance binds.** The card says **Pro**. The weekly limit refused 3 `earnings-t2-cloud` fires (Sun 21:21
+  to Mon 05:21 UTC) until the Mon 06:00 UTC reset. No T2 was due, and health can't see a refused run.
+  `ops/incidents/2026-10-26_weekly_limit.md` has expectations for tonight and Friday. Rule: read `get_usage` at
+  session start; no subagents unless needed; stop laptop work at weekly ≥ 60% before a Friday.
+- **Health RED (standing):** DPZ +100 not in a ledger. "Dates stale" fires every Monday because the re-checks run on
+  weekdays only. Owed: the "new RED" marker; count weekday hours only.
+- **This week:** Tue: peak capacity, including the weekly AI allowance (3 calls per PASS, ~22 PASS), and the new-RED
+  marker. Wed: DST inventory. **Thu, build day:** pooled H-T2C code; **the D008 v2 real-money sleeve draft (Jacob,
+  2026-10-26), with a recommended size and loss limit for him to decide.** Fri: commit the DST changes; week review on
+  counts. Also this week: the D003 v5 = A4 proposal, reviewed. Sun Nov 1: DST ends; Mon Nov 2 is a watch day.
+- **Next action:** after 15:56 ET, check that today's PASS names are queued for the 17:20 ET fire. Then peak capacity.
+- **Waiting on Jacob:** DPZ's 100 paper shares · Actions' AI token (org setting) · D003 v5 = A4 for Season B
+  (`analysis/d016/gate_audit_seasonA_decision.md`) · the sleeve's size and loss limit (after Thu).
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -185,6 +192,30 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-26 (Mon) 11:30 ET — week plan; D016 decided (A4); find_dates v4 (+29 dates); weekly-limit refusals found.**
+- **Week plan** given to Jacob at 08:40 ET (the table now in NOW). Startup check PASS, 0 warnings.
+- **D016 decision run** (`82e48d2`, 08:50 ET, write-once). Friday 16:00 ET was missed because no chat was open, but
+  no gate had been taken since Fri 15:56 ET. 31 of 31 gates reproduce.
+  - The failures: `wide_spread` on 22 events, `thin_oi` on 12, `no_quote` and `low_implied_move` on none.
+  - The §5 rule picks A4 for D003 v5 (+2: RTX, TTMI).
+  - Pass rate by expiry gap: ≤ 5 sessions 7/16, monthly 1/15.
+- **Recall audit** (seeded random 10 of the 60 PENDING peak names, read against company releases by a Sonnet
+  subagent). Company date and session missed by code: DBX, ONC, IONQ, CARG, MCHP. CALX was found by code but has no
+  second source yet. ATRO, RDW, TECH and UI have no company date (TECH is being acquired by Merck KGaA).
+  - **find_dates v4:** (1) when the company's pages give no statement, use the Nasdaq copy of its wire release
+    (`7fbb7f5`); (2) "before/after the financial markets open/close"; (3) replay wording earlier in a sentence voids
+    that date (`74f5a0e`). 3 tests; 344 pass. find_dates is in no hash list; D003 §6 is unchanged.
+  - The `apply seasonA --commit` run (09:00–10:55 ET, laptop, code only) confirmed 29: REGN PLTR VRTX AXON DAVE INTA
+    CW DASH DOCN DT FIG HUBS IONQ RPRX VIAV ALRM APPN CARG DBX DDOG GRND IREN KRMN ONC SOUN QNT FLY LOAR TWST.
+  - Season A: 208 CONFIRMED, 79 PENDING, 31 FROZEN.
+- **Weekly-limit refusals** (`ops/incidents/2026-10-26_weekly_limit.md`). The Mon 01:20 UTC `earnings-t2-cloud` log
+  reads "You've hit your weekly limit"; two more fires show the same 9 s runs. The usage card says the plan is Pro.
+  - The 5-hour window hit 90% at 09:20 ET from this chat. Work paused 09:21–11:21 ET to protect the 10:45 ET push.
+- **Oct 21 incident scored** in its file: E2 and E3 held, E1 not read.
+- **Jacob, 2026-10-26:** asked whether to buy PYPL before Tuesday's print. Answer: PYPL is out of Season A (D003
+  `industry_out`, Credit Services); there is no data and no verdict, and no personal advice was given. He then asked
+  for the D008 v2 real-money sleeve draft on Thursday's build day.
 
 **2026-10-21 (Wed) 21:05 ET — cloud routines' git step fixed (WDC/MXL T2 saved); the three alarms coded.**
 - **Found at 20:45 ET:** the 17:21 ET T2 and 17:50 ET D013 cloud runs stopped at step 1, "Diverging branches can't be
@@ -610,3 +641,4 @@ subscription access for Claude Code"), so laptop sessions add the line by hand u
 - **2026-10-21 (Wed), by hand (laptop):** the 17:21 ET T2 and 17:50 ET D013 runs failed at git step 1 (stale `main`); step 1 fixed in 3 routines 20:49 ET, hand-fired: WDC/MXL T2, T2R, T2O frozen 20:50–20:55 ET.
 - **2026-10-22 (Thu), housekeeping 08:41 ET:** 15 re-checked (GE BMRN BA CHRN GLW QRVO VRNS APH DBD WING ALGM CCC DRS; HII INSM MSI TXT not reached); confirmed []; retired [GE unconfirmed]; hk.py needed python3.12 (3.11 SyntaxError f-string backslash)
 - **2026-10-23 (Fri), housekeeping 08:43 ET:** Re-checked 15 (BMRN BA CHRN GLW QRVO VRNS APH DBD WING ALGM CCC DRS HII INSM MSI); confirmed []; retired []; notes only: BA/WING/DRS have company dates but 10:00-10:30 ET calls (no session), MSI Nov 4 no session; cloud python3 is 3.11 so hk.py ran in a 3.12 venv
+- **2026-10-26 (Mon), housekeeping 08:57 ET:** 15 names re-checked (BMRN BA CHRN GLW QRVO VRNS APH DBD WING ALGM CCC DRS HII INSM MSI, plus TXT); confirmed [HII 2026-10-29 BMO via call time]; retired []; WING/DRS/TXT have no clear session; ran on python3.12 because hk.py needs 3.12+ syntax
