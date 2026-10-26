@@ -9,6 +9,23 @@
 
 ---
 
+## 2026-10-26 (Mon) 11:30 ET — the dark peak was mostly our reader, and the allowance is a second clock (power, all RQs)
+- **What happened:** for the 60 unconfirmed names reporting Nov 2–6, a random 10 were read by hand against company
+  releases. Half had already announced date and session, some as early as Sep 28. The code missed them for
+  ordinary reasons:
+  - a release page that refused the download;
+  - "financial markets" in place of "market";
+  - a call replay's "available until November 19" read as a second report date.
+  Fixing the three and re-running confirmed 29 names in two hours; peak coverage went from 62% to 77%. Separately,
+  the cloud T2 runner was refused all Sunday night by the account's weekly limit, and the usage card says Pro, not Max.
+- **What it taught:** (1) "no date announced" was mostly a statement about our parser, not the companies. One recall
+  audit of 10 is worth more than days of re-running the same parser. (2) The scored decision depends on an allowance
+  shared with every chat, and when that allowance is spent, nothing in the repo shows it. Last week it ran out with
+  no PASS waiting. In the peak week it would cost T2s that can never be redone.
+- **What changed:** find_dates v4; a usage rule for laptop chats; the allowance goes into Tuesday's capacity
+  computation. D016 decided A4 for a Season B proposal. An untested lead for the Season B screen: names with only
+  monthly expiries pass the gate 1 time in 15.
+
 ## 2026-10-21 (Wed) 21:05 ET — the alarm was on, and no one could hear it (instrument reliability, all RQs)
 - **What happened:** from 17:21 ET every cloud routine stopped at its first git command. The sandbox's local `main` was
   a day stale in a shallow clone, and after ~107 commits `git pull --ff-only` could find no common ancestor. WDC and
