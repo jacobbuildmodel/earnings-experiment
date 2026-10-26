@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "NXPI",
+ "report_date": "2026-10-27",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:33.711646-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/nxp-semiconductors-announces-conference-call-review-third-quarter-2026-financial",
+  "published_et": "2026-10-06T08:00-04:00",
+  "quote": "linkedin facebook x email reddit EINDHOVEN, The Netherlands , Oct. 06, 2026 (GLOBE NEWSWIRE) -- NXP Semiconductors N.V. (NASDAQ: NXPI) today announced it will release financial results for the third quarter 2026 after the close of normal trading on the NASDAQ Global Select Market on Tuesday, October 27, 2026 .",
+  "title": "NXP Semiconductors Announces Conference Call to Review Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T22:51:01.079079-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-27T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-27T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 247.66000366210938,
+  "expiry": "2026-11-20",
+  "strike": 250.0,
+  "call": {
+   "bid": 12.9,
+   "ask": 14.5,
+   "openInterest": 2567.0,
+   "lastPrice": 14.8,
+   "impliedVolatility": 0.5606733386230469,
+   "lastTradeDate": "2026-10-26T17:23:48+00:00"
+  },
+  "put": {
+   "bid": 14.1,
+   "ask": 16.2,
+   "openInterest": 48.0,
+   "lastPrice": 15.1,
+   "impliedVolatility": 0.5269822692871093,
+   "lastTradeDate": "2026-10-26T17:11:53+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 17,
+  "implied_move": 0.11649034795041428,
+  "rel_spread": {
+   "call": 0.1167883211678832,
+   "put": 0.1386138613861386
+  },
+  "oi_atm": 2615.0,
+  "oi_sum": 2615.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
