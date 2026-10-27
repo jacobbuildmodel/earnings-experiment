@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/dropbox-announce-third-quarter-2026-earnings-results-2026-10-15",
+  "published_et": "2026-10-15T16:04-04:00",
+  "quote": "linkedin facebook x email reddit SAN FRANCISCO --(BUSINESS WIRE)-- Dropbox, Inc. (NASDAQ: DBX) announced today that it will report financial results for the third quarter ended September 30, 2026 , after market close on Thursday, November 5, 2026 .",
+  "title": "Dropbox to Announce Third Quarter 2026 Earnings Results",
+  "retrieved_et": "2026-10-26T09:33:37.150505-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session (company feed https://investors.dropbox.com/rss/news-releases.xml (RSS) gave no readable statement)"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}

@@ -1,0 +1,112 @@
+{
+ "track": "T2G",
+ "event": "FLEX_2026-10-28",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.47,
+  "thesis": "Despite deep valuation compression and potential relief from oversold conditions, Flex's poor earnings reaction track record (1-3 in last four prints, 0-3 on BMO) and acute market skepticism over EPC Power acquisition debt create an unfavorable risk-reward into the print.",
+  "reasons": [
+   "Flex has dropped at the post-earnings open in 3 of the last 4 quarters (averaging -9.0% raw returns in July 2026 despite beating estimates and raising guidance).",
+   "Severe negative pre-earnings momentum (down 31.9% in the past month and 10.8% in 5 days) driven by debt and financing anxieties surrounding the $4.4B EPC Power transaction.",
+   "While Axiom's $37.5B valuation benchmark and forward P/E of ~10.6x offer long-term support, the market has repeatedly used earnings events to de-risk rather than bid up the shares."
+  ],
+  "deciding_variable": "Clarity on Q2 cash flow, debt burden from the EPC Power acquisition, and second-half margin guidance for the core manufacturing business.",
+  "prior": {
+   "p": 0.55,
+   "from": "hardware_networking cluster (0.586) blended with BMO session base rate (0.548) and overall historical rate (0.542)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down 8 percentage points from 0.55 to 0.47 due to Flex's 25% recent win rate (all 3 prior BMO reports gapping down) and severe negative sentiment regarding debt leverage and spin-off execution.",
+  "theses": [
+   {
+    "expected": "Bear reaction / decline at exit open",
+    "mechanism": "Working capital drain, elevated leverage from $4.4B EPC deal, and margin headwinds in non-cloud units trigger another post-print sell-off.",
+    "wrong_if": "Management delivers blowout CPI margins and confirms rapid debt paydown using Axiom preferred proceeds."
+   },
+   {
+    "expected": "Relief rally / positive open",
+    "mechanism": "Extreme oversold conditions (-52% from 52-week high) and high implied volatility (18.5%) catalyze a sharp short squeeze on inline or slightly positive numbers.",
+    "wrong_if": "FY27 guidance is trimmed or integration costs for EPC Power spike."
+   },
+   {
+    "expected": "Muted / chop reaction",
+    "mechanism": "Solid AI infrastructure growth in CPI is offset by cyclical drag in lifestyle and automotive, leaving the net revision neutral.",
+    "wrong_if": "The market decisively reassesses the net enterprise value implied by the Axiom private placement."
+   }
+  ],
+  "key_observations": [
+   "Q2 adjusted operating margin vs. Q1's 6.7% and the FY target range of 7.0%-7.2%",
+   "Operating cash flow and free cash flow generation relative to elevated debt levels",
+   "Updates on the Axiom spin-off timeline and balance sheet allocation post-EPC Power close",
+   "FY27 revenue and adjusted EPS guidance revisions"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/FLEX_2026-10-28/gate.json",
+    "published": "2026-10-26T14:31:12.029163-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/FLEX_2026-10-28/factors.json",
+    "published": "2026-10-26T14:31:12.029163-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/866374/000086637426000026/flexex991-6262026.htm",
+    "published": "2026-07-29T07:15:54-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/866374/000119312526421058/d147467d8k.htm",
+    "published": "2026-10-14T08:13:15-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/866374/000119312526413173/d123485d8k.htm",
+    "published": "2026-10-05T08:07:19-04:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/why-flex-flex-shares-getting-185104884.html?.tsrc=rss",
+    "published": "2026-10-13T14:51:04-04:00",
+    "dossier_item": "I23"
+   }
+  ],
+  "decided_et": "2026-10-26T19:04:45-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 22386,
+   "candidatesTokenCount": 798,
+   "totalTokenCount": 25162,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 22386
+    }
+   ],
+   "thoughtsTokenCount": 1978,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

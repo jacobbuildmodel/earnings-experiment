@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "BSX",
+ "report_date": "2026-10-28",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:00.341087-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/boston-scientific-announces-participation-wells-fargo-21st-annual-healthcare",
+  "published_et": "2026-08-10T08:00-04:00",
+  "quote": "Additionally, the company will webcast its conference call discussing financial results and business highlights for the third quarter ended September 30, 2026 , on Wednesday, October 28, 2026 , at 8:00 a.m. ET .",
+  "title": "Boston Scientific announces participation in Wells Fargo 21st Annual Healthcare Conference and conference call discussing third quarter 2026 results",
+  "retrieved_et": "2026-10-08T22:52:38.464715-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 45.3849983215332,
+  "expiry": "2026-10-30",
+  "strike": 45.5,
+  "call": {
+   "bid": 1.6,
+   "ask": 1.9,
+   "openInterest": 216.0,
+   "lastPrice": 1.73,
+   "impliedVolatility": 0.851563984375,
+   "lastTradeDate": "2026-10-26T17:45:56+00:00"
+  },
+  "put": {
+   "bid": 1.85,
+   "ask": 2.15,
+   "openInterest": 132.0,
+   "lastPrice": 2.02,
+   "impliedVolatility": 0.9160164648437501,
+   "lastTradeDate": "2026-10-26T17:45:56+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.0826264214759437,
+  "rel_spread": {
+   "call": 0.17142857142857132,
+   "put": 0.1499999999999999
+  },
+  "oi_atm": 348.0,
+  "oi_sum": 5483.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

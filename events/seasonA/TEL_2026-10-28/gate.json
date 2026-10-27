@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "TEL",
+ "report_date": "2026-10-28",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:39.432568-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.te.com/news-releases/press-release-details/2026/TE-Connectivity-to-report-fourth-quarter-and-full-year-financial-results-on-October-28-2026/default.aspx",
+  "published_et": "2026-10-07T08:30-04:00",
+  "quote": "28, 2026 View All News TE Connectivity to report fourth quarter and full year financial results on October 28, 2026 October 7, 2026 Download (opens in new window) GALWAY, Ireland , Oct. 7, 2026 /PRNewswire/ -- TE Connectivity plc (NYSE: TEL) will report financial results for the fourth quarter and full year of fiscal 2026 before trading begins on October 28, 2026.",
+  "title": "TE Connectivity to report fourth quarter and full year financial results on October 28, 2026",
+  "retrieved_et": "2026-10-19T09:40:21.940989-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.te.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 215.10000610351562,
+  "expiry": "2026-11-20",
+  "strike": 220.0,
+  "call": {
+   "bid": 6.9,
+   "ask": 8.0,
+   "openInterest": 151.0,
+   "lastPrice": 7.5,
+   "impliedVolatility": 0.44336494140625,
+   "lastTradeDate": "2026-10-26T16:32:23+00:00"
+  },
+  "put": {
+   "bid": 11.7,
+   "ask": 13.5,
+   "openInterest": 69.0,
+   "lastPrice": 16.29,
+   "impliedVolatility": 0.46985393432617195,
+   "lastTradeDate": "2026-10-15T13:42:57+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 17,
+  "implied_move": 0.09321245667631946,
+  "rel_spread": {
+   "call": 0.14765100671140935,
+   "put": 0.1428571428571429
+  },
+  "oi_atm": 220.0,
+  "oi_sum": 220.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

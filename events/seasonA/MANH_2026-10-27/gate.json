@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "MANH",
+ "report_date": "2026-10-27",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:33.337127-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/manhattan-associates-announces-date-reporting-third-quarter-2026-financial-results",
+  "published_et": "2026-10-07T08:30-04:00",
+  "quote": "linkedin facebook x email reddit ATLANTA --(BUSINESS WIRE)-- Manhattan Associates Inc. (NASDAQ: MANH) today announced it will release its third quarter 2026 financial results on Tuesday, October 27, 2026 , after the stock market closes.",
+  "title": "Manhattan Associates Announces Date for Reporting Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T22:40:38.022270-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-27T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-27T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 234.9199981689453,
+  "expiry": "2026-11-20",
+  "strike": 230.0,
+  "call": {
+   "bid": 17.7,
+   "ask": 18.7,
+   "openInterest": 35.0,
+   "lastPrice": 22.0,
+   "impliedVolatility": 0.6317175500488281,
+   "lastTradeDate": "2026-10-22T17:32:36+00:00"
+  },
+  "put": {
+   "bid": 11.4,
+   "ask": 13.8,
+   "openInterest": 13.0,
+   "lastPrice": 11.4,
+   "impliedVolatility": 0.6039468316650394,
+   "lastTradeDate": "2026-10-22T18:44:51+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 17,
+  "implied_move": 0.13110846347721253,
+  "rel_spread": {
+   "call": 0.054945054945054944,
+   "put": 0.1904761904761905
+  },
+  "oi_atm": 48.0,
+  "oi_sum": 48.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

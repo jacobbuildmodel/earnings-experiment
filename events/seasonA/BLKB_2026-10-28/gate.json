@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "BLKB",
+ "report_date": "2026-10-28",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-27"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-28"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "reaction_day": "2026-10-28"
+ },
+ "snapshot_session": "2026-10-26",
+ "captured_et": "2026-10-26T14:31:00.328834-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/blackbaud-announces-date-third-quarter-2026-financial-results-2026-10-14",
+  "published_et": "2026-10-14T09:00-04:00",
+  "quote": "linkedin facebook x email reddit CHARLESTON, S.C. , Oct. 14, 2026 /PRNewswire/ -- Blackbaud (NASDAQ: BLKB), the world's leading provider of AI-powered solutions for social impact, will report its third quarter 2026 financial results at 8:00 a.m. ET on Wednesday, October 28 , before the U.S . financial markets open for trading.",
+  "title": "Blackbaud Announces Date of Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-19T10:08:10.046755-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 55.220001220703125,
+  "expiry": "2026-11-20",
+  "strike": 60.0,
+  "call": {
+   "bid": 0.8,
+   "ask": 2.35,
+   "openInterest": 2.0,
+   "lastPrice": 1.04,
+   "impliedVolatility": 0.5634809277343751,
+   "lastTradeDate": "2026-10-19T14:04:26+00:00"
+  },
+  "put": {
+   "bid": 4.3,
+   "ask": 7.5,
+   "openInterest": 4.0,
+   "lastPrice": 5.44,
+   "impliedVolatility": 0.7729514892578125,
+   "lastTradeDate": "2026-10-23T18:12:08+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 17,
+  "implied_move": 0.13536761743492082,
+  "rel_spread": {
+   "call": 0.9841269841269841,
+   "put": 0.5423728813559322
+  },
+  "oi_atm": 6.0,
+  "oi_sum": 9.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

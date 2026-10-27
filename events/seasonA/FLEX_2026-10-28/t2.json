@@ -1,0 +1,154 @@
+{
+ "track": "T2",
+ "event": "FLEX_2026-10-28",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.53,
+  "thesis": "The entry-to-exit window is only the overnight gap into a BMO print, so the result turns on whether the stock's depressed, high-IV pre-earnings drift reverses into a beat-and-raise reaction, and I see only a slight edge over a coin flip.",
+  "reasons": [
+   "The stock is down 32% over 1 month and 52% below its 52w high, so expectations are reset and the stock is cheap at about 10.6x forward PE, which favors a relief gap.",
+   "Estimates rose about 5.6% over 90 days, and the company has beaten EPS on each of the last 4 prints, with guidance raised last quarter.",
+   "The last 4 prints had only a 25% win rate on the open-to-open measure despite beats, with 3 of 4 down, which suggests sell-the-news behavior.",
+   "Heavy deal and financing news (EPC acquisition, $3.3B bridge, spin-off) adds balance-sheet risk, and Investor Day on Nov 10 is a possible catalyst that may limit the reaction.",
+   "The implied move of 18% is large and symmetric, so it gives no directional signal."
+  ],
+  "deciding_variable": "Whether the Q3 guidance and the AI infrastructure (CPI) outlook, together with the margin trajectory, reassure investors enough to offset the recent selloff.",
+  "prior": {
+   "p": 0.55,
+   "from": "BMO session base rate 0.548 (validation overall 0.542); hardware_networking cluster 0.586 is closest but only a candidate, so I stayed near the BMO rate"
+  },
+  "leak_probe": "I don't know. That earnings date (2026-10-28) is after today's date (2026-10-26) and past my knowledge cutoff, so I have no information on how FLEX's stock reacted.",
+  "moved_from_prior": "Moved down about 2 points from 0.55 to 0.53, because of the weak history of reactions to beats and the balance-sheet and spin-off overhang, partly offset by the oversold setup and rising estimates.",
+  "theses": [
+   {
+    "expected": "Rise: the beat and a raised FY guide meet an oversold stock, and short covering plus relief lift the open.",
+    "mechanism": "The stock fell 32% in a month, expectations are reset, the valuation is low, and AI and CPI demand supports the numbers.",
+    "wrong_if": "Guidance is only in line, or CPI margins compress because of memory costs and acquisition dilution."
+   },
+   {
+    "expected": "Fall: sell-the-news again despite the EPS beat.",
+    "mechanism": "The stock fell after beats in 3 of the last 4 prints; the market is focused on leverage from the EPC deal and spin-off complexity.",
+    "wrong_if": "Management gives clear spin-off economics and cash flow improves."
+   },
+   {
+    "expected": "Flat or choppy: a large gap in either direction is possible given the 18% implied move.",
+    "mechanism": "The stock has high uncertainty on guidance and free cash flow, and the market may be mixed on the AI-linked segment.",
+    "wrong_if": "The print moves the stock more than 10% in either direction."
+   }
+  ],
+  "key_observations": [
+   "Fiscal Q3 guidance for revenue and adjusted EPS versus the roughly $1.06 consensus for Q2",
+   "Full-year guidance, which was $4.42-4.74 adjusted EPS",
+   "Free cash flow and working capital, since Q1 FCF was only $41M",
+   "CPI segment growth and margins, and memory cost pass-through",
+   "Leverage and spin-off commentary ahead of the Nov 10 Investor Day"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/FLEX_2026-10-28/gate.json",
+    "published": "2026-10-26T14:31:12.029163-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/FLEX_2026-10-28/factors.json",
+    "published": "2026-10-26T14:31:12.029163-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/866374/000086637426000026/flexex991-6262026.htm",
+    "published": "2026-07-29T07:15:54-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/866374/000119312526421058/d147467d8k.htm",
+    "published": "2026-10-14T08:13:15-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/866374/000119312526413173/d123485d8k.htm",
+    "published": "2026-10-05T08:07:19-04:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/flex-report-q2-earnings-whats-114900795.html?.tsrc=rss",
+    "published": "2026-10-26T07:49:00-04:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/cogent-flex-mirion-netapp-viasat-200407412.html?.tsrc=rss",
+    "published": "2026-10-14T16:04:07-04:00",
+    "dossier_item": "I19"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/why-flex-flex-shares-getting-185104884.html?.tsrc=rss",
+    "published": "2026-10-13T14:51:04-04:00",
+    "dossier_item": "I23"
+   }
+  ],
+  "decided_et": "2026-10-26T17:23:47-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 31025,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1138,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 31025,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1138,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 31025,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 31025
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1385249
+ }
+}

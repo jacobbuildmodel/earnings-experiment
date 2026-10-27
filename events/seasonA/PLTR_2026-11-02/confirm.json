@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/palantir-announces-date-third-quarter-2026-earnings-release-and-webcast-2026-10-12",
+  "published_et": "2026-10-12T16:05-04:00",
+  "quote": "linkedin facebook x email reddit MIAMI --(BUSINESS WIRE)-- Palantir Technologies Inc. (NASDAQ: PLTR) announced today that results for its third quarter ended September 30, 2026 will be released on Monday, November 2, 2026 , following the close of U.S . markets.",
+  "title": "Palantir Announces Date of Third Quarter 2026 Earnings Release and Webcast",
+  "retrieved_et": "2026-10-26T09:12:05.469288-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session (company feed https://investors.palantir.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed) gave no readable statement)"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}

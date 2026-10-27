@@ -36,7 +36,7 @@ import requests
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import ET, ROOT, now_et, rule_for, write_json  # noqa: E402
 
-VERSION = "find_dates v3 (2026-10-07)"
+VERSION = "find_dates v4 (2026-10-26)"
 BROWSER = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                          "Chrome/126.0 Safari/537.36", "Accept": "*/*"}
 Q4_PRESS = ("/feed/PressRelease.svc/GetPressReleaseList?LanguageId=1&bodyType=0&pressReleaseDateFilter=3"
@@ -53,11 +53,12 @@ DATE_RE = re.compile(r"\b(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[
 # "U.S. ", "US " and the "U.S . " left by abbreviation handling (2026-10-19: STX "after the US market closes",
 # GDDY "after the U.S . stock market closes" read as no session)
 US = r"(u[.․]?s\s?[.․]?\s+)?"
-BMO_RE = re.compile(rf"before (the )?{US}(stock )?market(s)? open|prior to (the )?{US}(stock )?market(s)?"
+# "(stock |financial )": 2026-10-26, ONC "before the financial markets open", IONQ "after the financial markets close"
+BMO_RE = re.compile(rf"before (the )?{US}(stock |financial )?market(s)? open|prior to (the )?{US}(stock |financial )?market(s)?"
                     r" open|before the opening of|before the (start|beginning|open) of (the )?(regular )?trading|"
                     r"pre-market|premarket|before the bell|prior to the opening|before (the )?(nyse|nasdaq) open|"
                     r"before trading (begins|opens|starts)", re.I)  # TEL, 2026-10-19
-AMC_RE = re.compile(rf"after (the )?{US}(stock )?market(s)? (close|closes)|after (the )?close|following the close|"
+AMC_RE = re.compile(rf"after (the )?{US}(stock |financial )?market(s)? (close|closes)|after (the )?close|following the close|"
                     r"after the closing|after market hours|after (the )?(nyse|nasdaq)|after-market|after market close|"
                     r"after the bell|post-market|after the end of (the )?(regular )?trading", re.I)
 TIME_RE = re.compile(r"\b(\d{1,2})(?::(\d{2}))?\s*(a[.․]?m[.․]?|p[.․]?m[.․]?)\s*\(?\s*"
@@ -246,6 +247,11 @@ def parse_page(text, window, published):
             before = s[max(0, m.start() - 40): m.start()].lower()
             if re.search(r"(ended|ending|end of|as of|through|until|replay|period)\W+(\w+\W+){0,2}$", before):
                 continue  # a quarter end, a replay window - not the report date
+            # 2026-10-26 (IONQ, CARG): "A replay ... will be available until 11:59 PM Eastern Time, November 19" has
+            # too many words between "until" and the date for the test above; replay wording earlier in the
+            # sentence marks a replay window (CARG: "replay ... beginning ... on November 5, until ... November 19")
+            if re.search(r"\breplay|\barchived?\b", s[:m.start()], re.I):
+                continue
             hedged = bool(re.search(r"on or about|tentative|subject to change|expected to be on|around\W*$", before + " "))
             session, from_call = None, False
             bmo, amc = BMO_RE.search(clause), AMC_RE.search(clause)
@@ -280,19 +286,13 @@ def release_then_call(explicit, all_dates):
     return [x for x in all_dates if x != ex[0]] == [nxt]
 
 
-def probe(ticker, window, since_days=75):
-    """What the company's own feed says about the next results date. Returns a dict; writes nothing."""
-    items, host = feed_items(ticker)
-    if not items:
-        items, host = items_nasdaq(ticker), "www.nasdaq.com"
-    res = {"ticker": ticker, "host": host, "checked_et": now_et().isoformat(), "version": VERSION}
-    if not items:
-        res["outcome"] = "no_feed"
-        return res
+def results_hits(items, since_days):
     cutoff = now_et() - datetime.timedelta(days=since_days)
-    hits = [i for i in items if i["published"] >= cutoff and TITLE.search(i["title"]) and TITLE_RESULTS.search(i["title"])]
-    res["feed"] = items[0]["feed"]
-    res["newest_item"] = {"title": items[0]["title"][:150], "published": items[0]["published"].isoformat()}
+    return [i for i in items if i["published"] >= cutoff and TITLE.search(i["title"]) and TITLE_RESULTS.search(i["title"])]
+
+
+def statements_of(hits, window):
+    """Every results-date statement on the first four results-titled releases."""
     statements = []
     for it in hits[:4]:
         r = get(it["url"])
@@ -308,6 +308,31 @@ def probe(ticker, window, since_days=75):
             st.update(url=it["url"], title=it["title"], published_et=it["published"].isoformat(timespec="minutes"))
             statements.append(st)
         time.sleep(0.3)
+    return statements
+
+
+def probe(ticker, window, since_days=75):
+    """What the company's own feed says about the next results date. Returns a dict; writes nothing."""
+    items, host = feed_items(ticker)
+    if not items:
+        items, host = items_nasdaq(ticker), "www.nasdaq.com"
+    res = {"ticker": ticker, "host": host, "checked_et": now_et().isoformat(), "version": VERSION}
+    if not items:
+        res["outcome"] = "no_feed"
+        return res
+    res["feed"] = items[0]["feed"]
+    res["newest_item"] = {"title": items[0]["title"][:150], "published": items[0]["published"].isoformat()}
+    hits = results_hits(items, since_days)
+    statements = statements_of(hits, window)
+    if not statements and not items[0].get("nasdaq"):
+        # 2026-10-26: the company's feed lists the release but its page cannot be read (DBX: the release sits on
+        # dropbox.gcs-web.com, which refuses the fetch), or the feed never carried it. The Nasdaq copy of the
+        # same wire release is the same company source (nasdaq_body keeps only pages with a wire dateline).
+        nq = items_nasdaq(ticker)
+        statements = statements_of(results_hits(nq, since_days), window)
+        if statements:
+            res.update(host="www.nasdaq.com", feed=nq[0]["feed"],
+                       fallback=f"company feed {items[0]['feed']} gave no readable statement")
     res["statements"] = statements
     # Explicit release wording outranks a call time; a call time is used only when no page gives wording.
     explicit = [s for s in statements if s["session"] in ("BMO", "AMC") and not s["session_from_call_time"]]
@@ -454,7 +479,8 @@ def confirm_one(season, key, ev, window, snap, today, confirmed, paths):
                                            "quote": src["sentence"], "title": src["title"],
                                            "retrieved_et": res["checked_et"],
                                            "how": f"{VERSION}: company feed {res['feed']}; the quote is the sentence on the "
-                                                  "linked page that states the date and session"},
+                                                  "linked page that states the date and session"
+                                                  + (f" ({res['fallback']})" if res.get("fallback") else "")},
                         "second_sources_at_confirm": seconds})
                     paths.append(cpath)
                 ev.update(status="CONFIRMED", calendar_date=date, session=session,
