@@ -1,4 +1,4 @@
-# Health 2026-10-26 20:24 ET - **RED**
+# Health 2026-10-26 22:12 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-27T02:04:50Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40436330847
 - Actions failure: Earnings experiment - paper options at 2026-10-26T23:36:46Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40420937724
 - Actions failure: Earnings experiment - paper options at 2026-10-26T22:57:55Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40416381330
 - Actions failure: Earnings experiment - paper options at 2026-10-26T22:48:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40415253941
