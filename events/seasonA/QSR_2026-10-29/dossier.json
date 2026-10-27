@@ -1,0 +1,652 @@
+{
+ "event": "QSR_2026-10-29",
+ "season": "seasonA",
+ "built_et": "2026-10-27T14:32:16-04:00",
+ "cutoff_et": "2026-10-27T14:32:04.815483-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/QSR_2026-10-29/gate.json",
+   "published": "2026-10-27T14:32:04.815483-04:00",
+   "data": {
+    "ticker": "QSR",
+    "report_date": "2026-10-29",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "reaction_day": "2026-10-29"
+    },
+    "snapshot_session": "2026-10-27",
+    "captured_et": "2026-10-27T14:32:04.815483-04:00",
+    "options": {
+     "spot": 74.05000305175781,
+     "expiry": "2026-11-20",
+     "strike": 75.0,
+     "call": {
+      "bid": 1.9,
+      "ask": 2.05,
+      "openInterest": 571.0,
+      "lastPrice": 1.95,
+      "impliedVolatility": 0.32080757324218745,
+      "lastTradeDate": "2026-10-27T18:06:39+00:00"
+     },
+     "put": {
+      "bid": 2.45,
+      "ask": 2.7,
+      "openInterest": 16.0,
+      "lastPrice": 2.58,
+      "impliedVolatility": 0.28174546386718746,
+      "lastTradeDate": "2026-10-27T17:56:54+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 16,
+     "implied_move": 0.06144496708284729,
+     "rel_spread": {
+      "call": 0.07594936708860756,
+      "put": 0.0970873786407767
+     },
+     "oi_atm": 587.0,
+     "oi_sum": 587.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/QSR_2026-10-29/factors.json",
+   "published": "2026-10-27T14:32:04.815483-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.1381922435465497,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.03667930470934344,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.014112602183199319,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.030478787454127243,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.23423338647203412,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.8309694537935798,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.08406742047846683,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-06",
+       "session": "BMO",
+       "raw_return_A": -0.010790445042041297,
+       "eps_est": 1.04,
+       "eps_rep": 1.07,
+       "surprise_pct": 3.24,
+       "reaction_volume_ratio": 1.7894977074213159
+      },
+      {
+       "date": "2026-05-06",
+       "session": "BMO",
+       "raw_return_A": 0.007827066961614282,
+       "eps_est": 0.83,
+       "eps_rep": 0.86,
+       "surprise_pct": 3.97,
+       "reaction_volume_ratio": 2.5055849034504973
+      },
+      {
+       "date": "2026-02-12",
+       "session": "BMO",
+       "raw_return_A": -0.026237008871218936,
+       "eps_est": 0.95,
+       "eps_rep": 0.96,
+       "surprise_pct": 1.31,
+       "reaction_volume_ratio": 3.637503907316475
+      },
+      {
+       "date": "2025-10-30",
+       "session": "BMO",
+       "raw_return_A": 0.022158606432816752,
+       "eps_est": 1.0,
+       "eps_rep": 1.03,
+       "surprise_pct": 2.89,
+       "reaction_volume_ratio": 2.534896517105568
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.616870758823464,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 3.24,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.08393,
+      "7daysAgo": 1.08313,
+      "30daysAgo": 1.08234,
+      "60daysAgo": 1.08015,
+      "90daysAgo": 1.08769,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.003456867305941937,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.08393,
+      "low": 1.06,
+      "high": 1.15,
+      "yearAgoEps": 1.03,
+      "numberOfAnalysts": 23,
+      "growth": 0.052399997,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.08303119205114708,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0612,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 16.72154,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 3.4975893,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.046,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 33923119104,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.89286,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.06144496708284729,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.03906210937499999,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.05566350585937507,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.9428571428571428,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.6555441478439425,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 204.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.2862236382799248,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.04494045439409066,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 324,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.045643153526971014,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.2841269841269841,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.1381922435465497,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.014112602183199319,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.030478787454127243,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.23423338647203412,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.084087656319312,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 2.183683334736047,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:CommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 25858679522.241074,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.37507715703958827,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.10414834945248182,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1618756/000161875626000041/qsr-20260806.htm",
+   "published": "2026-08-06T06:32:57-04:00",
+   "form": "8-K",
+   "items": "2.02,9.01",
+   "text": "Item 2.02 Results of Operations and Financial Condition. On August 6, 2026, Restaurant Brands International Inc. (the “Company”) issued a press release and supplemental financial and operational information regarding results for the three months ended June 30, 2026. The press release and supplemental financial and operational information are furnished as Exhibit 99 hereto. Item 9.01 Financial Statements and Exhibits Exhibit Number Description 99 Press release and supplemental financial and operational information regarding results for the three months ended June 30, 2026 issued by the Company on August 6, 2026. 104 Cover Page Interactive Data File - the cover page XBRL tags are embedded within the Inline XBRL document SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. RESTAURANT BRANDS INTERNATIONAL INC. Date: August 6, 2026 /s/ Sami Siddiqui Name: Sami Siddiqui Title: Chief Financial Officer"
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1618756/000161875626000045/qsr-20260630.htm",
+   "published": "2026-08-06T16:20:00-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following Management’s Discussion and Analysis (“MD&A”) should be read in conjunction with the unaudited condensed consolidated financial statements and the related notes thereto (“Financial Statements”) in Item 1 and the Special Note Regarding Forward-Looking Statements later in this Item 2. All Note references herein refer to the Notes to the Financial Statements. Tabular amounts are displayed in millions of U.S. dollars except per share and unit count amounts, or as otherwise specifically identified. All references to “Canadian dollars” or “C$” are to the currency of Canada unless otherwise indicated. Percentages may not recompute due to rounding. Overview We are one of the world’s largest quick service restaurant (“QSR”) companies with nearly $49 billion in annual system-wide sales and over 33,000 restaurants, over 95% of which are franchised, in more than 120 countries and territories as of June 30, 2026. We own and franchise four iconic brands, Tim Hortons ®, Burger King® , Popeyes®, and Firehouse Subs®. Our brands have complementary daypart mixes and product platforms that benefit from global scale and the sharing of best practices while preserving the independence and rich heritage of each brand. We have six operating and reportable segments, including four franchisor segments for our Tim Hortons, Burger King, Popeyes, and Firehouse Subs brands in the U.S. and Canada (“TH”, “BK”, “PLK”, and “FHS”, respectively) and a fifth franchisor segment for all of our brands in the rest of the world (“INTL”). Additionally, we have a sixth operating and reportable segment, Restaurant Holdings (“RH”), which includes the operations of Burger King restaurants acquired as part of our acquisition of Carrols Restaurant Group Inc. (the “Carrols Acquisition”), as well as our acquisition of Popeyes China (“PLK China”) (“PLK China Acquisition”) and Firehouse Subs Brazil (“FHS Brazil”) restaurants. RBI maintains the franchisor dynamics in its TH, BK, PLK, FHS, and INTL segments (“five franchisor segments”) to report results consistent with how the business will be managed long-term. This approach reflects RBI’s intent to refranchise the vast majority of the Carrols Burger King restaurants and to find new partners for PLK China and new investors for FHS Brazil and sunset the RH segment. RH results include Company restaurant sales and expenses, including expenses associated with royalties, rent, and advertising. These expenses are recognized, as applicable, as revenues in the respective franchisor segments (BK for the Carrols Burger King restaurants and INTL for PLK China and FHS Brazil restaurants) and eliminated upon consolidation. Adjusted Operating Income represents our measure of segment income for each of our reportable segments and is used by management to measure operating performance. See Note 3, “Segment Reporting” of the Financial Statements for additional information about our operating and reportable segments and our measure of segment income. On February 14, 2025, we acquired substantially all the remaining equity interests in Pangaea Foods (China) Holdings Ltd. (“BK China”). Following the acquisition, we ceased accounting for our interest in BK China as an equity method investment and ceased recognition of franchise revenue. BK China met the criteria to be classified as held for sale and was reported as discontinued operations. On January 30, 2026, we established a joint venture with CPE Alder Investment Limited, a fund managed by CPE (“CPE”), with respect to the operations of BK China (the “BK China JV”). CPE invested $350 million of primary capital into the BK China JV. Following the transaction, we deconsolidated BK China, began accounting for our remaining 17% equity interest in the BK China JV under the equity method of accounting, and resumed recognizing franchise revenue, primarily related to royalties, from the BK China JV within our INTL segment. We refer to the acquisition of BK China and the subsequent establishment of the BK China JV collectively as the “BK China Transactions.” See Note 5, “BK China” of the Financial Statements and Note 6, “Equity Method Investments” of the Financial Statements for additional information. 29 Table of Contents Key Operating Metrics Key performance indicators (“KPIs”) are shown for RBI's five franchisor segments. The KPIs for the Carrols Burger King restaurants are included in the BK segment, and the KPIs for the BK China, PLK China, and FHS Brazil restaurants are included in the INTL segment. We evaluate our restaurants and assess our business based on the following operating metrics: • System-wide sales growth refers to the percentage change in sales at all franchised restaurants and Company restaurants (referred to as system-wide sales) in one period from the same period in the prior year on a constant currency basis, which means the results exclude the effect of foreign currency translation (“FX Impact”). We calculate the FX Impact by translating prior year results at current year monthly average exchange rates. System-wide sales is reported on a nominal basis. • Comparable sales refers to the percentage change in restaurant sales in one period from the same prior year period on a constant currency basis for restaurants that have been open for an initial consecutive period, typically at least 13 months. Additionally, if a restaurant is closed for a significant portion of a month, the restaurant is excluded from the monthly comparable sales calculation. • Unless otherwise stated, system-wide sales growth, system-wide sales, and comparable sales are presented on a system-wide basis, which means they include franchised restaurants and Company restaurants. System-wide results are driven by our franchised restaurants, as over 95% of system-wide restaurants are franchised. Franchise sales represent sales at all franchised restaurants and are revenues to our franchisees. We do not record franchise sales as revenues; however, our royalty revenues and advertising fund contributions are calculated based on a percentage of franchise sales. • Net restaurant growth refers to the net change in restaurant count (openings, net of permanent closures) over a trailing twelve-month period, divided by the restaurant count at the beginning of the trailing twelve-month period. In determining whether a restaurant meets our definition of a restaurant that will be included in our net restaurant growth, we consider factors such as scope of operations, format and image, separate franchise agreement, and minimum sales thresholds. We refer to restaurants that do not meet our definition as “alternative formats” and we believe these are helpful to build brand awareness, test new concepts and provide convenience in certain markets. These metrics are important indicators of the overall direction of our business, including trends in sales and the effectiveness of marketing, operations, and growth initiatives. The following tables present our consolidated key operating metrics for each of the periods indicated, which have been derived from our internal records. We evaluate our restaurants and assess our business based on these operating metrics. These metrics may differ from those used by other companies in our industry, who may define these metrics differently. Three Months Ended June 30, Six Months Ended June 30, Consolidated Key Operating Metrics 2026 2025 2026 2025 System-wide Sales Growth (a) 6.4 % 5.3 % 6.3 % 4.1 % System-wide Sales (in US$ millions) (a) $ 12,702 $ 11,853 $ 24,213 $ 22,349 Comparable Sales 3.8 % 2.4 % 3.5 % 1.3 % Net Restaurant Growth 2.9 % 2.9 % 2.9 % 2.9 % System Restaurant Count at Period End 33,156 32,229 33,156 32,229 (a) System-wide sales growth is calculated on a constant currency basis and therefore will not recalculate to the percentage change in system-wide sales, which is reported on a nominal basis. 30 Table of Contents Results of Operations for the Three and Six Months Ended June 30, 2026 and 2025 Tabular amounts in millions of U.S. dollars unless noted otherwise. Totals, variances, and percentage changes may not calculate exactly due to rounding. Consolidated Three Months Ended June 30, Variance FX Impact (a) Variance Excluding FX Impact Six Months Ended June 30, Variance FX Impact (a) Variance Excluding FX Impact 2026 2025 Favorable / (Unfavorable) 2026 2025 Favorable / (Unfavorable) Revenues: Supply chain sales $ 788 $ 732 $ 56 $ — $ 56 $ 1,474 $ 1,343 $ 131 $ 24 $ 107 Company restaurant sales 617 600 17 1 16 1,176 1,158 18 1 17 Franchise and property revenues 793 760 33 3 30 1,515 1,423 92 26 66 Advertising revenues and other services 322 318 4 — 4 619 595 24 5 19 Total revenues 2,520 2,410 110 4 106 4,784 4,519 265 56 209 Operating costs and expenses: Supply chain cost of sales 635 589 (46) 1 (47) 1,199 1,085 (114) (19) (95) Company restaurant expenses 508 498 (10) (1) (9) 985 966 (19) (1) (18) Franchise and property expenses 139 144 5 — 5 258 274 16 (4) 20 Advertising expenses and other services 369 364 (5) (2) (3) 710 675 (35) (7) (28) General and administrative expenses 181 188 7 (2) 9 361 379 18 (7) 25 (Income) loss from equity method investments (2) (5) (3) — (3) (4) (10) (6) — (6) Other operating expenses (income), net (26) 149 175 (2) 177 (47) 232 279 (8) 287 Total operating costs and expenses 1,804 1,927 123 (6) 129 3,462 3,601 139 (46) 185 Income from operations 716 483 233 (2) 235 1,322 918 404 10 394 Interest expense, net 124 132 8 — 8 247 262 15 — 15 Income from continuing operations before income taxes 592 351 241 (2) 243 1,075 656 419 10 409 Income tax (benefit) expense from continuing operations (73) 87 160 (1) 161 (35) 169 204 (2) 206 Net income from continuing operations 665 264 401 (3) 404 1,110 487 623 8 615 Net loss from discontinued operations (net of tax of $0) — 1 1 — 1 — 3 3 — 3 Net income $ 665 $ 263 $ 402 $ (3) $ 405 $ 1,110 $ 484 $ 626 $ 8 $ 618 (a) We calculate the FX Impact by translating prior year results at current year monthly average exchange rates. We analyze these results on a constant currency basis as this helps identify underlying business trends, without distortion from the effects of currency movements. Our operating results are impacted by a number of external factors, including consumer spending levels and general economic conditions. During the three and six months ended June 30, 2026, the increases in Total revenues were primarily driven by higher Supply chain sales and increased system-wide sales across our INTL, BK, TH, and FHS segments. Results also reflect a favorable FX Impact. 31 Table of Contents During the three and six months ended June 30, 2026, the increases in Income from operations were primarily driven by a net gain on foreign exchange arising from remeasurement of foreign denominated assets and liabilities, primarily related to intercompany financing, compared to a net loss in the prior year, as well as higher segment income across our INTL, BK, TH, and FHS segments. During the three and six months ended June 30, 2026, the increases in Net income from continuing operations were primarily driven by an increase in Income from operations and an Income tax benefit from continuing operations compared to Income tax expense from continuing operations in the prior year. General and Administrative Expenses Our general and administrative expenses were comprised of the following: Three Months Ended June 30, Variance FX Impact (a) Variance Excluding FX Impact Six Months Ended June 30, Variance FX Impact (a) Variance Excluding FX Impact 2026 2025 Favorable / (Unfavorable) 2026 2025 Favorable / (Unfavorable) Segment G&A (b): TH $ 34 $ 34 $ — $ — $ — $ 68 $ 71 $ 3 $ (1) $ 4 BK 31 31 — — — 64 67 3 — 3 PLK 18 19 — — — 36 40 4 — 4 FHS 12 13 — — — 25 27 1 — 1 INTL 52 47 (5) (1) (4) 103 98 (4) (5) — RH 27 23 (3) — (3) 51 48 (3) — (3) RH and BK China Transaction costs 3 16 13 — 13 9 22 ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1618756/000161875626000047/qsr-20260810.htm",
+   "published": "2026-08-10T16:49:35-04:00",
+   "form": "8-K",
+   "items": "7.01,9.01",
+   "text": "Item 7.01 Regulation FD Disclosure. On August 10, 2026, Restaurant Brands International Inc. (the “Company”) issued a press release announcing that Restaurant Brands International Limited Partnership (“RBI LP”) has received an exchange notice from 3G Restaurant Brands Holdings LP, an affiliate of 3G Capital Partners Ltd., to exchange 2,784,549 Class B exchangeable limited partnership units (the “Exchangeable Units”) of RBI LP. RBI LP intends to satisfy this notice with the repurchase of all of these Exchangeable Units for cash, using available cash on hand. The exchange notice is irrevocable. A copy of the press release is attached hereto as Exhibit 99 and is incorporated by reference. Item 9.01 Financial Statements and Exhibits Exhibit Number Description 99 Press release issued by the Company on August 10, 2026. 104 Cover Page Interactive Data File - the cover page XBRL tags are embedded within the Inline XBRL document. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. RESTAURANT BRANDS INTERNATIONAL INC. Date: August 10, 2026 /s/ Jill Granat Name: Jill Granat Title: General Counsel and Corporate Secretary"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/starbucks-post-q4-earnings-whats-153600757.html?.tsrc=rss",
+   "published": "2026-10-27T11:36:00-04:00",
+   "text": "Starbucks to Post Q4 Earnings: What's in the Cards for the Stock? - SBUX's fiscal fourth-quarter results are likely to reflect China's shift to a licensed model, stronger U.S. comparable sales and cost-saving initiatives supporting earnings.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/analysts-estimate-yum-brands-yum-130012515.html?.tsrc=rss",
+   "published": "2026-10-27T09:00:12-04:00",
+   "text": "Analysts Estimate Yum Brands (YUM) to Report a Decline in Earnings: What to Look Out for - Yum (YUM) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rbc-flags-earnings-upside-chipotle-160602965.html?.tsrc=rss",
+   "published": "2026-10-26T12:06:02-04:00",
+   "text": "RBC flags earnings upside at Chipotle, Burger King parent and Jersey Mike’s - Investing.com -- RBC Capital Markets sees potential for stronger comparable sales at Chipotle Mexican Grill, Restaurant Brands International and Jersey Mike's Subs as the restaurant operators prepare to report quarterly results, with promotional activity and digital engagement among the potential gr",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/restaurant-brands-qsr-beat-estimates-151003729.html?.tsrc=rss",
+   "published": "2026-10-26T11:10:03-04:00",
+   "text": "Will Restaurant Brands (QSR) Beat Estimates Again in Its Next Earnings Report? - Restaurant Brands (QSR) has an impressive earnings surprise history and currently possesses the right combination of the two key ingredients for a likely beat in its next quarterly report.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/builders-firstsource-gears-q3-earnings-145000777.html?.tsrc=rss",
+   "published": "2026-10-26T10:50:00-04:00",
+   "text": "Builders FirstSource Gears Up for Q3 Earnings: What's in Store? - BLDR heads into Q3 earnings with sales and EPS seen falling amid housing headwinds, as acquisitions and value-added products offer support.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/25/why-placer-ai-traffic-data-predicts-a-surprise-for-restaurant-brands-qsr-on-oct-29/?.tsrc=rss",
+   "published": "2026-10-25T11:00:05-04:00",
+   "text": "Why Placer.ai Traffic Data Predicts a Surprise for Restaurant Brands (QSR) on Oct 29 - Placer.ai foot traffic data points to a potential fifth straight earnings beat for Restaurant Brands International, but one struggling brand and record beef costs could unravel the entire multi-brand growth story before it gets credit.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/raised-earnings-forecasts-restaurant-brands-071630675.html?.tsrc=rss",
+   "published": "2026-10-24T03:16:30-04:00",
+   "text": "How Raised Earnings Forecasts At Restaurant Brands International Stock Has Changed Its Investment Story - Analysts recently raised their earnings forecasts for Restaurant Brands International ahead of the September 2026 quarter, with the consensus EPS estimate moving higher and the latest projections pointing to the possibility of an earnings beat on stronger revenue. The shift in expectations centers o",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/traditional-fast-food-stocks-q2-013639944.html?.tsrc=rss",
+   "published": "2026-10-23T21:36:39-04:00",
+   "text": "Traditional fast food stocks Q2 teardown: Restaurant Brands (NYSE:QSR) vs the rest - Wrapping up Q2 earnings, we look at the numbers and key takeaways for the traditional fast food stocks, including Restaurant Brands (NYSE:QSR) and its peers.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/restaurant-brands-international-qsr-could-220743008.html?.tsrc=rss",
+   "published": "2026-10-23T18:07:43-04:00",
+   "text": "Restaurant Brands International (QSR) Could Be 12% Undervalued After Rising Earnings Expectations - Restaurant Brands International (NYSE:QSR) is back in focus after the market turned more upbeat on its upcoming September quarter results, with consensus earnings estimates raised and expectations pointing to higher revenue. The stock has climbed with a 5.14% 30 day share price return and an 11.10% ",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/restaurant-brands-international-qsr-too-131445051.html?.tsrc=rss",
+   "published": "2026-10-23T09:14:45-04:00",
+   "text": "Is Restaurant Brands International (QSR) Too Pricey After Its 60% Run? - Restaurant Brands International has ridden a solid multi year run and fresh optimism around Burger King's turnaround, which puts a spotlight on a basic question for you as a shareholder or potential buyer. Is the current share price really backed by the cash flows the business is expected to generat",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/620166/what-could-lift-starbucks-stock/2026-10-23?.tsrc=rss",
+   "published": "2026-10-23T04:03:48-04:00",
+   "text": "What Could Lift Starbucks Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/restaurant-brands-qsr-reports-next-130029521.html?.tsrc=rss",
+   "published": "2026-10-22T09:00:29-04:00",
+   "text": "Restaurant Brands (QSR) Reports Next Week: Wall Street Expects Earnings Growth - Restaurant Brands (QSR) possesses the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619636/is-mcdonalds-stock-a-real-bargain/2026-10-21?.tsrc=rss",
+   "published": "2026-10-21T23:10:42-04:00",
+   "text": "Is McDonald's Stock A Real Bargain? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619687/could-starbucks-stock-survive-a-sales-slowdown/2026-10-21?.tsrc=rss",
+   "published": "2026-10-21T15:21:51-04:00",
+   "text": "Could Starbucks Stock Survive A Sales Slowdown? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.thestreet.com/restaurants/burger-kings-game-day-meal-blows-past-a-full-day-of-sodium?.tsrc=rss",
+   "published": "2026-10-21T15:13:00-04:00",
+   "text": "Burger King's Game Day meal blows past recommendations for daily sodium intake - The pretzel burger started as a small Ohio test, and the chain’s Halloween menu got a lot smaller this year.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619737/what-could-chipotle-stock-be-worth-in-three-years/2026-10-21?.tsrc=rss",
+   "published": "2026-10-21T15:03:57-04:00",
+   "text": "What Could Chipotle Stock Be Worth In Three Years? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/mcds-menu-innovation-offset-slower-123000523.html?.tsrc=rss",
+   "published": "2026-10-21T08:30:00-04:00",
+   "text": "Can MCD's Menu Innovation Offset Slower U.S. Comparable Sales Growth? - Can McDonald's chicken launches and limited-time offers spark a U.S. sales rebound as weaker customer traffic challenges comparable-sales growth?",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619403/what-are-chipotle-investors-betting-on/2026-10-20?.tsrc=rss",
+   "published": "2026-10-20T15:09:12-04:00",
+   "text": "What Are Chipotle Investors Betting On? - Chipotle Mexican Grill (CMG) stock currently trades at 24.3 times its adjusted earnings over the last twelve months. Those earnings add back stock-based pay after tax, and the valuation looks steep for a burrito chain whose reported net income fell over those same months. Yet the current price reads",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619382/is-the-market-underpricing-mcdonalds-stock/2026-10-20?.tsrc=rss",
+   "published": "2026-10-20T12:17:49-04:00",
+   "text": "Is The Market Underpricing McDonald's Stock? - McDonald's (MCD) shares lost 18.5% over the past year, including dividends, while the S&P 500 returned 17.4%. Buyers today pay 19.6 times McDonald's earnings over the past twelve months. That multiple sits below the 24.7 average seen at its fiscal quarter ends over the past three years, and marks a ",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/apple-downgraded-akamai-upgraded-wall-133515192.html?.tsrc=rss",
+   "published": "2026-10-20T09:35:15-04:00",
+   "text": "Apple downgraded, Akamai upgraded: Wall Street's top analyst calls - Apple downgraded, Akamai upgraded: Wall Street's top analyst calls",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:16-04:00",
+    "sha256": "42958acc31b1c1faf6ea2db5450102ea9b94d10188883f3c1a901432b9f15eb5"
+   }
+  }
+ ],
+ "missing": [
+  "earnings release: no EX-99.1 found in 0001618756-26-000041 - its 8-K body is given instead"
+ ],
+ "transient": [],
+ "chars": 36839
+}
