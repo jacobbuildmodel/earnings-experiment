@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "HWM",
+ "report_date": "2026-10-29",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:38.831603-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/howmet-aerospace-host-webcast-and-announce-third-quarter-2026-results-2026-10-01",
+  "published_et": "2026-10-01T08:00-04:00",
+  "quote": "The press release and presentation materials will be available at approximately 7:00 AM ET on October 29, 2026 , via the \"Investors\" section of the Howmet Aerospace website.",
+  "title": "Howmet Aerospace to Host Webcast and Announce Third Quarter 2026 Results",
+  "retrieved_et": "2026-10-08T23:02:43.918485-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 192.0800018310547,
+  "expiry": "2026-10-30",
+  "strike": 192.5,
+  "call": {
+   "bid": 5.4,
+   "ask": 7.1,
+   "openInterest": 29.0,
+   "lastPrice": 6.9,
+   "impliedVolatility": 0.8044453149414061,
+   "lastTradeDate": "2026-10-27T17:48:04+00:00"
+  },
+  "put": {
+   "bid": 7.2,
+   "ask": 8.5,
+   "openInterest": 11.0,
+   "lastPrice": 7.1,
+   "impliedVolatility": 0.9514165014648437,
+   "lastTradeDate": "2026-10-27T17:21:39+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.07340691308615123,
+  "rel_spread": {
+   "call": 0.2719999999999999,
+   "put": 0.16560509554140126
+  },
+  "oi_atm": 40.0,
+  "oi_sum": 260.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
