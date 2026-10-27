@@ -1,0 +1,142 @@
+{
+ "track": "T2R",
+ "event": "MSFT_2026-10-28",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "MSFT's entry-to-exit window is essentially a pure earnings gap with a roughly 5% implied move, no clear directional edge, and recent post-print reactions have skewed negative.",
+  "reasons": [
+   "Base rates of about 54% hold for AMC and software, but there is no MSFT-specific edge in the dossier.",
+   "The last 4 prints won only 1 of 4 on the open-to-open move, though the sample is tiny and the one win was +11%.",
+   "The 5.1% implied move is large for MSFT, with ATM IV about 2.8x realized vol, so the print is well hedged and the bar is high.",
+   "The sector backdrop is supportive: tech rose on the Anthropic IPO filing, but the stock is flat and sits 2.4% below its 52-week high.",
+   "Overhangs: the 60k buyout headline and capex and margin worries versus a strong prior print (Azure +43%, RPO $678B)."
+  ],
+  "deciding_variable": "Azure growth and capex/margin guidance for the December quarter relative to elevated expectations after the +11% reaction last quarter.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation t0_hit 0.542; AMC session 0.538; software_internet cluster 0.541"
+  },
+  "leak_probe": "I don't know. That earnings report is on 2026-10-28, which is after today's date (2026-10-27), so there's no stock reaction yet, and I can't answer from memory anyway.",
+  "moved_from_prior": "Moved down about 0.04 from 0.54 to 0.50: weak recent post-earnings reactions and a high implied bar offset the positive base rate and sector tone.",
+  "theses": [
+   {
+    "expected": "Rise: Azure holds at roughly 40% or better with solid guidance and capex discipline.",
+    "mechanism": "Strong cloud and AI demand with RPO backlog conversion and cost cuts from the buyouts lifts margins and the stock.",
+    "wrong_if": "Azure decelerates sharply or capex guidance jumps without matching revenue upside."
+   },
+   {
+    "expected": "Fall: the beat is priced in after last quarter's +11% and the stock trades near highs.",
+    "mechanism": "Elevated expectations plus capex intensity and FCF concerns drive a sell-the-news reaction, as in 3 of the last 4 prints.",
+    "wrong_if": "Guidance is above consensus and the stock gaps up at the open."
+   },
+   {
+    "expected": "Muted or flat move that is a coin flip.",
+    "mechanism": "The implied-move straddle prices a large move, but the outcome hinges on small differences in guidance.",
+    "wrong_if": "The open gaps more than 5% in either direction."
+   }
+  ],
+  "key_observations": [
+   "Azure growth rate and constant-currency guidance",
+   "Capex guidance and FCF",
+   "Commercial RPO growth and OpenAI/Anthropic contribution",
+   "Operating margin and guidance after the voluntary retirement program and segment change",
+   "Copilot seat growth"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/MSFT_2026-10-28/gate.json",
+    "published": "2026-10-27T14:31:48.868994-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/MSFT_2026-10-28/factors.json",
+    "published": "2026-10-27T14:31:48.868994-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/msft-ex99_1.htm",
+    "published": "2026-07-29T16:04:53-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/27/oracle-rises-5-as-google-tpus-come-to-oracle-cloud-and-nvidia-deal-expands-amazon-nudges-higher-microsoft-treads-water/?.tsrc=rss",
+    "published": "2026-10-27T13:02:23-04:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/tech-firms-track-wall-st-024224619.html?.tsrc=rss",
+    "published": "2026-10-27T12:53:20-04:00",
+    "dossier_item": "I13"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/a9c578d6-7fe2-32f8-9ad1-001342df9d83/microsoft-to-offer-60%2C000.html?.tsrc=rss",
+    "published": "2026-10-27T12:47:00-04:00",
+    "dossier_item": "I14"
+   }
+  ],
+  "decided_et": "2026-10-27T17:53:42-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 21522,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 945,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 21522,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 945,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 21522,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 21522
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.0977551
+ }
+}
