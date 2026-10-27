@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "NOW",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:54.135802-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.servicenow.com/news/news-details/2026/ServiceNow-to-Announce-Third-Quarter-2026-Financial-Results-on-October-28/default.aspx",
+  "published_et": "2026-10-07T11:00-04:00",
+  "quote": "er 28 View All News ServiceNow to Announce Third Quarter 2026 Financial Results on October 28 October 7, 2026 Download (opens in new window) SANTA CLARA, Calif.--(BUSINESS WIRE)-- ServiceNow (NYSE: NOW) today announced that it will release financial results for the third quarter ended September 30, 2026, following the close of market on Wednesday, October 28, 2026.",
+  "title": "ServiceNow to Announce Third Quarter 2026 Financial Results on October 28",
+  "retrieved_et": "2026-10-08T22:59:35.392792-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.servicenow.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 155.0850067138672,
+  "expiry": "2026-10-30",
+  "strike": 155.0,
+  "call": {
+   "bid": 8.2,
+   "ask": 8.3,
+   "openInterest": 1348.0,
+   "lastPrice": 8.25,
+   "impliedVolatility": 1.2685583447265623,
+   "lastTradeDate": "2026-10-27T18:05:25+00:00"
+  },
+  "put": {
+   "bid": 7.55,
+   "ask": 7.65,
+   "openInterest": 664.0,
+   "lastPrice": 7.65,
+   "impliedVolatility": 1.1811564379882813,
+   "lastTradeDate": "2026-10-27T17:53:23+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.1022020138235758,
+  "rel_spread": {
+   "call": 0.012121212121212293,
+   "put": 0.013157894736842176
+  },
+  "oi_atm": 2012.0,
+  "oi_sum": 4762.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
