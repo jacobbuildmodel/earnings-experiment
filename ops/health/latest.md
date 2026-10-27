@@ -1,4 +1,4 @@
-# Health 2026-10-26 19:56 ET - **RED**
+# Health 2026-10-26 20:24 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -21,7 +21,7 @@ check.py: PASS - 1 warning(s)
 
 ## Information
 - CAKE_2026-10-27: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
-- FFIV_2026-10-27: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2R, T2O
+- FFIV_2026-10-27: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
 - FLEX_2026-10-28: T2 deadline Tue 27 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
 - paper/options_ledger.json: open ['seasonA-AGYS-2026-10-26-F', 'seasonA-CDNS-2026-10-26-F', 'seasonA-CLS-2026-10-26-F', 'seasonA-EEFT-2026-10-27-F', 'seasonA-GLXY-2026-10-27-F', 'seasonA-RMBS-2026-10-26-F', 'seasonA-BSX-2026-10-28-F', 'seasonA-CAKE-2026-10-27-F', 'seasonA-EAT-2026-10-28-F', 'seasonA-ETSY-2026-10-28-F', 'seasonA-EXTR-2026-10-28-F', 'seasonA-FFIV-2026-10-27-F', 'seasonA-FLEX-2026-10-28-F', 'seasonA-GEHC-2026-10-28-F', 'seasonA-JMKE-2026-10-28-F', 'seasonA-LFUS-2026-10-28-F', 'seasonA-LOGI-2026-10-27-F', 'seasonA-MANH-2026-10-27-F', 'seasonA-NXPI-2026-10-27-F', 'seasonA-STX-2026-10-27-F', 'seasonA-TEL-2026-10-28-F', 'seasonA-VFC-2026-10-28-F']
 - paper/long_ledger.json: open ['seasonA-AGYS-2026-10-26-L', 'seasonA-CDNS-2026-10-26-L', 'seasonA-EEFT-2026-10-27-L', 'seasonA-GLXY-2026-10-27-L', 'seasonA-RMBS-2026-10-26-L', 'seasonA-BSX-2026-10-28-L', 'seasonA-CAKE-2026-10-27-L', 'seasonA-EAT-2026-10-28-L', 'seasonA-ETSY-2026-10-28-L', 'seasonA-EXTR-2026-10-28-L', 'seasonA-FFIV-2026-10-27-L', 'seasonA-FLEX-2026-10-28-L', 'seasonA-GEHC-2026-10-28-L', 'seasonA-JMKE-2026-10-28-L', 'seasonA-LFUS-2026-10-28-L', 'seasonA-LOGI-2026-10-27-L', 'seasonA-MANH-2026-10-27-L', 'seasonA-NXPI-2026-10-27-L', 'seasonA-STX-2026-10-27-L', 'seasonA-TEL-2026-10-28-L', 'seasonA-TER-2026-10-27-L']
