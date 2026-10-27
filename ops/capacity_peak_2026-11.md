@@ -119,8 +119,13 @@ order (gate paths, i.e. alphabetical by ticker) until buying power runs out. A r
 - **Laptop chats are the largest draw.** The week-plan chat took weekly use from 12% (09:20 ET) to ~20%. This chat
   took it 20% → 21% (5-hour 49% → 56%) in 8 minutes, ~25 calls at 100–190k context: about 1 point of the 5-hour
   window per minute of active laptop work.
-- **Measured cost of one PASS name:** _filled in after tonight's 17:20 and 17:50 ET fires (5-hour and weekly
-  readings before and after, this chat idle)._
+- **Measured cost of one PASS name: not isolated.** The laptop slept and the waiter for the 17:17 ET reading died
+  (exit 4).
+  - Bound: weekly use went 21% (Mon 12:20 ET) → 27% (Tue 07:50 ET). That covers 3 PASS names × 3 calls, ~10
+    routine sessions and the end of this chat, so the cost is **≤ 2 points per PASS**.
+  - At that bound, the ~26 PASS still due this week (to the Fri 17:20 ET fire) need ≤ 52 points on top of 27%.
+    That stays under the limit only if laptop chats stay small.
+  - **Owed:** measure from a chat that stays awake through one fire, or from the routine run logs.
 
 ## 4. Timing at the peak
 - **Gates:** 8 gates were captured in 11–14 s (Oct 20, 21, 23). 55 take ~1.5 min of the 80-minute window.

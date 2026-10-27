@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-23T19:55:01-04:00",
+ "graded_et": "2026-10-26T20:40:49-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "WDC",
  "report_date": "2026-10-22",
@@ -13,14 +13,63 @@
  "entry_session": "2026-10-22",
  "cluster": "hardware_networking",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-22T16:04:29-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 363.76,
+   "entry_session": "2026-10-22",
+   "exit": 346.1,
+   "exit_session": "2026-10-23",
+   "dividends": 0,
+   "raw_return": -0.048548493512205804,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLK",
+    "beta": 1.915316,
+    "bench_return": -0.016817174065862805,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.01633829094907372,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.026308555091268948,
+    "print_gap": -0.022840848132358316,
+    "entry_close": 354.19,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 363.76,
+   "entry_session": "2026-10-22",
+   "exit": 343.67,
+   "exit_session": "2026-10-23",
+   "dividends": 0,
+   "raw_return": -0.0552287222344402,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLK",
+    "beta": 1.915316,
+    "bench_return": -0.00919266749580927,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.03762185909703677,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": true,
+  "T2": true,
+  "T2G": true,
+  "T2E": true
  }
 }

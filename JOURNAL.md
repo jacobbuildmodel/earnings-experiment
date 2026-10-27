@@ -9,6 +9,39 @@
 
 ---
 
+## 2026-10-27 (Tue) 08:20 ET — the guard was guarding a folder nobody used (instrument reliability, all RQs)
+- **What happened:** Jacob asked for the hand-off rule to be enforced. The new guard refused nothing in its first
+  live drill. The chat's hooks run the copy in the main project folder, and that folder had sat at Oct 21, 286
+  commits behind, because every chat now works in a worktree and pulls only there. No guard change since Oct 21 had
+  ever run. After a fast-forward the drill refused a command and allowed `git status`, as designed.
+- **The paper reds:** every completed paper-options run since at least Oct 21 is red for one reason: the DPZ record's
+  permanent flag. A red that never clears is not an alarm, because a new failure looks the same.
+- **What it taught:** "committed and tested" is not "running". A test proves the code; only a live drill proves the
+  deployment. And this chat went from 96k to 217k in 25 minutes and spent 47 points of the 5-hour window. A long chat
+  costs the cloud routines' allowance too.
+- **What changed:** the guard refuses all but the hand-off steps past the line (`7fd5995`). `startup.py` keeps the
+  main folder current. Owed: the new-RED marker, so health reports known alerts as known.
+
+---
+
+## 2026-10-27 (Tue) 07:55 ET — the paper account was never sized for the peak (RQ6, D011 capacity)
+- **What happened:** the peak-capacity computation found that D011's sizing rule, 0.5% of equity per event, almost
+  never applies. On a ~$91k account 0.5% is $456, and any straddle dearer than $4.56 is still one contract. 23 of 26
+  butterflies sat on that floor, so each took ~2.6% of equity, not ~0.7%.
+  - With every gate opening a butterfly, the main account's margin passes its equity from tomorrow (Oct 27). On the
+    peak's Wednesday it reaches about twice its equity.
+  - A day-by-day replay refuses ~58% of the wanted opens, ~33% once DPZ's stranded shares are sold.
+  - Mon's T2 fire ran clean (3 PASS, all three tracks by 17:55 ET).
+  - The planned measurement of what one PASS costs in AI allowance failed: the laptop slept and killed the waiter.
+- **What it taught:** a sizing rule written as "0.5% of equity" was really "one lot". Every refusal is D011's own
+  question 3 answering itself: the account can't carry a peak day.
+  - The refusals are not random. They fall on late-alphabet and dear names, so peak-day execution figures need that
+    disclosure.
+  - A timer on a sleeping laptop is not a measurement plan.
+- **What changed:** the note and the script are committed; DPZ's flattening is now urgent, not tidy-up.
+  - Jacob asked that the fresh-chat hand-off be enforced, not advised. This chat ran to ~215k tokens because a chat
+    started by another session can't start its successor.
+
 ## 2026-10-26 (Mon) 11:30 ET — the dark peak was mostly our reader, and the allowance is a second clock (power, all RQs)
 - **What happened:** for the 60 unconfirmed names reporting Nov 2–6, a random 10 were read by hand against company
   releases. Half had already announced date and session, some as early as Sep 28. The code missed them for

@@ -1,0 +1,106 @@
+{
+ "track": "T2G",
+ "event": "CAKE_2026-10-27",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.6,
+  "thesis": "High short interest combined with strong 90-day earnings revision momentum and positive call skew favors an upside reaction following the recent 5-day consolidation.",
+  "reasons": [
+   "Short interest stands at an unusually high 39.3% of float, setting up strong short-covering tailwinds on solid results.",
+   "EPS consensus has been consistently revised upward (+43.7% over 90 days from $0.66 to $0.95), reflecting strong fundamental execution.",
+   "Past three consecutive prints delivered positive overnight returns (average +4.1%), supported by positive call IV skew (+0.025) and a 6.7% 5-day pre-earnings pullback easing short-term froth."
+  ],
+  "deciding_variable": "Same-store sales comps and restaurant-level operating margin relative to consensus.",
+  "prior": {
+   "p": 0.55,
+   "from": "consumer cluster base rate of 0.555 (n=436)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved up from 0.55 to 0.60 (+0.05) due to the combination of extreme short interest (39%), strong EPS estimate upward momentum (+44%), and a healthy pre-earnings pullback.",
+  "theses": [
+   {
+    "expected": "Comps beat driven by traffic and average check, operating margins hold above 7.6%",
+    "mechanism": "High short float sparks short covering and buyers step in following the recent pullback",
+    "wrong_if": "Traffic softens or labor and commodity inflation compresses unit margins below expectations"
+   },
+   {
+    "expected": "In-line earnings with constructive FY26 unit growth and margin outlook",
+    "mechanism": "Positive call skew and modest valuation (P/S ~1.4x) keep the post-earnings drift positive into next morning's open",
+    "wrong_if": "Management guides down Q4 consumer dining traffic amid macro headwinds"
+   },
+   {
+    "expected": "Guidance cut or margin squeeze triggers aggressive selling",
+    "mechanism": "Year-to-date doubling in stock price creates vulnerability to profit-taking despite short interest",
+    "wrong_if": "Short sellers rush to cover any shallow dip, preserving open gains"
+   }
+  ],
+  "key_observations": [
+   "Cheesecake Factory comparable restaurant sales growth vs. prior quarter's +5.8%",
+   "Operating margin performance against 7.6% baseline",
+   "Updates on FY26 development cadence across North Italia and Flower Child",
+   "Q4 guidance for restaurant-level margins and commodity inflation"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CAKE_2026-10-27/gate.json",
+    "published": "2026-10-26T14:31:00.328836-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CAKE_2026-10-27/factors.json",
+    "published": "2026-10-26T14:31:00.328836-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/887596/000110465926087561/tm2621325d1_ex99-1.htm",
+    "published": "2026-07-28T16:30:45-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-cake-stock-may-110928517.html?.tsrc=rss",
+    "published": "2026-10-25T07:09:28-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/cheesecake-factory-cake-already-priced-100745964.html?.tsrc=rss",
+    "published": "2026-10-25T06:07:45-04:00",
+    "dossier_item": "I11"
+   }
+  ],
+  "decided_et": "2026-10-26T19:55:29-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 17697,
+   "candidatesTokenCount": 672,
+   "totalTokenCount": 19590,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 17697
+    }
+   ],
+   "thoughtsTokenCount": 1221,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
