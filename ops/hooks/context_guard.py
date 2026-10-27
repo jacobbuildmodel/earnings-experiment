@@ -64,7 +64,7 @@ GIT_STEPS = {"add", "commit", "push", "pull", "fetch", "rebase", "merge", "statu
              "rev-parse", "branch"}
 SHELL_STEPS = {"cd", "date", "get-date", "head", "tail", "select-object", "out-string"}
 ALLOWED = ("reading and editing STATE.md and JOURNAL.md (and the shared side-session notes), git status, diff, "
-           "log, add, commit and push (fetch, pull, rebase or merge when a push is refused), `python ops/check.py`, "
+           "log, add, commit and push (fetch, pull, rebase or merge when a push is refused), `python check.py`, "
            "ToolSearch, start_session, SendMessage, AskUserQuestion and the app's plan and wrap-up tools")
 
 
@@ -269,7 +269,7 @@ def handoff_command(cmd):
             if sub not in GIT_STEPS:
                 return False
         elif exe in ("python", "python3", "py"):
-            if not any(a.replace("\\", "/").endswith("ops/check.py") for a in seg[1:]):
+            if not any(a.replace("\\", "/").rsplit("/", 1)[-1] == "check.py" for a in seg[1:]):
                 return False
         elif exe not in SHELL_STEPS:
             return False

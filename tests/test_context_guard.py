@@ -251,7 +251,7 @@ def test_past_the_line_new_work_is_refused(tmp_path):
     ("Write", {"file_path": r"C:\Users\jacob\AppData\Local\Claude-Data\c\side-session-notes\local_1\handoff.md"}),
     ("Grep", {"pattern": "## Log", "path": "STATE.md"}),
     ("Bash", {"command": "git add STATE.md JOURNAL.md && git commit -m 'x' && git push github HEAD:main"}),
-    ("PowerShell", {"command": "python ops/check.py"}),
+    ("PowerShell", {"command": "python check.py"}),
     ("ToolSearch", {"query": "select:mcp__ccd_session__start_session"}),
     ("mcp__ccd_session__start_session", {}),
     ("mcp__ccd_turn__wrap_up", {}),
@@ -345,8 +345,8 @@ HEREDOC_COMMIT = "git commit -m \"$(cat <<'EOF'\nSTATE NOW; rm -rf x\n\nCo-Autho
     "git push github HEAD:main 2>&1 | Select-Object -Last 3",
     "git fetch github && git rebase github/main",
     'git -C "C:\\Users\\jacob\\Earnings Experiment" merge --ff-only github/main 2>&1 | Select-Object -Last 1',
-    'git commit -q -m "STATE NOW + Log"; if ($?) { git log --oneline -1 }; python ops/check.py 2>&1 | Select-Object -Last 3',
-    "python ops/check.py",
+    'git commit -q -m "STATE NOW + Log"; if ($?) { git log --oneline -1 }; python check.py 2>&1 | Select-Object -Last 3',
+    "python check.py",
     "python ops\\check.py 2>/dev/null | tail -5",
     "TZ=America/New_York date",
 ])
@@ -357,7 +357,7 @@ def test_hand_off_shell_steps(cmd):
 @pytest.mark.parametrize("cmd", [
     "", "python -m pytest", "gh run view 40415253941 --log-failed", "git checkout main", "git reset --hard",
     "git status; python pipeline/due.py", "git commit -m 'x' && curl https://example.com",
-    "cat FRAMEWORK.md", "python ops/check.py && python ops/startup.py", "git stash push -u",
+    "cat FRAMEWORK.md", "python check.py && python ops/startup.py", "git stash push -u",
     HEREDOC_COMMIT + "; python pipeline/t2_stage2.py",
 ])
 def test_other_shell_work_is_not_a_hand_off_step(cmd):
