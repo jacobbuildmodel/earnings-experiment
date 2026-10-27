@@ -1,0 +1,63 @@
+{
+ "season": "seasonA",
+ "ticker": "BELFA",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:00.316744-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/bel-fuse-schedules-third-quarter-2026-financial-results-conference-call-2026-10-19",
+  "published_et": "2026-10-19T08:30-04:00",
+  "quote": "NEWSWIRE) -- Bel Fuse Inc. (Nasdaq: BELFA and BELFB) , a global designer, manufacturer, and provider of critical electronic components, systems and solutions for customers in aerospace, defense, industrial, and data-driven markets, today announced plans to release preliminary financial results for the third quarter after market close on Wednesday, October 28, 2026 .",
+  "title": "Bel Fuse Schedules Third Quarter 2026 Financial Results Conference Call",
+  "retrieved_et": "2026-10-20T21:22:39.272252-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {},
+ "status": "INELIGIBLE",
+ "reason": "no_expiry"
+}

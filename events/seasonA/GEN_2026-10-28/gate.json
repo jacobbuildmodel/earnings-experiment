@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "GEN",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:28.017078-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.gendigital.com/news/news-details/2026/Gen-to-Announce-Fiscal-2027-Second-Quarter-Results-on-October-28-2026/default.aspx",
+  "published_et": "2026-10-09T09:00-04:00",
+  "quote": "er Results on October 28, 2026 View All News Gen to Announce Fiscal 2027 Second Quarter Results on October 28, 2026 October 9, 2026 Download (opens in new window) TEMPE, Ariz. and PRAGUE , Oct. 9, 2026 /PRNewswire/ -- Gen Digital Inc. (NASDAQ: GEN) today announced that its fiscal 2027 second quarter financial results will be released on Wednesday, October 28, 2026, after market close.",
+  "title": "Gen to Announce Fiscal 2027 Second Quarter Results on October 28, 2026",
+  "retrieved_et": "2026-10-09T21:29:02.077826-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.gendigital.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 23.985000610351562,
+  "expiry": "2026-11-20",
+  "strike": 24.0,
+  "call": {
+   "bid": 1.25,
+   "ask": 1.5,
+   "openInterest": 276.0,
+   "lastPrice": 1.33,
+   "impliedVolatility": 0.5522505712890625,
+   "lastTradeDate": "2026-10-27T16:28:40+00:00"
+  },
+  "put": {
+   "bid": 1.2,
+   "ask": 1.4,
+   "openInterest": 478.0,
+   "lastPrice": 1.27,
+   "impliedVolatility": 0.516606396484375,
+   "lastTradeDate": "2026-10-27T16:28:40+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.11152803551922823,
+  "rel_spread": {
+   "call": 0.18181818181818182,
+   "put": 0.15384615384615383
+  },
+  "oi_atm": 754.0,
+  "oi_sum": 754.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "FTNT",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:27.637552-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/fortinet-announce-third-quarter-2026-financial-results-2026-10-02",
+  "published_et": "2026-10-02T09:00-04:00",
+  "quote": "linkedin facebook x email reddit SUNNYVALE, Calif. , Oct. 02, 2026 (GLOBE NEWSWIRE) -- News Summary Fortinet ® (NASDAQ: FTNT), the global cybersecurity leader driving the convergence of networking and security, announced that it will hold a conference call to discuss its third quarter 2026 financial results on Wednesday, October 28, at 1:30 p.m. Pacific Time ( 4:30 p.m. Eastern Time ).",
+  "title": "Fortinet to Announce Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T22:53:36.761544-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 185.46499633789062,
+  "expiry": "2026-10-30",
+  "strike": 185.0,
+  "call": {
+   "bid": 9.85,
+   "ask": 11.0,
+   "openInterest": 143.0,
+   "lastPrice": 10.56,
+   "impliedVolatility": 1.3183627832031248,
+   "lastTradeDate": "2026-10-27T17:39:10+00:00"
+  },
+  "put": {
+   "bid": 9.8,
+   "ask": 10.65,
+   "openInterest": 121.0,
+   "lastPrice": 10.3,
+   "impliedVolatility": 1.3527864392089843,
+   "lastTradeDate": "2026-10-27T17:49:36+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.11134176479522133,
+  "rel_spread": {
+   "call": 0.1103117505995204,
+   "put": 0.08312958435207819
+  },
+  "oi_atm": 264.0,
+  "oi_sum": 414.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "KLAC",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:43.736303-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.kla.com/news-events/press-releases/detail/522/kla-announces-first-quarter-fiscal-year-2027-earnings-date",
+  "published_et": "2026-10-01T09:00-04:00",
+  "quote": "irst Quarter Fiscal Year 2027 Earnings Date and Webcast Download as PDF October 01, 2026 9:00am EDT MILPITAS, Calif., October 1, 2026 -- KLA Corporation (NASDAQ: KLAC), a global leader in semiconductor process control and process-enabling technology, today announced that the company will review first quarter fiscal year 2027 earnings on Wednesday, October 28th at 2 p.m. PT .",
+  "title": "KLA Announces First Quarter Fiscal Year 2027 Earnings Date and Webcast",
+  "retrieved_et": "2026-10-08T23:33:30.985027-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.kla-tencor.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 153.55499267578125,
+  "expiry": "2026-10-30",
+  "strike": 152.5,
+  "call": {
+   "bid": 6.1,
+   "ask": 6.8,
+   "openInterest": 39.0,
+   "lastPrice": 6.3,
+   "impliedVolatility": 0.9248054394531251,
+   "lastTradeDate": "2026-10-27T17:20:07+00:00"
+  },
+  "put": {
+   "bid": 5.3,
+   "ask": 5.7,
+   "openInterest": 34.0,
+   "lastPrice": 5.63,
+   "impliedVolatility": 0.9411626977539063,
+   "lastTradeDate": "2026-10-27T18:06:50+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.0778222823743116,
+  "rel_spread": {
+   "call": 0.10852713178294578,
+   "put": 0.0727272727272728
+  },
+  "oi_atm": 73.0,
+  "oi_sum": 3058.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "OLED",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:55.916724-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.oled.com/newsroom/press-releases/press-release-details/2026/Universal-Display-Corporation-Announces-Third-Quarter-2026-Earnings-Conference-Call/default.aspx",
+  "published_et": "2026-10-08T16:15-04:00",
+  "quote": "n Announces Third Quarter 2026 Earnings Conference Call Oct 8, 2026 Download this Press Release EWING, N.J.--(BUSINESS WIRE)-- Universal Display Corporation (Nasdaq: OLED), a global leader in energy-efficient OLED technologies and materials, today announced its results for the third quarter, ended September 30, 2026, will be released on Wednesday, October 28, 2026, after market close.",
+  "title": "Universal Display Corporation Announces Third Quarter 2026 Earnings Conference Call",
+  "retrieved_et": "2026-10-09T21:31:15.802011-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.oled.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 90.12000274658203,
+  "expiry": "2026-11-20",
+  "strike": 90.0,
+  "call": {
+   "bid": 6.1,
+   "ask": 6.5,
+   "openInterest": 979.0,
+   "lastPrice": 5.5,
+   "impliedVolatility": 0.664309997558594,
+   "lastTradeDate": "2026-10-27T17:39:42+00:00"
+  },
+  "put": {
+   "bid": 5.2,
+   "ask": 7.2,
+   "openInterest": 69.0,
+   "lastPrice": 14.17,
+   "impliedVolatility": 0.6665072412109377,
+   "lastTradeDate": "2026-10-15T18:28:45+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.13870394606123207,
+  "rel_spread": {
+   "call": 0.06349206349206354,
+   "put": 0.3225806451612903
+  },
+  "oi_atm": 1048.0,
+  "oi_sum": 1048.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

@@ -1,0 +1,608 @@
+{
+ "event": "NOW_2026-10-28",
+ "season": "seasonA",
+ "built_et": "2026-10-27T14:32:04-04:00",
+ "cutoff_et": "2026-10-27T14:31:54.135802-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/NOW_2026-10-28/gate.json",
+   "published": "2026-10-27T14:31:54.135802-04:00",
+   "data": {
+    "ticker": "NOW",
+    "report_date": "2026-10-28",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "reaction_day": "2026-10-29"
+    },
+    "snapshot_session": "2026-10-27",
+    "captured_et": "2026-10-27T14:31:54.135802-04:00",
+    "options": {
+     "spot": 155.0850067138672,
+     "expiry": "2026-10-30",
+     "strike": 155.0,
+     "call": {
+      "bid": 8.2,
+      "ask": 8.3,
+      "openInterest": 1348.0,
+      "lastPrice": 8.25,
+      "impliedVolatility": 1.2685583447265623,
+      "lastTradeDate": "2026-10-27T18:05:25+00:00"
+     },
+     "put": {
+      "bid": 7.55,
+      "ask": 7.65,
+      "openInterest": 664.0,
+      "lastPrice": 7.65,
+      "impliedVolatility": 1.1811564379882813,
+      "lastTradeDate": "2026-10-27T17:53:23+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.1022020138235758,
+     "rel_spread": {
+      "call": 0.012121212121212293,
+      "put": 0.013157894736842176
+     },
+     "oi_atm": 2012.0,
+     "oi_sum": 4762.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/NOW_2026-10-28/factors.json",
+   "published": "2026-10-27T14:31:54.135802-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.16655016878386053,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.1795359958266718,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.03684639570019255,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.061365994133901314,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.49842863667531834,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.5902924813233187,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.1807479385178613,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-22",
+       "session": "AMC",
+       "raw_return_A": -0.008525831138442186,
+       "eps_est": 0.86,
+       "eps_rep": 0.9,
+       "surprise_pct": 5.05,
+       "reaction_volume_ratio": 2.443152240901666
+      },
+      {
+       "date": "2026-04-22",
+       "session": "AMC",
+       "raw_return_A": -0.14039408866995073,
+       "eps_est": 0.97,
+       "eps_rep": 0.97,
+       "surprise_pct": 0.36,
+       "reaction_volume_ratio": 3.8626898808374244
+      },
+      {
+       "date": "2026-01-28",
+       "session": "AMC",
+       "raw_return_A": -0.10387846865764994,
+       "eps_est": 0.89,
+       "eps_rep": 0.92,
+       "surprise_pct": 3.95,
+       "reaction_volume_ratio": 4.653342444441725
+      },
+      {
+       "date": "2025-10-29",
+       "session": "AMC",
+       "raw_return_A": -0.008357115152716421,
+       "eps_est": 0.85,
+       "eps_rep": 0.96,
+       "surprise_pct": 13.0,
+       "reaction_volume_ratio": 2.664341669441475
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.0,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.4058815589055724,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 5.05,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.0231,
+      "7daysAgo": 1.02284,
+      "30daysAgo": 1.02552,
+      "60daysAgo": 1.02553,
+      "90daysAgo": 1.02553,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.0023695064990786755,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.0231,
+      "low": 0.91,
+      "high": 1.17,
+      "yearAgoEps": 0.964,
+      "numberOfAnalysts": 39,
+      "growth": 0.061300002,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.25412960609911045,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0287,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 30.99971,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 10.881096,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.24,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 160300302336,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.44898,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.1022020138235758,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.08740190673828097,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.06884731201171834,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 2.527971242417434,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.0287227742317562,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 31406.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.4574378380977873,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.12346245528578023,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 227,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.2401244167962675,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.040632054176072234,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.16655016878386053,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.03684639570019255,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.061365994133901314,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.49842863667531834,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.6601099727347997,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.04244853230228694,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 160321703155.51758,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.09189024137118511,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.05305374849996842,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000072/erq2fy26.htm",
+   "published": "2026-07-22T16:11:27-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 erq2fy26.htm EX-99.1 Document ServiceNow Reports Second Quarter 2026 Financial Results • ServiceNow beats high end of guidance across all Q2 2026 topline growth and profitability metrics, raises full year subscription revenues outlook • Subscription revenues of $3,877 million in Q2 2026, representing 24.5% year-over-year growth, 23% in constant currency • Total revenues of $3,987 million in Q2 2026, representing 24% year-over-year growth, 22.5% in constant currency • Current remaining performance obligations of $13.20 billion as of Q2 2026, representing 21% year-over-year growth, 21.5% in constant currency • Remaining performance obligations of $29.0 billion as of Q2 2026, representing 21% year-over-year growth, 22% in constant currency • ServiceNow AI crossed $1 billion in annual contract value in Q2 2026 SANTA CLARA, Calif. - July 22, 2026 - ServiceNow (NYSE: NOW), the AI control tower for business reinvention, today announced financial results for its second quarter ended June 30, 2026, with subscription revenues of $3,877 million in Q2 2026, representing 24.5% year-over-year growth and 23% in constant currency. “ServiceNow’s exceptional Q2 results solidify our position as the fastest-growing major enterprise software and cybersecurity company,” said ServiceNow Chairman and CEO Bill McDermott. “The company’s sterling fundamentals have us operating to the Rule of 56, well on our way to the Rule of 60. With our AI Control Tower as the market standard, agentic deployments of ServiceNow AI increased ninefold in just nine months. Our $29 billion in remaining performance obligations is fueled by longer customer commitments and skyrocketing demand from our partner ecosystem. We are who we said we were: a defining company that is only just getting started.” As of June 30, 2026, current remaining performance obligations (“cRPO”), contract revenue that will be recognized as revenue in the next 12 months, was $13.20 billion, representing 21% year-over-year growth and 21.5% in constant currenc y. The company had 123 transactions over $1 million in net new annual contract value (“ACV”) in Q2 2026, growing nearly 40% year-over-year, and ended the quarter with 658 cu stomers with more than $5 million in ACV, representing approximately 23% year-over-year growth. \"Q2 was an outstanding quarter that highlights ServiceNow’s broad based demand, strong execution, and operating leverage,” said ServiceNow President and CFO Gina Mastantuono. “Once again, we beat the high end of our guidance range across every topline and profitability metric. AI net new ACV growth continues to outpace expectations, our AI Control Tower is supercharging our Security and Risk business, and ITOM is seeing strong demand tailwinds for the CMDB to serve as an essential governance and data foundation. In an environment where most enterprises are still searching for AI's ROI, ServiceNow is the platform delivering it.\" Recent Business Highlights Innovation At Knowledge 2026 in May, the company demonstrated how the world’s largest enterprises are standardizing on ServiceNow’s AI platform to govern, deploy, and scale AI across every corner of the business. • ServiceNow Otto launched as a new unified AI experience that combines the intelligence of Now Assist, Moveworks, and AI Experience to complete work across every department and system. Otto can understand 1 intent, route work to the right agent, and execute tasks to completion within the guardrails the enterprise requires. • AI Control Tower expanded with new discovery, observation, governance, security, and measurement capabilities that give enterprises control over every AI system, agent, and workflow regardless of where it runs. • Autonomous Workforce - AI specialists launched for IT, customer relationship management, employee services, and security and risk. The Autonomous Security & Risk AI specialist combines capabilities from Armis, Veza, and AI Control Tower to govern every AI agent, identity, and connected asset across the enterprise. • Build Agent reached general availability in ServiceNow Studio, and extended across Cursor, Windsurf, Claude Code, and GitHub Copilot, so developers can build from any environment with full ServiceNow AI Platform context and control. • Context Engine and Autonomous Data Analytics launched to give enterprises the live, governed data that autonomous AI needs to act, mapping people, assets, and policies in real time and enabling plain-language queries across the entire data estate. • The company introduced ServiceNow Action Fabric, enabling ServiceNow and third-party AI to securely take action through ServiceNow workflows. Anthropic became the first design partner, connecting Claude directly to ServiceNow workflows and actions. Financial Analyst Day • ServiceNow hosted its annual Financial Analyst Day on May 4, where the company outlined long-term targets including $30 billion+ in subscription revenues, 30% of ACV to come from AI, and a Rule of 60+ by 2030 1 . In addition, the company shared a commitment to reduce stock-based compensation to less than 10% of revenue by 2029. Partnerships • ServiceNow and NVIDIA deepened their partnership to extend agentic AI governance from desktops to data centers, introducing Project Arc, an enterprise autonomous desktop agent secured by NVIDIA OpenShell, and completed the integration of AI Control Tower into the NVIDIA Enterprise AI Factory Validated Design. • ServiceNow and Microsoft extended AI Control Tower governance across the Microsoft Agent 365 ecosystem and made ServiceNow AI specialists available through the Microsoft marketplace. • ServiceNow surpassed $1 billion in AWS Marketplace transactions and deepened its collaboration with AWS, giving mutual customers a unified architecture to deploy and scale AI across the enterprise. • ServiceNow and Accenture launched a joint offering to help enterprises migrate off legacy cybersecurity platforms and automate risk management, threat detection, and compliance. The companies also introduced a forward deployed engineering program to help organizations scale AI from pilot projects to enterprise-wide deployments. Industry Expansion • ServiceNow and Experian are expanding their global strategic partnership, integrating the Experian Ascend Platform with the ServiceNow AI Platform to connect Experian's intelligence and decisioning capabilities directly into ServiceNow workflows, enabling autonomous AI agents to act faster across employee onboarding, third-party risk management, and model lifecycle governance. • Nearly all 50 U.S. states are using the ServiceNow AI Platform to deliver better citizen services and modernized operations, with state agencies achieving measurable outcomes including 66% service desk cost reduction, unified technology visibility, strengthened cybersecurity, and faster policy implementation. • Leidos, a Fortune 500 ® national security technology leader, is deploying the ServiceNow AI Platform to provide autonomous, AI-driven workflows designed to cut costs, improve employee experiences, and free employees for mission critical work. (1) The Rule of 60+ reflects a combined subscription revenue growth rate on a constant currency basis and free cash flow margin exceeding 60%. See the section entitled “Statement Regarding Use of Non-GAAP Financial Measures” for an explanation of non-GAAP measures. 2 • ServiceNow and TeamViewer are partnering to integrate TeamViewer’s endpoint capabilities with the ServiceNow AI Platform to enable end-to-end agentic IT workflows. • ServiceNow and FedEx expanded their collaboration to embed FedEx Dataworks logistics intelligence directly into ServiceNow workflows to enable proactive supply chain management. • ServiceNow and Lenovo announced a multi-year strategic relationship to automate workflows across the technology lifecycle, helping customers achieve up to a 30% reduction in IT support costs and up to 50% faster employee productivity. Recognition • ServiceNow was recognized as a Leader across multiple Gartner ® Magic Quadrant™ reports, including the 2026 Gartner Magic Quadrant for AI Governance Platforms 2 , 2026 Gartner Magic Quadrant for Workplace Experience Applications 3 , and 2026 Gartner Magic Quadrant for SaaS Management Platforms 4 . The company was also named a Visionary in the 2026 Gartner Magic Quadrant for Analytics and Business Intelligence Platforms 5 . ServiceNow was additionally recognized as a Leader in the Forrester Wave™: Strategic Portfolio Management Tools, Q2 2026 6 and the IDC MarketScape: Worldwide Digital Employee Experience 2026 Vendor Assessment 7 . • ServiceNow placed on the Fortune 500 ® list 8 for the fourth consecutive year and was named to the Fortune 100 Best Companies to Work For ® list 8 , reflecting strong business momentum and an employee-first culture in the age of AI. (2) Gartner, Inc., Magic Quadrant for AI Governance Platforms, Lauren Kornutick, Sumit Agarwal, Priya Sundararaman, Nader Henein, Brandon Medford, June 16, 2026. (3) Gartner, Inc., Magic Quadrant for Workplace Experience Applications by Sohail Majumdar, Christopher Trueman, April 6, 2026. (4) Gartner, Inc., Magic Quadrant for SaaS Management Platforms by Tom Cipolla, Todd Larivee, Lina AL Dana, June 18, 2026. (5) Gartner, Inc., Magic Quadrant for Analytics and Business Intelligence Platforms by Anirudh Ganeshan, Christopher Long, Edgar Macari, June 29, 2026. Gartner Disclaimer The Gartner content described herein, (the \"Gartner Content\") represents research opinion or viewpoints published, as part of a syndicated subscription service, by Gartner, Inc. (\"Gartner\"), and is not representation of fact. Gartner Content speaks as of its original publication date (and not as of the date of this press release) and the opinions expressed in the Gartner Content are subject to change without notice. Gartner does not endorse any vendor, product or service depicted in its research publications, and does not advise technology users to select only those vendors with the highest ratings or other designation. Gartner research publications consist of the opinions of Gartner's research organization and should not be construed as statements of fact. Gartner disclaims all warranties, expressed or implied, with respect to this research, including any warranties of merchantability or fitness for a particular purpose. GARTNER is a registered trademark and service mark of Gartner, Inc. and/or its affiliates in the U.S. and internationally, and MAGIC QUADRANT is a registered trademark of Gartner, Inc. And/or its affiliates and are used herein with permission. All rights reserved. (6) The Forrester Wave™: Strategic Portfolio Management Tools, Q2 2026, Forrester Research, Inc. Forrester Disclaimer Forrester does not endorse any company, product, brand, or service included in its research publications and does not advise any person to select the products or services of any company or brand based on the ratings included in such publications. Information is based on the best available resources. Opinions reflect judgment at the time and are subject to change. For more information, read about Forrester’s objectivity at https://www.forrester.com/about-us/objectivity/. (7) IDC MarketScape: Worldwide Digital Employee Experience 2026 Vendor Assessment (doc #US53014625, June 2026). (8) From Fortune ©2026 Fortune Media IP Limited. All rights reserved. Used under license. Fortune and Fortune 500 are registered trademarks of Fortune Media IP Limited and are used under license. Fortune and Fortune Media IP Limited are not affiliated with, and do not endorse the products or services of, ServiceNow. 3 Second Quarter 2026 GAAP and Non-GAAP Results: The following table summarizes our financial results for the second quarter 2026: Second Quarter 2026 GAAP Results Second Quarter 2026 Non-GAAP Results (1) Amount ($ millions) Year/Year Growth (%) Amount ($ millions) (2) Year/Year Growth (%) Subscription revenues $ 3,877 24.5 % $ 3,848 23 % Professional services and other revenues $ 110 8.5 % $ 109 7 % Total revenues $ 3,987 24 % $ 3,957 22.5 % Amount ($ billions) Year/Year Growth (%) Amount ($ billions) (2) Year/Year Growth (%) cRPO $ 13.20 21 % $ 13.28 21.5 % RPO $ 29.0 21 % $ 29.2 22 % Amount ($ millions) Margin (%) Amount ($ millions) (3) Margin (%) (3) Subscription gross profit $ 2,847 73.5 % $ 3,123 80.5 % Professional services and other gross loss $ (29) (26.5 %) $ (16) (14 %) Total gross profit $ 2,818 70.5 % $ 3,107 78 % Income from operations $ 162 4 % $ 1,173 29.5 % Net cash provided by operating activities $ 587 14.5 % Free cash flow $ 634 16 % Amount ($ millions) Earnings per Basic/Diluted Share ($) Amount ($ millions) (3) Earnings per Basic/Diluted Share ($) (3) Net income $ 298 $0.29 / $0.29 $ 930 $0.90 / $0.90 (1) We report non-GAAP financial measures in addition to, and not as a substitute for, or superior to, financial measures calculated in accordance with GAAP. See the section entitled “Statement Regarding Use of Non-GAAP Financial Measures” for an explanation of non-GAAP measures. (2) Non-GAAP subscription revenues and total revenues are adjusted for constant currency by excluding effects of foreign currency rate fluctuations and any gains or losses from foreign currency hedge contracts. Professional services and other revenues, cRPO, and RPO are adjusted only for constant currency. See the section entitled “Statement Regarding Use of Non-GAAP Financial Measures” for an explanation of non-GAAP measures. (3) Refer to the table entitled “GAAP to Non-GAAP Reconciliation” for a reconciliation of GAAP to non-GAAP measures. Note: Numbers rounded for presentation purposes and may not foot. 4 Financial Outlook Our guidance includes GAAP and non‑GAAP financial measures. The non‑GAAP growth rates for subscription revenues are adjusted for constant currency by excluding the effects of foreign currency rate fluctuations and any gains or losses from foreign currency hedge contract",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1373715/000137371526000076/now-20260630.htm",
+   "published": "2026-07-22T19:07:00-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results Of Operations The following discussion and analysis of our financial condition, results of operations and cash flows should be read in conjunction with the (1) unaudited condensed consolidated financial statements and the related notes thereto included elsewhere in this Quarterly Report on Form 10-Q, and (2) the audited consolidated financial statements and notes thereto and management’s discussion and analysis of financial condition and results of operations for the year ended December 31, 2025 included in the Annual Report on Form 10-K filed with the Securities and Exchange Commission (the “SEC”), on January 29, 2026. This Quarterly Report on Form 10-Q contains “forward-looking statements” within the meaning of Section 21E of the Securities Exchange Act of 1934, as amended (the “Exchange Act”). These statements are often identified by the use of words such as “may,” “will,” “expect,” “believe,” “anticipate,” “intend,” “could,” “estimate,” or “continue,” and similar expressions or variations. Forward-looking statements are subject to risks, uncertainties and other factors that could cause actual results and the timing of certain events to differ materially from future results expressed or implied by the forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to those identified herein, and those discussed in the section titled “Risk Factors” in Part I, Item 1A of our Annual Report on Form 10-K filed with the SEC on January 29, 2026 and in Part II, Item 1A of this Quarterly Report on Form 10-Q and in our other SEC filings. We disclaim any obligation to update any forward-looking statements to reflect events or circumstances after the date of such statements. Investors and others should note that we announce material financial information to our investors using our investor relations website (https://www.servicenow.com/company/investor-relations.html), SEC filings, press releases, public conference calls and webcasts. We use these channels, as well as social media, to communicate with our investors and the public about our Company, our services and other issues. It is possible that the information we post on social media could be deemed to be material information. Therefore, we encourage investors, the media and others interested in our Company to review the information we post on the social media channels listed on our investor relations website. Our free cash flow and non-GAAP consolidated income from operations measures included in the section entitled “Key Business Metrics—Free Cash Flow,” and “Key Business Metrics—Non-GAAP Consolidated Income from Operations” are not in accordance with U.S. Generally Accepted Accounting Principles (“GAAP”). These non-GAAP financial measures are not intended to be considered in isolation or as a substitute for, or superior to, financial information prepared and presented in accordance with GAAP. These measures may be different from non-GAAP financial measures used by other companies, limiting their usefulness for comparison purposes. We encourage investors to carefully consider our results under GAAP, as well as our supplemental non-GAAP results, to more fully understand our business. Overview ServiceNow delivers solutions that help public and private organizations govern, secure and manage artificial intelligence and digitalize and streamline workflows to drive collaboration, productivity and better experiences across the enterprise. At the core of these solutions is the ServiceNow AI Platform (“Platform”), a robust, cloud-based Platform that facilitates comprehensive delivery of seamless workflows and drives digital transformation across all departments and personas within an organization. Our Platform’s single data fabric and integrated data layer supports organizations’ operationalization of their AI strategy with speed, scale and security. Our workflow applications built on the Platform are grouped into four areas: Technology, CRM and Industry, Core Business, and Creator and Other. We offer an innovative suite of products, including AI-powered applications, and services designed to automate workflows, integrate systems and empower employees, regardless of existing systems, cloud environments or collaboration tools. The combination of ServiceNow's Security Operations with Armis' cyber asset intelligence and Veza's identity governance capabilities delivers end-to-end visibility, risk controls, and 30 Table of Contents automated responses across the enterprise. Our one platform architecture provides the foundation for organizations to seamlessly integrate AI, data, and workflows and create intelligent processes across their enterprise. We are closely monitoring ongoing global conflicts. While those events are continuing to evolve and the outcomes remain highly uncertain, we do not believe they will have a material impact on our business and results of operations. However, if the conflicts persist or worsen, leading to greater global economic disruptions and uncertainty, our business and results of operations could be materially impacted. Additionally, other macroeconomic events, including interest rates, global inflation and tariffs, have led to economic uncertainty in the global economy. To mitigate risk, our cash and cash equivalents are distributed across several large financial institutions and are not concentrated in one financial institution. We have not experienced any impact to our liquidity or to our current and projected business operations and financial condition due to recent macroeconomic events. Further, we have policy restrictions on the types of securities that can be purchased as part of our available-for-sale debt securities portfolio. These restrictions take industry and company concentration limits into consideration among other things. We will continue to monitor the direct and indirect impact of macroeconomic events on our business and financial results. See the “Risk Factors” section in Part I, Item 1A of our Annual Report on Form 10-K filed with the SEC on January 29, 2026 for further discussion of the possible impact of conflicts and macroeconomic events on our business and financial results. On December 5, 2025, our board of directors approved and declared a 5-for-1 split of our common stock (“Stock Split”), with a proportionate increase in the number of shares of authorized common stock. The Stock Split had a record date of December 16, 2025 and an effective date of December 17, 2025. The par value per share of our common stock remains unchanged at $0.001 per share after the Stock Split. Accordingly, an amount equal to the par value of the additional issued shares resulting from the Stock Split was reclassified from additional paid-in capital to common stock. All references made to common share, equity award and per share amounts throughout this Management's Discussion and Analysis of Financial Condition and Results of Operations have been retroactively adjusted to reflect the effects of the Stock Split. Key Business Metrics Remaining performance obligations. Transaction price allocated to remaining performance obligations (“RPO”) represents contracted revenue that has not yet been recognized, which includes deferred revenue and non-cancellable amounts that will be invoiced and recognized as revenue in future periods. RPO excludes contracts that are billed in arrears, such as certain time and materials contracts, as we apply the “right to invoice” practical expedient under relevant accounting guidance. Current remaining performance obligations (“cRPO”) represents RPO that will be recognized as revenue in the next 12 months. As of June 30, 2026, our RPO was $29.0 billion, of which 46% represented cRPO. RPO and cRPO both increased by 21% compared to June 30, 2025. Factors that may cause our RPO to vary from period to period include the following: • Foreign currency exchange rates. While a majority of our contracts have historically been in U.S. Dollars, an increasing percentage of our contracts in recent periods has been in foreign currencies, particularly the Euro and British Pound Sterling. Fluctuations in foreign currency exchange rates as of the balance sheet date will cause variability in our RPO. • Mix of offerings. In a minority of cases, we allow our customers to host our software by themselves or through a third-party service provider. In self-hosted offerings, we recognize a portion of the revenue upfront upon the delivery of the software and as a result, such revenue is excluded from RPO. • Subscription start date. From time to time, we enter into contracts with a subscription start date in the future and these amounts are included in RPO if such contracts are signed by the balance sheet date. 31 Table of Contents • Timing of contract renewals. While customers typically renew their contracts at the end of the contract term, from time to time, customers may do so either before or after the scheduled expiration date. For example, in cases where we are successful in selling additional products or services to an existing customer, a customer may decide to renew its existing contract early to ensure that all its contracts expire on the same date. In other cases, prolonged negotiations or other factors may result in a contract not being renewed until after it has expired. • Contract duration. While we typically enter into multi-year subscription services, the duration of our contracts varies. Further, we continue to see an increase in the number of 12-month agreements entered into with the U.S. federal government throughout the year, with the highest number of agreements entered into in the quarter ended September 30, driven primarily by timing of their annual budget expenditures. We sometimes also enter into contracts with durations that have a 12-month or shorter term to enable the contracts to co-terminate with the existing contract. The contract duration will cause variability in our RPO. Number of customers with ACV greater than $5 million. We count the total number of customers with annual contract value (“ACV”) greater than $5 million as of the end of the period. We had 658 and 533 customers with ACV greater than $5 million as of June 30, 2026 and 2025, respectively. For purposes of customer count, a customer is defined as an entity that has a unique Dunn & Bradstreet Global Ultimate (“GULT”) Data Universal Numbering System (“DUNS”) number and an active subscription contract as of the measurement date. The DUNS number is a global standard for business identification and tracking. We make exceptions for holding companies, government entities and other organizations for which the GULT, in our judgment, does not accurately represent the ServiceNow customer. For example, while all U.S. government agencies roll up to “Government of the United States” under the GULT, we count each government agency that we contract with as a separate customer. Our customer count is subject to adjustments for acquisitions, spin-offs and other market activity; accordingly, we restate previously disclosed number of customers with ACV greater than $5 million calculations to allow for comparability. ACV is calculated based on the foreign exchange rate in effect at the time the contract was signed. Foreign exchange rate fluctuations could cause some variability in the number of customers with ACV greater than $5 million. We believe information regarding the total number of customers with ACV greater than $5 million provides useful information to investors because it is an indicator of our growing customer base and demonstrates the value customers are receiving from the Platform. Free cash flow. We define free cash flow, a non-GAAP financial measure, as GAAP net cash provided by operating activities plus cash outflows for legal settlements and business combination and other related costs",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://www.thestreet.com/investing/palantir-servicenow-ptc-sp-500-rally?.tsrc=rss",
+   "published": "2026-10-27T12:33:00-04:00",
+   "text": "Palantir is one of just 3 crushed S&P 500 stocks up for the year - Wall Street’s worst first-half stocks rallied hard. Most of them are still underwater, and a few popular brands kept falling.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/servicenow-google-cloud-advance-agentic-130000993.html?.tsrc=rss",
+   "published": "2026-10-27T09:00:00-04:00",
+   "text": "ServiceNow and Google Cloud advance agentic AI for industry workflows - SUNNYVALE, Calif. & SANTA CLARA, Calif., October 27, 2026--ServiceNow and Google Cloud expanded their partnership to connect ServiceNow Action Fabric to Gemini Enterprise.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-reports-earnings-tomorrow-072647956.html?.tsrc=rss",
+   "published": "2026-10-27T03:26:47-04:00",
+   "text": "ServiceNow (NOW) reports earnings tomorrow: what to expect - Enterprise workflow automation company ServiceNow (NYSE:NOW) will be reporting earnings this Wednesday after market close. Here’s what to expect.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-gains-ai-traction-042520833.html?.tsrc=rss",
+   "published": "2026-10-27T00:25:20-04:00",
+   "text": "ServiceNow (NOW) Gains AI Traction As Valuation Debate Heats Up - ServiceNow (NOW) is back in the spotlight after a run of AI centric announcements, from its Arc personal agent launch with NVIDIA to fresh customer deployments at Thrive and Boardwalktech. For context, ServiceNow’s share price has climbed over recent weeks, with a 7-day share price return of 8.82%, ",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/path/articles/620537/why-did-microsoft-stock-beat-uipath-over-five-years/2026-10-26?.tsrc=rss",
+   "published": "2026-10-26T16:08:15-04:00",
+   "text": "Why Did Microsoft Stock Beat UiPath Over Five Years? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/servicenow-now-rallies-investors-reassess-172614893.html?.tsrc=rss",
+   "published": "2026-10-26T13:26:14-04:00",
+   "text": "ServiceNow (NOW) Rallies as Investors Reassess the Value of Enterprise AI Software - Burke Wealth Management, an investment management company, released its “Focused Growth Strategy” Q3 2026 investor letter. A copy of the letter can be downloaded here. The fund delivered strong results in the third quarter of 2026, benefiting from a sharp recovery in enterprise software and solid co",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/servicenow-q3-earnings-loom-hold-170300623.html?.tsrc=rss",
+   "published": "2026-10-26T13:03:00-04:00",
+   "text": "ServiceNow Q3 Earnings Loom: Hold or Fold NOW Stock Ahead of Results? - NOW's Q3'26 earnings approach amid strong AI adoption, rising costs and stiff competition. Can its growth prospects justify the stock's premium valuation?",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/information-technology-resilience-orchestration-market-144100159.html?.tsrc=rss",
+   "published": "2026-10-26T10:41:00-04:00",
+   "text": "Information Technology (IT) Resilience Orchestration Market 2026-2030 | Capitalize on 14.2% CAGR as Microsoft, IBM, Broadcom and ServiceNow Scale AI and Hybrid Cloud - Boost ROI by automating recovery and failover, using AI monitoring, adopting hybrid-cloud and managed resilience services, and reducing downtime and recovery costs.Dublin, Oct. 26, 2026 (GLOBE NEWSWIRE) -- \"Information Technology (IT) Resilience Orchestration Market Report 2026\" has been added to Re",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-continues-benefit-mission-135440720.html?.tsrc=rss",
+   "published": "2026-10-26T09:54:40-04:00",
+   "text": "ServiceNow (NOW) Continues to Benefit from Mission-Critical Software - Investment management company Vulcan Value Partners recently released its third-quarter 2026 investor letter. The letter can be downloaded here. The portfolio reported a strong quarter, with all strategies except Small Cap reporting positive absolute results, with Small Cap down about 1%. In the qua",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/26/growth-stocks-buy-hold-2030/?.tsrc=rss",
+   "published": "2026-10-26T05:54:00-04:00",
+   "text": "Got $5,000? 3 Growth Stocks to Buy and Hold Through 2030. - These stocks are trading at discounts despite excellent growth prospects.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/bank-of-america-raises-servicenow-price-target-third-quarter-earnings?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-26T02:56:15-04:00",
+   "text": "Bank Of America Raises ServiceNow Price Target Ahead Of Q3 Earnings - Key Stats for ServiceNow StockPrice change for ServiceNow stock in last 6 months: 76%$NOW Stock Price as of Oct. 23: $15952-Week High: $193$NOW Stock Price Target: $157__Now Live: Discover how much upside your favorite stocks could have using TIKR’s new Valuation Model (It’s free)__>>> What Happened",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/enterprise-agent-price-nobody-show-095924809.html?.tsrc=rss",
+   "published": "2026-10-25T05:59:24-04:00",
+   "text": "The Enterprise Agent Price Nobody Will Show You - A procurement officer sits down on a Monday morning to build a budget for an enterprise AI agent rollout. They open eight browser tabs, one for each of the primary platforms: OpenAI, Anthropic, Google, Microsoft, xAI, Meta, ServiceNow, and Salesforce. The goal is simple — find a per-seat or per-unit",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/servicenow-wants-to-be-no-1-in-security-heres-what-its-7-75-billion-armis-bet-must-show-on-october-28?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-24T16:28:20-04:00",
+   "text": "ServiceNow Wants to Be No. 1 in Security. Here’s What Its $7.75 Billion Armis Bet Must Show on October 28 - Key Stats for ServiceNow StockCurrent Price: $158. 96Target Price (Mid): ~$326Street Target: ~$157Potential Total Return: ~105%Annualized IRR: ~19% / year__Now Live: Discover how much upside your favorite stocks could have using TIKR’s new Valuation Model (It’s free)__ >>> What Happened?ServiceNow (",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/24/servicenows-moment-of-truth-can-agentic-ai-growth-justify-a-premium-80x-earnings-multiple-on-oct-28/?.tsrc=rss",
+   "published": "2026-10-24T11:47:08-04:00",
+   "text": "ServiceNow’s Moment of Truth: Can Agentic AI Growth Justify a Premium 80x Earnings Multiple on Oct. 28? - ServiceNow trades at nearly 100 times earnings with agentic AI hype at a fever pitch, but one soft number on Wednesday could reprice the stock overnight the way a slim Q1 beat already cost investors 17%.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/3ca16b67-0147-386a-a235-2de67164740d/the-ai-trade-is-shifting-from.html?.tsrc=rss",
+   "published": "2026-10-24T11:44:00-04:00",
+   "text": "The AI Trade Is Shifting From Chip Stocks to Cybersecurity - Software leaders got a big boost this week and chip stocks were crushed as the AI tech investing landscape continues to shift.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-stocks-banks-may-ai-211323171.html?.tsrc=rss",
+   "published": "2026-10-23T17:13:23-04:00",
+   "text": "3 Stocks Banks May Need As AI Security Spending Grows - AI agents poking at bank systems and fresh headlines about software flaws have pushed cybersecurity for financial institutions from back-office worry to front-page story. That shift in attention can move capital. If more banks rethink their defenses and AI risk budgets, certain cybersecurity and AI ",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/servicenow-now-advances-while-market-204503013.html?.tsrc=rss",
+   "published": "2026-10-23T16:45:03-04:00",
+   "text": "ServiceNow (NOW) Advances While Market Declines: Some Information for Investors - ServiceNow (NOW) reached $158.62 at the closing of the latest trading day, reflecting a +1.03% change compared to its last close.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:04-04:00",
+    "sha256": "d4698cb26680fae6da3e0eea79e75c3cb2bf805d0018b11ee1506b08f2d3a840"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 47404
+}
