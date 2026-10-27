@@ -3,29 +3,28 @@
 **Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-26 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Mon 2026-10-26 11:30 ET by the week-plan chat (no outcome, P&L or C1 figure read).*
-- **Phase:** Season A, week 3 of 6. Gates: Mon 19 · Tue 32 · Wed 19 · Thu 1 · Fri 14 (the first peak entries). 31
-  frozen so far: 8 PASS, 6 with T2.
-- **D016 decision run done** (`82e48d2`, 08:50 ET). It is the first run after Fri 16:00 ET and saw the same 31 gates.
-  §5 picks **A4** (the better of the two nearest strikes, plus straddle spread ≤ 10%): 10 PASS vs 8. Jacob's call
-  before the Season B screen.
-- **Dates:** the recall audit missed 5 of 10 (seed 20261026, independent reader). That led to **find_dates v4**
-  (`7fbb7f5`, `74f5a0e`): the Nasdaq fallback, "financial markets" wording, replay windows. The 09:00–10:55 ET run
-  confirmed **29** (`ce9f5f6`); housekeeping confirmed HII. **Peak Nov 2–6: 121 of 157 (77%), was 62%.** Both
-  checkpoints were missed. Not read by code: dates that appear only as IR-calendar webcasts (MCHP).
-- 🔴 **The AI allowance binds.** The card says **Pro**. The weekly limit refused 3 `earnings-t2-cloud` fires (Sun 21:21
-  to Mon 05:21 UTC) until the Mon 06:00 UTC reset. No T2 was due, and health can't see a refused run.
-  `ops/incidents/2026-10-26_weekly_limit.md` has expectations for tonight and Friday. Rule: read `get_usage` at
-  session start; no subagents unless needed; stop laptop work at weekly ≥ 60% before a Friday.
-- **Health RED (standing):** DPZ +100 not in a ledger. "Dates stale" fires every Monday because the re-checks run on
-  weekdays only. Owed: the "new RED" marker; count weekday hours only.
-- **This week:** Tue: peak capacity, including the weekly AI allowance (3 calls per PASS, ~22 PASS), and the new-RED
-  marker. Wed: DST inventory. **Thu, build day:** pooled H-T2C code; **the D008 v2 real-money sleeve draft (Jacob,
-  2026-10-26), with a recommended size and loss limit for him to decide.** Fri: commit the DST changes; week review on
-  counts. Also this week: the D003 v5 = A4 proposal, reviewed. Sun Nov 1: DST ends; Mon Nov 2 is a watch day.
-- **Next action:** after 15:56 ET, check that today's PASS names are queued for the 17:20 ET fire. Then peak capacity.
-- **Waiting on Jacob:** DPZ's 100 paper shares · Actions' AI token (org setting) · D003 v5 = A4 for Season B
-  (`analysis/d016/gate_audit_seasonA_decision.md`) · the sleeve's size and loss limit (after Thu).
+*Rewritten Tue 2026-10-27 07:55 ET by the T2-check chat (no outcome, P&L or C1 figure read). Handed off to a fresh
+chat at Jacob's word: "save everything, start on a new chat, I want this to be enforced".*
+- **Phase:** Season A, week 3 of 6. Gates: Tue 33 · Wed 20 · Thu 1 · Fri 18 (+ pending). 51 frozen: 11 PASS, 9 with
+  T2. Mon: 20 gates, 3 PASS (CAKE, FFIV, FLEX).
+- **Mon's T2 fire was not refused:** T2 frozen 17:23–17:24 ET, T2R 17:53–17:54, T2O 17:55, all 3 names. The first
+  expectation in `ops/incidents/2026-10-26_weekly_limit.md` is met.
+- 🔴 **Weekly AI 27%** (Tue 07:50 ET; 21% Mon 12:20). Stop laptop work at ≥ 60% before Fri 17:20 ET. Cost per PASS is
+  not isolated: the laptop waiter died in sleep (exit 4). Upper bound ≤ 2 points per PASS (6 points overnight, 3 PASS
+  plus routines). ~26 PASS still due this week.
+- 🔴 **Peak capacity done** (`ops/capacity_peak_2026-11.md`, `ops/capacity_peak.py`). The main paper account's margin
+  binds from **Tue Oct 27**: 23 of 26 butterflies sat on the 1-lot floor, ~2.6% of equity each. Refused opens
+  (`capacity`) Oct 27–Nov 11: ~58% with DPZ held, ~33% if flattened. Scored tracks are unaffected (`grade.py` uses
+  prices). Owed: the report views split `capacity` out; `paper.py` labels buying-power refusals.
+- **D016 decision run done** (`82e48d2`): §5 picks A4 for D003 v5. Jacob's call. find_dates v4 live; peak 121/157.
+- **Health RED (standing):** DPZ +100. AMBER: 4 paper-options Actions failures Mon 18:48–22:04 ET (runs 40415253941,
+  40416381330, 40420937724, 40436330847), not yet read.
+- **This week:** Tue: enforce the hand-off (Jacob); the new-RED marker. Wed: DST inventory. **Thu, build day:**
+  pooled H-T2C code; the D008 v2 sleeve draft with a recommended size and loss limit. Fri: DST commits; week review.
+- **Next action:** read the 4 paper-options failures. Then make the fresh-chat rule enforced. After 15:56 ET, check
+  that Tue's PASS names get T2 from the 17:20 ET fire.
+- **Waiting on Jacob:** DPZ's 100 paper shares (**flatten before Tue 14:30 ET**: halves the refusals) · Actions' AI
+  token · D003 v5 = A4 · the sleeve's size and loss limit (after Thu).
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -192,6 +191,23 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-27 (Tue) 07:55 ET — peak capacity computed; Mon's T2 fire clean; handed off (Jacob: enforce it).**
+- Started Mon 12:07 ET (early); startup PASS. Weekly AI 20% at 12:08 ET, 21% at 12:20 ET, 27% Tue 07:50 ET.
+- **Peak capacity** (`300c5db`, `c60cce5`): `ops/capacity_peak.py` reads only the calendar, the gates and the
+  ledgers' sizing fields. The note is `ops/capacity_peak_2026-11.md`.
+  - Calendar: 113 gates this week, 139.5 Nov 2–6 (Tue Nov 3 has 54.5). ~29 and ~36 PASS, so 88 and 108 AI calls.
+  - Prints Nov 3–5: 135, not ~165.
+  - Paper: the 1-lot floor makes each butterfly ~2.6% of equity. Margin is 124–140% on Oct 27 and 152–210% on Nov 4.
+  - Refused opens: 58% with DPZ held, 33% if flattened; the second account 7%.
+  - `held_by_cap` can't bind (convention verified). `capacity` is the binding label, folded into "other" by the
+    hash-locked report views.
+  - Gates, T2 and C1 timing hold.
+- **Mon's 17:20 ET fire:** not refused. CAKE, FFIV and FLEX got T2, T2R and T2O by 17:55 ET.
+  - The laptop waiter for the 17:17 ET reading died with exit 4 while the laptop slept, the known `gh`/sleep failure.
+    So the per-PASS AI cost is only bounded (≤ 2 points).
+- Owed and not done: the per-PASS AI measurement; the 4 paper-options Actions failures (Mon evening); the hand-off
+  rule made enforced (Jacob, Tue 07:50 ET).
 
 **2026-10-26 (Mon) 11:30 ET — week plan; D016 decided (A4); find_dates v4 (+29 dates); weekly-limit refusals found.**
 - **Week plan** given to Jacob at 08:40 ET (the table now in NOW). Startup check PASS, 0 warnings.
