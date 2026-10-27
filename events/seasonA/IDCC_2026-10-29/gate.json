@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "IDCC",
+ "report_date": "2026-10-29",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:39.069856-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.interdigital.com/news-events/press-releases/news-details/2026/InterDigital-Announces-Date-for-Third-Quarter-2026-Financial-Results/default.aspx",
+  "published_et": "2026-10-13T08:30-04:00",
+  "quote": "10/13/2026 Download the PDF version PDF Format (opens in new window) WILMINGTON, Del., Oct. 13, 2026 (GLOBE NEWSWIRE) -- InterDigital, Inc. (Nasdaq: IDCC), a wireless, video and AI technology research and development company, today announced that the company will release its third quarter 2026 financial results before the market open on Thursday, October 29, 2026.",
+  "title": "InterDigital Announces Date for Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-19T09:29:46.017711-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.interdigital.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 327.5299987792969,
+  "expiry": "2026-11-20",
+  "strike": 330.0,
+  "call": {
+   "bid": 15.0,
+   "ask": 18.1,
+   "openInterest": 13.0,
+   "lastPrice": 19.4,
+   "impliedVolatility": 0.5177050183105469,
+   "lastTradeDate": "2026-10-22T19:45:27+00:00"
+  },
+  "put": {
+   "bid": 16.6,
+   "ask": 19.4,
+   "openInterest": 4.0,
+   "lastPrice": 17.5,
+   "impliedVolatility": 0.5288743402099609,
+   "lastTradeDate": "2026-10-22T19:20:34+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.1054865207118973,
+  "rel_spread": {
+   "call": 0.18731117824773422,
+   "put": 0.1555555555555554
+  },
+  "oi_atm": 17.0,
+  "oi_sum": 17.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

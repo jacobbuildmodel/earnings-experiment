@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "PLXS",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:32:04.105909-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.plexus.com/news/news-details/2026/Plexus-Sets-Fiscal-Fourth-Quarter-and-Fiscal-Year-2026-Earnings-Release-Date/default.aspx",
+  "published_et": "2026-10-14T16:15-04:00",
+  "quote": "se Date | Plexus Corp. View all news Plexus Sets Fiscal Fourth Quarter and Fiscal Year 2026 Earnings Release Date 10/14/2026 Download (opens in new window) NEENAH, WI, Oct. 14, 2026 (GLOBE NEWSWIRE) -- Plexus Corp. (NASDAQ: PLXS) announced today it will release its fiscal fourth quarter and fiscal year 2026 results after market close on Wednesday, October 28, 2026.",
+  "title": "Plexus Sets Fiscal Fourth Quarter and Fiscal Year 2026 Earnings Release Date",
+  "retrieved_et": "2026-10-19T09:40:16.614034-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.plexus.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 228.6199951171875,
+  "expiry": "2026-11-20",
+  "strike": 230.0,
+  "call": {
+   "bid": 49.3,
+   "ask": 53.5,
+   "openInterest": 1.0,
+   "lastPrice": 29.3,
+   "impliedVolatility": 2.2058150323486325,
+   "lastTradeDate": "2026-04-09T19:49:28+00:00"
+  },
+  "put": {
+   "bid": 11.6,
+   "ask": 14.2,
+   "openInterest": 0.0,
+   "lastPrice": 12.9,
+   "impliedVolatility": 0.509892596435547,
+   "lastTradeDate": "2026-10-27T17:59:34+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.281252739800999,
+  "rel_spread": {
+   "call": 0.0817120622568094,
+   "put": 0.20155038759689922
+  },
+  "oi_atm": 1.0,
+  "oi_sum": 1.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

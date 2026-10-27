@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "BHE",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:07.969572-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.bench.com/news/news-details/2026/BENCHMARK-TO-REPORT-THIRD-QUARTER-2026-RESULTS/default.aspx",
+  "published_et": "2026-10-14T16:07-04:00",
+  "quote": "s, Inc. - BENCHMARK TO REPORT THIRD QUARTER 2026 RESULTS View All News BENCHMARK TO REPORT THIRD QUARTER 2026 RESULTS October 14, 2026 Download (opens in new window) TEMPE, Ariz., October 14, 2026 -- Benchmark Electronics, Inc. (NYSE: BHE) will report financial results for the third quarter of fiscal year 2026 after the market closes on Wednesday, October 28, 2026.",
+  "title": "BENCHMARK TO REPORT THIRD QUARTER 2026 RESULTS",
+  "retrieved_et": "2026-10-19T09:53:12.512120-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.bench.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 70.54000091552734,
+  "expiry": "2026-11-20",
+  "strike": 70.0,
+  "call": {
+   "bid": 2.4,
+   "ask": 4.9,
+   "openInterest": 59.0,
+   "lastPrice": 2.7,
+   "impliedVolatility": 0.6311072045898438,
+   "lastTradeDate": "2026-10-26T13:30:02+00:00"
+  },
+  "put": {
+   "bid": 3.0,
+   "ask": 6.0,
+   "openInterest": 88.0,
+   "lastPrice": 4.18,
+   "impliedVolatility": 0.65039412109375,
+   "lastTradeDate": "2026-10-15T14:04:45+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.11553728231106407,
+  "rel_spread": {
+   "call": 0.6849315068493151,
+   "put": 0.6666666666666666
+  },
+  "oi_atm": 147.0,
+  "oi_sum": 147.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

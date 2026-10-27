@@ -1,0 +1,606 @@
+{
+ "event": "GOOG_2026-10-28",
+ "season": "seasonA",
+ "built_et": "2026-10-27T14:31:43-04:00",
+ "cutoff_et": "2026-10-27T14:31:30.430356-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/GOOG_2026-10-28/gate.json",
+   "published": "2026-10-27T14:31:30.430356-04:00",
+   "data": {
+    "ticker": "GOOG",
+    "report_date": "2026-10-28",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "reaction_day": "2026-10-29"
+    },
+    "snapshot_session": "2026-10-27",
+    "captured_et": "2026-10-27T14:31:30.430356-04:00",
+    "options": {
+     "spot": 318.05499267578125,
+     "expiry": "2026-10-30",
+     "strike": 317.5,
+     "call": {
+      "bid": 9.4,
+      "ask": 9.7,
+      "openInterest": 542.0,
+      "lastPrice": 9.55,
+      "impliedVolatility": 0.6986114123535156,
+      "lastTradeDate": "2026-10-27T18:14:05+00:00"
+     },
+     "put": {
+      "bid": 8.55,
+      "ask": 8.85,
+      "openInterest": 787.0,
+      "lastPrice": 8.8,
+      "impliedVolatility": 0.6763948376464846,
+      "lastTradeDate": "2026-10-27T17:56:02+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.057380014212207876,
+     "rel_spread": {
+      "call": 0.031413612565444914,
+      "put": 0.03448275862068954
+     },
+     "oi_atm": 1329.0,
+     "oi_sum": 14912.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/GOOG_2026-10-28/factors.json",
+   "published": "2026-10-27T14:31:30.430356-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.22408066744294164,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.06222729908728908,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.0545332983161354,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.016182526337618963,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.2277223614321087,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7452717998278384,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.20195215706694025,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-22",
+       "session": "AMC",
+       "raw_return_A": -0.07359292399430939,
+       "eps_est": 2.91,
+       "eps_rep": 2.85,
+       "surprise_pct": -2.15,
+       "reaction_volume_ratio": 2.130883820503465
+      },
+      {
+       "date": "2026-04-29",
+       "session": "AMC",
+       "raw_return_A": 0.07460635600546173,
+       "eps_est": 2.63,
+       "eps_rep": 2.76,
+       "surprise_pct": 4.95,
+       "reaction_volume_ratio": 2.684769330483747
+      },
+      {
+       "date": "2026-02-04",
+       "session": "AMC",
+       "raw_return_A": -0.08888584258491516,
+       "eps_est": 2.64,
+       "eps_rep": 2.82,
+       "surprise_pct": 6.78,
+       "reaction_volume_ratio": 2.445557891419815
+      },
+      {
+       "date": "2025-10-29",
+       "session": "AMC",
+       "raw_return_A": 0.08603536365427478,
+       "eps_est": 2.26,
+       "eps_rep": 2.87,
+       "surprise_pct": 26.87,
+       "reaction_volume_ratio": 2.6153962134103
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.4691518139543316,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -2.15,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 2.96591,
+      "7daysAgo": 2.96605,
+      "30daysAgo": 3.03077,
+      "60daysAgo": 3.01962,
+      "90daysAgo": 3.00175,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.011939701840592945,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 2.96591,
+      "low": 2.25023,
+      "high": 3.19,
+      "yearAgoEps": 2.87,
+      "numberOfAnalysts": 15,
+      "growth": 0.0334,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.3168572208866755,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": null,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 20.70854,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 8.724128,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.242,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 3889792024576,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.37705,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.057380014212207876,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.02221657470703109,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0023193127441405448,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.41700301807207013,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.6009508172617443,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 38969.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 3.019040908746973,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.0667701277599239,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 227,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.2423362508814868,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.3403285585495342,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.22398447481526662,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.05460759646398872,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.016182526337618963,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.22770031033879662,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.29664285179081,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 10.97633713596648,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:CommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 3889506885070.801,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.11463304042766437,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.16012008898211788,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000066/googexhibit991q22026.htm",
+   "published": "2026-07-22T16:01:36-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 googexhibit991q22026.htm EX-99.1 Document Exhibit 99.1 Alphabet Announces Second Quarter 2026 Results MOUNTAIN VIEW, Calif. – July 22, 2026 – Alphabet Inc. (NASDAQ: GOOG, GOOGL) today announced financial results for the quarter ended June 30, 2026. • Consolidated Alphabet revenues increased 24%, or 23% in constant currency, to $119.8 billion, reflecting strong performance across the business and our 12th consecutive quarter of double-digit revenue growth. • Google Services revenues increased 15% to $94.5 billion, led by 17% growth in Google Search & other, 15% in Google subscriptions, platforms, and devices, and 13% in YouTube ads. • Google Cloud saw a meaningful acceleration in growth as revenues increased 82% to $24.8 billion, led by an increase in Google Cloud Platform (GCP) across enterprise AI Solutions and enterprise AI Infrastructure, as well as core GCP services. • Consolidated Alphabet operating income increased 30% and operating margin expanded by 2 percentage points to 34%. • Other income reflected a net gain of $98.0 billion, primarily the result of net unrealized gains on our equity securities. • Net income available to common stockholders increased 298% and EPS increased 294% to $9.11. Sundar Pichai, CEO of Google and Alphabet, said: “Our AI investments are redefining what’s possible across every part of our business. Q2 was an amazing quarter, with Alphabet revenues growing 24% year-over-year and Google Cloud revenues accelerating to 82% growth, driven by demand for AI infrastructure and AI solutions. It’s great to see wide adoption of Gemini Enterprise, with nearly 90% of the Fortune 100 using it. We have exciting momentum across the board. Our popular AI features are driving Search query growth. Gemini models now process 22 billion API tokens per minute and the Gemini App has 950 million monthly active users. We are seeing strong demand for our security solutions, and our new Gemini 3.5 Flash Cyber delivers highly cost-efficient performance at the frontier. And month over month, people turn to YouTube for major world events, with over 1.7 billion unique viewers watching World Cup-related videos during the FIFA World Cup 2026 TM . These outstanding results show that our differentiated, full stack approach to AI is delivering real, measurable value for consumers, customers, and our partners globally.” Q2 2026 Financial Highlights (unaudited) The following table summarizes our consolidated financial results for the quarters ended June 30, 2025 and 2026 (in millions, except for per share information and percentages). Quarter Ended June 30, 2025 2026 Revenues $ 96,428 $ 119,796 Change in revenues year over year 14 % 24 % Change in constant currency revenues year over year (1) 13 % 23 % Operating income $ 31,271 $ 40,770 Operating margin 32 % 34 % Other income (expense), net $ 2,662 $ 97,983 Net income available to common stockholders $ 28,196 $ 112,107 Diluted net income per common share $ 2.31 $ 9.11 (1) Non-GAAP measure. See the section captioned “Reconciliation from GAAP Revenues to Non-GAAP Constant Currency Revenues and GAAP Percentage Change in Revenues to Non-GAAP Percentage Change in Constant Currency Revenues” for more details. Q2 2026 Supplemental Information (in millions, except for number of employees; unaudited) Revenues, Traffic Acquisition Costs (TAC), and Number of Employees Quarter Ended June 30, 2025 2026 Google Search & other $ 54,190 $ 63,271 YouTube ads 9,796 11,055 Google Network 7,354 7,303 Google advertising 71,340 81,629 Google subscriptions, platforms, and devices 11,203 12,911 Google Services total 82,543 94,540 Google Cloud 13,624 24,768 Other Bets 373 382 Hedging gains (losses) (112) 106 Total revenues $ 96,428 $ 119,796 Total TAC $ 14,705 $ 16,179 Number of employees 187,103 198,933 Segment Operating Results Quarter Ended June 30, 2025 2026 Operating income (loss): Google Services $ 33,063 $ 39,544 Google Cloud 2,826 8,814 Other Bets (1,246) (1,799) Alphabet-level activities (1) (3,372) (5,789) Total income from operations $ 31,271 $ 40,770 (1) Alphabet-level activities primarily reflect expenses related to our shared AI research and development. Additional Information Relating to the Quarter Ended June 30, 2026 (unaudited) Equity Capital Raise In June 2026, we issued a combination of Class A stock and Class C stock and mandatory convertible preferred stock for aggregate net proceeds of $49.6 billion, to be used for general corporate purposes, including capital expenditures to scale AI infrastructure and global compute. Additionally, we entered into an equity distribution agreement with certain sales agents to sell up to $40.0 billion of our Class A stock and Class C stock from time to time through an At-the-Market Program (ATM Program). The proceeds of the ATM Program are primarily intended to be used to meet tax obligations associated with employee equity grants. As of June 30, 2026, we have not sold any shares under the ATM Program. Issuance of Senior Unsecured Notes In the second quarter of 2026, we issued senior unsecured notes for net proceeds of $20.3 billion, to be used for general corporate purposes. 2 Preferred and Common Dividend Programs In July 2026, the company's Board of Directors declared a quarterly cash dividend of $12.15 per share on each of our Series A and Series B mandatory convertible preferred stock (equivalent to approximately $0.60 per each of our Series A and Series B Depositary Shares) and a quarterly cash dividend of $0.22 per share on our Class A, Class B, and Class C stock. The mandatory convertible preferred stock dividend is payable on August 15, 2026 to stockholders of record for each of the company's Series A and Series B shares as of August 1, 2026, and the common stock dividend is payable on September 14, 2026 to stockholders of record for each of the company's Class A, Class B, and Class C shares as of September 7, 2026. Webcast and Conference Call Information A live audio webcast of our second quarter 2026 earnings release call will be available on YouTube at https://www.youtube.com/watch?v=LzExSq9DU9w. The call begins today at 1:30 PM (PT) / 4:30 PM (ET). This press release, including the reconciliations of certain non-GAAP measures to their nearest comparable GAAP measures, is also available at http://abc.xyz/investor. We also provide announcements regarding our financial performance, including SEC filings, investor events, press and earnings releases, and blogs, on our investor relations website (http://abc.xyz/investor). We also share Google news and product updates on Google's Keyword blog at https://www.blog.google/ and News From Google page on X at x.com/NewsFromGoogle, and our executive officers may also use certain social media channels, such as X and LinkedIn, to communicate information about earnings results and company updates, which may be of interest or material to our investors. Forward-Looki ng Statements This press release may contain forward-looking statements that involve risks and uncertainties. Actual results may differ materially from the results predicted, and reported results should not be considered as an indication of future performance. The potential risks and uncertainties that could cause actual results to differ from the results predicted include, among others, those risks and uncertainties included under the captions “Risk Factors” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” in our Annual Report on Form 10-K for the year ended December 31, 2025 and our most recent Quarterly Report on Form 10-Q for the quarter ended March 31, 2026 , which are on file with the SEC and are available on our investor relations website at http://abc.xyz/investor and on the SEC website at www.sec.gov. Additional information will also be set forth in our Quarterly Report on Form 10-Q for the quarter ended June 30, 2026, and may be set forth in other reports and filings we make with the SEC. All information provided in this release and in the attachments is as of July 22, 2026 . Undue reliance should not be placed on the forward-looking statements in this press release, which are based on information available to us on the date hereof. We undertake no duty to update this information unless required by law. About Non-GAAP Financial Measures To supplement our consolidated financial statements, which are prepared and presented in accordance with GAAP, we use the following non-GAAP financial measures: free cash flow; constant currency revenues; and percentage change in constant currency revenues. The presentation of this financial information is not intended to be considered in isolation or as a substitute for, or superior to, the financial information prepared and presented in accordance with GAAP. We use these non-GAAP financial measures for financial and operational decision-making and as a means to evaluate period-to-period comparisons. We believe that these non-GAAP financial measures provide meaningful supplemental information regarding our performance and liquidity by excluding certain items that may not be indicative of our recurring core business operating results, such as our revenues excluding the effect of foreign exchange rate movements and hedging activities, which are recognized at the consolidated level. We believe that both management and investors benefit from referring to these non-GAAP financial measures in assessing our performance and when planning, forecasting, and analyzing future periods. These non-GAAP financial measures also facilitate management’s internal comparisons to our historical performance and liquidity as well as comparisons to our competitors’ operating results. We believe these non-GAAP financial measures are useful to investors both because (1) they allow for greater transparency with respect to key metrics used by management in its financial and operational decision-making and (2) they are used by our institutional investors and the analyst community to help them analyze the health of our business. There are a number of limitations related to the use of non-GAAP financial measures. We compensate for these limitations by providing specific information regarding the GAAP amounts excluded from these non-GAAP financial measures and evaluating these non-GAAP financial measures together with their relevant financial measures in accordance with GAAP. 3 For more information on these non-GAAP financial measures, please see the sections captioned “Reconciliation from GAAP Net Cash Provided by Operating Activities to Non-GAAP Free Cash Flow” and “Reconciliation from GAAP Revenues to Non-GAAP Constant Currency Revenues and GAAP Percentage Change in Revenues to Non-GAAP Percentage Change in Constant Currency Revenues” included at the end of this release. Contact Investor relations Media investor-relations@abc.xyz press@abc.xyz 4 Alphabet Inc. CONSOLIDATED BALANCE SHEETS (In millions, except per share amounts) As of December 31, 2025 As of June 30, 2026 (unaudited) Assets Current assets: Cash and cash equivalents $ 30,708 $ 55,911 Marketable securities 96,135 186,563 Total cash, cash equivalents, and marketable securities 126,843 242,474 Accounts receivable, net 62,886 69,175 Inventory 2,439 9,991 Other current assets 13,870 21,884 Total current assets 206,038 343,524 Non-marketable securities 68,687 131,461 Deferred income taxes 9,113 1,448 Property and equipment, net 246,597 321,212 Operating lease assets 15,221 17,694 Goodwill 33,380 57,828 Intangible assets, net 1,283 9,105 Other non-current assets 14,962 39,711 Total assets $ 595,281 $ 921,983 Liabilities and Stockholders’ Equity Current liabilities: Accounts payable $ 12,200 $ 20,258 Accrued compensation and benefits 17,546 15,086 Accrued expenses and other current liabilities 55,557 73,014 Accrued revenue share 10,864 10,599 Deferred revenue 6,578 7,154 Total current liabilities 102,745 126,111 Long-term debt 46,547 98,165 Income taxes payable, non-current 9,531 11,306 Deferred income taxes 919 22,819 Operating lease liabilities 12,744 14,591 Other long-term liabilities 7,530 8,511 Total liabilities 180,016 281,503 Commitments and contingencies Stockholders’ equity: Series A and Series B preferred stock and additional paid-in capital, $0.001 par value per share, 100 shares authorized; 6.25% mandatory convertible preferred stock, 0 and 19 shares issued and outstanding allocated equally between each series with a liquidation preference of $1,000 per share 0 18,023 Class A, Class B, and Class C stock and additional paid-in capital, $0.001 par value per share: 300,000 shares authorized (Class A 180,000, Class B 60,000, Class C 60,000); 12,088 (Class A 5,822, Class B 837, Class C 5,429) and 12,230 (Class A 5,868, Class B 835, Class C 5,527) shares issued and outstanding 93,126 131,371 Accumulated other comprehensive income (loss) (1,916) (2,285) Retained earnings 324,055 493,371 Total stockholders’ equity 415,265 640,480 Total liabilities and stockholders’ equity $ 595,281 $ 921,983 5 Alphabet Inc. CONSOLIDATED STATEMENTS OF INCOME (In millions, except per share amounts, unaudited) Quarter Ended June 30, Year To Date June 30, 2025 2026 2025 2026 Revenues $ 96,428 $ 119,796 $ 186,662 $ 229,692 Costs and expenses: Cost of revenues 39,039 45,943 75,400 87,214 Research and development 13,808 18,219 27,364 35,251 Sales and marketing 7,101 8,403 13,273 16,009 General and administrative 5,209 6,461 8,748 10,752 Total costs and expenses 65,157 79,026 124,785 149,226 Income from operations 31,271 40,770 61,877 80,466 Other income (expense), net 2,662 97,983 13,845 135,699 Income before income taxes 33,933 138,753 75,722 216,165 Provision for income taxes 5,737 26,560 12,986 41,394 Net income 28,196 112,193 62,736 174,771 Preferred stock dividends 0 86 0 86 Net income available to common stockholders $ 28,196 $ 112,107 $ 62,736 $ 174,685 Basic net income per common share $ 2.33 $ 9.23 $ 5.16 $ 14.41 Diluted net income per co",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1652044/000165204426000071/goog-20260630.htm",
+   "published": "2026-07-22T21:15:54-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS Please read the following discussion and analysis of our financial condition and results of operations together with \"Note about Forward-Looking Statements\" and our consolidated financial statements and related notes included under Item 1 of this Quarterly Report on Form 10-Q as well as our Annual Report on Form 10-K for the fiscal year ended December 31, 2025, including Part I, Item 1A \"Risk Factors,\" as updated in our Quarterly Report on Form 10-Q for the quarter ended March 31, 2026, and in Part II, Item 1A of this Quarterly Report on Form 10-Q. Understanding Alphabet’s Financial Results Alphabet is a collection of businesses — the largest of which is Google. We report Google in two segments, Google Services and Google Cloud, and all non-Google businesses collectively as Other Bets. Supporting these businesses, we have centralized certain AI-related research and development focused on advanced research in AI and developing the frontier models that serve our businesses, which is reported in Alphabet-level activities. For further details on our segments, see Note 15 of the Notes to Consolidated Financial Statements included in Item 1 of this Quarterly Report on Form 10-Q. Revenues and Monetization Metrics We generate revenues by delivering relevant, cost-effective online advertising; cloud-based solutions that provide enterprise customers of all sizes with infrastructure, platform services, and applications; and sales of products and services, such as fees received for subscription-based products, apps and in-app purchases, devices, and TPU systems. For additional information on how we recognize revenue, see Note 1 of the Notes to Consolidated Financial Statements included in Part II, Item 8 in our Annual Report on Form 10-K for the fiscal year ended December 31, 2025. In addition to the long-term trends and their financial effect on our business discussed in \"Trends in Our Business and Financial Effect\" in Part II, Item 7 of our Annual Report on Form 10-K for the fiscal year ended December 31, 2025, fluctuations in our revenues have been and may continue to be affected by a combination of factors, including: • changes in foreign currency exchange rates; • changes in pricing, such as those resulting from changes in fee structures, discounts, and customer incentives; • general economic conditions and various external dynamics, including geopolitical events, regulations, and other measures and their effect on advertiser, consumer, and enterprise spending; • new product, service, and market launches; and • seasonality. Additionally, fluctuations in our revenues generated from advertising (\"Google advertising\"), other sources (\"Google subscriptions, platforms, and devices\"), Google Cloud, and Other Bets have been, and may continue to be, affected by other factors unique to each set of revenues, as described below. Google Services Google Services revenues consist of Google advertising as well as Google subscriptions, platforms, and devices revenues. Google Advertising Google advertising revenues are comprised of the following: • Google Search & other, which includes revenues generated on Google search properties (including revenues from traffic generated by search distribution partners who use Google.com as their default search in browsers, toolbars, etc.), and other Google owned and operated properties like Gmail, Google Maps, and Google Play; • YouTube ads, which includes revenues generated on YouTube properties; and • Google Network, which includes revenues generated on Google Network properties participating in AdMob, AdSense, and Google Ad Manager. 42 We use certain metrics to track how well traffic across various properties is monetized as it relates to our advertising revenues: paid clicks and cost-per-click pertain to traffic on Google Search & other properties, while impressions and cost-per-impression pertain to traffic on our Google Network properties. Paid clicks represent engagement by users and include clicks on advertisements by end-users on Google search properties and other Google owned and operated properties including Gmail, Google Maps, and Google Play. Cost-per-click is defined as click-driven revenues divided by our total number of paid clicks and represents the average amount we charge advertisers for each engagement by users. Impressions include impressions displayed to users on Google Network properties participating primarily in AdMob, AdSense, and Google Ad Manager. Cost-per-impression is defined as impression-based and click-based revenues divided by our total number of impressions, and represents the average amount we charge advertisers for each impression displayed to users. As our business evolves, we periodically review, refine, and update our methodologies for monitoring, gathering, and counting the number of paid clicks and the number of impressions, and for identifying the revenues generated by the corresponding click and impression activity. Fluctuations in our advertising revenues, as well as the change in paid clicks and cost-per-click on Google Search & other properties and the change in impressions and cost-per-impression on Google Network properties and the correlation between these items have been, and may continue to be, affected by factors in addition to the general factors described above, such as: • advertiser competition for keywords; • changes in advertising quality, formats, delivery, or policy; • changes in device mix; • seasonal fluctuations in internet usage, advertising expenditures, and underlying business trends, such as traditional retail seasonality; and • traffic growth in emerging markets compared to more mature markets and across various verticals and channels. Google Subscriptions, Platforms, and Devices Google subscriptions, platforms, and devices revenues are comprised of the following: • consumer subscriptions, which primarily include revenues from YouTube services, such as YouTube TV, YouTube Music and Premium, and NFL Sunday Ticket, as well as Google One, which offers access to our most capable Gemini models; • platforms, which primarily include revenues from Google Play sales of apps and in-app purchases; • devices, which primarily include sales of the Pixel family of devices; and • other products and services. Fluctuations in our Google subscriptions, platforms, and devices revenues have been, and may continue to be, affected by factors in addition to the general factors described above, such as changes in customer usage and demand, number of subscribers, and the timing of product launches. Google Cloud Google Cloud revenues are comprised of the following: • Google Cloud Platform primarily generates consumption-based fees and subscriptions for infrastructure, platform, and other services. These services provide access to solutions such as AI offerings including our enterprise AI infrastructure, Vertex AI platform, and Gemini Enterprise; cybersecurity offerings; and data and analytics solutions. • Google Workspace includes subscriptions for cloud-based communication and collaboration tools for enterprises, such as Gmail, Docs, Calendar, Drive, and Meet, with integrated features like Gemini for Google Workspace. • Product sales, primarily the sale of TPU systems. • Other enterprise services. 43 Fluctuations in our Google Cloud revenues have been, and may continue to be, affected by factors in addition to the general factors described above, such as changes in customer usage, demand, and supply availability. We have signed a limited number of agreements to supply TPU systems to customers who require or provide on-premises infrastructure for specialized, high-scale workloads. In the second quarter of 2026, we began recognizing revenues from these agreements, with the significant majority to be recognized in 2027. Other Bets Revenues from Other Bets are generated primarily from the sale of autonomous transportation services and internet services. Costs and Expenses Our cost structure has two components: cost of revenues and operating expenses. Our operating expenses include costs related to research and development, sales and marketing, and general and administrative functions. Certain of our costs and expenses, including those associated with the operation of our technical infrastructure as well as components of our operating expenses, are generally less variable in nature and may not correlate to changes in revenue. Additionally, fluctuations in employee compensation expenses may not directly correlate with changes in headcount, due to factors such as annual SBC awards that vest over time. Cost of Revenues Cost of revenues is comprised of TAC and other costs of revenues. • TAC includes: ◦ amounts paid to our distribution partners who make available our search access points and other ad-supported services. Our distribution partners include browser providers, mobile carriers, original equipment manufacturers, and software developers; and ◦ amounts paid to Google Network partners primarily for ads displayed on their properties. • Other cost of revenues primarily includes: ◦ content acquisition costs, which are payments to content providers from whom we license video and other content for distribution, primarily related to YouTube (we pay fees to these content providers based on revenues generated, subscriber counts, or a flat fee); ◦ depreciation expense, primarily related to our technical infrastructure; ◦ employee compensation expenses related to our technical infrastructure and other operations such as content review and customer and product support; ◦ inventory and other costs related to the devices and TPU system hardware we sell; and ◦ other technical infrastructure operations costs, including energy, equipment, and network capacity costs. TAC as a percentage of revenues generated from ads placed on Google Network properties are significantly higher than TAC as a percentage of revenues generated from ads placed on Google Search & other properties, because most of the advertiser revenues from ads served on Google Network properties are paid as TAC to our Google Network partners. Operating Expenses Operating expenses are generally incurred during our normal course of business, which we categorize as either research and development, sales and marketing, or general and administrative. The main components of our research and development expenses are: • depreciation expense, primarily related to our technical infrastructure; • employee compensation expenses for engineering and technical employees responsible for research and development related to our existing and new products and services; • other technical infrastructure operations costs, including energy, equipment, and network capacity costs; and • third-party services fees primarily relating to consulting and outsourced services in support of our engineering and product development efforts. 44 The main components of our sales and marketing expenses are: • employee compensation expenses for employees engaged in sales and marketing, sales support, and certain customer service functions; and • spend relating to our advertising and promotional activities in support of our products and services. The main components of our general and administrative expenses are: • employee compensation expenses for employees in finance, human resources, information technology, legal, and other administrative support functions; • expenses relating to legal and other matters, including certain fines and settlements; and • third-party services fees, including audit, consulting, outside legal, and other outsourced administrative services. Other Income (Expense), Net OI&E, net primarily consists of interest income (expense), the effect of foreign currency exchange gains (losses), net gains (losses) and impairment on our marketable and non-marketable securities, and income (loss) and impairmen",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1652044/000119312526342390/d171253d8k.htm",
+   "published": "2026-08-10T16:10:48-04:00",
+   "form": "8-K",
+   "items": "8.01,9.01",
+   "text": "Item 8.01. Other Events. Alphabet Inc. U.S. Dollar-Denominated Senior Notes Offering On August 10, 2026, Alphabet Inc. (“Alphabet”) closed its underwritten public offering of $25 billion aggregate principal amount of U.S. dollar-denominated senior notes (the “Notes”) pursuant to Alphabet’s registration statement on Form S-3 (File No. 333-296395). The Notes were issued pursuant to an Indenture (the “Indenture”), dated as of February 12, 2016, between Alphabet and The Bank of New York Mellon Trust Company, N.A., as trustee. The Notes consist of $750,000,000 aggregate principal amount of floating rate notes due 2028, $1,250,000,000 aggregate principal amount of 4.500% notes due 2028, $500,000,000 aggregate principal amount of floating rate notes due 2029, $2,000,000,000 aggregate principal amount of 4.625% notes due 2029, $3,500,000,000 aggregate principal amount of 4.875% notes due 2031, $2,500,000,000 aggregate principal amount of 5.200% notes due 2033, $4,500,000,000 aggregate principal amount of 5.450% notes due 2036, $3,000,000,000 aggregate principal amount of 6.250% notes due 2046, $4,500,000,000 aggregate principal amount of 6.375% notes due 2056 and $2,500,000,000 aggregate principal amount of 6.500% notes due 2066. The foregoing description of the Indenture is qualified in its entirety by the terms of such agreement, which is filed hereto as Exhibit 4.1 and incorporated herein by reference. The foregoing descriptions of the Notes is qualified in its entirety by reference to the full text of the respective forms of the Notes filed as Exhibits 4.2-4.11 hereto and each is incorporated herein by reference. Item 9.01. Financial Statements and Exhibits. (d)Exhibits Exhibit No. Description 4.1 Indenture, dated February 12, 2016, between Alphabet Inc. and The Bank of New York Mellon Trust Company, N.A., as trustee (incorporated by reference to Exhibit 4.3 of Alphabet Inc.’s Registration Statement on Form S-3 filed on February 12, 2016 (File No. 333-209510) 4.2 Form of Global Note representing the Registrant’s floating rate notes due 2028 4.3 Form of Global Note representing the Registrant’s 4.500% notes due 2028 4.4 Form of Global Note representing the Registrant’s floating rate notes due 2029 4.5 Form of Global Note representing the Registrant’s 4.625% notes due 2029 4.6 Form of Global Note representing the Registrant’s 4.875% notes due 2031 4.7 Form of Global Note representing the Registrant’s 5.200% notes due 2033 4.8 Form of Global Note representing the"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/50c0990f-b090-34b4-9ad7-c05902c7977f/oracle-stock-climbs-on.html?.tsrc=rss",
+   "published": "2026-10-27T14:01:42-04:00",
+   "text": "Oracle Stock Climbs On OpenAI, Google Partnership Expansions. Here's The Next Test. - Oracle stock got a boost from a series of announcements at its AI World conference.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/ceg-stock-gains-on-reported-5b-nuclear-financing-offer/cZUeLBaRBCr?.tsrc=rss",
+   "published": "2026-10-27T13:46:58-04:00",
+   "text": "CEG Stock Gains On Reported $5B Nuclear Financing Offer – A Look At Some Key Highlights - According to a Bloomberg report, Constellation Energy could receive up to $5 billion in federal financing to upgrade its nuclear reactors across eight sites.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/6294d29d-51d6-3bfe-87d4-877203694b78/stock-market-today%3A-dow.html?.tsrc=rss",
+   "published": "2026-10-27T13:29:58-04:00",
+   "text": "Stock Market Today: Dow Wobbles As Boeing Dives; Broadcom Pops After Anthropic Report (Live Coverage) - Stock Market Today: The Dow Jones index rises Tuesday as the Fed meeting starts. Boeing stock tumbles. Consumer discretionary stocks rose.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/27/alphabet-is-set-to-become-an-even-bigger-anthropic/?.tsrc=rss",
+   "published": "2026-10-27T13:15:00-04:00",
+   "text": "Alphabet Is Set to Become an Even Bigger Anthropic Shareholder After the IPO - The tech giant is already the AI darling's second-largest shareholder.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/iren-2-top-ai-stocks-170802846.html?.tsrc=rss",
+   "published": "2026-10-27T13:08:02-04:00",
+   "text": "IREN And 2 Top AI Stocks To Watch - Bond investors are starting to worry less about the Federal Reserve and more about whether huge AI infrastructure buildouts can be financed sustainably. This shift puts the spotlight on the companies selling the compute, storage and cloud capacity that everyone needs. If capital continues to chase t",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/metas-capital-raise-is-spooking-investors-what-the-price-targets-say-now/?.tsrc=rss",
+   "published": "2026-10-27T13:03:42-04:00",
+   "text": "Meta’s Capital Raise Is Spooking Investors. What the Price Targets Say Now - Meta just handed investors a legal charge, negative free cash flow, and a brand-new share class designed for raising capital, all in one earnings report. Whether that combination signals a buying opportunity or a warning sign depends on which number you trust most.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/oracle-rises-5-as-google-tpus-come-to-oracle-cloud-and-nvidia-deal-expands-amazon-nudges-higher-microsoft-treads-water/?.tsrc=rss",
+   "published": "2026-10-27T13:02:23-04:00",
+   "text": "Oracle Rises 5% as Google TPUs Come to Oracle Cloud and NVIDIA Deal Expands; Amazon Nudges Higher, Microsoft Treads Water - Oracle just pulled off something no other hyperscale cloud outside Google has managed, and the market responded with a sharp single-day surge even as the company burns through cash at an alarming rate. Whether this bet on rival chip architectures pays off hinges on a rollout that hasn't even started",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/why-youtubes-native-multimodal-library-and-ai-search-overviews-make-alphabet-a-must-own-compounder/?.tsrc=rss",
+   "published": "2026-10-27T12:45:28-04:00",
+   "text": "Why YouTube’s Native Multimodal Library and AI Search Overviews Make Alphabet a Must-Own Compounder - Alphabet just doubled its capital spending while suspending buybacks, yet its AI flywheel connecting YouTube and Search keeps accelerating in ways most investors have not fully priced in.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/27/amazon-and-alphabet-are-each-spending-200-billion/?.tsrc=rss",
+   "published": "2026-10-27T12:38:00-04:00",
+   "text": "Amazon and Alphabet Are Each Spending At Least $200 Billion on Data Centers This Year. Here's Which Stock Outperforms Through 2028. - Amazon's massive capex spending will have a far greater effect on its profitability than Alphabet's.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/d8b73395-fec1-3dca-9dd5-2a91c44dab7e/the-santa-rally-ramps-up.html?.tsrc=rss",
+   "published": "2026-10-27T12:29:00-04:00",
+   "text": "The Santa Rally Ramps Up Today—If These 3 Things Don’t Ruin It - Stocks typically turn the corner on Oct. 27, and head for solid gains into the holiday season. This year, though, could be a tad less clear cut .",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/oracle-brings-google-tpus-oracle-160700105.html?.tsrc=rss",
+   "published": "2026-10-27T12:07:00-04:00",
+   "text": "Oracle Brings Google TPUs to Oracle Cloud Infrastructure - Oracle AI World -- Oracle and Google today announced that Google's Tensor Processing Units (TPUs) will be available through Oracle Cloud Infrastructure (OCI), marking the first time Google TPUs will be offered on a hyperscale cloud platform outside Google. By bringing Google's purpose-built TPUs to ",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/coherent-vs-arm-holdings-tech-160500693.html?.tsrc=rss",
+   "published": "2026-10-27T12:05:00-04:00",
+   "text": "Coherent vs. Arm Holdings: Which Tech Stock Offers More Upside Now? - COHR's AI-driven optical networking demand and integrated photonics portfolio offer strong growth potential, while its valuation compares favorably with ARM.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/this-magnificent-seven-stock-could-have-100-upside-heres-the-case/?.tsrc=rss",
+   "published": "2026-10-27T12:04:28-04:00",
+   "text": "This Magnificent Seven Stock Could Have 100% Upside. Here’s the Case. - Alphabet just posted its fastest cloud growth in years, yet its stock trades at a fraction of what rivals command. Whether that gap is a rare opportunity or a warning sign depends on one number hiding inside the balance sheet.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/article/oracle-in-effort-to-reduce-reliance-on-nvidia-adds-ai-chips-from-google-cerebras-and-sambanova-160000593.html?.tsrc=rss",
+   "published": "2026-10-27T12:00:00-04:00",
+   "text": "Oracle, in effort to reduce reliance on Nvidia, adds AI chips from Google, Cerebras, and SambaNova - Oracle is bringing AI chips from Google, Cerebras, SambaNova to its cloud as the company diversifies beyond Nvidia.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/energy/articles/us-offers-constellation-5-billion-154220306.html?.tsrc=rss",
+   "published": "2026-10-27T11:42:20-04:00",
+   "text": "US Offers Constellation $5 Billion Financing to Spur Nuclear - The Trump administration is offering as much as $5 billion in financing to Constellation Energy Corp. to upgrade and modernize the nuclear operator’s fleet of reactors in Illinois, Maryland, and Pennsylvania.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://247wallst.com/videos/tech-earnings-are-the-markets-biggest-story-this-week-heres-why-microsoft-amazon-intel-sandisk-and-alphabet-will-drive-the-stock-markets-next-move/?.tsrc=rss",
+   "published": "2026-10-27T11:22:14-04:00",
+   "text": "Microsoft, Amazon, and Intel Earnings Are on Deck This Week - This could be the most important week of 2026 for AI stocks. Microsoft (NASDAQ: MSFT), Amazon (NASDAQ: AMZN), Alphabet (NASDAQ: GOOGL), Intel (NASDAQ: INTC), and SanDisk (NASDAQ: SNDK) are preparing to report earnings, and the results could determine where the technology sector heads next. In this v",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:43-04:00",
+    "sha256": "6a4666f14ee52d068aea5e29960b6b30f23c58b8c4287a8a656c599b0957ee9c"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 49171
+}
