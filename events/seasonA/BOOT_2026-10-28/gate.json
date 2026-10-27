@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "BOOT",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:08.901909-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.bootbarn.com/news/news-details/2026/Boot-Barn-Holdings-Inc--to-Report-Second-Quarter-Fiscal-Year-2027-Results-on-October-28-2026/default.aspx",
+  "published_et": "2026-10-21T16:05-04:00",
+  "quote": "Barn Holdings, Inc. to Report Second Quarter Fiscal Year 2027 Results on October 28, 2026 October 21, 2026 IRVINE, Calif.--(BUSINESS WIRE)-- Boot Barn Holdings, Inc. (NYSE: BOOT) today announced that the company will release its financial results for the second quarter fiscal year 2027 ended September 26, 2026, after the market close on Wednesday, October 28, 2026.",
+  "title": "Boot Barn Holdings, Inc. to Report Second Quarter Fiscal Year 2027 Results on October 28, 2026",
+  "retrieved_et": "2026-10-22T21:16:35.987917-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.bootbarn.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 111.69000244140625,
+  "expiry": "2026-11-20",
+  "strike": 110.0,
+  "call": {
+   "bid": 8.1,
+   "ask": 10.4,
+   "openInterest": 19.0,
+   "lastPrice": 11.5,
+   "impliedVolatility": 0.7249783361816406,
+   "lastTradeDate": "2026-10-21T17:08:54+00:00"
+  },
+  "put": {
+   "bid": 6.4,
+   "ask": 7.5,
+   "openInterest": 38.0,
+   "lastPrice": 6.4,
+   "impliedVolatility": 0.6718782812500002,
+   "lastTradeDate": "2026-10-27T16:51:50+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.14504431592701136,
+  "rel_spread": {
+   "call": 0.24864864864864872,
+   "put": 0.15827338129496396
+  },
+  "oi_atm": 57.0,
+  "oi_sum": 57.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
