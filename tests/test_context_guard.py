@@ -344,6 +344,8 @@ HEREDOC_COMMIT = "git commit -m \"$(cat <<'EOF'\nSTATE NOW; rm -rf x\n\nCo-Autho
     "git push local HEAD:main }",
     "git push github HEAD:main 2>&1 | Select-Object -Last 3",
     "git fetch github && git rebase github/main",
+    'git -C "C:\\Users\\jacob\\Earnings Experiment" merge --ff-only github/main 2>&1 | Select-Object -Last 1',
+    'git commit -q -m "STATE NOW + Log"; if ($?) { git log --oneline -1 }; python ops/check.py 2>&1 | Select-Object -Last 3',
     "python ops/check.py",
     "python ops\\check.py 2>/dev/null | tail -5",
     "TZ=America/New_York date",

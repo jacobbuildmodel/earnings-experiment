@@ -3,26 +3,29 @@
 **Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-26 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Tue 2026-10-27 07:55 ET by the T2-check chat (no outcome, P&L or C1 figure read). Handed off to a fresh
-chat at Jacob's word: "save everything, start on a new chat, I want this to be enforced".*
-- **Phase:** Season A, week 3 of 6. Gates: Tue 33 · Wed 20 · Thu 1 · Fri 18 (+ pending). 51 frozen: 11 PASS, 9 with
-  T2. Mon: 20 gates, 3 PASS (CAKE, FFIV, FLEX).
-- **Mon's T2 fire was not refused:** T2 frozen 17:23–17:24 ET, T2R 17:53–17:54, T2O 17:55, all 3 names. The first
-  expectation in `ops/incidents/2026-10-26_weekly_limit.md` is met.
-- 🔴 **Weekly AI 27%** (Tue 07:50 ET; 21% Mon 12:20). Stop laptop work at ≥ 60% before Fri 17:20 ET. Cost per PASS is
-  not isolated: the laptop waiter died in sleep (exit 4). Upper bound ≤ 2 points per PASS (6 points overnight, 3 PASS
-  plus routines). ~26 PASS still due this week.
-- 🔴 **Peak capacity done** (`ops/capacity_peak_2026-11.md`, `ops/capacity_peak.py`). The main paper account's margin
-  binds from **Tue Oct 27**: 23 of 26 butterflies sat on the 1-lot floor, ~2.6% of equity each. Refused opens
-  (`capacity`) Oct 27–Nov 11: ~58% with DPZ held, ~33% if flattened. Scored tracks are unaffected (`grade.py` uses
-  prices). Owed: the report views split `capacity` out; `paper.py` labels buying-power refusals.
-- **D016 decision run done** (`82e48d2`): §5 picks A4 for D003 v5. Jacob's call. find_dates v4 live; peak 121/157.
-- **Health RED (standing):** DPZ +100. AMBER: 4 paper-options Actions failures Mon 18:48–22:04 ET (runs 40415253941,
-  40416381330, 40420937724, 40436330847), not yet read.
-- **This week:** Tue: enforce the hand-off (Jacob); the new-RED marker. Wed: DST inventory. **Thu, build day:**
-  pooled H-T2C code; the D008 v2 sleeve draft with a recommended size and loss limit. Fri: DST commits; week review.
-- **Next action:** read the 4 paper-options failures. Then make the fresh-chat rule enforced. After 15:56 ET, check
-  that Tue's PASS names get T2 from the 17:20 ET fire.
+*Rewritten Tue 2026-10-27 08:20 ET by the hand-off-enforcement chat (no outcome, P&L or C1 figure read). It hands
+off at 217k: past the 200k pre-window bar, and it spent the 5-hour window from 31% to 78% in ~25 min.*
+- **Phase:** Season A, week 3 of 6. Gates: Tue 33 · Wed 20 · Thu 1 · Fri 18 (+ pending). Mon: 3 PASS, all 3 tracks.
+- **Fresh-chat rule ENFORCED** (`7fd5995`, Jacob approved the design 08:15 ET). Past 300k, or 200k in 05:15–07:15 and
+  12:30–14:30 ET, `context_guard.py` (PreToolUse) refuses every tool but the hand-off steps. It never refuses inside
+  07:15–09:15 or 14:30–15:56 ET. Jacob lifts it for one turn with "override the guard". Drilled live: refused
+  `python --version`, allowed `git status`. 101 tests.
+- 🔴 **The main folder was 286 commits behind** (`554d258`, Oct 21). A worktree chat's hooks run the main folder's copy
+  (`${CLAUDE_PROJECT_DIR}`), so no guard change since Oct 21 had run. Now at `7fd5995`. `ops/startup.py` fast-forwards
+  it every session and pushes `github/main:main` to `local`.
+- **Paper-options reds explained:** the 4 runs, and every completed run since at least Oct 21 (~40), exit 1 by design on
+  the DPZ flag (`seasonA-DPZ-2026-10-13-F`, `held_past_expiry`). Errors 0, halt False, ledger commits land. The flag
+  stays in the record, and `paper_options.py` is hash-locked, so flattening DPZ will NOT turn the runs green. Health's
+  AMBER cannot tell this red from a new one: the new-RED marker (owed) must classify a known alert.
+- 🔴 **AI:** weekly 37%, 5-hour 78% (Tue 08:15 ET; resets 11:20 ET). Stop laptop work at weekly ≥ 60% before Fri 17:20
+  ET. Cost per PASS is still unmeasured (bound ≤ 2 points). ~26 PASS due this week.
+- 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): main paper margin binds from Oct 27. ~58% of opens refused with
+  DPZ held, ~33% flattened. Scored tracks unaffected. Owed: views split `capacity` out; `paper.py` labels them.
+- **D016 done** (`82e48d2`): §5 picks A4 for D003 v5, Jacob's call.
+- **This week:** Tue: the new-RED marker. Wed: DST inventory. **Thu, build day:** pooled H-T2C code; the D008 v2 sleeve
+  draft. Fri: DST commits; week review.
+- **Next action (a fresh chat, after 15:56 ET):** check every Tue PASS name has T2, T2R and T2O before Wed 09:15 ET.
+  Read `get_usage` at start and around the 17:20 and 17:50 ET fires for the per-PASS cost.
 - **Waiting on Jacob:** DPZ's 100 paper shares (**flatten before Tue 14:30 ET**: halves the refusals) · Actions' AI
   token · D003 v5 = A4 · the sleeve's size and loss limit (after Thu).
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
@@ -191,6 +194,26 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-27 (Tue) 08:20 ET — fresh-chat rule enforced; main folder was 286 commits behind; paper reds explained.**
+- Started 07:54 ET (a side session of the T2-check chat); startup PASS. Weekly 31% / 5-hour 31% at 07:58 ET; 37% / 78%
+  at 08:15 ET. The context reached 217k by 08:15: the system prompt and tools alone are ~96k at start.
+- **Guard** (`7fd5995`): PreToolUse added (`.claude/settings.json`). Allowed past the line: Read/Edit/Write/Grep on
+  STATE.md, JOURNAL.md and the side-session notes; git status/diff/log/add/commit/push/fetch/pull/rebase/merge;
+  `python ops/check.py`; ToolSearch, SendMessage, AskUserQuestion, `mcp__ccd_turn__*`, `mcp__ccd_session__*`,
+  get_usage, list_sessions. The T2 window moved from a lead-up to a live window (07:15–09:15 ET); its lead-up is
+  05:15–07:15. The pushes in the texts became `HEAD:main` (worktree chats). A drill file
+  (`%TEMP%\claude-context-guard\drill.json`, `{"add", "until"}`) can only make the guard stricter.
+- **Cloud and Actions:** cloud sessions do load project hooks; the guard is silent there (not Windows,
+  `CLAUDE_CODE_REMOTE`, `GITHUB_ACTIONS`; tests cover all three). A failed or missing `python` exits 0 (`|| true`).
+- **Live drill:** the first drill was not refused because the hook ran the main folder's stale copy. After the
+  fast-forward the same drill refused `python --version` and allowed `git status --short`.
+- **Paper-options:** `sync()` returns 1 whenever `alerts` is non-empty (`paper_options.py:632`). The DPZ trade's
+  `flag` is set once and never cleared (`:528`), so the red is permanent. Logs: "errors 0; alerts
+  ['seasonA-DPZ-2026-10-13-F']; halt False".
+- Headless `claude -p` is not signed in on the laptop (OAuth expired), so drills run inside a chat.
+- **Bug the drill found, fixed:** quoted text was stripped to a blank, so `git -C "C:\…" merge` lost -C's argument and
+  the hand-off commit itself was refused. Quoted text is now one placeholder word. 107 tests.
 
 **2026-10-27 (Tue) 07:55 ET — peak capacity computed; Mon's T2 fire clean; handed off (Jacob: enforce it).**
 - Started Mon 12:07 ET (early); startup PASS. Weekly AI 20% at 12:08 ET, 21% at 12:20 ET, 27% Tue 07:50 ET.

@@ -240,9 +240,10 @@ def drill_tokens(state_dir, now_ts):
 
 def handoff_command(cmd):
     """True when every command in a shell line is a hand-off step (git, check.py, the clock, cd, filters)."""
-    s = re.sub(r"<<-?\s*['\"]?(\w+)['\"]?[^\n]*\n.*?\n\s*\1[ \t]*(?=\r?\n|$)", " ", cmd, flags=re.S)  # heredocs
-    s = re.sub(r"@(['\"])[ \t]*\r?\n.*?\r?\n\1@", " ", s, flags=re.S)                            # here-strings
-    s = re.sub(r"'[^']*'|\"(?:[^\"\\`]|[\\`].)*\"", " ", s, flags=re.S)                           # quoted text
+    # Quoted text becomes one placeholder word, so `git -C "C:\a b" merge` keeps -C's argument.
+    s = re.sub(r"<<-?\s*['\"]?(\w+)['\"]?[^\n]*\n.*?\n\s*\1[ \t]*(?=\r?\n|$)", " _ ", cmd, flags=re.S)  # heredocs
+    s = re.sub(r"@(['\"])[ \t]*\r?\n.*?\r?\n\1@", " _ ", s, flags=re.S)                            # here-strings
+    s = re.sub(r"'[^']*'|\"(?:[^\"\\`]|[\\`].)*\"", " _ ", s, flags=re.S)                           # quoted text
     s = re.sub(r"\d?>>?&?\d?", " ", s)                                                             # redirections
     s = re.sub(r"\bif\s*\(\s*\$\?\s*\)|[{}()$]", " ", s)                                           # if ($?) { }
     segments = [seg.split() for seg in re.split(r"&&|\|\||[;|\r\n]", s)]
