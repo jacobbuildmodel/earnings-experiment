@@ -1,4 +1,4 @@
-# Health 2026-10-27 14:46 ET - **RED**
+# Health 2026-10-27 14:50 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -22,18 +22,34 @@ check.py: PASS - 1 warning(s)
 
 ## Information
 - QSR_2026-10-29: T2 deadline Wed 28 Oct 09:15 ET - frozen so far: none
+- NOW_2026-10-28: T2 deadline Wed 28 Oct 09:15 ET - frozen so far: none
 - GOOG_2026-10-28: T2 deadline Wed 28 Oct 09:15 ET - frozen so far: none
 - CMG_2026-10-28: T2 deadline Wed 28 Oct 09:15 ET - frozen so far: none
-- NOW_2026-10-28: T2 deadline Wed 28 Oct 09:15 ET - frozen so far: none
 - MSFT_2026-10-28: T2 deadline Wed 28 Oct 09:15 ET - frozen so far: none
 - paper/options_ledger.json: open ['seasonA-BSX-2026-10-28-F', 'seasonA-CAKE-2026-10-27-F', 'seasonA-EAT-2026-10-28-F', 'seasonA-ETSY-2026-10-28-F', 'seasonA-EXTR-2026-10-28-F', 'seasonA-FFIV-2026-10-27-F', 'seasonA-FLEX-2026-10-28-F', 'seasonA-GEHC-2026-10-28-F', 'seasonA-JMKE-2026-10-28-F', 'seasonA-LFUS-2026-10-28-F', 'seasonA-LOGI-2026-10-27-F', 'seasonA-MANH-2026-10-27-F', 'seasonA-NXPI-2026-10-27-F', 'seasonA-STX-2026-10-27-F', 'seasonA-TEL-2026-10-28-F', 'seasonA-VFC-2026-10-28-F', 'seasonA-ALNY-2026-10-29-F', 'seasonA-ARXS-2026-10-28-F', 'seasonA-BDC-2026-10-29-F', 'seasonA-BHE-2026-10-28-F', 'seasonA-BOOT-2026-10-28-F', 'seasonA-CMG-2026-10-28-F', 'seasonA-COHU-2026-10-28-F', 'seasonA-CROX-2026-10-29-F', 'seasonA-ENTG-2026-10-29-F', 'seasonA-FORM-2026-10-28-F', 'seasonA-FTAI-2026-10-29-F', 'seasonA-GEN-2026-10-28-F']
 - paper/long_ledger.json: open ['seasonA-BSX-2026-10-28-L', 'seasonA-CAKE-2026-10-27-L', 'seasonA-EAT-2026-10-28-L', 'seasonA-ETSY-2026-10-28-L', 'seasonA-EXTR-2026-10-28-L', 'seasonA-FFIV-2026-10-27-L', 'seasonA-FLEX-2026-10-28-L', 'seasonA-GEHC-2026-10-28-L', 'seasonA-JMKE-2026-10-28-L', 'seasonA-LFUS-2026-10-28-L', 'seasonA-LOGI-2026-10-27-L', 'seasonA-MANH-2026-10-27-L', 'seasonA-NXPI-2026-10-27-L', 'seasonA-STX-2026-10-27-L', 'seasonA-TEL-2026-10-28-L', 'seasonA-TER-2026-10-27-L', 'seasonA-ALNY-2026-10-29-L', 'seasonA-ARXS-2026-10-28-L', 'seasonA-BDC-2026-10-29-L', 'seasonA-BHE-2026-10-28-L', 'seasonA-BOOT-2026-10-28-L', 'seasonA-CMG-2026-10-28-L', 'seasonA-COHU-2026-10-28-L', 'seasonA-CROX-2026-10-29-L', 'seasonA-ENTG-2026-10-29-L', 'seasonA-FORM-2026-10-28-L', 'seasonA-FTAI-2026-10-29-L', 'seasonA-FTNT-2026-10-28-L', 'seasonA-GEN-2026-10-28-L', 'seasonA-GOOG-2026-10-28-L', 'seasonA-HII-2026-10-29-L', 'seasonA-HONA-2026-10-28-L', 'seasonA-HWM-2026-10-29-L', 'seasonA-IDCC-2026-10-29-L', 'seasonA-INCY-2026-10-29-L', 'seasonA-KLAC-2026-10-28-L', 'seasonA-LHX-2026-10-29-L', 'seasonA-MSFT-2026-10-28-L', 'seasonA-MUSA-2026-10-28-L', 'seasonA-NOW-2026-10-28-L', 'seasonA-OLED-2026-10-28-L', 'seasonA-QSR-2026-10-29-L', 'seasonA-QTWO-2026-10-28-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET
-- paper/long: CROX261120C00120000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/long: CROX261120P00120000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/long: ['seasonA-CROX-2026-10-29-L-open'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
-- paper/long: 72 position(s), 7 open order(s) - they match the ledgers
+- paper/options: BDC261120C00105000: the account holds -1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: BDC261120C00135000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: BDC261120P00075000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: BDC261120P00105000: the account holds -1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: CROX261120C00120000: the account holds -1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: CROX261120C00155000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: CROX261120P00085000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: CROX261120P00120000: the account holds -1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/options: open order seasonA-FORM-2026-10-28-F-open-r1 (FORM261120C00105000, FORM261120C00145000, FORM261120P00065000, FORM261120P00105000; new) sent 14:52 ET, not in a committed ledger yet
+- paper/options: ['seasonA-BDC-2026-10-29-F-open', 'seasonA-CROX-2026-10-29-F-open', 'seasonA-FORM-2026-10-28-F-open'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
+- paper/long: BHE261120C00070000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: BHE261120P00070000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: FTNT261030C00185000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: FTNT261030P00185000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: GEN261120C00024000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: GEN261120P00024000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: MUSA261120C00530000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: MUSA261120P00530000: the account holds +1, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
+- paper/long: ['seasonA-BHE-2026-10-28-L-open-r1', 'seasonA-FTNT-2026-10-28-L-open-r1', 'seasonA-GEN-2026-10-28-L-open-r1', 'seasonA-MUSA-2026-10-28-L-open-r1'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
+- paper/long: 80 position(s), 3 open order(s) - they match the ledgers
 - Tue 27 Oct: 33 snapshot(s) - ALNY, ARXS, BDC, BELFA, BHE, BOOT, CMG, COHU, CROX, ENTG, FORM, FTAI, FTNT, GEN, GOOG, HII, HONA, HWM, IDCC, INCY, KLAC, LHX, MSFT, MUSA, NOW, OLED, PI, PLXS, QSR, QTWO, TENB, TYL, WEX
 - Wed 28 Oct: 20 snapshot(s) - AMZN, AXTI, BBIO, COLM, DXCM, EXEL, GD, GDDY, INTC, MPWR, MSTR, OSIS, PINS, RDDT, REGN, SBUX, SNDK, SPSC, SYK, TWLO
 - Thu 29 Oct: 1 snapshot(s) - CIFR
