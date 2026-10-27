@@ -1,0 +1,649 @@
+{
+ "event": "CMG_2026-10-28",
+ "season": "seasonA",
+ "built_et": "2026-10-27T14:31:23-04:00",
+ "cutoff_et": "2026-10-27T14:31:10.617753-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/CMG_2026-10-28/gate.json",
+   "published": "2026-10-27T14:31:10.617753-04:00",
+   "data": {
+    "ticker": "CMG",
+    "report_date": "2026-10-28",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "reaction_day": "2026-10-29"
+    },
+    "snapshot_session": "2026-10-27",
+    "captured_et": "2026-10-27T14:31:10.617753-04:00",
+    "options": {
+     "spot": 27.940000534057617,
+     "expiry": "2026-10-30",
+     "strike": 28.0,
+     "call": {
+      "bid": 1.03,
+      "ask": 1.1,
+      "openInterest": 993.0,
+      "lastPrice": 1.07,
+      "impliedVolatility": 0.93945373046875,
+      "lastTradeDate": "2026-10-27T18:14:26+00:00"
+     },
+     "put": {
+      "bid": 1.01,
+      "ask": 1.06,
+      "openInterest": 50521.0,
+      "lastPrice": 1.05,
+      "impliedVolatility": 0.858399853515625,
+      "lastTradeDate": "2026-10-27T18:14:26+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.07516105797636595,
+     "rel_spread": {
+      "call": 0.06572769953051649,
+      "put": 0.04830917874396139
+     },
+     "oi_atm": 51514.0,
+     "oi_sum": 52644.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/CMG_2026-10-28/factors.json",
+   "published": "2026-10-27T14:31:10.617753-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.3218013984630631,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.12291996447840181,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.057841489870241736,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.06207344228135003,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.41395396870249923,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.1526409393031904,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.3196542003986944,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-29",
+       "session": "AMC",
+       "raw_return_A": 0.08885580172916319,
+       "eps_est": 0.32,
+       "eps_rep": 0.33,
+       "surprise_pct": 3.96,
+       "reaction_volume_ratio": 2.1544027811244857
+      },
+      {
+       "date": "2026-04-29",
+       "session": "AMC",
+       "raw_return_A": 0.07012192959022356,
+       "eps_est": 0.24,
+       "eps_rep": 0.24,
+       "surprise_pct": 1.4,
+       "reaction_volume_ratio": 2.5229724947400687
+      },
+      {
+       "date": "2026-02-03",
+       "session": "AMC",
+       "raw_return_A": -0.017196452033463205,
+       "eps_est": 0.24,
+       "eps_rep": 0.25,
+       "surprise_pct": 4.89,
+       "reaction_volume_ratio": 2.4584510927016328
+      },
+      {
+       "date": "2025-10-29",
+       "session": "AMC",
+       "raw_return_A": -0.21805453500139604,
+       "eps_est": 0.29,
+       "eps_rep": 0.29,
+       "surprise_pct": 0.87,
+       "reaction_volume_ratio": 7.252943014073479
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.5971923456599164,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 3.96,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.29079,
+      "7daysAgo": 0.2905,
+      "30daysAgo": 0.29048,
+      "60daysAgo": 0.29079,
+      "90daysAgo": 0.28845,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.00811232449297975,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.29079,
+      "low": 0.28,
+      "high": 0.3,
+      "yearAgoEps": 0.29,
+      "numberOfAnalysts": 32,
+      "growth": 0.0027,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.06877815605763597,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0339,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 20.45546,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 2.8453104,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.093,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 35349450752,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.8,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.07516105797636595,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.08105387695312505,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.060546269531250085,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.41400375939849626,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 2.8604454733153974,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 9027.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.1715622024588654,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.08968805455650651,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 227,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.09308926409376794,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.15696140612000017,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.3218013984630631,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.057841489870241736,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.06207344228135003,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.41395396870249923,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.8951666879669875,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 35349451154.19388,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.351455499147857,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.2053281682109202,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1058090/000105809026000063/cmg-20260729xex991.htm",
+   "published": "2026-07-29T16:10:46-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 cmg-20260729xex991.htm EX-99.1 Document Exhibit 99.1 EARNINGS RELEASE PR Contact: Laurie Schalow (949) 524-4035 MediaRelations@chipotle.com CHIPOTLE RAISES FULL YEAR COMPARABLE SALES GUIDANCE ON STRONG Q2 MOMENTUM \"RECIPE FOR GROWTH\" STRATEGY YIELDS COMPARABLE RESTAURANT SALES OF 2.2% ON SECOND CONSECUTIVE QUARTER OF IMPROVING TRANSACTION COMP NEWPORT BEACH, Calif. – July 29, 2026 – Chipotle Mexican Grill, Inc. (NYSE: CMG) today reported financial results for its second quarter ended June 30, 2026. Second quarter highlights, year over year: • Total revenue increased 9.3% to $3.3 billion • Comparable restaurant sales increased 2.2% • Operating margin was 15.7%, a decrease from 18.2% • Restaurant level operating margin 1 was 25.2%, a decrease from 27.4% • Diluted earnings per share remained flat at $0.32 • Adjusted diluted earnings per share 1 remained flat at $0.33 • Opened 100 company-owned restaurants, with 80 locations including a Chipotlane. We also opened one international partner-operated restaurant. “Our positive results reflect the momentum we're building as our Recipe for Growth strategy continues to take shape,” said Scott Boatwright, Chief Executive Officer, Chipotle. “We're seeing encouraging progress because we're focused on the right growth drivers—bringing meaningful menu innovation to our guests, deepening engagement through Chipotle Rewards, elevating hospitality in every restaurant, and expanding opportunities to serve more group occasions. These efforts are building a stronger business and reinforcing our confidence in Chipotle's ability to deliver sustainable long-term growth and shareholder value.” Results for the three months ended June 30, 2026: Total revenue in the second quarter of 2026 was $3.3 billion, an increase of 9.3% compared to the second quarter of 2025. The increase was driven by new restaurant openings and, to a lesser extent, comparable restaurant sales. Comparable restaurant sales increased 2.2%, consisting of a 1.2% increase in average check and a 1.0% increase in transactions. Digital sales represented 38.3% of total food and beverage revenue for the three months ended June 30, 2026, an increase from 35.5% for the three months ended June 30, 2025. During the second quarter we opened 100 company-owned restaurants, of which 80 included a Chipotlane, and one international partner-operated restaurant. Chipotlanes continue to perform well and are helping enhance guest access and convenience, as well as increase new restaurant sales, margins and returns. Food, beverage and packaging costs in the second quarter of 2026 were 29.7% of total revenue, an increase from 28.9% in the second quarter of 2025. The increase was driven by inflation, primarily from beef and freight, and higher protein and produce usage. These increases were partially offset by the benefit of menu price increases and lower avocado and dairy costs. Labor costs in the second quarter of 2026 were 25.0% of total revenue, an increase from 24.7% in the second quarter of 2025. The increase was primarily driven by higher employee compensation, including wage inflation and performance-based bonuses, and additional restaurant labor supporting operational execution, including hospitality initiatives. These headwinds were partially offset by the benefit from menu price increases. 1 Restaurant level operating margin, adjusted diluted earnings per share, adjusted net income, adjusted general and administrative expenses, and non-GAAP effective income tax rate are non-GAAP financial measures. Reconciliations to GAAP measures and further information are set forth in the table at the end of this press release. General and administrative expenses for the second quarter of 2026 were $190.5 million, compared to $172.2 million in the second quarter of 2025. The increase was driven by legal reserves, performance bonuses, wages, and restructuring costs, partially offset by lower stock-based compensation. Adjusted general and administrative expenses 1 for the second quarter of 2026 were $176.2 million, compared to $159.9 million in the second quarter of 2025. The effective income tax rate for the second quarter of 2026 was 24.3%, a decrease from 24.5% in the second quarter of 2025. The decrease was primarily due to an increase in U.S. federal income tax credits, partially offset by lower tax benefits from stock option exercises and equity vesting. Net income for the second quarter of 2026 was $403.5 million, or $0.32 per diluted share, compared to $436.1 million, or $0.32 per diluted share, in the second quarter of 2025. Adjusted net income 1 for the second quarter of 2026 was $418.9 million, or $0.33 per adjusted diluted share, compared to $450.4 million, or $0.33 per adjusted diluted share, in the second quarter of 2025. During the second quarter of 2026 we repurchased $630.7 million of stock at an average price per share of $32.55. As of June 30, 2026, $1.7 billion remained available under share repurchase authorizations from our Board of Directors, including an additional $1.3 billion in authorizations approved by our Board of Directors on June 11, 2026. The repurchase authorization may be modified, suspended or discontinued at any time. More information will be available in our Quarterly Report on Form 10-Q, which will be filed with the SEC in accordance with applicable rules. Outlook For 2026, management is anticipating the following: • Full year comparable restaurant sales growth in the low single digit range • 350 to 370 new restaurant openings, which includes 10 to 15 international partner-operated restaurants. Around 80% of new company-owned restaurants will have a Chipotlane • An estimated underlying full year effective tax rate between 24% and 26% before discrete items Definitions The following definitions apply to these terms as used throughout this release: • Comparable restaurant sales, or sales comps, and comparable restaurant transactions , represent the change in period-over-period total revenue or transactions for company-owned restaurants in operation for at least 13 full calendar months. • Average restaurant sales refers to the average trailing 12-month food and beverage revenue for company-owned restaurants in operation for at least 12 full calendar months. • Restaurant level operating margin represents total revenue less direct restaurant operating costs, expressed as a percent of total revenue. • Digital sales represent food and beverage revenue for company-owned restaurants generated through the Chipotle website, Chipotle app or third-party delivery aggregators. Digital sales include revenue deferrals associated with Chipotle Rewards. • Partner-operated restaurants represent Chipotle restaurants over which Chipotle does not have a controlling financial interest and for which Chipotle does not directly manage day-to-day operations. This includes restaurants operated by third parties pursuant to license or franchise agreements and restaurants in which Chipotle holds a minority, non‑controlling ownership interest. 1 Restaurant level operating margin, adjusted diluted earnings per share, adjusted net income, adjusted general and administrative expenses, and non-GAAP effective income tax rate are non-GAAP financial measures. Reconciliations to GAAP measures and further information are set forth in the table at the end of this press release. Conference Call Details and Supplemental Slides Chipotle will host a conference call on Wednesday, July 29, 2026, at 4:30 PM Eastern time to discuss second quarter 2026 financial results and provide a business update for the third quarter to date. In connection with the call, supplemental slides for the call will be available on the company's website at ir.chipotle.com/presentations. The conference call can be accessed live over the phone by dialing 1-888-317-6003 or, for international callers, by dialing 1-412-317-6061 and entering code: 3937444. The call will be webcast live on the company's website at ir.chipotle.com/events. An archived webcast will be available approximately one hour after the end of the call. About Chipotle Chipotle Mexican Grill, Inc. (NYSE: CMG) is cultivating a better world by serving responsibly sourced, classically-cooked, real food with wholesome ingredients without artificial colors, flavors or preservatives. There are over 4,200 restaurants as of June 30, 2026, in the United States, Canada, the United Kingdom, France, Germany, and the Middle East and it is the only restaurant company of its size that owns and operates all its restaurants in the United States, Canada and Europe. With nearly 140,000 employees passionate about providing a great guest experience, Chipotle is a longtime leader and innovator in the food industry. Chipotle is committed to making its food more accessible to everyone while continuing to be a brand with a demonstrated purpose as it leads the way in digital, technology and sustainable business practices. For more information or to place an order online, visit WWW.CHIPOTLE.COM . Forward-Looking Statements Certain statements in this press release, in the July 29, 2026, conference call and in the supplemental slides for the call are forward-looking statements as defined in the Private Securities Litigation Reform Act of 1995, including statements under “Outlook,” and about our anticipated full year 2026 comparable restaurant sales growth, the number of new company-owned and international partner-operated restaurant openings in 2026, expected number of restaurants with Chipotlanes, and estimated underlying effective 2026 full year tax rate, as well as statements about the expected success of our “Recipe for Growth” strategy, our future food, beverage, packaging, labor, general and administrative and other costs, future estimated tax rates and future long-term prospects. We use words such as “anticipate”, “believe”, “could”, “should”, “may”, “approximately”, “estimate”, “confident”, “assuming”, “expect”, “intend”, “project”, “target”, “goal” and similar terms and phrases, including references to assumptions, to identify forward-looking statements. The forward-looking statements in this press release are based on currently available operating, financial and competitive information available to us as of the date of this release and speak only as of the date they are made. We assume no obligation to update these forward-looking statements, whether as a result of new information, future events or otherwise, except as may be required by applicable law. These statements are subject to risks and uncertainties that could cause actual results to differ materially from those described in the statements, including but not limited to: wage inflation and state or local regulations mandating higher minimum wages; the competitive labor market, which impacts our ability to attract and retain qualified employees; the impact of any union organizing efforts and our responses to such efforts; increases in ingredient and other operating costs due to inflation, global conflicts, severe weather, our Food with Integrity philosophy, tariffs, or trade restrictions; intermittent supply shortages relating to our Food with Integrity philosophy, rapid expansion, limited time offerings, and supply chain disruptions; risks and impacts of food safety incidents and food-borne illnesses; our reliance on certain information technology systems and potential material failures, interruptions, or outages; risks that our investments in new technology and technological innovations may not generate returns; privacy and cybersecurity risks, including breaches, unauthorized access, theft, modification, destruction, or ransom of guest or employee personal or confidential information stored on our network or the network of third party providers; the impact of competition, including from sources outside the restaurant industry; the impact of government laws and regulations relating to our employees, employment practices, restaurant design and construction, and the sale of food or alcoholic beverages; our ability to achieve our planned growth, such as the costs and availability of suitable new restaurant sites, construction materials, and contractors and restaurant equipment; the expected costs and risks related to our international expansion, including through partner-operated restaurants in the Middle East, Asia, and Mexico; our ability to achieve expected levels of comparable restaurant sales due to factors such as changes in guests' perceptions of our brand, including as a result of negative publicity or social media posts and decreased consumer spending or restaurant visits, or the inability to increase menu prices or realize the benefits of menu price increases; failure to meet market expectations for our financial performance or any announced guidance and the impact thereof; the potential impact of activist shareholder actions or tactics; failure to attract or retain key executive talent; the impact of our brand, marketing, promotional, advertising, and pricing strategies, digital platform and menu innovations; our reliance on third party delivery services and the information technology infrastructure; and enforcement and litigation risks, including possible governmental actions and potential litigation related to food safety incidents, cybersecurity incidents, employment or privacy laws, advertising claims, contract disputes, or other matters. In addition, many of the foregoing risks and uncertainties are, or could be, exacerbated by any worsening of the global business and macroeconomic environment. These statements also are subject to other risk factors described from time to time in our SEC reports, including our annual report on Form 10-K and quarterly reports on Form 10-Q, all of which are available on the investor relations page of our website at ir.Chipotle.com. CHIPOTLE MEXICAN GRILL, INC. CONDENSED CONSOLIDATED STATEMENTS OF INCOME (in thousands, except per share data) (un",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1058090/000105809026000066/cmg-20260630.htm",
+   "published": "2026-07-31T12:23:51-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS Cautionary Note Regarding Forward-Looking Statements Certain statements in this report are forward-looking statements as defined in the Private Securities Litigation Reform Act of 1995, including statements about the number of new restaurants we expect to open in 2026, and the number with Chipotlanes, the number of new international partner-operated restaurants we expect to open, our anticipated comparable restaurant sales for 2026, the expected impact of tariffs on our food, beverage and packaging costs during the 2026 third quarter and on an ongoing basis, our expectation to generate positive cash flow for the foreseeable future, our expectations for utilization of cash flow from operations, our ability to manage prices, risks and volatility in our supply chain, our plans for continuing stock buybacks and the volume of buybacks, and the period of time during which our cash and short-term investment will fund our operations. We use words such as “anticipate,” “believe,” “could,” “should,” “may,” “approximately,” “estimate,” “expect,” “intend,” “project,” “target,” \"goal,\" and similar terms and phrases, including references to assumptions, to identify forward-looking statements. The forward-looking statements in this report are based on currently available operating, financial, and competitive information available to us as of the date of this filing and speak only as of the date they are made. We assume no obligation to update these forward-looking statements, whether as a result of new information, future events or otherwise, except as may be required by applicable law. These statements are subject to risks and uncertainties that could cause actual results to differ materially from those described in the statements, including but not limited to: wage inflation and state or local regulations mandating higher minimum wages; the competitive labor market, which impacts our ability to attract and retain qualified employees; the impact of any union organizing efforts and our responses to such efforts; increases in ingredient and other operating costs due to inflation, global conflicts, severe weather, our Food with Integrity philosophy, tariffs, or trade restrictions; intermittent supply shortages relating to our Food with Integrity philosophy, rapid expansion, limited time offerings, and supply chain disruptions; risks and impacts of food safety incidents and food-borne illnesses; our reliance on certain information technology systems and potential material failures, interruptions, or outages; risks that our investments in new technology and technological innovations may not generate returns; privacy and cybersecurity risks, including breaches, unauthorized access, theft, modification, destruction, or ransom of guest or employee personal or confidential information stored on our network or the network of third party providers; the impact of competition, including from sources outside the restaurant industry; the impact of government laws and regulations relating to our employees, employment practices, restaurant design and construction, and the sale of food or alcoholic beverages; our ability to achieve our planned growth, such as the costs and availability of suitable new restaurant sites, construction materials, and contractors and restaurant equipment; the expected costs and risks related to our international expansion, including through partner-operated restaurants in the Middle East, Asia, and Mexico; our ability to achieve expected levels of comparable restaurant sales due to factors such as changes in guests' perceptions of our brand, including as a result of negative publicity or social media posts and decreased consumer spending or restaurant visits, or the inability to increase menu prices or realize the benefits of menu price increases; failure to meet market expectations for our financial performance or any announced guidance and the impact thereof; the potential impact of activist shareholder actions or tactics; failure to attract or retain key executive talent; the impact of our brand, marketing, promotional, advertising, and pricing strategies, digital platform and menu innovations; our reliance on third party delivery services and the information technology infrastructure; and enforcement and litigation risks, including possible governmental actions and potential litigation related to food safety incidents, cybersecurity incidents, employment or privacy laws, advertising claims, contract disputes, or other matters. In addition, many of the foregoing risks and uncertainties are, or could be, exacerbated by any worsening of the global business and macroeconomic environment. These statements also are subject to other risk factors described from time to time in our SEC reports, including our annual report on Form 10-K and quarterly reports on Form 10-Q, all of which are available on the investor relations page of our website at ir.Chipotle.com. As of June 30, 2026, we owned 4,074 Chipotle restaurants throughout the United States and 112 international Chipotle restaurants. Additionally, we had 15 international partner-operated restaurants. We manage our U.S. operations based on 12 regions and aggregate our operations to one reportable segment. Throughout “Management’s Discussion and Analysis of Financial Condition and Results of Operations” we discuss the following key operating metrics which we believe will drive our financial results and long-term growth model. We believe these metrics are useful to investors because management uses these metrics to assess the growth of our business and the effectiveness of our marketing and operational strategies: • Comparable restaurant sales • Food, beverage, and packaging as a percentage of total revenue • Labor as a percentage of total revenue • Occupancy as a percentage of total revenue • Other operating costs as a percentage of total revenue • New restaurant openings 14 Table of Contents Second Quarter 2026 Financial Highlights, year-over-year: • Total revenue increased 9.3% to $3.3 billion • Comparable restaurant sales increased 2.2% • Diluted earnings per share remained flat at $0.32 Sales Trends . Comparable restaurant sales increased 2.2% for the three months ended June 30, 2026. The increase is attributable to a 1.2% increase in average check and a 1.0% increase in transactions. Comparable restaurant sales represent the change in period-over-period total revenue for company-owned restaurants in operation for at least 13 full calendar months. Digital sales represented 38.3% of total food and beverage revenue for the three months ended June 30, 2026, an increase from 35.5% for the three months ended June 30, 2025. We believe these results reflect the success of our Recipe for Growth strategy (as discussed in our Annual Report on Form 10-K for the fiscal year ending December 31, 2025) and related initiatives against the dynamic consumer environment that has persisted in 2026. We have recently experienced low-single-digit headwinds to our comparable restaurant sales trends that we believe are tied to that environment as customers respond to, among other things, recent U.S. food safety concerns and geopolitical developments. While our outlook remains positive, our financial results could be materially adversely impacted if these disruptions or trends worsen throughout the third quarter of 2026 or beyond. Restaurant Development. During the three months ended June 30, 2026, we opened 100 company-owned restaurants, which included 80 restaurants with a Chipotlane. We also opened one international partner-operated restaurant. Restaurant Activity The following table details company-owned restaurant unit data for the periods indicated. Three months ended June 30, Six months ended June 30, 2026 2025 2026 2025 Beginning of period 4,090 3,781 4,042 3,726 Openings 100 61 149 118 Permanent closures (3) (2) (4) (4) Relocations (1) (1) (1) (1) Total at end of period 4,186 3,839 4,186 3,839 The following table details partner-operated restaurant unit data for the periods indicated. Three months ended June 30, Six months ended June 30, 2026 2025 2026 2025 Beginning of period 14 5 14 3 Openings 1 - 1 2 Total at end of period 15 5 15 5 15 Table of Contents Results of Operations Our results of operations as a percentage of total revenue and period-over-period changes are discussed in the following section. Revenue Three months ended June 30, Percentage Six months ended June 30, Percentage 2026 2025 change 2026 2025 change (dollars in millions) (dollars in millions) Food and beverage revenue $ 3,332.8 $ 3,047.8 9.4 % $ 6,405.5 $ 5,907.6 8.4 % Delivery service revenue 15.8 15.6 0.8 % 31.3 31.1 0.7 % Total revenue $ 3,348.6 $ 3,063.4 9.3 % $ 6,436.8 $ 5,938.6 8.4 % Average restaurant sales (1) $ 3.102 $ 3.142 (1.3 %) $ 3.102 $ 3.142 (1.3 %) Comparable restaurant sales increase/(decrease) 2.2% (4.0%) 1.4 % (2.3 %) Transactions 1.0% (4.9%) 0.8% (3.7%) Average check 1.2% 0.9% 0.6% 1.4% Menu price increase 1.6% 1.9% 1.3% 2.4% Check mix (0.4 %) (1.0 %) (0.7 %) (1.0 %) (1) Average restaurant sales refers to the average trailing 12-month food and beverage revenue for company-owned restaurants in operation for at least 12 full calendar months. The following is a summary of the change in restaurant sales for the period indicated: Three months ended Six months ended (dollars in millions) For the period ended June 30, 2025 $ 3,063.4 $ 5,938.6 Change from: Comparable restaurant sales 65.9 79.9 Restaurants not yet in comparable base opened in 2026 66.0 80.1 Restaurants not yet in comparable base opened in 2025 161.9 353.9 Closures (9.8) (18.9) Other 1.2 3.2 For the period ended June 30, 2026 $ 3,348.6 $ 6,436.8 Food, Beverage and Packaging Costs Three months ended June 30, Percentage Six months ended June 30, Percentage 2026 2025 change 2026 2025 change (dollars in millions) (dollars in millions) Food, beverage and packaging $ 993.6 $ 886.0 12.1 % $ 1,906.9 $ 1,724.4 10.6 % As a percentage of total revenue 29.7 % 28.9 % 0.8 % 29.6 % 29.0 % 0.6 % Food, beverage and packaging costs increased 0.8% as a percentage of total revenue for the three months ended June 30, 2026 compared to the three months ended June 30, 2025. The increase was driven by 1.4% of inflation, primarily from beef and freight, and 0.5% of higher protein and produce usage. These increases were partially offset by a 0.5% benefit from menu price increases and 0.5% of lower avocado and dairy costs. 16 Table of Contents Food, beverage and packaging costs increased 0.6% as a percentage of total revenue for the six months ended June 30, 2026 compared to the six months ended June 30, 2025. The increase was primarily driven by 1.1% of inflation, primarily from beef and freight, and 0.5% of higher protein and produce usage. These increases were partially offset by 0.6% of lower avocado and dairy costs and a 0.4% benefit from menu price increases. Labor Costs Three months ended June 30, Percentage Six months ended June 30, Percentage 2026 2025 change 2026 2025 change (dollars in millions) (dollars in millions) Labor costs $ 836.5 $ 756.3 10.6 % $ 1,641.9 $ 1,474.5 11.4 % As a percentage of total revenue 25.0 % 24.7 % 0.3 % 25.5 % 24.8 % 0.7 % Labor costs increased 0.3% as a percentage of total revenue for the three months ended June 30, 2026 compared to the three months ended June 30, 2025. The increase was primarily driven by 0.3% from wage inflation and performance-based bonuses and 0.2% from restaurant labor execution. These increases were partially offset by a 0.4% benefit from menu price increases. Labor costs increased 0.7% as a percentage of total revenue for the six months ended June 30, 2026 compared to the six months ended June 30, 2025. The increase was primarily driven by 0.4% from wage inflation and performance-based bonuses, 0.2% from costs related to certain legal proceedings, and 0.2% from ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1058090/000105809026000088/cmg-20260914.htm",
+   "published": "2026-09-14T17:21:10-04:00",
+   "form": "8-K",
+   "items": "5.02,9.01",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On September 14, 2026, the Board of Directors (the “Board”) of Chipotle Mexican Grill, Inc. (“Chipotle”) increased the size of the Board to 11 directors and elected Sabir Sami as a director effective immediately. The Board determined that Mr. Sami is an independent director within the meaning of the listing standards of the New York Stock Exchange. The Board did not appoint Mr. Sami to any Board committees. Mr. Sami, age 59, spent 16 years at Yum! Brands, Inc., a global company operating restaurants primarily under the concepts of KFC, Taco Bell, and Habit Burger & Grill (“Yum! Brands”) in a variety of senior leadership roles. He most recently served as Chief Executive Officer of the KFC Division from January 2022 to February 2025, where he reported directly to the Yum! Brands Chief Executive Officer. He previously served in a dual role as KFC Division Chief Operating Officer and Managing Director of KFC Asia from January 2020 to January 2022, a role in which he led the global operations team and drove the KFC global operations agenda while overseeing Thailand, India, Asia Central and Greater Asia. Mr. Sami joined Yum! Brands in 2009 and worked on all three brands during his tenure. Mr. Sami received his MBA from The University of Karachi in Pakistan. Mr. Sami is currently a director with Sami Advisory, a business consulting firm he founded in August 2025. There are no arrangements or understandings between Mr. Sami and any other person pursuant to which he was elected as director. There are no family relationships between Mr. Sami and any director or executive officer of Chipotle, and there are no transactions in which Mr. Sami has or will have a direct or indirect material interest that would be required to be reported under Item 404(a) of Regulation S‑K. Mr. Sami will receive compensation in the amounts and forms paid to other non-employee members of the Board (prorated for his service on the Board from the date of his appointment until the next annual meeting of shareholders), as described in Exhibit 10.11 (Director Compensation Program and Stock Ownership Guidelines) to Chipotle’s Annual Report on Form 10-K for the fiscal year ended December 31, 2025, which was filed with the Securities and Exchange Commission on February 4, 2026. A copy of the press release announcing this election is attached he",
+   "exhibit_99_1": "EX-99.1 2 cmg-20260914xex991.htm EX-99.1 Document Exhibit 99.1 NEWS Contact: Erin Wolford (949) 524-4035 MediaRelations@chipotle.com CHIPOTLE APPOINTS SABIR SAMI TO ITS BOARD OF DIRECTORS NEWPORT BEACH, Calif., September 14, 2026 – Chipotle Mexican Grill (NYSE: CMG) today announced a new addition to its board of directors, Sabir Sami, effective immediately. Sabir Sami brings more than 30 years of global consumer and restaurant industry experience, including 16 years at Yum! Brands Inc., where he held a series of senior leadership roles across KFC, Taco Bell and Habit Burger & Grill. Most recently, Mr. Sami served as chief executive officer of KFC from January 2022 to February 2025, with global responsibility for the brand’s strategy and performance and reporting directly to the chief executive officer of Yum! Brands. Previously, he served as KFC’s chief operating officer and managing director of KFC Asia, leading the brand’s global operations team while overseeing markets across Thailand, India, Central Asia and Greater Asia. Mr. Sami also served as managing director of KFC’s Middle East, North Africa, Pakistan and Turkey markets. During his tenure at Yum! Brands, he held leadership roles across all three of the company’s brands, including serving as general manager of Yum! Canada and in general manager roles for KFC’s Canada and Turkey businesses. Before joining Yum! Brands in 2009, Mr. Sami held various leadership roles at Procter & Gamble, The Coca-Cola Co. and Reckitt Benckiser. In addition to his role at Chipotle, Mr. Sami serves as a director of Sami Advisory, a business consulting firm he founded in August 2025. He also serves on the Board of Directors of Save the Children Canada. Mr. Sami holds an MBA from the University of Karachi in Pakistan. “I’m thrilled to join Chipotle’s Board at such an exciting time for the company. With an iconic brand and global fanfare, Chipotle has an immense opportunity to bring its craveable menu to more guests around the world. I look forward to helping the company realize its significant potential.” With the change announced today, Chipotle’s Board of Directors will be composed of 11 directors, 10 of whom are independent. Mr. Sami brings significant global restaurant industry and operational expertise to the board. The board remains committed to ongoing refreshment and will continue to evaluate highly qualified independent director candidates who bring relevant experience and perspectives aligned with Chipotle’s lon"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1058090/000105809026000069/cmg-20260804.htm",
+   "published": "2026-08-05T08:55:23-04:00",
+   "form": "8-K",
+   "items": "7.01",
+   "text": "Item 7.01. Regulation FD Disclosure. The health and safety of our guests and employees is our highest priority. We are aware that public health authorities such as the Food and Drug Administration and the Minnesota Department of Health are investigating the source of a salmonella outbreak in the supply chain impacting several food service retailers in Minnesota and other states. The Minnesota Department of Health has confirmed it has no ongoing concerns with Chipotle. We are cooperating with public health authorities in their efforts. As part of our established health and safety protocols, upon learning of a potential outbreak, we immediately initiated our ingredient traceability system and were able to identify jalapeños as a potential common ingredient from a common lot, and the restaurants where it was distributed. Out of an abundance of caution, we proactively removed the jalapeños from our restaurants and replaced them with product from different growers. On July 29, 2026, Chipotle issued its earnings release and 2026 outlook, which speaks as of that date and reflects information available to us at that time. Due to the uncertain nature of any possible outcomes or impacts from the salmonella investigations, our guidance did not include a financial impact from these matters. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Chipotle Mexican Grill, Inc. 8/5/2026 By: /s/ Ilene Eskenazi Chief Legal and Human Resources Officer"
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/chipotle-hit-a-52-week-low-last-week-heres-what-rbcs-upside-call-needs-on-october-28?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-27T11:40:31-04:00",
+   "text": "Chipotle Hit a 52-Week Low Last Week. Here’s What RBC’s Upside Call Needs on October 28 - Key TakeawaysChipotle fell 2. 2% to a 52-week low on Friday, Oct.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/mcdonalds-vs-chipotle-restaurant-stock-150500248.html?.tsrc=rss",
+   "published": "2026-10-27T11:05:00-04:00",
+   "text": "McDonald's vs. Chipotle: Which Restaurant Stock Is the Better Buy Now? - MCD and CMG trade below their historical valuations, but traffic challenges and margin pressures cloud their outlooks. Which restaurant stock offers better growth potential?",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/smoked-brisket-return-could-big-101707259.html?.tsrc=rss",
+   "published": "2026-10-27T06:17:07-04:00",
+   "text": "Smoked Brisket Return Could Be A Big Week For Chipotle Stock - Chipotle Mexican Grill has brought back its limited time Smoked Brisket across the U.S. and Canada and is promoting Family Meals with a supersized to go bag tied to a new national ad campaign. The pairing of a high interest protein launch with a marketing push around group occasions highlights Chipo",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/expect-chipotle-cmg-q3-earnings-044647971.html?.tsrc=rss",
+   "published": "2026-10-27T00:46:47-04:00",
+   "text": "What to expect from Chipotle’s (CMG) Q3 earnings - Mexican fast-food chain Chipotle (NYSE:CMG) will be reporting results this Wednesday afternoon. Here’s what to look for.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/dont-miss-weeks-5-most-214800268.html?.tsrc=rss",
+   "published": "2026-10-26T17:48:00-04:00",
+   "text": "Don't Miss This Week's 5 Most Important Earnings Charts - Microsoft, Alphabet, Vertiv, Sandisk, and Eli Lilly are must-see charts.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rbc-flags-earnings-upside-chipotle-160602965.html?.tsrc=rss",
+   "published": "2026-10-26T12:06:02-04:00",
+   "text": "RBC flags earnings upside at Chipotle, Burger King parent and Jersey Mike’s - Investing.com -- RBC Capital Markets sees potential for stronger comparable sales at Chipotle Mexican Grill, Restaurant Brands International and Jersey Mike's Subs as the restaurant operators prepare to report quarterly results, with promotional activity and digital engagement among the potential gr",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/media-advertising/articles/chipotle-bring-back-mesquite-smoked-115300513.html?.tsrc=rss",
+   "published": "2026-10-26T07:53:00-04:00",
+   "text": "CHIPOTLE TO BRING BACK MESQUITE-SMOKED BRISKET FOR THE HEART OF FOOTBALL SEASON - Chipotle Mexican Grill (NYSE: CMG) today announced it is bringing back Smoked Brisket to restaurants across the U.S. and Canada beginning November 5. The limited-time protein, which has been known to disappear from menus quickly, returns this fall for football weekends, rivalry games and watch parti",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/why-did-tmus-lkq-cmg-stocks-tumble-to-52-week-lows-last-week/cZUdVrCRBUC?.tsrc=rss",
+   "published": "2026-10-25T23:11:10-04:00",
+   "text": "Why Did TMUS, LKQ, CMG Stocks Tumble To 52-Week Lows Last Week? - Telecom competition, financial losses, and shifting restaurant-sector expectations weighed on investor sentiment.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/not-buying-chipotle-just-dropped-16-in-a-month-is-it-time-to-sell-or-load-up?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-25T04:00:25-04:00",
+   "text": "“Not Buying”: Chipotle Just Dropped 16% in a Month. Is It Time to Sell, or Load Up? - Key TakeawaysChipotle Mexican Grill (CMG:NYSE) stock has fallen nearly 16% over the past month, closing at $27. 52 on October 23.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/starbucks-pledges-up-to-650-new-stores-while-closing-1-of-north-american-coffeehouses?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-24T17:10:09-04:00",
+   "text": "Starbucks Pledges Up to 650 New Stores While Closing 1% of North American Coffeehouses - Key TakeawaysStarbucks grew global comparable sales 7. 9% in fiscal Q3, led by a 4.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/why-chipotle-mexican-grill-cmg-204502340.html?.tsrc=rss",
+   "published": "2026-10-23T16:45:02-04:00",
+   "text": "Why Chipotle Mexican Grill (CMG) Dipped More Than Broader Market Today - The latest trading day saw Chipotle Mexican Grill (CMG) settling at $27.52, representing a -2.2% change from its previous close.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/chipotle-gears-q3-earnings-overcome-143500592.html?.tsrc=rss",
+   "published": "2026-10-23T10:35:00-04:00",
+   "text": "Chipotle Gears Up for Q3 Earnings: Can It Overcome Cost Pressures? - CMG heads into Q3 earnings with menu innovation, digital initiatives and pricing supporting sales, but rising food, labor and operating costs threaten margins.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/analyst-projections-key-metrics-reveal-121505465.html?.tsrc=rss",
+   "published": "2026-10-23T08:15:05-04:00",
+   "text": "What Analyst Projections for Key Metrics Reveal About Chipotle (CMG) Q3 Earnings - Get a deeper insight into the potential performance of Chipotle (CMG) for the quarter ended September 2026 by going beyond Wall Street's top-and-bottom-line estimates and examining the estimates for some of its key metrics.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/chipotle-softening-sales-force-analyst-103000195.html?.tsrc=rss",
+   "published": "2026-10-23T06:30:00-04:00",
+   "text": "Chipotle’s Softening Sales Force Analyst to Throw in the Towel - A long-standing Chipotle Mexican Grill Inc. bull has moved to the sidelines, citing concern that a slow start to the fourth quarter suggests softer sales for the year ahead.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/stocktwits-wall-street-wrap-analysts-turn-bullish-on-space-x-tesla-but-netflix-and-chipotle-face-fresh-downgrades-amid-growth-concerns/cZxyaiCRBx4?.tsrc=rss",
+   "published": "2026-10-23T05:30:54-04:00",
+   "text": "Stocktwits Wall Street Wrap: Analysts Turn Bullish On SpaceX, Tesla, But Netflix And Chipotle Face Fresh Downgrades Amid Growth Concerns - Wall Street analysts reviewed several major stocks after earnings reports and changes in companies’ business plans.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/why-did-crwv-smr-cmg-stocks-plunge-to-52-week-lows-today/cZxy2cjRBDM?.tsrc=rss",
+   "published": "2026-10-23T00:16:28-04:00",
+   "text": "Why Did CRWV, SMR, CMG Stocks Plunge To 52-Week Lows Today? - CoreWeave, NuScale Power, and Chipotle Mexican Grill shares tumbled to annual lows amid macroeconomic headwinds and Wall Street concerns.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/stocks-making-big-moves-yesterday-230953193.html?.tsrc=rss",
+   "published": "2026-10-22T19:09:53-04:00",
+   "text": "Stocks making big moves yesterday: Dell, Chipotle, Amkor, Super Micro, and United Airlines - Check out the companies making headlines yesterday:",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/chipotle-mexican-grill-cmg-fallen-171146969.html?.tsrc=rss",
+   "published": "2026-10-22T13:11:46-04:00",
+   "text": "Has Chipotle Mexican Grill (CMG) Fallen Below Fair Value After Its 32% Slide? - Chipotle Mexican Grill has seen its stock slide over the past year, and that drop now puts the spotlight squarely on a simple question for investors who care about valuation. Are the cash flows the restaurant chain generates enough to justify where the shares trade today, once the noise from rumors ",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/better-buy/2026/10/22/dutch-bros-vs-chipotle-mexican-grill-which-consumer-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+   "published": "2026-10-22T09:05:02-04:00",
+   "text": "Dutch Bros vs. Chipotle Mexican Grill: Which Consumer Stock Is a Better Buy in 2026? - Dutch Bros' 27.9% revenue growth comes with a 44.7x forward P/E, while Chipotle's 12.9% net margin trades at 26.0x, a valuation puzzle that reshapes the growth-versus-value trade-off.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:31:23-04:00",
+    "sha256": "46e69d5679e64bc48fbebce33686eab5c949ac78830ad5f46438662519cdbb50"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 54892
+}

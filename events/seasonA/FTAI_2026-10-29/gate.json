@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "FTAI",
+ "report_date": "2026-10-29",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:23.526452-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/ftai-aviation-ltd-announces-timing-third-quarter-2026-earnings-and-conference-call",
+  "published_et": "2026-10-06T06:00-04:00",
+  "quote": "linkedin facebook x email reddit Company Also Schedules Investor Meeting in New York City on Thursday, December 10, 2026 NEW YORK , Oct. 06, 2026 (GLOBE NEWSWIRE) -- FTAI Aviation Ltd. (Nasdaq: FTAI; the “Company” or “FTAI”) plans to announce its financial results for the third quarter 2026 before the market opens on Thursday, October 29, 2026 .",
+  "title": "FTAI Aviation Ltd. Announces Timing of Third Quarter 2026 Earnings and Conference Call",
+  "retrieved_et": "2026-10-19T11:51:41-04:00",
+  "how": "laptop housekeeping (the Actions AI step refused since 2026-10-15), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 157.39999389648438,
+  "expiry": "2026-10-30",
+  "strike": 157.5,
+  "call": {
+   "bid": 7.8,
+   "ask": 9.4,
+   "openInterest": 28.0,
+   "lastPrice": 8.6,
+   "impliedVolatility": 1.3164096679687498,
+   "lastTradeDate": "2026-10-27T18:12:10+00:00"
+  },
+  "put": {
+   "bid": 7.6,
+   "ask": 9.1,
+   "openInterest": 60.0,
+   "lastPrice": 7.78,
+   "impliedVolatility": 1.263187277832031,
+   "lastTradeDate": "2026-10-27T16:08:33+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.10768742476030418,
+  "rel_spread": {
+   "call": 0.18604651162790706,
+   "put": 0.17964071856287425
+  },
+  "oi_atm": 88.0,
+  "oi_sum": 285.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

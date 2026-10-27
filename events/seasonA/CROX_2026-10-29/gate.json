@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "CROX",
+ "report_date": "2026-10-29",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:18.196096-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.crocs.com/news-and-events/press-releases/press-release-details/2026/Crocs-Inc--Announces-Conference-Call-to-Review-Third-Quarter-2026-Earnings-Results/default.aspx",
+  "published_et": "2026-10-08T07:30-04:00",
+  "quote": "o main content menu Corporate Website Press Release Details All Press Releases Crocs, Inc. Announces Conference Call to Review Third Quarter 2026 Earnings Results October 8, 2026 Download this Press Release PDF Format (opens in new window) BROOMFIELD, Colo. , Oct. 8, 2026 /PRNewswire/ -- Crocs, Inc. (NASDAQ: CROX) announced today that on Thursday, October 29, 2026, at 8:30 am ET, it will host a conference call to discuss the results of its third quarter ended September 30, 2026.",
+  "title": "Crocs, Inc. Announces Conference Call to Review Third Quarter 2026 Earnings Results",
+  "retrieved_et": "2026-10-08T23:01:33.108360-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.crocs.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 119.0,
+  "expiry": "2026-11-20",
+  "strike": 120.0,
+  "call": {
+   "bid": 7.4,
+   "ask": 8.8,
+   "openInterest": 196.0,
+   "lastPrice": 8.19,
+   "impliedVolatility": 0.6894562304687502,
+   "lastTradeDate": "2026-10-27T18:09:49+00:00"
+  },
+  "put": {
+   "bid": 7.9,
+   "ask": 8.5,
+   "openInterest": 345.0,
+   "lastPrice": 8.0,
+   "impliedVolatility": 0.6169471899414063,
+   "lastTradeDate": "2026-10-27T17:45:49+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.1369747899159664,
+  "rel_spread": {
+   "call": 0.17283950617283952,
+   "put": 0.07317073170731704
+  },
+  "oi_atm": 541.0,
+  "oi_sum": 541.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
