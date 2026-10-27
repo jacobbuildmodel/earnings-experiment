@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "CMG",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:10.617753-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/chipotle-mexican-grill-announce-third-quarter-2026-results-october-28-2026-2026-09-01",
+  "published_et": "2026-09-01T16:10-04:00",
+  "quote": "A press release with third quarter financial results will be issued at approximately 4:10 p.m. ET on Wednesday, October 28, 2026 .",
+  "title": "CHIPOTLE MEXICAN GRILL TO ANNOUNCE THIRD QUARTER 2026 RESULTS ON OCTOBER 28, 2026",
+  "retrieved_et": "2026-10-08T22:53:01.596786-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 27.940000534057617,
+  "expiry": "2026-10-30",
+  "strike": 28.0,
+  "call": {
+   "bid": 1.03,
+   "ask": 1.1,
+   "openInterest": 993.0,
+   "lastPrice": 1.07,
+   "impliedVolatility": 0.93945373046875,
+   "lastTradeDate": "2026-10-27T18:14:26+00:00"
+  },
+  "put": {
+   "bid": 1.01,
+   "ask": 1.06,
+   "openInterest": 50521.0,
+   "lastPrice": 1.05,
+   "impliedVolatility": 0.858399853515625,
+   "lastTradeDate": "2026-10-27T18:14:26+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.07516105797636595,
+  "rel_spread": {
+   "call": 0.06572769953051649,
+   "put": 0.04830917874396139
+  },
+  "oi_atm": 51514.0,
+  "oi_sum": 52644.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
