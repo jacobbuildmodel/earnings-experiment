@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "GOOG",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:30.430356-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://abc.xyz/investor/news/news-details/2026/Alphabet-Announces-Date-of-Third-Quarter-2026-Financial-Results-Conference-Call-2026-8tpGZsLS6v/default.aspx",
+  "published_et": "2026-10-06T13:00-04:00",
+  "quote": "ate of Third Quarter 2026 Financial Results Conference Call View All News Alphabet Announces Date of Third Quarter 2026 Financial Results Conference Call October 6, 2026 MOUNTAIN VIEW, Calif. (October 6, 2026) – Alphabet Inc. (NASDAQ: GOOG, GOOGL) will hold its quarterly conference call to discuss third quarter 2026 financial results on Wednesday, October 28, at 1:30pm Pacific Time (4:30pm Eastern Time).",
+  "title": "Alphabet Announces Date of Third Quarter 2026 Financial Results Conference Call",
+  "retrieved_et": "2026-10-08T22:54:09.360499-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://abc.xyz/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 318.05499267578125,
+  "expiry": "2026-10-30",
+  "strike": 317.5,
+  "call": {
+   "bid": 9.4,
+   "ask": 9.7,
+   "openInterest": 542.0,
+   "lastPrice": 9.55,
+   "impliedVolatility": 0.6986114123535156,
+   "lastTradeDate": "2026-10-27T18:14:05+00:00"
+  },
+  "put": {
+   "bid": 8.55,
+   "ask": 8.85,
+   "openInterest": 787.0,
+   "lastPrice": 8.8,
+   "impliedVolatility": 0.6763948376464846,
+   "lastTradeDate": "2026-10-27T17:56:02+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.057380014212207876,
+  "rel_spread": {
+   "call": 0.031413612565444914,
+   "put": 0.03448275862068954
+  },
+  "oi_atm": 1329.0,
+  "oi_sum": 14912.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
