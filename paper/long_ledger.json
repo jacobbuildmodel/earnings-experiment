@@ -3385,9 +3385,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-AGYS-2026-10-26-L-close",
+      "sent_et": "2026-10-27T14:31:16.991030-04:00",
+      "qty": 1,
+      "natural": -15.26,
+      "sides": {
+       "AGYS261120C00105000": "sell",
+       "AGYS261120P00105000": "sell"
+      },
+      "quotes": {
+       "AGYS261120C00105000": {
+        "bid": 14.34,
+        "ask": 17.52,
+        "t": "2026-10-27T18:24:45.090485973Z"
+       },
+       "AGYS261120P00105000": {
+        "bid": 0.92,
+        "ask": 2.17,
+        "t": "2026-10-27T18:29:26.985263274Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "AGYS261120C00105000": "sell",
+       "AGYS261120P00105000": "sell"
+      },
+      "quote_age_s": {
+       "AGYS261120C00105000": 392,
+       "AGYS261120P00105000": 110
+      },
+      "limit_price": "-15.26",
+      "id": "0bd0d36d-24d5-4128-9e5e-89417b3b102c",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:31:18.070300477Z",
+      "legs_filled": [
+       {
+        "symbol": "AGYS261120C00105000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 14.4
+       },
+       {
+        "symbol": "AGYS261120P00105000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.9
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-27T14:31:16.991030-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 26.700000000000003,
+    "close_net": -15.3,
+    "pnl_per_unit": -11.400000000000002,
+    "qty": 1.0,
+    "pnl": -1140.0,
+    "pnl_on_spot": -0.09353462632836007,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.25999999999999446,
+    "entry_credit_vs_gate_bid_sum": -47.0
+   }
   },
   "seasonA-AMKR-2026-10-26-L": {
    "season": "seasonA",
@@ -3492,9 +3560,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-CDNS-2026-10-26-L-close",
+      "sent_et": "2026-10-27T14:31:16.991030-04:00",
+      "qty": 1,
+      "natural": -32.17,
+      "sides": {
+       "CDNS261030C00315000": "sell",
+       "CDNS261030P00315000": "sell"
+      },
+      "quotes": {
+       "CDNS261030C00315000": {
+        "bid": 31.8,
+        "ask": 35.21,
+        "t": "2026-10-27T18:28:24.764760328Z"
+       },
+       "CDNS261030P00315000": {
+        "bid": 0.37,
+        "ask": 1.42,
+        "t": "2026-10-27T18:31:13.046367865Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "CDNS261030C00315000": "sell",
+       "CDNS261030P00315000": "sell"
+      },
+      "quote_age_s": {
+       "CDNS261030C00315000": 172,
+       "CDNS261030P00315000": 4
+      },
+      "limit_price": "-32.17",
+      "id": "a512c7fb-bf82-404e-8b95-6b63debf3823",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "CDNS261030C00315000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "CDNS261030P00315000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:33:34.185227-04:00"
+     },
+     {
+      "client_order_id": "seasonA-CDNS-2026-10-26-L-close-r1",
+      "sent_et": "2026-10-27T14:36:01.586821-04:00",
+      "qty": 1,
+      "natural": -31.52,
+      "sides": {
+       "CDNS261030C00315000": "sell",
+       "CDNS261030P00315000": "sell"
+      },
+      "quotes": {
+       "CDNS261030C00315000": {
+        "bid": 31.34,
+        "ask": 33.74,
+        "t": "2026-10-27T18:35:43.57584229Z"
+       },
+       "CDNS261030P00315000": {
+        "bid": 0.18,
+        "ask": 1.38,
+        "t": "2026-10-27T18:35:27.522788829Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "CDNS261030C00315000": "sell",
+       "CDNS261030P00315000": "sell"
+      },
+      "quote_age_s": {
+       "CDNS261030C00315000": 18,
+       "CDNS261030P00315000": 34
+      },
+      "limit_price": "-29.94",
+      "id": "152e7456-a70b-4e7c-9781-b1757bfe1b9a",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:36:06.740180715Z",
+      "legs_filled": [
+       {
+        "symbol": "CDNS261030C00315000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 30.9
+       },
+       {
+        "symbol": "CDNS261030P00315000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.2
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-27T14:31:16.991030-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 25.299999999999997,
+    "close_net": -31.099999999999998,
+    "pnl_per_unit": 5.800000000000001,
+    "qty": 1.0,
+    "pnl": 580.0,
+    "pnl_on_spot": 0.018322540589681965,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.060000000000002274,
+    "entry_credit_vs_gate_bid_sum": -47.699999999999996
+   }
   },
   "seasonA-CLS-2026-10-26-L": {
    "season": "seasonA",
@@ -3622,7 +3811,28 @@
      }
     ]
    },
-   "open_failed": "platform"
+   "open_failed": "platform",
+   "close_sim": {
+    "net": -24.22,
+    "at": "2026-10-27T14:31:16.991030-04:00",
+    "why": "no real position (the entry was simulated); natural at this run"
+   },
+   "result": {
+    "open_net": 36.64,
+    "close_net": -24.22,
+    "pnl_per_unit": -12.420000000000002,
+    "qty": 1,
+    "pnl": -1242.0,
+    "pnl_on_spot": -0.0475889445642611,
+    "simulated_legs": [
+     "close",
+     "open"
+    ],
+    "simulated_why": {
+     "open": "opening order unfilled for a platform reason; booked at the natural when sent",
+     "close": "no real position (the entry was simulated); natural at this run"
+    }
+   }
   },
   "seasonA-CVLT-2026-10-27-L": {
    "season": "seasonA",
@@ -3727,9 +3937,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-EEFT-2026-10-27-L-close",
+      "sent_et": "2026-10-27T14:31:16.991030-04:00",
+      "qty": 1,
+      "natural": -5.41,
+      "sides": {
+       "EEFT261120C00065000": "sell",
+       "EEFT261120P00065000": "sell"
+      },
+      "quotes": {
+       "EEFT261120C00065000": {
+        "bid": 0.63,
+        "ask": 0.88,
+        "t": "2026-10-27T18:30:53.880741832Z"
+       },
+       "EEFT261120P00065000": {
+        "bid": 4.78,
+        "ask": 6.92,
+        "t": "2026-10-27T18:25:29.365454931Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "EEFT261120C00065000": "sell",
+       "EEFT261120P00065000": "sell"
+      },
+      "quote_age_s": {
+       "EEFT261120C00065000": 23,
+       "EEFT261120P00065000": 348
+      },
+      "limit_price": "-5.41",
+      "id": "bf020317-c8af-4df3-a538-92053810d485",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "EEFT261120C00065000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "EEFT261120P00065000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:33:34.185227-04:00"
+     },
+     {
+      "client_order_id": "seasonA-EEFT-2026-10-27-L-close-r1",
+      "sent_et": "2026-10-27T14:36:01.586821-04:00",
+      "qty": 1,
+      "natural": -5.46,
+      "sides": {
+       "EEFT261120C00065000": "sell",
+       "EEFT261120P00065000": "sell"
+      },
+      "quotes": {
+       "EEFT261120C00065000": {
+        "bid": 0.67,
+        "ask": 0.92,
+        "t": "2026-10-27T18:36:01.380239716Z"
+       },
+       "EEFT261120P00065000": {
+        "bid": 4.79,
+        "ask": 6.69,
+        "t": "2026-10-27T18:34:02.589265039Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "EEFT261120C00065000": "sell",
+       "EEFT261120P00065000": "sell"
+      },
+      "quote_age_s": {
+       "EEFT261120C00065000": 0,
+       "EEFT261120P00065000": 119
+      },
+      "limit_price": "-5.18",
+      "id": "54f8c374-80a3-467e-bca0-4afb28fa8884",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:36:07.219797747Z",
+      "legs_filled": [
+       {
+        "symbol": "EEFT261120C00065000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.65
+       },
+       {
+        "symbol": "EEFT261120P00065000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 4.7
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-27T14:31:16.991030-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 7.5,
+    "close_net": -5.3500000000000005,
+    "pnl_per_unit": -2.1499999999999995,
+    "qty": 1.0,
+    "pnl": -215.0,
+    "pnl_on_spot": -0.032761904761904756,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": 0.0,
+    "entry_credit_vs_gate_bid_sum": -12.85
+   }
   },
   "seasonA-GLXY-2026-10-27-L": {
    "season": "seasonA",
@@ -3812,9 +4143,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-GLXY-2026-10-27-L-close",
+      "sent_et": "2026-10-27T14:31:16.991030-04:00",
+      "qty": 2,
+      "natural": -1.8199999999999998,
+      "sides": {
+       "GLXY261030C00015000": "sell",
+       "GLXY261030P00015000": "sell"
+      },
+      "quotes": {
+       "GLXY261030C00015000": {
+        "bid": 1.67,
+        "ask": 2.36,
+        "t": "2026-10-27T18:31:11.008026966Z"
+       },
+       "GLXY261030P00015000": {
+        "bid": 0.15,
+        "ask": 0.19,
+        "t": "2026-10-27T18:31:12.942204111Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "GLXY261030C00015000": "sell",
+       "GLXY261030P00015000": "sell"
+      },
+      "quote_age_s": {
+       "GLXY261030C00015000": 6,
+       "GLXY261030P00015000": 4
+      },
+      "limit_price": "-1.82",
+      "id": "9fb362e8-4743-4af9-b0b3-77f3a9f8857a",
+      "status": "filled",
+      "filled_qty": 2.0,
+      "filled_at": "2026-10-27T18:31:19.280609962Z",
+      "legs_filled": [
+       {
+        "symbol": "GLXY261030C00015000",
+        "side": "sell",
+        "qty": 2.0,
+        "price": 1.69
+       },
+       {
+        "symbol": "GLXY261030P00015000",
+        "side": "sell",
+        "qty": 2.0,
+        "price": 0.13
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-27T14:31:16.991030-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 2.09,
+    "close_net": -1.8199999999999998,
+    "pnl_per_unit": -0.27,
+    "qty": 2.0,
+    "pnl": -54.0,
+    "pnl_on_spot": -0.018348623662944086,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.009999999999999787,
+    "entry_credit_vs_gate_bid_sum": -4.04
+   }
   },
   "seasonA-RMBS-2026-10-26-L": {
    "season": "seasonA",
@@ -3897,9 +4296,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-RMBS-2026-10-26-L-close",
+      "sent_et": "2026-10-27T14:31:16.991030-04:00",
+      "qty": 1,
+      "natural": -11.79,
+      "sides": {
+       "RMBS261120C00087500": "sell",
+       "RMBS261120P00087500": "sell"
+      },
+      "quotes": {
+       "RMBS261120C00087500": {
+        "bid": 6.23,
+        "ask": 7.21,
+        "t": "2026-10-27T18:29:39.779632005Z"
+       },
+       "RMBS261120P00087500": {
+        "bid": 5.56,
+        "ask": 6.32,
+        "t": "2026-10-27T18:30:50.520016202Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "RMBS261120C00087500": "sell",
+       "RMBS261120P00087500": "sell"
+      },
+      "quote_age_s": {
+       "RMBS261120C00087500": 97,
+       "RMBS261120P00087500": 26
+      },
+      "limit_price": "-11.79",
+      "id": "29daa37f-4d61-4049-9e66-83b122cca6ea",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "RMBS261120C00087500",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "RMBS261120P00087500",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:33:34.185227-04:00"
+     },
+     {
+      "client_order_id": "seasonA-RMBS-2026-10-26-L-close-r1",
+      "sent_et": "2026-10-27T14:36:01.586821-04:00",
+      "qty": 1,
+      "natural": -11.870000000000001,
+      "sides": {
+       "RMBS261120C00087500": "sell",
+       "RMBS261120P00087500": "sell"
+      },
+      "quotes": {
+       "RMBS261120C00087500": {
+        "bid": 6.28,
+        "ask": 7.23,
+        "t": "2026-10-27T18:35:43.752909304Z"
+       },
+       "RMBS261120P00087500": {
+        "bid": 5.59,
+        "ask": 6.22,
+        "t": "2026-10-27T18:35:43.769834322Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "RMBS261120C00087500": "sell",
+       "RMBS261120P00087500": "sell"
+      },
+      "quote_age_s": {
+       "RMBS261120C00087500": 18,
+       "RMBS261120P00087500": 18
+      },
+      "limit_price": "-11.27",
+      "id": "9ba9869a-eb12-4812-8042-6cc26146e8f5",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:36:07.614405636Z",
+      "legs_filled": [
+       {
+        "symbol": "RMBS261120C00087500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 6.2
+       },
+       {
+        "symbol": "RMBS261120P00087500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 5.5
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-27T14:31:16.991030-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 17.2,
+    "close_net": -11.7,
+    "pnl_per_unit": -5.5,
+    "qty": 1.0,
+    "pnl": -550.0,
+    "pnl_on_spot": -0.06321839080459771,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.19000000000000128,
+    "entry_credit_vs_gate_bid_sum": -32.4
+   }
   },
   "seasonA-BLKB-2026-10-28-L": {
    "season": "seasonA",
@@ -5538,11 +6058,2920 @@
     ]
    },
    "open_failed": "platform"
+  },
+  "seasonA-ALNY-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "ALNY",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 220.0,
+   "spot_at_gate": 224.9199981689453,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:00.312339-04:00",
+   "gate_straddle_mid": 30.9,
+   "gate_bid_sum": 29.1,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-ALNY-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    155.0,
+    290.0
+   ],
+   "legs": [
+    {
+     "symbol": "ALNY261120C00220000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "ALNY261120P00220000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-ALNY-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 32.74,
+      "sides": {
+       "ALNY261120C00220000": "buy",
+       "ALNY261120P00220000": "buy"
+      },
+      "quotes": {
+       "ALNY261120C00220000": {
+        "bid": 16.92,
+        "ask": 19.43,
+        "t": "2026-10-27T18:32:26.199654222Z"
+       },
+       "ALNY261120P00220000": {
+        "bid": 12.08,
+        "ask": 13.31,
+        "t": "2026-10-27T18:33:32.1312373Z"
+       }
+      },
+      "limit_price": "32.74",
+      "id": "d36c272c-3fc6-428e-9b70-9852e5bf5ffe",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:39.905309698Z",
+      "legs_filled": [
+       {
+        "symbol": "ALNY261120C00220000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 19.1
+       },
+       {
+        "symbol": "ALNY261120P00220000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 13.4
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-ARXS-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "ARXS",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 50.0,
+   "spot_at_gate": 52.470001220703125,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:00.312330-04:00",
+   "gate_straddle_mid": 9.15,
+   "gate_bid_sum": 7.800000000000001,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-ARXS-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    30.0,
+    70.0
+   ],
+   "legs": [
+    {
+     "symbol": "ARXS261120C00050000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "ARXS261120P00050000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-ARXS-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 10.489999999999998,
+      "sides": {
+       "ARXS261120C00050000": "buy",
+       "ARXS261120P00050000": "buy"
+      },
+      "quotes": {
+       "ARXS261120C00050000": {
+        "bid": 5.22,
+        "ask": 6.22,
+        "t": "2026-10-27T18:32:24.871197209Z"
+       },
+       "ARXS261120P00050000": {
+        "bid": 2.62,
+        "ask": 4.27,
+        "t": "2026-10-27T18:28:06.314864369Z"
+       }
+      },
+      "limit_price": "10.49",
+      "id": "850fc8dd-b989-4352-b754-3081821371f9",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "ARXS261120C00050000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "ARXS261120P00050000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:49:12.274790-04:00"
+     },
+     {
+      "client_order_id": "seasonA-ARXS-2026-10-28-L-open-r1",
+      "sent_et": "2026-10-27T14:51:24.241346-04:00",
+      "qty": 1,
+      "natural": 10.47,
+      "sides": {
+       "ARXS261120C00050000": "buy",
+       "ARXS261120P00050000": "buy"
+      },
+      "quotes": {
+       "ARXS261120C00050000": {
+        "bid": 5.1,
+        "ask": 6.23,
+        "t": "2026-10-27T18:48:53.708447944Z"
+       },
+       "ARXS261120P00050000": {
+        "bid": 2.62,
+        "ask": 4.24,
+        "t": "2026-10-27T18:45:29.669102643Z"
+       }
+      },
+      "limit_price": "10.47",
+      "id": "ec54f059-9ba5-4ef0-b542-0ab436869d90",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "ARXS261120C00050000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "ARXS261120P00050000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T15:06:35.377107-04:00"
+     }
+    ]
+   },
+   "open_failed": "platform"
+  },
+  "seasonA-BDC-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "BDC",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 105.0,
+   "spot_at_gate": 107.2300033569336,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:00.460293-04:00",
+   "gate_straddle_mid": 13.1,
+   "gate_bid_sum": 11.2,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-BDC-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    75.0,
+    135.0
+   ],
+   "legs": [
+    {
+     "symbol": "BDC261120C00105000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "BDC261120P00105000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-BDC-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 15.419999999999998,
+      "sides": {
+       "BDC261120C00105000": "buy",
+       "BDC261120P00105000": "buy"
+      },
+      "quotes": {
+       "BDC261120C00105000": {
+        "bid": 6.75,
+        "ask": 8.36,
+        "t": "2026-10-27T18:33:22.441167562Z"
+       },
+       "BDC261120P00105000": {
+        "bid": 4.67,
+        "ask": 7.06,
+        "t": "2026-10-27T18:33:24.643567011Z"
+       }
+      },
+      "limit_price": "15.42",
+      "id": "7e134e6c-6baf-4399-b216-132a0816ef41",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:40.809167177Z",
+      "legs_filled": [
+       {
+        "symbol": "BDC261120C00105000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 8.2
+       },
+       {
+        "symbol": "BDC261120P00105000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 7.1
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-BHE-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "BHE",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 70.0,
+   "spot_at_gate": 70.54000091552734,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:07.969572-04:00",
+   "gate_straddle_mid": 8.15,
+   "gate_bid_sum": 5.4,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-BHE-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    50.0,
+    90.0
+   ],
+   "legs": [
+    {
+     "symbol": "BHE261120C00070000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "BHE261120P00070000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-BHE-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 10.86,
+      "sides": {
+       "BHE261120C00070000": "buy",
+       "BHE261120P00070000": "buy"
+      },
+      "quotes": {
+       "BHE261120C00070000": {
+        "bid": 2.38,
+        "ask": 4.88,
+        "t": "2026-10-27T18:33:10.097556213Z"
+       },
+       "BHE261120P00070000": {
+        "bid": 2.97,
+        "ask": 5.98,
+        "t": "2026-10-27T18:32:49.997658645Z"
+       }
+      },
+      "limit_price": "10.86",
+      "id": "bc1d57d5-412c-4e62-ad5f-b17a30ff0857",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "BHE261120C00070000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "BHE261120P00070000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:49:12.274790-04:00"
+     },
+     {
+      "client_order_id": "seasonA-BHE-2026-10-28-L-open-r1",
+      "sent_et": "2026-10-27T14:51:24.241346-04:00",
+      "qty": 1,
+      "natural": 10.96,
+      "sides": {
+       "BHE261120C00070000": "buy",
+       "BHE261120P00070000": "buy"
+      },
+      "quotes": {
+       "BHE261120C00070000": {
+        "bid": 2.42,
+        "ask": 4.85,
+        "t": "2026-10-27T18:49:58.730629238Z"
+       },
+       "BHE261120P00070000": {
+        "bid": 2.96,
+        "ask": 6.11,
+        "t": "2026-10-27T18:50:00.225113281Z"
+       }
+      },
+      "limit_price": "10.96",
+      "id": "52a08c6d-b7db-4286-9409-75aef6151f5a",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:51:26.660113668Z",
+      "legs_filled": [
+       {
+        "symbol": "BHE261120C00070000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 4.9
+       },
+       {
+        "symbol": "BHE261120P00070000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 6.0
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-BOOT-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "BOOT",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 110.0,
+   "spot_at_gate": 111.69000244140625,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:08.901909-04:00",
+   "gate_straddle_mid": 16.2,
+   "gate_bid_sum": 14.5,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-BOOT-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    75.0,
+    145.0
+   ],
+   "legs": [
+    {
+     "symbol": "BOOT261120C00110000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "BOOT261120P00110000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-BOOT-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 18.07,
+      "sides": {
+       "BOOT261120C00110000": "buy",
+       "BOOT261120P00110000": "buy"
+      },
+      "quotes": {
+       "BOOT261120C00110000": {
+        "bid": 8.2,
+        "ask": 10.59,
+        "t": "2026-10-27T18:33:20.802019181Z"
+       },
+       "BOOT261120P00110000": {
+        "bid": 6.31,
+        "ask": 7.48,
+        "t": "2026-10-27T18:33:20.801973814Z"
+       }
+      },
+      "limit_price": "18.07",
+      "id": "cd6921f3-1041-48d7-a6f5-d97fa845873c",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:41.657544831Z",
+      "legs_filled": [
+       {
+        "symbol": "BOOT261120C00110000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 10.4
+       },
+       {
+        "symbol": "BOOT261120P00110000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 7.5
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-CMG-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "CMG",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 28.0,
+   "spot_at_gate": 27.940000534057617,
+   "gate_status": "PASS",
+   "gate_captured_et": "2026-10-27T14:31:10.617753-04:00",
+   "gate_straddle_mid": 2.0999999999999996,
+   "gate_bid_sum": 2.04,
+   "n": 2,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-CMG-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    23.0,
+    32.5
+   ],
+   "legs": [
+    {
+     "symbol": "CMG261030C00028000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "CMG261030P00028000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-CMG-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 2,
+      "natural": 2.22,
+      "sides": {
+       "CMG261030C00028000": "buy",
+       "CMG261030P00028000": "buy"
+      },
+      "quotes": {
+       "CMG261030C00028000": {
+        "bid": 1.04,
+        "ask": 1.1,
+        "t": "2026-10-27T18:33:41.755207065Z"
+       },
+       "CMG261030P00028000": {
+        "bid": 1.04,
+        "ask": 1.12,
+        "t": "2026-10-27T18:33:40.941485089Z"
+       }
+      },
+      "limit_price": "2.22",
+      "id": "322c6c03-dae4-474a-a26b-09119d250fc0",
+      "status": "filled",
+      "filled_qty": 2.0,
+      "filled_at": "2026-10-27T18:33:42.026630892Z",
+      "legs_filled": [
+       {
+        "symbol": "CMG261030C00028000",
+        "side": "buy",
+        "qty": 2.0,
+        "price": 1.08
+       },
+       {
+        "symbol": "CMG261030P00028000",
+        "side": "buy",
+        "qty": 2.0,
+        "price": 1.1
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-COHU-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "COHU",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 50.0,
+   "spot_at_gate": 51.18000030517578,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:10.810653-04:00",
+   "gate_straddle_mid": 9.8,
+   "gate_bid_sum": 9.1,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-COHU-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    30.0,
+    70.0
+   ],
+   "legs": [
+    {
+     "symbol": "COHU261120C00050000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "COHU261120P00050000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-COHU-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 10.43,
+      "sides": {
+       "COHU261120C00050000": "buy",
+       "COHU261120P00050000": "buy"
+      },
+      "quotes": {
+       "COHU261120C00050000": {
+        "bid": 5.06,
+        "ask": 5.88,
+        "t": "2026-10-27T18:33:40.962780124Z"
+       },
+       "COHU261120P00050000": {
+        "bid": 3.94,
+        "ask": 4.55,
+        "t": "2026-10-27T18:33:32.335526006Z"
+       }
+      },
+      "limit_price": "10.43",
+      "id": "7ab1b0a5-8eac-4cdb-9fd1-ed89eee3c26b",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:42.388882523Z",
+      "legs_filled": [
+       {
+        "symbol": "COHU261120C00050000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 5.8
+       },
+       {
+        "symbol": "COHU261120P00050000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 4.5
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-CROX-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "CROX",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 120.0,
+   "spot_at_gate": 119.0,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:18.196096-04:00",
+   "gate_straddle_mid": 16.3,
+   "gate_bid_sum": 15.3,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-CROX-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    85.0,
+    155.0
+   ],
+   "legs": [
+    {
+     "symbol": "CROX261120C00120000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "CROX261120P00120000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-CROX-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 17.21,
+      "sides": {
+       "CROX261120C00120000": "buy",
+       "CROX261120P00120000": "buy"
+      },
+      "quotes": {
+       "CROX261120C00120000": {
+        "bid": 7.25,
+        "ask": 8.71,
+        "t": "2026-10-27T18:33:12.246769112Z"
+       },
+       "CROX261120P00120000": {
+        "bid": 8.06,
+        "ask": 8.5,
+        "t": "2026-10-27T18:33:41.351693996Z"
+       }
+      },
+      "limit_price": "17.21",
+      "id": "23f757c0-26a0-4a14-afe2-560e1fdaee3f",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:48:13.973127892Z",
+      "legs_filled": [
+       {
+        "symbol": "CROX261120C00120000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 8.5
+       },
+       {
+        "symbol": "CROX261120P00120000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 8.5
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-ENTG-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "ENTG",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 150.0,
+   "spot_at_gate": 150.41000366210938,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:18.213717-04:00",
+   "gate_straddle_mid": 24.699999999999996,
+   "gate_bid_sum": 23.5,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-ENTG-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    100.0,
+    200.0
+   ],
+   "legs": [
+    {
+     "symbol": "ENTG261120C00150000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "ENTG261120P00150000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-ENTG-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 25.79,
+      "sides": {
+       "ENTG261120C00150000": "buy",
+       "ENTG261120P00150000": "buy"
+      },
+      "quotes": {
+       "ENTG261120C00150000": {
+        "bid": 11.49,
+        "ask": 13.22,
+        "t": "2026-10-27T18:33:27.110863566Z"
+       },
+       "ENTG261120P00150000": {
+        "bid": 10.78,
+        "ask": 12.57,
+        "t": "2026-10-27T18:33:20.895857838Z"
+       }
+      },
+      "limit_price": "25.79",
+      "id": "e7b33858-03ce-45cf-a846-c29c6d68d68c",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:34:07.274201215Z",
+      "legs_filled": [
+       {
+        "symbol": "ENTG261120C00150000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 12.9
+       },
+       {
+        "symbol": "ENTG261120P00150000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 12.5
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-FORM-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "FORM",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 105.0,
+   "spot_at_gate": 106.75,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:20.441546-04:00",
+   "gate_straddle_mid": 19.2,
+   "gate_bid_sum": 18.4,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-FORM-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    65.0,
+    145.0
+   ],
+   "legs": [
+    {
+     "symbol": "FORM261120C00105000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "FORM261120P00105000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-FORM-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 19.97,
+      "sides": {
+       "FORM261120C00105000": "buy",
+       "FORM261120P00105000": "buy"
+      },
+      "quotes": {
+       "FORM261120C00105000": {
+        "bid": 10.16,
+        "ask": 11.07,
+        "t": "2026-10-27T18:33:39.428335201Z"
+       },
+       "FORM261120P00105000": {
+        "bid": 8.26,
+        "ask": 8.9,
+        "t": "2026-10-27T18:33:16.355724945Z"
+       }
+      },
+      "limit_price": "19.97",
+      "id": "542a1b2a-0286-4774-b521-2fa405818cca",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "FORM261120C00105000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "FORM261120P00105000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:49:12.274790-04:00"
+     },
+     {
+      "client_order_id": "seasonA-FORM-2026-10-28-L-open-r1",
+      "sent_et": "2026-10-27T14:51:24.241346-04:00",
+      "qty": 1,
+      "natural": 19.880000000000003,
+      "sides": {
+       "FORM261120C00105000": "buy",
+       "FORM261120P00105000": "buy"
+      },
+      "quotes": {
+       "FORM261120C00105000": {
+        "bid": 10.08,
+        "ask": 11.05,
+        "t": "2026-10-27T18:49:59.728755026Z"
+       },
+       "FORM261120P00105000": {
+        "bid": 8.2,
+        "ask": 8.83,
+        "t": "2026-10-27T18:50:29.176487526Z"
+       }
+      },
+      "limit_price": "19.88",
+      "id": "9a9c50ed-8e14-4092-9432-538945404d6c",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "FORM261120C00105000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "FORM261120P00105000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T15:06:35.377107-04:00"
+     }
+    ]
+   },
+   "open_failed": "platform"
+  },
+  "seasonA-FTAI-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "FTAI",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 157.5,
+   "spot_at_gate": 157.39999389648438,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:23.526452-04:00",
+   "gate_straddle_mid": 16.95,
+   "gate_bid_sum": 15.399999999999999,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-FTAI-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    123.0,
+    192.5
+   ],
+   "legs": [
+    {
+     "symbol": "FTAI261030C00157500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "FTAI261030P00157500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-FTAI-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 18.310000000000002,
+      "sides": {
+       "FTAI261030C00157500": "buy",
+       "FTAI261030P00157500": "buy"
+      },
+      "quotes": {
+       "FTAI261030C00157500": {
+        "bid": 7.8,
+        "ask": 9.31,
+        "t": "2026-10-27T18:33:02.173858744Z"
+       },
+       "FTAI261030P00157500": {
+        "bid": 7.62,
+        "ask": 9,
+        "t": "2026-10-27T18:33:01.124739166Z"
+       }
+      },
+      "limit_price": "18.31",
+      "id": "c7e94ef9-4973-4004-8389-e145c1321760",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:43.776660665Z",
+      "legs_filled": [
+       {
+        "symbol": "FTAI261030C00157500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 9.2
+       },
+       {
+        "symbol": "FTAI261030P00157500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 9.1
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-FTNT-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "FTNT",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 185.0,
+   "spot_at_gate": 185.46499633789062,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:27.637552-04:00",
+   "gate_straddle_mid": 20.650000000000002,
+   "gate_bid_sum": 19.65,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-FTNT-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    143.0,
+    227.5
+   ],
+   "legs": [
+    {
+     "symbol": "FTNT261030C00185000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "FTNT261030P00185000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-FTNT-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 21.29,
+      "sides": {
+       "FTNT261030C00185000": "buy",
+       "FTNT261030P00185000": "buy"
+      },
+      "quotes": {
+       "FTNT261030C00185000": {
+        "bid": 9.71,
+        "ask": 10.78,
+        "t": "2026-10-27T18:33:43.425779551Z"
+       },
+       "FTNT261030P00185000": {
+        "bid": 9.99,
+        "ask": 10.51,
+        "t": "2026-10-27T18:33:36.414761802Z"
+       }
+      },
+      "limit_price": "21.29",
+      "id": "28537129-1898-43e4-982d-0f740059601c",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "FTNT261030C00185000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "FTNT261030P00185000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:49:12.274790-04:00"
+     },
+     {
+      "client_order_id": "seasonA-FTNT-2026-10-28-L-open-r1",
+      "sent_et": "2026-10-27T14:51:24.241346-04:00",
+      "qty": 1,
+      "natural": 21.67,
+      "sides": {
+       "FTNT261030C00185000": "buy",
+       "FTNT261030P00185000": "buy"
+      },
+      "quotes": {
+       "FTNT261030C00185000": {
+        "bid": 10.08,
+        "ask": 10.85,
+        "t": "2026-10-27T18:51:23.532575022Z"
+       },
+       "FTNT261030P00185000": {
+        "bid": 10.02,
+        "ask": 10.82,
+        "t": "2026-10-27T18:51:26.272881921Z"
+       }
+      },
+      "limit_price": "21.67",
+      "id": "fc477451-39eb-4fc8-83cd-76efda41602f",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:51:27.53999241Z",
+      "legs_filled": [
+       {
+        "symbol": "FTNT261030C00185000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 11.0
+       },
+       {
+        "symbol": "FTNT261030P00185000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 10.65
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-GEN-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "GEN",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 24.0,
+   "spot_at_gate": 23.985000610351562,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:28.017078-04:00",
+   "gate_straddle_mid": 2.675,
+   "gate_bid_sum": 2.45,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-GEN-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    18.0,
+    30.0
+   ],
+   "legs": [
+    {
+     "symbol": "GEN261120C00024000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "GEN261120P00024000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-GEN-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 2.86,
+      "sides": {
+       "GEN261120C00024000": "buy",
+       "GEN261120P00024000": "buy"
+      },
+      "quotes": {
+       "GEN261120C00024000": {
+        "bid": 1.22,
+        "ask": 1.48,
+        "t": "2026-10-27T18:31:49.899324177Z"
+       },
+       "GEN261120P00024000": {
+        "bid": 1.23,
+        "ask": 1.38,
+        "t": "2026-10-27T18:33:43.733702846Z"
+       }
+      },
+      "limit_price": "2.86",
+      "id": "7d08083b-a43f-48af-852a-7463063c5136",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "GEN261120C00024000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "GEN261120P00024000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:49:12.274790-04:00"
+     },
+     {
+      "client_order_id": "seasonA-GEN-2026-10-28-L-open-r1",
+      "sent_et": "2026-10-27T14:51:24.241346-04:00",
+      "qty": 1,
+      "natural": 2.94,
+      "sides": {
+       "GEN261120C00024000": "buy",
+       "GEN261120P00024000": "buy"
+      },
+      "quotes": {
+       "GEN261120C00024000": {
+        "bid": 1.18,
+        "ask": 1.52,
+        "t": "2026-10-27T18:49:57.928144438Z"
+       },
+       "GEN261120P00024000": {
+        "bid": 1.22,
+        "ask": 1.42,
+        "t": "2026-10-27T18:50:30.431890363Z"
+       }
+      },
+      "limit_price": "2.94",
+      "id": "54d70440-6709-47ed-be50-d01d68ef819d",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:51:27.900710802Z",
+      "legs_filled": [
+       {
+        "symbol": "GEN261120C00024000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 1.5
+       },
+       {
+        "symbol": "GEN261120P00024000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 1.4
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-GOOG-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "GOOG",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 317.5,
+   "spot_at_gate": 318.05499267578125,
+   "gate_status": "PASS",
+   "gate_captured_et": "2026-10-27T14:31:30.430356-04:00",
+   "gate_straddle_mid": 18.25,
+   "gate_bid_sum": 17.950000000000003,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-GOOG-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    280.0,
+    355.0
+   ],
+   "legs": [
+    {
+     "symbol": "GOOG261030C00317500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "GOOG261030P00317500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-GOOG-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 18.869999999999997,
+      "sides": {
+       "GOOG261030C00317500": "buy",
+       "GOOG261030P00317500": "buy"
+      },
+      "quotes": {
+       "GOOG261030C00317500": {
+        "bid": 9.47,
+        "ask": 9.75,
+        "t": "2026-10-27T18:33:34.559339193Z"
+       },
+       "GOOG261030P00317500": {
+        "bid": 8.79,
+        "ask": 9.12,
+        "t": "2026-10-27T18:33:35.70302237Z"
+       }
+      },
+      "limit_price": "18.87",
+      "id": "e44582b3-b6c4-4a42-9960-f83b730c5352",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:44.85558871Z",
+      "legs_filled": [
+       {
+        "symbol": "GOOG261030C00317500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 9.65
+       },
+       {
+        "symbol": "GOOG261030P00317500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 9.0
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-HII-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "HII",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 280.0,
+   "spot_at_gate": 279.885009765625,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:30.982043-04:00",
+   "gate_straddle_mid": 29.799999999999997,
+   "gate_bid_sum": 27.1,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-HII-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    220.0,
+    340.0
+   ],
+   "legs": [
+    {
+     "symbol": "HII261120C00280000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "HII261120P00280000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-HII-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 32.28,
+      "sides": {
+       "HII261120C00280000": "buy",
+       "HII261120P00280000": "buy"
+      },
+      "quotes": {
+       "HII261120C00280000": {
+        "bid": 14.02,
+        "ask": 17.28,
+        "t": "2026-10-27T18:28:54.206627714Z"
+       },
+       "HII261120P00280000": {
+        "bid": 13.34,
+        "ask": 15,
+        "t": "2026-10-27T18:30:58.09628256Z"
+       }
+      },
+      "limit_price": "32.28",
+      "id": "9f1bf76f-5a4e-4b77-883c-1d037bbe9fc1",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "HII261120C00280000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "HII261120P00280000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:49:12.274790-04:00"
+     },
+     {
+      "client_order_id": "seasonA-HII-2026-10-29-L-open-r1",
+      "sent_et": "2026-10-27T14:51:24.241346-04:00",
+      "qty": 1,
+      "natural": 32.19,
+      "sides": {
+       "HII261120C00280000": "buy",
+       "HII261120P00280000": "buy"
+      },
+      "quotes": {
+       "HII261120C00280000": {
+        "bid": 14.05,
+        "ask": 16.97,
+        "t": "2026-10-27T18:51:13.96474157Z"
+       },
+       "HII261120P00280000": {
+        "bid": 13.25,
+        "ask": 15.22,
+        "t": "2026-10-27T18:49:11.20709801Z"
+       }
+      },
+      "limit_price": "32.19",
+      "id": "c69a18be-fec9-4f69-a300-2d6d6c913cfa",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "HII261120C00280000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "HII261120P00280000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T15:06:35.377107-04:00"
+     }
+    ]
+   },
+   "open_failed": "platform"
+  },
+  "seasonA-HONA-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "HONA",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 170.0,
+   "spot_at_gate": 168.05999755859375,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:36.557776-04:00",
+   "gate_straddle_mid": 19.05,
+   "gate_bid_sum": 17.200000000000003,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-HONA-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    130.0,
+    210.0
+   ],
+   "legs": [
+    {
+     "symbol": "HONA261120C00170000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "HONA261120P00170000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-HONA-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 20.91,
+      "sides": {
+       "HONA261120C00170000": "buy",
+       "HONA261120P00170000": "buy"
+      },
+      "quotes": {
+       "HONA261120C00170000": {
+        "bid": 8.01,
+        "ask": 8.98,
+        "t": "2026-10-27T18:33:43.277482334Z"
+       },
+       "HONA261120P00170000": {
+        "bid": 9.39,
+        "ask": 11.93,
+        "t": "2026-10-27T18:33:17.210438119Z"
+       }
+      },
+      "limit_price": "20.91",
+      "id": "5e9dd6a6-3a07-449b-8955-0f0526535024",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:45.699602664Z",
+      "legs_filled": [
+       {
+        "symbol": "HONA261120C00170000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 9.0
+       },
+       {
+        "symbol": "HONA261120P00170000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 11.7
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-HWM-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "HWM",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 192.5,
+   "spot_at_gate": 192.0800018310547,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:38.831603-04:00",
+   "gate_straddle_mid": 14.1,
+   "gate_bid_sum": 12.600000000000001,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-HWM-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    160.0,
+    222.5
+   ],
+   "legs": [
+    {
+     "symbol": "HWM261030C00192500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "HWM261030P00192500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-HWM-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 15.01,
+      "sides": {
+       "HWM261030C00192500": "buy",
+       "HWM261030P00192500": "buy"
+      },
+      "quotes": {
+       "HWM261030C00192500": {
+        "bid": 5.43,
+        "ask": 7.2,
+        "t": "2026-10-27T18:33:42.465663095Z"
+       },
+       "HWM261030P00192500": {
+        "bid": 7.05,
+        "ask": 7.81,
+        "t": "2026-10-27T18:32:25.807022711Z"
+       }
+      },
+      "limit_price": "15.01",
+      "id": "bc5c51ea-db60-4aa5-9e27-ed7eeb1d243d",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:46.303936277Z",
+      "legs_filled": [
+       {
+        "symbol": "HWM261030C00192500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 7.3
+       },
+       {
+        "symbol": "HWM261030P00192500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 7.7
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-IDCC-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "IDCC",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 330.0,
+   "spot_at_gate": 327.5299987792969,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:39.069856-04:00",
+   "gate_straddle_mid": 34.55,
+   "gate_bid_sum": 31.6,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-IDCC-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    260.0,
+    400.0
+   ],
+   "legs": [
+    {
+     "symbol": "IDCC261120C00330000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "IDCC261120P00330000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-IDCC-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 38.06,
+      "sides": {
+       "IDCC261120C00330000": "buy",
+       "IDCC261120P00330000": "buy"
+      },
+      "quotes": {
+       "IDCC261120C00330000": {
+        "bid": 15.09,
+        "ask": 18.32,
+        "t": "2026-10-27T18:33:04.147415933Z"
+       },
+       "IDCC261120P00330000": {
+        "bid": 16.71,
+        "ask": 19.74,
+        "t": "2026-10-27T18:32:08.636323639Z"
+       }
+      },
+      "limit_price": "38.06",
+      "id": "f589ad40-ca42-4d71-9d59-9b3b26ec39e8",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:47.702407008Z",
+      "legs_filled": [
+       {
+        "symbol": "IDCC261120C00330000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 18.3
+       },
+       {
+        "symbol": "IDCC261120P00330000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 19.4
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-INCY-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "INCY",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 115.0,
+   "spot_at_gate": 115.87000274658203,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:43.111295-04:00",
+   "gate_straddle_mid": 9.7,
+   "gate_bid_sum": 9.0,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-INCY-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    95.0,
+    135.0
+   ],
+   "legs": [
+    {
+     "symbol": "INCY261120C00115000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "INCY261120P00115000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-INCY-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 10.23,
+      "sides": {
+       "INCY261120C00115000": "buy",
+       "INCY261120P00115000": "buy"
+      },
+      "quotes": {
+       "INCY261120C00115000": {
+        "bid": 5.16,
+        "ask": 5.75,
+        "t": "2026-10-27T18:33:33.839327515Z"
+       },
+       "INCY261120P00115000": {
+        "bid": 3.95,
+        "ask": 4.48,
+        "t": "2026-10-27T18:33:39.411115289Z"
+       }
+      },
+      "limit_price": "10.23",
+      "id": "49b73786-895b-430d-8a77-db4d99d187fc",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:42:04.126080471Z",
+      "legs_filled": [
+       {
+        "symbol": "INCY261120C00115000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 5.8
+       },
+       {
+        "symbol": "INCY261120P00115000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 4.4
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-KLAC-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "KLAC",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 152.5,
+   "spot_at_gate": 153.55499267578125,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:43.736303-04:00",
+   "gate_straddle_mid": 11.95,
+   "gate_bid_sum": 11.399999999999999,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-KLAC-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    128.0,
+    177.5
+   ],
+   "legs": [
+    {
+     "symbol": "KLAC261030C00152500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "KLAC261030P00152500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-KLAC-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 12.350000000000001,
+      "sides": {
+       "KLAC261030C00152500": "buy",
+       "KLAC261030P00152500": "buy"
+      },
+      "quotes": {
+       "KLAC261030C00152500": {
+        "bid": 6.02,
+        "ask": 6.61,
+        "t": "2026-10-27T18:33:48.176505517Z"
+       },
+       "KLAC261030P00152500": {
+        "bid": 5.18,
+        "ask": 5.74,
+        "t": "2026-10-27T18:33:47.763256674Z"
+       }
+      },
+      "limit_price": "12.35",
+      "id": "7f8395ad-bffc-4d1f-99d9-29e0b6c42026",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:43:32.619563206Z",
+      "legs_filled": [
+       {
+        "symbol": "KLAC261030C00152500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 6.6
+       },
+       {
+        "symbol": "KLAC261030P00152500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 5.7
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-LHX-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "LHX",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 257.5,
+   "spot_at_gate": 258.4649963378906,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:47.935369-04:00",
+   "gate_straddle_mid": 11.05,
+   "gate_bid_sum": 10.5,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-LHX-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    235.0,
+    280.0
+   ],
+   "legs": [
+    {
+     "symbol": "LHX261030C00257500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "LHX261030P00257500",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-LHX-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 11.74,
+      "sides": {
+       "LHX261030C00257500": "buy",
+       "LHX261030P00257500": "buy"
+      },
+      "quotes": {
+       "LHX261030C00257500": {
+        "bid": 5.84,
+        "ask": 6.42,
+        "t": "2026-10-27T18:33:45.731172269Z"
+       },
+       "LHX261030P00257500": {
+        "bid": 4.53,
+        "ask": 5.32,
+        "t": "2026-10-27T18:32:56.496334115Z"
+       }
+      },
+      "limit_price": "11.74",
+      "id": "7d300651-8dd4-406d-baea-b4923f3d5919",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:48.955641339Z",
+      "legs_filled": [
+       {
+        "symbol": "LHX261030C00257500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 6.4
+       },
+       {
+        "symbol": "LHX261030P00257500",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 5.3
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-MSFT-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "MSFT",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 530.0,
+   "spot_at_gate": 530.6599731445312,
+   "gate_status": "PASS",
+   "gate_captured_et": "2026-10-27T14:31:48.868994-04:00",
+   "gate_straddle_mid": 26.825000000000003,
+   "gate_bid_sum": 26.6,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-MSFT-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    475.0,
+    585.0
+   ],
+   "legs": [
+    {
+     "symbol": "MSFT261030C00530000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "MSFT261030P00530000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-MSFT-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 27.43,
+      "sides": {
+       "MSFT261030C00530000": "buy",
+       "MSFT261030P00530000": "buy"
+      },
+      "quotes": {
+       "MSFT261030C00530000": {
+        "bid": 13.64,
+        "ask": 14.12,
+        "t": "2026-10-27T18:33:49.042146249Z"
+       },
+       "MSFT261030P00530000": {
+        "bid": 12.99,
+        "ask": 13.31,
+        "t": "2026-10-27T18:33:48.232821002Z"
+       }
+      },
+      "limit_price": "27.43",
+      "id": "045057e6-2ac7-4d6c-b13a-5a36426a658d",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:49.316886271Z",
+      "legs_filled": [
+       {
+        "symbol": "MSFT261030C00530000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 14.15
+       },
+       {
+        "symbol": "MSFT261030P00530000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 13.15
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-MUSA-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "MUSA",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 530.0,
+   "spot_at_gate": 526.760009765625,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:51.701879-04:00",
+   "gate_straddle_mid": 49.5,
+   "gate_bid_sum": 43.4,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-MUSA-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    430.0,
+    630.0
+   ],
+   "legs": [
+    {
+     "symbol": "MUSA261120C00530000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "MUSA261120P00530000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-MUSA-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 55.36,
+      "sides": {
+       "MUSA261120C00530000": "buy",
+       "MUSA261120P00530000": "buy"
+      },
+      "quotes": {
+       "MUSA261120C00530000": {
+        "bid": 20.24,
+        "ask": 26.17,
+        "t": "2026-10-27T18:25:05.86917273Z"
+       },
+       "MUSA261120P00530000": {
+        "bid": 23.62,
+        "ask": 29.19,
+        "t": "2026-10-27T18:23:20.559919292Z"
+       }
+      },
+      "limit_price": "55.36",
+      "id": "519b0e37-45d1-4462-88b0-72f9e571f7c5",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "MUSA261120C00530000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "MUSA261120P00530000",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-27T14:49:12.274790-04:00"
+     },
+     {
+      "client_order_id": "seasonA-MUSA-2026-10-28-L-open-r1",
+      "sent_et": "2026-10-27T14:51:24.241346-04:00",
+      "qty": 1,
+      "natural": 55.97,
+      "sides": {
+       "MUSA261120C00530000": "buy",
+       "MUSA261120P00530000": "buy"
+      },
+      "quotes": {
+       "MUSA261120C00530000": {
+        "bid": 20.24,
+        "ask": 26.17,
+        "t": "2026-10-27T18:25:05.86917273Z"
+       },
+       "MUSA261120P00530000": {
+        "bid": 23.32,
+        "ask": 29.8,
+        "t": "2026-10-27T18:46:45.213964151Z"
+       }
+      },
+      "limit_price": "55.97",
+      "id": "92d49bfa-bbbc-4513-9544-a96a41b3d813",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:51:28.764559876Z",
+      "legs_filled": [
+       {
+        "symbol": "MUSA261120C00530000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 26.0
+       },
+       {
+        "symbol": "MUSA261120P00530000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 29.6
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-NOW-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "NOW",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-10-30",
+   "strike": 155.0,
+   "spot_at_gate": 155.0850067138672,
+   "gate_status": "PASS",
+   "gate_captured_et": "2026-10-27T14:31:54.135802-04:00",
+   "gate_straddle_mid": 15.850000000000001,
+   "gate_bid_sum": 15.75,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-NOW-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    123.0,
+    187.5
+   ],
+   "legs": [
+    {
+     "symbol": "NOW261030C00155000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "NOW261030P00155000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-NOW-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 16.14,
+      "sides": {
+       "NOW261030C00155000": "buy",
+       "NOW261030P00155000": "buy"
+      },
+      "quotes": {
+       "NOW261030C00155000": {
+        "bid": 7.9,
+        "ask": 8.07,
+        "t": "2026-10-27T18:33:48.686834448Z"
+       },
+       "NOW261030P00155000": {
+        "bid": 7.99,
+        "ask": 8.07,
+        "t": "2026-10-27T18:33:49.14296067Z"
+       }
+      },
+      "limit_price": "16.14",
+      "id": "3653153d-80fb-416b-bfc3-c81234bb69e9",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:50.027907716Z",
+      "legs_filled": [
+       {
+        "symbol": "NOW261030C00155000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 8.0
+       },
+       {
+        "symbol": "NOW261030P00155000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 8.0
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-OLED-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "OLED",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 90.0,
+   "spot_at_gate": 90.12000274658203,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:31:55.916724-04:00",
+   "gate_straddle_mid": 12.5,
+   "gate_bid_sum": 11.3,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-OLED-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    65.0,
+    115.0
+   ],
+   "legs": [
+    {
+     "symbol": "OLED261120C00090000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "OLED261120P00090000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-OLED-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 13.649999999999999,
+      "sides": {
+       "OLED261120C00090000": "buy",
+       "OLED261120P00090000": "buy"
+      },
+      "quotes": {
+       "OLED261120C00090000": {
+        "bid": 5.73,
+        "ask": 6.52,
+        "t": "2026-10-27T18:33:49.46120827Z"
+       },
+       "OLED261120P00090000": {
+        "bid": 5.22,
+        "ask": 7.13,
+        "t": "2026-10-27T18:33:46.960847096Z"
+       }
+      },
+      "limit_price": "13.65",
+      "id": "261bb507-87d1-4ddf-b161-82ec30b5acef",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:50.406163376Z",
+      "legs_filled": [
+       {
+        "symbol": "OLED261120C00090000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 6.5
+       },
+       {
+        "symbol": "OLED261120P00090000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 7.1
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-PI-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "PI",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 175.0,
+   "spot_at_gate": 176.0,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:32:00.638669-04:00",
+   "gate_straddle_mid": 35.4,
+   "gate_bid_sum": 32.7,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-PI-2026-10-28-L",
+   "structure": "L",
+   "skipped": "no_wing_strike"
+  },
+  "seasonA-PLXS-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "PLXS",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 230.0,
+   "spot_at_gate": 228.6199951171875,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:32:04.105909-04:00",
+   "gate_straddle_mid": 64.3,
+   "gate_bid_sum": 60.9,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-PLXS-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    100.0,
+    360.0
+   ],
+   "legs": [
+    {
+     "symbol": "PLXS261120C00230000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "PLXS261120P00230000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-PLXS-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 26.18,
+      "sides": {
+       "PLXS261120C00230000": "buy",
+       "PLXS261120P00230000": "buy"
+      },
+      "quotes": {
+       "PLXS261120C00230000": {
+        "bid": 9.31,
+        "ask": 12.2,
+        "t": "2026-10-27T18:32:17.560034644Z"
+       },
+       "PLXS261120P00230000": {
+        "bid": 11.47,
+        "ask": 13.98,
+        "t": "2026-10-27T18:32:34.239272517Z"
+       }
+      },
+      "limit_price": "26.18",
+      "status": "rejected",
+      "reject_kind": "capacity",
+      "error": "HTTP 403 {\"code\": 40310000, \"cost_basis\": \"2618\", \"message\": \"insufficient options buying power\", \"options_buying_power\": \"2435.37\"}",
+      "filled_qty": 0.0,
+      "legs_filled": []
+     }
+    ]
+   },
+   "open_failed": "capacity"
+  },
+  "seasonA-QSR-2026-10-29-L": {
+   "season": "seasonA",
+   "ticker": "QSR",
+   "report_date": "2026-10-29",
+   "session": "BMO",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 75.0,
+   "spot_at_gate": 74.05000305175781,
+   "gate_status": "PASS",
+   "gate_captured_et": "2026-10-27T14:32:04.815483-04:00",
+   "gate_straddle_mid": 4.550000000000001,
+   "gate_bid_sum": 4.35,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-QSR-2026-10-29-L",
+   "structure": "L",
+   "wings": [
+    65.0,
+    85.0
+   ],
+   "legs": [
+    {
+     "symbol": "QSR261120C00075000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "QSR261120P00075000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-QSR-2026-10-29-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 4.829,
+      "sides": {
+       "QSR261120C00075000": "buy",
+       "QSR261120P00075000": "buy"
+      },
+      "quotes": {
+       "QSR261120C00075000": {
+        "bid": 1.78,
+        "ask": 2.029,
+        "t": "2026-10-27T18:31:48.008740792Z"
+       },
+       "QSR261120P00075000": {
+        "bid": 2.47,
+        "ask": 2.8,
+        "t": "2026-10-27T18:32:13.006011231Z"
+       }
+      },
+      "limit_price": "4.83",
+      "id": "2f656f7a-ccd5-4a13-ba43-cad052ce4f74",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:51.392106099Z",
+      "legs_filled": [
+       {
+        "symbol": "QSR261120C00075000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 2.05
+       },
+       {
+        "symbol": "QSR261120P00075000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 2.75
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-QTWO-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "QTWO",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 65.0,
+   "spot_at_gate": 68.41000366210938,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:32:07.382569-04:00",
+   "gate_straddle_mid": 9.149999999999999,
+   "gate_bid_sum": 7.6000000000000005,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-QTWO-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    45.0,
+    85.0
+   ],
+   "legs": [
+    {
+     "symbol": "QTWO261120C00065000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "QTWO261120P00065000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-QTWO-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 10.61,
+      "sides": {
+       "QTWO261120C00065000": "buy",
+       "QTWO261120P00065000": "buy"
+      },
+      "quotes": {
+       "QTWO261120C00065000": {
+        "bid": 5.42,
+        "ask": 7.74,
+        "t": "2026-10-27T18:32:52.213696992Z"
+       },
+       "QTWO261120P00065000": {
+        "bid": 2.17,
+        "ask": 2.87,
+        "t": "2026-10-27T18:33:47.591142397Z"
+       }
+      },
+      "limit_price": "10.61",
+      "id": "1ed836f5-b23f-4a84-8bd5-ec6eb18aa472",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-27T18:33:51.75741108Z",
+      "legs_filled": [
+       {
+        "symbol": "QTWO261120C00065000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 7.6
+       },
+       {
+        "symbol": "QTWO261120P00065000",
+        "side": "buy",
+        "qty": 1.0,
+        "price": 2.9
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
+  },
+  "seasonA-TENB-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "TENB",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 46.0,
+   "spot_at_gate": 48.79499816894531,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:32:09.906134-04:00",
+   "gate_straddle_mid": 8.725,
+   "gate_bid_sum": 7.15,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-TENB-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    28.0,
+    65.0
+   ],
+   "legs": [
+    {
+     "symbol": "TENB261120C00046000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "TENB261120P00046000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-TENB-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 10.23,
+      "sides": {
+       "TENB261120C00046000": "buy",
+       "TENB261120P00046000": "buy"
+      },
+      "quotes": {
+       "TENB261120C00046000": {
+        "bid": 5.25,
+        "ask": 5.98,
+        "t": "2026-10-27T18:33:33.365218882Z"
+       },
+       "TENB261120P00046000": {
+        "bid": 1.88,
+        "ask": 4.25,
+        "t": "2026-10-27T18:33:08.452259579Z"
+       }
+      },
+      "limit_price": "10.23",
+      "status": "rejected",
+      "reject_kind": "capacity",
+      "error": "HTTP 403 {\"code\": 40310000, \"cost_basis\": \"1023\", \"message\": \"insufficient options buying power\", \"options_buying_power\": \"905.25\"}",
+      "filled_qty": 0.0,
+      "legs_filled": []
+     }
+    ]
+   },
+   "open_failed": "capacity"
+  },
+  "seasonA-TYL-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "TYL",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 380.0,
+   "spot_at_gate": 378.9501037597656,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:32:13.358294-04:00",
+   "gate_straddle_mid": 37.4,
+   "gate_bid_sum": 33.3,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-TYL-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    300.0,
+    460.0
+   ],
+   "legs": [
+    {
+     "symbol": "TYL261120C00380000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "TYL261120P00380000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-TYL-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 41.69,
+      "sides": {
+       "TYL261120C00380000": "buy",
+       "TYL261120P00380000": "buy"
+      },
+      "quotes": {
+       "TYL261120C00380000": {
+        "bid": 17.24,
+        "ask": 20.28,
+        "t": "2026-10-27T18:33:50.641421884Z"
+       },
+       "TYL261120P00380000": {
+        "bid": 16.21,
+        "ask": 21.41,
+        "t": "2026-10-27T18:30:05.150659213Z"
+       }
+      },
+      "limit_price": "41.69",
+      "status": "rejected",
+      "reject_kind": "capacity",
+      "error": "HTTP 403 {\"code\": 40310000, \"cost_basis\": \"4169\", \"message\": \"insufficient options buying power\", \"options_buying_power\": \"905.25\"}",
+      "filled_qty": 0.0,
+      "legs_filled": []
+     }
+    ]
+   },
+   "open_failed": "capacity"
+  },
+  "seasonA-WEX-2026-10-28-L": {
+   "season": "seasonA",
+   "ticker": "WEX",
+   "report_date": "2026-10-28",
+   "session": "AMC",
+   "snapshot_session": "2026-10-27",
+   "reaction_session": "2026-10-29",
+   "expiry": "2026-11-20",
+   "strike": 185.0,
+   "spot_at_gate": 185.00999450683594,
+   "gate_status": "INELIGIBLE",
+   "gate_captured_et": "2026-10-27T14:32:15.788091-04:00",
+   "gate_straddle_mid": 19.1,
+   "gate_bid_sum": 18.4,
+   "n": 1,
+   "equity": 89361.25,
+   "created_et": "2026-10-27T14:33:34.185227-04:00",
+   "exec": "v3",
+   "key": "seasonA-WEX-2026-10-28-L",
+   "structure": "L",
+   "wings": [
+    145.0,
+    230.0
+   ],
+   "legs": [
+    {
+     "symbol": "WEX261120C00185000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "WEX261120P00185000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-WEX-2026-10-28-L-open",
+      "sent_et": "2026-10-27T14:33:34.185227-04:00",
+      "qty": 1,
+      "natural": 19.91,
+      "sides": {
+       "WEX261120C00185000": "buy",
+       "WEX261120P00185000": "buy"
+      },
+      "quotes": {
+       "WEX261120C00185000": {
+        "bid": 9.57,
+        "ask": 10.26,
+        "t": "2026-10-27T18:33:41.97460937Z"
+       },
+       "WEX261120P00185000": {
+        "bid": 8.67,
+        "ask": 9.65,
+        "t": "2026-10-27T18:33:36.671060949Z"
+       }
+      },
+      "limit_price": "19.91",
+      "status": "rejected",
+      "reject_kind": "capacity",
+      "error": "HTTP 403 {\"code\": 40310000, \"cost_basis\": \"1991\", \"message\": \"insufficient options buying power\", \"options_buying_power\": \"905.25\"}",
+      "filled_qty": 0.0,
+      "legs_filled": []
+     }
+    ]
+   },
+   "open_failed": "capacity"
+  },
+  "seasonA-BELFA-2026-10-28-L": {
+   "key": "seasonA-BELFA-2026-10-28-L",
+   "ticker": "BELFA",
+   "report_date": "2026-10-28",
+   "skipped": "not_in_shx",
+   "gate_status": "INELIGIBLE"
   }
  },
  "errors_last_run": null,
  "alerts": null,
- "updated_et": "2026-10-26T15:09:17.021426-04:00",
+ "updated_et": "2026-10-27T15:08:46.148169-04:00",
  "convention_verified": {
   "trade": "seasonA-RTX-2026-10-20-L",
   "fill_net": 10.25,

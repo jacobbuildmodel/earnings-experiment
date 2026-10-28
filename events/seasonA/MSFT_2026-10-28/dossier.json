@@ -1,0 +1,607 @@
+{
+ "event": "MSFT_2026-10-28",
+ "season": "seasonA",
+ "built_et": "2026-10-27T14:32:03-04:00",
+ "cutoff_et": "2026-10-27T14:31:48.868994-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/MSFT_2026-10-28/gate.json",
+   "published": "2026-10-27T14:31:48.868994-04:00",
+   "data": {
+    "ticker": "MSFT",
+    "report_date": "2026-10-28",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-28"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-29"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "reaction_day": "2026-10-29"
+    },
+    "snapshot_session": "2026-10-27",
+    "captured_et": "2026-10-27T14:31:48.868994-04:00",
+    "options": {
+     "spot": 530.6599731445312,
+     "expiry": "2026-10-30",
+     "strike": 530.0,
+     "call": {
+      "bid": 14.05,
+      "ask": 14.3,
+      "openInterest": 7642.0,
+      "lastPrice": 14.12,
+      "impliedVolatility": 0.625125819091797,
+      "lastTradeDate": "2026-10-27T18:05:20+00:00"
+     },
+     "put": {
+      "bid": 12.55,
+      "ask": 12.75,
+      "openInterest": 3046.0,
+      "lastPrice": 12.72,
+      "impliedVolatility": 0.5860637097167969,
+      "lastTradeDate": "2026-10-27T18:16:36+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.05055026072730364,
+     "rel_spread": {
+      "call": 0.01763668430335097,
+      "put": 0.01581027667984184
+     },
+     "oi_atm": 10688.0,
+     "oi_sum": 47815.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/MSFT_2026-10-28/factors.json",
+   "published": "2026-10-27T14:31:48.868994-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.021802675765306034,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.042103554205318305,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.0022750333422919544,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.023841913323325192,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.21744922078372947,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.6135100465208048,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.023534895160932545,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-29",
+       "session": "AMC",
+       "raw_return_A": 0.11311647921618229,
+       "eps_est": 4.24,
+       "eps_rep": 4.74,
+       "surprise_pct": 11.81,
+       "reaction_volume_ratio": 3.4326102130099336
+      },
+      {
+       "date": "2026-04-29",
+       "session": "AMC",
+       "raw_return_A": -0.032431956828382846,
+       "eps_est": 4.07,
+       "eps_rep": 4.27,
+       "surprise_pct": 4.85,
+       "reaction_volume_ratio": 2.173249042472039
+      },
+      {
+       "date": "2026-01-28",
+       "session": "AMC",
+       "raw_return_A": -0.08944348398848234,
+       "eps_est": 3.92,
+       "eps_rep": 4.14,
+       "surprise_pct": 5.69,
+       "reaction_volume_ratio": 5.1521037591417596
+      },
+      {
+       "date": "2025-10-29",
+       "session": "AMC",
+       "raw_return_A": -0.026535087808540747,
+       "eps_est": 3.66,
+       "eps_rep": 4.13,
+       "surprise_pct": 12.73,
+       "reaction_volume_ratio": 2.295676066643443
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.2634097703167937,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 11.81,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 4.72072,
+      "7daysAgo": 4.71837,
+      "30daysAgo": 4.72455,
+      "60daysAgo": 4.72455,
+      "90daysAgo": 4.61379,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.02317617403479573,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 4.72072,
+      "low": 4.43,
+      "high": 4.86,
+      "yearAgoEps": 4.13,
+      "numberOfAnalysts": 25,
+      "growth": 0.143,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.09108780016607648,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0082,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 22.400433,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 11.874553,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.177,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 3940439818240,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.33333,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.05055026072730364,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.0390621093750001,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.0030517272949218688,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.7439581319377313,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.47988711166711345,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 52317.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.7849939504111125,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.07948712421611077,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 227,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.17747020577962092,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.4511093581610319,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.021802555677820967,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.0022750333422919544,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.023841913323325192,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.21744922078372947,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.750527023231191,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 2.0861609046579193,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 3940439770837.555,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.0842136967695528,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.20469661487177865,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/msft-ex99_1.htm",
+   "published": "2026-07-29T16:04:53-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 msft-ex99_1.htm EX-99.1 EX-99.1 Exhibit 99.1 Microsoft Cloud and AI Strength Fuels Fourth Quarter Results REDMOND, Wash. — July 29, 2026 — Microsoft Corp. today announced the following results for the quarter ended June 30, 2026, as compared to the corresponding period of last fiscal year: • Revenue was $90.0 billion and increased 18% (up 17% in constant currency) • Operating income was $40.6 billion and increased 18% • Net income was $35.8 billion and increased 31% on a GAAP basis, and was $35.3 billion and increased 22% on a non-GAAP basis • Diluted earnings per share was $4.81 and increased 32% on a GAAP basis, and was $4.74 and increased 23% on a non-GAAP basis • Non-GAAP results exclude the impact from investments in OpenAI, explained in the Non-GAAP Definition section below Several discrete items impacted our financial results in the quarter when compared to our forward-looking guidance provided on April 29, 2026, resulting in a benefit of $0.27 on diluted earnings per share. These include a $3.2 billion gain from our investment in Anthropic and lower-than-expected expenses related to the Voluntary Retirement Program which were partially offset by severance expense and impairment charges in XBOX. When adjusting for these items, we exceeded expectations across revenue, operating income, and diluted earnings per share. “We are advancing the frontier on the cost-to-outcome curve, ensuring every customer can turn tokens into business results,” said Satya Nadella, chairman and chief executive officer of Microsoft. “This year, Azure revenue surpassed $100 billion for the first time, and Microsoft 365 Copilot reached over 30 million paid seats, reflecting the confidence customers are placing in us to power their AI transformation.” “We delivered a strong quarter to close out the fiscal year, highlighted by Microsoft Cloud revenue of $59.3 billion, up 27% year-over-year,” said Amy Hood, executive vice president and chief financial officer of Microsoft. The following table adjusts for the impact from investments in OpenAI and reconciles our financial results reported in accordance with generally accepted accounting principles (GAAP) to non-GAAP financial results. Additional information regarding our non-GAAP definition is provided below. All growth comparisons relate to the corresponding period in the last fiscal year. Three Months Ended June 30, 2026 2025 Percentage Change Y/Y Percentage Change Y/Y ($ in millions, except per share amounts) As Reported (GAAP) Impact from OpenAI* As Adjusted (non-GAAP) As Reported (GAAP) Impact from OpenAI* As Adjusted (non-GAAP) GAAP Constant Currency Net Impact from OpenAI* Non-GAAP Non-GAAP Constant Currency Net Income $35,766 $(480) $35,286 $27,233 $1,575 $28,808 31% 31% $(2,055) 22% 22% Diluted Earnings per Share $4.81 $(0.07) $4.74 $3.65 $0.21 $3.86 32% 32% $(0.28) 23% 23% *Impact from OpenAI adjusts for the impact from investments in OpenAI Business Highlights Microsoft Cloud revenue was $59.3 billion and increased 27%, and commercial remaining performance obligation increased 84% to $678 billion. Revenue in Productivity and Business Processes was $37.8 billion and increased 14%, with the following business highlights: • Microsoft 365 Commercial cloud revenue increased 16% when adjusted for the prior year comparable that benefited from 2 points of in-period revenue recognition. On a reported basis, Microsoft 365 Commercial cloud revenue increased 14%. • Microsoft 365 Consumer cloud revenue increased 24% (up 22% in constant currency) • LinkedIn revenue increased 12% (up 10% in constant currency) • Dynamics 365 revenue increased 13% (up 12% in constant currency) Revenue in Intelligent Cloud was $39.3 billion and increased 32% (up 31% in constant currency), with the following business highlights: • Azure and other cloud services revenue increased 43% Revenue in More Personal Computing was $12.9 billion and decreased 4% (down 5% in constant currency), with the following business highlights: • Windows OEM and Devices revenue decreased 7% • XBOX content and services revenue decreased 10% • Search advertising revenue excluding traffic acquisition costs increased 10% (up 9% in constant currency) Microsoft returned $10.2 billion to shareholders in the form of dividends and share repurchases in the fourth quarter of fiscal year 2026. Fiscal Year 2026 Results Microsoft Corp. today announced the following results for the fiscal year ended June 30, 2026, as compared to the corresponding period of last fiscal year: • Revenue was $331.8 billion and increased 18% (up 16% in constant currency) • Operating income was $155.2 billion and increased 21% (up 19% in constant currency) • Net income was $133.7 billion and increased 31% on a GAAP basis, and increased 22% (up 20% in constant currency) on a non-GAAP basis • Diluted earnings per share was $17.95 and increased 32% on a GAAP basis, and increased 22% (up 21% in constant currency) on a non-GAAP basis • Non-GAAP results exclude the impact from investments in OpenAI, explained in the Non-GAAP Definition section below The following table adjusts for the impact from investments in OpenAI and reconciles our financial results reported in accordance with GAAP to non-GAAP financial results. Additional information regarding our non-GAAP definition is provided below. All growth comparisons relate to the corresponding period in the last fiscal year. Twelve Months Ended June 30, 2026 2025 Percentage Change Y/Y Percentage Change Y/Y ($ in millions, except per share amounts) As Reported (GAAP) Impact from OpenAI* As Adjusted (non-GAAP) As Reported (GAAP) Impact from OpenAI* As Adjusted (non-GAAP) GAAP Constant Currency Net Impact from OpenAI* Non-GAAP Non-GAAP Constant Currency Net Income $133,749 $(4,963) $128,786 $101,832 $3,620 $105,452 31% 30% $(8,583) 22% 20% Diluted Earnings per Share $17.95 $(0.67) $17.28 $13.64 $0.49 $14.13 32% 30% $(1.16) 22% 21% *Impact from OpenAI adjusts for the impact from investments in OpenAI Business Outlook Microsoft will provide forward-looking guidance in connection with this quarterly earnings announcement on its earnings conference call and webcast. Quarterly Highlights, Product Releases, and Customer Stories Every quarter Microsoft delivers hundreds of products, services, and enhancements. These releases are driven by years of significant research and development investments, to empower customers with greater productivity, security, and differentiated value. This momentum is reflected in stories that showcase how our technology is shaping industries and driving customer success . We share innovation updates on our product blogs across Azure , Microsoft 365 , and more on our Official Microsoft blog . Webcast Details Satya Nadella, chairman and chief executive officer, Amy Hood, executive vice president and chief financial officer, Alice Jolla, chief accounting officer, Brian DeFoe, deputy general counsel and corporate secretary, and Jonathan Neilson, vice president of investor relations, will host a conference call and webcast at 2:30 p.m. Pacific time (5:30 p.m. Eastern time) today to discuss details of the company’s performance for the quarter and certain forward-looking information. The session may be accessed at http://www.microsoft.com/en-us/investor . Participants can also dial into the conference call at (877) 407-0666 or +1 (201) 689-8023 for international, no password required. The webcast will be available for replay through the close of business on July 29, 2027. Non-GAAP Definition Impact from investments in OpenAI. In fiscal year 2026, net income and diluted earnings per share were impacted by net gains from investments in OpenAI, which resulted in an increase in net income and diluted earnings per share of $480 million and $0.07, respectively, in the fourth quarter, and $4,963 million and $0.67, respectively, for the full fiscal year. In fiscal year 2025, net income and diluted earnings per share were impacted by net losses from investments in OpenAI, which resulted in a decrease in net income and diluted earnings per share of $1,575 million and $0.21, respectively, in the fourth quarter, and $3,620 million and $0.49, respectively, for the full fiscal year. Microsoft has provided non-GAAP financial measures related to the impact from investments in OpenAI to aid investors in better understanding our performance. Microsoft believes these non-GAAP measures assist investors by providing additional insight into its operational performance and help clarify trends affecting its business. For comparability of reporting, management considers non-GAAP measures in conjunction with GAAP financial results in evaluating business performance. The non-GAAP financial measures presented in this release should not be considered as a substitute for, or superior to, the measures of financial performance prepared in accordance with GAAP. Constant Currency Microsoft presents constant currency information to provide a framework for assessing how our underlying businesses performed excluding the effect of foreign currency rate fluctuations. To present this information, current and comparative prior period results for entities reporting in currencies other than United States dollars are converted into United States dollars using the average exchange rates from the comparative period rather than the actual exchange rates in effect during the respective periods. All growth comparisons relate to the corresponding period in the last fiscal year. Microsoft has provided this non-GAAP financial information to aid investors in better understanding our performance. The non-GAAP financial measures presented in this release should not be considered as a substitute for, or superior to, the measures of financial performance prepared in accordance with GAAP. Financial Performance Constant Currency Reconciliation Three Months Ended June 30, 2026 2025 Percentage Change Y/Y Percentage Change Y/Y ($ in millions, except per share amounts) As Reported (GAAP) As Adjusted (non-GAAP) As Reported (GAAP) As Adjusted (non-GAAP) GAAP Non-GAAP Constant Currency Impact Constant Currency Non-GAAP Constant Currency Revenue $90,007 - $76,441 - 18% - $391 17% - Operating Income $40,603 - $34,323 - 18% - $269 18% - Net Income $35,766 $35,286 $27,233 $28,808 31% 22% $40 31% 22% Diluted Earnings per Share $4.81 $4.74 $3.65 $3.86 32% 23% $0.01 32% 23% Twelve Months Ended June 30, 2026 2025 Percentage Change Y/Y Percentage Change Y/Y ($ in millions, except per share amounts) As Reported (GAAP) As Adjusted (non-GAAP) As Reported (GAAP) As Adjusted (non-GAAP) GAAP Non-GAAP Constant Currency Impact Constant Currency Non-GAAP Constant Currency Revenue $331,839 - $281,724 - 18% - $4,445 16% - Operating Income $155,237 - $128,528 - 21% - $2,896 19% - Net Income $133,749 $128,786 $101,832 $105,452 31% 22% $1,772 30% 20% Diluted Earnings per Share $17.95 $17.28 $13.64 $14.13 32% 22% $0.24 30% 21% Segment Revenue Constant Currency Reconciliation Three Months Ended June 30, 2026 2025 Percentage Change Y/Y Percentage Change Y/Y ($ in millions) As Reported (GAAP) As Reported (GAAP) GAAP Constant Currency Impact Constant Currency Productivity and Business Processes $37,847 $33,112 14% $244 14% Intelligent Cloud $39,306 $29,878 32% $80 31% More Personal Computing $12,854 $13,451 (4)% $67 (5)% Selected Product and Service Information Constant Currency Reconciliation Three Months Ended June 30, 2026 Percentage Change Y/Y (GAAP) Constant Currency Impact Percentage Change Y/Y Constant Currency Microsoft Cloud revenue 27% 0% 27% Commercial remaining performance obligation 84% 0% 84% Microsoft 365 Commercial cloud revenue 14% 0% 14% Microsoft 365 Consumer cloud revenue 24% (2)% 22% LinkedIn revenue 12% (2)% 10% Dynamics 365 revenue 13% (1)% 12% Azure and other cloud services revenue 43% 0% 43% Windows OEM and Devices revenue (7)% 0% (7)% XBOX content and services revenue (10)% 0% (10)% Search advertising revenue excluding traffic acquisition costs 10% (1)% 9% About Microsoft Microsoft (Nasdaq “MSFT” @microsoft) creates platforms and tools powered by AI to deliver innovative solutions that meet the evolving needs of our customers. The technology company is committed to making AI available broadly and doing so responsibly, with a mission to empower every person and every organization on the planet to achieve more. Forward-Looking Statements Statements in this release that are “forward-looking statements” are based on current expectations and assumptions that are subject to risks and uncertainties. Actual results could differ materially because of factors such as: • intense competition in all of our markets that could adversely affect our results of operations; • substantial investments in cloud and AI strategy that depend on customer demand, technological developments, competitive dynamics, and regulatory condition; • development, delivery, and maintenance of competitive cloud-based and AI products and services that achieve broad customer adoption and sustainable revenue growth; • significant investments in products and services that may not achieve expected returns; • acquisitions, joint ventures, and strategic alliances that could have an adverse effect on our business; • cyberattacks and security vulnerabilities that could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position; • disclosure and misuse of personal data that could cause liability and harm to our reputation; • the possibility that we may not be able to protect information in our products and services from use by others; • abuse of our platforms that may harm our reputation or user engagement; • products and services, how they are used by customers, and how third-party products and services interact with them, presenting security, privacy, and execution risks; • issues about the development, deployment, and use of AI that may result in reputational or competitive harm, or liabi",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/msft-20260630.htm",
+   "published": "2026-07-29T16:08:01-04:00",
+   "form": "10-K",
+   "section": "MD&A",
+   "text": "ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following Management’s Discussion and Analysis of Financial Condition and Results of Operations (“MD&A”) is intended to help the reader understand the results of operations and financial condition of Microsoft Corporation. MD&A is provided as a supplement to, and should be read in conjunction with, our consolidated financial statements and the accompanying Notes to Financial Statements (Part II, Item 8 of this Form 10-K). This section generally discusses the results of our operations for the year ended June 30, 2026 compared to the year ended June 30, 2025. For a discussion of the year ended June 30, 2025 compared to the year ended June 30, 2024, please refer to Part II, Item 7, “Management’s Discussion and Analysis of Financial Condition and Results of Operations” in our Annual Report on Form 10-K for the year ended June 30, 2025. OVERVIEW Microsoft is a technology company committed to making digital technology and artificial intelligence (“AI”) available broadly and doing so responsibly, with a mission to empower every person and every organization on the planet to achieve more. We create platforms and applications, powered by AI, that deliver innovative solutions that meet the evolving needs of our customers. We generate revenue by offering a wide range of cloud-based solutions, content, and other services to people and businesses; licensing and supporting an array of software products; delivering relevant online advertising to a global audience; and designing and selling devices. Our most significant expenses are related to compensating employees; supporting and investing in our cloud-based services, including datacenter operations; designing, manufacturing, marketing, and selling our other products and services; and income taxes. Highlights from fiscal year 2026 compared with fiscal year 2025 included: • Microsoft Cloud revenue increased 27% to $214.4 billion. • Commercial remaining performance obligation increased 84% to $678 billion. • Microsoft 365 Commercial cloud revenue increased 17%. • Microsoft 365 Consumer cloud revenue increased 28%. • LinkedIn revenue increased 11%. • Dynamics 365 revenue increased 18%. • Azure and other cloud services revenue increased 41%. • Windows OEM and Devices revenue decreased slightly. • XBOX content and services revenue decreased 5%. • Search advertising (formerly Search and news advertising) revenue excluding traffic acquisition costs increased 12%. Industry Trends and Opportunities Our industry is dynamic and highly competitive, with frequent changes in both technologies and business models. Each industry shift is an opportunity to conceive new products, new technologies, or new ideas that can further transform the industry and our business. At Microsoft, we push the boundaries of what is possible through a broad range of research and development activities that seek to identify and address the changing demands of customers and users, industry trends, and competitive forces. We have a long-term strategic partnership with OpenAI which was originally established in 2019. In October 2025 and April 2026, we extended this partnership and continue to build on our shared vision to advance artificial intelligence responsibly and make its benefits broadly accessible. Microsoft is a major investor in OpenAI and will continue to receive revenue-sharing payments. We hold rights to OpenAI’s intellectual property, including models and infrastructure, for integration into our products. 34 PART II Item 7 Economic Conditions, Challenges, and Risks The markets for software, devices, and cloud-based services are dynamic and highly competitive. Our competitors are developing new software and devices, while also deploying competing cloud-based services for consumers and businesses. The devices and form factors customers prefer evolve rapidly, influencing how users access services in the cloud and, in some cases, the user’s choice of which suite of cloud-based services to use. Aggregate demand for our software, services, and devices is also correlated to global macroeconomic and geopolitical factors, which remain dynamic. We must continue to evolve and adapt over an extended time in pace with this changing environment. The investments we are making in cloud and AI infrastructure and devices will continue to increase our operating costs and may decrease our operating margins. We continue to identify and evaluate opportunities to expand our datacenter locations and increase our server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services. Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units and other components. Our devices are primarily manufactured by third-party contract manufacturers. For the majority of our products, we have the ability to use other manufacturers if a current vendor becomes unavailable or unable to meet our requirements. However, some of our products contain certain components for which there are very few qualified suppliers. Extended or unforeseen disruptions, or limited availability of components from these suppliers could impact our ability to operate our datacenters and manufacture devices on time to meet consumer demand. Our success is highly dependent on our ability to attract and retain qualified employees. We hire a mix of university and industry talent worldwide. We compete for talented individuals globally by offering an exceptional working environment, broad customer reach, scale in resources, the ability to grow one’s career across many different products and businesses, and competitive compensation and benefits. Our international operations provide a significant portion of our total revenue and expenses. Many of these revenue and expenses are denominated in currencies other than the U.S. dollar. As a result, changes in foreign exchange rates may significantly affect revenue and expenses. Fluctuations in the U.S. dollar relative to certain foreign currencies increased reported revenue and did not have a material impact on reported expenses from our international operations in fiscal year 2026. Further, global, regional, and local economic developments and changes in global trade policies such as restrictions on international trade, including tariffs and other controls on imports or exports, could result in increased supply chain challenges, cost volatility, and consumer and economic uncertainty which may adversely affect our results of operations. Refer to Risk Factors (Part I, Item 1A of this Form 10-K) for a discussion of these factors and other risks. Seasonality Our revenue fluctuates quarterly and is generally higher in the fourth quarter of our fiscal year. Fourth quarter revenue is driven by a higher volume of multi-year contracts executed during the period. Reportable Segments We report our financial performance based on the following three segments: Productivity and Business Processes, Intelligent Cloud, and More Personal Computing. The segment amounts included in MD&A are presented on a basis consistent with our internal management reporting. Additional information on our reportable segments is contained in Note 18 – Segment Information and Geographic Data of the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). 35 PART II Item 7 Metrics We use metrics in assessing the performance of our business and to make informed decisions regarding the allocation of resources. We disclose metrics to enable investors to evaluate progress against our ambitions, provide transparency into performance trends, and reflect the continued evolution of our products and services. Our commercial and other business metrics are fundamentally connected based on how customers use our products and services. The metrics are disclosed in the MD&A or the Notes to Financial Statements (Part II, Item 8 of this Form 10-K). Financial metrics are calculated based on financial results prepared in accordance with accounting principles generally accepted in the United States of America (“GAAP”), and growth comparisons relate to the corresponding period of last fiscal year. In the first quarter of fiscal year 2026, we made updates to our metrics to align with how we manage and monitor certain businesses. As part of these updates, Microsoft 365 Consumer subscribers was removed as a metric. Commercial Our commercial business primarily consists of Server products and cloud services, Microsoft 365 Commercial products and cloud services, the commercial portion of LinkedIn, Dynamics products and cloud services, and Enterprise and partner services. Our commercial metrics allow management and investors to assess the overall health of our commercial business and include leading indicators of future performance. Commercial remaining performance obligation Commercial portion of revenue allocated to remaining performance obligations, which includes unearned revenue and amounts that will be invoiced and recognized as revenue in future periods Microsoft Cloud revenue and revenue growth Revenue from Microsoft 365 Commercial cloud, Azure and other cloud services, the commercial portion of LinkedIn, and Dynamics 365 Microsoft Cloud gross margin percentage Gross margin percentage for our Microsoft Cloud business Productivity and Business Processes and Intelligent Cloud Metrics related to our Productivity and Business Processes and Intelligent Cloud segments assess the health of our core businesses within these segments. The metrics primarily reflect growth across our cloud services. Microsoft 365 Commercial cloud revenue growth Revenue from Microsoft 365 Commercial subscriptions, comprising Microsoft 365 Commercial, Enterprise Mobility + Security, the cloud portion of Windows Commercial, the per-user portion of Power BI, Exchange, SharePoint, Microsoft Teams, Microsoft 365 Security and Compliance, and Microsoft 365 Copilot Microsoft 365 Commercial seat growth The number of Microsoft 365 Commercial seats at end of period where seats are paid users covered by a Microsoft 365 Commercial subscription Microsoft 365 Consumer cloud revenue growth Revenue from Microsoft 365 Consumer subscriptions and other consumer services LinkedIn revenue growth Revenue from LinkedIn, including Talent Solutions, Marketing Solutions, Premium Subscriptions, and Sales Solutions Dynamics 365 revenue growth Revenue from Dynamics 365, including a set of intelligent, cloud-based applications across ERP, CRM, Power Apps, and Power Automate Azure and other cloud services revenue growth Revenue from Azure and other cloud services, including cloud and AI consumption-based services, GitHub cloud services, Health and Life Sciences cloud services (formerly Nuance Healthcare cloud services), virtual desktop offerings, and other cloud services 36 PART II Item 7 More Personal Computing Metrics related to our More Personal Computing segment assess the performance of our key consumer businesses. Windows OEM and Devices revenue growth Revenue from sales of Windows Pro and non-Pro licenses sold through the OEM channel and sales of first-party Devices, including Surface and PC accessories XBOX content and services revenue growth Revenue from XBOX content and services, comprising first- and third-party content (including games and in-game content), XBOX Game Pass and other subscriptions, XBOX Cloud Gaming, advertising, and other cloud services Search advertising revenue (ex TAC) growth Revenue from search advertising excluding traffic acquisition costs (“TAC”) paid to Bing Ads network publishers and content partners SUMMARY RESULTS OF OPERATIONS (In millions, except percentages and per share amounts) 2026 2025 Percentage Change Revenue $ 331,839 $ 281,724 18% Gross margin 225,465 193,893 16% Operating income 155,237 128,528 21% Net ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/789019/000119312526380280/d291965d8k.htm",
+   "published": "2026-09-02T16:30:24-04:00",
+   "form": "8-K",
+   "items": "7.01,9.01",
+   "text": "Item 7.01. Regulation FD Disclosure On September 2, 2026, Microsoft Corporation (the “Company”) posted presentation materials to its Investor Relations website titled “FY27 Segments and Investor Metrics” announcing a change in reportable segments and investor metrics. Beginning in fiscal year 2027, the Company will manage its operations under this updated reporting structure and report its financial performance based on two reportable segments: (1) Agents and Infra and (2) Devices and Consumer. A copy of the presentation materials is furnished as Exhibit 99.1 to this report. The exhibit furnished on this report under Regulation FD provides a description of our updated reporting structure and presents summary financial information and historical data on a basis consistent with the updated reporting structure. In accordance with General Instruction B.2 of Form 8-K, the information in this Current Report on Form 8-K, including Exhibit 99.1, shall not be deemed to be “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liability of that section, and shall not be incorporated by reference into any registration statement or other document filed under the Securities Act of 1933, as amended, or the Exchange Act, except as shall be expressly set forth by specific reference in such filing. Item 9.01. Financial Statements and Exhibits (d) Exhibits: 99.1 Investor Presentation, dated September 2026, titled “FY27 Segments and Investor Metrics” 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. MICROSOFT CORPORATION (Registrant) Date: September 2, 2026 /s/ A LICE L. J OLLA Alice L. Jolla Corporate Vice President and Chief Accounting Officer",
+   "exhibit_99_1": "EX-99.1 2 d291965dex991.htm EX-99.1 EX-99.1 FY27 Segments and Investor Metrics September 2026 Exhibit 99.1 This presentation contains forward-looking statements, which are any predictions, projections, or other statements about future events. These statements are based on current expectations and assumptions that are subject to risks and uncertainties. Actual results could materially differ because of factors discussed in the Risk Factors section and other sections of our Form 10-K, Forms 10-Q, and other reports and filings with the Securities and Exchange Commission. We do not undertake any duty to update forward-looking statements. All growth comparisons in this presentation relate to the corresponding period of last fiscal year unless otherwise noted. Numbers may not foot due to rounding. Agenda A note from Satya Updates for FY27 Segment Structure Metric Changes Restated Historical Financials FY27 Q1 Adjusted Outlook Our updated segment reporting Satya Nadella, Chairman and Chief Executive Officer of Microsoft There’s no question AI represents a profound shift in both technology and business. It is changing what we build and how we operate, and it is blurring the boundaries between our products and reshaping our business models. To reflect this and provide increased transparency to investors, we are updating our financial reporting to mirror how the business is operating, how we allocate resources, and where we are headed. Beginning with FY27, we will transition from our current three reporting segments, Productivity and Business Processes, Intelligent Cloud, and More Personal Computing, to two segments: Agents and Infra and Devices and Consumer. Within each of these segments, you will have full transparency of quarterly revenue across each of our key businesses, including Azure, M365 Cloud, Industry solutions, and ads. We will continue to focus on security, quality, and innovation in everything we do. We want every organization to own its own continuous learning loop so it retains its core IP, and to ensure AI empowers every person, amplifying their agency and ambition. That is what we mean by a frontier ecosystem, ensuring value flows and accrues across people, companies, industries, and countries, thereby leading to broad-based economic growth. As we build this ecosystem, the layers of our stack are not separate opportunities but reinforce each other. Investing in one strengthens the others and allows us to deliver customer value in a differentiated "
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://www.ibtimes.com/microsoft-has-offered-buyouts-tens-thousands-expert-says-company-falling-behind-ai-race-3809040?.tsrc=rss",
+   "published": "2026-10-27T14:11:19-04:00",
+   "text": "Microsoft Has Offered Buyouts to Tens of Thousands. An Expert Says the Company Is Falling Behind in the AI Race. - \"If it looks like your company is falling behind and you want to 'beat your peers' to the job market, while still having a company-provided safety,\" said Sean Campbell, co-founder and CEO of the market research firm Cascade Insights.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/ai-presentation-maker-native-pptx-181000376.html?.tsrc=rss",
+   "published": "2026-10-27T14:10:00-04:00",
+   "text": "AI Presentation Maker With Native PPTX Export: Presentations.AI Generates Editable PowerPoint Decks From PDFs, Word Documents, Spreadsheets and Website URLs, With Brand Sync, a Flat-Rate Team Plan and a Beta API for Developers and AI Agents - Every presentation generated on the AI-native platform exports as a native Microsoft PowerPoint file with editable text, vector shapes, real chart objects, slide layouts and speaker notes intact; the company sets out how document-to-presentation conversion, Brand Sync colour and font detection, a $7",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/can-apple-charge-3899-for-new-siri-ai-173242587.html?.tsrc=rss",
+   "published": "2026-10-27T13:32:42-04:00",
+   "text": "Can Apple charge $38.99 for new Siri AI? - Laffer Tengler Investments CEO and CIO Nancy Tengler and her panel of experts discuss how effective a subscription model for Apple's (AAPL) Siri AI would be.Today's panel includes Yahoo Finance's Pras Subramanian, Axios senior AI reporter Madison Mills, Envorso founder Adrian Balfour, and Clocktower",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/microsofts-dividend-yield-looks-small-the-check-it-writes-every-year-doesnt/?.tsrc=rss",
+   "published": "2026-10-27T13:17:50-04:00",
+   "text": "Microsoft’s Dividend Yield Looks Small. The Check It Writes Every Year Doesn’t. - Microsoft's dividend yield barely registers, yet the company writes one of the largest dividend checks in corporate history every single year. The number most income investors never look at tells a completely different story about this stock.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/metas-capital-raise-is-spooking-investors-what-the-price-targets-say-now/?.tsrc=rss",
+   "published": "2026-10-27T13:03:42-04:00",
+   "text": "Meta’s Capital Raise Is Spooking Investors. What the Price Targets Say Now - Meta just handed investors a legal charge, negative free cash flow, and a brand-new share class designed for raising capital, all in one earnings report. Whether that combination signals a buying opportunity or a warning sign depends on which number you trust most.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/oracle-rises-5-as-google-tpus-come-to-oracle-cloud-and-nvidia-deal-expands-amazon-nudges-higher-microsoft-treads-water/?.tsrc=rss",
+   "published": "2026-10-27T13:02:23-04:00",
+   "text": "Oracle Rises 5% as Google TPUs Come to Oracle Cloud and NVIDIA Deal Expands; Amazon Nudges Higher, Microsoft Treads Water - Oracle just pulled off something no other hyperscale cloud outside Google has managed, and the market responded with a sharp single-day surge even as the company burns through cash at an alarming rate. Whether this bet on rival chip architectures pays off hinges on a rollout that hasn't even started",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/tech-firms-track-wall-st-024224619.html?.tsrc=rss",
+   "published": "2026-10-27T12:53:20-04:00",
+   "text": "Tech firms gain on Anthropic IPO optimism; HSBC slumps in London - Tech firms rose Tuesday for a second day as AI titan Anthropic's IPO filing revived optimism over the sector.Earlier, equities rose in Japan and Korea, also boosted by Anthropic's IPO filing.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/a9c578d6-7fe2-32f8-9ad1-001342df9d83/microsoft-to-offer-60%2C000.html?.tsrc=rss",
+   "published": "2026-10-27T12:47:00-04:00",
+   "text": "Microsoft to Offer 60,000 Staff Voluntary Exit to Cut Costs for the AI Buildout - Some 60,000 eligible employees will receive buyout offers, with far fewer than that expected to accept.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/why-youtubes-native-multimodal-library-and-ai-search-overviews-make-alphabet-a-must-own-compounder/?.tsrc=rss",
+   "published": "2026-10-27T12:45:28-04:00",
+   "text": "Why YouTube’s Native Multimodal Library and AI Search Overviews Make Alphabet a Must-Own Compounder - Alphabet just doubled its capital spending while suspending buybacks, yet its AI flywheel connecting YouTube and Search keeps accelerating in ways most investors have not fully priced in.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://app.moby.co/home/news/news-microsoft-doesnt-want-to-fire-people-so-its-offering-for-them-to-leave?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+   "published": "2026-10-27T12:40:28-04:00",
+   "text": "Microsoft Doesn’t Want to Fire People, So it’s Asking if They Want to Leave - It’s recent voluntary exit program is offering 60,000 of its employees if they want an out",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/article/microsoft-to-report-q1-earnings-with-wall-street-looking-for-further-azure-growth-160835128.html?.tsrc=rss",
+   "published": "2026-10-27T12:08:35-04:00",
+   "text": "Microsoft to report Q1 earnings with Wall Street looking for further Azure growth - Microsoft will report its Q1 earnings after the bell Wednesday.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/coherent-vs-arm-holdings-tech-160500693.html?.tsrc=rss",
+   "published": "2026-10-27T12:05:00-04:00",
+   "text": "Coherent vs. Arm Holdings: Which Tech Stock Offers More Upside Now? - COHR's AI-driven optical networking demand and integrated photonics portfolio offer strong growth potential, while its valuation compares favorably with ARM.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/this-magnificent-seven-stock-could-have-100-upside-heres-the-case/?.tsrc=rss",
+   "published": "2026-10-27T12:04:28-04:00",
+   "text": "This Magnificent Seven Stock Could Have 100% Upside. Here’s the Case. - Alphabet just posted its fastest cloud growth in years, yet its stock trades at a fraction of what rivals command. Whether that gap is a rare opportunity or a warning sign depends on one number hiding inside the balance sheet.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/article/oracle-in-effort-to-reduce-reliance-on-nvidia-adds-ai-chips-from-google-cerebras-and-sambanova-160000593.html?.tsrc=rss",
+   "published": "2026-10-27T12:00:00-04:00",
+   "text": "Oracle, in effort to reduce reliance on Nvidia, adds AI chips from Google, Cerebras, and SambaNova - Oracle is bringing AI chips from Google, Cerebras, SambaNova to its cloud as the company diversifies beyond Nvidia.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/bessent-takes-shot-at-obama-dines-at-cheesecake-factory-as-stock-is-up-120-this-year/?.tsrc=rss",
+   "published": "2026-10-27T11:26:28-04:00",
+   "text": "Bessent Takes Shot At Obama, Dines At Cheesecake Factory, As Stock Is Up 120% This Year - A Treasury Secretary's lunch order at a chain restaurant turned a campaign rally joke into a political firestorm, and the restaurant at the center of it all has been quietly outpacing some of the biggest names in tech all year.",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://247wallst.com/videos/tech-earnings-are-the-markets-biggest-story-this-week-heres-why-microsoft-amazon-intel-sandisk-and-alphabet-will-drive-the-stock-markets-next-move/?.tsrc=rss",
+   "published": "2026-10-27T11:22:14-04:00",
+   "text": "Microsoft, Amazon, and Intel Earnings Are on Deck This Week - This could be the most important week of 2026 for AI stocks. Microsoft (NASDAQ: MSFT), Amazon (NASDAQ: AMZN), Alphabet (NASDAQ: GOOGL), Intel (NASDAQ: INTC), and SanDisk (NASDAQ: SNDK) are preparing to report earnings, and the results could determine where the technology sector heads next. In this v",
+   "feed": {
+    "fetched_et": "2026-10-27T14:32:03-04:00",
+    "sha256": "4b1cb525954848926b6b31fda4cea10e771579deae47bba0824f02bf0decc0de"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 51706
+}

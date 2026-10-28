@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "ENTG",
+ "report_date": "2026-10-29",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:18.213717-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.entegris.com/news/news-details/2026/Entegris-to-Report-Results-for-Third-Quarter-of-2026-on-Thursday-October-29-2026/default.aspx",
+  "published_et": "2026-10-01T16:30-04:00",
+  "quote": "sults for Third Quarter of 2026 on Thursday, October 29, 2026 View All News Entegris to Report Results for Third Quarter of 2026 on Thursday, October 29, 2026 Oct 1, 2026 BILLERICA, Mass.--(BUSINESS WIRE)-- Entegris, Inc. (NASDAQ: ENTG), will release its financial results for the third quarter of 2026, before the opening of the market on Thursday, October 29, 2026.",
+  "title": "Entegris to Report Results for Third Quarter of 2026 on Thursday, October 29, 2026",
+  "retrieved_et": "2026-10-08T23:02:01.478230-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.entegris.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T08:00:00-04:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T08:00:00-04:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 150.41000366210938,
+  "expiry": "2026-11-20",
+  "strike": 150.0,
+  "call": {
+   "bid": 11.7,
+   "ask": 13.1,
+   "openInterest": 1747.0,
+   "lastPrice": 12.5,
+   "impliedVolatility": 0.7788108056640625,
+   "lastTradeDate": "2026-10-27T14:27:34+00:00"
+  },
+  "put": {
+   "bid": 11.8,
+   "ask": 12.8,
+   "openInterest": 197.0,
+   "lastPrice": 17.8,
+   "impliedVolatility": 0.79883013671875,
+   "lastTradeDate": "2026-10-26T15:22:33+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.1642178006689479,
+  "rel_spread": {
+   "call": 0.11290322580645165,
+   "put": 0.08130081300813008
+  },
+  "oi_atm": 1944.0,
+  "oi_sum": 1944.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

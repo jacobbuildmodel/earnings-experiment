@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "TENB",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:32:09.906134-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/tenable-announce-fiscal-third-quarter-2026-earnings-results-2026-10-14",
+  "published_et": "2026-10-14T09:00-04:00",
+  "quote": "linkedin facebook x email reddit COLUMBIA, Md. , Oct. 14, 2026 (GLOBE NEWSWIRE) -- Tenable® Holdings, Inc. (NASDAQ: TENB), the exposure management company , today announced that it will release financial results for its third quarter ended September 30, 2026 , after the U.S. market close on Wednesday, October 28 .",
+  "title": "Tenable to Announce Fiscal Third Quarter 2026 Earnings Results",
+  "retrieved_et": "2026-10-19T10:26:44.920605-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 48.79499816894531,
+  "expiry": "2026-11-20",
+  "strike": 46.0,
+  "call": {
+   "bid": 5.3,
+   "ask": 6.0,
+   "openInterest": 48.0,
+   "lastPrice": 5.17,
+   "impliedVolatility": 0.8305681005859374,
+   "lastTradeDate": "2026-10-27T13:42:09+00:00"
+  },
+  "put": {
+   "bid": 1.85,
+   "ask": 4.3,
+   "openInterest": 1.0,
+   "lastPrice": 3.25,
+   "impliedVolatility": 0.87695435546875,
+   "lastTradeDate": "2026-10-27T14:20:56+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.17880931094189217,
+  "rel_spread": {
+   "call": 0.12389380530973454,
+   "put": 0.7967479674796747
+  },
+  "oi_atm": 49.0,
+  "oi_sum": 278.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

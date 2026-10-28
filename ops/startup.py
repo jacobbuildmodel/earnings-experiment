@@ -51,13 +51,28 @@ def run(cmd):
     return r.returncode, (r.stdout + r.stderr).strip()
 
 
+def main_folder():
+    """The main project folder when this chat runs in one of the app's worktrees, else None."""
+    rc, common = run(["git", "rev-parse", "--path-format=absolute", "--git-common-dir"])
+    rc2, own = run(["git", "rev-parse", "--path-format=absolute", "--git-dir"])
+    if rc or rc2 or Path(common).resolve() == Path(own).resolve():
+        return None
+    return Path(common).resolve().parent
+
+
 def main(argv):
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # STATE.md has emoji; the console may be cp1252
     print("US Eastern now:", datetime.now(ZoneInfo("America/New_York")).strftime("%a %Y-%m-%d %H:%M"))
     code = 0
     if "--no-git" not in argv:
-        for cmd in (["git", "pull", "--ff-only", "github", "main"], ["git", "push", "local", "main"]):
+        cmds = [["git", "pull", "--ff-only", "github", "main"]]
+        # A worktree chat's hooks run the main folder's copy (${CLAUDE_PROJECT_DIR}): fast-forward its main, so
+        # the context guard there is the current one. It sat 286 commits behind on 2026-10-27.
+        top = main_folder()
+        if top and run(["git", "-C", str(top), "symbolic-ref", "--short", "HEAD"])[1] == "main":
+            cmds.append(["git", "-C", str(top), "merge", "--ff-only", "github/main"])
+        for cmd in cmds + [["git", "push", "local", "github/main:main"]]:
             rc, out = run(cmd)
             print(f"$ {' '.join(cmd)}  (exit {rc}) " + " | ".join(out.splitlines()[-2:]))
         code, out = run([sys.executable, "check.py"])

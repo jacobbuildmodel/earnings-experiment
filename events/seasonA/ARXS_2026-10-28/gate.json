@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "ARXS",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:00.312330-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/arxis-schedules-third-quarter-2026-earnings-release-and-webcast-2026-10-15",
+  "published_et": "2026-10-15T16:05-04:00",
+  "quote": "linkedin facebook x email reddit BLOOMFIELD, Conn. , Oct. 15, 2026 /PRNewswire/ -- Arxis, Inc. (NASDAQ: ARXS) today announced that it will release its financial results for the third quarter of 2026 after the market closes on Wednesday, October 28, 2026 .",
+  "title": "Arxis Schedules Third Quarter 2026 Earnings Release and Webcast",
+  "retrieved_et": "2026-10-19T10:07:01.520849-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 52.470001220703125,
+  "expiry": "2026-11-20",
+  "strike": 50.0,
+  "call": {
+   "bid": 5.2,
+   "ask": 6.2,
+   "openInterest": 395.0,
+   "lastPrice": 6.6,
+   "impliedVolatility": 0.815431533203125,
+   "lastTradeDate": "2026-10-21T18:04:53+00:00"
+  },
+  "put": {
+   "bid": 2.6,
+   "ask": 4.3,
+   "openInterest": 21.0,
+   "lastPrice": 2.55,
+   "impliedVolatility": 0.8579115771484375,
+   "lastTradeDate": "2026-10-19T15:23:33+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.17438535900757096,
+  "rel_spread": {
+   "call": 0.17543859649122806,
+   "put": 0.4927536231884057
+  },
+  "oi_atm": 416.0,
+  "oi_sum": 416.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

@@ -42,15 +42,18 @@ one empty trigger commit to `claude/s2-trigger`). It never runs, reads or change
 DRIVE repo and moved here, it has already loaded the portfolio's rules and memory. Say so, and ask Jacob
 to start a fresh chat in `Earnings Experiment`.
 
-🔴 **Fresh-chat rule (Jacob, 2026-10-20; threshold measured 2026-10-21). Hand off to a new chat at whichever comes first:**
-- the context reaches **300k tokens** (30% of the 1M window; heads-up at 250k). The threshold is measured, not
-  guessed (`ops/token_efficiency_2026-10.md`; re-run `python ops/token_study.py`). The hook
-  `ops/hooks/context_guard.py` (`.claude/settings.json`, on every prompt and tool call) reads the real count
-  from the transcript. **Obey its CONTEXT GUARD notes;**
+🔴 **Fresh-chat rule (Jacob, 2026-10-20; threshold measured 2026-10-21; enforced by the hook since 2026-10-27). Hand off to a new chat at whichever comes first:**
+- the context reaches **300k tokens** (heads-up at 250k). The threshold is measured, not guessed
+  (`ops/token_efficiency_2026-10.md`; re-run `python ops/token_study.py`). The hook `ops/hooks/context_guard.py`
+  (`.claude/settings.json`, on every prompt and tool call) reads the real count from the transcript;
 - a work phase ends;
-- **before a time-critical window** (14:30–15:56 ET gates and paper exits; the T2 deadline before 09:15 ET) when
-  the chat is already long. The hook lowers the bar to 200k in the two hours before a window. Mid-window it says
-  to finish the window's work and hand off after 15:56 ET, with no commits mid-window.
+- **before a time-critical window** when the chat is already long: 200k in the two hours before the T2 window
+  (07:15–09:15 ET, freezes before the open) and the gates window (14:30–15:56 ET, gates and paper exits).
+
+**Enforced:** past the line, the hook refuses every tool call except the hand-off steps (read/edit STATE.md and
+JOURNAL.md, git add/commit/push, `check.py`, `start_session`, the app's turn tools). It never refuses inside a live
+window: finish the window's work, then hand off when it closes (no commits 14:30–15:56 ET). Only Jacob lifts it, for
+one turn, by typing "override the guard".
 
 Why: long chats lose detail and spend the 5-hour allowance the cloud routines share. Every call re-reads the whole
 context: a call at 650k costs ~4× one at 125k. On 2026-10-19 a long chat got the 10:45 ET routine push refused.

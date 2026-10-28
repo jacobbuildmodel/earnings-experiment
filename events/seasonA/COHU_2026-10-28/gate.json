@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "COHU",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:10.810653-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/cohu-announce-third-quarter-financial-results-october-28-2026-10-14",
+  "published_et": "2026-10-14T16:00-04:00",
+  "quote": "linkedin facebook x email reddit SAN DIEGO --(BUSINESS WIRE)-- Cohu, Inc. (NASDAQ: COHU ), a global supplier of equipment and services optimizing semiconductor manufacturing yield and productivity, will release financial results for third quarter 2026 on Wednesday, October 28, 2026 , at 1:00 p.m. Pacific Time / 4:00 p.m. Eastern Time .",
+  "title": "Cohu To Announce Third Quarter Financial Results on October 28",
+  "retrieved_et": "2026-10-14T21:34:34.749532-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 51.18000030517578,
+  "expiry": "2026-11-20",
+  "strike": 50.0,
+  "call": {
+   "bid": 5.1,
+   "ask": 5.9,
+   "openInterest": 599.0,
+   "lastPrice": 5.6,
+   "impliedVolatility": 0.92773509765625,
+   "lastTradeDate": "2026-10-27T17:01:12+00:00"
+  },
+  "put": {
+   "bid": 4.0,
+   "ask": 4.6,
+   "openInterest": 2203.0,
+   "lastPrice": 4.5,
+   "impliedVolatility": 0.9238288867187501,
+   "lastTradeDate": "2026-10-27T17:09:34+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.19148104614233338,
+  "rel_spread": {
+   "call": 0.1454545454545456,
+   "put": 0.13953488372093015
+  },
+  "oi_atm": 2802.0,
+  "oi_sum": 2802.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

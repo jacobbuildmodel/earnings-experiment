@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "FORM",
+ "report_date": "2026-10-28",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-28"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-29"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "reaction_day": "2026-10-29"
+ },
+ "snapshot_session": "2026-10-27",
+ "captured_et": "2026-10-27T14:31:20.441546-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/formfactor-announce-third-quarter-2026-financial-results-october-28th-2026-10-07",
+  "published_et": "2026-10-07T16:01-04:00",
+  "quote": "linkedin facebook x email reddit LIVERMORE, Calif. , Oct. 07, 2026 (GLOBE NEWSWIRE) -- FormFactor, Inc. (Nasdaq: FORM) will report financial results for its 2026 fiscal third quarter on Wednesday, October 28 th, 2026, at 1:25 p.m. Pacific Time .",
+  "title": "FormFactor to Announce Third Quarter 2026 Financial Results on October 28th",
+  "retrieved_et": "2026-10-08T23:32:12.209955-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-28T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-28T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 106.75,
+  "expiry": "2026-11-20",
+  "strike": 105.0,
+  "call": {
+   "bid": 10.1,
+   "ask": 11.2,
+   "openInterest": 11.0,
+   "lastPrice": 10.65,
+   "impliedVolatility": 0.8840343627929688,
+   "lastTradeDate": "2026-10-27T16:48:57+00:00"
+  },
+  "put": {
+   "bid": 8.3,
+   "ask": 8.8,
+   "openInterest": 151.0,
+   "lastPrice": 8.4,
+   "impliedVolatility": 0.8520522607421875,
+   "lastTradeDate": "2026-10-27T18:02:51+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 16,
+  "implied_move": 0.17985948477751756,
+  "rel_spread": {
+   "call": 0.1032863849765258,
+   "put": 0.05847953216374269
+  },
+  "oi_atm": 162.0,
+  "oi_sum": 162.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
