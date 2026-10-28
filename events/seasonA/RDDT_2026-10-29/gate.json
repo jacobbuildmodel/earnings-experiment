@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "RDDT",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:44.312458-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.redditinc.com/news-events/news-releases/news-details/2026/Reddit-to-Announce-Third-Quarter-Results-on-Thursday-October-29-2026/default.aspx",
+  "published_et": "2026-10-15T16:10-04:00",
+  "quote": "r Results on Thursday, October 29, 2026 View All News Reddit to Announce Third Quarter Results on Thursday, October 29, 2026 Oct 15, 2026 Download (opens in new window) SAN FRANCISCO--(BUSINESS WIRE)-- Reddit, Inc. (NYSE: RDDT), announced today that the company’s third quarter 2026 financial results will be released after market close on Thursday, October 29, 2026.",
+  "title": "Reddit to Announce Third Quarter Results on Thursday, October 29, 2026",
+  "retrieved_et": "2026-10-19T09:31:43.852362-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.redditinc.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 135.36500549316406,
+  "expiry": "2026-10-30",
+  "strike": 135.0,
+  "call": {
+   "bid": 8.55,
+   "ask": 9.05,
+   "openInterest": 206.0,
+   "lastPrice": 8.79,
+   "impliedVolatility": 1.7641613354492187,
+   "lastTradeDate": "2026-10-28T18:16:37+00:00"
+  },
+  "put": {
+   "bid": 8.55,
+   "ask": 8.85,
+   "openInterest": 1286.0,
+   "lastPrice": 8.75,
+   "impliedVolatility": 1.818360283203125,
+   "lastTradeDate": "2026-10-28T18:08:39+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.12928008931291884,
+  "rel_spread": {
+   "call": 0.056818181818181816,
+   "put": 0.03448275862068954
+  },
+  "oi_atm": 1492.0,
+  "oi_sum": 3675.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
