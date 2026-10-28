@@ -26,8 +26,9 @@ off at 217k: past the 200k pre-window bar, and it spent the 5-hour window from 3
   draft. Fri: DST commits; week review.
 - **Next action (a fresh chat, after 15:56 ET):** check every Tue PASS name has T2, T2R and T2O before Wed 09:15 ET.
   Read `get_usage` at start and around the 17:20 and 17:50 ET fires for the per-PASS cost.
-- **Waiting on Jacob:** DPZ's 100 paper shares (**flatten before Tue 14:30 ET**: halves the refusals) · Actions' AI
-  token · D003 v5 = A4 · the sleeve's size and loss limit (after Thu).
+- **DPZ flattened** (Jacob, Wed 10-28): 100 sold at market, filled $308.38 at 09:35:48 ET (`paper-flatten.yml`, record
+  `paper/manual/flatten_DPZ_2026-10-28.json`). The DPZ flag stays in the hash-locked ledger, so the runs stay red on it.
+- **Waiting on Jacob:** Actions' AI token · D003 v5 = A4 · the sleeve's size and loss limit (after Thu).
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)

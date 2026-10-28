@@ -9,6 +9,17 @@
 
 ---
 
+## 2026-10-28 (Wed) 09:40 ET — DPZ's stray shares sold (paper account clean-up, capacity)
+- **What happened:** with Jacob's yes, the 100 DPZ shares assigned from the 2026-10-13 straddle were sold by one
+  market day order in the paper options account: filled $308.38 at 09:35:48 ET. The laptop holds no paper keys, so a
+  new hand-run workflow (`paper-flatten.yml`, `pipeline/paper_flatten.py`) sent it. It refuses unless the account
+  holds exactly the stated shares, runs in its own concurrency group, and touches no ledger or track.
+- **What it taught:** a position no ledger owns still costs the experiment: it tied up the margin the peak's opens
+  need (`ops/capacity_peak_2026-11.md`: ~58% of butterfly opens refused with DPZ held, ~33% without). It sat for
+  15 days because the fix needed Jacob, and no deadline was attached until the capacity count put a cost on it.
+- **What changed:** the margin is freed for the peak. Health's "position not in ledger" line should clear on its next
+  run; the DPZ flag stays in the hash-locked ledger.
+
 ## 2026-10-27 (Tue) 08:20 ET — the guard was guarding a folder nobody used (instrument reliability, all RQs)
 - **What happened:** Jacob asked for the hand-off rule to be enforced. The new guard refused nothing in its first
   live drill. The chat's hooks run the copy in the main project folder, and that folder had sat at Oct 21, 286
