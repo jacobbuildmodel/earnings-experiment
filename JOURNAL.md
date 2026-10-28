@@ -22,7 +22,8 @@
 - **The uncomfortable number:** with no chat here, weekly AI use still rose 15 points in 25 hours, double the day
   before. At that pace the 60% stop rule ends laptop work before Thursday's build day.
 - **What changed:** `283515e` (the marker). Owed: the window runner's jobs; a per-PASS cost from the routine run logs,
-  not from prompt timing; Jacob's call on the stop rule.
+  not from prompt timing. Jacob kept the stop rule (09:52 ET): the build day and the DST work wait for Monday's reset,
+  and the first EST session is also the first day the inventory can be done.
 
 ---
 

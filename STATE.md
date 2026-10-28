@@ -19,13 +19,13 @@
   use elsewhere shares it. Per-PASS cost still not isolated: bound ≤ 3 points, all draws included.
   - The expectation "weekly < 60% until Fri 17:20 ET" (incident 2026-10-26) will likely FAIL: ~60% by Wed evening,
     ~85% by Fri 17:20 at this pace. The Fri fire should still land (< 100%). Mon 10:20 UTC is the fallback.
-  - The stop rule (laptop work ends at weekly ≥ 60%) then blocks Thu's build day and Fri's DST commits until the
-    Mon Nov 2 06:00 UTC reset. **Jacob's call:** keep the rule (build moves to Mon) or lift it.
+  - **Jacob, Wed 09:52 ET: keep the stop rule.** No laptop chat until the Mon Nov 2 06:00 UTC reset unless health goes
+    RED. Thu's build day and Fri's DST commits move to Mon after the reset.
 - 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): paper margin binds; owed: views split `capacity` out.
-- **Next action:** no laptop chat needed tonight. Health raises RED "T2 AT RISK" 14 h before a deadline. A fresh chat
-  only if weekly < 60%: Wed's DST inventory, then the marker's window-job extension.
+- **Next action (Mon Nov 2, after 06:00 UTC):** the DST inventory (was due Oct 28; Mon is the first EST session),
+  then the build day, then the marker's window-job extension. Before then only on a health RED ("T2 AT RISK" etc.).
 - **DPZ flattened** (Jacob, Wed): 100 sold at market, $308.38 at 09:35:48 ET (`paper/manual/flatten_DPZ_2026-10-28.json`).
-- **Waiting on Jacob:** the stop rule vs Thu's build · Actions' AI token · D003 v5 = A4 · the sleeve's size and loss limit.
+- **Waiting on Jacob:** Actions' AI token · D003 v5 = A4 · the sleeve's size and loss limit.
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -214,7 +214,8 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
   - No hash-locked file touched; `health.py` is in no hash list.
 - **AI:** weekly +15 points Tue 08:20 → Wed 09:32 with no chat here (Mon→Tue: +6 in 19.5 h). The expectation "below
   60% until Fri 17:20" (`ops/incidents/2026-10-26_weekly_limit.md`) is now likely to fail; the stop rule would end
-  laptop work before Thu's build day. Put to Jacob.
+  laptop work before Thu's build day. Put to Jacob: **keep the rule** (09:52 ET). Build day, DST inventory and DST
+  commits move to Mon Nov 2 after the 06:00 UTC reset; no laptop chat before then unless health goes RED.
 
 **2026-10-27 (Tue) 08:20 ET — fresh-chat rule enforced; main folder was 286 commits behind; paper reds explained.**
 - Started 07:54 ET (a side session of the T2-check chat); startup PASS. Weekly 31% / 5-hour 31% at 07:58 ET; 37% / 78%
