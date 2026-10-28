@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "AXTI",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:00.241649-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.axt.com/Investors/news/news-details/2026/AXT-Inc--Schedules-Third-Quarter-2026-Earnings-Release-for-October-29-2026/default.aspx",
+  "published_et": "2026-10-01T16:05-04:00",
+  "quote": "AXT, Inc., AXT, Inc. Schedules Third Quarter 2026 Earnings Release for October 29, 2026 View all news AXT, Inc. Schedules Third Quarter 2026 Earnings Release for October 29, 2026 10/01/2026 Download (opens in new window) FREMONT, Calif.--(BUSINESS WIRE)-- AXT, Inc. (NasdaqGS: AXTI ), a leading manufacturer of compound semiconductor substrates, will announce its financial results for the third quarter 2026 in a press release",
+  "title": "AXT, Inc. Schedules Third Quarter 2026 Earnings Release for October 29, 2026",
+  "retrieved_et": "2026-10-08T23:01:14.266359-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.axt.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 63.685001373291016,
+  "expiry": "2026-10-30",
+  "strike": 64.0,
+  "call": {
+   "bid": 3.6,
+   "ask": 4.4,
+   "openInterest": 175.0,
+   "lastPrice": 4.0,
+   "impliedVolatility": 1.8017588037109373,
+   "lastTradeDate": "2026-10-28T17:50:03+00:00"
+  },
+  "put": {
+   "bid": 4.8,
+   "ask": 6.3,
+   "openInterest": 171.0,
+   "lastPrice": 6.25,
+   "impliedVolatility": 2.3388713403320303,
+   "lastTradeDate": "2026-10-28T14:20:00+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.1499568154834836,
+  "rel_spread": {
+   "call": 0.20000000000000007,
+   "put": 0.2702702702702703
+  },
+  "oi_atm": 346.0,
+  "oi_sum": 624.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
