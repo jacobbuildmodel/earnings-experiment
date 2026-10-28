@@ -1,0 +1,142 @@
+{
+ "track": "T2R",
+ "event": "INTC_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.49,
+  "thesis": "INTC enters the print after a ~24% one-month drop, with a large implied move of about 9% and a recent $15B equity raise, so the reaction is close to a coin flip with a slight lean to the semis base rate.",
+  "reasons": [
+   "Semis cluster base rate is 47.9%, below the overall 54%, and I anchor on it.",
+   "The stock has fallen about 18-24% in a month, which leaves room for a relief bounce but also signals fading momentum and sentiment.",
+   "The $2.3B Classiq acquisition just before earnings and the $15B equity raise point to heavy spending and dilution, a mild negative for the cash-flow story.",
+   "The implied move of about 9% is large and roughly symmetric, with put and call IV near parity and a slightly higher put IV.",
+   "Forward P/E of about 43 after a 139% 12-month run sets a high bar, though recent beats and rising EPS revisions help (+2.4% over 90 days)."
+  ],
+  "deciding_variable": "Q4 guidance and gross margin trajectory, plus capex and foundry customer commentary, relative to a high bar after a 24% drawdown.",
+  "prior": {
+   "p": 0.48,
+   "from": "Semis cluster base rate 0.479 (n=434), a bit below overall 0.54 and the AMC rate of 0.538."
+  },
+  "leak_probe": "I don't know. Today is 2026-10-28, so the 2026-10-29 earnings report hasn't happened yet, and I have no information on how INTC's stock reacted.",
+  "moved_from_prior": "Moved up about +0.01 from 0.48 for rising estimates, strong Q2 beats and guidance, and the oversold bounce setup; offset by high valuation and the dilution/capex worries.",
+  "theses": [
+   {
+    "expected": "Rise: beat and raise driven by AI CPU demand and foundry wins",
+    "mechanism": "After a one-month drop, positioning is lighter and strong DCAI growth with yield improvements drives a relief rally.",
+    "wrong_if": "Q4 revenue guidance midpoint is at or below consensus or gross margin guidance is below about 42%."
+   },
+   {
+    "expected": "Fall: capex increase and cash burn overshadow a beat",
+    "mechanism": "The company has just raised $15B and bought Classiq for $2.3B, which suggests rising spending; with a 43x forward P/E, any capex raise is punished.",
+    "wrong_if": "Management shows capex discipline with clear customer commitments and the stock rallies despite higher spending."
+   },
+   {
+    "expected": "Flat or choppy: large move but sign decided by the first-hour open",
+    "mechanism": "With the exit at the open, the after-hours move already sets the direction, and a 9% implied move is in play either way.",
+    "wrong_if": "The after-hours move is large and one-directional, above 5%."
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue and gross margin guidance versus consensus",
+   "Capex guidance and free cash flow",
+   "Foundry external customer wins and the 14A commitments",
+   "DCAI growth and server CPU supply constraints",
+   "Commentary on the Classiq deal and dilution use of proceeds"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/INTC_2026-10-29/gate.json",
+    "published": "2026-10-28T14:31:18.538337-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/INTC_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:18.538337-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000155/q226earningsrelease.htm",
+    "published": "2026-07-23T16:09:00-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/50863/000119312526346806/d117670d8k.htm",
+    "published": "2026-08-12T16:05:07-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/28/intel-just-fell-24-in-a-month-what-will-it-take-to-get-intc-stock-back-above-100/?.tsrc=rss",
+    "published": "2026-10-28T14:09:33-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/intel-just-made-a-2-3-billion-quantum-buy-and-is-spending-again-can-cash-flow-keep-up?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T13:28:43-04:00",
+    "dossier_item": "I8"
+   }
+  ],
+  "decided_et": "2026-10-28T17:53:42-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 17505,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 995,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 17505,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 995,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 17505,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 17505
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.08178730000000001
+ }
+}
