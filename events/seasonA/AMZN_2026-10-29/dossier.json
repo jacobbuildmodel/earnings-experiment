@@ -1,0 +1,593 @@
+{
+ "event": "AMZN_2026-10-29",
+ "season": "seasonA",
+ "built_et": "2026-10-28T14:31:16-04:00",
+ "cutoff_et": "2026-10-28T14:31:00.241648-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/AMZN_2026-10-29/gate.json",
+   "published": "2026-10-28T14:31:00.241648-04:00",
+   "data": {
+    "ticker": "AMZN",
+    "report_date": "2026-10-29",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-30"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-30"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-06"
+     },
+     "reaction_day": "2026-10-30"
+    },
+    "snapshot_session": "2026-10-28",
+    "captured_et": "2026-10-28T14:31:00.241648-04:00",
+    "options": {
+     "spot": 253.0,
+     "expiry": "2026-10-30",
+     "strike": 252.5,
+     "call": {
+      "bid": 9.95,
+      "ask": 10.15,
+      "openInterest": 6011.0,
+      "lastPrice": 10.05,
+      "impliedVolatility": 1.0722702636718753,
+      "lastTradeDate": "2026-10-28T18:14:55+00:00"
+     },
+     "put": {
+      "bid": 10.05,
+      "ask": 10.35,
+      "openInterest": 1289.0,
+      "lastPrice": 10.17,
+      "impliedVolatility": 1.1435589697265625,
+      "lastTradeDate": "2026-10-28T18:12:31+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.0800395256916996,
+     "rel_spread": {
+      "call": 0.019900497512437915,
+      "put": 0.029411764705882252
+     },
+     "oi_atm": 7300.0,
+     "oi_sum": 40841.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/AMZN_2026-10-29/factors.json",
+   "published": "2026-10-28T14:31:00.241648-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.11468475410539214,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.025661822994457628,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.03571290655016557,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.04980004882812494,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.2705417631564718,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7554274955268766,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.10921762627129272,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-30",
+       "session": "AMC",
+       "raw_return_A": 0.13563313935566912,
+       "eps_est": 1.82,
+       "eps_rep": 5.75,
+       "surprise_pct": 215.14,
+       "reaction_volume_ratio": 3.299739290660423
+      },
+      {
+       "date": "2026-04-29",
+       "session": "AMC",
+       "raw_return_A": 0.058839582030174364,
+       "eps_est": 1.65,
+       "eps_rep": 2.78,
+       "surprise_pct": 68.18,
+       "reaction_volume_ratio": 2.2103862975396336
+      },
+      {
+       "date": "2026-02-05",
+       "session": "AMC",
+       "raw_return_A": -0.09875063959909092,
+       "eps_est": 1.95,
+       "eps_rep": 1.95,
+       "surprise_pct": 0.22,
+       "reaction_volume_ratio": 4.319461642705598
+      },
+      {
+       "date": "2025-10-30",
+       "session": "AMC",
+       "raw_return_A": 0.10147101555823945,
+       "eps_est": 1.56,
+       "eps_rep": 1.95,
+       "surprise_pct": 25.2,
+       "reaction_volume_ratio": 3.761880062549945
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.3978668233639,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 215.14,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.95857,
+      "7daysAgo": 1.95659,
+      "30daysAgo": 1.94095,
+      "60daysAgo": 1.95221,
+      "90daysAgo": 1.91799,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.021157565993566097,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.95857,
+      "low": 1.72,
+      "high": 2.23,
+      "yearAgoEps": 1.95,
+      "numberOfAnalysts": 46,
+      "growth": 0.0044,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.2603940630153633,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0095,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 24.210318,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 3.5181222,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.196,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 2728937127936,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.33333,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.0800395256916996,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.07128870605468718,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.0546872265624998,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.7267195146174543,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.3454521572121853,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 95624.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 4.09517038616489,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.11525949362921524,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 317,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.19620517346245125,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.1368902226254449,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.11468475410539214,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.03571290655016557,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.04980004882812494,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.2705417631564718,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 3.144269791748836,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 12.630188404327933,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 2728937333716.0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.28424251096442543,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.0855279189624063,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm",
+   "published": "2026-07-30T16:06:23-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 amzn-20260630xex991.htm EX-99.1 Document Exhibit 99.1 AMAZON.COM ANNOUNCES SECOND QUARTER RESULTS Net sales increased 20% year-over-year Operating income was $27.5 billion, up 43% year-over-year AWS net sales increased 37%—its fastest growth in 18 quarters—to a $169 billion annualized revenue run rate SEATTLE—(BUSINESS WIRE) July 30, 2026—Amazon.com, Inc. (NASDAQ: AMZN) today announced financial results for its second quarter ended June 30, 2026. • Net sales increased 20% to $200.6 billion in the second quarter, compared with $167.7 billion in second quarter 2025. Excluding the $0.1 billion favorable impact from year-over-year changes in foreign exchange rates throughout the quarter, net sales increased 20% compared with second quarter 2025. • North America segment sales increased 16% year-over-year to $116.2 billion. • International segment sales increased 15% year-over-year to $42.2 billion. • AWS segment sales increased 37% year-over-year to $42.2 billion. • Operating income increased to $27.5 billion in the second quarter, compared with $19.2 billion in second quarter 2025. • North America segment operating income was $9.1 billion, compared with $7.5 billion in second quarter 2025. • International segment operating income was $1.7 billion, compared with $1.5 billion in second quarter 2025. • AWS segment operating income was $16.6 billion, compared with $10.2 billion in second quarter 2025. • Net income increased to $62.6 billion in the second quarter, or $5.75 per diluted share, compared with $18.2 billion, or $1.68 per diluted share, in second quarter 2025. • Second quarter 2026 net income includes non-operating pre-tax other income of $53.4 billion, primarily from our investments in Anthropic. • Operating cash flow increased 33% to $161.4 billion for the trailing twelve months, compared with $121.1 billion for the trailing twelve months ended June 30, 2025. • Free cash flow decreased to an outflow of $7.6 billion for the trailing twelve months, driven primarily by a year-over-year increase of $66.1 billion in purchases of property and equipment, net of proceeds from sales and incentives. This increase primarily reflects investments in artificial intelligence. This compares to free cash flow inflow of $18.2 billion for the trailing twelve months ended June 30, 2025. “AWS is booming, growing 36.7% year-over-year in Q2—our fastest growth in 18 quarters—and our AI and Chips businesses each eclipsed run rates of more than $25 billion,” said Andy Jassy, President and CEO, Amazon. “In Stores, we again set record delivery speeds for Prime members in the first half of the year—over 40% more items delivered same-day or overnight, with Grocery and Everyday Essentials growing meaningfully faster than the rest of the business. And, Advertising had another strong quarter with 26% year-over-year growth. There’s a lot to be excited about, and we have much more coming for customers in the second half of the year and beyond.” Some other highlights since the company’s last earnings announcement include that Amazon: • Exceeded a $25 billion annual revenue run rate for AWS’s AI business, growing triple-digit percentages year-over-year. • Exceeded a $25 billion annual revenue run rate for its chips business, growing triple-digit percentages year-over-year. • Continued gaining momentum with Trainium, with the two leading AI labs in the world, Anthropic and OpenAI, making multi-year, multi-gigawatt commitments; an increasing number of AI start-ups adopting Trainium, including unicorns like NEURA Robotics and Odyssey; and commitments from other startups like TwelveLabs, Decart, Poolside, Karakuri, Inc., Metagenomi Therapeutics, Inc., NetoAI, and Splash Music, as well as larger companies like Uber and Pinterest. • Released Graviton5 into general availability. Graviton delivers up to 30 to 40% better price-performance than comparable instances, and Graviton5 delivers up to 25% better compute performance than Graviton4. Graviton is used by 98% of the top 1,000 EC2 customers, revenue commitments have increased nearly 3x quarter-over-quarter, and Graviton5 is growing nearly 2x faster than Graviton4 did. • Added 10+ fully managed foundation models to Amazon Bedrock, including OpenAI’s GPT-5.6, Anthropic’s Claude Opus 5, Google DeepMind’s Gemma 4, and SpaceXAI’s Grok 4.3. Amazon Bedrock provides the best selection of leading models, at superior performance, and with the governance and security controls that companies need, and it’s continuing to grow quickly—hundreds of thousands of customers now use Bedrock, more customers were added in the last six months than in the first two years after launch, and customers spent more in Q2 than all prior quarters combined. • Previewed AWS Continuum, which discovers, prioritizes, validates, and remediates code vulnerabilities. It starts by ingesting the backlog of vulnerabilities a team already has, and then leverages the new frontier models to run comprehensive scans. Continuum uses agents and each company’s own business context to prioritize what matters, then validates vulnerabilities in a sandbox and recommends the fix. • Added new capabilities to Bedrock AgentCore, which provides the building blocks that companies need to quickly and securely deploy and operate agents at scale. New capabilities include Payments (so agents can execute transactions autonomously), Web Search (to ground agents’ knowledge without having to leave AWS), and Harness, which further speeds up how fast customers can stitch together all the infrastructure they need for their agents. • Made Amazon Quick—an intelligent AI work companion that helps manage, search, and automate digital workloads across email, calendar, local or cloud files, and custom workflows—even more capable, adding autonomous agents that customers set up in plain language to run continuously in the background and carry out multi-step tasks; a personalized activity feed that pulls email, messages, calendar, and tasks into one prioritized view; and 16 new integrations, including Adobe, Moody’s, and Snowflake. Quick manages across leading SaaS tools like Slack, Salesforce, Jira, Teams, and ServiceNow; enforces a company’s existing access controls; and takes actions like scheduling meetings, drafting and sending email, updating a CRM record, building a dashboard, and more. • Made its spec-drive coding agent, Kiro, available on iOS so developers can now kick off a new project, monitor progress, steer an agent, and interact with Kiro sessions from their phone, desktop, command line, and the web. Kiro is up to 50% more cost-effective than alternatives and tripled in usage quarter-over-quarter. • Added new capabilities to AWS DevOps Agent, an always-available software operations teammate that helps developers ship software safely and reliably, including Release Management to perform readiness reviews of code changes and autonomously test releases to spot potential issues before they go live. • Launched serverless infrastructure for agentic AI that scales on demand, including: • Lambda MicroVMs, a new flavor of the popular AWS Lambda serverless compute service that not only offers instant start times with the ability to scale all the way up or down depending on demand, but also now provides a stateful runtime with sessions that can last up to 8 hours—ideal for long-running agent loops, multi-step pipelines, or persistent database engines. • Next-generation OpenSearch Serverless, which gives agents fast access to search across massive volumes of data, scales capacity up to 20x faster than the previous generation, and offers up to 60% cost savings versus provisioning for peak. • Purpose-built log analytics engine for Amazon OpenSearch Service, designed to keep pace with the vast increase in logs being produced by agentic workloads. It delivers up to 4x better price performance compared to the existing general-purpose engine, up to 2x higher data ingestion on the same hardware, and up to 2x faster analytical queries, while retaining up to 3x more data at the same cost—enabling teams to retain and analyze more observability data without choosing between insight and budget. • Announced an investment of $1 billion to create AWS Forward Deployed Engineering, a team of AI engineers embedded directly with customers to co-develop and deploy agentic AI solutions in days rather than months. Early customers include Allen Institute, Cox Automotive, the NBA, the NFL, Ricoh, and Southwest Airlines. • Announced general availability of AWS Secret Cloud for Industry, giving defense contractors a faster, more secure path to classified innovation, with Northrop Grumman first to run classified workloads on the platform, and committed up to $1 billion in cloud credits to accelerate U.S. Intelligence Community cloud migration and modernization. • Announced its global data centers are over 7x more water-efficient than the industry average. Amazon also reached 75% progress toward its goal to be water positive across global data center operations by 2030, and achieved water-positive status across its direct operations in India ahead of its 2027 target. • Announced new AWS agreements with Warner Bros. Discovery, Vodafone, Siemens Energy, Ryanair, Pinterest, Snowflake, Moody’s, Danske Bank, WNBA, Pennymac, Fiserv, WPP Enterprise Solutions, Vonage, Recursive, fal, Chai Discovery, Odyssey, TwelveLabs, Reactor, OpenRouter, Dash0, New York State Office of Information Technology Services, State of Iowa, University of South Florida, and The University of Utah. • Continued to expand its ultra-fast delivery service, Amazon Now, which offers delivery in 30 minutes or less on thousands of everyday essentials—adding 80 new cities and towns across the U.S. and several major cities in Egypt. Amazon Now is available in nine countries and over 250 cities and towns globally, and customers love it, with over 80% growth in gross sales and units sold quarter-over-quarter and over 60% more customers served quarter-over-quarter. • Added millions of new products to its selection, including over 700,000 from notable brands like ADT Blu, Bobbi Brown, BROWN GIRL Jane, CR7 Underwear, LeGer, Mamonde, OLIVA COSMETICS, Rabanne, and Ted Baker. • Brought together Rufus and Alexa+ into Alexa for Shopping, an agentic AI shopping assistant that offers personalized recommendations, product comparisons, price history, and the ability to automate shopping through features like Price Alerts and Auto-Buy. Worldwide customer adoption and engagement accelerated in Q2, with active users close to doubling and interactions up over 5x year-over-year. • Launched Amazon Supply Chain Services so any business can move, store, and deliver everything from raw materials to finished products using the same supply chain that supports Amazon, with Procter & Gamble, 3M, Lands’ End, and American Eagle Outfitters among the first customers. • Reached $60 billion in annualized gross sales for Amazon Business and continued to expand selection—adding nearly 30% more items compared to last year, including Same-Day Delivery of fresh groceries for businesses in 2,300+ U.S. cities and towns. • Introduced the next-generation of Proteus, an autonomous robot that assists Amazon fulfillment center employees by moving goods up to 1,300 pounds, reducing heavy lifting and further increasing safety. Using AI, employees can now direct Proteus with plain, conversational language. • Grew the number of new customers for Amazon Pharmacy by more than 2x in the first six months of the year, and same-day prescription deliveries nearly 5x. Also saved customers nearly $250 million so far this year in out-of-pocket costs, up more than 400% year-over-year, through manufacturer discounts applied automatically on an expanded selection of widely prescribed medications. • Expanded Ads Agent—an AI-powered tool that simplifies planning, launching, and managing advertising campaigns and turns hours of setup and targeting into minutes—to 11 new countries so far this year. Advertisers using Ads Agent see 8% lower cost-per-impression and 6% lower cost-per-acquisition than those that don’t use it. • Expanded Alexa+ to Germany, Austria, France, and Brazil, with hundreds of millions of customers now using new Alexa experiences, and that number growing every month. Alexa continues to drive meaningful momentum for the business, including in the U.S., where customers who use Alexa for Shopping spend an average of over 40% more per order than those who don’t, and customers who have tried Alexa+ are signing up for Prime at a nearly 25% higher rate. • Drew 36 million viewers globally for the series premiere of Off Campus on Prime Video in its first 12 days, becoming Prime Video’s No. 3 top-viewed series debut ever. • Delivered strong viewership for inaugural season of NBA on Prime Video, with a peak of 6.5 million U.S. viewers for Game 7 of the Eastern Conference Semifinals (outperforming Game 7 on broadcast in 2025). In Europe, viewership of the NBA more than doubled year-over-year on Prime Video, with the highest average viewership on record. • Averaged 2.3 million viewers during the second season of NASCAR on Prime Video and attracted the youngest audience the last two years among NASCAR broadcasters since 2017. • Completed four additional launches for Amazon Leo, its low Earth orbit satellite network, bringing the total constellation to nearly 400 satellites in orbit—enough to begin initial satellite internet service this year. • Received approval from the National Highway Traffic Safety Administration (Part 555 Exemption) for Zoox to charge for rides—the first purpose-built robotaxi to receive this exemption—paving the way for Zoox to begin offering paid commercial service to customers. • Supported relief efforts following earthquakes in Venezuela with its Amazon Disaster Relief program, donating and delivering more than 650,000 emergency supplies to more than a dozen nonprofits and establishing wee",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm",
+   "published": "2026-07-30T18:11:13-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations Forward-Looking Statements This Quarterly Report on Form 10-Q includes forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995. All statements other than statements of historical fact, including statements regarding guidance, industry prospects, or future results of operations or financial position, made in this Quarterly Report on Form 10-Q are forward-looking. We use words such as anticipates, believes, expects, future, intends, and similar expressions to identify forward-looking statements. Forward-looking statements reflect management’s current expectations and are inherently uncertain. Actual results and outcomes could differ materially for a variety of reasons, including, among others, fluctuations in foreign exchange rates and energy prices, changes in global economic conditions, tariff and trade policies, resource and supply volatility, including for memory chips, and customer demand and spending, inflation, interest rates, regional labor market constraints, world events, the rate of growth of the internet, online commerce, cloud services, and new and emerging technologies, the amount that Amazon.com invests in new business opportunities and the timing of those investments, the mix of products and services sold to customers, the mix of net sales derived from products as compared with services, the extent to which we owe income or other taxes, competition, management of growth, potential fluctuations in operating results, international growth and expansion, the outcomes of claims, litigation, government investigations, and other proceedings, fulfillment, sortation, delivery, and data center optimization, risks of inventory management, variability in demand, the degree to which we enter into, maintain, and develop commercial agreements, proposed and completed acquisitions and strategic transactions, payments risks, and risks of fulfillment throughput and productivity. In addition, global economic and geopolitical conditions and additional or unforeseen circumstances, developments, or events may give rise to or amplify many of these risks. These risks and uncertainties, as well as other risks and uncertainties that could cause our actual results or outcomes to differ significantly from management’s expectations, are described in greater detail in Item 1A of Part II, “Risk Factors.” For additional information, see Item 7 of Part II, “Management’s Discussion and Analysis of Financial Condition and Results of Operations — Overview” of our 2025 Annual Report on Form 10-K. Critical Accounting Estimates The preparation of financial statements in conformity with GAAP requires estimates and assumptions that affect the reported amounts of assets and liabilities, revenues and expenses, and related disclosures of contingent liabilities in the consolidated financial statements and accompanying notes. Critical accounting estimates are those estimates made in accordance with GAAP that involve a significant level of estimation uncertainty and have had or are reasonably likely to have a material impact on the financial condition or results of operations of the Company. Based on this definition, we have identified the critical accounting estimates addressed below. We also have other key accounting policies, which involve the use of estimates, judgments, and assumptions that are significant to understanding our results. For additional information, see Item 8 of Part II, “Financial Statements and Supplementary Data — Note 1 — Description of Business, Accounting Policies, and Supplemental Disclosures” of our 2025 Annual Report on Form 10-K and Item 1 of Part I, “Financial Statements — Note 1 — Accounting Policies and Supplemental Disclosures,” of this Form 10-Q. Although we believe that our estimates, assumptions, and judgments are reasonable, they are based upon information presently available. Actual results may differ significantly from these estimates under different assumptions, judgments, or conditions. Inventories Inventories, consisting of products available for sale, are primarily accounted for using the first-in, first-out method, and are valued at the lower of cost and net realizable value. This valuation requires us to make judgments, based on currently available information, about the likely method of disposition, such as through sales to individual customers, returns to product vendors, or liquidations, and expected recoverable values of each disposition category. These assumptions about future disposition of inventory are inherently uncertain and changes in our estimates and assumptions may cause us to realize material write-downs in the future. As a measure of sensitivity, for every 1% of additional inventory valuation allowance as of June 30, 2026, we would have recorded an additional cost of sales of approximately $405 million. In addition, we enter into supplier commitments for certain electronic device components and certain products. These commitments are based on forecasted customer demand. If we reduce these commitments, we may incur additional costs. Income Taxes We are subject to income taxes in the U.S. (federal and state) and numerous foreign jurisdictions. Tax laws, regulations, administrative practices, principles, and interpretations in various jurisdictions may be subject to significant change, with or without notice, due to economic, political, and other conditions, and significant judgment is required in evaluating and estimating our provision and accruals for these taxes. There are many transactions that occur during the ordinary course of business for which the ultimate tax determination is uncertain. In addition, our actual and forecasted earnings are subject to 26 Table of Contents change due to economic, political, and other conditions and significant judgment is required in determining our ability to use our deferred tax assets. Our effective tax rates could be affected by numerous factors, such as changes in our business operations, acquisitions, investments, entry into new businesses and geographies, intercompany transactions, the relative amount of our foreign earnings, including earnings being lower than anticipated in jurisdictions where we have lower statutory rates and higher than anticipated in jurisdictions where we have higher statutory rates, losses incurred in jurisdictions for which we are not able to realize related tax benefits, the applicability of special tax regimes, changes in foreign exchange rates, changes in our stock price, changes to our forecasts of income and loss and the mix of jurisdictions to which they relate, changes in our deferred tax assets and liabilities and their valuation, changes in the laws, regulations, administrative practices, principles, and interpretations related to tax, including changes to the global tax framework, competition, and other laws and accounting rules in various jurisdictions. In addition, a number of countries have enacted or are actively pursuing changes to their tax laws applicable to corporate multinationals. We are also currently subject to tax controversies in various jurisdictions, and these jurisdictions may assess additional income tax liabilities against us. Developments in an audit, investigation, or other tax controversy could have a material effect on our operating results or cash flows in the period or periods for which that development occurs, as well as for prior and subsequent periods. We regularly assess the likelihood of an adverse outcome resulting from these proceedings to determine the adequacy of our tax accruals. Although we believe our tax estimates are reasonable, the final outcome of audits, investigations, and any other tax controversies could be materially different from our historical income tax provisions and accruals. Liquidity and Capital Resources Cash flow information is as follows (in millions): Three Months Ended June 30, Six Months Ended June 30, Twelve Months Ended June 30, 2025 2026 2025 2026 2025 2026 Cash provided by (used in): Operating activities $ 32,515 $ 45,387 $ 49,530 $ 71,419 $ 121,137 $ 161,403 Investing activities (39,424) (79,245) (69,227) (143,457) (123,569) (216,775) Financing activities (2,539) 10,146 (2,586) 62,913 (8,652) 75,160 Our principal sources of liquidity are cash flows generated from operations and our cash, cash equivalents, and marketable securities balances, which, at fair value, were $123.0 billion as of December 31, 2025 and June 30, 2026. Amounts held in foreign currencies were $29.7 billion and $20.4 billion as of December 31, 2025 and June 30, 2026. Our foreign currency balances include British Pounds, Canadian Dollars, Euros, Indian Rupees, and Japanese Yen. Cash provided by (used in) operating activities was $32.5 billion and $45.4 billion for Q2 2025 and Q2 2026, and $49.5 billion and $71.4 billion for the six months ended June 30, 2025 and 2026. Our operating cash flows result primarily from cash received from our consumer, seller, developer, enterprise, and content creator customers, and advertisers, offset by cash payments we make for products and services, employee compensation, payment processing and related transaction costs, operating leases, and interest payments. Cash received from our customers and other activities generally corresponds to our net sales. The increase in operating cash flow for the trailing twelve months ended June 30, 2026, compared to the comparable prior year period, was due to an increase in net income, excluding non-cash income and expenses, and changes in working capital. Working capital at any specific point in time is subject to many variables, including variability in demand, inventory management and category expansion, the timing of cash receipts and payments, customer and vendor payment terms, and fluctuations in foreign exchange rates. Cash provided by (used in) investing activities corresponds with cash capital expenditures, including leasehold improvements, incentives received from property and equipment vendors, proceeds from asset sales, cash outlays for acquisitions, investments in other companies and intellectual property rights, and purchases, sales, and maturities of marketable securities. Cash provided by (used in) investing activities was $(39.4) billion and $(79.2) billion for Q2 2025 and Q2 2026, and $(69.2) billion and $(143.5) billion for the six months ended June 30, 2025 and 2026, with the variability caused primarily by purchases, sales, and maturities of marketable securities and cash capital expenditures. Cash capital expenditures were $31.4 billion and $53.1 billion during Q2 2025 and Q2 2026, and $55.6 billion and $96.3 billion for the six months ended June 30, 2025 and 2026, which primarily reflect investments in technology infrastructure (the majority of which is to support AWS business growth) and in additional capacity to support our fulfillment network, both of which we expect to increase in 2026. We made cash payments, net of acquired cash, related to acquisition and other investment activity of $1.7 billion and $24.4 billion during Q2 2025 and Q2 2026, and $1.7 billion and $39.8 billion for the six months ended June 30, 2025 and 2026. In Q2 2025, we invested $1.3 billion in convertible notes from Anthropic. We invested $28.7 billion in OpenAI’s Series C Preferred Stock for the six months ended June 30, 2026, including $13.7 billion invested in Q2 2026. Subsequent to June 30, 2026, we funded 27 Table of Contents the remaining Commitment Amount of $21.3 billion. In Q2 2026, we also invested $10.0 billion in Anthropic nonvoting preferred stock. Cash provided by (used in) financing activities was $(2.5) billion and $10.1 billion for Q2 2025 and Q2 2026, and $(2.6) billion and $62.9 billion for the six months ended June 30, 2025 and 2026. Cash inflows from financing activities resulted from proceeds from short-ter",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1018724/000110465926107526/tm2624614d5_8k.htm",
+   "published": "2026-09-14T16:45:41-04:00",
+   "form": "8-K",
+   "items": "8.01,9.01",
+   "text": "ITEM 8.01. OTHER EVENTS. 3 ITEM 9.01. FINANCIAL STATEMENTS AND EXHIBITS. 4 SIGNATURES 5 EXHIBIT 1.1 EXHIBIT 4.1 EXHIBIT 4.2 EXHIBIT 4.3 EXHIBIT 4.4 EXHIBIT 4.5 EXHIBIT 5.1 EXHIBIT 23.1 2 Table of Contents ITEM 8.01. OTHER EVENTS. On September 14, 2026, Amazon.com, Inc. (the “Company”) closed the sale of £1,250,000,000 aggregate principal amount of its 5.200% notes due 2029 (the “2029 Notes”), £1,000,000,000 aggregate principal amount of its 5.550% notes due 2032 (the “2032 Notes”), £1,000,000,000 aggregate principal amount of its 6.250% notes due 2038 (the “2038 Notes”), and £1,000,000,000 aggregate principal amount of its 6.650% notes due 2045 (the “2045 Notes” and, together with the 2029 Notes, 2032 Notes, and 2038 Notes, the “Notes”) pursuant to an Underwriting Agreement dated September 9, 2026 (the “Underwriting Agreement”) among the Company and the several underwriters named therein. The sale of the Notes was registered under the Company’s registration statement on Form S-3 filed on February 6, 2026 (File No. 333-293246). The aggregate public offering price of the Notes was £4.242 billion and the estimated net proceeds from the offering were approximately £4.235 billion, after deducting underwriting discounts from the public offering price and before deducting offering expenses payable by us. The Notes were issued pursuant to an Indenture dated as of November 29, 2012 between the Company and Wells Fargo Bank, National Association, as trustee (the “Prior Trustee”), as amended and supplemented by Supplemental Indenture No. 1, dated as of April 13, 2022, among the Company, the Prior Trustee, and Computershare Trust Company, National Association, as successor trustee, together with the officers’ certificate dated as of September 14, 2026 issued pursuant thereto establishing the terms of each series of the Notes (the “Officers’ Certificate”). The foregoing descriptions of the Underwriting Agreement and the Officers’ Certificate are qualified in their entirety by the terms of such documents, which are filed as Exhibit 1.1 and Exhibit 4.1, respectively, and incorporated herein by reference. The foregoing description of the Notes is qualified in its entirety by reference to the full text of the form of 2029 Note, form of 2032 Note, form of 2038 Note, and form of 2045 Note, which are filed hereto as Exhibit 4.2, Exhibit 4.3, Exhibit 4.4, and Exhibit 4.5, respectively, and incorporated herein by reference. 3 Table of Contents ITEM 9.01. FINANCIAL STATEMENTS AND"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000036/amzn-20260908.htm",
+   "published": "2026-09-09T16:28:21-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "ITEM 5.02. DEPARTURE OF DIRECTORS OR CERTAIN OFFICERS; ELECTION OF DIRECTORS; APPOINTMENT OF CERTAIN OFFICERS; COMPENSATORY ARRANGEMENTS OF CERTAIN OFFICERS. 3 SIGNATURES 4 Table of Contents ITEM 5.02. DEPARTURE OF DIRECTORS OR CERTAIN OFFICERS; ELECTION OF DIRECTORS; APPOINTMENT OF CERTAIN OFFICERS; COMPENSATORY ARRANGEMENTS OF CERTAIN OFFICERS. On September 8, 2026, the Board of Directors of Amazon.com, Inc. (the “Company”) elected Kevin R. Mandia as a director of the Company and also appointed him to the Audit Committee and Security Committee of the Board. Mr. Mandia has served as Chief Executive Officer of Armadin, Inc., a cybersecurity company he founded, since September 2025. Mr. Mandia has also served as General Partner of Ballistic Ventures, a venture capital firm he co-founded, since June 2024 and previously served as Strategic Partner from December 2021 to June 2024. He served as Chief Executive Officer of Mandiant, Inc., a cybersecurity firm acquired by Google LLC in September 2022, from June 2016 to July 2024 and as a director from February 2016 to September 2022. In connection with his election, Mr. Mandia was granted a restricted stock unit award under the Company’s 1997 Stock Incentive Plan for 4,086 shares of common stock of the Company, to vest in three equal annual installments beginning on November 15, 2027, assuming continued service as a director. Mr. Mandia also entered into an indemnification agreement with the Company in the same form as its other directors have entered, which is filed as an exhibit to Amendment No. 1, filed April 21, 1997, to the Company’s Registration Statement on Form S-1 (Registration No. 333-23795). Kristin Mandia, an employee of the Company, is the sister-in-law of Mr. Mandia. Ms. Mandia’s annual salary is $185,000. In 2026, she was also granted a restricted stock unit award under the Company’s 1997 Stock Incentive Plan with respect to 103 shares of common stock of the Company, vesting over 1.9 years. Her compensation is consistent with the total compensation provided to other employees of the same level with similar responsibilities. 3 Table of Contents SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. AMAZON.COM, INC. (REGISTRANT) By: /s/ Susan K. Jong Susan K. Jong Vice President and Secretary Dated: September 9, 2026 4"
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.marketbeat.com/instant-alerts/transcript-what-generac-gnrc-said-on-its-q3-earnings-call-2026-10-28/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "published": "2026-10-28T14:04:54-04:00",
+   "text": "What Generac (GNRC) Said on Its Q3 Earnings Call - Generac (NYSE:GNRC) said third-quarter net sales rose 16% year over year to a record $1.29 billion, driven by accelerating data center demand in its commercial and industrial business and a return to growth in residential generator sales. Adjusted EBITDA increased 33% to $256 million, or 19.8% of s",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/601a9794-5c39-3ae6-8d11-81b58bbd8376/amazon-earnings-preview%3A-why.html?.tsrc=rss",
+   "published": "2026-10-28T13:50:16-04:00",
+   "text": "Amazon Earnings Preview: Why Wall Street Is Bullish On Cloud Growth - AI spending is the key focus as Amazon's third-quarter earnings come due.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.benzinga.com/markets/prediction-markets/26/10/62667278/eisman-anthropic-ipo?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+   "published": "2026-10-28T13:36:38-04:00",
+   "text": "Steve Eisman Says Anthropic Left Q3 Figures Out of IPO Filing on Purpose: 'Very Intentional' - Steve Eisman accused Anthropic of deliberately omitting third-quarter financial figures from its IPO prospectus, arguing that newer numbers could reveal a sharp slowdown in the artificial intelligence company’s growth. Speaking on Prof G Markets Wednesday, the investor made famous by...",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/amazons-eps-is-absolutely-exploding-says-josh-brown-heres-what-the-stock-needs-to-see-october-29?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-28T13:26:11-04:00",
+   "text": "Amazon’s EPS Is “Absolutely Exploding,” Says Josh Brown. Here’s What the Stock Needs to See October 29 - Key TakeawaysAmazon reports its third-quarter results after the close on Thursday, Oct. 29, with its forward P/E close to its lowest level of the past five years.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/yahoo-finance-drives-the-new-slate-ev-a-27000-truck-with-hand-crank-windows-171121348.html?.tsrc=rss",
+   "published": "2026-10-28T13:11:21-04:00",
+   "text": "Yahoo Finance drives the new Slate EV, a $27,000 truck with hand-crank windows - The 8:30 Host Pras Subramanian shares his experience driving the new Slate Auto EV, an electric pick-up truck that comes with a $27,000 price tag. Amazon (AMZN) founder and executive chairman Jeff Bezos is an early backer of Slate Auto.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.businessinsider.com/recent-company-layoffs-laying-off-workers-2026?.tsrc=rss",
+   "published": "2026-10-28T12:52:08-04:00",
+   "text": "Companies laying off staff this year include Meta, Amazon, and Dropbox — see the list - Layoffs have hit over 35 companies in 2026, including Meta, Walmart, and American Express, as AI and economic conditions reshape the business landscape.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/strong-aws-performance-boost-amazons-164200384.html?.tsrc=rss",
+   "published": "2026-10-28T12:42:00-04:00",
+   "text": "Will Strong AWS Performance Boost Amazon's Q3 Earnings Report? - AMZN's Q3 earnings hinge on AWS revenue growth, a $496 billion backlog and AI partnerships, but soaring capital spending can pressure margins and free cash flow.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/28/wall-street-may-be-underestimating-this-magnificent-seven-stock/?.tsrc=rss",
+   "published": "2026-10-28T12:33:15-04:00",
+   "text": "Wall Street May Be Underestimating This Magnificent Seven Stock - Alphabet's cloud business is accelerating faster than any hyperscaler rival while the stock sits 21% below its 52-week high, and that disconnect between fundamentals and price is exactly where the bull case gets interesting.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/neocloud-stocks-could-face-a-house-of-cards-collapse-162851758.html?.tsrc=rss",
+   "published": "2026-10-28T12:28:51-04:00",
+   "text": "Neocloud stocks could face a house-of-cards collapse - In the Loop host Ejaaz Ahamadeen explains how the neocloud financing loop and idling unpowered GPUs are a house-of-cards collapse in the making, with insurers backing debt they also lend against.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/0e522231-6b9f-3989-97b5-7a275c29b8cc/stocks-are-calm%2C-but-there-is.html?.tsrc=rss",
+   "published": "2026-10-28T12:19:00-04:00",
+   "text": "Stocks Are Calm, but There Is Real Volatility Hiding in Big Tech - The VIX shows complacency. Other gauges don’t. No matter what happens this week, markets are likely to see big swings.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/28/microsoft-reports-with-zero-sell-ratings-and-a-year-of-flat-returns-we-see-22-upside/?.tsrc=rss",
+   "published": "2026-10-28T12:03:42-04:00",
+   "text": "Microsoft Reports With Zero Sell Ratings and a Year of Flat Returns, We See 22% Upside - Microsoft's revenue surged nearly 18% last year while its stock sat almost perfectly flat, and that disconnect between earnings momentum and share price tells a story most investors are missing ahead of this quarter's report.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/energy/articles/trump-doe-loans-5b-nuclear-155321800.html?.tsrc=rss",
+   "published": "2026-10-28T11:53:21-04:00",
+   "text": "Trump DOE loans $5B to nuclear plants that will power data centers - Constellation Energy will get $5 billion in government loans to modernize nuclear reactors. Most of the new capacity is already committed to Google, Amazon, and Meta.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.cryptoprowl.com/releases/jpmorgan-coca-cola-join-pushback-against-okx-ice-tokenized-stock-trading-7513?.tsrc=rss",
+   "published": "2026-10-28T11:53:00-04:00",
+   "text": "JPMorgan, Coca-Cola Join Pushback Against OKX-ICE Tokenized Stock Trading - JPMorgan Chase (NYSE: $JPM), Coca-Cola (NYSE: $KO), and Dell Technologies (NYSE: $DELL) and four other companies ha...",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.proactiveinvestors.com/companies/news/1100857/amazon-q3-preview-aws-acceleration-expected-to-lead-the-way-1100857.html?.tsrc=rss",
+   "published": "2026-10-28T11:53:00-04:00",
+   "text": "Amazon Q3 preview: AWS acceleration expected to lead the way - Amazon.com Inc (NASDAQ:AMZN) is expected to report a 12% increase in third-quarter revenue on Wednesday, with investors looking for further acceleration in its Amazon Web Services (AWS) cloud business and evidence that its growing artificial intelligence investments are delivering...",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:16-04:00",
+    "sha256": "4c7bb956c38c38c9c8c6e04452755c34f2404ebbcdc59b6ebcd8a270ce82df10"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 50762
+}
