@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "EXEL",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:10.000547-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/exelixis-release-third-quarter-2026-financial-results-thursday-october-29-2026-2026",
+  "published_et": "2026-10-15T16:05-04:00",
+  "quote": "linkedin facebook x email reddit – Conference Call and Webcast to Follow at 5:00 p.m. ET / 2:00 p.m. PT – ALAMEDA, Calif. --(BUSINESS WIRE)-- Exelixis, Inc. (Nasdaq: EXEL) announced today that its third quarter 2026 financial results will be released on Thursday, October 29, 2026 , after the markets close.",
+  "title": "Exelixis to Release Third Quarter 2026 Financial Results on Thursday, October 29, 2026",
+  "retrieved_et": "2026-10-15T21:11:25.711167-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 66.0999984741211,
+  "expiry": "2026-11-20",
+  "strike": 65.0,
+  "call": {
+   "bid": 3.5,
+   "ask": 4.3,
+   "openInterest": 2385.0,
+   "lastPrice": 3.9,
+   "impliedVolatility": 0.5559126440429689,
+   "lastTradeDate": "2026-10-28T17:52:46+00:00"
+  },
+  "put": {
+   "bid": 0.75,
+   "ask": 4.9,
+   "openInterest": 19.0,
+   "lastPrice": 2.95,
+   "impliedVolatility": 0.8115253222656249,
+   "lastTradeDate": "2026-10-27T15:28:23+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 15,
+  "implied_move": 0.10173979054829954,
+  "rel_spread": {
+   "call": 0.2051282051282051,
+   "put": 1.4690265486725664
+  },
+  "oi_atm": 2404.0,
+  "oi_sum": 2404.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
