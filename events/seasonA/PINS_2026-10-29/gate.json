@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "PINS",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:40.242806-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.pinterest.com/news-and-events/press-releases/press-releases-details/2026/Pinterest-to-Announce-Third-Quarter-2026-Results/default.aspx",
+  "published_et": "2026-10-19T16:06-04:00",
+  "quote": "Pinterest - Pinterest to Announce Third Quarter 2026 Results Pinterest to Announce Third Quarter 2026 Results October 19, 2026 SAN FRANCISCO--(BUSINESS WIRE)-- Pinterest, Inc. (NYSE: PINS) will release financial results for the third quarter 2026 on Thursday, October 29th, 2026 after market close.",
+  "title": "Pinterest to Announce Third Quarter 2026 Results",
+  "retrieved_et": "2026-10-20T21:17:06.824976-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.pinterest.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 20.829999923706055,
+  "expiry": "2026-10-30",
+  "strike": 21.0,
+  "call": {
+   "bid": 1.17,
+   "ask": 1.34,
+   "openInterest": 623.0,
+   "lastPrice": 1.24,
+   "impliedVolatility": 1.7714855175781248,
+   "lastTradeDate": "2026-10-28T18:14:34+00:00"
+  },
+  "put": {
+   "bid": 1.32,
+   "ask": 1.5,
+   "openInterest": 3586.0,
+   "lastPrice": 1.39,
+   "impliedVolatility": 1.75000125,
+   "lastTradeDate": "2026-10-28T17:56:34+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.12794047094388303,
+  "rel_spread": {
+   "call": 0.13545816733067742,
+   "put": 0.12765957446808504
+  },
+  "oi_atm": 4209.0,
+  "oi_sum": 4930.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
