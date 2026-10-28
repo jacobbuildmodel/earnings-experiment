@@ -1,12 +1,6 @@
 {
   "about": "Alerts a person has looked at and acknowledged (pipeline/health.py, 'known'). A RED or AMBER line that reads exactly as one under 'lines', and a failed paper-options run whose own job log shows it stopped only on alerts under 'paper_options_alerts', are reported under KNOWN and do not count in the status. Any change to the line, a new alert, an unreadable log or a date past 'until' alarms as before. Every entry needs why, source, acknowledged and until. Remove an entry when its cause is gone.",
   "lines": {
-    "POSITION NOT IN LEDGER: paper/options DPZ: the account holds +100, the ledgers show +0": {
-      "why": "DPZ's paper iron butterfly was held past its Oct 16 expiry and Alpaca's expiry processing left 100 DPZ shares that no ledger records; flattening them is Jacob's call (STATE.md, Waiting on Jacob 1). Any other quantity is a new mismatch and stays RED",
-      "source": "ops/incidents/2026-10-13_DPZ_exit.md",
-      "acknowledged": "2026-10-28, laptop chat (the new-RED marker owed in STATE.md NOW, 2026-10-27)",
-      "until": "2026-11-06"
-    },
     "paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']": {
       "why": "the DPZ trade's flag held_past_expiry is set once and never cleared (pipeline/paper_options.py, hash-locked); no other alert is on the ledger",
       "source": "ops/incidents/2026-10-13_DPZ_exit.md",

@@ -1,34 +1,31 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-26 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-28 09:55 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Tue 2026-10-27 08:20 ET by the hand-off-enforcement chat (no outcome, P&L or C1 figure read). It hands
-off at 217k: past the 200k pre-window bar, and it spent the 5-hour window from 31% to 78% in ~25 min.*
-- **Phase:** Season A, week 3 of 6. Gates: Tue 33 · Wed 20 · Thu 1 · Fri 18 (+ pending). Mon: 3 PASS, all 3 tracks.
-- **Fresh-chat rule ENFORCED** (`7fd5995`, Jacob approved the design 08:15 ET). Past 300k, or 200k in 05:15–07:15 and
-  12:30–14:30 ET, `context_guard.py` (PreToolUse) refuses every tool but the hand-off steps. It never refuses inside
-  07:15–09:15 or 14:30–15:56 ET. Jacob lifts it for one turn with "override the guard". Drilled live: refused
-  `python --version`, allowed `git status`. 101 tests.
-- 🔴 **The main folder was 286 commits behind** (`554d258`, Oct 21). A worktree chat's hooks run the main folder's copy
-  (`${CLAUDE_PROJECT_DIR}`), so no guard change since Oct 21 had run. Now at `7fd5995`. `ops/startup.py` fast-forwards
-  it every session and pushes `github/main:main` to `local`.
-- **Paper-options reds explained:** the 4 runs, and every completed run since at least Oct 21 (~40), exit 1 by design on
-  the DPZ flag (`seasonA-DPZ-2026-10-13-F`, `held_past_expiry`). Errors 0, halt False, ledger commits land. The flag
-  stays in the record, and `paper_options.py` is hash-locked, so flattening DPZ will NOT turn the runs green. Health's
-  AMBER cannot tell this red from a new one: the new-RED marker (owed) must classify a known alert.
-- 🔴 **AI:** weekly 37%, 5-hour 78% (Tue 08:15 ET; resets 11:20 ET). Stop laptop work at weekly ≥ 60% before Fri 17:20
-  ET. Cost per PASS is still unmeasured (bound ≤ 2 points). ~26 PASS due this week.
-- 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): main paper margin binds from Oct 27. ~58% of opens refused with
-  DPZ held, ~33% flattened. Scored tracks unaffected. Owed: views split `capacity` out; `paper.py` labels them.
-- **D016 done** (`82e48d2`): §5 picks A4 for D003 v5, Jacob's call.
-- **This week:** Tue: the new-RED marker. Wed: DST inventory. **Thu, build day:** pooled H-T2C code; the D008 v2 sleeve
-  draft. Fri: DST commits; week review.
-- **Next action (a fresh chat, after 15:56 ET):** check every Tue PASS name has T2, T2R and T2O before Wed 09:15 ET.
-  Read `get_usage` at start and around the 17:20 and 17:50 ET fires for the per-PASS cost.
-- **DPZ flattened** (Jacob, Wed 10-28): 100 sold at market, filled $308.38 at 09:35:48 ET (`paper-flatten.yml`, record
-  `paper/manual/flatten_DPZ_2026-10-28.json`). The DPZ flag stays in the hash-locked ledger, so the runs stay red on it.
-- **Waiting on Jacob:** Actions' AI token · D003 v5 = A4 · the sleeve's size and loss limit (after Thu).
+*Rewritten Wed 2026-10-28 09:55 ET by the new-RED-marker chat (no outcome, P&L or C1 figure read; "go" came 09:32).*
+- **Phase:** Season A, week 3 of 6. Gates: Wed 20 · Thu 1 · Fri 18 (+ pending). Mon: 3 PASS, all 3 tracks.
+- **Tue: 33 gates → 5 PASS** (CMG GOOG MSFT NOW QSR), 28 INELIGIBLE. All 5 froze T2 (17:23–17:24 ET), T2R (17:53–54)
+  and T2O (17:55–56) on Tue, 15 h before the 09:15 ET deadline; T2G also on CMG and QSR. check.py PASS (294 tokens).
+- **New-RED marker done** (`283515e`): `ops/health_known.json` + a KNOWN section in `health.py`, outside the status.
+  Acknowledged until 2026-11-06: the DPZ flag and its ledger-alerts line (the shares entry is out: sold). A failed
+  paper-options run is known only if its own job log shows errors 0, halt False, alerts ⊆ acknowledged, one error line.
+  Live: 10 of 10 paper-options failures in 24 h read known. Health was RED every day since Oct 20; it now reads RED
+  only for a new problem, so a "Health RED" issue comment means something again.
+  - Still alarms (AMBER): the paper-window runner's options job, same cause (all 45 inner runs exit 1 on the flag).
+    **Owed:** extend the classifier to its window jobs. Until then weekdays read AMBER.
+- 🔴 **AI: weekly 40% (Tue 08:20) → 55% (Wed 09:32) → 56% (09:45, after this build).** That is 15 points in 25 h with
+  5 PASS, ~25 routine sessions and no chat here: ~14 points a day, double Mon→Tue (6 in 19.5 h, 3 PASS). Jacob's own
+  use elsewhere shares it. Per-PASS cost still not isolated: bound ≤ 3 points, all draws included.
+  - The expectation "weekly < 60% until Fri 17:20 ET" (incident 2026-10-26) will likely FAIL: ~60% by Wed evening,
+    ~85% by Fri 17:20 at this pace. The Fri fire should still land (< 100%). Mon 10:20 UTC is the fallback.
+  - The stop rule (laptop work ends at weekly ≥ 60%) then blocks Thu's build day and Fri's DST commits until the
+    Mon Nov 2 06:00 UTC reset. **Jacob's call:** keep the rule (build moves to Mon) or lift it.
+- 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): paper margin binds; owed: views split `capacity` out.
+- **Next action:** no laptop chat needed tonight. Health raises RED "T2 AT RISK" 14 h before a deadline. A fresh chat
+  only if weekly < 60%: Wed's DST inventory, then the marker's window-job extension.
+- **DPZ flattened** (Jacob, Wed): 100 sold at market, $308.38 at 09:35:48 ET (`paper/manual/flatten_DPZ_2026-10-28.json`).
+- **Waiting on Jacob:** the stop rule vs Thu's build · Actions' AI token · D003 v5 = A4 · the sleeve's size and loss limit.
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -195,6 +192,29 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-28 (Wed) 09:55 ET — new-RED marker built; Tue's 5 PASS fully frozen; the weekly allowance runs hot.**
+- Started Tue 08:20 ET (side session of the hand-off chat). Startup PASS. 5-hour 96%, weekly 40% at 08:20 Tue, so it
+  paused until the 11:20 reset. Jacob's "go" arrived Wed 09:32 ET: 5-hour 12%, weekly 55%. The 17:20 / 17:50 ET
+  readings for the per-PASS cost were never taken.
+- **Tue PASS check:** 33 gates, 5 PASS (CMG GOOG MSFT NOW QSR), 28 INELIGIBLE (freezes 14:31–14:32 ET). T2 17:23–17:24,
+  T2R 17:53–17:54, T2O 17:55–17:56 ET (Tue), all 5 names; T2G on CMG (18:49) and QSR (17:15). check.py PASS.
+- **Marker** (`283515e`): `ops/health_known.json` (entries need why, source, acknowledged, until) and in `health.py`
+  `known_alerts`, `job_logs`, `known_failure`, `split_known` and a KNOWN report section that the status ignores.
+  - A line moves only if it reads exactly as acknowledged: DPZ at +200, or a second ledger alert, stays RED / AMBER.
+  - A paper-options failure is known only from its own job log: one job; one `##[error]` line, the exit code; the
+    last `options ledger:` line with errors 0, halt False and alerts ⊆ acknowledged; no `PUSH FAILED`,
+    `broker unreachable` or `Traceback`. A log fetch failure leaves it AMBER. A test pins the summary line to the
+    frozen `paper_options.py` text.
+  - 16 tests (`tests/test_health_known.py`), 427 pass. Live, read-only: 10 of 10 paper-options failures known.
+  - DPZ's shares were sold at 09:35 ET by another chat (Jacob's call) while this was built, so their entry came out
+    of `health_known.json` again (`its cause is gone`); the flag and its ledger line stay acknowledged.
+  - Not covered: `paper-window-push.yml`'s options job (Tue 11:50 ET run 40534954480: "41 run(s), 41 with a non-zero
+    exit" and "4 of 4"), the same flag through the window runner. Owed: classify its window jobs the same way.
+  - No hash-locked file touched; `health.py` is in no hash list.
+- **AI:** weekly +15 points Tue 08:20 → Wed 09:32 with no chat here (Mon→Tue: +6 in 19.5 h). The expectation "below
+  60% until Fri 17:20" (`ops/incidents/2026-10-26_weekly_limit.md`) is now likely to fail; the stop rule would end
+  laptop work before Thu's build day. Put to Jacob.
 
 **2026-10-27 (Tue) 08:20 ET — fresh-chat rule enforced; main folder was 286 commits behind; paper reds explained.**
 - Started 07:54 ET (a side session of the T2-check chat); startup PASS. Weekly 31% / 5-hour 31% at 07:58 ET; 37% / 78%
