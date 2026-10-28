@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "MPWR",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:18.760769-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/monolithic-power-systems-report-third-quarter-2026-results-october-29-2026-2026-10-08",
+  "published_et": "2026-10-08T16:01-04:00",
+  "quote": "linkedin facebook x email reddit SCHAFFHAUSEN, Switzerland , Oct. 08, 2026 (GLOBE NEWSWIRE) -- Monolithic Power Systems, Inc. (MPS) (Nasdaq: MPWR), a fabless global company that provides high-performance, semiconductor-based power electronics solutions, today announced it will report its third quarter 2026 financial results on Thursday, October 29, 2026 after the market closes.",
+  "title": "Monolithic Power Systems to Report Third Quarter 2026 Results on October 29, 2026",
+  "retrieved_et": "2026-10-08T23:03:40.474712-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 1203.75,
+  "expiry": "2026-11-20",
+  "strike": 1200.0,
+  "call": {
+   "bid": 77.1,
+   "ask": 86.5,
+   "openInterest": 78.0,
+   "lastPrice": 84.3,
+   "impliedVolatility": 0.6506687765502931,
+   "lastTradeDate": "2026-10-28T16:38:04+00:00"
+  },
+  "put": {
+   "bid": 72.0,
+   "ask": 86.0,
+   "openInterest": 121.0,
+   "lastPrice": 77.09,
+   "impliedVolatility": 0.6584964570617677,
+   "lastTradeDate": "2026-10-28T16:44:41+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 15,
+  "implied_move": 0.13358255451713397,
+  "rel_spread": {
+   "call": 0.11491442542787293,
+   "put": 0.17721518987341772
+  },
+  "oi_atm": 199.0,
+  "oi_sum": 492.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
