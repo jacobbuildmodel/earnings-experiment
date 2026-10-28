@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "SYK",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:32:01.370866-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.stryker.com/press-releases/news-details/2026/Stryker-to-announce-third-quarter-2026-financial-results/default.aspx",
+  "published_et": "2026-10-01T08:00-04:00",
+  "quote": "avigation panel Careers Investor Relations Patients Contact Corporate Press Release details View all news Stryker to announce third quarter 2026 financial results 10/01/2026 Download PDF Format (opens in new window) Portage, Michigan, Oct. 01, 2026 (GLOBE NEWSWIRE) -- Stryker (NYSE: SYK) will host a webcast at 4:30 p.m. (Eastern time) on Thursday, October 29, 2026, to discuss its third quarter 2026 financial results.",
+  "title": "Stryker to announce third quarter 2026 financial results",
+  "retrieved_et": "2026-10-08T23:06:38.109291-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.stryker.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 304.3800964355469,
+  "expiry": "2026-11-20",
+  "strike": 300.0,
+  "call": {
+   "bid": 13.9,
+   "ask": 17.8,
+   "openInterest": 406.0,
+   "lastPrice": 14.8,
+   "impliedVolatility": 0.502080174560547,
+   "lastTradeDate": "2026-10-28T14:04:54+00:00"
+  },
+  "put": {
+   "bid": 8.7,
+   "ask": 12.2,
+   "openInterest": 138.0,
+   "lastPrice": 11.06,
+   "impliedVolatility": 0.46234668518066413,
+   "lastTradeDate": "2026-10-28T15:56:50+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 15,
+  "implied_move": 0.08640512408001383,
+  "rel_spread": {
+   "call": 0.24605678233438485,
+   "put": 0.3349282296650718
+  },
+  "oi_atm": 544.0,
+  "oi_sum": 6179.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
