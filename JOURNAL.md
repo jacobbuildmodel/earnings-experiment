@@ -9,6 +9,35 @@
 
 ---
 
+## 2026-10-28 (Wed) 09:55 ET — an alarm that is always on reads as off (instrument reliability, all RQs)
+- **What happened:** health had read RED every day since at least Oct 20. The cause was the same each time: DPZ's 100
+  leftover shares (sold at 09:35 ET today) and its permanent flag, which also turned ~10 paper-options runs a day red. A new RED, such as a
+  T2 about to be missed, would have looked exactly like the old one. Health now keeps a list of acknowledged alerts.
+  A line is set aside only if it reads exactly as acknowledged, and a failed run only if its own log shows the
+  acknowledged flag was its sole reason to fail. Against the live record, all 10 of the last day's failed runs
+  qualified. Tuesday's 5 PASS names (CMG GOOG MSFT NOW QSR) froze all three AI tracks 15 h before the deadline.
+- **What it taught:** "known" has to be proven per run, not assumed by name. The window runner fails for the same
+  reason, yet it still alarms, because nothing yet reads its log. And a chat paused "until 11:20" resumed the next
+  morning: every measurement that depends on someone prompting at the right minute gets missed.
+- **The uncomfortable number:** with no chat here, weekly AI use still rose 15 points in 25 hours, double the day
+  before. At that pace the 60% stop rule ends laptop work before Thursday's build day.
+- **What changed:** `283515e` (the marker). Owed: the window runner's jobs; a per-PASS cost from the routine run logs,
+  not from prompt timing. Jacob kept the stop rule (09:52 ET): the build day and the DST work wait for Monday's reset,
+  and the first EST session is also the first day the inventory can be done.
+
+---
+
+## 2026-10-28 (Wed) 09:40 ET — DPZ's stray shares sold (paper account clean-up, capacity)
+- **What happened:** with Jacob's yes, the 100 DPZ shares assigned from the 2026-10-13 straddle were sold by one
+  market day order in the paper options account: filled $308.38 at 09:35:48 ET. The laptop holds no paper keys, so a
+  new hand-run workflow (`paper-flatten.yml`, `pipeline/paper_flatten.py`) sent it. It refuses unless the account
+  holds exactly the stated shares, runs in its own concurrency group, and touches no ledger or track.
+- **What it taught:** a position no ledger owns still costs the experiment: it tied up the margin the peak's opens
+  need (`ops/capacity_peak_2026-11.md`: ~58% of butterfly opens refused with DPZ held, ~33% without). It sat for
+  15 days because the fix needed Jacob, and no deadline was attached until the capacity count put a cost on it.
+- **What changed:** the margin is freed for the peak. Health's "position not in ledger" line should clear on its next
+  run; the DPZ flag stays in the hash-locked ledger.
+
 ## 2026-10-27 (Tue) 08:20 ET — the guard was guarding a folder nobody used (instrument reliability, all RQs)
 - **What happened:** Jacob asked for the hand-off rule to be enforced. The new guard refused nothing in its first
   live drill. The chat's hooks run the copy in the main project folder, and that folder had sat at Oct 21, 286

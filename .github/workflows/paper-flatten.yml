@@ -1,0 +1,37 @@
+name: paper-flatten
+# One market sell of a stray share position in the paper OPTIONS account, run by hand only (pipeline/paper_flatten.py).
+# Its own concurrency group: it must never cancel or queue behind a paper window job.
+on:
+  workflow_dispatch:
+    inputs:
+      symbol: {description: "ticker", required: true}
+      qty: {description: "shares the account must hold exactly", required: true}
+      why: {description: "reason, recorded with the order", required: true}
+concurrency:
+  group: paper-flatten
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  flatten:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -q -r requirements.txt
+      - name: sell
+        env:
+          APCA_API_KEY_ID: ${{ secrets.APCA_API_KEY_ID }}
+          APCA_API_SECRET_KEY: ${{ secrets.APCA_API_SECRET_KEY }}
+        run: python pipeline/paper_flatten.py "${{ inputs.symbol }}" "${{ inputs.qty }}" "${{ inputs.why }}"
+      - name: commit the record
+        if: always()
+        run: |
+          git config user.name "paper-flatten (Actions)" && git config user.email "noreply@github.com"
+          git add paper/manual || true
+          git diff --cached --quiet && exit 0
+          git commit -m "Paper account clean-up: ${{ inputs.symbol }} ${{ inputs.qty }} sold at market (code, by hand)"
+          for i in 1 2 3; do git push origin HEAD:main && exit 0; git pull --no-rebase --no-edit origin main; done
+          exit 1

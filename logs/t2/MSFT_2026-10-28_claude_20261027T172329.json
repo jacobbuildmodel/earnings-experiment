@@ -1,0 +1,57 @@
+{
+ "event": "MSFT_2026-10-28",
+ "backend": "claude",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "00929694c86fbe6b4c38204eefa6e8e7face314a88b87522f673bef168b2bfc8",
+ "called_et": "2026-10-27T17:23:29-04:00",
+ "prompt_sha256": "0e66b060ae74dd3e8730d55ad894f7d691ae5487a10b92a7b4c91ec6b153737b",
+ "probe_reply": "I don't know. Today is 2026-10-27, so that earnings report hasn't happened yet, and I have no information on how MSFT's stock reacted.",
+ "reply": "{\"prior\":{\"p\":0.54,\"from\":\"I3 overall validation hit rate 0.542 (AMC 0.538, software_internet 0.541); used ~0.54\"},\"confidence\":0.50,\"thesis\":\"MSFT enters the print near highs with a roughly 5% implied move and a mixed recent earnings-reaction history, so the outcome is close to a coin flip with a slight lean to the base rate.\",\"reasons\":[\"Base rate for AMC and software events is about 54%, and nothing in the dossier shifts it decisively.\",\"Last four prints had a 25% win rate on the open-to-open measure, with three of the four negative despite EPS beats, which suggests a high bar.\",\"The previous quarter was strong (Azure +43%, RPO +84%) and the stock is 2.4% below its 52w high, so expectations are elevated.\",\"Tech sentiment is positive into the print (Anthropic IPO filing, tech up two days), which offsets the high-bar concern.\",\"Implied move of about 5% is large relative to 60-day realized vol of 22%, so the options market is pricing a big move but with no clear direction signal.\"],\"moved_from_prior\":\"Moved down about 4 points from 0.54 because of the weak recent post-earnings reaction record and elevated expectations, partly offset by supportive sector sentiment.\",\"deciding_variable\":\"Azure growth and the capex/margin outlook relative to elevated expectations, plus Q2 guidance.\",\"theses\":[{\"expected\":\"Stock rises at the open\",\"mechanism\":\"Azure growth holds at about 40% or above, guidance is strong, and AI demand and backlog reassure investors\",\"wrong_if\":\"Azure decelerates or capex guidance surprises sharply higher without matching revenue\"},{\"expected\":\"Stock falls at the open\",\"mechanism\":\"High expectations and capex or margin concerns, as in three of the last four prints, drive a sell-the-news reaction\",\"wrong_if\":\"Revenue and guidance beat comfortably and capex intensity is flagged as manageable\"},{\"expected\":\"Muted reaction, with direction set by after-hours drift and market tone\",\"mechanism\":\"Large implied move gets crushed if results are in line, and the sign is then determined by macro and peer reports such as Alphabet and Amazon\",\"wrong_if\":\"Results are a large surprise in either direction\"}],\"key_observations\":[\"Azure growth rate and capacity commentary\",\"Capex guidance and FY27 operating margin outlook\",\"Commercial RPO and OpenAI/Anthropic related contributions\",\"New segment reporting (Agents and Infra, Devices and Consumer) clarity\",\"Voluntary exit program cost and effect on opex\"],\"items_used\":[\"I1\",\"I2\",\"I3\",\"I4\",\"I6\",\"I13\",\"I14\"]}",
+ "error": null,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 22158,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 916,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 22158,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 916,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 22158,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 22158
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model": "claude-sonnet-5-5",
+ "isolation": {
+  "tools": [],
+  "mcp_servers": [],
+  "num_turns": 1,
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "model": "claude-sonnet-5-5"
+ },
+ "outcome": "decided"
+}
