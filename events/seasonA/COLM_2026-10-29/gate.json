@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "COLM",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:00.310999-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.columbia.com/news-events/press-releases/detail/389/columbia-sportswear-company-reports-second-quarter-2026",
+  "published_et": "2026-07-30T16:05-04:00",
+  "quote": "Third Quarter 2026 Reporting Date The Company plans to report third quarter 2026 financial results on Thursday, October 29, 2026 at approximately 4:05 p.m. ET.",
+  "title": "Columbia Sportswear Company Reports Second Quarter 2026 Financial Results; Updates Full Year 2026 Financial Outlook",
+  "retrieved_et": "2026-10-08T23:01:27.609399-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.columbia.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 60.5099983215332,
+  "expiry": "2026-11-20",
+  "strike": 60.0,
+  "call": {
+   "bid": 1.0,
+   "ask": 4.9,
+   "openInterest": 19.0,
+   "lastPrice": 3.2,
+   "impliedVolatility": 0.7539087109375,
+   "lastTradeDate": "2026-10-21T18:26:08+00:00"
+  },
+  "put": {
+   "bid": 1.25,
+   "ask": 4.9,
+   "openInterest": 3.0,
+   "lastPrice": 2.65,
+   "impliedVolatility": 0.5395553857421876,
+   "lastTradeDate": "2026-10-26T18:57:42+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 15,
+  "implied_move": 0.09957032171749264,
+  "rel_spread": {
+   "call": 1.3220338983050848,
+   "put": 1.1869918699186992
+  },
+  "oi_atm": 22.0,
+  "oi_sum": 22.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
