@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "SNDK",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:55.706149-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/sandisk-report-first-quarter-fiscal-year-2027-results-october-29-2026-2026-09-29",
+  "published_et": "2026-09-29T17:30-04:00",
+  "quote": "linkedin facebook x email reddit MILPITAS, Calif. --(BUSINESS WIRE)-- Sandisk Corporation (NASDAQ: SNDK) announced today that it will hold its fiscal first quarter earnings conference call on Thursday, October 29, 2026 , at 1:30 p.m. Pacific Time .",
+  "title": "Sandisk to Report First Quarter Fiscal Year 2027 Results on October 29, 2026",
+  "retrieved_et": "2026-10-08T23:06:07.066828-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 1383.0,
+  "expiry": "2026-10-30",
+  "strike": 1382.5,
+  "call": {
+   "bid": 52.0,
+   "ask": 53.0,
+   "openInterest": 37.0,
+   "lastPrice": 52.6,
+   "impliedVolatility": 1.033513133239746,
+   "lastTradeDate": "2026-10-28T18:15:58+00:00"
+  },
+  "put": {
+   "bid": 59.9,
+   "ask": 60.8,
+   "openInterest": 1.0,
+   "lastPrice": 60.0,
+   "impliedVolatility": 1.222934793548584,
+   "lastTradeDate": "2026-10-28T18:15:25+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.08159797541576283,
+  "rel_spread": {
+   "call": 0.01904761904761905,
+   "put": 0.014913007456503705
+  },
+  "oi_atm": 38.0,
+  "oi_sum": 5695.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
