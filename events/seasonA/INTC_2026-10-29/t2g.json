@@ -1,0 +1,113 @@
+{
+ "track": "T2G",
+ "event": "INTC_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.47,
+  "thesis": "Despite a 24% one-month pullback lowering expectations, Intel faces intense scrutiny over elevated capital expenditure and cash burn following its $17B equity raise and recent $2.3B quantum acquisition, in a sector with sub-50% earnings hit rates.",
+  "reasons": [
+   "Semis cluster historically underperforms on earnings open reactions with a 47.9% win rate.",
+   "Last quarter's print produced a 94.6% EPS beat yet the stock traded down -0.77% at open, showing high hurdle rates for positive price reaction.",
+   "Recent $15B+ share issuance at $95 and $2.3B acquisition of Classiq have stoked market skepticism regarding ongoing free cash flow and margin discipline.",
+   "Options market exhibits negative call-minus-put IV skew (-0.084) and puts trade at a premium IV of 1.29 vs 1.21 for calls, signaling continued downside protection demand."
+  ],
+  "deciding_variable": "Q4 gross margin guidance and free cash flow commentary amidst massive ongoing foundry and acquisition capex.",
+  "prior": {
+   "p": 0.479,
+   "from": "semis cluster base rate (n=434, t0_hit=0.479)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Prior starts at 0.479 from the semis cluster. Modest de-risking from the recent -18.5% 1-month drawdown provides some support near the $95 offering level, but cash burn concerns, elevated valuation (43.4x forward P/E), and last quarter's negative reaction to an earnings beat nudge confidence slightly lower to 0.47.",
+  "theses": [
+   {
+    "expected": "Gross margin and DCAI revenue guide exceed consensus comfortably, reassuring markets after the sharp 24% pullback.",
+    "mechanism": "Short-term relief rally as shares reclaim the $95 secondary offering level on confirmation of stable 18A manufacturing yields and AI server momentum.",
+    "wrong_if": "Capex guidance is revised higher or foundry ramp losses widen further, exacerbating cash flow concerns."
+   },
+   {
+    "expected": "Q3 numbers meet midpoint expectations but Q4 margin or capex guidance disappoints.",
+    "mechanism": "Investors punish high multiple (43x P/E) on persistent capital intensity and dilution worries, opening lower.",
+    "wrong_if": "Management provides definitive commercial wafer customer wins for Intel 18A/14A that overshadow near-term spend."
+   },
+   {
+    "expected": "Strong top-line beat driven by DCAI and client AI, but offset by conservative forward guidance.",
+    "mechanism": "Similar to Q2 print where huge EPS surprise yielded a flat-to-down open (-0.77%) due to heavy investment overhead.",
+    "wrong_if": "The stock's pre-earnings 18.5% drawdown has already discounted conservative forward guide."
+   }
+  ],
+  "key_observations": [
+   "Q3 DCAI and Intel Foundry segment revenue vs $6.3B and $5.8B in Q2",
+   "Non-GAAP gross margin relative to the 42.0% guidance midpoint",
+   "Q4 2026 revenue and EPS guidance ranges",
+   "Full-year 2026 capex forecast and cash from operations trends following the Classiq acquisition"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/INTC_2026-10-29/gate.json",
+    "published": "2026-10-28T14:31:18.538337-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/INTC_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:18.538337-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000155/q226earningsrelease.htm",
+    "published": "2026-07-23T16:09:00-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/50863/000119312526346806/d117670d8k.htm",
+    "published": "2026-08-12T16:05:07-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/28/intel-just-fell-24-in-a-month-what-will-it-take-to-get-intc-stock-back-above-100/?.tsrc=rss",
+    "published": "2026-10-28T14:09:33-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/intel-just-made-a-2-3-billion-quantum-buy-and-is-spending-again-can-cash-flow-keep-up?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T13:28:43-04:00",
+    "dossier_item": "I8"
+   }
+  ],
+  "decided_et": "2026-10-28T16:15:13-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 13121,
+   "candidatesTokenCount": 856,
+   "totalTokenCount": 15360,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 13121
+    }
+   ],
+   "thoughtsTokenCount": 1383,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
