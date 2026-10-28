@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "MSTR",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:24.889482-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/strategy-announces-earnings-release-date-and-live-video-webinar-third-quarter-2026",
+  "published_et": "2026-10-08T08:00-04:00",
+  "quote": "LuxSE: STRE), the largest corporate holder of bitcoin and the world’s first Bitcoin Treasury Company , today announced it will report its financial results for the third quarter of 2026 after the U.S . financial markets close on Thursday, October 29, 2026 and will host a live Video Webinar at 5:00 p.m. Eastern Time that day to discuss the results.",
+  "title": "Strategy Announces Earnings Release Date and Live Video Webinar for Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T23:04:16.285319-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 140.41000366210938,
+  "expiry": "2026-10-30",
+  "strike": 140.0,
+  "call": {
+   "bid": 4.3,
+   "ask": 4.35,
+   "openInterest": 1673.0,
+   "lastPrice": 4.34,
+   "impliedVolatility": 0.8120135986328124,
+   "lastTradeDate": "2026-10-28T18:16:13+00:00"
+  },
+  "put": {
+   "bid": 4.85,
+   "ask": 4.95,
+   "openInterest": 3935.0,
+   "lastPrice": 4.88,
+   "impliedVolatility": 1.0065967639160154,
+   "lastTradeDate": "2026-10-28T18:15:26+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.06570044697242203,
+  "rel_spread": {
+   "call": 0.011560693641618458,
+   "put": 0.02040816326530623
+  },
+  "oi_atm": 5608.0,
+  "oi_sum": 22612.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
