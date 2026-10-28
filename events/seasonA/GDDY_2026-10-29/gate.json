@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "GDDY",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:16.410357-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/godaddy-inc-announce-third-quarter-2026-financial-results-thursday-october-29-2026",
+  "published_et": "2026-10-08T16:30-04:00",
+  "quote": "linkedin facebook x email reddit TEMPE, Ariz. , Oct. 8, 2026 /PRNewswire/ -- GoDaddy Inc. (NYSE: GDDY) will release financial results for the third quarter of 2026 on Thursday, October 29, 2026 , after the U.S . stock market closes.",
+  "title": "GoDaddy Inc. to Announce Third Quarter 2026 Financial Results on Thursday, October 29, 2026",
+  "retrieved_et": "2026-10-19T09:41:27.181928-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 106.2249984741211,
+  "expiry": "2026-10-30",
+  "strike": 106.0,
+  "call": {
+   "bid": 2.75,
+   "ask": 6.7,
+   "openInterest": 42.0,
+   "lastPrice": 4.3,
+   "impliedVolatility": 1.2021524267578125,
+   "lastTradeDate": "2026-10-28T16:03:24+00:00"
+  },
+  "put": {
+   "bid": 2.35,
+   "ask": 6.2,
+   "openInterest": 3.0,
+   "lastPrice": 5.0,
+   "impliedVolatility": 1.1435589697265625,
+   "lastTradeDate": "2026-10-28T16:24:32+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.08472581905654357,
+  "rel_spread": {
+   "call": 0.835978835978836,
+   "put": 0.9005847953216374
+  },
+  "oi_atm": 45.0,
+  "oi_sum": 110.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
