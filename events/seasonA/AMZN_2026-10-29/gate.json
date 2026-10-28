@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "AMZN",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:00.241648-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/amazoncom-webcast-third-quarter-2026-financial-results-conference-call-2026-10-15",
+  "published_et": "2026-10-15T16:01-04:00",
+  "quote": "linkedin facebook x email reddit SEATTLE --(BUSINESS WIRE)-- Amazon.com, Inc. (NASDAQ: AMZN) announced today that it will hold a conference call to discuss its third quarter 2026 financial results on Thursday, October 29, 2026 , at 2:00 p.m. PT / 5:00 p.m. ET .",
+  "title": "Amazon.com to Webcast Third Quarter 2026 Financial Results Conference Call",
+  "retrieved_et": "2026-10-15T20:58:46.015176-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 253.0,
+  "expiry": "2026-10-30",
+  "strike": 252.5,
+  "call": {
+   "bid": 9.95,
+   "ask": 10.15,
+   "openInterest": 6011.0,
+   "lastPrice": 10.05,
+   "impliedVolatility": 1.0722702636718753,
+   "lastTradeDate": "2026-10-28T18:14:55+00:00"
+  },
+  "put": {
+   "bid": 10.05,
+   "ask": 10.35,
+   "openInterest": 1289.0,
+   "lastPrice": 10.17,
+   "impliedVolatility": 1.1435589697265625,
+   "lastTradeDate": "2026-10-28T18:12:31+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.0800395256916996,
+  "rel_spread": {
+   "call": 0.019900497512437915,
+   "put": 0.029411764705882252
+  },
+  "oi_atm": 7300.0,
+  "oi_sum": 40841.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
