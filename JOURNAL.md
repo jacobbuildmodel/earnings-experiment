@@ -9,6 +9,23 @@
 
 ---
 
+## 2026-10-29 (Thu) 09:40 ET — the funder wants results before the record can give a verdict (Gate 1, RQ1, all RQs)
+- **What happened:** Jacob asked for a Stage 1 review on Tue Nov 3 (SGT): results he can use to judge whether the
+  model is useful, not redundant and worth funding, presented like a PhD qualifying review. The plan put Gate 1 in
+  early December, after Season A ends on Nov 20.
+- **What it taught:** at history's per-event Sharpe of 0.087, a real premium shows a t of about 0.9 at 100 events.
+  An honest review three weeks into the season can show that the record is truthful and whether the live premium
+  contradicts history. It cannot show that the premium is real. Saying so before the data is the only way a weak t
+  is not read later as failure, or a lucky one as proof.
+- **The uncomfortable number:** the weekly AI allowance read 85% on Thursday morning, a day ahead of the estimate.
+  The experiment outgrew the plan's allowance this week, so capacity is part of the funding question, not an aside.
+- **What changed:** `registry/D017_stage1_review_v1.md` was frozen before any look. It sets the data cut, six
+  pillars, the words each result may use, a firewall (the look may inform funding only) and the evidence-to-funding
+  table. It also registers the global multiplicity view. Plan: `ops/stage1_plan_2026-11.md`. The build waits for
+  Monday's reset.
+
+---
+
 ## 2026-10-28 (Wed) 09:55 ET — an alarm that is always on reads as off (instrument reliability, all RQs)
 - **What happened:** health had read RED every day since at least Oct 20. The cause was the same each time: DPZ's 100
   leftover shares (sold at 09:35 ET today) and its permanent flag, which also turned ~10 paper-options runs a day red. A new RED, such as a
