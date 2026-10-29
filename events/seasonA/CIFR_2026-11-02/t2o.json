@@ -1,0 +1,167 @@
+{
+ "track": "T2O",
+ "event": "CIFR_2026-11-02",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.54,
+  "thesis": "CIFR has sold off hard into the print after convert dilution, with 27% short interest and bullish option skew, while the sector shrugged off strong quarters and has rate and leverage worries; the net edge over the base rate is roughly zero.",
+  "reasons": [
+   "Deeply oversold: down 49% in 1m and 72% off the 52w high, with short interest of 27% of float, which leaves room for a relief or squeeze move",
+   "Option positioning tilts bullish: call IV above put IV, put/call volume of 0.24 and negative put skew",
+   "Last 4 BMO prints rose 3 of 4 times despite EPS misses; the market trades leases and delivery milestones, not EPS",
+   "Peer APLD fell more than 30% after a record quarter, and the sector is under pressure from rate-hike fears hitting debt-heavy builders",
+   "Barber Lake delivery was pushed out to Q4-26/Q1-27, and the cost overrun ($359M borne by Cipher) could dominate the call"
+  ],
+  "deciding_variable": "Whether the release includes new lease signings or a reaffirmed Barber Lake and Black Pearl delivery and rent schedule, versus further delays, cost overruns or new financing needs.",
+  "prior": {
+   "p": 0.55,
+   "from": "I3 by_cluster ai_infra t0_hit 0.558 (n=43), cross-checked against BMO 0.548 and overall ~0.54; the crypto_proxy rate of 0.25 rests on only n=8 and is flagged insufficient, so it was ignored"
+  },
+  "leak_probe": "I don't know: that earnings report (November 2, 2026) hasn't happened yet as of today (October 29, 2026), and it's also past my knowledge cutoff, so there's no post-earnings stock move to report.",
+  "moved_from_prior": "Roughly a wash, net about -0.01. Oversold conditions, short interest, bullish skew and the reaction history push up about +0.03. Sector contagion (APLD falling after a strong print), leverage and rate fears, weekend gap risk across a Fri-open to Mon-open window, and possible lingering convert-hedge selling push down about -0.04.",
+  "theses": [
+   {
+    "expected": "Gap up on oversold relief",
+    "mechanism": "New lease or site announcement plus confirmed rent commencement at Black Pearl and Barber Lake triggers short covering",
+    "wrong_if": "No new tenant news and capex or overrun guidance rises"
+   },
+   {
+    "expected": "Gap down",
+    "mechanism": "Barber Lake slips again or the funding gap widens, and the sector sell-on-news pattern seen with APLD repeats",
+    "wrong_if": "Management announces fully funded builds and new contracted revenue"
+   },
+   {
+    "expected": "Flat to small move driven by the macro or crypto weekend",
+    "mechanism": "Results are largely pre-known (BTC mining revenue declining, early HPC rent), so the weekend sector tape dominates",
+    "wrong_if": "The release contains material surprise news"
+   }
+  ],
+  "key_observations": [
+   "New hyperscaler or AI lab lease announcements, or progress on the Apollo site",
+   "Barber Lake data hall delivery timing and first rent in Q4-26",
+   "Black Pearl rent run-rate and HPC revenue recognized",
+   "Cost overrun estimates and incremental funding needs or equity issuance",
+   "Whether the greenshoe on the $150M of additional notes was exercised, plus dilution commentary",
+   "Sector and BTC move over the weekend"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CIFR_2026-11-02/gate.json",
+    "published": "2026-10-29T14:31:00.249545-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CIFR_2026-11-02/factors.json",
+    "published": "2026-10-29T14:31:00.249545-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000038/q226_earningsxprxdraftxvf.htm",
+    "published": "2026-08-04T07:37:42-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000119312526424297/d313847d8k.htm",
+    "published": "2026-10-16T17:26:24-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000119312526421035/d77312d8k.htm",
+    "published": "2026-10-14T07:49:45-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm",
+    "published": "2026-09-25T08:04:27-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/26/applied-digital-keeps-cratering-this-analyst-keeps-insisting-its-going-to-jump-by-390/?.tsrc=rss",
+    "published": "2026-10-26T10:45:17-04:00",
+    "dossier_item": "I16"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cipher-digital-slides-30-after-zero-coupon-note-sale-despite-9-billion-barber-lake-backlog?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-25T09:06:49-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/applied-digital-just-dropped-31-in-a-month-is-it-time-to-sell-or-load-up?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-23T14:11:39-04:00",
+    "dossier_item": "I18"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cipher-digital-lost-31-in-a-week-cantor-fitzgerald-still-sees-112-upside?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-22T10:51:23-04:00",
+    "dossier_item": "I21"
+   }
+  ],
+  "decided_et": "2026-10-29T17:55:17-04:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 28226,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1501,
+   "output_tokens_details": {
+    "thinking_tokens": 331
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 28226,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1501,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 28226,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 28226
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.2585957
+ }
+}
