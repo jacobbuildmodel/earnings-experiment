@@ -1,0 +1,681 @@
+{
+ "event": "CIFR_2026-11-02",
+ "season": "seasonA",
+ "built_et": "2026-10-29T14:31:21-04:00",
+ "cutoff_et": "2026-10-29T14:31:00.249545-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/CIFR_2026-11-02/gate.json",
+   "published": "2026-10-29T14:31:00.249545-04:00",
+   "data": {
+    "ticker": "CIFR",
+    "report_date": "2026-11-02",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-30"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-02"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-02"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-09"
+     },
+     "reaction_day": "2026-11-02"
+    },
+    "snapshot_session": "2026-10-29",
+    "captured_et": "2026-10-29T14:31:00.249545-04:00",
+    "options": {
+     "spot": 8.050000190734863,
+     "expiry": "2026-11-06",
+     "strike": 8.0,
+     "call": {
+      "bid": 0.78,
+      "ask": 0.82,
+      "openInterest": 1931.0,
+      "lastPrice": 0.81,
+      "impliedVolatility": 1.54297103515625,
+      "lastTradeDate": "2026-10-29T18:08:51+00:00"
+     },
+     "put": {
+      "bid": 0.64,
+      "ask": 0.67,
+      "openInterest": 5685.0,
+      "lastPrice": 0.6,
+      "impliedVolatility": 1.3554719726562499,
+      "lastTradeDate": "2026-10-29T17:41:19+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 4,
+     "implied_move": 0.18074533733236806,
+     "rel_spread": {
+      "call": 0.049999999999999906,
+      "put": 0.045801526717557293
+     },
+     "oi_atm": 7616.0,
+     "oi_sum": 7616.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/CIFR_2026-11-02/factors.json",
+   "published": "2026-10-29T14:31:00.249545-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.5966933587187815,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.4913111982458419,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.032451864662605634,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.09987023349930069,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.9761778768533326,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.4687079667743632,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.7241261101252627,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-04",
+       "session": "BMO",
+       "raw_return_A": -0.07152679982310017,
+       "eps_est": -0.13,
+       "eps_rep": -0.15,
+       "surprise_pct": -10.81,
+       "reaction_volume_ratio": 2.275798009125075
+      },
+      {
+       "date": "2026-05-05",
+       "session": "BMO",
+       "raw_return_A": 0.06950926217140707,
+       "eps_est": -0.04,
+       "eps_rep": -0.19,
+       "surprise_pct": -437.43,
+       "reaction_volume_ratio": 2.5995385589154094
+      },
+      {
+       "date": "2026-02-24",
+       "session": "BMO",
+       "raw_return_A": 0.09269667624403932,
+       "eps_est": 0.07,
+       "eps_rep": -0.14,
+       "surprise_pct": -290.92,
+       "reaction_volume_ratio": 1.5120299924406013
+      },
+      {
+       "date": "2025-11-03",
+       "session": "BMO",
+       "raw_return_A": 0.14528206428631218,
+       "eps_est": 0.06,
+       "eps_rep": 0.1,
+       "surprise_pct": 60.0,
+       "reaction_volume_ratio": 2.687175723817078
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.268635571074541,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -10.81,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.16,
+      "7daysAgo": -0.1625,
+      "30daysAgo": -0.1625,
+      "60daysAgo": -0.1625,
+      "90daysAgo": -0.095,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.6842105263157895,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.16,
+      "low": -0.46,
+      "high": 0.03,
+      "yearAgoEps": 0.1,
+      "numberOfAnalysts": 4,
+      "growth": -2.6,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 3.0625,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.2684,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 36.594795,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 17.472761,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": -0.43,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 3338922240,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.40909,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.18074533733236806,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.18749906250000015,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.17578037109375,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.2377385841990819,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.5668418674340618,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 10246.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.484587530889097,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.13272776134216913,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 160,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Monday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": -0.42988637667852636,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -3.162056609091275,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.5971192154107661,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.03347351123639297,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.09987023349930069,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.9765167520679956,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.396222542556431,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.7730389315701344,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 3337469588.9601974,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.05725685130798026,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.0708312015243978,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000038/q226_earningsxprxdraftxvf.htm",
+   "published": "2026-08-04T07:37:42-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q226_earningsxprxdraftxvf.htm EX-99.1 Document Exhibit 99.1 Cipher Digital Provides Second Quarter 2026 Business Update Black Pearl Data Center Delivery Accelerated Acquired Option for 900 MW Site Near San Antonio, Texas Completed Project-Level Financing to Fully Fund Third Data Center Development NEW YORK—August 4, 2026— Cipher Digital Inc. (NASDAQ: CIFR) (“Cipher” or the “Company”), a leading developer, owner, and operator of industrial-scale data centers, today announced its second quarter 2026 financial results, with an update on its operations and business strategy. As part of this update, Cipher disclosed an amendment to its Black Pearl campus lease with its investment-grade hyperscale tenant, accelerating the development timeline of initial capacity at the tenant's request. Under the amended terms, Cipher began delivering data center capacity at the beginning of August, two months ahead of the original schedule. “We are proud to have delivered our first HPC data center capacity ahead of schedule and announce that rent has commenced at the site,” said Tyler Page, Chief Executive Officer. “This accelerated delivery proves we can execute at scale, with speed, and without compromise in a challenging environment. As we continue to acquire new sites and sign new deals, our foundation of disciplined execution is what truly sets us apart.” Cipher also today announced it has acquired an option on a new site called Apollo for up to 900 MW, located within 25 miles of San Antonio, Texas. The site spans approximately 288 acres and has been submitted as a studied load in Batch Zero through ERCOT's updated process. The site's flat, buildable terrain makes it well-suited for large-scale data center development, and its proximity to San Antonio positions it favorably for fiber connectivity. Cipher moved quickly to secure the option, reflecting the Company's ability to identify and act on attractive opportunities as they arise in the market. In the second quarter, the Company also built on strong momentum from previous quarters by completing another highly successful bond offering. The offering fully funded the Company’s Stingray development through substantial completion and reimbursed Cipher for $56.7 million of previously funded project expenditures. “A core strength of our strategy is its repeatability, and in the second quarter, we demonstrated that once again. We accessed capital markets to fund another one of our leases, secured an option on a new site, and delivered accelerated capacity to our tenant, further building our position as a leading HPC development platform,\" said Tyler Page. “We look forward to carrying this momentum into the third quarter, where we expect to make significant additional progress.” Finance and Operations Highlights • First data center capacity at Black Pearl delivered in August, with rent commenced • Secured option for new Apollo data center site with up to 900 MW near San Antonio, Texas • Completed bond offering to fully fund Stingray data center development • Barber Lake data center continues to progress towards completion as tenant has commenced beneficial use of the facility, including partial occupancy of the building and deployment of network racks • Black Pearl data center continues to progress towards completion with remaining Phase I data halls moving through MEP fit-out and Phase II concrete foundations, building steel, and underground electrical in progress • Stingray data center construction continues to progress on schedule, with earthwork, grading, pad preparation, and underground electrical work all underway • Q2 2026 Revenue of $25 million and Adjusted EBITDA of negative $30 million Business Update Call and Webcast The live webcast and a webcast replay of the conference call can be accessed from the investor relations section of Cipher’s website at https://investors.cipherdigital.com/. About Cipher Cipher develops and operates industrial-scale data centers engineered for next-generation computing at the highest standards of innovation, precision, and excellence. The Company brings together deep expertise across power sourcing, construction, engineering, operations, real estate, and technology to deliver high-quality data centers purpose built for HPC workloads. By partnering with premier tenants, Cipher seeks to meet the growing demand for industrial-scale data center capacity and become a leading HPC development platform that is built for hyperscale. To learn more about Cipher, please visit https://www.cipherdigital.com/. Forward Looking Statements This press release contains certain forward-looking statements within the meaning of the federal securities laws of the United States. The Company intends such forward-looking statements to be covered by the safe harbor provisions for forward-looking statements contained in the Private Securities Litigation Reform Act of 1995 and includes this statement for purposes of complying with these safe harbor provisions. Any statements made in this press release that are not statements of historical fact, such as, statements about the Company’s beliefs and expectations regarding its future results of operations and financial position, its planned business model and strategy, its data center development, timing and likelihood of success, capacity, functionality and timing of operation of data centers, expectations regarding the operations of data centers, potential strategic initiatives, such as joint ventures and partnerships, and management plans and objectives, are forward-looking statements and should be evaluated as such. These forward-looking statements generally are identified by the words “may,” “will,” “should,” “expects,” “plans,” “anticipates,” “could,” “seeks,” “intends,” “targets,” “projects,” “contemplates,” “believes,” “estimates,” “strategy,” “future,” “forecasts,” “opportunity,” “predicts,” “potential,” “would,” “will likely result,” “continue,” and similar expressions (including the negative versions of such words or expressions). These forward-looking statements are based upon estimates and assumptions that, while considered reasonable by Cipher and its management, are inherently uncertain. Such forward-looking statements are subject to risks, uncertainties, and other factors that could cause actual results to differ materially from those expressed or implied by such forward-looking statements. New risks and uncertainties may emerge from time to time, and it is not possible to predict all risks and uncertainties. Many factors could cause actual future events to differ materially from the forward-looking statements in this press release, including but not limited to: volatility in the price of Cipher’s securities due to a variety of factors, including changes in the competitive and regulated industry in which Cipher operates, Cipher’s evolving business model and strategy and efforts it may make to modify aspects of its business model or engage in various strategic initiatives, variations in performance across competitors, changes in laws and regulations affecting Cipher’s business, and the ability to implement business plans, forecasts, and other expectations and to identify and realize additional opportunities. The foregoing list of factors is not exhaustive. You should carefully consider the foregoing factors and the other risks and uncertainties described in the “Risk Factors” section of Cipher’s Annual Report on Form 10-K for the fiscal year ended December 31, 2025 filed with the Securities and Exchange Commission (“SEC”) on February 24, 2026, Cipher’s Quarterly Report on Form 10-Q for the quarterly period ended June 30, 2026 to be filed with the SEC, and in Cipher’s subsequent filings with the SEC. These filings identify and address other important risks and uncertainties that could cause actual events and results to differ materially from those contained in the forward-looking statements. Forward-looking statements speak only as of the date they are made. Readers are cautioned not to put undue reliance on forward-looking statements, and Cipher assumes no obligation and, except as required by law, does not intend to update or revise these forward-looking statements, whether as a result of new information, future events, or otherwise. The Company maintains a dedicated investor website at https://investors.cipherdigital.com/investors (“Investors’ Website”). Financial and other important information regarding the Company is routinely posted on and accessible through the Investors Website. Cipher uses its Investors’ Website as a distribution channel of material information about the Company, including through press releases, investor presentations, reports and notices of upcoming events. Cipher intends to utilize its Investors’ Website as a channel of distribution to reach public investors and as a means of disclosing material non-public information for complying with disclosure obligations under Regulation FD. In addition, you may sign up to automatically receive email alerts and other information about the Company by visiting the “Email Alerts” option under the Investors Resources section of Cipher’s Investors’ Website and submitting your email address. Non-GAAP Financial Measures This press release includes supplemental financial measures Adjusted EBITDA, that excludes the impact of (i) interest income, (ii) interest expense, (iii) income taxes, (iv) depreciation and amortization, (v) the non-cash change in fair value of derivative asset, (vi) share-based compensation expense, (vii) nonrecurring gains and losses, (viii) the non-cash change in fair value of warrant liability, (ix) non-cash losses related to miners reclassified as held for sale, (x) impairment of long-lived assets, and (xi) non-cash disposal of miners. Beginning with the three months ended March 31, 2026, the Company changed its primary non-GAAP performance from \"Adjusted Earnings (Loss)\" to Adjusted EBITDA. Adjusted EBITDA differs from Adjusted Earnings (Loss) only in that, in addition to the adjustments previously made to compute Adjusted Earnings (Loss), Adjusted EBITDA also excludes interest expense, interest income, and current income tax expense. We believe Adjusted EBITDA is more representative of the Company's core operating performance, more comparable to measures used by industry peers, and more useful to investors evaluating our underlying business. The reconciliation table below presents Adjusted EBITDA for both periods presented under the Company’s new methodology. The Company does not intend to report Adjusted Earnings (Loss) in future periods. These supplemental financial measures are not measurements of financial performance under accounting principles generally accepted in the United States (“GAAP”) and, as a result, these supplemental financial measures may not be comparable to similarly titled measures of other companies. Management uses these non-GAAP financial measures internally to help understand, manage, and evaluate our business performance and to help make operating decisions. We believe the use of these non-GAAP financial measures can also facilitate comparison of our operating results to those of our competitors by excluding certain items that vary in our industry based on company policy. Non-GAAP financial measures are subject to material limitations as they are not in accordance with, or a substitute for, measurements prepared in accordance with GAAP. For example, we expect that share-based compensation expense, which is excluded from the non-GAAP financial measure, will continue to be a significant recurring expense over the coming years and is an important part of the compensation provided to certain employees, officers and directors. Similarly, we expect that depreciation and amortization will continue to be a recurring expense over the term of the useful life of the related assets. Our non-GAAP financial measures are not meant to be considered in isolation and should be read only in conjunction with our condensed consolidated financial statements, which have been prepared in accordance with GAAP. We rely primarily on such condensed consolidated financial statements to understand, manage and evaluate our business performance and use the non-GAAP financial measures only supplementally. Contacts: Investor Contact: Courtney Knight Head of Investor Relations at Cipher Digital courtney.knight@cipherdigital.com Media Contact: Ryan Dicovitsky Dukas Linden Public Relations CipherDigital@DLPR.com CIPHER DIGITAL INC. CONDENSED CONSOLIDATED BALANCE SHEETS (in thousands, except for share and per share amounts) (unaudited) June 30, 2026 December 31, 2025 ASSETS Current assets Cash and cash equivalents $ 831,829 $ 628,263 Restricted cash, current 3,188,452 1,761,292 Accounts receivable 20,084 687 Receivables, related party - 271 Prepaid expenses and other current assets 34,477 7,977 Bitcoin 37,802 125,400 Miners held for sale - 94,879 Derivative asset, current 19,436 34,090 Total current assets 4,132,080 2,652,859 Restricted cash, noncurrent 539,506 275,076 Property and equipment, net 2,132,585 633,417 Intangible assets, net 76,929 77,388 Investment in equity investees - 29,400 Derivative asset, non-current 3,244 22,720 Operating lease right-of-use asset 36,212 11,321 Security deposits 27,489 27,732 Other noncurrent assets 553,409 561,995 Total assets $ 7,501,454 $ 4,291,908 LIABILITIES, REDEEMABLE NONCONTROLLING INTEREST, AND STOCKHOLDERS’ EQUITY Current liabilities Accounts payable $ 289,091 $ 40,064 Accrued expenses and other current liabilities 356,746 90,086 Finance lease liability, current portion 4,475 4,237 Operating lease liability, current portion 2,242 1,731 Warrant liability 632,060 525,160 Short-term borrowings 94,484 37,793 Total current liabilities 1,379,098 699,071 Deferred revenue 25,512 - Long-term borrowings, net 5,446,866 2,711,648 Asset retirement obligations 23,509 33,696 Finance lease liability 795 3,094 Operating le",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000041/cifr-20260630.htm",
+   "published": "2026-08-04T09:07:07-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations. You should read the following discussion and analysis of our financial condition and results of operations together with our unaudited condensed consolidated financial statements and related notes included elsewhere in this Quarterly Report. This discussion contains forward‑looking statements based upon current plans, expectations and beliefs involving risks and uncertainties. Our actual results may differ materially from those anticipated in these forward‑looking statements as a result of various factors, including those set forth in Part II, Item 1A, “Risk Factors” and other factors set forth in other parts of this Quarterly Report. Unless the context otherwise requires, references in this Quarterly Report to the “Company,” “Cipher,” “Cipher Digital,” “we,” “us” or “our” refers to Cipher Digital Inc. and its consolidated subsidiaries, unless otherwise indicated. Overview We are dedicated to developing and operating industrial-scale data centers engineered for next-generation computing at the highest standards of innovation, precision, and excellence. Over the past several years, we have intentionally evolved from a pure-play bitcoin miner into a vertically integrated data center development and operations platform focused on energy-intensive compute infrastructure. Our vertical integration spans critical stages of the data center value chain, including land and power origination and interconnection, site development, data center design and construction, oversight and ongoing facility operations. Fundamentally, we bring together construction, engineering, operations, power, real estate and technology expertise to deliver high quality, purpose-built data centers that meet tenants’ needs. Our in-house teams source and control industrial-scale sites with access to substantial electric power capacity, advance grid interconnection and substation development, and manage the design and construction of data center campuses. We also operate and maintain energy-intensive data center facilities, leveraging operational expertise developed through our employees’ extensive experience managing Tier III HPC data centers and large, flexible electrical loads. Against a backdrop of increasing demand for AI technology and access to energized HPC data centers to meet consumers’ demands for such technology, we believe we play an important part of the AI economy and we expect to benefit from powerful, long-term growth drivers. While bitcoin mining has been an important component of our business model in prior years, our strategy increasingly emphasizes the development of industrial-scale data centers that can be leased to hyperscalers and other HPC customers under long-term contracts, while retaining the flexibility to deploy bitcoin mining as an interim or complementary use of power. On February 20, 2026, we changed our name to “Cipher Digital Inc.” Rebranding to “Cipher Digital” aligns with our corporate strategy to scale into a leading HPC data center developer and operator, as we leverage our existing site pipeline and source additional sites, partnering with premier tenants, and developing and operating industry-leading data centers purpose-built for HPC. Our goal is to monetize our power assets and manage capital efficiently through market cycles in order to align our infrastructure with the growing global demand for AI-driven compute capacity. Our data center portfolio consists of approximately 5.3 gigawatts (“GW”) of capacity across 11 sites, at various stages of interconnection. We are currently developing 700 MW of HPC data center facilities across three sites for hyperscaler tenants, and we currently operate approximately 207 MW of capacity at one bitcoin mining data center in Texas. We also maintain a pipeline of approximately 4.4 GW across seven sites in Texas and one additional site in Ohio. We have executed HPC leases at three of our data centers and are currently marketing potential leases at others of our pipeline sites. We believe we have a demonstrated ability to source high-quality sites suitable for HPC tenants, with characteristics like proximity to major metropolitan areas, ample acreage, diverse fiber routes, and available interconnection infrastructure. We have experienced in-house construction, engineering and operations teams and project management competencies. We have demonstrated an ability to access and manage capital in a disciplined manner. A significant component of our current and future growth is expected to be generated through the development of our existing portfolio and acquisition of new sites. We are focused on developing the remaining sites in our pipeline for future HPC tenants, and evaluating additional sites, locations, and partnerships to expand our pipeline that are suitable for HPC tenants. From time to time, we may also look to sell individual assets that we do not consider to be core to our business and growth strategy. For further details on our pipeline of future sites that we expect to be suitable for HPC, see “ Business—Site Pipeline ” of our Annual Report on Form 10-K. 41 Recent Developments On July 23, 2026, we entered into an option agreement to acquire a 900 MW site in Texas. On July 24, 2026, we amended the HPC lease at the Black Pearl Facility, which accelerated delivery of the first capacity to July 31, 2026. 42 Factors Affecting Our Results of Operations There have been no material changes to the “Factors Affecting Our Results of Operations” in the “Management’s Discussion and Analysis of Financial Condition and Results of Operations” section of our 2025 Form 10-K. Our financial position and results of operations depend to a significant extent on those factors. 43 Summary of Bitcoin Inventory The following table presents information about our Bitcoin inventory for the six months ended June 30, 2026, including bitcoin production and sales of bitcoin (dollar amounts in thousands): Quantity Amounts Opening balance 1,433 $ 125,400 Bitcoin received from equity investees 34 2,772 Bitcoin received from mining activities 798 60,129 Proceeds from sales of bitcoin (1,619) (123,428) Realized losses on sale of bitcoin — (47,732) Unrealized gains on fair value of bitcoin — 20,661 Ending balance 646 $ 37,802 44 Components of Our Results of Operations Revenue Our current revenue consists of bitcoin earned through mining activities at the Odessa and Black Pearl Facilities. We currently participate in third-party mining pools to mine bitcoin. The provision of computing power in accordance with the mining pool operator’s terms of service is the only performance obligation in our contract with the mining pool operator. We are entitled to a fractional share of the set cryptocurrency award from the mining pool operator (referred to as a “block reward”) and potentially transaction fees generated from blockchain users and distributed to individual miners by the mining pool operator. Our fractional share of the block reward is based on the proportion of computing power we contributed to the mining pool operator to the total computing power contributed by all mining pool participants in solving the current algorithm, over the contract term. The block reward is pre-determined in the protocol governing the relevant blockchain. Our proportionate share of transaction fees is based on our contributed share of hashrate as a percentage of total network hashrate during the contract term. The transaction fees are the aggregate fees paid by parties whose transactions are included in the block. Bitcoin earned is measured at fair value at contract inception and is recognized in revenue over the contract term as hashrate is provided. Cost of revenue Cost of revenue consists of direct production costs of bitcoin mining operations, primarily electricity expenses, as well as other facilities costs, but excludes depreciation which is separately stated. Compensation and benefits Compensation and benefits includes payroll and payroll-related expenses, as well as stock based compensation awarded to employees of the Company. General and administrative expenses General and administrative expenses represent insurance expense, rent expense, professional fees, including accounting and audit, consulting, legal, public relations and/or investor relations expenses, non-income taxes and licenses, travel, and other expenses. We expect our general and administrative fees to remain high as we incur the ongoing costs of operating as a public company, including increased director and officer insurance costs, and increased travel and conference participation expenses. Depreciation Our depreciation expense consists mainly of depreciation for our miners and mining equipment, as well as depreciation associated with leasehold improvements and other capitalized assets. We capitalize the cost of our mining machines and record depreciation expense on a straight-line basis over the estimated useful life of the machines, which is generally three years. Leasehold improvements include capitalized asset retirement costs, which are amortized over the estimated useful life of the related asset. All other leasehold improvements are depreciated over the lesser of the estimated useful life of the asset or the remaining life of the related lease. Change in fair value of derivative asset and power sales The change in fair value of derivative asset represents the changes in fair value of the Luminant Power Agreement recorded during the reporting period. Equity in losses of equity investees Equity in losses of equity investees includes our share of the losses recorded by Alborz LLC, Bear LLC and Chief Mountain LLC prior to February 19, 2026, when we sold our interests in these joint ventures. Changes in fair value of bitcoin and realized gain/loss on sale of bitcoin All of our bitcoin is recorded as a current asset on our condensed consolidated balance sheet as we expect to regularly exchange our bitcoin held for fiat currency to fund our operating expenses. We adopted ASU 2023-08 Accounting 45 for and Disclosure of Crypto Assets (“ASU 2023-08”) effective January 1, 2023, which requires cryptocurrencies to be measured at fair value each reporting period with changes in fair value being reported in net income. The fair value of bitcoin has been highly volatile since we began to obtain bitcoin through our operating activities, which has impacted our operating results and we expect volatility in the fair value of bitcoin to continue for the foreseeable future. Provision for income taxes Our provision for income taxes primarily consists of U.S. deferred federal taxes. A valuation allowance is recorded against substantially all of our net deferred tax assets, which are composed primarily of federal and state net operating loss carryforwards, stock-based compensation, intangible assets other than goodwill, investments in joint ventures and lease liabilities; in addition, we have deferred tax liabilities resulting from our derivative and right-to-use assets. Our ability to offset our deferred tax liabilities with our deferred tax assets is limited due to restrictions on the ability to offset taxable income by more than eighty percent with federal net operating losses. As a result, we have recorded a deferred tax liability for the amount of future taxable income that is not expected to be covered by net operating losses. We evaluate our ability to recognize our deferred tax assets annually by considering all positive and negative evidence available as prescribed by the Financial Accounting Standards Board (“FASB”) under its general principles of Accounting Standards Codification (“ASC”) 740, Income Taxes . 46 Results of Operations The following table sets forth our results of operations for the periods indicated (in thousands): Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Revenue - bitcoin minin",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1819989/000119312526424297/d313847d8k.htm",
+   "published": "2026-10-16T17:26:24-04:00",
+   "form": "8-K",
+   "items": "1.01,2.03,3.02,7.01,9.01",
+   "text": "Item 1.01. Entry into a Material Definitive Agreement. Indenture and Notes On October 16, 2026, Cipher Digital Inc. (the “Company”) issued $850.0 million aggregate principal amount of its 0.00% Convertible Senior Notes due 2032 (the “Notes”). The Notes were issued pursuant to, and are governed by, an indenture (the “Indenture”), dated as of October 16, 2026, between the Company and U.S. Bank Trust Company, National Association, as trustee (the “Trustee”). Pursuant to the purchase agreement between the Company and the representatives of the initial purchasers of the Notes, the Company granted the initial purchasers a 13-day option to purchase up to an additional $150,000,000 aggregate principal amount of Notes. The Notes will be the Company’s senior, unsecured obligations and will be (i) equal in right of payment with the Company’s existing and future senior, unsecured indebtedness, including the Company’s existing $6.6 million principal amount of 1.75% Convertible Senior Notes due 2030 (the “2030 Notes”) that will remain outstanding following the Concurrent 2030 Notes Exchange (as defined below) and $1.3 billion principal amount of 0.00% Convertible Senior Notes due 2031; (ii) senior in right of payment to the Company’s existing and future indebtedness that is expressly subordinated to the Notes; (iii) effectively subordinated to the Company’s existing and future secured indebtedness, including the Company’s $200.0 million senior secured revolving credit facility (the “Revolving Credit Facility”), to the extent of the value of the collateral securing that indebtedness; and (iv) structurally subordinated to all existing and future indebtedness and other liabilities, including trade payables, and (to the extent the Company is not a holder thereof) preferred equity, if any, of the Company’s subsidiaries, including the subsidiary senior secured notes and the subsidiary guarantees of the Revolving Credit Facility. The Notes will not bear regular interest, and the principal amount of the Notes will not accrete. The Notes will mature on November 1, 2032, unless earlier repurchased, redeemed or converted. Prior to August 1, 2032, the Notes will be convertible only upon satisfaction of certain conditions and during certain period, and thereafter, the Notes will be convertible at any time until the close of business on the second scheduled trading day immediately preceding the maturity date. The Company will settle conversions by paying or delivering, as applicable,",
+   "exhibit_99_1": "EX-99.1 5 d313847dex991.htm EX-99.1 EX-99.1 Exhibit 99.1 CIPHER DIGITAL INC. NOTICE OF CHANGE IN DEFAULT SETTLEMENT METHOD 1.75% CONVERTIBLE SENIOR NOTES DUE 2030 (CUSIP/ISIN NUMBERS: 17253J AA4 / US17253JAA43)* October 16, 2026 Reference is made to the First Supplemental Indenture, dated as of May 22, 2025 (the “ Supplemental Indenture ”), entered into by and between Cipher Digital Inc., a Delaware corporation (f/k/a Cipher Mining Inc., the “ Issuer ”), and U.S. Bank Trust Company, National Association (the “ Trustee ”), to the Indenture, dated as of May 22, 2025, between the Issuer and the Trustee, and to the Issuer’s 1.75% Convertible Senior Notes due 2030 (the “ Notes ”) issued thereunder. This Notice is being delivered pursuant to clause (x) of the definition of the term “Default Settlement Method” set forth in Section 1.01 of the Supplemental Indenture. Any capitalized term used but not otherwise defined in this Notice has the meaning assigned to such term in the Supplemental Indenture. In accordance with clause (x) of the definition of the term “Default Settlement Method” set forth in Section 1.01 of the Supplemental Indenture, the Issuer hereby provides notice to the Holders, the Trustee and the Conversion Agent that the Default Settlement Method is hereby changed to Physical Settlement. As such, all Notes validly surrendered for conversion in accordance with the Supplemental Indenture on or after the date hereof will be settled using Physical Settlement as the Settlement Method unless otherwise specified by the Company in connection with any such conversion in accordance with the provisions of Section 5.03(A)(i) of the Supplemental Indenture. CIPHER DIGITAL INC. * No representation is made as to the correctness or accuracy of the CUSIP or ISIN numbers listed above in this Notice or printed on the Notes. CIPHER DIGITAL INC. NOTICE OF CHANGE IN DEFAULT SETTLEMENT METHOD 0.00% CONVERTIBLE SENIOR NOTES DUE 2031 (CUSIP/ISIN NUMBERS: 17253J AB2 / US17253JAB26)* October 16, 2026 Reference is made to the Indenture, dated as of September 30, 2025 (the “ Indenture ”), entered into by and between Cipher Digital Inc., a Delaware corporation (f/k/a Cipher Mining Inc., the “ Issuer ”), and U.S. Bank Trust Company, National Association (the “ Trustee ”) and to the Issuer’s 0.00% Convertible Senior Notes due 2030 (the “ Notes ”) issued thereunder. This Notice is being delivered pursuant to clause (x) of the definition of the term “Default Settlement Method” set f"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1819989/000119312526421035/d77312d8k.htm",
+   "published": "2026-10-14T07:49:45-04:00",
+   "form": "8-K",
+   "items": "8.01,9.01",
+   "text": "Item 8.01. Other Events. On October 14, 2026, Cipher Digital Inc. (the “Company”) issued a press release announcing the pricing of its $850.0 million aggregate principal amount of 0.00% convertible senior notes due 2032 (the “notes”) in a private offering to persons reasonably believed to be qualified institutional buyers in reliance on Rule 144A under the Securities Act of 1933, as amended. The Company granted the initial purchasers of the notes a 13-day option to purchase up to an additional $150.0 million aggregate principal amount of notes. Concurrently with the offering, in separate, privately negotiated transactions with a limited number of holders of its 1.75% Convertible Senior Notes due 2030 (the “2030 notes”), the Company expects to exchange approximately $165.9 million principal amount of the 2030 notes for aggregate consideration (inclusive of accrued interest) consisting of approximately 40.7 million shares of the Company’s common stock (the “Concurrent 2030 Notes Exchange”). A copy of the press release announcing the pricing of the offering and the Concurrent 2030 Notes Exchange is filed as Exhibit 99.1 to this Current Report on Form 8-K and is incorporated herein by reference. The information included in this Current Report on Form 8-K is neither an offer to sell nor a solicitation of an offer to buy any securities and does not constitute an offer to exchange or repurchase, or a notice of redemption with respect to, the 2030 notes. Item 9.01 Financial Statements and Exhibits. (d) Exhibits . Exhibit Number Description 99.1 Press Release of the Company, dated October 14, 2026 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Cipher Digital Inc. Date: October 14, 2026 /s/ William Iwaschuk William Iwaschuk Co-President & Chief Legal Officer",
+   "exhibit_99_1": "EX-99.1 2 d77312dex991.htm EX-99.1 EX-99.1 Exhibit 99.1 Cipher Digital Announces Pricing of Private Offering of $850.0 Million of 0.00% Convertible Senior Notes Due 2032 and Concurrent Exchange of Convertible Senior Notes Due 2030 NEW YORK – October 14, 2026 – Cipher Digital Inc. (NASDAQ:CIFR) (“Cipher” or the “Company”), a leading developer, owner and operator of industrial-scale data centers, today announced the pricing of its offering of $850.0 million aggregate principal amount of 0.00% convertible senior notes due 2032 (the “notes”) in a private offering (the “offering”) to persons reasonably believed to be qualified institutional buyers pursuant to Rule 144A under the Securities Act of 1933, as amended (the “Securities Act”). The issuance and sale of the notes are scheduled to settle on October 16, 2026, subject to customary closing conditions. Cipher granted the initial purchasers of the notes a 13-day option to purchase up to an additional $150.0 million aggregate principal amount of notes. Concurrently with the offering, Cipher expects to exchange a portion of its outstanding 1.75% Convertible Senior Notes due 2030 (the “2030 notes”). The notes will be senior, unsecured obligations of Cipher. The notes will not bear regular interest, and the principal amount of the notes will not accrete. The notes will mature on November 1, 2032, unless earlier repurchased, redeemed or converted. Prior to August 1, 2032, the notes will be convertible only upon satisfaction of certain conditions and during certain periods, and thereafter, the notes will be convertible at any time until the close of business on the second scheduled trading day immediately preceding the maturity date. Cipher will settle conversions by paying or delivering, as applicable, cash, shares of its common stock, par value $0.001 per share (“common stock”), or a combination of cash and shares of its common stock, at Cipher’s election. The initial conversion rate will be 65.3211 shares of common stock per $1,000 principal amount of notes, which represents an initial conversion price of approximately $15.31 per share of common stock. The initial conversion price represents a premium of approximately 35.0% over the last reported sale price of $11.34 per share of Cipher’s common stock on October 13, 2026. The conversion rate and conversion price will be subject to adjustment upon the occurrence of certain events. The notes will be redeemable, in whole or in part (subject to certain limitations),"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1819989/000119312526419743/d134900d8k.htm",
+   "published": "2026-10-13T08:10:47-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01,9.01",
+   "text": "Item 7.01. Regulation FD Disclosure. In connection with the proposed offering discussed below, Cipher Digital Inc. (the “Company” or “Cipher”) has made available to potential investors a presentation with respect to marketing the offering. The investor presentation disclosed certain information that supplements or updates certain prior disclosures of the Company. Pursuant to Regulation FD, the Company is furnishing herewith such information as Exhibit 99.1 to this Current Report on Form 8-K. The information contained in Item 7.01 of this Current Report (as well as in Exhibit 99.1 attached hereto) is furnished and shall not be deemed to be “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liabilities of that section, and such information shall not be deemed to be incorporated by reference into any of the Company’s filings under the Securities Act of 1933, as amended, or the Exchange Act. Item 8.01. Other Events. On October 13, 2026, the Company issued a press release announcing that it intends to offer, subject to market and other conditions, $850.0 million aggregate principal amount of convertible senior notes due 2032 (the “notes”) in a private offering to persons reasonably believed to be qualified institutional buyers in reliance on Rule 144A under the Securities Act of 1933, as amended, and grant to the initial purchasers of the notes an option to purchase, within a 13-day period beginning on, and including, the date on which the notes are first issued, up to an additional $150.0 million aggregate principal amount of the notes. Concurrently with the offering, the Company expects to enter into separate, privately negotiated transactions with a limited number of holders of its 1.75% Convertible Senior Notes due 2030 (the “2030 notes”) to exchange a portion of the 2030 notes for shares of the Company’s common stock (the “Concurrent 2030 Notes Exchange”). A copy of the press release announcing the offering and the Concurrent 2030 Notes Exchange is filed as Exhibit 99.2 to this Current Report on Form 8-K and is incorporated herein by reference. The information included in this Current Report on Form 8-K is neither an offer to sell nor a solicitation of an offer to buy any securities and does not constitute an offer to exchange or repurchase, or a notice of redemption with respect to, the 2030 notes. Cautionary Note Regarding Forward-Looking Statements This Current Report o",
+   "exhibit_99_1": "EX-99.1 2 d134900dex991.htm EX-99.1 EX-99.1 Exhibit 99.1 Project Compass Investor Presentation October 2026 1 Legal Disclaimer This presentation is being made exclusively to qualified institutional buyers ( QIBs ) as defined in Rule 144A ( Rule 144A ) und er the Securities Act of 1933, as amended (the Securities Act ). The securities described herein have not been and will not be registered under the Securities Act and may not be offered or sold in the United States exc ept to QIBs in reliance on Rule 144A or pursuant to an exemption from or transaction not subject to the registration requirements of the Securities Act. This presentation shall not constitute an offer to sell o r the solicitation of an offer to buy, nor shall there be any sale of these securities in any jurisdiction in which such offer, solicitation or sale would be unlawful prior to the registration or qualification under the se curities laws of any such jurisdiction. Any purchaser of such securities will be deemed to have made certain representations and acknowledgments, including without limitation, that the purchaser is a QIB as defined in Rul e 144A under the Securities Act. An offer to sell or a solicitation of an offer to buy any securities referenced herein will occur solely by means of a confidential offering memorandum, which may contain information different from the information contained in this presentation. Such confidential offering memorandum will contain detailed information about Cipher Digital Inc. ( Cipher ) and its business and financial results, as well as its financial statements. This presentation is qualified in its entirety by such confidential offering memorandum, which should be read completely before making any investment . 2 Forward -Looking Statements This communication contains certain forward -looking statements within the meaning of the federal securities laws of the United S tates. The Company intends such forward -looking statements to be covered by the safe harbor provisions for forward -looking statements contained in the Private Securities Litigation Reform Act of 1995 and includes this statement for purposes of comp lying with these safe harbor provisions. Any statements made in this communication that are not statements of historical fact, s uch as, statements about the Company’s beliefs and expectations regarding its future results of operations and financial position, it s p lanned business model and strategy, its data center development, timing an"
+  },
+  {
+   "id": "I9",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm",
+   "published": "2026-09-25T08:04:27-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01,9.01",
+   "text": "Item 7.01 Regulation FD Disclosure. On September 25, 2026, Cipher Digital Inc. (“Cipher” or the “Company”) announced the entry into the Amendment and Commitment relating to the Barber Lake Facility (each as defined below). A copy of the press release is furnished hereto as Exhibit 99.1 to this Current Report on Form 8-K. The information contained in Item 7.01 of this Current Report (as well as in Exhibit 99.1 attached hereto) is furnished and shall not be deemed to be “filed” for purposes of Section 18 of the Securities and Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liabilities of that section, and such information shall not be deemed to be incorporated by reference into any of the Company’s filings under the Securities Act of 1933, as amended or the Exchange Act. Item 8.01 Other Events. On September 24, 2026, the Company, through its wholly owned subsidiary Cipher Barber Lake LLC, entered into an amendment (the “Amendment”) to its lease (the “Barber Lake Lease”) with Fluidstack USA II Inc. (“Fluidstack”) relating to the development, construction, and lease of an HPC data center facility (the “Barber Lake Facility”). Concurrently with the execution of the Amendment, the Company entered into a binding commitment with a leading AI lab to enter into a ten-year lease for the Barber Lake Facility (the “New Barber Lake Lease”) to commence following the term of the Barber Lake Lease with Fluidstack (the “Commitment”), thereby extending the aggregate contracted term for the Barber Lake Facility to twenty years. The New Barber Lake Lease will contain economic terms that are substantially consistent with the Barber Lake Lease and is expected to result in incremental aggregate contracted revenue of approximately $5.2 billion. In connection with the Amendment, the Company and Fluidstack agreed to certain tenant-modification change orders to modify the design of the Barber Lake Facility as well as to an updated phased delivery schedule for the Barber Lake Facility, with individual data halls now expected to be delivered between the fourth quarter of 2026 and the first quarter of 2027. Rent will commence for each data hall as it is delivered, with the first rent commencement expected to occur during the fourth quarter of 2026. In connection with the Amendment and the change orders, the Company, Fluidstack and the leading AI lab established a cost reimbursement framework, pursuant to which the Company will bear the first $359.3 mil",
+   "exhibit_99_1": "EX-99.1 2 barberlakeleaseamendmentpr.htm EX-99.1 Document Exhibit 99.1 Cipher Digital Expands Barber Lake Lease Term to 20 Years, Increasing Revenue to Over $9 Billion Additional 10-Year Term adds ~$5.2 Billion of Contracted Revenue at Barber Lake NEW YORK – September 25 , 2026 – Cipher Digital Inc. (NASDAQ: CIFR) (“Cipher” or the “Company”), a leading developer, owner, and operator of industrial-scale data centers, today announced a series of agreements that extend the contracted lease duration of its Barber Lake data center in Colorado City, Texas from 10 years to 20 years and increase total contracted revenue at the facility from $3.8 billion to over $9 billion. Cipher has executed an amendment to its existing lease with Fluidstack (the “Barber Lake Lease”) that is coupled with a binding commitment with a leading AI lab to lease the facility for an additional 10-year term following the conclusion of the Barber Lake Lease. The additional 10-year commitment with the leading AI lab, which will be governed by a separate lease containing economic terms substantially consistent with the Barber Lake Lease, is expected to generate approximately $5.2 billion of incremental contracted revenue. In connection with change orders and the continued evolution of tenant requirements at Barber Lake, the lease amendment establishes a phased delivery schedule for the site, with individual data halls expected to be delivered from the fourth quarter of 2026 through the first quarter of 2027. Rent will commence for each data hall as it is delivered, with the first rent commencement expected in the fourth quarter of 2026. Cipher remains on track with the revised delivery schedule. In connection with the amendment and the change orders, the Company, Fluidstack and the leading AI lab established a cost reimbursement framework, pursuant to which the Company will bear the first $359.3 million of costs in excess of the initial budgeted amount under the Barber Lake Lease. The tenant will reimburse the Company over the aggregate twenty-year term for 50% of any such costs above that amount, payable as additional rent and calculated in a manner to provide Cipher with a contracted rate of return on such reimbursed amounts. “Extending Barber Lake’s contracted life from 10 to 20 years and adding approximately $5.2 billion of contracted revenue reflects the enduring value of the infrastructure we're building,” said Tyler Page, Chief Executive Officer. “Barber Lake was designed as a long-li"
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cipher-digital-gears-report-q3-150400080.html?.tsrc=rss",
+   "published": "2026-10-29T11:04:00-04:00",
+   "text": "Cipher Digital Gears Up to Report Q3 Earnings: What's in Store? - Cipher Digital's Q3 results may reflect its shift to HPC leasing, with new data center rental income, declining mining revenues and rising construction costs in focus.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mara/articles/621242/what-are-mara-stock-investors-overlooking/2026-10-29?.tsrc=rss",
+   "published": "2026-10-29T10:33:45-04:00",
+   "text": "What Are MARA Stock Investors Overlooking? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mara/articles/620984/what-is-going-on-with-mara-stock-after-its-steep-fall/2026-10-28?.tsrc=rss",
+   "published": "2026-10-28T20:14:30-04:00",
+   "text": "What Is Going On With MARA Stock After Its Steep Fall? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/morgan-stanley-sees-terawulf-upside/?.tsrc=rss",
+   "published": "2026-10-28T10:38:03-04:00",
+   "text": "Morgan Stanley reiterates Overweight on five AI data center stocks, with 441% TeraWulf upside - Morgan Stanley argues TeraWulf, Cipher, Hut 8, Riot and Galaxy are priced like neoclouds while operating as landlords. It sketches a TeraWulf asset sale worth $3.3 billion and a 2027…",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/iren-limited-fell-by-33-in-2026-but-3-analysts-believe-it-will-nearly-quadruple-in-price-from-here/?.tsrc=rss",
+   "published": "2026-10-27T08:45:44-04:00",
+   "text": "IREN Limited Fell by 33% in 2026 But 3 Analysts Believe It Will Nearly Quadruple in Price From Here - A neocloud panic wiped out a third of IREN's value in months, yet every analyst covering the stock refuses to issue a sell rating. The reason comes down to a set of signed contracts that tell a very different story than the share price does.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/26/terawulf-jumps-7-as-ceo-pushes-back-on-stranded-data-center-fears-cipher-digital-rises-3-applied-digital-edges-higher/?.tsrc=rss",
+   "published": "2026-10-26T11:56:04-04:00",
+   "text": "TeraWulf Jumps 7% as CEO Pushes Back on Stranded Data Center Fears; Cipher Digital Rises 3%, Applied Digital Edges Higher - TeraWulf's CEO fired back at analysts calling his unfinished data centers stranded assets, and his argument rests on a build sequence that he says most critics are getting backwards.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/26/applied-digital-keeps-cratering-this-analyst-keeps-insisting-its-going-to-jump-by-390/?.tsrc=rss",
+   "published": "2026-10-26T10:45:17-04:00",
+   "text": "Applied Digital Keeps Cratering: This Analyst Keeps Insisting It’s Going to Jump by 390% - Applied Digital just posted the strongest quarter in its history, yet the stock cratered more than 30% immediately after. One analyst still sees nearly 400% upside from here, and the reasons behind that gap reveal a high-stakes bet on the future of AI infrastructure.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/cipher-digital-slides-30-after-zero-coupon-note-sale-despite-9-billion-barber-lake-backlog?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-25T09:06:49-04:00",
+   "text": "Cipher Digital Slides 30% After Zero-Coupon Note Sale Despite $9 Billion Barber Lake Backlog - Key TakeawaysCipher Digital closed at $7. 94 on October 23, down 30% from its October 13 close, the day before it priced $850 million of zero-coupon convertible notes.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/applied-digital-just-dropped-31-in-a-month-is-it-time-to-sell-or-load-up?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-23T14:11:39-04:00",
+   "text": "Applied Digital Just Dropped 31% in a Month: Is It Time to Sell, or Load Up? - Key TakeawaysApplied Digital fell 31% in the past month as bets on a US rate hike hit debt-heavy AI data center builders, with Cipher Digital down 52% and CoreWeave down 24% over the same stretch. The slide came right after a quarter where revenue jumped 322%, and the drop looks like a chance to buy",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/iren-rises-4-on-300mw-spanish-sovereign-ai-campus-as-neocloud-stocks-rebound?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-23T13:20:37-04:00",
+   "text": "IREN Rises 4% on 300MW Spanish “Sovereign AI” Campus as Neocloud Stocks Rebound - Key TakeawaysIREN shares rose 4% today after it set up IREN Europe and licensed a planned 300MW AI data center in Spain, as Applied Digital, Cipher Digital, Riot Platforms and MARA Holdings also rose. The Badajoz campus gives IREN a real second market, but it adds optionality more than near-term rev",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/620188/how-long-can-cipher-keep-burning-cash/2026-10-23?.tsrc=rss",
+   "published": "2026-10-23T12:08:31-04:00",
+   "text": "How Long Can Cipher Keep Burning Cash? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/cipher-digital-lost-31-in-a-week-cantor-fitzgerald-still-sees-112-upside?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-22T10:51:23-04:00",
+   "text": "Cipher Digital Lost 31% in a Week. Cantor Fitzgerald Still Sees 112% Upside - Key TakeawaysCipher Digital stock lost 31% in the past week (through Monday’s close). Most of the drop came on Tuesday and Wednesday, as it sold $850 million of zero-interest convertible notes and swapped older notes for about 40.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619688/should-you-wait-before-buying-cipher-digital-stock/2026-10-21?.tsrc=rss",
+   "published": "2026-10-21T22:51:06-04:00",
+   "text": "Should You Wait Before Buying Cipher Digital Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/crypto/articles/october-2026-crypto-stocks-watch-021404939.html?.tsrc=rss",
+   "published": "2026-10-21T22:14:04-04:00",
+   "text": "October 2026 Crypto Stocks To Watch - Regulators just gave crypto platforms the green light to keep paying interest style rewards on certain digital assets, which keeps fresh oxygen flowing into this corner of the market. That decision keeps the spotlight on businesses building the picks and shovels of digital finance, from blockchains ",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cipher-digital-inc-cifr-rises-210002362.html?.tsrc=rss",
+   "published": "2026-10-21T17:00:02-04:00",
+   "text": "Cipher Digital Inc. (CIFR) Rises Higher Than Market: Key Facts - The latest trading day saw Cipher Digital Inc. (CIFR) settling at $9.13, representing a +2.82% change from its previous close.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619689/is-now-the-right-time-for-mara-stock/2026-10-21?.tsrc=rss",
+   "published": "2026-10-21T14:25:36-04:00",
+   "text": "Is Now The Right Time For MARA Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/21/data-center-stocks-rise-as-iren-plans-300mw-ai-campus-in-spain-iren-and-cipher-digital-gain-4-core-scientific-climbs-3/?.tsrc=rss",
+   "published": "2026-10-21T09:42:21-04:00",
+   "text": "Data Center Stocks Rise as IREN Plans 300MW AI Campus in Spain: IREN and Cipher Digital Gain 4%, Core Scientific Climbs 3% - IREN just announced a massive AI campus in Spain with no customers, no financing, and a stock still deep in the red. Here is why former Bitcoin miners are surging anyway.",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619399/what-are-mara-stock-bears-missing/2026-10-20?.tsrc=rss",
+   "published": "2026-10-20T17:10:11-04:00",
+   "text": "What Are MARA Stock Bears Missing? - Investors betting on MARA (MARA) may be focused on the electric power the company controls at its own sites. You probably think of MARA as a bitcoin miner, but management now calls AI infrastructure the next use for those locations. Yet the stock fell 63.6% over the past year, while the S&P 500 retu",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I28",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/3-ai-stocks-revenue-growth-161024425.html?.tsrc=rss",
+   "published": "2026-10-20T12:10:24-04:00",
+   "text": "3 AI Stocks With Revenue Growth Over 6% - Oil parked above US$110 a barrel and energy markets still unsettled has pushed electricity and fuel costs sharply into focus. That is a headache for most industries. It is also a powerful tailwind for the giants building and renting AI data centers that can lock in power at scale and pass costs thro",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  },
+  {
+   "id": "I29",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619005/what-changed-for-cipher-digital-stock-and-what-did-not/2026-10-16?.tsrc=rss",
+   "published": "2026-10-16T21:26:45-04:00",
+   "text": "What Changed For Cipher Digital Stock, And What Did Not? - Shares of Cipher Digital (CIFR) fell 26.4% in the five trading days from October 8 to October 15, 2026. The S&P 500 slipped 0.25% over the same period. The stock saw its worst single-day performance on October 13, when executives announced a plan to sell $850 million of convertible notes. Cipher alr",
+   "feed": {
+    "fetched_et": "2026-10-29T14:31:20-04:00",
+    "sha256": "1fb4ac389ce0c1bf2cea73974944e1bafcf8724af84d0595f61b1d865fbd49bd"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 70071
+}
