@@ -1,4 +1,4 @@
-# Health 2026-10-28 20:54 ET - **RED** (2 known)
+# Health 2026-10-28 22:34 ET - **RED** (1 known)
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - paper/options_ledger.json: HALT - fill anomaly - new opens stopped until a person clears 'halt' in the ledger
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-29T02:21:24Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40805850883
 - Actions failure: Earnings experiment - paper options at 2026-10-28T23:54:49Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40790558595
 - Actions failure: Earnings experiment - paper options at 2026-10-28T22:55:28Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40783606768
 - Actions failure: Earnings experiment - paper options at 2026-10-28T22:44:20Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40782242970
@@ -18,7 +19,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-28T14:47:27Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40709416625
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
-- 1 paper-options run(s) in 24 h failed only on the acknowledged alert(s) ['seasonA-DPZ-2026-10-13-F'], each read from its job log; newest 2026-10-28T02:17:04Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40620011970 (ops/incidents/2026-10-13_DPZ_exit.md)
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F'] - the DPZ trade's flag held_past_expiry is set once and never cleared (pipeline/paper_options.py, hash-locked); no other alert is on the ledger (ops/incidents/2026-10-13_DPZ_exit.md; acknowledged 2026-10-28, laptop chat (the new-RED marker owed in STATE.md NOW, 2026-10-27), until 2026-11-06)
 
 ## Information
@@ -38,5 +38,5 @@ check.py: PASS - 1 warning(s)
 - Fri 30 Oct: 19 snapshot(s) - AEHR, BETA, BMRN, BWXT, DOCN, DT, FN, ICHR, IPGP, JAZZ, LSCC, MTCH, ON, PAY, PLTR, SHOP, VRTX, VVX, YUMC
 - Mon 02 Nov: 24 snapshot(s) - ALAB, AMD, ANET, DDOG, DUOL, FLYW, FRSH, HUT, NATL, NVTS, OUST, Q, RAL, RIOT, RPRX, SMCI, SWKS, TOST, UBER, VSH, W, XYZ, YOU, ZBH
 - Tue 03 Nov: 45 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KVYO, LOAR, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
-- seasonA: 70 name(s) still PENDING a confirmed date
+- seasonA: 66 name(s) still PENDING a confirmed date
 
