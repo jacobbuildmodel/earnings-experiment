@@ -1,4 +1,4 @@
-# Health 2026-10-28 20:03 ET - **RED** (2 known)
+# Health 2026-10-28 20:54 ET - **RED** (2 known)
 
 check.py: PASS - 1 warning(s)
 
@@ -31,7 +31,7 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: open ['seasonA-ALNY-2026-10-29-L', 'seasonA-BDC-2026-10-29-L', 'seasonA-BHE-2026-10-28-L', 'seasonA-BOOT-2026-10-28-L', 'seasonA-CMG-2026-10-28-L', 'seasonA-COHU-2026-10-28-L', 'seasonA-CROX-2026-10-29-L', 'seasonA-ENTG-2026-10-29-L', 'seasonA-FTAI-2026-10-29-L', 'seasonA-FTNT-2026-10-28-L', 'seasonA-GEN-2026-10-28-L', 'seasonA-GOOG-2026-10-28-L', 'seasonA-HONA-2026-10-28-L', 'seasonA-HWM-2026-10-29-L', 'seasonA-IDCC-2026-10-29-L', 'seasonA-INCY-2026-10-29-L', 'seasonA-KLAC-2026-10-28-L', 'seasonA-LHX-2026-10-29-L', 'seasonA-MSFT-2026-10-28-L', 'seasonA-MUSA-2026-10-28-L', 'seasonA-NOW-2026-10-28-L', 'seasonA-OLED-2026-10-28-L', 'seasonA-QSR-2026-10-29-L', 'seasonA-QTWO-2026-10-28-L', 'seasonA-BBIO-2026-10-29-L', 'seasonA-AMZN-2026-10-29-L', 'seasonA-AXTI-2026-10-29-L', 'seasonA-COLM-2026-10-29-L', 'seasonA-DXCM-2026-10-29-L', 'seasonA-EXEL-2026-10-29-L', 'seasonA-GDDY-2026-10-29-L', 'seasonA-GD-2026-10-30-L', 'seasonA-INTC-2026-10-29-L', 'seasonA-MSTR-2026-10-29-L', 'seasonA-OSIS-2026-10-29-L', 'seasonA-PINS-2026-10-29-L', 'seasonA-RDDT-2026-10-29-L', 'seasonA-SPSC-2026-10-29-L', 'seasonA-SYK-2026-10-29-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET (done)
-- paper/options: 131 position(s), 0 open order(s) - they match the ledgers
+- paper/options: 131 position(s), 10 open order(s) - they match the ledgers
 - paper/long: 79 position(s), 0 open order(s) - they match the ledgers
 - Wed 28 Oct: 20 snapshot(s) - AMZN, AXTI, BBIO, COLM, DXCM, EXEL, GD, GDDY, INTC, MPWR, MSTR, OSIS, PINS, RDDT, REGN, SBUX, SNDK, SPSC, SYK, TWLO
 - Thu 29 Oct: 1 snapshot(s) - CIFR
