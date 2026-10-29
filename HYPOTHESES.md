@@ -55,7 +55,7 @@ found on history is a CANDIDATE. It goes live only as a pre-registered shadow, w
 
 | # | idea | lever | evidence / prior | cost | verdict |
 |---|---|---|---|---|---|
-| **A** | **One global multiplicity view.** Report a Holm (and BH) across all 10 confirmatory tests beside each family's own verdict, registered as a *secondary* | truthfulness | arithmetic: 7 families at 5% each ≈ up to 30% chance of one false positive | tiny | **do now**, before any outcome look |
+| **A** | **One global multiplicity view.** Report a Holm (and BH) across all 10 confirmatory tests beside each family's own verdict, registered as a *secondary* | truthfulness | arithmetic: 7 families at 5% each ≈ up to 30% chance of one false positive | tiny | **registered** in D017 §6 (2026-10-29), before any outcome look |
 | **B** | **D016 gate audit → D003 v5 for Season B.** Season A's gates pass few names (2 PASS of 7 so far). Counts only | power (RQ3, RQ5) | 4/4 early Season A gates failed `wide_spread`; only RTX was a near-miss | small | **do this week** (plan) |
 | **C** | **Busy-day attention.** On days with many reporters, the open reaction is smaller and more is left for later | signal | Hirshleifer, Lim & Teoh 2009 ("Driven to Distraction"); data already captured (calendar captures, D006/D014 history) | low | **explore on history, then a live SH-M shadow** |
 | **D** | **Industry read-across.** The first reporter's reaction predicts its peers' reactions days later | signal (RQ2) | intra-industry information transfer (Foster 1981; Thomas & Zhang 2008 find later reporters overreact) | low: SH-M has industry and dates | **explore on history** |
@@ -65,5 +65,5 @@ found on history is a CANDIDATE. It goes live only as a pre-registered shadow, w
 | **H** | **An auth refusal is retried, not counted** (T2 attempt cap) | truthfulness | ABT and SPCX lost T2 this way | small, but it **changes `t2_stage2.py`**: only in a new D004 version with its own clock | at the next D004 version |
 | — | Not worth it now: post-earnings drift in large caps (gone since ~2006), news-sentiment NLP (costly, weak), more T2 models (shadows cover it) | | | | |
 
-**Order of work:** A (now), B (this week), E (start the capture), then C and D as one history exploration batch
-(D017) with FDR control and t > 3, then F and G.
+**Order of work:** A (done), B (this week), E (start the capture), then C and D as one history exploration batch
+(D018; D017 became the Stage 1 review) with FDR control and t > 3, then F and G.

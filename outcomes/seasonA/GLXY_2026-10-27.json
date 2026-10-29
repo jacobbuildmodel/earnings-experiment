@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-27T20:39:24-04:00",
+ "graded_et": "2026-10-28T21:08:51-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "GLXY",
  "report_date": "2026-10-27",
@@ -13,14 +13,63 @@
  "entry_session": "2026-10-26",
  "cluster": "ai_infra",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-27T07:04:45-04:00",
+   "window": "BMO"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 14.4,
+   "entry_session": "2026-10-26",
+   "exit": 16.65,
+   "exit_session": "2026-10-27",
+   "dividends": 0,
+   "raw_return": 0.15624999999999978,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.046746,
+    "bench_return": 0.01879311281299212,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.1177852715224594,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.0888888888888888,
+    "print_gap": 0.06186224489795911,
+    "entry_close": 15.68,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 14.4,
+   "entry_session": "2026-10-26",
+   "exit": 17.18,
+   "exit_session": "2026-10-27",
+   "dividends": 0,
+   "raw_return": 0.19305555555555554,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.046746,
+    "bench_return": 0.029221660963554275,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.13324623786504466,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -37,5 +86,10 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "no stage-2 decision frozen"
+ },
+ "correct": {
+  "T0": true,
+  "T1": true,
+  "T2": true
  }
 }

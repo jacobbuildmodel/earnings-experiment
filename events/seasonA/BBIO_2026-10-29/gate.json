@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "BBIO",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:00.241616-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.bridgebio.com/news/news-details/2026/BridgeBio-to-Report-Third-Quarter-2026-Financial-Results-and-Commercial-Updates-on-October-29-2026-at-430-pm-ET/default.aspx",
+  "published_et": "2026-10-22T07:30-04:00",
+  "quote": "BridgeBio Pharma Inc. - BridgeBio to Report Third Quarter 2026 Financial Results and Commercial Updates on October 29, 2026 at 4:30 pm ET View All News BridgeBio to Report Third Quarter 2026 Financial Results and Commercial Updates on October 29, 2026 at 4:30 pm ET October 22, 2026 Download (opens in new window) PALO ALTO, Calif., Oct. 22, 2026 (GLOBE NEWSWIRE) -- Bridge",
+  "title": "BridgeBio to Report Third Quarter 2026 Financial Results and Commercial Updates on October 29, 2026 at 4:30 pm ET",
+  "retrieved_et": "2026-10-23T21:24:30.753147-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.bridgebio.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 70.93499755859375,
+  "expiry": "2026-11-20",
+  "strike": 70.0,
+  "call": {
+   "bid": 2.9,
+   "ask": 6.1,
+   "openInterest": 225.0,
+   "lastPrice": 3.5,
+   "impliedVolatility": 0.5573774731445313,
+   "lastTradeDate": "2026-10-28T15:58:15+00:00"
+  },
+  "put": {
+   "bid": 2.2,
+   "ask": 3.9,
+   "openInterest": 49.0,
+   "lastPrice": 3.5,
+   "impliedVolatility": 0.6042520043945314,
+   "lastTradeDate": "2026-10-28T18:14:18+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 15,
+  "implied_move": 0.10643547275466593,
+  "rel_spread": {
+   "call": 0.711111111111111,
+   "put": 0.5573770491803278
+  },
+  "oi_atm": 274.0,
+  "oi_sum": 274.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

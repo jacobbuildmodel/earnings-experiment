@@ -1,0 +1,30 @@
+{
+ "event": "MSTR_2026-10-29",
+ "backend": "gemini",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "da740367e00f16d1ede424b02457ce15c86e8b6e8cf0e1d10461956055d1a2ed",
+ "called_et": "2026-10-28T17:40:53-04:00",
+ "prompt_sha256": "251b1e3bb845f3529af5edf4adc8dcd9103461aca8a0dc53cddaa81e77246e6c",
+ "probe_reply": "I don't know.",
+ "reply": "{\n \"prior\": {\n  \"p\": 0.538,\n  \"from\": \"base_rates AMC session hit rate (n=1820, 53.8%)\"\n },\n \"confidence\": 0.42,\n \"thesis\": \"Persistent negative earnings reactions over the past four quarters, heavy option put skew, and investor skepticism around paused Bitcoin purchases and heavy preferred dividend obligations tilt the entry-to-exit open probability downward.\",\n \"reasons\": [\n  \"Strategy has a 0-for-4 record on opening earnings reactions over the last four quarters (E_last4_win_rate_A: 0.0%).\",\n  \"Significant downside options hedging: ATM put implied volatility (100.7%) significantly exceeds call IV (81.2%), yielding a -19.5 vol spread.\",\n  \"Recent headlines focus heavily on Strategy pausing spot Bitcoin purchases to deploy cash into preferred stock buybacks and daily dividend structures, creating narrative friction into the release.\"\n ],\n \"moved_from_prior\": \"Moved down from the 0.538 AMC prior by 11.8 percentage points to 0.42 due to a completely negative 4-quarter reaction track record, pronounced put volatility skew, and negative technical momentum (-52.5% 12m return).\",\n \"deciding_variable\": \"Management's earnings call commentary regarding the capital allocation pivot (preferred dividend service/repurchases vs. spot Bitcoin accumulation) and its impact on common equity dilution.\",\n \"theses\": [\n  {\n   \"expected\": \"Open-to-open reaction drops below zero (-2% to -6%)\",\n   \"mechanism\": \"Market focuses on growing preferred cash dividend commitments and the slowdown in spot Bitcoin accumulation, driving another post-print common share discount widening.\",\n   \"wrong_if\": \"Michael Saylor announces a massive resumption of leveraged Bitcoin buying or accelerates common share repurchases under the $1B authorization.\"\n  },\n  {\n   \"expected\": \"High intraday volatility with a soft opening gap\",\n   \"mechanism\": \"Options imply a 6.57% move with heavy put skew; hedged dealers and cautious sentiment create a downward open before any conference call momentum takes hold.\",\n   \"wrong_if\": \"Broad cryptocurrency markets surge overnight alongside a massive GAAP mark-to-market earnings beat that exceeds the high-end analyst estimates.\"\n  },\n  {\n   \"expected\": \"Analyst scrutiny on preferred dividend coverage and cash burn\",\n   \"mechanism\": \"Disclosures regarding the $4.83B USD Reserve and daily dividend mechanics on STRC/STRF lead to common shareholder dilution concerns.\",\n   \"wrong_if\": \"Investors treat the preferred credit framework as successfully de-risking balance sheet solvency and re-rate common equity upward.\"\n  }\n ],\n \"key_observations\": [\n  \"Net Bitcoin Per Share (BPS) growth rate and BTC Yield metrics reported for Q3.\",\n  \"Status and trajectory of the $1.0B common share repurchase program vs. preferred share repurchases.\",\n  \"Any forward plan or timeline for resuming spot Bitcoin purchases via the ATM facility.\",\n  \"GAAP net income and mark-to-market digital asset adjustments relative to the wide analyst consensus range (-$0.99 to +$52.82).\"\n ],\n \"items_used\": [\n  \"I1\",\n  \"I2\",\n  \"I3\",\n  \"I4\",\n  \"I6\",\n  \"I7\",\n  \"I12\",\n  \"I26\"\n ]\n}",
+ "error": null,
+ "usage": {
+  "promptTokenCount": 21290,
+  "candidatesTokenCount": 789,
+  "totalTokenCount": 23290,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 21290
+   }
+  ],
+  "thoughtsTokenCount": 1211,
+  "serviceTier": "standard"
+ },
+ "model": "gemini-3.8-flash",
+ "isolation": {
+  "tools": "none sent",
+  "grounding": "none sent"
+ },
+ "outcome": "decided"
+}

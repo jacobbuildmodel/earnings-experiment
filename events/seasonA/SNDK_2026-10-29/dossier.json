@@ -1,0 +1,637 @@
+{
+ "event": "SNDK_2026-10-29",
+ "season": "seasonA",
+ "built_et": "2026-10-28T14:32:08-04:00",
+ "cutoff_et": "2026-10-28T14:31:55.706149-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/SNDK_2026-10-29/gate.json",
+   "published": "2026-10-28T14:31:55.706149-04:00",
+   "data": {
+    "ticker": "SNDK",
+    "report_date": "2026-10-29",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-30"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-30"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-06"
+     },
+     "reaction_day": "2026-10-30"
+    },
+    "snapshot_session": "2026-10-28",
+    "captured_et": "2026-10-28T14:31:55.706149-04:00",
+    "options": {
+     "spot": 1383.0,
+     "expiry": "2026-10-30",
+     "strike": 1382.5,
+     "call": {
+      "bid": 52.0,
+      "ask": 53.0,
+      "openInterest": 37.0,
+      "lastPrice": 52.6,
+      "impliedVolatility": 1.033513133239746,
+      "lastTradeDate": "2026-10-28T18:15:58+00:00"
+     },
+     "put": {
+      "bid": 59.9,
+      "ask": 60.8,
+      "openInterest": 1.0,
+      "lastPrice": 60.0,
+      "impliedVolatility": 1.222934793548584,
+      "lastTradeDate": "2026-10-28T18:15:25+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.08159797541576283,
+     "rel_spread": {
+      "call": 0.01904761904761905,
+      "put": 0.014913007456503705
+     },
+     "oi_atm": 38.0,
+     "oi_sum": 5695.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/SNDK_2026-10-29/factors.json",
+   "published": "2026-10-28T14:31:55.706149-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 6.842444988950368,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.19982358745406026,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.004275941868376876,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.06075319229629694,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.7773921460115194,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.5652627236871607,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.40723205174317456,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "AMC",
+       "raw_return_A": -0.16122021963352984,
+       "eps_est": 34.52,
+       "eps_rep": 39.25,
+       "surprise_pct": 13.72,
+       "reaction_volume_ratio": 1.1685231689780964
+      },
+      {
+       "date": "2026-04-30",
+       "session": "AMC",
+       "raw_return_A": -0.04801203815153843,
+       "eps_est": 14.66,
+       "eps_rep": 23.41,
+       "surprise_pct": 59.67,
+       "reaction_volume_ratio": 1.4935326191197336
+      },
+      {
+       "date": "2026-01-29",
+       "session": "AMC",
+       "raw_return_A": 0.21532147082146924,
+       "eps_est": 3.54,
+       "eps_rep": 6.2,
+       "surprise_pct": 74.97,
+       "reaction_volume_ratio": 2.7054907474055256
+      },
+      {
+       "date": "2025-11-06",
+       "session": "AMC",
+       "raw_return_A": -0.01688680108988061,
+       "eps_est": 0.89,
+       "eps_rep": 1.22,
+       "surprise_pct": 36.89,
+       "reaction_volume_ratio": 2.5203384634251025
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.9719712497321147,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 13.72,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": -7,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 46.40613,
+      "7daysAgo": 46.27224,
+      "30daysAgo": 46.18405,
+      "60daysAgo": 46.20664,
+      "90daysAgo": 44.20733,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.049738357869611186,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 46.40613,
+      "low": 44.05,
+      "high": 49.8,
+      "yearAgoEps": 1.22,
+      "numberOfAnalysts": 18,
+      "growth": 37.0378,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.12390604430923242,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0326,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 5.1969066,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 9.878247,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 3.716,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 200014757888,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.52,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.08159797541576283,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.1894216603088379,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.13574150878906233,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.6526948106123811,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7638166250153632,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 49523.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.451293236216265,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.07872064125908741,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 317,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 3.7159389794844815,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.784941438929169,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 6.838602841719183,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.0037839299977378005,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.06023351125977139,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.7772212237605718,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.815297934651391,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 202561179227.67334,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.09995992360037453,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": -7,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.5504509708090817,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026053346/sndkq4-26ex991xpressrelease.htm",
+   "published": "2026-08-05T16:09:06-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 sndkq4-26ex991xpressrelease.htm EX-99.1 Document Exhibit 99.1 Sandisk Reports Fiscal Fourth Quarter 2026 Financial Results News Summary • Fiscal fourth quarter revenue was $8.97 billion, up 51% sequentially, with GAAP net income reported at $6.90 billion ($43.97 diluted net income per share). Sequential revenue growth came approximately one-third from higher volumes and two-thirds from higher pricing. Fourth quarter Non-GAAP diluted net income per share was $39.25. • Fiscal year 2026 revenue was $20.25 billion, up 175% year-over-year, with GAAP net income reported at $11.43 billion ($73.76 diluted net income per share). Revenue outperformance was driven by both our mix shift toward higher-value customers, with Datacenter up 437%, and higher pricing. Fiscal year 2026 Non-GAAP diluted net income per share was $70.88. • Since announcing five New Business Model (“NBM”) agreements during our April earnings call, we have signed five additional agreements, including three NBMs with new customers and two deals expanding on previously signed NBMs. • Expanded our share repurchase authorization, with Sandisk’s Board of Directors approving an additional $14 billion buyback program, bringing total remaining authorization to $15.5 billion. • Expect first quarter 2027 revenue to be in the range of $10.30 billion to $10.80 billion, with expected Non-GAAP diluted net income per share to be in the range of $44.00 to $46.00. MILPITAS, Calif. — August 5, 2026 — Sandisk Corporation (Nasdaq: SNDK) today reported fiscal fourth quarter financial results. \"We closed fiscal 2026 with a leading technology portfolio, established datacenter as a key growth pillar, and deepened our customer partnerships,\" said David Goeckeler, Chairman and Chief Executive Officer of Sandisk. \"Our technology and products are well positioned to create value for our customers and generate growing and durable free cash flow.\" 1 Q4 2026 Financial Highlights GAAP Non-GAAP ($ in millions, except per share amounts) Q4 2026 Q3 2026 Q/Q Q4 2026 Q3 2026 Q/Q Revenue $8,965 $5,950 up 51% $8,965 $5,950 up 51% Gross Margin 84.6% 78.4% up 6.2 ppt 84.6% 78.4% up 6.2 ppt Operating Expenses $545 $551 down 1% $484 $448 up 8% Operating Income $7,037 $4,111 up 71% $7,104 $4,218 up 68% Net Income $6,903 $3,615 up 91% $6,162 $3,675 up 68% Diluted Net Income Per Share $43.97 $23.03 up 91% $39.25 $23.41 up 68% GAAP Non-GAAP ($ in millions, except per share amounts) Q4 2026 Q4 2025 Y/Y Q4 2026 Q4 2025 Y/Y Revenue $8,965 $1,901 up 372% $8,965 $1,901 up 372% Gross Margin 84.6% 26.2% up 58.4 ppt 84.6% 26.4% up 58.2 ppt Operating Expenses $545 $480 up 14% $484 $402 up 20% Operating Income $7,037 $18 * $7,104 $100 * Net Income (Loss) $6,903 $(23) * $6,162 $42 * Diluted Net Income (Loss) Per Share $43.97 $(0.16) * $39.25 $0.29 * * Not a meaningful figure Fiscal Year 2026 Financial Highlights GAAP Non-GAAP ($ in millions, except per share amounts) 2026 2025 Y/Y 2026 2025 Y/Y Revenue $20,248 $7,355 up 175% $20,248 $7,355 up 175% Gross Margin 71.5% 30.1% up 41.4 ppt 71.6% 30.3% up 41.3 ppt Operating Expenses $2,083 $3,589 down 42% $1,791 $1,539 up 16% Operating Income (Loss) $12,389 $(1,377) * $12,700 $689 * Net Income (Loss) $11,433 $(1,641) up 797% $10,987 $440 * Diluted Net Income (Loss) Per Share $73.76 $(11.32) up 752% $70.88 $2.99 * * Not a meaningful figure End Market Summary Revenue ($ in millions) Q4 2026 Q3 2026 Q/Q Q4 2025 Y/Y Datacenter $2,977 $1,467 up 103% $213 * Edge $5,432 $3,663 up 48% $1,103 up 392% Consumer $556 $820 down 32% $585 down 5% Total Revenue $8,965 $5,950 up 51% $1,901 up 372% * Not a meaningful figure Revenue ($ in millions) 2026 2025 Y/Y Datacenter $5,153 $960 up 437% Edge $12,160 $4,127 up 195% Consumer $2,935 $2,268 up 29% Total Revenue $20,248 $7,355 up 175% Additional details can be found within the Company’s earnings presentation, which is accessible online at investor.sandisk.com . 2 Business Outlook for Fiscal First Quarter of 2027 (in millions, except per share amounts) GAAP Non-GAAP (1) Revenue $10,300 - $10,800 $10,300 - $10,800 Gross Margin 83.0% - 84.9% 83.0% - 85.0% Operating Expenses $574 - $614 $520 - $540 Tax Expense (2) N/A 15.0% Diluted Net Income Per Share N/A $44.00 - $46.00 Diluted Shares Outstanding ~ 155 ~ 155 (1) Non-GAAP gross margin guidance excludes stock-based compensation expense, totaling approximately $5 million to $7 million. The Company’s Non-GAAP operating expenses guidance excludes stock-based compensation expense, totaling approximately $54 million to $74 million. Non-GAAP diluted net income per share guidance excludes these items totaling $59 million to $81 million. The timing and amount of these charges excluded from Non-GAAP gross margin, Non-GAAP operating expenses, and Non-GAAP diluted net income per share cannot be further allocated or quantified with certainty. Additionally, the timing and amount of certain other adjustments included in the Company's Non-GAAP diluted net income per share guidance are dependent on the timing and determination of certain actions or events and cannot be reasonably predicted. Accordingly, full reconciliations of Non-GAAP gross margin, Non-GAAP operating expenses, and Non-GAAP diluted net income per share to the most directly comparable GAAP financial measures (gross margin, operating expenses, and diluted net income per share, respectively) are not available without unreasonable effort. (2) Non-GAAP tax expense is determined based on a Non-GAAP pre-tax income or loss. Our estimated Non-GAAP tax expense may differ from our GAAP tax expense (i) due to differences in the tax treatment of items excluded from our Non-GAAP net income or loss; (ii) due to the fact that our GAAP income tax expense or benefit recorded in any interim period is based on an estimated forecasted GAAP tax expense for the full year, excluding loss jurisdictions; and (iii) because our GAAP taxes recorded in any interim period are dependent on the timing and determination of certain GAAP operating expenses. 3 Basis of Presentation On February 21, 2025, Sandisk Corporation (the “Company”) completed its separation from Western Digital Corporation (“WDC”) and became a standalone publicly traded company. The Company’s financial and operating results after the separation are presented on a consolidated basis. For periods prior to the separation, the Company’s historical combined financial statements were prepared on a carve-out basis and were derived from WDC’s consolidated financial statements and accounting records and prepared as if the Company existed on a standalone basis. The financial statements for all periods presented, including the historical results of the Company prior to February 21, 2025, are now referred to as “Consolidated Financial Statements” and have been prepared in accordance with U.S. generally accepted accounting principles (“GAAP”). Investor Communications The investment community conference call to discuss these results and the Company’s business outlook for the fiscal first quarter of 2027 will be broadcast live online today at 1:30 p.m. Pacific/4:30 p.m. Eastern. The live and archived conference call/webcast and the earnings presentation can be accessed online at investor.sandisk.com . About Sandisk Sandisk is a leading global semiconductor memory company with more than 30 years of innovation in NAND flash technology. We are a vertically integrated solutions provider with ownership of chip-level design and IP, front and back-end manufacturing, as well as systems engineering and design. With a differentiated innovation engine driving advancements in storage and semiconductor technologies, our broad and ever-expanding portfolio delivers powerful flash storage solutions for artificial intelligence workloads in datacenters, edge devices, and consumer applications. Our technologies enable everyone from students, gamers and home offices, to the largest enterprises and public clouds to produce, analyze, and store data. Our solutions include a broad range of solid state drives, embedded products, removable cards, universal serial bus drives, and wafers and components. Learn more about Sandisk at www.sandisk.com . 4 Forward-Looking Statements This press release contains forward-looking statements within the meaning of U.S. federal securities laws, including statements regarding expectations for: the Company’s business outlook and operational and financial performance for the fiscal first quarter of 2027 and beyond; the market leadership of the Company’s technology; the contribution of the Company’s datacenter business to growth generation and the expected benefits of its customer partnerships; and the Company’s ability to create value for its customers through technology and generate growing and durable free cash flow. These forward-looking statements are based on management’s current expectations and are subject to risks and uncertainties that could cause actual results to differ materially from those expressed or implied in the forward looking statements. The financial results for the Company’s fiscal fourth quarter ended July 3, 2026 included in this press release represent the most current information available to management. Actual results when disclosed in the Company’s Form 10-K may differ from these results as a result of the completion of the Company’s financial closing procedures; final adjustments; completion of the audit by the Company’s independent registered accounting firm; and other developments that may arise between now and the filing of the Company’s Form 10-K. Other key risks and uncertainties that could cause actual results to differ materially from those expressed or implied in the forward-looking statements include: adverse changes in global or regional economic conditions, including the impact of evolving trade policies, tariff regimes and trade wars; volatility in demand for the Company’s products; pricing trends and fluctuations in average selling prices; inflation; changes in interest rates and a potential economic recession; future responses to and effects of global health crises; the impact of business and market conditions; the impact of competitive products and pricing; the Company’s development and introduction of products based on new technologies and management of technology transitions; risks associated with strategic initiatives, including restructurings, acquisitions, divestitures, cost saving measures and joint ventures; risks related to product defects; difficulties or delays in product ramps, manufacturing or other supply chain disruptions; our reliance on strategic relationships with key partners, including Kioxia Corporation; risks related to our long-term agreements; fluctuation of our operating results, including due to changes in demand, industry cycle and timing of customer deployments, and our ability to accurately forecast demand; the attraction, retention and development of skilled management and technical talent; risks associated with the use of artificial intelligence in our business operations; changes to the Company’s relationships with key customers or consolidation among our customer base; compromise, damage or interruption from cybersecurity incidents or other data system security risks; our reliance on intellectual property; fluctuations in currency exchange rates; actions by competitors; risks related to our share repurchase program; risks associated with compliance with changing legal and regulatory requirements; and other risks and uncertainties listed in the Company’s filings with the Securities and Exchange Commission, including our Annual Report on Form 10-K and Quarterly Reports on Form 10-Q, to which your attention is directed. You should not place undue reliance on these forward-looking statements, which speak only as of the date hereof, and the Company undertakes no obligation to update or revise these forward-looking statements to reflect new information or events, except as required by law. ### Sandisk and the Sandisk logo are registered trademarks or trademarks of Sandisk Corporation or its affiliates in the United States and/or other countries. 5 SANDISK CORPORATION CONSOLIDATED BALANCE SHEETS (in millions; except par value, unaudited) July 3, 2026 June 27, 2025 ASSETS Current assets: Cash and cash equivalents $ 4,762 $ 1,481 Accounts receivable, net 4,708 1,068 Inventories 2,698 2,079 Income tax receivable 22 66 Other current assets 590 392 Total current assets 12,780 5,086 Marketable equity securities 1,777 — Property, plant and equipment, net 674 619 Notes receivable and investments in Flash Ventures 678 654 Goodwill 4,994 4,999 Income tax receivable, non-current 169 80 Deferred tax assets 66 58 Other non-current assets 1,369 1,489 Total assets $ 22,507 $ 12,985 LIABILITIES AND SHAREHOLDERS’ EQUITY Current liabilities: Accounts payable $ 516 $ 366 Accounts payable to related parties 460 400 Accrued expenses 313 274 Accrued compensation 657 173 Refund liabilities 1,500 126 Contract liabilities 849 25 Income tax payable, current 1,286 43 Current portion of long-term debt — 20 Total current liabilities 5,581 1,427 Deferred tax liabilities 161 17 Income tax payable, non-current 258 131 Long-term debt — 1,829 Non-current contract liabilities 393 — Other liabilities 378 365 Total liabilities 6,771 3,769 Shareholders’ equity: Common stock, $0.01 par value; authorized — 450 shares; issued and outstanding — 149 shares and 146 shares, respectively (issued and outstanding as of June 27, 2025 - 146 shares) $ 1 $ 1 Treasury stock (4,537) — Additional paid-in capital 10,879 11,248 Accumulated other comprehensive loss (256) (249) Retained earnings (Accumulated deficit) 9,649 (1,784) Total shareholders’ equity 15,736 9,216 Total liabilities and shareholders’ equity $ 22,507 $ 12,985 6 SANDISK CORPORATION CONSOLIDATED STATEMENTS OF OPERATIONS (in millions, except per share amounts; unaudited) Three Months Ended Year Ended July 3, 2026 June 27, 2025 July 3, 2026 J",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026057406/sndk-20260703.htm",
+   "published": "2026-08-17T16:50:29-04:00",
+   "form": "10-K",
+   "section": "MD&A",
+   "text": "Item 7. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis contains forward-looking statements within the meaning of the federal securities laws and should be read in conjunction with the disclosures we make concerning risks and other factors that may affect our business and operating results. You should read this information in conjunction with the Consolidated Financial Statements and the notes thereto included in Part II, Item 8., of this Annual Report on Form 10-K . See also “Forward-Looking Statements” immediately prior to Part I, Item 1., of this Annual Report on Form 10-K. For management’s discussion of our consolidated results for the year ended June 27, 2025 in comparison with the combined results for the year ended June 28, 2024, and other financial information related to fiscal year 2025, refer to Part II, Item 7., “Management’s Discussion and Analysis of Financial Condition and Results of Operations,” included in our 2025 Annual Report on Form 10-K, filed with the U.S. Securities and Exchange Commission (“SEC”) on August 21, 2025. Unless otherwise indicated or the context requires, references herein to specific years and quarters are to our fiscal years and fiscal quarters. As used herein, the terms “we,” “us,” “our,” and the “Company” refer to Sandisk Corporation and its subsidiaries. Overview Our Business Sandisk is a leading global semiconductor memory company with more than 30 years of innovation in NAND flash technology. We are a vertically integrated solutions provider with ownership of chip-level design and IP, front and back-end manufacturing, as well as systems engineering and design. With a differentiated innovation engine driving advancements in storage and semiconductor technologies, our broad and ever-expanding portfolio delivers powerful flash storage solutions for artificial intelligence (“AI”) workloads in datacenters, edge devices, and consumer applications. Our technologies enable everyone from students, gamers, and home offices to the largest enterprises and public clouds to produce, analyze, and store data. Our solutions include a broad range of solid-state drives (“SSDs”), embedded products, removable cards, universal serial bus drives and wafers and components. Our broad portfolio of technology and products addresses multiple end markets of “Datacenter” (formerly referred to as “Cloud”), “Edge” (formerly referred to as “Client”), and “Consumer.” The Datacenter end market is comprised primarily of products for datacenters, cloud service providers, and private cloud customers. Through the Edge end market, we provide our original equipment manufacturer (“OEM”) and channel customers a broad array of high-performance flash solutions across personal computer, mobile, gaming, automotive, physical AI, at-home entertainment, and industrial spaces. The Consumer end market is highlighted by our broad range of retail and other end-user products, which capitalize on the strength of our product brand recognition and vast presence around the world. The Company’s fiscal year ends on the Friday nearest to June 30 and typically consists of 52 weeks. Approximately every five to six years, we report a 53-week fiscal year to align the fiscal year with the foregoing policy. Fiscal years 2025 and 2024, which ended on June 27, 2025 and June 28, 2024, respectively, were each comprised of 52 weeks, with each fiscal quarter consisting of 13 weeks. Fiscal year 2026 was comprised of 53 weeks and ended on July 3, 2026, with the first fiscal quarter consisting of 14 weeks. Unless otherwise indicated or the context requires, references herein to specific years and quarters are to fiscal years and fiscal quarters, and references to financial information are on a consolidated basis. The Separation On October 30, 2023, Western Digital Corporation (“WDC”) announced that its board of directors (the “WDC Board of Directors”) authorized WDC management to pursue a plan to separate the Company into an independent public company (the “separation” or “the spin-off”). The separation received final approval by the WDC Board of Directors and was completed on February 21, 2025. Prior to February 21, 2025, we were wholly owned by WDC. On February 21, 2025, WDC executed the spin-off of the Company through WDC’s pro rata distribution of 116,035,464, or 80.1%, of the Company’s outstanding shares of common stock to holders of WDC’s common stock. Each WDC stockholder received one-third (1/3) of one share of the Company’s common stock for each share of WDC’s common stock held by such WDC stockholder as of February 12, 2025, the record date of the distribution. Upon completion of the separation, WDC owned 28,827,787, or 19.9%, of the outstanding shares of the Company’s common stock. Following the distribution, the Company became an independent publicly listed company, and on February 24, 2025, the Company began trading as an independent publicly traded company under the stock symbol “SNDK” on Nasdaq. 43 Table of Contents On June 9, 2025, WDC disposed of 21,314,768, or 14.6%, of our common stock through an exchange of our common stock for WDC debt held by WDC creditors, which shares were sold by affiliates of the WDC creditors in a registered public offering by the Company. On February 18, 2026, WDC disposed of an additional 5,821,135 outstanding shares of the Company through an exchange of Sandisk’s common stock for WDC debt held by WDC creditors, which shares were sold by affiliates of the WDC creditors in a registered public offering by us. All expenses for these offerings were paid for by us. Following this transaction, WDC continued to retain 1,691,884 of the outstanding shares of the Company’s common stock and, as of March 19, 2026, the sale of such shares was no longer subject to restriction, and we were no longer required to pay any expenses associated with WDC’s eventual exchange or distribution of our shares. Subsequent to this date, WDC has disposed of additional outstanding shares of our common stock in exchange for shares of its outstanding common stock and has announced that it expects to monetize all remaining shares of Sandisk common stock held by it by the end of 2026 in one or more subsequent exchanges for its outstanding common stock. Goodwill Impairment As discussed in Part II, Item 8. , Note 5, Supplemental Financial Statement Data of the Notes to Consolidated Financial Statements included in this Annual Report on Form 10-K , subsequent to the separation, we conducted a quantitative analysis of potential goodwill and long-lived assets impairments, in accordance with Accounting Standards Codification (“ASC”) No. 350, Intangibles - Goodwill and Other. This analysis indicated that the estimated carrying value of our reporting unit exceeded its fair value. Consequently, we recorded a goodwill impairment charge of $1.8 billion during the fiscal year ended June 27, 2025 . For the year ended July 3, 2026, there were no goodwill impairment charges recorded. Financing Activities Prior to the separation, we received financing from certain of WDC’s subsidiaries in the form of borrowings under revolving credit agreements and promissory notes to fund activities primarily related to Flash Ventures. Additional information regarding our outstanding notes due to (from) Western Digital Corporation is included in Part II, Item 8., Note 10, Related Parties and Related Commitments and Contingencies of the Notes to Consolidated Financial Statements included in this Annual Report on Form 10-K. As discussed in Part II, Item 8., Note 8, Debt of the Notes to Consolidated Financial Statements included in this Annual Report on Form 10-K, on February 21, 2025 , we entered into a loan agreement (the “Loan Agreement”) comprised of a seven-year Term Loan B facility in an aggregate principal amount of $2.0 billion (the “Term Loan Facility”) and a five-year revolving credit facility (the “Revolving Credit Facility”) in an aggregate principal amount of $1.5 billion, including up to $150 million for letters of credit. On February 21, 2025, we borrowed $2.0 billion under the Term Loan Facility. We used a portion of the proceeds of the borrowing to make a net distribution payment of $1.5 billion to WDC, with the remainder used for general corporate purposes of the Company. The proceeds of the Revolving Credit Facility may be used by us for working capital and general corporate purposes. On March 4, 2026, the Company settled in full the remaining outstanding principal amounts of the Term Loan Facility, plus accrued interest, using cash on hand. In connection with the early settlement of the Term Loan Facility, the Company recognized a loss on debt extinguishment of $46 million resulting from the write-off of the remaining unamortized issuance costs. As of July 3, 2026 , we have drawn no amounts under the Revolving Credit Facility. Operational Update In 2026, we continued to observe that the rapid growth of AI infrastructure is driving demand for high-performance storage products, and AI adoption is driving the need for NAND storage to support these workloads, leading to increased revenues when compared to prior periods. The current demand environment has led to pricing shifts that have positively impacted our business, and we expect these favorable pricing trends to have a positive impact on our revenue and cash flows from operations. We expect AI-driven demand to persist through calendar year 2027 and beyond. Accordingly, we expect to invest in, and allocate resources to, high-value opportunities for both the short-term and long-term benefit of our customers and us. 44 Table of Contents There are pending and ongoing investigations initiated by the United States under Section 232 of the Trade Expansion Act of 1962 and Section 301 of the Trade Act of 1974 that may impact tariff rates for our products. Currently, the majority of our products sold in the U.S. are exempt from tariffs, but additional tariff increases, or the loss of applicable exemptions, would increase the cost of goods sold for our products sold in the U.S., which could negatively impact our margins and financial performance. Increases in the price of our products in response to increased costs may adversely impact demand for those products in the U.S., which could also negatively impact our performance and financial results. Future trade policies and regulations in the U.S. and other countries, the terms of any trade arrangements that may be negotiated between the U.S. and other countries, the scope, amount, or duration of tariffs that may be imposed by any country, and the impact of these factors on our business are uncertain and may contribute to increased costs and reduced demand for our products, each of which could harm our financial performance. Commencing in fiscal 2026, we entered into long-term agreements, which we also refer to as New Business Models, or “NBMs,” with several Datacenter and Edge customers. These agreements generally commit us to deliver, and our customers to purchase, a stated volume of products, mostly over multi-year periods. The agreements include pricing mechanisms consisting of fixed and variable components and are supported by financial guarantees that are intended to provide additional protection in the event a customer does not satisfy their contractual purchase obligations. As NBMs are expected to become our predominant way of doing business, we believe that this business model will contribute to greater predictability of revenue, support production planning, and enhance supply assurance for our customers. While these agreements do not eliminate the risks associated with customer demand, market conditions, or operational execution, we believe they reduce certain elements of industry cyclicality and support our long-term strategic and financial objectives. We will continue to actively monitor developments impacting our business and may tak",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026062267/sndk-20260910.htm",
+   "published": "2026-09-16T16:24:55-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On September 10, 2026, following an annual review of the compensation levels of the executive officers of Sandisk Corporation (the “Company”), the Compensation and Talent Committee of the Board of Directors of the Company approved compensation adjustments for Alper Ilkbahar, the Company’s Chief Technology Officer, and Bernard Shek, the Company’s Chief Legal Officer, each effective as of October 1, 2026. The table below sets forth the adjusted annual base salary (if applicable) and adjusted annual short-term incentive (“STI”) target percentage amounts as a percentage of annual base salary (if applicable). In addition to compensation adjustments for Messrs. Ilkbahar and Shek, the table below also reflects the current compensation levels for the Company’s two other named executives, David Goeckeler, the Company’s Chief Executive Officer, and Luis Visoso, the Company’s Chief Financial Officer. There were no changes to Mr. Goeckeler’s annual base salary or to Messrs. Goeckeler, Visoso, or Ilkbahar’s annual STI targets. Name Position Annual Base Salary Annual STI Target % Alper Ilkbahar Executive Vice President and Chief Technology Officer $755,000 100% Bernard Shek Executive Vice President and Chief Legal Officer $618,000 100% David Goeckeler Chairman and Chief Executive Officer $1,300,000 200% Luis Visoso Executive Vice President and Chief Financial Officer $875,000 150% SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized. Sandisk Corporation (Registrant) By: /s/ Bernard Shek Bernard Shek Chief Legal Officer and Secretary Date: September 16, 2026"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/2023554/000119312526389293/d138343d8k.htm",
+   "published": "2026-09-11T16:15:07-04:00",
+   "form": "8-K",
+   "items": "1.01,9.01",
+   "text": "Item 1.01 Entry Into a Material Definitive Agreement. On September 9, 2026, Sandisk Corporation (“SDC” or the “Company”) entered into Amendment No. 1 (“Amendment No. 1”) by and among the Company, Sandisk Technologies, Inc. (“SDT”), the banks and other financial institutions party thereto and JPMorgan Chase Bank, N.A., as administrative agent, to the Company’s Loan Agreement dated as of February 21, 2025 by and among the Company, the banks and other financial institutions party thereto and JPMorgan Chase Bank, N.A., as administrative agent (as amended, supplemented or otherwise modified as of the effective date of Amendment No. 1, including by Amendment No. 1, the “Loan Agreement”),. Amendment No. 1 provides for a revolving credit facility (the “Revolving Credit Facility”) comprising an aggregate principal amount of $1,500.0 million in revolving commitments, which commitments refinanced in full the revolving commitments outstanding under the Loan Agreement prior to Amendment No. 1. Borrowings under the Revolving Credit Facility, for U.S. dollar borrowings, will bear interest, at the Company’s option, at (x) the Adjusted Term SOFR Rate or Adjusted Daily Simple SOFR (each as defined in the Loan Agreement) (and neither of which include a credit spread adjustment), plus an interest rate margin of 1.375% per annum (subject to step-ups and step-downs based on the Company’s Net Leverage Ratio (as defined in the Loan Agreement) or the corporate family ratings of the Company), or (y) a base rate plus an interest rate margin of 0.375% per annum (subject to step-ups and step-downs based on the Company’s Net Leverage Ratio (as defined in the Loan Agreement) or the corporate family ratings of the Company). The Company will pay a commitment fee of 0.175% per annum (subject to step-ups and step-downs based on the Company’s Net Leverage Ratio (as defined in the Loan Agreement) or the corporate family ratings of the Company) in respect of undrawn revolving commitments under the Revolving Credit Facility. The Revolving Credit Facility will also provide for borrowings in Euros, Yen and additional currencies agreed to by the lenders under the Revolving Credit Facility. The Revolving Credit Facility will mature on September 9, 2031, at which time the commitments thereunder shall be terminated, and will not have any amortization. The obligations under the Loan Agreement are guaranteed by SDT and are required to be guaranteed by any of the Company’s future material U.S. wholly ow"
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/strong-data-center-edge-boost-171700533.html?.tsrc=rss",
+   "published": "2026-10-28T13:17:00-04:00",
+   "text": "Can Strong Data Center & Edge Boost SNDK's Top Line in Q1 Earnings? - Sandisk's Q1 fiscal 2027 revenues are poised to benefit from AI-driven Data Center demand, rising Edge storage needs and favorable NAND pricing trends.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/sndk/articles/620986/did-the-market-read-sandisk-stock-right/2026-10-28?.tsrc=rss",
+   "published": "2026-10-28T13:04:44-04:00",
+   "text": "Did The Market Read SanDisk Stock Right? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/28/why-sandisk-stock-rallied-today/?.tsrc=rss",
+   "published": "2026-10-28T12:50:39-04:00",
+   "text": "Why Sandisk Stock Rallied Today - The chipmaker is rising thanks to a competitor's bullish results.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/7f8fbb85-20de-3e28-a1c8-7aac46f10f51/nasdaq-lags-despite-memory.html?.tsrc=rss",
+   "published": "2026-10-28T12:26:43-04:00",
+   "text": "Nasdaq Lags Despite Memory Chip Surge. Tech Earnings Can't Come Soon Enough. - Memory stocks were crushing it after SK Hynix signaled that that AI-driven demand will outpace supply through 2030.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.cryptoprowl.com/releases/jpmorgan-coca-cola-join-pushback-against-okx-ice-tokenized-stock-trading-7513?.tsrc=rss",
+   "published": "2026-10-28T11:53:00-04:00",
+   "text": "JPMorgan, Coca-Cola Join Pushback Against OKX-ICE Tokenized Stock Trading - JPMorgan Chase (NYSE: $JPM), Coca-Cola (NYSE: $KO), and Dell Technologies (NYSE: $DELL) and four other companies ha...",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/sandisk-corporation-sndk-beat-estimates-151002431.html?.tsrc=rss",
+   "published": "2026-10-28T11:10:02-04:00",
+   "text": "Will Sandisk Corporation (SNDK) Beat Estimates Again in Its Next Earnings Report? - Sandisk Corporation (SNDK) has an impressive earnings surprise history and currently possesses the right combination of the two key ingredients for a likely beat in its next quarterly report.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://decrypt.co/382043/jpmorgan-coca-cola-7-more-companies-objecting-okx-ice-tokenized-stocks?.tsrc=rss",
+   "published": "2026-10-28T11:05:03-04:00",
+   "text": "JPMorgan, Coca-Cola Among 7 More Companies Objecting to OKX-ICE Tokenized Stocks - Seven more companies, including JPMorgan Chase, Coca-Cola and Dell, have objected to trading of their shares on the planned OKX-ICE tokenized stock venue, bringing the total to 33.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/3f30793c-e86d-3bce-8ee7-c00fa5ee789c/the-ai-trade-is-back.-why.html?.tsrc=rss",
+   "published": "2026-10-28T10:23:00-04:00",
+   "text": "The AI Trade Is Back. Why Sandisk Stock Is Rising Before Big Tech Earnings. - The chip and memory trade is back in style ahead of the most crucial set of earnings of the quarter.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/article/this-nvidia-chart-shows-why-the-ai-compute-shortage-remains-acute-141431851.html?.tsrc=rss",
+   "published": "2026-10-28T10:14:31-04:00",
+   "text": "This Nvidia chart shows why the AI compute shortage remains acute - Here's another signal that AI demand is doing anything but slowing down.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/28/sandisk-is-down-45-from-its-high-history-suggests/?.tsrc=rss",
+   "published": "2026-10-28T09:50:00-04:00",
+   "text": "Sandisk Stock Is Down 45% From Its High. History Suggests This Is What Happens Next. - The stock isn't for the faint of heart.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/skhy-stock-analyst-sees-175-upside-potential-for-sk-hynix-company-s-q3-beat-uplifts-mu-sndk-wdc/cZU9iiSR9G2?.tsrc=rss",
+   "published": "2026-10-28T09:25:09-04:00",
+   "text": "SKHY Stock: Analyst Sees 175% Upside Potential For SK Hynix, Company's Q3 Beat Uplifts MU, SNDK, WDC - SK Hynix expects memory demand to outpace supply through 2030, citing AI adoption, the difficulty of advanced chipmaking and long lead times for new capacity.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://unchainedcrypto.com/jpmorgan-amd-and-coca-cola-join-objectors-to-okx-ice-stock-tokens-as-count-hits-33/?.tsrc=rss",
+   "published": "2026-10-28T09:15:00-04:00",
+   "text": "JPMorgan, AMD and Coca-Cola Join Objectors to OKX-ICE Stock Tokens as Count Hits 33 - A revised notice dated Oct. 27 adds seven issuers to the venue's objection list and names Amazon Web Services as cloud provider in its service-provider table, which no longer lists Alibaba Cloud.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/28/sk-hynix-jumps-7-micron-rises-3-on-memory-shortage-call-through-2030-while-seagate-slips-despite-upbeat-guidance/?.tsrc=rss",
+   "published": "2026-10-28T09:07:24-04:00",
+   "text": "SK Hynix Jumps 7%, Micron Rises 3% on Memory Shortage Call Through 2030 While Seagate Slips Despite Upbeat Guidance - SK Hynix just posted a record quarter and warned that the AI memory crunch could outlast the decade, lifting chipmakers across the board. But Seagate beat estimates and raised its dividend and still sold off, and the reason behind that split matters for anyone holding storage stocks.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/better-buy/2026/10/28/lumentum-vs-sandisk-which-tech-stock-is-the-better-buy-in-november/?.tsrc=rss",
+   "published": "2026-10-28T08:50:01-04:00",
+   "text": "Lumentum vs. Sandisk: Which Tech Stock Is the Better Buy in November? - One trades at a higher P/E, while the other looks like a bargain, but long-term growth sustainability is what counts.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/28/is-western-digitals-nightmare-3-months-over-a-wall-street-pro-says-its-price-will-increase-130/?.tsrc=rss",
+   "published": "2026-10-28T08:45:18-04:00",
+   "text": "Is Western Digital’s Nightmare 3 Months Over? A Wall Street Pro Says Its Price Will Increase 130% - Western Digital stock has cratered more than 50% from its peak even as earnings beat estimates and revenue surged, leaving investors to wonder whether Wall Street's most aggressive analyst has spotted something the market is missing.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/a49c066c-d499-3231-b322-cf5b6baa88a4/6-stocks-will-be-this-year%27s.html?.tsrc=rss",
+   "published": "2026-10-28T08:00:11-04:00",
+   "text": "6 Stocks Will Be This Year's Growth Stunners, Analysts Say - If you're looking for revenue growth this year, there's no shortage of options. But a few stocks are likely to put the rest to shame.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/391dd0db-d6a7-3692-9869-1f71d05f7e7f/memory-chip-maker-sk-hynix.html?.tsrc=rss",
+   "published": "2026-10-28T07:33:54-04:00",
+   "text": "Memory-Chip Maker SK Hynix Smashes Q3 Targets; Stock Jumps - South Korea-based memory-chip maker SK Hynix smashed expectations for the third quarter. SK Hynix stock jumped on the news.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/28/sk-hynix-jumps-8-after-a-632-profit-surge-and-a-45-billion-shareholder-pledge-micron-and-sandisk-are-riding-along/?.tsrc=rss",
+   "published": "2026-10-28T07:04:21-04:00",
+   "text": "SK Hynix Jumps 8% After a 632% Profit Surge and a $45 Billion Shareholder Pledge. Micron and SanDisk Are Riding Along. - SK Hynix shattered profit records overnight, and the ripple hit Micron, SanDisk, and Western Digital before US markets opened. Whether this premarket surge marks a genuine memory recovery or just a 60 trillion won promise doing heavy lifting is the question every memory investor needs to answer befo",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:08-04:00",
+    "sha256": "4c5ee60fc01c2e23543dd7260f6e86571aa636a04f269a0248a235e5b51c4753"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 51895
+}

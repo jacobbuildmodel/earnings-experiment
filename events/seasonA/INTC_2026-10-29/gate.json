@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "INTC",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:18.538337-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.intc.com/news-events/press-releases/detail/1782/intel-to-report-third-quarter-2026-financial-results",
+  "published_et": "2026-10-06T16:01-04:00",
+  "quote": "Intel to Report Third-Quarter 2026 Financial Results :: Intel Corporation (INTC) Press Releases Intel to Report Third-Quarter 2026 Financial Results Download as PDF Oct 6, 2026 • 4:01 PM EDT SANTA CLARA, Calif.--(BUSINESS WIRE)-- Intel Corporation today announced that it will report third-quarter financial results on Thursday, October 29, 2026, promptly after close of market.",
+  "title": "Intel to Report Third-Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T22:43:36.988158-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://www.intc.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 94.44000244140625,
+  "expiry": "2026-10-30",
+  "strike": 94.0,
+  "call": {
+   "bid": 4.25,
+   "ask": 4.45,
+   "openInterest": 3320.0,
+   "lastPrice": 4.4,
+   "impliedVolatility": 1.2080117724609374,
+   "lastTradeDate": "2026-10-28T18:12:22+00:00"
+  },
+  "put": {
+   "bid": 4.1,
+   "ask": 4.25,
+   "openInterest": 1678.0,
+   "lastPrice": 4.15,
+   "impliedVolatility": 1.2919957275390623,
+   "lastTradeDate": "2026-10-28T18:13:30+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.09026895149954274,
+  "rel_spread": {
+   "call": 0.04597701149425292,
+   "put": 0.03592814371257494
+  },
+  "oi_atm": 4998.0,
+  "oi_sum": 39556.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

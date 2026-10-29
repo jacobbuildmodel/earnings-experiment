@@ -1,0 +1,57 @@
+{
+ "event": "RDDT_2026-10-29",
+ "backend": "opus",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "fd21c85f011861e8b991b540676f8afae842a05ad501de980037f72a289c91d6",
+ "called_et": "2026-10-28T17:55:37-04:00",
+ "prompt_sha256": "a9728bb30e6d7aebcfb663c7e1f67174e4448f22a36899486e7bc6ce9eea6f83",
+ "probe_reply": "That earnings report (October 29, 2026) hasn't happened yet, since today is October 28, 2026, so I don't know how RDDT's stock will react.",
+ "reply": "{\"prior\": {\"p\": 0.54, \"from\": \"I3 base rates: software_internet cluster t0_hit 0.541 (n=919), AMC session 0.538, overall validation 0.542\"},\n \"confidence\": 0.54,\n \"thesis\": \"RDDT goes into the print washed out (-12% in 5 days, -48% from its 52-week high, ~14x forward P/E) with expectations reset toward slower growth, which roughly offsets the risk of another 'beat but sell' reaction like July's on US DAU softness, so I hold close to the base rate.\",\n \"reasons\": [\"Positioning is heavily de-risked: 5-day return -11.7%, 12-month return -38%, and the headlines are uniformly about slowdown fears (I7, I9, I17, I22).\",\n  \"Valuation is undemanding for 61% revenue growth and a 29% operating margin: forward P/E about 14 against P/S about 9.4 (I2).\",\n  \"Consistent large EPS beats and upward revisions (90-day EPS revision +5.3%), but July showed that a 30% beat still produced a -18% reaction on user metrics (I2, I4).\",\n  \"US DAUq is flat quarter on quarter (6% YoY). Logged-in DAUq growth is only 7% and that disclosure is being dropped from Q3 onward, a possible bear talking point (I5).\",\n  \"The implied move is about 13% and options skew is near neutral, so the outcome is symmetric and high-variance (I1, I2).\"],\n \"moved_from_prior\": \"Net zero. Washed-out sentiment, cheap valuation and a 15% short interest add about +2pp. US user-growth deceleration, the removal of the logged-in metric and July's beat-and-drop pattern subtract about -2pp.\",\n \"deciding_variable\": \"Q4 revenue/EBITDA guidance versus the slowdown fears, plus the trajectory of US DAUq.\",\n \"theses\": [{\"expected\": \"Rise\", \"mechanism\": \"Q4 guide implies 50%+ growth with ad pricing intact; shorts cover after a 12% pre-print drawdown.\", \"wrong_if\": \"Q4 revenue guide midpoint implies growth under about 45% or misses consensus.\"},\n  {\"expected\": \"Fall\", \"mechanism\": \"US DAUq declines quarter on quarter and search-traffic headwinds dominate the narrative despite a beat, repeating July.\", \"wrong_if\": \"US DAUq grows sequentially or management quantifies a stabilizing search contribution.\"},\n  {\"expected\": \"Rise\", \"mechanism\": \"Reddit Max/AI ad tools and ARPU growth near 35%+ show monetization offsetting slower users.\", \"wrong_if\": \"Ad price growth decelerates sharply from about 40% or margin guidance compresses due to rising costs.\"}],\n \"key_observations\": [\"Q4 revenue and Adj. EBITDA guidance vs consensus\",\n  \"US DAUq sequential change and the commentary on search-engine algorithm effects\",\n  \"Q3 revenue vs the $860-870M guide (a beat of 5% or more is the norm)\",\n  \"Ad pricing and impression growth; ARPU growth\",\n  \"Opex growth and any data-licensing/AI deal updates\",\n  \"Size of the buyback\"],\n \"items_used\": [\"I1\", \"I2\", \"I3\", \"I4\", \"I5\", \"I7\", \"I9\", \"I12\", \"I17\", \"I22\"]}",
+ "error": null,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 20777,
+  "cache_read_input_tokens": 633,
+  "output_tokens": 1397,
+  "output_tokens_details": {
+   "thinking_tokens": 233
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 20777,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1397,
+    "cache_read_input_tokens": 633,
+    "cache_creation_input_tokens": 20777,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 20777
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model": "claude-opus-5-5",
+ "isolation": {
+  "tools": [],
+  "mcp_servers": [],
+  "num_turns": 1,
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "model": "claude-opus-5-5"
+ },
+ "outcome": "decided"
+}

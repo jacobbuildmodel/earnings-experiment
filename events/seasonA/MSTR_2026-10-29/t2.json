@@ -1,0 +1,142 @@
+{
+ "track": "T2",
+ "event": "MSTR_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "MSTR's next-day open is driven mostly by bitcoin overnight and the Q3 mark-to-market and capital-structure commentary, with no clear edge either way.",
+  "reasons": [
+   "The base rate is about 54%, but the crypto_proxy sample is too small to use.",
+   "The last 4 prints all had negative raw returns (win rate 0 of 4), a mild negative pattern.",
+   "The stock is in a deep drawdown (-52% over 12m, -9% over 1m), with a put-skewed options market (put IV above call IV), which tilts slightly bearish.",
+   "Q3 EPS depends almost entirely on the BTC price move, so the headline EPS is hard to read; the 22.9 consensus is of little use.",
+   "Strategy paused BTC purchases and spent $205M on STRC buybacks; the daily-dividend vote passed. Mixed, and mostly priced in."
+  ],
+  "deciding_variable": "Bitcoin's overnight move and the call's messaging on the STRC discount, buybacks, the USD reserve and whether BTC buying resumes.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation t0_hit 0.542 and AMC 0.538; crypto_proxy cluster (n=8, 0.25) is insufficient, so ignored"
+  },
+  "leak_probe": "I don't know. Today's date is 2026-10-28, so the 2026-10-29 earnings report hasn't happened yet, and I have no information on how MSTR's stock reacted.",
+  "moved_from_prior": "Moved down about 4 points from 0.54: the 0-of-4 earnings reaction history, bearish put skew and weak trend, partly offset by oversold bounce potential and the BTC-driven coin-flip nature.",
+  "theses": [
+   {
+    "expected": "Down at the exit open",
+    "mechanism": "Buying pause and STRC support spending read as stress; large Q3 non-cash numbers and dilution concerns weigh on the premium.",
+    "wrong_if": "Management signals resumed BTC accumulation or BTC rallies overnight."
+   },
+   {
+    "expected": "Up at the exit open",
+    "mechanism": "The Q3 BTC mark-to-market is better than Q2, the STRC discount narrows, the $4.8B reserve calms credit fears, and the oversold stock bounces.",
+    "wrong_if": "BTC sells off after the close or management announces more bitcoin sales."
+   },
+   {
+    "expected": "Flat or small move",
+    "mechanism": "The ~6.6% implied move is dominated by BTC beta; earnings is mostly known from weekly 8-Ks.",
+    "wrong_if": "New capital-structure surprises such as MSCI exclusion news or a change to the dividend or financing plan."
+   }
+  ],
+  "key_observations": [
+   "BTC price overnight and at the Oct 30 open",
+   "STRC trading level versus $100 and the pace of buybacks",
+   "Any plan to resume BTC buying or sell BTC",
+   "MSTR premium to NAV and the ATM issuance stance",
+   "MSCI index eligibility commentary"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/MSTR_2026-10-29/gate.json",
+    "published": "2026-10-28T14:31:24.889482-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/MSTR_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:24.889482-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526431146/mstr-20261026.htm",
+    "published": "2026-10-26T08:49:15-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.marketbeat.com/instant-alerts/event-strategy-stockholders-approve-daily-dividends-for-four-preferred-stock-series-2026-10-28/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T13:04:43-04:00",
+    "dossier_item": "I13"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.barchart.com/story/news/8478770/michael-saylors-strategy-just-formed-a-golden-cross-why-bitcoin-bulls-shouldnt-expect-another-700-rally-yet?.tsrc=rss",
+    "published": "2026-10-27T10:37:30-04:00",
+    "dossier_item": "I28"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.ccn.com/news/crypto/strategy-zero-bitcoin-purchases-398m-strc-buybacks-saylor/?.tsrc=rss",
+    "published": "2026-10-27T10:22:15-04:00",
+    "dossier_item": "I29"
+   }
+  ],
+  "decided_et": "2026-10-28T17:23:26-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 28385,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 963,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 28385,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 963,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 28385,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 28385
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1260764
+ }
+}
