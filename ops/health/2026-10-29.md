@@ -1,4 +1,4 @@
-# Health 2026-10-29 11:00 ET - **RED** (1 known)
+# Health 2026-10-29 13:28 ET - **RED** (1 known)
 
 check.py: PASS - 1 warning(s)
 
@@ -23,17 +23,6 @@ check.py: PASS - 1 warning(s)
 ## Information
 - paper/options_ledger.json: open ['seasonA-ALNY-2026-10-29-F', 'seasonA-ARXS-2026-10-28-F', 'seasonA-BDC-2026-10-29-F', 'seasonA-BHE-2026-10-28-F', 'seasonA-BOOT-2026-10-28-F', 'seasonA-CMG-2026-10-28-F', 'seasonA-COHU-2026-10-28-F', 'seasonA-CROX-2026-10-29-F', 'seasonA-ENTG-2026-10-29-F', 'seasonA-FTAI-2026-10-29-F', 'seasonA-GEN-2026-10-28-F', 'seasonA-AMZN-2026-10-29-F', 'seasonA-AXTI-2026-10-29-F', 'seasonA-BBIO-2026-10-29-F', 'seasonA-COLM-2026-10-29-F', 'seasonA-EXEL-2026-10-29-F', 'seasonA-GD-2026-10-30-F', 'seasonA-INTC-2026-10-29-F', 'seasonA-MSTR-2026-10-29-F', 'seasonA-PINS-2026-10-29-F', 'seasonA-RDDT-2026-10-29-F', 'seasonA-SBUX-2026-10-29-F']
 - paper/long_ledger.json: open ['seasonA-ALNY-2026-10-29-L', 'seasonA-BDC-2026-10-29-L', 'seasonA-BHE-2026-10-28-L', 'seasonA-BOOT-2026-10-28-L', 'seasonA-CMG-2026-10-28-L', 'seasonA-COHU-2026-10-28-L', 'seasonA-CROX-2026-10-29-L', 'seasonA-ENTG-2026-10-29-L', 'seasonA-FTAI-2026-10-29-L', 'seasonA-FTNT-2026-10-28-L', 'seasonA-GEN-2026-10-28-L', 'seasonA-GOOG-2026-10-28-L', 'seasonA-HONA-2026-10-28-L', 'seasonA-HWM-2026-10-29-L', 'seasonA-IDCC-2026-10-29-L', 'seasonA-INCY-2026-10-29-L', 'seasonA-KLAC-2026-10-28-L', 'seasonA-LHX-2026-10-29-L', 'seasonA-MSFT-2026-10-28-L', 'seasonA-MUSA-2026-10-28-L', 'seasonA-NOW-2026-10-28-L', 'seasonA-OLED-2026-10-28-L', 'seasonA-QSR-2026-10-29-L', 'seasonA-QTWO-2026-10-28-L', 'seasonA-BBIO-2026-10-29-L', 'seasonA-AMZN-2026-10-29-L', 'seasonA-AXTI-2026-10-29-L', 'seasonA-COLM-2026-10-29-L', 'seasonA-DXCM-2026-10-29-L', 'seasonA-EXEL-2026-10-29-L', 'seasonA-GDDY-2026-10-29-L', 'seasonA-GD-2026-10-30-L', 'seasonA-INTC-2026-10-29-L', 'seasonA-MSTR-2026-10-29-L', 'seasonA-OSIS-2026-10-29-L', 'seasonA-PINS-2026-10-29-L', 'seasonA-RDDT-2026-10-29-L', 'seasonA-SPSC-2026-10-29-L', 'seasonA-SYK-2026-10-29-L']
-- paper/options: AMZN: the account holds +16, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: CMG: the account holds +0, the ledgers show +170 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: GOOG: the account holds +0, the ledgers show +19 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: INTC: the account holds +39, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: MSFT: the account holds +0, the ledgers show +13 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: MSTR: the account holds +36, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: NOW: the account holds +0, the ledgers show +22 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: QSR: the account holds +0, the ledgers show +78 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: RDDT: the account holds +19, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: SNDK: the account holds +2, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: ['seasonA-CMG-2026-10-28-sell', 'seasonA-GOOG-2026-10-28-sell', 'seasonA-MSFT-2026-10-28-sell', 'seasonA-NOW-2026-10-28-sell', 'seasonA-QSR-2026-10-29-sell', 'seasonA-AMZN-2026-10-29-buy', 'seasonA-INTC-2026-10-29-buy', 'seasonA-MSTR-2026-10-29-buy', 'seasonA-RDDT-2026-10-29-buy', 'seasonA-SNDK-2026-10-29-buy'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
 - paper/options: 131 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 79 position(s), 0 open order(s) - they match the ledgers
 - Thu 29 Oct: 1 snapshot(s) - CIFR
