@@ -1,0 +1,118 @@
+{
+ "track": "T2G",
+ "event": "MSTR_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.42,
+  "thesis": "Persistent negative earnings reactions over the past four quarters, heavy option put skew, and investor skepticism around paused Bitcoin purchases and heavy preferred dividend obligations tilt the entry-to-exit open probability downward.",
+  "reasons": [
+   "Strategy has a 0-for-4 record on opening earnings reactions over the last four quarters (E_last4_win_rate_A: 0.0%).",
+   "Significant downside options hedging: ATM put implied volatility (100.7%) significantly exceeds call IV (81.2%), yielding a -19.5 vol spread.",
+   "Recent headlines focus heavily on Strategy pausing spot Bitcoin purchases to deploy cash into preferred stock buybacks and daily dividend structures, creating narrative friction into the release."
+  ],
+  "deciding_variable": "Management's earnings call commentary regarding the capital allocation pivot (preferred dividend service/repurchases vs. spot Bitcoin accumulation) and its impact on common equity dilution.",
+  "prior": {
+   "p": 0.538,
+   "from": "base_rates AMC session hit rate (n=1820, 53.8%)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down from the 0.538 AMC prior by 11.8 percentage points to 0.42 due to a completely negative 4-quarter reaction track record, pronounced put volatility skew, and negative technical momentum (-52.5% 12m return).",
+  "theses": [
+   {
+    "expected": "Open-to-open reaction drops below zero (-2% to -6%)",
+    "mechanism": "Market focuses on growing preferred cash dividend commitments and the slowdown in spot Bitcoin accumulation, driving another post-print common share discount widening.",
+    "wrong_if": "Michael Saylor announces a massive resumption of leveraged Bitcoin buying or accelerates common share repurchases under the $1B authorization."
+   },
+   {
+    "expected": "High intraday volatility with a soft opening gap",
+    "mechanism": "Options imply a 6.57% move with heavy put skew; hedged dealers and cautious sentiment create a downward open before any conference call momentum takes hold.",
+    "wrong_if": "Broad cryptocurrency markets surge overnight alongside a massive GAAP mark-to-market earnings beat that exceeds the high-end analyst estimates."
+   },
+   {
+    "expected": "Analyst scrutiny on preferred dividend coverage and cash burn",
+    "mechanism": "Disclosures regarding the $4.83B USD Reserve and daily dividend mechanics on STRC/STRF lead to common shareholder dilution concerns.",
+    "wrong_if": "Investors treat the preferred credit framework as successfully de-risking balance sheet solvency and re-rate common equity upward."
+   }
+  ],
+  "key_observations": [
+   "Net Bitcoin Per Share (BPS) growth rate and BTC Yield metrics reported for Q3.",
+   "Status and trajectory of the $1.0B common share repurchase program vs. preferred share repurchases.",
+   "Any forward plan or timeline for resuming spot Bitcoin purchases via the ATM facility.",
+   "GAAP net income and mark-to-market digital asset adjustments relative to the wide analyst consensus range (-$0.99 to +$52.82)."
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/MSTR_2026-10-29/gate.json",
+    "published": "2026-10-28T14:31:24.889482-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/MSTR_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:24.889482-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1050446/000162828026051027/mstr-20260730x8kxex991.htm",
+    "published": "2026-07-30T16:00:23-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526435451/mstr-20261028.htm",
+    "published": "2026-10-28T10:28:08-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526431146/mstr-20261026.htm",
+    "published": "2026-10-26T08:49:15-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/strategy-sits-on-5-1-billion-in-cash-but-bought-0-of-bitcoin-thursdays-report-has-to-explain?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T13:41:52-04:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/cryptocurrency/2026/10/27/strive-buys-6182-btc-as-strategy-pauses-its-bitcoin-buying-can-treasury-buyers-hold-btc-above-80000/?.tsrc=rss",
+    "published": "2026-10-27T17:22:38-04:00",
+    "dossier_item": "I26"
+   }
+  ],
+  "decided_et": "2026-10-28T17:40:53-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 21290,
+   "candidatesTokenCount": 789,
+   "totalTokenCount": 23290,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 21290
+    }
+   ],
+   "thoughtsTokenCount": 1211,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "SPSC",
+ "report_date": "2026-10-29",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-10-29"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-10-30"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-10-30"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "reaction_day": "2026-10-30"
+ },
+ "snapshot_session": "2026-10-28",
+ "captured_et": "2026-10-28T14:31:58.253820-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/sps-commerce-announces-date-third-quarter-2026-financial-results-2026-10-15",
+  "published_et": "2026-10-15T16:07-04:00",
+  "quote": "linkedin facebook x email reddit MINNEAPOLIS , Oct. 15, 2026 (GLOBE NEWSWIRE) -- SPS Commerce, Inc. (NASDAQ: SPSC), the leading intelligent supply chain network, today announced that it will issue its financial results for the third quarter ended September 30, 2026 , after the market close on Thursday, October 29, 2026 .",
+  "title": "SPS Commerce Announces Date of Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-19T09:32:41.920521-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-10-29T16:00:00-04:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-10-29T16:00:00-04:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 85.1500015258789,
+  "expiry": "2026-11-20",
+  "strike": 80.0,
+  "call": {
+   "bid": 6.5,
+   "ask": 10.6,
+   "openInterest": 7.0,
+   "lastPrice": 10.35,
+   "impliedVolatility": 0.664309997558594,
+   "lastTradeDate": "2026-10-16T14:05:29+00:00"
+  },
+  "put": {
+   "bid": 0.25,
+   "ask": 4.5,
+   "openInterest": 29.0,
+   "lastPrice": 1.5,
+   "impliedVolatility": 0.5317429638671876,
+   "lastTradeDate": "2026-10-23T16:54:10+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 15,
+  "implied_move": 0.12830299241603255,
+  "rel_spread": {
+   "call": 0.47953216374269,
+   "put": 1.7894736842105263
+  },
+  "oi_atm": 36.0,
+  "oi_sum": 39.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

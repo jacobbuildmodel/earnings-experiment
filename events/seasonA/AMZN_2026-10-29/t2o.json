@@ -1,0 +1,149 @@
+{
+ "track": "T2O",
+ "event": "AMZN_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.55,
+  "thesis": "AWS growth is accelerating (37% in Q2 with a large backlog), the stock trades near a five-year-low forward P/E and 11% below its 52-week high, and estimates are drifting up, which tilts slightly toward a positive overnight reaction; but huge AI capex, negative FCF and a rich 8% implied move keep this close to the base rate.",
+  "reasons": [
+   "AWS reaccelerated to 37% YoY in Q2 and AI/chips run rates topped $25B each, so momentum supports another AWS beat (I4)",
+   "Valuation is undemanding (forward P/E ~24, near 5-year lows) and the stock is ~11% off its 52-week high after a -3.6% week, so expectations are not stretched (I2, I11)",
+   "EPS estimates revised up ~2% over 90 days, and 3 of the last 4 prints rose at the exit-A open (I2)",
+   "Offsets: TTM FCF is negative on capex up $66B YoY, and the ATM put IV is above call IV with some put skew (I2, I4)",
+   "Anthropic IPO skepticism (I10) could color any mark-to-market gains, which are non-operating, so the impact on the reaction is limited"
+  ],
+  "deciding_variable": "AWS revenue growth versus the ~high-30s% whisper, and whether Q4 operating income guidance and 2027 capex commentary are read as accretive rather than margin-dilutive",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 base rates: blend of consumer cluster (0.555), software_internet (0.541) and AMC session (0.538); overall about 0.54"
+  },
+  "leak_probe": "I don't know. That earnings report is scheduled for tomorrow (today is 2026-10-28), so the stock's reaction hasn't happened yet, and my knowledge only goes up to June 2026.",
+  "moved_from_prior": "+1pt for AWS momentum, low relative valuation and upward estimate revisions; partly offset by capex/FCF risk and bearish-leaning options skew. Net 0.54 -> 0.55.",
+  "theses": [
+   {
+    "expected": "Gap up",
+    "mechanism": "AWS growth holds at or above 37% with backlog expansion and AWS margin expansion, plus Q4 OI guidance above consensus",
+    "wrong_if": "AWS growth decelerates below ~33% or AWS margin compresses sharply on depreciation"
+   },
+   {
+    "expected": "Gap down",
+    "mechanism": "Capex guide for 2027 rises sharply with continued negative FCF, and soft Q4 OI guidance on investment (Leo, Zoox, AI) spooks investors",
+    "wrong_if": "Management frames capex as backed by signed multi-year commitments (Anthropic/OpenAI Trainium) with visible revenue"
+   },
+   {
+    "expected": "Muted move within ±2%",
+    "mechanism": "In-line AWS with mixed retail/ads and noisy non-operating Anthropic/OpenAI marks leave no clear signal",
+    "wrong_if": "Any segment surprises by more than ~3pts of growth"
+   }
+  ],
+  "key_observations": [
+   "AWS YoY growth and segment operating margin",
+   "AWS backlog figure (prior ~$496B per I14)",
+   "Q4 net sales and operating income guidance ranges vs consensus",
+   "Capex commentary for Q4 and 2027; TTM FCF",
+   "Advertising growth (~26% prior) and North America margin",
+   "Size of the non-operating gains from Anthropic/OpenAI investments vs operating EPS"
+  ],
+  "inputs_read": [
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/AMZN_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:00.241648-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000024/amzn-20260630xex991.htm",
+    "published": "2026-07-30T16:06:23-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1018724/000101872426000026/amzn-20260630.htm",
+    "published": "2026-07-30T18:11:13-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.benzinga.com/markets/prediction-markets/26/10/62667278/eisman-anthropic-ipo?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+    "published": "2026-10-28T13:36:38-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/amazons-eps-is-absolutely-exploding-says-josh-brown-heres-what-the-stock-needs-to-see-october-29?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T13:26:11-04:00",
+    "dossier_item": "I11"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/strong-aws-performance-boost-amazons-164200384.html?.tsrc=rss",
+    "published": "2026-10-28T12:42:00-04:00",
+    "dossier_item": "I14"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.proactiveinvestors.com/companies/news/1100857/amazon-q3-preview-aws-acceleration-expected-to-lead-the-way-1100857.html?.tsrc=rss",
+    "published": "2026-10-28T11:53:00-04:00",
+    "dossier_item": "I21"
+   }
+  ],
+  "decided_et": "2026-10-28T17:54:52-04:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 21881,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1436,
+   "output_tokens_details": {
+    "thinking_tokens": 256
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 21881,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1436,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 21881,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 21881
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.2059014
+ }
+}

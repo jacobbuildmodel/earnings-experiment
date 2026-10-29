@@ -1,0 +1,628 @@
+{
+ "event": "RDDT_2026-10-29",
+ "season": "seasonA",
+ "built_et": "2026-10-28T14:32:01-04:00",
+ "cutoff_et": "2026-10-28T14:31:44.312458-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/RDDT_2026-10-29/gate.json",
+   "published": "2026-10-28T14:31:44.312458-04:00",
+   "data": {
+    "ticker": "RDDT",
+    "report_date": "2026-10-29",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-30"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-30"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-06"
+     },
+     "reaction_day": "2026-10-30"
+    },
+    "snapshot_session": "2026-10-28",
+    "captured_et": "2026-10-28T14:31:44.312458-04:00",
+    "options": {
+     "spot": 135.36500549316406,
+     "expiry": "2026-10-30",
+     "strike": 135.0,
+     "call": {
+      "bid": 8.55,
+      "ask": 9.05,
+      "openInterest": 206.0,
+      "lastPrice": 8.79,
+      "impliedVolatility": 1.7641613354492187,
+      "lastTradeDate": "2026-10-28T18:16:37+00:00"
+     },
+     "put": {
+      "bid": 8.55,
+      "ask": 8.85,
+      "openInterest": 1286.0,
+      "lastPrice": 8.75,
+      "impliedVolatility": 1.818360283203125,
+      "lastTradeDate": "2026-10-28T18:08:39+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.12928008931291884,
+     "rel_spread": {
+      "call": 0.056818181818181816,
+      "put": 0.03448275862068954
+     },
+     "oi_atm": 1492.0,
+     "oi_sum": 3675.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/RDDT_2026-10-29/factors.json",
+   "published": "2026-10-28T14:31:44.312458-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.38257160143437063,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.06876028532759737,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.11687756673281335,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.07240911214593404,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.5925497846494842,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7825729787784478,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.47721388281711685,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-30",
+       "session": "AMC",
+       "raw_return_A": -0.17944446139865455,
+       "eps_est": 0.96,
+       "eps_rep": 1.25,
+       "surprise_pct": 29.56,
+       "reaction_volume_ratio": 7.111822688788967
+      },
+      {
+       "date": "2026-04-30",
+       "session": "AMC",
+       "raw_return_A": 0.12706835292990548,
+       "eps_est": 0.56,
+       "eps_rep": 1.01,
+       "surprise_pct": 79.12,
+       "reaction_volume_ratio": 3.812216468372849
+      },
+      {
+       "date": "2026-02-05",
+       "session": "AMC",
+       "raw_return_A": 0.0696996361455191,
+       "eps_est": 0.93,
+       "eps_rep": 1.24,
+       "surprise_pct": 33.14,
+       "reaction_volume_ratio": 4.478181600631118
+      },
+      {
+       "date": "2025-10-30",
+       "session": "AMC",
+       "raw_return_A": 0.04675036108556352,
+       "eps_est": 0.52,
+       "eps_rep": 0.8,
+       "surprise_pct": 53.8,
+       "reaction_volume_ratio": 3.59091296218939
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 4.748283429995581,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 29.56,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.3258,
+      "7daysAgo": 1.32469,
+      "30daysAgo": 1.31469,
+      "60daysAgo": 1.31948,
+      "90daysAgo": 1.25887,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.053166728891784025,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.3258,
+      "low": 1.2,
+      "high": 1.48,
+      "yearAgoEps": 0.8,
+      "numberOfAnalysts": 23,
+      "growth": 0.65730006,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.2111932418162619,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.14899999,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 13.981431,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 9.372189,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.611,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 26043754496,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.94118,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.12928008931291884,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.05419894775390621,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.016601479492187377,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.1420313790255987,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.2101713543488035,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 12970.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 3.022970990337581,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.14599915750990586,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 317,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.611011814813851,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.28787993614153223,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.38257160143437063,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.11687756673281335,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.07240911214593404,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.5925497846494842,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 4.0045770585143385,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.2301973438021389,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 27347754292.947403,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.10161104894512753,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.21586012228438337,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000098/earningspressreleaseq226.htm",
+   "published": "2026-07-30T16:09:38-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 earningspressreleaseq226.htm EX-99.1 Document Exhibit 99.1 Reddit Reports Second Quarter 2026 Results Daily Active Uniques (“DAUq”) increased 18% year-over-year to 130.3 million Weekly Active Uniques (“WAUq”) increased 24% year-over-year to 514.6 million, crossing half a billion Revenue of $805 million grew 61% year-over-year. 8th consecutive quarter over 60% Net income of $253 million, 31% of revenue, and Diluted EPS of $1.25, both up over 2x year-over-year Adj. EBITDA 1 of $343 million, 43% of revenue, up 106% year-over-year Operating cash flow of $262 million, 33% of revenue, up 135% year-over-year SAN FRANCISCO, Calif. – July 30, 2026 – Reddit, Inc. (NYSE: RDDT) today announced financial results for the quarter ended June 30, 2026. Reddit’s complete financial results and management commentary can be found in its shareholder letter on Reddit’s Investor Relations website at https://investor.redditinc.com. “In an increasingly automated web, the value of real human perspective has never been higher. Reddit’s commercial momentum reflects that,” said Steve Huffman, Founder and CEO of Reddit. “Crossing $1 million in revenue per employee and maintaining eight consecutive quarters of over 60% revenue growth shows the strength of our community model and the value we deliver to advertisers.” • Total revenue increased 61% year-over-year to $805 million, Ad revenue increased 64% year-over-year to $762 million, and Other revenue increased 24% year-over-year to $43 million • Gross margin was 91.3%, as compared to 90.8% in the prior year, up 50 bps year-over-year • Net income was $253 million, an improvement of $164 million from the prior year and more than doubling year-over-year • Adjusted EBITDA 1 was $343 million, an improvement of $176 million from the prior year and more than doubling year-over-year • Operating cash flow was $262 million, an improvement of $151 million from the prior year and more than doubling year-over-year • Free Cash Flow 1 was $261 million, an improvement of $150 million from the prior year and more than doubling year-over-year • Basic and diluted earnings per share (“EPS”) were $1.31 and $1.25, more than doubling year-over-year • Total fully diluted shares outstanding were 207.0 million as of June 30, 2026, up 0.2% from the prior year • We repurchased 1.5 million shares of our Class A common stock during the quarter for a total of $235 million at an average price per share of $157.57 1 Second Quarter 2026 Financial Highlights Three months ended June 30, (in millions, except percentages and per share amounts; unaudited) 2026 2025 % Change Revenue $ 805 $ 500 61% U.S. $ 638 $ 409 56% International $ 167 $ 91 84% GAAP gross margin 91.3 % 90.8 % Net income $ 253 $ 89 183% Net margin 31.4 % 17.9 % Net income per share Basic $ 1.31 $ 0.48 173% Diluted $ 1.25 $ 0.45 178% Adjusted EBITDA* $ 343 $ 167 106% Adjusted EBITDA margin* 42.6 % 33.4 % Net cash provided by (used in) operating activities $ 262 $ 111 135% Free Cash Flow* $ 261 $ 111 135% Cash, cash equivalents, and marketable securities $ 2,786 *The definitions of Adjusted EBITDA, Adjusted EBITDA margin, and Free Cash Flow can be found in the Use of Non-GAAP Financial Measures section of this release. A reconciliation of non-GAAP financial measures to the most directly comparable U.S. GAAP measure can be found on pages 10 - 11 . Financial Outlook The guidance provided below is based on Reddit’s current estimates and is not a guarantee of future performance. This guidance is subject to significant risks and uncertainties that could cause actual results to differ materially, including the risk factors discussed in Reddit’s reports on file with the Securities and Exchange Commission (the “SEC”). Reddit undertakes no duty to update any forward-looking statements or estimates, except as required by applicable law. As we look ahead, we will share our internal thoughts on revenue and Adjusted EBITDA for the third quarter. In the third quarter of 2026, we estimate: • Revenue in the range of $860 million to $870 million • Adjusted EBITDA 2 in the range of $385 million to $395 million Earnings Conference Call Information and Community Update Reddit will host a conference call to discuss the results for the second quarter of 2026 on Thursday, July 30, 2026, at 1:30 p.m. PT / 4:30 p.m. ET. A live webcast of the call can be accessed on Reddit’s Investor Relations website at https://investor.redditinc.com and investor relations subreddit, r/RDDT, at https://www.reddit.com/r/RDDT/. A replay of the webcast and transcript will be available on the same websites following the conclusion of the conference call. 2 Reddit will solicit questions from the community in the investor relations subreddit, r/RDDT, at https://www.reddit.com/r/RDDT/ on Thursday, July 30, 2026, after the market closes, and post responses following the earnings call at Reddit’s Investor Relations website at https://investor.redditinc.com and r/RDDT at https://www.reddit.com/r/RDDT/. Reddit uses the investor relations page on its website https://investor.redditinc.com, user accounts of Reddit's Chief Executive Officer, Steve Huffman (u/spez); Reddit's Chief Operating Officer, Jen Wong (u/adsjunkie); and Reddit's Chief Financial Officer, Drew Vollero (u/TimingandLuck), as well as the subreddits r/RDDT and r/reddit, available at https://www.reddit.com/r/RDDT/ and https://www.reddit.com/r/reddit/, respectively, as means of disclosing material non-public information and for complying with its disclosure obligation under Regulation FD. Notes 1 The definitions of Adjusted EBITDA, Adjusted EBITDA margin, and Free Cash Flow can be found in the Use of Non-GAAP Financial Measures section of this release. A reconciliation of non-GAAP financial measures to the most directly comparable U.S. GAAP measure can be found on pages 10 - 11 . 2 We have not provided a reconciliation to the forward-looking U.S. GAAP equivalent measures for our non-GAAP guidance due to uncertainty regarding, and the potential variability of, reconciling items. Therefore, a reconciliation of these non-GAAP guidance measures to their corresponding U.S. GAAP guidance measures is not available without unreasonable effort. About Reddit Reddit is a community of communities. Built on shared interests and passions, it is home to the most open and authentic conversations online. Every day, millions of people post, vote, comment, and search for answers across nearly every topic imaginable, and brands build trusted relationships with their audiences. With 26+ billion posts and comments and more than 130 million daily active uniques, Reddit is one of the internet’s largest sources of information. Learn more at www.redditinc.com. The Reddit app is available on the App Store and Google Play. Investor Relations ir@reddit.com Media Relations press@reddit.com 3 Forward Looking Statements This press release contains forward-looking statements within the meaning of the Securities Act of 1933, as amended, the Securities Exchange Act of 1934, as amended, and the Private Securities Litigation Reform Act of 1995. Forward-looking statements generally relate to future events or Reddit's future financial or operating performance. In some cases, you can identify forward-looking statements because they contain words such as \"may,\" \"will,\" \"should,\" \"expects,\" \"plans,\" \"anticipates,\" \"going to,\" \"could,\" \"intends,\" \"target,\" \"projects,\" \"contemplates,\" \"believes,\" \"estimates,\" \"predicts,\" \"potential\" or \"continue\" or the negative of these words or other similar terms or expressions that concern Reddit's expectations, strategy, priorities, plans or intentions. Forward-looking statements in this release include, but are not limited to, statements regarding Reddit’s future financial and operating performance, and GAAP and non-GAAP guidance. Reddit's expectations and beliefs regarding these matters may not materialize, and actual results in future periods are subject to risks and uncertainties that could cause actual results to differ materially from those projected, including those more fully described under the caption “Risk Factors” and elsewhere in documents that Reddit files with the SEC from time to time, including Reddit’s Quarterly Report on Form 10-Q for the quarter ended June 30, 2026, which is being filed with the SEC at or around the date hereof. The forward-looking statements in this release are based on information available to Reddit as of the date hereof, and Reddit undertakes no obligation to update any forward-looking statements, except as required by law. A Note About Metrics We define a daily active unique (“DAUq”) as a user whom we can identify with a unique identifier who has visited a page on the Reddit website, www.reddit.com, or opened a Reddit application at least once during a 24-hour period. Average DAUq for a particular period is calculated by adding the number of DAUq on each day of that period and dividing that sum by the number of days in that period. We define a weekly active unique (“WAUq”) as a user whom we can identify with a unique identifier who has visited a page on the Reddit website, www.reddit.com, or opened a Reddit application at least once during a trailing seven-day period. Average quarterly WAUq for a particular period is calculated by adding the number of WAUq on each day of that period and dividing that sum by the number of days in that period. We define average revenue per unique (“ARPU”) as quarterly revenue in a given geography divided by the average DAUq in that geography. For the purposes of calculating ARPU, advertising revenue in a given geography is based on the geographic location in which advertising impressions are delivered, as this approximates revenue based on user activity, while other revenue in a given geography is based on the billing address of the customer. Use of Non-GAAP Financial Measures We use certain non-GAAP financial measures to supplement our consolidated financial statements, which are presented in accordance with U.S. GAAP, to evaluate our core operating performance. These non-GAAP financial measures include Adjusted EBITDA, Adjusted EBITDA margin, Free Cash Flow, and Free Cash Flow margin. We use these non-GAAP financial measures to facilitate reviews of our operational performance and as a basis for strategic planning. By excluding certain items that are non-recurring or not reflective of the performance of our normal course of business, we believe that these non-GAAP financial measures provide meaningful supplemental information regarding our performance. Accordingly, we believe these non-GAAP financial measures are useful to investors and others because they allow investors to supplement their understanding of our financial trends and evaluate our ongoing and future performance in the same manner as management. However, there are a number of limitations related to the use of non-GAAP financial measures as they reflect the exercise of judgment by our management about which expenses are included or excluded in determining these non-GAAP measures. These non-GAAP measures should be considered in addition to, not as a substitute for or in isolation from, our financial results prepared in accordance with U.S. GAAP. Other companies, including companies in our industry, may 4 calculate these non-GAAP financial measures differently or not at all, which reduces their usefulness as comparative measures. A reconciliation is provided below for each historical non-GAAP financial measure to the most directly comparable financial measure stated in accordance with U.S. GAAP. Reddit encourages investors to review the related U.S. GAAP financial measures and the reconciliation of these non-GAAP financial measures to their most directly comparable U.S. GAAP financial measures, and not to rely on any single financial measure to evaluate Reddit’s business. We have not provided a reconciliation to the forward-looking GAAP equivalent measures for our non-GAAP guidance due to uncertainty regarding, and the potential variability of, reconciling items. Therefore, a reconciliation of these non-GAAP guidance measures to their corresponding GAAP guidance measures is not available without unreasonable effort. Adjusted EBITDA is defined as net income excluding interest (income) expense, net, income tax expense (benefit), depreciation and amortization, stock-based compensation expense and related taxes, other (income) expense, net, and certain other non-recurring or non-cash items impacting net income that we do not consider indicative of our ongoing business performance. Other (income) expense, net consists primarily of realized gains and losses on sales of marketable securities, foreign currency transaction gains and losses, and other income and expense that are not indicative of our core operating performance. Adjusted EBITDA margin is defined as Adjusted EBITDA divided by revenue. We consider the exclusion of certain non-recurring or non-cash items in calculating Adjusted EBITDA and Adjusted EBITDA margin to provide a useful measure for investors and others to evaluate our operating results in the same manner as management. Free Cash Flow represents net cash provided by (used in) operating activities less purchases of property and equipment. Free Cash Flow margin is defined as Free Cash Flow divided by revenue. We believe that Free Cash Flow is useful to investors as a liquidity measure because it measures our ability to generate or use cash. Once our business needs and obligations are met, cash can be used to maintain a strong balance sheet and invest in future growth. Additionally, we believe that Free Cash Flow is an important measure since we use third-party infrastructure partners to host our services and therefore we do not incur significant capital expenditures to support revenue generating activities. 5 Reddit, Inc. Key Operating Metrics by Geography (in millions, except percentages and ARPU) (unaudited) Three months ",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000100/rddt-20260630.htm",
+   "published": "2026-07-30T17:42:59-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our unaudited consolidated financial statements and related notes included elsewhere in this Quarterly Report on Form 10-Q and our audited consolidated financial statements and the related notes and the discussion under the heading “Management’s Discussion and Analysis of Financial Condition and Results of Operations” included in our Annual Report on Form 10-K for the year ended December 31, 2025 (the “Annual Report”). In addition to historical consolidated financial information, the following discussion contains forward-looking statements that reflect our plans, estimates, and beliefs that involve significant risks and uncertainties. Our actual results could differ materially from those discussed in the forward-looking statements. Factors that could cause or contribute to those differences include those discussed below and elsewhere in this Quarterly Report on Form 10-Q, particularly in “Risk Factors” and “Note Regarding Forward-Looking Statements.” Overview of Second Quarter 2026 Results User Metrics • Daily Active Uniques (“DAUq”) were 130.3 million for the three months ended June 30, 2026, an increase of 18% year-over-year • Average revenue per unique (“ARPU”) was $6.18 for the three months ended June 30, 2026, an increase of 36% year-over-year Financial Results • Revenue was $804.9 million for the three months ended June 30, 2026, an increase of 61% year-over-year • Gross margin was 91.3% for the three months ended June 30, 2026, as compared to 90.8% in the three months ended June 30, 2025 • Operating expenses were $502.9 million for the three months ended June 30, 2026 as compared to $386.0 million in the three months ended June 30, 2025 • Net income was $252.8 million for the three months ended June 30, 2026, as compared to $89.3 million in the three months ended June 30, 2025 • Adjusted EBITDA was $342.8 million for the three months ended June 30, 2026, as compared to $166.7 million in the three months ended June 30, 2025 • Net cash provided by operating activities was $261.9 million for the three months ended June 30, 2026, as compared to $111.3 million in the three months ended June 30, 2025 • Free Cash Flow was $260.7 million for the three months ended June 30, 2026, as compared to $110.8 million in the three months ended June 30, 2025 • Cash, cash equivalents, and marketable securities were $2.8 billion as of June 30, 2026 Key Financial and Operating Metrics We review a number of metrics, including the key metrics discussed below, to evaluate our business, measure our performance, identify trends affecting our business, formulate business plans, and make strategic decisions. Trends in User Metrics Daily Active Unique . We define a daily active unique (“DAUq”) as a user whom we can identify with a unique identifier who has visited a page on the Reddit website, www.reddit.com, or opened a Reddit application at least once during a 24-hour period. We calculate average DAUq for a particular period by adding the number of DAUq on each day of that period and dividing that sum by the number of days in that period. DAUq is shown globally and also broken out by the United States and the rest of the world because these markets have different characteristics. Most notably, we are more advanced in engagement and monetization in the United States than in the rest of the world. We measure DAUq because we believe that this metric helps management and investors understand usage of and engagement with our platform. DAUq is the primary metric by which we measure the scale of our active user base. 21 Table of Contents DAUq includes visits from those who have logged in to a registered account as well as those who have not logged in to—or do not have—a registered account. Visitors that come to Reddit from search engines are generally not logged in and originate from both desktop and mobile web. Currently, monetization of these users is mainly through conversation pages and feed ads. During the three months ended December 31, 2023, we deployed further advances in our process used to identify and address activity by users and visitors, including web crawlers and scrapers. As we identify automated agents, we remove them from our DAUq count prospectively and do not recalculate DAUq for prior periods if we assess such impact to be immaterial. As we have continued to improve our capabilities to identify suspicious traffic, we have not seen this methodology materially impact trends in DAUq from quarter to quarter. Year-over-year and quarter-over-quarter activity can also fluctuate due to various internal and external factors. Historically we monitored logged-in DAUq, which we define as a user whom we can identify with a unique identifier who has visited a page on the Reddit website, www.reddit.com, or opened a Reddit application at least once during a 24-hour period and was logged in to a registered account. We measured logged-in DAUq because these users tend to have higher engagement and spend more time on our platform compared to users who are not logged in to a registered account. However, as our business has scaled and our product strategy has evolved, our focus has shifted to delivering immediate value for all users and enabling them to engage with content on Reddit, regardless of whether they are logged in or logged out. As a result, management primarily uses total DAUq and DAUq by geography for managing the business and for evaluating our core operating performance. Therefore, beginning in the quarter ended September 30, 2026, we will no longer report logged-in and logged-out DAUq. Quarterly Average DAUq (in millions) Total DAUq YoY Growth: 47% 39% 31% 21% 19% 19% 17% 18% Logged-in DAUq YoY Growth: 27% 27% 23% 17% 14% 10% 7% 7% 22 Table of Contents Total DAUq YoY Growth: 51% 32% 21% 11% 7% 9% 7% 6% Total DAUq YoY Growth: 44% 46% 41% 32% 31% 28% 26% 28% Logged-in DAUq YoY Growth: 29% 24% 19% 12% 7% 5% 1% 1% Logged-in DAUq YoY Growth: 26% 29% 27% 22% 19% 14% 12% 12% We assess both year-over-year and quarter-over-quarter growth of DAUq in each period. In the three months ended June 30, 2026, global DAUq grew 18% compared to the prior year period, driven by 6% growth in DAUq in the United States and 28% growth in DAUq in the rest of world. Global DAUq grew 3% compared to the prior quarter period, driven by 5% growth in DAUq in the rest of world, while DAUq in the United States remained relatively flat. The change in global DAUq in the three months ended June 30, 2026, compared to the prior year period, was primarily driven by the combination of third-party search engine algorithm changes and our growth initiatives, particularly in machine translation, marketing, and product improvements. The change in global DAUq in the three months ended June 30, 2026, compared to the prior quarter period, was primarily driven by our growth initiatives, particularly in marketing and product improvements, partially offset by third-party search engine algorithm changes. Weekly Active Unique . We define a weekly active unique (“WAUq”) as a user whom we can identify with a unique identifier who has visited a page on the Reddit website, www.reddit.com, or opened a Reddit application at least once during a trailing seven-day period. We calculate average quarterly WAUq for a particular period by adding the number of WAUq on each day of that period and dividing that sum by the number of days in that period. We measure WAUq because we believe that this metric helps management and investors understand the reach of our platform. During the three months ended December 31, 2023, we deployed further advances in our process used to identify and address activity by users and visitors, including web crawlers and scrapers. As we identify automated agents, we remove them from our WAUq count prospectively and do not recalculate WAUq for prior periods if we assess such impact to be immaterial. As we have continued to improve our capabilities to identify suspicious traffic, we have not seen this methodology materially impact trends in WAUq from quarter to quarter. 23 Table of Contents Quarterly Average WAUq (in millions) WAUq YoY Growth: 53% 42% 31% 22% 21% 24% 23% 24% DAUq/WAUq: 27% 27% 27% 27% 26% 26% 26% 25% WAUq YoY Growth: 58% 31% 18% 8% 6% 12% 10% 9% WAUq YoY Growth: 48% 52% 44% 35% 37% 34% 33% 35% In the three months ended June 30, 2026, global WAUq grew 24% compared to the prior year period, driven by 9% growth in WAUq in the United States and 35% growth in WAUq in the rest of world. For the three months ended June 30, 2026, the proportion of DAUq to WAUq was 25%. Trends in Monetization Metrics We monetize our business primarily through advertising on our mobile applications and website. In the six months ended June 30, 2026, we recorded revenue of $1.5 billion, as compared to revenue of $0.9 billion for the six months ended June 30, 2025, representing an increase of 65% compared to the prior year period. ARPU . We define average revenue per unique (“ARPU”) as quarterly revenue in a given geography divided by the average DAUq in that geography. For the purposes of calculating ARPU, advertising revenue in a given geography is based on the geographic location in which advertising impressions are delivered, as this approximates revenue based on user activity, while other revenue in a given geography is based on the billing address of the customer. This differs from the presentation of our revenue by geography in the notes to our consolidated financial statements included elsewhere in the Quarterly Report on Form 10-Q, where both advertising revenue and other revenue are based on the billing address of the customer. 24 Table of Contents We present ARPU globally and also broken out on a United States and rest of world basis because we currently monetize users in the United States and the rest of the world at different rates. We measure ARPU because we believe that this metric helps our management and investors assess the extent to which we are monetizing our DAUq. Monetization of new users is generally at a lower rate than existing users and as such, ARPU tends to grow at a lower rate than revenue in periods of strong DAUq growth. Our ARPU reflects the seasonality of our advertising revenue, with the fourth quarter typically being the strongest quarter of each year, especially in the United States, our most developed geography. United States ARPU is higher primarily due to the relative size and maturity of the U.S. digital advertising market, a dynamic we expect will continue for the foreseeable future. Quarterly ARPU (in dollars) YoY Growth: 14% 23% 23% 47% 41% 42% 44% 36% YoY Growth: 12% 28% 31% 59% 54% 53% 54% 51% YoY Growth: 16% 25% 22% 40% 39% 38% 51% 31% During the three months ended June 30, 2026, ARPU was $6.18, an increase of 36% compared to $4.53 for the prior year period, United States ARPU was $11.85, compared to $7.87 for the prior year period, and rest of world ARPU was $2.26, compared to $1.73 for the prior year period. The increase in global ARPU compared to the prior year period was due primarily to an increase in advertising revenue driven by an increase in pricing and an increase in ad impressions delivered. During the three months ended June 30, 2026, the price of ads increased by approximately 40% compared to the prior year period driven by improved performance across the full funnel of ad objectives and higher advertiser demand. During the three months ended June 30, 2026, ad impressions delivered increased by approximately 17% compared to the prior year period driven in part by ad load optimization and improvements, including new ad placements, and by increases in the number of users and user engagement. 25 Table of Contents Non-GAAP Financial Measures We use certain non-GAAP fin",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000107/rddt-20260812.htm",
+   "published": "2026-08-12T16:54:31-04:00",
+   "form": "8-K",
+   "items": "5.02,9.01",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On August 12, 2026, Benjamin Lee notified Reddit, Inc. (“Reddit”) of his intention to step down as Reddit’s Chief Legal Officer and Corporate Secretary, effective September 14, 2026. Through September 25, 2026, Mr. Lee will remain an employee of Reddit and assist in the transition of his responsibilities. In connection with Mr. Lee's resignation, Reddit expects to appoint Paul Cappuccio as Reddit's Chief Legal Officer and Corporate Secretary. Mr. Cappuccio brings deep leadership experience as a public company general counsel, executive, and board director. Item 9.01 Financial Statements and Exhibits. (d) The following exhibits are being filed herewith: Exhibit No. Description 104 Cover Page Interactive Data File (embedded within the inline XBRL document) SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. REDDIT, INC. Date: August 12, 2026 By: /s/ Steven Huffman Steven Huffman President and Chief Executive Officer"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/reddit-fell-5-on-slower-growth-fears-the-october-29-outlook-decides-whether-the-multiple-holds?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-28T13:49:21-04:00",
+   "text": "Reddit Fell 5% on Slower-Growth Fears. The October 29 Outlook Decides Whether the Multiple Holds - Key TakeawaysReddit shares fell 5% on Monday as worries about slowing growth weighed on the stock ahead of its third-quarter report on Oct. 29.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://moneylion.com/trending/money/redditors-keep-sub-4-percent-mortgage-tight-budget?.tsrc=rss",
+   "published": "2026-10-28T13:00:33-04:00",
+   "text": "Here's Why Some Redditors Say You Should Keep Your Sub-4% Mortgage — Even If Your Budget's Tight - In today’s higher-rate environment, many people see a sub-4% mortgage as more than just a loan — it’s a financial asset worth protecting.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/reddit-sinks-9-into-q3-report-as-u-s-user-growth-slows-to-6?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-28T03:57:27-04:00",
+   "text": "Reddit Sinks 9% Into Q3 Report as U.S. User Growth Slows to 6% - Key TakeawaysReddit fell 9. 2% over the past week to $137 ahead of its October 29 third-quarter report.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/earnings-watch-reddit-rddt-reports-043034213.html?.tsrc=rss",
+   "published": "2026-10-28T00:30:34-04:00",
+   "text": "Earnings to watch: Reddit (RDDT) reports Q3 results tomorrow - Online community and discussion platform Reddit (NYSE:RDDT) will be reporting earnings this Thursday after market close. Here’s what you need to know.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://starterstory.videonest.co/videos/2335702/bro-wrote-200-seo-blog-posts-to-grow-his-app-to-18-UvpRcrXIcv?.tsrc=rss",
+   "published": "2026-10-27T19:34:08-04:00",
+   "text": "Bro wrote 200 SEO blog posts to grow his app to $18k/month 🥶 - Bro got 300 users from Reddit, then grew to 12K YouTube subs with one series.Meet Kourosh. He built Voicy, a speech-to-text app doing $18K/month as a side project.Reddit got him his first few hundred users. He had one content angle he knew would go viral, so he posted it 5 or 6 times until he got bl",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-reddit-stock-172000555.html?.tsrc=rss",
+   "published": "2026-10-27T13:20:00-04:00",
+   "text": "Should You Buy, Sell, or Hold Reddit Stock Before Q3 Earnings Release? - RDDT's Q3 earnings outlook reflects strong ad growth and AI innovation, but a 39.8% stock decline, premium valuation, and rising costs warrant caution.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/small-business/articles/teacher-kept-job-free-tuition-120013183.html?.tsrc=rss",
+   "published": "2026-10-27T08:00:13-04:00",
+   "text": "Teacher Kept Job For Free Tuition, But Both Kids Turn It Down. Paying $30K Exceeds A Third Of Their Salary. ‘I Would Really Like To Have Some Boundaries’ - A teacher kept their job partly so their two children could go to college for free or at little cost. But both chose other schools that would cost $60,000 a year, and the teacher did not want to spend more...",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/reddit-rddt-stock-may-earnings-091016254.html?.tsrc=rss",
+   "published": "2026-10-27T05:10:16-04:00",
+   "text": "Reddit (RDDT) Stock May Be About Right As Earnings Stay In Focus - Reddit has seen its share price fall sharply this year, which puts a spotlight on what investors are actually paying for the platform's earnings today. With the stock well below its earlier levels in 2026, the core issue is whether the current valuation lines up with what the business is generating ",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/better-buy/2026/10/27/reddit-vs-snap-which-social-media-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+   "published": "2026-10-27T02:28:39-04:00",
+   "text": "Reddit vs. Snap: Which Social Media Stock Is a Better Buy in 2026? - Reddit swung to a 24% net margin with near-70% revenue growth, while Snap remains unprofitable despite a billion-user base and subscription push.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/media-advertising/articles/rddt-rides-strong-demand-ad-171300915.html?.tsrc=rss",
+   "published": "2026-10-26T13:13:00-04:00",
+   "text": "RDDT Rides on Strong Demand in Ad Business: Can It Beat META and SNAP? - Reddit's ad revenues surge 64% in Q2 2026, fueled by AI-driven ad tools and user growth, but stiff competition from Meta Platforms and Snap poses challenges.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/26/reddit-sinks-5-as-slower-growth-guidance-looms-over-earnings-snap-drops-3-meta-holds-steady/?.tsrc=rss",
+   "published": "2026-10-26T11:51:05-04:00",
+   "text": "Reddit Sinks 5% as Slower Growth Guidance Looms Over Earnings; Snap Drops 3%, Meta Holds Steady - Reddit stock is sliding hard into its earnings report while Meta barely flinches, and the gap between them tells a story about which ad model investors trust right now.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://247wallst.com/personal-finance/2026/10/26/he-sat-on-745575-chase-points-for-years-waiting-for-the-perfect-trip-when-his-second-kid-was-born-he-decided-to-do-something-totally-different/?.tsrc=rss",
+   "published": "2026-10-26T10:06:49-04:00",
+   "text": "He Sat On 745,575 Chase Points For Years, Waiting For The Perfect Trip. When His Second Kid Was Born He Decided To Do Something Totally Different - For years he sat on a massive Chase Ultimate Rewards balance, convinced the perfect trip was just around the corner. A new baby changed his entire calculation, and his next move surprised even the points community.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/meta/articles/620501/one-unsettled-question-sits-under-metas-muse-bet/2026-10-26?.tsrc=rss",
+   "published": "2026-10-26T08:47:59-04:00",
+   "text": "One Unsettled Question Sits Under Meta's Muse Bet - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/26/3-reasons-to-buy-reddit-stock-this-week/?.tsrc=rss",
+   "published": "2026-10-26T08:23:00-04:00",
+   "text": "3 Reasons to Buy Reddit Stock This Week - Earnings season has come for Reddit. Where's the upvote button?",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/curious-reddit-inc-rddt-q3-121506959.html?.tsrc=rss",
+   "published": "2026-10-26T08:15:06-04:00",
+   "text": "Curious about Reddit Inc. (RDDT) Q3 Performance? Explore Wall Street Estimates for Key Metrics - Besides Wall Street's top-and-bottom-line estimates for Reddit Inc. (RDDT), review projections for some of its key metrics to gain a deeper understanding of how the company might have fared during the quarter ended September 2026.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/25/can-reddit-max-save-rddt-from-slower-growth-guidance-on-oct-29/?.tsrc=rss",
+   "published": "2026-10-25T10:56:00-04:00",
+   "text": "Can ‘Reddit Max’ Save RDDT From Slower Growth Guidance on Oct. 29? - Reddit beat earnings six quarters straight yet its stock sits deep in the red, and the Oct. 29 report hinges on whether a brand-new AI ad tool can convince investors the slowdown is temporary.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/real-estate/articles/sibling-bought-family-home-then-180008917.html?.tsrc=rss",
+   "published": "2026-10-24T14:00:08-04:00",
+   "text": "Sibling Bought Out Family Home, Then Its Value Tripled. Now Brother And Sister Want The Profit Because ‘It’s Only Fair’ - A sibling paid their brother and sister for their shares of the family home and thought that was the end of it. Years later, the property sold for roughly three times its earlier value and set off a family dispute....",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/small-business/articles/husband-saved-nothing-son-college-173007679.html?.tsrc=rss",
+   "published": "2026-10-23T13:30:07-04:00",
+   "text": "Husband Saved Nothing for Son’s College, Now Wants Stepdaughter’s $73K Fund Shared. Spouse Says, ‘I Never Agreed To Help His Son Pay For College’ - A spouse thought their husband was joking when he asked them to split their 15-year-old daughter’s $73,000 college fund with his son. The 18-year-old was about to start college with no savings, but the money had never been intended for...",
+   "feed": {
+    "fetched_et": "2026-10-28T14:32:01-04:00",
+    "sha256": "59b00e2f07f17fb5ea02a481f78e8bcbdc409a8869463585e5957cb14fe52a25"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 49036
+}

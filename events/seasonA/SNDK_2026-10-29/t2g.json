@@ -1,0 +1,113 @@
+{
+ "track": "T2G",
+ "event": "SNDK_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.45,
+  "thesis": "Despite secular AI storage tailwinds, Sandisk faces classic peak-cycle semiconductor skepticism, evidenced by poor past print reactions and heavy put skew following competitor-driven pre-earnings run-ups.",
+  "reasons": [
+   "SNDK has dropped at the open following 3 of its last 4 earnings reports, including a -16.1% drop in Q4 despite beating EPS by 13.7%.",
+   "Extreme cyclical profitability (gross margin expanded to 84.6% and forward P/E is 5.2x) typically causes markets to treat beats with peak-earnings skepticism.",
+   "A sympathy rally driven by SK Hynix results on the snapshot date elevates entry prices on Oct 29, raising the bar for a positive post-earnings reaction.",
+   "Options market exhibits substantial downside skew, with ATM put IV (1.22) trading significantly above call IV (1.03)."
+  ],
+  "deciding_variable": "Whether fiscal Q2 2027 revenue and gross margin guidance can convince investors that peak NAND pricing has not been reached.",
+  "prior": {
+   "p": 0.479,
+   "from": "cluster: semis (n=434, t0_hit=0.479)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down from 0.479 to 0.45 (-0.029) due to poor historical earnings open win rate (25%), elevated peak-cycle gross margin risks, and elevated put skew ahead of the print.",
+  "theses": [
+   {
+    "expected": "SNDK reports a modest beat against Q1 guidance ($44-$46 EPS) but issues cautious Q2 commentary, leading to profit taking and an open below entry open.",
+    "mechanism": "High gross margin comparisons and fear of cyclical flash oversupply trigger 'sell-the-news' behavior.",
+    "wrong_if": "Datacenter revenue accelerates well beyond expectations and management provides multi-quarter supply contract commitments."
+   },
+   {
+    "expected": "Pre-earnings sympathy bounce from SK Hynix inflates entry valuation, leaving minimal upside surprise buffer.",
+    "mechanism": "Expectations re-rate higher prior to SNDK's own print, meaning even solid numbers fail to generate next-morning follow-through.",
+    "wrong_if": "Guidance significantly exceeds the upper bound of analyst forecasts ($49.80 EPS)."
+   },
+   {
+    "expected": "High options implied volatility collapses post-announcement, with long holders de-risking at market open.",
+    "mechanism": "Market makers and hedgers dump long underlying delta as IV drops post-AMC announcement.",
+    "wrong_if": "Short squeeze dynamics take over given high institutional short positioning."
+   }
+  ],
+  "key_observations": [
+   "Fiscal Q1 2027 revenue and Non-GAAP EPS vs guidance of $10.3B-$10.8B and $44-$46",
+   "Datacenter segment revenue sequential growth (Q4 was $2.98B)",
+   "Fiscal Q2 2027 gross margin and revenue guidance",
+   "Updates on New Business Model (NBM) multi-year contracted volumes"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/SNDK_2026-10-29/gate.json",
+    "published": "2026-10-28T14:31:55.706149-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/SNDK_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:55.706149-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/2023554/000162828026053346/sndkq4-26ex991xpressrelease.htm",
+    "published": "2026-08-05T16:09:06-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.fool.com/investing/2026/10/28/why-sandisk-stock-rallied-today/?.tsrc=rss",
+    "published": "2026-10-28T12:50:39-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/7f8fbb85-20de-3e28-a1c8-7aac46f10f51/nasdaq-lags-despite-memory.html?.tsrc=rss",
+    "published": "2026-10-28T12:26:43-04:00",
+    "dossier_item": "I11"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/28/sk-hynix-jumps-7-micron-rises-3-on-memory-shortage-call-through-2030-while-seagate-slips-despite-upbeat-guidance/?.tsrc=rss",
+    "published": "2026-10-28T09:07:24-04:00",
+    "dossier_item": "I20"
+   }
+  ],
+  "decided_et": "2026-10-28T17:38:25-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 17548,
+   "candidatesTokenCount": 810,
+   "totalTokenCount": 19673,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 17548
+    }
+   ],
+   "thoughtsTokenCount": 1315,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

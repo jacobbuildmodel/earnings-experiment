@@ -1,0 +1,154 @@
+{
+ "track": "T2",
+ "event": "RDDT_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "RDDT enters a priced-for-a-big-move print (about 13% implied) after a sharp pre-earnings sell-off, which roughly offsets the usual positive drift, leaving a near-coin-flip with a slight upward lean.",
+  "reasons": [
+   "The stock fell about 9% in the past week and sits roughly 48% below its 52-week high, so expectations are already reset lower, which helps a beat-and-raise reaction",
+   "Fundamentals are strong: 61% revenue growth, a 29% operating margin, and EPS estimates revised up about 5% over 90 days",
+   "Q3 guidance of $860-870M implies a growth slowdown, and US DAUq growth is only 6%; headlines flag slower-growth fears",
+   "The last print dropped 18% despite a 30% EPS beat, so beats alone do not secure a rise, though 3 of the last 4 reactions were positive",
+   "Implied move of 13% against a 3x IV/RV ratio means the options are expensive; this adds variance but no clear direction"
+  ],
+  "deciding_variable": "Q4 revenue guidance relative to the roughly 55% growth the market expects, together with US DAUq trends and ad pricing.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 buy-everything hit rate: overall validation 54.2%, AMC 53.8%, software_internet cluster 54.1%"
+  },
+  "leak_probe": "I don't know. Today's date is 2026-10-28, so that earnings report on 2026-10-29 hasn't happened yet, and I have no information about how RDDT's stock reacted.",
+  "moved_from_prior": "Moved down about 2 points from 0.54: the post-July selloff and slowing-growth narrative offset the oversold-bounce and positive-revision signals.",
+  "theses": [
+   {
+    "expected": "Rise: a beat plus Q4 guidance above consensus triggers a relief rally from depressed levels",
+    "mechanism": "Sentiment is washed out, short interest is 15% of float, and forward P/E is about 14, so a good guide can force short covering and a re-rating",
+    "wrong_if": "Q4 revenue guidance implies growth below roughly 50% or the midpoint is below consensus"
+   },
+   {
+    "expected": "Fall: guidance confirms a deceleration and US user growth stalls",
+    "mechanism": "A high-multiple growth stock is sold when the growth trajectory bends, as happened after the July print despite a big beat",
+    "wrong_if": "US DAUq re-accelerates and guidance exceeds the street"
+   },
+   {
+    "expected": "Flat or small move with the open-to-open outcome decided by overnight noise",
+    "mechanism": "The pre-earnings drop already priced in much of the slowdown, so an in-line print leaves limited reaction",
+    "wrong_if": "The gap at the open exceeds roughly 5% in either direction"
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue and adjusted EBITDA guidance versus consensus",
+   "US DAUq growth and logged-in trend, plus search-algorithm commentary",
+   "Ad pricing and impressions growth",
+   "Q3 revenue growth versus 60%, and the ninth consecutive quarter above 60%",
+   "Buyback pace and margin commentary"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/RDDT_2026-10-29/gate.json",
+    "published": "2026-10-28T14:31:44.312458-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/RDDT_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:44.312458-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000098/earningspressreleaseq226.htm",
+    "published": "2026-07-30T16:09:38-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000100/rddt-20260630.htm",
+    "published": "2026-07-30T17:42:59-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/reddit-fell-5-on-slower-growth-fears-the-october-29-outlook-decides-whether-the-multiple-holds?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T13:49:21-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/reddit-sinks-9-into-q3-report-as-u-s-user-growth-slows-to-6?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T03:57:27-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/26/reddit-sinks-5-as-slower-growth-guidance-looms-over-earnings-snap-drops-3-meta-holds-steady/?.tsrc=rss",
+    "published": "2026-10-26T11:51:05-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/25/can-reddit-max-save-rddt-from-slower-growth-guidance-on-oct-29/?.tsrc=rss",
+    "published": "2026-10-25T10:56:00-04:00",
+    "dossier_item": "I22"
+   }
+  ],
+  "decided_et": "2026-10-28T17:22:51-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20779,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1058,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20779,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1058,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20779,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20779
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.09584179999999999
+ }
+}

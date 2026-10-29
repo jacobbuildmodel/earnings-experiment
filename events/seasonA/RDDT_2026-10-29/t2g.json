@@ -1,0 +1,131 @@
+{
+ "track": "T2G",
+ "event": "RDDT_2026-10-29",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.55,
+  "thesis": "Deep pre-earnings de-risking and elevated short interest create an asymmetric setup where Reddit's compressed valuation can spark a relief rally on solid monetization and steady Q4 guidance.",
+  "reasons": [
+   "RDDT shares dropped 11.7% over the past 5 sessions and sit 48% below 52-week highs, pricing in significant deceleration in US user growth.",
+   "Valuation has compressed to ~14x forward earnings with operating margins near 29% and cash flow exceeding $260M quarterly.",
+   "Short interest of nearly 15% of float provides high short-squeeze fuel if Q3 results hit the $860-$870M revenue guidance and Q4 holiday ad demand holds up."
+  ],
+  "deciding_variable": "Q4 revenue guidance and indications that international ARPU expansion is compensating for slowing domestic user growth.",
+  "prior": {
+   "p": 0.54,
+   "from": "base_rates: cluster software_internet (0.541, n=919)"
+  },
+  "leak_probe": "I don't know, as October 29, 2026, is in the future.",
+  "moved_from_prior": "Moved up +0.01 from prior 0.54 due to significant pre-earnings selloff, low hurdle rate on sentiment, and strong profitability offset by persistent US DAUq growth concerns.",
+  "theses": [
+   {
+    "expected": "Q3 revenue and EBITDA beat guidance midpoint ($865M/$390M) and Q4 guidance reflects healthy holiday ad spend, sparking a 5-10% relief rally.",
+    "mechanism": "Short covering against high 14.9% short float combined with multiple expansion from depressed 14x forward P/E.",
+    "wrong_if": "Management warns of further softening in direct response advertising or broader ad spending deceleration into Q4."
+   },
+   {
+    "expected": "US DAUq growth stabilizes near 5-7% while ARPU increases over 30% YoY, showing Reddit's high-intent community value.",
+    "mechanism": "Market refocuses on rapid commercial monetization and AI data licensing potential rather than pure top-of-funnel DAU scale.",
+    "wrong_if": "Search engine algorithm changes trigger an outright contraction in quarterly active users or ad load saturation."
+   },
+   {
+    "expected": "Q3 results meet baseline expectations but conservative Q4 guidance causes another sharp drop mirroring Q2's -18% reaction.",
+    "mechanism": "High sensitivity to top-line decelerations among growth tech investors leading to continuous multiple derating.",
+    "wrong_if": "Aggressive share repurchases and robust free cash flow support the stock price at the open."
+   }
+  ],
+  "key_observations": [
+   "Q3 reported revenue vs guidance range of $860M to $870M",
+   "Q4 revenue guidance range",
+   "US DAUq and Rest of World DAUq YoY growth rates",
+   "Global ARPU growth and ad pricing trends",
+   "Adjusted EBITDA margin relative to Q3 target of ~44-45%"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/RDDT_2026-10-29/gate.json",
+    "published": "2026-10-28T14:31:44.312458-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/RDDT_2026-10-29/factors.json",
+    "published": "2026-10-28T14:31:44.312458-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000098/earningspressreleaseq226.htm",
+    "published": "2026-07-30T16:09:38-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000100/rddt-20260630.htm",
+    "published": "2026-07-30T17:42:59-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/reddit-fell-5-on-slower-growth-fears-the-october-29-outlook-decides-whether-the-multiple-holds?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T13:49:21-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/reddit-sinks-9-into-q3-report-as-u-s-user-growth-slows-to-6?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-28T03:57:27-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.fool.com/coverage/better-buy/2026/10/27/reddit-vs-snap-which-social-media-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+    "published": "2026-10-27T02:28:39-04:00",
+    "dossier_item": "I15"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/26/reddit-sinks-5-as-slower-growth-guidance-looms-over-earnings-snap-drops-3-meta-holds-steady/?.tsrc=rss",
+    "published": "2026-10-26T11:51:05-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/25/can-reddit-max-save-rddt-from-slower-growth-guidance-on-oct-29/?.tsrc=rss",
+    "published": "2026-10-25T10:56:00-04:00",
+    "dossier_item": "I22"
+   }
+  ],
+  "decided_et": "2026-10-28T17:02:19-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 16652,
+   "candidatesTokenCount": 778,
+   "totalTokenCount": 18455,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 16652
+    }
+   ],
+   "thoughtsTokenCount": 1025,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

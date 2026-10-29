@@ -43,10 +43,17 @@ Checks, each mechanical (reviewed by Opus 5.5, 2026-10-13, fixes applied):
                      shares 26 h), AMBER up to 24 h, then RED "LEDGER STALE". An unknown open order under 15 min old ->
                      information; an option still listed after its expiry day, or an unreadable account -> AMBER
                      (both added 2026-10-15; Sonnet review SHIP WITH FIXES, fixes applied; either check crashing -> AMBER)
+  known              ops/health_known.json, entries a person acknowledged (each with why, source, acknowledged,
+                     until): a RED or AMBER line that reads exactly as an acknowledged one, and a failed paper-options
+                     run whose own job log shows it stopped only on acknowledged alerts (errors 0, halt False, one
+                     error line: the exit code), go under KNOWN and do not count in the status. Anything else about
+                     them, a lapsed entry or an unreadable log alarms as before; a malformed entry -> AMBER
+                     (added 2026-10-28: the DPZ flag had turned every paper-options run red since Oct 13)
 Information: upcoming snapshots, PENDING date confirmations, open paper positions.
 
     python pipeline/health.py --shapes     # also print each account's open orders and positions (compact, read-only)
 """
+import ast
 import collections
 import datetime
 import glob
@@ -95,6 +102,15 @@ DATES_QUIET = datetime.timedelta(hours=30)
 CANCEL_AFTER = {"v3_close": 2, "other": 15}      # minutes: paper_options.V3_RETRY_AFTER_MIN / RETRY_AFTER_MIN
 CANCEL_SLACK = datetime.timedelta(minutes=5)
 WINDOW_LEDGER = {"options": "options_ledger.json", "long": "long_ledger.json"}   # the ledgers paper_window.py works
+# acknowledged alerts (added 2026-10-28)
+KNOWN_FILE = os.path.join("ops", "health_known.json")
+KNOWN_FIELDS = ("why", "source", "acknowledged", "until")
+PAPER_OPTIONS = "Earnings experiment - paper options"
+# paper_options.py's summary line, printed once per sync run (pipeline/paper_options.py, hash-locked)
+LEDGER_LINE = re.compile(r"options ledger: \d+ record\(s\), \d+ with a result; errors (\d+); alerts (\[[^\]]*\]); "
+                         r"halt (True|False)")
+NOT_ONLY_ALERTS = ("PUSH FAILED", "broker unreachable", "Traceback")   # paper_options.py's other ways to exit 1
+RUN_ID = re.compile(r"/actions/runs/(\d+)")
 
 
 def load(p):
@@ -219,6 +235,80 @@ def actions_failures(now):
     except Exception:
         return None
     return out
+
+
+def known_alerts(today):
+    """The acknowledged entries still in force: ({line text: entry}, {paper-options alert key: entry}, amber, info).
+    An entry lacking a field is not acknowledged (AMBER); one past its `until` date alarms again (information)."""
+    p = os.path.join(ROOT, KNOWN_FILE)
+    if not os.path.exists(p):
+        return {}, {}, [], []
+    try:
+        k = load(p)
+    except ValueError as e:
+        return {}, {}, [f"{KNOWN_FILE} unreadable ({e}) - nothing treated as known"], []
+    lines, keys, amber, info = {}, {}, [], []
+    for group, out in (("lines", lines), ("paper_options_alerts", keys)):
+        for name, e in (k.get(group) or {}).items():
+            missing = [f for f in KNOWN_FIELDS if not (e or {}).get(f)]
+            if missing:
+                amber.append(f"{KNOWN_FILE}: {name} lacks {missing} - not treated as known")
+            elif D(e["until"]) < today:
+                info.append(f"{KNOWN_FILE}: {name} lapsed on {e['until']} - it alarms again until re-acknowledged")
+            else:
+                out[name] = e
+    return lines, keys, amber, info
+
+
+def job_logs(run_id):
+    """The text of each job log of one Actions run (read-only GETs)."""
+    import requests
+    h = {"Accept": "application/vnd.github+json"}
+    if os.environ.get("GITHUB_TOKEN"):
+        h["Authorization"] = f"Bearer {os.environ['GITHUB_TOKEN']}"
+    out = []
+    for j in gh_get(f"actions/runs/{run_id}/jobs").get("jobs", []):
+        r = requests.get(f"https://api.github.com/repos/{REPO}/actions/jobs/{j['id']}/logs", headers=h, timeout=30)
+        if r.status_code != 200:
+            raise OSError(f"job log {j['id']}: HTTP {r.status_code}")
+        out.append(r.text)
+    return out
+
+
+def known_failure(url, keys, logs=None):
+    """The acknowledged alerts a failed paper-options run stopped on, when they were its only reason to fail; else
+    None. Read from the run's own log: one job, one error line (the exit code), paper_options.py's last summary line
+    with errors 0, halt False and every alert acknowledged, and no push failure, broker outage or traceback."""
+    m = RUN_ID.search(url or "")
+    if not m or not keys:
+        return None
+    try:
+        texts = (logs or job_logs)(m.group(1))
+    except Exception:
+        return None
+    if len(texts) != 1:
+        return None
+    text = texts[0]
+    errs = [x for x in text.splitlines() if "##[error]" in x]
+    found = LEDGER_LINE.findall(text)
+    if (len(errs) != 1 or "Process completed with exit code 1." not in errs[0] or not found
+            or any(s in text for s in NOT_ONLY_ALERTS)):
+        return None
+    n_err, alerts, halt = found[-1]
+    try:
+        alerts = ast.literal_eval(alerts)
+    except (ValueError, SyntaxError):
+        return None
+    if n_err != "0" or halt != "False" or not alerts or not set(alerts) <= set(keys):
+        return None
+    return sorted(alerts)
+
+
+def split_known(red, amber, lines):
+    """RED and AMBER without the lines that read exactly as acknowledged ones, and those lines for KNOWN."""
+    known = [f"{x} - {lines[x]['why']} ({lines[x]['source']}; acknowledged {lines[x]['acknowledged']}, until "
+             f"{lines[x]['until']})" for x in red + amber if x in lines]
+    return [x for x in red if x not in lines], [x for x in amber if x not in lines], known
 
 
 def exits(name, led, now):
@@ -781,12 +871,24 @@ def run(write=False, commit=False, now=None):
     red, info = red + r, info + i
     r, a, i = decisions(now)
     red, amber, info = red + r, amber + a, info + i
+    k_lines, k_keys, a, i = known_alerts(now.date())
+    amber, info, known = amber + a, info + i, []
     fl = actions_failures(now)
     if fl is None:
         amber.append("GitHub Actions status unreadable (API)")
     else:
+        only = collections.defaultdict(list)
         for name, when, url, st in fl:
+            k = known_failure(url, k_keys) if name == PAPER_OPTIONS and st == "failure" else None
+            if k:
+                only[tuple(k)].append((when, url))
+                continue
             (red if name in CRITICAL_WORKFLOWS else amber).append(f"Actions {st}: {name} at {when} {url}")
+        for k, runs in only.items():
+            when, url = max(runs)
+            known.append(f"{len(runs)} paper-options run(s) in 24 h failed only on the acknowledged alert(s) "
+                         f"{list(k)}, each read from its job log; newest {when} {url} "
+                         f"({'; '.join(sorted({k_keys[x]['source'] for x in k}))})")
     r, a, i = ledgers(now)
     red, amber, info = red + r, amber + a, info + i
     for check in (ai_refusals, dates_stale):
@@ -805,10 +907,14 @@ def run(write=False, commit=False, now=None):
         if c:
             amber.append(c)
     info += upcoming(now)
+    red, amber, k = split_known(red, amber, k_lines)
+    known += k
     status = "RED" if red else "AMBER" if amber else "GREEN"
-    md = [f"# Health {now:%Y-%m-%d %H:%M} ET - **{status}**", "", f"check.py: {last}", ""]
+    md = [f"# Health {now:%Y-%m-%d %H:%M} ET - **{status}**" + (f" ({len(known)} known)" if known else ""), "",
+          f"check.py: {last}", ""]
     for title, xs in (("RED - events or decisions being lost, or about to be", red), ("AMBER - look at", amber),
-                      ("Information", info)):
+                      (f"KNOWN - acknowledged in {KNOWN_FILE}, reads exactly as acknowledged; not in the status",
+                       known), ("Information", info)):
         md.append(f"## {title}")
         md += [f"- {x}" for x in xs] or ["- none"]
         md.append("")

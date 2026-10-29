@@ -1,0 +1,685 @@
+{
+ "event": "MSTR_2026-10-29",
+ "season": "seasonA",
+ "built_et": "2026-10-28T14:31:44-04:00",
+ "cutoff_et": "2026-10-28T14:31:24.889482-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/MSTR_2026-10-29/gate.json",
+   "published": "2026-10-28T14:31:24.889482-04:00",
+   "data": {
+    "ticker": "MSTR",
+    "report_date": "2026-10-29",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-10-29"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-10-30"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-10-30"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-06"
+     },
+     "reaction_day": "2026-10-30"
+    },
+    "snapshot_session": "2026-10-28",
+    "captured_et": "2026-10-28T14:31:24.889482-04:00",
+    "options": {
+     "spot": 140.41000366210938,
+     "expiry": "2026-10-30",
+     "strike": 140.0,
+     "call": {
+      "bid": 4.3,
+      "ask": 4.35,
+      "openInterest": 1673.0,
+      "lastPrice": 4.34,
+      "impliedVolatility": 0.8120135986328124,
+      "lastTradeDate": "2026-10-28T18:16:13+00:00"
+     },
+     "put": {
+      "bid": 4.85,
+      "ask": 4.95,
+      "openInterest": 3935.0,
+      "lastPrice": 4.88,
+      "impliedVolatility": 1.0065967639160154,
+      "lastTradeDate": "2026-10-28T18:15:26+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.06570044697242203,
+     "rel_spread": {
+      "call": 0.011560693641618458,
+      "put": 0.02040816326530623
+     },
+     "oi_atm": 5608.0,
+     "oi_sum": 22612.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/MSTR_2026-10-29/factors.json",
+   "published": "2026-10-28T14:31:24.889482-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.5250481976017022,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.0921962544491648,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.08515762593994214,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.07539233754767571,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.8700298442366818,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.8784297192531612,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.5067102429869829,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-30",
+       "session": "AMC",
+       "raw_return_A": -0.0024187163360676056,
+       "eps_est": 3.07,
+       "eps_rep": -24.45,
+       "surprise_pct": -895.3,
+       "reaction_volume_ratio": 1.1562432202119879
+      },
+      {
+       "date": "2026-05-05",
+       "session": "AMC",
+       "raw_return_A": -0.026272728289955416,
+       "eps_est": -15.33,
+       "eps_rep": -38.25,
+       "surprise_pct": -149.58,
+       "reaction_volume_ratio": 0.7531995721997046
+      },
+      {
+       "date": "2026-02-05",
+       "session": "AMC",
+       "raw_return_A": -0.044074869453287424,
+       "eps_est": -20.99,
+       "eps_rep": -42.93,
+       "surprise_pct": -104.53,
+       "reaction_volume_ratio": 2.535262445807893
+      },
+      {
+       "date": "2025-10-30",
+       "session": "AMC",
+       "raw_return_A": -3.696154823451536e-05,
+       "eps_est": 9.67,
+       "eps_rep": 8.42,
+       "surprise_pct": -12.95,
+       "reaction_volume_ratio": 1.2270208266028035
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.0,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.4179315162055972,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -895.3,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 22.88906,
+      "7daysAgo": 17.98017,
+      "30daysAgo": 16.38957,
+      "60daysAgo": 15.2785,
+      "90daysAgo": 12.25167,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.8682400031995637,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 22.88906,
+      "low": -0.99,
+      "high": 52.82,
+      "yearAgoEps": 8.42,
+      "numberOfAnalysts": 9,
+      "growth": 1.7184,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 2.350904755372217,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0722,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 5.929869,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 119.29961,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.069,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 59452600320,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.25,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.06570044697242203,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.19458316528320296,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.19873353515624992,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.36872525732383216,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7332089632066955,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 103722.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.0451425170043336,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.0483902557618276,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 317,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.06882817413178666,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -68.08111597803347,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.5251835307690433,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.08541830189795363,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.07539233754767571,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.8700501696993049,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.2717129687701874,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -2.4045926072079755,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 49485195858.64258,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.010070628020217562,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.6916769249126832,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000162828026051027/mstr-20260730x8kxex991.htm",
+   "published": "2026-07-30T16:00:23-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 mstr-20260730x8kxex991.htm EX-99.1 Document Exhibit 99.1 Contact: Strategy CJ (Chaitanya Jain) Head of Investor Relations ir@strategy.com Strategy Announces Second Quarter Financial Results; Currently Holds 843,775 Bitcoin; Now the Largest Institutional Holder Globally Digital Capital Highlights (as of July 26, 2026) ▪ 843,775 bitcoin holdings, 25% growth year to date 2026 ▪ 4.5% BTC Yield achieved year to date ▪ BTC Monetization Program established; $218.4 million of sales year to date 2026 Digital Equity Highlights (as of July 26, 2026) ▪ $17.06 b illion of capital raised year to date through our ATM programs ▪ $1.0 billion MSTR repurchase program established; no repurchases to date ▪ Introduced new metrics such as BTC Hurdle ARR & Net Bitcoin Per Share on Strategy.com Digital Credit Highlights (as of July 26, 2026) ▪ STRC issuances raised $7.53 billion year to date 2026, representing a 254% growth ▪ $1.06 billion in cumulative dividends paid on all preferred stock to date ▪ Grew the USD Reserve to $3.75 billion, over 2.1 years of coverage, reserved for dividends and interest ▪ Repurchased $28.9 million aggregate notional amount of STRC for $25.0 million, a 13% discount to par TYSONS CORNER, Va., July 30, 2026 – Strategy Inc (Nasdaq: STRF/STRC/STRK/STRD/MSTR; LuxSE: STRE) (“Strategy” or the “Company”), the largest institutional holder of bitcoin and the world’s first Bitcoin Treasury Company, today announces financial results for the three-month period ended June 30, 2026 (the second quarter of its 2026 fiscal year). “In the second quarter of 2026, Strategy strengthened its balance sheet while navigating a meaningful bitcoin price decline. We grew our bitcoin holdings by 11% to 846,000 bitcoin, reduced our convertible debt by 18% to $6.7 billion, increased our USD Reserve by 12% to $2.4 billion, and grew Bitcoin Per Share by 5%. Our objective is for STRC to trade over time at $99 to $100. If STRC trades below $100, we intend to repurchase STRC shares in a regular and disciplined manner, scaling our repurchases according to market price and liquidity. These repurchases are an attractive use of capital that reduces our future preferred dividend requirements at a discount while allowing independent market demand to establish a healthy and sustainable market,” said Phong Le, President and Chief Executive Officer. “Strategy's USD Reserve currently stands at $3.75 billion, which is enough to cover our existing preferred dividend payments and interest obligations for more than 2.1 years. We've also built a track record of 18 months of consecutive dividend payments, having never missed a dividend despite the recent deep drawdown in bitcoin price. To give investors clearer transparency into our credit quality and equity strength, we've introduced a set of enhanced metrics, now available on strategy.com. Our BTC Hurdle ARR of 10.8% represents our current effective cost of credit. If BTC ARR is above this rate, Net BTC Per Share captures a positive spread and appreciates faster than bitcoin on a go-forward basis,” said Andrew Kang, Chief Financial Officer. “In the midst of this phase of muted bitcoin sentiment and market skepticism, we continue to evolve our business model and establish Digital Credit as a new asset class. Our plan is to return STRC to health with stable demand, high liquidity, and low volatility trading near par. We believe this is the best way to create shareholder value over the long term,” said Michael Saylor, Founder and Executive Chairman. Q2 Financial Summary ▪ Operating Loss: Operating loss for the second quarter of 2026 was $8.33 billion, compared to $14.03 billion operating income for the second quarter of 2025. Operating loss for the second quarter of 2026 includes an unrealized loss on the Company’s digital assets of $8.32 billion, compared to an unrealized gain on the Company’s digital assets of $14.05 billion for the second quarter of 2025. ▪ Net Loss and Net Loss Attributable to Common Stock: For the second quarter of 2026, the Company reported a net loss of $8.22 billion, or a net loss of $24.45 per common share on a diluted basis, as compared to a net income of $10.02 billion, or a net income of $32.60 per common share on a diluted basis, for the second quarter of 2025. Net loss attributable to common stockholders for the second quarter of 2026 was $8.62 billion, reflecting $400.7 million of dividends on preferred stock, compared to net income attributable to common stockholders of $9.97 billion, reflecting $49.1 million of dividends on preferred stock, for the second quarter of 2025. ▪ Cash and Cash Equivalents, and Short-term Investments: As of June 30, 2026, the Company had cash and cash equivalents of $1.71 billion, as compared to $2.21 billion as of March 31, 2026. As of June 30, 2026, the company had short term investments of $736.1 million; there were no short-term investments as of March 31, 2026. ▪ Revenues: Total revenues for the second quarter of 2026 were $122.4 million, compared to total revenues of $114.5 million for the second quarter of 2025, a 6.9% increase year-over-year. ▪ Gross Profit: Gross profit for the second quarter of 2026 was $81.6 million, representing a 66.6% gross margin, compared to $78.7 million, representing a gross margin of 68.8%, for the second quarter of 2025. Bitcoin Summary (as of July 26, 2026) ▪ BTC Yield: Achieved BTC Yield of 4.5% in 2026 YTD. ▪ BTC Gain: Achieved BTC Gain of 29,997 in 2026 YTD. ▪ BTC $ Gain: Achieved BTC $ Gain of $1.95 billion in 2026 YTD, based on the July 27, 2026 bitcoin market price of $64,915. ▪ Digital Assets: As of July 26, 2026, the Company’s digital assets were comprised of approximately 843,775 bitcoins, with an original cost basis and market value of $63.69 billion and $54.77 billion, respectively, which reflect an average cost per bitcoin of approximately $75,476 and a market price per bitcoin of approximately $64,915 as of July 27, 2026. Capital Markets Summary (as of July 26, 2026) ▪ ATM Offerings: The Company received aggregate gross proceeds of approximately $8.41 billion during the three months ended June 30, 2026, and additional aggregate gross proceeds of approximately $1.28 billion between July 1, 2026 and July 26, 2026, from the following sales made under its at-the-market offering program (\"ATM\"). Q2 FY 2026 QTD Q3 FY 2026 Securities Aggregate Gross Proceeds (in millions) Aggregate Gross Proceeds (in millions) MSTR $ 2,946.7 $ 1,276.0 STRC 5,465.0 — STRK — — STRF — — STRD — — STRE — — Total $ 8,411.8 $ 1,276.0 (Includes shares sold but not yet settled as of July 26, 2026) ▪ STRC Stock Dividend: Since the start of FY2026, the Company has declared and paid, or will pay, the following dividends on its STRC Stock: Record Date Annualized STRC Rate Dividend (USD/Share) Payment Date Monthly STRC Dividends January 15, 2026 11.00% $0.92 January 31, 2026 February 15, 2026 11.25% $0.94 February 28, 2026 March 15, 2026 11.50% $0.96 March 31, 2026 April 15, 2026 11.50% $0.96 April 30, 2026 May 15, 2026 11.50% $0.96 May 31, 2026 June 15, 2026 11.50% $0.96 June 30, 2026 Semi-Monthly STRC Dividends June 30, 2026 11.50% $0.48 July 15, 2026 July 15, 2026 12.00% $0.50 July 31, 2026 July 31, 2026 12.00% $0.50 August 15, 2026 ▪ Convertible Note Repurchase: In May 2026, the Company repurchased $1.50 billion aggregate principal amount of its 0% Convertible Senior Notes due 2029 in negotiated transactions for approximately $1.38 billion in cash, an approximate 8% discount to par. As a result, the Company reduced its aggregate principal amount of convertible notes outstanding from $8.21 billion to $6.71 billion. Digital Credit Capital Framework Summary (as of July 26, 2026) ▪ USD Reserve Policy: The Company has grown the USD Reserve to $3.75 billion, representing approximately 2.1 years of coverage reserved for preferred-stock dividend payments and interest on outstanding indebtedness. ▪ STRC Dividend Policy: Increased the dividend rate to 12.00% to support STRC trading near its $100 per share stated amount, and will maintain the 12.00% rate until STRC demonstrates sustained, healthy trading near $100 per share. ▪ $1.0 Billion Digital Credit Securities Repurchase Program: From July 20 through July 26, 2026, the Company repurchased 288,930 shares of STRC ($28.89 million aggregate notional) for approximately $25.00 million at an average price of $86.53 per share, an approximate 13.47% discount to the $100 per share stated amount. Approximately $975.00 million remains available, and while STRC trades below $100 per share the Company intends to be a regular and disciplined purchaser, buying more at deeper discounts and tapering as STRC approaches par. ▪ $1.0 Billion MSTR Repurchase Program: No repurchases to date. The Company will consider repurchasing MSTR when management believes it is trading below intrinsic value, which would be accretive to common shareholders. ▪ BTC Monetization Program: The Company has board authorization to sell bitcoin to: ▪ Fund the USD Reserve up to $1.25 billion of bitcoin sales ▪ Fund preferred stock dividends and interest expense as they become payable, or to replenish the USD Reserve after such payments ▪ Fund repurchases of MSTR or Digital Credit Securities under our repurchase programs The Company has sold approximately $218.4 million of bitcoin year to date 2026 to fund a portion of our preferred stock dividends. ROC Dividend Guidance Strategy believes that it will not have any accumulated earnings & profits for U.S. federal income tax purposes (“E&P”), and does not expect to generate current E&P in the current year or the foreseeable future. Based on these expectations, Strategy expects the distributions paid on its preferred equity instruments to be treated as non-taxable return of capital (\"ROC\") for the foreseeable future (i.e., ten years or more). Special tax considerations may apply to certain taxpayers based on their specific circumstances. Shareholders should consult their own tax advisors regarding the U.S. federal, state, local, and any non-U.S. tax consequences to them in connection with the receipt of any of these distributions. Strategy’s expectations on E&P may change, and any such change could affect the U.S. federal income tax treatment of the distributions. Strategy Dashboard Strategy maintains a dashboard on its website (www.strategy.com) as a disclosure channel for providing broad, non-exclusionary distribution of information regarding Strategy to the public, including information regarding market prices of its outstanding securities, bitcoin purchases and holdings, certain KPI metrics and other supplemental information, and as one means of disclosing non-public information in compliance with its disclosure obligations under Regulation FD. Investors and others are encouraged to regularly review the information that Strategy makes public via the website dashboard. Conference Call Strategy will be discussing its second quarter 2026 financial results on a live Video Webinar today beginning at approximately 5:00 p.m. ET. The live Video Webinar and accompanying presentation materials will be available under the “Events and Presentations” section of Strategy’s investor relations website at https://www.strategy.com/investor-relations. Log-in instructions will be available after registering for the event. An archived replay of the event will be available beginning approximately two hours after the call concludes. About Strategy Strategy Inc (Nasdaq: STRF/STRC/STRK/STRD/MSTR; LuxSE: STRE) is the world's first and largest Bitcoin Treasury Company. We pursue financial innovation strategies designed to generate value from our bitcoin holdings, including developing and issuing novel fixed-income instruments that provide investors varying degrees of economic exposure to bitcoin. In addition, we are an industry leader in AI-powered enterprise analytics software, advancing our vision of Intelligence Everywhere™. We believe our combination of active bitcoin-focused capital management and a scaled operating software business positions us for long-term value creation across both digital asset and enterprise analytics markets. Strategy, MicroStrategy, and Intelligence Everywhere are either trademarks or registered trademarks of Strategy Inc in the United States and certain other countries. Other product and company names mentioned herein may be the trademarks of their respective owners. Important Information About KPIs The Company seeks to acquire bitcoin in a manner it believes to be accretive to common stockholders. To assess achievement of this strategy, the Company monitors and reviews the following Key Performance Indicators (“KPIs”): ▪ Bitcoin Per Share (in Sats) (or BPS (in Sats) ) represents the ratio between the Company’s gross bitcoin holdings and its Assumed Diluted Shares Outstanding, expressed in terms of “Satoshis” or “Sats”, where: ▪ “Assumed Diluted Shares Outstanding” refers to the aggregate of the Company’s Basic Shares Outstanding as of the dates presented plus all additional shares that would result from the assumed conversion of all outstanding convertible notes and convertible preferred stock, exercise of all outstanding stock option awards, and settlement of all outstanding restricted stock units and performance stock units as of such dates. Assumed Diluted Shares Outstanding is not calculated using the treasury method, incorporates approximate forfeitures of awards in the current period which may be subject to future adjustment and does not take into account any vesting conditions (in the case of equity awards), the exercise price of any stock option awards or any contractual conditions limiting convertibility of convertible debt instruments. ▪ “Basic Shares Outstanding” reflects the actual class A common stock and class B common stock outstanding as of the dates presented. For purposes of this calculation, outstanding shares of such stock are deemed to include shares, if any, that (A)",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000105044626000044/mstr-20260630.htm",
+   "published": "2026-08-03T16:49:56-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2, Management’s Discussion and Analysis of Financial Condition and Results of Operations, for additional information. We may not be able to regain profitability in future periods, particularly if we incur significant losses related to our digital assets, which will depend on the prices of bitcoin at the time we sell bitcoin and at the end of the applicable period. As a result, our results of operations and financial condition may be materially adversely affected. Additionally, unrealized gains on digital assets do not generate cash, and we have in the past and may in the future experience significant negative cash flow even in periods in which we recognize unrealized gains on digital assets unless we sell our bitcoin or otherwise generate cash from our bitcoin holdings. As discussed in Part I Item 2, Management’s Discussion and Analysis of Financial Condition and Results of Operations, as of June 30, 2026, the cost basis of our bitcoin holdings exceeded their fair market value. As a result, we reversed the deferred tax liability against unrealized gain on bitcoin holdings that existed as of December 31, 2025, recorded a deferred tax asset with respect to the unrealized loss on our bitcoin and established a full valuation allowance on all domestic net deferred tax assets which, in our present estimation, more likely than not will not be realized. If, in future periods, the fair market value of our bitcoin holdings increases and exceeds the cost basis of our bitcoin holdings, the deferred tax asset with respect to our unrealized loss would be reversed and the valuation allowance on domestic net deferred tax assets could be released, which could result in a material impact on our financial condition and results of operations. In addition, any losses we realize on sales of our bitcoin generally would be capital losses, and the related tax benefits (including any deferred tax assets recorded with respect to our bitcoin) generally would be available only as an offset against capital gains we realize from sales of capital assets. To the extent we do not generate sufficient capital gains, these tax benefits may not be available to us. A significant decrease in the fair market value of our bitcoin holdings could adversely affect our ability to satisfy our financial obligations or liquidity needs As of June 30, 2026, we do not expect our enterprise analytics software business to generate sufficient cash flow from operations to satisfy our financial obligations or liquidity needs over the next twelve months. As of the date of this Quarterly Report, we have significant outstanding indebtedness (and related interest obligations) and expected dividend payments on our Preferred Stock outstanding. Our outstanding Preferred Stock accrues dividends payable, as and if declared by our board of directors, out of funds legally available for their payment: in the case of STRF Stock, STRE Stock and STRK Stock, quarterly in arrears on a cumulative basis; in the case of STRD Stock, quarterly in arrears on a non-cumulative basis; and in the case of STRC Stock, semi-monthly in arrears on a cumulative basis. The amount, frequency and cumulative nature of the dividends we expect to pay on our Preferred Stock requires us to have available and use significant liquidity on a recurring basis, and our ability to pay such dividends depends on, among other things, the availability of legally available funds, our financial condition, our results of operations, the value of our bitcoin holdings, access to capital markets, and the availability of other sources of liquidity. Additionally, we have substantial outstanding indebtedness and related annual contractual interest expense. See the “Liquidity and Capital Resources” section in Part I, Item 2 Management’s Discussion and Analysis of Financial Condition and Results of Operations and Note 6, Long-term Debt, to the Consolidated Financial Statements contained in Part I, Item 1 of this Quarterly Report, for additional information regarding expected dividend payments on our Preferred Stock and the principal amount, interest obligations and stated maturity dates of our outstanding indebtedness. 65 As part of our bitcoin strategy, we expect to issue additional preferred stock, and we expect to incur or continue to incur additional indebtedness and fixed charges. We intend to satisfy our financial obligations and liquidity needs, including repayment of principal and payment of interest on our debt and cash dividends on our Preferred Stock, through one or more available sources of liquidity, including cash and cash equivalents we hold in the USD Reserve, proceeds from the sale of bitcoin, proceeds from sales of our class A common stock and preferred stock under our ATM, and proceeds from additional equity or debt financings. We expect to determine which source of liquidity or combination of sources of liquidity to use from time to time based on our liquidity needs and our subjective assessment of the relative attractiveness of available alternatives, including market conditions, the trading prices and liquidity of our class A common stock and preferred stock, the market price and liquidity of bitcoin, the availability and cost of debt financing, availability of our cash reserves, dilution, tax considerations, timing, execution considerations, and other factors we consider relevant. Our ability to obtain equity or debt financing generally may depend on, among other factors, the value of our bitcoin holdings, investor sentiment and the general public perception of bitcoin, our strategy and our value proposition. Additionally, our ability to use bitcoin as a source of liquidity to satisfy our financial obligations will depend on the market price of bitcoin, the liquidity of the bitcoin market and other similar factors. Accordingly, a significant decline in the market price of bitcoin or a negative shift in these other factors may create liquidity and credit risks, as such a decline or such shifts may adversely impact our ability to utilize equity or debt financing or sales of bitcoin to satisfy our financial obligations and liquidity needs or to maintain the USD Reserve at current levels. Additionally, our ability to use our ATM may depend on, among other factors, available program capacity and our ability to maintain effective registration statements and related offering documents. Future amendments, terminations or reductions in available capacity under our ATM could adversely affect our ability to utilize the ATM for these purposes. These risks could materialize at times when bitcoin is trading below its carrying value on our most recent balance sheet or our cost basis. Our board-approved USD Reserve policy is an internal policy and does not create contractual rights in favor of holders of our securities. Likewise, our BTC Monetization Program is discretionary, and does not obligate us to sell bitcoin, fund any dividend or interest payment through sales of bitcoin, or repurchase any of our outstanding securities using proceeds from sales of bitcoin. The policies may be modified, suspended or terminated, and the USD Reserve may be insufficient to satisfy our financial obligations or liquidity needs if market conditions or our capital requirements change materially. Additionally, notwithstanding the availability of cash in our USD Reserve at the time an obligation arises, we have sold bitcoin and may continue to sell bitcoin to meet our liquidity needs and financial obligations if we determine it is favorable to do so. See “Liquidity and Capital Resources—Availability of the USD Reserve for Liquidity”, “Liquidity and Capital Resources—Digital Credit Capital Framework”, and “Liquidity and Capital Resources—Digital Credit Framework—BTC Monetization Program” for information about our USD Reserve and BTC Monetization program. Additionally, if we deplete our USD Reserve and are unable to obtain equity or debt financing in a timely manner, on favorable terms, or at all, we may be required to sell additional bitcoin to satisfy our financial obligations, potentially at prices below our cost basis or on other unfavorable terms. Any such sale of bitcoin may have a material adverse effect on our operating results and financial condition, and could be perceived negatively by market participants, resulting in a decline in the trading prices of our listed securities, or impair our ability to secure additional equity or debt financing in the future. If we are unable to raise equity or debt financing or sell our bitcoin to raise proceeds sufficient to satisfy our financial obligations or liquidity needs, including our debt service and cash dividend payments on our preferred stock, we could be in default under such obligations, which could have a material adverse effect on our financial condition. See “Risks Related to Our Outstanding and Potential Future Indebtedness” and “Risks Related to Our Preferred Stock” for additional details about the risks which may impact us if we are unable to satisfy our debt service and cash dividend obligations. We may have exposure to greater than anticipated tax liabilities We are subject to income taxes and non-income taxes in a variety of domestic and foreign jurisdictions. Our future income tax liability could be materially adversely affected by earnings that are lower than anticipated in jurisdictions where we have lower statutory rates, earnings that are higher than anticipated in jurisdictions where we have higher statutory rates, changes in the valuation of our deferred tax assets and liabilities, changes in the amount of our unrecognized tax benefits, or changes in tax laws, regulations, accounting principles, or interpretations thereof. In addition, if we were to sell any of our bitcoin at prices greater than the cost basis of the bitcoin sold, we would incur a tax liability with respect to any gain recognized, and such tax liability could be material. Changes in the tax laws of foreign jurisdictions could arise, including as a result of the project undertaken by the Organisation for Economic Co-operation and Development (“OECD”) and the Group of Twenty (“G20”) to combat base erosion and profit shifting (“BEPS”), including the OECD/G20 Inclusive Framework on BEPS and the Two-Pillar Solution (such as the Pillar Two global minimum tax rules). The OECD/G20 Inclusive Framework, which represents a group of participating jurisdictions, has issued recommendations and related guidance that, in some cases, make substantial changes to numerous long-standing tax positions and principles. Additionally, certain jurisdictions, such as Illinois, have enacted or proposed taxes or other revenue measures that may 66 apply to certain digital asset transactions, and other jurisdictions may adopt similar measures. These and similar changes, many of which have been adopted or are under active consideration by participating jurisdictions and/or other countries, could increase tax uncertainty and may adversely affect our provision for income taxes. After enactment of the U.S. Tax Cuts and Jobs Act, most of our income is taxable in the U.S. with a significant portion taxable under the Global Intangible Low-Taxed Income regime (or the Net Controlled Foreign Corporation \"CFC\" Tested Income regime after enactment of the One Big Beautiful Bill Act of 2025). As used herein, \"CFC\" means controlled foreign corporation. Beginning in fiscal year 2026, the deduction allowable under the Net CFC Tested Income regime will decrease from 50% to 40%, which will increase the effective tax rate imposed on our income. The U.S. also enacted the IRA in August 2022. The IRA imposes (i) a 1% excise tax on certain stock repurchases made by publicly traded U.S. corporations, and (ii) a 15% CAMT on a corporation with respect to an initial tax year and subsequent tax years, if the average annual AFSI for any consecutive three-tax-year period preceding the initial tax year exceeds $1 billi",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526435451/mstr-20261028.htm",
+   "published": "2026-10-28T10:28:08-04:00",
+   "form": "8-K",
+   "items": "8.01",
+   "text": "Item 8.01 Other Events. STRF, STRC, STRK and STRD Daily Dividends On October 28, 2026, Strategy Inc (the “Company”) held a Special Meeting of Stockholders (the “Special Meeting”). Based on preliminary voting results, the requisite vote was obtained from the issued and outstanding shares of the Company’s common stock as of the record date for the Special Meeting (September 25, 2026), to approve and adopt an amended and restated certificate of designations for each of the Company’s 10.00% Series A Perpetual Strife Preferred Stock (“STRF Stock”), Variable Rate Series A Perpetual Stretch Preferred Stock (“STRC Stock”), 8.00% Series A Perpetual Strike Preferred Stock (“STRK Stock”) and 10.00% Series A Perpetual Stride Preferred Stock (“STRD Stock”), to permit daily dividends. Dividend Entitlement and Trading Mechanics Subject to the filing and effectiveness of the amended and restated certificates of designations permitting daily dividends, under the new daily dividend schedule, effective November 1, 2026 for STRC Stock, and effective January 1, 2027 for STRF Stock, STRK Stock and STRD Stock, these instruments will have a dividend record date on every calendar day, including weekends and market and bank holidays. However, for any shares cleared through The Depository Trust Company (“DTC”), a record date that falls on a weekend or other DTC holiday will be deemed by DTC to fall on the immediately preceding day that is not a DTC holiday. An ex-dividend date is the first day on which shares trade without the right to receive a particular dividend. For shares traded on Nasdaq, the ex-dividend date is generally the same day as the record date, if it falls on a trading day, or the immediately preceding business day, if the record date does not fall on a trading day. As a result, if multiple daily dividends have record dates that fall on consecutive days that are DTC holidays, then they will be deemed by DTC to share a single record date occurring on the last preceding day that is not a DTC holiday, and by Nasdaq to share a single ex-dividend date occurring on the last preceding day that is a trading day, and will be paid together on the same payment date. For example, dividends with record dates of November 6, 7 and 8, 2026 — a Friday, Saturday and Sunday — would all be deemed by DTC to have a record date of Friday, November 6, which Nasdaq will also treat as the ex-dividend date for all three. All three dividends would be paid on Monday, November 9. Due to the T+1 s"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526431146/mstr-20261026.htm",
+   "published": "2026-10-26T08:49:15-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01",
+   "text": "Item 8.01 Other Events. ATM and BTC Update On October 26, 2026, Strategy Inc (\"Strategy\") announced that, during the period from October 19, 2026 to October 25, 2026, Strategy did not sell any shares under its at-the-market offering program and did not purchase or sell any bitcoin. As of October 25, 2026, Strategy holds approximately 848,517 bitcoin that were acquired at an aggregate purchase price of $64.02 billion and an average purchase price of approximately $75,446 per bitcoin, inclusive of fees and expenses. Repurchase Program Updates On October 26, 2026, Strategy announced the following update with respect to its share repurchase programs of the following securities: During Period October 19, 2026 to October 25, 2026 Security Shares Repurchased Aggregate Purchase Price (in millions) STRF Stock (1) - $ - 10.00% Series A Perpetual Strife Preferred Stock STRC Stock (1) 2,068,459 $ 204.9 Variable Rate Series A Perpetual Stretch Preferred Stock STRK Stock (1) - $ - 8.00% Series A Perpetual Strike Preferred Stock STRD Stock (1) - $ - 10.00% Series A Perpetual Stride Preferred Stock MSTR Stock (2) - $ - Class A Common Stock Total 2,068,459 $ 204.9 (1) $956.8 million aggregate purchase price of Strategy's preferred stock remains available under its digital credit securities repurchase program. (2) $1.0 billion aggregate purchase price of MSTR Stock remains available under Strategy's MSTR Stock repurchase program. USD Reserve and USD Cash Updates As part of its capital framework, Strategy maintains: (i) a U.S. dollar reserve (the \"USD Reserve\"), which is intended to support the payment of dividends on Strategy's preferred stock and interest on its outstanding indebtedness, and (ii) \"USD Cash\", which management maintains to deploy for broader general Bitcoin Treasury Company purposes, which may include acquiring bitcoin, expanding the USD Reserve, broader capital management uses, and other similar purposes. During the period from October 19, 2026 to October 25, 2026, Strategy used $204.9 million of USD Cash to fund repurchases of STRC Stock. As of October 25, 2026, the balances of the USD Reserve and USD Cash were $4.83 billion and $242.4 million, respectively. Item 7.01 Regulation FD Disclosure. Strategy Dashboard Strategy also maintains a dashboard on its website (www.strategy.com) as a disclosure channel for providing broad, non-exclusionary distribution of information regarding Strategy to the public, including information regarding market prices of its o"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526424688/mstr-20261019.htm",
+   "published": "2026-10-19T08:00:13-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01",
+   "text": "Item 8.01 Other Events. ATM Update On October 19, 2026, Strategy Inc (\"Strategy\") announced an update with respect to sales made under its at-the-market offering program (\"ATM\") of the following securities: During Period October 12, 2026 to October 18, 2026 As of October 18, 2026 Security Shares Sold Notional Value (in millions) (1) Net Proceeds (in millions) (2) Available for Issuance and Sale (in millions) STRF Stock - $ - $ - $ 1,619.3 10.00% Series A Perpetual Strife Preferred Stock STRC Stock - $ - $ - $ 17,510.8 Variable Rate Series A Perpetual Stretch Preferred Stock STRK Stock - $ - $ - $ 2,100.0 8.00% Series A Perpetual Strike Preferred Stock STRD Stock - $ - $ - $ 4,014.8 10.00% Series A Perpetual Stride Preferred Stock MSTR Stock 140,872 $ - $ 22.0 (3) $ 18,785.6 Class A Common Stock Total $ 22.0 (1) The total face value of the shares of preferred stock sold, which is used to calculate dividends thereon. (2) Net proceeds are presented net of sales commission. (3) The net proceeds from MSTR Stock sales were used to fund bitcoin purchases. BTC Update On October 19, 2026, Strategy announced updates with respect to its bitcoin holdings: During Period October 12, 2026 to October 18, 2026 As of October 18, 2026 BTC Purchased (1) Aggregate Purchase Price (in millions) (2) Average Purchase Price (2) Aggregate BTC Holdings Aggregate Purchase Price (in billions) (2) Average Purchase Price (2) 267 $ 22.1 $ 82,900 848,517 $ 64.02 $ 75,446 (1) The bitcoin purchases were made using $22.0 million in net proceeds from MSTR Stock sales and $0.1 million of USD Cash. (2) Aggregate and average purchase prices are inclusive of fees and expenses. Repurchase Program Updates On October 19, 2026, Strategy announced that its board of directors approved an increase in the aggregate purchase price authorized under its digital credit securities repurchase program from $2.0 billion to $3.0 billion (inclusive of any commissions, fees and expenses and inclusive of any repurchases made under the program to date). As of October 18, 2026, after giving effect to the increase, $1.16 billion aggregate purchase price remained available under Strategy's digital credit securities repurchase program. On October 19, 2026, Strategy also announced the following update with respect to its share repurchase programs of the following securities: During Period October 12, 2026 to October 18, 2026 Security Shares Repurchased Aggregate Purchase Price (in millions) STRF Stock (1) - $ - 10.00% Seri"
+  },
+  {
+   "id": "I9",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526423400/mstr-20261015.htm",
+   "published": "2026-10-16T07:59:13-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01",
+   "text": "Item 8.01 Other Events. Dividend Rate on Variable Rate Series A Perpetual Stretch Preferred Stock On October 15, 2026, Strategy Inc (the “Company”) announced that, if the Contingent Dividend Condition (as defined below) is satisfied, the regular dividend rate per annum on the Company’s Variable Rate Series A Perpetual Stretch Preferred Stock (“STRC”) for dividends with record dates from November 1, 2026 through November 30, 2026 will be 12.00%, as disclosed in the Company’s definitive proxy statement for the Special Meeting (as defined below) filed with the Securities and Exchange Commission on October 5, 2026. Such rate shall have no effect on any previously declared but unpaid dividends on STRC. As previously announced, management will recommend to the board of directors that the Company maintain STRC’s regular dividend rate per annum at 12.00% until STRC has demonstrated sustained, healthy trading near $100 per share. Cash Dividend Declaration On October 15, 2026, the Company’s board of directors declared daily cash dividends on STRC for each calendar day from November 1, 2026 through November 30, 2026 (each, a “Record Date”), payable to stockholders of record as of 5:00 p.m., New York City time on the applicable Record Date, subject to the Contingent Dividend Condition described below. Each daily dividend is payable on the business day immediately following its Record Date (each a “Payment Date”), beginning November 2, 2026 and ending December 1, 2026, as set forth in the tables below. Business days exclude days on which the Federal Reserve Bank of New York is closed (including Veterans Day and Thanksgiving Day); accordingly, the dividends for two or more Record Dates may be paid on the same business day. The Record Dates, Payment Dates and cash dividend per share for each daily dividend on STRC for the month of November 2026 are set forth below. Record Date Payment Date Cash Dividend Per Share (1) Record Date Payment Date Cash Dividend Per Share (1) November 1 November 2 $0.03 November 16 November 17 $0.03 November 2 November 3 $0.03 November 17 November 18 $0.03 November 3 November 4 $0.04 November 18 November 19 $0.04 November 4 November 5 $0.03 November 19 November 20 $0.03 November 5 November 6 $0.03 November 20 November 23 $0.03 November 6 November 9 $0.04 November 21 November 23 $0.04 November 7 November 9 $0.03 November 22 November 23 $0.03 November 8 November 9 $0.03 November 23 November 24 $0.03 November 9 November 10 $0.04 November 24 Novemb"
+  },
+  {
+   "id": "I10",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526419726/mstr-20261012.htm",
+   "published": "2026-10-13T08:00:15-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01,9.01",
+   "text": "Item 8.01 Other Events. On October 12, 2026, Strategy Inc (“Strategy”) issued a press release announcing certain capital markets and capital management updates. A copy of the press release is filed as Exhibit 99.1 to this Current Report on Form 8-K and is incorporated herein by reference. Item 7.01 Regulation FD Disclosure. Strategy Dashboard Strategy also maintains a dashboard on its website (www.strategy.com) as a disclosure channel for providing broad, non-exclusionary distribution of information regarding Strategy to the public, including information regarding market prices of its outstanding securities, bitcoin purchases and holdings, certain key performance indicator metrics and other supplemental information, and as one means of disclosing non-public information in compliance with its disclosure obligations under Regulation FD. Investors and others are encouraged to regularly review the information that Strategy makes public via the website dashboard. Furnished Information The information disclosed pursuant to Item 7.01 in this Current Report on Form 8-K shall not be deemed \"filed\" for purposes of Section 18 of the Exchange Act, or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as expressly set forth by specific reference in such a filing. Item 9.01 Financial Statements and Exhibits. (d) Exhibits Exhibit No. Description 99.1 Press release, dated October 12, 2026, announcing updates with respect to the Company's capital markets and capital management activities. 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: October 13, 2026 Strategy Inc (Registrant) By: /s/ Thomas C. Chow Name: Thomas C. Chow Title: Executive Vice President & General Counsel",
+   "exhibit_99_1": "EX-99.1 2 mstr-ex99_1.htm EX-99.1 EX-99.1 Contact: Strategy CJ (Chaitanya Jain) Head of Investor Relations ir@strategy.com Strategy Acquires 250 BTC and Repurchases $192 Million of STRC TYSONS CORNER, Va., October 12, 2026 - Strategy Inc (Nasdaq: STRF/STRC/STRK/STRD/MSTR; LuxSE: STRE) (“Strategy” or the “Company”), the largest institutional holder of bitcoin and the world’s first Bitcoin Treasury Company, today announced the following capital markets and capital management updates: ATM Update On October 12, 2026, Strategy announced an update with respect to sales made under its at-the-market offering program (\"ATM\") of the following securities: During Period October 5, 2026 to October 11, 2026 As of October 11, 2026 Security Shares Sold Notional Value (in millions) (1) Net Proceeds (in millions) (2) Available for Issuance and Sale (in millions) STRF Stock - $ - $ - $ 1,619.3 10.00% Series A Perpetual Strife Preferred Stock STRC Stock - $ - $ - $ 17,510.8 Variable Rate Series A Perpetual Stretch Preferred Stock STRK Stock - $ - $ - $ 2,100.0 8.00% Series A Perpetual Strike Preferred Stock STRD Stock - $ - $ - $ 4,014.8 10.00% Series A Perpetual Stride Preferred Stock MSTR Stock 125,183 $ - $ 21.0 (3) $ 18,807.6 Class A Common Stock Total $ 21.0 (1) The total face value of the shares of preferred stock sold, which is used to calculate dividends thereon. (2) Net proceeds are presented net of sales commission. (3) The net proceeds from MSTR Stock sales were used to fund bitcoin purchases. BTC Update On October 12, 2026, Strategy announced updates with respect to its bitcoin holdings: During Period October 5, 2026 to October 11, 2026 As of October 11, 2026 BTC Purchased (1) Aggregate Purchase Price (in millions) (2) Average Purchase Price (2) Aggregate BTC Holdings Aggregate Purchase Price (in billions) (2) Average Purchase Price (2) 250 $ 21.5 $ 86,194 848,250 $ 64.00 $ 75,444 (1) $21.0 million in bitcoin purchases were made using net proceeds from MSTR Stock sales and $0.5 million in bitcoin purchases were made using USD Cash. (2) Aggregate and average purchase prices are inclusive of fees and expenses. Repurchase Program Updates On October 12, 2026, Strategy announced the following update with respect to its share repurchase programs for the following securities: During Period October 5, 2026 to October 11, 2026 Security Shares Repurchased Aggregate Purchase Price (in millions) STRF Stock (1) - $ - 10.00% Series A Perpetual Strife Preferred Stock STRC Stock "
+  },
+  {
+   "id": "I11",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1050446/000119312526413164/mstr-20261005.htm",
+   "published": "2026-10-05T08:00:15-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01",
+   "text": "Item 8.01 Other Events. ATM Update On October 5, 2026, Strategy Inc (\"Strategy\") announced an update with respect to sales made under its at-the-market offering program (\"ATM\") of the following securities: During Period September 28, 2026 to September 30, 2026 As of September 30, 2026 Security Shares Sold Notional Value (in millions) (1) Net Proceeds (in millions) (2) Available for Issuance and Sale (in millions) STRF Stock - $ - $ - $ 1,619.3 10.00% Series A Perpetual Strife Preferred Stock STRC Stock - $ - $ - $ 17,510.8 Variable Rate Series A Perpetual Stretch Preferred Stock STRK Stock - $ - $ - $ 2,100.0 8.00% Series A Perpetual Strike Preferred Stock STRD Stock - $ - $ - $ 4,014.8 10.00% Series A Perpetual Stride Preferred Stock MSTR Stock - $ - $ - $ 18,844.4 Class A Common Stock Total $ - During Period October 1, 2026 to October 4, 2026 As of October 4, 2026 Security Shares Sold (3) Notional Value (in millions) (1) Net Proceeds (in millions) (2) Available for Issuance and Sale (in millions) STRF Stock - $ - $ - $ 1,619.3 10.00% Series A Perpetual Strife Preferred Stock STRC Stock - $ - $ - $ 17,510.8 Variable Rate Series A Perpetual Stretch Preferred Stock STRK Stock - $ - $ - $ 2,100.0 8.00% Series A Perpetual Strike Preferred Stock STRD Stock - $ - $ - $ 4,014.8 10.00% Series A Perpetual Stride Preferred Stock MSTR Stock 92,894 $ - $ 15.7 (4) $ 18,828.7 Class A Common Stock Total $ 15.7 (1) The total face value of the shares of preferred stock sold, which is used to calculate dividends thereon. (2) Net proceeds are presented net of sales commission. (3) Includes shares sold but not yet settled as of October 2, 2026. (4) $15.7 million in net proceeds from MSTR Stock sales were used to fund bitcoin purchases. BTC Update On October 5, 2026, Strategy announced updates with respect to its bitcoin holdings: During Period September 28, 2026 to September 30, 2026 BTC Acquired (1) Aggregate Purchase Price (in millions) (2) Average Purchase Price (2) - - - As of September 30, 2026 Aggregate BTC Holdings Aggregate Purchase Price (in billions) (2) Average Purchase Price (2) 847,666 $63.95 $75,436.6 During Period October 1, 2026 to October 4, 2026* BTC Acquired (1) Aggregate Purchase Price (in millions) (2) Average Purchase Price (2) 334 $28.7 $85,838.8 As of October 4, 2026* Aggregate BTC Holdings Aggregate Purchase Price (in billions) (2) Average Purchase Price (2) 848,000 $63.97 $75,440.7 *Bitcoin activity and holdings information is presented as of 4:00 p"
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/strategy-sits-on-5-1-billion-in-cash-but-bought-0-of-bitcoin-thursdays-report-has-to-explain?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-28T13:41:52-04:00",
+   "text": "Strategy Sits on $5.1 Billion in Cash but Bought $0 of Bitcoin. Thursday’s Report Has to Explain - Key TakeawaysStrategy bought no bitcoin in the week to Oct. 25 and spent $204.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.marketbeat.com/instant-alerts/event-strategy-stockholders-approve-daily-dividends-for-four-preferred-stock-series-2026-10-28/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "published": "2026-10-28T13:04:43-04:00",
+   "text": "Strategy Stockholders Approve Daily Dividends for Four Preferred Stock Series - Strategy (NASDAQ:MSTR) stockholders approved amendments to the terms of four perpetual preferred-stock series to permit daily dividend payments during the company’s 2026 special meeting of stockholders. The proposal covered the company’s 10% Series A Perpetual Strife preferred stock, variable-rate",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://decrypt.co/382066/strategy-shareholders-approve-daily-dividends-on-preferred-stock-with-99-3-in-favor?.tsrc=rss",
+   "published": "2026-10-28T13:03:32-04:00",
+   "text": "Strategy Shareholders Approve Daily Dividends on Preferred Stock, With 99.3% in Favor - STRC will begin paying dividends for every calendar day from November, with STRF, STRK and STRD following in January.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://unchainedcrypto.com/strategy-shareholders-approve-daily-dividends-on-its-four-preferred-stocks/?.tsrc=rss",
+   "published": "2026-10-28T11:07:21-04:00",
+   "text": "Strategy Shareholders Approve Daily Dividends on Its Four Preferred Stocks - STRC moves to a daily record date on Nov. 1 and STRF, STRK and STRD follow on Jan. 1, once the amended share terms are filed and take effect.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.cryptoprowl.com/releases/strategy-wins-vote-to-pay-daily-dividends-on-strc-strf-strk-and-strd-7511?.tsrc=rss",
+   "published": "2026-10-28T11:06:00-04:00",
+   "text": "Strategy Wins Vote to Pay Daily Dividends on STRC, STRF, STRK and STRD - Strategy Inc (NASDAQ: $MSTR) said stockholders have approved changes that will let its four bitcoin-funded preferre...",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-mstr-stock-145800392.html?.tsrc=rss",
+   "published": "2026-10-28T10:58:00-04:00",
+   "text": "Should You Buy, Sell or Hold MSTR Stock Before Q3 Earnings? - Strategy's Q3 earnings outlook brightens on Bitcoin's rebound, but premium valuation, dilution concerns and financing costs warrant caution ahead of results.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/cryptocurrency/strive-ceo-matt-cole-says-superintelligence-will-make-bitcoin-the-most-valuable-scarce-asset/cZU9hK1R9GT?.tsrc=rss",
+   "published": "2026-10-28T08:49:44-04:00",
+   "text": "Strive CEO Matt Cole Says Superintelligence Will Make Bitcoin The ‘Most Valuable Scarce Asset’ - Strive CEO said AI abundance \"will create exponential value for scarce assets.\"",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://decrypt.co/382029/morning-minute-robinhood-misses-but-crypto-beats-and-robinhood-chain-soars?.tsrc=rss",
+   "published": "2026-10-28T08:04:56-04:00",
+   "text": "Morning Minute: Robinhood Misses, But Crypto Beats and Robinhood Chain Soars - Vlad Tenev delivered the messaging that Robinhood Chain enthusiasts wanted to hear—and the market responded.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/28/here-are-wednesdays-top-wall-street-analyst-research-calls-enphase-energy-f5-marvell-technology-msg-rangers-pentair-silicon-motion-technology-spotify-technology-texas-instruments-whi/?.tsrc=rss",
+   "published": "2026-10-28T07:58:12-04:00",
+   "text": "Here Are Wednesday’s Top Wall Street Analyst Research Calls: Enphase Energy, F5, Marvell Technology, MSG Rangers, Pentair, Silicon Motion Technology, Spotify Technology, Texas Instruments, Whirlpool, and More - With the Fed rate decision dropping at 2:30 PM and Alphabet and Microsoft reporting before the bell, Wednesday's analyst calls on Enphase, Spotify, Whirlpool, and a newly public Rangers franchise land at a pivotal moment for markets.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/28/12-companies-that-launched-bitcoin-treasuries-in-2/?.tsrc=rss",
+   "published": "2026-10-28T06:35:00-04:00",
+   "text": "12 Companies That Launched Bitcoin Treasuries in 2025 Have Sold All Their Bitcoin. Here's the Potential Impact. - Buying assets when they're expensive and then selling them when they're cheap tends to be a poor strategy.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/28/strategys-michael-saylor-predicts-bitcoin-will-soa/?.tsrc=rss",
+   "published": "2026-10-28T05:24:00-04:00",
+   "text": "Strategy's Michael Saylor Predicts Bitcoin Will Soar Past $100,000 Over the Next 12 Months. Here's Why He's Right. - The Bitcoin bull recently gave one of his more reasonable price predictions.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/earnings-watch-strategy-mstr-reports-085434730.html?.tsrc=rss",
+   "published": "2026-10-28T04:54:34-04:00",
+   "text": "Earnings to watch: Strategy (MSTR) reports Q3 results tomorrow - Bitcoin development company Strategy (NASDAQ:MSTR) will be reporting results this Thursday after market close. Here’s what to expect.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/strategy-mstr-stock-may-undervalued-230903046.html?.tsrc=rss",
+   "published": "2026-10-27T19:09:03-04:00",
+   "text": "Strategy (MSTR) Stock May Be Undervalued On Bitcoin Policy Shift - Strategy Inc has had a wild few years, with the share price up 234.0% over three years and closely tied to its large Bitcoin holdings. These holdings now sit alongside buybacks, preferred dividends and index eligibility questions. With all of that affecting the ticker, the key question for investors",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/cryptocurrency/2026/10/27/hyperliquids-biggest-traders-are-shorting-bitcoin-for-the-first-time-since-march-could-btc-drop-below-75000/?.tsrc=rss",
+   "published": "2026-10-27T18:19:47-04:00",
+   "text": "Hyperliquid’s Biggest Traders Are Shorting Bitcoin for the First Time Since March. Could BTC Drop Below $75,000? - Hyperliquid's biggest Bitcoin traders just flipped short for the first time in months, but whether they're calling a crash or quietly protecting their bags changes everything about what happens next.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/cryptocurrency/2026/10/27/strive-buys-6182-btc-as-strategy-pauses-its-bitcoin-buying-can-treasury-buyers-hold-btc-above-80000/?.tsrc=rss",
+   "published": "2026-10-27T17:22:38-04:00",
+   "text": "Strive Buys 6,182 BTC as Strategy Pauses Its Bitcoin Buying. Can Treasury Buyers Hold BTC Above $80,000? - Strategy just skipped its regular Bitcoin buys to spend $205 million elsewhere, leaving a much smaller rival to carry the weight of corporate treasury buying. Whether that shift signals trouble for Bitcoin's grip on $80,000 is the question every crypto investor is asking right now.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/strategy-vs-cleanspark-bitcoin-stock-154100857.html?.tsrc=rss",
+   "published": "2026-10-27T11:41:00-04:00",
+   "text": "Strategy vs. CleanSpark: Which Bitcoin Stock Has Greater Upside Now? - Strategy and CleanSpark offer distinct Bitcoin investment opportunities, but treasury strength, mining pressures and AI ambitions make one stock more appealing.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I28",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8478770/michael-saylors-strategy-just-formed-a-golden-cross-why-bitcoin-bulls-shouldnt-expect-another-700-rally-yet?.tsrc=rss",
+   "published": "2026-10-27T10:37:30-04:00",
+   "text": "Michael Saylor’s Strategy Just Formed a Golden Cross. Why Bitcoin Bulls Shouldn’t Expect Another 700% Rally Yet. - Strategy’s golden cross may signal a rally, but its shrinking Bitcoin premium, slower Bitcoin purchases, preferred-stock buybacks, and potential MSCI exclusion weaken the bullish case.",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I29",
+   "kind": "headline",
+   "source": "https://www.ccn.com/news/crypto/strategy-zero-bitcoin-purchases-398m-strc-buybacks-saylor/?.tsrc=rss",
+   "published": "2026-10-27T10:22:15-04:00",
+   "text": "Strategy Buys $0 Bitcoin, Repurchases $205M in STRC as Saylor Reveals $5.1B Cash Holdings - Michael Saylor said Strategy repurchased $205 million of its STRC preferred stock while purchasing no additional Bitcoin during the reporting week. As of Oct. 25…",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  },
+  {
+   "id": "I30",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/crypto/articles/bitcoin-dips-below-80k-strategy-065649737.html?.tsrc=rss",
+   "published": "2026-10-27T02:56:49-04:00",
+   "text": "Bitcoin up as risk sentiment, oil slip offset Strategy buying pause, Fed caution - Investing.com -- Bitcoin was slightly higher on Tuesday, helped by a surge in risk sentiment and a fall in oil prices. The two factors slightly outweighed caution a day ahead of the Federal Reserve’s interest rate decision and a pause in purchases of the world’s largest cryptocurrency by top corpora",
+   "feed": {
+    "fetched_et": "2026-10-28T14:31:44-04:00",
+    "sha256": "dc1d4c73d67ceaac8c89fa0ff312896358598d410ece8995bc4bf6a3a2ac02fc"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 67171
+}
