@@ -1,4 +1,4 @@
-# Health 2026-10-29 06:20 ET - **RED** (1 known)
+# Health 2026-10-29 15:46 ET - **RED** (1 known)
 
 check.py: PASS - 1 warning(s)
 
@@ -16,21 +16,18 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-28T20:56:49Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40767739562
 - Actions failure: Earnings experiment - paper options at 2026-10-28T20:11:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40761051169
 - Actions failure: Earnings experiment - paper options at 2026-10-28T19:51:12Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40758009140
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-28T14:47:27Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40709416625
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F'] - the DPZ trade's flag held_past_expiry is set once and never cleared (pipeline/paper_options.py, hash-locked); no other alert is on the ledger (ops/incidents/2026-10-13_DPZ_exit.md; acknowledged 2026-10-28, laptop chat (the new-RED marker owed in STATE.md NOW, 2026-10-27), until 2026-11-06)
 
 ## Information
-- SNDK_2026-10-29: T2 deadline Thu 29 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
-- AMZN_2026-10-29: T2 deadline Thu 29 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
-- MSTR_2026-10-29: T2 deadline Thu 29 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
-- INTC_2026-10-29: T2 deadline Thu 29 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
-- RDDT_2026-10-29: T2 deadline Thu 29 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
-- paper/options_ledger.json: open ['seasonA-ALNY-2026-10-29-F', 'seasonA-ARXS-2026-10-28-F', 'seasonA-BDC-2026-10-29-F', 'seasonA-BHE-2026-10-28-F', 'seasonA-BOOT-2026-10-28-F', 'seasonA-CMG-2026-10-28-F', 'seasonA-COHU-2026-10-28-F', 'seasonA-CROX-2026-10-29-F', 'seasonA-ENTG-2026-10-29-F', 'seasonA-FTAI-2026-10-29-F', 'seasonA-GEN-2026-10-28-F', 'seasonA-AMZN-2026-10-29-F', 'seasonA-AXTI-2026-10-29-F', 'seasonA-BBIO-2026-10-29-F', 'seasonA-COLM-2026-10-29-F', 'seasonA-EXEL-2026-10-29-F', 'seasonA-GD-2026-10-30-F', 'seasonA-INTC-2026-10-29-F', 'seasonA-MSTR-2026-10-29-F', 'seasonA-PINS-2026-10-29-F', 'seasonA-RDDT-2026-10-29-F', 'seasonA-SBUX-2026-10-29-F']
-- paper/long_ledger.json: open ['seasonA-ALNY-2026-10-29-L', 'seasonA-BDC-2026-10-29-L', 'seasonA-BHE-2026-10-28-L', 'seasonA-BOOT-2026-10-28-L', 'seasonA-CMG-2026-10-28-L', 'seasonA-COHU-2026-10-28-L', 'seasonA-CROX-2026-10-29-L', 'seasonA-ENTG-2026-10-29-L', 'seasonA-FTAI-2026-10-29-L', 'seasonA-FTNT-2026-10-28-L', 'seasonA-GEN-2026-10-28-L', 'seasonA-GOOG-2026-10-28-L', 'seasonA-HONA-2026-10-28-L', 'seasonA-HWM-2026-10-29-L', 'seasonA-IDCC-2026-10-29-L', 'seasonA-INCY-2026-10-29-L', 'seasonA-KLAC-2026-10-28-L', 'seasonA-LHX-2026-10-29-L', 'seasonA-MSFT-2026-10-28-L', 'seasonA-MUSA-2026-10-28-L', 'seasonA-NOW-2026-10-28-L', 'seasonA-OLED-2026-10-28-L', 'seasonA-QSR-2026-10-29-L', 'seasonA-QTWO-2026-10-28-L', 'seasonA-BBIO-2026-10-29-L', 'seasonA-AMZN-2026-10-29-L', 'seasonA-AXTI-2026-10-29-L', 'seasonA-COLM-2026-10-29-L', 'seasonA-DXCM-2026-10-29-L', 'seasonA-EXEL-2026-10-29-L', 'seasonA-GDDY-2026-10-29-L', 'seasonA-GD-2026-10-30-L', 'seasonA-INTC-2026-10-29-L', 'seasonA-MSTR-2026-10-29-L', 'seasonA-OSIS-2026-10-29-L', 'seasonA-PINS-2026-10-29-L', 'seasonA-RDDT-2026-10-29-L', 'seasonA-SPSC-2026-10-29-L', 'seasonA-SYK-2026-10-29-L']
-- paper/options: 131 position(s), 10 open order(s) - they match the ledgers
-- paper/long: 79 position(s), 0 open order(s) - they match the ledgers
+- CIFR_2026-11-02: T2 deadline Fri 30 Oct 09:15 ET - frozen so far: none
+- paper/options_ledger.json: open ['seasonA-AMZN-2026-10-29-F', 'seasonA-AXTI-2026-10-29-F', 'seasonA-BBIO-2026-10-29-F', 'seasonA-COLM-2026-10-29-F', 'seasonA-EXEL-2026-10-29-F', 'seasonA-GD-2026-10-30-F', 'seasonA-INTC-2026-10-29-F', 'seasonA-MSTR-2026-10-29-F', 'seasonA-PINS-2026-10-29-F', 'seasonA-RDDT-2026-10-29-F', 'seasonA-SBUX-2026-10-29-F']
+- paper/long_ledger.json: open ['seasonA-BBIO-2026-10-29-L', 'seasonA-AMZN-2026-10-29-L', 'seasonA-AXTI-2026-10-29-L', 'seasonA-COLM-2026-10-29-L', 'seasonA-DXCM-2026-10-29-L', 'seasonA-EXEL-2026-10-29-L', 'seasonA-GDDY-2026-10-29-L', 'seasonA-GD-2026-10-30-L', 'seasonA-INTC-2026-10-29-L', 'seasonA-MSTR-2026-10-29-L', 'seasonA-OSIS-2026-10-29-L', 'seasonA-PINS-2026-10-29-L', 'seasonA-RDDT-2026-10-29-L', 'seasonA-SPSC-2026-10-29-L', 'seasonA-SYK-2026-10-29-L', 'seasonA-CIFR-2026-11-02-L']
+- paper window (options): paper-window-push.yml afternoon step since 12:00 ET
+- paper window (long): paper-window-push.yml afternoon step since 12:00 ET
+- paper/options: 100 position(s), 0 open order(s) - they match the ledgers
+- paper/long: 41 position(s), 0 open order(s) - they match the ledgers
 - Thu 29 Oct: 1 snapshot(s) - CIFR
 - Fri 30 Oct: 19 snapshot(s) - AEHR, BETA, BMRN, BWXT, DOCN, DT, FN, ICHR, IPGP, JAZZ, LSCC, MTCH, ON, PAY, PLTR, SHOP, VRTX, VVX, YUMC
 - Mon 02 Nov: 24 snapshot(s) - ALAB, AMD, ANET, DDOG, DUOL, FLYW, FRSH, HUT, NATL, NVTS, OUST, Q, RAL, RIOT, RPRX, SMCI, SWKS, TOST, UBER, VSH, W, XYZ, YOU, ZBH
