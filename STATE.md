@@ -23,8 +23,8 @@
      by Mon 20:00 SGT.
   - Then the build day and the health marker's window-job extension (weekdays read AMBER until then).
 - 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): paper margin binds; owed: views split `capacity` out.
-- **Waiting on Jacob:** **D003 v5 = A4, before Mon 14:00 SGT** (silence = A4, D017 §5) · Actions' AI token ·
-  the sleeve's size and loss limit.
+- **D003 v5 = A4 chosen** (Jacob, Thu 09:28 ET, before any look): `registry/D003_v5_choice_v1.md`. The v5 file,
+  its code and an independent review are owed before the Season B screen. **Waiting on Jacob:** Actions' AI token · the sleeve's size and loss limit.
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -165,7 +165,7 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 - **Owed before the Season B screen:**
   - the pooled H-T2C code, tested on synthetic data, reviewed and hashed (D005 v3);
   - `D005_confirmatory_seasonB.json` without `T2_confidence`;
-  - the D003 v5 decision (CHARTER I1, Jacob's call, on counts only).
+  - D003 v5: **A4 chosen 2026-10-29** (`registry/D003_v5_choice_v1.md`); owed: the v5 file, code, independent review.
 
 ## Waiting on Jacob
 
@@ -173,7 +173,7 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
    open, recorded in JOURNAL. (Plan, decision 1.)
 2. **The Actions AI token**, `CLAUDE_CODE_OAUTH_TOKEN`, refused since Oct 15: "organization has disabled Claude
    subscription access for Claude Code". Recommended: re-issue it from his own Max account. (Plan, decision 2.)
-3. **Before the Season B screen:** the D003 v5 gate change, if D016 supports one.
+3. ~~**Before the Season B screen:** the D003 v5 gate change, if D016 supports one.~~ **A4 chosen 2026-10-29.**
 4. **Before Gate 2 (Mar 2027):** the real-money sleeve and its loss limit (D008 v2).
 - Closed: an Anthropic API key (declined 2026-10-08, no new money until results); Fable credits (the same rule).
 
@@ -200,6 +200,7 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
   firewall and the evidence-to-funding table, and registers idea A. `gate1.py` is not reused: it prints H-T2C's b,
   which D005 v3 allows only at Gate 1. Hence a new `stage1.py`, committed before its first run.
 - HYPOTHESES: idea A now registered (D017 §6); the C + D history batch becomes D018.
+- 09:28 ET: Jacob chose **D003 v5 = A4**, before any look (`registry/D003_v5_choice_v1.md`, hash frozen).
 
 **2026-10-28 (Wed) 09:55 ET — new-RED marker built; Tue's 5 PASS fully frozen; the weekly allowance runs hot.**
 - Started Tue 08:20 ET (side session of the hand-off chat). Startup PASS. 5-hour 96%, weekly 40% at 08:20 Tue, so it

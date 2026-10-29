@@ -23,6 +23,8 @@
   pillars, the words each result may use, a firewall (the look may inform funding only) and the evidence-to-funding
   table. It also registers the global multiplicity view. Plan: `ops/stage1_plan_2026-11.md`. The build waits for
   Monday's reset.
+- **09:28 ET:** Jacob chose D003 v5 = A4 on the D016 counts, before any look. The Season B gate was decided blind,
+  which the look's firewall needed (`registry/D003_v5_choice_v1.md`).
 
 ---
 
