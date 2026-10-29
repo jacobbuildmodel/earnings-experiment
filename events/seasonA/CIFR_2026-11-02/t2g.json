@@ -1,0 +1,131 @@
+{
+ "track": "T2G",
+ "event": "CIFR_2026-11-02",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.57,
+  "thesis": "Severe recent de-risking after the zero-coupon convertible note dilution, coupled with 26.8% short interest, strong call option skew, and a 75% historical open win rate, sets up an asymmetric relief reaction on operational HPC milestone updates.",
+  "reasons": [
+   "The stock has dropped ~49% over the past month following the $850M convertible offering and debt-for-equity swap, substantially discounting near-term financing overhang.",
+   "Options pricing displays a notable call skew (ATM call IV 154% vs put IV 135%) and very low put/call volume ratio (0.24), indicating speculative demand for upside convexity.",
+   "CIFR has gained at the open in 3 of its last 4 earnings prints (+14.5%, +9.3%, +7.0%, -7.2%) despite large GAAP EPS misses, as the market trades it on HPC lease milestones rather than legacy mining earnings.",
+   "High short interest of 26.8% of float creates fertile ground for an open squeeze if data center delivery timelines at Black Pearl and Barber Lake remain on track."
+  ],
+  "deciding_variable": "Updates on HPC delivery milestones and initial rent commencement at Black Pearl and Barber Lake versus construction capex run-rates.",
+  "prior": {
+   "p": 0.548,
+   "from": "base_rates.by_session.BMO"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved up +0.022 from BMO base rate of 0.548 to 0.570 due to extreme one-month oversold conditions (-49%), 26.8% short interest, positive historical open win rate (75%), and bullish call-put IV skew, partially offset by ongoing capex cash burn risks.",
+  "theses": [
+   {
+    "expected": "Cipher confirms initial rent commencement at Black Pearl and affirms on-schedule delivery for Barber Lake Phase I in Q4 2026.",
+    "mechanism": "Validates the commercial execution of the HPC pivot, prompting short-covering given 26.8% short float and severe recent drawdown.",
+    "wrong_if": "Management reports construction delays, cost overruns exceeding tenant reimbursement caps, or further equity dilution."
+   },
+   {
+    "expected": "Legacy bitcoin mining gross margins remain compressed but are discounted by the market.",
+    "mechanism": "Investors focus almost entirely on contracted backlog ($9B+ at Barber Lake) and contracted capacity rather than quarterly mining EPS.",
+    "wrong_if": "The market reacts punitively to high net cash burn or wider operating losses."
+   },
+   {
+    "expected": "Positive price momentum over the Friday pre-earnings session carries through the weekend into a gap up on Monday.",
+    "mechanism": "Anticipatory positioning into high-beta AI infrastructure names following the completed note offering overhang lift.",
+    "wrong_if": "Macro headwinds or crypto market weakness drags peer neocloud/HPC proxy valuations lower on Friday."
+   }
+  ],
+  "key_observations": [
+   "Commencement date and dollar contribution of initial HPC rental revenue from Black Pearl",
+   "Barber Lake construction budget status and whether Capex exceeds the $359.3M initial threshold",
+   "Updates on tenant demand and prospective lease agreements for the 900 MW Apollo site option",
+   "Cash and liquidity position following the $850M convertible notes issuance and capital expenditure commitments"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CIFR_2026-11-02/gate.json",
+    "published": "2026-10-29T14:31:00.249545-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CIFR_2026-11-02/factors.json",
+    "published": "2026-10-29T14:31:00.249545-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000038/q226_earningsxprxdraftxvf.htm",
+    "published": "2026-08-04T07:37:42-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000041/cifr-20260630.htm",
+    "published": "2026-08-04T09:07:07-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000119312526424297/d313847d8k.htm",
+    "published": "2026-10-16T17:26:24-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000119312526421035/d77312d8k.htm",
+    "published": "2026-10-14T07:49:45-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm",
+    "published": "2026-09-25T08:04:27-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cipher-digital-slides-30-after-zero-coupon-note-sale-despite-9-billion-barber-lake-backlog?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-25T09:06:49-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cipher-digital-lost-31-in-a-week-cantor-fitzgerald-still-sees-112-upside?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-22T10:51:23-04:00",
+    "dossier_item": "I21"
+   }
+  ],
+  "decided_et": "2026-10-29T18:43:51-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 20724,
+   "candidatesTokenCount": 859,
+   "totalTokenCount": 22444,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 20724
+    }
+   ],
+   "thoughtsTokenCount": 861,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
