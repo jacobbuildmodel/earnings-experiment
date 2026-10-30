@@ -1,0 +1,641 @@
+{
+ "event": "BETA_2026-11-03",
+ "season": "seasonA",
+ "built_et": "2026-10-30T14:31:52-04:00",
+ "cutoff_et": "2026-10-30T14:31:40.821249-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/BETA_2026-11-03/gate.json",
+   "published": "2026-10-30T14:31:40.821249-04:00",
+   "data": {
+    "ticker": "BETA",
+    "report_date": "2026-11-03",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-02"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-03"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-10"
+     },
+     "reaction_day": "2026-11-03"
+    },
+    "snapshot_session": "2026-10-30",
+    "captured_et": "2026-10-30T14:31:40.821249-04:00",
+    "options": {
+     "spot": 19.56999969482422,
+     "expiry": "2026-11-20",
+     "strike": 20.0,
+     "call": {
+      "bid": 1.45,
+      "ask": 1.55,
+      "openInterest": 149.0,
+      "lastPrice": 1.5,
+      "impliedVolatility": 0.8828136718749999,
+      "lastTradeDate": "2026-10-30T18:07:44+00:00"
+     },
+     "put": {
+      "bid": 1.75,
+      "ask": 1.85,
+      "openInterest": 362.0,
+      "lastPrice": 1.8,
+      "impliedVolatility": 0.81445498046875,
+      "lastTradeDate": "2026-10-30T18:06:37+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 13,
+     "implied_move": 0.16862544974248356,
+     "rel_spread": {
+      "call": 0.06666666666666672,
+      "put": 0.0555555555555556
+     },
+     "oi_atm": 511.0,
+     "oi_sum": 511.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/BETA_2026-11-03/factors.json",
+   "published": "2026-10-30T14:31:40.821249-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": null,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.09940174380647104,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.011616138944380738,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.06451606618171479,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.6781602509735645,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.9226330629735241,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.46820651900678134,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-12",
+       "session": "BMO",
+       "raw_return_A": -0.08006810891903204,
+       "eps_est": -0.56,
+       "eps_rep": -0.46,
+       "surprise_pct": 17.96,
+       "reaction_volume_ratio": 2.1520720005106417
+      },
+      {
+       "date": "2026-05-12",
+       "session": "BMO",
+       "raw_return_A": -0.022150180569548095,
+       "eps_est": -0.74,
+       "eps_rep": -0.4,
+       "surprise_pct": 45.69,
+       "reaction_volume_ratio": 1.4346056531735671
+      },
+      {
+       "date": "2026-03-09",
+       "session": "BMO",
+       "raw_return_A": 0.014997358623529689,
+       "eps_est": -0.47,
+       "eps_rep": -1.71,
+       "surprise_pct": -264.74,
+       "reaction_volume_ratio": 1.4958294150477458
+      },
+      {
+       "date": "2025-12-04",
+       "session": "BMO",
+       "raw_return_A": 0.014675778715785404,
+       "eps_est": -0.44,
+       "eps_rep": -1.94,
+       "surprise_pct": -340.48,
+       "reaction_volume_ratio": 0.6453465924607547
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.4319634152981773,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 17.96,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": -30,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.615,
+      "7daysAgo": -0.585,
+      "30daysAgo": -0.51,
+      "60daysAgo": -0.51,
+      "90daysAgo": -0.51,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.20588235294117643,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.615,
+      "low": -0.63,
+      "high": -0.6,
+      "yearAgoEps": -1.9381,
+      "numberOfAnalysts": 2,
+      "growth": 0.6827,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.04878048780487809,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.099300005,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": -8.697778,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 102.09683,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 1.457,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 4578226176,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.33333,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.16862544974248356,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.06835869140624995,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.04589797851562505,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.2972222222222222,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.4057610241820768,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 467.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.2513772739608058,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": null,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 282,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unprofitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 1.4569225611800203,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -10.787146950470733,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.011616138944380738,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.06451606618171479,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.6781602509735645,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 4539808410.705948,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.009877509344722984,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": -30,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.2619180615810478,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1784570/000162828026055933/a2026q2earningsrelease.htm",
+   "published": "2026-08-12T06:05:24-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 a2026q2earningsrelease.htm EX-99.1 Document BETA Technologies, Inc. Announces Second Quarter 2026 Results Delivered strong revenue growth and continued momentum across its commercial, defense and integrated aerospace platform. SOUTH BURLINGTON, Vt. – August 12, 2026 – BETA Technologies, Inc. (NYSE: BETA) (“BETA” or the “Company”), an aerospace and defense company, today announced its financial and operating results for the second quarter ended June 30, 2026. “This quarter showed that the investments made across the business continue to translate into real-world operations and delivered tangible results,” said Kyle Clark, founder and chief executive officer of BETA. “We became the first company to launch operations under the eVTOL Integration Pilot Program, demonstrated hybrid-electric flight at commercial altitude with GE Aerospace, unveiled the MV250 for defense applications, and continued to grow our backlog. Each of these milestones builds on the same integrated foundation: certification, operational experience, infrastructure, and vertically integration. Progress in one program strengthens the others, accelerating our ability to serve commercial and defense customers as we scale.” Business Highlights • Unveiled the MV250 Aircraft: Launched BETA’s first hybrid-electric autonomous vertical takeoff and landing aircraft at the Farnborough International Airshow. Built on BETA’s common platform, the MV250 combines autonomous operations with hybrid-electric propulsion developed alongside GE Aerospace, accelerating technologies that will benefit both defense and commercial aircraft maximizing the total addressable market. • Achieved World’s First High-Altitude Hybrid-Electric Flight: Collaborated with GE Aerospace, NASA, and Boeing through NASA’s Electrified Powertrain Flight Demonstration program to complete the first hybrid-electric flight above 30,000 feet, reaching the altitudes at which commercial passenger aircraft operate. In addition to supporting flight testing in the U.S., the aircraft was flown by BETA pilots to Farnborough and in the airshow, showing the viability of hybrid-electric propulsion for aviation. • Completed Industry’s First eIPP Flights: Launched the first operations under the U.S. Department of Transportation and Federal Aviation Administration’s (“FAA”) eVTOL Integration Pilot Program, with BETA operating its conventional takeoff and landing ALIA aircraft to transport manufactured organs with United Therapeutics utilizing the Company’s existing airport charging network. This milestone reinforces BETA’s leadership in Advanced Air Mobility through proven operational experience and close collaboration with the FAA. • Expanded Charging Infrastructure: Grew BETA’s network to 138 charging sites, while announcing the deployment of up to 250 charging sites, including airports and vertiports in California, Texas, Florida, and New York under the America’s Consortium for Electric Skyways (“ACES”) with Archer Aviation and Macquarie Capital. ACES reinforces BETA’s strategy of building the industry’s leading interoperable charging network while generating infrastructure revenue today. • Advanced Certification Across BETA’s Common Platform: Reached agreement with the FAA on the H500A’s continued-rotation compliance approach, completed durability and lightning-strike teardowns with strong results and substantially completed software requirements-based testing, with formal FAA testing underway. For the CX300, BETA closed the Requirements Definition phase, receiving FAA acceptance of the aircraft’s complete set of compliance requirements and creating meaningful carryover to the A250 program. 1 • Strengthened Commercial Backlog: Following successful cargo flight demonstrations completed across Scotland, Loganair signed a term sheet for five CX300 aircraft, with options for five additional aircraft. The order demonstrates BETA’s strategy of proving aircraft performance through real-world operations that convert directly into commercial demand. Financial Highlights • Q2 Revenues of $14.7 million • Q2 Net loss of ($148.8) million • Q2 Adjusted EBITDA of ($109.8) million Second Quarter 2026 Key Financial Metrics (in thousands) Three Months Ended June 30, 2026 2025 Revenues $ 14,658 $ 5,966 Cost of revenues 6,637 1,190 Gross margin 8,021 4,776 Research and development 122,365 58,035 General and administrative 43,774 26,061 Total operating expenses 166,139 84,096 Loss from operations (158,118) (79,320) Net loss (148,753) (80,416) Adjusted EBITDA (1) (109,810) (68,394) Capital expenditures (2) 41,113 6,025 Cash and cash equivalents 1,479,470 174,531 (1) In addition to results determined in accordance with U.S. generally accepted accounting principles (“GAAP”), this press release contains financial measures that are not calculated and presented in accordance with GAAP. See “Non-GAAP Financial Measures” for definitions of these non-GAAP financial measures. A reconciliation of the non-GAAP measures to their related GAAP measures can be found in the supplemental tables later in this press release. (2) Represents purchases of property and equipment. Revenues for the quarter ended June 30, 2026 were $14.7 million, compared to $6.0 million for the quarter ended June 30, 2025. Product revenues and service revenues were $3.3 million and $11.4 million, respectively. Operating expenses for the quarter ended June 30, 2026 were $166.1 million, including research and development expenses of $122.4 million. Non-cash warrant expense related to the collaborative arrangement with GE Aerospace of $5.7 million and in-process research and development (“IPR&D”) expense of $16.1 million related to an acquisition, were both embedded in research and development expenses in the quarter. Investments in research and development enable our certification programs and the further advancement of our enabling technologies. Net loss and Adjusted EBITDA for the quarter ended June 30, 2026 were ($148.8) million and ($109.8) million, respectively. Capital expenditures for the quarter ended June 30, 2026 were $41.1 million, compared to $6.0 million for the quarter ended June 30, 2025. Cash and cash equivalents totaled $1,479.5 million as of June 30, 2026, 2 compared to $174.5 million as of June 30, 2025, as a result of successful private financings and the proceeds from our IPO. Financial Outlook BETA increases our full year 2026 revenues to be in the range o f $42 million to $50 million and updates full year 2026 Adjusted EBITDA to be in the range of ($400) million to ($445) million. BETA has not reconciled our forward-looking Adjusted EBITDA guidance because certain items that impact this non-GAAP metric are uncertain or out of BETA’s control and cannot be reasonably predicted. In particular, stock-based compensation expense is impacted by the future fair market value of BETA’s Class A common stock, BETA’s future hiring needs, and other factors, all of which are difficult to predict, subject to frequent change, or not within BETA’s control. The actual amount of these expenses during 2026 could materially affect BETA’s future GAAP financial results. Accordingly, a reconciliation of this forward-looking non-GAAP metric is not available without unreasonable effort. Webcast and Conference Call Details BETA will host a live webcast and conference call at 8:30 am ET today to discuss the quarter’s financial and operating results. A link to the live webcast and supporting materials can be accessed on the Company’s Investor Relations website and a replay webcast will be available following the call. Participants may also join the conference call by registering on our Investors Relations website. Investors should note that BETA may use our website (investors.beta.team) and BETA’s company account on Instagram and LinkedIn as a means of disclosing information and for complying with BETA’s disclosure obligations under Regulation FD. The information BETA provides through these channels may be deemed material. Investors should monitor these channels in addition to reviewing BETA’s press releases, SEC filings, and public conference calls. About BETA Technologies, Inc. BETA (NYSE: BETA) is an aerospace and defense company designing, manufacturing and selling high-performance electric aircraft, advanced electric propulsion systems, components and charging systems to top operators worldwide. BETA has built and flown its family of ALIA aircraft, consisting of both conventional fixed-wing electric aircraft (the “ALIA CTOL”) and electric vertical takeoff and landing aircraft (the “ALIA VTOL”), more than 190,000 nautical miles, including multiple trips across the United States. BETA is deploying a network of charging infrastructure to enable the growing industry with more than 130 sites across the United States and internationally. BETA’s intentional approach to developing the enabling technologies necessary to electrify aviation unlocks lucrative aftermarket revenue opportunity over the life of each aircraft. These highly scalable enabling technologies allow BETA to serve a customer base across cargo and logistics, defense, passenger and medical end markets and unlock cost-effective and safe missions. Visit www.beta.team for more information about BETA and its products. Contacts Media: Nat Bol, external communications press@beta.team 3 Investor Relations: Devon Rothman, head of investor relations and FP&A investors@beta.team 4 Forward Looking Statements This press release and the accompanying earnings call contain forward-looking statements within the meaning of federal securities laws. Forward-looking statements are neither historical facts nor assurances of future performance. Instead, they are based only on our current beliefs, expectations and assumptions regarding the future of our business, future plans and strategies, projections, anticipated events and trends, the economy and other future conditions. Forward-looking statements can be identified by words such as: “anticipate,” “intend,” plan,” “goal,” “seek,” “believe,” “project,” “estimate,” “expect,” “strategy,” “future,” “likely,” “may,” “should,” “will” and similar references to future periods. Examples of forward-looking statements include, among others, statements we make regarding our future financial and operating performance, including our outlook and guidance; our regulatory outlook, progress and timing; our business strategy, plan, objectives, and goals; capital needs and the growth of our operations, manufacturing capabilities, and supporting infrastructure for aircraft development and deployment; plans and anticipated benefits with respect to our collaborations with third parties, and projected demand for our aircraft, other products, and services. Because forward-looking statements relate to the future, they are subject to inherent uncertainties, risks and changes in circumstances that are difficult to predict and many of which are outside of our control. Our actual results and financial condition may differ materially from those indicated in the forward-looking statements. Therefore, you should not rely on any of these forward-looking statements. Important factors that could cause our actual results and financial condition to differ materially from those indicated in the forward-looking statements include, among others, factors described throughout the “Risk Factors” and “Management’s Discussion and Analysis of Financial Condition and Results of Operations” sections of our Annual Report on Form 10-K for the year ended December 31, 2025 filed with the Securities and Exchange Commission (the “SEC”) on March 9, 2026, as such descriptions may be updated or amended by the factors that will be included in the future reports we file with the SEC. Moreover, we operate in a very competitive and rapidly changing environment, and new risks and uncertainties may emerge that could have an impact on the forward-looking statements contained in this press release and the accompanying earnings call. Any forward-looking statement made by us in this press release and the accompanying earnings call is based only on information currently available to us and speaks only as of the date on which it is made. We undertake no obligation to publicly update any forward-looking statement whether as a result of new information, future developments or otherwise. Non-GAAP Financial Measures In addition to traditional financial metrics, we use EBITDA and Adjusted EBITDA to help us evaluate our business. We define EBITDA as net loss adjusted for interest income, interest expense, provision for income taxes, and depreciation and amortization. We define Adjusted EBITDA as EBITDA adjusted for stock-based compensation, warrant expense, acquisition-related expense, loss on disposal of property and equipment, and IPO costs. We believe that these non-GAAP measures provide useful information to investors because they allow for greater transparency into what measures we use in operating our business and measuring our performance and enable comparison of financial trends and results between periods where items may vary independent of business performance. These non-GAAP measures are presented for supplemental informational purposes and should not be considered as substitutes for or superior to financial information presented in accordance with GAAP. The principal limitation of these non-GAAP financial measures is that they 5 exclude certain expenses that are required by GAAP to be recorded in our financial statements and they are subject to inherent limitations as they reflect the exercise of judgment by our management about which expenses are excluded or included in determining these non-GAAP financial measures. Further, non-GAAP financial measures are not standardized. It may not be possible to compare these financial measures with other companies’ non-GAAP financial measures having the same or similar names. Investors are encouraged to review the rela",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1784570/000162828026055982/bta-20260630.htm",
+   "published": "2026-08-12T09:31:53-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis should be read in conjunction with our condensed consolidated financial statements and related notes, and other financial information, included elsewhere in this Quarterly Report on Form 10-Q and our Annual Report on Form 10-K for the year ended December 31, 2025 filed with the SEC on March 9, 2026. As discussed in the section titled “Special Note Regarding Forward-Looking Statements,” the following discussion contains forward-looking statements reflecting our current expectations, estimates and assumptions concerning events and financial trends that may affect our future operating results or financial position. Actual results and the timing of events may differ materially from those contained in these forward-looking statements due to a number of factors. Factors that could cause or contribute to such differences include, but are not limited to, capital expenditures, economic and competitive conditions, regulatory changes and other uncertainties, including those discussed below and in the section titled “Risk Factors” included under Part II, Item 1A below, as well as in the Annual Report on Form 10-K for the year ended December 31, 2025, all of which are difficult to predict. In light of these risks, uncertainties and assumptions, the forward-looking events discussed may not occur. We assume no obligation to update any of these forward-looking statements. Unless otherwise indicated or the context otherwise requires, all references in this section to the “Company,” “BETA,” “we,” “us,” or “our” refer to BETA Technologies, Inc. and its consolidated subsidiaries. Overview W e are continuing to redefine the aerospace industry. We design, manufacture, and sell high-performance electric aircraft, advanced electric propulsion systems, charging systems, and components that are positioned to transform the aviation industry. Further, we have invested in the underlying infrastructure of this breakthrough technology, which is critical to bringing electric aviation to life. We believe we have developed a differentiated presence in North America and are well positioned to expand globally. We are continuing to develop highly scalable technologies that can be tailored to and deployed for cost-effective and safe missions across cargo and logistics, medical, defense, and passenger end markets. Our simplified approach to designing electric aircraft allows us to service a variety of end markets and mission types while leveraging the same core technologies. The portability of our technologies and systems across various aircraft also unlocks flexibility to innovate on future generations of aircraft. Since inception, the Company has devoted substantially all of its time and efforts to performing research and development activities, raising capital, recruiting management and technical staff to support these operations, and designing manufacturing processes. During the three and six months ended June 30, 2026, the Company continued to make investments across facilities, equipment, and tooling needed to manufacture its aircraft and charging systems. Recent Developments BETA served as the systems integrator, supported flight tests in the U.S., and ferried GE Aerospace’s hybrid-electric aircraft to the UK for the Farnborough International Airshow (“Farnborough”). In collaboration with BETA, NASA and Boeing, GE Aerospace conducted the first hybrid electric flight above 30,000 feet , reaching the same altitude levels of passenger commercial aircraft. On July 20, 2026 at Farnborough, the Company unveiled the MV250, an autonomous hybrid-electric VTOL aircraft giving military operators greater range, higher speed, increased payload capability, and lower operating costs for contested on- and off-airport logistics. 15 Table of Contents Results of Operations Comparison of Results f or the Three and Six Months Ended June 30, 2026 an d 2025 The following table presents selected financial information for the periods presented (dollars in thousands): Three Months Ended June 30, Increase (Decrease) ($) Increase (Decrease) (%) Six Months Ended June 30, Increase (Decrease) ($) Increase (Decrease) (%) 2026 2025 2026 2025 Revenues: Product $ 3,280 $ 2,544 $ 736 29 % $ 4,243 $ 5,032 $ (789) (16 %) Service 11,378 3,422 7,956 * 20,548 10,533 10,015 95 % 14,658 5,966 8,692 * 24,791 15,565 9,226 59 % Cost of revenues: Product 1,661 62 1,599 * 2,257 595 1,662 * Service 4,976 1,128 3,848 * 8,681 2,333 6,348 * 6,637 1,190 5,447 * 10,938 2,928 8,010 * Gross margin: Product 1,619 2,482 (863) (35 %) 1,986 4,437 (2,451) (55 %) Service 6,402 2,294 4,108 * 11,867 8,200 3,667 45 % 8,021 4,776 3,245 68 % 13,853 12,637 1,216 10 % Operating expenses: Research and development 122,365 58,035 64,330 * 214,104 115,899 98,205 85 % General and administrative 43,774 26,061 17,713 68 % 90,824 54,075 36,749 68 % Total operating expenses 166,139 84,096 82,043 98 % 304,928 169,974 134,954 79 % Loss from operations (158,118) (79,320) 78,798 99 % (291,075) (157,337) 133,738 85 % Other (income) expense: Interest income (13,293) (2,023) 11,270 * (27,774) (4,720) 23,054 * Interest expense 3,661 2,890 771 27 % 7,278 5,750 1,528 27 % Total other (income) expense (9,632) 867 10,499 * (20,496) 1,030 21,526 * Loss before income taxes (148,486) (80,187) 68,299 85 % (270,579) (158,367) 112,212 71 % Provision for income taxes 267 229 38 17 % 483 327 156 48 % Net loss $ (148,753) $ (80,416) $ 68,337 85 % $ (271,062) $ (158,694) $ 112,368 71 % ______________ * Percentage increase (decrease) is not meaningful Revenues Our product revenue is primarily generated from the sale of tangible products such as our batteries, engines, flight control systems, and an international network of electric charging and related equipment (“Enabling Technologies”). Our service revenue is primarily generated from engineering, consulting, and other service arrangements for our customers. Service revenue also includes revenue associated with usage of and priority access to our charging stations. Product revenues increased by $0.7 million, or 29%, during the three months ended June 30, 2026 compared to the three months ended June 30, 2025. The increase was attributable to the delivery of ground service equipment (“GSE”) to commercial and foreign government customers of $2.7 million during 2026, offset by the delivery of electric propulsion engines and batteries to commercial customers totaling $2.0 million during 2025. Product revenues decreased by $0.8 million, or 16%, during the six months ended June 30, 2026 compared to the six months ended June 30, 2025. The decrease was attributable to the delivery of electric propulsion engines and batteries to commercial customers totaling $4.3 million during 2025, offset by the delivery of GSE to commercial and foreign government customers of $3.5 million during 2026. Service revenues increased by $8.0 million during the three months ended June 30, 2026 compared to the three months ended June 30, 2025. The increase was attributable to contracts with commercial customers of $6.9 million related to engineering and consulting services to support our customers’ research and development activities, $1.0 million related to completion of services for the U.S. government, and $0.1 million related to priority access to the Company’s charging stations. 16 Table of Contents Service revenues increased by $10.0 million, or 95%, during the six months ended June 30, 2026 compared to the six months ended June 30, 2025. The increase was attributable to contracts with commercial customers of $13.1 million related to engineering and consulting services to support our customers’ research and development activities and $0.3 million related to priority access to the Company’s charging stations, offset by $3.4 million related to completion of services for the U.S. government during 2025. Cost of Revenues C ost of product revenues and service revenues may include the direct cost of materials, labor, subcontractors, and overhead costs (where allowable), depending on the nature of the agreement. Included within cost of product revenues are purchases made directly for contractual performance obligations primarily recognized over time and as such, no inventories are recorded in the condensed consolidated balance sheets. Cost of product revenues increased by $1.6 million and $1.7 million during the three and six months ended June 30, 2026 compared to the three and six months ended June 30, 2025, respectively. The increase was attributable to labor and material costs to fulfill contracts with commercial and foreign government customers. Cost of service revenues increased by $3.8 million and $6.3 million during the three and six months ended June 30, 2026 compared to the three and six months ended June 30, 2025, respectively. The increase was attributable to labor and material costs to fulfill contracts with commercial and U.S. government customers . Research and Development Expenses Research and development expenses are attributable to continued spend related to the development, testing, certification, and prototype production of our electric aircraft, electric propulsion systems, charging solutions, and network. The increases to research and development expenses were attributable to the following (in millions): Three Months Ended June 30, 2026 Six Months Ended June 30, 2026 Parts and materials $ 11.5 $ 19.0 Labor costs, including stock-based compensation 17.4 31.5 Warrant expense 5.7 11.3 Acquisition-related expense 16.1 16.1 Loss on disposal of property and equipment 5.3 5.3 Professional fees 5.1 9.7 Other 3.2 5.3 $ 64.3 $ 98.2 General and Administrative Expenses Genera l and administrative expenses increased $17.7 million, or 68%, for the three months ended June 30, 2026 compared to the three months ended June 30, 2025. The increase was attributable to increased stock-based compensation expense of $5.9 million, salaries and benefits of $7.7 million due to increased headcount, and $4.1 million of other administrative c osts. Genera l and administrative expenses increased $36.7 million, or 68%, for the six months ended June 30, 2026 compared to the six months ended June 30, 2025. The increase was attributable to increased stock-based compensation expense of $16.3 million, salaries and benefits of $12.1 million due to increased headcount, $2.5 million of professional fees, and $5.8 million of other administrative c osts. 17 Table of Contents Other (Income) Expense Interest income increased $11.3 million for the three months ended June 30, 2026 compared to the three months ended June 30, 2025 and $23.1 million for the six months ended June 30, 2026 compared to the six months ended June 30, 2025. The increase was attributable to interest on the proceeds from convertible preferred stock offerings and the IPO. Interest expense increased $0.8 million, or 27%, for the three months ended June 30, 2026 compared to the three months ended June 30, 2025 and $1.5 million, or 27%, for the six months ended June 30, 2026 compared to the six months ended June 30, 2025. The increase was attributable to a sale-leaseback transaction that occurred during 2025. Provision for Income Taxes Provision for income taxes increased by less than $0.1 million, or 17% , for the three months ended June 30, 2026 compared to the three months ended June 30, 2025. Provision for income taxes increased by $0.2 million, or 48%, for the six months ended June 30, 2026 compared to the six months ended June 30, 2025, primarily due to an increase in tax on foreign earnings. 18 Table of Contents Non-GAAP Financial Measures EBITDA and Adjusted EBITDA W e define EBITDA as net loss adjusted for interest income, interest expense, provision for income taxes, and depreciation and amortization. We define Adjusted EBITDA as EBITDA adjusted for stock-based compensation, warrant expense, acquis",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/beta-completes-14-electric-flights-172300315.html?.tsrc=rss",
+   "published": "2026-10-30T13:23:00-04:00",
+   "text": "BETA Completes 14 All-Electric Flights Across Florida Under U.S. DOT and FAA’s eVTOL Integration Pilot Program - SOUTH BURLINGTON, Vt. & TAMPA BAY, Fla., October 30, 2026--BETA Technologies (NYSE: BETA) (\"BETA\"), an aerospace and defense company, has completed 14 flights across Florida, covering nearly 700 nautical miles, under the Federal Aviation Administration (FAA) and U.S. Department of Transportation (U.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/general-dynamics-gd-q3-earnings-111502321.html?.tsrc=rss",
+   "published": "2026-10-30T07:15:02-04:00",
+   "text": "General Dynamics (GD) Q3 Earnings and Revenues Beat Estimates - General Dynamics (GD) delivered earnings and revenue surprises of +8.45% and +6.43%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/l3harris-lhx-surpasses-q3-earnings-101002307.html?.tsrc=rss",
+   "published": "2026-10-29T06:10:02-04:00",
+   "text": "L3Harris (LHX) Surpasses Q3 Earnings and Revenue Estimates - L3Harris (LHX) delivered earnings and revenue surprises of +9.70% and +2.80%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/22/surprise-candidate-gets-first-ever-evtol-faa-authorization/?.tsrc=rss",
+   "published": "2026-10-22T11:35:02-04:00",
+   "text": "Not Joby, Not Archer: Surprise Candidate Gets First-Ever eVTOL FAA Authorization - The eVTOL race just got tighter.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/beta-becomes-first-company-secure-110000664.html?.tsrc=rss",
+   "published": "2026-10-21T07:00:00-04:00",
+   "text": "BETA Becomes First Company to Secure Landmark FAA Authorization to Conduct Flight Operations with Prospective Customers in Electric VTOL Aircraft - SOUTH BURLINGTON, Vt., October 21, 2026--BETA Technologies, Inc. (NYSE: BETA) (\"BETA\"), an aerospace and defense company, today announced that the Federal Aviation Administration (\"FAA\") has awarded its ALIA VTOL (\"A250\") aircraft a Special Airworthiness Certificate for market surveys, marking the f",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/beta-technologies-announce-third-quarter-100000387.html?.tsrc=rss",
+   "published": "2026-10-20T06:00:00-04:00",
+   "text": "BETA Technologies to Announce Third Quarter 2026 Results on November 3, 2026 - SOUTH BURLINGTON, Vt., October 20, 2026--BETA Technologies, Inc. (NYSE: BETA) (\"BETA\" or the \"Company\"), an aerospace and defense company, today announced it will release its financial and operating results for the third quarter of 2026 before the market opens on November 3, 2026. The Company will a",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/archers-redundant-propulsion-design-support-125000407.html?.tsrc=rss",
+   "published": "2026-10-13T08:50:00-04:00",
+   "text": "Can Archer's Redundant Propulsion Design Support Aircraft Safety? - ACHR prioritizes Midnight's safety with redundant electric motors, distributed propulsion and ongoing flight testing to advance aircraft certification.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/beta-technologies-beta-building-electric-091334577.html?.tsrc=rss",
+   "published": "2026-10-10T05:13:34-04:00",
+   "text": "What Is BETA Technologies (BETA) Building With This Electric Aviation Training Push? - BETA Technologies (NYSE:BETA) partnered with Marshall University to create an electric aviation workforce training program in West Virginia. The collaboration includes showcasing BETA electric aircraft at Yeager Airport in Charleston as part of the training effort. The initiative is intended to supp",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/beta-technologies-beta-stock-may-021017497.html?.tsrc=rss",
+   "published": "2026-10-09T22:10:17-04:00",
+   "text": "BETA Technologies (BETA) Stock May Stay Hard To Pin Down As Utah Medical Cargo News - BETA Technologies has had a rough start to the year in the market, and investors are now asking whether the current share price still lines up with what its book value can reasonably support. With book value front of mind, the question is how much of the story is about the balance sheet and how much",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/beta-technologies-beta-tests-electric-010852550.html?.tsrc=rss",
+   "published": "2026-10-09T21:08:52-04:00",
+   "text": "BETA Technologies (BETA) Tests Electric Flights In Utah, Is The 33% Undervaluation Real? - BETA Technologies (BETA) just put its all-electric ALIA CTOL aircraft through real-world medical and cargo flights in Utah, giving investors fresh data on how its electric aviation model might translate into commercial use. These Utah test flights land at a moment when BETA Technologies’ 90 day shar",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://app.moby.co/home/research/tools/earningsCalendar/earnings-new-horizon-aircraft-ltd-q1-2027-earnings-call-summary?utm_source=yahoo_finance&utm_medium=rss&.tsrc=rss",
+   "published": "2026-10-09T16:49:36-04:00",
+   "text": "New Horizon Aircraft Ltd. Q1 2027 Earnings Call Summary - Moby summary of New Horizon Aircraft Ltd.'s Q1 2027 earnings call",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/spacex-initiated-humana-upgraded-wall-134518623.html?.tsrc=rss",
+   "published": "2026-10-09T09:45:18-04:00",
+   "text": "SpaceX initiated, Humana upgraded: Wall Street's top analyst calls - SpaceX initiated, Humana upgraded: Wall Street's top analyst calls",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/beta-completes-utah-eipp-operations-193200765.html?.tsrc=rss",
+   "published": "2026-10-07T15:32:00-04:00",
+   "text": "BETA Completes Utah eIPP Operations to Support the Future of Radiopharmaceutical Delivery and Treatment - SOUTH BURLINGTON, Vt. & SALT LAKE CITY, October 07, 2026--BETA Technologies, Inc. (NYSE: BETA) (BETA), an aerospace and defense company, today concluded five days of flight operations in Utah that demonstrated how electric aviation can provide reliable, time-sensitive movement of critical medical ca",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/09/25/why-beta-technologies-stock-was-climbing-this-week/?.tsrc=rss",
+   "published": "2026-09-25T05:10:17-04:00",
+   "text": "Why Beta Technologies Stock Was Climbing This Week - The company's aircraft will be used to deliver medical equipment.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/beta-launches-north-carolina-eipp-194500141.html?.tsrc=rss",
+   "published": "2026-09-23T15:45:00-04:00",
+   "text": "BETA Launches North Carolina eIPP Operations to Build a Scalable Model for Rural Healthcare Access - SOUTH BURLINGTON, Vt. & RALEIGH, N.C., September 23, 2026--BETA Technologies, Inc. (NYSE: BETA) (\"BETA\"), an aerospace and defense company, today announced the launch of flight operations in North Carolina’s eLIFT program under the U.S. Department of Transportation’s (\"U.S. DOT\") and Federal Aviatio",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/surf-air-mobility-attends-faas-103000076.html?.tsrc=rss",
+   "published": "2026-09-15T06:30:00-04:00",
+   "text": "Surf Air Mobility Attends FAA's Project Nexus eIPP Event, Reinforcing Its Position as the Commercial Platform for Advanced Air Mobility - LOS ANGELES, September 15, 2026--Surf Air Mobility (NYSE: SRFM) (\"Surf Air Mobility\" or the \"Company\"), a leading air mobility platform, announced today that Company executives attended the launch meeting for Project Nexus on Thursday, September 10, at Alliance Field in Fort Worth, Texas (AFW). Proj",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/beta-technologies-beta-could-34-051611497.html?.tsrc=rss",
+   "published": "2026-09-15T01:16:11-04:00",
+   "text": "BETA Technologies (BETA) Could Be 34% Undervalued As Jefferies Conference Nears - BETA Technologies (BETA) is set to present at the Jefferies Global Industrials Conference on September 10 in New York, prompting fresh attention on how investors are weighing this electric aerospace stock. Recent trading has been choppy for BETA Technologies, with the share price at US$20.68 after a",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/merlin-demonstrates-autonomous-flight-capabilities-200100471.html?.tsrc=rss",
+   "published": "2026-09-10T16:01:00-04:00",
+   "text": "Merlin Demonstrates Autonomous Flight Capabilities at Texas Department of Transportation Project NEXUS eIPP Kickoff Event - Merlin showcased how autonomy can support safer, more efficient aviation operations Merlin Cessna Caravan Merlin Cessna Caravan at Alliance Airport BOSTON, Sept. 10, 2026 (GLOBE NEWSWIRE) -- Merlin, Inc. (NASDAQ: MRLN), an aerospace and defense technology company building the operating system of rec",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/archer-beta-plan-bring-air-120000746.html?.tsrc=rss",
+   "published": "2026-09-10T08:00:00-04:00",
+   "text": "Archer, BETA Plan to Bring Air Taxi Charging Infrastructure to Texas to Support TxDOT’s eIPP Operations with America’s Consortium for Electric Skyways - DALLAS, September 10, 2026--America's Consortium for Electric Skyways (ACES) today announced plans to support Texas' air taxi operations under the White House's eVTOL Integration Pilot Program (eIPP) by expanding interoperable electric aviation charging infrastructure in the state across key locatio",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/beta-technologies-participate-upcoming-investor-110000618.html?.tsrc=rss",
+   "published": "2026-09-08T07:00:00-04:00",
+   "text": "BETA Technologies to Participate in Upcoming Investor Conferences - SOUTH BURLINGTON, Vt., September 08, 2026--BETA Technologies, Inc. (NYSE: BETA) (\"BETA\" or the \"Company\"), an aerospace and defense company, today announced its participation at the following upcoming investor conferences:",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:52-04:00",
+    "sha256": "feb5186eef93c1c7aa2a5307d81600969381ee4dcc47b0af6c7d94cb9c8284c3"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 49876
+}

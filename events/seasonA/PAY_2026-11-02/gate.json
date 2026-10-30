@@ -1,0 +1,97 @@
+{
+ "season": "seasonA",
+ "ticker": "PAY",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:26.367193-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/paymentus-report-third-quarter-2026-earnings-results-and-host-webcast-november-2-2026",
+  "published_et": "2026-10-19T16:05-04:00",
+  "quote": "linkedin facebook x email reddit DALLAS, Texas --(BUSINESS WIRE)-- Paymentus Holdings, Inc. (“Paymentus”) (NYSE: PAY), a leading provider of cloud-native billing, payment, disbursement, and AI-enabled Service Commerce solutions, will announce its third quarter financial results after the market close on Monday, November 2, 2026 .",
+  "title": "Paymentus to Report Third Quarter 2026 Earnings Results and Host Webcast on November 2, 2026",
+  "retrieved_et": "2026-10-21T21:10:55.305344-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 32.63999938964844,
+  "expiry": "2026-11-20",
+  "strike": 33.0,
+  "call": {
+   "bid": 1.0,
+   "ask": 3.9,
+   "openInterest": 3.0,
+   "lastPrice": 1.4,
+   "impliedVolatility": 0.8183611914062499,
+   "lastTradeDate": "2026-10-19T14:52:03+00:00"
+  },
+  "put": {
+   "bid": 1.9,
+   "ask": 3.9,
+   "openInterest": 2.0,
+   "lastPrice": 2.1,
+   "impliedVolatility": 0.8466812207031249,
+   "lastTradeDate": "2026-10-22T19:40:15+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.16390931679051188,
+  "rel_spread": {
+   "call": 1.183673469387755,
+   "put": 0.6896551724137931
+  },
+  "oi_atm": 5.0,
+  "oi_sum": 22.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
