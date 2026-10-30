@@ -1,0 +1,144 @@
+{
+ "track": "T2O",
+ "event": "SHOP_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.55,
+  "thesis": "SHOP reaches the print with strong momentum in the business (34% revenue growth, accelerating GMV, rising FCF margin), a recent 8% pullback, and call-rich option pricing; peak-multiple valuation and weak software sentiment roughly offset this, leaving only a slight edge above the base rate.",
+  "reasons": [
+   "Q2 was strong: GMV +32%, revenue +34%, op income +68%, FCF margin 18%. Q3 guide is low-thirties revenue growth, which leaves room for a beat.",
+   "The 5-day return is -8.4% going into the print, so some de-risking has already happened and expectations are less stretched.",
+   "ATM call IV is above put IV (+0.10) and the put skew is negative, a mildly bullish options signal.",
+   "Software sentiment is fragile after NOW's 19% drop. The high valuation (63x forward P/E, 15x sales) means anything short of acceleration can sell off.",
+   "The implied move is ~13.5% and the last four reactions were mixed (2 of 4 up), so the outcome is close to a coin flip around a slightly positive drift."
+  ],
+  "deciding_variable": "Q4 holiday-quarter guidance on revenue and gross profit growth, plus Q3 GMV growth versus ~30% expectations.",
+  "prior": {
+   "p": 0.545,
+   "from": "I3 base rates: software_internet cluster t0_hit 0.541 (n=919) and BMO session 0.548 (n=898); overall ~0.54"
+  },
+  "leak_probe": "I don't know: that earnings report (November 3, 2026) is still in the future as of today (October 30, 2026), so there's no stock reaction to report yet.",
+  "moved_from_prior": "Up about +0.5pp in net. The pre-earnings pullback, call-over-put IV spread, upward EPS revisions and fundamental momentum add about +1.5pp. The elevated valuation, sector risk-off after NOW, and macro/weekend gap risk from the Friday-to-Monday entry subtract about -1pp.",
+  "theses": [
+   {
+    "expected": "Gap up",
+    "mechanism": "GMV and revenue beat the low-thirties guide, the Q4 guide implies continued 30%+ growth, and the FCF margin holds high-teens or better. Shorts and underweights chase after the recent pullback.",
+    "wrong_if": "The Q4 guide decelerates to the mid/high-twenties or gross profit growth lags revenue badly."
+   },
+   {
+    "expected": "Gap down",
+    "mechanism": "Margin compression from payments mix and loan losses (transaction and loan losses nearly doubled YoY in Q2), or a soft holiday outlook, gets punished at a 63x multiple amid software de-rating.",
+    "wrong_if": "Operating leverage continues and opex lands at the low end of 33-34% of revenue."
+   },
+   {
+    "expected": "Muted or slightly positive",
+    "mechanism": "An in-line beat that is already priced after the strong Q2 reaction. The move is set mostly by the macro tape and the post-NOW sentiment.",
+    "wrong_if": "The print materially surprises in either direction, or the broad market gaps strongly on Nov 2-3."
+   }
+  ],
+  "key_observations": [
+   "Q3 GMV growth (constant currency) versus ~30%",
+   "Revenue growth versus the low-thirties guide; gross profit growth versus the mid-to-high-twenties guide",
+   "Q4 outlook for revenue growth and FCF margin",
+   "Transaction and loan losses and Shopify Capital growth",
+   "Opex as a percentage of revenue versus 33-34%",
+   "MRR growth and merchant adds; AI and agentic commerce commentary",
+   "Broad tech and software tape from Friday close through Monday open"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/SHOP_2026-11-03/gate.json",
+    "published": "2026-10-30T14:31:31.226157-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/SHOP_2026-11-03/factors.json",
+    "published": "2026-10-30T14:31:31.226157-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000046/exhibit991pressreleaseq220.htm",
+    "published": "2026-08-05T07:01:47-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000047/shop-20260630.htm",
+    "published": "2026-08-05T07:03:05-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/now-q3-earnings-lag-estimates-170100941.html?.tsrc=rss",
+    "published": "2026-10-29T13:01:00-04:00",
+    "dossier_item": "I15"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/29/servicenows-19-crash-says-wall-street-thinks-ai-will-eat-software-its-openai-deal-says-the-opposite/?.tsrc=rss",
+    "published": "2026-10-29T07:02:58-04:00",
+    "dossier_item": "I25"
+   }
+  ],
+  "decided_et": "2026-10-30T17:55:40-04:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20306,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1534,
+   "output_tokens_details": {
+    "thinking_tokens": 249
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20306,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1534,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20306,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20306
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1952983
+ }
+}
