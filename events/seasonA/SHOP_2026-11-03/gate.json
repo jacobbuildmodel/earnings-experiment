@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "SHOP",
+ "report_date": "2026-11-03",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:31.226157-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/shopify-announce-third-quarter-2026-financial-results-2026-10-06",
+  "published_et": "2026-10-06T07:00-04:00",
+  "quote": "linkedin facebook x email reddit Internet, Everywhere, Oct. 06, 2026 (GLOBE NEWSWIRE) -- Shopify Inc. (NASDAQ, TSX: SHOP) plans to announce financial results for the quarter ended September 30, 2026 before markets open on Tuesday, November 3, 2026 .",
+  "title": "Shopify to Announce Third-Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T23:19:37.735272-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T07:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-03T07:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 154.55999755859375,
+  "expiry": "2026-11-06",
+  "strike": 155.0,
+  "call": {
+   "bid": 10.35,
+   "ask": 11.05,
+   "openInterest": 165.0,
+   "lastPrice": 10.79,
+   "impliedVolatility": 1.1959268719482423,
+   "lastTradeDate": "2026-10-30T17:07:52+00:00"
+  },
+  "put": {
+   "bid": 10.05,
+   "ask": 10.35,
+   "openInterest": 120.0,
+   "lastPrice": 10.29,
+   "impliedVolatility": 1.0927779736328125,
+   "lastTradeDate": "2026-10-30T17:26:41+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.1352225694237398,
+  "rel_spread": {
+   "call": 0.06542056074766366,
+   "put": 0.029411764705882252
+  },
+  "oi_atm": 285.0,
+  "oi_sum": 514.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
