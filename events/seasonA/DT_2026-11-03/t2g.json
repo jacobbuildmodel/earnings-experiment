@@ -1,0 +1,119 @@
+{
+ "track": "T2G",
+ "event": "DT_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.58,
+  "thesis": "A steep 10% pre-earnings pullback coupled with positive call-skew and strong observability demand provides an asymmetric setup for a post-earnings gap up.",
+  "reasons": [
+   "Dynatrace has gapped up in 3 of its last 4 earnings releases, averaging double-digit gains on beats.",
+   "A 10.6% drop in the 5 days heading into the print has substantially lowered valuation hurdles and de-risked investor expectations.",
+   "Call IV trades at a premium over put IV (+3.0 pts ATM), showing bullish positioning among options traders despite recent stock weakness.",
+   "Sustained enterprise demand in AI observability and log management (highlighted by recent Q4 Forrester Leader recognition) supports ARR beat potential."
+  ],
+  "deciding_variable": "Full-year ARR growth guidance and net new ARR additions driven by AI/log analytics adoption.",
+  "prior": {
+   "p": 0.54,
+   "from": "software_internet cluster base rate (0.541, n=919)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved up from 0.54 to 0.58 (+0.04) due to favorable de-risking from the 5-day 10.6% selloff, 75% historical win rate over the trailing year, and positive call skew.",
+  "theses": [
+   {
+    "expected": "Dynatrace beats Q2 revenue/EPS estimates and raises FY27 constant-currency ARR guidance slightly.",
+    "mechanism": "Robust cloud migration and consumption of the DPS licensing tier drive higher annualized log and AI analytics spend.",
+    "wrong_if": "Enterprise sales cycles lengthen and macro scrutiny stalls large platform consolidation deals, forcing guidance cuts."
+   },
+   {
+    "expected": "The stock rebounds sharply at the open after the 10.6% pre-earnings selloff.",
+    "mechanism": "Short covering and dip-buying triggered by clean execution and solid margin expansion.",
+    "wrong_if": "The market punishes any slowdown in ARR growth below 15% constant currency, repeating the May 2026 post-earnings drop."
+   },
+   {
+    "expected": "Non-GAAP operating margins remain robust near 29.5-30.0%, sustaining high free cash flow generation.",
+    "mechanism": "Disciplined cost structure and high gross margin SaaS subscription expansion translate to strong operating leverage.",
+    "wrong_if": "Increased R&D and GTM spending on AI agentic capabilities compress operating margins below guided ranges."
+   }
+  ],
+  "key_observations": [
+   "Q2 FY27 ARR growth rate (constant currency vs 15.5%-16.5% FY target)",
+   "Full-year ARR and revenue guidance revisions",
+   "Net expansion rate (DBNRR) stability around 110%+",
+   "Log management and AI-related ARR consumption run-rates"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/DT_2026-11-03/gate.json",
+    "published": "2026-10-30T14:31:09.284628-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/DT_2026-11-03/factors.json",
+    "published": "2026-10-30T14:31:09.284628-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000049/q1fy27-earningsreleaseex99.htm",
+    "published": "2026-08-05T06:32:18-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000050/dt-20260630.htm",
+    "published": "2026-08-05T06:33:56-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/independent-research-firm-names-dynatrace-130000753.html?.tsrc=rss",
+    "published": "2026-10-30T09:00:00-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-ahead-earnings-valuation-160632338.html?.tsrc=rss",
+    "published": "2026-10-27T12:06:32-04:00",
+    "dossier_item": "I18"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/dynatrace-likely-post-strong-results-155626351.html?.tsrc=rss",
+    "published": "2026-10-26T11:56:26-04:00",
+    "dossier_item": "I21"
+   }
+  ],
+  "decided_et": "2026-10-30T14:53:21-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 18826,
+   "candidatesTokenCount": 748,
+   "totalTokenCount": 20697,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 18826
+    }
+   ],
+   "thoughtsTokenCount": 1123,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
