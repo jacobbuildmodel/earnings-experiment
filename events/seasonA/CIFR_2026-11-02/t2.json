@@ -1,0 +1,148 @@
+{
+ "track": "T2",
+ "event": "CIFR_2026-11-02",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "CIFR enters the print after a roughly 50% monthly collapse driven by convertible-note dilution, which offers some mean-reversion and short-squeeze potential, but the big implied move and weak financials leave the direction close to a coin flip.",
+  "reasons": [
+   "Stock is down about 50% in a month and 72% from its 52-week high, so the bad financing news is largely priced in and a bounce is possible.",
+   "Short interest is high at 26.8% of float, and recent HPC lease news (Barber Lake extended to 20 years, $9B backlog) gives positive fundamentals to cite.",
+   "Last 4 prints had a 75% win rate for the open-to-open move, but the most recent one fell 7%, and EPS missed on each of the last three.",
+   "Implied move of about 18% is large and symmetric, with call IV above put IV, so options give no clear direction.",
+   "Sector sentiment is fragile: debt-heavy AI data-center names are under rate-hike pressure, and the Barber Lake delivery schedule slipped."
+  ],
+  "deciding_variable": "Whether management gives new HPC lease signings or financing and delivery updates that ease dilution and cash-burn worries.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation hit 54.2% and BMO 54.8%; crypto_proxy cluster (n=8) is insufficient, ai_infra 55.8% is a closer fit."
+  },
+  "leak_probe": "I don't know. Today is 2026-10-29, so that earnings report on 2026-11-02 hasn't happened yet, and I have no information on how CIFR's stock reacted to it.",
+  "moved_from_prior": "Moved down about 2 points from 0.54: dilution overhang, rate pressure on leveraged names and negative momentum offset the oversold bounce and squeeze potential.",
+  "theses": [
+   {
+    "expected": "Rise on a relief bounce",
+    "mechanism": "Oversold stock with high short interest reacts to confirmed rent commencement at Black Pearl and Barber Lake first-rent guidance, and maybe a new lease.",
+    "wrong_if": "Capex overruns or new delays are disclosed, or there is no new tenant news."
+   },
+   {
+    "expected": "Fall on weak results",
+    "mechanism": "Revenue is falling with mining wind-down, EBITDA is deeply negative, and the Barber Lake cost-overrun burden of $359M weighs on the stock.",
+    "wrong_if": "Results show the cost overrun is contained and the stock holds the recent lows."
+   },
+   {
+    "expected": "Flat to choppy, decided by the sector tape",
+    "mechanism": "The stock trades with neocloud and bitcoin-miner peers and rate expectations more than the print itself.",
+    "wrong_if": "A large company-specific surprise outweighs the sector move."
+   }
+  ],
+  "key_observations": [
+   "Black Pearl rent commencement and Q4 revenue guidance",
+   "Barber Lake first data hall delivery timing and cost overrun updates",
+   "New lease announcements for Apollo or other pipeline sites",
+   "Cash, liquidity and further financing or dilution commentary",
+   "Pre-market price action of peers like IREN, TeraWulf and Applied Digital on Oct 30 and Nov 2"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CIFR_2026-11-02/gate.json",
+    "published": "2026-10-29T14:31:00.249545-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CIFR_2026-11-02/factors.json",
+    "published": "2026-10-29T14:31:00.249545-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1819989/000181998926000043/cifr-20260924.htm",
+    "published": "2026-09-25T08:04:27-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cipher-digital-slides-30-after-zero-coupon-note-sale-despite-9-billion-barber-lake-backlog?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-25T09:06:49-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/applied-digital-just-dropped-31-in-a-month-is-it-time-to-sell-or-load-up?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-23T14:11:39-04:00",
+    "dossier_item": "I18"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cipher-digital-lost-31-in-a-week-cantor-fitzgerald-still-sees-112-upside?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-22T10:51:23-04:00",
+    "dossier_item": "I21"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.trefis.com/articles/619005/what-changed-for-cipher-digital-stock-and-what-did-not/2026-10-16?.tsrc=rss",
+    "published": "2026-10-16T21:26:45-04:00",
+    "dossier_item": "I29"
+   }
+  ],
+  "decided_et": "2026-10-29T17:23:27-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 28229,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1027,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 28229,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1027,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 28229,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 28229
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1259497
+ }
+}
