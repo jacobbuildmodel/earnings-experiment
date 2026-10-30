@@ -1,4 +1,4 @@
-# Health 2026-10-30 10:53 ET - **RED**
+# Health 2026-10-30 13:04 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -16,7 +16,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-29T21:00:13Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40953964992
 - Actions failure: Earnings experiment - paper options at 2026-10-29T20:11:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40946765719
 - Actions failure: Earnings experiment - paper options at 2026-10-29T19:50:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40943697875
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-29T15:00:21Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40897132963
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
@@ -25,13 +24,6 @@ check.py: PASS - 1 warning(s)
 ## Information
 - paper/options_ledger.json: open ['seasonA-AMZN-2026-10-29-F', 'seasonA-AXTI-2026-10-29-F', 'seasonA-BBIO-2026-10-29-F', 'seasonA-COLM-2026-10-29-F', 'seasonA-EXEL-2026-10-29-F', 'seasonA-GD-2026-10-30-F', 'seasonA-INTC-2026-10-29-F', 'seasonA-MSTR-2026-10-29-F', 'seasonA-PINS-2026-10-29-F', 'seasonA-RDDT-2026-10-29-F', 'seasonA-SBUX-2026-10-29-F']
 - paper/long_ledger.json: open ['seasonA-BBIO-2026-10-29-L', 'seasonA-AMZN-2026-10-29-L', 'seasonA-AXTI-2026-10-29-L', 'seasonA-COLM-2026-10-29-L', 'seasonA-DXCM-2026-10-29-L', 'seasonA-EXEL-2026-10-29-L', 'seasonA-GDDY-2026-10-29-L', 'seasonA-GD-2026-10-30-L', 'seasonA-INTC-2026-10-29-L', 'seasonA-MSTR-2026-10-29-L', 'seasonA-OSIS-2026-10-29-L', 'seasonA-PINS-2026-10-29-L', 'seasonA-RDDT-2026-10-29-L', 'seasonA-SPSC-2026-10-29-L', 'seasonA-SYK-2026-10-29-L', 'seasonA-CIFR-2026-11-02-L']
-- paper/options: AMZN: the account holds +0, the ledgers show +16 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: CIFR: the account holds +213, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: INTC: the account holds +0, the ledgers show +39 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: MSTR: the account holds +0, the ledgers show +36 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: RDDT: the account holds +0, the ledgers show +19 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: SNDK: the account holds +0, the ledgers show +2 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: ['seasonA-AMZN-2026-10-29-sell', 'seasonA-INTC-2026-10-29-sell', 'seasonA-MSTR-2026-10-29-sell', 'seasonA-RDDT-2026-10-29-sell', 'seasonA-SNDK-2026-10-29-sell', 'seasonA-CIFR-2026-11-02-buy'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
 - paper/options: 96 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 41 position(s), 0 open order(s) - they match the ledgers
 - Fri 30 Oct: 19 snapshot(s) - AEHR, BETA, BMRN, BWXT, DOCN, DT, FN, ICHR, IPGP, JAZZ, LSCC, MTCH, ON, PAY, PLTR, SHOP, VRTX, VVX, YUMC
