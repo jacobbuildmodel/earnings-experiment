@@ -1,0 +1,129 @@
+{
+ "track": "T2",
+ "event": "SHOP_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.54,
+  "thesis": "SHOP enters earnings with a strong growth profile but a large implied move (~13.5%) and a recent pullback, so the pre-earnings drift is a coin flip tilted slightly by the base rate.",
+  "reasons": [
+   "Base rates for BMO and software/internet are about 54-55%, which is the starting point.",
+   "Fundamentals are strong: 34% revenue growth, Q3 guide of low-thirties revenue growth, and upward EPS revisions over 90 days (+3.6%).",
+   "The stock is down 8% over 5 days and 13.8% below its 52-week high, which could give a modest rebound, but the weak sentiment in software (ServiceNow -19%) cuts against it.",
+   "The implied move of 13.5% is large with an ATM IV/RV of 2.3, so the print is high variance and the direction is near 50/50."
+  ],
+  "deciding_variable": "Q3 GMV growth and Q4 guidance relative to elevated expectations, particularly gross profit dollar growth and the free cash flow margin.",
+  "prior": {
+   "p": 0.55,
+   "from": "I3 BMO base rate 0.548 and software_internet cluster 0.541, overall validation 0.542"
+  },
+  "leak_probe": "I don't know. The date you mention (2026-11-03) is after today's date (2026-10-30) and after my knowledge cutoff, so I have no information about SHOP's earnings report or how the stock reacted.",
+  "moved_from_prior": "Moved down about 1 point from 0.55 to 0.54: the software sell-off sentiment (NOW crash) and a high bar after a +27% last print offset the positive revisions and strong guidance.",
+  "theses": [
+   {
+    "expected": "Beat on GMV and revenue with solid Q4 guide, stock gaps up",
+    "mechanism": "33%+ growth with operating leverage and a depressed price versus the high leads to a relief rally",
+    "wrong_if": "Q4 revenue guide implies deceleration below the low-thirties growth rate or gross profit growth guide is weak"
+   },
+   {
+    "expected": "In-line results but stock falls on sell-the-news",
+    "mechanism": "After a +27% reaction last quarter and a 63x forward PE, the bar is high and any slowdown in GMV causes derating",
+    "wrong_if": "GMV growth accelerates again and FCF margin comes in above the low-twenties"
+   },
+   {
+    "expected": "Software sector contagion weighs on the open",
+    "mechanism": "AI-disruption fears (NOW -19%) spill over to application software multiples regardless of SHOP's results",
+    "wrong_if": "SHOP is treated as an AI beneficiary through agentic commerce and rises despite the sector"
+   }
+  ],
+  "key_observations": [
+   "Q3 GMV growth versus about 30% constant currency",
+   "Q4 revenue and gross profit dollar growth guide",
+   "Free cash flow margin versus the high-teens to low-twenties guide",
+   "Transaction and loan loss ratio trends",
+   "Commentary on AI and agentic commerce"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/SHOP_2026-11-03/gate.json",
+    "published": "2026-10-30T14:31:31.226157-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/SHOP_2026-11-03/factors.json",
+    "published": "2026-10-30T14:31:31.226157-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000046/exhibit991pressreleaseq220.htm",
+    "published": "2026-08-05T07:01:47-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/29/servicenows-19-crash-says-wall-street-thinks-ai-will-eat-software-its-openai-deal-says-the-opposite/?.tsrc=rss",
+    "published": "2026-10-29T07:02:58-04:00",
+    "dossier_item": "I25"
+   }
+  ],
+  "decided_et": "2026-10-30T17:24:30-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20320,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 961,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20320,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 961,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20320,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20320
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.092992
+ }
+}
