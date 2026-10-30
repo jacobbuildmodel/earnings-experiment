@@ -7661,9 +7661,118 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-ALNY-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -43.32,
+      "sides": {
+       "ALNY261120P00220000": "sell"
+      },
+      "quotes": {
+       "ALNY261120P00220000": {
+        "bid": 43.32,
+        "ask": 45.84,
+        "t": "2026-10-29T18:31:36.411221716Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "ALNY261120C00220000",
+        "bid": 0,
+        "ask": 2.68
+       }
+      ],
+      "all_sides": {
+       "ALNY261120C00220000": "sell",
+       "ALNY261120P00220000": "sell"
+      },
+      "quote_age_s": {
+       "ALNY261120P00220000": 0
+      },
+      "order_class": "simple",
+      "limit_price": "43.32",
+      "id": "847c7be1-b93d-436d-b66e-df4db7de6209",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "ALNY261120P00220000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-ALNY-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -43.33,
+      "sides": {
+       "ALNY261120P00220000": "sell"
+      },
+      "quotes": {
+       "ALNY261120P00220000": {
+        "bid": 43.33,
+        "ask": 45.72,
+        "t": "2026-10-29T18:36:13.747325523Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [
+       {
+        "symbol": "ALNY261120C00220000",
+        "bid": 0,
+        "ask": 2.72
+       }
+      ],
+      "all_sides": {
+       "ALNY261120C00220000": "sell",
+       "ALNY261120P00220000": "sell"
+      },
+      "quote_age_s": {
+       "ALNY261120P00220000": 2
+      },
+      "order_class": "simple",
+      "limit_price": "41.16",
+      "id": "ecde8e65-f773-43cb-89a8-83910579ea1a",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:17.552490371Z",
+      "legs_filled": [
+       {
+        "symbol": "ALNY261120P00220000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 43.3
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 32.5,
+    "close_net": -43.3,
+    "pnl_per_unit": 10.799999999999997,
+    "qty": 1.0,
+    "pnl": 1080.0,
+    "pnl_on_spot": 0.048017073127876064,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.240000000000002,
+    "entry_credit_vs_gate_bid_sum": -61.6
+   }
   },
   "seasonA-ARXS-2026-10-28-L": {
    "season": "seasonA",
@@ -7791,7 +7900,28 @@
      }
     ]
    },
-   "open_failed": "platform"
+   "open_failed": "platform",
+   "close_sim": {
+    "net": -7.07,
+    "at": "2026-10-29T14:31:36.258317-04:00",
+    "why": "no real position (the entry was simulated); natural at this run"
+   },
+   "result": {
+    "open_net": 10.489999999999998,
+    "close_net": -7.07,
+    "pnl_per_unit": -3.419999999999998,
+    "qty": 1,
+    "pnl": -342.0,
+    "pnl_on_spot": -0.06518010139955108,
+    "simulated_legs": [
+     "close",
+     "open"
+    ],
+    "simulated_why": {
+     "open": "opening order unfilled for a platform reason; booked at the natural when sent",
+     "close": "no real position (the entry was simulated); natural at this run"
+    }
+   }
   },
   "seasonA-BDC-2026-10-29-L": {
    "season": "seasonA",
@@ -7874,9 +8004,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-BDC-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -7.52,
+      "sides": {
+       "BDC261120C00105000": "sell",
+       "BDC261120P00105000": "sell"
+      },
+      "quotes": {
+       "BDC261120C00105000": {
+        "bid": 4.72,
+        "ask": 7.1,
+        "t": "2026-10-29T18:31:30.949571697Z"
+       },
+       "BDC261120P00105000": {
+        "bid": 2.8,
+        "ask": 4.98,
+        "t": "2026-10-29T18:29:25.574869629Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "BDC261120C00105000": "sell",
+       "BDC261120P00105000": "sell"
+      },
+      "quote_age_s": {
+       "BDC261120C00105000": 5,
+       "BDC261120P00105000": 131
+      },
+      "limit_price": "-7.52",
+      "id": "3d8aa6e7-1366-43f8-9c62-6b4492a90d26",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "BDC261120C00105000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "BDC261120P00105000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-BDC-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -7.47,
+      "sides": {
+       "BDC261120C00105000": "sell",
+       "BDC261120P00105000": "sell"
+      },
+      "quotes": {
+       "BDC261120C00105000": {
+        "bid": 4.67,
+        "ask": 7.34,
+        "t": "2026-10-29T18:33:01.613169553Z"
+       },
+       "BDC261120P00105000": {
+        "bid": 2.8,
+        "ask": 4.98,
+        "t": "2026-10-29T18:29:25.574869629Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "BDC261120C00105000": "sell",
+       "BDC261120P00105000": "sell"
+      },
+      "quote_age_s": {
+       "BDC261120C00105000": 194,
+       "BDC261120P00105000": 410
+      },
+      "limit_price": "-7.09",
+      "id": "131eed18-dee8-4e43-adc9-bd8bae7535bb",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:17.709988379Z",
+      "legs_filled": [
+       {
+        "symbol": "BDC261120C00105000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 4.7
+       },
+       {
+        "symbol": "BDC261120P00105000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 2.75
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 15.299999999999999,
+    "close_net": -7.45,
+    "pnl_per_unit": -7.849999999999999,
+    "qty": 1.0,
+    "pnl": -785.0,
+    "pnl_on_spot": -0.07320712257995476,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.11999999999999922,
+    "entry_credit_vs_gate_bid_sum": -26.5
+   }
   },
   "seasonA-BHE-2026-10-28-L": {
    "season": "seasonA",
@@ -8001,9 +8252,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-BHE-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -3.23,
+      "sides": {
+       "BHE261120C00070000": "sell",
+       "BHE261120P00070000": "sell"
+      },
+      "quotes": {
+       "BHE261120C00070000": {
+        "bid": 3.05,
+        "ask": 6.27,
+        "t": "2026-10-29T18:05:56.741982001Z"
+       },
+       "BHE261120P00070000": {
+        "bid": 0.18,
+        "ask": 4.93,
+        "t": "2026-10-29T18:26:18.082551429Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "BHE261120C00070000": "sell",
+       "BHE261120P00070000": "sell"
+      },
+      "quote_age_s": {
+       "BHE261120C00070000": 1540,
+       "BHE261120P00070000": 318
+      },
+      "limit_price": "-3.23",
+      "id": "e761475c-9b6e-4366-b45c-7c04db266414",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "BHE261120C00070000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "BHE261120P00070000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-BHE-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -3.24,
+      "sides": {
+       "BHE261120C00070000": "sell",
+       "BHE261120P00070000": "sell"
+      },
+      "quotes": {
+       "BHE261120C00070000": {
+        "bid": 3.02,
+        "ask": 6.02,
+        "t": "2026-10-29T18:35:25.978729875Z"
+       },
+       "BHE261120P00070000": {
+        "bid": 0.22,
+        "ask": 4.82,
+        "t": "2026-10-29T18:35:21.254439391Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "BHE261120C00070000": "sell",
+       "BHE261120P00070000": "sell"
+      },
+      "quote_age_s": {
+       "BHE261120C00070000": 50,
+       "BHE261120P00070000": 54
+      },
+      "limit_price": "-3.07",
+      "id": "beaaa5f9-aabf-4767-89c0-af009a80afaa",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:17.822732979Z",
+      "legs_filled": [
+       {
+        "symbol": "BHE261120C00070000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 3.0
+       },
+       {
+        "symbol": "BHE261120P00070000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.2
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 10.9,
+    "close_net": -3.2,
+    "pnl_per_unit": -7.7,
+    "qty": 1.0,
+    "pnl": -770.0,
+    "pnl_on_spot": -0.10915792316505439,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.0600000000000005,
+    "entry_credit_vs_gate_bid_sum": -16.3
+   }
   },
   "seasonA-BOOT-2026-10-28-L": {
    "season": "seasonA",
@@ -8086,9 +8458,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-BOOT-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -20.11,
+      "sides": {
+       "BOOT261120C00110000": "sell",
+       "BOOT261120P00110000": "sell"
+      },
+      "quotes": {
+       "BOOT261120C00110000": {
+        "bid": 19.53,
+        "ask": 22.05,
+        "t": "2026-10-29T18:31:33.470778652Z"
+       },
+       "BOOT261120P00110000": {
+        "bid": 0.58,
+        "ask": 1.27,
+        "t": "2026-10-29T18:31:24.642284463Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "BOOT261120C00110000": "sell",
+       "BOOT261120P00110000": "sell"
+      },
+      "quote_age_s": {
+       "BOOT261120C00110000": 3,
+       "BOOT261120P00110000": 12
+      },
+      "limit_price": "-20.11",
+      "id": "8bf3cefe-e30c-4ad3-8fe1-faefa6e7f036",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "BOOT261120C00110000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "BOOT261120P00110000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-BOOT-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -20.04,
+      "sides": {
+       "BOOT261120C00110000": "sell",
+       "BOOT261120P00110000": "sell"
+      },
+      "quotes": {
+       "BOOT261120C00110000": {
+        "bid": 19.46,
+        "ask": 22.05,
+        "t": "2026-10-29T18:36:16.963031031Z"
+       },
+       "BOOT261120P00110000": {
+        "bid": 0.58,
+        "ask": 1.27,
+        "t": "2026-10-29T18:36:16.962461254Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "BOOT261120C00110000": "sell",
+       "BOOT261120P00110000": "sell"
+      },
+      "quote_age_s": {
+       "BOOT261120C00110000": -1,
+       "BOOT261120P00110000": -1
+      },
+      "limit_price": "-19.03",
+      "id": "a184654f-dc85-41c7-af0b-e1692654b855",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:17.973728067Z",
+      "legs_filled": [
+       {
+        "symbol": "BOOT261120C00110000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 19.2
+       },
+       {
+        "symbol": "BOOT261120P00110000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.6
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 17.9,
+    "close_net": -19.8,
+    "pnl_per_unit": 1.9000000000000021,
+    "qty": 1.0,
+    "pnl": 190.0,
+    "pnl_on_spot": 0.017011370386501353,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.1700000000000017,
+    "entry_credit_vs_gate_bid_sum": -32.4
+   }
   },
   "seasonA-CMG-2026-10-28-L": {
    "season": "seasonA",
@@ -8171,9 +8664,71 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-CMG-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 2,
+      "natural": -3.26,
+      "sides": {
+       "CMG261030C00028000": "sell"
+      },
+      "quotes": {
+       "CMG261030C00028000": {
+        "bid": 3.26,
+        "ask": 3.48,
+        "t": "2026-10-29T18:31:37.269697113Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "CMG261030P00028000",
+        "bid": 0,
+        "ask": 0.03
+       }
+      ],
+      "all_sides": {
+       "CMG261030C00028000": "sell",
+       "CMG261030P00028000": "sell"
+      },
+      "quote_age_s": {
+       "CMG261030C00028000": -1
+      },
+      "order_class": "simple",
+      "limit_price": "3.26",
+      "id": "941b63af-712b-4b84-aece-ae2a9d4decfb",
+      "status": "filled",
+      "filled_qty": 2.0,
+      "filled_at": "2026-10-29T18:31:38.547925574Z",
+      "legs_filled": [
+       {
+        "symbol": "CMG261030C00028000",
+        "side": "sell",
+        "qty": 2.0,
+        "price": 3.3
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 2.18,
+    "close_net": -3.3,
+    "pnl_per_unit": 1.1199999999999997,
+    "qty": 2.0,
+    "pnl": 224.0,
+    "pnl_on_spot": 0.040085897587395156,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.040000000000000036,
+    "entry_credit_vs_gate_bid_sum": -4.220000000000001
+   }
   },
   "seasonA-COHU-2026-10-28-L": {
    "season": "seasonA",
@@ -8256,9 +8811,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-COHU-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -8.459999999999999,
+      "sides": {
+       "COHU261120C00050000": "sell",
+       "COHU261120P00050000": "sell"
+      },
+      "quotes": {
+       "COHU261120C00050000": {
+        "bid": 6.18,
+        "ask": 7.16,
+        "t": "2026-10-29T18:31:27.044000892Z"
+       },
+       "COHU261120P00050000": {
+        "bid": 2.28,
+        "ask": 2.46,
+        "t": "2026-10-29T18:31:23.442826538Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "COHU261120C00050000": "sell",
+       "COHU261120P00050000": "sell"
+      },
+      "quote_age_s": {
+       "COHU261120C00050000": 9,
+       "COHU261120P00050000": 13
+      },
+      "limit_price": "-8.46",
+      "id": "68b07d9d-9b83-4261-b281-896fd01f45d2",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:31:38.677184463Z",
+      "legs_filled": [
+       {
+        "symbol": "COHU261120C00050000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 6.3
+       },
+       {
+        "symbol": "COHU261120P00050000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 2.3
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 10.3,
+    "close_net": -8.6,
+    "pnl_per_unit": -1.700000000000001,
+    "qty": 1.0,
+    "pnl": -170.0,
+    "pnl_on_spot": -0.03321609984101703,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.129999999999999,
+    "entry_credit_vs_gate_bid_sum": -19.4
+   }
   },
   "seasonA-CROX-2026-10-29-L": {
    "season": "seasonA",
@@ -8341,9 +8964,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-CROX-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -30.450000000000003,
+      "sides": {
+       "CROX261120C00120000": "sell",
+       "CROX261120P00120000": "sell"
+      },
+      "quotes": {
+       "CROX261120C00120000": {
+        "bid": 30.17,
+        "ask": 32.4,
+        "t": "2026-10-29T18:30:49.586560054Z"
+       },
+       "CROX261120P00120000": {
+        "bid": 0.28,
+        "ask": 0.57,
+        "t": "2026-10-29T18:30:07.82775079Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "CROX261120C00120000": "sell",
+       "CROX261120P00120000": "sell"
+      },
+      "quote_age_s": {
+       "CROX261120C00120000": 47,
+       "CROX261120P00120000": 88
+      },
+      "limit_price": "-30.45",
+      "id": "3d8b1567-1171-4550-8582-572b324a93fb",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "CROX261120C00120000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "CROX261120P00120000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-CROX-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -30.81,
+      "sides": {
+       "CROX261120C00120000": "sell",
+       "CROX261120P00120000": "sell"
+      },
+      "quotes": {
+       "CROX261120C00120000": {
+        "bid": 30.49,
+        "ask": 32.049,
+        "t": "2026-10-29T18:36:11.441330762Z"
+       },
+       "CROX261120P00120000": {
+        "bid": 0.32,
+        "ask": 0.53,
+        "t": "2026-10-29T18:35:31.405305034Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "CROX261120C00120000": "sell",
+       "CROX261120P00120000": "sell"
+      },
+      "quote_age_s": {
+       "CROX261120C00120000": 4,
+       "CROX261120P00120000": 44
+      },
+      "limit_price": "-29.26",
+      "id": "e3791fc1-8e1b-4295-a068-1e6c810fe9c8",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:18.117595345Z",
+      "legs_filled": [
+       {
+        "symbol": "CROX261120C00120000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 30.0
+       },
+       {
+        "symbol": "CROX261120P00120000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.3
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 17.0,
+    "close_net": -30.3,
+    "pnl_per_unit": 13.3,
+    "qty": 1.0,
+    "pnl": 1330.0,
+    "pnl_on_spot": 0.11176470588235295,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.21000000000000085,
+    "entry_credit_vs_gate_bid_sum": -32.3
+   }
   },
   "seasonA-ENTG-2026-10-29-L": {
    "season": "seasonA",
@@ -8426,9 +9170,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-ENTG-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -21.15,
+      "sides": {
+       "ENTG261120C00150000": "sell",
+       "ENTG261120P00150000": "sell"
+      },
+      "quotes": {
+       "ENTG261120C00150000": {
+        "bid": 16.41,
+        "ask": 18.38,
+        "t": "2026-10-29T18:31:38.082785605Z"
+       },
+       "ENTG261120P00150000": {
+        "bid": 4.74,
+        "ask": 5.95,
+        "t": "2026-10-29T18:30:46.09897496Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "ENTG261120C00150000": "sell",
+       "ENTG261120P00150000": "sell"
+      },
+      "quote_age_s": {
+       "ENTG261120C00150000": -2,
+       "ENTG261120P00150000": 50
+      },
+      "limit_price": "-21.15",
+      "id": "53646f7f-03db-412e-83b3-6667619d0a51",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:31:38.975886439Z",
+      "legs_filled": [
+       {
+        "symbol": "ENTG261120C00150000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 16.7
+       },
+       {
+        "symbol": "ENTG261120P00150000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 4.7
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 25.4,
+    "close_net": -21.4,
+    "pnl_per_unit": -4.0,
+    "qty": 1.0,
+    "pnl": -400.0,
+    "pnl_on_spot": -0.026593975816833666,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.39000000000000057,
+    "entry_credit_vs_gate_bid_sum": -48.9
+   }
   },
   "seasonA-FORM-2026-10-28-L": {
    "season": "seasonA",
@@ -8556,7 +9368,28 @@
      }
     ]
    },
-   "open_failed": "platform"
+   "open_failed": "platform",
+   "close_sim": {
+    "net": -14.4,
+    "at": "2026-10-29T14:31:36.258317-04:00",
+    "why": "no real position (the entry was simulated); natural at this run"
+   },
+   "result": {
+    "open_net": 19.97,
+    "close_net": -14.4,
+    "pnl_per_unit": -5.5699999999999985,
+    "qty": 1,
+    "pnl": -557.0,
+    "pnl_on_spot": -0.05217798594847774,
+    "simulated_legs": [
+     "close",
+     "open"
+    ],
+    "simulated_why": {
+     "open": "opening order unfilled for a platform reason; booked at the natural when sent",
+     "close": "no real position (the entry was simulated); natural at this run"
+    }
+   }
   },
   "seasonA-FTAI-2026-10-29-L": {
    "season": "seasonA",
@@ -8639,9 +9472,118 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-FTAI-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -31.58,
+      "sides": {
+       "FTAI261030C00157500": "sell"
+      },
+      "quotes": {
+       "FTAI261030C00157500": {
+        "bid": 31.58,
+        "ask": 37.12,
+        "t": "2026-10-29T18:31:22.585395903Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "FTAI261030P00157500",
+        "bid": 0,
+        "ask": 1.37
+       }
+      ],
+      "all_sides": {
+       "FTAI261030C00157500": "sell",
+       "FTAI261030P00157500": "sell"
+      },
+      "quote_age_s": {
+       "FTAI261030C00157500": 14
+      },
+      "order_class": "simple",
+      "limit_price": "31.58",
+      "id": "dbd2a73c-816b-4ad2-9e11-dbe3a9506256",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "FTAI261030C00157500",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-FTAI-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -30.85,
+      "sides": {
+       "FTAI261030C00157500": "sell"
+      },
+      "quotes": {
+       "FTAI261030C00157500": {
+        "bid": 30.85,
+        "ask": 36.37,
+        "t": "2026-10-29T18:33:06.569922889Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [
+       {
+        "symbol": "FTAI261030P00157500",
+        "bid": 0,
+        "ask": 1.37
+       }
+      ],
+      "all_sides": {
+       "FTAI261030C00157500": "sell",
+       "FTAI261030P00157500": "sell"
+      },
+      "quote_age_s": {
+       "FTAI261030C00157500": 189
+      },
+      "order_class": "simple",
+      "limit_price": "29.30",
+      "id": "450ae846-654d-41e9-bb17-7c70219edb50",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:18.369383945Z",
+      "legs_filled": [
+       {
+        "symbol": "FTAI261030C00157500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 31.0
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 18.299999999999997,
+    "close_net": -31.0,
+    "pnl_per_unit": 12.700000000000003,
+    "qty": 1.0,
+    "pnl": 1270.0,
+    "pnl_on_spot": 0.08068615306524268,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.010000000000005116,
+    "entry_credit_vs_gate_bid_sum": -33.699999999999996
+   }
   },
   "seasonA-FTNT-2026-10-28-L": {
    "season": "seasonA",
@@ -8766,9 +9708,118 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-FTNT-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -47.61,
+      "sides": {
+       "FTNT261030P00185000": "sell"
+      },
+      "quotes": {
+       "FTNT261030P00185000": {
+        "bid": 47.61,
+        "ask": 49.85,
+        "t": "2026-10-29T18:31:35.220945828Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "FTNT261030C00185000",
+        "bid": 0,
+        "ask": 0.03
+       }
+      ],
+      "all_sides": {
+       "FTNT261030C00185000": "sell",
+       "FTNT261030P00185000": "sell"
+      },
+      "quote_age_s": {
+       "FTNT261030P00185000": 1
+      },
+      "order_class": "simple",
+      "limit_price": "47.61",
+      "id": "157d8600-100c-494e-838d-600c7556e0bd",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "FTNT261030P00185000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-FTNT-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -47.58,
+      "sides": {
+       "FTNT261030P00185000": "sell"
+      },
+      "quotes": {
+       "FTNT261030P00185000": {
+        "bid": 47.58,
+        "ask": 50.78,
+        "t": "2026-10-29T18:36:17.078422841Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [
+       {
+        "symbol": "FTNT261030C00185000",
+        "bid": 0,
+        "ask": 0.03
+       }
+      ],
+      "all_sides": {
+       "FTNT261030C00185000": "sell",
+       "FTNT261030P00185000": "sell"
+      },
+      "quote_age_s": {
+       "FTNT261030P00185000": -1
+      },
+      "order_class": "simple",
+      "limit_price": "45.20",
+      "id": "a091c11d-6ee4-4979-b568-f4b0c7071063",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:18.491442935Z",
+      "legs_filled": [
+       {
+        "symbol": "FTNT261030P00185000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 47.15
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 21.65,
+    "close_net": -47.15,
+    "pnl_per_unit": 25.5,
+    "qty": 1.0,
+    "pnl": 2550.0,
+    "pnl_on_spot": 0.13749225192630235,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.020000000000003126,
+    "entry_credit_vs_gate_bid_sum": -41.3
+   }
   },
   "seasonA-GEN-2026-10-28-L": {
    "season": "seasonA",
@@ -8893,9 +9944,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-GEN-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -3.3499999999999996,
+      "sides": {
+       "GEN261120C00024000": "sell",
+       "GEN261120P00024000": "sell"
+      },
+      "quotes": {
+       "GEN261120C00024000": {
+        "bid": 3.32,
+        "ask": 4.32,
+        "t": "2026-10-29T18:31:20.050988687Z"
+       },
+       "GEN261120P00024000": {
+        "bid": 0.03,
+        "ask": 0.08,
+        "t": "2026-10-29T18:31:12.735586469Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "GEN261120C00024000": "sell",
+       "GEN261120P00024000": "sell"
+      },
+      "quote_age_s": {
+       "GEN261120C00024000": 16,
+       "GEN261120P00024000": 24
+      },
+      "limit_price": "-3.35",
+      "id": "c5e96c23-b892-4751-970e-b1231396ac4d",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:31:39.465072479Z",
+      "legs_filled": [
+       {
+        "symbol": "GEN261120C00024000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 3.3
+       },
+       {
+        "symbol": "GEN261120P00024000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.05
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 2.9,
+    "close_net": -3.3499999999999996,
+    "pnl_per_unit": 0.44999999999999973,
+    "qty": 1.0,
+    "pnl": 45.0,
+    "pnl_on_spot": 0.018761725601365485,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.040000000000000036,
+    "entry_credit_vs_gate_bid_sum": -5.35
+   }
   },
   "seasonA-GOOG-2026-10-28-L": {
    "season": "seasonA",
@@ -8978,9 +10097,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-GOOG-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -37.339999999999996,
+      "sides": {
+       "GOOG261030C00317500": "sell",
+       "GOOG261030P00317500": "sell"
+      },
+      "quotes": {
+       "GOOG261030C00317500": {
+        "bid": 0.01,
+        "ask": 0.03,
+        "t": "2026-10-29T18:31:37.539699096Z"
+       },
+       "GOOG261030P00317500": {
+        "bid": 37.33,
+        "ask": 37.55,
+        "t": "2026-10-29T18:31:38.623267742Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "GOOG261030C00317500": "sell",
+       "GOOG261030P00317500": "sell"
+      },
+      "quote_age_s": {
+       "GOOG261030C00317500": -1,
+       "GOOG261030P00317500": -2
+      },
+      "limit_price": "-37.34",
+      "id": "6a1c6cb2-2fdc-495f-bca8-55d13de2a85e",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:32:55.488626219Z",
+      "legs_filled": [
+       {
+        "symbol": "GOOG261030C00317500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.01
+       },
+       {
+        "symbol": "GOOG261030P00317500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 37.7
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 18.65,
+    "close_net": -37.71,
+    "pnl_per_unit": 19.060000000000002,
+    "qty": 1.0,
+    "pnl": 1906.0,
+    "pnl_on_spot": 0.05992674361011958,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.21999999999999886,
+    "entry_credit_vs_gate_bid_sum": -36.6
+   }
   },
   "seasonA-HII-2026-10-29-L": {
    "season": "seasonA",
@@ -9108,7 +10295,28 @@
      }
     ]
    },
-   "open_failed": "platform"
+   "open_failed": "platform",
+   "close_sim": {
+    "net": -35.730000000000004,
+    "at": "2026-10-29T14:31:36.258317-04:00",
+    "why": "no real position (the entry was simulated); natural at this run"
+   },
+   "result": {
+    "open_net": 32.28,
+    "close_net": -35.730000000000004,
+    "pnl_per_unit": 3.450000000000003,
+    "qty": 1,
+    "pnl": 345.0,
+    "pnl_on_spot": 0.012326490807382018,
+    "simulated_legs": [
+     "close",
+     "open"
+    ],
+    "simulated_why": {
+     "open": "opening order unfilled for a platform reason; booked at the natural when sent",
+     "close": "no real position (the entry was simulated); natural at this run"
+    }
+   }
   },
   "seasonA-HONA-2026-10-28-L": {
    "season": "seasonA",
@@ -9191,9 +10399,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-HONA-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -15.27,
+      "sides": {
+       "HONA261120C00170000": "sell",
+       "HONA261120P00170000": "sell"
+      },
+      "quotes": {
+       "HONA261120C00170000": {
+        "bid": 2.68,
+        "ask": 3.45,
+        "t": "2026-10-29T18:31:26.333080059Z"
+       },
+       "HONA261120P00170000": {
+        "bid": 12.59,
+        "ask": 14.07,
+        "t": "2026-10-29T18:31:29.369179989Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "HONA261120C00170000": "sell",
+       "HONA261120P00170000": "sell"
+      },
+      "quote_age_s": {
+       "HONA261120C00170000": 10,
+       "HONA261120P00170000": 7
+      },
+      "limit_price": "-15.27",
+      "id": "7f307c78-3755-4975-82ab-e273f9a4327b",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:31:39.839272688Z",
+      "legs_filled": [
+       {
+        "symbol": "HONA261120C00170000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 2.7
+       },
+       {
+        "symbol": "HONA261120P00170000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 12.7
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 20.7,
+    "close_net": -15.399999999999999,
+    "pnl_per_unit": -5.300000000000001,
+    "qty": 1.0,
+    "pnl": -530.0,
+    "pnl_on_spot": -0.03153635652143912,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.21000000000000085,
+    "entry_credit_vs_gate_bid_sum": -37.900000000000006
+   }
   },
   "seasonA-HWM-2026-10-29-L": {
    "season": "seasonA",
@@ -9276,9 +10552,118 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-HWM-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -12.31,
+      "sides": {
+       "HWM261030C00192500": "sell"
+      },
+      "quotes": {
+       "HWM261030C00192500": {
+        "bid": 12.31,
+        "ask": 14.56,
+        "t": "2026-10-29T18:31:17.306185257Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "HWM261030P00192500",
+        "bid": 0,
+        "ask": 0.32
+       }
+      ],
+      "all_sides": {
+       "HWM261030C00192500": "sell",
+       "HWM261030P00192500": "sell"
+      },
+      "quote_age_s": {
+       "HWM261030C00192500": 19
+      },
+      "order_class": "simple",
+      "limit_price": "12.31",
+      "id": "9a791530-2c73-4bde-b95c-d0c5a99e2552",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "HWM261030C00192500",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-HWM-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -12.21,
+      "sides": {
+       "HWM261030C00192500": "sell"
+      },
+      "quotes": {
+       "HWM261030C00192500": {
+        "bid": 12.21,
+        "ask": 14.41,
+        "t": "2026-10-29T18:35:54.740692767Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [
+       {
+        "symbol": "HWM261030P00192500",
+        "bid": 0,
+        "ask": 0.28
+       }
+      ],
+      "all_sides": {
+       "HWM261030C00192500": "sell",
+       "HWM261030P00192500": "sell"
+      },
+      "quote_age_s": {
+       "HWM261030C00192500": 21
+      },
+      "order_class": "simple",
+      "limit_price": "11.59",
+      "id": "a72b073e-af61-469a-b820-0ff4719a1185",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:18.79484799Z",
+      "legs_filled": [
+       {
+        "symbol": "HWM261030C00192500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 12.1
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 15.0,
+    "close_net": -12.1,
+    "pnl_per_unit": -2.9000000000000004,
+    "qty": 1.0,
+    "pnl": -290.0,
+    "pnl_on_spot": -0.015097875741123304,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.009999999999999787,
+    "entry_credit_vs_gate_bid_sum": -27.6
+   }
   },
   "seasonA-IDCC-2026-10-29-L": {
    "season": "seasonA",
@@ -9361,9 +10746,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-IDCC-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -23.72,
+      "sides": {
+       "IDCC261120C00330000": "sell",
+       "IDCC261120P00330000": "sell"
+      },
+      "quotes": {
+       "IDCC261120C00330000": {
+        "bid": 16.14,
+        "ask": 18.85,
+        "t": "2026-10-29T18:30:42.332175138Z"
+       },
+       "IDCC261120P00330000": {
+        "bid": 7.58,
+        "ask": 10.52,
+        "t": "2026-10-29T18:28:49.507686691Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "IDCC261120C00330000": "sell",
+       "IDCC261120P00330000": "sell"
+      },
+      "quote_age_s": {
+       "IDCC261120C00330000": 54,
+       "IDCC261120P00330000": 167
+      },
+      "limit_price": "-23.72",
+      "id": "403d7756-f480-407d-bf2c-71c647290d97",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "IDCC261120C00330000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "IDCC261120P00330000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-IDCC-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -24.28,
+      "sides": {
+       "IDCC261120C00330000": "sell",
+       "IDCC261120P00330000": "sell"
+      },
+      "quotes": {
+       "IDCC261120C00330000": {
+        "bid": 16.66,
+        "ask": 19.52,
+        "t": "2026-10-29T18:36:07.256693075Z"
+       },
+       "IDCC261120P00330000": {
+        "bid": 7.62,
+        "ask": 10.31,
+        "t": "2026-10-29T18:36:13.007679411Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "IDCC261120C00330000": "sell",
+       "IDCC261120P00330000": "sell"
+      },
+      "quote_age_s": {
+       "IDCC261120C00330000": 8,
+       "IDCC261120P00330000": 3
+      },
+      "limit_price": "-23.06",
+      "id": "494da7f9-32a6-48b5-b846-8d71c35dc64b",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:18.777708921Z",
+      "legs_filled": [
+       {
+        "symbol": "IDCC261120C00330000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 16.9
+       },
+       {
+        "symbol": "IDCC261120P00330000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 7.5
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 37.7,
+    "close_net": -24.4,
+    "pnl_per_unit": -13.300000000000004,
+    "qty": 1.0,
+    "pnl": -1330.0,
+    "pnl_on_spot": -0.04060696745204731,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.35999999999999943,
+    "entry_credit_vs_gate_bid_sum": -69.30000000000001
+   }
   },
   "seasonA-INCY-2026-10-29-L": {
    "season": "seasonA",
@@ -9446,9 +10952,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-INCY-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -7.92,
+      "sides": {
+       "INCY261120C00115000": "sell",
+       "INCY261120P00115000": "sell"
+      },
+      "quotes": {
+       "INCY261120C00115000": {
+        "bid": 3.76,
+        "ask": 4.24,
+        "t": "2026-10-29T18:31:23.818576859Z"
+       },
+       "INCY261120P00115000": {
+        "bid": 4.16,
+        "ask": 4.67,
+        "t": "2026-10-29T18:31:36.183538992Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "INCY261120C00115000": "sell",
+       "INCY261120P00115000": "sell"
+      },
+      "quote_age_s": {
+       "INCY261120C00115000": 12,
+       "INCY261120P00115000": 0
+      },
+      "limit_price": "-7.92",
+      "id": "35e223f1-96b3-4213-a683-902c726291b8",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "INCY261120C00115000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "INCY261120P00115000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-INCY-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -7.9,
+      "sides": {
+       "INCY261120C00115000": "sell",
+       "INCY261120P00115000": "sell"
+      },
+      "quotes": {
+       "INCY261120C00115000": {
+        "bid": 3.78,
+        "ask": 4.35,
+        "t": "2026-10-29T18:36:04.434817788Z"
+       },
+       "INCY261120P00115000": {
+        "bid": 4.12,
+        "ask": 5.16,
+        "t": "2026-10-29T18:36:11.997234021Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "INCY261120C00115000": "sell",
+       "INCY261120P00115000": "sell"
+      },
+      "quote_age_s": {
+       "INCY261120C00115000": 11,
+       "INCY261120P00115000": 4
+      },
+      "limit_price": "-7.50",
+      "id": "a936a00b-de89-466d-8fa5-b5da4be82e80",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:19.064069738Z",
+      "legs_filled": [
+       {
+        "symbol": "INCY261120C00115000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 3.8
+       },
+       {
+        "symbol": "INCY261120P00115000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 4.1
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 10.2,
+    "close_net": -7.8999999999999995,
+    "pnl_per_unit": -2.3,
+    "qty": 1.0,
+    "pnl": -230.0,
+    "pnl_on_spot": -0.01984983123742824,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.030000000000001137,
+    "entry_credit_vs_gate_bid_sum": -19.2
+   }
   },
   "seasonA-KLAC-2026-10-28-L": {
    "season": "seasonA",
@@ -9531,9 +11158,118 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-KLAC-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -14.06,
+      "sides": {
+       "KLAC261030C00152500": "sell"
+      },
+      "quotes": {
+       "KLAC261030C00152500": {
+        "bid": 14.06,
+        "ask": 18.06,
+        "t": "2026-10-29T18:31:38.915930056Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "KLAC261030P00152500",
+        "bid": 0,
+        "ask": 0.52
+       }
+      ],
+      "all_sides": {
+       "KLAC261030C00152500": "sell",
+       "KLAC261030P00152500": "sell"
+      },
+      "quote_age_s": {
+       "KLAC261030C00152500": -3
+      },
+      "order_class": "simple",
+      "limit_price": "14.06",
+      "id": "fa4fda19-4bae-477f-b59e-58ec856964c2",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "KLAC261030C00152500",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-KLAC-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -13.63,
+      "sides": {
+       "KLAC261030C00152500": "sell"
+      },
+      "quotes": {
+       "KLAC261030C00152500": {
+        "bid": 13.63,
+        "ask": 18.38,
+        "t": "2026-10-29T18:36:17.801221811Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [
+       {
+        "symbol": "KLAC261030P00152500",
+        "bid": 0,
+        "ask": 0.48
+       }
+      ],
+      "all_sides": {
+       "KLAC261030C00152500": "sell",
+       "KLAC261030P00152500": "sell"
+      },
+      "quote_age_s": {
+       "KLAC261030C00152500": -2
+      },
+      "order_class": "simple",
+      "limit_price": "12.94",
+      "id": "6518792d-54aa-4147-8cd2-6ca91450b1c6",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:19.190143218Z",
+      "legs_filled": [
+       {
+        "symbol": "KLAC261030C00152500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 13.8
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 12.3,
+    "close_net": -13.8,
+    "pnl_per_unit": 1.5,
+    "qty": 1.0,
+    "pnl": 150.0,
+    "pnl_on_spot": 0.009768487327319449,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.05000000000000071,
+    "entry_credit_vs_gate_bid_sum": -23.7
+   }
   },
   "seasonA-LHX-2026-10-29-L": {
    "season": "seasonA",
@@ -9616,9 +11352,71 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-LHX-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -20.51,
+      "sides": {
+       "LHX261030C00257500": "sell"
+      },
+      "quotes": {
+       "LHX261030C00257500": {
+        "bid": 20.51,
+        "ask": 23.89,
+        "t": "2026-10-29T18:31:21.741723361Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "LHX261030P00257500",
+        "bid": 0,
+        "ask": 0.62
+       }
+      ],
+      "all_sides": {
+       "LHX261030C00257500": "sell",
+       "LHX261030P00257500": "sell"
+      },
+      "quote_age_s": {
+       "LHX261030C00257500": 15
+      },
+      "order_class": "simple",
+      "limit_price": "20.51",
+      "id": "d5cac1ec-16da-4c7d-ba71-0e111fb8546a",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:31:40.526610782Z",
+      "legs_filled": [
+       {
+        "symbol": "LHX261030C00257500",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 20.9
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 11.7,
+    "close_net": -20.9,
+    "pnl_per_unit": 9.2,
+    "qty": 1.0,
+    "pnl": 920.0,
+    "pnl_on_spot": 0.0355947618840149,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.040000000000000924,
+    "entry_credit_vs_gate_bid_sum": -22.2
+   }
   },
   "seasonA-MSFT-2026-10-28-L": {
    "season": "seasonA",
@@ -9701,9 +11499,77 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-MSFT-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -8.8,
+      "sides": {
+       "MSFT261030C00530000": "sell",
+       "MSFT261030P00530000": "sell"
+      },
+      "quotes": {
+       "MSFT261030C00530000": {
+        "bid": 3.48,
+        "ask": 3.75,
+        "t": "2026-10-29T18:31:38.397797415Z"
+       },
+       "MSFT261030P00530000": {
+        "bid": 5.32,
+        "ask": 5.64,
+        "t": "2026-10-29T18:31:38.284972446Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "MSFT261030C00530000": "sell",
+       "MSFT261030P00530000": "sell"
+      },
+      "quote_age_s": {
+       "MSFT261030C00530000": -2,
+       "MSFT261030P00530000": -2
+      },
+      "limit_price": "-8.80",
+      "id": "0871b5c2-bf6d-41f2-a6d0-1de9ca50e3d1",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:31:40.655745432Z",
+      "legs_filled": [
+       {
+        "symbol": "MSFT261030C00530000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 3.55
+       },
+       {
+        "symbol": "MSFT261030P00530000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 5.3
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 27.3,
+    "close_net": -8.85,
+    "pnl_per_unit": -18.450000000000003,
+    "qty": 1.0,
+    "pnl": -1845.0,
+    "pnl_on_spot": -0.03476802648345768,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.129999999999999,
+    "entry_credit_vs_gate_bid_sum": -53.900000000000006
+   }
   },
   "seasonA-MUSA-2026-10-28-L": {
    "season": "seasonA",
@@ -9828,9 +11694,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-MUSA-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -30.4,
+      "sides": {
+       "MUSA261120C00530000": "sell",
+       "MUSA261120P00530000": "sell"
+      },
+      "quotes": {
+       "MUSA261120C00530000": {
+        "bid": 12.94,
+        "ask": 18.49,
+        "t": "2026-10-29T18:31:10.891697261Z"
+       },
+       "MUSA261120P00530000": {
+        "bid": 17.46,
+        "ask": 23.42,
+        "t": "2026-10-29T18:31:10.891697261Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "MUSA261120C00530000": "sell",
+       "MUSA261120P00530000": "sell"
+      },
+      "quote_age_s": {
+       "MUSA261120C00530000": 25,
+       "MUSA261120P00530000": 25
+      },
+      "limit_price": "-30.40",
+      "id": "b4f0150b-4a06-4695-9664-f5328f9661ea",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "MUSA261120C00530000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "MUSA261120P00530000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-MUSA-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -30.4,
+      "sides": {
+       "MUSA261120C00530000": "sell",
+       "MUSA261120P00530000": "sell"
+      },
+      "quotes": {
+       "MUSA261120C00530000": {
+        "bid": 12.57,
+        "ask": 18.13,
+        "t": "2026-10-29T18:35:51.428034713Z"
+       },
+       "MUSA261120P00530000": {
+        "bid": 17.83,
+        "ask": 23.18,
+        "t": "2026-10-29T18:35:51.428794691Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "MUSA261120C00530000": "sell",
+       "MUSA261120P00530000": "sell"
+      },
+      "quote_age_s": {
+       "MUSA261120C00530000": 24,
+       "MUSA261120P00530000": 24
+      },
+      "limit_price": "-28.88",
+      "id": "f0f938a2-5672-4738-8396-e501c85f672c",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:19.315094407Z",
+      "legs_filled": [
+       {
+        "symbol": "MUSA261120C00530000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 12.7
+       },
+       {
+        "symbol": "MUSA261120P00530000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 17.5
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 55.6,
+    "close_net": -30.2,
+    "pnl_per_unit": -25.400000000000002,
+    "qty": 1.0,
+    "pnl": -2540.0,
+    "pnl_on_spot": -0.04821930201440577,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.36999999999999744,
+    "entry_credit_vs_gate_bid_sum": -99.0
+   }
   },
   "seasonA-NOW-2026-10-28-L": {
    "season": "seasonA",
@@ -9913,9 +11900,118 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-NOW-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -45.95,
+      "sides": {
+       "NOW261030P00155000": "sell"
+      },
+      "quotes": {
+       "NOW261030P00155000": {
+        "bid": 45.95,
+        "ask": 46.2,
+        "t": "2026-10-29T18:31:39.691774615Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [
+       {
+        "symbol": "NOW261030C00155000",
+        "bid": 0,
+        "ask": 0.01
+       }
+      ],
+      "all_sides": {
+       "NOW261030C00155000": "sell",
+       "NOW261030P00155000": "sell"
+      },
+      "quote_age_s": {
+       "NOW261030P00155000": -3
+      },
+      "order_class": "simple",
+      "limit_price": "45.95",
+      "id": "3c1917f7-95be-463f-93fe-10651a0ec1bf",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "NOW261030P00155000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-NOW-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -45.82,
+      "sides": {
+       "NOW261030P00155000": "sell"
+      },
+      "quotes": {
+       "NOW261030P00155000": {
+        "bid": 45.82,
+        "ask": 46.12,
+        "t": "2026-10-29T18:36:19.167503836Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [
+       {
+        "symbol": "NOW261030C00155000",
+        "bid": 0,
+        "ask": 0.01
+       }
+      ],
+      "all_sides": {
+       "NOW261030C00155000": "sell",
+       "NOW261030P00155000": "sell"
+      },
+      "quote_age_s": {
+       "NOW261030P00155000": -4
+      },
+      "order_class": "simple",
+      "limit_price": "43.52",
+      "id": "fea6b4f7-9ad0-4a66-aa8d-a8d08229f484",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:19.451306916Z",
+      "legs_filled": [
+       {
+        "symbol": "NOW261030P00155000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 45.4
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 16.0,
+    "close_net": -45.4,
+    "pnl_per_unit": 29.4,
+    "qty": 1.0,
+    "pnl": 2940.0,
+    "pnl_on_spot": 0.1895734515087147,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.14000000000000057,
+    "entry_credit_vs_gate_bid_sum": -31.75
+   }
   },
   "seasonA-OLED-2026-10-28-L": {
    "season": "seasonA",
@@ -9998,9 +12094,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-OLED-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -7.6899999999999995,
+      "sides": {
+       "OLED261120C00090000": "sell",
+       "OLED261120P00090000": "sell"
+      },
+      "quotes": {
+       "OLED261120C00090000": {
+        "bid": 2.32,
+        "ask": 2.7,
+        "t": "2026-10-29T18:31:35.561504918Z"
+       },
+       "OLED261120P00090000": {
+        "bid": 5.37,
+        "ask": 8.43,
+        "t": "2026-10-29T18:25:02.737375132Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "OLED261120C00090000": "sell",
+       "OLED261120P00090000": "sell"
+      },
+      "quote_age_s": {
+       "OLED261120C00090000": 1,
+       "OLED261120P00090000": 394
+      },
+      "limit_price": "-7.69",
+      "id": "e1a46e5d-7347-4b4e-add8-a4e83f613bef",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "OLED261120C00090000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "OLED261120P00090000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-OLED-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -7.710000000000001,
+      "sides": {
+       "OLED261120C00090000": "sell",
+       "OLED261120P00090000": "sell"
+      },
+      "quotes": {
+       "OLED261120C00090000": {
+        "bid": 2.35,
+        "ask": 2.67,
+        "t": "2026-10-29T18:36:18.321883698Z"
+       },
+       "OLED261120P00090000": {
+        "bid": 5.36,
+        "ask": 8.4,
+        "t": "2026-10-29T18:36:19.084958813Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "OLED261120C00090000": "sell",
+       "OLED261120P00090000": "sell"
+      },
+      "quote_age_s": {
+       "OLED261120C00090000": -3,
+       "OLED261120P00090000": -3
+      },
+      "limit_price": "-7.32",
+      "id": "221dc254-f4ec-484e-87e0-84ddfe73a513",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:19.700955726Z",
+      "legs_filled": [
+       {
+        "symbol": "OLED261120C00090000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 2.3
+       },
+       {
+        "symbol": "OLED261120P00090000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 5.3
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 13.6,
+    "close_net": -7.6,
+    "pnl_per_unit": -6.0,
+    "qty": 1.0,
+    "pnl": -600.0,
+    "pnl_on_spot": -0.0665778941093914,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.049999999999998934,
+    "entry_credit_vs_gate_bid_sum": -24.9
+   }
   },
   "seasonA-PI-2026-10-28-L": {
    "season": "seasonA",
@@ -10177,9 +12394,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-QSR-2026-10-29-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -3.61,
+      "sides": {
+       "QSR261120C00075000": "sell",
+       "QSR261120P00075000": "sell"
+      },
+      "quotes": {
+       "QSR261120C00075000": {
+        "bid": 0.92,
+        "ask": 1.08,
+        "t": "2026-10-29T18:31:40.184171885Z"
+       },
+       "QSR261120P00075000": {
+        "bid": 2.69,
+        "ask": 3.43,
+        "t": "2026-10-29T18:31:39.862891272Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "QSR261120C00075000": "sell",
+       "QSR261120P00075000": "sell"
+      },
+      "quote_age_s": {
+       "QSR261120C00075000": -4,
+       "QSR261120P00075000": -4
+      },
+      "limit_price": "-3.61",
+      "id": "559418aa-bdda-466f-a084-2c300984080b",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "QSR261120C00075000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "QSR261120P00075000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-QSR-2026-10-29-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -3.54,
+      "sides": {
+       "QSR261120C00075000": "sell",
+       "QSR261120P00075000": "sell"
+      },
+      "quotes": {
+       "QSR261120C00075000": {
+        "bid": 0.93,
+        "ask": 1.12,
+        "t": "2026-10-29T18:36:16.114407287Z"
+       },
+       "QSR261120P00075000": {
+        "bid": 2.61,
+        "ask": 3.37,
+        "t": "2026-10-29T18:36:15.114454955Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "QSR261120C00075000": "sell",
+       "QSR261120P00075000": "sell"
+      },
+      "quote_age_s": {
+       "QSR261120C00075000": 0,
+       "QSR261120P00075000": 1
+      },
+      "limit_price": "-3.36",
+      "id": "ca6eb9e5-715d-4878-a03a-24a642eca822",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:19.817065996Z",
+      "legs_filled": [
+       {
+        "symbol": "QSR261120C00075000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 0.95
+       },
+       {
+        "symbol": "QSR261120P00075000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 2.65
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 4.8,
+    "close_net": -3.5999999999999996,
+    "pnl_per_unit": -1.2000000000000002,
+    "qty": 1.0,
+    "pnl": -120.0,
+    "pnl_on_spot": -0.016205266043827857,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.028999999999999915,
+    "entry_credit_vs_gate_bid_sum": -9.149999999999999
+   }
   },
   "seasonA-QTWO-2026-10-28-L": {
    "season": "seasonA",
@@ -10262,9 +12600,130 @@
        }
       ]
      }
+    ],
+    "close": [
+     {
+      "client_order_id": "seasonA-QTWO-2026-10-28-L-close",
+      "sent_et": "2026-10-29T14:31:36.258317-04:00",
+      "qty": 1,
+      "natural": -4.859999999999999,
+      "sides": {
+       "QTWO261120C00065000": "sell",
+       "QTWO261120P00065000": "sell"
+      },
+      "quotes": {
+       "QTWO261120C00065000": {
+        "bid": 2.73,
+        "ask": 3.88,
+        "t": "2026-10-29T18:31:24.112680858Z"
+       },
+       "QTWO261120P00065000": {
+        "bid": 2.13,
+        "ask": 2.63,
+        "t": "2026-10-29T18:31:32.057616391Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.0,
+      "dropped_legs": [],
+      "all_sides": {
+       "QTWO261120C00065000": "sell",
+       "QTWO261120P00065000": "sell"
+      },
+      "quote_age_s": {
+       "QTWO261120C00065000": 12,
+       "QTWO261120P00065000": 4
+      },
+      "limit_price": "-4.86",
+      "id": "0e53d16e-a5a5-49a1-98b6-67e3c5554fa9",
+      "status": "canceled",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "QTWO261120C00065000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "QTWO261120P00065000",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       }
+      ],
+      "cancel_requested": "2026-10-29T14:34:00.205692-04:00"
+     },
+     {
+      "client_order_id": "seasonA-QTWO-2026-10-28-L-close-r1",
+      "sent_et": "2026-10-29T14:36:15.639783-04:00",
+      "qty": 1,
+      "natural": -4.85,
+      "sides": {
+       "QTWO261120C00065000": "sell",
+       "QTWO261120P00065000": "sell"
+      },
+      "quotes": {
+       "QTWO261120C00065000": {
+        "bid": 2.73,
+        "ask": 3.88,
+        "t": "2026-10-29T18:31:24.112680858Z"
+       },
+       "QTWO261120P00065000": {
+        "bid": 2.12,
+        "ask": 2.67,
+        "t": "2026-10-29T18:36:11.509318056Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.05,
+      "dropped_legs": [],
+      "all_sides": {
+       "QTWO261120C00065000": "sell",
+       "QTWO261120P00065000": "sell"
+      },
+      "quote_age_s": {
+       "QTWO261120C00065000": 292,
+       "QTWO261120P00065000": 4
+      },
+      "limit_price": "-4.60",
+      "id": "51ad4949-243f-4552-8df5-469aadcb1487",
+      "status": "filled",
+      "filled_qty": 1.0,
+      "filled_at": "2026-10-29T18:36:20.098211003Z",
+      "legs_filled": [
+       {
+        "symbol": "QTWO261120C00065000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 2.75
+       },
+       {
+        "symbol": "QTWO261120P00065000",
+        "side": "sell",
+        "qty": 1.0,
+        "price": 2.1
+       }
+      ]
+     }
     ]
    },
-   "sanity_checked": true
+   "sanity_checked": true,
+   "exit_first_sent_et": "2026-10-29T14:31:36.258317-04:00",
+   "exit_late": false,
+   "result": {
+    "open_net": 10.5,
+    "close_net": -4.85,
+    "pnl_per_unit": -5.65,
+    "qty": 1.0,
+    "pnl": -565.0,
+    "pnl_on_spot": -0.08259026015999758,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.10999999999999943,
+    "entry_credit_vs_gate_bid_sum": -18.1
+   }
   },
   "seasonA-TENB-2026-10-28-L": {
    "season": "seasonA",
@@ -12156,11 +14615,96 @@
    "report_date": "2026-10-30",
    "skipped": "not_in_shx",
    "gate_status": "INELIGIBLE"
+  },
+  "seasonA-CIFR-2026-11-02-L": {
+   "season": "seasonA",
+   "ticker": "CIFR",
+   "report_date": "2026-11-02",
+   "session": "BMO",
+   "snapshot_session": "2026-10-29",
+   "reaction_session": "2026-11-02",
+   "expiry": "2026-11-06",
+   "strike": 8.0,
+   "spot_at_gate": 8.050000190734863,
+   "gate_status": "PASS",
+   "gate_captured_et": "2026-10-29T14:31:00.249545-04:00",
+   "gate_straddle_mid": 1.455,
+   "gate_bid_sum": 1.42,
+   "n": 2,
+   "equity": 85615.54,
+   "created_et": "2026-10-29T14:34:00.205692-04:00",
+   "exec": "v3",
+   "key": "seasonA-CIFR-2026-11-02-L",
+   "structure": "L",
+   "wings": [
+    5.0,
+    11.0
+   ],
+   "legs": [
+    {
+     "symbol": "CIFR261106C00008000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    },
+    {
+     "symbol": "CIFR261106P00008000",
+     "ratio_qty": "1",
+     "side": "buy",
+     "position_intent": "buy_to_open"
+    }
+   ],
+   "orders": {
+    "open": [
+     {
+      "client_order_id": "seasonA-CIFR-2026-11-02-L-open",
+      "sent_et": "2026-10-29T14:34:00.205692-04:00",
+      "qty": 2,
+      "natural": 1.46,
+      "sides": {
+       "CIFR261106C00008000": "buy",
+       "CIFR261106P00008000": "buy"
+      },
+      "quotes": {
+       "CIFR261106C00008000": {
+        "bid": 0.74,
+        "ask": 0.76,
+        "t": "2026-10-29T18:34:00.04261091Z"
+       },
+       "CIFR261106P00008000": {
+        "bid": 0.67,
+        "ask": 0.7,
+        "t": "2026-10-29T18:34:02.578322002Z"
+       }
+      },
+      "limit_price": "1.46",
+      "id": "89e69273-3cfa-4bd2-b45e-75f0df39367d",
+      "status": "filled",
+      "filled_qty": 2.0,
+      "filled_at": "2026-10-29T18:40:10.140050077Z",
+      "legs_filled": [
+       {
+        "symbol": "CIFR261106C00008000",
+        "side": "buy",
+        "qty": 2.0,
+        "price": 0.74
+       },
+       {
+        "symbol": "CIFR261106P00008000",
+        "side": "buy",
+        "qty": 2.0,
+        "price": 0.72
+       }
+      ]
+     }
+    ]
+   },
+   "sanity_checked": true
   }
  },
  "errors_last_run": null,
  "alerts": null,
- "updated_et": "2026-10-28T15:08:47.149870-04:00",
+ "updated_et": "2026-10-29T14:40:46.838301-04:00",
  "convention_verified": {
   "trade": "seasonA-RTX-2026-10-20-L",
   "fill_net": 10.25,

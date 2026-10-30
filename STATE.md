@@ -1,31 +1,30 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-28 09:55 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-29 09:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Wed 2026-10-28 09:55 ET by the new-RED-marker chat (no outcome, P&L or C1 figure read; "go" came 09:32).*
-- **Phase:** Season A, week 3 of 6. Gates: Wed 20 · Thu 1 · Fri 18 (+ pending). Mon: 3 PASS, all 3 tracks.
-- **Tue: 33 gates → 5 PASS** (CMG GOOG MSFT NOW QSR), 28 INELIGIBLE. All 5 froze T2 (17:23–17:24 ET), T2R (17:53–54)
-  and T2O (17:55–56) on Tue, 15 h before the 09:15 ET deadline; T2G also on CMG and QSR. check.py PASS (294 tokens).
-- **New-RED marker done** (`283515e`): `ops/health_known.json` + a KNOWN section in `health.py`, outside the status.
-  Acknowledged until 2026-11-06: the DPZ flag and its ledger-alerts line (the shares entry is out: sold). A failed
-  paper-options run is known only if its own job log shows errors 0, halt False, alerts ⊆ acknowledged, one error line.
-  Live: 10 of 10 paper-options failures in 24 h read known. Health was RED every day since Oct 20; it now reads RED
-  only for a new problem, so a "Health RED" issue comment means something again.
-  - Still alarms (AMBER): the paper-window runner's options job, same cause (all 45 inner runs exit 1 on the flag).
-    **Owed:** extend the classifier to its window jobs. Until then weekdays read AMBER.
-- 🔴 **AI: weekly 40% (Tue 08:20) → 55% (Wed 09:32) → 56% (09:45, after this build).** That is 15 points in 25 h with
-  5 PASS, ~25 routine sessions and no chat here: ~14 points a day, double Mon→Tue (6 in 19.5 h, 3 PASS). Jacob's own
-  use elsewhere shares it. Per-PASS cost still not isolated: bound ≤ 3 points, all draws included.
-  - The expectation "weekly < 60% until Fri 17:20 ET" (incident 2026-10-26) will likely FAIL: ~60% by Wed evening,
-    ~85% by Fri 17:20 at this pace. The Fri fire should still land (< 100%). Mon 10:20 UTC is the fallback.
-  - **Jacob, Wed 09:52 ET: keep the stop rule.** No laptop chat until the Mon Nov 2 06:00 UTC reset unless health goes
-    RED. Thu's build day and Fri's DST commits move to Mon after the reset.
+*Rewritten Thu 2026-10-29 09:40 ET by the Stage 1 planning chat (no outcome, P&L or C1 figure read).*
+- **Phase:** Season A, week 3 of 6. Gates: Thu 1 · Fri 18 (+ pending). Tue: 5 PASS (CMG GOOG MSFT NOW QSR), all frozen.
+- 🔴 **Stage 1 review for Jacob, Tue Nov 3 (SGT)**: is the model useful, not redundant, worth funding.
+  - Rules frozen **before any look**: `registry/D017_stage1_review_v1.md` (data cut: exit-A ≤ Fri Oct 30).
+    It fixes the 6 pillars, the words each result may use, the firewall, and what the evidence supports.
+    It also registers the global Holm/BH view (idea A). Plan, deck outline and committee questions:
+    `ops/stage1_plan_2026-11.md`.
+  - Never shown at Stage 1: C1 (blind to Dec 7) and H-T2C's b (Gate 1 only, D005 v3).
+- 🔴 **AI weekly 85% at Thu 09:13 ET** (5-hour 43%), with 3 d 16 h to the reset. That is ahead of Wed's estimate
+  (85% by Fri 17:20). Fri's 18 gates may lose T2 to the limit; Mon 10:20 UTC is the fallback; lost = missing.
+  Jacob's stop rule holds: this chat planned only, then stopped.
+- **Next action (Mon Nov 2, after 06:00 UTC = 14:00 SGT), in order:**
+  1. the DST inventory (the first EST session; T2 deadline 09:15 EST = 22:15 SGT);
+  2. write `pipeline/stage1.py` (D017 §2–4), test it on synthetic data, **commit before the first run**;
+  3. run it once and commit `outcomes/reports/stage1_2026-10-30.md`;
+  4. build the deck (Artifact slides) from that output only; have a second model review it for overclaiming;
+     deliver by Tue Nov 3 12:00 SGT. If the DST work breaks something, the deck moves to Wed Nov 4: tell Jacob
+     by Mon 20:00 SGT.
+  - Then the build day and the health marker's window-job extension (weekdays read AMBER until then).
 - 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): paper margin binds; owed: views split `capacity` out.
-- **Next action (Mon Nov 2, after 06:00 UTC):** the DST inventory (was due Oct 28; Mon is the first EST session),
-  then the build day, then the marker's window-job extension. Before then only on a health RED ("T2 AT RISK" etc.).
-- **DPZ flattened** (Jacob, Wed): 100 sold at market, $308.38 at 09:35:48 ET (`paper/manual/flatten_DPZ_2026-10-28.json`).
-- **Waiting on Jacob:** Actions' AI token · D003 v5 = A4 · the sleeve's size and loss limit.
+- **D003 v5 = A4 chosen** (Jacob, Thu 09:28 ET, before any look): `registry/D003_v5_choice_v1.md`. The v5 file,
+  its code and an independent review are owed before the Season B screen. **Waiting on Jacob:** Actions' AI token · the sleeve's size and loss limit.
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -166,7 +165,7 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 - **Owed before the Season B screen:**
   - the pooled H-T2C code, tested on synthetic data, reviewed and hashed (D005 v3);
   - `D005_confirmatory_seasonB.json` without `T2_confidence`;
-  - the D003 v5 decision (CHARTER I1, Jacob's call, on counts only).
+  - D003 v5: **A4 chosen 2026-10-29** (`registry/D003_v5_choice_v1.md`); owed: the v5 file, code, independent review.
 
 ## Waiting on Jacob
 
@@ -174,7 +173,7 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
    open, recorded in JOURNAL. (Plan, decision 1.)
 2. **The Actions AI token**, `CLAUDE_CODE_OAUTH_TOKEN`, refused since Oct 15: "organization has disabled Claude
    subscription access for Claude Code". Recommended: re-issue it from his own Max account. (Plan, decision 2.)
-3. **Before the Season B screen:** the D003 v5 gate change, if D016 supports one.
+3. ~~**Before the Season B screen:** the D003 v5 gate change, if D016 supports one.~~ **A4 chosen 2026-10-29.**
 4. **Before Gate 2 (Mar 2027):** the real-money sleeve and its loss limit (D008 v2).
 - Closed: an Anthropic API key (declined 2026-10-08, no new money until results); Fable credits (the same rule).
 
@@ -192,6 +191,16 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-10-29 (Thu) 09:40 ET — Stage 1 review planned for Tue Nov 3 (SGT); D017 frozen before any look.**
+- Jacob: "results that I can use … to pass stage 1 of the validation that this model is useful and not redundant",
+  a presentation like a PhD QA, plus the projects carrying into next month, by Nov 3. Startup PASS (`39faec3`).
+- Usage at 09:13 ET: weekly 85%, 5-hour 43%, reset Mon 06:00 UTC. So: plan and freeze only, no outcome read.
+- `registry/D017_stage1_review_v1.md` (hash in FROZEN.sha256) fixes the data cut, the 6 pillars, the words, the
+  firewall and the evidence-to-funding table, and registers idea A. `gate1.py` is not reused: it prints H-T2C's b,
+  which D005 v3 allows only at Gate 1. Hence a new `stage1.py`, committed before its first run.
+- HYPOTHESES: idea A now registered (D017 §6); the C + D history batch becomes D018.
+- 09:28 ET: Jacob chose **D003 v5 = A4**, before any look (`registry/D003_v5_choice_v1.md`, hash frozen).
 
 **2026-10-28 (Wed) 09:55 ET — new-RED marker built; Tue's 5 PASS fully frozen; the weekly allowance runs hot.**
 - Started Tue 08:20 ET (side session of the hand-off chat). Startup PASS. 5-hour 96%, weekly 40% at 08:20 Tue, so it
@@ -704,3 +713,4 @@ subscription access for Claude Code"), so laptop sessions add the line by hand u
 - **2026-10-23 (Fri), housekeeping 08:43 ET:** Re-checked 15 (BMRN BA CHRN GLW QRVO VRNS APH DBD WING ALGM CCC DRS HII INSM MSI); confirmed []; retired []; notes only: BA/WING/DRS have company dates but 10:00-10:30 ET calls (no session), MSI Nov 4 no session; cloud python3 is 3.11 so hk.py ran in a 3.12 venv
 - **2026-10-26 (Mon), housekeeping 08:57 ET:** 15 names re-checked (BMRN BA CHRN GLW QRVO VRNS APH DBD WING ALGM CCC DRS HII INSM MSI, plus TXT); confirmed [HII 2026-10-29 BMO via call time]; retired []; WING/DRS/TXT have no clear session; ran on python3.12 because hk.py needs 3.12+ syntax
 - **2026-10-28 (Wed), housekeeping 08:42 ET:** 15 re-checked; confirmed []; retired []; DBD/WING confirm refused (snapshot 10-26 passed), WING/GLW/BA/CHRN/APH retire INELIGIBLE, DBD retire refused (later snapshot ahead); 10 notes; ran under python3.12 venv because system python3.11 fails hk.py f-string syntax
+- **2026-10-29 (Thu), housekeeping 08:51 ET:** 9 re-checked (QRVO VRNS DBD ALGM CCC DRS INSM MSI TXT); confirmed []; retired []; none had a company-stated session; note: hk.py needs python3.12 (SyntaxError on 3.11)
