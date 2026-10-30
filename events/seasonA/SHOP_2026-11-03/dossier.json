@@ -1,0 +1,641 @@
+{
+ "event": "SHOP_2026-11-03",
+ "season": "seasonA",
+ "built_et": "2026-10-30T14:31:42-04:00",
+ "cutoff_et": "2026-10-30T14:31:31.226157-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/SHOP_2026-11-03/gate.json",
+   "published": "2026-10-30T14:31:31.226157-04:00",
+   "data": {
+    "ticker": "SHOP",
+    "report_date": "2026-11-03",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-02"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-03"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-10"
+     },
+     "reaction_day": "2026-11-03"
+    },
+    "snapshot_session": "2026-10-30",
+    "captured_et": "2026-10-30T14:31:31.226157-04:00",
+    "options": {
+     "spot": 154.55999755859375,
+     "expiry": "2026-11-06",
+     "strike": 155.0,
+     "call": {
+      "bid": 10.35,
+      "ask": 11.05,
+      "openInterest": 165.0,
+      "lastPrice": 10.79,
+      "impliedVolatility": 1.1959268719482423,
+      "lastTradeDate": "2026-10-30T17:07:52+00:00"
+     },
+     "put": {
+      "bid": 10.05,
+      "ask": 10.35,
+      "openInterest": 120.0,
+      "lastPrice": 10.29,
+      "impliedVolatility": 1.0927779736328125,
+      "lastTradeDate": "2026-10-30T17:26:41+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 3,
+     "implied_move": 0.1352225694237398,
+     "rel_spread": {
+      "call": 0.06542056074766366,
+      "put": 0.029411764705882252
+     },
+     "oi_atm": 285.0,
+     "oi_sum": 514.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/SHOP_2026-11-03/factors.json",
+   "published": "2026-10-30T14:31:31.226157-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.13658453549256155,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.03668925719406535,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.08370877241100816,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.05759958554633138,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.5025437894835986,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7866409067916519,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.13759626991488216,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "BMO",
+       "raw_return_A": 0.2726964128899352,
+       "eps_est": 0.4,
+       "eps_rep": 0.42,
+       "surprise_pct": 5.05,
+       "reaction_volume_ratio": 5.060112551159618
+      },
+      {
+       "date": "2026-05-05",
+       "session": "BMO",
+       "raw_return_A": -0.0836952099993078,
+       "eps_est": 0.33,
+       "eps_rep": 0.36,
+       "surprise_pct": 8.56,
+       "reaction_volume_ratio": 5.43835198636685
+      },
+      {
+       "date": "2026-02-11",
+       "session": "BMO",
+       "raw_return_A": 0.13212153502743318,
+       "eps_est": 0.51,
+       "eps_rep": 0.48,
+       "surprise_pct": -5.71,
+       "reaction_volume_ratio": 4.493523431272581
+      },
+      {
+       "date": "2025-11-04",
+       "session": "BMO",
+       "raw_return_A": -0.07085468694355412,
+       "eps_est": 0.34,
+       "eps_rep": 0.34,
+       "surprise_pct": 0.61,
+       "reaction_volume_ratio": 1.9451009916376196
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 4.234272240109167,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 5.05,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.45981,
+      "7daysAgo": 0.45955,
+      "30daysAgo": 0.45955,
+      "60daysAgo": 0.46247,
+      "90daysAgo": 0.44396,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.03570141454185056,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.45981,
+      "low": 0.39,
+      "high": 0.52483,
+      "yearAgoEps": 0.34,
+      "numberOfAnalysts": 33,
+      "growth": 0.3524,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.2932298123137818,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0172,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 62.86632,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 15.115344,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.337,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 200565506048,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.7037,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.1352225694237398,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.10314889831542984,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0841060247802734,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.0383409693754522,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.9592741376922012,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 8453.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.2771198186857218,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.13423084408328384,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 282,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.33694029850746277,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.13619871615964277,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.13658453549256155,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.08370877241100816,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.05759958554633138,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.5025437894835986,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 3.8450873608052483,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 200609751299.67883,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.06614334504696255,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.12743607463718037,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000046/exhibit991pressreleaseq220.htm",
+   "published": "2026-08-05T07:01:47-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 exhibit991pressreleaseq220.htm EX-99.1 Document Shopify Delivers Big: 30%+ Growth Across GMV, Revenue, Gross Profit, and Free Cash Flow August 5, 2026 - Shopify announced today financial results for the quarter ended June 30, 2026. Shopify achieved 34% revenue growth (33% in constant currency) and 18% free cash flow margins. “This was a monster quarter: more than 30% growth in GMV AND revenue AND gross profit AND free cash flow,” said Harley Finkelstein, President of Shopify. “We power every kind of business, and with AI, we're expanding what's possible for all of them. No one else comes close.” “GMV growth accelerated on top of last year’s already strong Q2 with solid results across all merchant sizes, channels, and geographies. Alongside this momentum, we continue to drive operating leverage, which flowed through to 18% free cash flow margins. Broad-based, consistent, and compounding growth with financial discipline; that’s exactly the model that we’ve been building,” said Jeff Hoffmeister, Chief Financial Officer. Selected Business Performance Information (1) (In US $ millions, except percentages) Three months ended June 30, 2026 June 30, 2025 GMV 115,567 87,837 MRR 221 185 Revenue 3,583 2,680 Gross profit 1,708 1,302 Operating income 488 291 Free cash flow 654 422 YoY revenue growth rate 34 % 31 % Free cash flow margin 18 % 16 % (1) See endnotes below for definitions of GMV and MRR and additional information on constant currency, free cash flow, and free cash flow margin, which are non-GAAP financial measures and are rec onciled to the comparable GAAP measures in the non-GAAP reconciliations at the end of this press release. Please refer to the Condensed Consolidated Statements of Cash Flows for additional information on the presentation of cash flows in 2026 and 2025. 1 2026 Outlook The outlook that follows supersedes all prior financial outlook statements made by Shopify, constitutes forward-looking information within the meaning of applicable securities laws, is based on a number of assumptions, and is subject to a number of risks. Actual results could vary materially as a result of numerous factors, including certain risk factors, many of which are beyond Shopify’s control. Please see \"Forward-looking Statements\" at the end of this press release. For the third quarter of 2026, we expect: • Revenue to grow at a low-thirties percentage rate on a year-over-year basis; • Gross profit dollars to grow at a mid-to-high twenties percentage rate on a year-over-year basis; • Operating expenses as a percentage of revenue to be 33% to 34%; • Stock-based compensation to be $150 million; and • Free cash flow margin to be in the high-teens to low-twenties. Quarterly Conference Call Shopify’s management team will hold a conference call to discuss its second-quarter results today, August 5, 2026, at 8:30 a.m. ET. The conference call will be webcast in the Investor Relations section of Shopify’s website at www.shopify.com/investors/events . An archived replay of the webcast will be available following the conclusion of the call. Shopify’s Form 10-Q for the quarter ended June 30, 2026, including the unaudited Condensed Consolidated Financial Statements and accompanying Notes, and Management's Discussion and Analysis, will be available on Shopify’s website at www.shopify.com and will be filed on EDGAR at www.sec.gov and on SEDAR+ at www.sedarplus.ca . About Shopify Shopify provides essential internet infrastructure for commerce. Shopify’s all-in-one platform makes it easier to start, run, and grow a business, powering sales online, in-store, and everywhere in between. Millions of businesses in 175+ countries use Shopify—from entrepreneurs to brands like Aldo, BarkBox, Carrier, Meta, SKIMS, Supreme, and Vuori. For more information, visit www.shopify.com . CONTACT INVESTORS: Shane Kleinstein CONTACT MEDIA: Ben McConaghy Director, Investor Relations Director, Communications IR@shopify.com press@shopify.com 2 Shopify Inc. Condensed Consolidated Statements of Operations (In US $ millions) Three months ended June 30, 2026 June 30, 2025 Revenues Subscription solutions 802 656 Merchant solutions 2,781 2,024 3,583 2,680 Cost of revenues Subscription solutions 163 121 Merchant solutions 1,712 1,257 1,875 1,378 Gross profit 1,708 1,302 Operating expenses Sales and marketing 498 415 Research and development 445 394 General and administrative 136 122 Transaction and loan losses 141 80 Total operating expenses 1,220 1,011 Operating income 488 291 Net other income, including taxes (2) 1,014 615 Net Income 1,502 906 less: equity investments, marked to market, net of taxes 1,063 568 Net income excluding the impact of equity investments (3) 439 338 (2) Net other income, including taxes includes interest income, gains and losses on equity and other investments, foreign exchange gains and losses, and our provision for income taxes. (3) Net income excluding the impact of equity investments is a non-GAAP financial measure which is reconciled at the end of this press release. This measure excludes the impact of any gains or losses on our equity investments in third parties. Shopify believes this measure provides useful information to investors given that valuations of third parties in public and private markets are outside of our control, and therefore, fluctuations in those valuations are not relevant to the fundamentals of our business and have little analytical or predictive value regarding our ability to drive operational results. This measure does not have a standardized meaning under US GAAP and may not be comparable to similar measures presented by other companies. GAAP and non-GAAP diluted net income (loss) per share are available in the Financial Supplemental posted on www.shopify.com/investors . Note: More detailed Condensed Consolidated Statements of Operations and Comprehensive Income are available in the Quarterly Report on Form 10-Q filed concurrently with this press release with US and Canadian regulators and available on www.sec.gov and www.sedarplus.ca . 3 Shopify Inc. Condensed Consolidated Balance Sheets (In US $ millions) June 30, 2026 December 31, 2025 Assets Current assets Cash and cash equivalents 1,656 1,545 Marketable securities 3,291 4,233 Trade and other receivables, net 466 500 Loans and merchant cash advances, net 2,184 1,784 Other current assets 219 234 7,816 8,296 Long-term assets Long-term assets (4) 195 210 Deferred tax assets 30 33 Long-term investments 525 975 Equity and other investments 4,854 4,582 Equity method investment 559 602 Goodwill 491 491 6,654 6,893 Total assets 14,470 15,189 Liabilities and shareholders’ equity Liabilities Accounts payable 575 570 Deferred tax liabilities 79 55 Other liabilities (5) 1,132 1,091 1,786 1,716 Shareholders’ equity 12,684 13,473 Total liabilities and shareholders’ equity 14,470 15,189 (4) Long-term assets includes Property and equipment, net, Operating lease right-of-use assets, net, Intangible assets, net, and Other long-term assets. (5) Other liabilities includes Accrued liabilities, Current and Long-term Deferred revenue, and Operating lease liabilities. Note: More detailed Condensed Consolidated Balance Sheet and Notes to the Condensed Consolidated Financial Statements are available in the Quarterly Report on Form 10-Q filed concurrently with this press release with US and Canadian regulators and available on www.sec.gov and www.sedarplus.ca . 4 Shopify Inc. Condensed Consolidated Statements of Cash Flows (In US $ millions) Three months ended June 30, 2026 June 30, 2025 Cash flows from operating activities Net income for the period 1,502 906 Adjustments to reconcile net income to net cash provided by operating activities: Amortization and depreciation 7 8 Stock-based compensation 128 113 Impairment of right-of-use assets and leasehold improvements — 10 Provision for transaction and loan losses 94 44 Deferred income tax recovery 165 98 Revenue related to non-cash consideration (13) (12) Net gain on equity and other investments (1,250) (682) Net loss on equity method investment 22 24 Unrealized foreign exchange loss (gain) 4 (46) Changes in operating assets and liabilities (1) (35) Net cash provided by operating activities 658 428 Cash flows from investing activities Purchases of property and equipment (4) (6) Purchases of marketable securities (654) (1,464) Maturities of marketable securities 1,450 1,464 Purchases and originations of loans and merchant cash advances (6) (1,584) (944) Repayments and sales of loans and merchant cash advances (6) 1,417 767 Purchases of equity and other investments (55) (71) Acquisition of businesses, net of cash acquired — — Other 1 2 Net cash provided by (used in) investing activities 571 (252) Cash flows from financing activities Proceeds from the exercise of stock options 3 44 Repurchases of common stock (1,420) — Net cash (used in) provided by financing activities (1,417) 44 Effect of foreign exchange on cash, cash equivalents and restricted cash (4) 13 Net (decrease) increase in cash, cash equivalents and restricted cash (192) 233 Cash, cash equivalents and restricted cash – beginning of period 1,848 1,309 Cash, cash equivalents and restricted cash – end of period 1,656 1,542 (6) Starting in April 2026, the cash flows associated with merchant cash advances are presented within investing cash flows rather than operating cash flows on a basis consistent with loans, given the similar nature of the underlying lending activities. For the three months ended June 30, 2026, the changes described above resulted in a net cash use of $37 million presented in Investing activities after consideration of repayments and purchases and originations. 5 Reconciliation of Non-GAAP Financial Measures Free Cash Flow Reconciliation (In US $ millions, except percentages) The following table illustrates how free cash flow is calculated in this press release: Three months ended June 30, 2026 June 30, 2025 Net cash provided by operating activities (6) 658 428 less: capital expenditures (7) (4) (6) Free cash flow 654 422 Revenue 3,583 2,680 Free cash flow margin 18 % 16 % Net Income Excluding the Impact of Equity Investments Reconciliation (In US $ millions) The following table illustrates how Net income excluding the impact of equity investments is calculated in this press release: Three months ended June 30, 2026 June 30, 2025 Net Income 1,502 906 less: equity investments, marked to market, net of taxes 1,063 568 Net income excluding the impact of equity investments (3) 439 338 (7) Capital expenditures is equivalent to the amount included in “Purchases of property and equipment” on our Condensed Consolidated Statements of Cash Flows for the reported period. 6 Constant Currency Analysis (In US $ millions, except percentages) The following table converts our GMV, revenues, gross profit, and operating income using the comparative period's monthly average exchange rates. We have provided the below disclosure as we believe it presents a clear comparison of our period-to-period operating results by removing the impact of fluctuations in foreign exchange rates and to assist investors in understanding our financial and operating performance. The table below and our Condensed Consolidated Statements of Operations disclosure are supplements to our Condensed Consolidated Financial Statements, which are prepared and presented in accordance with US GAAP (excluding GMV). Three months ended June 30, GMV Revenue Subscription solutions revenue Merchant solutions revenue Gross profit Operating income 2025 as reported 87,837 2,680 656 2,024 1,302 291 2026 as reported 115,567 3,583 802 2,781 1,708 488 Percentage change YoY 32 % 34 % 22 % 37 % 31 % 68 % Constant currency impact 1,149 16 3 44 12 11 Percentage change YoY constant currency 30 % 33 % 22 % 35 % 30 % 64 % 7 Regulatory Disclosures and Forward-looking Statements Advisory Regarding Forward-looking Statements This press release contains forward-looking statements and forward-looking information (collectively, “forward-looking statements“), including statements related to Shopify’s financial outlook, such as expected revenue and expenses for the next fiscal quarter, Shopify's expectations regarding its ability to support merchants as they scale, and Shopify's expectations regarding the development of emerging technologies, including AI. These statements can be identified by words such as “will“ and “expect“ and are based on Shopify's current projections and expectations about future events and financial results. Known and unknown risks may cause actual results to differ materially from those described in the forward-looking statements. These risks include, but are not limited to, the Company’s ability to maintain expected growth and manage expenses, the impact of changes in economic conditions and consumer spending in key markets such as the United States, Europe, and globally, the impact of measures that affect international trade, including tariffs, the adoption and impact of emerging technologies such as AI, our reliance on third-party providers to deliver services, a cyberattack or security breach, and serious errors or defects in software or hardware. Other factors and risks that may cause actual results to differ materially from those set out in the forward-looking statements are set out in Shopify's Form 10-Q under the heading “Risk Factors“ and other filings made with US and Canadian securities regulators, available at www.sec.gov and www.sedarplus.ca . Undue reliance should not be placed on the forward-looking statements in this press release, which are based on information available to management on the date hereof and represent management’s beliefs regarding future events, projections, and financial trends, which, by their nature, are inherently uncertain. The forward-looking statements are provided to give additional information about management’s expectations and beliefs and may not be appropriate for other purposes. S",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1594805/000159480526000047/shop-20260630.htm",
+   "published": "2026-08-05T07:03:05-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2: Management's Discussion and Analysis of Financial Condition and Results of Operations In this Management's Discussion and Analysis of Financial Condition and Results of Operations (\"MD&A\"), \"we\", \"us\", \"our\", \"Shopify\" and \"the Company\" refer to Shopify Inc. and its consolidated subsidiaries, unless the context requires otherwise. In this MD&A, we present Shopify's results of operations and cash flows for the three and six months ended June 30, 2026 and 2025, and our financial position as of June 30, 2026. You should read this MD&A in conjunction with the unaudited condensed consolidated financial statements and the accompanying notes thereto in Part I - Item 1 of this Quarterly Report on Form 10-Q and with our audited consolidated financial statements included in the Company's 2025 Form 10-K. Our unaudited condensed consolidated financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America (\"U.S. GAAP\"). All amounts are in U.S. dollars (\"USD\") except where otherwise indicated. Our MD&A is intended to enable readers to gain an understanding of Shopify's results of operations, cash flows and financial position. To do so, we provide information and analysis comparing our results of operations, cash flows and financial position for the most recently completed period with the same period from the preceding fiscal year. We also provide analysis and commentary that we believe will help investors assess our future prospects. In addition, we provide \"forward-looking statements\" that are not historical facts, but that are based on our current estimates, beliefs and assumptions and which are subject to known and unknown important risks, uncertainties, assumptions and other factors that could cause actual results to differ materially from current expectations, including those discussed under Part II — Item 1A \"Risk Factors\" of this Quarterly Report on Form 10-Q and in our 2025 Form 10-K. Forward-looking statements are intended to assist readers in understanding management's expectations as of the date of this Quarterly Report on Form 10-Q, including this MD&A, and may not be suitable for other purposes. See \"Forward-looking Statements\" in this Quarterly Report on Form 10-Q. In this MD&A, references to our \"solutions\" means the combination of products and services that we offer to merchants, and references to \"our merchants\" as of a particular date means the total number of unique shops that are paying for a subscription to our platform. Business Overview We believe we can help merchants of all verticals and sizes, from aspirational entrepreneurs to companies with large-scale, direct-to-consumer or business to business (\"B2B\") operations, or both, realize their potential at all stages of their business life cycle. In the six months ended June 30, 2026, our platform facilitated gross merchandise volume (\"GMV\") of $216.3 billion, representing an increase of 33% from the six months ended June 30, 2025. A detailed description of this metric is presented below in the section entitled, \"Key Performance Indicators\". During the six months ended June 30, 2026, our total revenue was $6.8 billion, an increase of 34% versus the six months ended June 30, 2025. Our business model has two revenue components: a recurring subscription component we call subscription solutions and a merchant success-based component we call merchant solutions. In the six months ended June 30, 2026, subscription solutions revenues accounted for 23% of our total revenues (June 30, 2025 - 25%). We offer a range of plans that increase in price depending on additional features and economic considerations. Shopify Plus is offered at a starting rate that is several times that of our standard Shopify plans. Shopify Plus solves for the complexity of merchants as they grow and scale globally, offering additional functionality and support, including features like Shopify Audiences, B2B features and Launchpad, for ecommerce automation. Aldo, BarkBox, Carrier, Meta, Vuori, SKIMS and Supreme are a few of our notable merchants seeking a reliable, cost-effective and scalable commerce solution. The flexibility of our pricing plans is designed to help our merchants grow in a cost-effective manner and to provide more advanced features and support as their business needs evolve. Revenue from subscription solutions is generated through the sale of subscriptions to our platform, including variable platform fees, as well as through the sale of subscriptions to our POS Pro offering, the sale of apps, the sale of themes and the registration of domain names. Subscription solutions revenues increased from $1.3 billion in the six months ended June 30, 2025 to $1.6 billion in the six months ended 26 Table of Contents June 30, 2026, representing an increase of 22%. Our merchants typically enter into monthly subscription agreements. The revenue from these agreements is recognized over time on a ratable basis over the contractual term and therefore we have deferred revenue on our balance sheet. We do not consider this deferred revenue balance to be a good indicator of future revenue. Instead, we believe Monthly Recurring Revenue (\"MRR\") is most closely correlated with the long-term value of our merchant relationships. As of June 30, 2026, MRR totaled $221 million, representing an increase of 19% relative to MRR at June 30, 2025. A detailed description of this metric is presented below in the section entitled, \"Key Performance Indicators\". We offer a variety of merchant solutions that are designed to add value to our merchants by passing on our economies of scale and augmenting our subscription solutions. During the six months ended June 30, 2026, merchant solutions revenues accounted for 77% of total revenues (June 30, 2025 - 75%). We principally generate merchant solutions revenues from payment processing fees and currency conversion fees from Shopify Payments. Shopify Payments is a fully integrated payment solution. In addition to payment processing fees and currency conversion fees from Shopify Payments, we also generate merchant solutions revenue from our lending services and financial products, referral fees from partners, the sale of shipping labels, the sale of POS hardware, advertising on the Shopify App Store and Shop Campaigns, our buyer acquisition offering. The majority of our merchant solutions revenues are directionally correlated with the level of GMV that our merchants process through our platform. Merchant solutions revenues increased from $3.8 billion in the six months ended June 30, 2025 to $5.2 billion in the six months ended June 30, 2026, representing an increase of 38%. Our business model is driven by our ability to attract new merchants, retain revenue from existing merchants and increase sales to both new and existing merchants. Our merchants represent a wide array of retail verticals, business sizes and geographies, and no single merchant has ever represented more than five percent of our total revenues in a single reporting period. We believe that our future success depends on many factors, including our ability to expand our merchant base; localize features for specific geographies; retain merchants as they grow their businesses on our platform and adopt more features; offer more sales channels that connect merchants with potential customers; develop new solutions to extend our platform’s functionality and catalyze merchants’ sales growth; leverage emerging technologies, including AI; enhance our ecosystem and partner programs; provide a high level of merchant support; hire, retain and motivate qualified personnel; and build with a focus on maximizing long-term value. We have focused on rapidly growing our business and plan to continue making investments to drive future growth. We believe that our investments will increase our revenue base, improve the retention of this base and strengthen our ability to increase sales to our merchants. We also maintain a portfolio of investments with varying time horizons in our cash management program. Key Performance Indicators Our key performance indicators, which we do not consider to be non-GAAP measures, that we use to evaluate our business, measure our performance, identify trends affecting our business, formulate financial projections and make strategic decisions are MRR and GMV. Our key performance indicators may be calculated in a manner different than similar key performance indicators used by other companies. The following table shows MRR and GMV for the three and six months ended June 30, 2026 and 2025: Three months ended June 30, Six months ended June 30, 2026 2025 2026 2025 (in US $ millions) Monthly Recurring Revenue 221 185 221 185 Gross Merchandise Volume 115,567 87,837 216,310 162,587 27 Table of Contents Monthly Recurring Revenue MRR is the aggregate value of all subscription plans, excluding variable platform fees, in effect on the last day of the period, assuming merchants maintain their subscription the following month. Subscription plans to both our platform and our POS Pro offering are included in this calculation. When applicable, MRR relating to subscription plans billed in a merchant's local currency is converted to USD using the respective currency exchange rate as of the period end date. Prospective merchants that have joined the platform through special new merchant trial incentives, including paid trials, are included in MRR at their trial price while merchants on free trials are excluded from the calculation of MRR through the duration of the free trial. MRR allows us to average our various pricing plans and billing periods into a single, consistent number that we can track over time. We also consider the factors that contribute to MRR, specifically the number of paying merchants using our platform, the number of merchants that are on full-price plans or paid trials, the mix of subscription plan types and overall pricing of our subscription plans. In addition, we use MRR to forecast monthly, quarterly and annual subscription plan revenue, which makes up the majority of our subscription solutions revenue. We had $221 million of MRR as of June 30, 2026 compared to $185 million as of June 30, 2025. In the three and six months ended June 30, 2026, the MRR growth rate for the period was higher than the same period in 2025 driven by the prior year impact of extending the length of paid trials. Gross Merchandise Volume GMV is the total dollar value of orders facilitated through our platform including certain apps and channels for which a revenue-sharing arrangement is in place in the period, net of refunds, and inclusive of shipping and handling, duty and value-added taxes. GMV does not represent revenue earned by us. However, the volume of GMV facilitated through our platform is an indicator of the success of our merchants and the strength of our platform. Our merchant solutions revenues are also directionally correlated with the level of GMV facilitated through our platform. For the three and six months ended June 30, 2026 we facilitated GMV of $115.6 billion and $216.3 billion, respectively, (June 30, 2025 - $87.8 billion and $162.6 billion), representing year-over-year growth of 32% on a quarterly basis and 33% on a year-to-date basis (2025 vs 2024 - 31% and 27%). On a constant currency basis, in which GMV in the three and six months ended June 30, 2026 is converted using the comparative period's monthly average exchange rates, year-over-year growth was 30% and 30% (2025 vs 2024 - 29% and 27%). Factors Affecting the Comparability of Our Results Change in Revenue Mix As a result of the continued growth of Shopify Payments, referral fees, other transaction services and other services rendered as part of strategic partnerships and Shopify Capital, our revenues from merchant solutions have increased. Merchant solutions are intended to complement subscription solutions by providing addi",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/lumen-report-q3-earnings-heres-151700821.html?.tsrc=rss",
+   "published": "2026-10-30T11:17:00-04:00",
+   "text": "Lumen to Report Q3 Earnings: Here's What Investors Should Know - LUMN gears up for Q3 earnings amid rising AI-driven connectivity demand, strategic growth and legacy business challenges. What can investors expect?",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://www.theaccountant-online.com/news/mia-appoints-ahmad-syahazan-yaacob/?.tsrc=rss",
+   "published": "2026-10-30T10:15:21-04:00",
+   "text": "MIA appoints Ahmad Syahazan Yaacob as president - The institute has also named Datuk Muhamad Umar Swift as its vice-president.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/pypl/articles/621533/what-could-paypal-stock-be-worth-in-three-years/2026-10-30?.tsrc=rss",
+   "published": "2026-10-30T08:32:25-04:00",
+   "text": "What Could PayPal Stock Be Worth In Three Years? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/investors-heavily-search-shopify-inc-120002582.html?.tsrc=rss",
+   "published": "2026-10-30T08:00:02-04:00",
+   "text": "Investors Heavily Search Shopify Inc. (SHOP): Here is What You Need to Know - Zacks.com users have recently been watching Shopify (SHOP) quite a bit. Thus, it is worth knowing the facts that could determine the stock's prospects.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/29/2-stocks-that-could-quietly-become-big-winners-in-the-artificial-intelligence-ai-revolution/?.tsrc=rss",
+   "published": "2026-10-29T17:22:02-04:00",
+   "text": "2 Stocks That Could Quietly Become Big Winners in the Artificial Intelligence (AI) Revolution - These aren’t top AI stocks, but the technology is helping improve their businesses.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/economy/articles/tracking-recession-probabilities-fred-macro-182500575.html?.tsrc=rss",
+   "published": "2026-10-29T14:25:00-04:00",
+   "text": "Tracking Recession Probabilities on the FRED Macro System - Polymarket odds for a 2027 recession? They rest at 35%.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/founder-led-giants-redefining-technology-173300946.html?.tsrc=rss",
+   "published": "2026-10-29T13:33:00-04:00",
+   "text": "Founder-Led Giants Redefining Technology and Global Market Growth - NVIDIA, Dell, Shopify, Salesforce and BlackRock stand out as founder-run companies with strong vision, innovation and long-term growth drivers.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/klac-q1-earnings-beat-estimates-171600750.html?.tsrc=rss",
+   "published": "2026-10-29T13:16:00-04:00",
+   "text": "KLAC Q1 Earnings Beat Estimates, Revenues Rise on AI Demand - KLA's Q1 fiscal 2027 earnings and revenues beat estimates as AI demand fuels wafer inspection growth, margin expansion and a strong second-quarter outlook.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/formfactors-q3-earnings-beat-estimates-170800791.html?.tsrc=rss",
+   "published": "2026-10-29T13:08:00-04:00",
+   "text": "FormFactor's Q3 Earnings Beat Estimates, Revenues Increase Y/Y - FORM's Q3'26 earnings beat estimates as revenues jump 38.4%, fueled by strong demand for probe cards, DRAM and photonics systems.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/now-q3-earnings-lag-estimates-170100941.html?.tsrc=rss",
+   "published": "2026-10-29T13:01:00-04:00",
+   "text": "NOW Q3 Earnings Lag Estimates, Revenues Rise on Subscription Growth - ServiceNow's Q3'26 earnings miss estimates despite 20.5% revenue growth, fueled by strong subscriptions and AI demand, prompting a higher 2026 outlook.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/googl-q3-earnings-miss-estimates-164800392.html?.tsrc=rss",
+   "published": "2026-10-29T12:48:00-04:00",
+   "text": "GOOGL Q3 Earnings Miss Estimates, Cloud & Search Aid Top-Line Growth - Alphabet's Q3'26 revenues surge 25% as Cloud growth hit 103% and Search gains momentum, but soaring AI spending and investment losses weigh on earnings.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/settle-launches-public-api-mcp-160000088.html?.tsrc=rss",
+   "published": "2026-10-29T12:00:00-04:00",
+   "text": "SETTLE LAUNCHES PUBLIC API AND MCP SERVER, OPENING ITS PROCURE-TO-PAY PLATFORM TO AI AGENTS - Settle, the leading cash flow management and working capital platform for inventory-based businesses, today announced the launch of its public API and Model Context Protocol (MCP) server. Businesses can now connect Settle directly to their own software, data warehouses and AI assistants such as Clau",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/shopifys-strong-merchant-retention-sustain-145200235.html?.tsrc=rss",
+   "published": "2026-10-29T10:52:00-04:00",
+   "text": "Can Shopify's Strong Merchant Retention Sustain Revenue Growth? - SHOP's 97% retention among merchants reaching $10M in annual GMV supports revenue growth, even as Adobe and Commerce.com intensify competition for merchants.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/aehr-gears-report-q1-earnings-144900617.html?.tsrc=rss",
+   "published": "2026-10-29T10:49:00-04:00",
+   "text": "AEHR Gears Up to Report Q1 Earnings: What's in Store for the Stock? - Aehr Test Systems heads into Q1 fiscal 2027 with a record backlog as AI processors, silicon photonics and data center demand drive testing needs.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/small-business/articles/square-earns-best-class-javelin-141000440.html?.tsrc=rss",
+   "published": "2026-10-29T10:10:00-04:00",
+   "text": "Square Earns Best in Class in Javelin Strategy & Research’s 2026 Small Business Point-of-Sale System Scorecard - Shopify POS and Lightspeed named as Overall Leaders as providers add tools and services beyond payments 2026 Small Business Point-of-Sale System Scorecard Results Square Earns Best in Class; Shopify POS and Lightspeed Named Overall Leaders LIVONIA, Mich., Oct. 29, 2026 (GLOBE NEWSWIRE) -- Javelin St",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/ichr-set-report-q3-earnings-130700441.html?.tsrc=rss",
+   "published": "2026-10-29T09:07:00-04:00",
+   "text": "ICHR Set to Report Q3 Earnings: What's in Store for the Stock? - Ichor expects AI-driven semiconductor equipment demand to lift Q3 revenues, while manufacturing changes and proprietary products support margin gains.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.axios.com/2026/10/29/conde-nast-shopify-shop-vogue-gq#utm_source=yahoo_finance&utm_medium=partner&utm_campaign=subs-partner-yahoo-finance-media?.tsrc=rss",
+   "published": "2026-10-29T09:00:12-04:00",
+   "text": "Condé Nast brings product picks to Shop app - Condé Nast is partnering with Shopify to bring curated shopping collections to the Shop app, the companies exclusively tell Axios.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/small-business/articles/front-row-expands-seoul-giving-130000391.html?.tsrc=rss",
+   "published": "2026-10-29T09:00:00-04:00",
+   "text": "Front Row Expands to Seoul, Giving Korean Brands a Direct Path to U.S. Growth - Front Row, the global growth partner that helps brands lead on Amazon, TikTok Shop and Shopify, today announced its expansion into Korea, giving Korean Beauty, Health and Wellness and Pharmacy brands direct, local support to launch and scale in the United States.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/shopify-shop-q3-earnings-preview-121506710.html?.tsrc=rss",
+   "published": "2026-10-29T08:15:06-04:00",
+   "text": "Shopify (SHOP) Q3 Earnings Preview: What You Should Know Beyond the Headline Estimates - Get a deeper insight into the potential performance of Shopify (SHOP) for the quarter ended September 2026 by going beyond Wall Street's top-and-bottom-line estimates and examining the estimates for some of its key metrics.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/29/servicenows-19-crash-says-wall-street-thinks-ai-will-eat-software-its-openai-deal-says-the-opposite/?.tsrc=rss",
+   "published": "2026-10-29T07:02:58-04:00",
+   "text": "ServiceNow’s 19% Crash Says Wall Street Thinks AI Will Eat Software. Its OpenAI Deal Says the Opposite. - ServiceNow stock cratered 19% the same morning it announced a major partnership with OpenAI, which means one of those two signals badly misreads where AI is headed for enterprise software.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:42-04:00",
+    "sha256": "802064eaefe3920d7227de8cedb9f5aa775ebe01d4159a171b55ef95f749b3d7"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 47816
+}

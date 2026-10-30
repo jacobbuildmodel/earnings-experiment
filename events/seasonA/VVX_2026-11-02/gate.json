@@ -1,0 +1,97 @@
+{
+ "season": "seasonA",
+ "ticker": "VVX",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:34.393312-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.gov2x.com/news/news-details/2026/V2X-to-Announce-Third-Quarter-2026-Financial-Results/default.aspx",
+  "published_et": "2026-10-08T07:28-04:00",
+  "quote": "nc. - V2X to Announce Third Quarter 2026 Financial Results View All News V2X to Announce Third Quarter 2026 Financial Results October 08, 2026 Download (opens in new window) RESTON, Va. , Oct. 8, 2026 /PRNewswire/ -- V2X, Inc. , (NYSE: VVX), a leading provider of global mission solutions, will report third quarter 2026 financial results on Monday, November 2, 2026, after market close.",
+  "title": "V2X to Announce Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-19T21:31:26.681476-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.gov2x.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 79.79000091552734,
+  "expiry": "2026-11-20",
+  "strike": 80.0,
+  "call": {
+   "bid": 3.0,
+   "ask": 5.5,
+   "openInterest": 109.0,
+   "lastPrice": 4.25,
+   "impliedVolatility": 0.5568891967773439,
+   "lastTradeDate": "2026-10-30T17:12:34+00:00"
+  },
+  "put": {
+   "bid": 2.3,
+   "ask": 5.1,
+   "openInterest": 3.0,
+   "lastPrice": 10.71,
+   "impliedVolatility": 0.6389196264648438,
+   "lastTradeDate": "2026-10-08T17:46:06+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.09963654478982352,
+  "rel_spread": {
+   "call": 0.5882352941176471,
+   "put": 0.7567567567567568
+  },
+  "oi_atm": 112.0,
+  "oi_sum": 112.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
