@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "DT",
+ "report_date": "2026-11-03",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:09.284628-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/dynatrace-report-second-quarter-fiscal-year-2027-financial-results-2026-10-20",
+  "published_et": "2026-10-20T08:00-04:00",
+  "quote": "linkedin facebook x email reddit BOSTON --(BUSINESS WIRE)-- Dynatrace (NYSE: DT), the leading AI-powered observability platform, today announced that it will report financial results for its second quarter of fiscal year 2027 ended September 30, 2026 before the U.S . financial markets open on November 3, 2026 .",
+  "title": "Dynatrace to Report Second Quarter Fiscal Year 2027 Financial Results",
+  "retrieved_et": "2026-10-26T09:20:15.597363-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session (company feed https://www.dynatrace.com/news/rss (RSS) gave no readable statement)"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T07:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-03T07:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 57.279998779296875,
+  "expiry": "2026-11-20",
+  "strike": 57.5,
+  "call": {
+   "bid": 3.5,
+   "ask": 3.6,
+   "openInterest": 448.0,
+   "lastPrice": 3.6,
+   "impliedVolatility": 0.6516148120117189,
+   "lastTradeDate": "2026-10-30T17:36:21+00:00"
+  },
+  "put": {
+   "bid": 3.5,
+   "ask": 3.7,
+   "openInterest": 88.0,
+   "lastPrice": 3.4,
+   "impliedVolatility": 0.6213416772460938,
+   "lastTradeDate": "2026-10-30T17:33:03+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.12482542165458768,
+  "rel_spread": {
+   "call": 0.028169014084507067,
+   "put": 0.0555555555555556
+  },
+  "oi_atm": 536.0,
+  "oi_sum": 536.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "IPGP",
+ "report_date": "2026-11-03",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:10.434981-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.ipgphotonics.com/news/news-details/2026/IPG-Photonics-to-Announce-Third-Quarter-2026-Financial-Results-on-November-3/default.aspx",
+  "published_et": "2026-10-20T08:00-04:00",
+  "quote": "ial Results on November 3 View All News IPG Photonics to Announce Third Quarter 2026 Financial Results on November 3 October 20, 2026 Download (opens in new window) MARLBOROUGH, Mass., Oct. 20, 2026 (GLOBE NEWSWIRE) -- IPG Photonics Corporation (Nasdaq: IPGP) will release its third quarter 2026 financial results before the market opens on Tuesday, November 3, 2026.",
+  "title": "IPG Photonics to Announce Third Quarter 2026 Financial Results on November 3",
+  "retrieved_et": "2026-10-21T21:13:58.441804-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.ipgphotonics.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T07:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-03T07:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 71.51499938964844,
+  "expiry": "2026-11-20",
+  "strike": 70.0,
+  "call": {
+   "bid": 5.7,
+   "ask": 8.6,
+   "openInterest": 2.0,
+   "lastPrice": 12.22,
+   "impliedVolatility": 0.9201668139648438,
+   "lastTradeDate": "2026-10-08T15:20:47+00:00"
+  },
+  "put": {
+   "bid": 3.5,
+   "ask": 6.0,
+   "openInterest": 9.0,
+   "lastPrice": 3.81,
+   "impliedVolatility": 0.7912618530273439,
+   "lastTradeDate": "2026-10-29T14:22:49+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.1663986590444198,
+  "rel_spread": {
+   "call": 0.4055944055944055,
+   "put": 0.5263157894736842
+  },
+  "oi_atm": 11.0,
+  "oi_sum": 11.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
