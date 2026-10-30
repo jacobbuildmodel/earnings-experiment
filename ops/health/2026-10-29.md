@@ -1,4 +1,4 @@
-# Health 2026-10-29 20:57 ET - **RED**
+# Health 2026-10-29 22:44 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - paper/options_ledger.json: HALT - fill anomaly - new opens stopped until a person clears 'halt' in the ledger
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-30T02:34:51Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40992515141
 - Actions failure: Earnings experiment - paper options at 2026-10-29T23:49:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40975749362
 - Actions failure: Earnings experiment - paper options at 2026-10-29T23:03:30Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40970430473
 - Actions failure: Earnings experiment - paper options at 2026-10-29T22:53:54Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40969286655
@@ -16,7 +17,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-29T20:11:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40946765719
 - Actions failure: Earnings experiment - paper options at 2026-10-29T19:50:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40943697875
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-29T15:00:21Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40897132963
-- Actions failure: Earnings experiment - paper options at 2026-10-29T02:21:24Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40805850883
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
@@ -35,5 +35,5 @@ check.py: PASS - 1 warning(s)
 - Mon 02 Nov: 24 snapshot(s) - ALAB, AMD, ANET, DDOG, DUOL, FLYW, FRSH, HUT, NATL, NVTS, OUST, Q, RAL, RIOT, RPRX, SMCI, SWKS, TOST, UBER, VSH, W, XYZ, YOU, ZBH
 - Tue 03 Nov: 45 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KVYO, LOAR, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
 - Wed 04 Nov: 34 snapshot(s) - AKAM, ALRM, ATEN, AVPT, AXON, BILL, CARG, CART, DBX, DIOD, FIGS, FIVN, FROG, GRND, HALO, IONQ, IREN, KRMN, LASR, LITE, LYFT, MRNA, NET, PCTY, PDFS, QNT, SARO, SOUN, TDC, TEAM, TXG, TXRH, UA, WULF
-- seasonA: 66 name(s) still PENDING a confirmed date
+- seasonA: 62 name(s) still PENDING a confirmed date
 
