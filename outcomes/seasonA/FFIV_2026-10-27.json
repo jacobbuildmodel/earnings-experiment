@@ -3,24 +3,75 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-28T21:08:46-04:00",
+ "graded_et": "2026-10-29T21:16:21-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "FFIV",
  "report_date": "2026-10-27",
  "session": "AMC",
  "entry_session": "2026-10-27",
  "cluster": "software_internet",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-27T16:09:27-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 461.45,
+   "entry_session": "2026-10-27",
+   "exit": 421.31,
+   "exit_session": "2026-10-28",
+   "dividends": 0,
+   "raw_return": -0.08698667244555203,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.454466,
+    "bench_return": 0.003611086034124744,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.08862778827113656,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.004529201430274132,
+    "print_gap": -0.08283263671194707,
+    "entry_close": 459.36,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 461.45,
+   "entry_session": "2026-10-27",
+   "exit": 365.53,
+   "exit_session": "2026-10-28",
+   "dividends": 0,
+   "raw_return": -0.2078665077473183,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.454466,
+    "bench_return": 0.010291595197255532,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.21254368785023423,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +90,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }
