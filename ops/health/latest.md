@@ -1,4 +1,4 @@
-# Health 2026-10-29 19:59 ET - **RED**
+# Health 2026-10-29 20:57 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -28,7 +28,7 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: open ['seasonA-BBIO-2026-10-29-L', 'seasonA-AMZN-2026-10-29-L', 'seasonA-AXTI-2026-10-29-L', 'seasonA-COLM-2026-10-29-L', 'seasonA-DXCM-2026-10-29-L', 'seasonA-EXEL-2026-10-29-L', 'seasonA-GDDY-2026-10-29-L', 'seasonA-GD-2026-10-30-L', 'seasonA-INTC-2026-10-29-L', 'seasonA-MSTR-2026-10-29-L', 'seasonA-OSIS-2026-10-29-L', 'seasonA-PINS-2026-10-29-L', 'seasonA-RDDT-2026-10-29-L', 'seasonA-SPSC-2026-10-29-L', 'seasonA-SYK-2026-10-29-L', 'seasonA-CIFR-2026-11-02-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET (done)
-- paper/options: 100 position(s), 0 open order(s) - they match the ledgers
+- paper/options: 100 position(s), 6 open order(s) - they match the ledgers
 - paper/long: 41 position(s), 0 open order(s) - they match the ledgers
 - Thu 29 Oct: 1 snapshot(s) - CIFR
 - Fri 30 Oct: 19 snapshot(s) - AEHR, BETA, BMRN, BWXT, DOCN, DT, FN, ICHR, IPGP, JAZZ, LSCC, MTCH, ON, PAY, PLTR, SHOP, VRTX, VVX, YUMC
