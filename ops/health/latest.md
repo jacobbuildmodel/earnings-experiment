@@ -1,4 +1,4 @@
-# Health 2026-10-30 10:53 ET - **RED**
+# Health 2026-10-30 11:49 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -16,7 +16,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-29T21:00:13Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40953964992
 - Actions failure: Earnings experiment - paper options at 2026-10-29T20:11:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40946765719
 - Actions failure: Earnings experiment - paper options at 2026-10-29T19:50:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40943697875
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-29T15:00:21Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40897132963
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
