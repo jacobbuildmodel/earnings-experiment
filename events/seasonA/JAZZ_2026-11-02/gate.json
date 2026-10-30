@@ -1,0 +1,64 @@
+{
+ "season": "seasonA",
+ "ticker": "JAZZ",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:18.119801-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/jazz-pharmaceuticals-report-third-quarter-financial-results-november-2-2026-2026-10",
+  "published_et": "2026-10-19T16:15-04:00",
+  "quote": "linkedin facebook x email reddit DUBLIN , Oct. 19, 2026 /PRNewswire/ -- Jazz Pharmaceuticals plc (Nasdaq: JAZZ) today announced it will report its 2026 third quarter financial results on Monday, November 2, 2026 , after the close of the U.S . financial markets.",
+  "title": "Jazz Pharmaceuticals to Report Third Quarter Financial Results on November 2, 2026",
+  "retrieved_et": "2026-10-21T21:21:08.386546-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": [
+   {
+    "accepted_utc": "2026-10-26T20:03:16.000Z",
+    "accession": "0001628280-26-067275"
+   }
+  ]
+ },
+ "status": "INELIGIBLE",
+ "reason": "printed_before_entry"
+}

@@ -1,0 +1,97 @@
+{
+ "season": "seasonA",
+ "ticker": "ICHR",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:10.274119-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/ichor-announce-third-quarter-2026-financial-results-november-2nd-2026-10-07",
+  "published_et": "2026-10-07T09:00-04:00",
+  "quote": "The earnings press release and supplemental financial information will be available on Ichor's investor website, https://ir.ichorsystems.com , after the market close on November 2 nd.",
+  "title": "Ichor to Announce Third Quarter 2026 Financial Results on November 2nd",
+  "retrieved_et": "2026-10-19T21:29:00.084927-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 38.119998931884766,
+  "expiry": "2026-11-20",
+  "strike": 37.5,
+  "call": {
+   "bid": 4.3,
+   "ask": 4.7,
+   "openInterest": 20.0,
+   "lastPrice": 5.97,
+   "impliedVolatility": 1.133305114746094,
+   "lastTradeDate": "2026-10-27T18:34:03+00:00"
+  },
+  "put": {
+   "bid": 3.1,
+   "ask": 3.7,
+   "openInterest": 46.0,
+   "lastPrice": 3.4,
+   "impliedVolatility": 1.001958115234375,
+   "lastTradeDate": "2026-10-30T17:31:22+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.20724029961585838,
+  "rel_spread": {
+   "call": 0.08888888888888896,
+   "put": 0.17647058823529413
+  },
+  "oi_atm": 66.0,
+  "oi_sum": 66.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
