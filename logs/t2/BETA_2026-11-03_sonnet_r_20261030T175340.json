@@ -1,0 +1,57 @@
+{
+ "event": "BETA_2026-11-03",
+ "backend": "sonnet_r",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "63bb45459f01a29eada60dc539d93f12246f79d38e3c3c5771d387688b6c514f",
+ "called_et": "2026-10-30T17:53:40-04:00",
+ "prompt_sha256": "2bcaaefa4095b3c984c08e41b94ca7fc5da174d1b64e4bf5d22ed74eaa63ab47",
+ "probe_reply": "I don't know. Today is 2026-10-30, so that earnings report on 2026-11-03 hasn't happened yet, and I have no information about how BETA's stock will react.",
+ "reply": "{\"prior\":{\"p\":0.55,\"from\":\"BMO session base rate 0.548 (validation overall 0.542); drones/robotics/space/defense cluster 0.586 is a candidate only, so I stay near 0.55\"},\"confidence\":0.50,\"thesis\":\"BETA enters the print with a high implied move (~17%) and mixed signals: recent positive FAA and eIPP news flow against a stock down 10% in a month and 47% off its high, with two prior prints falling after earnings, so I see no edge over a coin flip.\",\"reasons\":[\"Base rate for BMO events is ~55%, with the sector cluster slightly higher at 59%, but the cluster difference is not a finding.\",\"The last two prints had negative open-to-open reactions (-8.0% and -2.2%) despite EPS beats; the last four split 50/50.\",\"Positive news flow (FAA Special Airworthiness Certificate, 14 Florida eIPP flights, and the Loganair term sheet) is likely already priced in ahead of the print.\",\"The stock is down 9.9% over a month and 47% off its 52-week high, with 9.9% short interest, which gives some mean-reversion and squeeze potential but also shows weak momentum.\",\"The entry is at the open of 2026-11-02, so the return measured is only that open to the next-day open, which is the reaction session, and implied volatility is elevated relative to realised (1.25x), so the distribution is wide and nearly symmetric.\"],\"moved_from_prior\":\"Moved down about 0.05 from 0.55 to 0.50: the last two post-earnings reactions were negative, estimates were revised down 21% over 90 days, and the positive news seems already priced in. The sector cluster's higher hit rate offsets some of that, but not enough to push above 0.50.\",\"deciding_variable\":\"Whether FY2026 revenue and adjusted EBITDA guidance holds or improves, together with certification timeline commentary (H500A and CX300) and cash burn relative to the $1.48B cash balance.\",\"theses\":[{\"expected\":\"Rise: guidance is raised or reaffirmed and certification milestones are on track, producing a relief rally.\",\"mechanism\":\"The stock is depressed and heavily shorted, so good certification and eIPP progress could trigger a squeeze after the recent run of news.\",\"wrong_if\":\"Revenue misses the $42-50M annual range, burn guidance widens, or certification timelines slip.\"},{\"expected\":\"Fall: the sell-the-news pattern of the last two prints repeats.\",\"mechanism\":\"The positive FAA and eIPP news has already lifted expectations, while R&D and cash burn keep growing quickly (R&D +111% year on year), so a modest beat is not enough.\",\"wrong_if\":\"Management raises guidance and announces new orders that convert term sheets into firm orders.\"},{\"expected\":\"Flat or noisy move within the ±17% implied range, with direction set by the sector tape.\",\"mechanism\":\"Eletric aviation and defense peers move together, so sector sentiment on the day matters more than BETA's own numbers.\",\"wrong_if\":\"There is a large idiosyncratic surprise such as an equity raise or a major order.\"}],\"key_observations\":[\"FY2026 revenue and adjusted EBITDA guidance versus $42-50M and -$400 to -$445M\",\"Q3 revenue against the roughly $14.7M Q2 level and the consensus of around -$0.62 EPS\",\"Timing updates on H500A and CX300 FAA certification\",\"Quarterly cash burn and capex relative to $1.48B in cash\",\"Backlog conversion, including Loganair, and defense (MV250) traction\",\"Any capital raise or ATM disclosure\"],\"items_used\":[\"I1\",\"I2\",\"I3\",\"I4\",\"I6\",\"I10\"]}",
+ "error": null,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 20950,
+  "cache_read_input_tokens": 633,
+  "output_tokens": 1246,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 20950,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1246,
+    "cache_read_input_tokens": 633,
+    "cache_creation_input_tokens": 20950,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 20950
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model": "claude-sonnet-5-5",
+ "isolation": {
+  "tools": [],
+  "mcp_servers": [],
+  "num_turns": 1,
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "model": "claude-sonnet-5-5"
+ },
+ "outcome": "decided"
+}
