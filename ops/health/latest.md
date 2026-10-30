@@ -1,4 +1,4 @@
-# Health 2026-10-30 19:00 ET - **RED**
+# Health 2026-10-30 19:53 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - paper/options_ledger.json: HALT - fill anomaly - new opens stopped until a person clears 'halt' in the ledger
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-30T23:29:32Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41144776126
 - Actions failure: Earnings experiment - paper options at 2026-10-30T22:44:19Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41140078688
 - Actions failure: Earnings experiment - paper options at 2026-10-30T22:33:02Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41138861401
 - Actions failure: Earnings experiment - paper options at 2026-10-30T22:11:39Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41136459857
@@ -15,8 +16,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-30T19:54:02Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41118981350
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-30T14:52:56Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41075575074
 - Actions failure: Earnings experiment - paper options at 2026-10-30T02:34:51Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40992515141
-- Actions failure: Earnings experiment - paper options at 2026-10-29T23:49:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40975749362
-- Actions failure: Earnings experiment - paper options at 2026-10-29T23:03:30Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40970430473
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
