@@ -1,4 +1,4 @@
-# Health 2026-10-29 19:19 ET - **RED**
+# Health 2026-10-29 19:59 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - paper/options_ledger.json: HALT - fill anomaly - new opens stopped until a person clears 'halt' in the ledger
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-10-29T23:49:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40975749362
 - Actions failure: Earnings experiment - paper options at 2026-10-29T23:03:30Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40970430473
 - Actions failure: Earnings experiment - paper options at 2026-10-29T22:53:54Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40969286655
 - Actions failure: Earnings experiment - paper options at 2026-10-29T22:41:05Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40967723745
@@ -16,7 +17,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-29T19:50:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40943697875
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-29T15:00:21Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40897132963
 - Actions failure: Earnings experiment - paper options at 2026-10-29T02:21:24Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40805850883
-- Actions failure: Earnings experiment - paper options at 2026-10-28T23:54:49Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40790558595
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
