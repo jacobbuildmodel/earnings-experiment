@@ -1,0 +1,658 @@
+{
+ "event": "DT_2026-11-03",
+ "season": "seasonA",
+ "built_et": "2026-10-30T14:31:23-04:00",
+ "cutoff_et": "2026-10-30T14:31:09.284628-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/DT_2026-11-03/gate.json",
+   "published": "2026-10-30T14:31:09.284628-04:00",
+   "data": {
+    "ticker": "DT",
+    "report_date": "2026-11-03",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-02"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-03"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-10"
+     },
+     "reaction_day": "2026-11-03"
+    },
+    "snapshot_session": "2026-10-30",
+    "captured_et": "2026-10-30T14:31:09.284628-04:00",
+    "options": {
+     "spot": 57.279998779296875,
+     "expiry": "2026-11-20",
+     "strike": 57.5,
+     "call": {
+      "bid": 3.5,
+      "ask": 3.6,
+      "openInterest": 448.0,
+      "lastPrice": 3.6,
+      "impliedVolatility": 0.6516148120117189,
+      "lastTradeDate": "2026-10-30T17:36:21+00:00"
+     },
+     "put": {
+      "bid": 3.5,
+      "ask": 3.7,
+      "openInterest": 88.0,
+      "lastPrice": 3.4,
+      "impliedVolatility": 0.6213416772460938,
+      "lastTradeDate": "2026-10-30T17:33:03+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 13,
+     "implied_move": 0.12482542165458768,
+     "rel_spread": {
+      "call": 0.028169014084507067,
+      "put": 0.0555555555555556
+     },
+     "oi_atm": 536.0,
+     "oi_sum": 536.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/DT_2026-11-03/factors.json",
+   "published": "2026-10-30T14:31:09.284628-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.16874108836951618,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.03341207557066128,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.10569873458070256,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.038939808732124215,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.3652766813831681,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.1978102379706188,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.12214561257782564,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "BMO",
+       "raw_return_A": 0.17056820609352807,
+       "eps_est": 0.44,
+       "eps_rep": 0.48,
+       "surprise_pct": 8.16,
+       "reaction_volume_ratio": 4.594914592386407
+      },
+      {
+       "date": "2026-05-13",
+       "session": "BMO",
+       "raw_return_A": -0.16199998855590825,
+       "eps_est": 0.39,
+       "eps_rep": 0.41,
+       "surprise_pct": 5.36,
+       "reaction_volume_ratio": 3.4609267133337664
+      },
+      {
+       "date": "2026-02-09",
+       "session": "BMO",
+       "raw_return_A": 0.14537841956283537,
+       "eps_est": 0.41,
+       "eps_rep": 0.44,
+       "surprise_pct": 7.18,
+       "reaction_volume_ratio": 2.8890394822741334
+      },
+      {
+       "date": "2025-11-05",
+       "session": "BMO",
+       "raw_return_A": 0.014804289635078627,
+       "eps_est": 0.41,
+       "eps_rep": 0.44,
+       "surprise_pct": 7.53,
+       "reaction_volume_ratio": 3.542530017784419
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.6218527014446815,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 8.16,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": -1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.49113,
+      "7daysAgo": 0.49082,
+      "30daysAgo": 0.48988,
+      "60daysAgo": 0.48956,
+      "90daysAgo": 0.48683,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.008832652055132235,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.49113,
+      "low": 0.48,
+      "high": 0.51272,
+      "yearAgoEps": 0.44,
+      "numberOfAnalysts": 33,
+      "growth": 0.1162,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.06662187200944754,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.07,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 25.250832,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 7.933012,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.162,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 16624309248,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.7027,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.12482542165458768,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.030273134765625098,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.01928691650390635,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.3927272727272728,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.4083592766774856,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 1316.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.7424551773159949,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.11846376637450794,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 282,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.1617244406084437,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.12889055591220236,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.16843504082489003,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.1059329170777169,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.038939808732124215,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.36545986885382303,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.626377706048885,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.07081904461308092,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 16549706683.5271,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.12662375473311926,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": -1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.06193584903640205,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000049/q1fy27-earningsreleaseex99.htm",
+   "published": "2026-08-05T06:32:18-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q1fy27-earningsreleaseex99.htm EX-99.1 Document EXHIBIT 99.1 Dynatrace Reports First Quarter Fiscal Year 2027 Financial Results Exceeds high end of guidance across all metrics Delivers ARR growth of 17% Achieves record new logo ARR growth of more than 160% BOSTON, Mass., August 5, 2026 - Dynatrace (NYSE: DT), the leading AI-powered observability platform, today announced financial results for the first quarter of fiscal 2027 ended June 30, 2026. \"Dynatrace delivered an exceptional quarter, led by 41% organic net new ARR growth,\" 1 said Rick McConnell, Chief Executive Officer of Dynatrace. \"Demand continues to strengthen as enterprises expand cloud-native workloads and accelerate their AI initiatives. As software becomes increasingly AI-driven, customers are turning to Dynatrace for the deterministic answers, contextual analytics, and intelligent automation required to operate at scale, and we are increasingly confident in the opportunity ahead.\" \"In Q1, we exceeded the high end of our top-line and profitability guidance, increased free cash flow, and returned capital to shareholders,\" said Jim Benson, Chief Financial Officer, Dynatrace. \"These strong results reflect the competitive differentiation of our platform and the momentum in our business, providing a solid start toward our goal of accelerating ARR growth in fiscal 2027. During the quarter, we also repurchased $275 million of Dynatrace stock, underscoring our confidence in our long-term growth trajectory and our commitment to delivering shareholder value.\" First Quarter Fiscal 2027 Financial and Other Recent Business Highlights : All growth rates are compared to the first quarter of fiscal 2026, unless otherwise noted. Financial Highlights : • Total ARR of $2,136 million, an increase of 17% on an as reported and constant currency basis • Total revenue of $555 million, an increase of 16%, or 15% on a constant currency basis • Subscription revenue of $530 million, an increase of 16%, or 15% on a constant currency basis • GAAP income from operations of $71 million and non-GAAP income from operations of $162 million • GAAP net income per share of $0.12 and non-GAAP net income per share of $0.48, on a dilutive basis Business Highlights • Demonstrated four consecutive quarters of acceleration in trailing-twelve-month organic net new ARR growth. • Nearly doubled annualized logs consumption in the last two quarters to $200 million, growing well over 100% year-over-year. • Named a Leader in the 2026 Gartner® Magic Quadrant™ for Observability Platforms for the 16th consecutive year. 2 • Named a Leader and an Outperformer in the 2026 GigaOm Radar for Kubernetes Observability. • Launched the private preview of our observability offering for AI-first teams, Dynatrace Bluebox, at the AWS Summit New York. • Delivered significant advancements of Dynatrace Intelligence, extending the power of the Dynatrace platform. New capabilities include Autonomous SRE agent, Cloud SE agent, and Agent Building to help customers move beyond analysis and recommendations into trusted, autonomous execution. Share Repurchase Program • During the first quarter of fiscal 2027, Dynatrace spent $275 million to repurchase 7.1 million shares at an average price of $38.88 under that program. 1 Represents the quarterly increase in ARR for the first quarter of fiscal 2027 compared to ARR for the first quarter of fiscal 2026, adjusted for foreign exchange, and excludes $13 million of ARR contributed from the Bindplane acquisition. 2 Gartner, Magic Quadrant for Observability Platforms, Padraig Byrne, Martin Caren, D.B. Cummings, Neil Young, 13 July 2026. See below for disclaimers. 1 CFO Leadership Update Dynatrace also announced today that in connection with his planned retirement, Jim Benson will resign from his position as Chief Financial Officer by the company’s current fiscal year end on March 31, 2027. Dynatrace has initiated a search for a new CFO, and Mr. Benson will ensure a smooth transition of his duties once a new CFO is appointed. \"I want to thank Jim for his leadership and many contributions to Dynatrace,” said Rick McConnell. “Jim has played a critical role in scaling the business, strengthening our financial profile, and positioning Dynatrace for its next phase of growth acceleration. Jim built a world-class Finance organization, and we will miss his valuable insights and guidance when he retires.” \"Serving as CFO of Dynatrace has been a privilege, and I am proud of what we have accomplished over the last four years,\" said Jim Benson. \"During my tenure, Dynatrace delivered consistent growth and profitability with disciplined capital allocation, strategic investment, and a relentless focus on shareholder value creation. The momentum across the business and the opportunities ahead give me tremendous confidence in Dynatrace's future. I am committed to assisting Rick in the search process and ensuring a smooth transition once a new CFO is appointed.\" 2 First Quarter 2027 Financial Highlights (Unaudited – In thousands, except per share data) Three Months Ended June 30, 2026 2025 Annual recurring revenue (ARR): Total ARR $ 2,135,982 $ 1,822,205 Year-over-Year Increase 17 % Year-over-Year Increase - constant currency (*) 17 % Revenue: Total revenue $ 554,548 $ 477,349 Year-over-Year Increase 16 % Year-over-Year Increase - constant currency (*) 15 % Subscription revenue $ 530,255 $ 457,507 Year-over-Year Increase 16 % Year-over-Year Increase - constant currency (*) 15 % GAAP Financial Measures: GAAP income from operations $ 71,476 $ 62,338 GAAP operating margin 13 % 13 % GAAP net income $ 36,651 $ 47,955 GAAP net income per share - diluted $ 0.12 $ 0.16 GAAP shares outstanding - diluted 293,744 304,160 Net cash provided by operating activities $ 306,240 $ 269,692 Net cash provided by operating activities as a percent of revenue 55 % 56 % Non-GAAP Financial Measures (*) : Non-GAAP income from operations $ 161,600 $ 143,106 Non-GAAP operating margin 29 % 30 % Non-GAAP net income $ 139,721 $ 126,277 Non-GAAP net income per share - diluted $ 0.48 $ 0.42 Non-GAAP shares outstanding - diluted 293,744 304,160 Adjusted free cash flow $ 309,177 $ 262,157 Adjusted free cash flow margin 56 % 55 % * For additional information, please see the \"Non-GAAP Financial Measures\" and \"Definitions - Non-GAAP and Other Metrics\" sections of this press release. 3 Financial Outlook Based on information available as of August 5, 2026, Dynatrace is issuing guidance for the second quarter and updating its prior guidance for full year fiscal 2027 in the tables below. This guidance is based on foreign exchange rates as of June 30, 2026. We expect foreign exchange to be a headwind of approximately $14 million on ARR and approximately $4 million on revenue for fiscal 2027 compared to ARR and revenue at constant currency. This represents an incremental headwind of approximately $23 million to ARR and $19 million to revenue compared to our prior guidance. This guidance also excludes the impact of any share repurchases after June 30, 2026. Growth rates for ARR, Total revenue, and Subscription revenue are presented in constant currency to provide better visibility into the underlying growth of the business. All growth rates below are compared to the full year and second quarter of fiscal 2026. (In millions, except per share data) Current Guidance Fiscal 2027 Prior Guidance Fiscal 2027* Guidance Change at Midpoint** ARR $2,359 - $2,379 $2,382 - $2,402 $(23) As reported 15% - 16% 16% - 17% (100) bps Constant currency 15.5% - 16.5% 15.5% - 16.5% — Total revenue $2,306 - $2,320 $2,317 - $2,335 $(13) As reported 14% - 15% 15% - 16% (100) bps Constant currency 14.5% - 15% 14% - 15% 25 bps Subscription revenue $2,206 - $2,220 $2,217 - $2,235 $(13) As reported 14% - 15% 15% - 16% (100) bps Constant currency 14.5% - 15% 14% - 15% 25 bps Non-GAAP income from operations $682 - $690 $682 - $690 $— Non-GAAP operating margin 29.5% - 29.75% 29.5% 13 bps Non-GAAP net income $581 - $591 $584 - $594 $(3) Non-GAAP net income per diluted share $1.97 - $1.99 $1.93 - $1.95 $0.04 Diluted weighted average shares outstanding 295 - 297 302 - 304 (7) Adjusted free cash flow* $610 - $615 $613 - $620 $(4) Adjusted free cash flow margin* 26.5% 26.5% — *Beginning in the first quarter of fiscal 2027, we updated our non-GAAP liquidity measure from free cash flow to adjusted free cash flow (with a corresponding update to the related margin). For additional information, please see the \"Non-GAAP Financial Measures\" and \"Definitions - Non-GAAP and Other Metrics\" sections of this press release. Our prior guidance for fiscal 2027 issued on May 13, 2026 (as set forth in this table) reflected our previous definition of free cash flow and the related margin and there were no \"below the line\" items contemplated at the time to be adjusted (as set forth in our current definition of adjusted free cash flow). **Guidance change at midpoint is rounded to the nearest million. (In millions, except per share data) Q2 Fiscal 2027 Guidance Total revenue $565 - $570 As reported 14% - 15% Constant currency 15% - 16% Subscription revenue $540 - $545 As reported 14% - 15% Constant currency 15% - 16% Non-GAAP income from operations $166 - $170 Non-GAAP operating margin 29.5% - 30% Non-GAAP net income $141 - $145 Non-GAAP net income per diluted share $0.48 - $0.49 Diluted weighted average shares outstanding 293 - 294 4 Conference Call and Webcast Information Dynatrace will host a conference call and live webcast to discuss its results and business outlook at 8:00 a.m. Eastern Time today, August 5, 2026. To access the conference call from the U.S. and Canada, dial (866) 405-1247, or internationally, dial (201) 689-8045 with event confirmation #: 13761927. The call will also be available live via webcast on the company’s website, ir.dynatrace.com. An audio replay of the call will also be available until 11:59 p.m. Eastern Time on August 19, 2026 by dialing (877) 660-6853 from the U.S. and Canada, or for international callers by dialing (201) 612-7415 and entering event confirmation #: 13761927. In addition, an archived webcast will be available at ir.dynatrace.com. We announce material financial information to our investors using our Investor Relations website, press releases, SEC filings and public conference calls and webcasts. We also use these channels to disclose information about the company, our planned financial and other announcements, attendance at upcoming investor and industry conferences, and for complying with our disclosure obligations under Regulation FD. Non-GAAP Financial Measures In addition to disclosing financial measures prepared in accordance with GAAP, this press release and the accompanying tables contain certain non-GAAP financial measures as defined by Regulation G, including non-GAAP income from operations, non-GAAP operating margin, non-GAAP net income, non-GAAP net income per diluted share, adjusted free cash flow, and adjusted free cash flow margin. We also use or discuss non-GAAP financial measures in conference calls, slide presentations and webcasts. We use these non-GAAP financial measures for financial and operational decision-making purposes, and as a means to evaluate period-to-period comparisons and liquidity. We believe that these non-GAAP financial measures provide useful information about our operating results, enhance the overall understanding of past financial performance and allow for greater transparency with respect to metrics used by our management in its financial and operational decision-making. The presentation of the non-GAAP financial measures is not intended to be considered in isolation or as a substitute for, or superior to, the financial information prepared and presented in accordance with GAAP. Our non-GAAP financial measures may not provide information that is directly comparable to similarly titled metrics provided by other companies. Non-GAAP financial measures are defined in this press release and the tables included in this press release include reconciliations of historical non-GAAP financial measures to their most directly comparable GAAP measures. We also include non-GAAP financial measures in our financial outlook included in this press release. Reconciliations of forward-looking non-GAAP income from operations, non-GAAP net income, non-GAAP net income per diluted share, and adjusted free cash flow guidance to the most directly comparable GAAP measures are not available without unreasonable efforts due to the high variability, complexity, and low visibility with respect to the charges excluded from these non-GAAP measures; in particular, the measures and effects of share-based compensation expense, employer taxes and tax deductions specific to equity compensation awards that are directly impacted by future hiring, turnover and retention needs, as well as unpredictable fluctuations in our stock price. We expect the variability of the above charges to have a significant, and potentially unpredictable, impact on our future GAAP financial results. Beginning in the first quarter of fiscal 2027, we updated our non-GAAP liquidity measure from free cash flow to adjusted free cash flow (with a corresponding update to the related margin) to exclude the impact of certain items that management does not consider indicative of ongoing operating performance. We believe that adjusted free cash flow is a more useful measure as excluding payments for acquisition-related, restructuring, and other non-recurring and unusual items provides investors with better comparability of cash generated from our business period over period. Adjusted free cash flow is not residual cash flow available for our discretionary expenditures. Prior period results have been recast to conform to the current period presentation for comparability. 5 Definitions - Non-GAAP and Other Metrics Adjusted Free Cash Flow is defined as the net cash provided by or used in operating activ",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000050/dt-20260630.htm",
+   "published": "2026-08-05T06:33:56-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following discussion and analysis of our financial condition and results of operations should be read in conjunction with the condensed consolidated financial statements and related notes appearing elsewhere in this Quarterly Report on Form 10-Q. We prepare our condensed consolidated financial statements in accordance with accounting principles generally accepted in the United States of America (“GAAP”) and applicable SEC rules and regulations regarding interim financial reporting. The following discussion and analysis contains forward-looking statements that involve risks and uncertainties. When reviewing the discussion below, you should keep in mind the substantial risks and uncertainties that could impact our business. In particular, we encourage you to review the risks and uncertainties described in the section titled “Risk Factors” included elsewhere in this Form 10-Q and in our Form 10-K for the fiscal year ended March 31, 2026 (the “Annual Report”). These risks and uncertainties could cause actual results to differ materially from those projected in forward-looking statements contained in this report or implied by past results and trends. Our fiscal year ends on March 31. Our historical results are not necessarily indicative of the results that may be expected for any period in the future, and our interim results are not necessarily indicative of the results we expect for the full fiscal year or any other period. Overview Dynatrace combines broad and deep observability, continuous runtime application security, and advanced agentic AI operations to deliver answers and intelligent automation across IT operations, development, security, business, and executive teams. This unified approach enables organizations to optimize their rapidly evolving AI, cloud, and IT operations, accelerate secure software delivery, and improve digital performance. Our vision is a world where software works perfectly. Our customers include many of the world’s largest enterprises which deploy the Dynatrace platform to support increasingly complex IT environments. As workloads scale and cybersecurity threats evolve, cloud modernization and rapid AI adoption have significantly increased data volume and complexity, rendering traditional monitoring or observability approaches insufficient for many organizations. We believe this positions Dynatrace to address a significant market opportunity through our differentiated platform, deep cloud ecosystem integrations, and trusted customer and partner relationships. We take Dynatrace to market through a combination of our global direct sales team and a network of partners, including global system integrators (“GSIs”), cloud providers, resellers and technology alliance partners. Dynatrace addresses customer needs at various scales and sizes, but our global direct sales team targets the largest 15,000 companies globally. We generate revenue primarily by selling subscriptions, which we define as Software-as-a-Service (“SaaS”) agreements, term-based licenses, and maintenance and support agreements. The majority of our customers deploy Dynatrace as a SaaS solution to get the latest Dynatrace features and updates with greatly reduced administrative effort. We also provide options to deploy our platform in customer-provisioned infrastructure. Our Dynatrace Platform Subscription (“DPS”) licensing model provides customers with a flexible, scalable, and transparent subscription for the modern cloud. Under the DPS licensing model, a customer makes a minimum annual spend commitment at the platform level and then consumes that commitment based on actual usage and a straightforward rate card. Any platform capability can be used in any quantity at any time based on the customer’s evolving needs. The Dynatrace platform has been commercially available since 2016 and is the primary offering we sell. First-Quarter 2027 Financial Highlights Our financial highlights for the three months ended June 30, 2026 were: • Our annual recurring revenue (“ARR”) was $2,136 million as of June 30, 2026, which reflected 17% growth year-over-year; • Our total revenue was $555 million, which reflected 16% growth year-over-year; • Our subscription revenue was $530 million, which reflected 16% growth year-over-year; • We delivered GAAP income from operations of $71 million and non-GAAP income from operations (1) of $162 million; and • Our net cash provided by operating activities and adjusted free cash flow (1) was $306 million and $309 million, respectively. (1) Non-GAAP financial measure. For additional information, please see the “Key Metrics” section below for applicable definitions and the “Non-GAAP Financial Results” section below for a reconciliation to the most directly comparable GAAP financial measure. We believe in a disciplined and balanced approach to operating our business. We plan to continue driving innovation to meet customers’ needs and grow our customer relationships. We also plan to invest in future growth opportunities that we expect will drive long-term value, while leveraging our global partner ecosystem, optimizing costs, and improving efficiency and profitability. 18 Table of Contents We believe this approach is even more important at this time as we navigate the current macroeconomic environment, which can include geopolitical considerations, tariffs and trade policies, fluctuations in credit, equity, and foreign currency markets, changes in inflation, interest rates, consumer confidence and spending, and other factors that may affect the buying patterns of our customers and prospective customers, including the size of transactions and length of sales cycles. In the ongoing dynamic macroeconomic landscape, we have seen resiliency in our industry and we remain confident in our ability to execute in this environment. Please see the section titled “Risk Factors” included under Part II, Item 1A of this Quarterly Report for further discussion of the possible impact of macroeconomic conditions on our business and regarding fluctuations in our annual and quarterly operating results. Key Factors Affecting Our Performance Our historical financial performance has been, and we expect our financial performance in the future to be, driven by our ability to: • Extend our technology and market leadership position. We intend to maintain our position as a leading AI-powered observability platform through increased investment in research and development, and innovation. We plan to expand the functionality of our end-to-end Dynatrace platform and invest in capabilities that address new market opportunities. We plan to continue evolving our AI capabilities to drive differentiation, with a continued focus on agentic AI capabilities and functionalities that can act autonomously to make decisions and take actions without human intervention. We also believe we are well positioned to continue growing our next generation log management offering, which integrates logs, traces, metrics, and other core observability and security data types into a fully integrated platform with a single datastore, providing customers with greater value than log management solutions that are viewed as too expensive, providing too little value, or largely operating independently from existing monitoring tools. We believe this strategy will enable new growth opportunities and allow us to deliver differentiated high-value outcomes to our customers. • Expand and strengthen our relationships with existing customers. We plan to establish new and deeper relationships within our existing customers’ organizations and expand the breadth of our platform capabilities to provide for expansion opportunities. In addition, we believe the ease of implementation of Dynatrace provides us with the opportunity to expand adoption within our existing enterprise customers, across new customer applications, with AI-native, cloud-native and development teams, and into additional business units or divisions. We also believe that our DPS licensing model will drive broader consumption of the Dynatrace platform and further expansion opportunities for customers that prefer the flexibility and predictability of pricing under that model. With access to the full Dynatrace platform, DPS customers are able to adopt Dynatrace more broadly across their IT environments, which can lead to increased consumption. • Grow our customer base. We intend to drive new customer growth through ongoing investments in our go-to-market strategy focused on customer segmentation, partner enablement, and continued expansion of our sales motion beyond application performance to include end-to-end observability, tool consolidation, and cloud modernization. We plan to continue addressing customer needs at various scales and sizes, with our global direct sales team targeting the largest 15,000 companies globally. In addition, we plan to expand our reach internationally to what we believe are large, mostly untapped, markets for our company, while leveraging our sector specialization globa lly. We also are focused on intuitive ways for customer teams to onboard and receive additional value from Dynatrace, including through our free trial program. • Leverage our strategic partner ecosystem. We intend to invest in our strategic partner ecosystem, with a particular emphasis on building and deepening AI- and cloud-focused, loyal and comprehensive partnerships with GSIs and hyperscaler cloud providers. Cloud migration and modernization are foundational growth drivers for our strategic partners and our company. Our strategic partners work with their customers to help them digitally transform their businesses and reduce cloud complexity. By working more closely with strategic partners, our objective is to participate in digital transformation projects earlier in the purchasing cycle and enable customers to establish more resilient cloud deployments from the start. Key Metrics We monitor the following key metrics to help us measure and evaluate the effectiveness of our operations: As of June 30, 2026 2025 (in thousands, except percentages) Total ARR $ 2,135,982 $ 1,822,205 Year-over-year increase 17 % 18 % Dollar-based net retention rate 110 % 111 % 19 Table of Contents Three Months Ended June 30, 2026 2025 (in thousands) Non-GAAP income from operations (1) $ 161,600 $ 143,106 Adjusted free cash flow (1) 309,177 262,157 (1) Non-GAAP financial measure. For additional information, please see the applicable definitions below and the “Non-GAAP Financial Results” section below for a reconciliation to the most directly comparable GAAP financial measure. ARR: We define ARR as the daily revenue of all subscription agreements that are actively generating revenue as of the last day of the reporting period multiplied by 365. We exclude from our calculation of ARR any revenues derived from month-to-month agreements and/or product usage overage billings. Dollar-based net retention rate: We define the dollar-based net retention rate as the ARR at the end of a reporting period for the cohort of Dynatrace accounts as of one year prior to the date of calculation, divided by the ARR one year prior to the date of calculation for that same cohort. Our dollar-based net retention rate reflects customer renewals, expansion, contraction and churn. Dollar-based net retention rate is presented on a constant currency basis. Non-GAAP income from operations: We define non-GAAP income from operations as GAAP income from operations adjusted for the following items: share-based compensation; employer payroll taxes on employee stock transactions; amortization of intangibles; acquisition-related, restructuring, and other non-recurring or unusual items that may arise from time to time. Adjusted free cash flow: We define adjusted free cash flow as the net cash provided by or used in operating activities less capital expe",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000059/dt-20260924.htm",
+   "published": "2026-09-25T16:36:08-04:00",
+   "form": "8-K",
+   "items": "1.01,2.03,9.01",
+   "text": "Item 1.01. Entry Into a Material Definitive Agreement. On September 24, 2026, Dynatrace LLC (the “Borrower”) and Dynatrace Intermediate LLC (“Holdings”), each a Delaware limited liability company and wholly-owned subsidiary of Dynatrace, Inc. (the “Company”), and certain of their respective U.S. subsidiaries, as guarantors, entered into a Credit Agreement (the “Credit Agreement”) with Bank of America, N.A., as administrative agent, and certain lenders from time to time party thereto, for a senior secured revolving credit facility (the “Credit Facility”) in which the lenders agreed to extend revolving credit commitments in the aggregate amount of up to $500,000,000. Borrowings under the Credit Facility are available in U.S. dollars, Euros, Pounds Sterling, and Canadian Dollars (subject to an aggregate $100,000,000 cap on non-U.S. dollar-denominated borrowings) and will accrue interest at (i) the Term SOFR Rate, (ii) the EURIBO Rate, (iii) the Adjusted Term CORRA Rate, (iv) Daily Simple SONIA, or (v) the base rate, in each case, plus an applicable margin. The base rate is the highest of (i) the Federal Funds Rate plus ½ of 1.00%, (ii) Bank of America, N.A.’s prime rate in effect for such day, (iii) Term SOFR plus 1.00% and (iv) 1.00%. The applicable margin for borrowings is a percentage per annum based on a pricing level determined by the Borrower’s then-current ratio of (i) total funded debt of the Borrower and its restricted subsidiaries minus unrestricted domestic cash and cash equivalents up to the greater of $650,000,000 and 100% of Adjusted EBITDA for the most recently ended four consecutive fiscal quarters to (ii) Adjusted EBITDA of Borrower and its restricted subsidiaries as of such date (the “Total Leverage Ratio”) (or, at the Borrower's election, based on S&P and Moody’s debt ratings on the Borrower or the Company (the “Credit Rating Margin Election”)), with ranges of (a) 0.00% for base rate loans or 1.00% for all other benchmark rates if the Total Leverage Ratio is less than 1.0 to 1.0 (or, following the Credit Rating Margin Election, a debt rating of greater than or equal to BBB / Baa2), (b) 0.25% for base rate loans or 1.25% for all other benchmark rates if the Total Leverage Ratio is less than 2.0 to 1.0 but greater than or equal to 1.0 to 1.0 (or, following the Credit Rating Margin Election, a debt rating of BBB- / Baa3), (c) 0.375% for base rate loans or 1.375% for all other benchmark rates if the Total Leverage Ratio is less than 3.0 to 1.0 "
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000057/dt-20260826.htm",
+   "published": "2026-08-27T16:40:28-04:00",
+   "form": "8-K",
+   "items": "5.07,9.01",
+   "text": "Item 5.07. Submission of Matters to a Vote of Security Holders. On August 26, 2026, Dynatrace, Inc. (the \"Company\") held its annual meeting of stockholders (the \"Annual Meeting\") to consider and vote on the three proposals set forth below, each of which is described in greater detail in the Company’s definitive proxy statement filed with the U.S. Securities and Exchange Commission on July 10, 2026 (the \"Proxy Statement\"). The final voting results are set forth below. Proposal 1 – Election of Directors The stockholders elected each of the four persons named below to serve as a Class I director of the Company’s Board of Directors for a three-year term that expires at the Company’s annual meeting of stockholders in 2029 or until their successor is duly elected and qualified or until their earlier resignation, death, or removal. The results of such vote were as follows: Director Name Votes For Votes Against Abstentions Broker Non-Votes Rick McConnell 170,107,278 65,680,576 1,391,439 21,659,292 Michael Capone 149,285,296 86,478,884 1,415,113 21,659,292 Stephen Lifshatz 148,572,811 87,184,818 1,421,664 21,659,292 George Riedel 229,330,676 7,634,311 214,306 21,659,292 Proposal 2 – Ratification of Appointment of Independent Registered Public Accounting Firm The stockholders ratified the appointment of Ernst & Young LLP as the Company’s independent registered public accounting firm for the fiscal year ending March 31, 2027. The results of such vote were as follows: Votes For Votes Against Abstentions Broker Non-Votes 247,923,660 10,564,983 349,942 0 Proposal 3 – Non-Binding, Advisory Vote to Approve the Compensation of Named Executive Officers The stockholders approved, on a non-binding, advisory basis, the compensation of the Company’s named executive officers, as disclosed in the Proxy Statement . The results of such vote were as follows: Votes For Votes Against Abstentions Broker Non-Votes 219,597,331 17,214,901 367,061 21,659,292 No other matters were brought before the Annual Meeting and no other votes were held. Item 9.01. Financial Statements and Exhibits. (d) Exhibits Exhibit No. Description 104 Cover Page Interactive Data File - the cover page XBRL tags are embedded within the Inline XBRL document SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: August 27, 2026 DYNATRACE, INC. By: /s/ Nicole Fitzpatrick Nam"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000054/dt-20260820.htm",
+   "published": "2026-08-20T16:14:54-04:00",
+   "form": "8-K",
+   "items": "1.01,1.02,2.03,3.02,8.01,9.01",
+   "text": "Item 1.01. Entry Into a Material Definitive Agreement. On August 20, 2026, Dynatrace LLC (the “Issuer”), an indirect wholly owned subsidiary of Dynatrace, Inc. (the “Guarantor”), issued $1.4375 billion aggregate principal amount of 0.00% Exchangeable Senior Notes due 2031 (the “Notes”), which included $187.5 million principal amount of Notes purchased pursuant to the full exercise of the option granted to the Initial Purchasers (as defined below) in the Purchase Agreement (as defined below). The Notes were issued in a private placement (the “Offering”) to persons reasonably believed to be qualified institutional buyers pursuant to Rule 144A under the Securities Act of 1933, as amended (the “Securities Act”). The Notes are senior, unsecured obligations of the Issuer and are fully and unconditionally guaranteed on an unsecured and unsubordinated basis by the Guarantor (the “Guarantee”). The Notes will not bear regular interest and the principal amount of the Notes will not accrete. The Notes will mature on September 1, 2031, unless earlier exchanged, redeemed or repurchased. In connection with the Offering, the Issuer and the Guarantor entered into a purchase agreement, dated August 17, 2026 (the “Purchase Agreement”), with Goldman Sachs & Co. LLC, BofA Securities, Inc., Morgan Stanley & Co. LLC and BMO Capital Markets Corp., as representatives of the several initial purchasers named therein (the “Initial Purchasers”). The net proceeds from the sale of the Notes were approximately $1.411 billion, after deducting the Initial Purchasers’ discounts and commissions and estimated Offering expenses payable by the Issuer. The Issuer used approximately $167.8 million of the net proceeds from the Offering to pay the cost of the exchangeable note hedge transactions described below (after such cost was partially offset by the proceeds to the Guarantor from the sale of the Warrants (as defined below) under the warrant transactions described below). In addition, the Issuer used approximately $134.7 million of the net proceeds from the Offering to repurchase approximately 2.83 million shares of the Guarantor’s common stock, $0.001 per share (the “Common Stock”), from certain purchasers of the Notes in privately negotiated transactions. The price per share of the Common Stock so repurchased was equal to $47.61, which was the last reported sale price per share of the Common Stock on The New York Stock Exchange on August 17, 2026. The Issuer intends to use the remainder of t",
+   "exhibit_99_1": "EX-99.1 5 exhibit991-announcementpre.htm EX-99.1 Document EXHIBIT 99.1 Dynatrace Announces Proposed Private Placement of $1.25 Billion of Exchangeable Senior Notes BOSTON, Mass—August 17, 2026—Dynatrace, Inc. (“Dynatrace”) (NYSE: DT), the leading AI-powered observability platform, today announced that its indirect wholly-owned subsidiary, Dynatrace LLC (the “Issuer”), intends to offer, subject to market conditions and other factors, $1.25 billion aggregate principal amount of its Exchangeable Senior Notes due 2031 (the “notes”) in a private placement (the “offering”) to persons reasonably believed to be qualified institutional buyers pursuant to Rule 144A under the Securities Act of 1933, as amended (the “Securities Act”). The Issuer also intends to grant the initial purchasers of the notes an option to purchase up to an additional $187.5 million aggregate principal amount of notes, for settlement during a 13-day period beginning on, and including, the first date on which the notes are issued. The notes will be senior, unsecured obligations of the Issuer and will be fully and unconditionally guaranteed on an unsecured and unsubordinated basis by Dynatrace. The notes will accrue interest payable semi-annually in arrears. The notes will mature on September 1, 2031, unless earlier exchanged, redeemed or repurchased. The interest rate, exchange rate, and other terms of the notes are to be determined upon pricing of the offering. The notes will be exchangeable for cash, shares of Dynatrace’s common stock (the “common stock”) or a combination of cash and shares of the common stock, at the Issuer’s election. Prior to the close of business on the business day immediately preceding June 1, 2031, noteholders may exchange their notes at their option only upon the satisfaction of specified conditions and during certain periods. On or after June 1, 2031, until the close of business on the second scheduled trading day immediately preceding the maturity date, noteholders may exchange all or any portion of their notes at any time, regardless of these conditions or periods. The Issuer may not redeem the notes prior to September 6, 2029, except in the event of a cleanup redemption as described below. On or after September 6, 2029 and prior to the 21 st scheduled trading day immediately preceding the maturity date, the Issuer may redeem for cash all or any portion of the notes (subject to a partial redemption limitation), at its option, if the last reported sale price of the"
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/independent-research-firm-names-dynatrace-130000753.html?.tsrc=rss",
+   "published": "2026-10-30T09:00:00-04:00",
+   "text": "Independent Research Firm Names Dynatrace a Leader in AIOps - BOSTON, October 30, 2026--Dynatrace (NYSE: DT), the leading AI-powered observability platform, today announced that Forrester has named it a Leader in The Forrester Wave™: AIOps Platforms, Q4 2026 report. Forrester evaluated 10 providers on 24 criteria. Dynatrace received the highest score of all ve",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/leidos-holdings-release-q3-earnings-111100468.html?.tsrc=rss",
+   "published": "2026-10-30T07:11:00-04:00",
+   "text": "Leidos Holdings to Release Q3 Earnings: Here's What to Expect - LDOS' Q3 results may benefit from rising defense demand, contract wins and AI initiatives, while healthcare revenue pressure and higher interest costs pose challenges.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/gtlb/articles/621336/can-gitlab-stock-get-back-to-where-it-was/2026-10-29?.tsrc=rss",
+   "published": "2026-10-29T16:10:28-04:00",
+   "text": "Can GitLab Stock Get Back To Where It Was? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/dynatrace-inc-dt-rises-strong-165245479.html?.tsrc=rss",
+   "published": "2026-10-29T12:52:45-04:00",
+   "text": "Dynatrace, Inc. (DT) Rises on Strong Results and AI-Driven Demand, Ariel Global Fund Says - Ariel Investments, an investment management company, released its “Ariel Global Fund” Q3 2026 investor letter. The Fund declined in the third quarter of 2026 as renewed geopolitical tensions, higher oil prices, and elevated interest rates contributed to uneven performance across global markets. The ",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/dynatrace-present-upcoming-investor-conferences-120000636.html?.tsrc=rss",
+   "published": "2026-10-29T08:00:00-04:00",
+   "text": "Dynatrace to Present at Upcoming Investor Conferences - BOSTON, October 29, 2026--Dynatrace (NYSE: DT), the leading AI-powered observability platform, today announced that its executives will present at the following investor conferences:",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-stock-sinks-market-211501718.html?.tsrc=rss",
+   "published": "2026-10-28T17:15:01-04:00",
+   "text": "Dynatrace (DT) Stock Sinks As Market Gains: What You Should Know - In the most recent trading session, Dynatrace (DT) closed at $62.81, indicating a -1.47% shift from the previous trading day.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/why-klaviyo-kvyo-could-standout-135302847.html?.tsrc=rss",
+   "published": "2026-10-28T09:53:02-04:00",
+   "text": "Why Klaviyo (KVYO) Could Be the Standout AI Beneficiary in Software? - In Q3 2026, Meditation Capital reports a favorable period for its software holdings, driven by Salesforce’s acquisition of Braze, a positive rerating for Atlassian, and strong gains across Dynatrace and Workiva. The letter can be downloaded here. These successes validate the firm’s core investment p",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/fair-isaac-fico-reports-next-130028400.html?.tsrc=rss",
+   "published": "2026-10-28T09:00:28-04:00",
+   "text": "Fair Isaac (FICO) Reports Next Week: Wall Street Expects Earnings Growth - Fair Isaac (FICO) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-stock-may-10-001941501.html?.tsrc=rss",
+   "published": "2026-10-27T20:19:41-04:00",
+   "text": "Dynatrace (DT) Stock May Be 10% Undervalued Following AI And Logs Momentum - Dynatrace has delivered a strong 50.5% year to date return, which puts a sharper spotlight on whether today's US$63.75 share price is supported by the cash the business is expected to generate. With investors also weighing fresh expectations around its AI and logs offerings, the key issue is how tho",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-ahead-earnings-valuation-160632338.html?.tsrc=rss",
+   "published": "2026-10-27T12:06:32-04:00",
+   "text": "Dynatrace (DT) Ahead Of Earnings With Valuation Still Up For Debate - Dynatrace (DT) is back in focus ahead of its November 3 earnings release, with recent research pointing to expectations for higher revenue and earnings for the September 2026 quarter. Recent trading has been strong, with Dynatrace’s share price posting a 10.75% 1 month gain and a 46.20% 3 month shar",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/strong-earnings-change-dynatrace-dt-150759984.html?.tsrc=rss",
+   "published": "2026-10-27T11:07:59-04:00",
+   "text": "Will Strong Earnings Change Dynatrace (DT) Stock Narrative - Dynatrace is heading into its November 3, 2026 earnings release with analysts expecting higher quarterly earnings and revenue, supported by strong logs usage and AI related demand. Some analysts view Dynatrace's longer term outlook as conservative on AI contribution, which could leave room for futur",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-earnings-expected-grow-130003784.html?.tsrc=rss",
+   "published": "2026-10-27T09:00:03-04:00",
+   "text": "Dynatrace (DT) Earnings Expected to Grow: What to Know Ahead of Next Week's Release - Dynatrace (DT) possesses the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/dynatrace-likely-post-strong-results-155626351.html?.tsrc=rss",
+   "published": "2026-10-26T11:56:26-04:00",
+   "text": "Dynatrace Likely to Post Strong Results Backed by AI Adoption, Logs Momentum, Oppenheimer Says - Dynatrace (DT) will likely report another strong quarter of results on Nov. 3 backed by \"steady mark",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/datadog-just-gained-13-in-a-month-take-profits-or-buy-more?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-25T12:35:42-04:00",
+   "text": "Datadog Just Gained 13% in a Month: Take Profits, or Buy More? - Key TakeawaysDatadog stock has gained 98% year to date through October 23, closing at $269. 65 after another volatile week.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/amazon-stock-other-mega-cap-001944653.html?.tsrc=rss",
+   "published": "2026-10-23T20:19:44-04:00",
+   "text": "Amazon Stock And Other Mega Cap Tech Names For The AI Infrastructure Reset - AI infrastructure stocks have just been hit hard, even where earnings and backlogs looked solid, and that kind of indiscriminate selling often creates openings for patient investors watching Microsoft, Alphabet or Amazon. When builders and suppliers suddenly look risky, attention can swing back to m",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-falls-more-steeply-211504417.html?.tsrc=rss",
+   "published": "2026-10-22T17:15:04-04:00",
+   "text": "Dynatrace (DT) Falls More Steeply Than Broader Market: What Investors Need to Know - The latest trading day saw Dynatrace (DT) settling at $63.37, representing a -2.18% change from its previous close.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/fjtsy-dt-better-value-stock-144003633.html?.tsrc=rss",
+   "published": "2026-10-22T10:40:03-04:00",
+   "text": "FJTSY or DT: Which Is the Better Value Stock Right Now? - FJTSY vs. DT: Which Stock Is the Better Value Option?",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/top-software-stocks-watch-going-073450676.html?.tsrc=rss",
+   "published": "2026-10-22T03:34:50-04:00",
+   "text": "Top Software Stocks to Watch Going Into Sept-Qtr Earnings, According to Jefferies - Investing.com-- Jefferies updated its outlook on several U.S. software stocks, highlighting opportunities across observability platforms, enterprise technology and cloud-based tools going into the September quarter earnings season.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-report-second-quarter-fiscal-120000878.html?.tsrc=rss",
+   "published": "2026-10-20T08:00:00-04:00",
+   "text": "Dynatrace to Report Second Quarter Fiscal Year 2027 Financial Results - BOSTON, October 20, 2026--Dynatrace (NYSE: DT), the leading AI-powered observability platform, today announced that it will report financial results for its second quarter of fiscal year 2027 ended September 30, 2026 before the U.S. financial markets open on November 3, 2026. In conjunction with thi",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:23-04:00",
+    "sha256": "1018569ad39303a03b5667b69ad8c29bcf732a76e6eb04fe3caeb4116c4d30ee"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 59005
+}

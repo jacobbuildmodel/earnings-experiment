@@ -1,4 +1,4 @@
-# Health 2026-10-30 06:23 ET - **RED**
+# Health 2026-10-30 15:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -16,22 +16,25 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-10-29T21:00:13Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40953964992
 - Actions failure: Earnings experiment - paper options at 2026-10-29T20:11:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40946765719
 - Actions failure: Earnings experiment - paper options at 2026-10-29T19:50:35Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40943697875
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-10-29T15:00:21Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/40897132963
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
 - none
 
 ## Information
-- CIFR_2026-11-02: T2 deadline Fri 30 Oct 09:15 ET - frozen so far: T2, T2G, T2R, T2O
-- paper/options_ledger.json: open ['seasonA-AMZN-2026-10-29-F', 'seasonA-AXTI-2026-10-29-F', 'seasonA-BBIO-2026-10-29-F', 'seasonA-COLM-2026-10-29-F', 'seasonA-EXEL-2026-10-29-F', 'seasonA-GD-2026-10-30-F', 'seasonA-INTC-2026-10-29-F', 'seasonA-MSTR-2026-10-29-F', 'seasonA-PINS-2026-10-29-F', 'seasonA-RDDT-2026-10-29-F', 'seasonA-SBUX-2026-10-29-F']
-- paper/long_ledger.json: open ['seasonA-BBIO-2026-10-29-L', 'seasonA-AMZN-2026-10-29-L', 'seasonA-AXTI-2026-10-29-L', 'seasonA-COLM-2026-10-29-L', 'seasonA-DXCM-2026-10-29-L', 'seasonA-EXEL-2026-10-29-L', 'seasonA-GDDY-2026-10-29-L', 'seasonA-GD-2026-10-30-L', 'seasonA-INTC-2026-10-29-L', 'seasonA-MSTR-2026-10-29-L', 'seasonA-OSIS-2026-10-29-L', 'seasonA-PINS-2026-10-29-L', 'seasonA-RDDT-2026-10-29-L', 'seasonA-SPSC-2026-10-29-L', 'seasonA-SYK-2026-10-29-L', 'seasonA-CIFR-2026-11-02-L']
-- paper/options: 100 position(s), 6 open order(s) - they match the ledgers
+- BETA_2026-11-03: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: T2G
+- DT_2026-11-03: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: T2G
+- SHOP_2026-11-03: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: T2G
+- PLTR_2026-11-02: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: none
+- paper/long_ledger.json: open ['seasonA-CIFR-2026-11-02-L', 'seasonA-DOCN-2026-11-03-L', 'seasonA-BETA-2026-11-03-L', 'seasonA-DT-2026-11-03-L', 'seasonA-IPGP-2026-11-03-L', 'seasonA-MTCH-2026-11-02-L', 'seasonA-ON-2026-11-02-L', 'seasonA-PAY-2026-11-02-L', 'seasonA-PLTR-2026-11-02-L', 'seasonA-SHOP-2026-11-03-L', 'seasonA-VVX-2026-11-02-L', 'seasonA-YUMC-2026-11-03-L']
+- paper window (options): paper-window-push.yml afternoon step since 12:00 ET
+- paper window (long): paper-window-push.yml afternoon step since 12:00 ET
+- paper/options: 71 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 41 position(s), 0 open order(s) - they match the ledgers
 - Fri 30 Oct: 19 snapshot(s) - AEHR, BETA, BMRN, BWXT, DOCN, DT, FN, ICHR, IPGP, JAZZ, LSCC, MTCH, ON, PAY, PLTR, SHOP, VRTX, VVX, YUMC
 - Mon 02 Nov: 24 snapshot(s) - ALAB, AMD, ANET, DDOG, DUOL, FLYW, FRSH, HUT, NATL, NVTS, OUST, Q, RAL, RIOT, RPRX, SMCI, SWKS, TOST, UBER, VSH, W, XYZ, YOU, ZBH
 - Tue 03 Nov: 45 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KVYO, LOAR, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
 - Wed 04 Nov: 34 snapshot(s) - AKAM, ALRM, ATEN, AVPT, AXON, BILL, CARG, CART, DBX, DIOD, FIGS, FIVN, FROG, GRND, HALO, IONQ, IREN, KRMN, LASR, LITE, LYFT, MRNA, NET, PCTY, PDFS, QNT, SARO, SOUN, TDC, TEAM, TXG, TXRH, UA, WULF
 - Thu 05 Nov: 2 snapshot(s) - ROIV, VIA
-- seasonA: 62 name(s) still PENDING a confirmed date
+- seasonA: 55 name(s) still PENDING a confirmed date
 

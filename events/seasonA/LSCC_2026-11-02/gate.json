@@ -1,0 +1,98 @@
+{
+ "season": "seasonA",
+ "ticker": "LSCC",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:19.261307-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/lattice-semiconductor-schedules-third-quarter-2026-results-conference-call-2026-10-12",
+  "published_et": "2026-10-12T07:00-04:00",
+  "quote": "The dial-in number for the live audio call beginning on Monday, November 2, 2026 , at 5 p.m. Eastern Time is 1-877-407-3982 or 1-201-493-6780 with conference identification number 13763047.",
+  "title": "Lattice Semiconductor Schedules Third Quarter 2026 Results Conference Call",
+  "retrieved_et": "2026-10-19T21:29:28.333926-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 91.04499816894531,
+  "expiry": "2026-11-20",
+  "strike": 90.0,
+  "call": {
+   "bid": 8.2,
+   "ask": 9.7,
+   "openInterest": 26.0,
+   "lastPrice": 9.4,
+   "impliedVolatility": 0.9514165014648437,
+   "lastTradeDate": "2026-10-30T15:21:08+00:00"
+  },
+  "put": {
+   "bid": 5.8,
+   "ask": 7.1,
+   "openInterest": 509.0,
+   "lastPrice": 6.25,
+   "impliedVolatility": 0.7863790893554687,
+   "lastTradeDate": "2026-10-30T16:48:24+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.16914712844986152,
+  "rel_spread": {
+   "call": 0.1675977653631285,
+   "put": 0.20155038759689922
+  },
+  "oi_atm": 535.0,
+  "oi_sum": 535.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

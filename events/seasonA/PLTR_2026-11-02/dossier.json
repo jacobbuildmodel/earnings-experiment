@@ -1,0 +1,619 @@
+{
+ "event": "PLTR_2026-11-02",
+ "season": "seasonA",
+ "built_et": "2026-10-30T14:31:40-04:00",
+ "cutoff_et": "2026-10-30T14:31:29.972603-04:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/PLTR_2026-11-02/gate.json",
+   "published": "2026-10-30T14:31:29.972603-04:00",
+   "data": {
+    "ticker": "PLTR",
+    "report_date": "2026-11-02",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-02"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-03"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-10"
+     },
+     "reaction_day": "2026-11-03"
+    },
+    "snapshot_session": "2026-10-30",
+    "captured_et": "2026-10-30T14:31:29.972603-04:00",
+    "options": {
+     "spot": 184.3699951171875,
+     "expiry": "2026-11-06",
+     "strike": 185.0,
+     "call": {
+      "bid": 12.3,
+      "ask": 12.45,
+      "openInterest": 423.0,
+      "lastPrice": 12.38,
+      "impliedVolatility": 1.164554958496094,
+      "lastTradeDate": "2026-10-30T18:14:56+00:00"
+     },
+     "put": {
+      "bid": 12.25,
+      "ask": 12.35,
+      "openInterest": 1451.0,
+      "lastPrice": 12.5,
+      "impliedVolatility": 1.0997359466552736,
+      "lastTradeDate": "2026-10-30T18:09:38+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 3,
+     "implied_move": 0.13383414141935793,
+     "rel_spread": {
+      "call": 0.012121212121212007,
+      "put": 0.00813008130081298
+     },
+     "oi_atm": 1874.0,
+     "oi_sum": 5359.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/PLTR_2026-11-02/factors.json",
+   "published": "2026-10-30T14:31:29.972603-04:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.07265727198237315,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.029862071108496813,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.06294787551123726,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.05166517927119818,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.492975143480914,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.5316879889205202,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.11808178521041257,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-03",
+       "session": "AMC",
+       "raw_return_A": 0.14558017181131944,
+       "eps_est": 0.35,
+       "eps_rep": 0.41,
+       "surprise_pct": 18.51,
+       "reaction_volume_ratio": 5.138521007026782
+      },
+      {
+       "date": "2026-05-04",
+       "session": "AMC",
+       "raw_return_A": -0.0504568651848033,
+       "eps_est": 0.28,
+       "eps_rep": 0.33,
+       "surprise_pct": 18.08,
+       "reaction_volume_ratio": 1.8629744744529684
+      },
+      {
+       "date": "2026-02-02",
+       "session": "AMC",
+       "raw_return_A": 0.09348085585084687,
+       "eps_est": 0.23,
+       "eps_rep": 0.25,
+       "surprise_pct": 8.6,
+       "reaction_volume_ratio": 2.862963946308864
+      },
+      {
+       "date": "2025-11-03",
+       "session": "AMC",
+       "raw_return_A": -0.06327874837520253,
+       "eps_est": 0.17,
+       "eps_rep": 0.21,
+       "surprise_pct": 25.46,
+       "reaction_volume_ratio": 2.706346522828693
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.1427014876543264,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 18.51,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.40705,
+      "7daysAgo": 0.41181,
+      "30daysAgo": 0.41367,
+      "60daysAgo": 0.41452,
+      "90daysAgo": 0.372,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.09422043010752695,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.40705,
+      "low": 0.38,
+      "high": 0.45,
+      "yearAgoEps": 0.21,
+      "numberOfAnalysts": 25,
+      "growth": 0.9383,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.1719690455717971,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.026099999,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 78.4368,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 71.96362,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.928,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 443003830272,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.875,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.13383414141935793,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.06481901184082028,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.004638648681640323,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.8482692931258107,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.8420342926642254,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 91201.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.2965568701528576,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.13638450865915047,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 154,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Monday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.928334945705726,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.4712069043908851,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.07273271783435564,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.06302411129089902,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.05166517927119818,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.49301793388658943,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.9499992618678927,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 2.975465990810897,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:CommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 442974076616.1194,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.013896842557978236,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.22559725664901953,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000039/a2026q2ex991pressrelease.htm",
+   "published": "2026-08-03T16:06:14-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 a2026q2ex991pressrelease.htm EX-99.1 Document Exhibit 99.1 Palantir Reports Q2 2026 U.S. Comm Revenue Growth of 149% Y/Y and Revenue Growth of 93% Y/Y; Raises FY 2026 Revenue Guidance to 82% Y/Y Growth and U.S. Comm Revenue Guidance to 134% Y/Y, Crushing Consensus Expectations 8/3/2026 MIAMI — (BUSINESS WIRE) — Palantir Technologies Inc. (NASDAQ:PLTR) today announced financial results for the second quarter ended June 30, 2026. “Demand for AI sovereignty has now been unleashed. And Palantir is the only company that has demonstrated it can transform tokens into actual economic value. Our customers trust us to provide them with maximal control over their operations, data, and decisions. Their competitive advantage should never become the training data for future models. This quarter was otherworldly: our U.S. commercial revenue grew 149% year-over-year, our overall revenue grew 93% year-over-year, and our Rule of 40 score climbed to 155%. The sovereign AI revolution makes us very optimistic about the future,” said Alex Karp, Co-Founder and Chief Executive Officer of Palantir Technologies. Q2 2026 Highlights • U.S. revenue grew 115% year-over-year and 23% quarter-over-quarter to $1.573 billion ◦ U.S. commercial revenue grew 149% year-over-year and 28% quarter-over-quarter to $764 million ◦ U.S. government revenue grew 90% year-over-year and 18% quarter-over-quarter to $809 million • Revenue grew 93% year-over-year and 19% quarter-over-quarter to $1.935 billion • Closed 220 deals of at least $1 million, 98 deals of at least $5 million, and 73 deals of at least $10 million • Closed total contract value (“TCV”) of $3.373 billion, up 49% year-over-year ◦ Closed a record-setting $2.132 billion of U.S. commercial TCV, up 153% year-over-year • U.S. commercial remaining deal value (“RDV”) of $6.238 billion, up 124% year-over-year and 27% quarter-over-quarter • GAAP income from operations of $912 million, representing a 47% margin • Adjusted income from operations of $1.194 billion, representing a 62% margin • Rule of 40 score of 155% • GAAP net income of $1.062 billion, representing a 55% margin • Cash from operations of $1.216 billion, representing a 63% margin • Adjusted free cash flow of $1.220 billion, representing a 63% margin • GAAP earnings per share (“EPS”) of $0.41 • Adjusted EPS of $0.41 • Cash, cash equivalents, and short-term U.S. Treasury securities of $9.2 billion Q2 2026 Financial Summary (Unaudited) (Amounts in thousands, except percentages and per share amounts) Second Quarter Amount Revenue $ 1,935,464 Year-over-year growth 93 % Amount Margin Income from Operations $ 912,004 47 % Adjusted Income from Operations $ 1,194,472 62 % Cash from Operations $ 1,216,167 63 % Adjusted Free Cash Flow $ 1,220,359 63 % Net Income Attributable to Common Stockholders $ 1,061,890 55 % Adjusted Net Income Attributable to Common Stockholders $ 1,047,001 Adjusted EBITDA $ 1,202,692 62 % GAAP EPS, Diluted $ 0.41 Adjusted EPS, Diluted $ 0.41 Outlook For Q3 2026, we expect: • Revenue of between $2.160 – $2.164 billion. • Adjusted income from operations of between $1.292 – $1.296 billion. For full year 2026: • We are raising our revenue guidance to between $8.150 – $8.158 billion. • We are raising our U.S. commercial revenue guidance to in excess of $3.424 billion, representing a growth rate of at least 134%. • We are raising our adjusted income from operations guidance to between $4.889 – $4.897 billion. • We are raising our adjusted free cash flow guidance to between $4.5 – $4.7 billion. • And we continue to expect GAAP operating income and net income in each quarter of this year. CEO Letter Palantir CEO Alex Karp’s quarterly letter is available through Palantir’s website at https://www.palantir.com/newsroom/letters. Earnings Webcast A live public webcast will be held at 5:00 PM ET today to discuss the results for our second quarter ended June 30, 2026 and financial outlook. The webcast can be accessed by registering online at https://palantir.events/palantirearnings-q22026. A replay of the webcast will be available at https://investors.palantir.com following the event. An investor presentation, including supplemental financial information and reconciliations of certain non-GAAP measures to their nearest comparable GAAP measures, will be available through Palantir’s Investor Relations website at https://investors.palantir.com. Forward-Looking Statements This press release and statements on our earnings webcast contain “forward-looking statements” within the meaning of the “safe harbor” provisions of the Private Securities Litigation Reform Act of 1995, including, but not limited to, statements regarding our financial outlook, product development and related timing, distribution, and pricing, expected benefits of and applications for our software platforms, business strategy, and plans (including strategy and plans relating to our Artificial Intelligence Platform (“AIP”), sales and marketing efforts, sales force, partnerships, and customers), investments in our business, market trends and market size, opportunities (including growth opportunities), our expectations regarding our existing and potential investments in, and commercial contracts with, various entities, and our expectations regarding macroeconomic events. These forward-looking statements are made as of the date they were first issued and were based on current expectations, estimates, forecasts, and projections as well as the beliefs and assumptions of management. Words such as “guidance,” “expect,” “anticipate,” “should,” “believe,” “hope,” “target,” “project,” “plan,” “goals,” “estimate,” “potential,” “predict,” “may,” “will,” “might,” “could,” “intend,” “shall,” and variations of these terms or the negative of these terms and similar expressions are intended to identify these forward-looking statements. Forward-looking statements are subject to a number of risks and uncertainties, many of which involve factors or circumstances that are beyond our control. Our actual results could differ materially from those stated or implied in forward-looking statements due to a number of factors, including but not limited to risks detailed in our filings with the Securities and Exchange Commission (the “SEC”), including in our Annual Report on Form 10-K for the fiscal year ended December 31, 2025 and other filings and reports that we may file from time to time with the SEC, including our Quarterly Report on Form 10-Q for the quarter ended June 30, 2026. In particular, the following factors, among others, could cause our results to differ materially from those expressed or implied by such forward-looking statements: our ability to successfully execute our business and growth strategy; the sufficiency of our available funds to meet our liquidity needs; the demand for our platforms, product offerings, and services in general; our ability to increase our number of new customers and revenue generated from customers; our ability to realize some or all of the total contract value of customer contracts as revenue, including any contractual options available to customers or contractual periods that are subject to termination for convenience provisions; our long and unpredictable sales cycle; our ability to successfully execute our channel sales and other strategic initiatives with third parties; our ability to retain and expand our customer base; the fluctuation of our results of operations and our key business measures on a quarterly basis in future periods; the seasonality of our business; the implementation process for our platforms, which may be complex and lengthy; our ability to successfully develop and deploy new technologies to address the needs of our existing or prospective customers; our ability to make our platforms and product offerings easier to install, consume, and use; our ability to maintain and enhance our brand and reputation; our ability to maintain and enhance our culture as our business grows and as we pursue our business and financial goals; news or social media coverage about us or our leadership, including but not limited to coverage that presents, or relies on, inaccurate, misleading, incomplete, or otherwise damaging information; the impact of recent, ongoing, or future global macroeconomic and geopolitical events, fluctuating interest rates, monetary policy changes, foreign currency fluctuations, or the potential or actual imposition of tariffs or other impacts on trade relations on the business and operations of our company or of our existing or prospective customers and partners; issues raised by the use of artificial intelligence in our platforms; and any breach or access to our or customer or third-party data. The forward-looking statements included in this press release represent our views as of the date of this press release. We anticipate that subsequent events and developments will cause our views to change. We undertake no intention or obligation to update or revise any forward-looking statements, whether as a result of new information, future events or otherwise. These forward-looking statements should not be relied upon as representing our views as of any date subsequent to the date of this press release. Past performance is not necessarily indicative of future results. Additional Definitions For the purpose of this press release, our earnings webcast, and our CEO’s letter: • Total contract value (“TCV”) is the total potential lifetime value of contracts entered into with, or awarded by, our customers at the time of contract execution, annual contract value (“ACV”) is defined as the total value of contracts closed in the period divided by the dollar-weighted average contract duration of those same contracts, and remaining deal value (“RDV”) is the total remaining value of contracts as of the end of the reporting period. Except as noted below, TCV, ACV, and RDV each presume the exercise of all contract options available to our customers and no termination of contracts. However, the majority of our contracts are subject to termination provisions, including for convenience, and there can be no guarantee that contracts are not terminated or that contract options will be exercised. Further, RDV may exclude all or some portion of the value of certain commercial contracts as a result of our ongoing assessments of customers’ financial condition, including the consideration of such customers’ ability and intention to pay, and whether such contracts continue to meet the criteria for revenue recognition, among other factors. • Remaining performance obligations (“RPO”) reflect the total values of contracts that have been entered into with, or awarded by, our customers, and represent non-cancelable contracted revenue that has not yet been recognized, which includes deferred revenue and, in certain instances, amounts that will be invoiced. We have elected the practical expedient, as permitted under Accounting Standards Codification 606— Revenue from Contracts with Customers , to not disclose remaining performance obligations for contracts with original terms of twelve months or less. • The term “strategic commercial contracts” is as defined in our Quarterly Report on Form 10-Q for the fiscal quarter ended March 31, 2026. • “Dollar-weighted duration basis” is the total value of contracts closed in the applicable period, divided by the dollar-weighted average contract duration of those same contracts. • The term “Rule of 40” refers to the sum of our revenue growth rate year-over-year and our adjusted operating margin for each of the periods presented. Non-GAAP Financial Measures This press release and the accompanying tables, as well as our earnings webcast, and our CEO’s letter, contain the non-GAAP financial measures adjusted income from operations, which excludes stock-based compensation and related employer payroll taxes; adjusted operating margin; adjusted free cash flow; adjusted free cash flow margin; adjusted earnings before interest, taxes, depreciation, and amortization (“adjusted EBITDA”); adjusted EBITDA margin; adjusted net income attributable to common stockholders; and adjusted EPS, diluted. We believe these non-GAAP financial measures and other metrics described in this press release help us evaluate our business, identify trends affecting Palantir’s business, formulate business plans and financial projections, and make strategic decisions. We exclude stock-based compensation, which is a non-cash expense, from these non-GAAP financial measures because we believe that excluding this item provides meaningful supplemental information regarding operational performance and provides useful information to investors and others in understanding and evaluating our operating results in the same manner as our management team. We exclude employer payroll taxes related to stock-based compensation as it is difficult to predict and outside of Palantir’s control. Our definitions may differ from the definitions used by other companies and therefore comparability may be limited. In addition, other companies may not publish these or similar metrics. Further, these metrics have certain limitations as they do not include the impact of certain expenses that are reflected in our consolidated statements of operations. For example, adjusted free cash flow does not reflect our future contractual commitments or the total increase or decrease in our cash balances for a given period. Thus, our non-GAAP financial measures should be considered in addition to, not as a substitute for, or in isolation from, measures prepared in accordance with GAAP. We compensate for these limitations by providing a reconciliation of each of these non-GAAP measures to the most comparable GAAP measure. We encourage investors and others to review our business, results of operations, and financial information in their entirety, not to rely on any single financial measure, and to view these non-GAAP measures i",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000041/pltr-20260630.htm",
+   "published": "2026-08-03T18:06:38-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our condensed consolidated financial statements and the accompanying notes thereto included elsewhere in this Quarterly Report on Form 10-Q. This discussion contains forward-looking statements based upon current plans, expectations, and beliefs, involving risks and uncertainties. Our actual results may differ materially from those anticipated in these forward-looking statements. You should review the section titled “Special Note Regarding Forward-Looking Statements” for a discussion of forward-looking statements and the section titled “Risk Factors” for a discussion of factors that could cause actual results to differ materially from the results described in or implied by the forward-looking statements contained in the following discussion and analysis and elsewhere in this Quarterly Report on Form 10-Q. Our historical results are not necessarily indicative of the results that may be expected for any period in the future. Overview We build software that empowers organizations to effectively integrate their data, decisions, and operations at scale. We were founded in 2003 and started building software for the intelligence community in the United States to assist in counterterrorism investigations and operations. We later began working with commercial enterprises, who often faced fundamentally similar challenges in working with data. We have built four principal software platforms, Gotham, Foundry, Apollo, and our Artificial Intelligence Platform (“AIP”). Foundry is our foundational data operations platform, which provides the core capabilities for data management, logic authoring, systemic mapping development through our Ontology, analytics, and workflow development. AIP is our generative AI platform, which provides secure connectivity to third-party-provided large language models (“LLMs”), a development toolchain for building AI-powered agents and automations, an array of AI-enabled end user applications, a broad evaluations framework for governing AI workflows in production, and more. Apollo is our continuous delivery platform, enabling the orchestration of upgrades of services and assets every day to manage the underlying infrastructure that hosts our other platforms. Gotham integrates with our other platforms, as well as our broader defense offerings, to power a wide array of missions across allied defense and intelligence operations. For over a decade, Gotham has surfaced insights for global defense agencies, the intelligence community, disaster relief organizations and beyond. Foundry is becoming a central operating system not only for individual institutions but also for entire industries. Apollo, which we began offering as a commercial solution in 2021, is a cloud-agnostic, single control layer that coordinates ongoing delivery of new features, security updates, and platform configurations, helping to ensure the continuous operation of critical systems. Apollo allows our customers to run their software in virtually any environment. In 2023, we began deploying our newest offering, AIP, which is designed for customers across the commercial and government sectors, enabling them to derive value from recent breakthroughs in artificial intelligence via the combination of our existing software platforms with generative AI models, including LLMs. We believe AIP uniquely allows users to connect LLMs and other AI with their data and operations to facilitate decision-making within the legal, ethical, and security constraints that they require. The Ontology has continuously evolved over time, serving as the heart of our platforms by activating data and analytics inside operations, enabling real-time connectivity between data, analytics, and operational teams, as well as AI. Ontology generally refers to the systematic mapping of data to meaningful context. The Palantir Ontology goes far beyond the traditional concept by integrating the elements of a decision—the data, logic, and actions—into a foundational representation of the organization, and allowing users to build interconnected workflows, turning specialized expertise into shared infrastructure to dynamically optimize decision-making across the enterprise. The Ontology can help create a shared understanding across all users in a data ecosystem regardless of technical skills, enabling organizations to scale more efficiently and rapidly. While our focus in the short term remains on making our software platforms available to increasingly broad swaths of the market, we are also working to identify additional component parts and products embedded within those platforms that have potential as commercial offerings on their own. We believe that every institution faces challenges that our platforms and products were designed to address. Our approach with all our clients is to establish a partnership that transforms the way they use data in pursuit of their goals. We regularly evaluate partnerships and investment opportunities in complementary businesses, employee teams, technologies, and intellectual property rights in an effort to expand our product and service offerings. 22 Table of contents Our Business Our customers pay us to use the software platforms we have built. While we generally offer contract terms of one to five years in length, our customers sometimes enter into shorter-term contracts. Revenue is generally recognized ratably over the contract term. Many of our customer contracts contain termination for convenience provisions. For the three months ended June 30, 2026, we generated $1.9 billion in revenue, reflecting a 93% growth rate from the three months ended June 30, 2025 when we generated $1.0 billion in revenue. For the six months ended June 30, 2026, we generated $3.6 billion in revenue, reflecting a 89% growth rate from the six months ended June 30, 2025 when we generated $1.9 billion in revenue. In the three months ended June 30, 2026 and 2025, we generated income from operations of $912 million and $269 million, respectively, or adjusted income from operations of $1.2 billion and $0.5 billion, respectively, when excluding stock-based compensation and related employer payroll taxes. In the six months ended June 30, 2026 and 2025, we generated income from operations of $1.7 billion and $0.4 billion, respectively, or adjusted income from operations of $2.2 billion and $0.9 billion, respectively, when excluding stock-based compensation and related employer payroll taxes. In the three months ended June 30, 2026 and 2025, our gross profit was $1.6 billion and $0.8 billion, respectively, reflecting a gross margin of 85% and 81%, respectively, or 86% and 82%, respectively, when excluding stock-based compensation. In the six months ended June 30, 2026 and 2025, our gross profit was $3.1 billion and $1.5 billion, respectively, reflecting a gross margin of 86% and 81%, respectively, or 87% and 82%, respectively, when excluding stock-based compensation. For more information about our adjusted income from operations, which excludes stock-based compensation and related employer payroll taxes; and gross profit and gross margin, when excluding stock-based compensation; as well as reconciliations from income from operations and gross profit, see the section titled “Non-GAAP Reconciliations” below . Our Customers We define a customer as an organization from which we have recognized revenue during the trailing twelve-month period. During the period ended June 30, 2026 and 2025, we had 1,049 and 849 customers, respectively, including companies in various commercial sectors and government agencies around the world. For large government agencies, where a single institution has multiple divisions, units, or subsidiary agencies, each such division, unit, or subsidiary agency that enters into a separate contract with us and is invoiced as a separate entity is treated as a separate customer. For example, while the U.S. Food and Drug Administration, Centers for Disease Control and Prevention, and National Institutes of Health are subsidiary agencies of the U.S. Department of Health and Human Services, we treat each of those agencies as a separate customer given that the governing structures and procurement processes of each agency are independent. We have built lasting and significant customer relationships and partnerships with some of the world’s leading government institutions and companies. Our average revenue for the top twenty customers during the trailing twelve months ended June 30, 2026 was $124 million, which grew 67% from an average of $75 million in revenue from the top twenty customers during the trailing twelve months ended June 30, 2025, demonstrating our expanding relationships with existing customers. Organizations in the commercial and government sectors face similar challenges when it comes to managing data, and we intend to expand our reach in both markets moving forward. Our decisions about which customer relationships require further investment may change over time, based on our assessment of the potential long-term value that our software can generate for them. We conduct pilots and bootcamps with customers, generally at our own expense and without a guarantee of future returns, in order to access a unique set of opportunities that others may pass over for lack of resources and shorter investment horizons. We manage customers at the account level, not by industry or sector, so that we can optimize on the specific growth opportunities for each customer. In the six months ended June 30, 2026, 52% of our revenue came from government customers and 48% came from commercial customers. Our U.S. customers have been a meaningful source of revenue growth for our business and, in recent periods, has represented an increasing portion of our total revenue. In the six months ended June 30, 2026, we generated 80% of our revenue from customers in the United States and the remaining 20% from non-U.S. customers. Revenue from our U.S. customers during the trailing twelve months ended June 30, 2026 was $4.8 billion, which grew 99% from the prior twelve-month period. We expect that U.S. customers will continue to be a source of significant revenue growth for us. We continue to believe that our government customers remain a meaningful source of revenue for our business, particularly during periods of economic uncertainty. However, large government customers, in particular, are generally subject to a number 23 Table of contents of uncertainties regarding budgets and spending levels, changes in timing and spending priorities, and regulatory and policy changes, which can make it difficult to predict when, or if, we will make sales to such customers or the size and scope of any contract awards. See also the discussion of “Risks Related to Relationships and Business with the Public Sector” within “ Item 1A. Risk Factors” included in this Quarterly Report on Form 10-Q. Expansion of Access to Platforms The speed with which our platforms can be deployed has significantly expanded the range of potential customers with which we plan on partnering over the long term. We anticipate that our reach among an increasingly broad set of customers, in both the commercial and government sectors, will accelerate moving forward. We believe that, as these new partners grow, we will grow with them. Our proximity to these businesses and the industries in which they are operating has enhanced, and is expected to continue enhancing, our own product and business development efforts, as we continue expanding access to our platforms to the broadest possible set of customers. Macroeconomic Trends As a corporation with an international presence, we are subject to risks and uncertainties caused by significant events with macroeconomic impacts, inclu",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/d3ec971d-88fe-3b98-aa2c-d71ab16315ff/apple%2C-super-micro%2C-amd%2C.html?.tsrc=rss",
+   "published": "2026-10-30T13:44:47-04:00",
+   "text": "Apple, Super Micro, AMD, Palantir Step Up To Earnings Plate After Tech Sell-Off - Apple stock continues to show relative strength ahead of its upcoming earnings report amid a sell-off in semiconductor stocks.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/top-line-improvement-benefit-palantir-171100939.html?.tsrc=rss",
+   "published": "2026-10-30T13:11:00-04:00",
+   "text": "Will Top-Line Improvement Benefit Palantir in Q3 Earnings? - PLTR's third-quarter revenues are expected to jump 84% as AI-driven demand lifts its government and commercial businesses.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-portfolio-q3-earnings-165300648.html?.tsrc=rss",
+   "published": "2026-10-30T12:53:00-04:00",
+   "text": "Should Palantir Stock Be in Your Portfolio Before Q3 Earnings? - PLTR's Q3 earnings loom as strong AI demand and robust revenue growth fuel optimism, but a 60% stock rally, steep valuation and negative ESP raise concerns.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/30/should-you-buy-palantir-stock-before-nov-2/?.tsrc=rss",
+   "published": "2026-10-30T11:15:00-04:00",
+   "text": "Should You Buy Palantir Stock Before Nov. 2? - Palantir reports earnings on Monday, Nov. 2.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/palantir-trades-at-150-times-josh-brown-says-mondays-guidance-has-to-do-more-than-beat?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-30T07:47:21-04:00",
+   "text": "Palantir Trades at 150 Times, Josh Brown Says. Monday’s Guidance Has to Do More Than Beat - Key TakeawaysPalantir Technologies (PLTR:NASDAQ) reports third-quarter results on Monday, Nov. 2.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/charts/2026/10/30/palantir-technologies-vs-figma-comparing-revenue-growth-trends/?.tsrc=rss",
+   "published": "2026-10-30T02:40:37-04:00",
+   "text": "Palantir Technologies vs. Figma: Comparing Revenue Growth Trends - Palantir's quarterly revenue has nearly tripled Figma's, yet both companies posted consistent growth over eight quarters -- a rare alignment that raises questions about their divergent paths.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/nasdaq-100-futures-dip-on-weak-intel-amazon-earnings-with-bloated-capex-worries-weighing-on-sentiment-amzn-intc-sbux-pltr-asts-in-focus/cZUXcXOR9Ri?.tsrc=rss",
+   "published": "2026-10-29T19:54:15-04:00",
+   "text": "Nasdaq 100 Futures Dip On Weak Intel, Amazon Earnings With Bloated Capex Worries Weighing On Sentiment —  AMZN, INTC, SBUX, PLTR, ASTS In Focus - Amazon’s Q3 earnings and revenue fell short of expectations.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/jp-morgan-is-bullish-on-palantir-predicts-over-30-rally-on-strong-ai-demand/cZUXbW6R9RW?.tsrc=rss",
+   "published": "2026-10-29T18:40:49-04:00",
+   "text": "JPMorgan Is Bullish on Palantir, Predicts Over 30% Rally on Strong AI Demand - JPMorgan has initiated coverage on Palantir Technologies with an ‘overweight rating and a $262 price target.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.marketbeat.com/instant-alerts/transcript-what-stagwell-stgw-said-on-its-q3-earnings-call-2026-10-29/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "published": "2026-10-29T18:15:12-04:00",
+   "text": "What Stagwell (STGW) Said on Its Q3 Earnings Call - Stagwell (NASDAQ:STGW) reported record third-quarter revenue, net revenue, adjusted EBITDA and adjusted earnings per share, as the marketing company emphasized its expansion into AI-based marketing transformation software and services. Chairman and Chief Executive Officer Mark Penn said the company",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/29/could-1000-invested-in-palantir-turn-into-100000/?.tsrc=rss",
+   "published": "2026-10-29T16:50:00-04:00",
+   "text": "Could $1,000 Invested in Palantir Turn Into $100,000? - The high-growth tech stock still has a bright future.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/ea73e0e6-1f97-3d96-9c86-0b7e89d1ec67/why-j.p.-morgan-believes.html?.tsrc=rss",
+   "published": "2026-10-29T14:00:00-04:00",
+   "text": "Why J.P. Morgan Believes Palantir Stock Is Just Getting Going After a Lackluster 2026 - Palantir stock is in the midst of a modest 2026, but that could all change soon, according to J.P. Morgan.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/palantir-seen-beating-revenue-estimates-164852851.html?.tsrc=rss",
+   "published": "2026-10-29T12:48:52-04:00",
+   "text": "Palantir Seen Beating Revenue Estimates, Raising Guidance, Oppenheimer Says - Palantir Technologies (PLTR) is poised for another revenue beat and annual guidance raise in its upc",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/jpmorgan-starts-palantir-overweight-calls-135016462.html?.tsrc=rss",
+   "published": "2026-10-29T09:50:16-04:00",
+   "text": "JPMorgan starts Palantir at Overweight, calls it a disruptive AI leader - Investing.com -- JPMorgan has initiated coverage of Palantir Technologies with an Overweight rating and a December 2027 price target of $262 per share, also adding the stock to its Analyst Focus List.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/alphabet-downgraded-ebay-upgraded-wall-134755938.html?.tsrc=rss",
+   "published": "2026-10-29T09:47:55-04:00",
+   "text": "Alphabet downgraded, eBay upgraded: Wall Street's top analyst calls - Alphabet downgraded, eBay upgraded: Wall Street's top analyst calls",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/snow/articles/621306/what-did-snowflake-stock-investors-miss-before-the-run-2/2026-10-29?.tsrc=rss",
+   "published": "2026-10-29T09:21:11-04:00",
+   "text": "What Did Snowflake Stock Investors Miss Before The Run? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/29/what-a-1000-investment-in-palantir-could-be-worth/?.tsrc=rss",
+   "published": "2026-10-29T09:05:00-04:00",
+   "text": "What a $1,000 Investment in Palantir Could Be Worth by the End of 2027 (The Answer May Surprise You) - Palantir's stock has a ton of anticipated growth priced into it already.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/29/here-are-thursdays-top-wall-street-analyst-research-calls-alphabet-boston-scientific-ebay-fervo-energy-fortinet-hilton-worldwide-holdings-lennox-international-palantir-technologies-and-more/?.tsrc=rss",
+   "published": "2026-10-29T07:57:53-04:00",
+   "text": "Here Are Thursday’s Top Wall Street Analyst Research Calls: Alphabet, Boston Scientific, eBay, Fervo Energy, Fortinet, Hilton Worldwide Holdings, Lennox International, Palantir Technologies, and More - Alphabet cratered after hours while Microsoft soared, and now traders brace for Amazon's results as analysts across Wall Street reshuffle their ratings on Palantir, Fortinet, Hilton, and a new geothermal energy play just entering the public markets.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/nebius-is-up-103-in-2026-despite-musks-guppy-level-death-warning-take-profits-or-buy-more?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-29T07:54:49-04:00",
+   "text": "Nebius Is Up 103% in 2026 Despite Musk’s “Guppy-Level Death” Warning: Take Profits, or Buy More? - Key TakeawaysNebius stock is up 103% in 2026, helped by an August report in which second-quarter revenue rose 454% to $582. 3 million.",
+   "feed": {
+    "fetched_et": "2026-10-30T14:31:40-04:00",
+    "sha256": "86ce5513f46b645e562f7314d5abd7ac2d10769c77d6e5d38100784894d909f7"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 46983
+}

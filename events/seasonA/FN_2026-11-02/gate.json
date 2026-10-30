@@ -1,0 +1,97 @@
+{
+ "season": "seasonA",
+ "ticker": "FN",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:09.778029-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/fabrinet-announce-first-quarter-fiscal-year-2027-financial-results-november-2-2026",
+  "published_et": "2026-10-19T16:15-04:00",
+  "quote": "E: FN), a leading provider of advanced optical packaging and precision optical, electro-mechanical and electronic manufacturing services to original equipment manufacturers of complex products, today announced it will release financial results for the first quarter of fiscal year 2027, which ended September 25, 2026 , after market close on Monday, November 2, 2026 .",
+  "title": "Fabrinet to Announce First Quarter Fiscal Year 2027 Financial Results on November 2, 2026",
+  "retrieved_et": "2026-10-21T21:10:21.624448-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 318.9599914550781,
+  "expiry": "2026-11-20",
+  "strike": 320.0,
+  "call": {
+   "bid": 29.2,
+   "ask": 38.9,
+   "openInterest": 49.0,
+   "lastPrice": 37.0,
+   "impliedVolatility": 1.1080977212524417,
+   "lastTradeDate": "2026-10-27T14:29:22+00:00"
+  },
+  "put": {
+   "bid": 29.8,
+   "ask": 31.2,
+   "openInterest": 117.0,
+   "lastPrice": 30.7,
+   "impliedVolatility": 0.9602665106201171,
+   "lastTradeDate": "2026-10-30T18:02:13+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.20237647896065714,
+  "rel_spread": {
+   "call": 0.28487518355359764,
+   "put": 0.04590163934426225
+  },
+  "oi_atm": 166.0,
+  "oi_sum": 166.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

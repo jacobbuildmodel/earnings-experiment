@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "AEHR",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:00.312153-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/aehr-test-systems-announce-first-quarter-fiscal-2027-financial-results-november-2",
+  "published_et": "2026-10-08T07:30-04:00",
+  "quote": "26 / Aehr Test Systems (NASDAQ:AEHR), a leading provider of test and burn-in solutions for semiconductor devices used in artificial intelligence (AI), silicon photonics, data center, automotive, and industrial applications,today announced that it will report financial results for its first quarter of fiscal 2027 ended September 25, 2026 on Monday, November 2, 2026 following the close of the market.",
+  "title": "Aehr Test Systems to Announce First Quarter Fiscal 2027 Financial Results on November 2, 2026",
+  "retrieved_et": "2026-10-19T21:27:04.982844-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 52.0,
+  "expiry": "2026-11-06",
+  "strike": 51.0,
+  "call": {
+   "bid": 5.1,
+   "ask": 6.1,
+   "openInterest": 0.0,
+   "lastPrice": 14.0,
+   "impliedVolatility": 1.67578287109375,
+   "lastTradeDate": "2026-10-28T13:53:55+00:00"
+  },
+  "put": {
+   "bid": 3.5,
+   "ask": 4.1,
+   "openInterest": 4.0,
+   "lastPrice": 3.16,
+   "impliedVolatility": 1.41015919921875,
+   "lastTradeDate": "2026-10-30T14:47:26+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.18076923076923074,
+  "rel_spread": {
+   "call": 0.17857142857142858,
+   "put": 0.15789473684210517
+  },
+  "oi_atm": 4.0,
+  "oi_sum": 37.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
