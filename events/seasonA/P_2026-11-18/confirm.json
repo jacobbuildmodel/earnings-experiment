@@ -1,0 +1,26 @@
+{
+ "session": "AMC",
+ "session_from_call_time": true,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/everpure-announces-date-and-conference-call-information-third-quarter-fiscal-2027",
+  "published_et": "2026-10-28T16:05-04:00",
+  "quote": "linkedin facebook x email reddit SANTA CLARA, Calif. , Oct. 28, 2026 /PRNewswire/ -- Everpure (NYSE: P), the company revolutionizing storage and data management, today announced it will host a conference call on Wednesday, November 18 , at 2:00 p.m. PT to discuss its financial results for third quarter fiscal 2027 ended November 1, 2026 .",
+  "title": "Everpure Announces Date and Conference Call Information for Third Quarter Fiscal 2027 Financial Results",
+  "retrieved_et": "2026-10-30T21:57:30.173492-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session (company feed https://ir.everpuredata.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed) gave no readable statement)"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-18T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}

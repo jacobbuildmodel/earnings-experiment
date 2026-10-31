@@ -3,24 +3,75 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-29T21:16:29-04:00",
+ "graded_et": "2026-10-30T20:57:30-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "MSFT",
  "report_date": "2026-10-28",
  "session": "AMC",
  "entry_session": "2026-10-28",
  "cluster": "software_internet",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-28T16:04:44-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 531.82,
+   "entry_session": "2026-10-28",
+   "exit": 540.22,
+   "exit_session": "2026-10-29",
+   "dividends": 0,
+   "raw_return": 0.015794817795494742,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.65424,
+    "bench_return": -0.032382837096339046,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.0369809651374036,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.0015230717159941953,
+    "print_gap": 0.0173443061335945,
+    "entry_close": 531.01,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 531.82,
+   "entry_session": "2026-10-28",
+   "exit": 530.14,
+   "exit_session": "2026-10-29",
+   "dividends": 0,
+   "raw_return": -0.0031589635590990595,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.65424,
+    "bench_return": -0.028784744085634584,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.015673167411486513,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -37,5 +88,10 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "no stage-2 decision frozen"
+ },
+ "correct": {
+  "T0": true,
+  "T1": true,
+  "T2": false
  }
 }

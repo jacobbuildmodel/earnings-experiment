@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-29T21:16:19-04:00",
+ "graded_et": "2026-10-30T20:57:19-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "CMG",
  "report_date": "2026-10-28",
@@ -13,14 +13,63 @@
  "entry_session": "2026-10-28",
  "cluster": "consumer",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-28T16:10:53-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 28.12,
+   "entry_session": "2026-10-28",
+   "exit": 30.46,
+   "exit_session": "2026-10-29",
+   "dividends": 0,
+   "raw_return": 0.08321479374110963,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLY",
+    "beta": 0.706393,
+    "bench_return": 0.00338042818757045,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.08082688293240717,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.02169274537695598,
+    "print_gap": 0.06021580229725032,
+    "entry_close": 28.73,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 28.12,
+   "entry_session": "2026-10-28",
+   "exit": 31.28,
+   "exit_session": "2026-10-29",
+   "dividends": 0,
+   "raw_return": 0.11237553342816509,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLY",
+    "beta": 0.706393,
+    "bench_return": 0.007194244604316502,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.10729356939938814,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": true,
+  "T1": true,
+  "T2": true,
+  "T2G": true,
+  "T2E": true
  }
 }
