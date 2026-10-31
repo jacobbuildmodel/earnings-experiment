@@ -1,4 +1,4 @@
-# Health 2026-10-30 19:53 ET - **RED**
+# Health 2026-10-30 20:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -29,7 +29,7 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: open ['seasonA-CIFR-2026-11-02-L', 'seasonA-DOCN-2026-11-03-L', 'seasonA-BETA-2026-11-03-L', 'seasonA-DT-2026-11-03-L', 'seasonA-IPGP-2026-11-03-L', 'seasonA-MTCH-2026-11-02-L', 'seasonA-ON-2026-11-02-L', 'seasonA-PAY-2026-11-02-L', 'seasonA-PLTR-2026-11-02-L', 'seasonA-SHOP-2026-11-03-L', 'seasonA-VVX-2026-11-02-L', 'seasonA-YUMC-2026-11-03-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET (done)
-- paper/options: 71 position(s), 0 open order(s) - they match the ledgers
+- paper/options: 71 position(s), 5 open order(s) - they match the ledgers
 - paper/long: 41 position(s), 0 open order(s) - they match the ledgers
 - Fri 30 Oct: 19 snapshot(s) - AEHR, BETA, BMRN, BWXT, DOCN, DT, FN, ICHR, IPGP, JAZZ, LSCC, MTCH, ON, PAY, PLTR, SHOP, VRTX, VVX, YUMC
 - Mon 02 Nov: 24 snapshot(s) - ALAB, AMD, ANET, DDOG, DUOL, FLYW, FRSH, HUT, NATL, NVTS, OUST, Q, RAL, RIOT, RPRX, SMCI, SWKS, TOST, UBER, VSH, W, XYZ, YOU, ZBH
