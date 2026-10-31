@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "ON",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:23.900210-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/onsemi-announce-third-quarter-financial-results-2026-10-15-1",
+  "published_et": "2026-10-15T16:05-04:00",
+  "quote": "linkedin facebook x email reddit SCOTTSDALE, Ariz. , Oct. 15, 2026 (GLOBE NEWSWIRE) -- onsemi (Nasdaq: ON ) plans to announce its financial results for the third quarter, which ended October 2, 2026 , after market close on Monday, November 2, 2026 .",
+  "title": "onsemi to Announce Third Quarter Financial Results",
+  "retrieved_et": "2026-10-19T21:29:51.638432-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 69.81999969482422,
+  "expiry": "2026-11-06",
+  "strike": 70.0,
+  "call": {
+   "bid": 3.7,
+   "ask": 4.4,
+   "openInterest": 3.0,
+   "lastPrice": 4.1,
+   "impliedVolatility": 1.003422951660156,
+   "lastTradeDate": "2026-10-30T17:26:30+00:00"
+  },
+  "put": {
+   "bid": 3.5,
+   "ask": 3.8,
+   "openInterest": 132.0,
+   "lastPrice": 3.65,
+   "impliedVolatility": 0.8627943408203125,
+   "lastTradeDate": "2026-10-30T18:12:28+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.11028358684697624,
+  "rel_spread": {
+   "call": 0.17283950617283952,
+   "put": 0.08219178082191776
+  },
+  "oi_atm": 135.0,
+  "oi_sum": 317.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

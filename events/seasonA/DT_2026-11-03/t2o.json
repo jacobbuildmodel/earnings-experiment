@@ -1,0 +1,155 @@
+{
+ "track": "T2O",
+ "event": "DT_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.54,
+  "thesis": "Dynatrace's fundamental momentum is strong, but a roughly 46% three-month run-up, a 12.5% implied move and wildly two-sided recent reactions leave this close to a coin flip, so I stay at the buy-everything base rate.",
+  "reasons": [
+   "Q1 FY27 (I4) beat across all metrics, with organic net new ARR up 41% and four quarters of accelerating trailing-twelve-month net new ARR, which supports another beat-and-raise.",
+   "Expectations are elevated: the stock is up about 46% in three months and about 50% year to date (I17, I18), so a merely good print could still sell off.",
+   "The 10.6% five-day pullback (I2: A_ret_5d) has partly reset positioning before the print.",
+   "Recent reactions were +17%, -16%, +14.5% and +1.5% despite EPS beats of 5% to 8% every time, so the beat itself does not predict direction.",
+   "The 12.5% implied move with IV at 1.74x 60-day realized vol means a large binary outcome, and none of it tilts direction clearly."
+  ],
+  "deciding_variable": "Whether net new ARR keeps accelerating and full-year FY27 ARR guidance is raised by more than the beat, given FX headwinds and the high bar set by the run-up.",
+  "prior": {
+   "p": 0.545,
+   "from": "I3 base rates: software_internet cluster t0_hit 0.541 and BMO session 0.548 (overall ~0.54)"
+  },
+  "leak_probe": "I don't know. November 3, 2026 is still in the future (today is October 30, 2026), so Dynatrace (DT) hasn't reported those earnings yet and there's no stock reaction to describe.",
+  "moved_from_prior": "Net about -0.005. Business momentum and the bullish sell-side previews (I19, I20, I21) add roughly +0.02. The stretched three-month run and high expectations subtract roughly -0.025. The recent pullback and mildly call-rich ATM IV (I2: B_iv_spread +0.03) roughly offset each other.",
+  "theses": [
+   {
+    "expected": "Gap up",
+    "mechanism": "Net new ARR growth accelerates again, logs and AI consumption beat, and the full-year ARR/revenue guide rises beyond the Q2 beat.",
+    "wrong_if": "The guide raise is only the beat flow-through or ARR growth is flat at 17%."
+   },
+   {
+    "expected": "Gap down",
+    "mechanism": "After the big run, an in-line ARR result or FX-driven guide trim triggers profit-taking, similar to the May print (-16%).",
+    "wrong_if": "ARR growth reaches 18% or more with a clear constant-currency raise."
+   },
+   {
+    "expected": "Muted move",
+    "mechanism": "A solid beat is already priced in, and the recent 10% pullback offsets disappointment-driven selling.",
+    "wrong_if": "Net retention or new-logo commentary materially surprises in either direction."
+   }
+  ],
+  "key_observations": [
+   "Total ARR growth (17% last quarter) and organic net new ARR growth versus the 41% in Q1",
+   "Full-year FY27 ARR guide versus $2,359M to $2,379M, on both constant-currency and as-reported bases",
+   "Dollar-based net retention (110% last quarter)",
+   "Annualized logs consumption versus $200M and AI-related commentary",
+   "Q2 revenue versus the $565M to $570M guide and EPS versus 0.49 consensus",
+   "Any CFO appointment news or changes to buyback and capital-allocation commentary"
+  ],
+  "inputs_read": [
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/DT_2026-11-03/factors.json",
+    "published": "2026-10-30T14:31:09.284628-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000049/q1fy27-earningsreleaseex99.htm",
+    "published": "2026-08-05T06:32:18-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000050/dt-20260630.htm",
+    "published": "2026-08-05T06:33:56-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1773383/000177338326000054/dt-20260820.htm",
+    "published": "2026-08-20T16:14:54-04:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-stock-may-10-001941501.html?.tsrc=rss",
+    "published": "2026-10-27T20:19:41-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/dynatrace-dt-ahead-earnings-valuation-160632338.html?.tsrc=rss",
+    "published": "2026-10-27T12:06:32-04:00",
+    "dossier_item": "I18"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/strong-earnings-change-dynatrace-dt-150759984.html?.tsrc=rss",
+    "published": "2026-10-27T11:07:59-04:00",
+    "dossier_item": "I19"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/dynatrace-likely-post-strong-results-155626351.html?.tsrc=rss",
+    "published": "2026-10-26T11:56:26-04:00",
+    "dossier_item": "I21"
+   }
+  ],
+  "decided_et": "2026-10-30T17:54:44-04:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 25027,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1559,
+   "output_tokens_details": {
+    "thinking_tokens": 356
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 25027,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1559,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 25027,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 25027
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.2338488
+ }
+}

@@ -1,0 +1,119 @@
+{
+ "track": "T2G",
+ "event": "PLTR_2026-11-02",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.56,
+  "thesis": "Despite an extreme valuation multiple, strong US commercial AIP momentum and a 6% 5-day pullback into earnings lower the immediate bar for a guidance-driven relief rally.",
+  "reasons": [
+   "Pre-earnings pullback (-6.3% over 5 days) amid broad tech weakness eases tactical positioning hurdles.",
+   "Persistent positive call skew (call IV 6.5 vol points above put IV) indicates institutional demand for upside convexity.",
+   "Hyper-growth in U.S. commercial revenue (149% YoY last quarter) offers high beat potential against raised Q3 revenue targets.",
+   "Valuation at ~72x sales limits upside if full-year guide raises do not significantly surpass whisper numbers."
+  ],
+  "deciding_variable": "Q4 revenue guidance and U.S. commercial AIP customer conversion velocity.",
+  "prior": {
+   "p": 0.541,
+   "from": "registry base rate for software_internet cluster (n=919, hit rate 0.541)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved up +1.9% from 0.541 prior due to constructive call-skew positioning and a 5-day pre-earnings de-risking pullback, offset by extreme valuation sensitivity.",
+  "theses": [
+   {
+    "expected": "Q3 beat on U.S. commercial expansion accompanied by another full-year guidance raise",
+    "mechanism": "AIP bootcamps converting rapidly into multi-year enterprise contracts, reaccelerating TCV and operating leverage",
+    "wrong_if": "Government contract delays or decelerating commercial pipeline additions cause a guidance tap-out"
+   },
+   {
+    "expected": "Guidance beats consensus but fails to meet elevated buy-side whisper targets, sparking multiple compression",
+    "mechanism": "At 72x P/S, investors demand flawless beats; any sign of decelerating sequential growth prompts profit-taking",
+    "wrong_if": "Management raises FY26 operating income and free cash flow targets well above 60% margins"
+   },
+   {
+    "expected": "Post-earnings short squeeze and momentum pop on sovereign AI narrative",
+    "mechanism": "Positive call open interest and sentiment push retail and systematic buyers into breakout momentum at the open",
+    "wrong_if": "Macro tech risk aversion and capex fatigue overshadow idiosyncratic execution"
+   }
+  ],
+  "key_observations": [
+   "U.S. commercial revenue growth rate (Q2 was 149% YoY)",
+   "Full-year 2026 revenue guidance range revision (prior guide $8.150 - $8.158B)",
+   "Q3 GAAP operating income and margin (Q2 GAAP operating margin was 47%)",
+   "Remaining deal value (RDV) and closed total contract value (TCV) trajectory"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/PLTR_2026-11-02/gate.json",
+    "published": "2026-10-30T14:31:29.972603-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/PLTR_2026-11-02/factors.json",
+    "published": "2026-10-30T14:31:29.972603-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1321655/000132165526000039/a2026q2ex991pressrelease.htm",
+    "published": "2026-08-03T16:06:14-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/d3ec971d-88fe-3b98-aa2c-d71ab16315ff/apple%2C-super-micro%2C-amd%2C.html?.tsrc=rss",
+    "published": "2026-10-30T13:44:47-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/palantir-stock-portfolio-q3-earnings-165300648.html?.tsrc=rss",
+    "published": "2026-10-30T12:53:00-04:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/palantir-trades-at-150-times-josh-brown-says-mondays-guidance-has-to-do-more-than-beat?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-30T07:47:21-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/jpmorgan-starts-palantir-overweight-calls-135016462.html?.tsrc=rss",
+    "published": "2026-10-29T09:50:16-04:00",
+    "dossier_item": "I18"
+   }
+  ],
+  "decided_et": "2026-10-30T15:53:57-04:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 15304,
+   "candidatesTokenCount": 715,
+   "totalTokenCount": 16829,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 15304
+    }
+   ],
+   "thoughtsTokenCount": 810,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

@@ -1,0 +1,57 @@
+{
+ "event": "DT_2026-11-03",
+ "backend": "sonnet_r",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "1aceca16fdf51ba31e0c1eb247ac1f287413ddf70bf425a9bf49bb38487ba64d",
+ "called_et": "2026-10-30T17:53:20-04:00",
+ "prompt_sha256": "17e09d7128c665f7dfe15db72449d3ad16e65875352a0890df6d93ae544ff615",
+ "probe_reply": "I don't know. Today is 2026-10-30, so the 2026-11-03 earnings report hasn't happened yet, and I have no information on how DT's stock will react.",
+ "reply": "{\"prior\":{\"p\":0.55,\"from\":\"BMO session base rate 0.548 and software_internet cluster 0.541; overall validation 0.542\"},\"confidence\":0.53,\"thesis\":\"DT enters earnings after a strong run with high expectations and a large implied move, so the reaction is close to a coin flip with a slight positive drift from the base rate.\",\"reasons\":[\"Base rate for BMO and software is about 54-55%, which sets the starting point.\",\"Stock is up about 50% YTD and ran into the print, so expectations are elevated, though the 5-day return of -10.6% shows some pre-print pullback.\",\"Last four prints show a 75% win rate, with large moves in both directions (+17%, -16%, +15%, +1%), so outcomes are volatile.\",\"Analysts are optimistic: estimates were revised up, the stock has a 1.70 rec mean, and the AI and logs momentum narrative is strong.\",\"Implied move of 12.5% is large and IV is 1.74x realized volatility, which signals a binary outcome with no directional edge.\"],\"moved_from_prior\":\"Moved down about 2 points from 0.55 because the stock ran up strongly into the print and expectations are high; the positive revision trend and the recent pullback offset most of that.\",\"deciding_variable\":\"Net new ARR and the size of the guidance raise (including whether the ARR growth acceleration continues), relative to elevated expectations.\",\"theses\":[{\"expected\":\"Up: ARR acceleration and logs growth lead to a raise\",\"mechanism\":\"Strong net new ARR and AI demand push the stock up after the pre-print pullback\",\"wrong_if\":\"Net new ARR growth decelerates or ARR guidance is only maintained\"},{\"expected\":\"Down: sell-the-news after a 50% YTD run\",\"mechanism\":\"Elevated expectations mean a merely in-line beat is not enough, as in the May print (-16%)\",\"wrong_if\":\"The beat is large and guidance is raised well above consensus\"},{\"expected\":\"Flat to modestly up: a beat with a conservative outlook\",\"mechanism\":\"Dynatrace habitually beats and guides conservatively, so the stock drifts with the software sector tone\",\"wrong_if\":\"The move is larger than 5% either way\"}],\"key_observations\":[\"Net new ARR growth and total ARR growth versus 17%\",\"Full-year ARR and revenue guidance changes, including FX\",\"Logs consumption and AI-related commentary\",\"Non-GAAP operating margin and free cash flow\",\"CFO transition update and buyback pace\"],\"items_used\":[\"I1\",\"I2\",\"I3\",\"I4\",\"I14\",\"I17\",\"I18\"]}",
+ "error": null,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 24398,
+  "cache_read_input_tokens": 633,
+  "output_tokens": 871,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 24398,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 871,
+    "cache_read_input_tokens": 633,
+    "cache_creation_input_tokens": 24398,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 24398
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model": "claude-sonnet-5-5",
+ "isolation": {
+  "tools": [],
+  "mcp_servers": [],
+  "num_turns": 1,
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "model": "claude-sonnet-5-5"
+ },
+ "outcome": "decided"
+}

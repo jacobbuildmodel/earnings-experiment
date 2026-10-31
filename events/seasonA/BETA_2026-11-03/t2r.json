@@ -1,0 +1,137 @@
+{
+ "track": "T2R",
+ "event": "BETA_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "BETA enters the print with a high implied move (~17%) and mixed signals: recent positive FAA and eIPP news flow against a stock down 10% in a month and 47% off its high, with two prior prints falling after earnings, so I see no edge over a coin flip.",
+  "reasons": [
+   "Base rate for BMO events is ~55%, with the sector cluster slightly higher at 59%, but the cluster difference is not a finding.",
+   "The last two prints had negative open-to-open reactions (-8.0% and -2.2%) despite EPS beats; the last four split 50/50.",
+   "Positive news flow (FAA Special Airworthiness Certificate, 14 Florida eIPP flights, and the Loganair term sheet) is likely already priced in ahead of the print.",
+   "The stock is down 9.9% over a month and 47% off its 52-week high, with 9.9% short interest, which gives some mean-reversion and squeeze potential but also shows weak momentum.",
+   "The entry is at the open of 2026-11-02, so the return measured is only that open to the next-day open, which is the reaction session, and implied volatility is elevated relative to realised (1.25x), so the distribution is wide and nearly symmetric."
+  ],
+  "deciding_variable": "Whether FY2026 revenue and adjusted EBITDA guidance holds or improves, together with certification timeline commentary (H500A and CX300) and cash burn relative to the $1.48B cash balance.",
+  "prior": {
+   "p": 0.55,
+   "from": "BMO session base rate 0.548 (validation overall 0.542); drones/robotics/space/defense cluster 0.586 is a candidate only, so I stay near 0.55"
+  },
+  "leak_probe": "I don't know. Today is 2026-10-30, so that earnings report on 2026-11-03 hasn't happened yet, and I have no information about how BETA's stock will react.",
+  "moved_from_prior": "Moved down about 0.05 from 0.55 to 0.50: the last two post-earnings reactions were negative, estimates were revised down 21% over 90 days, and the positive news seems already priced in. The sector cluster's higher hit rate offsets some of that, but not enough to push above 0.50.",
+  "theses": [
+   {
+    "expected": "Rise: guidance is raised or reaffirmed and certification milestones are on track, producing a relief rally.",
+    "mechanism": "The stock is depressed and heavily shorted, so good certification and eIPP progress could trigger a squeeze after the recent run of news.",
+    "wrong_if": "Revenue misses the $42-50M annual range, burn guidance widens, or certification timelines slip."
+   },
+   {
+    "expected": "Fall: the sell-the-news pattern of the last two prints repeats.",
+    "mechanism": "The positive FAA and eIPP news has already lifted expectations, while R&D and cash burn keep growing quickly (R&D +111% year on year), so a modest beat is not enough.",
+    "wrong_if": "Management raises guidance and announces new orders that convert term sheets into firm orders."
+   },
+   {
+    "expected": "Flat or noisy move within the ±17% implied range, with direction set by the sector tape.",
+    "mechanism": "Eletric aviation and defense peers move together, so sector sentiment on the day matters more than BETA's own numbers.",
+    "wrong_if": "There is a large idiosyncratic surprise such as an equity raise or a major order."
+   }
+  ],
+  "key_observations": [
+   "FY2026 revenue and adjusted EBITDA guidance versus $42-50M and -$400 to -$445M",
+   "Q3 revenue against the roughly $14.7M Q2 level and the consensus of around -$0.62 EPS",
+   "Timing updates on H500A and CX300 FAA certification",
+   "Quarterly cash burn and capex relative to $1.48B in cash",
+   "Backlog conversion, including Loganair, and defense (MV250) traction",
+   "Any capital raise or ATM disclosure"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/BETA_2026-11-03/gate.json",
+    "published": "2026-10-30T14:31:40.821249-04:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/BETA_2026-11-03/factors.json",
+    "published": "2026-10-30T14:31:40.821249-04:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1784570/000162828026055933/a2026q2earningsrelease.htm",
+    "published": "2026-08-12T06:05:24-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/articles/beta-completes-14-electric-flights-172300315.html?.tsrc=rss",
+    "published": "2026-10-30T13:23:00-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/articles/beta-becomes-first-company-secure-110000664.html?.tsrc=rss",
+    "published": "2026-10-21T07:00:00-04:00",
+    "dossier_item": "I10"
+   }
+  ],
+  "decided_et": "2026-10-30T17:53:40-04:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20950,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1246,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20950,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1246,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20950,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20950
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.0984266
+ }
+}

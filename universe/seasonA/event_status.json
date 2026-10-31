@@ -1,7 +1,7 @@
 {
  "season": "seasonA",
  "rule": "D003_universe_screen_v4",
- "updated_et": "2026-10-29T22:34:36.630223-04:00",
+ "updated_et": "2026-10-30T14:32:35.658833-04:00",
  "events": {
   "AAOI": {
    "status": "PENDING",
@@ -199,11 +199,12 @@
     "2026-10-28T08:42:55-04:00: housekeeping - Company: results Monday 2026-11-02, no session stated (release 2026-10-19 16:05 ET)",
     "2026-10-28T22:02:36.888753-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-02']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Adeia Enters into Multi-Year IP License Renewal with TCL'",
     "2026-10-29T10:47:56.614320-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-02']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Adeia Enters into Multi-Year IP License Renewal with TCL'",
-    "2026-10-29T22:18:18.136800-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-02']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Adeia Enters into Multi-Year IP License Renewal with TCL'"
+    "2026-10-29T22:18:18.136800-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-02']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Adeia Enters into Multi-Year IP License Renewal with TCL'",
+    "2026-10-30T10:54:09.422409-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-02']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Adeia Enters into Multi-Year IP License Renewal with TCL'"
    ]
   },
   "AEHR": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -226,7 +227,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:18.378827-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "ad0fca8"
   },
   "AGYS": {
    "status": "FROZEN",
@@ -308,7 +315,7 @@
    ]
   },
   "ALGM": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "calendar_dates": [
     "2026-10-29"
    ],
@@ -341,8 +348,10 @@
     "2026-10-28T22:01:16.324850-04:00: find_dates v4 (2026-10-26) - no_feed",
     "2026-10-29T08:51:16-04:00: housekeeping - probe: no_feed",
     "2026-10-29T10:46:33.317424-04:00: find_dates v4 (2026-10-26) - no_feed",
-    "2026-10-29T22:17:01.192731-04:00: find_dates v4 (2026-10-26) - no_feed"
-   ]
+    "2026-10-29T22:17:01.192731-04:00: find_dates v4 (2026-10-26) - no_feed",
+    "2026-10-30T08:40:02-04:00: housekeeping - INELIGIBLE unconfirmed: find_dates probe 2026-10-30: no company date statement; ALGM calendar date's sessions passed"
+   ],
+   "reason": "unconfirmed"
   },
   "ALNY": {
    "status": "FROZEN",
@@ -1112,7 +1121,7 @@
    "freeze_commit": "0d69891"
   },
   "BMRN": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-10-26"
    ],
@@ -1152,7 +1161,13 @@
    "flags": [
     "confirmed_by_code",
     "session_from_call_time"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "printed_before_entry",
+   "frozen_et": "2026-10-30T14:31:20.082062-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "24d042a"
   },
   "BOOT": {
    "status": "FROZEN",
@@ -1257,7 +1272,7 @@
    ]
   },
   "BWXT": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -1280,7 +1295,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:16.723093-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "195c0c0"
   },
   "CAKE": {
    "status": "FROZEN",
@@ -1332,7 +1353,8 @@
     "2026-10-27T21:57:55.924611-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Calix Releases Universal Communications Language Model on Hugging Face While Cal'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
     "2026-10-28T22:02:49.488408-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Calix Releases Universal Communications Language Model on Hugging Face While Cal'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
     "2026-10-29T10:48:10.601118-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Calix Releases Universal Communications Language Model on Hugging Face While Cal'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
-    "2026-10-29T22:18:29.240620-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'BOYCOM Achieves 20%+ ARPU Growth Through SmartLife Experiences With Calix'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING"
+    "2026-10-29T22:18:29.240620-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'BOYCOM Achieves 20%+ ARPU Growth Through SmartLife Experiences With Calix'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
+    "2026-10-30T10:54:22.847383-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'BOYCOM Achieves 20%+ ARPU Growth Through SmartLife Experiences With Calix'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING"
    ]
   },
   "CARG": {
@@ -1444,7 +1466,7 @@
    ]
   },
   "CCC": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "calendar_dates": [
     "2026-10-29"
    ],
@@ -1477,8 +1499,10 @@
     "2026-10-28T22:01:29.017162-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2025-10-30T00:00 'CCC Expands Relationship with Opus IVS to Deliver ADAS Insights to Collision Rep'",
     "2026-10-29T08:51:16-04:00: housekeeping - probe: newest feed item is from 2025; no date statement",
     "2026-10-29T10:46:42.326795-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2025-10-30T00:00 'CCC Expands Relationship with Opus IVS to Deliver ADAS Insights to Collision Rep'",
-    "2026-10-29T22:17:11.759461-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2025-10-30T00:00 'CCC Expands Relationship with Opus IVS to Deliver ADAS Insights to Collision Rep'"
-   ]
+    "2026-10-29T22:17:11.759461-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2025-10-30T00:00 'CCC Expands Relationship with Opus IVS to Deliver ADAS Insights to Collision Rep'",
+    "2026-10-30T08:41:15-04:00: housekeeping - INELIGIBLE unconfirmed: find_dates probe 2026-10-30: company feed showed no date statement ahead of the report"
+   ],
+   "reason": "unconfirmed"
   },
   "CDNS": {
    "status": "FROZEN",
@@ -1729,7 +1753,8 @@
     "2026-10-26T21:47:25.146874-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-26T00:00 'Corcept Reports Positive Results from Phase 2 BELLA Trial of Lifyorli® Combined '",
     "2026-10-27T21:58:59.216686-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Corcept Therapeutics to Announce Third Quarter Financial Results, Provide Corpor'",
     "2026-10-28T22:03:43.847645-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Corcept Therapeutics to Announce Third Quarter Financial Results, Provide Corpor'",
-    "2026-10-29T22:19:27.406311-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Corcept Therapeutics to Announce Third Quarter Financial Results, Provide Corpor'"
+    "2026-10-29T22:19:27.406311-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Corcept Therapeutics to Announce Third Quarter Financial Results, Provide Corpor'",
+    "2026-10-30T10:55:10.956731-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Corcept Therapeutics to Announce Third Quarter Financial Results, Provide Corpor'"
    ]
   },
   "CORZ": {
@@ -1812,7 +1837,8 @@
     "2026-10-26T21:47:32.920921-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://ir.aboutcoupang.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-22T08:00 'Sartori Cheese Boosts Wisconsin Dairy Exports to South Korea with Coupang'",
     "2026-10-27T21:59:15.473951-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://ir.aboutcoupang.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-27T10:13 'Nebraska Cattle Producers Get New Direct Access to Overseas Markets'",
     "2026-10-28T22:03:54.009820-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://ir.aboutcoupang.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-27T10:13 'Nebraska Cattle Producers Get New Direct Access to Overseas Markets'",
-    "2026-10-29T22:19:38.497297-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://ir.aboutcoupang.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-27T10:13 'Nebraska Cattle Producers Get New Direct Access to Overseas Markets'"
+    "2026-10-29T22:19:38.497297-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://ir.aboutcoupang.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-27T10:13 'Nebraska Cattle Producers Get New Direct Access to Overseas Markets'",
+    "2026-10-30T10:55:20.813166-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://ir.aboutcoupang.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-27T10:13 'Nebraska Cattle Producers Get New Direct Access to Overseas Markets'"
    ]
   },
   "CROX": {
@@ -2080,7 +2106,9 @@
     "2026-10-28T22:00:49.484109-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-28T07:01 'Diebold Nixdorf Reports Third Quarter Revenue and Adjusted EBITDA Growth'; found 2026-10-28 BMO but its snapshot session 2026-10-26 has passed - left for the AI step",
     "2026-10-29T08:51:15-04:00: housekeeping - probe: Q3 results release 10-28 on Nasdaq feed, no session/time statement found",
     "2026-10-29T10:46:13.356646-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://investors.dieboldnixdorf.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-28T07:01 'Diebold Nixdorf Reports Third Quarter Revenue and Adjusted EBITDA Growth'",
-    "2026-10-29T22:16:39.693781-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://investors.dieboldnixdorf.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-28T07:01 'Diebold Nixdorf Reports Third Quarter Revenue and Adjusted EBITDA Growth'"
+    "2026-10-29T22:16:39.693781-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://investors.dieboldnixdorf.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-28T07:01 'Diebold Nixdorf Reports Third Quarter Revenue and Adjusted EBITDA Growth'",
+    "2026-10-30T08:41:16-04:00: housekeeping - Company feed: Q3 results 2026-10-28 07:01 ET (BMO) but snapshot 2026-10-26 passed; hk refused confirm",
+    "2026-10-30T10:53:36.910494-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://investors.dieboldnixdorf.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-28T07:01 'Diebold Nixdorf Reports Third Quarter Revenue and Adjusted EBITDA Growth'"
    ]
   },
   "DBX": {
@@ -2251,7 +2279,7 @@
    ]
   },
   "DOCN": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-04"
    ],
@@ -2279,7 +2307,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:09.270582-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "a56634f"
   },
   "DPC": {
    "status": "CONFIRMED",
@@ -2331,7 +2365,7 @@
    "freeze_commit": "23902f0"
   },
   "DRS": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "calendar_dates": [
     "2026-10-29"
    ],
@@ -2364,11 +2398,13 @@
     "2026-10-28T22:01:40.776882-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-14T00:00 'Leonardo DRS Expands Federal Access to Mission-Critical Technologies Through NAS'",
     "2026-10-29T08:51:16-04:00: housekeeping - company states call Thu 10-29 10:00 ET (intraday); no release time -> no session; results release posted 10-29",
     "2026-10-29T10:46:52.914961-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'Leonardo DRS Announces Financial Results for Third Quarter 2026'",
-    "2026-10-29T22:17:23.830984-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'Leonardo DRS Announces Financial Results for Third Quarter 2026'"
-   ]
+    "2026-10-29T22:17:23.830984-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'Leonardo DRS Announces Financial Results for Third Quarter 2026'",
+    "2026-10-30T08:41:16-04:00: housekeeping - INELIGIBLE unconfirmed: find_dates probe 2026-10-30: company feed showed no date statement ahead of the report"
+   ],
+   "reason": "unconfirmed"
   },
   "DT": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-04"
    ],
@@ -2396,7 +2432,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "PASS",
+   "gate_reason": null,
+   "frozen_et": "2026-10-30T14:31:26.615039-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "f0a54c8"
   },
   "DUOL": {
    "status": "CONFIRMED",
@@ -2922,7 +2964,7 @@
    ]
   },
   "FN": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -2947,7 +2989,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:23.391613-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "c3db716"
   },
   "FORM": {
    "status": "FROZEN",
@@ -3631,11 +3679,12 @@
     "2026-10-26T21:47:50.590798-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'ImmunityBio Announces Database Lock for Registrational Trial of Locally Delivere'",
     "2026-10-27T21:59:32.675569-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'ImmunityBio Announces Database Lock for Registrational Trial of Locally Delivere'",
     "2026-10-28T22:04:09.906953-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'ImmunityBio Announces Database Lock for Registrational Trial of Locally Delivere'",
-    "2026-10-29T22:19:53.017710-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'ImmunityBio Announces Database Lock for Registrational Trial of Locally Delivere'"
+    "2026-10-29T22:19:53.017710-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'ImmunityBio Announces Database Lock for Registrational Trial of Locally Delivere'",
+    "2026-10-30T10:55:34.923570-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'ImmunityBio Announces Database Lock for Registrational Trial of Locally Delivere'"
    ]
   },
   "ICHR": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -3658,7 +3707,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:21.742608-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "5e49594"
   },
   "IDCC": {
    "status": "FROZEN",
@@ -3742,7 +3797,7 @@
    ]
   },
   "INSM": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "calendar_dates": [
     "2026-10-29"
    ],
@@ -3774,8 +3829,10 @@
     "2026-10-28T22:02:01.351922-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-20T00:00 'Insmed Appoints Two New Directors to Its Board'",
     "2026-10-29T08:51:16-04:00: housekeeping - probe: Q3 results release dated 10-29 on feed, no session statement found",
     "2026-10-29T10:47:14.434218-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'Insmed Reports Third-Quarter 2026 Financial Results and Provides Business Update'",
-    "2026-10-29T22:17:43.019581-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'Insmed Reports Third-Quarter 2026 Financial Results and Provides Business Update'"
-   ]
+    "2026-10-29T22:17:43.019581-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-29T00:00 'Insmed Reports Third-Quarter 2026 Financial Results and Provides Business Update'",
+    "2026-10-30T08:41:15-04:00: housekeeping - INELIGIBLE unconfirmed: find_dates probe 2026-10-30: company feed showed no date statement ahead of the report"
+   ],
+   "reason": "unconfirmed"
   },
   "INTA": {
    "status": "FROZEN",
@@ -3896,7 +3953,7 @@
    ]
   },
   "IPGP": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-03"
    ],
@@ -3921,7 +3978,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:25.010172-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "9d0d84f"
   },
   "IREN": {
    "status": "CONFIRMED",
@@ -3955,7 +4018,7 @@
    ]
   },
   "JAZZ": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-04"
    ],
@@ -3980,7 +4043,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "printed_before_entry",
+   "frozen_et": "2026-10-30T14:31:28.299600-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "cb8c6d0"
   },
   "JMKE": {
    "status": "FROZEN",
@@ -4143,7 +4212,8 @@
     "2026-10-27T21:58:09.950455-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Kontoor Brands Declares Quarterly Dividend, a 2 Percent Increase'",
     "2026-10-28T22:03:03.061225-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Kontoor Brands Declares Quarterly Dividend, a 2 Percent Increase'",
     "2026-10-29T10:48:26.834383-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Kontoor Brands Declares Quarterly Dividend, a 2 Percent Increase'",
-    "2026-10-29T22:18:40.360541-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Kontoor Brands Declares Quarterly Dividend, a 2 Percent Increase'"
+    "2026-10-29T22:18:40.360541-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Kontoor Brands Declares Quarterly Dividend, a 2 Percent Increase'",
+    "2026-10-30T10:54:33.677504-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-22T00:00 'Kontoor Brands Declares Quarterly Dividend, a 2 Percent Increase'"
    ]
   },
   "KVYO": {
@@ -4410,7 +4480,7 @@
    "freeze_commit": "ed2c57d"
   },
   "LSCC": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -4434,7 +4504,13 @@
    "flags": [
     "confirmed_by_code",
     "session_from_call_time"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:31.589599-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "4d8aa7e"
   },
   "LUNR": {
    "status": "PENDING",
@@ -4537,7 +4613,8 @@
     "2026-10-26T21:47:54.052868-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://ir.mara.com/news-events/press-releases/rss (RSS), newest item 2026-08-06T16:05 'MARA Announces Second Quarter 2026 Results'",
     "2026-10-27T21:59:35.716803-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://ir.mara.com/news-events/press-releases/rss (RSS), newest item 2026-08-06T16:05 'MARA Announces Second Quarter 2026 Results'",
     "2026-10-28T22:04:12.916811-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://ir.mara.com/news-events/press-releases/rss (RSS), newest item 2026-08-06T16:05 'MARA Announces Second Quarter 2026 Results'",
-    "2026-10-29T22:19:55.658735-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://ir.mara.com/news-events/press-releases/rss (RSS), newest item 2026-08-06T16:05 'MARA Announces Second Quarter 2026 Results'"
+    "2026-10-29T22:19:55.658735-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://ir.mara.com/news-events/press-releases/rss (RSS), newest item 2026-08-06T16:05 'MARA Announces Second Quarter 2026 Results'",
+    "2026-10-30T10:55:37.427598-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://ir.mara.com/news-events/press-releases/rss (RSS), newest item 2026-08-06T16:05 'MARA Announces Second Quarter 2026 Results'"
    ]
   },
   "MBGL": {
@@ -4637,7 +4714,8 @@
     "2026-10-26T21:48:08.460466-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-20T00:00 'Madrigal Pharmaceuticals to Release Third-Quarter 2026 Financial Results and Hos'",
     "2026-10-27T21:59:50.173371-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Madrigal to Present Multiple Abstracts at AASLD's The Liver Meeting 2026, Includ'",
     "2026-10-28T22:04:32.277495-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Madrigal to Present Multiple Abstracts at AASLD's The Liver Meeting 2026, Includ'",
-    "2026-10-29T22:20:08.583806-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Madrigal to Present Multiple Abstracts at AASLD's The Liver Meeting 2026, Includ'"
+    "2026-10-29T22:20:08.583806-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Madrigal to Present Multiple Abstracts at AASLD's The Liver Meeting 2026, Includ'",
+    "2026-10-30T10:55:52.709447-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-27T00:00 'Madrigal to Present Multiple Abstracts at AASLD's The Liver Meeting 2026, Includ'"
    ]
   },
   "MDT": {
@@ -4855,7 +4933,9 @@
     "2026-10-28T22:02:13.179502-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-19T00:00 'Motorola Solutions to Issue Third-Quarter 2026 Earnings Results on November 4'",
     "2026-10-29T08:51:16-04:00: housekeeping - company states results Nov 4 (10-19 release); no session stated",
     "2026-10-29T10:47:33.651043-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-19T00:00 'Motorola Solutions to Issue Third-Quarter 2026 Earnings Results on November 4'",
-    "2026-10-29T22:17:55.520646-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-19T00:00 'Motorola Solutions to Issue Third-Quarter 2026 Earnings Results on November 4'"
+    "2026-10-29T22:17:55.520646-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-19T00:00 'Motorola Solutions to Issue Third-Quarter 2026 Earnings Results on November 4'",
+    "2026-10-30T08:41:16-04:00: housekeeping - Company release 2026-10-19: Q3 results on November 4; no session stated in title; left PENDING",
+    "2026-10-30T10:53:55.469022-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-30T00:00 'Rheinmetall and Silvus Technologies, a Motorola Solutions Company, Strengthen Ai'"
    ]
   },
   "MSTR": {
@@ -4882,7 +4962,7 @@
    "freeze_commit": "8c4d815"
   },
   "MTCH": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-03"
    ],
@@ -4905,7 +4985,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:29.972468-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "5e993e6"
   },
   "MTSI": {
    "status": "CONFIRMED",
@@ -5236,7 +5322,7 @@
    "freeze_commit": "00c3097"
   },
   "ON": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -5259,7 +5345,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:33.482433-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "ced9f39"
   },
   "ONC": {
    "status": "CONFIRMED",
@@ -5448,7 +5540,7 @@
    ]
   },
   "PAY": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -5473,7 +5565,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:35.189645-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "301796b"
   },
   "PAYC": {
    "status": "CONFIRMED",
@@ -5725,7 +5823,7 @@
    "freeze_commit": "635ae39"
   },
   "PLTR": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -5753,7 +5851,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "PASS",
+   "gate_reason": null,
+   "frozen_et": "2026-10-30T14:31:42.098774-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "b700b73"
   },
   "PLUS": {
    "status": "PENDING",
@@ -5865,7 +5969,8 @@
     "2026-10-27T21:58:17.479524-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-08T00:00 'THE 2026 REAL SIMPLE HOME OPENS ITS DOORS IN FORT GREENE, BROOKLYN'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
     "2026-10-28T22:03:10.548405-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-08T00:00 'THE 2026 REAL SIMPLE HOME OPENS ITS DOORS IN FORT GREENE, BROOKLYN'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
     "2026-10-29T10:48:34.852948-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-08T00:00 'THE 2026 REAL SIMPLE HOME OPENS ITS DOORS IN FORT GREENE, BROOKLYN'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
-    "2026-10-29T22:18:48.319419-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-08T00:00 'THE 2026 REAL SIMPLE HOME OPENS ITS DOORS IN FORT GREENE, BROOKLYN'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING"
+    "2026-10-29T22:18:48.319419-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-08T00:00 'THE 2026 REAL SIMPLE HOME OPENS ITS DOORS IN FORT GREENE, BROOKLYN'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING",
+    "2026-10-30T10:54:41.508798-04:00: find_dates v4 (2026-10-26) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-08T00:00 'THE 2026 REAL SIMPLE HOME OPENS ITS DOORS IN FORT GREENE, BROOKLYN'; found 2026-11-03 BMO but no second source agrees yet ([]) - left PENDING"
    ]
   },
   "PTC": {
@@ -6065,7 +6170,7 @@
    ]
   },
   "QRVO": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "calendar_dates": [
     "2026-10-27"
    ],
@@ -6100,8 +6205,10 @@
     "2026-10-28T22:00:29.814654-04:00: find_dates v4 (2026-10-26) - no_feed",
     "2026-10-29T08:51:15-04:00: housekeeping - probe: no_feed; no company statement available",
     "2026-10-29T10:45:54.975174-04:00: find_dates v4 (2026-10-26) - no_feed",
-    "2026-10-29T22:16:25.729645-04:00: find_dates v4 (2026-10-26) - no_feed"
-   ]
+    "2026-10-29T22:16:25.729645-04:00: find_dates v4 (2026-10-26) - no_feed",
+    "2026-10-30T08:40:02-04:00: housekeeping - INELIGIBLE unconfirmed: find_dates probe 2026-10-30: no company date statement; QRVO calendar date's sessions passed"
+   ],
+   "reason": "unconfirmed"
   },
   "QSR": {
    "status": "FROZEN",
@@ -6859,7 +6966,7 @@
    ]
   },
   "SHOP": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-03"
    ],
@@ -6873,7 +6980,13 @@
    ],
    "rechecks": [
     "2026-10-08T23:19:37.735272-04:00: find_dates v3 (2026-10-07) - found; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-06T00:00 'Shopify to Announce Third-Quarter 2026 Financial Results'; CONFIRMED 2026-11-03 BMO, snapshot 2026-10-30"
-   ]
+   ],
+   "gate_status": "PASS",
+   "gate_reason": null,
+   "frozen_et": "2026-10-30T14:31:43.731327-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "e2b940b"
   },
   "SITM": {
    "status": "CONFIRMED",
@@ -6926,7 +7039,8 @@
     "2026-10-26T21:48:35.263350-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-07T00:00 'Silicon Labs Expands AI Developer Platform to Simplify IoT Development and Scale'",
     "2026-10-27T22:00:21.105500-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-07T00:00 'Silicon Labs Expands AI Developer Platform to Simplify IoT Development and Scale'",
     "2026-10-28T22:04:47.736264-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-07T00:00 'Silicon Labs Expands AI Developer Platform to Simplify IoT Development and Scale'",
-    "2026-10-29T22:20:21.470637-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-07T00:00 'Silicon Labs Expands AI Developer Platform to Simplify IoT Development and Scale'"
+    "2026-10-29T22:20:21.470637-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-07T00:00 'Silicon Labs Expands AI Developer Platform to Simplify IoT Development and Scale'",
+    "2026-10-30T10:56:07.371104-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-07T00:00 'Silicon Labs Expands AI Developer Platform to Simplify IoT Development and Scale'"
    ]
   },
   "SMCI": {
@@ -7801,7 +7915,7 @@
    ]
   },
   "TXT": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "calendar_dates": [
     "2026-10-29"
    ],
@@ -7832,8 +7946,10 @@
     "2026-10-28T22:02:23.815881-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://investor.textron.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-28T14:00 ' Global Medical Response Expands Bell Fleet with Additional Bell 407GXis'",
     "2026-10-29T08:51:17-04:00: housekeeping - company states release 'Thursday morning, October 29' and replay 11:00 ET; no explicit before-open wording or time",
     "2026-10-29T10:47:44.165211-04:00: find_dates v4 (2026-10-26) - no_clear_session ['BMO', 'INTRADAY']; feed https://investor.textron.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-29T06:30 'Textron Reports Third Quarter 2026 Results; Raises Full Year Adjusted EPS and Ca'",
-    "2026-10-29T22:18:06.518237-04:00: find_dates v4 (2026-10-26) - no_clear_session ['BMO', 'INTRADAY']; feed https://investor.textron.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-29T06:30 'Textron Reports Third Quarter 2026 Results; Raises Full Year Adjusted EPS and Ca'"
-   ]
+    "2026-10-29T22:18:06.518237-04:00: find_dates v4 (2026-10-26) - no_clear_session ['BMO', 'INTRADAY']; feed https://investor.textron.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-29T06:30 'Textron Reports Third Quarter 2026 Results; Raises Full Year Adjusted EPS and Ca'",
+    "2026-10-30T08:41:16-04:00: housekeeping - INELIGIBLE unconfirmed: find_dates probe 2026-10-30: company feed showed no date statement ahead of the report"
+   ],
+   "reason": "unconfirmed"
   },
   "TYL": {
    "status": "FROZEN",
@@ -8137,7 +8253,7 @@
    "freeze_commit": "b91e51b"
   },
   "VRNS": {
-   "status": "PENDING",
+   "status": "INELIGIBLE",
    "calendar_dates": [
     "2026-10-27"
    ],
@@ -8172,8 +8288,10 @@
     "2026-10-28T22:00:45.639500-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'VRNS Alert: Monsey Firm of Wohl & Fruchter Investigating Fairness of the Propose'",
     "2026-10-29T08:51:15-04:00: housekeeping - probe: newest item 10-21 is about Proofpoint sale of Varonis; no earnings date statement",
     "2026-10-29T10:46:08.987068-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'VRNS Alert: Monsey Firm of Wohl & Fruchter Investigating Fairness of the Propose'",
-    "2026-10-29T22:16:37.000481-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'VRNS Alert: Monsey Firm of Wohl & Fruchter Investigating Fairness of the Propose'"
-   ]
+    "2026-10-29T22:16:37.000481-04:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-10-21T00:00 'VRNS Alert: Monsey Firm of Wohl & Fruchter Investigating Fairness of the Propose'",
+    "2026-10-30T08:40:02-04:00: housekeeping - INELIGIBLE unconfirmed: find_dates probe 2026-10-30: no company date statement; VRNS calendar date's sessions passed"
+   ],
+   "reason": "unconfirmed"
   },
   "VRSN": {
    "status": "FROZEN",
@@ -8199,7 +8317,7 @@
    "freeze_commit": "c773a50"
   },
   "VRTX": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -8227,7 +8345,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:40.220391-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "d1847f6"
   },
   "VSAT": {
    "status": "PENDING",
@@ -8301,7 +8425,7 @@
    ]
   },
   "VVX": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-02"
    ],
@@ -8324,7 +8448,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:45.336429-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "1c57d43"
   },
   "W": {
    "status": "CONFIRMED",
@@ -8617,11 +8747,12 @@
     "2026-10-26T21:48:38.764086-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://investors.yum.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-20T18:13 'Yum! Brands Announces Q3 2026 Earnings and Conference Call Details'",
     "2026-10-27T22:00:25.164478-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://investors.yum.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-20T18:13 'Yum! Brands Announces Q3 2026 Earnings and Conference Call Details'",
     "2026-10-28T22:04:52.433898-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://investors.yum.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-20T18:13 'Yum! Brands Announces Q3 2026 Earnings and Conference Call Details'",
-    "2026-10-29T22:20:26.688864-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://investors.yum.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-20T18:13 'Yum! Brands Announces Q3 2026 Earnings and Conference Call Details'"
+    "2026-10-29T22:20:26.688864-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://investors.yum.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-20T18:13 'Yum! Brands Announces Q3 2026 Earnings and Conference Call Details'",
+    "2026-10-30T10:56:09.928289-04:00: find_dates v4 (2026-10-26) - no_clear_session ['INTRADAY']; feed https://investors.yum.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-20T18:13 'Yum! Brands Announces Q3 2026 Earnings and Conference Call Details'"
    ]
   },
   "YUMC": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-03"
    ],
@@ -8643,7 +8774,13 @@
    "entry": "2026-11-02 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-10-30T14:31:49.378643-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "0612b5d"
   },
   "Z": {
    "status": "CONFIRMED",
@@ -8715,7 +8852,8 @@
     "2026-10-26T21:48:41.913114-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://investors.zebra.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-26T08:10 'ORAFOL Fresnel Optics Cuts Inspection Times in Half with Zebra Technologies’ AI '",
     "2026-10-27T22:00:28.372731-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://investors.zebra.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-26T08:10 'ORAFOL Fresnel Optics Cuts Inspection Times in Half with Zebra Technologies’ AI '",
     "2026-10-28T22:04:56.207478-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://investors.zebra.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-26T08:10 'ORAFOL Fresnel Optics Cuts Inspection Times in Half with Zebra Technologies’ AI '",
-    "2026-10-29T22:20:29.527207-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://investors.zebra.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-26T08:10 'ORAFOL Fresnel Optics Cuts Inspection Times in Half with Zebra Technologies’ AI '"
+    "2026-10-29T22:20:29.527207-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://investors.zebra.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-26T08:10 'ORAFOL Fresnel Optics Cuts Inspection Times in Half with Zebra Technologies’ AI '",
+    "2026-10-30T10:56:12.701539-04:00: find_dates v4 (2026-10-26) - no_session_stated ['2026-11-03']; feed https://investors.zebra.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-26T08:10 'ORAFOL Fresnel Optics Cuts Inspection Times in Half with Zebra Technologies’ AI '"
    ]
   },
   "ZETA": {
@@ -8779,7 +8917,7 @@
    ]
   },
   "BETA": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "flags": [
     "added_midseason",
     "confirmed_by_code"
@@ -8791,7 +8929,13 @@
    "entry": "2026-11-02 open",
    "rechecks": [
     "2026-10-23T21:16:47.656199-04:00: find_dates v3 (2026-10-07) - found; feed https://investors.beta.team/news-events/press-releases/rss (RSS), newest item 2026-10-21T07:00 'BETA Becomes First Company to Secure Landmark FAA Authorization to Conduct Fligh'; CONFIRMED 2026-11-03 BMO, snapshot 2026-10-30"
-   ]
+   ],
+   "gate_status": "PASS",
+   "gate_reason": null,
+   "frozen_et": "2026-10-30T14:31:55.883703-04:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "1078fe7"
   },
   "CSQR": {
    "status": "CONFIRMED",

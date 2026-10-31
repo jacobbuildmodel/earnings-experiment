@@ -1,0 +1,97 @@
+{
+ "season": "seasonA",
+ "ticker": "MTCH",
+ "report_date": "2026-11-02",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-02"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-03"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "reaction_day": "2026-11-03"
+ },
+ "snapshot_session": "2026-10-30",
+ "captured_et": "2026-10-30T14:31:20.811514-04:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.mtch.com/investor-relations/news-events/news-events/news-details/2026/Match-Group-to-Announce-Third-Quarter-2026-Results/default.aspx",
+  "published_et": "2026-10-12T16:11-04:00",
+  "quote": "Match Group - Match Group to Announce Third Quarter 2026 Results View all news Match Group to Announce Third Quarter 2026 Results 10/12/2026 Download (opens in new window) LOS ANGELES , Oct. 12, 2026 /PRNewswire/ -- Match Group (NASDAQ: MTCH) will release financial results and full prepared remarks for the third quarter 2026 on Monday, November 2, 2026 after-market close.",
+  "title": "Match Group to Announce Third Quarter 2026 Results",
+  "retrieved_et": "2026-10-19T21:35:25.061183-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.mtch.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-02T15:00:00-05:00",
+   "session": null,
+   "artifact": "amc_placeholder",
+   "note": "15:00 EST: Yahoo's after-close placeholder in the EDT offset - no vote for AMC, disagrees with BMO (D003 v4 addendum 1)"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-after-hours",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 41.470001220703125,
+  "expiry": "2026-11-20",
+  "strike": 42.5,
+  "call": {
+   "bid": 1.95,
+   "ask": 2.4,
+   "openInterest": 368.0,
+   "lastPrice": 2.2,
+   "impliedVolatility": 0.6469761865234375,
+   "lastTradeDate": "2026-10-30T17:47:49+00:00"
+  },
+  "put": {
+   "bid": 2.55,
+   "ask": 2.85,
+   "openInterest": 295.0,
+   "lastPrice": 2.65,
+   "impliedVolatility": 0.5224657128906249,
+   "lastTradeDate": "2026-10-30T14:25:24+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 13,
+  "implied_move": 0.11755485547384666,
+  "rel_spread": {
+   "call": 0.20689655172413793,
+   "put": 0.1111111111111112
+  },
+  "oi_atm": 663.0,
+  "oi_sum": 663.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
