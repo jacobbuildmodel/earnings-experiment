@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-29T21:16:32-04:00",
+ "graded_et": "2026-10-30T20:57:37-04:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "QSR",
  "report_date": "2026-10-29",
@@ -13,14 +13,63 @@
  "entry_session": "2026-10-28",
  "cluster": "consumer",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-29T06:34:31-04:00",
+   "window": "BMO"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 74.07,
+   "entry_session": "2026-10-28",
+   "exit": 75.25,
+   "exit_session": "2026-10-29",
+   "dividends": 0,
+   "raw_return": 0.01593087619819089,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLY",
+    "beta": 0.208341,
+    "bench_return": 0.00338042818757045,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.015226594409164275,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.0060753341433779084,
+    "print_gap": 0.009796027911969984,
+    "entry_close": 74.52,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 74.07,
+   "entry_session": "2026-10-28",
+   "exit": 73.01,
+   "exit_session": "2026-10-29",
+   "dividends": 0,
+   "raw_return": -0.014310787093289923,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLY",
+    "beta": 0.208341,
+    "bench_return": 0.007194244604316502,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.01580964320839783,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": true,
+  "T1": true,
+  "T2": true,
+  "T2G": true,
+  "T2E": true
  }
 }
