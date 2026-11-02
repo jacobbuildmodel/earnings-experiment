@@ -1,10 +1,10 @@
-# Health 2026-11-01 21:38 ET - **RED**
+# Health 2026-11-02 06:37 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
 - paper/options_ledger.json: HALT - fill anomaly - new opens stopped until a person clears 'halt' in the ledger
-- DATES STALE (seasonA): no date confirmed or retired since Fri 30 Oct 22:12 ET (over 30 h), while 30 PENDING name(s) have a calendar date within 7 days, 23 within 3 sessions ['ADEA', 'CALX', 'CORT', 'CPNG', 'DBD', 'EBAY', 'IBRX', 'KTB', 'MARA', 'MCD', 'MDGL', 'PCOR', 'PEN', 'PPLI', 'RAMP', 'RDW', 'ROG', 'SHOO', 'SLAB', 'TECH', 'WK', 'YUM', 'ZBRA']; newest re-check Fri 30 Oct 22:06 ET - the re-checks are not running
+- DATES STALE (seasonA): no date confirmed or retired since Fri 30 Oct 22:12 ET (over 30 h), while 32 PENDING name(s) have a calendar date within 7 days, 28 within 3 sessions ['AAOI', 'ADEA', 'CALX', 'CORT', 'CPNG', 'DBD', 'EBAY', 'IBRX', 'KTB', 'MARA', 'MCD', 'MCHP', 'MDGL', 'PCOR', 'PEN', 'PLUS', 'PPLI', 'RAMP', 'RDW', 'RL', 'ROG', 'SHOO', 'SLAB', 'SYNA', 'TECH', 'WK', 'YUM', 'ZBRA']; newest re-check Fri 30 Oct 22:06 ET - the re-checks are not running
 
 ## AMBER - look at
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
