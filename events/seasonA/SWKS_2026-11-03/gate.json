@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "SWKS",
+ "report_date": "2026-11-03",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:47.676967-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/skyworks-sets-date-fourth-quarter-fiscal-2026-earnings-release-and-conference-call",
+  "published_et": "2026-10-20T08:01-04:00",
+  "quote": "After the close of the market on Nov. 3, and prior to the conference call, Skyworks will issue a copy of the earnings press release via GlobeNewswire.",
+  "title": "Skyworks Sets Date for Fourth Quarter Fiscal 2026 Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-21T08:47:34-04:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-03T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 85.32499694824219,
+  "expiry": "2026-11-20",
+  "strike": 85.0,
+  "call": {
+   "bid": 5.3,
+   "ask": 5.8,
+   "openInterest": 413.0,
+   "lastPrice": 5.55,
+   "impliedVolatility": 0.6980010668945313,
+   "lastTradeDate": "2026-11-02T19:14:58+00:00"
+  },
+  "put": {
+   "bid": 4.6,
+   "ask": 5.3,
+   "openInterest": 43.0,
+   "lastPrice": 3.16,
+   "impliedVolatility": 0.6579624047851562,
+   "lastTradeDate": "2026-11-02T15:29:05+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 12,
+  "implied_move": 0.12305889687132669,
+  "rel_spread": {
+   "call": 0.0900900900900901,
+   "put": 0.14141414141414146
+  },
+  "oi_atm": 456.0,
+  "oi_sum": 456.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
