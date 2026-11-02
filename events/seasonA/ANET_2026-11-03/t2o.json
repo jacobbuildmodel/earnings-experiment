@@ -1,0 +1,161 @@
+{
+ "track": "T2O",
+ "event": "ANET_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.54,
+  "thesis": "After a roughly 21% one-month drawdown, ANET's bar is lower, but consensus sits at the top of guidance and gross margin is compressing on memory costs, so the ~10% implied move is close to a coin flip with a slight edge from the cluster base rate and the de-risked setup.",
+  "reasons": [
+   "Cluster base rate for hardware_networking is favorable at 0.586, but the AMC rate is only 0.538.",
+   "The stock is down 21% in a month and 24% below its 52-week high amid an AI-infra rout, so positioning is partly washed out.",
+   "Consensus EPS of $1.079 sits at the top of the Q3 guide of $1.06-1.08, and ANET has beaten by 5-15% in each of the last four quarters, so a beat is likely but already expected.",
+   "Gross margin fell to 63.4% from 65.6% year on year, and memory and supply cost pressure is the focal risk (I7, I9), so Q4 margin guidance could disappoint.",
+   "Past reactions are mixed (2 up, 2 down, ±6-14%), and ANET has sold off on strong prints when guidance was merely in line."
+  ],
+  "deciding_variable": "Q4 revenue guide versus about $3.5B+ expectations, and whether non-GAAP gross and operating margin guidance holds against memory and component cost inflation.",
+  "prior": {
+   "p": 0.57,
+   "from": "I3 by_cluster hardware_networking t0_hit 0.586 (n=348), shaded toward the AMC session rate 0.538 and ai_infra 0.558"
+  },
+  "leak_probe": "I don't know, because that report is dated 2026-11-03, which is after today (2026-11-02) and after my knowledge cutoff, so the stock's reaction hasn't happened yet.",
+  "moved_from_prior": "Down about 3 points: margin-compression risk, consensus pinned at the top of guidance, and a hostile tape for AI infrastructure (I9, I12, I19). This is partly offset by the oversold setup and the mild call-over-put IV skew.",
+  "theses": [
+   {
+    "expected": "Up",
+    "mechanism": "A beat with a Q4 guide above about $3.5B and 2027 AI networking commentary reignites the oversold AI-infra trade.",
+    "wrong_if": "The guide is merely in line or gross margin is guided below 62%."
+   },
+   {
+    "expected": "Down",
+    "mechanism": "Revenue beats but gross margin guidance falls on memory costs, so the market punishes the operating-leverage miss as in May 2026.",
+    "wrong_if": "Margin guidance holds at 48-49% operating and gross margin is at least 62%."
+   },
+   {
+    "expected": "Down",
+    "mechanism": "Customer concentration or timing commentary (deferred revenue, acceptance periods) signals lumpiness and feeds the AI-capex-peak fear.",
+    "wrong_if": "Deferred revenue grows strongly and management raises its full-year growth target."
+   }
+  ],
+  "key_observations": [
+   "Q3 revenue versus the $3.3B guide (beat size above $3.4B)",
+   "Q4 revenue guide and non-GAAP operating margin guide",
+   "Gross margin trend and memory-cost commentary",
+   "Deferred revenue growth (it was $6.87B total in Q2)",
+   "Updated 2026/2027 growth targets and AI networking revenue target",
+   "Overnight AMD/SMCI reactions and market tone on election day"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/ANET_2026-11-03/gate.json",
+    "published": "2026-11-02T14:31:00.286057-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/ANET_2026-11-03/factors.json",
+    "published": "2026-11-02T14:31:00.286057-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000174/ex991q226-earningsrelease.htm",
+    "published": "2026-08-04T16:06:44-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000175/anet-20260630.htm",
+    "published": "2026-08-04T18:08:09-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-stocks-move-lower-180322794.html?.tsrc=rss",
+    "published": "2026-11-02T13:03:22-05:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/arista-networks-reports-on-november-3-the-number-that-matters-is-gross-margin-not-revenue?ref=yahoofinance&tlnk=yf-261102-c64w4j2r&.tsrc=rss",
+    "published": "2026-11-02T11:36:48-05:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/02/amd-arista-supermicro-earnings-previews-can-ai-infrastructure-shake-off-fridays-rout/?.tsrc=rss",
+    "published": "2026-11-02T07:20:21-05:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/d0bc23d0-115b-314d-8989-07ca797bebfa/dow-jones-futures-rise-but.html?.tsrc=rss",
+    "published": "2026-11-01T23:01:36-05:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/intel-surpasses-q3-earnings-estimates-114700160.html?.tsrc=rss",
+    "published": "2026-10-30T07:47:00-04:00",
+    "dossier_item": "I19"
+   }
+  ],
+  "decided_et": "2026-11-02T16:55:25-05:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20821,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1465,
+   "output_tokens_details": {
+    "thinking_tokens": 285
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20821,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1465,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20821,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20821
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1980867
+ }
+}
