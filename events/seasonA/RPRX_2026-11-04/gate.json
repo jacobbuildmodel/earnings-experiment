@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "RPRX",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:38.083396-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.royaltypharma.com/news/royalty-pharma-to-announce-third-quarter-2026-financial-results-on-november-4-2026/",
+  "published_et": "2026-10-09T08:53-04:00",
+  "quote": "sults on November 4, 2026 | Royalty Pharma Search Search Close Search Panel Royalty Pharma to announce third quarter 2026 financial results on November 4, 2026 News 9 October 2026 Download PDF NEW YORK, NY, October 9, 2026 — Royalty Pharma plc (Nasdaq: RPRX) today announced that it will report its third quarter 2026 financial results on Wednesday, November 4, 2026 before the U.S. financial markets open.",
+  "title": "Royalty Pharma to announce third quarter 2026 financial results on November 4, 2026",
+  "retrieved_et": "2026-10-26T09:24:57.062806-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://www.royaltypharma.com/news/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 66.61000061035156,
+  "expiry": "2026-11-20",
+  "strike": 67.5,
+  "call": {
+   "bid": 0.5,
+   "ask": 2.0,
+   "openInterest": 13.0,
+   "lastPrice": 1.33,
+   "impliedVolatility": 0.39649041015625003,
+   "lastTradeDate": "2026-11-02T18:05:50+00:00"
+  },
+  "put": {
+   "bid": 0.3,
+   "ask": 4.9,
+   "openInterest": 1.0,
+   "lastPrice": 2.05,
+   "impliedVolatility": 0.72851833984375,
+   "lastTradeDate": "2026-10-30T13:30:02+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 12,
+  "implied_move": 0.05779912873025389,
+  "rel_spread": {
+   "call": 1.2,
+   "put": 1.7692307692307694
+  },
+  "oi_atm": 14.0,
+  "oi_sum": 14.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
