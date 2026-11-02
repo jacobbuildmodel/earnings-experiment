@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "ZBH",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:32:09.708151-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/zimmer-biomet-announces-webcast-and-conference-call-third-quarter-2026-financial",
+  "published_et": "2026-10-06T07:30-04:00",
+  "quote": "linkedin facebook x email reddit WARSAW, Ind. , Oct. 6, 2026 /PRNewswire/ -- Zimmer Biomet Holdings, Inc. (NYSE and SIX: ZBH), a global medical technology leader, today announced its third quarter earnings conference call will be webcast on Wednesday, November 4, 2026 , at 8:30 a.m. ET .",
+  "title": "Zimmer Biomet Announces Webcast and Conference Call of Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-08T23:52:52.817260-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 96.625,
+  "expiry": "2026-11-20",
+  "strike": 95.0,
+  "call": {
+   "bid": 3.0,
+   "ask": 5.3,
+   "openInterest": 62.0,
+   "lastPrice": 5.0,
+   "impliedVolatility": 0.5095263891601562,
+   "lastTradeDate": "2026-10-30T15:57:57+00:00"
+  },
+  "put": {
+   "bid": 2.5,
+   "ask": 4.2,
+   "openInterest": 29.0,
+   "lastPrice": 3.2,
+   "impliedVolatility": 0.570316796875,
+   "lastTradeDate": "2026-10-28T15:33:22+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 12,
+  "implied_move": 0.07761966364812418,
+  "rel_spread": {
+   "call": 0.5542168674698794,
+   "put": 0.5074626865671642
+  },
+  "oi_atm": 91.0,
+  "oi_sum": 91.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
