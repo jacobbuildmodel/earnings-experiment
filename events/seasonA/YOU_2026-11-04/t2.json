@@ -1,0 +1,136 @@
+{
+ "track": "T2",
+ "event": "YOU_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.56,
+  "thesis": "CLEAR is a profitable-growth name with a strong beat history and a run-up into the print, but the 14% implied move and the elevated pre-earnings price leave the outcome close to a coin flip with a slight positive tilt.",
+  "reasons": [
+   "Last 4 prints: 3 of 4 had positive open-to-open reactions, all with EPS beats, and the average move was large",
+   "Revenue growth of ~27% with a ~30% operating margin, a Q2 FCF guidance raise, and EPS estimates revised up ~6.5% over 90 days",
+   "The stock has rallied about 16% over the past month into the print, so the bar is higher and some good news is priced in",
+   "Short interest of ~19% of float leaves room for a squeeze on a good print",
+   "Net cash flows, the VA.gov CLEAR1 rollout, and the dip-then-recovery pattern are mild positives; the President's departure and an aviation executive's exit are mild negatives"
+  ],
+  "deciding_variable": "Q3 total bookings and Q4 guidance versus the elevated expectations after the run-up, especially CLEAR+ member growth and the travel-demand read.",
+  "prior": {
+   "p": 0.548,
+   "from": "BMO session base rate (0.548) in I3, close to the software_internet cluster rate of 0.541 and the overall rate of ~0.54"
+  },
+  "leak_probe": "I don't know. The date you mention (2026-11-04) is after today's date (2026-11-02), so that earnings report hasn't happened yet, and I have no data on how the stock reacted.",
+  "moved_from_prior": "Up about 1 point from 0.548 to 0.56, for the earnings beat history, upward estimate revisions and high short interest; partly offset by the strong pre-earnings run-up and the high implied move.",
+  "theses": [
+   {
+    "expected": "Beat on bookings and a guidance raise, and the stock gaps up",
+    "mechanism": "Strong bookings growth, margin expansion and a high FCF guide, with a heavily shorted stock covering",
+    "wrong_if": "Q4 bookings guidance implies deceleration below ~20% growth, or active CLEAR+ member growth stalls"
+   },
+   {
+    "expected": "Sell the news: the stock opens down despite an EPS beat",
+    "mechanism": "The 16% one-month run-up and a 14% implied move mean expectations are demanding, and EPS beats alone are routine",
+    "wrong_if": "Bookings come in well above guidance with a raised outlook and the stock opens green"
+   },
+   {
+    "expected": "Muted or mixed reaction, near flat at the open",
+    "mechanism": "Solid results are largely priced in; the leadership changes add some uncertainty",
+    "wrong_if": "There is a large surprise in either direction on bookings or membership"
+   }
+  ],
+  "key_observations": [
+   "Total bookings versus the $311-316M guide",
+   "Active CLEAR+ member growth and retention",
+   "Q4 and full-year revenue and FCF guidance",
+   "Commentary on the leadership transition and eGate rollout",
+   "CLEAR1 B2B traction, including the VA pilot"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/YOU_2026-11-04/gate.json",
+    "published": "2026-11-02T14:32:09.564961-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/YOU_2026-11-04/factors.json",
+    "published": "2026-11-02T14:32:09.564961-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000039/clearq22026pressreleaseear.htm",
+    "published": "2026-08-05T06:00:55-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1856314/000095014226002552/eh260830672_8k.htm",
+    "published": "2026-09-16T06:30:37-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-climbed-driving-fresh-121008440.html?.tsrc=rss",
+    "published": "2026-10-20T08:10:08-04:00",
+    "dossier_item": "I15"
+   }
+  ],
+  "decided_et": "2026-11-02T16:23:47-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 22528,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 965,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 22528,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 965,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 22528,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 22528
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.10208339999999999
+ }
+}
