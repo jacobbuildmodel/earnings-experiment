@@ -1,0 +1,141 @@
+{
+ "track": "T2R",
+ "event": "RIOT_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "RIOT enters earnings after a roughly 33-40% monthly drawdown with a sector-wide lease-financing scare, which offers some mean-reversion and short-covering potential but no clear edge over the buy-everything base rate for an open-to-open hold on a stock with a 16% implied move.",
+  "reasons": [
+   "Base rate of about 54% for buying all events, 54.8% for BMO, with no usable cluster data for crypto proxies.",
+   "Stock is down about 40% in a month and 59% from its 52-week high, on sector financing fears and a Keefe Bruyette target cut, which leaves low expectations and room for relief.",
+   "The entry-to-exit window includes the earnings gap at the exit open, so the result depends on the print itself, with a large implied move of 16% and no directional skew.",
+   "Put-heavy volume (put/call volume 1.6) and negative EPS revisions are mild negatives, while the last four prints all gained, though that sample is small and the stock has changed."
+  ],
+  "deciding_variable": "Whether management gives credible financing and timing updates on the 191 MW lease and Corsicana data center leasing, and whether the market reads them as de-risking, against weak Q3 mining numbers and bitcoin direction.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation hit 0.542, BMO 0.548; crypto_proxy cluster (n=8) is insufficient so ignored"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-02, so the November 4, 2026 earnings report hasn't happened yet, and I have no information about how RIOT's stock reacted to it.",
+  "moved_from_prior": "Moved down about 0.04 from 0.54 to 0.50: bearish crypto and sector tape, negative estimate revisions and put-heavy flow offset oversold mean-reversion and the record of positive past reactions.",
+  "theses": [
+   {
+    "expected": "Relief rally on financing clarity",
+    "mechanism": "Oversold stock with short interest of about 15.5% reacts to clarity on investment-grade backstop and new tenant progress, so shorts cover",
+    "wrong_if": "Management is vague on financing or the timing of Corsicana leasing, or announces dilution"
+   },
+   {
+    "expected": "Decline on weak mining results and sector overhang",
+    "mechanism": "Revenue and loss miss from higher costs and network difficulty, plus the lease catalyst drought narrative, extend the sector selloff",
+    "wrong_if": "Mining results and data center revenue beat, and the call is upbeat on new leases"
+   },
+   {
+    "expected": "Muted or mixed open dominated by bitcoin moves",
+    "mechanism": "Stock trades with bitcoin and the miner basket between entry and exit opens, so the print is a smaller factor than crypto beta",
+    "wrong_if": "Bitcoin is stable and the stock gaps strongly on company-specific news"
+   }
+  ],
+  "key_observations": [
+   "Update on financing and the investment-grade credit backstop for the 191 MW lease",
+   "New lease announcements or tenant pipeline at Corsicana",
+   "Data center and engineering revenue versus the loss estimate of about -$0.31",
+   "Bitcoin price move and miner basket pre-market on Nov 4",
+   "AMD Phase 3 delivery in November 2026 on schedule"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/RIOT_2026-11-04/gate.json",
+    "published": "2026-11-02T14:31:34.466815-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/RIOT_2026-11-04/factors.json",
+    "published": "2026-11-02T14:31:34.466815-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1167419/000110465926093406/riot-20260810xex99d1.htm",
+    "published": "2026-08-10T16:22:21-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/riot-platforms-sinks-5-cipher-down-8-as-keefe-bruyette-warns-of-lease-catalyst-drought?ref=yahoofinance&tlnk=yf-261102-rpqh9qvg&.tsrc=rss",
+    "published": "2026-11-02T13:27:39-05:00",
+    "dossier_item": "I11"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/mara-reports-november-9-after-riot-fell-33-in-a-month-its-cash-flow-is-the-test?ref=yahoofinance&tlnk=yf-261102-3jmxjcpm&.tsrc=rss",
+    "published": "2026-11-02T11:53:09-05:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/riot-platforms-dropped-33-in-a-month-atb-cormark-sees-108-upside-from-here?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-30T08:25:55-04:00",
+    "dossier_item": "I22"
+   }
+  ],
+  "decided_et": "2026-11-02T16:53:57-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 24770,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1080,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 24770,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1080,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 24770,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 24770
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.11242819999999999
+ }
+}
