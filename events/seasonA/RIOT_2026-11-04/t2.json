@@ -1,0 +1,148 @@
+{
+ "track": "T2",
+ "event": "RIOT_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "RIOT enters a BMO print after a ~33% monthly drawdown with a 16% implied move and an expected Q3 revenue/loss miss, but oversold, high short interest and a strong recent post-print record roughly offset the sector-wide pressure.",
+  "reasons": [
+   "Base rate ~54% for BMO events; crypto_proxy cluster sample too small to use",
+   "Stock down ~40% in a month and 59% below its 52w high, so expectations are depressed and mean-reversion is possible",
+   "Sector headwinds persist: Keefe Bruyette cut targets and warned of a lease catalyst drought, Binance hack, financing fears",
+   "Last 4 prints all rose (+1% to +15%) despite big EPS misses; the market reacts to the AI lease story, not EPS",
+   "Entry is the open of the day before a BMO print, so the exit open is the reaction itself, a high-variance coin flip with an implied move of ~16%"
+  ],
+  "deciding_variable": "Whether management gives concrete financing and timing updates on the 191 MW Rockdale lease (investment-grade backstop, Corsicana tenant) that ease funding fears.",
+  "prior": {
+   "p": 0.54,
+   "from": "D004 base rates: overall validation 54.2%, BMO 54.8%; crypto_proxy cluster (n=8, insufficient) ignored"
+  },
+  "leak_probe": "I don't know. That earnings date (2026-11-04) is after today's date (2026-11-02) and past my knowledge cutoff, so I have no information on how RIOT's stock moved afterward.",
+  "moved_from_prior": "Down about 2 points from 0.54: the sector drift is negative and the consensus is for a wider loss, offset by the oversold setup and prior positive reactions.",
+  "theses": [
+   {
+    "expected": "Relief rally on financing clarity",
+    "mechanism": "Oversold stock, 15% short float and depressed expectations amplify any positive news on credit backstop or new lease progress",
+    "wrong_if": "Management is vague on financing or flags further delays"
+   },
+   {
+    "expected": "Selloff on weak mining results and capex or dilution worries",
+    "mechanism": "Revenue down and wider loss, higher mining costs, and a sector in a funding-fear regime pressure the stock",
+    "wrong_if": "Data center and engineering revenue beat and the stock gaps up"
+   },
+   {
+    "expected": "Muted move that is dominated by bitcoin and sector beta at the open",
+    "mechanism": "With the lease already priced in, the opening direction follows crypto and miner sentiment on Nov 3-4",
+    "wrong_if": "A large idiosyncratic surprise moves the stock more than 10%"
+   }
+  ],
+  "key_observations": [
+   "Financing update on the $573M Morgan Stanley facility and the investment-grade backstop",
+   "Data center revenue and AMD Phase 3 delivery on track for November",
+   "Corsicana tenant discussions and new lease timing",
+   "Cost to mine per bitcoin and bitcoin holdings or liquidity",
+   "Bitcoin price and miner peer moves into the print"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/RIOT_2026-11-04/gate.json",
+    "published": "2026-11-02T14:31:34.466815-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/RIOT_2026-11-04/factors.json",
+    "published": "2026-11-02T14:31:34.466815-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1167419/000110465926093406/riot-20260810xex99d1.htm",
+    "published": "2026-08-10T16:22:21-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/riot-platforms-sinks-5-cipher-down-8-as-keefe-bruyette-warns-of-lease-catalyst-drought?ref=yahoofinance&tlnk=yf-261102-rpqh9qvg&.tsrc=rss",
+    "published": "2026-11-02T13:27:39-05:00",
+    "dossier_item": "I11"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/mara-reports-november-9-after-riot-fell-33-in-a-month-its-cash-flow-is-the-test?ref=yahoofinance&tlnk=yf-261102-3jmxjcpm&.tsrc=rss",
+    "published": "2026-11-02T11:53:09-05:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/whats-offing-riot-platforms-stock-131200312.html?.tsrc=rss",
+    "published": "2026-11-02T08:12:00-05:00",
+    "dossier_item": "I13"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/riot-platforms-dropped-33-in-a-month-atb-cormark-sees-108-upside-from-here?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-30T08:25:55-04:00",
+    "dossier_item": "I22"
+   }
+  ],
+  "decided_et": "2026-11-02T16:24:46-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 24771,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1000,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 24771,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1000,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 24771,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 24771
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1116322
+ }
+}
