@@ -1,0 +1,143 @@
+{
+ "track": "T2",
+ "event": "AMD_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.48,
+  "thesis": "AMD enters the print down about 25% over the past month with an implied move of about 9%, but the setup is a coin flip, and the semis cluster base rate and weak past earnings reactions keep me slightly below 50%.",
+  "reasons": [
+   "Semis cluster base rate is 47.9%, below the overall 54%",
+   "Last 4 prints had a 25% win rate on the open-to-open measure, with big down reactions after strong beats (-14.5% in Feb)",
+   "Stock is down 25% in 1m and 11% in 5d, which lowers the bar, but momentum into prints is only weakly predictive",
+   "Implied move of about 9% is high, and a 2.09x ratio of ATM IV to 60d realized vol suggests premium is rich, so a drift is not obvious",
+   "Fundamentals are strong (50% revenue growth, EPS estimates revised up 4.8% over 90d, guide of $13B), but this is likely priced in with high expectations"
+  ],
+  "deciding_variable": "Q4 revenue guide and data-center/MI450 Helios ramp commentary versus a buy-side bar well above the $13B-implied consensus, plus whether Intel's PC warning bleeds into AMD's client outlook.",
+  "prior": {
+   "p": 0.48,
+   "from": "I3 semis cluster t0_hit 0.479 (n=434), versus overall 0.542 and AMC 0.538; semis is the weakest cluster so I lean on it"
+  },
+  "leak_probe": "I don't know. That earnings report is dated 2026-11-03, which is after today's date (2026-11-02) and after my knowledge cutoff, so I have no information about how AMD's stock reacted.",
+  "moved_from_prior": "Moved from 0.48 to 0.48. The oversold setup and strong estimate revisions offset the weak recent earnings reactions and the semis cluster drag, so no net change.",
+  "theses": [
+   {
+    "expected": "Stock rises on a beat with a Q4 guide well above consensus and reassuring Helios ramp timing",
+    "mechanism": "Depressed price into the print (-25% 1m) means a strong data-center guide triggers a relief rally and short covering",
+    "wrong_if": "The guide is merely in line with the elevated whisper number, or gross margin guidance disappoints"
+   },
+   {
+    "expected": "Stock falls despite an EPS beat",
+    "mechanism": "Pattern from the last 4 prints: beats of 2-16% still produced mostly negative open-to-open reactions, as expectations were high and the AI trade is crowded",
+    "wrong_if": "Data-center revenue and the guide both clearly beat the buy-side bar and the stock gaps up"
+   },
+   {
+    "expected": "Mixed reaction driven by PC and client weakness spilling over from Intel's warning",
+    "mechanism": "Client and Gaming is about a third of revenue, and a cautious client outlook could offset data-center strength",
+    "wrong_if": "Client revenue and the outlook are strong and management dismisses the PC concerns"
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue guide versus consensus and the buy-side whisper",
+   "Data Center revenue growth and its acceleration in H2",
+   "MI450/Helios ramp timing and customer commentary (OpenAI, Meta, Anthropic)",
+   "Non-GAAP gross margin guide against about 56%",
+   "Client segment commentary and any read-across from Intel's PC warning",
+   "Dilution commentary on warrants and the World Labs stock acquisition"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/AMD_2026-11-03/gate.json",
+    "published": "2026-11-02T14:31:00.282036-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/AMD_2026-11-03/factors.json",
+    "published": "2026-11-02T14:31:00.282036-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000121/q22026991.htm",
+    "published": "2026-08-04T16:16:24-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000182/amd-20260926.htm",
+    "published": "2026-09-28T16:16:47-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/02/amd-slides-3-ahead-of-earnings-as-pc-worries-linger-intel-drops-5-nvidia-edges-higher/?.tsrc=rss",
+    "published": "2026-11-02T12:49:21-05:00",
+    "dossier_item": "I16"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/amd-just-dropped-16-in-a-month-is-it-time-to-sell-or-load-up?ref=yahoofinance&tlnk=yf-261102-vw32x445&.tsrc=rss",
+    "published": "2026-11-02T10:28:28-05:00",
+    "dossier_item": "I22"
+   }
+  ],
+  "decided_et": "2026-11-02T16:23:27-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 25167,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1126,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 25167,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1126,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 25167,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 25167
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.11451349999999999
+ }
+}
