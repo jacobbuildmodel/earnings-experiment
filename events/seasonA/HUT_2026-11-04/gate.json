@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "HUT",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:19.320544-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/hut-8-schedules-third-quarter-2026-earnings-release-and-conference-call-2026-10-08",
+  "published_et": "2026-10-08T06:30-04:00",
+  "quote": "ct. 8, 2026 /PRNewswire/ -- Hut 8 Corp. (Nasdaq, TSX: HUT) (\" Hut 8 \" or the \"Company\"), an energy infrastructure platform integrating power, digital infrastructure, and compute at scale to fuel next-generation, energy-intensive technologies, today announced it will release financial results for the third quarter of 2026 before the market opens on November 4, 2026 .",
+  "title": "Hut 8 Schedules Third Quarter 2026 Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-08T23:17:04.005987-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 54.31999969482422,
+  "expiry": "2026-11-06",
+  "strike": 54.0,
+  "call": {
+   "bid": 4.15,
+   "ask": 4.7,
+   "openInterest": 4.0,
+   "lastPrice": 5.35,
+   "impliedVolatility": 1.6884781201171877,
+   "lastTradeDate": "2026-11-02T17:45:05+00:00"
+  },
+  "put": {
+   "bid": 3.6,
+   "ask": 4.0,
+   "openInterest": 11.0,
+   "lastPrice": 3.02,
+   "impliedVolatility": 1.5673849755859375,
+   "lastTradeDate": "2026-11-02T18:03:18+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.15141752662387636,
+  "rel_spread": {
+   "call": 0.1242937853107344,
+   "put": 0.10526315789473682
+  },
+  "oi_atm": 15.0,
+  "oi_sum": 2111.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
