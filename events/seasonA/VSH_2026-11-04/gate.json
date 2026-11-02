@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "VSH",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:59.607128-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/vishay-intertechnology-announce-third-quarter-results-wednesday-november-4-2026-10-06",
+  "published_et": "2026-10-06T16:15-04:00",
+  "quote": "A conference call to discuss Vishay’s third quarter financial results is scheduled for Wednesday, November 4, 2026 , at 9:00 a.m. ET .",
+  "title": "Vishay Intertechnology To Announce Third Quarter Results on Wednesday, November 4",
+  "retrieved_et": "2026-10-08T23:42:41.787242-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 25.93000030517578,
+  "expiry": "2026-11-20",
+  "strike": 26.0,
+  "call": {
+   "bid": 2.15,
+   "ask": 2.45,
+   "openInterest": 15.0,
+   "lastPrice": 2.3,
+   "impliedVolatility": 0.99023447265625,
+   "lastTradeDate": "2026-11-02T19:09:19+00:00"
+  },
+  "put": {
+   "bid": 1.9,
+   "ask": 2.3,
+   "openInterest": 2.0,
+   "lastPrice": 1.72,
+   "impliedVolatility": 0.87500125,
+   "lastTradeDate": "2026-10-30T14:59:36+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 12,
+  "implied_move": 0.1696876185196856,
+  "rel_spread": {
+   "call": 0.1304347826086958,
+   "put": 0.19047619047619047
+  },
+  "oi_atm": 17.0,
+  "oi_sum": 17.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
