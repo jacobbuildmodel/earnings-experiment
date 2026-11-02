@@ -1,0 +1,608 @@
+{
+ "event": "ALAB_2026-11-03",
+ "season": "seasonA",
+ "built_et": "2026-11-02T14:31:13-05:00",
+ "cutoff_et": "2026-11-02T14:31:00.286057-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/ALAB_2026-11-03/gate.json",
+   "published": "2026-11-02T14:31:00.286057-05:00",
+   "data": {
+    "ticker": "ALAB",
+    "report_date": "2026-11-03",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-04"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-11"
+     },
+     "reaction_day": "2026-11-04"
+    },
+    "snapshot_session": "2026-11-02",
+    "captured_et": "2026-11-02T14:31:00.286057-05:00",
+    "options": {
+     "spot": 233.15499877929688,
+     "expiry": "2026-11-06",
+     "strike": 235.0,
+     "call": {
+      "bid": 16.9,
+      "ask": 17.35,
+      "openInterest": 3.0,
+      "lastPrice": 16.65,
+      "impliedVolatility": 1.65234548828125,
+      "lastTradeDate": "2026-11-02T19:14:06+00:00"
+     },
+     "put": {
+      "bid": 16.95,
+      "ask": 17.3,
+      "openInterest": 467.0,
+      "lastPrice": 16.54,
+      "impliedVolatility": 1.4827906719970703,
+      "lastTradeDate": "2026-11-02T18:59:33+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 2,
+     "implied_move": 0.14689798708721166,
+     "rel_spread": {
+      "call": 0.02627737226277389,
+      "put": 0.020437956204379645
+     },
+     "oi_atm": 470.0,
+     "oi_sum": 1066.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/ALAB_2026-11-03/factors.json",
+   "published": "2026-11-02T14:31:00.286057-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.3751400447225155,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.3344703344964678,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.10155681859875276,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.10473581616496674,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.8352476857227312,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.789455138649044,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.5172974119447934,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-04",
+       "session": "AMC",
+       "raw_return_A": 0.006777068652558338,
+       "eps_est": 0.69,
+       "eps_rep": 0.8,
+       "surprise_pct": 15.62,
+       "reaction_volume_ratio": 2.0970419065125934
+      },
+      {
+       "date": "2026-05-05",
+       "session": "AMC",
+       "raw_return_A": 0.10760260382935805,
+       "eps_est": 0.54,
+       "eps_rep": 0.61,
+       "surprise_pct": 13.47,
+       "reaction_volume_ratio": 1.4503013618724878
+      },
+      {
+       "date": "2026-02-10",
+       "session": "AMC",
+       "raw_return_A": -0.1609822390255654,
+       "eps_est": 0.51,
+       "eps_rep": 0.58,
+       "surprise_pct": 12.64,
+       "reaction_volume_ratio": 3.379259602274189
+      },
+      {
+       "date": "2025-11-04",
+       "session": "AMC",
+       "raw_return_A": 0.014914274157127982,
+       "eps_est": 0.39,
+       "eps_rep": 0.49,
+       "surprise_pct": 25.6,
+       "reaction_volume_ratio": 1.571206987628318
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.124452464571897,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 15.62,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.19211,
+      "7daysAgo": 1.19211,
+      "30daysAgo": 1.19161,
+      "60daysAgo": 1.19161,
+      "90daysAgo": 0.8074,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.4764800594500867,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.19211,
+      "low": 1.18,
+      "high": 1.21,
+      "yearAgoEps": 0.49,
+      "numberOfAnalysts": 20,
+      "growth": 1.4329,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.02516546291869041,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.060599998,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 35.860344,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 33.653614,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 1.045,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 40448917504,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.88462,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.14689798708721166,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.1695548162841798,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.09570264648437532,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.5638743455497383,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.5590031520882585,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 5974.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.8767703364335093,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.16948164773779648,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 279,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 1.044548651817116,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.2274413863404689,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.3751400447225155,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.10155681859875276,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.10473581616496674,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.8352476857227312,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.0970135811526833,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.6613536684388533,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 40448919211.34619,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.029714489866093968,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.1415712443327754,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm",
+   "published": "2026-08-04T16:09:40-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q226exhibit991.htm EX-99.1 Document Exhibit 99.1 IR CONTACT: Leslie Green leslie.green@asteralabs.com Astera Labs Reports Second Quarter 2026 Financial Results • Record quarterly revenue of $392.4 million, up 27% QoQ and up 104% year-over-year • Q2 revenue strength reflects diversified growth across AI fabrics and signal conditioning • Q3 revenue inflection to be driven by Scorpio™ X-Series 320-lane fabric switch production ramp SAN JOSE, CA, U.S. – August 4, 2026 – Astera Labs, Inc. (Nasdaq: ALAB), a leader in semiconductor-based connectivity solutions for rack-scale AI infrastructure, today announced preliminary financial results for the second quarter of fiscal year 2026, ended June 30, 2026. “Astera Labs delivered outstanding Q2 2026 results, with record revenue of $392.4 million, up 27% sequentially and 104% year-over-year, driven by broad-based strength across our portfolio, including record quarterly revenue for our Aries product line,” said Jitendra Mohan, Astera Labs’ Chief Executive Officer. “We expect momentum to accelerate in Q3 as Scorpio fabric switches become our largest product family, one quarter ahead of our prior expectations. This milestone will mark our evolution into a complete AI fabric infrastructure provider. New design wins across a broadening set of customers coupled with our expansion into optical interconnects and custom solutions further expand our growth opportunity in 2027 and beyond.” Second Quarter of Fiscal 2026 Financial Highlights GAAP Financial Results: • Revenue of $392.4 million, up 27% sequentially and up 104% year-over-year • GAAP gross margin of 73.3% • GAAP operating income of $89.2 million • GAAP operating margin of 22.7% • GAAP net income of $153.1 million • GAAP diluted net income per share of $0.83 Non-GAAP Financial Results (1) : • Non-GAAP gross margin of 73.7% • Non-GAAP operating income of $153.5 million • Non-GAAP operating margin of 39.1% • Non-GAAP net income of $145.8 million • Non-GAAP diluted net income per share of $0.80 ____________ (1) See “Reconciliation of GAAP to Non-GAAP Financial Measures” table included below. Q2 2026 and Recent Business Highlights • Expanded Taurus signal conditioning portfolio to include 3.2T Smart Retimers and Smart Redrivers for 224G Ethernet and UALink connectivity, purpose-built for AI infrastructure. The new Taurus Smart Signal Conditioners are the industry’s first OCP standard footprint compatible design to enable Smart Swap, which will give architects the flexibility to choose between low-power Smart Redrivers and long-reach Smart Retimers without board re-design. The expanded portfolio leverages Astera Labs’ Unified COSMOS software capabilities and will integrate telemetry, diagnostics, and intelligent link management to deliver advanced observability across high-speed interconnects. • Showcased comprehensive portfolio updates at Computex 2026 in Taiwan highlighting current AI rack-scale connectivity strategy and the first public demonstration of the Scorpio X-Series 320 Lane Smart Fabric Switch. Additional demonstrations included ultra-low latency optical connectivity, NVIDIA MGX-based reference designs, 200G/lane technology with SerDes diagnostics, COSMOS-enabled rack-level validation, and production ready systems from Astera Labs and ecosystem partners. • Demonstrated ecosystem partnership and compatibility at AMD Advancing AI 2026 with multiple exhibits highlighting Astera Labs’ solutions to resolve data movement bottlenecks across PCIe, CXL, and Ethernet. Joint architectures included AMD Instinct platforms operating with Scorpio P-Series 320L for fabric optimization, Leo CXL memory controller for smart memory tiering, and Taurus 1.6T Smart Ethernet Retimers for scale-out connectivity, all with full-stack interop validated from end to end. • Announced significant expansion of Astera Labs’ Taiwan operations and Cloud-Scale Interop Lab, deepening the company’s presence within one of the world’s most important semiconductor ecosystems. Astera Labs’ expanded Taiwan footprint positions the company to bring together broader engineering, cross-functional support, and closer business coordination with key AI platform providers including AMD, Arm, Intel, and NVIDIA. Third Quarter of Fiscal 2026 Financial Outlook Based on current business trends and conditions, Astera Labs estimates the following: GAAP Financial Outlook: • Revenue within a range of $540 million to $560 million • GAAP gross margin of approximately 72% • GAAP operating expenses within a range of approximately $232 million to $236 million • GAAP tax rate of approximately 4% • GAAP diluted net income per share of approximately $0.87 to $0.92 on weighted-average diluted shares outstanding of approximately 185 million Non-GAAP Financial Outlook (2) : • Non-GAAP gross margin of approximately 72% • Non-GAAP operating expenses within a range of approximately $156 million to $160 million • Non-GAAP tax rate of approximately 12% • Non-GAAP dilu ted net income per share of approximately $1.16 to $1.21 on weighted-average diluted shares outstanding of approximately 185 million _____________ (2) See “Reconciliation of GAAP to Non-GAAP Outlook” table included below. Earnings Webcast and Conference Call Astera Labs will host a conference call to review its financial results for the second quarter of 2026 and to discuss our financial outlook today at 1:30 p.m. Pacific Time. Interested parties may join the conference call by dialing 1-833-461-5787 and using conference ID 622 676 657. The call will also be webcast and can be accessed at the Astera Labs website at https://ir.asteralabs.com/. The webcast will be recorded and available for replay on the company’s website for the next six months. Discussion of Non-GAAP Financial Measures We use certain non-GAAP financial measures, including those concerning our financial outlook, to supplement the performance measures in our consolidated financial statements, which are presented in accordance with GAAP. A reconciliation of these non-GAAP measures to the closest GAAP measure can be found later in this release. The timing and impact of any adjustments to arrive at the corresponding GAAP financial measures concerning our financial outlook are inherently dependent on future events that are typically uncertain or that may be outside of our control. These non-GAAP financial measures include non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP operating income, non-GAAP operating margin, non-GAAP tax rate, non-GAAP net income, and non-GAAP diluted net income per share. We use these non-GAAP financial measures for financial and operational decision-making and as a means to assist us in evaluating period-to-period comparisons. By excluding certain items that may not be indicative of our recurring core operating results, we believe that, non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP operating income, non-GAAP operating margin, non-GAAP tax rate, non-GAAP net income, and non-GAAP diluted net income per share provide meaningful supplemental information regarding our performance. Accordingly, we believe these non-GAAP financial measures are useful to investors and others because they allow for additional information with respect to financial measures used by management in its financial and operational decision-making and they may be used by our institutional investors and the analyst community to help them analyze the health of our business. However, there are a number of limitations related to the use of non-GAAP financial measures, and these non-GAAP measures should be considered in addition to, not as a substitute for or in isolation from, our financial results prepared in accordance with GAAP. Other companies, including companies in our industry, may calculate these non-GAAP financial measures differently or not at all, which reduces their usefulness as comparative measures. We adjust the following items from one or more of our non-GAAP financial measures: Stock-based compensation expense We exclude non-cash stock-based compensation expense from certain of our non-GAAP financial measures because we believe that excluding this item provides meaningful supplemental information regarding operational performance. In particular, companies calculate non-cash stock-based compensation expense using a variety of valuation methodologies and subjective assumptions. Moreover, stock-based compensation expense is a non-cash charge that can vary significantly from period to period for reasons that are unrelated to our core operating performance, and therefore excluding this item provides investors and other users of our financial information with information that allows meaningful comparisons of our business performance across periods. Acquisition-related costs We exclude acquisition-related costs incurred in connection with our acquisitions, which we generally would have not otherwise incurred in the periods presented as part of our continuing operations. Acquisition-related costs include certain incremental expenses incurred to effect a business combination such as third-party costs: advisory, legal, accounting, valuation, and other professional fees. We believe that providing the non-GAAP measures excluding these costs assists our investors because such costs are not reflective of our ongoing operating results. Income tax effect This represents the impact of the non-GAAP adjustments on an after-tax basis and one-off discrete tax adjustments that are unrelated to our core operating performance in connection with the presentation of non-GAAP net income and non-GAAP net income per diluted share. This approach is designed to enhance investors’ ability to understand the impact of our non-GAAP tax expense on our current operations, provide improved modeling accuracy, and substantially reduce fluctuations caused by GAAP to non-GAAP adjustments. Other We exclude other adjustments, including non-cash fair value adjustments related to equity investments without readily determinable fair values. These investments are measured at cost and adjusted for observable price changes or impairment on a nonrecurring basis only upon the occurrence of certain events. Accordingly, these adjustments are not indicative of our core operating performance. Cautionary Note Regarding Forward-Looking Statements This press release contains forward-looking statements based on Astera Labs' current expectations. The words “accelerating,” “advance,” “ahead,” “aim,” “anticipate,” “beginning,” “believe,” “capabilities,” “coming,” “commence,” “committed,” “confidence,” “continue,” “could,” “deliver,” “designed,” “drive ,” “early stages,” “enable,” “estimates,\" “expanding,” “expect,\" “forecasting,” “forthcoming,” “forward,” “future,” “goal,” “going forward,” “growth,” “guidance,” “intend,\" “interest,” “long-term,” “look,” “may,” “mission,” “momentum,” “multi-year,” “next,” “on track,” “opportunity,” “outlook,” “paths,” “planning,” “poised,” “positions,” “potential,” “progressing,” “project,” “proliferate,” “proposed,” “prospects,” “provide,” “pursuing,” “ramp,” “represent,” “roadmap,” “should,” “strategy,” “targeted,” “track,” “trajectory,” “trends,” “upcoming,” “upside,” “ultimately,” “vision,” “well positioned,” “will,” “would,” and similar phrases as they relate to Astera Labs are intended to identify such forward-looking statements. These forward-looking statements reflect the current views and assumptions of Astera Labs as of August 4, 2026, and are subject to various assumptions, beliefs, risks and uncertainties that could cause actual results to differ materially from expectations. These forward-looking statements include, but are not limited to, statements regarding market trends, dynamics and expectations (including cloud and AI infrastructure and connectivity market trends and the industry’s build out); our and our ultimate customers’ future demand, product purchases, deployment of systems incorporating our products, business, operating results, cash flow, financial position, outlook and guidance (and any underlying drivers), including for the third quarter of fiscal 2026; our business strategy, plans and market, revenue or other forms of opportunities, our absolute or relative market share or growth profile or rate and our timing and ability to further build upon our revenue base, expand our product offerings, portfolio and features or performance, increase and service our market opportunity (including the timing and extent of such market opportunities), remain at the forefront of an AI infrastructure transformation, and scale or expand our connectivity platform; our objectives or strategies for future operations (such as our optical and custom solutions businesses), organizational investments and changes, and the drivers, timing and impacts associated therewith; our production, development, shipping/shipments and delivery of (including timing and customers), activity, applications and demand for, availability of, as well as absolute and relative revenue, growth (including the drivers), ramping and roadmap (e.g., optical) for, existing, new, growing or enhanced (whether technologically or otherwise) products or software, including the high volume deployment of Scorpio X-Series solutions, production volume deployment of Scorpio X-Series 320-L, additional growth catalysts across our Scorpio P-Series, Aries, Taurus and Leo portfolios, and the comparative capabilities, performance and results of those products or software for our customers; the benefits, timing, impact, proliferation and customer adoption of different connectivity standards and demands; the design wins at and diversification, activity, engagements and expectations of our customers; the plans and potential success of our announced and ongoing collaborations, partnerships and strategic relationships, including our warrant agreement with Amazon; the ability of UA",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+   "published": "2026-08-04T17:34:14-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis of our financial condition and results of operations should be read in conjunction with the unaudited condensed consolidated financial statements and related notes included elsewhere in this Quarterly Report on Form 10-Q and the audited consolidated financial statements and notes thereto and management’s discussion and analysis of financial condition and results of operations for the year ended December 31, 2025 included in our Annual Report on Form 10-K filed with the SEC on February 20, 2026. As discussed in the section titled “Special Note about Forward-Looking Statements,” this discussion contains forward-looking statements that involve risks and uncertainties. Our actual results could differ materially from those discussed in these forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, those identified below and those discussed in the section titled “Risk Factors” and included elsewhere in this Quarterly Report on Form 10-Q and Annual Report on Form 10-K filed with the SEC on February 20, 2026. Overview Our mission is to innovate, design, and deliver semiconductor-based connectivity solutions that are purpose-built to unleash the full potential of cloud and AI infrastructure. Building on years of experience with a singular focus on addressing connectivity challenges in data-centric systems, we have developed and deployed our Intelligent Connectivity Platform built from the ground up for cloud and AI infrastructure. Our Intelligent Connectivity Platform is comprised of semiconductor-based, high-speed, mixed-signal connectivity products that integrate a matrix of microcontrollers and sensors, and COSMOS, our software suite, which is embedded in our connectivity products and integrated into our customers’ systems. Our Intelligent Connectivity Platform provides our customers with the ability to deploy and operate high-performance cloud and AI infrastructure at scal e , addressing an increasingly diverse set of requirements. We provide our connectivity products in various form factors, including Integrated Circuits (“ICs”), boards, and modules. Our patented software-defined platform approach delivers critical connectivity performance, enables flexibility and customization, and supports observability and predictive analytics. This approach is designed to efficiently address the data, network, and memory bottlenecks, scalability, and other unique infrastructure requirements of our hyperscaler and system OEM customers. Based on trusted relationships with the leading hyperscalers and collaboration with data center infrastructure suppliers, our platform is designed to meet our customers’ unique cloud scale requirements. Our COSMOS software suite is foundational to our Intelligent Connectivity Platform and is designed to enable our customers to seamlessly configure, manage, monitor, optimize, troubleshoot, and customize functions in our IC, board, and module products. Today, our connectivity solutions are at the heart of major AI platforms deployed worldwide featuring both commercially available Graphic Processing Units (“GPUs”) and proprietary AI accelerators. We offer our customers four product families across multiple form factors including ICs, boards, and module s, shipping millions of devices across leading hyperscalers . Our products, which include Aries PCIe ® /CX L ® Smart DSP Retimers, Aries PCIe®/CXL® Smart Cable Modules™, Taurus Ethernet Smart Cable Module s ™ , Leo CXL Memory Connectivity Controllers, and Scorpio Smart Fabric Switches, are built upon industry standard connectivity protocols such as Peripheral Component Interconnect Express (“PCIe”), Ethernet, and Compute Express Link (“CXL”), to address the growing demand for purpose-built connectivity solutions that solve critical data, network, and memory bottlenecks inherent in cloud and AI infrastructure. Since our inception, we have created and commercialized first-to-market PCIe, Ethernet, and CXL products. We have become a trusted partner and a proven supplier to our hyperscaler and system OEM customers. We have experienced strong growth since the commercial launch of Aries in 2020. Our revenue grew from $34.8 million in 2021, $79.9 million in 2022, $115.8 million in 2023, and $396.3 million in 2024, to $852.5 million in 2025. Our revenue was $700.8 million for the six months ended June 30, 2026, driven by a sizable increase in demand for our products. 19 Table of Contents Summary of Financial Highlights Our revenue was $392.4 million for the three months ended June 30, 2026, c ompared to $191.9 million for the same period in 2025, representing an increase of 104% year over year. Our revenue was $700.8 million for the six months ended June 30, 2026 c ompared to $351.4 million for the same period in 2025, representing an increase of 99% year over year. Gross margin decreased by 250 basis points (“bps”) to 73.3% for the three months ended June 30, 2026, compared to 75.8% for the same period in 2025. Gross margin decreased by 80 bps to 74.6% for the six months ended June 30, 2026 compared to 75.4% for the same period in 2025. Operating income was $89.2 million and $151.1 million for the three and six months ended June 30, 2026, respectively, compared to $39.8 million and $51.1 million for the same periods in 2025, respectively, representing an increase of 124% and 196% year over year, respectively. Net income was $153.1 million and $233.4 million for the three and six months ended June 30, 2026 respectively, compared to $51.2 million and $83.0 million for the same periods in 2025, respectively, representing an increase of 199% and 181% year over year, respectively. Results of Operations Comparison of the Three and Six Months Ended June 30, 2026 and 2025 Revenue Three Months Ended June 30, Change Six Months Ended June 30, Change 2026 2025 Amount % 2026 2025 Amount % (in thousands, except percentages) Revenue $ 392,400 $ 191,925 $ 200,475 104 % $ 700,761 $ 351,367 $ 349,394 99 % Total revenue increased $200.5 million , or 104%, and $349.4 million, or 99%, for the three and six months ended June 30, 2026, compared to the same periods in 2025, primarily due to an increase in overall unit shipments driven by higher demand for our Aries, Scorpio, and Taurus products, as well as higher overall average selling prices resulting from an increased mix of hardware modules and Scorpio products . Cost of Revenue, Gross Profit, and Gross Margin Three Months Ended June 30, Change Six Months Ended June 30, Change 2026 2025 Amount % 2026 2025 Amount % (in thousands, except percentages and bps) Cost of revenue $ 104,833 $ 46,362 $ 58,471 126 % $ 178,053 $ 86,393 $ 91,660 106 % Gross profit 287,567 145,563 142,004 98 % 522,708 264,974 257,734 97 % Gross margin 73.3 % 75.8 % (250) bps 74.6 % 75.4 % (80) bps Total cost of revenue increased $58.5 million , or 126% , and $91.7 million, or 106%, for the three and six months ended June 30, 2026, compared to the same periods in 2025, respectively, primarily due to higher unit shipments and shift in product mix cost. 20 Table of Contents Gross margin decreased 250 bps to 73.3% for the three months ended June 30, 2026 compared to 75.8% for the same period in 2025. The decrease was primarily driven by a shift in product mix towards lower margin hardware modules, as well as the impact of the Warrants. Gross margin decreased 8 0 bps to 74.6% for the six months ended June 30, 2026 compared to 75.4% for the same period in 2025. The decrease was primarily driven by a shift in product mix towards lower margin hardware modules, as well as the impact of the Warrants . For an additional discussion of Warrants, s ee Note 9 - Common Stock Warrants in the notes to the unaudited condensed c onsolidated f inancial s tatements set forth in Part I, Item 1 of this Quarterly Report on Form 10-Q. Research and Development Three Months Ended June 30, Change Six Months Ended June 30, Change 2026 2025 Amount % 2026 2025 Amount % (in thousands, except percentages) Research and development $ 135,898 $ 66,724 $ 69,174 104 % $ 261,532 $ 131,278 $ 130,254 99 % Percentage of revenue 35 % 35 % 37 % 37 % Research and development expense increased $69.2 million , or 104% , for the three months ended June 30, 2026 compared to the same period in 2025. The increase was primarily due to a $32.7 million increase in personnel-related costs resulting from an 118% increase in headcount, an $18.6 million increase in non-cash stock-based compensation expenses, and a $12.1 million increase in overall spending to support our R&D initiatives, which includes hardware design, software licensing, and cloud hosting services costs. Research and development expense increased $130.3 million, or 99% , for the six months ended June 30, 2026 c ompared to the same period in 2025. The increase was primarily due to a $49.8 million increase in personnel-related costs resulting from a 102% increase in headcount, a $28.8 million increase in non-cash stock-based compensation expenses, and a $41.4 million increase in overall spending to support our R&D initiatives, which includes hardware design, software licensing, and cloud hosting services costs. Sales and Marketing Three Months Ended June 30, Change Six Months Ended June 30, Change 2026 2025 Amount % 2026 2025 Amount % (in thousands, except percentages) Sales and marketing $ 26,372 $ 18,609 $ 7,763 42 % $ 48,271 $ 40,311 $ 7,960 20 % Percentage of revenue 7 % 10 % 7 % 11 % Sales and marketing expense increased by $7.8 million , or 42%, for the three months ended June 30, 2026 compared to the same period in 2025. The increase was primarily due to a $4.9 million increase in personnel-related costs resulting from a 47% increase in headcount, and a $2.2 million increase in non-cash stock-based compensation expenses. Sales and marketing expense increased by $8.0 million , or 20% , for the six months ended June 30, 2026 compared to the same period in 2025. The increase was primarily due to a $6.9 million increase in personnel-related costs resulting from a 113% increase in headcount. 21 Table of Contents General and Administrative Three Months Ended June 30, Change Six Months Ended June 30, Change 2026 2025 Amount % 2026 2025 Amount % (in thousands, except percentages) General and administrative $ 36,049 $ 20,456 $ 15,593 76 % $ 61,824 $ 42,326 $ 19,498 46 % Percentage of revenue 9 % 11 % 9 % 12 % General and administrative expense increased $15.6 million , or 76% , for the three months ended June 30, 2026 compared to the same period in 2025. The in crease was primarily due to a $6.4 million increase in non-cash stock-based compensation expenses, a $5.6 million increase in personnel-related costs resulting from a 79% increase in headcount, a $1.8 million increase in professional services fees associated with the continued development of our public company infrastructure, and a $1.8 million increase in other operating costs to support our business expansion. General and administrative expense increased $19.5 million , or 46% , for the six months ended June 30, 2026 compared to the same period in 2025. The in crease was primarily due to a $7.3 million increase in personnel-related costs resulting from a 58% increase in headcount, a $4.5 million in crease in non-cash stock-based compensation expense, a $4.3 million increase in professional services fees associated with the continued development of our public company infrastructure, and a $3.0 million increase in other operating costs to support our business expansion. Interest and Other Income Three Months Ended June 30, Change Six Months Ended June 30, Change 2026 2025 Amount % 2026 2025 Amount % (in thousands, except percentages) Interest and other income $ 13,577 $ 10,885 $ 2,692 25 % $ 25,158 $ 21,317 $ 3,841 18 % For th e three and six months ended June 30,",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/astera-labs-stock-fell-after-its-last-3-revenue-beats-heres-what-could-change-on-nov-3?ref=yahoofinance&tlnk=yf-261102-4j4fpmh4&.tsrc=rss",
+   "published": "2026-11-02T08:08:49-05:00",
+   "text": "Astera Labs Stock Fell After Its Last 3 Revenue Beats. Here’s What Could Change on Nov. 3 - Key Stats for Astera Labs StockCurrent Price: $258. 70Target Price (Mid): ~$740Street Target: ~$383Potential Total Return: ~187%Annualized IRR: ~29% / yearWhat Happened?Astera Labs (ALAB:NASDAQ) has beaten Wall Street’s revenue estimates in each of its last five reports, and the stock fell the sessi",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/astera-labs-fell-harder-than-the-market-in-the-ai-selloff-heres-what-november-3-must-show?ref=yahoofinance&tlnk=yf-261102-qx5g4q4r&.tsrc=rss",
+   "published": "2026-11-02T07:52:01-05:00",
+   "text": "Astera Labs Fell Harder Than the Market in the AI Selloff. Here’s What November 3 Must Show - Key TakeawaysAstera Labs fell 11% on Friday, nearly four times the Nasdaq Composite’s 2. 9% drop, on AI spending worries that didn’t come from Astera.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/01/these-3-ai-stocks-could-soon-enter-the-sp-500-are/?.tsrc=rss",
+   "published": "2026-11-01T10:29:00-05:00",
+   "text": "These 3 AI Stocks Could Soon Enter the S&P 500. Are They Worth Buying Before the Move? - Three AI infrastructure companies are growing fast, but none have joined the S&P 500. See how each compares in size, valuation, and risk.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/31/wall-street-is-getting-more-interested-in-credo-heres-my-price-prediction/?.tsrc=rss",
+   "published": "2026-10-31T11:33:50-04:00",
+   "text": "Wall Street Is Getting More Interested in Credo. Here’s My Price Prediction - Credo just posted triple-digit revenue growth and still trades at a steeper discount than its closest rivals, yet the stock has fallen nearly 20% in a single month. Something in this picture does not add up, and the answer points to a price target most analysts have not caught up to yet.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/80e46b19-d761-3ae5-8271-ddd72da50a8e/nasdaq-100-nears-correction.html?.tsrc=rss",
+   "published": "2026-10-30T14:17:20-04:00",
+   "text": "Nasdaq 100 Nears Correction Territory as AI Selloff Intensifies - The Nasdaq 100, which is made up of 100 of the largest nonfinancial companies trading on the Nasdaq exchange, was down 9.4% from its recent highs seen earlier this month.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-alab-stock-162300895.html?.tsrc=rss",
+   "published": "2026-10-30T12:23:00-04:00",
+   "text": "Should You Buy, Sell, or Hold ALAB Stock Before Q3 Earnings Release? - Astera Labs' Q3 earnings outlook looks promising on strong AI demand and Scorpio growth, but high valuation and margin pressures warrant caution.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/heres-why-astera-labs-inc-211502060.html?.tsrc=rss",
+   "published": "2026-10-29T17:15:02-04:00",
+   "text": "Here's Why Astera Labs, Inc. (ALAB) Fell More Than Broader Market - Astera Labs, Inc. (ALAB) concluded the recent trading session at $290.43, signifying a -2.28% move from its prior day's close.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/28/2-ai-stocks-down-48-to-70-buy-hold-10-years/?.tsrc=rss",
+   "published": "2026-10-28T11:50:00-04:00",
+   "text": "2 AI Stocks Down 48% to 70% to Buy Now and Hold for 10 Years - Two companies that help AI data centers move data are on sale.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/snap-snap-earnings-expected-grow-130016336.html?.tsrc=rss",
+   "published": "2026-10-28T09:00:16-04:00",
+   "text": "Snap (SNAP) Earnings Expected to Grow: Should You Buy? - Snap (SNAP) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/rendezvous-robotics-raises-20-million-130000449.html?.tsrc=rss",
+   "published": "2026-10-28T09:00:00-04:00",
+   "text": "Rendezvous Robotics Raises $20 Million to Build Spacecraft That Assemble Themselves in Orbit - Rendezvous Robotics, the company building spacecraft that assemble themselves in orbit, has raised $20 million in an oversubscribed seed round. MaC Venture Capital and Toyota Ventures led the financing, which comes as the company prepares for a first-of-its-kind mission in 2028, when seven independe",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/alab/articles/620960/was-there-any-sign-astera-labs-stock-would-run/2026-10-28?.tsrc=rss",
+   "published": "2026-10-28T04:22:55-04:00",
+   "text": "Was There Any Sign Astera Labs Stock Would Run? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/crdo/articles/620750/can-credo-technology-stock-bounce-off-its-current-support/2026-10-27?.tsrc=rss",
+   "published": "2026-10-27T09:39:53-04:00",
+   "text": "Can Credo Technology Stock Bounce Off Its Current Support? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/astera-labs-inc-alab-earnings-130014940.html?.tsrc=rss",
+   "published": "2026-10-27T09:00:14-04:00",
+   "text": "Astera Labs, Inc. (ALAB) Earnings Expected to Grow: What to Know Ahead of Next Week's Release - Astera Labs, Inc. (ALAB) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/astera-labs-alab-detracts-despite-112011087.html?.tsrc=rss",
+   "published": "2026-10-27T07:20:11-04:00",
+   "text": "Astera Labs (ALAB) Detracts Despite Strong Core Business - Fred Alger Management, an investment management company, released its third-quarter 2026 investor letter for “Alger Capital Appreciation Fund.” The letter can be downloaded here. The Fund outperformed the Russell 1000 Growth Index, with Class A shares returning 2.00% compared to 0.92% for the benchm",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/3-ai-infrastructure-stocks-watch-051132613.html?.tsrc=rss",
+   "published": "2026-10-27T01:11:32-04:00",
+   "text": "3 AI Infrastructure Stocks to Watch If Data Center Spending Slows - AI infrastructure looked like the surest growth story of the decade, until the Bank of Korea flagged how quickly the mood could change if US tech giants trim data center spending. That warning turns a hot trend into a pressure test for anything tied to chips and cloud, and investors often prefer not",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/astera-labs-alab-stock-may-190956402.html?.tsrc=rss",
+   "published": "2026-10-24T15:09:56-04:00",
+   "text": "Astera Labs (ALAB) Stock May Be 12% Undervalued On Cash Flow - Astera Labs has rallied 55.9% over the past year, even after a sharp pullback in recent weeks, which puts a spotlight on a simple question for investors who care about cash generation. Do the cash flows that underpin Astera Labs today support this kind of share price and the expectations now baked i",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/credo-stock-fell-nearly-10-in-a-day-as-maxlinear-targeted-its-cable-market-heres-what-credos-ceo-called-its-biggest-moat?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-24T11:11:11-04:00",
+   "text": "Credo Stock Fell Nearly 10% in a Day as MaxLinear Targeted Its Cable Market. Here’s What Credo’s CEO Called Its Biggest Moat - Key Stats for Credo StockCurrent Price: $147. 29Target Price (Mid): ~$470Street Target: ~$284Potential Total Return: ~219%Annualized IRR: ~29% / year__Now Live: Discover how much upside your favorite stocks could have using TIKR’s new Valuation Model (It’s free)__ >>> What Happened?Credo Technology ",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "421d4f86a68d017c904b99239032e13aa3d603b1fa4615614e24bcb6452bb3eb"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 47678
+}
