@@ -1,0 +1,142 @@
+{
+ "track": "T2R",
+ "event": "ALAB_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.53,
+  "thesis": "ALAB enters earnings after a sharp ~33% one-month drawdown and an AI selloff, with a high bar already priced in (14.7% implied move), so the setup is roughly balanced with a slight lean up from washed-out positioning and strong fundamentals.",
+  "reasons": [
+   "Semis cluster base rate is weak (0.479), but ai_infra and AMC rates are higher, so the prior sits near 0.51",
+   "Stock down ~33% in 1m and ~52% from the 52w high, with 5d return -10%: positioning is washed out, which favors a relief bounce on a beat",
+   "Fundamentals strong: revenue +104% YoY, Q3 guide of $540-560M, EPS estimates revised up 48% over 90d, a Scorpio ramp one quarter early",
+   "Headline I6 notes the stock fell after its last 3 revenue beats; the last-4 reaction record is mixed (-16% in Feb, +0.7% in Aug), so beats do not guarantee a rise",
+   "Macro risk: Nasdaq 100 near correction and AI capex worries could cap any rally; implied move of 14.7% is large and symmetric"
+  ],
+  "deciding_variable": "Q4 revenue guide versus elevated whisper numbers (likely well above $540-560M run-rate extrapolation) and gross margin trajectory, in the context of AI capex sentiment.",
+  "prior": {
+   "p": 0.51,
+   "from": "I3: semis cluster t0_hit 0.479 (n=434), AMC overall 0.538, overall ~0.54; blended to about 0.51 for a semis AMC name"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-02, so that earnings report on 2026-11-03 hasn't happened yet, and I have no information on how Astera Labs (ALAB) stock will react.",
+  "moved_from_prior": "Moved up about +0.02 from 0.51 to 0.53 for the depressed pre-earnings positioning and strong estimate revisions, partly offset by the weak semis base rate and the pattern of selling off after beats.",
+  "theses": [
+   {
+    "expected": "Rise: beat and a guide well above consensus with Scorpio ramp commentary, short covering after the selloff",
+    "mechanism": "Depressed price and strong estimate revisions make the bar beatable; a large guide lifts the stock at the next open",
+    "wrong_if": "Guide only in line with the buy-side whisper or gross margin guides below 72%"
+   },
+   {
+    "expected": "Fall: sell the news despite a beat, as in the past three prints",
+    "mechanism": "Elevated expectations at 35x forward P/E and margin dilution from hardware modules and warrants cause de-rating",
+    "wrong_if": "The stock opens higher on a beat with raised guidance despite the AI selloff"
+   },
+   {
+    "expected": "Flat to modest move: the market shrugs and the macro AI trade dominates",
+    "mechanism": "Sector-wide AI capex fears drive the open, overwhelming company-specific results",
+    "wrong_if": "Company-specific surprise produces a move beyond the 14.7% implied range"
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue guide versus consensus and the buy-side whisper",
+   "Non-GAAP gross margin guide (about 72% last quarter)",
+   "Scorpio X-Series ramp timing and customer diversification",
+   "Commentary on hyperscaler capex and 2027 growth",
+   "Opex growth and the effect of the Amazon warrant on margins"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/ALAB_2026-11-03/gate.json",
+    "published": "2026-11-02T14:31:00.286057-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/ALAB_2026-11-03/factors.json",
+    "published": "2026-11-02T14:31:00.286057-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm",
+    "published": "2026-08-04T16:09:40-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/astera-labs-stock-fell-after-its-last-3-revenue-beats-heres-what-could-change-on-nov-3?ref=yahoofinance&tlnk=yf-261102-4j4fpmh4&.tsrc=rss",
+    "published": "2026-11-02T08:08:49-05:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/astera-labs-fell-harder-than-the-market-in-the-ai-selloff-heres-what-november-3-must-show?ref=yahoofinance&tlnk=yf-261102-qx5g4q4r&.tsrc=rss",
+    "published": "2026-11-02T07:52:01-05:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/80e46b19-d761-3ae5-8271-ddd72da50a8e/nasdaq-100-nears-correction.html?.tsrc=rss",
+    "published": "2026-10-30T14:17:20-04:00",
+    "dossier_item": "I10"
+   }
+  ],
+  "decided_et": "2026-11-02T16:52:26-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20094,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1106,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20094,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1106,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20094,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20094
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.09351640000000001
+ }
+}
