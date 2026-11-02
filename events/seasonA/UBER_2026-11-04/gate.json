@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "UBER",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:51.702612-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.uber.com/news-events/news/press-release-details/2026/Uber-Announces-Date-of-Third-Quarter-2026-Results-Conference-Call/default.aspx",
+  "published_et": "2026-10-05T16:30-04:00",
+  "quote": "tails Back to News and events Uber Announces Date of Third Quarter 2026 Results Conference Call October 05, 2026 Download this Press Release PDF Format (opens in new window) SAN FRANCISCO--(BUSINESS WIRE)-- Uber Technologies, Inc. (NYSE: UBER) will hold its quarterly conference call to discuss its third quarter 2026 financial results on Wednesday, November 4th at 5:00 a.m. Pacific Time (8:00 a.m. Eastern Time).",
+  "title": "Uber Announces Date of Third Quarter 2026 Results Conference Call",
+  "retrieved_et": "2026-10-08T23:27:11.768116-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.uber.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 66.77999877929688,
+  "expiry": "2026-11-06",
+  "strike": 67.0,
+  "call": {
+   "bid": 2.53,
+   "ask": 2.59,
+   "openInterest": 1095.0,
+   "lastPrice": 2.54,
+   "impliedVolatility": 0.8544936425781251,
+   "lastTradeDate": "2026-11-02T19:09:45+00:00"
+  },
+  "put": {
+   "bid": 2.64,
+   "ask": 2.72,
+   "openInterest": 988.0,
+   "lastPrice": 2.7,
+   "impliedVolatility": 0.8227556787109375,
+   "lastTradeDate": "2026-11-02T19:16:19+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.07846660820282171,
+  "rel_spread": {
+   "call": 0.023437500000000024,
+   "put": 0.02985074626865674
+  },
+  "oi_atm": 2083.0,
+  "oi_sum": 8005.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

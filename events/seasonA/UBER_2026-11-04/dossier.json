@@ -1,0 +1,648 @@
+{
+ "event": "UBER_2026-11-04",
+ "season": "seasonA",
+ "built_et": "2026-11-02T14:32:08-05:00",
+ "cutoff_et": "2026-11-02T14:31:51.702612-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/UBER_2026-11-04/gate.json",
+   "published": "2026-11-02T14:31:51.702612-05:00",
+   "data": {
+    "ticker": "UBER",
+    "report_date": "2026-11-04",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-04"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-11"
+     },
+     "reaction_day": "2026-11-04"
+    },
+    "snapshot_session": "2026-11-02",
+    "captured_et": "2026-11-02T14:31:51.702612-05:00",
+    "options": {
+     "spot": 66.77999877929688,
+     "expiry": "2026-11-06",
+     "strike": 67.0,
+     "call": {
+      "bid": 2.53,
+      "ask": 2.59,
+      "openInterest": 1095.0,
+      "lastPrice": 2.54,
+      "impliedVolatility": 0.8544936425781251,
+      "lastTradeDate": "2026-11-02T19:09:45+00:00"
+     },
+     "put": {
+      "bid": 2.64,
+      "ask": 2.72,
+      "openInterest": 988.0,
+      "lastPrice": 2.7,
+      "impliedVolatility": 0.8227556787109375,
+      "lastTradeDate": "2026-11-02T19:16:19+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 2,
+     "implied_move": 0.07846660820282171,
+     "rel_spread": {
+      "call": 0.023437500000000024,
+      "put": 0.02985074626865674
+     },
+     "oi_atm": 2083.0,
+     "oi_sum": 8005.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/UBER_2026-11-04/factors.json",
+   "published": "2026-11-02T14:31:51.702612-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.3079075525156405,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.019527262063370854,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.009829147934000693,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.0285754899895716,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.2915180446429194,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.8373763735878175,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.3303249301862974,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "BMO",
+       "raw_return_A": -0.032393740536811544,
+       "eps_est": 0.83,
+       "eps_rep": 1.17,
+       "surprise_pct": 40.22,
+       "reaction_volume_ratio": 3.1297276965409173
+      },
+      {
+       "date": "2026-05-06",
+       "session": "BMO",
+       "raw_return_A": 0.043232310901988535,
+       "eps_est": 0.71,
+       "eps_rep": 0.13,
+       "surprise_pct": -81.74,
+       "reaction_volume_ratio": 2.5493739489077902
+      },
+      {
+       "date": "2026-02-04",
+       "session": "BMO",
+       "raw_return_A": -0.060325585914818736,
+       "eps_est": 0.78,
+       "eps_rep": 0.14,
+       "surprise_pct": -81.94,
+       "reaction_volume_ratio": 3.2237750920229398
+      },
+      {
+       "date": "2025-11-04",
+       "session": "BMO",
+       "raw_return_A": -0.05826338550111976,
+       "eps_est": 0.69,
+       "eps_rep": 3.11,
+       "surprise_pct": 353.17,
+       "reaction_volume_ratio": 3.5035612054813408
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.101609485738247,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 40.22,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.90324,
+      "7daysAgo": 0.90292,
+      "30daysAgo": 0.91568,
+      "60daysAgo": 0.95246,
+      "90daysAgo": 0.91859,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.01671039310247224,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.90324,
+      "low": 0.79,
+      "high": 1.133,
+      "yearAgoEps": 3.11,
+      "numberOfAnalysts": 31,
+      "growth": -0.7096,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.3797440325937735,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0248,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 15.149865,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 2.4698458,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.122,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 136402165760,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.58,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.07846660820282171,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.031737963867187635,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.03710900390625027,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.5646868686868687,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.3284129540168188,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 19363,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.876750431252937,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.09952414313783506,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 479,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.12172950754881029,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.1331830033119583,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.3079075525156405,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.009829147934000693,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.0285754899895716,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.2915180446429194,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.6011004640008646,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.3111076338313801,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 136402162387.02048,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.40488361059336986,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.1018221607574353,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000027/uberq226earningspressrelea.htm",
+   "published": "2026-08-05T06:56:58-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 uberq226earningspressrelea.htm EXHIBIT 99.1 Document Exhibit 99.1 Uber Announces Results for Second Quarter 2026 Gross Bookings grew 22% year-over-year on a constant currency basis; Trips grew 18% year-over-year GAAP Income from operations of $1.9 billion; Non-GAAP Operating Income of $2.1 billion, up 40% year-over-year GAAP Diluted EPS of $1.17; Non-GAAP EPS of $0.81, up 35% year-over-year SAN FRANCISCO – August 5, 2026 – Uber Technologies, Inc. (NYSE: UBER) today announced financial results for the quarter ended June 30, 2026. “Uber’s platform advantage continues to compound: record consumers and engagement, and profitable growth across our business,” said Dara Khosrowshahi, CEO. “In fact, we’ve added more first-time users over the past twelve months than in any period over the past five years. We’re investing from a position of strength, as we accelerate our cross-platform strategy at a global scale and build the world’s largest platform for autonomous vehicles.” “We continue to convert strong top-line growth into faster earnings and significant cash generation,” said Balaji Krishnamurthy, CFO. “Gross Bookings grew 22%, Non-GAAP EPS grew 35%, and trailing twelve-month free cash flow exceeded $10 billion for the first time in Uber’s history—giving us the flexibility to both invest for the future and pursue strategic opportunities, while continuing to reduce our share count.” Financial and Operational Highlights for Second Quarter 2026 • Trips during the quarter grew 18% year-over-year (“YoY”) to 3.9 billion, driven by Monthly Active Platform Consumers (“MAPCs\") growth of 16% YoY and monthly Trips per MAPC growth of 2% YoY. • Gross Bookings grew 24% YoY to $58.0 billion, and 22% on a constant currency basis. • Revenue grew 12% YoY to $14.2 billion, or 11% on a constant currency basis. Business model changes negatively impacted total revenue YoY growth by 8 percentage points on a reported and constant currency basis. • GAAP Income from operations grew 30% YoY to $1.9 billion. • GAAP Net income attributable to Uber Technologies, Inc. was $2.4 billion, which includes a $1.6 billion net benefit (pre-tax) from revaluations of Uber’s equity investments. GAAP Diluted earnings per share (“EPS”) was $1.17. • Adjusted EBITDA grew 33% YoY to $2.8 billion. Adjusted EBITDA margin as a percentage of Gross Bookings was 4.9%, up from 4.5% in Q2 2025. • Non-GAAP Operating Income grew 40% YoY to $2.1 billion. Non-GAAP Operating Income as a percentage of Gross Bookings was 3.7%, up from 3.3% in Q2 2025. • Non-GAAP Net Income grew 29% YoY to $1.7 billion and Non-GAAP EPS grew 35% YoY to $0.81. • Net cash provided by operating activities was $2.9 billion and free cash flow, defined as net cash flows from operating activities less capital expenditures, was $2.8 billion. • Unrestricted cash, cash equivalents, and short-term investments were $5.4 billion at the end of the second quarter. Outlook for Q3 2026 For Q3 2026, we anticipate: • Gross Bookings of $58.25 billion to $60.25 billion, representing growth of 18% to 22% YoY on a constant-currency basis. ◦ Our outlook assumes a roughly 1 percentage-point currency headwind to total reported YoY growth. • Non-GAAP EPS of $0.84 to $0.88, representing growth of 28% to 35% YoY. ◦ Our outlook translates to Adjusted EBITDA of $2.86 billion to $2.96 billion. 1 Financial and Operational Highlights for Second Quarter 2026 Three Months Ended June 30, (In millions, except percentages and per share amounts) 2025 2026 % Change % Change (Constant Currency (1) ) Monthly Active Platform Consumers (“MAPCs”) 180 208 16 % Trips 3,268 3,867 18 % Gross Bookings $ 46,756 $ 58,022 24 % 22 % Revenue $ 12,651 $ 14,191 12 % 11 % GAAP Income from operations $ 1,450 $ 1,890 30 % GAAP Net income attributable to Uber Technologies, Inc. (2) $ 1,355 $ 2,394 77 % GAAP Diluted EPS $ 0.63 $ 1.17 85 % Adjusted EBITDA (1) $ 2,119 $ 2,819 33 % Non-GAAP Operating Income (1) $ 1,534 $ 2,143 40 % Non-GAAP Net Income (1) $ 1,280 $ 1,652 29 % Non-GAAP EPS (1) $ 0.60 $ 0.81 35 % Net cash provided by operating activities $ 2,564 $ 2,862 12 % Free cash flow (1) $ 2,475 $ 2,792 13 % (1) See “Definitions of Non-GAAP Measures” and “Reconciliations of Non-GAAP Measures” sections herein for an explanation and reconciliations of non-GAAP measures used throughout this release. (2) Q2 2025 net income includes a $17 million net headwind (pre-tax) from revaluations of Uber’s equity investments. Q2 2026 net income includes a $1.6 billion net benefit (pre-tax) from revaluations of Uber’s equity investments. Results by Offering and Segment Gross Bookings Three Months Ended June 30, (In millions, except percentages) 2025 2026 % Change % Change (Constant Currency) Gross Bookings: Mobility $ 23,762 $ 28,988 22 % 20 % Delivery 21,734 27,463 26 % 25 % Freight 1,260 1,571 25 % 25 % Total $ 46,756 $ 58,022 24 % 22 % Revenue Three Months Ended June 30, (In millions, except percentages) 2025 2026 % Change % Change (Constant Currency) Revenue: Mobility $ 7,288 $ 7,363 1 % 0 % Delivery 4,102 5,245 28 % 26 % Freight 1,261 1,583 26 % 25 % Total $ 12,651 $ 14,191 12 % 11 % 2 Non-GAAP Operating Income and Segment Operating Income (Loss) Three Months Ended June 30, (In millions, except percentages) 2025 2026 % Change Segment Operating Income (Loss): Mobility $ 1,729 $ 2,215 28 % Delivery 766 1,055 38 % Freight (26) (24) 8 % Corporate G&A and Platform R&D (1) (935) (1,103) (18) % Non-GAAP Operating Income (2) $ 1,534 $ 2,143 40 % (1) Includes costs that are not directly attributable to our reportable segments. Corporate G&A also includes certain shared costs such as finance, accounting, tax, human resources, information technology and legal costs. Platform R&D also includes mapping and payment technologies and support and development of the internal technology infrastructure. Our allocation methodology is periodically evaluated and may change. (2) “Non-GAAP Operating Income” is a non-GAAP measure as defined by the SEC. See “Definitions of Non-GAAP Measures” and “Reconciliations of Non-GAAP Measures” sections herein for an explanation and reconciliations of non-GAAP measures used throughout this release. 3 Webcast and conference call information A live audio webcast of our second quarter ended June 30, 2026 earnings release call will be available at https://investor.uber.com/, along with the earnings press release and slide presentation. The call begins on August 5, 2026 at 5:00 AM (PT) / 8:00 AM (ET). This press release, including the reconciliations of certain non-GAAP measures to their nearest comparable GAAP measures, is also available on that site. We also provide announcements regarding our financial performance and other matters, including SEC filings, investor events, press and earnings releases, on our investor relations website (https://investor.uber.com/), and our blogs (https://uber.com/blog) and X accounts (@uber and @dkhos), as a means of disclosing material information and complying with our disclosure obligations under Regulation FD. About Uber Uber’s mission is to create opportunity through movement. We started in 2010 to solve a simple problem: how do you get access to a ride at the touch of a button? More than 79 billion trips later, we're building products to get people closer to where they want to be. By changing how people, food, and things move through cities, Uber is a platform that opens up the world to new possibilities. Forward-Looking Statements This press release contains forward-looking statements regarding our future business expectations which involve risks and uncertainties. Actual results may differ materially from the results predicted, and reported results should not be considered as an indication of future performance. Forward-looking statements include all statements that are not historical facts and can be identified by terms such as “anticipate,” “believe,” “contemplate,” “continue,” “could,” “estimate,” “expect,” “hope,” “intend,” “may,” “might,” “objective,” “ongoing,” “plan,” “potential,” “predict,” “project,” “should,” “target,” “will,” or “would” or similar expressions and the negatives of those terms. Forward-looking statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from any future results, performance or achievements expressed or implied by the forward-looking statements. These risks, uncertainties and other factors relate to, among others: competition, managing our growth and corporate culture, financial performance, investments in new products or offerings, our ability to attract drivers, consumers and other partners to our platform, our brand and reputation and other legal and regulatory developments, particularly with respect to our relationships with drivers and couriers and the impact of the global economy, including rising inflation and interest rates. For additional information on other potential risks and uncertainties that could cause actual results to differ from the results predicted, please see our annual report on Form 10-K for the year ended December 31, 2025 and subsequent quarterly reports and other filings filed with the Securities and Exchange Commission from time to time. All information provided in this release and in the attachments is as of the date of this press release and any forward-looking statements contained herein are based on assumptions that we believe to be reasonable as of this date. Undue reliance should not be placed on the forward-looking statements in this press release, which are based on information available to us on the date hereof. We undertake no duty to update this information unless required by law. Non-GAAP Financial Measures To supplement our financial information, which is prepared and presented in accordance with generally accepted accounting principles in the United States of America (“GAAP”), we use the following non-GAAP financial measures: Adjusted EBITDA; Non-GAAP Operating Income; Non-GAAP Net Income; Non-GAAP EPS; Free cash flow; as well as, revenue growth rates in constant currency. The presentation of this financial information is not intended to be considered in isolation or as a substitute for, or superior to, the financial information prepared and presented in accordance with GAAP. We use these non-GAAP financial measures for financial and operational decision-making and as a means to evaluate period-to-period comparisons. We believe that these non-GAAP financial measures provide meaningful supplemental information regarding our performance by excluding certain items that may not be indicative of our recurring core business operating results. We believe that both management and investors benefit from referring to these non-GAAP financial measures in assessing our performance and when planning, forecasting, and analyzing future periods. These non-GAAP financial measures also facilitate management’s internal comparisons to our historical performance. We believe these non-GAAP financial measures are useful to investors both because (1) they allow for greater transparency with respect to key metrics used by management in its financial and operational decision-making and (2) they are used by our institutional investors and the analyst community to help them analyze the health of our business. There are a number of limitations related to the use of non-GAAP financial measures. In light of these limitations, we provide specific information regarding the GAAP amounts excluded from these non-GAAP financial measures and evaluating these non-GAAP financial measures together with their relevant financial measures in accordance with GAAP. 4 For more information on these non-GAAP financial measures, please see the sections titled “Definitions of Non-GAAP Measures” and “Reconciliations of Non-GAAP Measures” included at the end of this release. In regards to forward looking non-GAAP guidance, we are not able to reconcile the forward-looking Non-GAAP EPS and Adjusted EBITDA measures to the closest corresponding GAAP measures without unreasonable efforts because we are unable to predict the ultimate outcome of certain significant items. These items include, but are not limited to, significant legal settlements, unrealized gains and losses on equity investments, tax and regulatory reserve changes, restructuring costs and acquisition and financing related impacts. Contacts Investors and analysts: investor@uber.com Media: press@uber.com 5 UBER TECHNOLOGIES, INC. CONDENSED CONSOLIDATED BALANCE SHEETS (In millions) (Unaudited) As of December 31, 2025 As of June 30, 2026 Assets Cash and cash equivalents $ 7,105 $ 4,870 Short-term investments 528 521 Restricted cash and cash equivalents 631 661 Accounts receivable, net 3,827 4,298 Prepaid expenses and other current assets 1,902 2,179 Total current assets 13,993 12,529 Restricted cash and cash equivalents 1,911 1,646 Restricted investments 8,874 9,486 Investments 9,178 8,759 Equity method investments 287 3,773 Property and equipment, net 1,897 1,809 Operating lease right-of-use assets 1,114 1,558 Intangible assets, net 1,048 1,132 Goodwill 8,931 9,472 Deferred tax assets 10,951 10,162 Other non-current assets 3,618 5,475 Total assets $ 61,802 $ 65,801 Liabilities, redeemable non-controlling interests and equity Accounts payable $ 1,013 $ 1,366 Short-term insurance reserves 3,387 3,758 Operating lease liabilities, current 169 178 Short-term debt — 1,997 Accrued and other current liabilities 7,751 7,572 Total current liabilities 12,320 14,871 Long-term insurance reserves 9,076 9,528 Long-term debt, net of current portion 10,521 10,726 Operating lease liabilities, non-current 1,390 1,830 Other non-current liabilities 412 447 Total liabilities 33,719 37,402 Redeemable non-controlling interests 165 180 Equity Common stock — — Additional paid-in capital 38,101 35,698 Accumulated other comprehensive loss (432) (432) Accumulated de",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000032/uber-20260630.htm",
+   "published": "2026-08-05T16:07:13-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our condensed consolidated financial statements and the related notes and other financial information included elsewhere in this Quarterly Report on Form 10-Q and our audited consolidated financial statements included in our 2025 Annual Report on Form 10-K. In addition to our historical consolidated financial information, the following discussion contains forward-looking statements that reflect our plans, estimates, and beliefs. Our actual results could differ materially from those discussed in the forward-looking statements. You should review the sections titled “Special Note Regarding Forward-Looking Statements” for a discussion of forward-looking statements and Part II, Item 1A, “Risk Factors” for a discussion of factors that could cause actual results to differ materially from the results described in or implied by the forward-looking statements contained in the following discussion and analysis and elsewhere in this Quarterly Report on Form 10-Q. Overview We are a technology platform that uses a massive network, leading technology, operational excellence, and product expertise to power movement from point A to point B. We develop and operate proprietary technology applications supporting a variety of offerings on our platform. We connect consumers with providers of ride services, merchants as well as delivery service providers for meal preparation, grocery and other delivery services. Uber also connects consumers with public transportation networks. We use this same network, technology, operational excellence, and product expertise to connect Shippers with Carriers in the freight industry by providing Carriers with the ability to book a shipment, transportation management and other logistics services. We are also developing technologies designed to provide new solutions to solve everyday problems. Driver Classification Developments The classification of Drivers is currently being challenged in courts, by legislators and by government agencies in the United States and abroad. We are involved in numerous legal proceedings globally, including putative class and collective class action lawsuits, demands for arbitration, charges and claims before administrative agencies, and investigations or audits by labor, social security, and tax authorities that claim that Drivers should be treated as our employees (or as workers or quasi-employees where those statuses exist), rather than as independent contractors. Of particular note are proceedings in California, where on May 5, 2020, the California Attorney General, in conjunction with the city attorneys for San Francisco, Los Angeles and San Diego, filed a complaint in San Francisco Superior Court (the “Court”) against Uber and Lyft, Inc., alleging that drivers are misclassified, and sought an injunction and monetary damages related to the alleged competitive advantage caused by the alleged misclassification of drivers. To comply with Proposition 22, we have incurred and expect to incur additional expenses, including expenses associated with a guaranteed minimum earnings floor for Drivers, insurance for injury protection and subsidies for health care. We do not expect these changes will have a material impact on our business, results of operations, financial position, or cash flows. If, as a result of legislation or judicial decisions, we are required to classify Drivers as employees, workers or quasi-employees where those statuses exist, we would incur significant additional expenses for compensating Drivers, including expenses associated with the application of wage and hour laws (including minimum wage, overtime, and meal and rest period requirements), employee benefits, social security contributions, taxes (direct and indirect), and potential penalties. Additionally, we may not have adequate Driver supply as Drivers may opt out of our platform given the loss of flexibility under an employment model, and we may not be able to hire a majority of the Drivers currently using our platform. Any of these events could negatively impact our business, results of operations, financial position, and cash flows. For a discussion of risk factors related to how misclassification challenges may impact our business, result of operations, financial position and operating condition and cash flows, see the risk factor titled “- Our business would be adversely affected if Drivers were classified as employees, workers or quasi-employees ” included in Part II, Item 1A, “Risk Factors”, and Note 11 – Commitments and Contingencies in the notes to our condensed consolidated financial statements included in Part I, Item 1, of this Quarterly Report on Form 10-Q. In addition, if we are required to classify Drivers as employees, this may impact our current financial statement presentation including revenue, cost of revenue, incentives and promotions as further described in our significant and critical accounting policies in the section titled “Critical Accounting Estimates” and Note 1 in the section titled “Notes to Consolidated Financial Statements” included in our Annual Report on Form 10-K for the year ended December 31, 2025. 33 Financial and Operational Highlights Three Months Ended June 30, (In millions, except percentages and per share amounts) 2025 2026 % Change % Change (Constant Currency (1) ) Monthly Active Platform Consumers (“MAPCs”) (2) 180 208 16 % Trips (2) 3,268 3,867 18 % Gross Bookings (2) $ 46,756 $ 58,022 24 % 22 % Revenue $ 12,651 $ 14,191 12 % 11 % Income from operations $ 1,450 $ 1,890 30 % Net income attributable to Uber Technologies, Inc. $ 1,355 $ 2,394 77 % GAAP Diluted EPS $ 0.63 $ 1.17 85 % Six Months Ended June 30, 2025 2026 % Change Net cash provided by operating activities $ 4,888 $ 5,213 7 % Free cash flow (1) $ 4,725 $ 5,078 7 % (1) See the section titled “Reconciliations of Non-GAAP Financial Measures” for more information and reconciliations to the most directly comparable GAAP financial measure. (2) See the section titled “Certain Key Metrics” for more information. Highlights for the Second Quarter 2026 Trips increased to 3.9 billion in the second quarter of 2026, up 18% year-over-year, driven by MAPCs growth of 16% YoY and monthly Trips per MAPC growth of 2% YoY. Overall Gross Bookings increased to $58.0 billion in the second quarter of 2026, up 22% on a constant currency basis, compared to the same period in 2025. Mobility Gross Bookings grew 20% year-over-year, on a constant currency basis, primarily due to an increase in Mobility Trip volumes. Delivery Gross Bookings grew 25% year-over-year, on a constant currency basis, primarily driven by an increase in Delivery Trip volumes. Freight Gross Bookings grew 25% year-over-year, on a constant currency basis, primarily driven by an increase in Freight Trip volumes. Revenue was $14.2 billion, up 12% year-over-year, primarily attributable to an increase in Gross Bookings of 24%. The increase in Gross Bookings was primarily driven by an increase in Trip volumes. The increase in revenue was partially offset by Mobility business model changes in the United Kingdom (“UK”) that negatively impacted revenue by $1.1 billion. Net income attributable to Uber Technologies, Inc. was $2.4 billion, which includes the favorable impact of a pre-tax unrealized gain on debt and equity securities, net of $1.6 billion primarily related to changes in the fair value of our equity securities, including: a $1.1 billion net unrealized gain on our Delivery Hero investment and $899 million net gain on our Aurora investment, offset by a $437 million net unrealized loss on our Didi investment. Unrestricted cash, cash equivalents, and short-term investments were $5.4 billion at the end of the second quarter. Components of Results of Operations Revenue We generate substantially all of our revenue from fees paid by Drivers and Merchants for use of our platform. We have concluded that we are an agent in these arrangements as we arrange for other parties to provide the service to the end-user. Under this model, revenue is net of Driver and Merchant earnings and Driver incentives. We act as an agent in these transactions by connecting consumers to Drivers and Merchants to facilitate a Trip, meal, grocery or other delivery service. In certain markets we are responsible for the Mobility or Delivery services (and in most markets we are responsible for the Freight services), and in these markets we present revenue from end-users and from Shippers on a gross basis, with the payments to Drivers and Carriers classified within cost of revenue, exclusive of depreciation and amortization. We would expect revenue to fluctuate on an absolute dollar basis for the foreseeable future based upon factors such as Trip volume, Driver supply, macroeconomic conditions, global travel activities and management pricing and promotional activities. Effective January 2, 2026, we implemented a business model change in certain UK markets, primarily driven by regulatory and tax considerations. As a result of this business model change, we are no longer responsible for the Mobility services in these markets, and accordingly, payments to drivers are recorded as a reduction of revenue instead of cost of revenue. 34 For additional discussion related to our revenue, see the section titled “Management’s Discussion and Analysis of Financial Condition and Results of Operations - Critical Accounting Estimates - Revenue Recognition” as well as “Note 1 – Description of Business and Summary of Significant Accounting Policies - Revenue Recognition” to our audited consolidated financial statements included in our Annual Report Form 10-K for the year ended December 31, 2025, and Note 10 – Segment Information and Geographic Information in the notes to the condensed consolidated financial statements included in Part I, Item 1, of this Quarterly Report on Form 10-Q. Cost of Revenue, Exclusive of Depreciation and Amortization Cost of revenue, exclusive of depreciation and amortization, primarily consists of costs incurred for certain Mobility and Delivery transactions where we are primarily responsible for Mobility and Delivery services and pay Drivers and Couriers for services, certain insurance costs related to our Mobility and Delivery offerings, costs incurred with Carriers for Uber Freight transportation services, credit card processing fees, bank fees, data center and networking expenses, mobile device and service costs, and amounts related to fare chargebacks and other credit card losses. We expect that cost of revenue, exclusive of depreciation and amortization, will fluctuate on an absolute dollar basis for the foreseeable future primarily driven by Trip volume changes on the platform. Effective January 2, 2026, we implemented a business model change in certain UK markets, primarily driven by regulatory and tax considerations. As a result of this business model change, we are no longer responsible for the Mobility services in these markets, and accordingly, payments to drivers are recorded as a reduction of revenue instead of cost of revenue. Operations and Support Operations and support expenses primarily consist of compensation costs, including stock-based compensation, for employees that support operations in cities, including the general managers, Driver operations, platform user support representatives and community managers. Also included is the contractor and professional service costs, cost of customer support, Driver background checks and the allocation of certain corporate costs. We would expect operations and support expenses to vary from period to period on an absolute dollar basis, but decrease as a percentage of revenue as we become more efficient in supporting platform users. Sales and Marketing Sales and marketi",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1543151/000155278126000486/e26383_uber-8k.htm",
+   "published": "2026-09-15T17:15:42-04:00",
+   "form": "8-K",
+   "items": "8.01,9.01",
+   "text": "Item 8.01 Other Events. On September 15, 2026, Uber Technologies, Inc. (the “Company”) completed a registered public offering of €750,000,000 aggregate principal amount of the Company’s 3.750% Senior Notes due 2029, €1,000,000,000 aggregate principal amount of the Company’s 4.125% Senior Notes due 2032, €1,000,000,000 aggregate principal amount of the Company’s 4.375% Senior Notes due 2034, €1,000,000,000 aggregate principal amount of the Company’s 4.750% Senior Notes due 2038, and €750,000,000 aggregate principal amount of the Company’s 5.250% Senior Notes due 2046 (together, the “Notes”). The Notes are the Company’s senior unsecured debt obligations. The offering was made pursuant to the Company’s Registration Statement on Form S-3 (File No. 333-293483) (the “Registration Statement”), including a Prospectus and a related Prospectus Supplement dated September 9, 2026 filed with the Securities and Exchange Commission (“SEC”). In connection with the issuance of the Notes, the Company entered into an underwriting agreement (the “Underwriting Agreement”) with Goldman Sachs & Co. LLC, Morgan Stanley & Co. International plc, Deutsche Bank AG, London Branch, Merrill Lynch International and BNP PARIBAS, as representatives of the several underwriters listed in Schedule II to the Underwriting Agreement. The Notes were issued pursuant to the Indenture, dated as of September 9, 2024 (the “Base Indenture”), between the Company and U.S. Bank Trust Company, National Association, as trustee (the “Trustee”), as supplemented by the Third Supplemental Indenture, dated September 15, 2026 (the “Supplemental Indenture” and, together with the Base Indenture, the “Indenture”) between the Company and the Trustee. The Company intends to use the net proceeds from the offering for general corporate purposes. The above descriptions of the Underwriting Agreement, the Indenture and the Notes do not purport to be complete, and each is qualified in its entirety by reference to the Underwriting Agreement, the Indenture and the forms of Notes, as applicable, copies of which are filed as exhibits to this Current Report on Form 8-K and are incorporated herein by reference. The Company is filing this Current Report on Form 8-K to file certain items with the SEC that are to be incorporated by reference into the Registration Statement. Forward-Looking Statements This Current Report on Form 8-K contains forward-looking statements within the meaning of the federal securities laws. These statement"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1543151/000155278126000414/e26328_uber-8k.htm",
+   "published": "2026-08-07T16:15:48-04:00",
+   "form": "8-K",
+   "items": "1.01,1.02,2.03,9.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. Term Loan Credit Agreement On August 6, 2026, Uber Technologies, Inc. (the “Company”) entered into a Term Loan Credit Agreement (the “Term Loan Credit Agreement”), among the Company, as borrower, the lenders party thereto and Morgan Stanley Senior Funding, Inc., as administrative agent. The Term Loan Credit Agreement was entered into in connection with the previously disclosed Business Combination Agreement, dated as of July 16, 2026, by and among the Company, Uber International Technologies II Corporation, a Delaware corporation and a wholly-owned subsidiary of the Company (the “Bidder”), and Delivery Hero SE, a European Company ( Societas Europaea ) incorporated under German law (“Delivery Hero”), pursuant to which the Bidder agreed to make a voluntary public takeover offer (the “Offer”) for the shares of Delivery Hero. The entry into the Term Loan Credit Agreement reduced the commitments under the Bridge Credit Agreement (as defined below) by €4,000,000,000. The Term Loan Credit Agreement provides for senior unsecured term loan commitments in two tranches: Tranche A term loans, which will mature on the date that is eighteen (18) months after the Closing Date (as defined in the Term Loan Credit Agreement), and Tranche B term loans, which will mature on the date that is three (3) years after the Closing Date. The proceeds of any loans under the Term Loan Credit Agreement will be used to finance the Offer, to provide funding for related transactions, to refinance certain indebtedness of Delivery Hero and for the payment of related transaction costs. The Term Loan Credit Agreement is unsecured and is not guaranteed by any subsidiary of the Company. Loans under the Term Loan Credit Agreement will bear interest at EURIBOR plus an applicable margin. The applicable margin will fluctuate based upon the ratings of the Company’s non-credit-enhanced senior unsecured long-term debt by Standard & Poor’s Financial Services LLC, Moody’s Investors Service, Inc. or Fitch Ratings Ltd. (the “Debt Rating”). The Term Loan Credit Agreement also provides for a commitment fee, commencing on November 13, 2026 until the termination of the aggregate commitments, accruing at a rate determined by reference to the Debt Rating. The Term Loan Credit Agreement contains certain customary representations and warranties, affirmative and negative covenants and events of default. Negative covenants include, among others, certain limitatio"
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/uber-heads-q3-wall-street-185356160.html?.tsrc=rss",
+   "published": "2026-11-02T13:53:56-05:00",
+   "text": "Uber Heads Into Q3 With Wall Street Seeing 58% Upside - Wall Street expects steady revenue growth, while analysts remain broadly bullish on Uber's cash flow and market position.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/rivian-soars-9-on-ubs-upgrade-after-selloff-initial-r2-demand-looks-solid?ref=yahoofinance&tlnk=yf-261102-vr4jfhjh&.tsrc=rss",
+   "published": "2026-11-02T13:29:55-05:00",
+   "text": "Rivian Soars 9% on UBS Upgrade After Selloff: “Initial R2 Demand Looks Solid” - Key TakeawaysRivian shares jumped 9% after UBS upgraded the stock to Buy and kept its $17 price target. The upgrade looks well-timed, with the stock near its lowest forward price/sales in three years.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.nrn.com/restaurant-technology/tech-tracker-blackbird-launches-a-debit-card?.tsrc=rss",
+   "published": "2026-11-02T13:05:36-05:00",
+   "text": "Tech Tracker: Blackbird launches a debit card - Also, Popmenu takes a cue from TikTok, Tock’s chief gets a new gig, and DoorDash sells what now?",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-trade-desk-ttd-140004660.html?.tsrc=rss",
+   "published": "2026-11-02T09:00:04-05:00",
+   "text": "Earnings Preview: The Trade Desk (TTD) Q3 Earnings Expected to Decline - The Trade Desk (TTD) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/meta/articles/622010/which-of-10-famous-ipos-made-buyers-rich/2026-11-02?.tsrc=rss",
+   "published": "2026-11-02T08:18:23-05:00",
+   "text": "Which Of 10 Famous IPOs Made Buyers Rich? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/6-big-funds-sold-shopify-stock-before-earnings?ref=yahoofinance&tlnk=yf-261102-8cc45pfr&.tsrc=rss",
+   "published": "2026-11-02T07:55:04-05:00",
+   "text": "6 Big Funds Sold Shopify Last Quarter. Should You Follow Them Before Earnings? - Key TakeawaysSix big funds cut or sold their Shopify (SHOP:NASDAQ) stakes in the three months to June 30, and the stock is up 39% since then. Analysts expect Shopify’s earnings to more than double from 2025 to 2028, and at about 75x forward earnings the stock trades near its usual multiple since lat",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/037d81ec-598e-3929-84b5-91fa99c367f3/tesla-faces-a-robo-taxi.html?.tsrc=rss",
+   "published": "2026-11-02T07:49:00-05:00",
+   "text": "Tesla Faces a Robo-Taxi Revolution in China. Musk’s Ambitions Have a Tough Test. - Morgan Stanley has thoughts on how robo-taxis will grow.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8588925/option-volatility-and-earnings-report-for-nov-2-6?.tsrc=rss",
+   "published": "2026-11-02T07:00:03-05:00",
+   "text": "Option Volatility and Earnings Report For Nov 2-6 - It was a bloodbath last week for a lot of companies that reported earnings, will this week be more of the same? Let’s take a look at which companies are reporting this week and what the options market is saying.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/tech-rebound-crude-slide-lift-113558010.html?.tsrc=rss",
+   "published": "2026-11-02T06:35:58-05:00",
+   "text": "Tech Rebound, Crude Slide Lift Wall Street Pre-Bell; Asia Mixed, Europe Up - Wall Street futures pointed moderately higher pre-bell Monday as traders waded back into tech shares",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/apple-and-palantir-to-kick-off-tech-earnings-in-another-crucial-week-amd-to-settle-chip-debate-after-intel-s-warning/cNG9qNVR92s?.tsrc=rss",
+   "published": "2026-11-02T03:40:08-05:00",
+   "text": "Stocktwits Tech Watch: Apple And Palantir To Kick Off Tech Earnings In Another Crucial Week, AMD To Settle Chip Debate After Intel’s Warning - Tech stocks gain in Monday’s premarket after a sharp fall last week.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.thestreet.com/crypto/markets/binances-hack-has-me-fearing-phone-chargers?.tsrc=rss",
+   "published": "2026-11-01T22:24:15-05:00",
+   "text": "Binance's hack has me fearing phone chargers - After a week covering billions drained from the world’s biggest crypto exchange, I sat in an Uber with a dying phone, wondering if a charger could steal my crypto wallet.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/doordash-just-agreed-to-buy-instacart-for-17-billion-is-it-time-to-sell-or-load-up?ref=yahoofinance&tlnk=yf-261102-fmfw5276&.tsrc=rss",
+   "published": "2026-11-01T18:16:47-05:00",
+   "text": "DoorDash Just Agreed to Buy Instacart for $17 Billion. Is It Time to Sell, or Load Up? - Key TakeawaysDoorDash agreed to buy Instacart for $65 a share, or about $17 billion, the same day it posted record third-quarter revenue of $4. 62 billion, up 34%.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8581500/midterm-elections-important-earnings-and-other-key-things-to-watch-this-week?.tsrc=rss",
+   "published": "2026-11-01T13:00:02-05:00",
+   "text": "Midterm Elections, Important Earnings and Other Key things to Watch this Week - Markets face a crowded week as midterm elections land Tuesday alongside a heavy earnings calendar. Apple (AAPL) and Palantir Technologies (PLTR) kick off results Monday. Advanced Micro Devices (AMD), Qualcomm (QCOM), Arm Holdings (ARM), and Uber Technologies (UBER) follow as the week unfolds.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/what-to-expect-markets-this-week-nov-1-2026/cNGes4VR923?.tsrc=rss",
+   "published": "2026-11-01T09:06:16-05:00",
+   "text": "What To Expect In Markets This Week: AAPL, PLTR, AMD, SMCI, SHOP, Earnings, Jobs Report And More - The week will bring results from some of the market’s most closely watched technology companies, while a major labor-market report could provide an important read on the health of the U.S. economy.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/teslas-cybercab-costs-about-25000-to-build-waymo-has-a-big-problem-its-cost-is-nearly-4x-that?ref=yahoofinance&tlnk=yf-261101-739mfm8c&.tsrc=rss",
+   "published": "2026-11-01T03:18:14-05:00",
+   "text": "Tesla’s Cybercab Costs “About $25,000” to Build. Waymo Has a Big Problem: It’s Cost Is Nearly 4X That - Key TakeawaysTesla’s Cybercab costs about $25,000 to produce, against upward of $100,000 for each of Alphabet’s Waymo vehicles, according to Prof G Markets’ Dan Chiolan. That gap lets Tesla put about four robotaxis on the road for the price of one of Waymo’s current cars, an edge that shrinks agains",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/trumps-ftc-probes-personalized-pricing-at-instacart-days-after-doordash-agreed-to-buy-it-for-17-billion?ref=yahoofinance&tlnk=yf-261101-3hhfw43r&.tsrc=rss",
+   "published": "2026-11-01T02:09:14-05:00",
+   "text": "Trump’s FTC Probes Personalized Pricing at Instacart Days After DoorDash Agreed to Buy It for $17 Billion - Key TakeawaysThe FTC ordered nine companies, including DoorDash, Instacart, Walmart and Uber, to explain how they use personal data to set prices. The orders came one day before DoorDash announced its $17 billion deal to buy Instacart.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8564637/why-dumping-uber-stock-before-q3-earnings-may-not-be-the-smartest-move?.tsrc=rss",
+   "published": "2026-10-30T18:44:27-04:00",
+   "text": "Why Dumping Uber Stock Before Q3 Earnings May Not Be the Smartest Move - Uber shares have taken a hit, but don't confuse a falling stock with a broken business.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rules-robotaxi-pressure-uber-technologies-171443609.html?.tsrc=rss",
+   "published": "2026-10-30T13:14:43-04:00",
+   "text": "How New Rules And Robotaxi Pressure At Uber Technologies (UBER) Has Changed Its Investment Story - Uber Technologies is heading into its Q3 2026 results with regulators in the UK and US tightening scrutiny on VAT, pricing and data use, while robotaxi competition and new autonomous vehicle partnerships add pressure on its core ride hailing and delivery operations. Alongside these regulatory and au",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8556660/uber-stock-heres-what-to-expect-from-uber-s-q3-earnings-report?.tsrc=rss",
+   "published": "2026-10-30T11:21:55-04:00",
+   "text": "UBER Stock: Here’s What to Expect From Uber's Q3 Earnings Report - Uber is expected to post another quarter of solid growth, with its Mobility and Delivery businesses continuing to drive performance.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:08-05:00",
+    "sha256": "3e594ddeec8b67a717ba3e0536d5d1acafe963ffe4532049cf8c7b49bfa2596c"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 53971
+}
