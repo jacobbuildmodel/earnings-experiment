@@ -1,0 +1,124 @@
+{
+ "track": "T2G",
+ "event": "ALAB_2026-11-03",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "While Astera Labs benefits from rapid Scorpio switch adoption and a de-risked valuation following a 33% monthly pullback, broader AI sector headwinds and ongoing gross margin pressure from hardware mix temper the likelihood of an opening pop.",
+  "reasons": [
+   "Strong secular growth with revenue up 104% YoY and Scorpio switches ramping ahead of schedule provide strong operational tailwinds.",
+   "Shares have dropped 33% in the past month and sit 51% below 52-week highs, lowering the bar for a relief rally.",
+   "Broader AI infrastructure sentiment has deteriorated sharply with macro selloff concerns, and gross margins face dilution from module mix expansion."
+  ],
+  "deciding_variable": "Q4 revenue guidance and Scorpio switch ramp trajectory relative to lofty AI interconnect expectations.",
+  "prior": {
+   "p": 0.55,
+   "from": "ai_infra cluster base rate (0.558) blended with AMC session base rate (0.538)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down 3 percentage points from prior of 0.55 to 0.52 due to severe recent AI infrastructure sector momentum degradation and gross margin pressure, partially offset by de-risked positioning.",
+  "theses": [
+   {
+    "expected": "Beat and raise driven by faster Scorpio 320-lane fabric switch volume shipments across hyperscalers.",
+    "mechanism": "Hyperscaler accelerator cluster buildouts drive high-margin connectivity demand, triggering a relief squeeze after recent heavy selling.",
+    "wrong_if": "Hyperscalers delay deployments or guidance reflects capex digestion, causing forward projections to miss whisper numbers."
+   },
+   {
+    "expected": "In-line results with gross margins compressed further due to module product mix.",
+    "mechanism": "Management notes ongoing shift toward lower-margin hardware modules and warrant dilution, keeping buyers hesitant despite top-line growth.",
+    "wrong_if": "High-margin chip-level Scorpio and Taurus IC mix exceeds expectations, driving gross margins above 73%."
+   },
+   {
+    "expected": "Sell-the-news reaction consistent with recent AI infrastructure sector de-risking.",
+    "mechanism": "Broader macro AI spending scrutiny (Nasdaq correction risk) leads investors to fade any unexceptional beats on high multiple stocks.",
+    "wrong_if": "Management provides definitive FY2027 visibility and custom ASIC interconnect design wins that overwhelm macro caution."
+   }
+  ],
+  "key_observations": [
+   "Q3 reported revenue relative to the $540M-$560M guidance range.",
+   "Non-GAAP gross margin compared to the 72% guidance target.",
+   "Q4 revenue guidance and commentary on Scorpio switch share vs competitors like Credo.",
+   "Early commentary on optical interconnect roadmap and customer concentration."
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/ALAB_2026-11-03/gate.json",
+    "published": "2026-11-02T14:31:00.286057-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/ALAB_2026-11-03/factors.json",
+    "published": "2026-11-02T14:31:00.286057-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000033/q226exhibit991.htm",
+    "published": "2026-08-04T16:09:40-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1736297/000173629726000035/alab-20260630.htm",
+    "published": "2026-08-04T17:34:14-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/astera-labs-stock-fell-after-its-last-3-revenue-beats-heres-what-could-change-on-nov-3?ref=yahoofinance&tlnk=yf-261102-4j4fpmh4&.tsrc=rss",
+    "published": "2026-11-02T08:08:49-05:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/astera-labs-fell-harder-than-the-market-in-the-ai-selloff-heres-what-november-3-must-show?ref=yahoofinance&tlnk=yf-261102-qx5g4q4r&.tsrc=rss",
+    "published": "2026-11-02T07:52:01-05:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/80e46b19-d761-3ae5-8271-ddd72da50a8e/nasdaq-100-nears-correction.html?.tsrc=rss",
+    "published": "2026-10-30T14:17:20-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-alab-stock-162300895.html?.tsrc=rss",
+    "published": "2026-10-30T12:23:00-04:00",
+    "dossier_item": "I11"
+   }
+  ],
+  "decided_et": "2026-11-02T18:07:41-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 15893,
+   "candidatesTokenCount": 710,
+   "totalTokenCount": 18146,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 15893
+    }
+   ],
+   "thoughtsTokenCount": 1543,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
