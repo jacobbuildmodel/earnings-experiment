@@ -1,0 +1,630 @@
+{
+ "event": "ANET_2026-11-03",
+ "season": "seasonA",
+ "built_et": "2026-11-02T14:31:14-05:00",
+ "cutoff_et": "2026-11-02T14:31:00.286057-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/ANET_2026-11-03/gate.json",
+   "published": "2026-11-02T14:31:00.286057-05:00",
+   "data": {
+    "ticker": "ANET",
+    "report_date": "2026-11-03",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-04"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-11"
+     },
+     "reaction_day": "2026-11-04"
+    },
+    "snapshot_session": "2026-11-02",
+    "captured_et": "2026-11-02T14:31:00.286057-05:00",
+    "options": {
+     "spot": 164.31500244140625,
+     "expiry": "2026-11-06",
+     "strike": 165.0,
+     "call": {
+      "bid": 7.6,
+      "ask": 8.25,
+      "openInterest": 20.0,
+      "lastPrice": 7.75,
+      "impliedVolatility": 1.0754440759277344,
+      "lastTradeDate": "2026-11-02T19:08:25+00:00"
+     },
+     "put": {
+      "bid": 8.1,
+      "ask": 8.6,
+      "openInterest": 346.0,
+      "lastPrice": 8.38,
+      "impliedVolatility": 1.041508698730469,
+      "lastTradeDate": "2026-11-02T19:07:49+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 2,
+     "implied_move": 0.0990475596152796,
+     "rel_spread": {
+      "call": 0.082018927444795,
+      "put": 0.059880239520958084
+     },
+     "oi_atm": 366.0,
+     "oi_sum": 507.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/ANET_2026-11-03/factors.json",
+   "published": "2026-11-02T14:31:00.286057-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.03708028218550852,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.20754763634115814,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.07292373420884546,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.055066543694123116,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.49659908944608777,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7752522777329731,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.2418796794457555,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-04",
+       "session": "AMC",
+       "raw_return_A": 0.1198188910965492,
+       "eps_est": 0.89,
+       "eps_rep": 1.02,
+       "surprise_pct": 15.18,
+       "reaction_volume_ratio": 2.717868165858889
+      },
+      {
+       "date": "2026-05-05",
+       "session": "AMC",
+       "raw_return_A": -0.13559322033898302,
+       "eps_est": 0.81,
+       "eps_rep": 0.87,
+       "surprise_pct": 7.73,
+       "reaction_volume_ratio": 4.817712400668285
+      },
+      {
+       "date": "2026-02-12",
+       "session": "AMC",
+       "raw_return_A": 0.056666719740715576,
+       "eps_est": 0.76,
+       "eps_rep": 0.82,
+       "surprise_pct": 8.17,
+       "reaction_volume_ratio": 2.595288213398028
+      },
+      {
+       "date": "2025-11-04",
+       "session": "AMC",
+       "raw_return_A": -0.066662321082813,
+       "eps_est": 0.71,
+       "eps_rep": 0.75,
+       "surprise_pct": 4.98,
+       "reaction_volume_ratio": 2.0624386738704805
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.0483268634489207,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 15.18,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 1.07881,
+      "7daysAgo": 1.07881,
+      "30daysAgo": 1.07656,
+      "60daysAgo": 1.07679,
+      "90daysAgo": 0.9167,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.1768408421511946,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 1.07881,
+      "low": 1.059,
+      "high": 1.12,
+      "yearAgoEps": 0.75,
+      "numberOfAnalysts": 26,
+      "growth": 0.4384,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.05654378435498388,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0117,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 31.463623,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 19.66057,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.377,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 207238135808,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.28125,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.0990475596152796,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.03393537719726547,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.03564435302734337,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.0205686630369026,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.9232920495405513,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 6680.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.1314505197940217,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.11995368006640163,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 279,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.3768595791001452,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.45393154791316664,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.03708028218550852,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.07292373420884546,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.055066543694123116,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.49659908944608777,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 3.013199254124881,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.17042640956191243,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 207238131115.28174,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.050863226488644595,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.19168974835687877,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000174/ex991q226-earningsrelease.htm",
+   "published": "2026-08-04T16:06:44-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 ex991q226-earningsrelease.htm EX-99.1 Document Exhibit 99.1 Arista Networks, Inc. Reports Second Quarter 2026 Financial Results • Delivered 40% growth in non-GAAP EPS year-over-year as the company achieved its first $3+ billion revenue quarter. • Recognized on the 2026 Fortune 500 list of the largest United States corporations by revenue and named a Leader in the 2026 Gartner® Magic Quadrant™ for Enterprise Wired and Wireless LAN. • Introduced 1.6 Tbps AI fabric platforms, including liquid-cooled options optimized for scale-up, scale-out, and scale-across networks. SANTA CLARA, Calif. - August 4, 2026 -- Arista Networks, Inc. (NYSE: ANET), an industry leader in data-driven, client-to-cloud networking for large AI, data center, campus, and routing environments, today announced financial results for its second quarter ended June 30, 2026. “As we deliver our first $3 billion quarter in Q2 2026, it is clear that our Arista 2.0 platform strategy is compelling,” stated Jayshree Ullal, Chairperson and CEO of Arista Networks. “Customers see networking as the central nervous system for infrastructure from the client to campus to data and AI centers.” Second Quarter Financial Highlights • Revenue of $3.036 billion, an increase of 12.1% compared to the first quarter of 2026, and an increase of 37.7% from the second quarter of 2025. • GAAP and non-GAAP operating margin of 45.4% and 49.9%, respectively, compared to GAAP and non-GAAP operating margin of 44.7% and 48.8% in the second quarter of 2025. • GAAP and non-GAAP diluted earnings per share of $0.95 and $1.02, respectively, compared to GAAP and non-GAAP diluted earnings per share of $0.70 and $0.73 in the second quarter of 2025. A reconciliation of the company’s non-GAAP financial measures to their most directly comparable GAAP measures has been provided in the financial statement tables included in this press release. Commenting on the company's financial results, Chantelle Breithaupt, Arista’s CFO, said, “Our second quarter 2026 reflects strong, broad-based growth, with revenue up 37.7% and EPS up 39.7%. This performance underscores the strength of our market position and the continued dedication of our global team.\" Company Highlights • Defending the Keys to the Kingdom: Resilient Infrastructure vs. AI-Capable Adversaries – Join Arista, Anthropic and Palo Alto Networks for a webinar to discuss the future of security in an AI world. Register here: https://events.arista.com/webinar-defending-the-keys-to-the-kingdom. • Arista Networks was named a Leader in the 2026 Gartner® Magic Quadrant™ for Enterprise Wired and Wireless LAN – The recognition reflects Arista's continued momentum in the enterprise campus, built on its unified, single-EOS architecture spanning the data center to the campus edge. • Arista introduced the 7060XE7 Series, a next-generation 1.6-terabit portfolio for AI fabrics – The new Etherlink™ platforms deliver up to 100 Tbps of system bandwidth and support Linear Pluggable Optics, cutting interconnect power consumption by approximately 60% compared to traditional pluggable optics. • Arista detailed new innovations for scale-up, scale-out, and scale-across AI fabrics – The company outlined techniques including multi-planar leaf-spine designs, the open Multipath Reliable Connection 1 (MRC) protocol, and segment routing over IPv6 (SRv6), aimed at maximizing AI cluster utilization and resilience. Financial Outlook For the third quarter of 2026, we expect: • Revenue of approximately $3.3 billion; • Non-GAAP operating margin of 48 - 49%; and • Non-GAAP diluted net income per share between $1.06 and $1.08. Guidance for non-GAAP financial measures excludes certain items, including stock-based compensation expense, intangible asset amortization, tax benefits on stock-based awards, the income tax effect on non-GAAP exclusions, and potential non-recurring charges or benefits. A reconciliation of non-GAAP guidance measures to corresponding GAAP measures is not available on a forward-looking basis without unreasonable effort because these exclusions can be uncertain or difficult to predict, including stock-based compensation expense and tax benefits on stock-based awards, which is impacted by the timing of employee stock transactions, and the future fair market value of the company’s common stock. The actual amount of these exclusions will have a significant impact on the company's GAAP gross margin, operating margin, and net income per share. Prepared Materials and Conference Call Information Arista's executives will discuss the second quarter 2026 financial results on a conference call today at 1:30 PM Pacific Time. To listen to the call via telephone, dial (888) 330-2502 in the United States or +1 (240) 789-2713 from international locations. The Conference ID is 5655862. The financial results conference call will also be available via live webcast on Arista's investor relations website at https://investors.arista.com/ . Shortly after the conference call concludes, a replay of the audio webcast will be available on Arista’s investor relations website. 2 ARISTA NETWORKS, INC. Condensed Consolidated Income Statements (Unaudited, in millions, except per share amounts) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Revenue: Product $ 2,605.2 $ 1,877.0 $ 4,916.5 $ 3,569.5 Service 430.5 327.8 828.2 640.1 Total revenue 3,035.7 2,204.8 5,744.7 4,209.6 Cost of revenue: Product 1,047.5 707.3 2,009.4 1,380.0 Service 77.9 58.9 148.2 114.9 Total cost of revenue 1,125.4 766.2 2,157.6 1,494.9 Gross profit 1,910.3 1,438.6 3,587.1 2,714.7 Operating expenses: Research and development 348.2 296.5 691.9 562.9 Sales and marketing 150.3 126.5 291.9 243.1 General and administrative 33.8 29.4 67.5 63.7 Total operating expenses 532.3 452.4 1,051.3 869.7 Income from operations 1,378.0 986.2 2,535.8 1,845.0 Other income (expense), net 126.3 94.0 239.9 190.2 Income before income taxes 1,504.3 1,080.2 2,775.7 2,035.2 Provision for income taxes 291.4 191.4 539.9 332.6 Net income $ 1,212.9 $ 888.8 $ 2,235.8 $ 1,702.6 Net income per share: Basic $ 0.96 $ 0.71 $ 1.78 $ 1.35 Diluted $ 0.95 $ 0.70 $ 1.75 $ 1.34 Weighted-average shares used in computing net income per share: Basic 1,260.1 1,256.3 1,258.9 1,258.2 Diluted 1,276.0 1,271.2 1,274.9 1,275.2 3 ARISTA NETWORKS, INC. Reconciliation of Selected GAAP to Non-GAAP Financial Measures (Unaudited, in millions, except percentages and per share amounts) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 GAAP gross profit $ 1,910.3 $ 1,438.6 $ 3,587.1 $ 2,714.7 GAAP gross margin 62.9 % 65.2 % 62.4 % 64.5 % Stock-based compensation expense 7.4 5.8 14.4 11.3 Intangible asset amortization 7.0 2.6 14.0 5.8 Non-GAAP gross profit $ 1,924.7 $ 1,447.0 $ 3,615.5 $ 2,731.8 Non-GAAP gross margin 63.4 % 65.6 % 62.9 % 64.9 % GAAP income from operations $ 1,378.0 $ 986.2 $ 2,535.8 $ 1,845.0 GAAP operating margin 45.4 % 44.7 % 44.1 % 43.8 % Stock-based compensation expense 120.4 85.2 241.3 178.2 Intangible asset amortization 15.3 5.0 30.6 10.6 Non-GAAP income from operations $ 1,513.7 $ 1,076.4 $ 2,807.7 $ 2,033.8 Non-GAAP operating margin 49.9 % 48.8 % 48.9 % 48.3 % GAAP net income $ 1,212.9 $ 888.8 $ 2,235.8 $ 1,702.6 Stock-based compensation expense 120.4 85.2 241.3 178.2 Intangible asset amortization 15.3 5.0 30.6 10.6 (Gains)/losses on strategic investments (6.0) (5.4) (8.8) (10.9) Tax benefits on stock-based awards (1) (30.9) (32.1) (65.3) (80.1) Income tax effect on non-GAAP exclusions (1) (10.0) (7.3) (23.7) (20.3) Non-GAAP net income (1) $ 1,301.7 $ 934.2 $ 2,409.9 $ 1,780.1 GAAP diluted net income per share $ 0.95 $ 0.70 $ 1.75 $ 1.34 Non-GAAP adjustments to net income per share (1) 0.07 0.03 0.14 0.06 Non-GAAP diluted net income per share (1) $ 1.02 $ 0.73 $ 1.89 $ 1.40 Weighted-average shares used in computing diluted net income per share 1,276.0 1,271.2 1,274.9 1,275.2 Summary of Stock-Based Compensation Expense: Cost of revenue $ 7.4 $ 5.8 $ 14.4 $ 11.3 Research and development 70.1 53.2 142.3 110.2 Sales and marketing 32.2 18.8 62.0 38.7 General and administrative 10.7 7.4 22.6 18.0 Total $ 120.4 $ 85.2 $ 241.3 $ 178.2 (1) Prior period amounts have been updated to conform to the current period presentation to reflect the change in methodology for calculating non-GAAP income taxes associated with stock-based awards. The retrospective application of this change resulted in an increase to non-GAAP net income of $10.7 million and $30.4 million for the three and six months ended June 30, 2025, respectively. The impact of this change on non-GAAP diluted net income per share was an increase of nil and $0.03 for the three and six months ended June 30, 2025, respectively. Please refer to the discussions under \"Non-GAAP Financial Measures\" for further information with respect to this change. 4 ARISTA NETWORKS, INC. Condensed Consolidated Balance Sheets (Unaudited, in millions) June 30, 2026 December 31, 2025 ASSETS CURRENT ASSETS: Cash and cash equivalents $ 2,290.2 $ 1,963.9 Marketable securities 11,053.1 8,779.1 Accounts receivable 2,266.2 1,886.9 Inventories 2,535.3 2,247.1 Prepaid expenses and other current assets 2,018.6 1,510.0 Total current assets 20,163.4 16,387.0 Property and equipment, net 312.5 203.1 Goodwill 416.1 416.1 Deferred tax assets 2,001.6 1,773.6 Other assets 826.5 668.8 TOTAL ASSETS $ 23,720.1 $ 19,448.6 LIABILITIES AND STOCKHOLDERS’ EQUITY CURRENT LIABILITIES: Accounts payable $ 692.7 $ 651.7 Accrued liabilities 486.6 475.4 Deferred revenue 5,100.7 4,002.6 Other current liabilities 538.4 246.8 Total current liabilities 6,818.4 5,376.5 Deferred revenue, non-current 1,765.2 1,369.8 Other long-term liabilities 338.8 331.8 TOTAL LIABILITIES 8,922.4 7,078.1 STOCKHOLDERS’ EQUITY: Common stock 0.1 0.1 Additional paid-in capital 3,155.3 2,911.8 Retained earnings 11,682.8 9,446.6 Accumulated other comprehensive income (loss) (40.5) 12.0 TOTAL STOCKHOLDERS’ EQUITY 14,797.7 12,370.5 TOTAL LIABILITIES AND STOCKHOLDERS’ EQUITY $ 23,720.1 $ 19,448.6 5 ARISTA NETWORKS, INC. Condensed Consolidated Statements of Cash Flows (Unaudited, in millions) Six Months Ended June 30, 2026 2025 CASH FLOWS FROM OPERATING ACTIVITIES: Net income $ 2,235.8 $ 1,702.6 Adjustments to reconcile net income to net cash provided by operating activities: Depreciation, amortization and other 46.7 26.6 Stock-based compensation 241.3 178.2 Deferred income taxes (213.1) (337.9) Other (10.6) (21.0) Changes in operating assets and liabilities: Accounts receivable, net (379.3) (483.1) Inventories (288.2) (224.5) Other assets (619.7) (403.2) Accounts payable 40.9 160.0 Deferred revenue 1,493.5 1,141.4 Income taxes, net 198.4 152.4 Other liabilities 30.8 (49.7) Net cash provided by operating activities 2,776.5 1,841.8 CASH FLOWS FROM INVESTING ACTIVITIES: Proceeds from maturities of marketable securities 1,508.6 1,651.2 Proceeds from sale of marketable securities 494.4 15.9 Purchases of marketable securities (4,328.9) (2,705.7) Purchases of property and equipment (84.2) (52.4) Cash paid for business combinations, net of cash acquired — (300.0) Other (35.0) — Net cash used in investing activities (2,445.1) (1,391.0) CASH FLOWS FROM FINANCING ACTIVITIES: Proceeds from issuance of common stock under equity plans 33.4 31.3 Tax withholding paid on behalf of employees for net share settlement (31.2) (39.3) Repurchases of common stock — (983.0) Other (3.7) — Net cash used in financing activities (1.5) (991.0) Effect of exchange rate changes (3.6) 3.3 NET INCREASE (DECREASE) IN CASH, CASH EQUIVALENTS AND RESTRICTED CASH 326.3 (536.9) CASH, CASH EQUIVALENTS AND RESTRICTED CASH —Beginning of period 1,965.3 2,763.8 CASH, CASH EQUIVALENTS AND RESTRICTED CASH —End of period $ 2,291.6 $ 2,226.9 6 Forward-Looking Statements This press release contains “forward-looking statements” regarding our future performance, including but not limited to quotations from management, and statements in the section entitled “Financial Outlook,” such as estimates regarding revenue, non-GAAP operating margin and non-GAAP diluted net income per share for the third quarter of 2026 . Forward-looking statements are subject to known and unknown risks, uncertainties, assumptions and other factors that could cause actual results, performance or achievements to differ materially from those anticipated in or implied by the forward-looking statements including but not limited to risks associated with: escalated or escalating U.S. tariffs and countermeasures and retaliatory actions taken by other countries; some of the key components in our products come from sole or limited sources of supply, which increases the risk of supply shortages, extended lead times or supply changes; key component supply constraints and inventory management; our reliance upon a predominant merchant silicon vendor; enhanced import/export restrictions, as well as countermeasures taken by affected countries; large purchases by a limited number of customers who represent a substantial portion of our revenue; adverse economic conditions , continuing uncertain economic conditions or reduced information technology and network infrastructure spending ; volatility in our revenue and revenue growth rates; variability in our gross margins ; variations in our results of operations ; the rapid evolution of the networking market; failure to successfully carry out new products and service offerings and expand into adjacent markets; intense competition and industry consolidation; expansion of our international sales and operations; investments in or acquisitions of other businesses, products or technologies; industry cyclicality; fluctuations in currency exchange rates; failure to raise additional capital on terms satisfactory to us; our inability to attract new large customers or sell additional products and services to our existing customers; inability to grow sales of switching and routing platforms which generate most of our pr",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000175/anet-20260630.htm",
+   "published": "2026-08-04T18:08:09-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations You should read the following discussion and analysis of our financial condition and results of operations together with the unaudited condensed consolidated financial statements and related notes that are included elsewhere in this Quarterly Report on Form 10-Q, and our Annual Report on Form 10-K filed with the SEC. This Quarterly Report on Form 10-Q contains forward-looking statements based upon current plans, expectations and beliefs that involve risks and uncertainties. The words “believe,” “may,” “will,” “potentially,” \"likely\" “estimate,” “continue,” “anticipate,” “intend,” “could,” “would,” \"should\", “project,” “plan,” “predict,” “expect,” the negative of any of these words and similar expressions that convey uncertainty of future events or outcomes are intended to identify forward-looking statements. These forward-looking statements include, but are not limited to statements concerning the following: our ability to retain and increase sales to existing customers and attract new customers, including large and government customers; our expectation that we will derive substantially all of our product revenue from sales of our switching and routing platforms for the foreseeable future; our relationships with and expectations concerning third parties, including, but not limited to our large customers, suppliers, distributors, systems integrators, channel partners and value-added resellers; our expectations regarding the growth of our revenue, including variability in sales and revenue concentration and timing, and the development and sale of next-generation versions of our switches; our plans to continue to expand our sales force, marketing activities and relationships with channel, technology and system-level partners; our expectation that our sales and marketing expenses will increase in absolute dollars as we expand our sales and marketing efforts worldwide; our expectation that our results of operations will vary from period to period, including the potential impact on our results of operations of the timing and size of our investments to introduce new products and services and to enhance our existing platform; our expectations related to our inventory and purchase commitments; the potential impacts of tightening supply conditions and our ability to manage such supply chain constraints, particularly in the memory and silicon markets; actions we might take related to our supply of components, such as our expectation that we will continue to issue non-cancellable and non-returnable purchase orders; our expectation that our gross margin will fluctuate over time and the factors influencing such expectation; our plans to invest in the business, including in research and development; market trends, including our expectation that large system vendors will continue to combine cloud-focused hardware and software solutions as an alternative to our products; our expectation of increased competition and our ability to compete effectively; our expectation that our business will continue to be subject to new and changing legal and regulatory obligations, particularly related to AI, privacy, data protection, cybersecurity and the environment; our belief that no potential litigation-related liabilities are likely to have a material adverse effect on our financial position, results of operations or cash flows; our belief that we will not pay any cash dividends in the foreseeable future; the potential amount of capital expenditures related to our new building in Santa Clara; and our belief that our existing cash, cash equivalents and marketable securities, together with cash flow from operations, will be sufficient to meet our working capital requirements and our growth strategies for the foreseeable future. The forward-looking statements made in this Quarterly Report on Form 10-Q relate only to events as of the date on which the statements are made. Our actual results may differ materially from those anticipated in these forward-looking statements as a result of various factors, including those set forth under “Risk Factors” and elsewhere in this Quarterly Report on Form 10-Q. We undertake no obligation to update any forward-looking statements made in this Quarterly Report on Form 10-Q to reflect events or circumstances after the date of this Quarterly Report on Form 10-Q or to reflect new information or the occurrence of unanticipated events, except as required by law. You should not place undue reliance on our forward-looking statements. Overview In a world where data is increasingly a precious commodity and competitive differentiator, Arista was founded to enable our customers to access all their centers of data in the quickest, most reliable, and secure manner. Over the last two decades, we have established ourselves as an industry leader in data-driven, client-to-cloud networking-as-a-service. Our “Centers of Data” strategy is a fundamental pivot from legacy, siloed networking to a unified, data-driven approach in which the network is a service that interconnects four primary domains: AI Centers, Data Centers, Campus Centers, and WAN Centers. Anchored by Arista’s state-oriented Extensible Operating System (EOS) and Network Data Lake (NetDL), our network-as-a-service platform delivers a seamless, consolidated networking experience regardless of data location. Our solutions are differentiated because they: • offer uncompromising reliability derived from the foundation of robust quality assurance capabilities, and a suite of automated diagnostics; • are based on advanced open and standards-based technology that avoids what is often expensive vendor lock-in, and • provide consistent real-time telemetry and intelligent automation to decrease the manual workload on the operator. 15 Table of Contents Our strategic differentiation enables us to deliver a comprehensive suite of products and services on a global scale. Through our network-as-a-service approach, we empower customers to seamlessly leverage their data across our entire platform. By combining world-class engineering with continuous innovation, we provide the predictable performance and simplicity needed to turn data into a sustainable competitive advantage in today’s AI-driven world. The market for cloud networking is characterized by rapid technological evolution, intensifying competition, and the expansion of generative and agentic AI. To sustain our success and adapt to the market, we must increase sales in cloud, AI and enterprise data center Ethernet switching/routing markets, and campus workspace markets by leveraging our ability to rapidly develop new features and software applications. Our growth strategy relies on maintaining our agility and increasing our investment in research and development to deliver market-leading features to enhance the functionality of our existing cloud networking platform, expand our product offerings and build upon our technology leadership. In addition, we must continue to expand our global sales force and deepen our channel partnerships to reach new customers more effectively and increase sales to existing customers. Historically, a limited number of customers have accounted for a significant portion of our revenue. Two of our customers accounted for more than 10% of our total revenue in each of the last three years. Sales to one end customer represented 16%, 15%, and 21% of our total revenue, and sales to the other end customer represented 26%, 20%, and 18% of our total revenue for the years ended December 31, 2025, 2024, and 2023, respectively. We have experienced unpredictability in the timing of orders from our high-volume customers, primarily due to the inherent complexity of large-scale orders and fluctuations in their specific demand. This includes reductions or shifts in their capital expenditure budgets, as well as the impact of their internal cost-reduction and efficiency initiatives. Furthermore, variability in customer concentration is driven by the timing of new product deployments, customer spending cycles, and the extensive periods required for evaluation, testing, and qualification. We expect this variability in concentration and sales timing to continue on both a quarterly and annual basis. Additionally, the pricing discounts typically required for these large-scale orders adversely impact our gross margins. We believe an increased focus on the deployment of AI-enabled solutions by our large customers has accelerated the need for advanced technology offerings, including some offerings from potential new market entrants. This prioritization of AI related infrastructure investment has, at times, come in conjunction with a reduction or changes in the mix of previously planned purchases and various cost reduction measures by these customers, including optimization and increased efficiency in non-AI related capital expenditures. In addition, although the focus on deployment of AI-enabled solutions has driven increased demand for networking, the long-term trajectory is unknown. As such, demand estimates for our new products are difficult to forecast and can create volatility in our revenue. We remain in a period of new product introductions and expanded use cases, particularly in the AI Ethernet market. This has resulted in increased customer trials and contracts with acceptance periods, and an increase in the volatility and magnitude of our evaluation inventory and product deferred revenue balances, which in turn may create variability in our revenue results on a quarterly and annual basis. In addition, if we are not able to satisfy the requirements under customer trials or contracts with acceptance periods, we may be required to accept product returns from our customers, which would prevent us from recognizing revenue on such transactions and may result in the write-down of inventory. Macroeconomic Update Global economic and business activities continue to face widespread macroeconomic uncertainties, including the effects of, among other things, inflation, monetary policy shifts, recession risks, supply constraints and potential supply chain disruptions, changes in government administration policy positions, and geopolitical pressures, including the war in Iran and international trade measures and tariff uncertainty. Management is actively collaborating with contract manufacturers and suppliers to optimize our supply chain in response to component constraints, evolving international trade policies, and tariff uncertainties. Ongoing supply constraints and future trade measures have and could continue to adversely affect our supply chain stability and increase our product costs. We are maintaining a disciplined fulfillment cadence to ensure reliable inventory deployment. As we build capacity to meet escalating d emand, we are shipping products against previously committed demand/deployment plans and accelerating some shipments as needed. Simultaneously, we are balancing customers’ requirements and lead times against the availability and lead times of key components and products from our suppliers and contract manufacturers. Given the timing and prioritization of customer orders and shipment patterns, as well as the timing and outcome of customer trials and contracts with acceptance periods, near term revenue trends may not be reflective of current demand levels and may benefit from demand/deployment plans that have been previously committed. In addition, we expect inventory and purchase commitments to remain elevated and subject to volatility as a result of new product introductions, shifts in customer demand, tightening supply conditions and fluctuations in supplier lead times. This volatility creates a heightened risk of excess or obsolete inventory and supplier liability charges. Simultaneously, supply chain inflation and material scarcity, such as the tightening of supply cond",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-stocks-move-lower-180322794.html?.tsrc=rss",
+   "published": "2026-11-02T13:03:22-05:00",
+   "text": "Arista Networks Stocks Move Lower With Earnings Testing Growth Against Margin Guidance - Tuesday's report will show whether stronger AI networking demand preserves operating leverage.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/arista-networks-reports-on-november-3-the-number-that-matters-is-gross-margin-not-revenue?ref=yahoofinance&tlnk=yf-261102-c64w4j2r&.tsrc=rss",
+   "published": "2026-11-02T11:36:48-05:00",
+   "text": "Arista Networks Reports on November 3. The Number That Matters Is Gross Margin, Not Revenue - Key TakeawaysArista Networks reports on November 3. It has guided to about $3.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/5-best-meme-stocks-invest-152539882.html?.tsrc=rss",
+   "published": "2026-11-02T10:25:39-05:00",
+   "text": "5 Best Meme Stocks to Invest In - Nobody has to double their money every year to build real wealth. An investor who puts $10,000 into a stock that returns 15% annually and holds it for 40 years ends up with about $2.7 million. That takes patience, not a lucky guess. Reaching for stocks that promise to multiply overnight makes that o",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/02/amd-arista-supermicro-earnings-previews-can-ai-infrastructure-shake-off-fridays-rout/?.tsrc=rss",
+   "published": "2026-11-02T07:20:21-05:00",
+   "text": "AMD, Arista, Supermicro Earnings Previews: Can AI Infrastructure Shake Off Friday’s Rout? - AMD, Arista, and Supermicro all report Tuesday after a brutal month that erased billions in market value, and what their executives say about AI demand and memory costs could either revive the trade or confirm the selloff was a signal.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/us-equity-investors-monitor-state-103216728.html?.tsrc=rss",
+   "published": "2026-11-02T05:32:16-05:00",
+   "text": "US Equity Investors to Monitor State of Big-Tech Trade, Health of Labor Market, Midterm Elections This Week - US equity market investors will focus on earnings while watching for any further deterioration in th",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/csco/articles/621799/the-dates-that-matter-most-for-cisco-stock/2026-11-02?.tsrc=rss",
+   "published": "2026-11-02T03:35:16-05:00",
+   "text": "The Dates That Matter Most For Cisco Stock - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/d0bc23d0-115b-314d-8989-07ca797bebfa/dow-jones-futures-rise-but.html?.tsrc=rss",
+   "published": "2026-11-01T23:01:36-05:00",
+   "text": "Dow Jones Futures Rise But Market Still Ails; Midterm Elections Ahead - Techs led another stock market sell-off. It's a time to be defensive. Apple, Palantir, jobs and midterm elections loom.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/arista-networks-2-more-ai-051502703.html?.tsrc=rss",
+   "published": "2026-10-31T01:15:02-04:00",
+   "text": "Arista Networks And 2 More AI Infrastructure Stocks To Watch - When St. Louis Fed chief Alberto Musalem and Dallas Fed’s Lorie Logan both pointed to more rate hikes ahead, the message was simple. Money is not cheap and capital will stay picky. That puts more focus on real infrastructure behind AI, like the switches, routers and server builders that keep model t",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/better-buy/2026/10/30/arista-networks-vs-monday-com-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+   "published": "2026-10-30T18:47:02-04:00",
+   "text": "Arista Networks vs. Monday.com: Which Technology Stock Is a Better Buy in 2026? - Arista's 39% net margin and zero debt contrast sharply with Monday.com's 9.6% margin and crowded SaaS competition, but valuation tells a different story.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/anet/articles/621536/is-arista-networks-stock-really-expensive/2026-10-30?.tsrc=rss",
+   "published": "2026-10-30T18:18:44-04:00",
+   "text": "Is Arista Networks Stock Really Expensive? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/better-buy/2026/10/30/arista-networks-vs-figma-which-technology-stock-is-a-better-buy-in-2026/?.tsrc=rss",
+   "published": "2026-10-30T15:50:02-04:00",
+   "text": "Arista Networks vs. Figma: Which Technology Stock Is a Better Buy in 2026? - Arista boasts 39% net margins and zero debt, while Figma burns cash despite 41% revenue growth, a stark contrast in profitability profiles.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/mpwr-q3-earnings-surpass-estimates-135000749.html?.tsrc=rss",
+   "published": "2026-10-30T09:50:00-04:00",
+   "text": "MPWR Q3 Earnings Surpass Estimates on Enterprise Data Strength - Monolithic Power's Q3 2026 earnings surge 73.2% as AI-driven demand fuels record revenues, with Enterprise Data growth and upbeat Q4 2026 guidance in focus.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/cien/articles/621488/is-there-a-risk-hiding-in-ciena-stocks-growth/2026-10-30?.tsrc=rss",
+   "published": "2026-10-30T09:42:04-04:00",
+   "text": "Is There A Risk Hiding In Ciena Stock's Growth? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/intel-surpasses-q3-earnings-estimates-114700160.html?.tsrc=rss",
+   "published": "2026-10-30T07:47:00-04:00",
+   "text": "Intel Surpasses Q3 Earnings Estimates on Robust Data Center Demand - INTC beats Q3 earnings estimates as AI-driven data center demand fuels revenue growth, but weak PC sales and a soft Q4 outlook send shares plunging over 25%.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-anet-declines-more-204502817.html?.tsrc=rss",
+   "published": "2026-10-29T16:45:02-04:00",
+   "text": "Arista Networks (ANET) Declines More Than Market: Some Information for Investors - The latest trading day saw Arista Networks (ANET) settling at $184.22, representing a -1.34% change from its previous close.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-anet-could-23-191547849.html?.tsrc=rss",
+   "published": "2026-10-29T15:15:47-04:00",
+   "text": "Arista Networks (ANET) Could Be 23% Undervalued Following Its AI Infrastructure Outlook - Arista Networks (ANET) is back in focus ahead of its third quarter 2026 earnings report on November 3, as investors evaluate AI infrastructure demand, new product launches, and supply chain conditions. Despite some pressure over the past month, with a 30 day share price return down 8.9%, Arista Netw",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/arista-networks-anet-vs-csco-172012012.html?.tsrc=rss",
+   "published": "2026-10-29T13:20:12-04:00",
+   "text": "Arista Networks (ANET) vs. CSCO and AVGO: Is AI Data Center Expansion Creating a Long-Term Networking Winner? - Is ANET a good stock to buy? We came across a bullish thesis on Arista Networks, Inc. on TradersPro’s Substack. Since the thesis was published on August 29th, ANET shares have pulled back amid profit-taking and valuation concerns after a strong rally, creating a near-term pause while AI networking d",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/cisco-gains-ai-networking-boom-163800660.html?.tsrc=rss",
+   "published": "2026-10-29T12:38:00-04:00",
+   "text": "Cisco Gains From AI Networking Boom: Can It Outpace HPE & ANET? - CSCO's AI networking growth, rising hyperscaler demand, and expanding portfolio strengthen its competitive position against Arista Networks and Hewlett Packard.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/global-ai-data-center-market-161300754.html?.tsrc=rss",
+   "published": "2026-10-29T12:13:00-04:00",
+   "text": "Global AI Data Center Market Size, Share, Trends, and Forecast 2026-2036 | Revenue to Reach USD 2.75 Trillion as Hyperscale Investment, AI Inference, and Edge Deployments Accelerate - Includes Detailed Profiles of NVIDIA Corp., Cisco Systems, Intel Corp., Dell Technologies, Equinix, Digital Realty Trust, Schneider Electric, Vertiv Holdings Co., Huawei Technologies Co., Arista Networks and MoreDublin, Oct. 29, 2026 (GLOBE NEWSWIRE) -- \"AI Data Center Market Size, Share & Trends An",
+   "feed": {
+    "fetched_et": "2026-11-02T14:31:13-05:00",
+    "sha256": "cf0c3669ca406c82933e54c9f991df6b14b4d22560813139fccd419f33aae5a7"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 47737
+}
