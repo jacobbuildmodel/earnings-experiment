@@ -1,0 +1,30 @@
+{
+ "event": "AMD_2026-11-03",
+ "backend": "gemini",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "931a8ace2a5f2f5079f9b29a8d1c58458f6b2a847db4e9733259b2fbc5806d23",
+ "called_et": "2026-11-02T18:12:41-05:00",
+ "prompt_sha256": "effd770cbd2e3a9759388ac6165bf4e8db66568cbd5d21dd03ebe9d52373842f",
+ "probe_reply": "I don't know.",
+ "reply": "{\n  \"prior\": {\n    \"p\": 0.479,\n    \"from\": \"semis cluster base rate (n=434, t0_hit=0.479)\"\n  },\n  \"confidence\": 0.46,\n  \"thesis\": \"Despite a sharp pre-earnings pullback de-risking headline valuation, AMD's persistent track record of post-earnings drops and high whisper expectations for AI data center revenue make an open-to-open gain slightly improbable.\",\n  \"reasons\": [\n    \"AMD has won only 1 of its last 4 earnings reaction sessions (win rate 0.25), repeatedly falling despite EPS beats.\",\n    \"The stock is down 25.3% over the past month and 10.9% in the last 5 days following Intel's PC warnings, reflecting deep sector caution.\",\n    \"Call IV trades at an elevated 20-point premium over puts (IV spread +0.204), indicating lingering speculative upside positioning that risks being crushed on guidance.\",\n    \"High market cap ($773B) and elevated P/S (18.7x) maintain an unforgiving bar for Helios rackscale and MI400 GPU revenue guidance.\"\n  ],\n  \"moved_from_prior\": \"Moved down 1.9 percentage points from the 0.479 semis base rate to 0.46, balancing AMD's 1-in-4 historical print win rate and AI guidance sensitivity against the oversold pre-print dip.\",\n  \"deciding_variable\": \"Q4 revenue guidance and updated full-year MI350/MI400 AI accelerator revenue targets relative to elevated buy-side expectations.\",\n  \"theses\": [\n    {\n      \"expected\": \"Bearish reaction\",\n      \"mechanism\": \"Data center AI acceleration outlook meets rather than beats aggressive whisper numbers, and PC/client headwinds highlighted by Intel linger, leading to a gap down.\",\n      \"wrong_if\": \"Management raises FY26/FY27 AI revenue guidance significantly above consensus, driven by Helios rackscale deployments.\"\n    },\n    {\n      \"expected\": \"Bullish reaction\",\n      \"mechanism\": \"The 25% pre-earnings drawdown fully prices in PC weakness, allowing in-line data center metrics and margin expansion to drive a relief squeeze.\",\n      \"wrong_if\": \"Non-GAAP gross margins come under pressure from new product ramps or supply bottlenecks.\"\n    },\n    {\n      \"expected\": \"Volatility crush / flat open\",\n      \"mechanism\": \"Solid Q3 beat offset by conservative Q4 guide leaves the stock trading within its implied 9% move band near the flatline.\",\n      \"wrong_if\": \"Broad institutional re-allocation occurs on commentary regarding the Anthropic and Meta multi-gigawatt partnerships.\"\n    }\n  ],\n  \"key_observations\": [\n    \"Q4 2026 revenue guidance mid-point vs consensus\",\n    \"Data Center segment revenue growth rate and MI400/Helios commentary\",\n    \"Non-GAAP gross margin guidance vs Q3 56% target\",\n    \"Client segment commentary post-Intel PC market weakness\"\n  ],\n  \"items_used\": [\n    \"I1\",\n    \"I2\",\n    \"I3\",\n    \"I4\",\n    \"I11\",\n    \"I16\"\n  ]\n}",
+ "error": null,
+ "usage": {
+  "promptTokenCount": 19143,
+  "candidatesTokenCount": 758,
+  "totalTokenCount": 21273,
+  "promptTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 19143
+   }
+  ],
+  "thoughtsTokenCount": 1372,
+  "serviceTier": "standard"
+ },
+ "model": "gemini-3.8-flash",
+ "isolation": {
+  "tools": "none sent",
+  "grounding": "none sent"
+ },
+ "outcome": "decided"
+}
