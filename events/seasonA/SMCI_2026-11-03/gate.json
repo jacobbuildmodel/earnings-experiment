@@ -1,0 +1,64 @@
+{
+ "season": "seasonA",
+ "ticker": "SMCI",
+ "report_date": "2026-11-03",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:43.916367-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.supermicro.com/news/news-details/2026/Supermicro-Provides-First-Quarter-of-Fiscal-Year-2027-Preliminary-Business-Update/default.aspx",
+  "published_et": "2026-10-20T16:30-04:00",
+  "quote": "cro Computer, Inc. (NASDAQ: SMCI) (“Supermicro” or the “Company”), an AI, Enterprise, Storage, and 5G/Edge IT Total Solution Provider, featuring Data Center Building Block Solutions® (DCBBS), today is providing a preliminary business update for the first quarter of fiscal year 2027 (Q1’27), ended September 30, 2026, and schedules earnings call for November 3rd at 5pm EST.",
+  "title": "Supermicro Provides First Quarter of Fiscal Year 2027 Preliminary Business Update",
+  "retrieved_et": "2026-10-22T21:13:51.276338-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.supermicro.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": [
+   {
+    "accepted_utc": "2026-10-20T20:44:26.000Z",
+    "accession": "0001375365-26-000025"
+   }
+  ]
+ },
+ "status": "INELIGIBLE",
+ "reason": "printed_before_entry"
+}
