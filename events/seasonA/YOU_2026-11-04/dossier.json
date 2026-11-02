@@ -1,0 +1,659 @@
+{
+ "event": "YOU_2026-11-04",
+ "season": "seasonA",
+ "built_et": "2026-11-02T14:32:23-05:00",
+ "cutoff_et": "2026-11-02T14:32:09.564961-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/YOU_2026-11-04/gate.json",
+   "published": "2026-11-02T14:32:09.564961-05:00",
+   "data": {
+    "ticker": "YOU",
+    "report_date": "2026-11-04",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-03"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-04"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-11"
+     },
+     "reaction_day": "2026-11-04"
+    },
+    "snapshot_session": "2026-11-02",
+    "captured_et": "2026-11-02T14:32:09.564961-05:00",
+    "options": {
+     "spot": 48.119998931884766,
+     "expiry": "2026-11-20",
+     "strike": 48.0,
+     "call": {
+      "bid": 3.4,
+      "ask": 3.6,
+      "openInterest": 1134.0,
+      "lastPrice": 3.5,
+      "impliedVolatility": 0.78711150390625,
+      "lastTradeDate": "2026-11-02T19:07:40+00:00"
+     },
+     "put": {
+      "bid": 3.1,
+      "ask": 3.4,
+      "openInterest": 61.0,
+      "lastPrice": 5.3,
+      "impliedVolatility": 0.7575707836914063,
+      "lastTradeDate": "2026-10-28T15:45:22+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 12,
+     "implied_move": 0.14027431732812,
+     "rel_spread": {
+      "call": 0.0571428571428572,
+      "put": 0.09230769230769226
+     },
+     "oi_atm": 1195.0,
+     "oi_sum": 1316.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/YOU_2026-11-04/factors.json",
+   "published": "2026-11-02T14:32:09.564961-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.5694677894324556,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.15812273924096987,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.04449748753288696,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.04631435476583734,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.32826593697662754,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7460399888714717,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.22347108490117118,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "BMO",
+       "raw_return_A": 0.1830136312528834,
+       "eps_est": 0.47,
+       "eps_rep": 0.57,
+       "surprise_pct": 21.98,
+       "reaction_volume_ratio": 3.597906967311012
+      },
+      {
+       "date": "2026-05-06",
+       "session": "BMO",
+       "raw_return_A": -0.01095177959111271,
+       "eps_est": 0.36,
+       "eps_rep": 0.47,
+       "surprise_pct": 32.03,
+       "reaction_volume_ratio": 2.142460273363707
+      },
+      {
+       "date": "2026-02-25",
+       "session": "BMO",
+       "raw_return_A": 0.2375656404592148,
+       "eps_est": 0.43,
+       "eps_rep": 0.46,
+       "surprise_pct": 6.7,
+       "reaction_volume_ratio": 6.89110238831972
+      },
+      {
+       "date": "2025-11-06",
+       "session": "BMO",
+       "raw_return_A": 0.1857790836409221,
+       "eps_est": 0.33,
+       "eps_rep": 0.37,
+       "surprise_pct": 12.75,
+       "reaction_volume_ratio": 1.6933586779989367
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.5812070767483437,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 21.98,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": -1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.54307,
+      "7daysAgo": 0.54307,
+      "30daysAgo": 0.54307,
+      "60daysAgo": 0.53807,
+      "90daysAgo": 0.51,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.06484313725490204,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.54307,
+      "low": 0.43,
+      "high": 0.67,
+      "yearAgoEps": 0.3677,
+      "numberOfAnalysts": 4,
+      "growth": 0.47689998,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.44193197930285233,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.1892,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 18.470255,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 4.9485955,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.266,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 4952079360,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.33333,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.14027431732812,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.029540720214843663,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.04199176757812495,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.9803921568627451,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.17731608519534822,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 505,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.352791005098463,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.1650818375117204,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 479,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.26559801701394736,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.2986495389855161,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.5685188185066876,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.04386587236173556,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.045681640921954036,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.3278804599389931,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.8643084664467917,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": -1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.1593270617335263,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000039/clearq22026pressreleaseear.htm",
+   "published": "2026-08-05T06:00:55-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 clearq22026pressreleaseear.htm EX-99.1 Document CLEAR Announces Second Quarter 2026 Financial Results NEW YORK, August 5, 2026 – Clear Secure, Inc. (NYSE: YOU), the secure identity company, has released financial results for the second quarter 2026 on its Investor Relations website at https://ir.clearme.com. Second Quarter Financial Highlights (percentage change is expressed as year-over-year, unless otherwise specified) ● Revenue of $277.8 million was up 26.6%; Total Bookings of $295.9 million increased 32.8% ● Operating income of $83.0 million, representing a 29.9% operating income margin ● Net income of $72.3 million, representing a 26.0% net income margin ● Adjusted EBITDA of $101.1 million, representing a 36.4% Adjusted EBITDA margin and 900 basis points of year-over-year margin expansion, exceeding long-term Adjusted EBITDA margin target of 35% ● Earnings per Common Share Basic and Diluted of $0.50 and $0.49, respectively ● Net cash provided by operating activities of $201.2 million; Free Cash Flow of $189.0 million Operational Achievements ● Total CLEAR Members grew to 43.5 million, up 30.0% year-over-year and Active CLEAR+ Members grew to 8.3 million, up 15.2% year-over-year, as of June 30, 2026 ● 62 CLEAR+ airports, including second quarter launches of Northwest Arkansas (Bentonville) and Indianapolis, and 280 retail locations with TSA PreCheck® Enrollment Provided by CLEAR as of June 30, 2026 ● eGates launched across 50 airports as of today; on track for network wide rollout in 2026 ● CLEAR Concierge, a premium, personalized on-demand airport service now offered at 39 airports ● Continued strong momentum in CLEAR1 across core verticals Capital Allocation Activities ● Approximately $22.2 million returned to shareholders in the second quarter of 2026, related to our regular quarterly dividend of $0.15 per share and distributions ● Clear Secure, Inc. announced today that its Board of Directors has declared a quarterly cash dividend of $0.15 per share, payable on September 24, 2026 to shareholders of record of Class A Common Stock as of the close of business on September 10, 2026 Third Quarter and Full Year 2026 Guidance ● Third quarter 2026 Revenue of $284-287 million, representing 24.6% year-over-year growth at the midpoint ● Third quarter 2026 Total Bookings of $311-316 million, representing 20.5% year-over-year growth at the midpoint ● Full Year 2026 Free Cash Flow guidance increased from at least $465 million to at least $480 million, representing at least 39.9% year-over-year growth \"Identity has become critical infrastructure and CLEAR has firmly established itself as the trusted, secure identity company. Our second quarter results demonstrate the strength we are seeing across CLEAR Travel and CLEAR1, and we have never been better positioned for what's ahead,” said Caryn Seidman Becker, CLEAR’s CEO. Conference Call Details CLEAR will host a conference call to discuss these results at 8:00 AM (ET) today. Investors and analysts can access the live teleconference call by dialing toll-free 877-407-3089 for U.S. participants and +1-215-268-9854 for international participants. Listeners can access the live webcast at https://event.choruscall.com/mediaframe/webcast.html?webcastid=NTtHOW8v. A webcast replay will be available after the event on the investor relations website at https://ir.clearme.com. About CLEAR The mission of CLEAR, the secure identity company, is to strengthen security and create frictionless experiences. With over 43 million Members and a growing network of partners across the world, CLEAR's secure identity platform is transforming the way people live, work, and travel. Whether you are traveling, at the stadium, or on your phone, CLEAR connects you to the things that make you, you—making everyday experiences easier, more secure, and friction-free. CLEAR is committed to privacy done right. Members are always in control of their own information, and we do not sell biometric or sensitive personal data. For more information, visit clearme.com. 1 Key Performance Indicators Q2 2025 Q3 2025 Q4 2025 Q1 2026 Q2 2026 Total Bookings (in millions) $ 222.9 $ 260.1 $ 287.1 $ 291.7 $ 295.9 Total CLEAR Members (in thousands) 33,472 35,751 37,998 40,986 43,501 Active CLEAR+ Members (in thousands) 7,227 7,399 7,616 8,167 8,329 Definitions of Key Performance Indicators To evaluate performance of the business, we utilize a variety of other non-GAAP financial reporting and performance measures. These key measures include Total Bookings, Total CLEAR Members, and Active CLEAR+ Members. Total Bookings Total Bookings represent our total revenue plus the change in deferred revenue during the period. Total Bookings in any particular period reflect sales to new and renewing CLEAR+ subscribers plus any accrued billings to partners. Management believes that Total Bookings is an important measure of the current health and growth of the business and views it as a leading indicator. Total CLEAR Members We define Total CLEAR Members as the cumulative number of Members that have registered for the CLEAR platform since inception as of the end of the period. This includes Members who have enrolled through CLEAR+, trials, single-use product purchases, other non-paid uses of the CLEAR platform, and associated family accounts. Total CLEAR Members exclude members who are solely marketing opt-ins and purged accounts, and are adjusted to remove identified duplicate non-paid accounts. Management views this metric as an important tool to analyze the efficacy of our growth and marketing initiatives as new Members are potentially a current and leading indicator of revenues. Active CLEAR+ Members We define Active CLEAR+ Members as the number of members with an active CLEAR+ subscription as of the end of the period. This includes CLEAR+ members who have an activated payment method, plus associated family accounts and is inclusive of Members who are in a trial or in a billing grace period. Management views this as an important tool to measure the growth of its CLEAR+ product. Prior period Active CLEAR+ Members have been recast to reflect the removal of certain lapsed accounts identified in connection with a billing system transformation project undertaken during 2025. This recast had no impact on our consolidated financial statements or non-GAAP financial measures. There has been no other change in the calculation of Active CLEAR+ Members. 2 CLEAR SECURE, INC. CONDENSED CONSOLIDATED BALANCE SHEETS ( UNAUDITED ) (dollars in thousands, except share and per share data) June 30, 2026 December 31, 2025 Assets Current assets: Cash and cash equivalents $ 128,228 $ 85,734 Marketable securities 831,040 614,439 Accounts receivable 1,263 1,925 Prepaid revenue share fee 31,347 29,679 Prepaid expenses and other current assets 31,656 32,837 Total current assets 1,023,534 764,614 Property and equipment, net 62,714 59,331 Right of use asset, net 97,215 100,048 Intangible assets, net 2,528 2,753 Goodwill 62,684 62,684 Restricted cash 2,852 2,764 Other assets 326,805 311,198 Total assets $ 1,578,332 $ 1,303,392 Liabilities and stockholders' equity Current liabilities: Accounts payable $ 6,175 $ 7,156 Accrued liabilities 404,692 236,543 Deferred revenue 572,989 516,201 Total current liabilities 983,856 759,900 Other long term liabilities 351,313 339,107 Total liabilities 1,335,169 1,099,007 Commitments and contingencies Class A Common Stock, $0.00001 par value - 1,000,000,000 shares authorized; 101,961,485 and 101,940,628 shares issued and outstanding, respectively, as of June 30, 2026 and 97,988,039 and 97,986,631 shares issued and outstanding as of December 31, 2025 1 1 Class B Common Stock, $0.00001 par value - 100,000,000 shares authorized; 151,787 shares issued and outstanding as of June 30, 2026 and 351,787 shares issued and outstanding as of December 31, 2025 — — Class C Common Stock, $0.00001 par value - 200,000,000 shares authorized; 14,246,787 shares issued and outstanding as of June 30, 2026 and 15,745,891 shares issued and outstanding as of December 31, 2025 — — Class D Common Stock, $0.00001 par value - 100,000,000 shares authorized; 18,380,246 shares issued and outstanding as of June 30, 2026 and 19,130,246 shares issued and outstanding as of December 31, 2025 — — Accumulated other comprehensive (loss) income (753) 840 Treasury stock at cost, 0 shares as of June 30, 2026 and December 31, 2025 — — Retained earnings 158,350 119,791 Additional paid-in capital 48,645 57,102 Total stockholders’ equity attributable to Clear Secure, Inc. 206,243 177,734 Non-controlling interests 36,920 26,651 Total stockholders’ equity 243,163 204,385 Total liabilities and stockholders’ equity $ 1,578,332 $ 1,303,392 3 CLEAR SECURE, INC. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED) (dollars in thousands, except share and per share data) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Revenue $ 277,757 $ 219,467 $ 530,760 $ 430,835 Operating expenses: Cost of revenue share fee 39,289 31,198 76,167 60,765 Cost of direct salaries and benefits 47,997 47,699 96,249 98,441 Research and development 17,772 18,229 37,223 37,228 Sales and marketing 17,152 14,485 33,106 27,871 General and administrative 65,934 58,532 129,571 113,270 Depreciation and amortization 6,661 6,768 13,491 13,300 Operating income 82,952 42,556 144,953 79,960 Other income (expense): Interest income, net 7,932 5,805 14,693 11,958 Other income (expense), net 471 (4,055) 2,454 (3,607) Income before tax 91,355 44,306 162,100 88,311 Income tax expense (19,045) (6,431) (33,406) (11,853) Net income 72,310 37,875 128,694 76,458 Less: net income attributable to non-controlling interests 22,260 13,153 39,849 26,331 Net income attributable to Clear Secure, Inc. $ 50,050 $ 24,722 $ 88,845 $ 50,127 Net income per share of Class A Common Stock and Class B Common Stock Net income per common share basic, Class A $ 0.50 $ 0.26 $ 0.89 $ 0.53 Net income per common share basic, Class B $ 0.50 $ 0.26 $ 0.89 $ 0.53 Net income per common share diluted, Class A $ 0.49 $ 0.26 $ 0.87 $ 0.52 Net income per common share diluted, Class B $ 0.49 $ 0.26 $ 0.87 $ 0.52 Weighted-average shares of Class A Common Stock outstanding, basic 100,694,482 92,990,661 99,954,645 94,150,710 Weighted-average shares of Class B Common Stock outstanding, basic 151,787 612,443 229,135 644,659 Weighted-average shares of Class A Common Stock outstanding, diluted 102,768,573 94,418,159 102,037,728 95,667,917 Weighted-average shares of Class B Common Stock outstanding, diluted 151,787 612,443 229,135 644,659 4 CLEAR SECURE, INC. CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (UNAUDITED) (dollars in thousands) Six Months Ended June 30, 2026 2025 Operating activities: Net income $ 128,694 $ 76,458 Adjustments to reconcile net income to net cash provided from operating activities: Depreciation of property and equipment 13,266 11,142 Amortization of intangible assets 225 2,158 Noncash lease expense 3,161 3,219 Impairment of strategic investment — 4,719 Equity-based compensation 22,399 18,091 Deferred income tax 18,296 934 Amortization of revolver loan costs 66 66 Gain on divestiture of a business — (635) Premium amortization and (discount accretion), net on marketable securities (873) (85) Changes in operating assets and liabilities: Accounts receivable 662 (708) Prepaid expenses and other assets 2,096 6,683 Prepaid revenue share fee (1,668) 795 Accounts payable (702) (6,871) Accrued and other long term liabilities 151,999 112,439 Deferred revenue 56,788 (824) Operating lease liabilities (2,885) (6,250) Net cash provided by operating activities $ 391,524 $ 221,331 Investing activities: Purchases of marketable securities (568,346) (242,914) Sales of marketable securities 349,894 269,466 Proceeds from divestiture — 2,700 Purchase of strategic investment — (514) Purchases of property and equipment (17,059) (12,147) Net cash (used in) provided by investing activities $ (235,511) $ 16,591 Financing activities: Repurchase of Class A Common Stock (1,238) (126,345) Payment of dividend (30,181) (23,502) Payment of special dividend (20,105) (25,316) Distributions to members (9,875) (9,839) Tax distribution to members (17,229) (25,986) Payment of taxes on net settled stock-based awards (20,303) (4,939) Debt issuance costs (325) — Payments under tax receivable agreements (14,254) (334) Net cash used in financing activities $ (113,510) $ (216,261) Net increase (decrease) in cash, cash equivalents, and restricted cash 42,503 21,661 Cash, cash equivalents, and restricted cash, beginning of period 88,498 70,348 Exchange rate effect on cash and cash equivalents, and restricted cash 79 70 Cash, cash equivalents, and restricted cash, end of period $ 131,080 $ 92,079 5 Non-GAAP Financial Measures In addition to our results as determined in accordance with GAAP, we disclose Adjusted EBITDA, Adjusted EBITDA Margin, and Free Cash Flow as non-GAAP financial measures that management believes provide useful information to investors. These measures are not financial measures calculated in accordance with GAAP and should not be considered as a substitute for net income, net income margin, net cash provided by (used in) operating activities or any other operating performance measure calculated in accordance with GAAP, and may not be comparable to a similarly titled measure reported by other companies. Our Non-GAAP financial measures are expressed in thousands, unless otherwise indicated. We periodically reassess the components of our Non-GAAP adjustments for changes in how we evaluate our performance and changes in how we make financial and operational decisions to ensure the adjustments remain relevant and meaningful. Adjusted EBITDA and Adjusted EBITDA Margin We define Adjusted EBITDA as net income adjusted for income taxes, interest (income), net, depreciation and amortization, impairment and losses on asset disposals, equity-based compensation expense",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000042/you-20260630.htm",
+   "published": "2026-08-05T08:34:53-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following Management’s Discussion and Analysis of Financial Condition and Results of Operations (“MD&A”) is intended to help readers understand our results of operations, financial condition and cash flows and should be read in conjunction with the audited consolidated financial statements and the related notes included in our Annual Report on Form 10-K for the fiscal year ended December 31, 2025 (“Annual Report on Form 10-K”). This discussion contains forward-looking statements that involve risks and uncertainties. Our actual results could differ materially from those discussed below. For purposes of this MD&A, the term “we” and other forms thereof refer to Clear Secure, Inc. and its subsidiaries (collectively, the “Company”), which includes Alclear Holdings, LLC (“Alclear”). Forward-Looking Statements This quarterly report includes certain forward-looking statements within the meaning of the federal securities laws regarding, among other things, our or management’s intentions, plans, beliefs, expectations or predictions of future events, which are considered forward-looking statements. You should not place undue reliance on those statements because they are subject to numerous uncertainties and factors relating to our operations and business environment, all of which are difficult to predict and many of which are beyond our control. Forward-looking statements include information concerning our possible or assumed future results of operations, including descriptions of our business strategy. These statements often include words such as “may,” “will,” “should,” “believe,” “expect,” “anticipate,” “intend,” “plan,” “estimate,” or similar expressions. These statements are based upon assumptions that we have made in light of our experience in the industry, as well as our perceptions of historical trends, current conditions, expected future developments and other factors that we believe are appropriate under the circumstances. As you read this quarterly report, you should understand that these statements are not guarantees of performance or results. They involve known and unknown risks, uncertainties and assumptions, including those described under the heading “Risk Factors” in our Annual Report on Form 10-K. Although we believe that these forward-looking statements are based upon reasonable assumptions, you should be aware that many factors, including those described under the heading “Risk Factors” in our Annual Report on Form 10-K, could affect our actual financial results or results of operations and could cause actual results to differ materially from those in the forward-looking statements. Our forward-looking statements made herein are made only as of the date of this quarterly report. We expressly disclaim any intent, obligation or undertaking to update or revise any forward-looking statements made herein to reflect any change in our expectations with regard thereto or any change in events, conditions or circumstances on which any such statements are based. All subsequent written and oral forward-looking statements attributable to us or persons acting on our behalf are expressly qualified in their entirety by the cautionary statements contained in this quarterly report. Overview Clear Secure, Inc. (the “Company” or “CLEAR”) is a secure identity company making experiences safer and easier - both digitally and physically. We make everyday experiences frictionless by connecting your identity to all the things that make you, YOU - transforming the way you live, work, and travel. CLEAR has been delivering secure, frictionless experiences in airports for over 15 years, achieving exceptional user delight and trust with CLEAR+, our consumer travel subscription service. CLEAR+ enables access to predictable and fast experiences through dedicated entry lanes in airport security checkpoints nationwide. Additionally, our CLEAR Travel portfolio includes TSA PreCheck® Enrollment Provided by CLEAR, premium services such as CLEAR Concierge, other travel benefits such as expedited passport services, our free CLEAR app which helps travelers plan their trip Home to Gate, and other mobile-first identity solutions such as CLEAR ID. Our CLEAR Travel portfolio extends CLEAR’s value proposition beyond the airport lane and supports our strategy to expand use cases, increase engagement and address new customer segments such as international travelers. CLEAR1 is our business to business (“B2B”) multi-layered identity verification solution. We combine biometric, document and device signals with verified data sources to ensure users are who they claim to be. Our B2B partners can select which verification layers to deploy, based on their specific security requirements, risk tolerance and user experience goals. We partner with a breadth of organizations, with a particular focus on Healthcare, Workforce and Governmental organizations where high fidelity identity security is paramount to their operational success. Our scaled Member base and comprehensive secure identity platform underpin our CLEAR Travel and CLEAR1 businesses, maximizing security and minimizing friction for consumers and our enterprise partners. 22 Table of Contents Key Factors Affecting Performance We believe that our current and future financial growth are dependent upon many factors, including the key factors affecting performance described below. Ability to Grow Total CLEAR Members We are focused on growing Total CLEAR Members and the number of Members that engage with our platform. Our operating results and growth opportunities depend, in part, on our ability to attract new Members, including paying Members (CLEAR+ Members) as well as new platform Members. We rely on multiple channels to attract new CLEAR+ Members, including in-airport (our largest channel) which in turn is dependent on the ongoing ability of our Ambassadors to successfully engage with the traveling public. We also rely on numerous digital channels such as our website, mobile app and paid search. We also entered into strategic distribution partnerships with partners such as Delta Air Lines, United Airlines, Alaska Airlines, and American Express that promote our services to their customers on a discounted or subsidized basis which helps us to efficiently scale membership in CLEAR+. Through our partnership with American Express, eligible card members receive statement credits for all or a portion of their CLEAR+ membership. We initially entered into our partnership with American Express in 2019. In February 2026, we executed a multi-year renewal of the partnership with American Express. In many cases, we offer limited time trials to new Members who may convert to paying Members upon the completion of their trial. Our future success is dependent on those channels continuing to drive new Members and our ability to convert trial Members into paying Members. Ability to retain CLEAR+ Members Our ability to execute on our growth strategy is focused, in part, on our ability to retain our existing CLEAR+ Members. Frequency and recency of usage are the leading indicators of retention, and we must continue to provide frictionless and predictable experiences that our Members will use in their daily lives. We are subject to various factors which may be out of our control and may impact our Member experience, such as checkpoint staffing generally, checkpoint queue configurations and Registered Traveler policies adopted by TSA. For example, the TSA employs varied randomization as part of their normal security processes. If the TSA materially increases randomized reverification rates for CLEAR+ Members at the checkpoint or makes other adjustments to checkpoint processes, it may negatively impact the Lane experience and therefore may impact our ability to retain CLEAR+ Members. The value of the CLEAR platform to our Members increases as we add more use cases and partnerships, which in turn drives more frequent usage and strong retention. We cannot be sure that we will be successful in retaining our Members due to any number of factors such as our inability to successfully implement a new product, adoption of our technology, harm to our brand or other factors. If our efforts to develop and offer more benefits are not valued by our current and future CLEAR+ Members, our ability to attract and retain CLEAR+ Members, or increase pricing, may be negatively impacted. Ability to add new partners, retain existing partners and generate new revenue streams Our partners include local airport authorities, airlines and other businesses. Our future success depends on maintaining those relationships, adding new relationships and maintaining favorable business terms. In addition, our growth strategy relies on creating new revenue streams such as per partner, per Member or per use transaction fees. Although we believe our service provides significant value to our partners, our success depends on creating mutually beneficial partnership agreements. We are focused on innovating both our product and our platform to improve our Members’ experience, improve safety and security and introduce new use cases. We intend to accelerate our pace of innovation to add more features and use cases, to ultimately deliver greater value to our Members and partners. In the near term, we believe that growing our Member base facilitates our ability to add new partnerships and provide additional offerings, which we expect will lead to revenue generation opportunities in the long term. Timing of new partner, product and location launches Our financial performance is dependent in part on new partner, product and location launches. In many cases, we cannot predict the exact timing of those launches. Delays, resulting either from internal or external factors, may have a material effect on our financial results. 23 Table of Contents Timing of expenses; Discretionary investments Although many of our expenses occur in a predictable fashion, certain expenses may fluctuate from period to period due to timing. In addition, management may make discretionary investments when it sees an opportunity to accelerate growth, add a new partner or acquire talent, among other reasons. This may lead to volatility or unpredictability in our expense base and in our profitability. Maintaining strong unit economics Our business model is powered by network effects and has historically been characterized by efficient Member acquisition and high Member retention rates. While we believe our unit economics will remain attractive, this is dependent on our ability to add new Members efficiently and maintain our historically strong retention rates. As we grow our market penetration, the cost to acquire new Members could increase and the experience we deliver to Members could degrade, causing lower retention rates. Changes to the macro and regulatory environment Our business is dependent on macroeconomic and other events outside of our control, such as decreased levels of travel or attendance at events, changes in government policy and regulation, terrorism, civil unrest, political instability, union and other transit related strikes and other general economic conditions. We are also subject to changes in discretionary consumer spending. Taxation and Expenses We are subject to U.S. federal, state and local income taxes with respect to our allocable share of any taxable income of Alclear and will be taxed at the prevailing corporate tax rates. Alclear is treated as a flow-through entity for U.S. federal income tax purposes, and as such, has generally not been subject to U.S. federal income tax at the entity level. In addition to tax expense, we incur expenses related to our operations, plus payments under the tax receivable agreement (“TRA”) described below, which we expect to be significant. We intend to cause Alclear to make distributions in an amount suffi",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000048/you-20261029.htm",
+   "published": "2026-10-30T16:35:17-04:00",
+   "form": "8-K",
+   "items": "5.03",
+   "text": "Item 5.03 Amendments to Articles of Incorporation or Bylaws; Change in Fiscal Year. On October 29, 2026, the Board of Directors (the “Board”) of Clear Secure, Inc. (the “Company”) approved and adopted third amended and restated by-laws of the Company (the “Third Amended and Restated By-Laws”), effective as of such date. The Third Amended and Restated By-Laws update and expand the procedural and informational requirements for director nominations and other proposals submitted by stockholders under the Company’s “advance notice” provisions to reflect the Securities and Exchange Commission’s “universal proxy” rules as set forth in Rule 14a-19 under the Securities Exchange Act of 1934, as amended. The foregoing summary of the amendments to the by-laws does not purport to be complete and is qualified in its entirety by reference to the full text of the Third Amended and Restated By-Laws, a copy of which is filed as Exhibit 3.1 hereto, and is incorporated herein by reference. Item 9.01 Financial Statements and Exhibits. (d) Exhibits Exhibit No. Description 3.1 Third Amended and Restated By-laws of Clear Secure, Inc., effective October 29, 2026 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. CLEAR SECURE, INC. Date: October 30, 2026 By: /s/ Caryn Seidman Becker Caryn Seidman Becker Chief Executive Officer"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1856314/000095014226002552/eh260830672_8k.htm",
+   "published": "2026-09-16T06:30:37-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On September 15, 2026, Clear Secure, Inc. (the “Company”) entered into an agreement with Michael Barkin, the Company’s President and a member of the Company’s Board of Directors (the “Board”), pursuant to which Mr. Barkin will transition to an advisory role on October 15, 2026. In addition, effective October 15, 2026, Mr. Barkin will resign from the Board in accordance with his employment agreement. Mr. Barkin’s resignation from the Board does not involve a disagreement on any matter relating to the Company’s operations, policies or practices. Mr. Barkin has been an impactful partner to CLEAR over the past seven years with significant contributions during pivotal moments of growth as well as oversight of key initiatives. In his CLEAR advisory role, Mr. Barkin will continue to support CLEAR’s leadership and champion CLEAR’s mission. The Company is grateful for Mr. Barkin’s dedication and service to the Company. Pursuant to the transition agreement, Mr. Barkin has agreed to remain in the advisory role until December 31, 2026, for an advisory fee of $300,000 per full month of service. The agreement contains customary representations and warranties, as well as confidentiality and intellectual property protection covenants and a general release of claims. The foregoing summary of the agreement is qualified by reference to the complete text of the Transition and Advisory Agreement dated September 15, 2026, a copy of which will be filed as an exhibit to the Quarterly Report on Form 10-Q for the quarter ended September 30, 2026. In addition, on September 14, 2026, Kyle McLaughlin notified the Company of his intention to resign from his role as EVP, Aviation to pursue a new opportunity. Mr. McLaughlin’s resignation does not involve a disagreement on any matter relating to the Company’s operations, policies or practices. The Company is appreciative of Mr. McLaughlin’s contributions during his tenure. Mr. McLaughlin’s last day will be October 2, 2026. The Company has initiated a search for his successor. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. CLEAR SECURE, INC. Date: September 16, 2026 By: /s/ Caryn Seidman Becker Name: Caryn Seidman Becker Title: Chief Execut"
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/crypto/articles/3-stocks-investors-watching-regulated-181052732.html?.tsrc=rss",
+   "published": "2026-11-02T13:10:52-05:00",
+   "text": "3 Stocks For Investors Watching Regulated Crypto Exchange And Custody Demand - The Binance cyber theft, with $6.3b drained and only part of it frozen, has pushed regulated crypto exchanges and custodial platforms into the spotlight again. Confidence in centralized players is being tested, yet investor curiosity about listed companies tied to digital assets is rising. This arti",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/trending-stock-clear-secure-inc-120004705.html?.tsrc=rss",
+   "published": "2026-10-28T08:00:04-04:00",
+   "text": "Is Trending Stock CLEAR Secure, Inc. (YOU) a Buy Now? - Clear Secure (YOU) has received quite a bit of attention from Zacks.com users lately. Therefore, it is wise to be aware of the facts that can impact the stock's prospects.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/why-clear-secure-outpaced-stock-205004670.html?.tsrc=rss",
+   "published": "2026-10-26T16:50:04-04:00",
+   "text": "Why Clear Secure (YOU) Outpaced the Stock Market Today - The latest trading day saw Clear Secure (YOU) settling at $46.07, representing a +1.52% change from its previous close.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-cybersecurity-stocks-retail-investors-150904076.html?.tsrc=rss",
+   "published": "2026-10-25T11:09:04-04:00",
+   "text": "3 Cybersecurity Stocks Retail Investors Are Watching As Identity And Network Security Matter More - Markets are on edge as cyber risk, AI uncertainty, geopolitical shocks, and policy questions all collide, yet this kind of stress can quietly reset which stocks investors pay most attention to. Security-focused businesses exposed to these headlines may see their importance reassessed almost overnigh",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-software-stocks-competitive-advantages-190439047.html?.tsrc=rss",
+   "published": "2026-10-23T15:04:39-04:00",
+   "text": "3 software stocks with competitive advantages - Software is rapidly reducing operating expenses for businesses. This secular theme has materialized in superior earnings growth and stock price performance for most SaaS companies, and over the last six months, the industry’s 54.6% return has topped the S&P 500 by 45.5 percentage points.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/clear-announce-third-quarter-2026-100000840.html?.tsrc=rss",
+   "published": "2026-10-21T06:00:00-04:00",
+   "text": "CLEAR To Announce Third Quarter 2026 Financial Results On November 4, 2026 - Clear Secure, Inc. (NYSE: YOU), the secure identity company, today announced that it will report financial results for the third quarter ending September 30, 2026 at approximately 6:00 a.m. ET on Wednesday, November 4, 2026. At 8:00 a.m. ET, results will be discussed via live webcast and teleconfere",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-stock-looks-undervalued-130956833.html?.tsrc=rss",
+   "published": "2026-10-20T09:09:56-04:00",
+   "text": "Clear Secure (YOU) Stock Looks Undervalued Based On Its Earnings￼ - Clear Secure has logged strong multi year share returns, and that price strength now puts a spotlight on whether the current valuation lines up with what its earnings can reasonably support. With the stock recently closing at US$45.18, investors are asking if the story in the share chart is matched ",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-climbed-driving-fresh-121008440.html?.tsrc=rss",
+   "published": "2026-10-20T08:10:08-04:00",
+   "text": "Clear Secure (YOU) Climbed, What Is Driving Fresh Attention? - Clear Secure (YOU) is back in focus after the U.S. Department of Veterans Affairs rolled out CLEAR1 as an identity verification option for VA.gov users, coinciding with positive expectations ahead of the next earnings report. Recent trading has reflected that optimism. Clear Secure’s 1-day share pri",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-clear-secure-111047962.html?.tsrc=rss",
+   "published": "2026-10-20T07:10:47-04:00",
+   "text": "How Investors May Respond To Clear Secure (YOU) VA.gov Identity Rollout - GovCIO and the U.S. Department of Veterans Affairs have already rolled out Clear Secure's CLEAR1 platform on VA.gov and at six pilot medical centers, giving Veterans an optional, no cost digital and in person identity verification choice that uses biometrics and government ID. The VA pilot extends C",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-exceeds-market-returns-205003836.html?.tsrc=rss",
+   "published": "2026-10-19T16:50:03-04:00",
+   "text": "Clear Secure (YOU) Exceeds Market Returns: Some Facts to Consider - Clear Secure (YOU) reached $45.18 at the closing of the latest trading day, reflecting a +2.85% change compared to its last close.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-reasons-explosive-upside-potential-174455651.html?.tsrc=rss",
+   "published": "2026-10-19T13:44:55-04:00",
+   "text": "3 Reasons YOU Has Explosive Upside Potential - What a brutal six months it’s been for CLEAR Secure. The stock has dropped 22.8% and now trades at $43.89, rattling many shareholders. This may have investors wondering how to approach the situation.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/most-watched-stock-clear-secure-120006053.html?.tsrc=rss",
+   "published": "2026-10-16T08:00:06-04:00",
+   "text": "Is Most-Watched Stock CLEAR Secure, Inc. (YOU) Worth Betting on Now? - Clear Secure (YOU) has been one of the stocks most watched by Zacks.com users lately. So, it is worth exploring what lies ahead for the stock.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-increases-despite-market-205004526.html?.tsrc=rss",
+   "published": "2026-10-13T16:50:04-04:00",
+   "text": "Clear Secure (YOU) Increases Despite Market Slip: Here's What You Need to Know - Clear Secure (YOU) closed at $43.52 in the latest trading session, marking a +2.5% move from the prior day.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/2-cash-producing-stocks-long-083504259.html?.tsrc=rss",
+   "published": "2026-10-13T04:35:04-04:00",
+   "text": "2 Cash-Producing Stocks for Long-Term Investors and 1 We Ignore - A company that generates cash isn’t automatically a winner. Some businesses stockpile cash but fail to reinvest wisely, limiting their ability to expand.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/why-market-dipped-clear-secure-205004264.html?.tsrc=rss",
+   "published": "2026-10-07T16:50:04-04:00",
+   "text": "Why the Market Dipped But Clear Secure (YOU) Gained Today - In the most recent trading session, Clear Secure (YOU) closed at $42.58, indicating a +2.6% shift from the previous trading day.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/healthcare/articles/u-department-veterans-affairs-selects-120000913.html?.tsrc=rss",
+   "published": "2026-10-07T08:00:00-04:00",
+   "text": "U.S. Department of Veterans Affairs Selects CLEAR for New Pilot Initiative to Modernize the Veteran Experience on VA.gov - CLEAR (NYSE: YOU), the secure identity company, announced today that the U.S. Department of Veterans Affairs (VA) has integrated CLEAR1, CLEAR's secure identity platform, as part of a pilot to reimagine the Veteran experience across digital and physical touchpoints. The pilot provides a new, fast, s",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-inc-attracting-investor-120008473.html?.tsrc=rss",
+   "published": "2026-10-05T08:00:08-04:00",
+   "text": "CLEAR Secure, Inc. (YOU) is Attracting Investor Attention: Here is What You Should Know - Recently, Zacks.com users have been paying close attention to Clear Secure (YOU). This makes it worthwhile to examine what the stock has in store.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-us-growth-tech-stocks-110717740.html?.tsrc=rss",
+   "published": "2026-10-05T07:07:17-04:00",
+   "text": "3 US Growth Tech Stocks Retail Investors Are Watching After Cooling Inflation - Rate hike odds just swung sharply, inflation cooled and the latest jobs report underwhelmed, so interest rate sensitive growth and technology stocks are suddenly back in focus for anyone watching the Fed. This mix of softer data and slower wage gains is reshuffling which companies benefit or lag. Th",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/1-safe-steady-stock-impressive-111803368.html?.tsrc=rss",
+   "published": "2026-10-02T07:18:03-04:00",
+   "text": "1 Safe-and-Steady Stock with Impressive Fundamentals and 2 We Brush Off - A stock with low volatility can be reassuring, but it doesn’t always mean strong long-term performance. Investors who prioritize stability may miss out on higher-reward opportunities elsewhere.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-rises-higher-market-205005383.html?.tsrc=rss",
+   "published": "2026-09-25T16:50:05-04:00",
+   "text": "Clear Secure (YOU) Rises Higher Than Market: Key Facts - Clear Secure (YOU) closed at $39.6 in the latest trading session, marking a +2.72% move from the prior day.",
+   "feed": {
+    "fetched_et": "2026-11-02T14:32:23-05:00",
+    "sha256": "1ab4e7c333fec5c876fe93e33c7f85987753a98daa4f13f6cee122823c2ca33e"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 53417
+}
