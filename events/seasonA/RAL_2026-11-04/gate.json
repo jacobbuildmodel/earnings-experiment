@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "RAL",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:34.106341-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.ralliant.com/news-events/press-releases/detail/131/ralliant-announces-third-quarter-2026-earnings-release-and-conference-call-date",
+  "published_et": "2026-10-14T08:30-04:00",
+  "quote": "tion Ralliant Ralliant Announces Third Quarter 2026 Earnings Release and Conference Call Date October 14, 2026 8:30 am ET Download as PDF RALEIGH, N.C.--(BUSINESS WIRE)-- Ralliant Corporation (“Ralliant” or the “Company”) (NYSE: RAL) will release earnings for the third quarter of 2026 before the opening of the New York Stock Exchange on Wednesday, November 4, 2026.",
+  "title": "Ralliant Announces Third Quarter 2026 Earnings Release and Conference Call Date",
+  "retrieved_et": "2026-10-19T10:19:28.275650-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.ralliant.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 66.66000366210938,
+  "expiry": "2026-11-20",
+  "strike": 65.0,
+  "call": {
+   "bid": 5.2,
+   "ask": 7.1,
+   "openInterest": 22.0,
+   "lastPrice": 5.5,
+   "impliedVolatility": 0.8823253955078124,
+   "lastTradeDate": "2026-10-20T16:56:04+00:00"
+  },
+  "put": {
+   "bid": 2.85,
+   "ask": 4.0,
+   "openInterest": 1280.0,
+   "lastPrice": 2.78,
+   "impliedVolatility": 0.702151416015625,
+   "lastTradeDate": "2026-11-02T15:14:50+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 12,
+  "implied_move": 0.14363935604525904,
+  "rel_spread": {
+   "call": 0.3089430894308942,
+   "put": 0.3357664233576642
+  },
+  "oi_atm": 1302.0,
+  "oi_sum": 1302.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
