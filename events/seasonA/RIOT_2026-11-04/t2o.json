@@ -1,0 +1,173 @@
+{
+ "track": "T2O",
+ "event": "RIOT_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "RIOT reaches the print after a ~40% one-month washout with a 16% implied move and heavy put positioning, so a relief bounce is plausible, but weak bitcoin and sector-wide lease and financing worries leave this close to a coin flip.",
+  "reasons": [
+   "The stock is down 40% in a month and 59% below its 52-week high, with 15.5% of float short and put/call volume of 1.6, which sets up a squeeze or relief rally if the print is merely okay.",
+   "All four of the last four prints showed a positive exit-A reaction despite EPS misses, which suggests the market looks through GAAP EPS.",
+   "Crypto and AI-hosting sentiment is deteriorating: the Binance hack pushed BTC below $80k, KBW cut targets and warned of a 'lease catalyst drought', and Cipher fell after its Q3 miss.",
+   "EPS estimates have been cut 36% over 90 days, so the bar is lowered, but no new lease announcement is expected.",
+   "The holding window includes the full Nov 3 session plus the overnight print, so BTC beta adds noise unrelated to earnings."
+  ],
+  "deciding_variable": "Whether management announces or credibly signals new data center lease or financing progress (investment-grade backstop for the 191 MW project, Corsicana tenant) versus a pure mining quarter with rising costs.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 by_session BMO t0_hit 0.548, shaded toward the overall 0.542; the crypto_proxy cluster (0.25, n=8) is flagged insufficient and given little weight"
+  },
+  "leak_probe": "I don't know: that earnings report (November 4, 2026) hasn't happened yet as of today (November 2, 2026), and my knowledge only runs through June 2026, so I can't tell you how RIOT's stock reacted.",
+  "moved_from_prior": "Net -0.02. Oversold positioning, short interest and the last-4 win streak add about +0.03. Negative sector momentum, the Cipher read-through, BTC weakness and the lack of a lease catalyst subtract about -0.05.",
+  "theses": [
+   {
+    "expected": "rise",
+    "mechanism": "Lowered estimates are beaten on Q3 BTC price strength; financing updates (Morgan Stanley backstop, debt repayment) ease funding fears; shorts cover in a deeply oversold name",
+    "wrong_if": "No new lease news and the call emphasizes capex needs or equity issuance"
+   },
+   {
+    "expected": "fall",
+    "mechanism": "KBW 'lease catalyst drought' is confirmed; rising cost to mine and dilution or ATM usage to fund the Rockdale build reinforce financing concerns, mirroring Cipher's reaction",
+    "wrong_if": "Riot announces a new tenant or AMD exercises more capacity"
+   },
+   {
+    "expected": "fall",
+    "mechanism": "Bitcoin continues sliding after the Binance hack during the Nov 3 session and overnight, dragging high-beta miners regardless of the print",
+    "wrong_if": "BTC stabilizes or rebounds above $80k before the Nov 4 open"
+   }
+  ],
+  "key_observations": [
+   "Any new HPC or AI lease or AMD expansion exercise",
+   "Status of the investment-grade credit backstop and plans to refinance the $573M facility due Dec 31, 2026",
+   "ATM equity issuance or dilution in Q3",
+   "Cost to mine per BTC and hash rate growth",
+   "Data Center segment revenue and AMD Phase 3 delivery on track for November",
+   "BTC price path on Nov 3 and overnight"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/RIOT_2026-11-04/gate.json",
+    "published": "2026-11-02T14:31:34.466815-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/RIOT_2026-11-04/factors.json",
+    "published": "2026-11-02T14:31:34.466815-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1167419/000110465926093406/riot-20260810xex99d1.htm",
+    "published": "2026-08-10T16:22:21-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1167419/000110465926097330/riot-20260810x8k.htm",
+    "published": "2026-08-14T17:00:29-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cipher-digital-falls-5-on-q3-revenue-miss-as-first-hpc-lease-revenue-arrives?ref=yahoofinance&tlnk=yf-261102-vfpc362f&.tsrc=rss",
+    "published": "2026-11-02T13:28:43-05:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/riot-platforms-sinks-5-cipher-down-8-as-keefe-bruyette-warns-of-lease-catalyst-drought?ref=yahoofinance&tlnk=yf-261102-rpqh9qvg&.tsrc=rss",
+    "published": "2026-11-02T13:27:39-05:00",
+    "dossier_item": "I11"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/mara-reports-november-9-after-riot-fell-33-in-a-month-its-cash-flow-is-the-test?ref=yahoofinance&tlnk=yf-261102-3jmxjcpm&.tsrc=rss",
+    "published": "2026-11-02T11:53:09-05:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/whats-offing-riot-platforms-stock-131200312.html?.tsrc=rss",
+    "published": "2026-11-02T08:12:00-05:00",
+    "dossier_item": "I13"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://stocktwits.com/news-articles/markets/equity/cifr-stock-gets-biggest-price-target-cut-amid-ai-hosting-valuation-concerns/cNG9DBuR9PT?.tsrc=rss",
+    "published": "2026-11-02T07:11:59-05:00",
+    "dossier_item": "I15"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/next-bitcoin-bull-market-hardly?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-30T10:11:02-04:00",
+    "dossier_item": "I20"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/riot-platforms-dropped-33-in-a-month-atb-cormark-sees-108-upside-from-here?ref=yahoofinance&.tsrc=rss",
+    "published": "2026-10-30T08:25:55-04:00",
+    "dossier_item": "I22"
+   }
+  ],
+  "decided_et": "2026-11-02T16:56:09-05:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 24766,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1542,
+   "output_tokens_details": {
+    "thinking_tokens": 327
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 24766,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1542,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 24766,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 24766
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.2315835
+ }
+}
