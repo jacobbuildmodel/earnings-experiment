@@ -1,0 +1,142 @@
+{
+ "track": "T2",
+ "event": "UBER_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "Base rate tilt toward a rise is offset by UBER's poor recent earnings-day record, a stock already down heavily, and mixed event risk (Delivery Hero deal, robotaxi, regulatory), leaving roughly a coin flip.",
+  "reasons": [
+   "Last 4 prints: only 1 of 4 positive open-to-open returns (win rate 0.25), with reactions averaging negative even on EPS beats",
+   "Implied move about 7.8% with ATM IV near 2.9x realized vol; elevated event premium, but symmetric and no directional signal",
+   "Stock is 33% off its 52w high and -31% over 12m, so expectations are low and sentiment is bearish, which can support a relief move",
+   "Guidance in Aug was strong (GB +18-22%, EPS +28-35%), analysts bullish (rec mean 1.58) but the Delivery Hero acquisition and debt financing add overhang",
+   "Entry is the open of Nov 3, so the pre-earnings run-up day is included; midterm election Nov 3 adds macro noise"
+  ],
+  "deciding_variable": "Q4 gross bookings guidance and Q3 adjusted EBITDA versus consensus, plus commentary on the Delivery Hero deal financing and autonomous vehicle competition.",
+  "prior": {
+   "p": 0.55,
+   "from": "I3 BMO session base rate 0.548 (overall validation 0.542; consumer cluster 0.555; software_internet 0.541)"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-02, so the November 4, 2026 earnings report hasn't happened yet, and I have no information on how UBER's stock reacted.",
+  "moved_from_prior": "Down about 5 points from 0.55 to 0.50: weak earnings-day history and deal/robotaxi/regulatory overhang offset the base rate and low-expectation setup.",
+  "theses": [
+   {
+    "expected": "Rise: Q3 beats with strong Q4 bookings guide in line or above, stock rebounds from depressed levels",
+    "mechanism": "Low expectations, 33% drawdown, and high IV crush with relief rally",
+    "wrong_if": "Gross bookings guide implies deceleration below 18% constant currency or EBITDA guide is light"
+   },
+   {
+    "expected": "Fall: guidance merely in line, with Delivery Hero deal costs and robotaxi fears dominating",
+    "mechanism": "Pattern of negative reactions on past prints despite beats; investors sell on capital allocation concerns",
+    "wrong_if": "Management shows leverage and buyback support alongside upbeat AV partnership commentary"
+   },
+   {
+    "expected": "Flat or small move: the 7.8% implied move overstates the realized reaction",
+    "mechanism": "Implied move is rich versus 60d realized vol, so realized move may be smaller and direction is dictated by modest guide changes",
+    "wrong_if": "A large surprise in bookings or regulatory news triggers a move beyond 8%"
+   }
+  ],
+  "key_observations": [
+   "Q4 gross bookings and EBITDA guidance versus consensus",
+   "Mobility and Delivery gross bookings growth and trips growth",
+   "Delivery Hero offer status, financing, and leverage commentary",
+   "AV partnerships and robotaxi competition remarks",
+   "Buyback pace and free cash flow"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/UBER_2026-11-04/gate.json",
+    "published": "2026-11-02T14:31:51.702612-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/UBER_2026-11-04/factors.json",
+    "published": "2026-11-02T14:31:51.702612-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1543151/000154315126000027/uberq226earningspressrelea.htm",
+    "published": "2026-08-05T06:56:58-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1543151/000155278126000414/e26328_uber-8k.htm",
+    "published": "2026-08-07T16:15:48-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.barchart.com/story/news/8564637/why-dumping-uber-stock-before-q3-earnings-may-not-be-the-smartest-move?.tsrc=rss",
+    "published": "2026-10-30T18:44:27-04:00",
+    "dossier_item": "I24"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/rules-robotaxi-pressure-uber-technologies-171443609.html?.tsrc=rss",
+    "published": "2026-10-30T13:14:43-04:00",
+    "dossier_item": "I25"
+   }
+  ],
+  "decided_et": "2026-11-02T16:24:28-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 22849,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1088,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 22849,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1088,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 22849,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 22849
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.10462990000000001
+ }
+}
