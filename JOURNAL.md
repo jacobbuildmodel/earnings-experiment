@@ -9,6 +9,22 @@
 
 ---
 
+## 2026-11-02 (Mon) 08:10 ET — a blind review caught the deck borrowing strength the record does not have (Stage 1, RQ1)
+- **What happened:** the Stage 1 deck (13 slides) was built from the committed output only and published privately
+  for Jacob. A second model (Sonnet), given the slides, D017, the output and the plan but not the builder's
+  conclusions, found 15 things to fix. Each was checked against its source before it went in (v7).
+- **What it taught:**
+  - The hand-off's own facts carried an attribution slip: history's "t 3.6" is on the raw +0.85%. The net +0.65% has
+    t 2.76, the SPY-hedged net 2.25 (D009). A number copied from a brief needs the same source check as a web figure.
+  - The near-miss holds under D017's fixed ±1.96 SE and fails under a small-sample t(7) interval (upper bound
+    ≈ +0.73%, derived). Showing both is the honest version; either one alone overclaims.
+  - Even Gate 2's floor (250 events) gives a real premium of history's size only t ≈ 1.4; t ≈ 2 needs ~600–850. So
+    "when will we know?" has no date answer, and the deck now says so.
+  - P1 passes while two CHARTER §6 health numbers miss target (T2 missing 7.7% of 26 frozen PASS; 1 fence breach).
+    The PASS test and the health targets measure different things; a deck showing only the PASS hides that.
+- **What changed:** the deck carries the corrections. No registry, code or output file changed. Still owed: D011 v4,
+  a new-RED alarm, gate1.health counting graded rows with no T2.
+
 ## 2026-11-02 (Mon) 07:40 ET — the first live read does not look like history yet, and a 5-day halt went unseen (Stage 1, RQ1, D011)
 - **What happened:** the Stage 1 code was written, tested on synthetic data and committed (07:26 ET) before its one
   run (07:28 ET). P1 PASS; the primary read (SH-W, 84 events) is INSUFFICIENT on 8 of the 10 sessions rule 7 needs.
