@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "FRSH",
+ "report_date": "2026-11-03",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:14.165208-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.freshworks.com/news/news-details/2026/Freshworks-to-Announce-Third-Quarter-2026-Financial-Results-on-November-3-2026/default.aspx",
+  "published_et": "2026-10-08T08:00-04:00",
+  "quote": "View All News Freshworks to Announce Third Quarter 2026 Financial Results on November 3, 2026 October 8, 2026 Download (opens in new window) SAN MATEO, Calif., Oct. 08, 2026 (GLOBE NEWSWIRE) -- Freshworks Inc. (NASDAQ: FRSH) will announce its financial results for the third quarter ended September 30, 2026 following the close of market on Tuesday, November 3, 2026.",
+  "title": "Freshworks to Announce Third Quarter 2026 Financial Results on November 3, 2026",
+  "retrieved_et": "2026-10-19T21:44:13.010852-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.freshworks.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-03T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 14.53499984741211,
+  "expiry": "2026-11-20",
+  "strike": 15.0,
+  "call": {
+   "bid": 0.7,
+   "ask": 1.05,
+   "openInterest": 4558.0,
+   "lastPrice": 0.85,
+   "impliedVolatility": 0.813478427734375,
+   "lastTradeDate": "2026-11-02T15:21:08+00:00"
+  },
+  "put": {
+   "bid": 1.15,
+   "ask": 1.5,
+   "openInterest": 59.0,
+   "lastPrice": 1.35,
+   "impliedVolatility": 0.8027363476562499,
+   "lastTradeDate": "2026-11-02T15:02:38+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 12,
+  "implied_move": 0.15135879071864594,
+  "rel_spread": {
+   "call": 0.4000000000000001,
+   "put": 0.26415094339622647
+  },
+  "oi_atm": 4617.0,
+  "oi_sum": 4617.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
