@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "W",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:32:00.091129-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.wayfair.com/news/news-details/2026/Wayfair-Schedules-Third-Quarter-2026-Earnings-Release-and-Conference-Call/default.aspx",
+  "published_et": "2026-10-01T07:00-04:00",
+  "quote": "Wayfair Schedules Third Quarter 2026 Earnings Release and Conference Call 10/01/2026 Download (opens in new window) BOSTON , Oct. 1, 2026 /PRNewswire/ -- Wayfair Inc. (NYSE: W), the destination for all things home, today announced it will release financial results for its third quarter ending September 30, 2026 before the opening of the market on November 4, 2026.",
+  "title": "Wayfair Schedules Third Quarter 2026 Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-08T23:47:38.689391-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.wayfair.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 114.72000122070312,
+  "expiry": "2026-11-06",
+  "strike": 115.0,
+  "call": {
+   "bid": 7.35,
+   "ask": 8.75,
+   "openInterest": 152.0,
+   "lastPrice": 9.2,
+   "impliedVolatility": 1.5288109497070312,
+   "lastTradeDate": "2026-11-02T16:38:50+00:00"
+  },
+  "put": {
+   "bid": 6.4,
+   "ask": 7.75,
+   "openInterest": 52.0,
+   "lastPrice": 6.3,
+   "impliedVolatility": 1.294192982177734,
+   "lastTradeDate": "2026-11-02T17:05:58+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.1318427461563733,
+  "rel_spread": {
+   "call": 0.1739130434782609,
+   "put": 0.19081272084805648
+  },
+  "oi_atm": 204.0,
+  "oi_sum": 1041.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
