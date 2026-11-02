@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "DUOL",
+ "report_date": "2026-11-03",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:09.958153-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/duolingo-announce-third-quarter-2026-results-tuesday-november-3-2026-2026-10-08",
+  "published_et": "2026-10-08T08:00-04:00",
+  "quote": "linkedin facebook x email reddit PITTSBURGH , Oct. 08, 2026 (GLOBE NEWSWIRE) -- Duolingo, Inc. (Nasdaq: DUOL), the world's leading mobile learning platform, will announce its results for the third quarter ending September 30, 2026 , following the close of the U.S. market on Tuesday, November 3, 2026 .",
+  "title": "Duolingo to Announce Third Quarter 2026 Results on Tuesday, November 3, 2026",
+  "retrieved_et": "2026-10-19T21:43:42.276487-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-03T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 135.9199981689453,
+  "expiry": "2026-11-06",
+  "strike": 136.0,
+  "call": {
+   "bid": 8.5,
+   "ask": 11.0,
+   "openInterest": 11.0,
+   "lastPrice": 9.0,
+   "impliedVolatility": 1.544191732177734,
+   "lastTradeDate": "2026-11-02T15:20:57+00:00"
+  },
+  "put": {
+   "bid": 8.5,
+   "ask": 9.8,
+   "openInterest": 27.0,
+   "lastPrice": 9.0,
+   "impliedVolatility": 1.4367703942871093,
+   "lastTradeDate": "2026-11-02T19:11:41+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.13905238562840289,
+  "rel_spread": {
+   "call": 0.2564102564102564,
+   "put": 0.1420765027322405
+  },
+  "oi_atm": 38.0,
+  "oi_sum": 314.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
