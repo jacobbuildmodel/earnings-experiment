@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "TOST",
+ "report_date": "2026-11-03",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:49.924040-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/toast-announces-release-date-third-quarter-2026-financial-results-2026-10-20",
+  "published_et": "2026-10-20T16:05-04:00",
+  "quote": "linkedin facebook x email reddit BOSTON --(BUSINESS WIRE)-- Toast (NYSE: TOST), the global technology platform built for restaurant and retail businesses, will release financial results for the third quarter ended September 30, 2026 following the close of the U.S . markets on Tuesday, November 3, 2026 .",
+  "title": "Toast Announces Release Date Of Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-22T21:16:04.674539-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-03T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-03T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 33.75,
+  "expiry": "2026-11-06",
+  "strike": 33.5,
+  "call": {
+   "bid": 1.98,
+   "ask": 2.19,
+   "openInterest": 1465.0,
+   "lastPrice": 1.97,
+   "impliedVolatility": 1.2480506347656248,
+   "lastTradeDate": "2026-11-02T19:10:16+00:00"
+  },
+  "put": {
+   "bid": 1.67,
+   "ask": 1.84,
+   "openInterest": 38.0,
+   "lastPrice": 1.71,
+   "impliedVolatility": 1.197269638671875,
+   "lastTradeDate": "2026-11-02T19:10:35+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.11377777777777777,
+  "rel_spread": {
+   "call": 0.10071942446043164,
+   "put": 0.09686609686609696
+  },
+  "oi_atm": 1503.0,
+  "oi_sum": 2137.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
