@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "RIOT",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:34.466815-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/riot-announces-third-quarter-2026-earnings-conference-call-2026-10-20",
+  "published_et": "2026-10-20T16:05-04:00",
+  "quote": "ROCK, Colo. , Oct. 20, 2026 (GLOBE NEWSWIRE) -- Riot Platforms, Inc. (NASDAQ: RIOT) (“Riot” or “the Company”), a leader in vertically integrated digital infrastructure specializing in the development of large-scale data centers and Bitcoin mining applications, announced today that it has scheduled its third quarter 2026 earnings conference call to November 4, 2026 , at 8:00 AM EST .",
+  "title": "Riot Announces Third Quarter 2026 Earnings Conference Call",
+  "retrieved_et": "2026-10-21T21:07:51.506384-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 11.760000228881836,
+  "expiry": "2026-11-06",
+  "strike": 12.0,
+  "call": {
+   "bid": 0.8,
+   "ask": 0.82,
+   "openInterest": 1360.0,
+   "lastPrice": 0.82,
+   "impliedVolatility": 1.671876640625,
+   "lastTradeDate": "2026-11-02T19:14:31+00:00"
+  },
+  "put": {
+   "bid": 1.04,
+   "ask": 1.12,
+   "openInterest": 4173.0,
+   "lastPrice": 1.09,
+   "impliedVolatility": 1.7265638671875,
+   "lastTradeDate": "2026-11-02T19:06:11+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.16071428258634524,
+  "rel_spread": {
+   "call": 0.024691358024691242,
+   "put": 0.07407407407407414
+  },
+  "oi_atm": 5533.0,
+  "oi_sum": 5533.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
