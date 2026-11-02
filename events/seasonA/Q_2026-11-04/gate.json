@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "Q",
+ "report_date": "2026-11-04",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-03"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-04"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "reaction_day": "2026-11-04"
+ },
+ "snapshot_session": "2026-11-02",
+ "captured_et": "2026-11-02T14:31:28.443742-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.qnityelectronics.com/press-releases/detail/78/qnity-schedules-third-quarter-2026-earnings-release-and-conference-call",
+  "published_et": "2026-10-01T06:30-04:00",
+  "quote": "e and Conference Call | Qnity Electronics, Inc. (Q) Qnity Schedules Third Quarter 2026 Earnings Release and Conference Call October 01, 2026 6:30am EDT Download as PDF WILMINGTON, Del.--(BUSINESS WIRE)-- Qnity Electronics, Inc. (“Qnity”) (NYSE: Q), will release its third quarter 2026 financial results before the opening of the market on Wednesday, November 4, 2026.",
+  "title": "Qnity Schedules Third Quarter 2026 Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-08T23:36:42.947926-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.qnityelectronics.com/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 116.12999725341797,
+  "expiry": "2026-11-20",
+  "strike": 115.0,
+  "call": {
+   "bid": 8.1,
+   "ask": 9.3,
+   "openInterest": 209.0,
+   "lastPrice": 8.9,
+   "impliedVolatility": 0.7731956274414062,
+   "lastTradeDate": "2026-11-02T18:31:46+00:00"
+  },
+  "put": {
+   "bid": 6.1,
+   "ask": 7.7,
+   "openInterest": 3267.0,
+   "lastPrice": 6.9,
+   "impliedVolatility": 0.7092314233398438,
+   "lastTradeDate": "2026-11-02T19:08:33+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 12,
+  "implied_move": 0.13433221707529883,
+  "rel_spread": {
+   "call": 0.13793103448275876,
+   "put": 0.23188405797101455
+  },
+  "oi_atm": 3476.0,
+  "oi_sum": 3476.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
