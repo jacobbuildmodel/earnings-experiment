@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "MTSI",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:00.094088-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/macom-report-fourth-quarter-and-fiscal-year-2026-financial-results-november-5-2026",
+  "published_et": "2026-10-22T08:30-04:00",
+  "quote": "linkedin facebook x email reddit LOWELL, Mass. , Oct. 22, 2026 (GLOBE NEWSWIRE) -- MACOM Technology Solutions Holdings, Inc. (“MACOM”) (Nasdaq: MTSI) plans to announce financial results for its fourth quarter and fiscal year 2026, ended October 2, 2026 , before the market open on Thursday, November 5, 2026 .",
+  "title": "MACOM to Report Fourth Quarter and Fiscal Year 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-23T21:34:34.968975-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 233.32000732421875,
+  "expiry": "2026-11-20",
+  "strike": 230.0,
+  "call": {
+   "bid": 20.3,
+   "ask": 22.6,
+   "openInterest": 98.0,
+   "lastPrice": 23.47,
+   "impliedVolatility": 0.9639285833740234,
+   "lastTradeDate": "2026-11-03T16:38:25+00:00"
+  },
+  "put": {
+   "bid": 15.3,
+   "ask": 17.4,
+   "openInterest": 259.0,
+   "lastPrice": 15.0,
+   "impliedVolatility": 0.8765881481933593,
+   "lastTradeDate": "2026-11-03T16:37:50+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.16200925258618548,
+  "rel_spread": {
+   "call": 0.10722610722610725,
+   "put": 0.12844036697247693
+  },
+  "oi_atm": 357.0,
+  "oi_sum": 357.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

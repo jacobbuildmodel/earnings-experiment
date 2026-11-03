@@ -1,0 +1,650 @@
+{
+ "event": "QCOM_2026-11-04",
+ "season": "seasonA",
+ "built_et": "2026-11-03T14:32:41-05:00",
+ "cutoff_et": "2026-11-03T14:32:27.108390-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/QCOM_2026-11-04/gate.json",
+   "published": "2026-11-03T14:32:27.108390-05:00",
+   "data": {
+    "ticker": "QCOM",
+    "report_date": "2026-11-04",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-12"
+     },
+     "reaction_day": "2026-11-05"
+    },
+    "snapshot_session": "2026-11-03",
+    "captured_et": "2026-11-03T14:32:27.108390-05:00",
+    "options": {
+     "spot": 162.86500549316406,
+     "expiry": "2026-11-06",
+     "strike": 162.5,
+     "call": {
+      "bid": 7.5,
+      "ask": 7.9,
+      "openInterest": 189.0,
+      "lastPrice": 7.87,
+      "impliedVolatility": 1.1069380590820312,
+      "lastTradeDate": "2026-11-03T18:58:36+00:00"
+     },
+     "put": {
+      "bid": 6.5,
+      "ask": 6.9,
+      "openInterest": 413.0,
+      "lastPrice": 6.8,
+      "impliedVolatility": 1.0131885278320314,
+      "lastTradeDate": "2026-11-03T19:03:05+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.08841678392725325,
+     "rel_spread": {
+      "call": 0.05194805194805199,
+      "put": 0.05970149253731349
+     },
+     "oi_atm": 602.0,
+     "oi_sum": 3468.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/QCOM_2026-11-04/factors.json",
+   "published": "2026-11-03T14:32:27.108390-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.08094718179790783,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.09914811913621357,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.11568112552315646,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.033483947067505015,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.45523447672933526,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7356246030723624,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.34524654898651597,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-29",
+       "session": "AMC",
+       "raw_return_A": -0.09859763795210219,
+       "eps_est": 2.23,
+       "eps_rep": 2.21,
+       "surprise_pct": -0.74,
+       "reaction_volume_ratio": 1.776587714674909
+      },
+      {
+       "date": "2026-04-29",
+       "session": "AMC",
+       "raw_return_A": 0.13601851937048948,
+       "eps_est": 2.56,
+       "eps_rep": 2.65,
+       "surprise_pct": 3.34,
+       "reaction_volume_ratio": 4.7855689334555045
+      },
+      {
+       "date": "2026-02-04",
+       "session": "AMC",
+       "raw_return_A": -0.1061797764643655,
+       "eps_est": 3.4,
+       "eps_rep": 3.5,
+       "surprise_pct": 2.87,
+       "reaction_volume_ratio": 3.146630442985435
+      },
+      {
+       "date": "2025-11-05",
+       "session": "AMC",
+       "raw_return_A": 0.01739525906728634,
+       "eps_est": 2.88,
+       "eps_rep": 3.0,
+       "surprise_pct": 4.32,
+       "reaction_volume_ratio": 1.2641477233007794
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.7432337036041567,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -0.74,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 2.16073,
+      "7daysAgo": 2.15608,
+      "30daysAgo": 2.15685,
+      "60daysAgo": 2.15586,
+      "90daysAgo": 2.18882,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.01283339881762784,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 2.16073,
+      "low": 2.09,
+      "high": 2.26,
+      "yearAgoEps": 3.0,
+      "numberOfAnalysts": 25,
+      "growth": -0.2798,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.07867711375322226,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0312,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 16.030193,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 3.9463952,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": -0.04,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 173913686016,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.56757,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.08841678392725325,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.09374953124999985,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.043456813964843466,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.130715935334873,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7930313588850174,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 9226.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.3286094257911483,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.10177416795046743,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 479,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": -0.04032802701398941,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.16346637177038303,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.08094718179790783,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.11568112552315646,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.033483947067505015,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.45523447672933526,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.3519254750508325,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.21084882194790683,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 171008255767.82227,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.2577010086567542,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.17813377028605296,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000085/qcom062826erex991.htm",
+   "published": "2026-07-29T16:01:35-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 qcom062826erex991.htm EX-99.1 Document Exhibit 99.1 FOR IMMEDIATE RELEASE Qualcomm Contact: Brett Simpson Senior Vice President, Investor Relations Phone: 1-858-658-4813 | e-mail: ir@qualcomm.com Qualcomm Announces Third Quarter Fiscal 2026 Results Revenues: $9.9 billion GAAP EPS: $1.87, Non-GAAP EPS: $2.21 —Combined QCT Automotive and IoT Revenues Grew 28% Year-Over-Year— —QCT Automotive Revenues: 23 Consecutive Quarters of Double-Digit Year-Over-Year Growth— —Completed Acquisition of Modular Inc Creating an Open Software Foundation for Generative and Agentic AI— SAN DIEGO - July 29, 2026 - Qualcomm Incorporated (NASDAQ: QCOM) today announced results for its fiscal third quarter ended June 28, 2026. “Despite a challenging memory and supply environment, our third quarter results reflect solid execution of our growth strategy, with quarterly revenues at the high end of guidance,” said Cristiano Amon, President and CEO of Qualcomm Incorporated. “We are well positioned to execute on the vision we outlined at our recent Investor Day, with total non-handset revenues growing to $40 billion by fiscal 2029 – nearly double the target we shared in November 2024. In the near term, we expect year-over-year growth in non-handset revenues, including Data Center, to accelerate from 24% in fiscal 2026 to greater than 60% in fiscal 2027 – a significant inflection point in the execution of our growth strategy.” Third Quarter Results 1 GAAP Non-GAAP (in millions, except per share data and percentages) Q3 Fiscal 2026 Q3 Fiscal 2025 Change Q3 Fiscal 2026 Q3 Fiscal 2025 Change Revenues $9,947 $10,365 (4%) $9,947 $10,365 (4%) Earnings before taxes (EBT) $2,462 $2,952 (17%) $2,693 $3,544 (24%) Net income $2,002 $2,666 (25%) $2,356 $3,040 (23%) Diluted earnings per share (EPS) $1.87 $2.43 (23%) $2.21 $2.77 (20%) (1) Discussion regarding our use of Non-GAAP financial measures and reconciliations between GAAP and Non-GAAP results are included at the end of this news release in the sections labeled “Note Regarding Use of Non-GAAP Financial Measures” and “Reconciliations of GAAP Results to Non-GAAP Results.” Segment Results QCT QTL (in millions, except percentages) Q3 Fiscal 2026 Q3 Fiscal 2025 Change Q3 Fiscal 2026 Q3 Fiscal 2025 Change Revenues $8,504 $8,993 (5%) $1,278 $1,318 (3%) EBT $2,192 $2,671 (18%) $881 $942 (6%) EBT as % of revenues 26% 30% -4 points 69% 71% -2 points Qualcomm Announces Third Quarter Fiscal 2026 Results Page 2 of 8 QCT Revenue Streams 1 (in millions, except percentages) Q3 Fiscal 2026 Q3 Fiscal 2025 Change Handsets $5,086 $6,328 (20%) Automotive 1,588 984 +61% IoT (internet of things) 1,830 1,681 +9% Total QCT revenues $8,504 $8,993 (5%) (1) We disaggregate QCT revenues based on the industries and applications in which our products are sold. Return of Capital to Stockholders During the third quarter of fiscal 2026, we returned $2.3 billion to stockholders, including $973 million, or $0.92 per share, of cash dividends paid and $1.4 billion through repurchases of 8 million shares of common stock. Business Outlook The following statements are forward looking, and actual results may differ materially. The “Note Regarding Forward-Looking Statements” in this news release provides a description of certain risks that we face, and our most recent quarterly report on file with the Securities and Exchange Commission (SEC) provides a more complete description of our risks. The semiconductor industry is experiencing a broad-based increase in input costs, across wafer fabrication, assembly, test, advanced packaging, memory and other materials. We are taking concrete actions to reflect the higher input costs in our product pricing and expect these actions to benefit our gross margins over time as the pricing changes gradually come into effect. These factors are reflected in both our fiscal 2026 third quarter performance and fourth quarter guidance. The following table summarizes GAAP and Non-GAAP guidance based on the current outlook. Current Guidance Q4 FY26 Estimates 1 Revenues $9.7B - $10.5B Supplemental Revenue Information QCT revenues $8.4B - $9.0B QTL revenues $1.2B - $1.4B GAAP diluted EPS $1.22 - $1.42 Less diluted EPS attributable to QSI $— Less diluted EPS attributable to share-based compensation ($0.72) Less diluted EPS attributable to other items 2 ($0.11) Non-GAAP diluted EPS $2.05 - $2.25 (1) Our outlook does not include provisions for proposed tax law changes, future asset impairments or for pending legal matters, other than future legal amounts that are probable and estimable. Further, due to their nature, certain income and expense items, such as certain investments, derivative and foreign currency transaction gains or losses, cannot be accurately forecast. Accordingly, we only include such items in our financial outlook to the extent they are reasonably certain. Our outlook includes the impact of any pending business combinations to the extent they are expected to close in the upcoming quarter. Actual results may differ materially from the outlook. (2) Our guidance for diluted EPS attributable to other items for the fourth quarter of fiscal 2026 is primarily related to acquisition-related items. Qualcomm Announces Third Quarter Fiscal 2026 Results Page 3 of 8 Conference Call and Available Information Qualcomm’s third quarter fiscal 2026 earnings conference call will be broadcast live on July 29, 2026, beginning at 1:45 p.m. Pacific Time (PT) at https://investor.qualcomm.com/news-events/investor-events . This conference call will include a discussion of “Non-GAAP financial measures” as defined in Regulation G. The most directly comparable GAAP financial measures and information reconciling these Non-GAAP financial measures to our financial results prepared in accordance with GAAP, as well as other financial and statistical information to be discussed on the conference call, will be posted to our Investor Relations website at https://investor.qualcomm.com immediately prior to the commencement of the call. An audio replay will be available on our website and via telephone following the live call for 30 days thereafter. To listen to the replay via telephone, U.S. callers may dial (877) 660-6853 and international callers may dial (201) 612-7415. Callers should use reservation number 13761080. Our Investor Relations website at https://investor.qualcomm.com contains a significant amount of information about us, including financial and other information for investors, and it is possible that this information could be deemed to be material information. Accordingly, investors and others interested in Qualcomm should review the information posted on our website in addition to following our press releases, SEC filings and public conference calls and webcasts. About Qualcomm Qualcomm is a global computing leader at the center of the AI era, enabling intelligence to scale from the most personal devices to large‑scale infrastructure. Building on more than four decades of innovation, we develop platforms and solutions that bring together advanced AI, high‑performance, low-power computing and industry‑leading connectivity—powering products and services used around the world. At Qualcomm, we are engineering human progress. Qualcomm Incorporated includes our licensing business, QTL, and the vast majority of our patent portfolio. Qualcomm Technologies, Inc., a subsidiary of Qualcomm Incorporated, operates, along with its subsidiaries, substantially all of our engineering and research and development functions and substantially all of our products and services businesses, including our QCT semiconductor business. Snapdragon and Qualcomm branded products are products of Qualcomm Technologies, Inc. and/or its subsidiaries. Qualcomm patents are licensed by Qualcomm Incorporated. Qualcomm, Snapdragon, Qualcomm Dragonwing and Qualcomm Dragonfly are trademarks or registered trademarks of Qualcomm Incorporated. Note Regarding Forward-Looking Statements In addition to the historical information contained herein, this news release contains forward-looking statements that are inherently subject to risks and uncertainties, including but not limited to statements regarding: our growth strategy; our Investor Day vision; our fiscal 2027 and fiscal 2029 targets and expectations for non-handset revenues and revenue growth; our acquisition of Modular Inc, including the expected benefits of such acquisition; the impact of industry-wide increases in input costs, including actions we are taking in response thereto, the expected impact on our gross margins and the timing thereof; and our estimates and guidance related to revenues and earnings per share (EPS). Forward-looking statements are generally identified by words such as “estimate,” “forecast,” “guidance,” “expect,” “anticipate,” “intend,” “plan,” “believe,” “seek” and similar expressions. Actual results may differ materially from those referred to in the forward-looking statements due to a number of important factors, including but not limited to: our dependence on a small number of customers and licensees, and particularly from their sale of premium-tier handset devices; our customers vertically integrating; a significant portion of our business being concentrated in China, which is exacerbated by U.S./China trade and national security tensions; our ability to extend our technologies and products into new and expanded product areas, and industries and applications beyond mobile handsets; our strategic acquisitions, transactions and investments, and our ability to consummate strategic acquisitions; our dependence on a limited number of third-party suppliers; risks associated with the operation and control of our manufacturing facilities; security breaches of our information technology systems, or other misappropriation of our technology, intellectual property or other proprietary or confidential information; our ability to attract and retain qualified employees; the continued and future success of our licensing programs, which requires us to continue to evolve our patent portfolio and to renew or renegotiate license agreements that are expiring; efforts by some OEMs to avoid paying fair and reasonable royalties for the use of our intellectual property, and other attacks on our licensing business model; potential changes in our patent licensing practices, whether due to governmental investigations, legal challenges or otherwise; adverse rulings in governmental investigations or proceedings or other legal proceedings; our customers’ and licensees’ sales of products and services based on cellular and other communications technologies, including 5G, and our customers’ demand for our products based on these technologies; competition in an environment of rapid technological change, and our ability to adapt to such change and compete effectively; failures in our products or in the products of our customers or licensees, including those resulting from security vulnerabilities, defects or errors; difficulties in enforcing and protecting our intellectual property rights; claims by third parties that we infringe their intellectual property; our use of open source software; the cyclical nature of the semiconductor industry, declines in global, regional or local economic conditions, or our stock price and earnings volatility; geopolitical conflicts, natural disasters, pandemics and other health crises, and other factors outside of our control; our ability to comply with laws, regulations, policies and standards; our indebtedness; and potential tax liabilities. These and other risks are set forth in our Quarterly Report on Form 10-Q for the fiscal quarter ended June 28, 2026 filed with the SEC. Our reports filed with the SEC are available on our website at www.qualcomm.com . We undertake no obligation to update, or continue to provide information with respect to, any forward-looking statement or risk factor, whether as a result of new information, future events or otherwise. Qualcomm Announces Third Quarter Fiscal 2026 Results Page 4 of 8 QUALCOMM Incorporated CONDENSED CONSOLIDATED BALANCE SHEETS (In millions, except par value amounts) (Unaudited) June 28, 2026 September 28, 2025 ASSETS Current assets: Cash and cash equivalents $ 4,533 $ 5,520 Restricted cash — 2,323 Marketable securities 3,771 4,635 Accounts receivable, net 4,668 4,315 Inventories 8,379 6,526 Other current assets 1,653 2,435 Total current assets 23,004 25,754 Deferred tax assets 5,679 743 Property, plant and equipment, net 5,217 4,690 Goodwill 14,274 11,358 Other intangible assets, net 1,510 1,148 Other assets 7,683 6,450 Total assets $ 57,367 $ 50,143 LIABILITIES AND STOCKHOLDERS’ EQUITY Current liabilities: Trade accounts payable $ 2,897 $ 2,791 Payroll and other benefits related liabilities 1,470 1,839 Unearned revenues 280 358 Short-term debt 2,489 — Other current liabilities 4,277 4,156 Total current liabilities 11,413 9,144 Unearned revenues 81 71 Long-term debt 12,781 14,811 Other liabilities 5,434 4,911 Total liabilities 29,709 28,937 Stockholders’ equity: Preferred stock, $0.0001 par value; 8 shares authorized; none outstanding — — Common stock and paid-in capital, $0.0001 par value; 6,000 shares authorized; 1,057 and 1,074 shares issued and outstanding, respectively — — Retained earnings 27,263 20,646 Accumulated other comprehensive income 395 560 Total stockholders’ equity 27,658 21,206 Total liabilities and stockholders’ equity $ 57,367 $ 50,143 Qualcomm Announces Third Quarter Fiscal 2026 Results Page 5 of 8 QUALCOMM Incorporated CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (In millions, except per share data) (Unaudited) Three Months Ended Nine Months Ended June 28, 2026 June 29, 2025 June 28, 2026 June 29, 2025 Revenues: Equipment and services $ 8,475 $ 8,893 $ 28,002 $ 28,193 Licensing 1,472 1,472 4,796 4,820 Total revenues 9,947 10,365 32,798 33,013 Costs and expenses: Cost of revenues 4,670 4,606 15,138 14,704 Research and devel",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm",
+   "published": "2026-07-29T16:02:50-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations.” References to “and,” “or” and “and/or” should be read to include the others, as appropriate. Risk Factors Summary: RISKS RELATED TO OUR OPERATING BUSINESSES • We derive a significant portion of our revenues from a small number of customers and licensees, and particularly from their sale of premium-tier handset devices. If revenues derived from these customers or licensees decrease or the timing of such revenues fluctuates, our business and results of operations could be negatively affected. • Our business, particularly our semiconductor business, may suffer as a result of our customers vertically integrating (i.e., developing their own integrated circuit products). • A significant portion of our business is concentrated in China, and the risks of such concentration are exacerbated by U.S./China trade and national security tensions. RISKS RELATED TO NEW INITIATIVES • Our growth depends in part on our ability to extend our technologies and products into new and expanded product areas, and industries and applications beyond mobile handsets. Our research, development and other investments in these new and expanded product areas, industries and applications, and related technologies and products, as well as in our existing technologies and products, and new technologies, may not generate operating income or contribute to future results of operations that meet our expectations. • We may engage in acquisitions and other strategic transactions or make investments, or be unable to consummate planned strategic acquisitions, which could adversely affect our results of operations or fail to enhance stockholder value. RISKS RELATED TO SUPPLY AND MANUFACTURING • We depend on a limited number of third-party suppliers for the procurement, manufacture, assembly and testing of our products manufactured in a fabless production model. If we fail to execute supply strategies that provide supply assurance, technology leadership and reasonable margins, our business and results of operations may be harmed. We are also subject to order and shipment uncertainties that could negatively impact our results of operations. • There are numerous risks associated with the operation and control of our manufacturing facilities, including a higher portion of fixed costs relative to a fabless model; environmental compliance and liability; impacts related to climate change; exposure to natural disasters, health crises, geopolitical conflicts and cyber-attacks; timely supply of equipment and materials; and various manufacturing issues. RISKS RELATED TO CYBERSECURITY OR MISAPPROPRIATION OF OUR CRITICAL INFORMATION • Our business and operations could suffer in the event of security breaches of our IT systems, or other misappropriation of our technology, intellectual property or other proprietary or confidential information. RISKS RELATED TO HUMAN CAPITAL MANAGEMENT • We may not be able to attract or retain qualified employees. 27 RISKS SPECIFIC TO OUR LICENSING BUSINESS • The continued and future success of our licensing programs requires us to continue to evolve our patent portfolio and to renew or renegotiate license agreements that are expiring. • Efforts by some OEMs to avoid paying fair and reasonable royalties for the use of our intellectual property may require the investment of substantial management time and financial resources and may result in legal decisions or actions by governments, courts, regulators or agencies, Standards Development Organizations (SDOs) or other industry organizations that harm our business. • Changes in our patent licensing practices, whether due to governmental investigations, legal challenges or otherwise, could adversely impact our business and results of operations. RISKS RELATED TO REGULATORY AND LEGAL CHALLENGES • Our business may suffer as a result of adverse rulings in governmental investigations or proceedings or other legal proceedings. RISKS RELATED TO INDUSTRY DYNAMICS AND COMPETITION • Our revenues depend on our customers’ and licensees’ sales of products and services based on cellular and other communications technologies, including 5G, and customer demand for our products based on these technologies. • Our industry is subject to intense competition in an environment of rapid technological change. Our success depends in part on our ability to adapt to such change and compete effectively; and such change and competition could result in decreased demand for our products and technologies or declining average selling prices for our products or those of our customers or licensees. RISKS RELATED TO PRODUCT DEFECTS OR SECURITY VULNERABILITIES • Failures in our products, or in the products of our customers or licensees, including those resulting from security vulnerabilities, defects or errors, could harm our business. RISKS RELATED TO INTELLECTUAL PROPERTY • The enforcement and protection of our intellectual property may be expensive, could fail to prevent misappropriation or unauthorized use of our intellectual property, could result in the loss of our ability to enforce one or more patents, and could be adversely affected by changes in patent laws, by laws in certain foreign jurisdictions that may not effectively protect our intellectual property and by ineffective enforcement of laws in such jurisdictions. • Claims by third parties that we infringe their intellectual property could adversely affect our business. • Our use of open source software may harm our business. GENERAL RISK FACTORS • We operate in the highly cyclical semiconductor industry, which is subject to significant downturns. We are also susceptible to declines in global, regional and local economic conditions generally. Our stock price and financial results are subject to substantial quarterly and annual fluctuations due to these dynamics, among others. • Geopolitical conflicts, natural disasters, pandemics and other health crises, and other factors outside of our control, could significantly disrupt our business. • Our business may suffer due to the impact of, or our failure to comply with, the various existing, new or amended laws, regulations, policies or standards to which we are subject. • There are risks associated with our debt. • Tax liabilities could adversely affect our results of operations. 28 Risk Factors: RISKS RELATED TO OUR OPERATING BUSINESSES We derive a significant portion of our revenues from a small number of customers and licensees, and particularly from their sale of premium-tier handset devices. If revenues derived from these customers or licensees decrease or the timing of such revenues fluctuates, our business and results of operations could be negatively affected. We derive a significant portion of our revenues from a small number of customers and licensees, and particularly from their sale of premium-tier handset devices, and we expect this trend to continue in the foreseeable future. The mobile industry is experiencing and may continue to experience concentration of device share among a few companies, particularly at the premium tier, contributing to this trend. Certain Chinese original equipment manufacturers (OEMs) have increased and may continue to increase their device share in China and in certain regions outside of China, and we derive a significant portion of our revenues from a small number of these OEMs as well. See also “Notes to Condensed Consolidated Financial Statements, Note 2. Composition of Certain Financial Statement Items - Concentrations.” In addition, a number of our largest customers have developed, are developing or may develop their own integrated circuit products, or may choose our competitors’ integrated circuit products, which they have in the past utilized, currently utilize and may in the future utilize in some or all of their devices, rather than our products, which could significantly reduce the revenues we derive from these customers. See also the Risk Factor titled “ Our business, particularly our semiconductor business, may suffer as a result of our customers vertically integrating (i.e., developing their own integrated circuit products) .” Further, political actions, including trade and/or national security protection policies (for example, tariffs and other controls on imports or exports), or other actions by governments, particularly the U.S. and Chinese governments, have in the past, currently are and could in the future limit or prevent us from transacting business with certain of our customers, limit, prevent or discourage those customers from transacting business with us, or make it more expensive to do so, any of which could also significantly reduce the revenues we derive from these customers. See also the Risk Factor titled “ A significant portion of our business is concentrated in China, and the risks of such concentration are exacerbated by U.S./China trade and national security tensions .” The loss of any one of our significant customers, a reduction in the purchases of our products by any of these customers or the cancellation of significant purchases by any of these customers, whether due to the use of their own integrated circuit products or our competitors’ integrated circuit products, government restrictions, a decline in global, regional or local economic conditions, a decline in consumer demand (or a shift in consumer demand away from new devices in favor of refurbished or secondhand devices) or for any other reasons, would reduce our revenues and could harm our ability to achieve or sustain expected results of operations. A delay of significant purchases, even if only temporary, would reduce our revenues in the period of the delay. Any such reduction in revenues would also impact our cash resources available for other purposes, such as research and development. In addition, the timing and size of purchases by our significant customers may be impacted by the timing of such customers’ new or next generation product introductions, over which we have no control, and the timing and success of such introductions may cause our revenues and results of operations to fluctuate. We spend a significant amount of engineering and development time, funds and resources in understanding our key customers’ feedback and/or specifications and attempt to incorporate such input into our product launches and technologies. These efforts may not require or result in purchase commitments from such customers or we may have lower purchases from such customers than expected, and consequently, we may not achieve the anticipated revenues from these efforts, or these efforts may result in non-recoverable costs. Further, the concentration of device share among a few companies, and the corresponding purchasing power of these companies, may result in lower prices for our products, which could have an adverse effect on our revenues and margins. Apple purchases our MDM (or thin modem) products, which do not include our integrated application processor technology, and which have lower revenue and margin contributions than our combined modem and application processor products. Consequently, to the extent Apple devices using our MDM products take share from our customers who purchase our integrated modem and application processor products, our revenues and margins may be negatively impacted. Additionally, we expect that Apple will increasingly use its own modem products, rather than our products, in its future devices, which will have a significant negative impact on our QCT revenues, results of operations and cash flows. The mobile industry has also from time to time experienced declines in sales or slowing growth in the premium-tier device segment. A reduction in sales of premium-tier devices, a reduction in sales of our premium-tier integrated circuit products (which have a higher revenue and margin contribution than our lower-tier integrated circuit products), a",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/804328/000110465926105718/tm2623289d1_8k.htm",
+   "published": "2026-09-08T09:00:20-04:00",
+   "form": "8-K",
+   "items": "3.02",
+   "text": "Item 3.02. Unregistered Sale of Equity Securities. On September 3, 2026, in connection with a strategic collaboration between QUALCOMM Incorporated (the “Company”), and Qualcomm Technologies, Inc., a subsidiary of the Company, and certain of its affiliates (collectively, “QTI”), and Amazon Data Services, Inc. and certain of its affiliates (collectively, “Amazon”) related to the purchase of certain QTI server chip products, technology, systems and manufacturing services by Amazon, the Company issued a warrant (the “Warrant”) to Amazon.com NV Investment Holdings LLC, an affiliate of Amazon (the “Warrantholder”) to acquire up to an aggregate of 25,000,000 shares (the “Warrant Shares”) of the Company’s common stock at an exercise price of $161.26 per share. The Warrant allows for cashless exercise and expires on September 3, 2036. The Warrant Shares vest in tranches tied to the execution of certain commercial arrangements, the placement of binding purchase orders and actual purchases of QTI’s server chip products, technology, systems and manufacturing services by Amazon during the term of the Warrant, up to a maximum amount of $60 billion in payments, with 3,750,000 shares being vested upon issuance of the Warrant based on initial purchase commitments. The exercise price and the number of Warrant Shares are subject to customary adjustments. So long as the Warrant is unexercised, the Warrant does not entitle the Warrantholder to any voting rights or other rights as a holder of the Company’s common stock. The Warrantholder has certain customary registration rights with respect to the Warrant Shares, and the Company expects to file with the Securities and Exchange Commission a resale prospectus supplement to register the resale of the Warrant Shares in connection therewith after the date hereof. The Warrant was issued, and the Warrant Shares are expected to be issued, in reliance on the exemption from registration pursuant to Section 4(a)(2) of the Securities Act of 1933, as amended. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. QUALCOMM Incorporated Date: September 8, 2026 By: /s/ Akash Palkhiwala Name: Akash Palkhiwala Title: Executive Vice President, Chief Financial Officer and Chief Operating Officer"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/qualcomm-stocks-edge-lower-ai-153959715.html?.tsrc=rss",
+   "published": "2026-11-03T10:39:59-05:00",
+   "text": "Qualcomm Stocks Edge Lower With AI Memory Validation in Focus - Dragonfly AI250 sampling is expected in the first half of 2027; commercial deployment remains a later hurdle.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/qualcomm-is-betting-on-anduril-and-ai-heres-what-the-november-4-report-has-to-show?ref=yahoofinance&tlnk=yf-261103-78wqmrqm&.tsrc=rss",
+   "published": "2026-11-03T09:45:04-05:00",
+   "text": "Qualcomm Is Betting on Anduril and AI. Here’s What the November 4 Report Has to Show - Key TakeawaysQualcomm reports its fiscal fourth quarter after the close on Wednesday, Nov. 4, after a week of headlines about Anduril’s U.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/intc/articles/622330/is-intel-stock-still-worth-owning-after-its-quarter/2026-11-03?.tsrc=rss",
+   "published": "2026-11-03T09:36:33-05:00",
+   "text": "Is Intel Stock Still Worth Owning After Its Quarter? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/qualcomm-is-down-10-in-a-year-its-cfo-says-things-can-only-go-up-from-here?ref=yahoofinance&tlnk=yf-261103-9466pc8p&.tsrc=rss",
+   "published": "2026-11-03T09:25:43-05:00",
+   "text": "Qualcomm Is Down 10% in a Year. Its CFO Says “Things Can Only Go Up From Here” - Key TakeawaysQualcomm stock is down 10% over the past year, after a May rally on AI devices, cars and data centers unwound. Handset revenue fell 20% in the June quarter and Qualcomm’s Apple revenue is fading faster than planned, while automotive revenue grew 61%.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mu/articles/622310/what-just-happened-to-micron-stock/2026-11-03?.tsrc=rss",
+   "published": "2026-11-03T08:40:13-05:00",
+   "text": "What Just Happened To Micron Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.just-auto.com/news/infineon-qualcomm-central-vehicle-computers/?.tsrc=rss",
+   "published": "2026-11-03T08:21:40-05:00",
+   "text": "Infineon, Qualcomm sign agreement for integrated CPUs - The subsystem combines Infineon’s Aurix microcontrollers and Optireg power-management chips with Qualcomm’s Snapdragon Ride and Ride Flex systems-on-chip.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/nvda/articles/622250/how-big-could-nvidia-stocks-next-fall-be/2026-11-03?.tsrc=rss",
+   "published": "2026-11-03T07:41:33-05:00",
+   "text": "How Big Could NVIDIA Stock's Next Fall Be? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mrvl/articles/622181/what-just-happened-to-marvell-stock-2/2026-11-03?.tsrc=rss",
+   "published": "2026-11-03T07:17:28-05:00",
+   "text": "What Just Happened To Marvell Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/brad-gerstner-qualcomm-distillate-sold-whos-right?ref=yahoofinance&tlnk=yf-261103-jw7r75f3&.tsrc=rss",
+   "published": "2026-11-03T07:07:09-05:00",
+   "text": "Brad Gerstner Bought Qualcomm. A $2.1 Billion Fund Sold All of It. Who’s Right? - Key TakeawaysBrad Gerstner’s Altimeter Capital bought 1. 88 million Qualcomm (QCOM:NASDAQ) shares in the quarter ended June 30, while Distillate Capital Partners, which manages $2.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/anthropics-profit-just-disappeared-thats-120000388.html?.tsrc=rss",
+   "published": "2026-11-03T07:00:00-05:00",
+   "text": "Anthropic's profit just disappeared. That's good news - Anthropic's amended S-1 shows third-quarter revenue near $17 billion, up 47%, but a $567 million operating loss and $895 billion in compute commitments. Host Ejaaz Ahamadeen breaks down why demand outran Anthropic's compute, where the money goes, whether it can pay, and whether the IPO is a buy or a",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/qcom/articles/622172/how-would-you-fix-qualcomm/2026-11-03?.tsrc=rss",
+   "published": "2026-11-03T06:57:07-05:00",
+   "text": "How Would You Fix Qualcomm? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zacks-analyst-blog-highlights-apple-113700898.html?.tsrc=rss",
+   "published": "2026-11-03T06:37:00-05:00",
+   "text": "The Zacks Analyst Blog Highlights Apple, Qualcomm, AMD, BMW, Ferrari, Deutsche, Lufthansa and Ryanair - Apple, Qualcomm and AMD headline a pivotal week for global markets as U.S. midterm elections, October jobs data and central bank decisions test investor sentiment on AI, inflation and economic growth.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8611082/are-wall-street-analysts-bullish-on-qualcomm-stock?.tsrc=rss",
+   "published": "2026-11-03T06:26:27-05:00",
+   "text": "Are Wall Street Analysts Bullish on QUALCOMM Stock? - QUALCOMM has underperformed the broader market over the past year, but analysts are cautiously optimistic about the stock’s prospects.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/arm-is-up-88-in-2026-and-down-55-from-its-high-take-profits-or-buy-more?ref=yahoofinance&tlnk=yf-261103-rp384p2g&.tsrc=rss",
+   "published": "2026-11-03T00:38:14-05:00",
+   "text": "Arm Is Up 88% in 2026 and Down 55% From Its High: Take Profits, or Buy More? - Key TakeawaysArm Holdings (ARM) gained 88% in 2026 through October 30 despite falling 55% from its June high, while Advanced Micro Devices (AMD) climbed approximately 136%. Intel (INTC) added pressure to semiconductor stocks after issuing weaker-than-expected fourth-quarter guidance, with ARM declin",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/live/earnings-live-updates-apple-palantir-roku-and-more-212856249.html?.tsrc=rss",
+   "published": "2026-11-02T16:28:56-05:00",
+   "text": "Earnings live updates: Pfizer lifts outlook as it continues to develop cancer and obesity drug pipeline - The third quarter earnings season is over halfway done, and the reports continue to pour in.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/qualcomm-qcom-joins-700-million-190916281.html?.tsrc=rss",
+   "published": "2026-11-02T14:09:16-05:00",
+   "text": "Qualcomm (QCOM) Joins $700 Million Hark Funding Round In AI Assistant Bet - Qualcomm (NasdaqGS:QCOM) joined Nvidia and AMD in a US$700 million Series A funding round for AI startup Hark, which is valued at US$6b. Hark is working on foundation models, software, and AI-focused hardware aimed at a next generation personal assistant platform. Qualcomm Ventures' participation li",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/02/amd-slides-3-ahead-of-earnings-as-pc-worries-linger-intel-drops-5-nvidia-edges-higher/?.tsrc=rss",
+   "published": "2026-11-02T12:49:21-05:00",
+   "text": "AMD Slides 3% Ahead of Earnings as PC Worries Linger; Intel Drops 5%, NVIDIA Edges Higher - Intel's PC warning sent AMD stock tumbling 11% in a single session, but the real question is whether that warning stops at the PC market or follows AMD straight into its AI data center ambitions ahead of earnings.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://www.benzinga.com/markets/tech/26/11/62783303/nvidia-amd-hark-ai-startup?utm_source=yahooFinance&utm_campaign=partner_feed&utm_medium=referral&.tsrc=rss",
+   "published": "2026-11-02T10:44:02-05:00",
+   "text": "Nvidia and AMD Are Backing a $6 Billion AI Startup Taking on Grok - Hark is entering the consumer AI race with heavyweight backing: Nvidia Corp (NASDAQ:NVDA) and Advanced Micro Devices, Inc.’s (NASDAQ:AMD) AMD Ventures joined a $700 million round valuing it at $6 billion. Now its founder, Figure AI CEO Brett Adcock, is...",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/wi-fi-6-wi-fi-153700998.html?.tsrc=rss",
+   "published": "2026-11-02T10:37:00-05:00",
+   "text": "Wi-Fi 6, Wi-Fi 6E and Wi-Fi 7 Chipset - Global Strategic Business Report 2026: Capitalize on 13.3% CAGR to $90.7 Billion by 2032; Outmaneuver Broadcom, Qualcomm, Intel and Mediatek - Target enterprise, IoT and immersive applications with 6 GHz and MLO solutions, while aligning upgrades with regulatory approvals and device compatibility.Dublin, Nov. 02, 2026 (GLOBE NEWSWIRE) -- \"Wi-Fi 6, Wi-Fi 6E and Wi-Fi 7 Chipset - Global Strategic Business Report 2026\" has been added to Resea",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/02/nvidia-isnt-the-only-ai-winner-qualcomm-may-be-the-next-stock-to-watch/?.tsrc=rss",
+   "published": "2026-11-02T10:33:42-05:00",
+   "text": "Nvidia Isn’t the Only AI Winner. Qualcomm May Be the Next Stock to Watch - Qualcomm is quietly lining up data center wins with the world's biggest hyperscalers, and the revenue clock is about to start ticking. Whether it can offset mounting handset headwinds before Wall Street loses patience is the real question.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:41-05:00",
+    "sha256": "24fa9ebcff67076fae1dcccf2445073d62f9cb8f45fa2c01020da8125c19a3f4"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 51191
+}

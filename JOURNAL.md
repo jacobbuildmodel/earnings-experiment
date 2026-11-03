@@ -9,6 +9,19 @@
 
 ---
 
+## 2026-11-03 (Tue) 11:10 ET — the first output read an incomplete cut, and nothing in it said so (Stage 1, RQ1, Gate 2)
+- **What happened:** an independent committee rebuilt Stage 1 from the raw files and found 20 SH-W, ~100 SH-M and 5
+  gated events missing from D017 §2's cut. True, but not a stale pull: no grade of the 10-30 exits existed yet. D017 fixed
+  the run for Monday morning, while a shadow session settles at 06:00 ET the next day and the grader fires only on weekday
+  evenings. `stage1.py` dropped ungraded events without a word.
+- **What it taught:** a sample definition is only as good as the check that the sample is all there. On the full cut,
+  SH-W is net −1.50% with an upper bound of +0.27%. That is below history's +0.65%, and INSUFFICIENT holds only on the
+  session count (9 < 10). Two more Gate 2 problems surfaced from counts and execution alone: 250 gated events cannot exist
+  by Mar 2027 (~65 to ~87 PASS a season), and the paper fill gap (27.5 bp median, +91 bp signed round trip) already fails
+  D008's ≤ 15 bp.
+- **What changed:** stage1 counts pending events per read and refuses to write an incomplete cut (`4383102`,
+  `a6f7cc6`). The r2 addendum sits beside the untouched first output. The committee's stops are Jacob's decision.
+
 ## 2026-11-02 (Mon) 08:10 ET — a blind review caught the deck borrowing strength the record does not have (Stage 1, RQ1)
 - **What happened:** the Stage 1 deck (13 slides) was built from the committed output only and published privately
   for Jacob. A second model (Sonnet), given the slides, D017, the output and the plan but not the builder's

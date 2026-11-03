@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "SNAP",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:57.316772-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.snap.com/news/news-details/2026/Snap-Inc--Announces-Date-of-Third-Quarter-2026-Results-Conference-Call/default.aspx",
+  "published_et": "2026-10-08T16:10-04:00",
+  "quote": "nt Investor Relations Site Search News Details View all news Snap Inc. Announces Date of Third Quarter 2026 Results Conference Call 10/08/2026 Download PDF Format (opens in new window) SANTA MONICA, Calif.--(BUSINESS WIRE)-- Snap Inc. (NYSE: SNAP) will hold its quarterly conference call to discuss third quarter 2026 financial results on Wednesday, November 4, 2026 at 2:00 p.m. Pacific Time (5:00 p.m. Eastern Time).",
+  "title": "Snap Inc. Announces Date of Third Quarter 2026 Results Conference Call",
+  "retrieved_et": "2026-10-19T21:48:24.819081-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.snap.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 5.578199863433838,
+  "expiry": "2026-11-06",
+  "strike": 5.5,
+  "call": {
+   "bid": 0.42,
+   "ask": 0.44,
+   "openInterest": 6722.0,
+   "lastPrice": 0.44,
+   "impliedVolatility": 1.6875015625,
+   "lastTradeDate": "2026-11-03T19:08:02+00:00"
+  },
+  "put": {
+   "bid": 0.33,
+   "ask": 0.35,
+   "openInterest": 4223.0,
+   "lastPrice": 0.33,
+   "impliedVolatility": 1.6328143359374998,
+   "lastTradeDate": "2026-11-03T19:09:40+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.13803736310122136,
+  "rel_spread": {
+   "call": 0.046511627906976785,
+   "put": 0.0588235294117646
+  },
+  "oi_atm": 10945.0,
+  "oi_sum": 10945.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

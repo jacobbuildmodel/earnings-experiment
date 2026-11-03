@@ -1,7 +1,7 @@
 # PRE Stage 1: the committee's decision
 
 <div class="verdict">
-<div class="lab">Decision · confidence about 80%</div>
+<div class="lab">Decision · confidence about 85% after PRE's answers</div>
 <div class="big">B · REFRAME: end PRE as a trade picker; keep a code-only premium monitor with fixed kill dates</div>
 <p>No money goes to it now. Stop the selection research, the paper options and the extra AI shadow tracks. Keep only the automated measurement of the one open question: does buying broadly before earnings pay after costs Jacob would actually pay? It stops at Gate 1 (early Dec) or Gate 2 (Mar 2027) unless the bars below are met.</p>
 </div>
@@ -32,9 +32,9 @@ weak:
 1. **The sample was chosen with hindsight.** The history universe is the companies worth ≥ $2B on 2026-09-28
    (`analysis/history/universe.json`). Firms that shrank or delisted after bad prints are missing. That is selection on
    the outcome, not just "today's listed companies".
-2. **The live record contradicts it on every interval method, and the deck understated that.** Stage 1 ran on a
-   shadow grade from the evening of Fri 10-30, before that day's exits were priced. It left out the 10-29 entry
-   session, the season's worst, although D017's cut includes it. On the correct cut:
+2. **The live record contradicts it on every interval method, and the deck understated that.** Stage 1 ran before
+   the Fri 10-30 exits had been graded, and `stage1.py` dropped them without a word. That left out the 10-29 entry
+   session, the season's worst, although D017's cut includes it. PRE confirmed this and re-ran it (r2, `4fa6d03`). On the correct cut:
    - SH-W is **−1.50% net** (n 104, 9 sessions), and every 95% upper bound (normal, t, session bootstrap,
      wild-cluster) is below history's +0.65%;
    - gated S0 is −5.34% net (n 21);
@@ -55,9 +55,9 @@ criteria are fixed in §12 before any further data is read.
 
 | outcome | committee's probability it is the right call |
 |---|---|
-| **B · REFRAME** (recommended) | ~80% |
-| A · TERMINATE outright | ~15% |
-| C · continue as is, smaller | ~5% |
+| **B · REFRAME** (recommended) | ~85% after PRE's answers (~80% before) |
+| A · TERMINATE outright | ~12% |
+| C · continue as is, smaller | ~3% |
 | D, E, F (shadow, live pilot, integrate) | ~0%: no edge to shadow, pilot or integrate |
 
 ## 2. Current model assessment
@@ -97,7 +97,7 @@ model he is asking about is the one that already failed and closed.
 | 7 | **Scope creep** | 10 confirmatory hypotheses in 7 families, 6 AI tracks, 2 paper options accounts, ~1,687 commits in 7 weeks; the allowance hit 85% by Thursday of week 26 Oct | HYPOTHESES; git log; JOURNAL 10-29 |
 | 8 | **No termination rule** | D017 §5 and D008 only withhold money. Nothing ever stops the research, which is how it keeps growing | D017; D008 |
 | 9 | **Layer 1 is absent** | no EPS or revenue surprise forecast is recorded, so "wrong about the numbers" can't be told from "wrong about the reaction" | D004 v4 |
-| 11 | **Stage 1 ran on a stale grade** | the run (Mon 11-02 07:28 ET) read the shadow grade committed Fri 10-30 21:52 ET (`c2dc357`), before Friday's exit opens were fetched. It omitted 20 SH-W, ~100 SH-M and 5 gated events inside D017's own cut; the corrected read is materially worse (§5). Verified: `graded.json` holds 129 graded 10-29 prints at `c2dc357` and 227 at `4d9affc` | *committee recompute*; git |
+| 11 | **Stage 1 dropped ungraded events silently** | the run (Mon 11-02 07:28 ET) read the newest grade, `c2dc357` (Fri 10-30 21:52 ET), made before Friday's exit opens were fetched, and `stage1.py` did not report the gap. PRE confirmed and fixed it (`4383102`, `a6f7cc6`, r2). It omitted 20 SH-W, ~100 SH-M and 5 gated events inside D017's own cut; the corrected read is materially worse (§5). Verified: `graded.json` holds 129 graded 10-29 prints at `c2dc357` and 227 at `4d9affc` | *committee recompute*; git |
 | 12 | **Health counter defect, still in the output** | the report prints "T2 missing 0 of 26"; ABT and SPCX have no `t2.json`, so it is 2 of 26 (7.7%). It also says "T2 none recorded" for cost, but `t2.json` records ~$0.097 a decision | stage1 P1, P6; the deck already flags the first |
 | 10 | **Mismatch with what the funder needs** | the mandate asks for about one attractive trade a month; a 1-day, 10%-SD coin with a small tilt only pays in bulk (§5, §6) | mandate §8; CHARTER §5 |
 
@@ -454,8 +454,13 @@ PRE's own files answer:
 - P7: why Layer 1 is missing;
 - P8–P10: failures and rejections (after Gate 1).
 
-**Assessment of answers:** pending; Jacob forwards the file. `PRE_QA.md` Part D fixes in advance which answers would
-move the decision.
+**Assessment of answers (round 1 of 1):** `COMMITTEE_ASSESSMENT.md`. PRE answered every question with citations.
+
+- **Confirmed:** the corrected cut (r2) and the +91 bp signed slippage.
+- **Conceded:** history's +0.65% is an upper bound with no mechanism behind it.
+- **New, from PRE:** D008's Gate 2 cannot be met in Mar 2027, because gated events reach 250 only by mid-2027.
+
+The recommendation stands, at ~85% confidence.
 
 ## 12. Final funding decision
 

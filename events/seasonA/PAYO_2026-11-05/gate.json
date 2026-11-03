@@ -1,0 +1,87 @@
+{
+ "season": "seasonA",
+ "ticker": "PAYO",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:14.240415-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/payoneer-report-third-quarter-2026-results-november-5-2026-2026-10-22",
+  "published_et": "2026-10-22T10:00-04:00",
+  "quote": "linkedin facebook x email reddit NEW YORK , Oct. 22, 2026 /PRNewswire/ -- Payoneer Global Inc. (NASDAQ: PAYO) (\" Payoneer \" or the \"Company\"), the global financial technology company powering business growth across borders, will report its Third Quarter 2026 financial results on Thursday, November 5, 2026 , before the market opens.",
+  "title": "Payoneer to Report Third Quarter 2026 Results on November 5, 2026",
+  "retrieved_et": "2026-10-23T21:26:50.350826-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 7.170000076293945,
+  "expiry": "2026-11-20",
+  "strike": 7.0,
+  "call": {
+   "bid": 0.15,
+   "ask": 0.25,
+   "openInterest": 1797.0,
+   "lastPrice": 0.1,
+   "impliedVolatility": 0.23828886718749998,
+   "lastTradeDate": "2026-10-20T16:09:29+00:00"
+  },
+  "put": {
+   "bid": 0.0,
+   "ask": 0.25,
+   "openInterest": 27.0,
+   "lastPrice": 0.15,
+   "impliedVolatility": 0.523442265625,
+   "lastTradeDate": "2026-07-08T19:14:24+00:00"
+  },
+  "quote_retried": true,
+  "expiry_sessions_after_reaction": 11
+ },
+ "status": "INELIGIBLE",
+ "reason": "no_quote"
+}

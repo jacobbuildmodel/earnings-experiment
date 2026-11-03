@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "CORZ",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:19.414090-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.corescientific.com/news-events/press-releases/detail/145/core-scientific-inc-schedules-third-quarter-fiscal-year-2026-earnings-release-conference-call-and-webcast",
+  "published_et": "2026-10-15T07:00-04:00",
+  "quote": "ll and Webcast October 15, 2026 7:00 am EDT Download as PDF MIAMI--(BUSINESS WIRE)-- Core Scientific, Inc. (Nasdaq: CORZ) (“Core Scientific” or the “Company”), a leader in digital infrastructure for high-density colocation (“HDC”), today announced it will release its third quarter 2026 financial results prior to financial markets open on Thursday, November 5, 2026.",
+  "title": "Core Scientific, Inc. Schedules Third Quarter Fiscal Year 2026 Earnings Release, Conference Call and Webcast",
+  "retrieved_et": "2026-10-19T09:24:55.135407-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.corescientific.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 13.835000038146973,
+  "expiry": "2026-11-06",
+  "strike": 14.0,
+  "call": {
+   "bid": 0.71,
+   "ask": 0.78,
+   "openInterest": 6872.0,
+   "lastPrice": 0.6,
+   "impliedVolatility": 1.421877890625,
+   "lastTradeDate": "2026-11-03T17:29:11+00:00"
+  },
+  "put": {
+   "bid": 0.94,
+   "ask": 1.01,
+   "openInterest": 463.0,
+   "lastPrice": 0.95,
+   "impliedVolatility": 1.5332054589843749,
+   "lastTradeDate": "2026-11-03T19:08:04+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.12432237045590733,
+  "rel_spread": {
+   "call": 0.09395973154362425,
+   "put": 0.07179487179487186
+  },
+  "oi_atm": 7335.0,
+  "oi_sum": 7335.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "ONC",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:06.740020-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/beone-medicines-announce-third-quarter-2026-financial-results-november-5-2026-10-22",
+  "published_et": "2026-10-22T06:01-04:00",
+  "quote": "SSE: 688235), a global oncology company, will report its third quarter 2026 financial results on Thursday, November 5, 2026 , before the financial markets open.",
+  "title": "BeOne Medicines to Announce Third Quarter 2026 Financial Results on November 5",
+  "retrieved_et": "2026-10-26T09:36:51.696715-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 354.32000732421875,
+  "expiry": "2026-11-20",
+  "strike": 350.0,
+  "call": {
+   "bid": 15.6,
+   "ask": 18.9,
+   "openInterest": 11.0,
+   "lastPrice": 16.3,
+   "impliedVolatility": 0.5340012420654296,
+   "lastTradeDate": "2026-11-03T14:44:26+00:00"
+  },
+  "put": {
+   "bid": 9.5,
+   "ask": 12.8,
+   "openInterest": 158.0,
+   "lastPrice": 7.8,
+   "impliedVolatility": 0.476567734375,
+   "lastTradeDate": "2026-11-02T18:40:54+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.08015353187214382,
+  "rel_spread": {
+   "call": 0.1913043478260869,
+   "put": 0.2959641255605382
+  },
+  "oi_atm": 169.0,
+  "oi_sum": 193.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

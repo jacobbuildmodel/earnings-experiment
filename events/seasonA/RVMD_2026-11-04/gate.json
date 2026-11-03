@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "RVMD",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:41.385113-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/revolution-medicines-report-financial-results-third-quarter-2026-after-market-close",
+  "published_et": "2026-10-21T16:05-04:00",
+  "quote": "OD CITY, Calif. , Oct. 21, 2026 (GLOBE NEWSWIRE) -- Revolution Medicines, Inc. (Nasdaq: RVMD), a global, commercial-stage oncology company dedicated to discovering, developing and delivering innovative medicines for patients with RAS-addicted cancers, today announced that it will report financial results for the third quarter of 2026 on Wednesday, November 4, 2026 , after market close.",
+  "title": "Revolution Medicines to Report Financial Results for Third Quarter 2026 After Market Close on November 4, 2026",
+  "retrieved_et": "2026-10-23T21:28:37.191909-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 194.42999267578125,
+  "expiry": "2026-11-20",
+  "strike": 195.0,
+  "call": {
+   "bid": 10.3,
+   "ask": 12.9,
+   "openInterest": 51.0,
+   "lastPrice": 11.1,
+   "impliedVolatility": 0.6894562304687502,
+   "lastTradeDate": "2026-11-03T17:19:34+00:00"
+  },
+  "put": {
+   "bid": 10.5,
+   "ask": 13.3,
+   "openInterest": 23.0,
+   "lastPrice": 11.55,
+   "impliedVolatility": 0.6738313867187502,
+   "lastTradeDate": "2026-11-03T17:22:10+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.12086612603636243,
+  "rel_spread": {
+   "call": 0.2241379310344827,
+   "put": 0.23529411764705888
+  },
+  "oi_atm": 74.0,
+  "oi_sum": 74.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

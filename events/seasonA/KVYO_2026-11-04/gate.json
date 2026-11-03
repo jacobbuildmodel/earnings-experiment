@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "KVYO",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:54.020918-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.klaviyo.com/newsroom/news/news-details/2026/Klaviyo-to-Announce-Third-Quarter-2026-Results-on-November-4-2026/default.aspx",
+  "published_et": "2026-10-14T16:30-04:00",
+  "quote": "r 4, 2026 View All News Klaviyo to Announce Third Quarter 2026 Results on November 4, 2026 October 14, 2026 Download (opens in new window) BOSTON--(BUSINESS WIRE)-- Klaviyo, Inc. (NYSE: KVYO), the autonomous B2C CRM, today announced that its third quarter 2026 results will be released following the close of the U.S. financial markets on Wednesday, November 4, 2026.",
+  "title": "Klaviyo to Announce Third Quarter 2026 Results on November 4, 2026",
+  "retrieved_et": "2026-10-19T21:45:07.900370-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.klaviyo.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 21.65999984741211,
+  "expiry": "2026-11-20",
+  "strike": 22.5,
+  "call": {
+   "bid": 1.55,
+   "ask": 1.7,
+   "openInterest": 1586.0,
+   "lastPrice": 1.65,
+   "impliedVolatility": 1.0332079589843752,
+   "lastTradeDate": "2026-11-03T18:05:19+00:00"
+  },
+  "put": {
+   "bid": 2.4,
+   "ask": 2.55,
+   "openInterest": 20.0,
+   "lastPrice": 2.65,
+   "impliedVolatility": 1.0390673046875003,
+   "lastTradeDate": "2026-11-03T18:06:59+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.18928901333717502,
+  "rel_spread": {
+   "call": 0.09230769230769226,
+   "put": 0.06060606060606058
+  },
+  "oi_atm": 1606.0,
+  "oi_sum": 1606.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

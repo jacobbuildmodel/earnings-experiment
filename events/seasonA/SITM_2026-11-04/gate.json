@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "SITM",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:48.970515-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/sitime-corporation-announce-third-quarter-2026-financial-results-november-4-2026-2026",
+  "published_et": "2026-10-07T16:05-04:00",
+  "quote": "linkedin facebook x email reddit SANTA CLARA, Calif. --(BUSINESS WIRE)-- SiTime Corporation (Nasdaq: SITM), the Precision Timing company, will announce its third quarter 2026 financial results on Wednesday, November 4, 2026 , after market close.",
+  "title": "SiTime Corporation to Announce Third Quarter 2026 Financial Results on November 4, 2026",
+  "retrieved_et": "2026-10-19T21:48:15.227143-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 444.6499938964844,
+  "expiry": "2026-11-20",
+  "strike": 440.0,
+  "call": {
+   "bid": 46.8,
+   "ask": 51.9,
+   "openInterest": 8.0,
+   "lastPrice": 52.5,
+   "impliedVolatility": 1.2026407055664063,
+   "lastTradeDate": "2026-11-03T19:05:19+00:00"
+  },
+  "put": {
+   "bid": 39.6,
+   "ask": 44.0,
+   "openInterest": 88.0,
+   "lastPrice": 41.0,
+   "impliedVolatility": 1.1279950827026366,
+   "lastTradeDate": "2026-11-03T17:16:09+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.2049926936943126,
+  "rel_spread": {
+   "call": 0.10334346504559275,
+   "put": 0.10526315789473681
+  },
+  "oi_atm": 96.0,
+  "oi_sum": 250.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

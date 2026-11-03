@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "DCO",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:32.604507-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/ducommun-incorporated-announces-third-quarter-conference-call-2026-10-22",
+  "published_et": "2026-10-22T06:30-04:00",
+  "quote": "linkedin facebook x email reddit COSTA MESA, Calif. , Oct. 22, 2026 (GLOBE NEWSWIRE) -- Ducommun Incorporated (NYSE: DCO) (“Ducommun” or the “Company”) today announced that it plans to release the Company's 2026 third quarter financial results on November 5, 2026 , prior to the stock market opening.",
+  "title": "Ducommun Incorporated Announces Third Quarter Conference Call",
+  "retrieved_et": "2026-10-23T21:33:17.136247-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 167.94000244140625,
+  "expiry": "2026-11-20",
+  "strike": 170.0,
+  "call": {
+   "bid": 9.2,
+   "ask": 11.5,
+   "openInterest": 16.0,
+   "lastPrice": 12.6,
+   "impliedVolatility": 0.7591576818847658,
+   "lastTradeDate": "2026-10-15T19:46:05+00:00"
+  },
+  "put": {
+   "bid": 11.3,
+   "ask": 13.5,
+   "openInterest": 3.0,
+   "lastPrice": 12.95,
+   "impliedVolatility": 0.7585473364257813,
+   "lastTradeDate": "2026-10-15T15:25:00+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.135465045071304,
+  "rel_spread": {
+   "call": 0.2222222222222223,
+   "put": 0.1774193548387096
+  },
+  "oi_atm": 19.0,
+  "oi_sum": 20.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

@@ -129,11 +129,15 @@ def test_cut_by_exit_a(tmp_path, monkeypatch):
     rows["void_in"] = {"gate_status": "PASS", "void": "no_open", "entry_session": "2026-10-29", "exits": {}}
     rows["void_out"] = {"gate_status": "PASS", "void": "no_open", "entry_session": "2026-10-31", "exits": {}}
     rows["inel"] = {"gate_status": "INELIGIBLE", "entry_session": "2026-10-20"}
+    rows["pend_in"] = {"gate_status": "PASS", "void": None, "graded": False, "entry_session": "2026-10-29",
+                       "exits": {"exit_A": {"status": "pending"}}}
+    rows["pend_out"] = {"gate_status": "PASS", "void": None, "graded": False, "entry_session": "2026-10-30",
+                        "exits": {"exit_A": {"status": "pending"}}}    # entry on the cut day: exit A falls after it
     for k, v in rows.items():
         (d / f"{k}.json").write_text(json.dumps(v), encoding="utf-8")
     monkeypatch.setattr(stage1, "ROOT", str(tmp_path))
     got, voids, pending, inel = stage1.load_rows_cut("s", "2026-10-30")
-    assert [r["ticker"] for r in got] == ["X1"] and voids == {"no_open": 1} and inel == 1 and pending == 0
+    assert [r["ticker"] for r in got] == ["X1"] and voids == {"no_open": 1} and inel == 1 and pending == 1
     assert stage1.shadow_in_cut(sh_row("SH-W", 1, 0.0, 3), "2026-10-30")
     assert not stage1.shadow_in_cut({"timing": {"exit_A": {"session": "2026-11-02"}}}, "2026-10-30")
 
@@ -159,6 +163,23 @@ def test_p3_and_markdown():
     assert r["P3"]["decision_agreement_with_T2"]["T2G"] == {"n": 40, "agreement_with_T2": 1.0}
     md = stage1.markdown(r)
     assert "INTERIM" in md and "fund to Gate 1" in md and "| SH-W |" in md
+
+
+def test_pending_in_cut_is_counted_and_blocks_write():
+    r = case(0.015)
+    assert r["P2"]["pending_in_cut"] == {"SH-W": 0, "S0 gated": 0, "SH-M": 0} and r["P2"]["cut_complete"]
+    assert "the cut is complete" in stage1.markdown(r)
+    rows = [out_row(i, r_, k) for i, (r_, k) in enumerate(make(40, 0.02, 0.03))]
+    sh = [sh_row("SH-W", i, r_, k) for i, (r_, k) in enumerate(make(50, 0.01, 0.03, seed=2))]
+    late = sh_row("SH-W", 99, 0.0, 3)
+    late.update(graded=False, exit_A={})                                 # inside the cut, prices not settled yet
+    void = sh_row("SH-M", 98, 0.0, 3)
+    void.update(graded=False, void="not_domestic_foreign", exit_A={})    # VOID: never pending
+    s = src(rows, sh + [late, void])
+    s["outcomes"] = (rows, {}, 2, 0)
+    r = stage1.compute("synthetic", "2026-10-30", s)
+    assert r["P2"]["pending_in_cut"] == {"SH-W": 1, "S0 gated": 2, "SH-M": 0} and not r["P2"]["cut_complete"]
+    assert r["P2"]["SH-W"]["n"] == 50 and "INCOMPLETE" in stage1.markdown(r)
 
 
 def test_out_base_never_replaces(tmp_path, monkeypatch):
