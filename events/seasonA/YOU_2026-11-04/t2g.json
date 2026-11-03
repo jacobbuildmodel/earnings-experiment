@@ -1,0 +1,113 @@
+{
+ "track": "T2G",
+ "event": "YOU_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.59,
+  "thesis": "Strong track record of massive post-earnings gaps, solid free cash flow generation, and high short interest create a favourable setup for an upward open reaction.",
+  "reasons": [
+   "YOU has beaten earnings and gained significantly at 3 of the last 4 prints (+18.3%, +23.8%, +18.6%).",
+   "High short interest (18.9% of float) provides squeeze potential on solid bookings or FCF execution.",
+   "Option skew reflects upside demand with call IV trading above put IV and very low put/call OI (0.18).",
+   "Offsetting risks include significant executive departures in September 2026 and a 16% run-up over the trailing month."
+  ],
+  "deciding_variable": "Q3 bookings growth and full-year Free Cash Flow guidance update",
+  "prior": {
+   "p": 0.55,
+   "from": "BMO base rate (0.548) across historical earnings sessions"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved up from 0.55 to 0.59 (+0.04) due to strong 75% historical reaction win rate, high short squeeze potential, and expanding cash flows, moderated slightly by recent executive turnover and month-to-date share price momentum.",
+  "theses": [
+   {
+    "expected": "Bookings and CLEAR+ member growth beat consensus alongside reaffirmed or raised FY26 FCF guidance",
+    "mechanism": "Short covering and institutional buying on steady recurring software/identity subscription economics",
+    "wrong_if": "Active CLEAR+ member net additions stall or TSA security line changes depress travel subscription demand"
+   },
+   {
+    "expected": "B2B / enterprise CLEAR1 expansion and government contracts (e.g., VA.gov rollout) show commercial traction",
+    "mechanism": "Investors re-rate YOU from an airport security vendor to an enterprise identity verification platform",
+    "wrong_if": "Commercial implementation revenues remain negligible relative to the core CLEAR+ travel base"
+   },
+   {
+    "expected": "Recent executive turnover (President and EVP Aviation departures) generates operational hesitation or margin headwinds",
+    "mechanism": "Market punishes management changes and sells into the recent 16% monthly run-up",
+    "wrong_if": "Leadership transitions are dismissed as orderly and guidance commentary remains confidently upbeat"
+   }
+  ],
+  "key_observations": [
+   "Q3 Total Bookings and Active CLEAR+ Members count",
+   "FY2026 Free Cash Flow guidance revision vs. prior target of at least $480M",
+   "CLEAR1 commercial/government pipeline updates following the VA.gov announcement",
+   "Operating margin sustainability above the 29-30% range"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/YOU_2026-11-04/gate.json",
+    "published": "2026-11-02T14:32:09.564961-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/YOU_2026-11-04/factors.json",
+    "published": "2026-11-02T14:32:09.564961-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1856314/000185631426000039/clearq22026pressreleaseear.htm",
+    "published": "2026-08-05T06:00:55-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1856314/000095014226002552/eh260830672_8k.htm",
+    "published": "2026-09-16T06:30:37-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/clear-secure-climbed-driving-fresh-121008440.html?.tsrc=rss",
+    "published": "2026-10-20T08:10:08-04:00",
+    "dossier_item": "I15"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/healthcare/articles/u-department-veterans-affairs-selects-120000913.html?.tsrc=rss",
+    "published": "2026-10-07T08:00:00-04:00",
+    "dossier_item": "I23"
+   }
+  ],
+  "decided_et": "2026-11-02T19:56:40-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 17952,
+   "candidatesTokenCount": 702,
+   "totalTokenCount": 19497,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 17952
+    }
+   ],
+   "thoughtsTokenCount": 843,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

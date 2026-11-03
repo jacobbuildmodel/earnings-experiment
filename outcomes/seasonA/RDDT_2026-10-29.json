@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-30T20:57:38-04:00",
+ "graded_et": "2026-11-02T22:00:29-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "RDDT",
  "report_date": "2026-10-29",
@@ -13,14 +13,63 @@
  "entry_session": "2026-10-29",
  "cluster": "software_internet",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-29T16:08:57-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 129.95,
+   "entry_session": "2026-10-29",
+   "exit": 100.25,
+   "exit_session": "2026-10-30",
+   "dividends": 0,
+   "raw_return": -0.22854944209311268,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.879438,
+    "bench_return": -0.008895038545167044,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.21183176863986103,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.0026933435936898897,
+    "print_gap": -0.22646604938271597,
+    "entry_close": 129.6,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 129.95,
+   "entry_session": "2026-10-29",
+   "exit": 91.73,
+   "exit_session": "2026-10-30",
+   "dividends": 0,
+   "raw_return": -0.29411312043093485,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.879438,
+    "bench_return": -0.012650721486459737,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.27033687374186594,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }

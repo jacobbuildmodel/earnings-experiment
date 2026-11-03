@@ -3,24 +3,75 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-10-30T20:57:32-04:00",
+ "graded_et": "2026-11-02T22:00:25-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "MSTR",
  "report_date": "2026-10-29",
  "session": "AMC",
  "entry_session": "2026-10-29",
  "cluster": "crypto_proxy",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-10-29T16:03:24-04:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 141.65,
+   "entry_session": "2026-10-29",
+   "exit": 131.7,
+   "exit_session": "2026-10-30",
+   "dividends": 0,
+   "raw_return": -0.07024355806565485,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IBIT",
+    "beta": 1.561437,
+    "bench_return": -0.03814773980154362,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.010678265673151985,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.0002117896223085003,
+    "print_gap": -0.07004660358706405,
+    "entry_close": 141.62,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 141.65,
+   "entry_session": "2026-10-29",
+   "exit": 130.51,
+   "exit_session": "2026-10-30",
+   "dividends": 0,
+   "raw_return": -0.07864454641722562,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IBIT",
+    "beta": 1.561437,
+    "bench_return": -0.04388092613009931,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.01012724476342175,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +90,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": true,
+  "T2": true,
+  "T2G": true,
+  "T2E": true
  }
 }
