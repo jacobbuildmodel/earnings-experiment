@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "CRUS",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:22.352883-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.cirrus.com/news-and-events/investor-news/news-details/2026/Cirrus-Logic-to-Report-Second-Quarter-Fiscal-Year-2027-Results/default.aspx",
+  "published_et": "2026-10-13T16:00-04:00",
+  "quote": "ort Second Quarter Fiscal Year 2027 Results View All News Cirrus Logic to Report Second Quarter Fiscal Year 2027 Results October 13, 2026 AUSTIN, Texas--(BUSINESS WIRE)-- Cirrus Logic, Inc. (Nasdaq: CRUS) will post its second quarter fiscal year 2027 financial results and business outlook on the Investor Relations area of its website on Wednesday, November 4, at approximately 4 p.m. ET.",
+  "title": "Cirrus Logic to Report Second Quarter Fiscal Year 2027 Results",
+  "retrieved_et": "2026-10-19T21:33:16.753602-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.cirrus.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 113.19999694824219,
+  "expiry": "2026-11-20",
+  "strike": 115.0,
+  "call": {
+   "bid": 4.7,
+   "ask": 5.5,
+   "openInterest": 93.0,
+   "lastPrice": 5.31,
+   "impliedVolatility": 0.5896037133789063,
+   "lastTradeDate": "2026-11-03T17:31:23+00:00"
+  },
+  "put": {
+   "bid": 5.7,
+   "ask": 6.8,
+   "openInterest": 160.0,
+   "lastPrice": 5.9,
+   "impliedVolatility": 0.5247850256347657,
+   "lastTradeDate": "2026-11-03T17:12:53+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.10026502037088833,
+  "rel_spread": {
+   "call": 0.15686274509803919,
+   "put": 0.17599999999999993
+  },
+  "oi_atm": 253.0,
+  "oi_sum": 253.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
