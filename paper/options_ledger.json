@@ -29241,6 +29241,11 @@
      "which": "open",
      "at": "2026-11-03T15:01:07.833489-05:00",
      "why": "a needed quote is missing or a sold leg has no bid"
+    },
+    {
+     "which": "open",
+     "at": "2026-11-03T15:03:58.688437-05:00",
+     "why": "a needed quote is missing or a sold leg has no bid"
     }
    ]
   },
@@ -29328,6 +29333,11 @@
     {
      "which": "open",
      "at": "2026-11-03T15:01:07.833489-05:00",
+     "why": "a needed quote is missing or a sold leg has no bid"
+    },
+    {
+     "which": "open",
+     "at": "2026-11-03T15:03:58.688437-05:00",
      "why": "a needed quote is missing or a sold leg has no bid"
     }
    ]
@@ -29611,7 +29621,7 @@
       },
       "limit_price": "-0.75",
       "id": "f2486ee0-800b-4a61-81b7-b49b22789ce2",
-      "status": "new",
+      "status": "canceled",
       "filled_qty": 0.0,
       "filled_at": null,
       "legs_filled": [
@@ -29641,6 +29651,71 @@
        }
       ],
       "cancel_requested": "2026-11-03T15:01:07.833489-05:00"
+     },
+     {
+      "client_order_id": "seasonA-SNAP-2026-11-04-F-open-r1",
+      "sent_et": "2026-11-03T15:03:58.688437-05:00",
+      "qty": 3,
+      "natural": -0.6699999999999999,
+      "sides": {
+       "SNAP261106C00005500": "sell",
+       "SNAP261106P00005500": "sell",
+       "SNAP261106C00007500": "buy",
+       "SNAP261106P00003500": "buy"
+      },
+      "quotes": {
+       "SNAP261106C00005500": {
+        "bid": 0.39,
+        "ask": 0.44,
+        "t": "2026-11-03T20:04:00.652009572Z"
+       },
+       "SNAP261106P00005500": {
+        "bid": 0.37,
+        "ask": 0.38,
+        "t": "2026-11-03T20:04:02.189886578Z"
+       },
+       "SNAP261106C00007500": {
+        "bid": 0.05,
+        "ask": 0.06,
+        "t": "2026-11-03T20:03:55.160010074Z"
+       },
+       "SNAP261106P00003500": {
+        "bid": 0,
+        "ask": 0.03,
+        "t": "2026-11-03T15:53:30.465873601Z"
+       }
+      },
+      "limit_price": "-0.67",
+      "id": "50fbdc2f-645b-410e-9ae1-42ca3d9e18d6",
+      "status": "pending_new",
+      "filled_qty": 0.0,
+      "filled_at": null,
+      "legs_filled": [
+       {
+        "symbol": "SNAP261106C00005500",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "SNAP261106P00005500",
+        "side": "sell",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "SNAP261106C00007500",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       },
+       {
+        "symbol": "SNAP261106P00003500",
+        "side": "buy",
+        "qty": 0.0,
+        "price": null
+       }
+      ]
      }
     ]
    }
@@ -30319,7 +30394,7 @@
    "open_failed": "capacity"
   }
  },
- "updated_et": "2026-11-03T15:01:07.833489-05:00",
+ "updated_et": "2026-11-03T15:03:58.688437-05:00",
  "errors_last_run": null,
  "alerts": [
   "seasonA-DPZ-2026-10-13-F",
