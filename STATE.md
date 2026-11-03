@@ -3,7 +3,11 @@
 **Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-03 11:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat; first bullet added Tue 11-03 11:10 ET by the committee-Q&A chat.*
+*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat; first two bullets added Tue 11-03 by the committee-Q&A chat.*
+- 🔴 **Jacob APPROVED the committee's §12 stops** ("Approve the stops", committee chat, relayed 11-03 ~11:40 ET), plus
+  `COMMITTEE_ASSESSMENT.md` "Changes to the plan". **NOT YET IMPLEMENTED:** handed off at 11:50 ET (context guard).
+  Order: register D019 (frozen) → halt F/L opens via the D011 §5 ledger `halt` **before 14:30 ET today** → stop shadow
+  T2 routines → MOC secondary + Layer-1 scripts → the two owed fixes. Brief: STATE Log 11-03 11:50 ET.
 - 🔴 **Stage 1 committee (REFRAME, 2.5/10) answered:** `reviews/2026-11-03_stage1_committee/PRE_QA_answers.md`. P0 was real:
   the first output missed the 10-30 exits. Full-cut addendum `outcomes/reports/stage1_2026-10-30_r2.md`: SH-W net −1.50%
   [−3.28%, +0.27%], INSUFFICIENT only because 9 < 10 sessions. Also found: D008 #1 (250 gated) is out of reach by Mar 2027,
@@ -193,6 +197,16 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-11-03 (Tue) 11:50 ET — §12 approved by Jacob; implementation handed off unstarted (context guard at 250k).**
+- Mapped, not changed: the shadow-T2 and paper-options code and workflows are hash-listed (`t2_models.py`,
+  `t2_stage2.py`, `t2-queue.yml`, `paper_options.py`, `paper_long.py`, `paper_window.py`, `paper-options.yml`,
+  `paper-long.yml`, `paper-window.yml`). Stops go through data, settings and routines, never edits.
+- F/L opens: the D011 §5 `halt` field in `paper/options_ledger.json` and `paper/long_ledger.json` blocks new opens and
+  leaves exits running (`paper_options.py:477`). A halt also turns each run red (`:632`). `paper_long.py:20` reuses
+  `paper_options` (verify that L honours the halt).
+- Not hash-listed, free to fix: `gate1.py` (T2-missing count), `stage1.py` (`decisions()` reads T2's cost from
+  `decision.json`; it is in `t2.json` `t2.cost_usd_equiv`), `health.py`.
 
 **2026-11-03 (Tue) 11:10 ET — the Stage 1 committee's questions answered, P0 fixed with a full-cut addendum.**
 - The committee (REFRAME, 2.5/10, `2b95c1c`) asked P0–P10 (`PRE_QA.md`). Answers: `PRE_QA_answers.md`, each cited.
