@@ -129,11 +129,15 @@ def test_cut_by_exit_a(tmp_path, monkeypatch):
     rows["void_in"] = {"gate_status": "PASS", "void": "no_open", "entry_session": "2026-10-29", "exits": {}}
     rows["void_out"] = {"gate_status": "PASS", "void": "no_open", "entry_session": "2026-10-31", "exits": {}}
     rows["inel"] = {"gate_status": "INELIGIBLE", "entry_session": "2026-10-20"}
+    rows["pend_in"] = {"gate_status": "PASS", "void": None, "graded": False, "entry_session": "2026-10-29",
+                       "exits": {"exit_A": {"status": "pending"}}}
+    rows["pend_out"] = {"gate_status": "PASS", "void": None, "graded": False, "entry_session": "2026-10-30",
+                        "exits": {"exit_A": {"status": "pending"}}}    # entry on the cut day: exit A falls after it
     for k, v in rows.items():
         (d / f"{k}.json").write_text(json.dumps(v), encoding="utf-8")
     monkeypatch.setattr(stage1, "ROOT", str(tmp_path))
     got, voids, pending, inel = stage1.load_rows_cut("s", "2026-10-30")
-    assert [r["ticker"] for r in got] == ["X1"] and voids == {"no_open": 1} and inel == 1 and pending == 0
+    assert [r["ticker"] for r in got] == ["X1"] and voids == {"no_open": 1} and inel == 1 and pending == 1
     assert stage1.shadow_in_cut(sh_row("SH-W", 1, 0.0, 3), "2026-10-30")
     assert not stage1.shadow_in_cut({"timing": {"exit_A": {"session": "2026-11-02"}}}, "2026-10-30")
 

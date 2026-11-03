@@ -88,12 +88,14 @@ def guard(obj, path=""):
 
 def load_rows_cut(season, cut):
     """report.load_rows on the cut. A graded event counts when its exit-A open is on or before the cut; a VOID or
-    pending one by its exit-A session when it has one, else by its entry session."""
+    pending one by its exit-A session when it has one, else by its entry session: exit A is at least one session after
+    entry, so an entry on the cut day exits after the cut (CIFR, entry Fri 10-30, was counted pending in the first run)."""
     rows, voids, pending, ineligible = [], {}, 0, 0
     for p in sorted(glob.glob(os.path.join(ROOT, "outcomes", season, "*.json"))):
         o = json.load(open(p, encoding="utf-8"))
         a = (o.get("exits") or {}).get("exit_A") or {}
-        if (a.get("exit_session") or o.get("entry_session") or "9999") > cut:
+        x = a.get("exit_session")
+        if (x > cut) if x else ((o.get("entry_session") or "9999") >= cut):
             continue
         if o.get("gate_status") != "PASS":
             ineligible += 1
