@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "CAVA",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:11.856372-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.cava.com/news/news-details/2026/CAVA-to-Announce-Third-Quarter-2026-Financial-Results-on-November-4th-2026/default.aspx",
+  "published_et": "2026-10-14T16:30-04:00",
+  "quote": "A press release with third quarter financial results will be issued at approximately 4:10 PM Eastern Time on Wednesday, November 4, 2026.",
+  "title": "CAVA to Announce Third Quarter 2026 Financial Results on November 4th, 2026",
+  "retrieved_et": "2026-10-19T21:32:49.455384-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.cava.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 60.28499984741211,
+  "expiry": "2026-11-06",
+  "strike": 60.0,
+  "call": {
+   "bid": 3.55,
+   "ask": 4.15,
+   "openInterest": 673.0,
+   "lastPrice": 3.75,
+   "impliedVolatility": 1.4765651171875,
+   "lastTradeDate": "2026-11-03T18:28:40+00:00"
+  },
+  "put": {
+   "bid": 3.25,
+   "ask": 4.15,
+   "openInterest": 84.0,
+   "lastPrice": 3.59,
+   "impliedVolatility": 1.530764064941406,
+   "lastTradeDate": "2026-11-03T17:11:20+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.1252384510095359,
+  "rel_spread": {
+   "call": 0.15584415584415598,
+   "put": 0.24324324324324334
+  },
+  "oi_atm": 757.0,
+  "oi_sum": 1032.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
