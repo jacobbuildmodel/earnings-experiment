@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "RDW",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:28.959873-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.rdw.com/news-events/press-releases/detail/249/redwire-corporation-to-report-third-quarter-2026-results-on",
+  "published_et": "2026-10-29T16:30-04:00",
+  "quote": "ire Corporation to Report Third Quarter 2026 Results on November 4, 2026 October 29, 2026 4:30pm EDT Download as PDF JACKSONVILLE, Fla.--(BUSINESS WIRE)-- Redwire Corporation (NYSE: RDW; “Redwire” or “the Company”) today announced that it will report financial results for the third quarter ended September 30, 2026, after market close on Wednesday, November 4, 2026.",
+  "title": "Redwire Corporation to Report Third Quarter 2026 Results on November 4, 2026",
+  "retrieved_et": "2026-11-02T10:49:50.713879-05:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://ir.rdw.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 8.0,
+  "expiry": "2026-11-06",
+  "strike": 8.0,
+  "call": {
+   "bid": 0.45,
+   "ask": 0.5,
+   "openInterest": 2998.0,
+   "lastPrice": 0.49,
+   "impliedVolatility": 1.4140654296875002,
+   "lastTradeDate": "2026-11-03T19:11:56+00:00"
+  },
+  "put": {
+   "bid": 0.45,
+   "ask": 0.5,
+   "openInterest": 839.0,
+   "lastPrice": 0.5,
+   "impliedVolatility": 1.4296903515625,
+   "lastTradeDate": "2026-11-03T19:14:29+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.11875,
+  "rel_spread": {
+   "call": 0.10526315789473682,
+   "put": 0.10526315789473682
+  },
+  "oi_atm": 3837.0,
+  "oi_sum": 3837.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
