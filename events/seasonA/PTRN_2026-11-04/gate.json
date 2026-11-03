@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "PTRN",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:20.604219-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/pattern-report-third-quarter-2026-financial-results-2026-10-07",
+  "published_et": "2026-10-07T18:09-04:00",
+  "quote": "linkedin facebook x email reddit LEHI, Utah --(BUSINESS WIRE)-- Pattern Group Inc. (Nasdaq: PTRN) (“Pattern”), a leader in accelerating brands on global ecommerce marketplaces, announced today that it will report third quarter 2026 financial results for the period ended September 30, 2026 following the close of the market on Wednesday, November 4, 2026 .",
+  "title": "Pattern to Report Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-19T21:46:45.038672-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 16.950000762939453,
+  "expiry": "2026-11-20",
+  "strike": 17.5,
+  "call": {
+   "bid": 0.8,
+   "ask": 1.35,
+   "openInterest": 114.0,
+   "lastPrice": 1.0,
+   "impliedVolatility": 0.8740246972656249,
+   "lastTradeDate": "2026-11-03T19:05:05+00:00"
+  },
+  "put": {
+   "bid": 0.3,
+   "ask": 2.75,
+   "openInterest": 19.0,
+   "lastPrice": 1.95,
+   "impliedVolatility": 0.807619111328125,
+   "lastTradeDate": "2026-10-30T14:23:57+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.15339232347911178,
+  "rel_spread": {
+   "call": 0.5116279069767441,
+   "put": 1.6065573770491806
+  },
+  "oi_atm": 133.0,
+  "oi_sum": 133.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
