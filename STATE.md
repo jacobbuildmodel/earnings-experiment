@@ -1,9 +1,13 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-02 08:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-03 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat, at its end.*
+*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat; first bullet added Tue 11-03 11:30 ET by the committee-Q&A chat.*
+- 🔴 **Stage 1 committee (REFRAME, 2.5/10) answered:** `reviews/2026-11-03_stage1_committee/PRE_QA_answers.md`. P0 was real:
+  the first output missed the 10-30 exits. Full-cut addendum `outcomes/reports/stage1_2026-10-30_r2.md`: SH-W net −1.50%
+  [−3.28%, +0.27%], INSUFFICIENT only because 9 < 10 sessions. Also found: D008 #1 (250 gated) is out of reach by Mar 2027,
+  and D008 #4 (≤ 15 bp) fails at 27.5 bp. The §12 stops are Jacob's call; none is implemented.
 - **Phase:** Season A, week 4 of 6, the first EST day (SGT = ET + 13). Gates: Mon 24 · Tue 46 (peak) · Wed 34.
   Today's 4 T2s (PLTR SHOP BETA DT) were frozen Fri.
 - ✅ **Stage 1 deck delivered** (private Artifact, 13 slides, v7): https://claude.ai/artifact/YFW42zSaPUAYZFJgHmeLbf.
@@ -18,7 +22,7 @@
 - ✅ **Paper options halt cleared** by Jacob 07:14 ET (`199b8c4`). ✅ **Housekeeping routine landed** 07:51 ET (`0eab8d3`).
 - **Owed:** D011 v4 = skip an F open whose natural is a debit (BHE, COLM) · a "new RED" alarm (health is RED daily,
   so a new RED is lost) · gate1.health counting graded rows with no T2 (it reads 0 of 26; ABT and SPCX have none).
-- **Next action:** Jacob's committee session on the deck, when he is ready (Tue SGT). Gates 14:30–15:56 EST today;
+- **Next action:** the committee assesses the answers (one round); then Jacob's funding call on REFRAME. Gates 14:30–15:56 EST today;
   options opens resume at today's gates.
 - 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): paper margin binds; owed: views split `capacity` out.
 - **D003 v5 = A4 chosen** (Jacob, Thu 09:28 ET): the v5 file, its code and an independent review are owed before the
@@ -189,6 +193,17 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-11-03 (Tue) 11:30 ET — the Stage 1 committee's questions answered, P0 fixed with a full-cut addendum.**
+- The committee (REFRAME, 2.5/10, `2b95c1c`) asked P0–P10 (`PRE_QA.md`). Answers: `PRE_QA_answers.md`, each cited.
+- P0: Stage 1 ran Mon 07:28 ET, but Friday's exits settle Sat 06:00 ET and the shadow grader runs weekday evenings only.
+  So 20 SH-W, 114 SH-M and 5 gated events in the cut were ungraded, and `stage1.py` dropped them silently. Fixes:
+  `4383102` and `a6f7cc6`. stage1 now refuses `--write` on an incomplete cut. r2 equals the committee's recompute.
+- Computed, none on Season A returns: signed paper slippage (+91 bp a round trip; sells +105 bp); history premium by
+  event age (the oldest, most survivor-filtered events carry the smallest premium, +0.25%); D016 interim gate audit on
+  all of Season A (32 of 143 PASS).
+- Owed (not done: outside P0): the `gate1.health` T2-missing count; stage1's P6 reads T2's cost from the wrong file.
+  D008 Gate 2 #1 vs RESEARCH_PLAN §6 ("T0 or T0-wide") must be settled before Season B.
 
 **2026-11-02 (Mon) 08:10 ET — Stage 1 deck built from the committed output, reviewed blind by Sonnet, delivered.**
 - Side session of the build chat. Startup 07:34 ET: check.py PASS (0 warnings). Deck: private Artifact (Slides type),
