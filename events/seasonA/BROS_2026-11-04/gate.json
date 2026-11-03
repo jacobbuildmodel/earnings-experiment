@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "BROS",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:10.344496-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/dutch-bros-inc-host-third-quarter-2026-conference-call-and-webcast-november-4-2026-10",
+  "published_et": "2026-10-14T09:00-04:00",
+  "quote": "The conference call and webcast will take place on Wednesday, November 4, 2026 at 5:00 p.m. Eastern Time (ET).",
+  "title": "Dutch Bros Inc. to Host Third Quarter 2026 Conference Call and Webcast on November 4",
+  "retrieved_et": "2026-10-19T21:42:25.356905-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 43.88999938964844,
+  "expiry": "2026-11-06",
+  "strike": 44.0,
+  "call": {
+   "bid": 2.45,
+   "ask": 2.7,
+   "openInterest": 166.0,
+   "lastPrice": 2.74,
+   "impliedVolatility": 1.4345731396484376,
+   "lastTradeDate": "2026-11-03T17:08:09+00:00"
+  },
+  "put": {
+   "bid": 2.55,
+   "ask": 2.7,
+   "openInterest": 78.0,
+   "lastPrice": 2.75,
+   "impliedVolatility": 1.4013701806640624,
+   "lastTradeDate": "2026-11-03T18:00:59+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.11847801486245708,
+  "rel_spread": {
+   "call": 0.0970873786407767,
+   "put": 0.05714285714285728
+  },
+  "oi_atm": 244.0,
+  "oi_sum": 441.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "thin_oi"
+}
