@@ -1,4 +1,4 @@
-# Health 2026-11-03 10:46 ET - **AMBER**
+# Health 2026-11-03 13:31 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -27,17 +27,6 @@ check.py: PASS - 1 warning(s)
 ## Information
 - paper/options_ledger.json: open ['seasonA-ALAB-2026-11-03-F', 'seasonA-AMD-2026-11-03-F', 'seasonA-ANET-2026-11-03-F', 'seasonA-DDOG-2026-11-04-F', 'seasonA-FLYW-2026-11-03-F', 'seasonA-FRSH-2026-11-03-F', 'seasonA-HUT-2026-11-04-F', 'seasonA-NVTS-2026-11-03-F', 'seasonA-OUST-2026-11-03-F', 'seasonA-Q-2026-11-04-F', 'seasonA-RAL-2026-11-04-F', 'seasonA-RIOT-2026-11-04-F', 'seasonA-RPRX-2026-11-04-F', 'seasonA-SWKS-2026-11-03-F', 'seasonA-TOST-2026-11-03-F', 'seasonA-VSH-2026-11-04-F', 'seasonA-W-2026-11-04-F', 'seasonA-XYZ-2026-11-03-F', 'seasonA-YOU-2026-11-04-F', 'seasonA-ZBH-2026-11-04-F']
 - paper/long_ledger.json: open ['seasonA-DOCN-2026-11-03-L', 'seasonA-BETA-2026-11-03-L', 'seasonA-DT-2026-11-03-L', 'seasonA-IPGP-2026-11-03-L', 'seasonA-MTCH-2026-11-02-L', 'seasonA-ON-2026-11-02-L', 'seasonA-PAY-2026-11-02-L', 'seasonA-PLTR-2026-11-02-L', 'seasonA-SHOP-2026-11-03-L', 'seasonA-VVX-2026-11-02-L', 'seasonA-YUMC-2026-11-03-L', 'seasonA-AMD-2026-11-03-L', 'seasonA-ANET-2026-11-03-L', 'seasonA-DDOG-2026-11-04-L', 'seasonA-DUOL-2026-11-03-L', 'seasonA-FLYW-2026-11-03-L', 'seasonA-FRSH-2026-11-03-L', 'seasonA-NVTS-2026-11-03-L', 'seasonA-OUST-2026-11-03-L', 'seasonA-Q-2026-11-04-L', 'seasonA-RAL-2026-11-04-L', 'seasonA-RIOT-2026-11-04-L', 'seasonA-SWKS-2026-11-03-L', 'seasonA-TOST-2026-11-03-L', 'seasonA-UBER-2026-11-04-L', 'seasonA-VSH-2026-11-04-L', 'seasonA-W-2026-11-04-L', 'seasonA-XYZ-2026-11-03-L', 'seasonA-YOU-2026-11-04-L', 'seasonA-ZBH-2026-11-04-L']
-- paper/options: ALAB: the account holds +7, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: AMD: the account holds +6, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: ANET: the account holds +15, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: BETA: the account holds +0, the ledgers show +88 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: DT: the account holds +0, the ledgers show +40 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: PLTR: the account holds +0, the ledgers show +11 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: RIOT: the account holds +136, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: SHOP: the account holds +0, the ledgers show +13 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: UBER: the account holds +49, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: YOU: the account holds +38, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: ['seasonA-BETA-2026-11-03-sell', 'seasonA-DT-2026-11-03-sell', 'seasonA-PLTR-2026-11-02-sell', 'seasonA-SHOP-2026-11-03-sell', 'seasonA-ALAB-2026-11-03-buy', 'seasonA-AMD-2026-11-03-buy', 'seasonA-ANET-2026-11-03-buy', 'seasonA-RIOT-2026-11-04-buy', 'seasonA-UBER-2026-11-04-buy', 'seasonA-YOU-2026-11-04-buy'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
 - paper/options: 129 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 62 position(s), 0 open order(s) - they match the ledgers
 - Tue 03 Nov: 48 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KTB, KVYO, LOAR, MELI, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RDW, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
