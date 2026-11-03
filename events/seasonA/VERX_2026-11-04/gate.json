@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "VERX",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:33:16.206705-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/vertex-announce-third-quarter-2026-financial-results-wednesday-november-4-2026-2026",
+  "published_et": "2026-10-15T16:05-04:00",
+  "quote": "linkedin facebook x email reddit KING OF PRUSSIA, Pa. , Oct. 15, 2026 (GLOBE NEWSWIRE) -- Vertex, Inc. (NASDAQ:VERX), the Decision-to-Defense™ global indirect tax and compliance company, today announced that it will release third quarter 2026 financial results after the market close on Wednesday, November 4, 2026 .",
+  "title": "Vertex to Announce Third Quarter 2026 Financial Results on Wednesday, November 4, 2026",
+  "retrieved_et": "2026-10-19T21:31:05.141398-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 15.34000015258789,
+  "expiry": "2026-11-20",
+  "strike": 16.0,
+  "call": {
+   "bid": 0.55,
+   "ask": 1.3,
+   "openInterest": 64.0,
+   "lastPrice": 0.94,
+   "impliedVolatility": 0.88476677734375,
+   "lastTradeDate": "2026-11-03T18:43:26+00:00"
+  },
+  "put": {
+   "bid": 1.15,
+   "ask": 1.8,
+   "openInterest": 1.0,
+   "lastPrice": 1.84,
+   "impliedVolatility": 0.8037129003906249,
+   "lastTradeDate": "2026-10-27T19:43:45+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.1564537142194953,
+  "rel_spread": {
+   "call": 0.8108108108108107,
+   "put": 0.44067796610169496
+  },
+  "oi_atm": 65.0,
+  "oi_sum": 65.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
