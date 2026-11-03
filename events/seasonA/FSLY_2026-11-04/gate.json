@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "FSLY",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:44.927265-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/fastly-announce-third-quarter-2026-financial-results-2026-10-08",
+  "published_et": "2026-10-08T17:00-04:00",
+  "quote": "linkedin facebook x email reddit SAN FRANCISCO --(BUSINESS WIRE)-- Fastly, Inc. (NASDAQ: FSLY), a leader in global edge cloud platforms, will release financial results for the third quarter of 2026 after market close on Wednesday, November 4, 2026 .",
+  "title": "Fastly to Announce Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-19T21:44:25.272838-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 20.975000381469727,
+  "expiry": "2026-11-06",
+  "strike": 21.0,
+  "call": {
+   "bid": 1.9,
+   "ask": 2.05,
+   "openInterest": 12.0,
+   "lastPrice": 1.97,
+   "impliedVolatility": 2.2734418164062498,
+   "lastTradeDate": "2026-11-03T19:12:01+00:00"
+  },
+  "put": {
+   "bid": 1.9,
+   "ask": 2.2,
+   "openInterest": 893.0,
+   "lastPrice": 2.0,
+   "impliedVolatility": 2.330082299804687,
+   "lastTradeDate": "2026-11-03T19:11:10+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.19189510974006313,
+  "rel_spread": {
+   "call": 0.07594936708860756,
+   "put": 0.14634146341463428
+  },
+  "oi_atm": 905.0,
+  "oi_sum": 905.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
