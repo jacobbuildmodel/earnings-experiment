@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "LOAR",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:56.527388-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.loargroup.com/news-events/press-releases/detail/42/loar-holdings-inc-announces-date-and-time-for-third-quarter-2026-earnings-and-conference-call",
+  "published_et": "2026-10-07T16:05-04:00",
+  "quote": "Earnings and Conference Call :: Loar Holdings Inc. (LOAR) Loar Holdings Inc. Announces Date and Time for Third Quarter 2026 Earnings and Conference Call October 07, 2026 4:05pm EDT Download as PDF WHITE PLAINS, NY / ACCESS Newswire / October 7, 2026 / Loar Holdings Inc. (NYSE:LOAR) will report Q3 2026 earnings before the market opens on Thursday, November 5, 2026.",
+  "title": "Loar Holdings Inc. Announces Date and Time for Third Quarter 2026 Earnings and Conference Call",
+  "retrieved_et": "2026-10-26T09:43:04.164140-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://ir.loargroup.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 69.01000213623047,
+  "expiry": "2026-11-20",
+  "strike": 65.0,
+  "call": {
+   "bid": 4.5,
+   "ask": 7.0,
+   "openInterest": 26.0,
+   "lastPrice": 3.06,
+   "impliedVolatility": 0.5686078295898438,
+   "lastTradeDate": "2026-10-20T17:46:45+00:00"
+  },
+  "put": {
+   "bid": 1.5,
+   "ask": 2.45,
+   "openInterest": 1.0,
+   "lastPrice": 4.94,
+   "impliedVolatility": 0.6127968408203126,
+   "lastTradeDate": "2026-10-13T16:16:43+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.1119402950423088,
+  "rel_spread": {
+   "call": 0.43478260869565216,
+   "put": 0.48101265822784817
+  },
+  "oi_atm": 27.0,
+  "oi_sum": 67.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
