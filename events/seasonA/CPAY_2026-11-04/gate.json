@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "CPAY",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:22.022282-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/corpay-announce-third-quarter-2026-results-november-4-2026-2026-10-21",
+  "published_et": "2026-10-21T09:05-04:00",
+  "quote": "linkedin facebook x email reddit ATLANTA --(BUSINESS WIRE)-- Corpay, Inc. , (NYSE: CPAY) the global spend management company, today announced that the Company will host a conference call to discuss third quarter 2026 financial results on Wednesday, November 4th, 2026 at 5:30 pm ET .",
+  "title": "Corpay to Announce Third Quarter 2026 Results on November 4, 2026",
+  "retrieved_et": "2026-10-22T21:16:55.130458-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 410.0,
+  "expiry": "2026-11-20",
+  "strike": 410.0,
+  "call": {
+   "bid": 10.9,
+   "ask": 17.1,
+   "openInterest": 33.0,
+   "lastPrice": 14.54,
+   "impliedVolatility": 0.47095255615234377,
+   "lastTradeDate": "2026-11-02T20:04:07+00:00"
+  },
+  "put": {
+   "bid": 11.5,
+   "ask": 16.1,
+   "openInterest": 7.0,
+   "lastPrice": 14.4,
+   "impliedVolatility": 0.4434259759521484,
+   "lastTradeDate": "2026-11-02T17:59:11+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.06780487804878049,
+  "rel_spread": {
+   "call": 0.44285714285714295,
+   "put": 0.3333333333333334
+  },
+  "oi_atm": 40.0,
+  "oi_sum": 40.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
