@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "NTCT",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:04.646275-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.netscout.com/news/news-details/2026/NETSCOUT-to-Report-Second-Quarter-Fiscal-Year-2027-Financial-Results-on-November-5th/default.aspx",
+  "published_et": "2026-10-22T08:30-04:00",
+  "quote": "nload (opens in new window) WESTFORD, Mass.--(BUSINESS WIRE)-- NETSCOUT SYSTEMS, INC. (NASDAQ: NTCT), a leading provider of network observability, AIOps, carrier service assurance, cybersecurity, and DDoS attack protection, plans to announce its second quarter fiscal year 2027 financial results for the period ended September 30, 2026, on Thursday, November 5, 2026, at approximately 7:30 a.m. ET.",
+  "title": "NETSCOUT to Report Second Quarter Fiscal Year 2027 Financial Results on November 5th",
+  "retrieved_et": "2026-10-23T21:34:41.887077-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.netscout.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 38.0099983215332,
+  "expiry": "2026-11-20",
+  "strike": 40.0,
+  "call": {
+   "bid": 0.7,
+   "ask": 1.5,
+   "openInterest": 26.0,
+   "lastPrice": 1.27,
+   "impliedVolatility": 0.5600629931640625,
+   "lastTradeDate": "2026-10-30T19:55:35+00:00"
+  },
+  "put": {
+   "bid": 2.35,
+   "ask": 3.8,
+   "openInterest": 2.0,
+   "lastPrice": 2.7,
+   "impliedVolatility": 0.5556685058593751,
+   "lastTradeDate": "2026-10-15T13:49:05+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.10983952076721887,
+  "rel_spread": {
+   "call": 0.7272727272727273,
+   "put": 0.4715447154471544
+  },
+  "oi_atm": 28.0,
+  "oi_sum": 28.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

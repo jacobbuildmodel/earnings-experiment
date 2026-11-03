@@ -1,0 +1,641 @@
+{
+ "event": "KVYO_2026-11-04",
+ "season": "seasonA",
+ "built_et": "2026-11-03T14:32:04-05:00",
+ "cutoff_et": "2026-11-03T14:31:54.020918-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/KVYO_2026-11-04/gate.json",
+   "published": "2026-11-03T14:31:54.020918-05:00",
+   "data": {
+    "ticker": "KVYO",
+    "report_date": "2026-11-04",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-12"
+     },
+     "reaction_day": "2026-11-05"
+    },
+    "snapshot_session": "2026-11-03",
+    "captured_et": "2026-11-03T14:31:54.020918-05:00",
+    "options": {
+     "spot": 21.65999984741211,
+     "expiry": "2026-11-20",
+     "strike": 22.5,
+     "call": {
+      "bid": 1.55,
+      "ask": 1.7,
+      "openInterest": 1586.0,
+      "lastPrice": 1.65,
+      "impliedVolatility": 1.0332079589843752,
+      "lastTradeDate": "2026-11-03T18:05:19+00:00"
+     },
+     "put": {
+      "bid": 2.4,
+      "ask": 2.55,
+      "openInterest": 20.0,
+      "lastPrice": 2.65,
+      "impliedVolatility": 1.0390673046875003,
+      "lastTradeDate": "2026-11-03T18:06:59+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 11,
+     "implied_move": 0.18928901333717502,
+     "rel_spread": {
+      "call": 0.09230769230769226,
+      "put": 0.06060606060606058
+     },
+     "oi_atm": 1606.0,
+     "oi_sum": 1606.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/KVYO_2026-11-04/factors.json",
+   "published": "2026-11-03T14:31:54.020918-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.16692308279184198,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.29700591963324086,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.07333991674205964,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.11929224303540154,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.68221158045094,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.9825530459104698,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.348767259756926,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "AMC",
+       "raw_return_A": -0.1522762822851932,
+       "eps_est": 0.19,
+       "eps_rep": 0.19,
+       "surprise_pct": -0.3,
+       "reaction_volume_ratio": 3.3568819958803147
+      },
+      {
+       "date": "2026-05-05",
+       "session": "AMC",
+       "raw_return_A": -0.22112359893455935,
+       "eps_est": 0.2,
+       "eps_rep": 0.22,
+       "surprise_pct": 11.33,
+       "reaction_volume_ratio": 4.128045229170925
+      },
+      {
+       "date": "2026-02-10",
+       "session": "AMC",
+       "raw_return_A": 0.1077000150610461,
+       "eps_est": 0.17,
+       "eps_rep": 0.19,
+       "surprise_pct": 10.3,
+       "reaction_volume_ratio": 3.606416814022762
+      },
+      {
+       "date": "2025-11-05",
+       "session": "AMC",
+       "raw_return_A": 0.08805509813023615,
+       "eps_est": 0.14,
+       "eps_rep": 0.18,
+       "surprise_pct": 29.35,
+       "reaction_volume_ratio": 4.692811597189473
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.9460389090658685,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -0.3,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.17247,
+      "7daysAgo": 0.17241,
+      "30daysAgo": 0.17241,
+      "60daysAgo": 0.17241,
+      "90daysAgo": 0.20821,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.17165361894241388,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.17247,
+      "low": 0.15,
+      "high": 0.19,
+      "yearAgoEps": 0.18,
+      "numberOfAnalysts": 21,
+      "growth": -0.0418,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.23192439264799677,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.16049999,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 20.689062,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 4.664752,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.264,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 6482400768,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.43478,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.18928901333717502,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.005859345703125074,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.0361326318359374,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.403125,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.24307836696386673,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 449,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.5187922068855144,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.1929301498317409,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 479,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unprofitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.264259664229642,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -0.04037768231078105,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.1674999823937049,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.07259663679054285,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.11929224303540154,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.6822583755146518,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.8678692088336315,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.13776407561759407,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 6425357476.757973,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.21627683829681263,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.01871158796360849,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1835830/000183583026000039/confidentialfiscalq22026ea.htm",
+   "published": "2026-08-05T16:09:08-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 confidentialfiscalq22026ea.htm EX-99.1 Document Klaviyo Delivers Strong Q2 as Autonomous B2C CRM Strategy Gains Momentum Second quarter revenue of $370.6 million, representing 26% year-over-year growth Raises FY26 revenue guidance to $1.526 billion to $1.534 billion, for year-over-year growth of 24% BOSTON, August 5, 2026 — Klaviyo (NYSE: KVYO), the autonomous B2C CRM, today announced results for its second quarter ended June 30, 2026. “Software and the rise of AI agents are transforming consumer experience. But agents are only as good as the context behind them, and we’ve spent more than a decade building the real-time infrastructure that delivers that context at scale. The adoption we’ve seen of Composer and Customer Agent is proof that it works. Bringing on Agency’s team will accelerate what Klaviyo’s agents can do as we continue to build the autonomous B2C CRM,” said Andrew Bialecki, co-founder and co-CEO of Klaviyo. Recent Business Highlights (all figures as of June 30, 2026): ● Three major product announcements: Released Composer; enhanced Customer Agent with Conversational Agent Builder, Custom Skills, Simulations, and API access for developers; and launched K:Social for general availability. ● Reached an agreement to acquire the team and technology of Agency, an AI-native customer success company, with co-founder and CEO Elias Torres to become Chief Product Officer following closing. ● Expanded AI ecosystem with new Anthropic Claude integration and native Figma integration, and launched as Shopify Sidekick and Stripe Projects partners. ● Added new customers Warner Music Group, the San Francisco 49ers, and Claire’s, and a regional expansion with The Body Shop. ● Total customers exceeded 205,000, and the cohort of customers generating over $50,000 of ARR increased 36% year over year to 4,477. ● Drove continued international expansion with 35% year-over-year revenue growth outside the Americas, and hosted our largest K:LDN ever. ● Platform adoption is strong with 20% of our ARR coming from customers using 3 or more products. ● Delivered NRR of 109%, up one percentage point year-over-year, driven by customer expansions, cross-sell and strong retention. “Our autonomous B2C CRM strategy is landing as brands of all sizes around the globe consolidate onto Klaviyo. We closed the quarter at a nearly $1.5 billion annualized run rate, with Q2 revenue growth of 26% year-over-year, supported by broad-based strength across enterprise, international, and multi-product. We continued to convert that growth efficiently, with annualized revenue per employee up 28% year over year. We are once again raising our full-year revenue outlook and continuing to invest strategically in growth,” said Amanda Whalen, CFO of Klaviyo. Second Quarter 2026 Financial Highlights: $ in millions (except per share amounts) Q2 FY26 Revenue $370.6 YoY Growth 26% Gross Profit $269.1 Gross Margin 73% Non-GAAP Gross Profit $271.9 Non-GAAP Gross Margin 73% Operating Loss $(15.0) Operating Margin (4)% Non-GAAP Operating Income $50.9 Non-GAAP Operating Margin 14% Net loss per share, basic and diluted $(0.03) Non-GAAP net income per share, basic $0.19 Non-GAAP net income per share, diluted $0.19 Cash from Operating Activities $93.9 Free Cash Flow $82.9 Financial Outlook $ in millions FY26-Q3 Guidance FY26 Guidance Low High Low High Revenue $377 $381 $1,526 $1,534 Year-over-year Growth Rate 21.5% 22.5% 24% Non-GAAP Operating Income $40 $43 $212 $218 Non-GAAP Operating Margin 10.5% 11% 14% Fully Diluted Shares Outstanding (Millions) 286 293 Klaviyo has not provided a reconciliation of non-GAAP operating income guidance measures to the most directly comparable GAAP measures because certain items excluded from GAAP cannot be reasonably calculated or predicted at this time. Accordingly, a reconciliation is not available without unreasonable effort. Stock-based compensation-related charges, including employer payroll tax-related items on employee stock transactions, are impacted by the timing of employee stock transactions, the future fair market value of our common stock, and our future hiring and retention needs, all of which are difficult to predict and subject to constant change. Dilutive Securities Klaviyo has various dilutive securities. The table below details these securities (shares in millions; rounding differences may occur): Price as of June 30, 2026 Weighted Average Exercise Price Shares Share price $ 15.10 Common stock outstanding as of 6/30/2026 289.0 Warrants outstanding 1.7 RSUs and PSUs outstanding 22.3 Options outstanding $ 3.05 1.4 ESPP shares outstanding 0.2 Total estimated fully diluted shares 314.6 We have excluded the impact of the Shopify investment option of 15,743,174 shares at $88.93 per share as it was out of the money as of June 30, 2026. The investment option expires on July 28, 2030. Conference Call Information In conjunction with this announcement, Klaviyo will host a conference call for investors at 4:30 p.m. ET (1:30 p.m. PT) today to discuss the results for its second quarter ended June 30, 2026 and its outlook for its third quarter ending September 30, 2026 and fiscal year ending December 31, 2026. The live webcast and a replay of the webcast will be available at the Investor Relations section of Klaviyo’s website: https://investors.klaviyo.com (live and replay). Select Defined Terms Customers. We define a customer as a distinct paid subscription to our platform. A single organization could have multiple discrete contracting divisions or subsidiaries or brands each with paid subscriptions to our platform, which would, in general, constitute multiple distinct customers. In some cases at the customer’s request, we allow subscriptions under the same parent organization to be consolidated into a single paid subscription in which case such consolidated paid subscriptions would constitute a single customer. We measure our total number of customers as a point-in-time calculation measured as of the end of a particular period. Customers do not include persons or entities that use our platform on a free trial basis. Customers Generating Over $50,000 of ARR. We calculate our number of customers generating over $50,000 of ARR (as defined below) as those customers that have an average ARR of greater than $50,000 over the prior twelve months (or the entire duration of the customer’s paying relationship, if it is less than twelve months) as of the date of determination. We believe the number of customers generating over $50,000 of ARR is a key performance metric to help investors and others understand and evaluate our results of operations in the same manner as our management team, as it is an indicator of our ability to grow the number of customers that are exceeding this ARR threshold, both from our existing customers expanding their usage of our platform and from our sales to larger customers. We believe this is an important indicator of our ability to continue to successfully move up market. Dollar-Based Net Revenue Retention Rate. We calculate our Dollar-Based Net Revenue Retention Rate (“NRR”) by first identifying the cohort of customers as of twelve months prior to the date of determination. We then calculate the Annualized Recurring Revenue (“ARR”) from this customer cohort as of twelve months prior to the date of determination (the “Prior Period ARR”) and the ARR from this customer cohort as of the date of determination (the “Current Period ARR”). ARR, for any date of determination, is the annualized value of existing paid subscriptions, which we calculate by taking the amount of revenue that we expect to receive in the next monthly period for our existing paid subscriptions, assuming no changes to such subscriptions in the next month, as of that date of determination, and multiplying that amount by twelve. Current Period ARR includes any expansion, price increases, and customer subscriptions that are deactivated and subsequently reactivated during the applicable twelve-month period and reflects contraction or attrition over the last twelve months from this customer cohort, but excludes any ARR from new customers in the current period. We then divide the total Current Period ARR by the total Prior Period ARR to arrive at the point-in-time NRR. We then calculate the weighted average point-in-time NRR as of the last day of each month in the current trailing twelve-month period to arrive at the NRR, with the weightings determined by the total ARR at the end of each period. We believe NRR is a key performance metric to help investors and others understand and evaluate our results of operations in the same manner as our management team, as it represents the expansion in usage of our platform by our existing customers, which is an important measure of the health of our business and future growth prospects. We measure Dollar-Based Net Revenue Retention Rate to measure this growth. About Klaviyo Klaviyo (CLAY-vee-oh) is an autonomous B2C CRM that powers more valuable customer experiences. We unify a flexible, scalable data platform, intelligence that gets smarter with every interaction, and action across Marketing and Service to help businesses turn real-time customer data into personalization at scale. High-growth enterprises like Mattel, TaylorMade, Glossier, Liquid Death, Daily Harvest and more than 205,000 other paying customers leverage Klaviyo’s actionable infrastructure and our more than 350 integrations to deliver measurable outcomes through faster, higher-quality experiences. Source: Klaviyo, Inc. Contact Investor Relations Brad Sills ir@klaviyo.com Press Danielle Zanatta press@klaviyo.com Forward Looking Statements This press release includes certain “forward-looking stat ements” within the meaning of the safe harbor provisions of the Private Securities Litigation Reform Act of 1995, as amended. Other than statements of historical facts, all statements contained in this press release, including, but not limited to, statements about Klaviyo’s outlook for the third quarter of fiscal year 2026 ending September 30, 2026 and the full fiscal year ending December 31, 2026, and Klaviyo’s expectations regarding possible or assumed business strat egies, potential growth and innovation opportunities, new products, potential market opportunities, use of artificial intelligence and machine learning, and other similar matters, are forward-looking statements. Words such as “aim,” “anticipate,” “believe,” “contemplate,” “continue,” “could,” “estimate,” “expect,” “future,” “going to,” “guidance,” “intend,” “keep,” “may,” “opportunity,” “outlook,” “plan,” “potential,” “predict,” “project,” “shall,” “should,” “strategy,” “target,” “will,” “would,” or words of similar meaning or similar references to future periods may identify these forward-looking statements, although not all forward-looking statements contain these identifying words. Forward-looking statements reflect management’s beliefs, expectations and assumptions about future events as of the date hereof, which are inherently subject to uncertainties, risks and changes in circumstances that are difficult to predict and many of which are outside of our control. These risks include, among others, the following: our ability to achieve future growth and sustain our growth rate; our ability to successfully execute our business and growth strategy, such as the success of our investment in our key growth initiatives and our ability to recognize effective areas for growth; our ability to successfully integrate with third-party platforms; our relationships with third parties, such as our marketing agency and technology partners; unfavorable conditions in our industry; our ability to attract new customers, including mid-market and enterprise customers, retain revenue from existing customers and increase sales from both new and existing customers; our ability to leverage artificial intelligence and machine learning in our products; our ability to sustain strong international growth; the success of our marketing and sales strategies; costs and expenses associated with being a public company; the impact of macroeconomic factors, including tariffs; as well as other risks and uncertainties set forth under the caption “Risk Factors” and elsewhere in our Quarterly Report on Form 10-Q for the quarter ended June 30, 2026, as filed with the Securities and Exchange Commission (the “SEC”), and the other filings and reports we make with the SEC from time to time, which may be obtained on our Investor Relations website at https://investors.klaviyo.com and on the SEC website at www.sec.gov. Moreover, we operate in a very competitive and rapidly changing environment, and new risks may emerge from time to time. It is not possible for our management to predict all risks, nor can we assess the impact of all factors on our business or the extent to which any factor(s) may cause actual results or outcomes to differ materially from those contained in any forward-looking statements we may make. In light of the risks, uncertainties, assumptions, and other factors, the future events and trends discussed in this press release may not occur and actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements. Therefore, you should not rely on any of the forward-looking statements. Any forward-looking statement made by us in this press release is based only on information currently available to us and speaks only as of the date on which it is made. Other than as required by law, we assume no obligation to update any forward-looking statements contained in this press release in the event of new information, future developments or otherwise. Statement Regarding Use of Non-GAAP Financial Measures In addition to financial measures prepared in accordance with generally accepted accounting principles in the United States (GAAP), this press release and the accompanying tables contain non",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1835830/000183583026000040/kvyo-20260630.htm",
+   "published": "2026-08-05T16:09:59-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our condensed consolidated financial statements and related notes that appear elsewhere in this Quarterly Report on Form 10-Q and our Annual Report on Form 10-K for the year ended December 31, 2025 filed with the Securities and Exchange Commission (the “SEC”) on February 10, 2026. As discussed in the section titled “Special Note Regarding Forward-Looking Statements,” the following discussion and analysis contains forward-looking statements that involve risks and uncertainties, as well as assumptions that, if they do not materialize or prove incorrect, could cause our results to differ materially from those expressed or implied by such forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, those identified below, and those discussed in the section titled “Risk Factors” included under Part II, Item 1A within this Quarterly Report on Form 10-Q. Overview We founded Klaviyo in 2012 to provide businesses of all sizes with powerful technology that captures, stores, analyzes, and predictively uses their own data to drive measurable, high-value outcomes. Today, Klaviyo enables over 205,000 businesses around the globe to efficiently drive revenue growth by making it easy to bring their first-party data together and use it to create and deliver highly personalized, omnichannel consumer experiences at scale. Our platform combines our proprietary data, intelligence, and action layers into one vertically-integrated solution with advanced machine learning and AI capabilities and over 350 integrations, enabling businesses to create and store unified consumer profiles, derive new insights, and rapidly segment their consumers. Klaviyo began as a database designed for speed, flexibility, and unlimited data storage. The Klaviyo Data Platform (“KDP”) generates unified, highly granular consumer profiles populated with data from customers’ own systems and over 350 third-party integrations, and provides customers user-friendly ways to track new types of data, sync data in and out of Klaviyo at scale, and drive revenue growth. Building upon our robust data infrastructure, we developed tools, initially focusing on marketing automation, where we revolutionized email practices. Our innovation shifted the industry paradigm away from batch and blast practices with a fast, data-rich marketing tool. In addition to our email offering, we now incorporate text messaging and WhatsApp channels, Reviews, Klaviyo Service, Klaviyo Analytics, and others. In February 2025, we announced Klaviyo B2C CRM, establishing Klaviyo as a unified CRM built for B2C brands and positioning Klaviyo to address a critical gap in the market: providing consumer brands with a system designed for their unique, high-volume, fast-paced needs across marketing, service and analytics. In September 2025, we launched Marketing Agent and Customer Agent, establishing Klaviyo as the AI-first B2C CRM. In June 2026, we announced the public beta of Composer, our next generation agent for marketing and analysis. Taken together, this is a natural evolution of our journey – from a leading marketing automation platform to a comprehensive consumer engagement solution. Powered by the KDP and AI, we combine marketing, service, analytics, and our data platform into a single solution designed to meet the high-volume, fast-paced needs of our customers. Klaviyo Service is an AI-powered customer service offering that integrates with marketing and data to help businesses provide seamless customer support via Customer Hub, Customer Agent and Helpdesk. Marketing Analytics gives brands real-time AI-powered insight into customer and purchase behavior so they can take action faster. Our Advanced KDP offering unlocks advanced features for even more powerful ways to track, transform, cleanse, and analyze data as well as run more advanced reporting and predictive analytics to drive revenue growth for our customers. These offerings leverage Klaviyo’s unified platform to deliver an integrated, AI-first customer experience that enhances automation, personalization, and efficiency across channels. Today, our customers primarily operate within the retail and eCommerce vertical. Due to the flexibility and adaptability of our technology, we have also seen organic growth from customers in other verticals, such as education, events and entertainment, restaurants, and travel, as well as from B2B companies. As of June 30, 2026, our platform had efficiently scaled to over 205,000 customers. See the section titled “Key Performance Metrics – Customers” for additional information on how we define customers. 28 We generate revenue through the sale of subscriptions to our customers for the use of our platform. Our subscription plans are tiered based on the number of active consumer profiles stored on our platform and the number of emails, text messages and WhatsApp messages sent as well as tickets and conversations executed through Klaviyo Service. We currently permit our customers to send unlimited push notifications, which are included as part of our email subscription plan. Active consumer profiles are identified profiles that can be reached via at least one enabled marketing channel in Klaviyo; this means the profile is not suppressed, either by revoking consent or being rendered undeliverable. The vast majority of our subscription plans today are monthly. Our land-and-expand strategy aligns our success with that of our customers. As our customers’ businesses grow, they utilize more active consumer profiles and send more emails, text messages and WhatsApp messages, which naturally increases their usage of our platform. Our revenue also expands when our customers add additional marketing channels, such as text messaging, WhatsApp messaging, and mobile push and additional use cases, such as Customer Agent, Composer, Marketing Analytics, and Advanced KDP, or when their other companies, business units, and geographies start using our platform. Factors Affecting Our Future Performance We believe that our performance and future success depend on a number of factors that present significant opportunities for us but also pose risks and challenges, including the following factors: Growth in New Customers Attracting new customers to our platform is a key driver of our revenue growth strategy. We have successfully grown our retail and eCommerce customer base and believe we have significant room to expand within this vertical as well as expand further into other industries, including education, events and entertainment, restaurants, wellness, and travel as well as with B2B companies. Our ability to attract new customers will depend on a number of factors, including our ability to innovate, the effectiveness and pricing of our new and existing offerings and capabilities, and the success of our selling and marketing efforts. Expansion of Revenue From Our Existing Customer Base We believe our product-led growth strategy enables us to efficiently expand penetration within our existing customer base. We focus on expansion in three primary ways. First, as our customers increase their usage of our platform through the number of active consumer profiles they store and email, text messages and WhatsApp messages they send, they move to higher subscription tiers. Second, we cross-sell additional use cases (e.g. Customer Agent, Marketing Analytics, etc.) and marketing channels (e.g. text messaging and WhatsApp) to customers who started on our platform with our email offering. Finally, we offer our platform to our customers’ other brands, business units, and geographies. Going forward, our ability to increase sales to existing customers will depend on a number of factors, including our customers’ satisfaction with our solutions and the ability of our customers to attract new consumers. We expect these three forms of revenue expansion to continue in the future. Growth with Larger Customers When we first launched our platform, we intentionally focused on serving entrepreneurs and SMBs based on the need we saw for a simple and easy-to-use, yet powerful solution for customers in this category, and the large market opportunity within this group of customers. As our customers have scaled and become mid-market companies and larger enterprises themselves, their success with Klaviyo has attracted more interest from similarly sized businesses that are looking to drive better engagement with their consumers. Our ability to continue to move up-market is dependent on a number of factors, including our ability to further adapt our platform to the needs of larger accounts, the effectiveness of our sales team, and pricing. 29 International Expansion We believe we have significant expansion opportunities in international markets. We started by serving customers in North America and, in 2019, we expanded our operations to London, England to penetrate the European region. In 2022, we opened our office in Sydney, Australia to capitalize on the opportunities in Asia Pacific. In 2024, we expanded our presence in the European region by adding operations in Dublin, Ireland. In 2025, we continued our expansion into the Asia Pacific and European regions by adding operations in Singapore and France, respectively. In 2026, we further expanded our North American presence by adding operations in Canada. We have already experienced significant growth with international sales outside of the Americas accounting for 36.8% of our revenue for the six months ended June 30, 2026. We also continue to expand our product offerings to better serve the international market. As of the date of this Quarterly Report on Form 10-Q, we offer text messaging capabilities in more than 20 countries, and we offer our platform in English, French, German, Portuguese, Korean, Spanish, Italian, Dutch, Swedish, Spanish (Mexico), and Polish. We believe that the introduction of additional languages to our platform increases our efficacy and ease of use in other regions. We also currently only bill in U.S. Dollars, and we believe that adding additional currencies to our platform will help us further our international expansion efforts. Investment in Innovation and Product Development Since our inception, we have been focused on product innovation, seeking to create what we believe is the best software solution for our customers. We originally launched our platform with email messaging as our first marketing channel. Since then, we have successfully added other marketing channels, such as text messaging, mobile push, and WhatsApp messaging, and additional use cases, such as Customer Agent, Composer, Marketing Analytics, and Advanced KDP. We have also introduced AI features that provide customers with AI-powered tools to streamline data segmentation, create and orchestrate campaigns, and drive better engagement, including our Composer and Customer Agent offerings as well as our MCP Server capability. Our continued success depends on our ability to sustain product and technology innovation to continue delivering value to our customers. As technology and consumer preferences change, we believe that our ability to drive continuous product innovation will be critical to attract and retain customers and drive revenue growth. Increased Adoption of Our Text Messaging and WhatsApp Messaging Offerings We have seen notable success in the expansion of our platform with our text messaging and WhatsApp messaging offerings. Once customers adopt our text messaging and WhatsApp messaging offerings, they typically grow their usage over time as they gain comfort and confidence in the new channel. Our text messaging and WhatsApp messaging offerings have higher associated communication sending costs, and ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/broadridge-financial-solutions-br-q1-121502821.html?.tsrc=rss",
+   "published": "2026-11-03T07:15:02-05:00",
+   "text": "Broadridge Financial Solutions (BR) Q1 Earnings and Revenues Beat Estimates - Broadridge Financial (BR) delivered earnings and revenue surprises of +13.87% and +1.50%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/why-klaviyo-kvyo-could-standout-135302847.html?.tsrc=rss",
+   "published": "2026-10-28T09:53:02-04:00",
+   "text": "Why Klaviyo (KVYO) Could Be the Standout AI Beneficiary in Software? - In Q3 2026, Meditation Capital reports a favorable period for its software holdings, driven by Salesforce’s acquisition of Braze, a positive rerating for Atlassian, and strong gains across Dynatrace and Workiva. The letter can be downloaded here. These successes validate the firm’s core investment p",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/klaviyo-email-marketing-ai-agent-163000905.html?.tsrc=rss",
+   "published": "2026-10-27T12:30:00-04:00",
+   "text": "Klaviyo Email Marketing: AI Agent That Drafts Whole Flows From a Prompt Reaches General Availability - Optimum7 released an updated guide to Klaviyo email marketing flows covering which flows a store needs, the order to build them and the checks before a drafted flow goes live.Composer, the AI marketing agent Klaviyo made generally available on Oct. 13, can draft a whole flow and the messages inside ",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/smarter-act-could-lift-unity-011118882.html?.tsrc=rss",
+   "published": "2026-10-23T21:11:18-04:00",
+   "text": "SMARTER Act Could Lift Unity Stock And Other High Skill Tech Employers - Washington’s new SMARTER Act proposal has pushed high skill immigration from background noise to potential market catalyst, especially for U.S. technology and healthcare employers that live or die by access to talent. Investors watching this debate see more than politics. They see a possible reshapi",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/crm-stock-in-focus-jefferies-says-salesforce-s-braze-deal-could-spark-more-software-takeovers/cZxtMp4RBHM?.tsrc=rss",
+   "published": "2026-10-21T03:21:15-04:00",
+   "text": "CRM Stock In Focus: Jefferies Says Salesforce’s Braze Deal Could Spark More Software Takeovers - Jefferies says Salesforce’s $5.66 billion deal could spur software industry consolidation, boost marketing abilities and fuel Klaviyo takeover speculation.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/stock-market-today/2026/10/20/stock-market-today-oct-20-salesforce-agrees-to-acquire-braze-for-usd5-66-billion-brze-stock-soars-52/?.tsrc=rss",
+   "published": "2026-10-20T17:09:42-04:00",
+   "text": "Stock Market Today, Oct. 20: Salesforce Agrees to Acquire Braze for $5.66 Billion: BRZE Stock Soars 52% - On Oct. 20, 2026, the customer engagement software maker's board unanimously backed the $47.50-per-share offer, confirming shareholder support.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/braze-soars-51-as-salesforce-agrees-to-5-66-billion-buyout-to-deliver-that-wow-moment?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-20T15:48:58-04:00",
+   "text": "Braze Soars 51% as Salesforce Agrees to $5.66 Billion Buyout to Deliver That “Wow Moment” - Key TakeawaysBraze shares jumped 51% after Salesforce agreed to buy the company for $47. 50 a share in cash, about $5.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/salesforce-needs-integrate-braze-while-184657254.html?.tsrc=rss",
+   "published": "2026-10-20T14:46:57-04:00",
+   "text": "Salesforce Needs to Integrate Braze While Preserving Its Innovation, Truist Says - Salesforce's (CRM) acquisition of Braze (BRZE) will be successful if it is able to effectively integ",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/20/why-klaviyo-stock-rallied-today/?.tsrc=rss",
+   "published": "2026-10-20T13:38:47-04:00",
+   "text": "Why Klaviyo Stock Rallied Today - The CRM and marketing specialist caught a tailwind from the acquisition of a competitor.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/8c23ce17-b6c8-3e2a-a9b5-42c132f0639d/salesforce-acquires-braze-for.html?.tsrc=rss",
+   "published": "2026-10-20T12:34:00-04:00",
+   "text": "Salesforce Acquires Braze for $5.7 Billion in Latest AI Bet. The Price ‘Seems a Bit Odd.’ - Salesforce will pay a 58% premium for marketing software company Braze.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.proactiveinvestors.com/companies/news/1100413/braze-rallies-as-salesforce-acquisition-puts-marketing-software-in-focus-1100413.html?.tsrc=rss",
+   "published": "2026-10-20T11:17:00-04:00",
+   "text": "Braze rallies as Salesforce acquisition puts marketing software in focus - Salesforce Inc (NYSE:CRM, XETRA:FOO)’s $5.66 billion deal for Braze Inc (NASDAQ:BRZE) sent the customer-engagement software company’s shares soaring, with rival Klaviyo also climbing as investors reassessed the sector’s value. Salesforce will pay $47.50 in cash for each Braze Class A share,...",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/klaviyo-shares-jump-8-salesforce-134516165.html?.tsrc=rss",
+   "published": "2026-10-20T09:45:16-04:00",
+   "text": "Klaviyo shares jump 8% as Salesforce moves to acquire rival Braze for $5.7 billion - Investing.com — Klaviyo (NYSE: KVYO) shares rose 8% on Tuesday following news that Salesforce (NYSE: CRM) reached a definitive agreement to acquire rival customer engagement platform Braze (NASDAQ: BRZE) in a transaction valued at approximately $5.66 billion. Under the terms of the deal, Braze Class",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/klaviyo-kvyo-stock-looks-discounted-071104731.html?.tsrc=rss",
+   "published": "2026-10-20T03:11:04-04:00",
+   "text": "Klaviyo (KVYO) Stock Looks Discounted Following Its 40% Three Year Fall - Klaviyo has seen its share price move around over recent months, yet the longer track record still shows a material drawdown. This puts the focus squarely on what investors are paying for its sales today. With the stock recently closing at US$17.52, the question is whether that price lines up with t",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/goldman-upgrades-zeta-buy-cuts-134635046.html?.tsrc=rss",
+   "published": "2026-10-16T09:46:35-04:00",
+   "text": "Goldman upgrades Zeta to Buy, cuts Klaviyo on visibility gap - Investing.com -- Goldman Sachs upgraded Zeta Global to Buy from Neutral and downgraded Klaviyo to Neutral from Buy on Friday, telling investors in a note that it sees greater visibility into upside to 2027 estimates for Zeta.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/16/here-are-fridays-top-wall-street-analyst-research-calls-barrick-mining-brinker-international-constellation-energy-equifax-fox-corporation-jpmorgan-chase-klaviyo-toll-brothers-workday/?.tsrc=rss",
+   "published": "2026-10-16T07:55:29-04:00",
+   "text": "Here Are Friday’s Top Wall Street Analyst Research Calls: Barrick Mining, Brinker International, Constellation Energy, Equifax, Fox Corporation, JPMorgan Chase, Klaviyo, Toll Brothers, Workday, and More - Bonds staged one of their biggest single-day rallies in years while crypto suffered a brutal $1 billion liquidation wave, and Wall Street analysts responded with a fresh round of double upgrades and surprise downgrades across banking, broadcasting, and beyond.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/klaviyo-announce-third-quarter-2026-203000701.html?.tsrc=rss",
+   "published": "2026-10-14T16:30:00-04:00",
+   "text": "Klaviyo to Announce Third Quarter 2026 Results on November 4, 2026 - BOSTON, October 14, 2026--Klaviyo, Inc. (NYSE: KVYO), the autonomous B2C CRM, today announced that its third quarter 2026 results will be released following the close of the U.S. financial markets on Wednesday, November 4, 2026.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/intuits-mailchimp-faces-headwinds-stage-134600080.html?.tsrc=rss",
+   "published": "2026-10-13T09:46:00-04:00",
+   "text": "Intuit's Mailchimp Faces Headwinds: Can It Stage a Turnaround? - INTU is working to revive Mailchimp's growth as revenues decline and customer churn rises, while margin expansion, SMS adoption and retention gains offer hope.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/3-ai-stocks-own-october-110802879.html?.tsrc=rss",
+   "published": "2026-10-04T07:08:02-04:00",
+   "text": "3 AI Stocks To Own In October 2026 - Backlash against power hungry data centers across the US, Europe, and Asia is colliding with an AI boom that shows little sign of slowing. That tension pushes investors to look past mega caps and toward smaller AI specialists that might help solve power, cooling, and automation bottlenecks. This art",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/small-business/articles/meta-expands-muse-small-businesses-132300470.html?.tsrc=rss",
+   "published": "2026-10-01T09:23:00-04:00",
+   "text": "META Expands Muse for Small Businesses: Will Ad Growth Accelerate? - Meta Platforms expands Muse for small businesses, linking AI to ads, sales and operations as advertising growth and AI adoption strengthen across its platforms.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/super-scaled-customer-growth-sustain-142300111.html?.tsrc=rss",
+   "published": "2026-09-24T10:23:00-04:00",
+   "text": "Can Super-Scaled Customer Growth Sustain ZETA's Momentum? - Zeta Global's super-scaled customer count reached 197 in Q2 2026, extending seven straight quarters of growth. Its long-term pace is expected to moderate.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:32:04-05:00",
+    "sha256": "e916011f642cbc27216de7aed8781d2d169caa8c83165d2a1f5a76b103168fda"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 49444
+}

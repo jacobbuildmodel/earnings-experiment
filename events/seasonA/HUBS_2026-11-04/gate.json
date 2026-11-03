@@ -1,0 +1,62 @@
+{
+ "season": "seasonA",
+ "ticker": "HUBS",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:50.720221-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/hubspot-announce-third-quarter-2026-financial-results-november-4-2026-2026-10-21",
+  "published_et": "2026-10-21T16:05-04:00",
+  "quote": "linkedin facebook x email reddit CAMBRIDGE, Mass. --(BUSINESS WIRE)-- HubSpot, Inc. , the agentic customer platform for scaling businesses, announced today that it will report its third quarter 2026 financial results after the U.S . financial markets close on Wednesday, November 4, 2026 .",
+  "title": "HubSpot to Announce Third Quarter 2026 Financial Results on November 4, 2026",
+  "retrieved_et": "2026-10-26T09:21:05.794258-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": [
+   {
+    "accepted_utc": "2026-10-06T12:15:34.000Z",
+    "accession": "0001193125-26-414965"
+   }
+  ]
+ },
+ "status": "INELIGIBLE",
+ "reason": "printed_before_entry"
+}

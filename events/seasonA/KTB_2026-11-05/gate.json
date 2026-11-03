@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "KTB",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:52.081090-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/kontoor-brands-announces-third-quarter-2026-earnings-and-conference-call-date-2026-11",
+  "published_et": "2026-11-02T06:50-05:00",
+  "quote": "linkedin facebook x email reddit GREENSBORO, N.C. --(BUSINESS WIRE)-- Kontoor Brands, Inc. (NYSE: KTB) today announced plans to release its third quarter 2026 financial results on Thursday, November 5, 2026 , at approximately 6:50 a.m. ET .",
+  "title": "Kontoor Brands Announces Third Quarter 2026 Earnings and Conference Call Date",
+  "retrieved_et": "2026-11-02T10:46:53.158798-05:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 77.4000015258789,
+  "expiry": "2026-11-20",
+  "strike": 75.0,
+  "call": {
+   "bid": 4.9,
+   "ask": 6.5,
+   "openInterest": 189.0,
+   "lastPrice": 4.0,
+   "impliedVolatility": 0.6518589501953126,
+   "lastTradeDate": "2026-10-30T19:59:38+00:00"
+  },
+  "put": {
+   "bid": 2.1,
+   "ask": 3.9,
+   "openInterest": 1.0,
+   "lastPrice": 6.0,
+   "impliedVolatility": 0.6062051098632814,
+   "lastTradeDate": "2026-10-21T15:48:01+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.11240309855925687,
+  "rel_spread": {
+   "call": 0.28070175438596484,
+   "put": 0.6
+  },
+  "oi_atm": 190.0,
+  "oi_sum": 190.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

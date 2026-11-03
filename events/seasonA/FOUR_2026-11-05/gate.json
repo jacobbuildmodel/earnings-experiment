@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "FOUR",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:42.166593-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.shift4.com/news-events/press-releases/detail/309/shift4-announces-date-of-third-quarter-earnings-results-and-upcoming-investor-conference-participation",
+  "published_et": "2026-10-22T16:30-04:00",
+  "quote": "Q3 2026 Earnings Conference Call Shift4 will release its third quarter 2026 financial results pre-market open on Thursday, November 5, 2026.",
+  "title": "Shift4 Announces Date of Third Quarter Earnings Results and Upcoming Investor Conference Participation",
+  "retrieved_et": "2026-10-23T21:33:39.472320-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.shift4.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 41.904998779296875,
+  "expiry": "2026-11-20",
+  "strike": 40.0,
+  "call": {
+   "bid": 4.5,
+   "ask": 4.8,
+   "openInterest": 813.0,
+   "lastPrice": 4.6,
+   "impliedVolatility": 0.9995117236328125,
+   "lastTradeDate": "2026-11-03T17:37:56+00:00"
+  },
+  "put": {
+   "bid": 2.6,
+   "ask": 2.85,
+   "openInterest": 640.0,
+   "lastPrice": 2.74,
+   "impliedVolatility": 0.9936524072265626,
+   "lastTradeDate": "2026-11-03T19:05:36+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.17599332334651235,
+  "rel_spread": {
+   "call": 0.06451612903225802,
+   "put": 0.09174311926605504
+  },
+  "oi_atm": 1453.0,
+  "oi_sum": 1453.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

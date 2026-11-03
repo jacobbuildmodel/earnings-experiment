@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "MELI",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:58.598983-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/mercadolibre-inc-report-third-quarter-2026-financial-results-2026-10-29",
+  "published_et": "2026-10-29T10:26-04:00",
+  "quote": "The Company will host its earnings results video conference, as well as a conference call and audio webcast, on November 4 , at 5:00 p.m. Eastern Time .",
+  "title": "MercadoLibre, Inc. to Report Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-30T22:00:31.534054-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 1673.25,
+  "expiry": "2026-11-06",
+  "strike": 1670.0,
+  "call": {
+   "bid": 58.9,
+   "ask": 69.9,
+   "openInterest": 8.0,
+   "lastPrice": 66.6,
+   "impliedVolatility": 0.8993235165405272,
+   "lastTradeDate": "2026-11-03T18:13:41+00:00"
+  },
+  "put": {
+   "bid": 52.4,
+   "ask": 62.8,
+   "openInterest": 10.0,
+   "lastPrice": 60.18,
+   "impliedVolatility": 0.8484207052612304,
+   "lastTradeDate": "2026-11-03T17:42:28+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.0729119976094427,
+  "rel_spread": {
+   "call": 0.17080745341614917,
+   "put": 0.18055555555555555
+  },
+  "oi_atm": 18.0,
+  "oi_sum": 601.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
