@@ -1,0 +1,147 @@
+{
+ "track": "T2",
+ "event": "CHYM_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.57,
+  "thesis": "Chime enters with a strong beat-and-raise record, positive estimate revisions and a 4-for-4 record of positive opening reactions, but a 13% implied move and a stretched run-up leave a high bar, so I lean only slightly above base rate.",
+  "reasons": [
+   "Last 4 prints all rose at the next open (+13.2%, +2.0%, +9.7%, +1.9%) with large EPS beats, so management guides conservatively and tends to beat",
+   "EPS estimates revised up (90d revision 0.67; current 0.098 vs 0.059 ninety days ago), the Q2 raise supports momentum, and Evercore named it a top pick",
+   "Peers SoFi (+13%) and Gen Digital reacted strongly to beat-and-raise prints, so the sector backdrop is supportive",
+   "Implied move of 13% and IV about 1.7x realized vol price in a lot, and another firm calls the stock fully priced after a 63% 12m gain, which caps the edge",
+   "Entry is the open of the report day, so the only drift before the print is the pre-earnings run-up and the trade is effectively a pure earnings gap"
+  ],
+  "deciding_variable": "Q3 revenue and active member growth versus the guide ($680-690M) and whether Q4 and full-year guidance is raised again, plus any CFO or Stride acquisition commentary.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation t0_hit 0.542 and AMC session 0.538; fintech/consumer cluster ~0.55"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-03, so the 2026-11-04 earnings report hasn't happened yet, and I have no data on how CHYM (Chime) stock reacted to it.",
+  "moved_from_prior": "Up about 3 points from 0.54: the strong beat history and upward revisions add roughly 4 points, and the high implied move and fully-priced sentiment give back about 1 point.",
+  "theses": [
+   {
+    "expected": "Beat-and-raise with accelerating Active Members and Chime Prime traction; stock gaps up",
+    "mechanism": "Consistent conservative guidance, upward revisions and a pattern of 4 positive reactions lead to another beat and a guidance raise",
+    "wrong_if": "Revenue growth decelerates below 25% or the full-year raise is smaller than the beat"
+   },
+   {
+    "expected": "In-line results but stock sells off on a high bar",
+    "mechanism": "After a 63% 12m run and a 13% implied move, only a clear acceleration satisfies buyers, so a modest beat sells off",
+    "wrong_if": "Guidance is raised well above consensus and the open is higher"
+   },
+   {
+    "expected": "Muted or mixed reaction driven by Stride acquisition costs and credit metrics",
+    "mechanism": "The $590M cash deal, interim CFO and MyPay and Instant Loans loss rates may shift the focus to capital use and credit quality instead of growth",
+    "wrong_if": "Loss rates stay low and management frames the deal as accretive, boosting the stock"
+   }
+  ],
+  "key_observations": [
+   "Q3 revenue versus the $680-690M guide and Active Member net adds",
+   "Full-year revenue and adjusted EBITDA guidance change",
+   "MyPay and Instant Loans loss rates and transaction margin",
+   "Stride Bank deal financing and accretion commentary, and CFO search update"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CHYM_2026-11-04/gate.json",
+    "published": "2026-11-03T14:31:11.916993-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CHYM_2026-11-04/factors.json",
+    "published": "2026-11-03T14:31:11.916993-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1795586/000179558626000046/ex991q226.htm",
+    "published": "2026-08-05T16:10:43-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1795586/000119312526385383/d948605d8k.htm",
+    "published": "2026-09-08T17:28:16-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/evercore-isi-names-fintech-stock-131636229.html?.tsrc=rss",
+    "published": "2026-11-03T08:16:36-05:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/chime-financial-chym-stock-looks-161342039.html?.tsrc=rss",
+    "published": "2026-10-31T12:13:42-04:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/sofi-stock-rallies-13-earnings-150100204.html?.tsrc=rss",
+    "published": "2026-10-28T11:01:00-04:00",
+    "dossier_item": "I15"
+   }
+  ],
+  "decided_et": "2026-11-03T16:26:32-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 22242,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1079,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 22242,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1079,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 22242,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 22242
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.0998253
+ }
+}
