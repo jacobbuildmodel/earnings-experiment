@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "SHAK",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:48.302592-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.shakeshack.com/press-releases/press-release-details/2026/Shake-Shack-to-Announce-Third-Quarter-2026-Financial-Results-on-November-5-2026/default.aspx",
+  "published_et": "2026-10-15T16:05-04:00",
+  "quote": "ber 5, 2026 Skip to main content Site Search Search query Search query Press Release Details View All News Shake Shack to Announce Third Quarter 2026 Financial Results on November 5, 2026 October 15, 2026 NEW YORK--(BUSINESS WIRE)-- Shake Shack Inc. (“Shake Shack” or the “Company”) (NYSE: SHAK), will release third quarter 2026 financial results on November 5, 2026, before the market opens.",
+  "title": "Shake Shack to Announce Third Quarter 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-19T09:32:19.867913-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.shakeshack.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 70.94999694824219,
+  "expiry": "2026-11-06",
+  "strike": 70.0,
+  "call": {
+   "bid": 4.4,
+   "ask": 5.2,
+   "openInterest": 44.0,
+   "lastPrice": 4.65,
+   "impliedVolatility": 1.4653347045898437,
+   "lastTradeDate": "2026-11-03T18:27:48+00:00"
+  },
+  "put": {
+   "bid": 3.2,
+   "ask": 4.2,
+   "openInterest": 12.0,
+   "lastPrice": 3.2,
+   "impliedVolatility": 1.4140654296875002,
+   "lastTradeDate": "2026-11-02T16:17:32+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.11980268309526108,
+  "rel_spread": {
+   "call": 0.1666666666666666,
+   "put": 0.27027027027027023
+  },
+  "oi_atm": 56.0,
+  "oi_sum": 322.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
