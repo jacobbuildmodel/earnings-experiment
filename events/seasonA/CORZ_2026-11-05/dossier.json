@@ -1,0 +1,659 @@
+{
+ "event": "CORZ_2026-11-05",
+ "season": "seasonA",
+ "built_et": "2026-11-03T14:31:35-05:00",
+ "cutoff_et": "2026-11-03T14:31:19.414090-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/CORZ_2026-11-05/gate.json",
+   "published": "2026-11-03T14:31:19.414090-05:00",
+   "data": {
+    "ticker": "CORZ",
+    "report_date": "2026-11-05",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-12"
+     },
+     "reaction_day": "2026-11-05"
+    },
+    "snapshot_session": "2026-11-03",
+    "captured_et": "2026-11-03T14:31:19.414090-05:00",
+    "options": {
+     "spot": 13.835000038146973,
+     "expiry": "2026-11-06",
+     "strike": 14.0,
+     "call": {
+      "bid": 0.71,
+      "ask": 0.78,
+      "openInterest": 6872.0,
+      "lastPrice": 0.6,
+      "impliedVolatility": 1.421877890625,
+      "lastTradeDate": "2026-11-03T17:29:11+00:00"
+     },
+     "put": {
+      "bid": 0.94,
+      "ask": 1.01,
+      "openInterest": 463.0,
+      "lastPrice": 0.95,
+      "impliedVolatility": 1.5332054589843749,
+      "lastTradeDate": "2026-11-03T19:08:04+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.12432237045590733,
+     "rel_spread": {
+      "call": 0.09395973154362425,
+      "put": 0.07179487179487186
+     },
+     "oi_atm": 7335.0,
+     "oi_sum": 7335.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/CORZ_2026-11-05/factors.json",
+   "published": "2026-11-03T14:31:19.414090-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.3577066179150502,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.16656628191462408,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.030143729044987966,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.10635744994277574,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.7052237911866429,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.1806928488863595,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.5255486930540982,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-07-28",
+       "session": "BMO",
+       "raw_return_A": -0.06268171803206946,
+       "eps_est": -0.06,
+       "eps_rep": -0.04,
+       "surprise_pct": 27.17,
+       "reaction_volume_ratio": 2.526996193204571
+      },
+      {
+       "date": "2026-05-06",
+       "session": "AMC",
+       "raw_return_A": -0.04570581386126671,
+       "eps_est": -0.05,
+       "eps_rep": -0.11,
+       "surprise_pct": -119.6,
+       "reaction_volume_ratio": 2.568505700957993
+      },
+      {
+       "date": "2026-03-02",
+       "session": "AMC",
+       "raw_return_A": -0.03439949941593923,
+       "eps_est": -0.12,
+       "eps_rep": -0.18,
+       "surprise_pct": -53.36,
+       "reaction_volume_ratio": 2.3107850106451435
+      },
+      {
+       "date": "2025-10-24",
+       "session": "AMC",
+       "raw_return_A": 0.044456342812764005,
+       "eps_est": 0.07,
+       "eps_rep": -0.2,
+       "surprise_pct": -382.86,
+       "reaction_volume_ratio": 0.7572030295693959
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.040872483594276,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 27.17,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 13,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.00411,
+      "7daysAgo": -0.00411,
+      "30daysAgo": -0.00411,
+      "60daysAgo": -0.04,
+      "90daysAgo": 0.0,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": null,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.00411,
+      "low": -0.05,
+      "high": 0.06356,
+      "yearAgoEps": -0.198,
+      "numberOfAnalysts": 4,
+      "growth": 0.9792,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 27.630170316301705,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.2696,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 85.00246,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 10.096829,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 1.088,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 4445745152,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.31818,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.12432237045590733,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.11132756835937485,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.15234298828124992,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 4.940519105984138,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.42610958366064416,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 16479.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.0951387251393006,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.13172078582631339,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 619,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unprofitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 1.0883273134252431,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -0.4778777230345735,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.3579387494948272,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.030494245295992317,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.10595760073084781,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.7049553330812521,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.0377622622927687,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -1.1485555866253514,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 4444138274.51367,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.09907680022583996,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 13,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.1067347117723219,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000013/q22026corescientificinc-ea.htm",
+   "published": "2026-07-28T07:06:14-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q22026corescientificinc-ea.htm EX-99.1 Document Core Scientific Announces Second Quarter 2026 Results MIAMI, Florida, July 28, 2026 - Core Scientific, Inc . ( NASDAQ: CORZ ), a leader in digital infrastructure for high-density colocation services (“HDC”), today announced financial results for the second quarter ended June 30, 2026. Recent Business Developments • Announced a partnership with AMD with the potential to support up to 2.5 GW of leasable capacity, anchored by 15-year agreements for approximately 530 MW across five sites and more than $14 billion of potential base contracted revenue. • Increased total leased customer power capacity to approximately 1.1 GW, representing more than $24 billion of potential contracted revenue. • Billing for 437 MW of capacity as of mid-July, representing approximately $635 million in average annualized colocation GAAP revenue. Financial Summary and Operating Metrics (in millions, except billing megawatts) Metric Q2 2026 Q1 2026 Q2 2025 Billing MW 395 225 N/A Colocation Revenue $ 136.7 $ 77.5 $ 10.6 Total Revenue $ 164.2 $ 115.2 $ 78.6 Gross Profit $ 70.0 $ 30.1 $ 5.0 Net loss (1) $ (1,155.3) $ (347.2) $ (936.8) Adjusted EBITDA $ 41.1 $ 8.9 $ 28.5 Capital Expenditures (“CapEx”) (2) $ 797.5 $ 389.2 $ 121.3 Liquidity (3) $ 1,819.4 $ 1,042.5 $ 754.1 (1) Net loss for the quarter ended June 30, 2026 was primarily driven by the change in fair value of warrants, reflecting appreciation in the Company’s stock price during the period. (2) CapEx includes purchases of property, plant and equipment and acquisitions of land and development rights. (3) Liquidity is comprised of cash and cash equivalents and digital assets. Conference Call and Earnings Presentation In conjunction with this release, Core Scientific, Inc. will host a conference call today, Tuesday, July 28, 2026, at 8:30 am Eastern Time that will be webcast live. Adam Sullivan, Chief Executive Officer, Jim Nygaard, Chief Financial Officer, Matt Brown, Chief Operating Officer, and Jon Charbonneau, Senior Vice President, Investor Relations will host the call. Investors with Internet access may listen to the live audio webcast via the Investor Relations page of the Core Scientific, Inc. website, http://investors.corescientific.com or by using the following link https://event.choruscall.com/mediaframe/webcast.html?webcastid=IPzPbUYf A supplementary investor presentation for the second quarter 2026 may be accessed at https://investors.corescientific.com/news-events/presentations -more- Core Scientific, Inc. First Quarter 2026 Earnings Release - 2 Audio Replay An audio replay of the event will be archived on the Investor Relations section of the Company's website at http://investors.corescientific.com. About Core Scientific Core Scientific is a leader in designing, building and operating large scale, purpose-built data centers for high-density colocation (“HDC”) services. Core Scientific operates facilities for high-density colocation services serving artificial intelligence-related (“AI”) workloads and is a premier provider of digital infrastructure and services to its third-party customers. The majority of the Company's revenue is derived from high-density colocation services, with the remainder derived from earning digital assets for the Company's own account and from digital asset mining hosting services. The Company is in the process of repurposing its remaining mining facilities to support its high-density colocation services business as circumstances allow . Core Scientific’s facilities are located in Alabama (1), Georgia (2), Kentucky (1), North Carolina (1), North Dakota (1), Oklahoma (1) and Texas (4). To learn more, visit www.corescientific.com. Special Note Regarding Forward-Looking Statements This press release includes forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, (the “Securities Act”) and Section 21E of the Securities Exchange Act of 1934, as amended, (the “Exchange Act”). Forward-looking statements may include words such as “aim,” “estimate,” “plan,” “project,” “forecast,” “goal,” “intend,” “will,” “expect,” “anticipate,” “believe,” “seek,” “target” or other similar expressions that predict or indicate future events or trends or that are not statements of historical matters. These forward-looking statements include, but are not limited to, statements regarding projections, estimates and forecasts of revenue, contracted revenue and other financial and performance metrics, projections of market opportunity and expectations, the Company’s ability to scale and grow its business, successfully finance and complete construction of its data centers, source sufficient electrical energy, necessary long lead infrastructure components, supplies and equipment, the expected growth of the Company, the Company’s ability to source and retain talent, and our ability to source and acquire suitable additional land and power. These statements are provided for illustrative purposes only and are based on various assumptions, whether or not i dentified in this press release, and on the current expectations of the Company’s management. These forward-looking statements are not intended to serve, and must not be relied on by any investor, as a guarantee, an assurance, a prediction or a definitive statement of fact or probability. Actual events and circumstances are difficult or impossible to predict and will differ from assumptions. Many actual events and circumstances are beyond the control of the Company. These forward-looking statements are not guarantees of future performance and are subject to risks, uncertainties and assumptions, known or unknown, that could cause actual results to vary materially from those indicated or anticipated. These risks, assumptions and uncertainties include those described in Part I. Item 1A. — “Risk Factors” of the Company’s Annual Report on Form 10-K for the year ended December 31, 2025 and in the Company’s Quarterly Reports on Form 10-Q. If one or more of these risks or uncertainties materializes, or if underlying assumptions prove incorrect, actual results may vary materially from those indicated or anticipated by such forward-looking statements. There may be additional risks that the Company could not presently know or that the Company currently believes are immaterial that could also cause actual results to differ from those contained in the forward-looking statements. In addition, forward-looking statements reflect the Company’s expectations, plans or forecasts of future events and views as of the date of this press release and should not be relied upon as representing the -more- Core Scientific, Inc. First Quarter 2026 Earnings Release - 3 Company’s assessments as of any date subsequent to the date of this press release. The Company anticipates that subsequent events and developments will cause the Company’s assessments to change. However, while the Company may elect to update these forward-looking statements at some point in the future, the Company specifically disclaims any obligation to do so. Accordingly, you should not place undue reliance on these forward-looking statements, which speak only as of the date they are made. -more- Core Scientific, Inc. First Quarter 2026 Earnings Release - 4 Core Scientific, Inc. Condensed Consolidated Balance Sheets (in thousands, except par value) (Unaudited) June 30, 2026 March 31, 2026 December 31, 2025 Assets Current Assets: Cash and cash equivalents $ 1,769,735 $ 1,005,148 $ 311,378 Digital assets 49,675 37,312 222,000 Customer funding receivable and other current assets 458,489 352,128 362,159 Restricted cash, current portion 165,745 60,244 — Total Current Assets 2,443,644 1,454,832 895,537 Property, plant and equipment, net 1,774,142 1,344,924 1,293,299 Intangibles, net 228,625 10,945 1,076 Operating lease right-of-use assets 114,199 105,986 108,484 Restricted cash, net of current portion 615,911 80,593 — Other noncurrent assets 80,972 72,284 49,248 Total Assets $ 5,257,493 $ 3,069,564 $ 2,347,644 Liabilities and Stockholders’ Deficit Current Liabilities: Accounts payable $ 112,374 $ 218,857 $ 126,106 Accrued expenses 509,189 364,479 511,957 Deferred revenue 287,201 219,555 127,561 Notes payable, current portion — 993,944 — Warrant liabilities, current portion 1,811,587 844,752 — Other current liabilities 17,443 20,196 15,777 Total Current Liabilities 2,737,794 2,661,783 781,401 Long-term debt 4,297,967 1,061,651 1,060,325 Warrant liabilities, net of current portion 163,683 116,495 936,107 Deferred revenue, net of current portion 367,242 434,672 428,290 Other noncurrent liabilities 110,163 100,649 104,261 Total Liabilities 7,676,849 4,375,250 3,310,384 Commitments and contingencies Stockholders’ Deficit: Preferred stock; $0.00001 par value; 2,000,000 shares authorized; none issued and outstanding at June 30, 2026 and December 31, 2025 — — — Common stock; $0.00001 par value; 10,000,000 shares authorized at June 30, 2026 and December 31, 2025; 319,587 and 314,231 shares issued and outstanding at June 30, 2026 and December 31, 2025, respectively 3 3 3 Additional paid-in capital 3,229,842 3,188,202 3,183,960 Accumulated deficit (5,649,201) (4,493,891) (4,146,703) Total Stockholders’ Deficit (2,419,356) (1,305,686) (962,740) Total Liabilities and Stockholders’ Deficit $ 5,257,493 $ 3,069,564 $ 2,347,644 Certain prior year amounts have been reclassified for consistency with the current year presentation. -more- Core Scientific, Inc. First Quarter 2026 Earnings Release - 5 Core Scientific, Inc. Condensed Consolidated Statements of Operations (in thousands, except per share amounts) (Unaudited) Three Months Ended Six Months Ended June 30, 2026 March 31, 2026 June 30, 2025 June 30, 2026 June 30, 2025 Revenue: Colocation revenue $ 136,669 $ 77,539 $ 10,560 $ 214,208 $ 19,133 Digital asset self-mining revenue 21,535 30,105 62,424 51,640 129,603 Digital asset hosted mining revenue from customers 5,997 7,600 5,644 13,597 9,417 Total revenue 164,201 115,244 78,628 279,445 158,153 Cost of revenue: Cost of colocation services 56,686 33,618 9,430 90,304 17,536 Cost of digital asset self-mining 33,700 47,189 59,589 80,889 120,759 Cost of digital asset hosted mining services 3,771 4,331 4,584 8,102 6,620 Total cost of revenue 94,157 85,138 73,603 179,295 144,915 Gross profit 70,044 30,106 5,025 100,150 13,238 Change in fair value of digital assets 9,368 6,558 (29,797) 15,926 (19,109) Loss on disposal of property, plant and equipment 1,273 13,638 4,166 14,911 4,172 Loss on remeasurement of assets held for sale 19,495 — — 19,495 — Impairment of property, plant and equipment — 266,488 — 266,488 — Loss on contract termination 41,948 — — 41,948 — Colocation organizational and site startup costs 27,039 8,665 11,655 35,704 23,322 Selling, general and administrative 49,389 45,179 45,285 94,568 78,175 Operating loss (78,468) (310,422) (26,284) (388,890) (73,322) Non-operating expenses (income), net: Loss on debt extinguishment 5,435 — 1,377 5,435 1,377 Interest expense (income), net 23,833 4,857 (1,185) 28,690 (3,372) Change in fair value of warrants and contingent value rights 1,045,515 30,799 909,958 1,076,314 288,494 Other non-operating expense, net 152 510 207 662 364 Total non-operating expense, net 1,074,935 36,166 910,357 1,111,101 286,863 Loss before income taxes (1,153,403) (346,588) (936,641) (1,499,991) (360,185) Income tax expense 1,907 600 158 2,507 363 Net loss $ (1,155,310) $ (347,188) $ (936,799) $ (1,502,498) $ (360,548) Net loss per share, basic and diluted $ (3.32) $ (1.06) $ (0.04) $ (4.39) $ (0.23) Weighted average shares outstanding, basic and diluted 325,329 322,911 317,985 324,128 316,593 Supplemental information - stock based compensation: Cost of revenue $ 1,283 $ 853 $ 941 $ 2,136 $ 2,323 Colocation organizational and site startup costs 4,302 4,224 4,638 8,526 7,590 Selling, general and administrative 12,655 12,684 18,592 25,339 30,442 Stock-based compensation expense, net of amounts capitalized 18,240 17,761 24,171 36,001 40,355 Capitalized stock-based compensation 519 626 176 1,145 396 Total stock-based compensation cost $ 18,759 $ 18,387 $ 24,347 $ 37,146 $ 40,751 Certain prior year amounts have been reclassified for consistency with the current year presentation. -more- Core Scientific, Inc. First Quarter 2026 Earnings Release - 6 Core Scientific, Inc. Condensed Consolidated Statements of Cash Flows (Unaudited, in thousands) Six Months Ended June 30, 2026 2025 Cash flows from Operating Activities: Net loss $ (1,502,498) $ (360,548) Adjustments to reconcile net loss to net cash provided by (used in) operating activities: Depreciation and amortization 32,146 38,487 Loss on disposal of property, plant and equipment 14,911 4,172 Loss on remeasurement of assets held for sale 19,495 — Impairment of property, plant and equipment 266,488 — Change in operating lease right-of-use assets 6,400 5,404 Stock-based compensation 36,001 40,355 Digital asset self-mining revenue (51,640) (129,769) Proceeds from sales of digital assets generated by self-mining revenues (1) 208,249 — Loss (gain) on fair value of digital assets 15,926 (19,109) Change in fair value of warrants and contingent value rights 1,076,314 288,494 Loss on debt extinguishment 5,435 1,377 Changes in operating assets and liabilities: Customer funding receivable and other current assets (81,842) (207,550) Accounts payable (35,594) 133,531 Accrued expenses 155,200 70,826 Deferred revenue from colocation services 98,409 131,293 Other operating assets and liabilities, net (32,451) (8,004) Net cash provided by (used in) operating activities 230,949 (11,041) Cash flows from Investing Activities: Purchases of property, plant and equipment (954,244) (205,259) Proceeds from sales of property and equipment 3,927 1,671 Acquisitions of land and development rights (232,500) — Other investing activities (74) (5,036) Net cash used in investing activities (1,182,891) (20",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000014/core-20260630.htm",
+   "published": "2026-07-28T07:08:46-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations Unless the context otherwise requires, all references in this section to “we,” “us,” “our,” the “Company,” “Core Scientific,” or “Core” refer to Core Scientific, Inc. and its subsidiaries. The following Management's Discussion and Analysis of Financial Condition and Results of Operations (“MD&A”) is intended to promote understanding of the results of operations and financial condition of the Company. This MD&A is provided as a supplement to, and should be read in conjunction with, our unaudited condensed consolidated financial statements and the accompanying notes to the unaudited condensed consolidated financial statements (Part I, Item 1 of this Form 10-Q) as well as the financial and other information included in our Annual Report on Form 10-K for the year ended December 31, 2025, filed with the Securities and Exchange Commission on March 2, 2026. This section generally discusses the results of operations for the three and six months ended June 30, 2026, compared to June 30, 2025. As discussed in the section titled “Cautionary Note Regarding Forward-Looking Statements,” the following discussion and analysis contains forward-looking statements that involve risks and uncertainties, as well as assumptions that, if they never materialize or prove incorrect, could cause our results to differ materially from those expressed or implied by such forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, those identified below, and those discussed in the section titled “Risk Factors” under Part I, Item 1A in our Annual Report on Form 10-K for the year ended December 31, 2025, filed with the Securities and Exchange Commission on March 2, 2026. Overview Core Scientific, Inc. is a leader in designing, building and operating large-scale purpose-built data centers for HDC services. We develop and operate facilities serving AI and HPC related workloads and are a provider of digital infrastructure to our third-party customers. The majority of our revenue is derived from HDC service. Our strategic objective is to maximize the value of our large-scale data center infrastructure portfolio by converting power capacity across our facilities into long-term contracted HDC revenue streams. We believe this strategy enhances the predictability of future cash flows, reduces the relative contribution of bitcoin market volatility to our operating results, and increases the long-term value of our infrastructure platform relative to its historical use in digital asset mining operations. In 2024, we announced our first HDC contract with CoreWeave, a provider of HPC services, which was subsequently expanded to approximately 590 MW of leased customer power capacity across five sites. As of June 30, 2026, approximately 395 MW has commenced billing. During the six months ended June 30, 2026, certain CoreWeave license agreements were assigned to a special purpose vehicle financing structure while CoreWeave remained a primary obligor under the agreements. See “Strategic Transition to High-Density Colocation Services” below for a more detailed discussion of this arrangement and the associated risks. While our current colocation revenue remains concentrated with a single customer, we believe our available unleased power capacity provides a meaningful opportunity to diversify our customer base over time. As of June 30, 2026, we controlled approximately 2.1 GW of gross utility power capacity, or approximately 1.3 GW of total leasable customer power capacity across 11 data centers in seven U.S. states including Alabama ( 1 ), Georgia ( 2) , Kentucky (1), North Carolina (1), North Dakota (1), Oklahoma (1), and Texas (4). We continue to develop, convert and expand most of our facilities to support AI and HPC workloads while pursuing additional land and power opportunities to expand our data center footprint. We expect colocation revenue to increase as additional contracted capacity is commissioned and delivered to our existing customer and as we add new customer relationships over time. We continue to operate a self-mining fleet at two facilities and provide hosted mining services to one remaining customer. Our hosted mining operations are expected to conclude by December 31, 2026, while we continue to wind down our self-mining operations. 2026 Highlights: • On July 28, 2026, we announced a strategic commercial relationship with AMD with the potential to support up to 2.5 GW of leasable capacity, anchored by a 15-year agreement for approximately 530 MW across five sites. • On May 6, 2026, our indirect wholly-owned subsidiary, Core Scientific Finance completed a $3.3 billion offering of 7.75% Senior Secured Notes due 2031 (the \"Senior Secured Notes”). The net proceeds were used to fund a debt service reserve account and to repay in full and terminate our Term Loan Facility. The Senior Secured Notes and related guarantees are secured by first-priority liens, among other things, on substantially all assets of Core Scientific Finance and its subsidiary guarantors, which own or operate our specified data center development projects. For additional details, see Note 7 — Debt to our condensed consolidated financial statements. 29 • Billable customer power capacity of 395 MW as of June 30, 2026, against 590 MW of leased customer power capacity, with the remaining 195 MW in various stages of construction and commissioning. • On May 5, 2026, we closed on the acquisition of land and related electrical power in Hunt County, Texas for approximately $233 million in cash, which is expected to support approximately 430 MW of gross power capacity, with an approved ERCOT interconnection ramp schedule. For additional details, see Note 3 — Asset Acquisition to our condensed consolidated financial statements. • In May 2026, we announced our entry into an agreement and plan of merger to acquire Polaris DS LLC, for approximately $421 million in cash, subject to certain adjustments. The acquisition will add approximately 40 additional acres adjacent to our existing data center operating in Muskogee, Oklahoma, and will provide up to 440 MW of gross utility power capacity. The transaction is expected to close in the third quarter of 2026. For additional details, see Note 10 — Commitments and Contingencies to our condensed consolidated financial statements. These operational milestones, together with the strategic financing and portfolio developments outlined above, drove the financial results for the three and six months ended June 30, 2026, which are summarized below. Financial Results: • Total revenue for the three and six months ended June 30, 2026 was $164.2 million and $279.4 million, respectively, compared to $78.6 million and $158.2 million for the three and six months ended June 30, 2025. ◦ Colocation revenue was $136.7 million and $214.2 million for the three and six months ended June 30, 2026, respectively, compared to $10.6 million and $19.1 million for the three and six months ended June 30, 2025, respectively. The increase in colocation revenue was driven by incremental billable customer power capacity delivered to our customer. ◦ Digital asset self-mining revenue was $21.5 million and $51.6 million for the three and six months ended June 30, 2026, respectively, compared to $62.4 million and $129.6 million for the three and six months ended June 30, 2025, respectively. The decrease reflected a reduction in bitcoin mined of 53% and 49% for the three and six months ended June 30, 2026, respectively, compared to the three and six months ended June 30, 2025, as well as a decline in the average bitcoin price of 27% and 23% for the same periods, respectively. ◦ The increase in colocation revenue and corresponding decline in self-mining revenue reflects the continued execution of our strategy to reallocate power capacity from digital asset mining to long-term contracted colocation services. • Net loss for the three and six months ended June 30, 2026 was $1.2 billion and $1.5 billion, respectively, compared to $936.8 million and $360.5 million for the three and six months ended June 30, 2025, respectively. Net loss for the three and six months ended June 30, 2026 was primarily driven by the change in fair value of warrants. Net loss for the six months ended June 30, 2026 was also impacted by a $266.5 million impairment charge on mining-related property, plant and equipment recognized during the first quarter of 2026. • Adjusted EBITDA was $41.1 million and $50.0 million for the three and six months ended June 30, 2026, respectively, compared to $28.5 million and $26.7 million for the three and six months ended June 30, 2025, respectively. Adjusted EBITDA is a non-GAAP financial measure. See “Key Business Operating Metrics and Non-GAAP Financial Measures” below for our definition and reconciliation to net loss. • Capital expenditures were $954.2 million for the six months ended June 30, 2026, of which $180.9 million was funded by CoreWeave pursuant to its existing colocation service agreement with the Company. • Cash and cash equivalents and digital assets totaled $1.8 billion as of June 30, 2026. Recent Developments On July 27, 2026, the Company entered into Lease Agreements (collectively, the “AMD Leases”) with Advanced Micro Devices, Inc. (“AMD”) for an aggregate of 377 MW of critical IT capacity at the Company’s Pecos, TX; Muskogee, OK; and Hunt County, TX sites; and Lease Agreements (the “Neocloud Leases,” and collectively with the AMD Leases, the “Leases”) with a Neocloud (“Neocloud”), for 152 MW of critical IT capacity at the Company’s Auburn, AL and Dalton Phase 3, GA sites. Each of the Leases is for a fifteen year term with three five-year options. The AMD Leases provide AMD a reservation of capacity right to lease from the Company at certain times and under certain circumstances an additional 1,925 MWs of critical IT capacity through December 28, 2028. 30 In connection with the Neocloud Leases, each of the Company, Neocloud and AMD has entered into a Credit Support Agreement with respect to each Neocloud Lease: (i) establishing protections for AMD equipment held within the applicable Neocloud Lease premises, (ii) providing AMD the right, but not the obligation, to cure certain defaults of Neocloud under the applicable Neocloud Lease, and (iii) establishing AMD’s rights and obligations in the event of certain material defaults by a Neocloud with respect to the applicable Neocloud Lease. Each Credit Support Agreement will terminate automatically upon earliest to occur of the expiration of the applicable Neocloud Lease, specified circumstances relating to the insolvency or default of Neocloud, and 15 years from the effective date of the applicable Neocloud Lease. In addition, AMD may terminate the applicable Credit Support Agreement upon the Company’s breach of a material representation, subject to a specified cure period. In addition, the Company issued to AMD a warrant (the “Warrant”) to purchase up to 30 million shares (the “Warrant Shares”) of the Company’s common stock, par value $0.00001 per share (“Common Stock”) at an exercise price of $23.47 per share, which represents the volume-weighted average price of the Company’s Common Stock on the Nasdaq Global Select Market for the five trading days prior to execution of the Leases. The Warrant is exercisable immediately, subject to satisfaction of the vesting conditions therein, and will terminate on July 27, 2031. The Warrant Shares will vest at a rate of 12,222 shares per each one megawatt (“MW”) of critical IT load contemplated by the Leases. As a result of the Leases executed on July 27, 2026, an aggregate of approximately 6.5 million Warrant Shares vested and became exercisable. The Warrant was issued, and the Warrant Shares are expected to be issued, in reliance on the exemption from registration pursuant to Section ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000023/core-20260910.htm",
+   "published": "2026-09-10T07:18:20-04:00",
+   "form": "8-K",
+   "items": "7.01",
+   "text": "Item 7.01 Regulation FD Disclosure. Core Scientific, Inc. (the “Company”) is providing the following update with respect to electrical power status of each of its existing and proposed data centers located in Texas. Denton, Texas: The site’s existing 297 Megawatts of electrical power has been conditionally approved by the Electric Reliability Council of Texas (“ERCOT”) as “Base Load, Pathway (a)” (“longstanding existing load”) based on its status as load energized prior to March 25, 2022 and is not subject to Batch Zero allocation process. The Site’s additional 74 Megawatts of electrical power to be energized was previously incorporated in and validated by ERCOT’s 2025 Regional Transmission Plan (RTP) study cases and is not subject to the Batch Zero process. Pecos, Texas: The existing 300 Megawatts of electrical power has been conditionally approved in Batch Zero as “Base Load, Pathway (b)” (“existing load energized after March 25, 2022 and before July 10, 2026”). An additional 300 Megawatts has been conditionally approved in Batch Zero as “Studied Load.” All required documentation has been submitted and required posted collateral has been paid. We will not receive the final allocation and load ramp until the conclusion of the Batch Zero process. Hunt, Texas: The site's planned 431 Megawatts of electrical power has been conditionally approved in Batch Zero as “Base Load, Advancing Large Load, Pathway (e)” (“demonstrated maturity and advancement through the interconnection process”). The Company and its utility partner have completed the required interconnection studies, received ERCOT approval of its 431 Megawatt stability study, posted the required financial collateral, has ordered long-lead equipment, commenced construction, and otherwise satisfied the applicable Pathway (e) documentation requirements. The information in this Item 7.01 of this Current Report on Form 8-K is furnished and shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or subject to the liabilities of that section or Sections 11 and 12(a)(2) of the Securities Act of 1933, as amended. The information shall not be deemed incorporated by reference into any other filing with the Securities and Exchange Commission made by the Company, whether made before or after today’s date, regardless of any general incorporation language in such filing, except as shall be expressly set forth by specific references in such filing"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000021/core-20260825.htm",
+   "published": "2026-08-27T07:07:08-04:00",
+   "form": "8-K",
+   "items": "1.01,2.03,7.01,9.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. On August 25, 2026 (the “Closing Date”), Core Scientific, Inc. (the “Company”) entered into a Credit Agreement (the “Credit Agreement”), among the Company, as borrower, each issuing bank and lender party thereto from time to time (the “Lenders”), JPMorgan Chase Bank, N.A. as administrative agent and collateral agent. The Credit Agreement provides for (a) a senior secured revolving credit facility in an aggregate principal amount of up to $100.0 million outstanding at any time (the “Revolving Credit Facility”), and (b) a letter of credit facility in an aggregate principal amount of up to $500.0 million outstanding at any time (the “L/C Facility” and together with the Revolving Credit Facility, the “Facilities” and each, a “Facility”). Loans under the Revolving Credit Facility may be borrowed, repaid and reborrowed and letters of credit may be issued under the L/C Facility from time to time until the third anniversary of the Closing Date or, at the Company’s election in its sole discretion, the fourth anniversary of the Closing Date (the “Maturity Date”). The proceeds of borrowings under the Revolving Credit Facility may be used for general corporate purposes and working capital needs. Letters of Credit may be issued under the L/C Facility to provide credit support for specific project obligations under utility agreements and for other general corporate purposes of the Company and its subsidiaries. As of the Closing Date, no amounts were outstanding under either Facility. Borrowings under the Revolving Credit Facility bear interest at a rate per annum equal to, at the Company’s option, (i) Adjusted Term SOFR (subject to a 0.00% floor) plus an applicable margin of 1.750%, or (ii) an alternate base rate plus an applicable margin of 0.75%. Letters of credit issued under the L/C Facility are subject to (a) a per annum fee equal to 1.750% of the aggregate face amount of outstanding letters of credit and (b) a quarterly fronting fee equal to 0.125% of the aggregate face amount of outstanding letters of credit. The Company will also pay a quarterly commitment fee of 0.250% per annum on the actual daily unused portion of the Facilities. The Company’s obligations under the Credit Agreement are guaranteed by certain direct or indirect, wholly owned material domestic subsidiaries of the Company (collectively, the “Guarantors”) and are secured by a first-priority lien on substantially all assets of the Company and th",
+   "exhibit_99_1": "EX-99.1 3 revolverprvf.htm EX-99.1 revolverprvf Core Scientific Secures $600 Million of Senior Secured Credit Facilities MIAMI, Florida, August 27, 2026 – Core Scientific, Inc. (Nasdaq: CORZ) (“Core Scientific” or the “Company”), a leader in digital infrastructure for high-density colocation (“HDC”), today announced that it has entered into $600 million of committed senior secured credit facilities, consisting of a $100 million revolving credit facility and $500 million letter of credit facility. The proceeds of borrowings under the revolving credit facility may be used for general corporate purposes and working capital needs. The letter of credit facility may be issued to provide credit support for specific project obligations under utility agreements and for other general corporate purposes of the Company and its subsidiaries. “We appreciate the group of financial institutions that worked with us to develop a financing solution tailored to the needs of our business,” said Jim Nygaard, Chief Financial Officer of Core Scientific. “The facilities are expected to release approximately $300 million of restricted cash, meaningfully improving our capital efficiency and financial flexibility as we pursue opportunities in a dynamic and rapidly evolving industry.” Borrowings under the revolving credit facility have a three-year maturity and will bear interest at either Adjusted Term Secured Overnight Financing Rate (“SOFR”) plus 1.75% or an alternate base rate plus 0.75%, at the Company’s election. Letters of credit issued under the letter of credit facility will carry an annual fee of 1.75% on outstanding amounts, as well as an annual 0.125% fronting fee. The Company’s obligations under the facilities are guaranteed by certain wholly owned domestic subsidiaries and secured by a first-priority lien on substantially all assets of the Company and the guarantors. Morgan Stanley Senior Funding, Inc. acted as Lead Left Arranger and Joint Bookrunner, and JPMorgan Chase Bank, N.A. serves as Administrative Agent, Collateral Agent, Joint Lead Arranger and Joint Bookrunner. Goldman Sachs and TD Securities (USA) LLC as Joint Lead Arrangers and Joint Bookrunners. At closing, commitments are expected to be allocated equally among Morgan Stanley, JPMorgan Chase Bank, N.A., Goldman Sachs and TD Securities. -more- About Core Scientific, Inc. Core Scientific is a leader in designing, building and operating large scale, purpose-built data centers for high-density colocation (“HDC”)"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000018/core-20260813.htm",
+   "published": "2026-08-14T07:02:41-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01,9.01",
+   "text": "Item 7.01 Regulation FD Disclosure. On August 14, 2026, the Company issued a press release announcing the closing of the Acquisition. A copy of the press release is furnished as Exhibit 99.1 to this Current Report on Form 8-K. The information in this Item 7.01 of this Current Report on Form 8-K (including Exhibit 99.1) is furnished and shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or subject to the liabilities of that section or Sections 11 and 12(a)(2) of the Securities Act of 1933, as amended. The information shall not be deemed incorporated by reference into any other filing with the Securities and Exchange Commission made by the Company, whether made before or after today’s date, regardless of any general incorporation language in such filing, except as shall be expressly set forth by specific references in such filing. Item 8.01 Other Events. On August 13, 2026, Core Scientific, Inc., a Delaware corporation (the “Company”), completed the previously announced acquisition of Polaris DS LLC, a Nevada limited liability company (the “Target”), contemplated by the Agreement and Plan of Merger, dated as of May 5, 2026 (the “Merger Agreement”), by and among the Company, Polar Merger Sub, LLC, a Nevada limited liability company and wholly owned subsidiary of the Company (“Merger Sub”), the Target, Top Access Enterprises Limited, a company organized under the laws of Hong Kong and sole owner of the Target (“Seller”), and, solely for the purposes of Article XI (and Article I and Article XII to the extent relating thereto) of the Merger Agreement, Altair LLC, an Oklahoma limited liability company, pursuant to which Merger Sub merged with and into the Target (the “Acquisition”), with the Target surviving the merger as a wholly owned subsidiary of the Company. The aggregate purchase price paid by the Company for the Acquisition was approximately $444.3 million in cash, subject to certain customary post-closing purchase price adjustments set forth in the Merger Agreement. The Purchase Price is subject to increase by an additional $40 million in cash in the event that an additional 40 megawatts of firm electric capacity becomes available to the Target prior to December 31, 2026 in accordance with the terms of the Merger Agreement. A portion of the Purchase Price was withheld from the closing payment and deposited in escrow to secure the indemnification obligations of Seller and Parent S",
+   "exhibit_99_1": "EX-99.1 2 polarisclosingvf20260814.htm EX-99.1 polarisclosingvf20260814 Core Scientific Completes Acquisition of Polaris DS, Advancing Planned Muskogee Expansion to 1.5 GW of Gross Power MIAMI, Florida, August 14, 2026 – Core Scientific, Inc. (Nasdaq: CORZ) (“Core Scientific” or the “Company”), a leader in digital infrastructure for high-density colocation (“HDC”), today announced that it has completed its previously announced acquisition of Polaris DS LLC (“Polaris”). Through the acquisition, Core Scientific has secured the approximately 440 currently in service megawatts (“MW”) of gross, grid-connected power capacity being used by Polaris under existing electric service agreements with Oklahoma Gas & Electric. The aggregate purchase price for the acquisition was approximately $444 million in cash. “The Polaris acquisition is another example of how we are strategically expanding our power portfolio to support our long-term growth,” said Adam Sullivan, Chief Executive Officer of Core Scientific. “Through site acquisitions this year, we have added more than 600 MW of leasable power to our portfolio, while continuing to further scale our campuses.” Core Scientific reiterates its plan to scale its Muskogee campus to approximately 1.5 GW of gross power, or approximately 1.0 GW of leasable power, through a combination of grid-connected and behind-the-meter solutions. The Company is on track to deliver the next approximately 82 MW at Muskogee to its customer beginning in the second half of 2027. About Core Scientific, Inc. Core Scientific is a leader in designing, building and operating large scale, purpose-built data centers for high-density colocation (“HDC”) services. Core Scientific operates facilities for high-density colocation services serving artificial intelligence-related (“AI”) workloads and is a premier provider of digital infrastructure and services to its third- party customers. The majority of the Company's revenue is derived from high-density colocation services, with the remainder derived from earning digital assets for the Company's own account and from digital asset mining hosting services. The Company is in the process of repurposing its remaining mining facilities to support its high-density colocation services business as circumstances allow. Core Scientific’s facilities are located in Alabama (1), Georgia (2), Kentucky (1), North Carolina (1), North Dakota (1), Oklahoma (1) and Texas (4). To learn more, visit www.corescientific.com. -more-"
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/02/cipher-digital-falls-5-on-revenue-miss-and-keefe-bruyette-target-cut-terawulf-and-iren-drop-4/?.tsrc=rss",
+   "published": "2026-11-02T09:55:17-05:00",
+   "text": "Cipher Digital Falls 5% on Revenue Miss and Keefe Bruyette Target Cut; TeraWulf and IREN Drop 4% - Keefe Bruyette just slashed Cipher Digital's price target by more than half, and a revenue miss is adding fuel to a stock that has already lost more than half its value in a single month. Whether the AI landlord model survives this stress test depends on a tight window of deadlines that could break ",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/cifr-stock-gets-biggest-price-target-cut-amid-ai-hosting-valuation-concerns/cNG9DBuR9PT?.tsrc=rss",
+   "published": "2026-11-02T07:11:59-05:00",
+   "text": "CIFR Stock Gets Biggest Price-Target Cut In Sector-Wide Reset Amid Keefe Bruyette’s AI Hosting Valuation Concerns - Keefe Bruyette lowered price targets on seven bitcoin miners and AI hosting companies on Monday.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/core-scientific-corz-vs-cifr-211620311.html?.tsrc=rss",
+   "published": "2026-10-31T17:16:20-04:00",
+   "text": "Core Scientific (CORZ) vs. CIFR and WULF: Can Its Shift From Bitcoin Mining to AI Colocation Unlock Long-Term Value? - Is CORZ a good stock to buy? We came across a bullish thesis on Core Scientific, Inc. on RA Capital’s Substack by The Analyst’s Journal. Since the thesis was published on August 10th, CORZ shares have pulled back as investors grew more cautious about the debt and funding needed to build AI data cent",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mara/articles/621500/how-big-could-mara-stocks-next-fall-be/2026-10-30?.tsrc=rss",
+   "published": "2026-10-30T10:49:12-04:00",
+   "text": "How Big Could MARA Stock's Next Fall Be? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/cifr/articles/621243/can-cipher-digital-stock-fall-50/2026-10-29?.tsrc=rss",
+   "published": "2026-10-29T19:19:42-04:00",
+   "text": "Can Cipher Digital Stock Fall 50%? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mara/articles/621242/what-are-mara-stock-investors-overlooking/2026-10-29?.tsrc=rss",
+   "published": "2026-10-29T10:33:45-04:00",
+   "text": "What Are MARA Stock Investors Overlooking? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mara/articles/620984/what-is-going-on-with-mara-stock-after-its-steep-fall/2026-10-28?.tsrc=rss",
+   "published": "2026-10-28T20:14:30-04:00",
+   "text": "What Is Going On With MARA Stock After Its Steep Fall? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/apld/articles/621033/how-did-applied-digital-stock-leave-its-industry-behind/2026-10-28?.tsrc=rss",
+   "published": "2026-10-28T05:26:08-04:00",
+   "text": "How Did Applied Digital Stock Leave Its Industry Behind? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/27/applied-digital-jumps-10-as-data-center-stocks-rebound-riot-climbs-7-core-scientific-gains-4/?.tsrc=rss",
+   "published": "2026-10-27T14:02:16-04:00",
+   "text": "Applied Digital Jumps 10% as Data Center Stocks Rebound; Riot Climbs 7%, Core Scientific Gains 4% - Applied Digital's top executives started buying shares after a steep selloff, and now the stock is surging back alongside Riot and Core Scientific. Whether that insider conviction holds up against a heavy debt load and a critical construction deadline is the real question.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/bitcoin-outperforms-grayscale-s-ai-compute-etf-as-ai-cloud-stocks-slide/cZUehy1RBCA?.tsrc=rss",
+   "published": "2026-10-27T13:34:30-04:00",
+   "text": "Bitcoin Outperforms Grayscale’s AI Compute ETF As AI Cloud Stocks Slide - Grayscale has recently added CoreWeave, Nebius and DigitalOcean to its AI Compute ETF, which together make up about 26% of the fund.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/anthropic-leases-core-scientific-terawulf/?.tsrc=rss",
+   "published": "2026-10-27T09:43:52-04:00",
+   "text": "KBW sees Anthropic’s AMD and overseas lease plans favoring Core Scientific and TeraWulf, backstops still required - KBW's Stephen Glagola reviewed Anthropic's S-1 and found leasing upside for Core Scientific and TeraWulf. He does not expect an investment-grade rating soon, so hardware providers will keep guaranteeing the…",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/article/coreweave-ai-landlord-stocks-sink-to-lowest-levels-in-more-than-a-year-as-the-price-of-insuring-coreweaves-debt-doubles-140909005.html?.tsrc=rss",
+   "published": "2026-10-26T10:09:09-04:00",
+   "text": "CoreWeave, AI landlord stocks sink to lowest levels in more than a year as the price of insuring CoreWeave's debt doubles - Wall Street is still paying up for the companies that buy AI computing power while dumping the neoclouds that borrowed billions to rent it out.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/620188/how-long-can-cipher-keep-burning-cash/2026-10-23?.tsrc=rss",
+   "published": "2026-10-23T12:08:31-04:00",
+   "text": "How Long Can Cipher Keep Burning Cash? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.cryptoprowl.com/releases/ai-pivot-fails-to-slow-bitcoin-mining-competition-as-hashrate-surges-7396?.tsrc=rss",
+   "published": "2026-10-23T09:33:00-04:00",
+   "text": "AI Pivot Fails to Slow Bitcoin Mining Competition as Hashrate Surges - Bitcoin’s network hashrate has risen above 1 zettahash per second for the first time since March, a seven-mon...",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/short-sellers-gain-6bn-amid-135501347.html?.tsrc=rss",
+   "published": "2026-10-22T09:55:01-04:00",
+   "text": "Short sellers gain $6bn amid AI data center stock selloff - Investing.com -- Investors who bet against US neocloud and data center companies have gained $6 billion in paper profits this month as concerns about debt-fueled AI expansion triggered a selloff, according to data analytics firm ORTEX.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619931/what-changed-for-applied-digital-stock-and-what-did-not/2026-10-22?.tsrc=rss",
+   "published": "2026-10-22T07:31:28-04:00",
+   "text": "What Changed For Applied Digital Stock, And What Did Not? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619688/should-you-wait-before-buying-cipher-digital-stock/2026-10-21?.tsrc=rss",
+   "published": "2026-10-21T22:51:06-04:00",
+   "text": "Should You Wait Before Buying Cipher Digital Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/619689/is-now-the-right-time-for-mara-stock/2026-10-21?.tsrc=rss",
+   "published": "2026-10-21T14:25:36-04:00",
+   "text": "Is Now The Right Time For MARA Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/21/data-center-stocks-rise-as-iren-plans-300mw-ai-campus-in-spain-iren-and-cipher-digital-gain-4-core-scientific-climbs-3/?.tsrc=rss",
+   "published": "2026-10-21T09:42:21-04:00",
+   "text": "Data Center Stocks Rise as IREN Plans 300MW AI Campus in Spain: IREN and Cipher Digital Gain 4%, Core Scientific Climbs 3% - IREN just announced a massive AI campus in Spain with no customers, no financing, and a stock still deep in the red. Here is why former Bitcoin miners are surging anyway.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:31:35-05:00",
+    "sha256": "4249fe42930fc8c3b8d5ce11a74e961c5093819b79180022c27c299295006b3f"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 61284
+}
