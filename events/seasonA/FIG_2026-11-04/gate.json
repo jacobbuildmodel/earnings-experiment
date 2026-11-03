@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "FIG",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:40.915865-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.figma.com/news-events/news/news-details/2026/Figma-to-Announce-Third-Quarter-2026-Financial-Results-on-November-4-2026/default.aspx",
+  "published_et": "2026-10-14T16:05-04:00",
+  "quote": "nc. View All News Figma to Announce Third Quarter 2026 Financial Results on November 4, 2026 October 14, 2026 SAN FRANCISCO--(BUSINESS WIRE)-- Figma, Inc. (NYSE: FIG), a leading design and product development platform, today announced that it will release its third quarter 2026 financial results after the U.S. financial markets close on Wednesday, November 4, 2026.",
+  "title": "Figma to Announce Third Quarter 2026 Financial Results on November 4, 2026",
+  "retrieved_et": "2026-10-26T09:20:43.011836-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://investor.figma.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 21.260000228881836,
+  "expiry": "2026-11-06",
+  "strike": 21.5,
+  "call": {
+   "bid": 1.31,
+   "ask": 1.55,
+   "openInterest": 359.0,
+   "lastPrice": 1.36,
+   "impliedVolatility": 1.734376328125,
+   "lastTradeDate": "2026-11-03T19:06:08+00:00"
+  },
+  "put": {
+   "bid": 1.36,
+   "ask": 1.51,
+   "openInterest": 711.0,
+   "lastPrice": 1.41,
+   "impliedVolatility": 1.470705771484375,
+   "lastTradeDate": "2026-11-03T18:45:14+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.1347601114372464,
+  "rel_spread": {
+   "call": 0.1678321678321678,
+   "put": 0.10452961672473861
+  },
+  "oi_atm": 1070.0,
+  "oi_sum": 3291.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
