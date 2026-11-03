@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "POWI",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:16.137423-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.powerint.com/news/news-details/2026/Power-Integrations-to-Announce-Third-Quarter-Financial-Results/default.aspx",
+  "published_et": "2026-10-15T16:30-04:00",
+  "quote": ", Inc. - Power Integrations to Announce Third-Quarter Financial Results View All News Power Integrations to Announce Third-Quarter Financial Results October 15, 2026 Download (opens in new window) SAN JOSE, Calif.--(BUSINESS WIRE)-- Power Integrations (Nasdaq: POWI ) will release its third-quarter financial results after market hours on Wednesday, November 4 th , 2026, and will host a conference call that day beginning at 1:30 p.m. Pacific time.",
+  "title": "Power Integrations to Announce Third-Quarter Financial Results",
+  "retrieved_et": "2026-10-19T21:46:31.169605-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.powerint.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 47.435001373291016,
+  "expiry": "2026-11-20",
+  "strike": 45.0,
+  "call": {
+   "bid": 3.8,
+   "ask": 5.7,
+   "openInterest": 20.0,
+   "lastPrice": 2.5,
+   "impliedVolatility": 0.8305681005859374,
+   "lastTradeDate": "2026-10-30T19:06:27+00:00"
+  },
+  "put": {
+   "bid": 1.55,
+   "ask": 3.2,
+   "openInterest": 42.0,
+   "lastPrice": 2.62,
+   "impliedVolatility": 0.8457046679687499,
+   "lastTradeDate": "2026-11-03T15:07:46+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.1502055400806173,
+  "rel_spread": {
+   "call": 0.4000000000000001,
+   "put": 0.6947368421052632
+  },
+  "oi_atm": 62.0,
+  "oi_sum": 62.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
