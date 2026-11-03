@@ -1,0 +1,606 @@
+{
+ "event": "SNAP_2026-11-04",
+ "season": "seasonA",
+ "built_et": "2026-11-03T14:33:12-05:00",
+ "cutoff_et": "2026-11-03T14:32:57.316772-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/SNAP_2026-11-04/gate.json",
+   "published": "2026-11-03T14:32:57.316772-05:00",
+   "data": {
+    "ticker": "SNAP",
+    "report_date": "2026-11-04",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-12"
+     },
+     "reaction_day": "2026-11-05"
+    },
+    "snapshot_session": "2026-11-03",
+    "captured_et": "2026-11-03T14:32:57.316772-05:00",
+    "options": {
+     "spot": 5.578199863433838,
+     "expiry": "2026-11-06",
+     "strike": 5.5,
+     "call": {
+      "bid": 0.42,
+      "ask": 0.44,
+      "openInterest": 6722.0,
+      "lastPrice": 0.44,
+      "impliedVolatility": 1.6875015625,
+      "lastTradeDate": "2026-11-03T19:08:02+00:00"
+     },
+     "put": {
+      "bid": 0.33,
+      "ask": 0.35,
+      "openInterest": 4223.0,
+      "lastPrice": 0.33,
+      "impliedVolatility": 1.6328143359374998,
+      "lastTradeDate": "2026-11-03T19:09:40+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 1,
+     "implied_move": 0.13803736310122136,
+     "rel_spread": {
+      "call": 0.046511627906976785,
+      "put": 0.0588235294117646
+     },
+     "oi_atm": 10945.0,
+     "oi_sum": 10945.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/SNAP_2026-11-04/factors.json",
+   "published": "2026-11-03T14:32:57.316772-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.2848461888424265,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.005668497205657874,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.08253290568568716,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.06313991077286585,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.5448503648648542,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.8917176005906177,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.38633665898831204,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-03",
+       "session": "AMC",
+       "raw_return_A": 0.11506269660179713,
+       "eps_est": -0.12,
+       "eps_rep": -0.1,
+       "surprise_pct": 18.28,
+       "reaction_volume_ratio": 2.7930220801043597
+      },
+      {
+       "date": "2026-05-06",
+       "session": "AMC",
+       "raw_return_A": -0.08548383052837716,
+       "eps_est": -0.07,
+       "eps_rep": -0.05,
+       "surprise_pct": 25.37,
+       "reaction_volume_ratio": 1.633277140180584
+      },
+      {
+       "date": "2026-02-04",
+       "session": "AMC",
+       "raw_return_A": -0.04590159628667356,
+       "eps_est": 0.15,
+       "eps_rep": 0.19,
+       "surprise_pct": 22.79,
+       "reaction_volume_ratio": 3.5692797307478474
+      },
+      {
+       "date": "2025-11-05",
+       "session": "AMC",
+       "raw_return_A": 0.16417911220295545,
+       "eps_est": -0.12,
+       "eps_rep": -0.06,
+       "surprise_pct": 50.58,
+       "reaction_volume_ratio": 3.258010177707325
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.813397282185029,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 18.28,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.00342,
+      "7daysAgo": 0.00342,
+      "30daysAgo": 0.00364,
+      "60daysAgo": 0.00383,
+      "90daysAgo": -0.00435,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 1.7862068965517242,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.00342,
+      "low": -0.02,
+      "high": 0.04,
+      "yearAgoEps": -0.06,
+      "numberOfAnalysts": 32,
+      "growth": 1.0569999,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 17.54385964912281,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0746,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 7.164189,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 1.4858431,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.189,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 9436713984,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.66667,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.13803736310122136,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.054687226562500246,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.06249968750000012,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.20646235842771485,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.4422773710015335,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 18109,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 3.046997958110093,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.16309636381480289,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 479,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.18890425524004972,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -0.10676782199796997,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.284641026603478,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.08226970411940249,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.06313991077286585,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.5449018949073562,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.8216042525508658,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.9960552114476228,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:CommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 9629663700.920105,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.6595333126112348,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.04334779977938893,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1564408/000156440826000047/snap-20260803xexx991pressr.htm",
+   "published": "2026-08-03T16:13:07-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 snap-20260803xexx991pressr.htm EX-99.1 Document Exhibit 99.1 Snap Inc. Announces Second Quarter 2026 Financial Results Second quarter revenue increased 19% year-over-year to $1,599 million Second quarter operating cash flow was $176 million and Free Cash Flow was $121 million Second quarter net loss of $164 million and Adjusted EBITDA of $250 million SANTA MONICA, Calif. – August 3, 2026 – Snap Inc. (NYSE: SNAP) today announced financial results for the quarter ended June 30, 2026. “Q2 reflects the progress we are making to strengthen our core business and build a more durable financial foundation for Snap,” said Evan Spiegel, co-founder and CEO. “We grew revenue by 19%, expanded margins, and generated positive free cash flow while improving advertising performance and rapidly growing our direct revenue business. We remain focused on serving our 971 million monthly active users, delivering measurable value for advertisers, and investing with discipline to increase free cash flow per share over time.” Q2 2026 Financial Summary • Revenue was $1,599 million, compared to $1,345 million in the prior year, an increase of 19% year-over-year. • Net loss was $164 million, compared to $263 million in the prior year. • Adjusted EBITDA was $250 million, compared to $41 million in the prior year. • Operating cash flow was $176 million, compared to $88 million in the prior year. • Free Cash Flow was $121 million, compared to $24 million in the prior year. • Common shares outstanding was 1,682 million as of June 30, 2026, compared to 1,682 million as of June 30, 2025. Three Months Ended June 30, Percent Change Six Months Ended June 30, Percent Change 2026 2025 2026 2025 (Unaudited) (dollars in thousands, except per share amounts) Revenue $ 1,598,993 $ 1,344,930 19 % $ 3,127,784 $ 2,708,147 15 % Operating loss $ (170,721) $ (259,676) 34 % $ (245,170) $ (453,522) 46 % Net loss $ (163,960) $ (262,570) 38 % $ (252,911) $ (402,157) 37 % Adjusted EBITDA (1) $ 249,615 $ 41,270 505 % $ 482,948 $ 149,695 223 % Net cash provided by operating activities $ 176,214 $ 88,494 99 % $ 502,993 $ 240,104 109 % Free Cash Flow (2) $ 120,538 $ 23,793 407 % $ 406,545 $ 138,189 194 % Diluted net loss per share attributable to common stockholders $ (0.10) $ (0.16) 38 % $ (0.15) $ (0.24) 38 % (1) See page 8 for a reconciliation of net loss to Adjusted EBITDA. Total restructuring charges included in our consolidated statement of operations for the three and six months ended June 30, 2026 and excluded from Adjusted EBITDA were $128.5 million. (2) See page 8 for a reconciliation of net cash provided by operating activities to Free Cash Flow. 1 Q3 2026 Outlook Snap Inc. will discuss its Q3 2026 outlook during its Q2 2026 Earnings Call (details below) and in its investor letter available at investor.snap.com. Conference Call Information Snap Inc. will host a conference call to discuss the results at 2:00 p.m. Pacific / 5:00 p.m. Eastern today. The live audio webcast along with supplemental information will be accessible at investor.snap.com. A recording of the webcast will also be available following the conference call. Snap Inc. uses its websites (including snap.com and investor.snap.com) as means of disclosing material non-public information and for complying with its disclosure obligation under Regulation FD. Definitions Free Cash Flow is defined as net cash provided by (used in) operating activities, reduced by purchases of property and equipment. Common shares outstanding plus shares underlying stock-based awards includes common shares outstanding, restricted stock units, restricted stock awards, and outstanding stock options. Adjusted EBITDA is defined as net income (loss), excluding interest income; interest expense; other income (expense), net; income tax benefit (expense); depreciation and amortization; stock-based compensation expense; payroll and other tax expense related to stock-based compensation; and certain other items impacting net income (loss) from time to time. Constant Currency Revenue is defined as GAAP revenue in the current period translated using the prior period average monthly exchange rates for revenue transactions in currencies other than the U.S. dollar. We calculate the Constant Currency Revenue percentage change using current period Constant Currency Revenue and prior period GAAP revenue. A Daily Active User (DAU) is defined as a registered and logged-in Snapchat user who visits Snapchat through our applications or websites at least once during a defined 24-hour period. We calculate average DAUs for a particular quarter by adding the number of DAUs on each day of that quarter and dividing that sum by the number of days in that quarter. Average Revenue Per User (ARPU) is defined as quarterly revenue divided by the average DAUs. A Monthly Active User (MAU) is defined as a registered and logged-in Snapchat user who visits Snapchat through our applications or websites at least once during the 30-day period ending on the calendar month-end. We calculate average Monthly Active Users for a particular quarter by calculating the average of the MAUs as of each calendar month-end in that quarter. Note: For adjustments and additional information regarding the non-GAAP financial measures and other items discussed, please see “Non-GAAP Financial Measures,” “Reconciliation of GAAP to Non-GAAP Financial Measures,” and “Supplemental Financial Information and Business Metrics.” About Snap Inc. Snap Inc. is a technology company. We believe the camera presents the greatest opportunity to improve the way people live and communicate. Snap contributes to human progress by empowering people to express themselves, live in the moment, learn about the world, and have fun together. Snap Inc. operates Snapchat, a visual messaging app that enhances your relationships with friends, family, and the world, and Specs Inc., a wholly-owned subsidiary dedicated to making computing more human, in addition to Bitmoji, Saturn, and other digital services. For more information, visit snap.com. 2 Contact Investors and Analysts: ir@snap.com Press: press@snap.com Forward-Looking Statements This press release contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, about us and our industry that involve substantial risks and uncertainties. All statements other than statements of historical facts contained in this press release, including statements regarding guidance, our future results of operations or financial condition, future stock repurchase programs or stock dividends, business strategy and plans, user growth and engagement, product initiatives, objectives of management for future operations, and advertiser and partner offerings, are forward-looking statements. In some cases, you can identify forward-looking statements because they contain words such as “anticipate,” “believe,” “contemplate,” “continue,” “could,” “estimate,” “expect,” “going to,” “intend,” “may,” “plan,” “potential,” “predict,” “project,” “should,” “target,” “will,” or “would” or the negative of these words or other similar terms or expressions. We caution you that the foregoing may not include all of the forward-looking statements made in this press release. You should not rely on forward-looking statements as predictions of future events. We have based the forward-looking statements contained in this press release primarily on our current expectations and projections about future events and trends, including our financial outlook, macroeconomic uncertainty, and geo-political events and conflicts, that we believe may continue to affect our business, financial condition, results of operations, and prospects. These forward-looking statements are subject to risks and uncertainties related to: our financial performance; our ability to attain and sustain profitability; our ability to generate and sustain positive cash flow; our ability to attract and retain users, partners, and advertisers; competition and new market entrants; managing our growth and future expenses; compliance with new laws, regulations, and executive actions; our ability to maintain, protect, and enhance our intellectual property; our ability to succeed in existing and new market segments; our ability to attract and retain qualified team members and key personnel; our ability to repay or refinance outstanding debt, or to access additional financing; future acquisitions, divestitures, or investments; and the potential adverse impact of climate change, natural disasters, health epidemics, macroeconomic conditions, and war or other armed conflict, as well as risks, uncertainties, and other factors described in “Risk Factors” and elsewhere in our most recent periodic report filed with the U.S. Securities and Exchange Commission, or SEC, which is available on the SEC’s website at www.sec.gov. Additional information will be made available in our periodic report that will be filed with the SEC for the period covered by this press release and other filings that we make from time to time with the SEC. In addition, any forward-looking statements contained in this press release are based on assumptions that we believe to be reasonable as of the date of this press release. We undertake no obligation to update any forward-looking statements to reflect events or circumstances after the date of this press release or to reflect new information or the occurrence of unanticipated events, including future developments related to geo-political events and conflicts and macroeconomic conditions, except as required by law. Non-GAAP Financial Measures To supplement our consolidated financial statements, which are prepared and presented in accordance with GAAP, we use certain non-GAAP financial measures, as described below, to understand and evaluate our core operating performance. These non-GAAP financial measures, which may be different than similarly titled measures used by other companies, are presented to enhance investors’ overall understanding of our financial performance and should not be considered a substitute for, or superior to, the financial information prepared and presented in accordance with GAAP. We use the non-GAAP financial measure of Free Cash Flow, which is defined as net cash provided by (used in) operating activities, reduced by purchases of property and equipment. We believe Free Cash Flow is an important liquidity measure of the cash that is available, after capital expenditures, for operational expenses and investment in our business and is a key financial indicator used by management. Additionally, we believe that Free Cash Flow is an important measure since we use third-party infrastructure partners to host our services and therefore we do not incur significant capital expenditures to support revenue generating activities. Free Cash Flow is useful to investors as a liquidity measure because it measures our ability to generate or use cash. Once our business needs and obligations are met, cash can be used to maintain a strong balance sheet and invest in future growth. 3 We use the non-GAAP financial measure of Adjusted EBITDA, which is defined as net income (loss), excluding interest income; interest expense; other income (expense), net; income tax benefit (expense); depreciation and amortization; stock-based compensation expense; payroll and other tax expense related to stock-based compensation; and certain other items impacting net income (loss) from time to time. We believe that Adjusted EBITDA helps identify underlying trends in our business that could otherwise be masked by the effect of the expenses that we exclude in Adjusted EBITDA. We use the non-GAAP financial measure of Constant Currency Revenue, which is defined as GAAP revenue in the current period translated using the prior period average monthly exchange rates for revenue transactions in currencies other than the U.S. dollar. We calculate the Constant Currency Revenue percentage change using current period Constant Currency Revenue and prior period GAAP revenue. We report revenue on a constant-currency basis in order to facilitate period-to-period comparisons of our results without regard to the impact of fluctuating foreign currency exchange rates, which we believe is helpful to investors. However, Constant Currency Revenue is a non-GAAP financial measure, may be calculated differently from similarly titled measures used by other companies, and is not meant to be considered as an alternative or substitute for comparable measures prepared in accordance with GAAP. We believe that these non-GAAP financial measures provide useful information about our financial performance, enhance the overall understanding of our past performance and future prospects, and allow for greater transparency with respect to key metrics used by our management for financial and operational decision-making. We are presenting these non-GAAP measures to assist investors in seeing our financial performance through the eyes of management, and because we believe that these measures provide an additional tool for investors to use in comparing our core financial performance over multiple periods with other companies in our industry. For a reconciliation of these non-GAAP financial measures to the most directly comparable GAAP financial measure, please see “Reconciliation of GAAP to Non-GAAP Financial Measures.” Snap Inc., “Snapchat,” and our other registered and common law trade names, trademarks, and service marks are the property of Snap Inc. or our subsidiaries. 4 SNAP INC. CONSOLIDATED STATEMENTS OF CASH FLOWS (in thousands, unaudited) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Cash flows from operating activities Net loss $ (163,960) $ (262,570) $ (252,911) $ (402,157) Adjustments to reconcile net loss to net cash provided by operating activities: Depr",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1564408/000156440826000052/snap-20260630.htm",
+   "published": "2026-08-03T18:46:43-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our consolidated financial statements and related notes included elsewhere in this Quarterly Report on Form 10-Q and with our audited consolidated financial statements included in our Annual Report. In addition to historical consolidated financial information, the following discussion contains forward-looking statements that reflect our plans, estimates, and beliefs that involve significant risks and uncertainties. Our actual results could differ materially from those discussed in the forward-looking statements. Factors that could cause or contribute to those differences include those discussed below and elsewhere in this Quarterly Report on Form 10-Q, particularly in “Risk Factors,” “Note Regarding Forward-Looking Statements,” and “Note Regarding User Metrics and Other Data.” Overview of Second Quarter 2026 Results Our key user metrics and financial results for the three months ended June 30, 2026 were as follows: User Metrics • Daily Active Users, or DAUs, increased 5% year-over-year to 493 million. • Average revenue per user, or ARPU, was $3.25, compared to $2.87 in the prior year. Financial Results • Revenue was $1,599.0 million, compared to $1,344.9 million in the prior year, an increase of 19% year-over-year. • Total costs and expenses were $1,769.7 million, compared to $1,604.6 million in the prior year. • Net loss was $164.0 million, compared to $262.6 million in the prior year. • Adjusted EBITDA was $249.6 million, compared to $41.3 million in the prior year. • Diluted net loss per share was $(0.10) , compared to $(0.16) in the prior year. • Cash provided by operating activities was $176.2 million, compared to $88.5 million in the prior year. • Free Cash Flow was $120.5 million , compared to $23.8 million in the prior year. • Cash, cash equivalents, and marketable securities were $2.7 billion as of June 30, 2026. Business and Macroeconomic Conditions We periodically make changes to our business and priorities. In recent years, our focus has been on three strategic priorities: growing our community and deepening their engagement with our products, accelerating and diversifying our revenue growth, and investing in the future of augmented reality, including our investments in SPECS. We believe that we can be successful in our current operating environment, with various macroeconomic factors and geo-political events and conflicts impacting our business, by rigorously prioritizing our investments and continuing to engage our community with our products while driving success for our advertising partners. In connection with these efforts, we have undertaken restructuring initiatives to further align our cost structure and investments with our strategic priorities, which may continue to affect our operations and financial results. Macroeconomic factors and geo-political events and conflicts such as labor shortages and disruptions, supply chain disruptions, inflation, changes in interest and foreign currency exchange rates, banking instability, tariffs and retaliatory countermeasures, war and other armed conflict, and other risks and uncertainties have in the past and may continue to cause logistical challenges, increased input costs, and inventory constraints for our advertisers, which in turn may cause our advertisers to halt or decrease advertising spending on our platform. Such macroeconomic factors and geo-political events and conflicts may also negatively impact, in the short-term or long-term, the global economy, advertising ecosystem, our customers and their budgets with us, user engagement, other user metrics, and our business, financial condition, and results of operations. In addition, competition for advertising dollars has increased and demand growth on our advertising platform has slowed. We expect to continue to experience increased competition, which may result in reduced advertising demand, and could adversely affect our revenue growth, pricing, business, financial condition, and results of operations. Demand has 28 Table of Contents also been disrupted by recent changes we made to our advertising platform, and, in the future, we may continue to experience adverse impacts to our revenue growth as a result of these changes. Our revenue, particularly in North America, has further been impacted by platform policy changes and restrictions that affected our targeting, measurement, and optimization capabilities, and in turn our ability to measure the effectiveness of advertisements on our services. This has resulted in, and in the future is likely to continue to result in, reduced advertising revenue, especially if we are unable to mitigate these developments. We compete with other companies in every aspect of our business. We must compete effectively for users and advertisers to grow our business and increase our revenue. These and other risks and uncertainties are further described in the section titled “Risk Factors” in Part II, Item 1A of this Quarterly Report on Form 10-Q. Trends in User Metrics We define a DAU as a registered and logged-in Snapchat user who visits Snapchat through our applications or websites at least once during a defined 24-hour period. We define ARPU as quarterly revenue divided by the average DAUs. We assess the health of our business by measuring DAUs and ARPU because we believe that these metrics are important ways for both management and investors to understand engagement and monitor the performance of our platform. We also measure ARPU because we believe that this metric helps our management and investors to assess the extent to which we are monetizing our service. However, as our business and the way users engage with our platform evolve, we periodically review the metrics we use to evaluate our performance, including metrics broken out by geography, and may refine, change, or remove these metrics in the future in connection with changes to our products, our business, or how management believes we can best monitor engagement with and performance of our platform. User Engagement We calculate average DAUs for a particular quarter by adding the number of DAUs on each day of that quarter and dividing that sum by the number of days in that quarter. DAUs are broken out by geography because markets have different characteristics . We had 493 million DAUs on average in the second quarter of 2026, an increase of 23 million, or 5%, from the second quarter of 2025. 29 Table of Contents Quarterly Average Daily Active Users (1) (in millions) Global YoY growth: 9% 9% 9% 9% 9% 8% 5% 5% 5% (1) Numbers may not foot due to rounding. North America (2) Europe (3) YoY growth: —% —% (1)% (1)% (2)% (3)% (5)% (7)% (7)% 3% 4% 4% 3% 3% 1% (1)% (2)% (2)% (2) North America includes Mexico, the Caribbean, and Central America. (3) Europe includes Russia and Turkey. 30 Table of Contents Rest of World YoY growth: 16% 16% 17% 16% 15% 15% 11% 12% 12% Monetization We recorded revenue of $1,599.0 million for the three months ended June 30, 2026, compared to revenue of $1,344.9 million for the same period in 2025, an increase of 19% year-over-year. We monetize our business primarily through advertising and to a lesser extent through other revenue. We measure our business using ARPU because it helps us understand the rate at which we are monetizing our daily user base. ARPU was $3.25 in the second quarter of 2026, compared to $2.87 in the second quarter of 2025. For purposes of calculating ARPU, we attribute revenue to regions based on our estimate of where revenue-generating activities occur, which is generally determined by the billing address of the customer. For advertising revenue, we allocate revenue based on the geographic location where advertising impressions are delivered, as this approximates revenue based on user activity. This differs from the presentation of our revenue by geography in the notes to our consolidated financial statements, where all revenue is based on the billing address of the customer. 31 Table of Contents Quarterly Average Revenue per User Global North America (1) Europe (2) (1) North America includes Mexico, the Caribbean, and Central America. (2) Europe includes Turkey. Europe also includes Russia and Belarus; however, we maintain a policy prohibiting sales to entities in these countries. 32 Table of Contents Rest of World Results of Operations Components of Results of Operations Revenue We generate the substantial majority of our revenue through the sale of our advertising products on Snapchat, which include Snap Ads and AR Ads, referred to as advertising revenue. Snap Ads may be subject to revenue sharing arrangements between us and the content partner. Additionally, we generate revenue from subscriptions, such as Snapchat+, Lens+, and Snapchat Platinum, which provide subscribers access to exclusive, experimental, and pre-release features, as well as an ad-free experience for Snapchat Platinum subscribers. We generate revenue from Memories Storage Plans, which provide subscribers with the ability to purchase cloud storage. We also generate r evenue from partnerships which allow leading companies to connect with our global community on Snapchat and through subscriptions and sales of physical products. Sales of physical products are reported net of allowances for returns. Cost of Revenue Cost of revenue includes payments for infrastructure, content and developer partner costs, and advertiser partner and other costs. Infrastructure costs primarily consist of payments to third-party infrastructure partners for hosting our products, which include expenses related to storage, computing, and bandwidth. Content and developer partner costs primarily consist of fees paid to our content creators and publisher partners who share content on our platform through revenue sharing arrangements. Under these arrangements, we pay a portion of the fees we receive from advertisers for Snap Ads that are displayed within partner content on Snapchat. Advertising partner and other costs primarily consist of payments to third-party partners for fulfillment services, transaction processing fees, and other expenses directly related to providing our services. Cost of revenue includes personnel-related costs, including salaries, benefits, and stock-based compensation expense for our employees engaged in the delivery of our services. Cost of revenue also includes facilities and other supporting overhead costs, including depreciation and amortization, and inventory costs. Research and Development Expenses Research and development expenses primarily consist of personnel-related costs, including salaries, benefits, and stock-based compensation expense for our engineers, designers, and other employees engaged in the research and development of our products. Research and development expenses also include facilities and other supporting overhead costs, including depreciation and amortization. Research and development costs are expensed as incurred. Sales and Marketing Expenses Sales and marketing expenses primarily consist of personnel-related costs, including salaries, benefits, commissions, and stock-based compensation expense for our employees engaged in sales and sales support, business development, media, marketing, corporate partnerships, and customer service functions. Sales and marketing expenses also include costs incurred for advertising, market research, tradeshows, branding, marketing, promotional expense, and public 33 Table of Contents relations, as well as costs incurred for marketing events, which are recognized when the event occurs. Sales and marketing expenses also include facilities and other supporting overhead costs, including depreciation and amortization. General and Administrative Expenses General and administrative expenses p",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1564408/000119312526385199/d129201d8k.htm",
+   "published": "2026-09-08T16:10:08-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. (b) Departure of Directors or Principal Officers; Election of Directors; Appointment of Principal Officers On September 3, 2026, Ajit Mohan, our Chief Business Officer, notified us that he will leave Snap to pursue other opportunities. Mr. Mohan’s last day at Snap is expected to be December 31, 2026. Mr. Mohan has confirmed that his decision is not related to any disagreement with us on any matter relating to our accounting, strategy, management, operations, policies, or practices (financial or otherwise). SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. SNAP INC. Date: September 8, 2026 By: /s/ Zachary Briers Zachary Briers General Counsel"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/snap-snap-stock-trades-below-191058965.html?.tsrc=rss",
+   "published": "2026-11-03T14:10:58-05:00",
+   "text": "Snap (SNAP) Stock Trades Below Fair Value As Caution Lingers - Snap Inc. has seen its share price come under pressure in recent years, and that slide raises a basic question for investors who still follow the story. Is the current US$5.45 price tag aligned with what the business is generating through its sales, or has sentiment moved further than the topline ju",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/snap-snap-could-26-undervalued-171143965.html?.tsrc=rss",
+   "published": "2026-11-03T12:11:43-05:00",
+   "text": "Snap (SNAP) Could Be 26% Undervalued Following Settlement And Q3 Earnings Focus - Snap (SNAP) is back in focus as it moves to finalize a settlement with two teenagers over alleged mental health harms from Snapchat, just as investors gear up for the upcoming Q3 earnings release. Recent trading reflects that tension between legal risk and growth hopes. Snap shares closed at US$5.45",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/investors-may-respond-snap-snap-161627862.html?.tsrc=rss",
+   "published": "2026-11-03T11:16:27-05:00",
+   "text": "How Investors May Respond To Snap (SNAP) Teen Lawsuit Settlement - Snap is finalizing a confidential settlement with two teenagers who alleged that compulsive Snapchat use harmed their mental health, while investors also await the company's Q3 earnings update on revenue, earnings and key user metrics. The settlement highlights rising legal and compliance pressures ",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/attorney-mark-lanier-calls-social-204100402.html?.tsrc=rss",
+   "published": "2026-11-02T15:41:00-05:00",
+   "text": "Attorney Mark Lanier Calls for Social Media Companies to Make Meaningful Changes in Wake of Meta, Snap Settlements - LOS ANGELES, November 02, 2026--While settlements have been reached with Meta Platforms Inc. and Snap Inc. in advance of the second bellwether trial over alleged addictive behaviors and mental health damages affecting young users of social media, lead trial attorney Mark Lanier says the companies mu",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.ibtimes.com/meta-settles-lawsuit-over-harmful-social-media-products-3809294?.tsrc=rss",
+   "published": "2026-11-02T15:00:21-05:00",
+   "text": "Meta Settles Another Lawsuit Over Being Addictive As Legal Reckoning Continues. Its Stock Edged Down. - The settlement involving an 18-year-old plaintiff comes as Meta and other social media companies face mounting legal pressure over alleged harms to children and teens.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/rblx/articles/621863/what-is-behind-the-move-in-roblox-stock/2026-11-02?.tsrc=rss",
+   "published": "2026-11-02T12:56:30-05:00",
+   "text": "What Is Behind The Move In Roblox Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/snap-snap-q3-earnings-horizon-131504420.html?.tsrc=rss",
+   "published": "2026-11-02T08:15:04-05:00",
+   "text": "Snap (SNAP) Q3 Earnings on the Horizon: Analysts' Insights on Key Performance Measures - Evaluate the expected performance of Snap (SNAP) for the quarter ended September 2026, looking beyond the conventional Wall Street top-and-bottom-line estimates and examining some of its key metrics for better insight.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/media-advertising/articles/justad-raises-usd-5-million-104000655.html?.tsrc=rss",
+   "published": "2026-11-02T05:40:00-05:00",
+   "text": "JustAd Raises USD 5 Million to Accelerate Expansion into New Markets - DUBAI, AE / ACCESS Newswire / November 2, 2026 / , the AI-powered marketing OS, today announced a USD 5 million investment from angel investor Imad Jomaa. The company will use the funding to expand quickly into new markets.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/apple-and-palantir-to-kick-off-tech-earnings-in-another-crucial-week-amd-to-settle-chip-debate-after-intel-s-warning/cNG9qNVR92s?.tsrc=rss",
+   "published": "2026-11-02T03:40:08-05:00",
+   "text": "Stocktwits Tech Watch: Apple And Palantir To Kick Off Tech Earnings In Another Crucial Week, AMD To Settle Chip Debate After Intel’s Warning - Tech stocks gain in Monday’s premarket after a sharp fall last week.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/rddt/articles/621770/should-you-buy-reddit-stock-for-its-cash/2026-11-01?.tsrc=rss",
+   "published": "2026-11-02T02:04:01-05:00",
+   "text": "Should You Buy Reddit Stock For Its Cash? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/meta/articles/621753/can-meta-stock-fall-30/2026-11-01?.tsrc=rss",
+   "published": "2026-11-02T02:03:53-05:00",
+   "text": "Can Meta Stock Fall 30%? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/what-to-expect-markets-this-week-nov-1-2026/cNGes4VR923?.tsrc=rss",
+   "published": "2026-11-01T09:06:16-05:00",
+   "text": "What To Expect In Markets This Week: AAPL, PLTR, AMD, SMCI, SHOP, Earnings, Jobs Report And More - The week will bring results from some of the market’s most closely watched technology companies, while a major labor-market report could provide an important read on the health of the U.S. economy.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/30/reddit-plunges-25-as-search-traffic-slump-and-soft-outlook-overshadow-earnings-beat-snap-falls-5-pinterest-drops-4-meta-dips/?.tsrc=rss",
+   "published": "2026-10-30T09:52:31-04:00",
+   "text": "Reddit Plunges 25% as Search Traffic Slump and Soft Outlook Overshadow Earnings Beat; Snap Falls 5%, Pinterest Drops 4%, Meta Dips - Reddit beat earnings expectations by a wide margin, yet its stock cratered in morning trading as the CEO revealed a threat that no quarterly report can easily fix. The culprit sits inside Google, and Reddit's proposed solution could cost it millions of casual visitors.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/snap-inc-snap-attracting-investor-120003275.html?.tsrc=rss",
+   "published": "2026-10-30T08:00:03-04:00",
+   "text": "Snap Inc. (SNAP) is Attracting Investor Attention: Here is What You Should Know - Zacks.com users have recently been watching Snap (SNAP) quite a bit. Thus, it is worth knowing the facts that could determine the stock's prospects.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/snap/articles/621494/how-low-can-snap-stock-go/2026-10-30?.tsrc=rss",
+   "published": "2026-10-30T05:56:28-04:00",
+   "text": "How Low Can Snap Stock Go? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/onespan-ospn-q3-earnings-revenues-220509922.html?.tsrc=rss",
+   "published": "2026-10-29T18:05:09-04:00",
+   "text": "OneSpan (OSPN) Q3 Earnings and Revenues Surpass Estimates - OneSpan (OSPN) delivered earnings and revenue surprises of +59.09% and +11.49%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:12-05:00",
+    "sha256": "d50fb68078d8e3191b5101e608559b21c8ab5ee319edcb5995e6c121070fd080"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 47325
+}
