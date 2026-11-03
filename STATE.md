@@ -1,29 +1,31 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-02 08:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 3 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-10-29 09:40 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat, at its end.*
-- **Phase:** Season A, week 4 of 6, the first EST day (SGT = ET + 13). Gates: Mon 24 · Tue 46 (peak) · Wed 34.
-  Today's 4 T2s (PLTR SHOP BETA DT) were frozen Fri.
-- ✅ **Stage 1 deck delivered** (private Artifact, 13 slides, v7): https://claude.ai/artifact/YFW42zSaPUAYZFJgHmeLbf.
-  Built from `outcomes/reports/stage1_2026-10-30.md` only (P1 PASS · SH-W INSUFFICIENT → D017 §5 "fund to Gate 1
-  and Season B"; the decision is Jacob's). Sonnet reviewed it blind for overclaiming: 15 findings, each checked
-  against its source, all applied. Corrections to carry:
-  - D006's t 3.6 is on the RAW +0.85%; net +0.65% has t 2.76, SPY-hedged net 2.25 (D009).
-  - SH-W's +0.48% upper bound becomes ≈ +0.73% with a t(7) interval (derived, not D017's statistic).
-  - Gate 2's floor (250 events) gives a real premium only t ≈ 1.4; t ≈ 2 needs ~600–850 (RESEARCH_PLAN).
-  - Health: T2 missing 2 of 26 frozen PASS = 7.7% (target < 5%), fence breaches 1 (target 0), while P1 passes.
-  - The Actions refusal is an account or organization setting, not the token.
-- ✅ **Paper options halt cleared** by Jacob 07:14 ET (`199b8c4`). ✅ **Housekeeping routine landed** 07:51 ET (`0eab8d3`).
-- **Owed:** D011 v4 = skip an F open whose natural is a debit (BHE, COLM) · a "new RED" alarm (health is RED daily,
-  so a new RED is lost) · gate1.health counting graded rows with no T2 (it reads 0 of 26; ABT and SPCX have none).
-- **Next action:** Jacob's committee session on the deck, when he is ready (Tue SGT). Gates 14:30–15:56 EST today;
-  options opens resume at today's gates.
+*Rewritten Thu 2026-10-29 09:40 ET by the Stage 1 planning chat (no outcome, P&L or C1 figure read).*
+- **Phase:** Season A, week 3 of 6. Gates: Thu 1 · Fri 18 (+ pending). Tue: 5 PASS (CMG GOOG MSFT NOW QSR), all frozen.
+- 🔴 **Stage 1 review for Jacob, Tue Nov 3 (SGT)**: is the model useful, not redundant, worth funding.
+  - Rules frozen **before any look**: `registry/D017_stage1_review_v1.md` (data cut: exit-A ≤ Fri Oct 30).
+    It fixes the 6 pillars, the words each result may use, the firewall, and what the evidence supports.
+    It also registers the global Holm/BH view (idea A). Plan, deck outline and committee questions:
+    `ops/stage1_plan_2026-11.md`.
+  - Never shown at Stage 1: C1 (blind to Dec 7) and H-T2C's b (Gate 1 only, D005 v3).
+- 🔴 **AI weekly 85% at Thu 09:13 ET** (5-hour 43%), with 3 d 16 h to the reset. That is ahead of Wed's estimate
+  (85% by Fri 17:20). Fri's 18 gates may lose T2 to the limit; Mon 10:20 UTC is the fallback; lost = missing.
+  Jacob's stop rule holds: this chat planned only, then stopped.
+- **Next action (Mon Nov 2, after 06:00 UTC = 14:00 SGT), in order:**
+  1. the DST inventory (the first EST session; T2 deadline 09:15 EST = 22:15 SGT);
+  2. write `pipeline/stage1.py` (D017 §2–4), test it on synthetic data, **commit before the first run**;
+  3. run it once and commit `outcomes/reports/stage1_2026-10-30.md`;
+  4. build the deck (Artifact slides) from that output only; have a second model review it for overclaiming;
+     deliver by Tue Nov 3 12:00 SGT. If the DST work breaks something, the deck moves to Wed Nov 4: tell Jacob
+     by Mon 20:00 SGT.
+  - Then the build day and the health marker's window-job extension (weekdays read AMBER until then).
 - 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): paper margin binds; owed: views split `capacity` out.
-- **D003 v5 = A4 chosen** (Jacob, Thu 09:28 ET): the v5 file, its code and an independent review are owed before the
-  Season B screen. **Waiting on Jacob:** the Stage 1 funding call · Actions AI access · the sleeve's size and loss limit.
-- **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 13 from Mon Nov 2.
+- **D003 v5 = A4 chosen** (Jacob, Thu 09:28 ET, before any look): `registry/D003_v5_choice_v1.md`. The v5 file,
+  its code and an independent review are owed before the Season B screen. **Waiting on Jacob:** Actions' AI token · the sleeve's size and loss limit.
+- **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 12 until Nov 1, then + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
 
@@ -189,38 +191,6 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
-
-**2026-11-02 (Mon) 08:10 ET — Stage 1 deck built from the committed output, reviewed blind by Sonnet, delivered.**
-- Side session of the build chat. Startup 07:34 ET: check.py PASS (0 warnings). Deck: private Artifact (Slides type),
-  13 slides per `ops/stage1_plan_2026-11.md`; every Stage 1 figure from `stage1_2026-10-30.md`; nothing from D017 §4;
-  INTERIM on every slide; the §5 row shown without a recommendation beyond it.
-- Review: a Sonnet subagent given the slides, D017, the output and the plan (not the builder's conclusions) returned
-  15 findings. Checked against RESEARCH_PLAN §2 and §4, D008 §3–4, D009 v1, D016, gate1.py HEALTH and the 10-19 and
-  10-26 incidents before applying; all applied (v7). The corrections are in NOW.
-- Housekeeping cloud routine landed 07:51 ET (`0eab8d3`). No code, registry or output file touched.
-
-**2026-11-02 (Mon) 07:40 ET — paper halt cleared; Stage 1 computed (code committed before its run); deck handed off.**
-- Startup 07:07 ET: check.py PASS. Health RED for (1) the options halt and (2) DATES STALE. (2) is a weekend artefact:
-  re-checks run on weekdays only, and the 30 h threshold trips every weekend.
-- (1) The sign guard (D011 §5) halted opens Wed 10-28 14:38 on COLM 10-29 F: fill 1.35 vs natural 2.31. Both are
-  debits (convention: debit +), so it tripped on distance, not sign. The quotes were Alpaca indicative, 1.02/4.92
-  on the short legs, so the natural was a debit: a short iron fly opened for a debit can only lose. 2 of 63 opens did
-  this (BHE, COLM). Blocked: 15 Fri structures (5 PASS: CIFR BETA DT PLTR SHOP); 3 more had no wing strike. Not
-  flagged by the Thu chat or anyone since. Jacob: "Yes, clear it" → cleared 07:14 ET, `199b8c4`.
-- `pipeline/stage1.py` `0ec6a5e` (07:26 ET; 10 synthetic tests, `tests/test_stage1.py`), run once 07:28 ET, output
-  `1537ceb`. It patches report.load_rows / shadow.load to the cut, swallows their stdout and guards banned keys.
-  - P1 PASS: check PASS, 0 late freezes, VOID 0 of 16, missed windows 0, fence breaches 1 (2026-09-30 housekeeping
-    Edit on the T1/history fence, `logs/actions/2026-09-30T0148Z_36656505056_housekeeping.json`).
-  - P2: SH-W n 84, 8 sessions, raw −0.56%, net −0.76% [−2.00%, +0.48%], win 48.8%, excess over SPY −0.49% →
-    INSUFFICIENT. S0 n 16, 6 sessions, net −2.31%. SH-M n 596, 13 sessions, net −0.28% [−0.87%, +0.31%], excess
-    −0.04%. Consistency: S0 and SH-W means equal report.run and shadow.report_; SPY returns match shadow's to 6e-8.
-  - P3 (INSUFFICIENT): T1 11 BUYs win 54.5% mean +0.42% vs all 40.0% / −2.91%; T2 9 BUYs 44.4% / −1.64% vs all
-    42.9% / −2.83%. Agreement with T2: T2G 80% (n 10), T2R 64.3% (14), T2O 64.3% (14).
-  - P4: shares |fill − official open| median 27.5 bp, mean 40.4 (n 23). PX-F per $ spot at fill −4.76% (n 62,
-    −$38.7k), mid −1.34%; PX-L −1.33% (n 76, −$11.6k), mid +0.82%; 8 entry dates → insufficient. Open-fill trigger:
-    both accounts 6 of 6, not fired.
-  - P6: T2 missing 2 of 16 in the cut (ABT, SPCX: no stage-2 decision), while gate1.health reads 0 of 26 (it counts
-    only "T2 frozen as MISSING"). Cost per decision: T2R $0.098, T2O $0.204; T2 and T2G record none.
 
 **2026-10-29 (Thu) 09:40 ET — Stage 1 review planned for Tue Nov 3 (SGT); D017 frozen before any look.**
 - Jacob: "results that I can use … to pass stage 1 of the validation that this model is useful and not redundant",
@@ -745,4 +715,3 @@ subscription access for Claude Code"), so laptop sessions add the line by hand u
 - **2026-10-28 (Wed), housekeeping 08:42 ET:** 15 re-checked; confirmed []; retired []; DBD/WING confirm refused (snapshot 10-26 passed), WING/GLW/BA/CHRN/APH retire INELIGIBLE, DBD retire refused (later snapshot ahead); 10 notes; ran under python3.12 venv because system python3.11 fails hk.py f-string syntax
 - **2026-10-29 (Thu), housekeeping 08:51 ET:** 9 re-checked (QRVO VRNS DBD ALGM CCC DRS INSM MSI TXT); confirmed []; retired []; none had a company-stated session; note: hk.py needs python3.12 (SyntaxError on 3.11)
 - **2026-10-30 (Fri), housekeeping 08:41 ET:** re-checked 10 (QRVO VRNS DBD ALGM CCC DRS INSM MSI TXT +); confirmed []; retired [QRVO VRNS ALGM + see run]; DBD confirm refused (snapshot passed); MSI noted (Nov 4); hk.py needs py>=3.12 (ran in venv)
-- **2026-11-02 (Mon), housekeeping 07:51 ET:** re-checked 14 (DBD MSI ADEA CALX KTB PPLI CORT CPNG IBRX MARA MDGL SLAB YUM ZBRA); confirmed []; retired []; ADEA/CALX/PPLI/MDGL/YUM company-dated but snapshot 2026-10-30 passed so refused; KTB no 2nd source; hk.py needed python3.12 (f-string syntax error on 3.11)

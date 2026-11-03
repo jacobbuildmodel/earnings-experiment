@@ -1,160 +1,29 @@
-# Health 2026-11-02 17:24 ET - **AMBER**
+# Health 2026-11-01 21:38 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
-- none
+- paper/options_ledger.json: HALT - fill anomaly - new opens stopped until a person clears 'halt' in the ledger
+- DATES STALE (seasonA): no date confirmed or retired since Fri 30 Oct 22:12 ET (over 30 h), while 30 PENDING name(s) have a calendar date within 7 days, 23 within 3 sessions ['ADEA', 'CALX', 'CORT', 'CPNG', 'DBD', 'EBAY', 'IBRX', 'KTB', 'MARA', 'MCD', 'MDGL', 'PCOR', 'PEN', 'PPLI', 'RAMP', 'RDW', 'ROG', 'SHOO', 'SLAB', 'TECH', 'WK', 'YUM', 'ZBRA']; newest re-check Fri 30 Oct 22:06 ET - the re-checks are not running
 
 ## AMBER - look at
-- Actions failure: Earnings experiment - paper options at 2026-11-02T19:37:40Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41511693360
-- Actions failure: Earnings experiment - paper options at 2026-11-02T14:47:24Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41465289651
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
-- EXIT MISSED: paper/long_ledger.json seasonA-CIFR-2026-11-02-L still open after its reaction session 2026-11-02 - 1 close order(s) sent, 0 of 2 closed; expiry 2026-11-06
-- PAPER WINDOW NOT COVERED (options): no window step ran today; no frozen paper-options.yml run either in the 25 minutes to 15:56 ET - exits and gates were not being worked - the window is over
-- PAPER WINDOW NOT COVERED (long): no window step ran today; no frozen paper-long.yml run either in the 25 minutes to 15:56 ET - exits and gates were not being worked - the window is over
-- paper/options: ALAB261106C00235000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ALAB261106C00305000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ALAB261106P00165000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ALAB261106P00235000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: AMD261104C00472500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: AMD261104C00560000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: AMD261104P00385000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: AMD261104P00472500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ANET261106C00165000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ANET261106C00200000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ANET261106P00130000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ANET261106P00165000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: DDOG261106C00220000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: DDOG261106C00290000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: DDOG261106P00150000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: DDOG261106P00220000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FLYW261120C00020000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FLYW261120C00025000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FLYW261120P00015000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FLYW261120P00020000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FRSH261120C00015000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FRSH261120C00020000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FRSH261120P00010000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: FRSH261120P00015000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: HUT261106C00054000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: HUT261106C00071000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: HUT261106P00035000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: HUT261106P00054000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: NVTS261106C00008000: the account holds -2, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: NVTS261106C00010500: the account holds +2, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: NVTS261106P00005000: the account holds +2, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: NVTS261106P00008000: the account holds -2, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: OUST261106C00028500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: OUST261106C00038500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: OUST261106P00018000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: OUST261106P00028500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: Q261120C00115000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: Q261120C00150000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: Q261120P00080000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: Q261120P00115000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RAL261120C00065000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RAL261120C00085000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RAL261120P00045000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RAL261120P00065000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RIOT261106C00012000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RIOT261106C00016000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RIOT261106P00008000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RIOT261106P00012000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RPRX261120C00067500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RPRX261120C00080000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RPRX261120P00057500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: RPRX261120P00067500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: SWKS261120C00085000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: SWKS261120C00110000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: SWKS261120P00062500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: SWKS261120P00085000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: TOST261106C00033500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: TOST261106C00041500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: TOST261106P00025500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: TOST261106P00033500: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: VSH261120C00026000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: VSH261120C00035000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: VSH261120P00015000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: VSH261120P00026000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: W261106C00115000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: W261106C00146000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: W261106P00084000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: W261106P00115000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: XYZ261106C00078000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: XYZ261106C00095000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: XYZ261106P00061000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: XYZ261106P00078000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: YOU261120C00048000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: YOU261120C00065000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: YOU261120P00030000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: YOU261120P00048000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ZBH261120C00095000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ZBH261120C00110000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ZBH261120P00080000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/options: ZBH261120P00095000: the account holds -1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: AMD261104C00472500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: AMD261104P00472500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: ANET261106C00165000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: ANET261106P00165000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: CIFR261106C00008000: the account holds +0, the ledgers show +2 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: CIFR261106P00008000: the account holds +0, the ledgers show +2 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: DDOG261106C00220000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: DDOG261106P00220000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: DUOL261106C00136000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: DUOL261106P00136000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: FLYW261120C00020000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: FLYW261120P00020000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: FRSH261120C00015000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: FRSH261120P00015000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: NVTS261106C00008000: the account holds +3, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: NVTS261106P00008000: the account holds +3, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: OUST261106C00028500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: OUST261106P00028500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: Q261120C00115000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: Q261120P00115000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: RAL261120C00065000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: RAL261120P00065000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: RIOT261106C00012000: the account holds +2, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: RIOT261106P00012000: the account holds +2, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: SWKS261120C00085000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: SWKS261120P00085000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: TOST261106C00033500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: TOST261106P00033500: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: UBER261106C00067000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: UBER261106P00067000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: VSH261120C00026000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: VSH261120P00026000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: W261106C00115000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: W261106P00115000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: XYZ261106C00078000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: XYZ261106P00078000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: YOU261120C00048000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: YOU261120P00048000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: ZBH261120C00095000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- paper/long: ZBH261120P00095000: the account holds +1, the ledgers show +0 - its ledger order (sent Mon 14:38 ET) still reads live: the paper runs have not refreshed the ledger since
-- no SH-M calendar capture for 2026-11-02 yet
-- no C1 implied-move capture for 2026-11-02 (D015): that session's events can never be C1
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
 - none
 
 ## Information
-- RIOT_2026-11-04: T2 deadline Tue 03 Nov 09:15 ET - frozen so far: T2, T2R, T2O
-- YOU_2026-11-04: T2 deadline Tue 03 Nov 09:15 ET - frozen so far: T2, T2R, T2O
-- UBER_2026-11-04: T2 deadline Tue 03 Nov 09:15 ET - frozen so far: T2, T2R, T2O
-- AMD_2026-11-03: T2 deadline Tue 03 Nov 09:15 ET - frozen so far: T2, T2R, T2O
-- ANET_2026-11-03: T2 deadline Tue 03 Nov 09:15 ET - frozen so far: T2, T2R, T2O
-- ALAB_2026-11-03: T2 deadline Tue 03 Nov 09:15 ET - frozen so far: T2, T2R, T2O
-- paper/options_ledger.json: open ['seasonA-ALAB-2026-11-03-F', 'seasonA-AMD-2026-11-03-F', 'seasonA-ANET-2026-11-03-F', 'seasonA-DDOG-2026-11-04-F', 'seasonA-DUOL-2026-11-03-F', 'seasonA-FLYW-2026-11-03-F', 'seasonA-FRSH-2026-11-03-F', 'seasonA-HUT-2026-11-04-F', 'seasonA-NVTS-2026-11-03-F', 'seasonA-OUST-2026-11-03-F', 'seasonA-Q-2026-11-04-F', 'seasonA-RAL-2026-11-04-F', 'seasonA-RIOT-2026-11-04-F', 'seasonA-RPRX-2026-11-04-F', 'seasonA-SWKS-2026-11-03-F', 'seasonA-TOST-2026-11-03-F', 'seasonA-UBER-2026-11-04-F', 'seasonA-VSH-2026-11-04-F', 'seasonA-W-2026-11-04-F', 'seasonA-XYZ-2026-11-03-F', 'seasonA-YOU-2026-11-04-F', 'seasonA-ZBH-2026-11-04-F']
-- paper/long_ledger.json: open ['seasonA-CIFR-2026-11-02-L', 'seasonA-DOCN-2026-11-03-L', 'seasonA-BETA-2026-11-03-L', 'seasonA-DT-2026-11-03-L', 'seasonA-IPGP-2026-11-03-L', 'seasonA-MTCH-2026-11-02-L', 'seasonA-ON-2026-11-02-L', 'seasonA-PAY-2026-11-02-L', 'seasonA-PLTR-2026-11-02-L', 'seasonA-SHOP-2026-11-03-L', 'seasonA-VVX-2026-11-02-L', 'seasonA-YUMC-2026-11-03-L', 'seasonA-ALAB-2026-11-03-L', 'seasonA-AMD-2026-11-03-L', 'seasonA-ANET-2026-11-03-L', 'seasonA-DDOG-2026-11-04-L', 'seasonA-DUOL-2026-11-03-L', 'seasonA-FLYW-2026-11-03-L', 'seasonA-FRSH-2026-11-03-L', 'seasonA-HUT-2026-11-04-L', 'seasonA-NATL-2026-11-04-L', 'seasonA-NVTS-2026-11-03-L', 'seasonA-OUST-2026-11-03-L', 'seasonA-Q-2026-11-04-L', 'seasonA-RAL-2026-11-04-L', 'seasonA-RIOT-2026-11-04-L', 'seasonA-RPRX-2026-11-04-L', 'seasonA-SWKS-2026-11-03-L', 'seasonA-TOST-2026-11-03-L', 'seasonA-UBER-2026-11-04-L', 'seasonA-VSH-2026-11-04-L', 'seasonA-W-2026-11-04-L', 'seasonA-XYZ-2026-11-03-L', 'seasonA-YOU-2026-11-04-L', 'seasonA-ZBH-2026-11-04-L']
-- paper/options: ['seasonA-ALAB-2026-11-03-F-open', 'seasonA-AMD-2026-11-03-F-open', 'seasonA-ANET-2026-11-03-F-open', 'seasonA-DDOG-2026-11-04-F-open', 'seasonA-DUOL-2026-11-03-F-open', 'seasonA-FLYW-2026-11-03-F-open', 'seasonA-FRSH-2026-11-03-F-open', 'seasonA-HUT-2026-11-04-F-open', 'seasonA-NVTS-2026-11-03-F-open', 'seasonA-OUST-2026-11-03-F-open', 'seasonA-Q-2026-11-04-F-open', 'seasonA-RAL-2026-11-04-F-open', 'seasonA-RIOT-2026-11-04-F-open', 'seasonA-RPRX-2026-11-04-F-open', 'seasonA-SWKS-2026-11-03-F-open', 'seasonA-TOST-2026-11-03-F-open', 'seasonA-UBER-2026-11-04-F-open', 'seasonA-VSH-2026-11-04-F-open', 'seasonA-W-2026-11-04-F-open', 'seasonA-XYZ-2026-11-03-F-open', 'seasonA-YOU-2026-11-04-F-open', 'seasonA-ZBH-2026-11-04-F-open'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
-- paper/options: 127 position(s), 0 open order(s) - they match the ledgers
-- paper/long: ['seasonA-CIFR-2026-11-02-L-close', 'seasonA-ALAB-2026-11-03-L-open', 'seasonA-AMD-2026-11-03-L-open', 'seasonA-ANET-2026-11-03-L-open', 'seasonA-DDOG-2026-11-04-L-open', 'seasonA-DUOL-2026-11-03-L-open', 'seasonA-FLYW-2026-11-03-L-open', 'seasonA-FRSH-2026-11-03-L-open', 'seasonA-HUT-2026-11-04-L-open', 'seasonA-NATL-2026-11-04-L-open', 'seasonA-NVTS-2026-11-03-L-open', 'seasonA-OUST-2026-11-03-L-open', 'seasonA-Q-2026-11-04-L-open', 'seasonA-RAL-2026-11-04-L-open', 'seasonA-RIOT-2026-11-04-L-open', 'seasonA-RPRX-2026-11-04-L-open', 'seasonA-SWKS-2026-11-03-L-open', 'seasonA-TOST-2026-11-03-L-open', 'seasonA-UBER-2026-11-04-L-open', 'seasonA-VSH-2026-11-04-L-open', 'seasonA-W-2026-11-04-L-open', 'seasonA-XYZ-2026-11-03-L-open', 'seasonA-YOU-2026-11-04-L-open', 'seasonA-ZBH-2026-11-04-L-open'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
-- paper/long: 62 position(s), 0 open order(s) - they match the ledgers
+- BETA_2026-11-03: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: T2, T2G, T2R, T2O
+- DT_2026-11-03: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: T2, T2G, T2R, T2O
+- SHOP_2026-11-03: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: T2, T2G, T2R, T2O
+- PLTR_2026-11-02: T2 deadline Mon 02 Nov 09:15 ET - frozen so far: T2, T2G, T2R, T2O
+- paper/long_ledger.json: open ['seasonA-CIFR-2026-11-02-L', 'seasonA-DOCN-2026-11-03-L', 'seasonA-BETA-2026-11-03-L', 'seasonA-DT-2026-11-03-L', 'seasonA-IPGP-2026-11-03-L', 'seasonA-MTCH-2026-11-02-L', 'seasonA-ON-2026-11-02-L', 'seasonA-PAY-2026-11-02-L', 'seasonA-PLTR-2026-11-02-L', 'seasonA-SHOP-2026-11-03-L', 'seasonA-VVX-2026-11-02-L', 'seasonA-YUMC-2026-11-03-L']
+- paper/options: 44 position(s), 5 open order(s) - they match the ledgers
+- paper/long: 26 position(s), 0 open order(s) - they match the ledgers
 - Mon 02 Nov: 24 snapshot(s) - ALAB, AMD, ANET, DDOG, DUOL, FLYW, FRSH, HUT, NATL, NVTS, OUST, Q, RAL, RIOT, RPRX, SMCI, SWKS, TOST, UBER, VSH, W, XYZ, YOU, ZBH
-- Tue 03 Nov: 48 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KTB, KVYO, LOAR, MELI, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RDW, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
+- Tue 03 Nov: 46 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KVYO, LOAR, MELI, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
 - Wed 04 Nov: 34 snapshot(s) - AKAM, ALRM, ATEN, AVPT, AXON, BILL, CARG, CART, DBX, DIOD, FIGS, FIVN, FROG, GRND, HALO, IONQ, IREN, KRMN, LASR, LITE, LYFT, MRNA, NET, PCTY, PDFS, QNT, SARO, SOUN, TDC, TEAM, TXG, TXRH, UA, WULF
 - Thu 05 Nov: 2 snapshot(s) - ROIV, VIA
 - Fri 06 Nov: 8 snapshot(s) - ACHR, ASTS, CSQR, ONTO, QBTS, QLYS, SANM, ZETA
-- seasonA: 47 name(s) still PENDING a confirmed date
+- seasonA: 50 name(s) still PENDING a confirmed date
 
