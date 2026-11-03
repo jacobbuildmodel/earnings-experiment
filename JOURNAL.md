@@ -9,7 +9,7 @@
 
 ---
 
-## 2026-11-03 (Tue) 11:30 ET — the first output read an incomplete cut, and nothing in it said so (Stage 1, RQ1, Gate 2)
+## 2026-11-03 (Tue) 11:10 ET — the first output read an incomplete cut, and nothing in it said so (Stage 1, RQ1, Gate 2)
 - **What happened:** an independent committee rebuilt Stage 1 from the raw files and found 20 SH-W, ~100 SH-M and 5
   gated events missing from D017 §2's cut. True, but not a stale pull: no grade of the 10-30 exits existed yet. D017 fixed
   the run for Monday morning, while a shadow session settles at 06:00 ET the next day and the grader fires only on weekday

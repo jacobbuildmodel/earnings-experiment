@@ -1,9 +1,9 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-03 11:30 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-03 11:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat; first bullet added Tue 11-03 11:30 ET by the committee-Q&A chat.*
+*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat; first bullet added Tue 11-03 11:10 ET by the committee-Q&A chat.*
 - 🔴 **Stage 1 committee (REFRAME, 2.5/10) answered:** `reviews/2026-11-03_stage1_committee/PRE_QA_answers.md`. P0 was real:
   the first output missed the 10-30 exits. Full-cut addendum `outcomes/reports/stage1_2026-10-30_r2.md`: SH-W net −1.50%
   [−3.28%, +0.27%], INSUFFICIENT only because 9 < 10 sessions. Also found: D008 #1 (250 gated) is out of reach by Mar 2027,
@@ -194,7 +194,7 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 
 ## Log — newest first (2026-10-14 onward)
 
-**2026-11-03 (Tue) 11:30 ET — the Stage 1 committee's questions answered, P0 fixed with a full-cut addendum.**
+**2026-11-03 (Tue) 11:10 ET — the Stage 1 committee's questions answered, P0 fixed with a full-cut addendum.**
 - The committee (REFRAME, 2.5/10, `2b95c1c`) asked P0–P10 (`PRE_QA.md`). Answers: `PRE_QA_answers.md`, each cited.
 - P0: Stage 1 ran Mon 07:28 ET, but Friday's exits settle Sat 06:00 ET and the shadow grader runs weekday evenings only.
   So 20 SH-W, 114 SH-M and 5 gated events in the cut were ungraded, and `stage1.py` dropped them silently. Fixes:

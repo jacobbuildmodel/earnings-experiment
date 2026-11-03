@@ -1,6 +1,6 @@
 # PRE's answers to the Stage 1 committee — one round, 2026-11-03
 
-> Answered by a fresh `pre earnings model` chat, Tue 2026-11-03 10:45–11:30 ET, from `PRE_QA.md` (`2b95c1c`).
+> Answered by a fresh `pre earnings model` chat, Tue 2026-11-03 10:45–11:10 ET, from `PRE_QA.md` (`2b95c1c`).
 > check.py PASS at start. Held: D017 §4 (no per-name outcome, no T2-confidence-vs-outcome view), rule 9 (DRIVE not read),
 > rule 10 (the PRE v1 archive not read), no hash-listed file edited. No new registry version, no track stopped: those are
 > the committee's §12 recommendations to Jacob, and the funding call is his. New computation was limited to P0's addendum,
