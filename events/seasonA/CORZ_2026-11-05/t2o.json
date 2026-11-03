@@ -1,0 +1,167 @@
+{
+ "track": "T2O",
+ "event": "CORZ_2026-11-05",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.47,
+  "thesis": "In a sector-wide AI-landlord de-rating driven by debt worries, with peers selling off on prints and three straight negative CORZ reactions, the reaction to the BMO print is slightly more likely to be down than up, though 27% short interest leaves real squeeze risk.",
+  "reasons": [
+   "Peers are being punished on prints: CIFR fell 5% on a revenue miss and a halved KBW target, and WULF and IREN fell 4% (I9, I10)",
+   "CORZ's last three reactions were negative, including -6.3% after the Q2 EPS beat and the AMD deal; last-4 win rate is 0.25 (I2)",
+   "Options lean bearish: put IV above call IV, put/call volume of 4.9, and positive put skew (I1, I2)",
+   "Sector narrative centers on leverage and funding; CORZ has $4.3B of long-term debt, heavy capex and a stockholders' deficit (I4, I20, I23)",
+   "Offset: short interest of 27% of float, the stock 52% off its high, KBW sees leasing upside from Anthropic/AMD, and the analyst rating is a strong buy (I2, I19)"
+  ],
+  "deciding_variable": "Whether management announces new lease or customer signings (for example, AMD reservation take-up or Anthropic-linked capacity) and shows credible funding of capex without heavy equity dilution.",
+  "prior": {
+   "p": 0.55,
+   "from": "I3 base rates: ai_infra cluster t0_hit 0.558 (n=43) and BMO session 0.548, close to overall ~0.54; crypto_proxy (0.25, n=8) treated as insufficient"
+  },
+  "leak_probe": "I don't know. That earnings report (November 5, 2026) is two days after today's date and also after my knowledge cutoff, so CORZ's reaction hasn't happened yet.",
+  "moved_from_prior": "Down about 8 points from 0.55: about -4 for the poor CORZ reaction history and negative peer prints, about -3 for the bearish options skew and flow plus the debt-funding narrative, and about -1 for sector momentum. Partly offset (+0 to +1) by squeeze potential from heavy short interest and a depressed valuation.",
+  "theses": [
+   {
+    "expected": "Down",
+    "mechanism": "Results land in line, but capex and funding needs plus delivery timing extend the debt-worry narrative; the stock follows CIFR lower",
+    "wrong_if": "The release includes a new hyperscale or investment-grade-backstopped lease or a raised billing-MW trajectory"
+   },
+   {
+    "expected": "Up",
+    "mechanism": "A new lease announcement or exercise of the AMD capacity reservation triggers a short squeeze in a heavily shorted, oversold name",
+    "wrong_if": "Any new leases come with equity or warrant dilution, or with weak-credit counterparties"
+   },
+   {
+    "expected": "Flat to down",
+    "mechanism": "Sector beta dominates the Nov 4 session before the print; peers or macro risk-off lower the stock ahead of the event",
+    "wrong_if": "Data center stocks rebound on Nov 4, as they did on Oct 27"
+   }
+  ],
+  "key_observations": [
+   "Billing MW versus the 437 MW mid-July figure, and the year-end ramp",
+   "New leased capacity or customer diversification beyond CoreWeave",
+   "Capex guide and funding plan: new notes, equity, or the ATM",
+   "Commentary on CoreWeave credit and SPV assignments",
+   "Colocation revenue run-rate and adjusted EBITDA trend",
+   "Muskogee and Hunt County delivery timelines"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CORZ_2026-11-05/gate.json",
+    "published": "2026-11-03T14:31:19.414090-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CORZ_2026-11-05/factors.json",
+    "published": "2026-11-03T14:31:19.414090-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000013/q22026corescientificinc-ea.htm",
+    "published": "2026-07-28T07:06:14-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1839341/000183934126000014/core-20260630.htm",
+    "published": "2026-07-28T07:08:46-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/02/cipher-digital-falls-5-on-revenue-miss-and-keefe-bruyette-target-cut-terawulf-and-iren-drop-4/?.tsrc=rss",
+    "published": "2026-11-02T09:55:17-05:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://stocktwits.com/news-articles/markets/equity/cifr-stock-gets-biggest-price-target-cut-amid-ai-hosting-valuation-concerns/cNG9DBuR9PT?.tsrc=rss",
+    "published": "2026-11-02T07:11:59-05:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/10/27/applied-digital-jumps-10-as-data-center-stocks-rebound-riot-climbs-7-core-scientific-gains-4/?.tsrc=rss",
+    "published": "2026-10-27T14:02:16-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://blockspace.media/insight/anthropic-leases-core-scientific-terawulf/?.tsrc=rss",
+    "published": "2026-10-27T09:43:52-04:00",
+    "dossier_item": "I19"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/article/coreweave-ai-landlord-stocks-sink-to-lowest-levels-in-more-than-a-year-as-the-price-of-insuring-coreweaves-debt-doubles-140909005.html?.tsrc=rss",
+    "published": "2026-10-26T10:09:09-04:00",
+    "dossier_item": "I20"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/short-sellers-gain-6bn-amid-135501347.html?.tsrc=rss",
+    "published": "2026-10-22T09:55:01-04:00",
+    "dossier_item": "I23"
+   }
+  ],
+  "decided_et": "2026-11-03T17:00:35-05:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 25351,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1427,
+   "output_tokens_details": {
+    "thinking_tokens": 195
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 25351,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1427,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 25351,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 25351
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.23148259999999998
+ }
+}
