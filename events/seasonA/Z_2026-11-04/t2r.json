@@ -1,0 +1,143 @@
+{
+ "track": "T2R",
+ "event": "Z_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "Z enters the print after a sharp rebound with a large implied move, and the last four prints were mostly negative, so the edge over the ~54% base rate is small and slightly negative.",
+  "reasons": [
+   "Base rate is about 54% for AMC and software_internet, so the starting point is neutral-to-slightly-positive.",
+   "The stock is up 13% over 1 month and jumped 8% on Nov 2, which raises the bar for the print (I2, I10).",
+   "The last four prints had a 25% win rate, with the two most recent at -15% and -6% despite EPS beats of about 15% (I2).",
+   "The implied move is about 14% against the stock's historical reaction, so the options market already prices a big move (I1).",
+   "The stock is 59% below its 52-week high with a forward P/E near 11, short interest of 9%, and a cost-cutting plan, which supports a squeeze if results are good (I2, I5).",
+   "The FTC settlement and reaffirmed guidance remove some overhang (I8), but the $212.5M class action settlement is a modest negative (I6)."
+  ],
+  "deciding_variable": "Q4 revenue guidance and the Adjusted EBITDA outlook, relative to a slowing second half in housing traffic and purchase mortgage volume.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation t0_hit 0.542; AMC 0.538; software_internet cluster 0.541"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-03, so that earnings report hasn't happened yet, and I have no information on how Z's stock will react (and I'm also not certain which company \"Z\" refers to).",
+  "moved_from_prior": "Down about 2 points from 0.54, because of the pre-earnings run-up and the pattern of negative reactions to beats. This is partly offset by cheap valuation and short interest.",
+  "theses": [
+   {
+    "expected": "Stock rises on a beat and a guide above consensus.",
+    "mechanism": "Revenue growth near 18%, margin gains from the 7% headcount cut, and a low multiple trigger a short squeeze after the run-up.",
+    "wrong_if": "Guidance for Q4 EBITDA or revenue is only in line, or the stock opens down despite a beat."
+   },
+   {
+    "expected": "Stock falls despite an EPS beat.",
+    "mechanism": "Following the rebound, a weak housing outlook, traffic down 2%, or soft Residential growth disappoints, as in the last two prints.",
+    "wrong_if": "Traffic returns to growth and Residential revenue growth accelerates."
+   },
+   {
+    "expected": "A muted or mixed reaction that is decided by the opening gap.",
+    "mechanism": "Rate-driven sector moves and the implied-move pricing offset the earnings news.",
+    "wrong_if": "The gap exceeds 10% in either direction."
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue and Adjusted EBITDA guidance versus consensus",
+   "Traffic and visit trend (was -2% year over year)",
+   "Residential revenue growth (was 7%) and Mortgages growth",
+   "Rentals growth (was 31%) and the multifamily trend",
+   "Buyback pace and headcount-cut savings"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/Z_2026-11-04/gate.json",
+    "published": "2026-11-03T14:33:29.541264-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/Z_2026-11-04/factors.json",
+    "published": "2026-11-03T14:33:29.541264-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000052/z-20260630.htm",
+    "published": "2026-08-05T16:36:13-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000063/z-20261027.htm",
+    "published": "2026-10-28T16:30:24-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000056/z-20260822.htm",
+    "published": "2026-08-24T09:04:20-04:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/02/rocket-companies-jumps-9-compass-and-zillow-surge-8-as-treasury-yields-retreat/?.tsrc=rss",
+    "published": "2026-11-02T13:57:01-05:00",
+    "dossier_item": "I10"
+   }
+  ],
+  "decided_et": "2026-11-03T16:54:04-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 23585,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1002,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 23585,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1002,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 23585,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 23585
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.1044273
+ }
+}
