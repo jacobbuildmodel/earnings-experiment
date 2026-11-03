@@ -1,0 +1,580 @@
+{
+ "season": "seasonA",
+ "cut": "2026-10-30",
+ "rule": "registry/D017_stage1_review_v1.md",
+ "label": "INTERIM - descriptive",
+ "run_et": "2026-11-03T10:58:32-05:00",
+ "code": "a6f7cc6 2026-11-03 23:56:39 +0800",
+ "report_run_implementation": "CHANGED since registration: ['pipeline/grade.py', 'pipeline/report.py']",
+ "P1": {
+  "check_py": "PASS - 0 warning(s)",
+  "late_freezes": 0,
+  "late_freezes_source": "[ok]   timestamps: 546 token(s) cover their manifests and pre-date entry",
+  "graded_in_cut": 21,
+  "void_in_cut": 0,
+  "void_reasons": {},
+  "void_rate": 0.0,
+  "pending_in_cut": 0,
+  "ineligible_in_cut": 0,
+  "season_to_date (CHARTER §6)": {
+   "missed_windows": 0,
+   "t2_missing": 0,
+   "frozen_pass": 32,
+   "t2_missing_rate": 0.0,
+   "single_source": 0,
+   "fence_breaches": 1
+  },
+  "pass": true,
+  "word": "PASS"
+ },
+ "P2": {
+  "SH-W": {
+   "n": 104,
+   "sessions": 9,
+   "raw_mean": -0.013030098331136565,
+   "net_mean": -0.015030098331136567,
+   "win_rate": 0.49038461538461536,
+   "excess_spy_mean": -0.01063182574198134,
+   "excess_spy_net_mean": -0.01263182574198134,
+   "excess_spy_n": 104,
+   "se_cluster_session": 0.00906740011374728,
+   "ci95_net": [
+    -0.032802202554081235,
+    0.0027420058918081035
+   ],
+   "role": "primary (T0-wide, RQ1's universe)",
+   "word": "INSUFFICIENT"
+  },
+  "S0 gated": {
+   "n": 21,
+   "sessions": 7,
+   "raw_mean": -0.05141843382027912,
+   "net_mean": -0.053418433820279124,
+   "win_rate": 0.3333333333333333,
+   "excess_spy_mean": -0.04835526001913651,
+   "excess_spy_net_mean": -0.05035526001913651,
+   "excess_spy_n": 21,
+   "se_cluster_session": 0.029028691313241945,
+   "ci95_net": [
+    -0.11031466879423334,
+    0.003477801153675089
+   ],
+   "role": "secondary (H-S0's statistic)"
+  },
+  "SH-M": {
+   "n": 696,
+   "sessions": 14,
+   "raw_mean": -0.0017640257920918875,
+   "net_mean": -0.0037640257920918893,
+   "win_rate": 0.4985632183908046,
+   "excess_spy_mean": -4.897873192893027e-05,
+   "excess_spy_net_mean": -0.00204897873192893,
+   "excess_spy_n": 696,
+   "se_cluster_session": 0.0027941683550228888,
+   "ci95_net": [
+    -0.009240595767936751,
+    0.0017125441837529728
+   ],
+   "role": "secondary (market-wide)"
+  },
+  "pending_in_cut": {
+   "SH-W": 0,
+   "S0 gated": 0,
+   "SH-M": 0
+  },
+  "cut_complete": true,
+  "consistency": {
+   "S0 net mean: stage1 / report.run H_S0": [
+    -0.053418433820279124,
+    -0.053418433820279124
+   ],
+   "S0 n: stage1 / report.run H_S0": [
+    21,
+    21
+   ],
+   "SH-W net mean: stage1 / shadow.report_": [
+    -0.015030098331136567,
+    -0.015030098331136568
+   ],
+   "SH-W n: stage1 / shadow.report_": [
+    104,
+    104
+   ],
+   "SPY return: max |stage1 - shadow's stored|, n": [
+    5.642538014605236e-08,
+    800
+   ]
+  }
+ },
+ "P3": {
+  "T1": {
+   "events_with_a_decision": 20,
+   "sessions": 7,
+   "buys": 13,
+   "buy_sessions": 6,
+   "win_rate_all (T0)": 0.3,
+   "win_rate_buys": 0.46153846153846156,
+   "mean_return_all (T0)": -0.05891170619884867,
+   "mean_return_buys": -0.018551180487360732,
+   "word": "INSUFFICIENT"
+  },
+  "T2": {
+   "events_with_a_decision": 19,
+   "sessions": 6,
+   "buys": 11,
+   "buy_sessions": 6,
+   "win_rate_all (T0)": 0.3157894736842105,
+   "win_rate_buys": 0.36363636363636365,
+   "mean_return_all (T0)": -0.05990765763952879,
+   "mean_return_buys": -0.0395242554716124,
+   "word": "INSUFFICIENT"
+  },
+  "decision_agreement_with_T2": {
+   "T2G": {
+    "n": 15,
+    "agreement_with_T2": 0.8666666666666667
+   },
+   "T2R": {
+    "n": 19,
+    "agreement_with_T2": 0.7368421052631579
+   },
+   "T2O": {
+    "n": 19,
+    "agreement_with_T2": 0.7368421052631579
+   }
+  }
+ },
+ "P4": {
+  "paper_shares_fill_vs_official_open": {
+   "n": 23,
+   "median_abs_bp": 27.480337344831796,
+   "mean_abs_bp": 40.366625126950346,
+   "no_real_fill (simulated or unfilled)": 1,
+   "official_open_unreadable": 0
+  },
+  "paper_options": {
+   "PX-F": {
+    "trades_in_cut": 102,
+    "open_fill_trigger_v1": {
+     "counted": 6,
+     "state": "not fired: v1 opens stay; close the note with these counts",
+     "counts": {
+      "filled_attempt_0": 6,
+      "filled_attempt_1": 0,
+      "open_failed: platform": 0,
+      "other (counted, never triggers)": 0,
+      "pending": 0
+     }
+    },
+    "pnl_per_spot": {
+     "all": {
+      "real round trips": {
+       "fill": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.04762792288693089,
+        "median_pnl_on_spot": -0.02897500391619339,
+        "hit_rate": 0.14516129032258066,
+        "pnl_usd": -38678.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.013351292849276322,
+        "median_pnl_on_spot": -0.003254764525923052,
+        "hit_rate": 0.46774193548387094,
+        "pnl_usd": -12973.4,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.03125185786999532,
+        "median_pnl_on_spot": -0.017252016047290073,
+        "hit_rate": 0.27419354838709675,
+        "pnl_usd": -26480.1,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.0491524228907143,
+        "median_pnl_on_spot": -0.030714946050954137,
+        "hit_rate": 0.14516129032258066,
+        "pnl_usd": -39986.8,
+        "status": "insufficient"
+       }
+      },
+      "all with a result (simulated legs labelled)": {
+       "fill": {
+        "n": 63,
+        "missing": 0,
+        "entry_dates": 9,
+        "mean_pnl_on_spot": -0.04603330803630841,
+        "median_pnl_on_spot": -0.028204496101047048,
+        "hit_rate": 0.15873015873015872,
+        "pnl_usd": -37054.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 63,
+        "missing": 0,
+        "entry_dates": 9,
+        "mean_pnl_on_spot": -0.012167523195687962,
+        "median_pnl_on_spot": -0.0024370875271778523,
+        "hit_rate": 0.47619047619047616,
+        "pnl_usd": -11091.4,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 63,
+        "missing": 0,
+        "entry_dates": 9,
+        "mean_pnl_on_spot": -0.02985159918899614,
+        "median_pnl_on_spot": -0.017052968825954754,
+        "hit_rate": 0.2857142857142857,
+        "pnl_usd": -24729.1,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 63,
+        "missing": 0,
+        "entry_dates": 9,
+        "mean_pnl_on_spot": -0.04753567518230431,
+        "median_pnl_on_spot": -0.029701346255145894,
+        "hit_rate": 0.15873015873015872,
+        "pnl_usd": -38366.8,
+        "status": "insufficient"
+       }
+      }
+     },
+     "without_DPZ": {
+      "real round trips": {
+       "fill": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.04762792288693089,
+        "median_pnl_on_spot": -0.02897500391619339,
+        "hit_rate": 0.14516129032258066,
+        "pnl_usd": -38678.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.013351292849276322,
+        "median_pnl_on_spot": -0.003254764525923052,
+        "hit_rate": 0.46774193548387094,
+        "pnl_usd": -12973.4,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.03125185786999532,
+        "median_pnl_on_spot": -0.017252016047290073,
+        "hit_rate": 0.27419354838709675,
+        "pnl_usd": -26480.1,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.0491524228907143,
+        "median_pnl_on_spot": -0.030714946050954137,
+        "hit_rate": 0.14516129032258066,
+        "pnl_usd": -39986.8,
+        "status": "insufficient"
+       }
+      },
+      "all with a result (simulated legs labelled)": {
+       "fill": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.04762792288693089,
+        "median_pnl_on_spot": -0.02897500391619339,
+        "hit_rate": 0.14516129032258066,
+        "pnl_usd": -38678.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.013351292849276322,
+        "median_pnl_on_spot": -0.003254764525923052,
+        "hit_rate": 0.46774193548387094,
+        "pnl_usd": -12973.4,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.03125185786999532,
+        "median_pnl_on_spot": -0.017252016047290073,
+        "hit_rate": 0.27419354838709675,
+        "pnl_usd": -26480.1,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 62,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.0491524228907143,
+        "median_pnl_on_spot": -0.030714946050954137,
+        "hit_rate": 0.14516129032258066,
+        "pnl_usd": -39986.8,
+        "status": "insufficient"
+       }
+      }
+     }
+    }
+   },
+   "PX-L": {
+    "trades_in_cut": 101,
+    "open_fill_trigger_v1": {
+     "counted": 6,
+     "state": "not fired: v1 opens stay; close the note with these counts",
+     "counts": {
+      "filled_attempt_0": 3,
+      "filled_attempt_1": 2,
+      "open_failed: platform": 1,
+      "other (counted, never triggers)": 0,
+      "pending": 0
+     }
+    },
+    "pnl_per_spot": {
+     "all": {
+      "real round trips": {
+       "fill": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.013253928031780467,
+        "median_pnl_on_spot": -0.029044505584907603,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -11568.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": 0.008214271452544991,
+        "median_pnl_on_spot": -0.008452427979620567,
+        "hit_rate": 0.40789473684210525,
+        "pnl_usd": 8977.5,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.003038891005500412,
+        "median_pnl_on_spot": -0.022012907423774743,
+        "hit_rate": 0.34210526315789475,
+        "pnl_usd": -1866.2,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.014292053463545814,
+        "median_pnl_on_spot": -0.030635765764182584,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -12709.9,
+        "status": "insufficient"
+       }
+      },
+      "all with a result (simulated legs labelled)": {
+       "fill": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.013253928031780467,
+        "median_pnl_on_spot": -0.029044505584907603,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -11568.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": 0.008214271452544991,
+        "median_pnl_on_spot": -0.008452427979620567,
+        "hit_rate": 0.40789473684210525,
+        "pnl_usd": 8977.5,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.003038891005500412,
+        "median_pnl_on_spot": -0.022012907423774743,
+        "hit_rate": 0.34210526315789475,
+        "pnl_usd": -1866.2,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.014292053463545814,
+        "median_pnl_on_spot": -0.030635765764182584,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -12709.9,
+        "status": "insufficient"
+       }
+      }
+     },
+     "without_DPZ": {
+      "real round trips": {
+       "fill": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.013253928031780467,
+        "median_pnl_on_spot": -0.029044505584907603,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -11568.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": 0.008214271452544991,
+        "median_pnl_on_spot": -0.008452427979620567,
+        "hit_rate": 0.40789473684210525,
+        "pnl_usd": 8977.5,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.003038891005500412,
+        "median_pnl_on_spot": -0.022012907423774743,
+        "hit_rate": 0.34210526315789475,
+        "pnl_usd": -1866.2,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.014292053463545814,
+        "median_pnl_on_spot": -0.030635765764182584,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -12709.9,
+        "status": "insufficient"
+       }
+      },
+      "all with a result (simulated legs labelled)": {
+       "fill": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.013253928031780467,
+        "median_pnl_on_spot": -0.029044505584907603,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -11568.0,
+        "status": "insufficient"
+       },
+       "mid": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": 0.008214271452544991,
+        "median_pnl_on_spot": -0.008452427979620567,
+        "hit_rate": 0.40789473684210525,
+        "pnl_usd": 8977.5,
+        "status": "insufficient"
+       },
+       "halfway": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.003038891005500412,
+        "median_pnl_on_spot": -0.022012907423774743,
+        "hit_rate": 0.34210526315789475,
+        "pnl_usd": -1866.2,
+        "status": "insufficient"
+       },
+       "natural": {
+        "n": 76,
+        "missing": 0,
+        "entry_dates": 8,
+        "mean_pnl_on_spot": -0.014292053463545814,
+        "median_pnl_on_spot": -0.030635765764182584,
+        "hit_rate": 0.3026315789473684,
+        "pnl_usd": -12709.9,
+        "status": "insufficient"
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "P5": {
+  "D006": [
+   "| D006 (history) | Which literature factors select winners? | **No factor cleared t > 3**; the composite R-LIT failed validation (−0.7 pts). Buy-all won 54% |"
+  ],
+  "D007": [
+   "| D007 (history) | 20 new signals vs buy-all | **None beats buying everything** |"
+  ],
+  "D010": [
+   "| D010 v1/v2 (options history) | Does either side of the straddle pay after costs? | **No, after costs**. Short at mid +1.13% on liquid names (post-hoc → became H-XT). Holding to expiry gives it back. The IV spread (LR12) is no selector |"
+  ],
+  "D014": [
+   "| D014 v1–v3 (first hour) | Patterns in the first hour after the print | **None validated**. C1 failed validation (−0.8%, n 62) → became H-C1 on fresh data |"
+  ]
+ },
+ "P6": {
+  "t2_missing_in_cut": 2,
+  "graded_in_cut": 21,
+  "t2_missing_season_to_date": [
+   0,
+   32
+  ],
+  "recorded_cost_usd_equiv_per_decision": {
+   "T2": {
+    "n": 0,
+    "mean": null,
+    "total": 0.0
+   },
+   "T2G": {
+    "n": 0,
+    "mean": null,
+    "total": 0.0
+   },
+   "T2R": {
+    "n": 21,
+    "mean": 0.09815474285714286,
+    "total": 2.0612496
+   },
+   "T2O": {
+    "n": 21,
+    "mean": 0.20512416666666664,
+    "total": 4.3076075
+   }
+  },
+  "not_computed_here": "the weekly allowance's path and the tracks competing for it: ops records (STATE Log, JOURNAL), cited in the deck"
+ },
+ "supports": "fund to Gate 1 and Season B: the record is sound and nothing contradicts the premium"
+}
