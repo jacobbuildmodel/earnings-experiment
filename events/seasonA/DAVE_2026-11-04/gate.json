@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "DAVE",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:32.607966-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/dave-host-third-quarter-2026-conference-call-november-4-2026-4-30-pm-et-2026-10-23",
+  "published_et": "2026-10-23T08:43-04:00",
+  "quote": "linkedin facebook x email reddit LOS ANGELES, CA , Oct. 23, 2026 (GLOBE NEWSWIRE) -- Dave Inc. (Nasdaq: DAVE) (“Dave” or the “Company”), one of the nation’s leading neobanks, will host a conference call on Wednesday, November 4, 2026 , at 4:30 p.m. Eastern time to discuss its financial results for the third quarter ended September 30, 2026 .",
+  "title": "Dave to Host Third Quarter 2026 Conference Call on November 4, 2026 at 4:30 p.m. ET",
+  "retrieved_et": "2026-10-26T09:16:11.760464-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 313.7099914550781,
+  "expiry": "2026-11-06",
+  "strike": 315.0,
+  "call": {
+   "bid": 21.5,
+   "ask": 25.8,
+   "openInterest": 1.0,
+   "lastPrice": 24.6,
+   "impliedVolatility": 1.8530280786132813,
+   "lastTradeDate": "2026-11-03T18:42:07+00:00"
+  },
+  "put": {
+   "bid": 21.5,
+   "ask": 25.2,
+   "openInterest": 8.0,
+   "lastPrice": 22.8,
+   "impliedVolatility": 1.7314466552734376,
+   "lastTradeDate": "2026-11-03T18:41:31+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.14981990143826895,
+  "rel_spread": {
+   "call": 0.18181818181818185,
+   "put": 0.15845824411134898
+  },
+  "oi_atm": 9.0,
+  "oi_sum": 26.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
