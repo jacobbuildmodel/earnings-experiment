@@ -1,0 +1,658 @@
+{
+ "event": "Z_2026-11-04",
+ "season": "seasonA",
+ "built_et": "2026-11-03T14:33:48-05:00",
+ "cutoff_et": "2026-11-03T14:33:29.541264-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/Z_2026-11-04/gate.json",
+   "published": "2026-11-03T14:33:29.541264-05:00",
+   "data": {
+    "ticker": "Z",
+    "report_date": "2026-11-04",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-04"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-05"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-12"
+     },
+     "reaction_day": "2026-11-05"
+    },
+    "snapshot_session": "2026-11-03",
+    "captured_et": "2026-11-03T14:33:29.541264-05:00",
+    "options": {
+     "spot": 31.05500030517578,
+     "expiry": "2026-11-20",
+     "strike": 30.0,
+     "call": {
+      "bid": 2.6,
+      "ask": 2.85,
+      "openInterest": 1074.0,
+      "lastPrice": 2.7,
+      "impliedVolatility": 0.79883013671875,
+      "lastTradeDate": "2026-11-03T18:12:13+00:00"
+     },
+     "put": {
+      "bid": 1.55,
+      "ask": 1.65,
+      "openInterest": 4382.0,
+      "lastPrice": 1.6,
+      "impliedVolatility": 0.7719749365234375,
+      "lastTradeDate": "2026-11-03T19:14:34+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 11,
+     "implied_move": 0.13926903743353608,
+     "rel_spread": {
+      "call": 0.09174311926605504,
+      "put": 0.06249999999999992
+     },
+     "oi_atm": 5456.0,
+     "oi_sum": 5456.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/Z_2026-11-04/factors.json",
+   "published": "2026-11-03T14:33:29.541264-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.58582290057601,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.13298068143213837,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.031045209222164805,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.11048355697832069,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.5722593133562667,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.151965624072263,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.5914353449232006,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "AMC",
+       "raw_return_A": -0.15170705603466839,
+       "eps_est": 0.45,
+       "eps_rep": 0.52,
+       "surprise_pct": 14.83,
+       "reaction_volume_ratio": 3.5304000196208274
+      },
+      {
+       "date": "2026-05-06",
+       "session": "AMC",
+       "raw_return_A": -0.06295721822571165,
+       "eps_est": 0.46,
+       "eps_rep": 0.53,
+       "surprise_pct": 15.52,
+       "reaction_volume_ratio": 2.5325480306246773
+      },
+      {
+       "date": "2026-02-10",
+       "session": "AMC",
+       "raw_return_A": -0.04206553498250165,
+       "eps_est": 0.41,
+       "eps_rep": 0.39,
+       "surprise_pct": -5.61,
+       "reaction_volume_ratio": 4.91368077249165
+      },
+      {
+       "date": "2025-10-30",
+       "session": "AMC",
+       "raw_return_A": 0.008115318611281452,
+       "eps_est": 0.44,
+       "eps_rep": 0.44,
+       "surprise_pct": -0.32,
+       "reaction_volume_ratio": 2.4409245461447795
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.3543883422204837,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 14.83,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 6,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.58488,
+      "7daysAgo": 0.5999,
+      "30daysAgo": 0.5999,
+      "60daysAgo": 0.5999,
+      "90daysAgo": 0.66873,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.12538692745951294,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.58488,
+      "low": 0.5,
+      "high": 0.71,
+      "yearAgoEps": 0.44,
+      "numberOfAnalysts": 6,
+      "growth": 0.32930002,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.359048009848174,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0933,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 11.246229,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 2.4852285,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.179,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 6983492096,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.57143,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.13926903743353608,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.026855200195312512,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0039062109375000986,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.2169811320754718,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.4378624218305855,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 1175.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.3724591601921772,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.1347384594257179,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 479,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Wednesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.17862595419847338,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -0.012953367875647668,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.58582290057601,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.031045209222164805,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.11048355697832069,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.5722593133562667,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.681699053122607,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.48712230044745475,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 7077310349.54834,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.3970434898590153,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 6,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.0022620169651272385,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000050/q22026991.htm",
+   "published": "2026-08-05T16:07:32-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q22026991.htm EX-99.1 Document Exhibit 99.1 Contacts: Investors Brad Berning ir@zillowgroup.com Media Gina Cole press@zillow.com Zillow Group Reports Second-Quarter 2026 Financial Results SEATTLE, August 5, 2026 — Zillow Group, Inc. (NASDAQ: Z and ZG), which is transforming the way people buy, sell, rent and finance homes, today announced its consolidated financial results for the three months ended June 30, 2026. Complete financial results for the second quarter and outlook for the third quarter and the full year of 2026 can be found in the shareholder letter on the Investor Relations section of Zillow Group’s website at https://investors.zillowgroup.com/investors/financials/quarterly-results/default.aspx. “Zillow delivered another quarter of strong results and consistent execution. We outperformed the broader housing market and our outlook, and we are on track toward our full-year goals,” said Zillow Chief Executive Officer Jeremy Wacksman. “Zillow is the operating system for modern real estate, and we are building toward a future where getting home through the integrated experience on Zillow is the standard for renters, buyers, sellers and the industry professionals who guide them through it.” Recent highlights include: • Q2 revenue was up 18% year over year to $772 million, above the high end of the company’s outlook range. The residential real estate industry grew by 6% in Q2. 1 The company estimates Q2 purchase mortgage origination volume for the industry was approximately flat year over year, which more closely represents the company’s customer base. ◦ For Sale revenue was up 14% year over year in Q2 to $549 million. ▪ Residential revenue was up 7% year over year in Q2 to $465 million, benefiting from growth in Preferred, Zillow Showcase, New Construction and the company’s suite of agent software tools. ▪ Mortgages revenue increased 75% year over year to $84 million in Q2, primarily due to a 95% increase in purchase loan origination volume to $2.2 billion. ◦ Rentals revenue increased 31% year over year in Q2 to $209 million, primarily driven by multifamily revenue growing 42% year over year. • Net loss was $4 million in Q2, and net loss margin was 1%, an 80-basis-point decrease year over year. Diluted net loss per share was $0.02 compared to diluted net income per share of $0.01 in Q2 a year ago. • Adjusted net income was $118 million and Diluted adjusted net income per share was $0.52 compared with $0.40 in Q2 a year ago. 2 • Q2 Adjusted EBITDA was $176 million, above the high end of our outlook range, and Adjusted EBITDA margin was 23%. 2 • Cash and investments at the end of Q2 were $682 million. In Q2, the company repurchased 5.6 million shares for $200 million. • Traffic to Zillow Group’s mobile apps and sites in Q2 was down 2% year over year to 239 million average monthly unique users. 3 Visits during Q2 were down 2% year over year to 2.5 billion. According to Comscore, which tracks growth trends across the residential real estate category, Zillow’s average monthly unique visitors in Q2 outperformed the category, which saw a decline overall, similar to other leading indicators that are pointing to a slower second half. Zillow is the only large company in the category, according to Comscore, to consistently expand its reach with the real estate audience over the past seven quarters. 1 National Association of Realtors® existing homes sold during Q2 2026 multiplied by the average selling price per home for Q2 2026 compared with the same period in 2025 2 Adjusted net income, Diluted adjusted net income per share, Adjusted EBITDA and Adjusted EBITDA margin are non-GAAP financial measures; they are not calculated or presented in accordance with U.S. generally accepted accounting principles (“GAAP”). Please see the “Use of Non-GAAP Financial Measures” section below for more information about our presentation of these non-GAAP financial measures, including a reconciliation to the most directly comparable GAAP financial measures for the relevant period. 3 For information on the company’s calculation of average monthly unique users and visits, please see Zillow Group’s publicly available filings with the U.S. Securities and Exchange Commission. Second-Quarter 2026 Financial Highlights The following table sets forth Zillow Group’s financial highlights for the periods presented (in millions, except percentages, unaudited): Three Months Ended June 30, 2025 to 2026 % Change Six Months Ended June 30, 2025 to 2026 % Change 2026 2025 2026 2025 Revenue: For Sale revenue: Residential $ 465 $ 434 7% $ 915 $ 851 8% Mortgages 84 48 75% 148 89 66% Total For Sale revenue 549 482 14% 1,063 940 13% Rentals 209 159 31% 392 288 36% Other 14 14 —% 25 25 —% Total revenue $ 772 $ 655 18% $ 1,480 $ 1,253 18% Other Financial Data: Gross profit $ 562 $ 489 $ 1,081 $ 948 Net income (loss) $ (4) $ 2 $ 42 $ 10 Diluted net income (loss) per share $ (0.02) $ 0.01 $ 0.18 $ 0.04 Net cash provided by operating activities $ 11 $ 87 $ 211 $ 191 Non-GAAP Financial Measures: (1) Adjusted EBITDA $ 176 $ 155 $ 374 $ 308 Adjusted net income $ 118 $ 101 $ 263 $ 206 Diluted adjusted net income per share $ 0.52 $ 0.40 $ 1.12 $ 0.81 Adjusted free cash flow $ 96 $ 100 $ 223 $ 188 Percentage of Revenue: Gross profit 73% 75% 73% 76% Net income (loss) (1)% —% 3% 1% Adjusted EBITDA (1) 23% 24% 25% 25% Adjusted net income (1) 15% 15% 18% 16% (1) These are non-GAAP financial measures. Please see the “Use of Non-GAAP Financial Measures” section below for more information about our presentation of these non-GAAP financial measures, including a reconciliation to the most directly comparable GAAP financial measures for the relevant period. Conference Call and Webcast Information Zillow Group will host a live webcast to discuss these results today at 2 p.m. Pacific time (5 p.m. Eastern time). Please register for the live event at https://zillow-q2-26-financial-results.open-exchange.net/. A shareholder letter and link to both the live webcast and recorded replay of the call may be accessed in the Quarterly Results section of Zillow Group’s Investor Relations website. Forward-Looking Statements This press release contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934 that involve risks and uncertainties, including, without limitation, statements regarding the company’s business strategies, the execution of those strategies, and their impact on consumers and real estate professionals . Statements containing words such as “may,” “believe,” “anticipate,” “expect,” “intend,” “plan,” “project,” “predict,” “will,” “projections,” “continue,” “estimate,” “outlook,” “guidance,” “would,” “could,” “strive” or similar expressions constitute forward-looking statements. Forward-looking statements are made based on assumptions as of August 5, 2026, and although we believe the expectations reflected in the forward-looking statements are reasonable, we cannot guarantee these results. Differences in Zillow Group’s actual results from those described in these forward-looking statements may result from actions taken by Zillow Group as well as from risks and uncertainties beyond Zillow Group’s control. Factors that may contribute to such differences include, but are not limited to: the health and stability of the economy and United States residential real estate industry, including changes in inflationary conditions, interest rates, housing availability and affordability, labor shortages and supply chain issues; our ability to manage advertising, product inventory and pricing, and to maintain relationships with our real estate partners; our ability to establish or maintain relationships with listing and data providers, which affects traffic to our mobile apps and websites; or changes to our rights to use or timely access listing data, or to the quality or quantity of such listing data; our ability to comply with current and future rules and requirements promulgated by National Association of REALTORS®, multiple listing services, or other real estate industry groups or governing bodies, or decisions to repeal, amend or not enforce such rules and requirements; our ability to navigate industry changes, including as a result of past, pending or future lawsuits, settlements or government investigations, which may include lawsuits, settlements or investigations in which we are not a named party; uncertainties related to policy changes, enforcement priorities, or government shutdowns at the federal and state levels; our ability to continue to innovate and compete to attract customers and real estate partners; our ability to effectively invest resources to pursue new strategies, develop new products and services and expand existing products and services into new markets; our ability to operate and grow Zillow Home Loans’ mortgage operations, including the ability to obtain or maintain sufficient financing to fund the origination of mortgages, meet customers’ financing needs with product offerings, continue to grow origination operations and resell originated mortgages on the secondary market; the duration and impact of natural disasters, climate change, geopolitical events, and other catastrophic events (including public health crises) on our ability to operate, demand for our products or services, or general economic conditions; our public statements, disclosures, targets, and product features related to sustainability matters; our ability to maintain adequate security controls or technology systems, or those of third parties on which we rely, to protect data integrity and the information and privacy of our customers and other third parties; our ability to navigate any significant disruption in service on our mobile apps or websites or in our network; the impact of past, pending or future litigation and other disputes or enforcement actions, which may include lawsuits or investigations to which we are not a party; our ability to attract, engage, and retain a highly skilled workforce; mergers, acquisitions, investments, strategic partnerships, capital-raising activities, or other corporate transactions or commitments by us or our competitors; our ability to continue relying on third-party services to support critical functions of our business; our ability to protect and continue using our intellectual property and prevent others from copying, infringing upon, or developing similar intellectual property, including as a result of artificial intelligence; our ability to comply with domestic and international laws, regulations, rules, contractual obligations, policies and other obligations, or to obtain or maintain required licenses to support our business and operations; our ability to pay our debt or to raise additional capital or refinance our indebtedness on acceptable terms, or at all; actual or anticipated fluctuations in quarterly and annual results of operations and financial position; actual or perceived inaccuracies in the assumptions, estimates and internal or third-party data that we use to calculate business, performance and operating metrics; and volatility of our Class A common stock and Class C capital stock prices. The foregoing list of risks and uncertainties is illustrative but not exhaustive. For more information about potential factors that could affect Zillow Group’s business and financial results, please review the “Risk Factors” described in Zillow Group’s publicly available filings with the United States Securities and Exchange Commission. Except as may be required by law, Zillow Group does not intend and undertakes no duty to update this information to reflect future events or circumstances. About Zillow Group, Inc. Zillow Group, Inc. (Nasdaq: Z and ZG) is reimagining real estate to make home a reality for more and more people. As the most visited real estate app and website in the United States, Zillow connects hundreds of millions of consumers with innovative technology, trusted agents and loan officers, and seamless digital solutions. With industry-leading tools and resources, Zillow supercharges real estate professionals so they can grow their businesses and deliver exceptional client experiences. For renters and housing providers, Zillow offers not only a robust marketplace but a set of end-to-end products and services to streamline applications, leases, payments and more. Zillow’s ecosystem spans the entire home journey — from dreaming and shopping to renting, buying, selling and financing. Zillow Group’s affiliates, subsidiaries, and brands include Zillow ® , Zillow Premier Agent ® , Zillow Home Loans ® , Zillow Rentals ® , Zillow ® New Construction, Trulia ® , StreetEasy ® , Out East ® , HotPads ® , Follow Up Boss ® , ShowingTime ® , dotloop ® and Zillow ® Closing. All marks herein are owned by MFTB Holdco, Inc., a Zillow affiliate. Zillow Home Loans, LLC is an Equal Housing Lender, NMLS #10287 (www.nmlsconsumeraccess.org). © 2026 MFTB Holdco, Inc., a Zillow affiliate. Please visit https://investors.zillowgroup.com, www.zillow.com/news, and www.linkedin.com/company/zillow, where Zillow Group discloses information about the company, its financial information, and its business that may be deemed material. Logos for Zillow Group and some of its key brands are available at https://zillow.com/news/logos/. (ZFIN) Use of Non-GAAP Financial Measures To provide investors with additional information regarding our financial results and liquidity, this press release includes references to Adjusted EBITDA, Adjusted net income, Diluted adjusted net income per share, and Adjusted free cash flow, all of which are non-GAAP financial measures not calculated or presented in accordance with GAAP. We have provided a reconciliation below of each non-GAAP financial measure to the most directly comparable GAAP financial measure. Adjusted EBITDA Adjusted EBITDA is a key metric used by our management ",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000052/z-20260630.htm",
+   "published": "2026-08-05T16:36:13-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion of our financial condition and results of operations should be read in conjunction with our condensed consolidated financial statements and the related notes included elsewhere in this Quarterly Report on Form 10-Q. In addition to historical financial information, the following discussion contains forward-looking statements that reflect our plans, estimates and beliefs. Our actual results may differ materially from those described in or implied by any forward-looking statements. Factors that could cause or contribute to these differences include those discussed below and elsewhere in this Quarterly Report on Form 10-Q, including in the section titled “Note Regarding Forward-Looking Statements,” and those factors discussed in Part I, Item 1A (Risk Factors) of our Annual Report on Form 10-K for the year ended December 31, 2025. Overview of our Business Zillow Group is reimagining real estate to make home a reality for more and more people. As the most visited real estate app and website in the United States, Zillow connects hundreds of millions of consumers with innovative technology, trusted agents and loan officers, and seamless digital solutions. With industry-leading tools and resources, Zillow supercharges real estate professionals so they can grow their businesses and deliver exceptional client experiences. For renters and housing providers, Zillow offers not only a robust marketplace but a set of end-to-end products and services to streamline applications, leases, payments and more. Zillow’s ecosystem spans the entire home journey — from dreaming and shopping to renting, buying, selling and financing. Our portfolio of affiliates, subsidiaries and brands includes Zillow, Zillow Premier Agent, Zillow Home Loans, our mortgage origination operations and affiliate lender, Zillow Rentals, Zillow New Construction, Trulia, StreetEasy, Out East, HotPads, Follow Up Boss, ShowingTime, dotloop and Zillow Closing. As of June 30, 2026, we had 7,232 employees, compared to 7,068 employees as of December 31, 2025. Health of Housing Market Our financial performance is impacted by changes in the health of the housing market, which is impacted, in turn, by general economic conditions. Current market factors have been driven by low housing inventory, elevated and volatile mortgage interest rates, changes in rental inventory and occupancy rates, as well as home price fluctuations and inflationary conditions. These factors may impact the number of transactions consumers complete using our products and services and demand for our advertising services. According to residential real estate data published by NAR, TTV increased 6% during the three months ended June 30, 2026 as compared to the three months ended June 30, 2025 and increased 4% during the six months ended June 30, 2026 as compared to the six months ended June 30, 2025. We continue to invest in the growth of our business, which we believe has resulted in year over year total revenue results, described below, for the three and six month periods ended June 30, 2026 as compared to the same periods in the prior year, that exceeded industry performance for the same periods. The extent to which market factors impact our results and financial position will depend on future developments, which are uncertain and difficult to predict. Revenue Overview Our revenue is classified into four categories: Residential, Mortgages, Rentals and Other. Our “For Sale revenue” subtotal includes our Residential and Mortgages revenue categories and represents our revenue from participation in residential real estate purchase and sale transactions. Residential. Residential revenue includes revenue generated from our agent and software offerings and revenue derived from our New Construction marketplace and StreetEasy for sale product offerings. Agent offerings include Zillow Preferred, Premier Agent market-based pricing, and Zillow Showcase. Software offerings primarily include Follow Up Boss, dotloop, and ShowingTime. Premier Agent advertising products, which include the delivery of validated customer connections, or leads, are offered on a pay for performance (“Zillow Preferred”) and share of voice (“market-based pricing”) basis. Connections are delivered when consumer contact information is provided to Premier Agent partners. We do not promise any minimum or maximum share of connections to customers for either market-based pricing or Zillow Preferred. With the Zillow Preferred model, Premier Agent partners are provided with leads and pay a performance advertising fee when a real estate transaction is closed with one of the leads, generally within two years. For Premier Agent market-based pricing, connections are distributed to Premier Agent partners in proportion to their share of voice, or a Premier Agent partner’s share of total advertising purchased in a particular zip code. 24 Table of Contents Zillow Showcase is an advertising and marketing solution which allows real estate agents to advertise an enhanced listing on our mobile apps and websites. Follow Up Boss revenue primarily consists of our software as a service (“SaaS”) customer relationship management system which provides real estate agents, teams and brokerages with a central hub to manage real estate transactions from connection to close. Dotloop is a real estate transaction management SaaS solution. ShowingTime primarily generates revenue through Appointment Center, which is a SaaS and call center solution allowing real estate agents, brokerages and MLSs to efficiently schedule real estate viewing appointments on behalf of their customers. Our new construction marketing solutions allow home builders to showcase their available inventory to home shoppers. New construction revenue primarily includes revenue generated by advertising sold to builders on a cost per residential community or cost per impression basis. StreetEasy for-sale revenue primarily consists of our StreetEasy Experts and StreetEasy subscription offerings. StreetEasy Experts is our pay for performance pricing model available in the New York City market for which agents and brokers are provided with leads at no initial cost and pay a performance referral fee only when a real estate purchase transaction is closed with one of the leads. Revenue generated through StreetEasy subscription offerings includes the sale of advertising and a suite of tools to developers, property managers, agents and other market professionals on a cost per property basis. Rentals. Rentals revenue includes advertising and a suite of tools sold to property managers on a cost per lead, lease, listing or impression basis or for a fixed fee for certain advertising packages through both the Zillow and StreetEasy brands. Rentals revenue also includes revenue generated from our rental applications product, through which potential renters can submit applications to multiple properties for a flat service fee. Mortgages. Mortgages revenue primarily includes revenue generated through mortgage originations and the related sale of mortgages on the secondary market through Zillow Home Loans and revenue from advertising sold to mortgage lenders and other mortgage professionals on a cost per lead basis, primarily through our Connect services. Other. Other revenue includes revenue generated primarily by display advertising. For additional information on our revenue categories, see Note 2 in our Notes to Consolidated Financial Statements in Part II, Item 8 in our Annual Report on Form 10-K for the fiscal year ended December 31, 2025. Financial Overview For the three months ended June 30, 2026 and 2025, we generated total revenue of $772 million and $655 million, respectively, an increase of 18%. The increase in total revenue was primarily attributable to the following: For Sale Revenue • Mortgages revenue increased by $36 million, or 75%, to $84 million, driven by an increase in mortgage originations revenue as a result of increased total loan origination volume. • Residential revenue increased by $31 million, or 7%, to $465 million, due to an increase in residential revenue per visit. Rentals Revenue Rentals revenue increased by $50 million, or 31%, to $209 million, due to increases in quarterly revenue per average monthly rentals unique visitor and average monthly rentals unique visitors. Gross Profit During the three months ended June 30, 2026 and 2025, we generated gross profit of $562 million and $489 million, respectively, an increase of 15%. August 2026 Cost Management Actions On August 4, 2026, Zillow Group announced a plan to reduce its headcount by approximately 7% of its employees. This headcount reduction is designed to allow the Company to move faster and operate more efficiently, including with a more 25 Table of Contents sustainable cost structure. As a result, the Company currently estimates that it will incur pre-tax restructuring costs totaling approximately $59 million to $64 million related to employee termination costs, of which an estimated $36 million to $38 million are expected to be future cash expenditures associated with severance payments, and the remaining amount is expected to be accelerated share-based compensation expense. For the three months ended June 30, 2026, Zillow Group recorded $36 million in restructuring costs related to employee termination costs and expects that the remainder of the restructuring costs will be recognized during the three months ending September 30, 2026. These employee termination costs have been recorded as restructuring costs within our condensed consolidated statements of operations. We plan to fund the cash expenditures through existing cash and investment balances. We expect total headcount-related expenses to decrease in absolute dollars during the three months ending September 30, 2026 as a result of these cost management actions. Key Metrics Management has identified visits, unique users, For Sale revenue per TTV, and the volume of loans originated through Zillow Home Loans as relevant to investors’ and others’ assessment of our financial condition and results of operations. Visits The number of visits is an important metric because it is an indicator of consumers’ level of engagement with our mobile apps, websites and other services. We believe highly engaged consumers are more likely to use our products and services, including Zillow Home Loans, or be transaction-ready real estate market participants and therefore more sought-after by our Premier Agent partners. We define a visit as a group of interactions by users with our Zillow, Trulia and StreetEasy mobile apps and websites. A single visit can contain multiple page views and actions, and a single user can open multiple visits across domains, web browsers, desktop or mobile devices. Visits can occur on the same day, or over several days, weeks or months. Zillow and StreetEasy measure visits using an internal measurement tool, and Trulia measures visits with Adobe Analytics. Visits to Trulia end after thirty minutes of user inactivity. Visits to Zillow and StreetEasy end after thirty minutes of user inactivity or at midnight. The following table presents the number of visits to our mobile apps and websites for the periods presented (in millions, except percentages): Three Months Ended June 30, 2025 to 2026 % Change Six Months Ended June 30, 2025 to 2026 % Change 2026 2025 2026 2025 Visits 2,529 2,590 (2) % 4,805 4,944 (3) % Unique Users Measuring unique users is important to us because much of our revenue depends in part on our ability to connect home buyers and sellers, renters and individuals with or looking for a mortgage to real estate, rental and mortgage professionals, products and services. Growth in consumer traffic to our mobile apps and websites increases the number of impressions, clicks, connections, leads and other even",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000063/z-20261027.htm",
+   "published": "2026-10-28T16:30:24-04:00",
+   "form": "8-K",
+   "items": "1.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. On October 27, 2026, Zillow Group, Inc. (“the Company” or “Zillow”) entered into a stipulation of settlement (the “Settlement Agreement”) to resolve all claims against all defendants alleged in the previously disclosed consolidated securities class action litigation captioned Jaeger v. Zillow Group, Inc., et al., Case No. 2:21-cv-01551-TSZ (W.D. Wash.) (the “Class Action”). Pursuant to the Settlement Agreement, the Company has agreed to pay or cause to be paid an aggregate of $212.5 million in cash (the “Settlement Payment”) into a settlement fund held in escrow within 20 business days after the court preliminarily approves the settlement. Approximately $48 million of the Settlement Payment is expected to be paid through insurance proceeds. The settlement fund will be used to pay class notice and administration costs, court-approved plaintiffs’ attorneys’ fees and expenses, and cash payments to eligible members of the settlement class. The settlement class consists of all persons or entities who purchased or otherwise acquired Zillow Class A common stock or Class C capital stock during the period from August 5, 2021, to November 2, 2021, inclusive (the “Class Period”), and were allegedly damaged thereby, subject to certain exclusions and exceptions. Upon the settlement becoming effective, settlement class members who have not validly requested exclusion will be bound by the settlement and will release the Company, the other defendants named in the Class Action, and certain of their respective related parties from any and all claims that were or could have been asserted that arise out of or relate to the allegations in the Class Action or the purchase or other acquisition of the Company’s stock during the Class Period. The Settlement Agreement contains no admission of liability or wrongdoing by any of the defendants. The settlement does not affect the claims asserted in the previously disclosed related shareholder derivative actions, all of which remain pending. The settlement remains subject to court approval. As is customary in securities class action settlements, if the court preliminarily approves the settlement, members of the settlement class will receive notice and an opportunity to object or request exclusion, and the court will then hold a fairness hearing on final approval and entry of the proposed order and final judgment. If the court approves the settlement and enters such order and final ju"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000060/z-20260916.htm",
+   "published": "2026-09-17T16:06:50-04:00",
+   "form": "8-K",
+   "items": "5.02,9.01",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. Retirement of Chief Accounting Officer; Appointment of Principal Accounting Officer Jennifer Rock has notified Zillow Group, Inc. (“Zillow” or “the Company”) that she will retire from her position as Zillow’s Chief Accounting Officer and principal accounting officer, effective September 17, 2026. Ms. Rock will remain employed by Zillow in an advisory role through March 1, 2027. Ms. Rock’s decision to retire was not the result of any disagreement with the Company on any matter relating to the Company’s operations, policies or practices, including accounting principles or practices, or financial disclosures. In connection with this transition, on September 16, 2026, the board of directors of the Company (the “Board”) appointed Rikki Tremblay as Zillow’s Vice President, Principal Accounting Officer, effective September 17, 2026. Ms. Tremblay, 41, has served in various roles at Zillow since December 2014. Prior to her appointment as Vice President, Principal Accounting Officer, Ms. Tremblay served as Vice President, Reporting, Technical Accounting and Controls from February 2025 to September 2026. She served as Senior Director, Reporting, Technical Accounting and Controls from February 2023 to February 2025; Senior Director, Financial Reporting and Technical Accounting from February 2019 to February 2023; and in various other financial reporting and accounting leadership positions from December 2014 to February 2019. Prior to joining Zillow, Ms. Tremblay served in various audit roles at Deloitte & Touche LLP from September 2009 to November 2014, most recently as an audit manager. Ms. Tremblay holds two B.A. degrees from the University of Washington and is a Certified Public Accountant licensed in the State of Washington. There are no arrangements or understandings between Ms. Tremblay and any other persons pursuant to which Ms. Tremblay was appointed as the Company’s Vice President, Principal Accounting Officer. Ms. Tremblay does not have any family relationship with any director or executive officer of the Company or any person nominated or chosen by the Company to become a director or executive officer. Other than her employment relationship with the Company as disclosed herein and her compensation and benefits in connection with such employment relationship, there are no transactions in which Ms. Trembl"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1617640/000161764026000056/z-20260822.htm",
+   "published": "2026-08-24T09:04:20-04:00",
+   "form": "8-K",
+   "items": "7.01,8.01,9.01",
+   "text": "Item 7.01 Regulation FD Disclosure. Zillow Group, Inc. (the “Company” or “Zillow”) today issued a press release relating to the matters described in Item 8.01 of this Current Report on Form 8-K. A copy of the press release is furnished as Exhibit 99.1 hereto. In connection with these matters, the Company is reaffirming its third quarter, fourth quarter and full year 2026 financial outlook previously provided in its Shareholder Letter furnished as Exhibit 99.2 to the Company’s Current Report on Form 8-K filed with the Securities and Exchange Commission on August 5, 2026. The information in this Item 7.01 and Exhibit 99.1 of this Current Report on Form 8-K shall not be deemed to be “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended (the “Securities Act”), or the Exchange Act, except as expressly set forth by specific reference in such a filing. Item 8.01 Other Events. On A ugust 22, 20 26, Zillow and Redfin Corporation (“Redfin”) entered into a stipulated final order for equitable relief (“Order”) with the Federal Trade Commission (the “FTC”) and the Attorneys General of the Commonwealth of Virginia and the States of Arizona, Connecticut, New York, and Washington (collectively, the “States”) that fully resolves the FTC’s and States’ previously disclosed antitrust litigation related to the partnership between Zillow and Redfin. The Order, which contains no admission of liability or wrongdoing by Zillow, will be filed today in the United States District Court for the Eastern District of Virginia and is subject to entry by the court. Under the terms of the Order, the partnership between Zillow and Redfin will continue and the syndication of multifamily rental listings from Zillow to Redfin will remain intact through at least June 30, 2030, as provided in the existing agreement. Pursuant to the Order, the parties’ agreement was amended to, among other things, allow Zillow and Redfin to offer standalone multifamily advertising products in addition to the existing partnership. Zillow and Redfin will also pay the States an immaterial amount for reasonable fees and costs related to the litigation. Forward-Looking Statements This Current Report on Form 8-K contains “forward-looking statements” within the meaning of Section 27A of the Securities Ac",
+   "exhibit_99_1": "EX-99.1 2 exhibit991.htm EX-99.1 exhibit991 Media contact: Ellie Russell press@zillow.com Zillow Resolves Federal Trade Commission Lawsuit, Reaffirming Partnership with Redfin and Expanding Access to Even More Housing Options for Renters Syndication partnership with Redfin continues; both companies to also offer standalone options, improving choice, affordability and access SEATTLE, Aug. 24, 2026 — Zillow Group today announced a resolution with the Federal Trade Commission (FTC) and five states regarding its multifamily rental listings syndication agreement with Redfin. Zillow has consistently maintained the partnership with Redfin is pro-consumer and procompetitive, and we’re pleased to have found a resolution that enables its continuation. The partnership will continue, and the listings syndication will remain intact across Zillow, Trulia, HotPads, Rent.com, ApartmentGuide and Redfin. In 2027, Zillow and Redfin will offer standalone multifamily advertising products in addition to the existing partnership — giving housing providers even more flexibility in how they work with Zillow. \"This resolution is a win for renters and multifamily housing providers,\" said Michael Sherman, general manager and SVP of Zillow Rentals. \"Our syndication partnership with Redfin has already expanded access to multifamily listings across multiple platforms, bringing more leads and leases to property managers and more options to renters. Now, with the ability to offer more multifamily advertising solutions in addition to the existing partnership, we can do even more to support the marketplace. The data shows the pro- consumer and procompetitive benefits of this partnership. This positive resolution enables us to keep our energy on innovating for renters and property managers, and ultimately making renting easier, more affordable and better for everyone.\" Since the combined syndication partnership launched: • Renters across the country have more options. Multifamily properties on Redfin's websites nearly quadrupled, and multifamily properties on Zillow's websites grew almost 40%. • Housing providers are getting more for their investment. Through this partnership, properties that were previously listed on only Zillow or Redfin have seen an increase in leads, reflecting the benefit of reaching new audiences. This means Exhibit 99.1 renters are getting access to more inventory in more places and housing providers in the category are filling vacancies faster and at lower customer a"
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/rkt/articles/622210/what-is-behind-the-rise-in-rocket-stock/2026-11-03?.tsrc=rss",
+   "published": "2026-11-03T07:17:16-05:00",
+   "text": "What Is Behind The Rise In Rocket Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/02/rocket-companies-jumps-9-compass-and-zillow-surge-8-as-treasury-yields-retreat/?.tsrc=rss",
+   "published": "2026-11-02T13:57:01-05:00",
+   "text": "Rocket Companies Jumps 9%, Compass and Zillow Surge 8% as Treasury Yields Retreat - Treasury yields just flinched, and housing stocks are sprinting toward their biggest single-day gains in months. But with soft sales data, ongoing integrations, and FTC litigation in the mix, the question is whether this rally has legs or a trap door.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/rkt/articles/621889/what-is-behind-the-move-in-rocket-companies-stock/2026-11-02?.tsrc=rss",
+   "published": "2026-11-02T12:44:09-05:00",
+   "text": "What Is Behind The Move In Rocket Companies Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/zg/articles/621862/what-gave-alphabet-stock-its-edge-over-zillow/2026-11-01?.tsrc=rss",
+   "published": "2026-11-01T20:23:07-05:00",
+   "text": "What Gave Alphabet Stock Its Edge Over Zillow? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://247wallst.com/personal-finance/2026/11/01/everyone-talks-about-retiring-to-a-small-town-nobody-talks-about-the-retirees-who-moved-to-a-big-city-apartment-and-sold-the-car/?.tsrc=rss",
+   "published": "2026-11-01T09:05:46-05:00",
+   "text": "Everyone Talks About Retiring to a Small Town. Nobody Talks About the Retirees Who Moved to a Big-City Apartment and Sold the Car - Selling the car and the house to rent a city apartment sounds like a radical retirement plan, but the math in some cities comes surprisingly close to breaking even, while in others it requires a portfolio most retirees simply do not have.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/real-estate/articles/zillow-group-zg-opens-fha-131229651.html?.tsrc=rss",
+   "published": "2026-10-31T09:12:29-04:00",
+   "text": "Zillow Group (ZG) Opens FHA Down Payment Assistance To Buyers In 43 States - Zillow Group (NasdaqGS:ZG) said on 29 October 2026 that Zillow Home Loans is rolling out a new FHA down payment assistance program across 43 states. The assistance is structured as a second loan on top of an FHA mortgage and is fully forgivable after five years for eligible borrowers. Program terms ",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-akamai-technologies-akam-130021633.html?.tsrc=rss",
+   "published": "2026-10-29T09:00:21-04:00",
+   "text": "Earnings Preview: Akamai Technologies (AKAM) Q3 Earnings Expected to Decline - Akamai Technologies (AKAM) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zillow-zg-beat-estimates-again-151003884.html?.tsrc=rss",
+   "published": "2026-10-28T11:10:03-04:00",
+   "text": "Will Zillow (ZG) Beat Estimates Again in Its Next Earnings Report? - Zillow (ZG) has an impressive earnings surprise history and currently possesses the right combination of the two key ingredients for a likely beat in its next quarterly report.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zillow-group-zg-earnings-expected-130005504.html?.tsrc=rss",
+   "published": "2026-10-28T09:00:05-04:00",
+   "text": "Zillow Group (ZG) Earnings Expected to Grow: Should You Buy? - Zillow (ZG) possesses the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zillow-z-reports-next-week-130004084.html?.tsrc=rss",
+   "published": "2026-10-28T09:00:04-04:00",
+   "text": "Zillow (Z) Reports Next Week: Wall Street Expects Earnings Growth - Zillow (Z) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/real-estate/articles/zillow-home-loans-now-help-100000772.html?.tsrc=rss",
+   "published": "2026-10-28T06:00:00-04:00",
+   "text": "Zillow Home Loans will now help eligible buyers cover their FHA down payment - Zillow Home Loans today launched down payment assistance for eligible buyers who finance their home purchase with an FHA loan. Buyers in 43 states and Washington, D.C., can receive up to 3.5% of the purchase price, which covers the full FHA minimum down payment, as a second loan with no interest and",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/z/articles/620809/is-zillow-stock-worth-the-wait/2026-10-27?.tsrc=rss",
+   "published": "2026-10-27T14:54:17-04:00",
+   "text": "Is Zillow Stock Worth The Wait? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://247wallst.com/personal-finance/2026/10/26/renting-for-good-was-supposed-to-be-about-the-money-retirees-who-did-it-found-that-was-the-smallest-part/?.tsrc=rss",
+   "published": "2026-10-26T10:17:42-04:00",
+   "text": "Renting for Good Was Supposed to Be About the Money. Retirees Who Did It Found That Was the Smallest Part - Selling the house frees the equity and ends the maintenance calls, but retirees who made the switch say the spreadsheet missed the costs that hit hardest. Here is what the math leaves out.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zillow-zg-stock-looks-above-030826934.html?.tsrc=rss",
+   "published": "2026-10-25T23:08:26-04:00",
+   "text": "Zillow (ZG) Stock Looks Above Fair Value After A 68% Fall - Zillow Group shares have rebounded in recent weeks after a difficult multi-year stretch, which puts fresh attention on whether the current price lines up with what the company is earning. For anyone watching the stock today, the core issue is how much of its recent share move is supported by earning",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/real-estate/articles/zillow-group-zg-says-hidden-181127454.html?.tsrc=rss",
+   "published": "2026-10-25T14:11:27-04:00",
+   "text": "Zillow Group (ZG) Says Hidden Homeownership Costs Have Jumped Nearly 32% - Zillow Group (NasdaqGS:ZG) and Thumbtack report hidden annual homeownership costs in the U.S. have risen nearly 32%. The joint research points to homeowners' insurance and routine maintenance as the main drivers of the higher recurring expenses. The findings focus on ongoing ownership outlays, not m",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zillow-group-zg-could-28-170839920.html?.tsrc=rss",
+   "published": "2026-10-25T13:08:39-04:00",
+   "text": "Zillow Group (ZG) Could Be 28% Undervalued After Claude Rollout - Zillow Group (ZG) just rolled out a new Zillow experience inside Claude, giving users a way to search homes, rentals and affordability tools directly through the AI assistant. The Claude rollout lands as investors reassess Zillow Group after a sharp reset. The 1 month share price return of 16.21% an",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://www.trefis.com/articles/620199/will-zillow-stock-ever-get-back-to-its-old-high/2026-10-23?.tsrc=rss",
+   "published": "2026-10-23T06:35:05-04:00",
+   "text": "Will Zillow Stock Ever Get Back To Its Old High? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/real-estate/articles/hidden-homeownership-costs-surge-32-194309487.html?.tsrc=rss",
+   "published": "2026-10-22T15:43:09-04:00",
+   "text": "Hidden Homeownership Costs Surge 32% Over Past 5 Years, Study Shows - The hidden cost of owning a home have surged over the past five years, driven by sharp gains in insu",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/costar-soars-6-on-keefe-bruyette-price-target-hike-as-zillow-lennar-rally?ref=yahoofinance&.tsrc=rss",
+   "published": "2026-10-22T13:36:08-04:00",
+   "text": "CoStar Soars 6% on Keefe Bruyette Price Target Hike as Zillow, Lennar Rally - Key TakeawaysCoStar shares jumped 6. 2% today after Keefe Bruyette raised its price target to $34 from $29.",
+   "feed": {
+    "fetched_et": "2026-11-03T14:33:48-05:00",
+    "sha256": "fb8a406f55a396463cf5e5fa9c04d3cf3d3560dfd40da0afc994c70d26022074"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 58843
+}
