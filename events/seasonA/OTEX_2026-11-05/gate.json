@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "OTEX",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:10.396840-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.opentext.com/press-releases/press-releases-details/2026/OpenText-to-Report-First-Quarter-Fiscal-Year-2027-Financial-Results-on-Thursday-November-5-2026/default.aspx",
+  "published_et": "2026-10-08T09:00-04:00",
+  "quote": "Report First Quarter Fiscal Year 2027 Financial Results on Thursday, November 5, 2026 10/08/2026 Download (opens in new window) WATERLOO, ON , Oct. 8, 2026 /PRNewswire/ -- Open Text Corporation (NASDAQ: OTEX), (TSX: OTEX), announced today that financial results for its first quarter fiscal year 2027 will be released before market open on Thursday, November 5, 2026.",
+  "title": "OpenText to Report First Quarter Fiscal Year 2027 Financial Results on Thursday, November 5, 2026",
+  "retrieved_et": "2026-10-08T23:35:19.881831-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.opentext.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 25.7450008392334,
+  "expiry": "2026-11-20",
+  "strike": 25.0,
+  "call": {
+   "bid": 1.6,
+   "ask": 1.9,
+   "openInterest": 283.0,
+   "lastPrice": 1.79,
+   "impliedVolatility": 0.5986368261718751,
+   "lastTradeDate": "2026-11-03T18:04:03+00:00"
+  },
+  "put": {
+   "bid": 0.65,
+   "ask": 0.85,
+   "openInterest": 76.0,
+   "lastPrice": 0.77,
+   "impliedVolatility": 0.5273484765625001,
+   "lastTradeDate": "2026-11-03T17:11:23+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.09710623105477599,
+  "rel_spread": {
+   "call": 0.17142857142857132,
+   "put": 0.2666666666666666
+  },
+  "oi_atm": 359.0,
+  "oi_sum": 359.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
