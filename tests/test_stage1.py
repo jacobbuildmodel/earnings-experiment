@@ -161,6 +161,23 @@ def test_p3_and_markdown():
     assert "INTERIM" in md and "fund to Gate 1" in md and "| SH-W |" in md
 
 
+def test_pending_in_cut_is_counted_and_blocks_write():
+    r = case(0.015)
+    assert r["P2"]["pending_in_cut"] == {"SH-W": 0, "S0 gated": 0, "SH-M": 0} and r["P2"]["cut_complete"]
+    assert "the cut is complete" in stage1.markdown(r)
+    rows = [out_row(i, r_, k) for i, (r_, k) in enumerate(make(40, 0.02, 0.03))]
+    sh = [sh_row("SH-W", i, r_, k) for i, (r_, k) in enumerate(make(50, 0.01, 0.03, seed=2))]
+    late = sh_row("SH-W", 99, 0.0, 3)
+    late.update(graded=False, exit_A={})                                 # inside the cut, prices not settled yet
+    void = sh_row("SH-M", 98, 0.0, 3)
+    void.update(graded=False, void="not_domestic_foreign", exit_A={})    # VOID: never pending
+    s = src(rows, sh + [late, void])
+    s["outcomes"] = (rows, {}, 2, 0)
+    r = stage1.compute("synthetic", "2026-10-30", s)
+    assert r["P2"]["pending_in_cut"] == {"SH-W": 1, "S0 gated": 2, "SH-M": 0} and not r["P2"]["cut_complete"]
+    assert r["P2"]["SH-W"]["n"] == 50 and "INCOMPLETE" in stage1.markdown(r)
+
+
 def test_out_base_never_replaces(tmp_path, monkeypatch):
     monkeypatch.setattr(stage1, "ROOT", str(tmp_path))
     (tmp_path / "outcomes" / "reports").mkdir(parents=True)

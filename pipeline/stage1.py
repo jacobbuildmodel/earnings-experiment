@@ -12,6 +12,8 @@ Never shown (D017 §4): C1, any T2-confidence-vs-outcome view (H-T2C's slope, Br
 confirmatory block, per-name outcomes. report.run and shadow.report_ print their full tables, so their stdout is
 swallowed, only the fields named below are read, and guard() refuses an output that carries a banned key.
 --write saves outcomes/reports/stage1_<cut>.md and .json; a later run never replaces them (D017 §2), it writes _r2.
+--write refuses while any event in the cut is neither graded nor VOID (bug fix 2026-11-03: the first run missed the
+10-30 exits, which were not graded yet).
 Every input comes through sources(), so tests/test_stage1.py runs the same compute() on synthetic data.
 """
 import contextlib
@@ -323,7 +325,16 @@ def compute(season, cut, src):
           "S0 gated": {**read(s0), "role": "secondary (H-S0's statistic)"},
           "SH-M": {**read(sh["SH-M"]), "role": "secondary (market-wide)"}}
     p2["SH-W"]["word"] = word(p2["SH-W"])
-    diffs = [abs(e["spy"] - e["spy_stored"]) for e in sh["SH-W"] + sh["SH-M"]
+    # Inside the cut but neither graded nor VOID: D017 §2's sample is not all there yet. The first run (1537ceb) read
+    # the shadow grade of Fri 21:52 ET, while a Friday exit settles at 06:00 ET the next day (shadow.settled) and the
+    # grader fires on weekday evenings only, so the 10-30 exits were missing from it unnoticed.
+    p2["pending_in_cut"] = {"SH-W": sum(1 for e in src["shadow"] if e["track"] == "SH-W" and not e.get("graded")
+                                        and not e.get("void")),
+                            "S0 gated": pending,
+                            "SH-M": sum(1 for e in src["shadow"] if e["track"] == "SH-M" and not e.get("graded")
+                                        and not e.get("void"))}
+    p2["cut_complete"] = not any(p2["pending_in_cut"].values())
+    diffs =[abs(e["spy"] - e["spy_stored"]) for e in sh["SH-W"] + sh["SH-M"]
              if e.get("spy") is not None and e.get("spy_stored") is not None]
     shw = (shrep.get("descriptive") or {}).get("SH-W net mean (descriptive, D009 §5)") or {}
     p2["consistency"] = {
@@ -413,6 +424,11 @@ def markdown(r):
                  f"{pct(x.get('win_rate'), 1, False)} | {pct(x.get('excess_spy_mean'))} (n {x.get('excess_spy_n', 0)}) | "
                  f"{pct(x.get('excess_spy_net_mean'))} | {pct(x.get('se_cluster_session'), 2, False)} | "
                  f"{'[' + pct(ci[0]) + ', ' + pct(ci[1]) + ']' if ci else '-'} | {x.get('word', '(secondary: no word)')} |")
+    pc = p2["pending_in_cut"]
+    L += ["", f"Pending in the cut (neither graded nor VOID): SH-W {pc['SH-W']} · S0 gated {pc['S0 gated']} · "
+          f"SH-M {pc['SH-M']} - " + ("the cut is complete." if p2["cut_complete"] else
+                                       "**the cut is INCOMPLETE: these events are in D017 §2's sample and missing "
+                                       "from the reads above.**")]
     L += ["", f"D017 words, primary only: INSUFFICIENT under {MIN_EVENTS} events or {MIN_SESSIONS} sessions; "
           f"CONTRADICTS HISTORY if the upper bound is below {pct(HIST_NET)}; ALIVE if the net mean and the excess over "
           "SPY are both > 0; else NOT YET VISIBLE. Power (D017 §1): a real premium shows t of about 0.087 x sqrt(n).", "",
@@ -484,6 +500,9 @@ def main(argv):
     md = markdown(r)
     print(md)
     if "--write" in argv:
+        if not r["P2"]["cut_complete"]:
+            raise SystemExit(f"D017 §2: the cut is incomplete {r['P2']['pending_in_cut']} - not written; "
+                             "run again once every event in it is graded or VOID")
         base = out_base(cut)
         write_json(base + ".json", r)
         with open(base + ".md", "w", encoding="utf-8", newline="\n") as f:
