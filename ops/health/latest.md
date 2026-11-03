@@ -1,4 +1,4 @@
-# Health 2026-11-02 22:57 ET - **AMBER**
+# Health 2026-11-03 06:15 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-11-03T04:03:59Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41575882842
 - Actions failure: Earnings experiment - paper options at 2026-11-03T02:02:31Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41563598606
 - Actions failure: Earnings experiment - paper options at 2026-11-03T01:25:03Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41559603872
 - Actions failure: Earnings experiment - paper options at 2026-11-03T01:08:15Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41557714310
@@ -18,8 +19,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-11-02T19:37:40Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41511693360
 - Actions failure: Earnings experiment - paper options at 2026-11-02T14:47:24Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41465289651
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
-- PAPER WINDOW NOT COVERED (options): window steps today ran 17:27-17:27, 17:39-17:39, 19:05-19:05, 20:00-20:00, 20:17-20:17, 20:36-20:36 ET; no frozen paper-options.yml run either in the 25 minutes to 15:56 ET - exits and gates were not being worked - the window is over
-- PAPER WINDOW NOT COVERED (long): window steps today ran 17:27-17:27, 17:39-17:39, 19:05-19:05, 20:00-20:00, 20:17-20:17, 20:36-20:36 ET; no frozen paper-long.yml run either in the 25 minutes to 15:56 ET - exits and gates were not being worked - the window is over
 - no C1 implied-move capture for 2026-11-02 (D015): that session's events can never be C1
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
@@ -36,10 +35,10 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: open ['seasonA-DOCN-2026-11-03-L', 'seasonA-BETA-2026-11-03-L', 'seasonA-DT-2026-11-03-L', 'seasonA-IPGP-2026-11-03-L', 'seasonA-MTCH-2026-11-02-L', 'seasonA-ON-2026-11-02-L', 'seasonA-PAY-2026-11-02-L', 'seasonA-PLTR-2026-11-02-L', 'seasonA-SHOP-2026-11-03-L', 'seasonA-VVX-2026-11-02-L', 'seasonA-YUMC-2026-11-03-L', 'seasonA-AMD-2026-11-03-L', 'seasonA-ANET-2026-11-03-L', 'seasonA-DDOG-2026-11-04-L', 'seasonA-DUOL-2026-11-03-L', 'seasonA-FLYW-2026-11-03-L', 'seasonA-FRSH-2026-11-03-L', 'seasonA-NVTS-2026-11-03-L', 'seasonA-OUST-2026-11-03-L', 'seasonA-Q-2026-11-04-L', 'seasonA-RAL-2026-11-04-L', 'seasonA-RIOT-2026-11-04-L', 'seasonA-SWKS-2026-11-03-L', 'seasonA-TOST-2026-11-03-L', 'seasonA-UBER-2026-11-04-L', 'seasonA-VSH-2026-11-04-L', 'seasonA-W-2026-11-04-L', 'seasonA-XYZ-2026-11-03-L', 'seasonA-YOU-2026-11-04-L', 'seasonA-ZBH-2026-11-04-L']
 - paper/options: 127 position(s), 10 open order(s) - they match the ledgers
 - paper/long: 62 position(s), 0 open order(s) - they match the ledgers
-- Mon 02 Nov: 24 snapshot(s) - ALAB, AMD, ANET, DDOG, DUOL, FLYW, FRSH, HUT, NATL, NVTS, OUST, Q, RAL, RIOT, RPRX, SMCI, SWKS, TOST, UBER, VSH, W, XYZ, YOU, ZBH
 - Tue 03 Nov: 48 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KTB, KVYO, LOAR, MELI, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RDW, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
-- Wed 04 Nov: 34 snapshot(s) - AKAM, ALRM, ATEN, AVPT, AXON, BILL, CARG, CART, DBX, DIOD, FIGS, FIVN, FROG, GRND, HALO, IONQ, IREN, KRMN, LASR, LITE, LYFT, MRNA, NET, PCTY, PDFS, QNT, SARO, SOUN, TDC, TEAM, TXG, TXRH, UA, WULF
+- Wed 04 Nov: 35 snapshot(s) - AKAM, ALRM, ATEN, AVPT, AXON, BILL, CARG, CART, DBX, DIOD, FIGS, FIVN, FROG, GRND, HALO, IONQ, IREN, KRMN, LASR, LITE, LYFT, MRNA, NET, PCTY, PDFS, QNT, SARO, SOUN, TDC, TEAM, TXG, TXRH, UA, VSAT, WULF
 - Thu 05 Nov: 2 snapshot(s) - ROIV, VIA
 - Fri 06 Nov: 8 snapshot(s) - ACHR, ASTS, CSQR, ONTO, QBTS, QLYS, SANM, ZETA
-- seasonA: 47 name(s) still PENDING a confirmed date
+- Mon 09 Nov: 7 snapshot(s) - ATRO, CRWV, FLY, MRCY, RGTI, RUM, STUB
+- seasonA: 43 name(s) still PENDING a confirmed date
 
