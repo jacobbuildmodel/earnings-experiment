@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "QCOM",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:27.108390-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.qualcomm.com/news-events/press-releases/news-details/2026/Qualcomm-Schedules-Fourth-Quarter-and-Fiscal-2026-Earnings-Release-and-Conference-Call/default.aspx",
+  "published_et": "2026-10-22T09:00-04:00",
+  "quote": "Call View all news Qualcomm Schedules Fourth Quarter and Fiscal 2026 Earnings Release and Conference Call 10/22/2026 Download (opens in new window) SAN DIEGO , Oct. 22, 2026 /PRNewswire/ -- Qualcomm Incorporated (NASDAQ: QCOM) today announced that it will publish the Company's financial results for its fourth quarter and fiscal 2026 on Wednesday, November 4, 2026, after the close of the market on the Company's Investor Relations website, at https://investor.qualcomm.com/financial-information .",
+  "title": "Qualcomm Schedules Fourth Quarter and Fiscal 2026 Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-23T21:27:19.129114-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.qualcomm.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 162.86500549316406,
+  "expiry": "2026-11-06",
+  "strike": 162.5,
+  "call": {
+   "bid": 7.5,
+   "ask": 7.9,
+   "openInterest": 189.0,
+   "lastPrice": 7.87,
+   "impliedVolatility": 1.1069380590820312,
+   "lastTradeDate": "2026-11-03T18:58:36+00:00"
+  },
+  "put": {
+   "bid": 6.5,
+   "ask": 6.9,
+   "openInterest": 413.0,
+   "lastPrice": 6.8,
+   "impliedVolatility": 1.0131885278320314,
+   "lastTradeDate": "2026-11-03T19:03:05+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.08841678392725325,
+  "rel_spread": {
+   "call": 0.05194805194805199,
+   "put": 0.05970149253731349
+  },
+  "oi_atm": 602.0,
+  "oi_sum": 3468.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
