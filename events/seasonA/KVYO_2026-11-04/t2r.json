@@ -1,0 +1,143 @@
+{
+ "track": "T2R",
+ "event": "KVYO_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "KVYO enters earnings with a large run-up, a high implied move and a recent history of sharp post-earnings sell-offs, which offsets the typical positive drift and leaves the outcome close to a coin flip.",
+  "reasons": [
+   "Stock is up about 30% in 1m and 7% in 5d after the Braze/Salesforce takeover read-through, so a lot of good news is already priced in.",
+   "The last two prints saw -15% and -22% reactions despite EPS in line or beat, which suggests that the bar is high on guidance.",
+   "Implied move of about 19% is large, and ATM IV is 1.5x realized vol, so premium is rich with no directional tilt (call-put IV spread near zero).",
+   "Q3 guide of 21.5-22.5% growth is a deceleration from 26%, but the company has repeatedly raised guidance, and short interest of 16% adds squeeze potential on a beat.",
+   "Goldman downgrade on Oct 16 and a 90-day EPS revision of -17% are modest negatives."
+  ],
+  "deciding_variable": "Q4 revenue guidance and the full-year raise relative to elevated expectations after the sector rerating.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation hit 0.542, AMC session 0.538, software_internet cluster 0.541"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-03, so that earnings report hasn't happened yet, and I have no information on how Klaviyo (KVYO) stock reacted to it.",
+  "moved_from_prior": "Moved down about 4 points from 0.54 to 0.50, because of the pre-earnings run-up, the history of negative reactions and the deceleration in guidance, partly offset by short interest and takeover-speculation support.",
+  "theses": [
+   {
+    "expected": "Beat and raise with Q4 guide implying stable growth drives a gap up.",
+    "mechanism": "Short interest of 16% and a depressed valuation (P/S 4.7) amplify a positive surprise, with takeover optionality in the background.",
+    "wrong_if": "Q4 revenue guide implies growth below about 20% or margin guidance is cut."
+   },
+   {
+    "expected": "Sell the news after the rally, with a gap down despite an in-line print.",
+    "mechanism": "The 30% one-month run-up pulled forward the Braze read-through, and growth deceleration plus SMS cost pressure on gross margin disappoint.",
+    "wrong_if": "The company raises FY revenue guidance materially above consensus and NRR rises."
+   },
+   {
+    "expected": "Small move with a muted open-to-open change.",
+    "mechanism": "The AI agent adoption narrative (Composer GA) offsets deceleration, so the market treats the print as neutral.",
+    "wrong_if": "There is a large move in either direction exceeding the roughly 19% implied."
+   }
+  ],
+  "key_observations": [
+   "Q4 revenue guidance versus consensus",
+   "FY26 revenue guidance raise",
+   "NRR trend versus 109%",
+   "Non-GAAP operating margin guide",
+   "Composer and Customer Agent adoption metrics",
+   "Gross margin trend from SMS and WhatsApp mix"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/KVYO_2026-11-04/gate.json",
+    "published": "2026-11-03T14:31:54.020918-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/KVYO_2026-11-04/factors.json",
+    "published": "2026-11-03T14:31:54.020918-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://stocktwits.com/news-articles/markets/equity/crm-stock-in-focus-jefferies-says-salesforce-s-braze-deal-could-spark-more-software-takeovers/cZxtMp4RBHM?.tsrc=rss",
+    "published": "2026-10-21T03:21:15-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.fool.com/investing/2026/10/20/why-klaviyo-stock-rallied-today/?.tsrc=rss",
+    "published": "2026-10-20T13:38:47-04:00",
+    "dossier_item": "I14"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/klaviyo-shares-jump-8-salesforce-134516165.html?.tsrc=rss",
+    "published": "2026-10-20T09:45:16-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/goldman-upgrades-zeta-buy-cuts-134635046.html?.tsrc=rss",
+    "published": "2026-10-16T09:46:35-04:00",
+    "dossier_item": "I19"
+   }
+  ],
+  "decided_et": "2026-11-03T16:54:38-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20434,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 998,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20434,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 998,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20434,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20434
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.0917833
+ }
+}
