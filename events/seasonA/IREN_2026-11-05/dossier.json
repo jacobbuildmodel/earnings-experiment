@@ -1,0 +1,640 @@
+{
+ "event": "IREN_2026-11-05",
+ "season": "seasonA",
+ "built_et": "2026-11-04T14:32:06-05:00",
+ "cutoff_et": "2026-11-04T14:31:52.812735-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/IREN_2026-11-05/gate.json",
+   "published": "2026-11-04T14:31:52.812735-05:00",
+   "data": {
+    "ticker": "IREN",
+    "report_date": "2026-11-05",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-06"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-06"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-13"
+     },
+     "reaction_day": "2026-11-06"
+    },
+    "snapshot_session": "2026-11-04",
+    "captured_et": "2026-11-04T14:31:52.812735-05:00",
+    "options": {
+     "spot": 21.809999465942383,
+     "expiry": "2026-11-06",
+     "strike": 22.0,
+     "call": {
+      "bid": 1.73,
+      "ask": 1.76,
+      "openInterest": 528.0,
+      "lastPrice": 1.75,
+      "impliedVolatility": 2.3203166992187496,
+      "lastTradeDate": "2026-11-04T19:14:30+00:00"
+     },
+     "put": {
+      "bid": 1.86,
+      "ask": 1.94,
+      "openInterest": 3582.0,
+      "lastPrice": 1.87,
+      "impliedVolatility": 2.2832074169921874,
+      "lastTradeDate": "2026-11-04T19:09:46+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.16712517603184196,
+     "rel_spread": {
+      "call": 0.01719197707736391,
+      "put": 0.04210526315789466
+     },
+     "oi_atm": 4110.0,
+     "oi_sum": 7859.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/IREN_2026-11-05/factors.json",
+   "published": "2026-11-04T14:31:52.812735-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.6780073721910315,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.47153582414836515,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.24358528368107168,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.11080829137079817,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.8804875284503968,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.3589698864630753,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.714500726494856,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-27",
+       "session": "AMC",
+       "raw_return_A": -0.07392376273841383,
+       "eps_est": -0.45,
+       "eps_rep": -0.25,
+       "surprise_pct": 44.09,
+       "reaction_volume_ratio": 1.989387037558855
+      },
+      {
+       "date": "2026-05-08",
+       "session": "BMO",
+       "raw_return_A": 0.07492214376029671,
+       "eps_est": -0.26,
+       "eps_rep": -0.16,
+       "surprise_pct": 38.42,
+       "reaction_volume_ratio": 2.90669563315011
+      },
+      {
+       "date": "2026-02-05",
+       "session": "AMC",
+       "raw_return_A": -0.06296898679706775,
+       "eps_est": -0.25,
+       "eps_rep": -0.03,
+       "surprise_pct": 88.44,
+       "reaction_volume_ratio": 1.6657912265845614
+      },
+      {
+       "date": "2025-11-06",
+       "session": "AMC",
+       "raw_return_A": -0.1405755177610507,
+       "eps_est": 0.14,
+       "eps_rep": 0.01,
+       "surprise_pct": -94.38,
+       "reaction_volume_ratio": 1.2396698718086203
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.9503859422755367,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 44.09,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.665,
+      "7daysAgo": -0.51,
+      "30daysAgo": -0.26,
+      "60daysAgo": -0.26,
+      "90daysAgo": -0.235,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -1.8297872340425536,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.665,
+      "low": -0.82,
+      "high": -0.51,
+      "yearAgoEps": 0.00806,
+      "numberOfAnalysts": 2,
+      "growth": -83.5062,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.46616541353383445,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.24059999,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": -5.4775224,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 12.484523,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": -0.267,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 8826644480,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.55,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.16712517603184196,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.03710928222656218,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.035156162109374556,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.63704,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7097956931476614,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 102315.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.6141904157988773,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.16235992559708765,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 612,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": -0.26732054759413104,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -4.520918200036436,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.6780073721910315,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.24358528368107168,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.11080829137079817,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.8804875284503968,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.928708961156574,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 7796215964.170803,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.09068591779001552,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.06628951328112616,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1878848/000187884826000051/irenreportsfy26results.htm",
+   "published": "2026-08-27T16:13:20-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 irenreportsfy26results.htm EX-99.1 irenreportsfy26results 1 IREN Reports FY26 Results New Multi-Year Contract with Leading Frontier AI Lab $4bn Contracted ARR for 2026 Capacity; $1bn Operating ARR Today1,2 $2.8bn GPU Financings Fund 90% of Associated GPU Capex NEW YORK, August 27, 2026 (GLOBE NEWSWIRE) – IREN Limited (NASDAQ: IREN) (“IREN” or “the Company”) today provided a business update and reported its financial results for the full fiscal year ended June 30, 2026. Highlights • Growing platform and diversified customer base o Signed a new multi-year AI Cloud contract with a leading frontier AI lab o Other recent signings including Cohere, Prometheus, Perplexity, Figure AI, Fal AI and Higgsfield AI o Contract renewals and expansions with existing customers o Continuing to deliberately allocate capacity to a diversified customer base across hyperscalers, enterprises, AI developers and frontier labs • Annualized run-rate revenue (ARR) o Current: $4bn contracted ARR for 2026 capacity; $1bn ARR operating today1,2 o 2026: capacity largely sold out o 2027: late-stage discussions with a range of new customers over a significant portion of capacity o 2028: customer and financing discussions progressing in parallel • Contracted pricing increasing, driving more value per MW o Recent 3-year contracts >$20m revenue per MW (IT), representing a ~2 year payback3 o Active discussions at ~$25m per MW (IT) o Recent customer prepayments represent 45-55% of GPU capex4 o Shorter duration contracts and Mirantis managed services provide further revenue upside • Horizon 1 delivered to Microsoft o First of four 50MW (IT) liquid-cooled deployments at Childress o NVIDIA Exemplar Cloud status achieved on GB300 NVL72 o Horizon 2 commissioning underway and Horizon 3-4 in late-stage construction, targeting delivery in Q4 2026 2 • Executing global expansion across >5GW data center pipeline o Targeting cumulative delivery of approximately  2026: 0.3GW (IT)  2027: 0.8GW (IT) o In addition, new liquid-cooled deployments planned at Mackenzie, Canal Flats and Prince George during 2027 to optimize use of power headroom at existing sites o Development progressing at Sweetwater (Texas), Kiowa (Oklahoma), Bundey (Australia) and Badajoz (Spain) o Acquisition of Mirantis and Nostrum completed, strengthening software and services capabilities and expanding platform to Europe o Headcount nearly tripled in FY26, alongside five recent C-suite appointments • Capital-efficient GPU financing o $3.6bn investment grade GPU financing for Microsoft contract at 6.0%5  Together with prepayments, funds 96% of associated GPU capex o New $2.8bn GPU financings supporting non-investment grade customer deployments  Includes $2.4bn financing led by Blue Owl and Pacific Investment Management Company LLC, as adviser to certain investors, at a 9.0% fixed rate for Mackenzie air- cooled expansion, which funds 90% of associated GPU capex  Together with customer prepayments, provides funding in excess of GPU capex, supporting other data center capex requirements FY26 and Q4 FY26 Financial Results US$m Quarter ended Quarter ended Year ended Year ended June 30, 2026 March 31, 2026 June 30, 2026 June 30, 2025 Revenue AI Cloud Services Revenue 70.5 33.6 128.8 16.4 Bitcoin Mining Revenue 66.7 111.2 578.2 484.6 Total Revenue 137.2 144.8 707.0 501.0 Net income (loss) (684.0) (247.8) (702.6) 86.9 Adjusted EBITDA6 19.2 59.5 245.7 269.7 • FY26 and Q4 FY26 results reflected ongoing transition from Bitcoin mining to AI Cloud Services • AI Cloud Services revenue increased ~8x to $128.8m in FY26 (vs FY25 $16.4m) • Net income (loss) in FY26 and Q4 FY26 was impacted by non-cash impairments of $(638.8)m and $(450.4)m respectively, primarily related to the decommissioning of Bitcoin mining hardware as sites are converted to support AI Cloud growth • Adjusted EBITDA decreased in Q4 FY26 reflecting increased employee related costs and broader platform investment ahead of AI Cloud Services revenue ramp • Well capitalized with existing cash and committed GPU financing and prepayments of $14bn 3 Management Commentary “We started IREN with a simple observation: the digital world can scale almost instantly, but the physical world cannot,” said Daniel Roberts, Co-Founder and Co-CEO of IREN. “This year, that founding thesis became tangible. Exponential AI consumption growth has fueled demand for compute capacity well beyond the available supply of infrastructure. IREN was built for this moment. Our 2026 capacity is largely sold out. This includes Horizon 1, the first of four leading-edge liquid cooled GPU deployments that we successfully delivered to Microsoft this month. We have broadened our customer base to include hyperscalers, enterprises, AI developers and frontier labs. As our platform has scaled and our market position has strengthened, we have attracted leading customers and secured stronger pricing, more attractive contract terms and improved paybacks. We are continuing to contract future capacity with a deliberate strategy, building a diversified base of counterparties and preserving room for higher-value managed services and software. Site optimization is also increasing the revenue potential of every megawatt. With increasing availability of a broad range of capital sources to fund our expansion, we are well positioned to keep compounding as the structural shortage of compute deepens. We have spent years assembling what is difficult to replicate: power, land, data centers, compute, software and people. This is only the beginning.” FY26 Results Webcast & Conference Call IREN will host its FY26 results webcast and conference call at the following time: Time & Date: 5:00 p.m. Eastern Time, Thursday, August 27, 2026 Participant Registration Link Live Webcast Use this link Phone Dial-In with Live Q&A Use this link The webcast will be recorded, and the replay will be accessible shortly after the event at https://iren.com/investor/events-and-presentations 4 About IREN IREN is a vertically integrated AI Cloud platform, delivering data centers, compute and software for AI training and inference. IREN’s platform is underpinned by its expansive portfolio of land and grid-connected power in renewable-rich regions across North America, Europe and APAC. Contacts Investors ir@iren.com Media media@iren.com 5 Assumptions and Notes 1. Annualized-run-rate revenue (“ARR”) is calculated as GPU/hour pricing for commissioned GPUs under contract as of the relevant date multiplied by 8,760 hours per year and includes annualized revenue for storage and ancillaries. ARR is an operating metric, not a U.S. GAAP measure, and differs from, and is not a substitute for, GAAP revenue; recognized revenue may be materially lower. 2. Operating ARR of $1bn is calculated as of August 26, 2026. $4bn of ARR targeted to be operational by December 31, 2026 is based on internal company assumptions regarding utilization and pricing, with revenue expected to ramp upon, and being subject to, commissioning, testing and customer acceptance in the months following each data center’s delivery. ARR is not derived from or an adjustment to GAAP revenue, and excludes GAAP recognition and measurement effects. ARR is an operating metric, not a U.S. GAAP measure, and differs from, and is not a substitute for, GAAP revenue; recognized revenue may be materially lower. 3. Payback period estimated based on estimated capital expenditure for GPUs and ancillaries divided by contracted revenue less estimated direct costs. 4. Customer prepayments represent amounts contractually payable by customers in advance of service delivery, expressed as a percentage of the estimated capital expenditure for GPUs and ancillaries. Prepayment terms vary by contract and there can be no assurance that future contracts will include prepayments or similar terms. GPU capex excludes provincial sales tax and goods and services tax. 5. Weighted average interest rate across U.S. private placement and DDTL, excluding fees. 6. Adjusted EBITDA is a non-GAAP financial measure. Refer to page 10 for a reconciliation to the nearest comparable GAAP financial measure. 6 Forward-Looking Statements This press release includes “forward-looking statements” within the meaning of Section 27A of the Securities Act of 1933, as amended (“Securities Act”), and Section 21E of the Securities Exchange Act of 1934, as amended (“Exchange Act”), that involve substantial risks and uncertainties. Forward-looking statements include information concerning possible or assumed future results of operations, including descriptions of our business plan and strategies, revenue targets, expectations as to delivery timelines, supply-demand and other market conditions, anticipated contract durations and revenue impacts, planned GPU deployments, future capital expenditure requirements, and other trends we expect to affect our business. These statements often include words such as “anticipate,” “expect,” “suggest,” “plan,” “believe,” “intend,” “estimate,” “target,” “project,” “should,” “potential,” “could,” “would,” “may,” “will,” “forecast,” and other similar expressions. Forward-looking statements may also be made, verbally or in writing, by members of our Board or management team. Such statements are subject to the same limitations, uncertainties, assumptions and disclaimers set out in this press release. We base these forward-looking statements or projections on our current expectations, plans and assumptions that we have made in light of our experience in the industry, as well as our perceptions of historical trends, current conditions, expected future developments and other factors we believe are appropriate under the circumstances and at such time. The forward-looking statements are subject to and involve risks, uncertainties and assumptions and you should not place undue reliance on these forward-looking statements. Although we believe that these forward-looking statements are based on reasonable assumptions at the time they are made, you should be aware that many factors could affect our actual financial results or results of operations and could cause actual results to differ materially from those expressed in the forward-looking statements. Factors that may materially affect such forward-looking statements include, but are not limited to: our ability to obtain additional capital on commercially reasonable terms and in a timely manner to meet our substantial and increasingly larger capital needs in connection with the ongoing expansion of our business, including in connection with our data center developments and hardware purchase commitments; the amount and terms of any future financing or grant of security, or any refinancing, restructuring or modification to the terms of any future financing or grant of security, which could require us to comply with onerous covenants or restrictions or guarantees, and our ability to service our debt obligations; our ability to successfully execute on our growth strategies and operating plans, including our ability to continue to develop our existing data center sites, design and deploy direct-to-chip liquid and air cooling systems, provide software, and operate and expand our AI Cloud Services business; our shorter operating history in new markets and geographies we have entered or may seek to enter, including the market for AI Cloud Services, the expansion of our capabilities to include software offerings, and our expansion into new geographies for data centers such as Australia and Europe; our ability to remain competitive in highly competitive, dynamic and rapidly evolving industries; development and construction delays, increased costs and cost overruns affecting our data centers and our ability to construct, commission and deliver contracted capacity in accordance with the schedules specified in our customer contracts; delays, increases in costs or reductions in the supply of materials or equipment used in our development or operations (including GPUs and any other hardware required or necessary for any current or future AI Cloud Services we offer), including as a result of tariffs and duties, being in high demand due to global supply chain constraints and other factors, and our ability to secure additional hardware equipment (including GPUs and any other hardware necessary or required for any current or future AI Cloud Services we offer), on commercially reasonable terms or at all, any of which may impact the timely delivery of contracted AI Cloud Services capacity to our customers; price increases imposed by suppliers of certain equipment (including GPUs and any other hardware required for any current or future AI Cloud Services we offer), including in respect of orders already placed, and our inability in certain cases to pass such increased costs through to our customers under our customer contracts, notwithstanding cost pass-through provisions in certain of our contracts with suppliers contain; our ability to deliver contracted AI Cloud Services capacity on schedule, or at all, and to meet service level commitments or other obligations under our contracts, as well as service interruptions or equipment failures, any of which could result in significant payments under relevant customer contracts being reduced or delayed, expose us to service credits, damages or other liability, or give rise to termination rights; our ability to match customer contracts, capital expenditures, power commitments and financing; our ability to appropriately scale our workforce in a sufficiently timely manner to achieve our business objectives and sustain our growth trajectory; expectations with respect to the profitability, viability, operability, security, popularity and public perceptions of any current and future AI Cloud Services we offer, including GPU rental rates; our ability to successfully market our AI Cloud Services business and secure and retain customers on commercially reasona",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1878848/000187884826000052/iren-20260630.htm",
+   "published": "2026-08-27T16:18:57-04:00",
+   "form": "10-K",
+   "section": "MD&A",
+   "text": "ITEM 7. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following discussion should be read together with our consolidated financial statements and the related notes thereto included elsewhere in this Annual Report. Some of the information contained in this discussion and analysis or set forth elsewhere in this Annual Report, including information with respect to our plans and strategy for our business, includes forward-looking statements that reflect plans, estimates and beliefs and involve numerous risks, uncertainties, and other important factors, including but not limited to those described in “Item 1A. Risk Factors” and “Special Note Regarding Forward-Looking Statements.” Therefore, actual results may differ materially from those contained in any forward-looking statements. The following discussion and analysis generally discusses fiscal year 2026 and fiscal year 2025 items and year-to-year comparisons between such fiscal years. Discussions of year-to year comparisons between fiscal year 2025 and fiscal year 2024 are not included, and can be found in “Management’s Discussion and Analysis of Financial Condition and Results of Operations” in Part II, Item 7 of the Group’s Annual Report for the fiscal year ended June 30, 2025, filed with the SEC on August 28, 2025. Our fiscal year ends on June 30. Accordingly, references herein to “fiscal year 2026”, “fiscal year 2025,” and “fiscal year 2024” relate to the years ended June 30, 2026, June 30, 2025 and June 30, 2024, respectively. Overview IREN is a vertically integrated AI Cloud Services platform, delivering data centers, compute and software for AI training and inference. We own and operate all three layers of the AI Cloud Services stack. The data center layer includes the land, power, substations, buildings and cooling that form the physical foundation of our AI Cloud Services platform. The compute layer includes the GPUs, CPUs, storage, servers and networking deployed within that data center infrastructure. The software layer includes the managed services and enterprise support that enables customers to deploy, operate and manage AI workloads. We generate AI Cloud Services revenue by delivering both bare metal compute and managed cloud services to customers supporting AI training and inference workloads. Our customer base includes hyperscalers, frontier labs, AI developers and enterprises. As of June 30, 2026, our operating AI Cloud Services capacity represented approximately 40MW. 109 We continue to operate Bitcoin miners at certain of our data centers while we transition this data center capacity toward AI Cloud Services. We aim to substantially complete this transition by December 31, 2026. We generate Bitcoin mining revenue by contributing computing power, or hashrate, to the Bitcoin network and receiving a share of block rewards and transaction fees, and exchanging these Bitcoin for fiat currencies such as USD or CAD. We typically liquidate all the Bitcoin we mine daily and therefore did not have any Bitcoin held on our balance sheet as of June 30, 2026. As of June 30, 2026, our installed Bitcoin mining capacity was approximately 23.2 EH/s, representing approximately 380MW of data center capacity. Our total revenue was $707.0 million for the year ended June 30, 2026, compared to total revenue of $501.0 million for the year ended June 30, 2025. We generated net income (loss) of $(702.6) million for the year ended June 30, 2026 compared to net income (loss) of $86.9 million for the year ended June 30, 2025. We generated Adjusted EBITDA of $245.7 million and $269.7 million for the years ended June 30, 2026 and 2025, respectively. Our cash and cash equivalents were $5,895.6 million and restricted cash was $1,723.9 million as of June 30, 2026. Adjusted EBITDA is a financial measure not defined by GAAP. For a definition of Adjusted EBITDA, an explanation of our management’s use of this measure and a reconciliation of Adjusted EBITDA to net income (loss) , see “Special Note Regarding Non-GAAP Measures.” For the fiscal year ended June 30, 2026, 72% and 24% of the Company’s non-current assets were located in the United States of America and Canada, respectively. Recent Developments NVIDIA Strategic Partnership In May 2026, we entered into a strategic partnership with NVIDIA intended to support the deployment over time of up to 5GW of NVIDIA DSX-aligned AI infrastructure across our global data center pipeline. Pursuant to a securities purchase agreement, we granted NVIDIA the right to invest up to $2.1 billion in Ordinary shares, subject to delivery of up to 600,000 GPUs and certain regulatory conditions. Strategic Acquisitions In June 2026, we completed the acquisition of Nostrum Group, a developer of grid-connected AI data centers based in Spain. In connection with the acquisition, we issued 837,424 Ordinary shares on June 12, 2026 to certain of the sellers thereunder plus approximately EUR 82 million of cash. The acquisition marked our entry into the European market and added several data center sites including an approximately 300MW site in Badajoz, together with an additional development pipeline, and local development, engineering, construction and operations capabilities. In August 2026, we completed the acquisition of Mirantis, Inc. (“Mirantis”), a provider of cloud infrastructure software, Kubernetes-based orchestration and enterprise support services. Aggregate consideration was approximately $544 million, payable through the issuance of 12.6 million Ordinary shares plus cash and restricted stock units of approximately $40 million. Mirantis became our direct wholly owned subsidiary and expands our software and operational capabilities for deploying, managing, monitoring and supporting customer workloads. AI Cloud Services Contracts On November 2, 2025, we entered into the Microsoft Agreement, pursuant to which we will provide Microsoft Corporation with dedicated GPU services at “Horizon” data center facilities located in Childress, Texas over a five-year average term. The GPU services will be made available to Microsoft Corporation in four tranches (“Horizon 1,” “Horizon 2,” “Horizon 3” and “Horizon 4” data center facilities) targeted for deployment during 2026 (subject to extension in certain circumstances). Horizon 1 was delivered to, and accepted by, Microsoft in August 2026. Horizon 2-4 is targeted for delivery in phases in calendar Q4 2026, with grace periods under the Microsoft Agreement for delivery extending from mid-Q4 of calendar 2026 to the beginning of Q2 of calendar 2027. The total contract value is approximately $9.7 billion through 2031, with 20% of the contract value for each tranche to be paid prior to the applicable delivery date and credited against the service fees due and payable after the 24th calendar month of the applicable GPU service term on a pro rata basis. The GPU quantity and the estimated monthly payments are expected to be approximately equal across all four tranches. In May 2026, we entered into a five-year cloud services contract with NVIDIA to support its internal AI and research workloads representing approximately $3.4 billion of total contract value. 110 In July 2026, we entered into multi-year cloud services contracts with leading AI developers including Prometheus, Perplexity and Together AI, representing approximately $2.8 billion in aggregate total contract value. In August 2026, we entered into a multi-year cloud services contract with a leading frontier AI lab. Key Factors Affecting Our Performance We believe our financial condition, results of operations and cash flows are affected by the factors described below. These factors should be considered together with the matters described under “Risk Factors” in Part I, Item 1A of this Annual Report. Customer demand, contracting and customer concentration Growth in AI training and inference workloads has contributed to increased demand for our AI Cloud Services. We expect AI infrastructure requirements to expand as organizations develop and deploy AI across a broader range of use cases. The pace and breadth of AI adoption, together with customers’ infrastructure strategies and investment priorities, will affect demand for our platform and the timing and scale of our investments. Our AI Cloud Services revenue depends on our ability to contract capacity with creditworthy customers on acceptable commercial terms, and on the continued growth of demand for AI infrastructure. We primarily contract capacity under multi-year reserved capacity arrangements that specify the amount and type of capacity, service levels, pricing, term, customer prepayments, deployment schedules and acceptance conditions. Revenue (excluding prepayments) generally commences only after applicable compute has been delivered, commissioned, placed in service and accepted (where applicable) by the relevant customer. Our customer contracts are concentrated, and the loss of, default by, or reduction in capacity taken by any of our largest customers could materially affect our revenue and our ability to service any indebtedness incurred to finance the related infrastructure. See “Item 1A. Risk Factors.” We seek to mitigate this exposure through customer credit assessment, customer prepayments and by broadening our customer base across hyperscalers, enterprises AI developers, frontier labs, and channel partners. Diversification may reduce concentration over time but may also result in shorter contract terms, smaller individual commitments and greater variability in utilization and pricing. Delivery, commissioning, testing and customer acceptance of AI Cloud Services capacity Our ability to convert contracted capacity into revenue depends on delivery of capacity in accordance with contractual schedules. Each deployment requires the completion of data center construction and energization, delivery and installation of GPUs, servers, storage and networking equipment, integration and configuration of the resulting clusters, performance testing against contractual specifications, and acceptance by the customer. Revenue generally begins only upon customer acceptance, and in certain arrangements is subject to service-level credits based on uptime and other performance requirements thereafter. Delays at any stage may postpone revenue commencement and result in “delay credits”, while certain operating, financing and other costs continue to be incurred, affecting expected project returns. Failure to satisfy delivery schedules or ongoing service-level requirements may also result in significant payments under relevant customer contracts being reduced or delayed, expose us to service credits, damages or other liability, or give rise to termination rights under our customer contracts, any of which could have a material adverse impact on our business, operating results, financial condition and future prospects. Power availability and data center construction Our growth depends on our ability to secure large-scale grid-connected power, and to construct and energize data centers capable of supporting AI compute. As of June 30, 2026, we had executed grid connection agreements, letters of agreement or equivalents representing approximately 5GW of total power capacity in the United States, Canada, Spain and Asia Pacific and data center projects in varying stages of development. Development timelines are affected by grid connection studies and approvals, transmission and substation construction, utility and transmission service provider processes, permitting, equipment lead times and construction execution. Permitting requirements, evolving regulation and community considerations may affect not only development schedules and costs but also the continued validity of the permits and grid connection rights required to operate the facility. 111 Once a data center is operating, our electricity costs are influenced by regional utility tariffs or wh",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1878848/000114036126032638/ef20080141_8k.htm",
+   "published": "2026-08-13T07:46:14-04:00",
+   "form": "8-K",
+   "items": "7.01,9.01",
+   "text": "Item 7.01 Regulation FD Disclosure. On August 13, 2026, IREN Limited (the “Company”) issued a press release announcing the delivery to, and acceptance by Microsoft of Horizon 1, and its achievement of NVIDIA Exemplar Cloud Status on GB300 NVL72. A copy of the press release is attached as Exhibit 99.1 hereto and incorporated by reference herein. The information contained in this Item 7.01, including Exhibit 99.1, is being furnished and shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as expressly set forth by specific reference in such filing. Item 9.01 Financial Statements and Exhibits. (d) Exhibits Exhibit Number 99.1 Press release, dated August 13, 2026, announcing the delivery to, and acceptance by Microsoft of Horizon 1 and achievement of NVIDIA Exemplar Cloud Status on GB300 NVL72. 104 Cover Page Interactive Data File (embedded within the Inline XBRL document). SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. IREN LIMITED By: /s/ William Roberts William Roberts Co-Chief Executive Officer and Director Date: August 13, 2026",
+   "exhibit_99_1": "EX-99.1 2 ef20080141_ex99-1.htm EXHIBIT 99.1 Exhibit 99.1 IREN Delivers Horizon 1 to Microsoft and Achieves NVIDIA Exemplar Cloud Status on GB300 NVL72 NEW YORK, August 13, 2026 (GLOBE NEWSWIRE) – IREN Limited (NASDAQ: IREN) (“IREN”) today announced that Horizon 1 has been delivered to and accepted by Microsoft, and that IREN has achieved NVIDIA Exemplar Cloud status on NVIDIA GB300 NVL72. Horizon 1 is the first of four 50MW (IT load) direct-to-chip liquid cooled AI Cloud deployments scheduled for delivery to Microsoft at IREN’s Childress, Texas campus in 2026 under a five-year, $9.7bn cloud services contract announced in November 2025. The rapid delivery of Horizon 1 to Microsoft reflects the agility of IREN’s vertically integrated model, which provides end-to-end control across design, engineering and construction of the data centers supporting its GPU deployments. IREN’s Exemplar Cloud status was achieved following NVIDIA’s testing of its NVIDIA GB300 NVL72 deployment at Horizon 1. The designation demonstrates IREN’s ability to support demanding AI workloads with performance, reliability and scale . IREN continues to target a broader expansion to 480MW (gross) AI Cloud capacity in 2026 and 1.2GW (gross) AI Cloud capacity in 2027. Daniel Roberts, Co-Founder and Co-CEO of IREN, said: “Delivering Horizon 1 demonstrates the strength of our vertically integrated model and our ability to execute complex AI infrastructure projects at speed and scale. I want to congratulate and thank the more than 3,000 people across our site team whose expertise, commitment and execution made this milestone possible. We look forward to building on this momentum with Microsoft as we work to deliver Horizons 2 - 4 later this year.” 1 About IREN IREN is a vertically integrated AI Cloud platform, delivering data centers, compute and software for AI training and inference. IREN’s platform is underpinned by its expansive portfolio of land and grid-connected power in renewable-rich regions across North America, Europe and APAC. Contacts Investors ir@iren.com Media media@iren.com Forward-Looking Statements This news release contains “forward-looking statements” within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, that involve substantial risks and uncertainties. Forward-looking statements generally relate to future events or IREN’s future financial or operating performance. Forward-looking stat"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/c7cfda24-812a-3e7d-a41e-138b0ad10480/ai%27s-building-boom-meets-a.html?.tsrc=rss",
+   "published": "2026-11-04T14:01:39-05:00",
+   "text": "AI's Building Boom Meets A Blue Wave. 'Neocloud' Stocks Fall. - CoreWeave stock and Nebius shares sold off amid worries that the \"blue wave\" midterm election results will slow the AI data center buildout.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/news/irens-ai-transformation-faces-crucial-184119580.html?.tsrc=rss",
+   "published": "2026-11-04T13:41:19-05:00",
+   "text": "IREN's AI Transformation Faces a Crucial Earnings Test - Investors will watch for updates on AI customer demand and the company's transition into computing infrastructure.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.thestreet.com/crypto/markets/popular-tech-stock-rallies-15-after-disclosing-1-5b-bitcoin-sale?.tsrc=rss",
+   "published": "2026-11-04T13:13:06-05:00",
+   "text": "Popular tech stock rallies 15% after disclosing $1.5B Bitcoin sale - Asset sales are now funding a bigger AI push.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/04/terawulf-falls-4-despite-google-backstop-for-19-billion-anthropic-leases-cipher-digital-plunges-18-iren-tumbles-9/?.tsrc=rss",
+   "published": "2026-11-04T12:56:12-05:00",
+   "text": "TeraWulf Falls 4% Despite Google Backstop for $19 Billion Anthropic Leases; Cipher Digital Plunges 18%, IREN Tumbles 9% - Google locked in a massive long-term guarantee for Anthropic's leases at TeraWulf's Kentucky campus, yet the stock is still sliding while rivals are getting crushed. The funding math behind these AI data center buildouts is making investors nervous about who actually pays before the first tenant fli",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/dan-ives-after-the-blue-wave-10-of-datacenters-will-not-happen-coreweave-and-nebius-sink?ref=yahoofinance&tlnk=yf-261104-c6rm62m6&.tsrc=rss",
+   "published": "2026-11-04T12:54:04-05:00",
+   "text": "Dan Ives: After the Blue Wave, “10% of Datacenters Will Not Happen.” CoreWeave and Nebius Sink - Key TakeawaysCoreWeave fell 7% today, and Nebius and IREN fell too, after Wedbush’s Dan Ives estimated that 10% of planned US data centers won’t be built now that Democrats have swept Congress. Neoclouds like CoreWeave, Nebius and IREN need new US sites to come online to grow into their debt, so a s",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/iren-report-q1-earnings-buy-174900782.html?.tsrc=rss",
+   "published": "2026-11-04T12:49:00-05:00",
+   "text": "IREN to Report Q1 Earnings: Should You Buy, Sell or Hold the Stock? - IREN faces a challenging Q1 earnings outlook as AI cloud growth battles declining bitcoin mining revenues and rising costs. Is reducing exposure the right move?",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/iren-stock-faces-us-data-171528367.html?.tsrc=rss",
+   "published": "2026-11-04T12:15:28-05:00",
+   "text": "IREN Stock Faces US Data Center Policy Risk As Spain Expansion Advances - In recent days, IREN confirmed plans for a 300MW AI data center campus in Badajoz, Spain, while also formally objecting to tokenized trading of its shares on the planned ICE and OKX blockchain venue. The business is pushing ahead with large scale AI infrastructure in Europe at the same time as polit",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/wondering-why-iren-fell-68-161129995.html?.tsrc=rss",
+   "published": "2026-11-04T11:11:29-05:00",
+   "text": "Wondering Why IREN Fell 68%? Here's What Investors Missed - If you had looked at IREN on 3 November 2025 and decided to sit it out, the past year may now feel very different from skipping a hyped opportunity. Investors who held IREN over the past year are down 68.0%, including dividends. That kind of drawdown grabs attention. The real question is what clue w",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/04/blue-trade-sends-first-solar-and-sunrun-soaring-while-data-center-stocks-slump-as-investors-weigh-democrats-big-night/?.tsrc=rss",
+   "published": "2026-11-04T11:11:09-05:00",
+   "text": "“Blue Trade” Sends First Solar And Sunrun Soaring While Data Center Stocks Slump As Investors Weigh Democrats’ Big Night - Democrats flipped Congress overnight and investors wasted no time picking winners and losers, sending solar stocks surging while AI data center names cratered. The real question is whether this rotation survives contact with the actual legislative calendar.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/c5d0833e-fe1d-3e77-b792-4b103f8d64bf/bitcoin-rises%2C-crypto-miners.html?.tsrc=rss",
+   "published": "2026-11-04T11:07:41-05:00",
+   "text": "Bitcoin Rises, Crypto Miners Sharply Divided As Midterms Dampen AI Outlook - Bitcoin price rises. Miners diverge sharply after midterm elections on AI, data center slowdown fears. Riot Platforms spikes on $28bil deal.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/04/texas-blue-wave-could-threaten-27-of-planned-u-s-data-center-power-heres-what-it-means-for-coreweave-iren-nebius-and-other-neocloud-stocks/?.tsrc=rss",
+   "published": "2026-11-04T10:39:56-05:00",
+   "text": "Texas Blue Wave Could Threaten 27% Of Planned U.S. Data Center Power. Here’s What It Means For CoreWeave, Iren, Nebius And Other Neocloud Stocks - Texas just flipped Democratic for the first time in decades, and the new governor-elect has data centers in her crosshairs. Neocloud stocks are already bleeding, but the real question is how much of their future capacity she can actually stop.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-153021165.html?.tsrc=rss",
+   "published": "2026-11-04T10:30:21-05:00",
+   "text": "BC-Most Active Stocks - NEW YORK (AP) — prices for the Nasdaq composite, NYSE and NYSE American listed most active stocks. Nasdaq most active stocks:Stock Name Volume High Low Last Change Curis Inc.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/cleanspark-sinks-11-cipher-down-18-as-texas-elects-critic-of-data-center-madness?ref=yahoofinance&tlnk=yf-261104-xp6476wj&.tsrc=rss",
+   "published": "2026-11-04T10:23:20-05:00",
+   "text": "CleanSpark Sinks 11%, Cipher Down 18% as Texas Elects Critic of “Data Center Madness” - Key TakeawaysCleanSpark fell 11% after Gina Hinojosa, who called for a moratorium on new data centers, won the Texas governor’s race, and Keefe Bruyette downgraded it and Cipher Digital. The result puts CleanSpark’s Texas campuses in doubt, and they’re the upside beyond the Georgia lease in analysts",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/iren-sinks-9-coreweave-down-6-as-democrats-win-congress-cramer-warns-be-careful?ref=yahoofinance&tlnk=yf-261104-76qv6vhw&.tsrc=rss",
+   "published": "2026-11-04T10:13:20-05:00",
+   "text": "IREN Sinks 9%, CoreWeave Down 6% as Democrats Win Congress: Cramer Warns “Be Careful” - Key TakeawaysIREN fell 9% today, with CoreWeave and Applied Digital, after Democrats won Congress and Texas elected a governor backing a data center moratorium. Jim Cramer warned investors to be careful with Nebius and IREN.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/04/iren-falls-5-coreweave-drops-4-as-texas-election-stokes-data-center-moratorium-fears-nebius-dips-2/?.tsrc=rss",
+   "published": "2026-11-04T10:02:38-05:00",
+   "text": "IREN Falls 5%, CoreWeave Drops 4% as Texas Election Stokes Data Center Moratorium Fears; Nebius Dips 2% - Texas just handed AI data center investors a political wildcard that could reshape where the next wave of GPU capacity gets built, and three major stocks are already paying the price before anyone knows what the new governor will actually do.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/coreweave-falls-3-iren-down-4-as-democratic-sweep-hits-data-centers-incrementally-more-negative-sentiment?ref=yahoofinance&tlnk=yf-261104-w3v8f9g6&.tsrc=rss",
+   "published": "2026-11-04T09:42:43-05:00",
+   "text": "CoreWeave Falls 3%, IREN Down 4% as Democratic Sweep Hits Data Centers: “Incrementally More Negative Sentiment” - Key TakeawaysCoreWeave fell 3% today after Democrats won Congress and the Texas governor’s race, on fears of tighter data center rules. IREN, whose AI build runs through Texas, and Nebius fell on the same fears.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/spacex-falls-4-as-democrats-sweep-congress-musk-says-data-centers-in-space-looking-pretty-appealing?ref=yahoofinance&tlnk=yf-261104-h7jrj6r2&.tsrc=rss",
+   "published": "2026-11-04T09:38:36-05:00",
+   "text": "SpaceX Falls 4% as Democrats Sweep Congress: Musk Says “Data Centers in Space Looking Pretty Appealing” - Key TakeawaysSpaceX fell 4% today after Democrats won both houses of Congress and Texas elected a governor who wants a data center moratorium. The drop looks justified: SpaceX’s AI segment brought in over half of its third-quarter revenue, so a slower US data center build hits its growth.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/ai-data-center-stocks-dip-as-midterm-elections-shake-up-wall-street-140829988.html?.tsrc=rss",
+   "published": "2026-11-04T09:08:29-05:00",
+   "text": "AI data center stocks dip as midterm elections shake up Wall Street - The 8:30 hosts, Jake Conley and Pras Subramanian, welcome Defiance ETFs CIO Sylvia Jablonski to discuss how AI data centers became an issue in the midterm elections, an election in which Democrats won back both the House and the Senate. initial market reaction has weighed on neocloud stocks, includi",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/article/spacex-tesla-stocks-sink-as-analyst-warns-democrats-victory-will-create-major-hurdles-for-ai-build-out-135511616.html?.tsrc=rss",
+   "published": "2026-11-04T08:51:38-05:00",
+   "text": "SpaceX, Tesla stocks sink as analyst warns Democrats' victory will create 'major hurdles' for AI build-out - SpaceX, Tesla, and data center-related stocks declined on Wednesday after Democrats took control of the House and Senate, raising worries of a slowdown in AI data center build-outs.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:06-05:00",
+    "sha256": "2b9c9d4dd51c733d4b288d836280b3a85deee6e07e064ca2a2bce24546c8b3b2"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 53784
+}

@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "KRMN",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:32:01.264732-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.karman-sd.com/News--Events/press-releases/news-details/2026/Karman-Space--Defense-Schedules-Third-Quarter-Fiscal-Year-2026-Earnings-Release-Conference-Call-and-Webcast/default.aspx",
+  "published_et": "2026-10-22T16:30-04:00",
+  "quote": "ws Karman Space & Defense Schedules Third Quarter Fiscal Year 2026 Earnings Release, Conference Call and Webcast October 22, 2026 HUNTINGTON BEACH, Calif.--(BUSINESS WIRE)-- Karman Space & Defense (NYSE: KRMN) today announced it will issue financial results for the Company's third quarter fiscal year 2026 after financial markets close on Thursday, November 5, 2026.",
+  "title": "Karman Space & Defense Schedules Third Quarter Fiscal Year 2026 Earnings Release, Conference Call and Webcast",
+  "retrieved_et": "2026-10-26T09:35:53.931946-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://investors.karman-sd.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 33.03499984741211,
+  "expiry": "2026-11-20",
+  "strike": 35.0,
+  "call": {
+   "bid": 2.1,
+   "ask": 2.5,
+   "openInterest": 543.0,
+   "lastPrice": 2.0,
+   "impliedVolatility": 1.0908248583984377,
+   "lastTradeDate": "2026-11-04T18:36:37+00:00"
+  },
+  "put": {
+   "bid": 3.7,
+   "ask": 4.8,
+   "openInterest": 576.0,
+   "lastPrice": 4.45,
+   "impliedVolatility": 1.0854537915039062,
+   "lastTradeDate": "2026-11-04T17:46:51+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.19827455820355067,
+  "rel_spread": {
+   "call": 0.17391304347826084,
+   "put": 0.2588235294117646
+  },
+  "oi_atm": 1119.0,
+  "oi_sum": 1119.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
