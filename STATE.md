@@ -1,37 +1,31 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-03 11:10 ET · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-04 08:55 ET · **D019 REFRAME live** · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Mon 2026-11-02 08:10 ET by the Stage 1 deck chat; first two bullets added Tue 11-03 by the committee-Q&A chat.*
-- 🔴 **Jacob APPROVED the committee's §12 stops** ("Approve the stops", committee chat, relayed 11-03 ~11:40 ET), plus
-  `COMMITTEE_ASSESSMENT.md` "Changes to the plan". **NOT YET IMPLEMENTED:** handed off at 11:50 ET (context guard).
-  Order: register D019 (frozen) → halt F/L opens via the D011 §5 ledger `halt` **before 14:30 ET today** → stop shadow
-  T2 routines → MOC secondary + Layer-1 scripts → the two owed fixes. Brief: STATE Log 11-03 11:50 ET.
-- 🔴 **Stage 1 committee (REFRAME, 2.5/10) answered:** `reviews/2026-11-03_stage1_committee/PRE_QA_answers.md`. P0 was real:
-  the first output missed the 10-30 exits. Full-cut addendum `outcomes/reports/stage1_2026-10-30_r2.md`: SH-W net −1.50%
-  [−3.28%, +0.27%], INSUFFICIENT only because 9 < 10 sessions. Also found: D008 #1 (250 gated) is out of reach by Mar 2027,
-  and D008 #4 (≤ 15 bp) fails at 27.5 bp. The §12 stops are Jacob's call; none is implemented.
-- **Phase:** Season A, week 4 of 6, the first EST day (SGT = ET + 13). Gates: Mon 24 · Tue 46 (peak) · Wed 34.
-  Today's 4 T2s (PLTR SHOP BETA DT) were frozen Fri.
-- ✅ **Stage 1 deck delivered** (private Artifact, 13 slides, v7): https://claude.ai/artifact/YFW42zSaPUAYZFJgHmeLbf.
-  Built from `outcomes/reports/stage1_2026-10-30.md` only (P1 PASS · SH-W INSUFFICIENT → D017 §5 "fund to Gate 1
-  and Season B"; the decision is Jacob's). Sonnet reviewed it blind for overclaiming: 15 findings, each checked
-  against its source, all applied. Corrections to carry:
-  - D006's t 3.6 is on the RAW +0.85%; net +0.65% has t 2.76, SPY-hedged net 2.25 (D009).
-  - SH-W's +0.48% upper bound becomes ≈ +0.73% with a t(7) interval (derived, not D017's statistic).
-  - Gate 2's floor (250 events) gives a real premium only t ≈ 1.4; t ≈ 2 needs ~600–850 (RESEARCH_PLAN).
-  - Health: T2 missing 2 of 26 frozen PASS = 7.7% (target < 5%), fence breaches 1 (target 0), while P1 passes.
-  - The Actions refusal is an account or organization setting, not the token.
-- ✅ **Paper options halt cleared** by Jacob 07:14 ET (`199b8c4`). ✅ **Housekeeping routine landed** 07:51 ET (`0eab8d3`).
-- **Owed:** D011 v4 = skip an F open whose natural is a debit (BHE, COLM) · a "new RED" alarm (health is RED daily,
-  so a new RED is lost) · gate1.health counting graded rows with no T2 (it reads 0 of 26; ABT and SPCX have none).
-- **Next action:** the committee assesses the answers (one round); then Jacob's funding call on REFRAME. Gates 14:30–15:56 EST today;
-  options opens resume at today's gates.
-- 🔴 **Peak capacity** (`ops/capacity_peak_2026-11.md`): paper margin binds; owed: views split `capacity` out.
-- **D003 v5 = A4 chosen** (Jacob, Thu 09:28 ET): the v5 file, its code and an independent review are owed before the
-  Season B screen. **Waiting on Jacob:** the Stage 1 funding call · Actions AI access · the sleeve's size and loss limit.
-- **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 13 from Mon Nov 2.
+*Rewritten Wed 2026-11-04 08:55 ET by the D019 implementation chat (handed off at the context guard, 253k).*
+- 🔴 **REFRAME is live: `registry/D019_reframe_v1.md`** (`149a1738`, sha256 `58b32147…724a`). PRE is now a code-only
+  premium monitor. **Primary read: SH-M**, on REPORT §12's kill bars (copied verbatim, D019 §5). Gate 1 (early Dec):
+  continue only if SH-M raw mean's upper 95% bound (cluster t, G − 1 df) ≥ +0.50% and P1 PASS; else TERMINATE.
+- ✅ **Paper options F and L halted** (`e4511bed`, 08:39 ET, before today's gates): `halt` with `"stop": "D019"` in both
+  ledgers. **Do not clear it.** 32 F and 44 L positions still open; they close under D011's own exits (reaction sessions
+  Wed 11-04 and Thu 11-05, from 14:30 ET). Each paper run now exits 1 and health shows RED for the halt (by design).
+- ✅ **Shadow T2R/T2O/T2M stopped:** the routine `earnings-t2-models` is disabled (RemoteTrigger, 08:40 ET).
+- **T2G/T2E:** still run until Jacob removes the `GEMINI_API_KEY` repository secret. Decisions after `149a1738` count
+  for nothing (D019 §1).
+- **Main T2** runs to Season A's close (report dates to Fri 11-20), then `earnings-t2-cloud` gets disabled. H-T2C is
+  "stopped for resources, no verdict". No D018, no new batches, no D003 v5 build (Season B keeps D003 v4).
+- ✅ **MOC secondary registered** (`registry/D019_moc_secondary_v1.md`, `acc61fb6`); code `pipeline/moc_secondary.py` +
+  10 tests (`c0700fbd`, hashed in `D019_implementation_v1.sha256`). Not run on any season. Only Season B counts.
+- **Owed (the hand-off brief, STATE Log 11-04 08:55 ET):** (1) the Layer-1 capture script (D019 §3b); (2) the gate1
+  health T2-missing counter; (3) stage1 P6's cost from `t2.json`; (4) health.py: a D019 halt should not read RED;
+  (5) check.py: verify `D019_implementation_v1.sha256`.
+- **Budget (D019 §6):** one laptop chat per gate, ≤ 300k tokens, ≤ 10% of the weekly allowance, read each Monday.
+  The hand-off chat finishing the owed items is the last non-repair chat before Gate 1.
+- **Waiting on Jacob:** remove `GEMINI_API_KEY` (GitHub repo settings → Secrets) · after Fri 11-20, disable
+  `earnings-t2-cloud` (or say so and a chat does it) · the one-off `earnings-d010-backtest` routine (Jan 1, 2027, options
+  research) is out of D019's scope; recommend disabling it.
+- **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
 
@@ -197,6 +191,27 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-11-04 (Wed) 08:55 ET — D019 REFRAME frozen and implemented in part; handed off at the context guard.**
+- Started 08:27 ET (the hand-off came Tue 11:50 ET, so Tuesday's 14:30 gates ran unhalted; today's are the first
+  halted ones). Startup: check.py PASS, 0 warnings.
+- `149a1738` D019 (stops, keep list, REPORT §12's kill table verbatim, SH-M primary, the budget) → `e4511bed` the halt
+  in both ledgers → `earnings-t2-models` disabled (RemoteTrigger) → `acc61fb6` the MOC registration → `c0700fbd` its code.
+- Halt mechanics checked: `paper_window.py` pulls `main` before each sync; `step()` reads `led["halt"]` (`paper_options.py:477`),
+  and L runs the same step on its own ledger (`paper_long.py:20`). New gate records get `open_failed: "halt"`, which is
+  listed as an alert. Health RED while halted (`health.py:351`).
+- T2G is in `t2-queue.yml` (hash-listed): the only lever is the `GEMINI_API_KEY` secret (then `t2_stage2.py:163` skips it).
+- **HAND-OFF brief (the next chat):** TASK = finish D019's owed items. (1) `pipeline/layer1.py` + tests: per SH-M/SH-W
+  event in `outcomes/shadow/<season>/graded.json`, EPS estimate, reported and surprise from yfinance
+  `get_earnings_dates()` (matched on the ET date; probe OK for MSFT) and the quarterly revenue actual from EDGAR XBRL
+  **frames** (`/api/xbrl/frames/us-gaap/<concept>/USD/CY2026Q3.json`; one call per concept and quarter, ~1,665 rows,
+  match by CIK and `end` within 120 days before D; concepts Revenues, then RevenueFromContractWithCustomerExcludingAssessedTax,
+  …; fiscal Q4 often has no quarterly fact → missing, disclosed). Write-once per field with source tier, into
+  `outcomes/layer1/<season>.json` (outcomes/ is fenced from every AI step). A weekly code workflow to run it.
+  (2) `gate1.py` health: count graded PASS events with no T2 decision (ABT, SPCX). (3) `stage1.py` P6: read
+  `t2.json` `t2.cost_usd_equiv`. (4) `health.py`: a halt with `"stop": "D019"` → info, not RED (and the paper-window
+  runs that exit 1 only for it). (5) `check.py`: verify `registry/D019_implementation_v1.sha256`. Each its own commit;
+  none edits a hash-listed file; no commits 14:30–15:56 ET.
 
 **2026-11-03 (Tue) 11:50 ET — §12 approved by Jacob; implementation handed off unstarted (context guard at 250k).**
 - Mapped, not changed: the shadow-T2 and paper-options code and workflows are hash-listed (`t2_models.py`,

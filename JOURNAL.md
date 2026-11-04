@@ -9,6 +9,22 @@
 
 ---
 
+## 2026-11-04 (Wed) 08:55 ET — the stop arrived a day late, and the halt was the cheapest lever (D019, Gate 1)
+
+- **What happened.** Jacob approved the committee's §12 stops Tue ~11:40 ET. The chat that took the approval hit its
+  context guard and handed off at 11:50 ET. The implementation chat started Wed 08:27 ET. So Tuesday's 14:30 gates
+  opened 12 more F and 25 more L structures that the stop would have blocked. The brief said "before 14:30 ET today",
+  and "today" had passed by the time anyone read it.
+- **What it taught.** A hand-off brief with a same-day deadline needs a session that starts at once. A decision with a
+  clock should be implemented by the chat that takes it, and only the rest handed off. The same was true on 10-19.
+- **What changed.** D019 is frozen (`149a1738`). The halt went in at 08:39 ET (`e4511bed`), six hours before today's
+  gates. `earnings-t2-models` is disabled. The MOC secondary is registered (`acc61fb6`) before any number, with its code
+  and tests (`c0700fbd`).
+- **A design choice to watch.** The MOC spread is 0 in v1, because an MOC order fills at the closing-auction price, which
+  is the price used. It is an assumption, not a measurement. Season C's paper pilot is where it gets measured.
+- **The guard bit again.** The guard counted ~253k by 08:47 ET, inside the T2 window (limit 200k), so the rest is handed
+  off. Each `RemoteTrigger get/update` returns the routine's full record, prompt three times over: filter it in a script.
+
 ## 2026-11-03 (Tue) 11:10 ET — the first output read an incomplete cut, and nothing in it said so (Stage 1, RQ1, Gate 2)
 - **What happened:** an independent committee rebuilt Stage 1 from the raw files and found 20 SH-W, ~100 SH-M and 5
   gated events missing from D017 §2's cut. True, but not a stale pull: no grade of the 10-30 exits existed yet. D017 fixed
