@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "FROG",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:34.312157-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.jfrog.com/news/news-details/2026/JFrog-Announces-Timing-of-Third-Quarter-2026-Financial-Results/default.aspx",
+  "published_et": "2026-10-14T16:05-04:00",
+  "quote": "Event : JFrog’s Third Quarter 2026 Financial Results Conference Call Date : Thursday, November 5, 2026 Time : 2:00 p.m. PT (5:00 p.m. ET) Webcast registration link : https://investors.jfrog.com/events-and-presentations/events/default.aspx About JFrog JFrog Ltd. (Nasdaq: FROG), the creators of the unified DevOps, DevSecOps, DevGovOps and MLOps platfor",
+  "title": "JFrog Announces Timing of Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-19T21:55:13.687238-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.jfrog.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 85.23500061035156,
+  "expiry": "2026-11-20",
+  "strike": 85.0,
+  "call": {
+   "bid": 7.5,
+   "ask": 8.4,
+   "openInterest": 61.0,
+   "lastPrice": 7.95,
+   "impliedVolatility": 1.071049566650391,
+   "lastTradeDate": "2026-11-04T19:11:24+00:00"
+  },
+  "put": {
+   "bid": 7.4,
+   "ask": 8.3,
+   "openInterest": 128.0,
+   "lastPrice": 7.85,
+   "impliedVolatility": 1.0896041613769532,
+   "lastTradeDate": "2026-11-04T19:11:24+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.18536985847198004,
+  "rel_spread": {
+   "call": 0.11320754716981137,
+   "put": 0.11464968152866246
+  },
+  "oi_atm": 189.0,
+  "oi_sum": 189.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
