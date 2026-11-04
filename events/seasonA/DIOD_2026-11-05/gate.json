@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "DIOD",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:19.737972-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/diodes-incorporated-announce-third-quarter-2026-financial-results-november-5-2026",
+  "published_et": "2026-10-15T17:00-04:00",
+  "quote": "linkedin facebook x email reddit PLANO, Texas --(BUSINESS WIRE)-- Diodes Incorporated (Nasdaq: DIOD) will host a conference call on Thursday, November 5, 2026 , 4:00 p.m. Central Time ( 5:00 p.m. Eastern Time ) to discuss its third quarter 2026 financial results.",
+  "title": "Diodes Incorporated to Announce Third Quarter 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-19T21:54:32.878505-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 78.9000015258789,
+  "expiry": "2026-11-20",
+  "strike": 80.0,
+  "call": {
+   "bid": 4.4,
+   "ask": 6.8,
+   "openInterest": 3.0,
+   "lastPrice": 7.3,
+   "impliedVolatility": 0.8981943774414061,
+   "lastTradeDate": "2026-10-30T18:48:37+00:00"
+  },
+  "put": {
+   "bid": 5.0,
+   "ask": 7.1,
+   "openInterest": 54.0,
+   "lastPrice": 4.49,
+   "impliedVolatility": 0.8024922094726561,
+   "lastTradeDate": "2026-11-03T14:55:00+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.14765525696699563,
+  "rel_spread": {
+   "call": 0.4285714285714285,
+   "put": 0.3471074380165289
+  },
+  "oi_atm": 57.0,
+  "oi_sum": 57.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
