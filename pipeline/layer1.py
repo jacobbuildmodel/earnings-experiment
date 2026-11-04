@@ -11,8 +11,9 @@ After each print, what the company reported against what was expected:
   when Reported EPS is in. Stored as Yahoo states them (its adjusted basis), never recomputed.
 - Revenue: the quarterly actual from SEC EDGAR XBRL frames (/api/xbrl/frames/us-gaap/<concept>/USD/CY####Q#.json),
   concepts in CONCEPTS order: the CIK's row whose period ends before the print and at most MAX_LAG days before
-  it. A quarter is at least 90 days long, so the previous quarter always ends 91+ days before the print and is
-  never taken while the new 10-Q is unfiled. The year-ago quarter is the same concept's row ending 365 +- 14 days
+  it. The shortest quarter is 12 weeks (84 days: the 16/12/12/12 retail calendar, e.g. ACI's ending 2026-09-12)
+  and no print comes within 7 days of its quarter's end, so the previous quarter ends 91+ days before the print
+  and is never taken while the new 10-Q is unfiled. The year-ago quarter is the same concept's row ending 365 +- 14 days
   earlier. Fiscal Q4 usually has no quarterly fact (the 10-K reports the year): missing, disclosed.
 - Write-once per field: outcomes/layer1/<season>.jsonl, one row per (ticker, date, field) with its source tier,
   never rewritten (D001 §2: fetch once). A missing field is retried by later runs inside its window (EPS 30

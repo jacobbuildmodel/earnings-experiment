@@ -123,9 +123,12 @@ def test_revenue_is_the_reported_quarter_never_the_previous_one():
 
 
 def test_a_previous_quarter_can_never_fit_the_lag():
-    # the shortest quarter end-to-end is 90 days (Dec 31 -> Mar 31), so a print the day after a quarter's end
-    # still sits 91 days after the previous one
-    assert (datetime.date(2027, 3, 31) - datetime.date(2026, 12, 31)).days + 1 > l1.MAX_LAG
+    # the shortest quarter is 12 weeks (ACI: 2026-06-20 -> 2026-09-12, 84 days); a print 7+ days after its end
+    # still sits 91+ days after the previous quarter's end
+    assert (datetime.date(2026, 9, 12) - datetime.date(2026, 6, 20)).days + 7 > l1.MAX_LAG
+    q_prev = frow(1, "2026-03-29", "2026-06-20", 1)
+    fr = frames({("Revenues", "CY2026Q2"): [q_prev]}, date="2026-09-19")
+    assert l1.revenue_of(fr, 1, "2026-09-19") == ({}, l1.NO_QUARTER)      # the 12-week Q3 unfiled: nothing
 
 
 def test_concept_order_decides():
