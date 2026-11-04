@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "MRNA",
+ "report_date": "2026-11-06",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:32:20.135063-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/moderna-report-third-quarter-2026-financial-results-friday-november-6-2026-2026-10-13",
+  "published_et": "2026-10-13T07:00-04:00",
+  "quote": "linkedin facebook x email reddit CAMBRIDGE, MA / ACCESS Newswire / October 13, 2026 / Moderna, Inc. (NASDAQ:MRNA), today announced that it will host a live conference call and webcast at 8:00 a.m. ET on Friday, November 6, 2026 to report its third quarter 2026 financial results, and provide a corporate update.",
+  "title": "Moderna to Report Third Quarter 2026 Financial Results on Friday, November 6, 2026",
+  "retrieved_et": "2026-10-19T10:39:55.584146-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-06T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-06T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 244.94000244140625,
+  "expiry": "2026-11-06",
+  "strike": 245.0,
+  "call": {
+   "bid": 10.0,
+   "ask": 10.85,
+   "openInterest": 6314.0,
+   "lastPrice": 10.3,
+   "impliedVolatility": 1.1806681591796875,
+   "lastTradeDate": "2026-11-04T19:12:39+00:00"
+  },
+  "put": {
+   "bid": 9.1,
+   "ask": 10.55,
+   "openInterest": 47.0,
+   "lastPrice": 10.1,
+   "impliedVolatility": 1.105961501464844,
+   "lastTradeDate": "2026-11-04T19:04:03+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.08267330692480147,
+  "rel_spread": {
+   "call": 0.08153477218225416,
+   "put": 0.14758269720101794
+  },
+  "oi_atm": 6361.0,
+  "oi_sum": 11934.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
