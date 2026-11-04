@@ -1,0 +1,87 @@
+{
+ "season": "seasonA",
+ "ticker": "PTC",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:20.073761-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investor.ptc.com/resources/news/news-details/2026/PTC-to-Announce-Fourth-Fiscal-Quarter-and-Full-Year-2026-Results-on-Wednesday-November-4-2026/default.aspx",
+  "published_et": "2026-10-19T07:00-04:00",
+  "quote": "eers eSupport Why PTC Products & Solutions Education & Support Try & Buy News Details View All News PTC to Announce Fourth Fiscal Quarter and Full Year 2026 Results on Wednesday, November 4, 2026 October 19, 2026 BOSTON , Oct. 19, 2026 /PRNewswire/ -- PTC (NASDAQ: PTC) will release its fiscal 2026 fourth quarter and full year results on Wednesday, November 4 th after the stock market closes.",
+  "title": "PTC to Announce Fourth Fiscal Quarter and Full Year 2026 Results on Wednesday, November 4, 2026",
+  "retrieved_et": "2026-10-21T21:22:15.482463-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investor.ptc.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 194.33999633789062,
+  "expiry": "2026-11-20",
+  "strike": 195.0,
+  "call": {
+   "bid": 0.2,
+   "ask": 1.5,
+   "openInterest": 2040.0,
+   "lastPrice": 0.55,
+   "impliedVolatility": 0.10596597167968749,
+   "lastTradeDate": "2026-11-03T18:09:36+00:00"
+  },
+  "put": {
+   "bid": 0.0,
+   "ask": 1.9,
+   "openInterest": 99.0,
+   "lastPrice": 1.0,
+   "impliedVolatility": 0.08838802246093751,
+   "lastTradeDate": "2026-11-02T20:55:00+00:00"
+  },
+  "quote_retried": true,
+  "expiry_sessions_after_reaction": 11
+ },
+ "status": "INELIGIBLE",
+ "reason": "no_quote"
+}

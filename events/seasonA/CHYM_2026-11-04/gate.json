@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "CHYM",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:31:11.916993-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/chime-announce-third-quarter-2026-financial-results-november-4-2026-2026-10-14",
+  "published_et": "2026-10-14T16:05-04:00",
+  "quote": "linkedin facebook x email reddit SAN FRANCISCO --(BUSINESS WIRE)-- Chime® (Nasdaq: CHYM) will release financial results for the third quarter 2026 on November 4, 2026 after market close.",
+  "title": "Chime to Announce Third Quarter 2026 Financial Results on November 4, 2026",
+  "retrieved_et": "2026-10-19T21:42:38.558420-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 28.485000610351562,
+  "expiry": "2026-11-20",
+  "strike": 27.5,
+  "call": {
+   "bid": 2.35,
+   "ask": 2.55,
+   "openInterest": 585.0,
+   "lastPrice": 2.7,
+   "impliedVolatility": 0.7744163183593751,
+   "lastTradeDate": "2026-11-02T18:22:33+00:00"
+  },
+  "put": {
+   "bid": 1.3,
+   "ask": 1.4,
+   "openInterest": 2570.0,
+   "lastPrice": 1.4,
+   "impliedVolatility": 0.726565234375,
+   "lastTradeDate": "2026-11-03T18:21:10+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.13340354286736666,
+  "rel_spread": {
+   "call": 0.08163265306122437,
+   "put": 0.07407407407407397
+  },
+  "oi_atm": 3155.0,
+  "oi_sum": 3155.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

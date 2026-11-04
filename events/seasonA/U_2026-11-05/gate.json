@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "U",
+ "report_date": "2026-11-05",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:33:08.271743-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.unity.com/news/news-details/2026/Unity-Announces-Date-of-Third-Quarter-2026-Financial-Results-Webcast/default.aspx",
+  "published_et": "2026-10-14T08:50-04:00",
+  "quote": "es - Unity Announces Date of Third Quarter 2026 Financial Results Webcast View All News Unity Announces Date of Third Quarter 2026 Financial Results Webcast October 14, 2026 Download (opens in new window) SAN FRANCISCO--(BUSINESS WIRE)-- Unity (NYSE: U) announced today it will release third quarter 2026 financial results before the market opens on November 05, 2026, with a webcast to follow at 8:30 a.m. ET/5:30 a.m. PT.",
+  "title": "Unity Announces Date of Third Quarter 2026 Financial Results Webcast",
+  "retrieved_et": "2026-10-19T10:28:05.646527-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.unity.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 40.31999969482422,
+  "expiry": "2026-11-06",
+  "strike": 40.5,
+  "call": {
+   "bid": 2.52,
+   "ask": 2.89,
+   "openInterest": 265.0,
+   "lastPrice": 2.66,
+   "impliedVolatility": 1.6582048339843751,
+   "lastTradeDate": "2026-11-03T17:31:04+00:00"
+  },
+  "put": {
+   "bid": 2.43,
+   "ask": 3.05,
+   "openInterest": 95.0,
+   "lastPrice": 2.84,
+   "impliedVolatility": 1.5712912060546875,
+   "lastTradeDate": "2026-11-03T16:47:11+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.13504464387927467,
+  "rel_spread": {
+   "call": 0.13678373382624773,
+   "put": 0.22627737226277359
+  },
+  "oi_atm": 360.0,
+  "oi_sum": 11031.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

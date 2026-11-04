@@ -1,0 +1,155 @@
+{
+ "track": "T2O",
+ "event": "QCOM_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.49,
+  "thesis": "QCOM goes into the print after a sharp 11.6% five-day drop and 34% below its 52-week high, so the bar looks lowered, but the semis base rate, an industry-wide input-cost and memory squeeze on handsets, and a weak sector tape (Intel's guide, AMD's slide) leave the outcome roughly a coin flip, tilted slightly down.",
+  "reasons": [
+   "The semis cluster base rate is below 50% (0.479), against ~0.54 for buying every event.",
+   "Price momentum into the print is very weak: -11.6% over 5 days and -9.9% over 1 month. That implies low expectations and some room for a relief bounce.",
+   "The December-quarter guide is exposed to higher memory and input costs, which could cut handset builds; Apple modem revenue is also fading faster than planned.",
+   "ATM call IV is above put IV (+0.09) and put/call OI is 0.79, so options positioning leans mildly bullish.",
+   "Consensus EPS of 2.16 sits at the midpoint of the 2.05-2.25 guide and revisions are slightly negative, so a small beat is likely but probably already priced."
+  ],
+  "deciding_variable": "The FQ1'27 (December quarter) revenue and EPS guide against consensus, especially handset QCT revenue under memory-driven build cuts, plus gross-margin commentary on pricing pass-through.",
+  "prior": {
+   "p": 0.48,
+   "from": "I3 by_cluster semis t0_hit 0.479 (n=434), checked against overall ~0.54 and AMC 0.538; semis is the closest peer group, so it is weighted most"
+  },
+  "leak_probe": "I can't know that yet: today is 2026-11-03, so Qualcomm's November 4, 2026 earnings report and the stock's reaction haven't happened.",
+  "moved_from_prior": "Up about +0.01 net. The oversold run-up into the print, the relatively bullish options skew and low short interest add about +0.03. The memory and input-cost guide risk and sector weakness in semis/PC subtract about -0.02.",
+  "theses": [
+   {
+    "expected": "Gap up",
+    "mechanism": "The stock is washed out after a 12% drop in 5 days. An in-line or better December guide plus concrete data-center and Amazon progress triggers a relief rally.",
+    "wrong_if": "The guide midpoint lands below consensus or handset revenue is guided down sharply."
+   },
+   {
+    "expected": "Gap down",
+    "mechanism": "Memory shortages cut Android OEM builds and Apple share fades, so the December handset guide disappoints and margin pressure persists.",
+    "wrong_if": "QCT handset guide is flat or up sequentially and gross margin guides higher."
+   },
+   {
+    "expected": "Small move with mixed sign",
+    "mechanism": "Results and guide come in near consensus. The stock drifts with the semis tape and macro (midterms, jobs data), and the move stays within the ~8.8% implied move.",
+    "wrong_if": "A large surprise in guide or data-center bookings drives a move bigger than the implied move."
+   }
+  ],
+  "key_observations": [
+   "FQ1'27 revenue guide vs. consensus, and the QCT handset guide",
+   "Gross margin trajectory and progress on passing input costs through to pricing",
+   "Data-center revenue timing, the Amazon warrant tranches, and AI250 progress",
+   "Commentary on memory supply and Android OEM build plans for the December quarter",
+   "Automotive/IoT growth sustaining its ~28% combined pace",
+   "Pace of the Apple modem revenue decline"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/QCOM_2026-11-04/gate.json",
+    "published": "2026-11-03T14:32:27.108390-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/QCOM_2026-11-04/factors.json",
+    "published": "2026-11-03T14:32:27.108390-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000085/qcom062826erex991.htm",
+    "published": "2026-07-29T16:01:35-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/804328/000110465926105718/tm2623289d1_8k.htm",
+    "published": "2026-09-08T09:00:20-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/qualcomm-stocks-edge-lower-ai-153959715.html?.tsrc=rss",
+    "published": "2026-11-03T10:39:59-05:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/qualcomm-is-down-10-in-a-year-its-cfo-says-things-can-only-go-up-from-here?ref=yahoofinance&tlnk=yf-261103-9466pc8p&.tsrc=rss",
+    "published": "2026-11-03T09:25:43-05:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/arm-is-up-88-in-2026-and-down-55-from-its-high-take-profits-or-buy-more?ref=yahoofinance&tlnk=yf-261103-rp384p2g&.tsrc=rss",
+    "published": "2026-11-03T00:38:14-05:00",
+    "dossier_item": "I20"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/02/amd-slides-3-ahead-of-earnings-as-pc-worries-linger-intel-drops-5-nvidia-edges-higher/?.tsrc=rss",
+    "published": "2026-11-02T12:49:21-05:00",
+    "dossier_item": "I23"
+   }
+  ],
+  "decided_et": "2026-11-03T16:59:24-05:00",
+  "model": "claude-opus-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-opus-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 21682,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1418,
+   "output_tokens_details": {
+    "thinking_tokens": 225
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 21682,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1418,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 21682,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 21682
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.2019506
+ }
+}

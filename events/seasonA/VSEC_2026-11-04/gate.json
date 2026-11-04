@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "VSEC",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:33:27.857222-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/vse-corporation-announces-third-quarter-2026-results-conference-call-date-2026-10-13",
+  "published_et": "2026-10-13T07:00-04:00",
+  "quote": "linkedin facebook x email reddit MIRAMAR, Fla. --(BUSINESS WIRE)-- VSE Corporation (“VSE” or the “Company”) (NASDAQ: VSEC, VSECU), a leading provider of aviation aftermarket distribution and repair services, announced today that it will issue third quarter 2026 results after the market close on Wednesday, November 4, 2026 .",
+  "title": "VSE Corporation Announces Third Quarter 2026 Results Conference Call Date",
+  "retrieved_et": "2026-10-19T21:22:04.841803-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 164.55999755859375,
+  "expiry": "2026-11-20",
+  "strike": 165.0,
+  "call": {
+   "bid": 11.0,
+   "ask": 12.9,
+   "openInterest": 6.0,
+   "lastPrice": 4.3,
+   "impliedVolatility": 0.834718449707031,
+   "lastTradeDate": "2026-10-26T15:19:28+00:00"
+  },
+  "put": {
+   "bid": 11.6,
+   "ask": 12.9,
+   "openInterest": 9.0,
+   "lastPrice": 16.1,
+   "impliedVolatility": 0.8251970605468748,
+   "lastTradeDate": "2026-10-29T16:21:41+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.1470588257111712,
+  "rel_spread": {
+   "call": 0.15899581589958162,
+   "put": 0.10612244897959189
+  },
+  "oi_atm": 15.0,
+  "oi_sum": 15.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

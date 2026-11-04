@@ -9,6 +9,55 @@
 
 ---
 
+## 2026-11-03 (Tue) 11:10 ET — the first output read an incomplete cut, and nothing in it said so (Stage 1, RQ1, Gate 2)
+- **What happened:** an independent committee rebuilt Stage 1 from the raw files and found 20 SH-W, ~100 SH-M and 5
+  gated events missing from D017 §2's cut. True, but not a stale pull: no grade of the 10-30 exits existed yet. D017 fixed
+  the run for Monday morning, while a shadow session settles at 06:00 ET the next day and the grader fires only on weekday
+  evenings. `stage1.py` dropped ungraded events without a word.
+- **What it taught:** a sample definition is only as good as the check that the sample is all there. On the full cut,
+  SH-W is net −1.50% with an upper bound of +0.27%. That is below history's +0.65%, and INSUFFICIENT holds only on the
+  session count (9 < 10). Two more Gate 2 problems surfaced from counts and execution alone: 250 gated events cannot exist
+  by Mar 2027 (~65 to ~87 PASS a season), and the paper fill gap (27.5 bp median, +91 bp signed round trip) already fails
+  D008's ≤ 15 bp.
+- **What changed:** stage1 counts pending events per read and refuses to write an incomplete cut (`4383102`,
+  `a6f7cc6`). The r2 addendum sits beside the untouched first output. The committee's stops are Jacob's decision.
+
+## 2026-11-02 (Mon) 08:10 ET — a blind review caught the deck borrowing strength the record does not have (Stage 1, RQ1)
+- **What happened:** the Stage 1 deck (13 slides) was built from the committed output only and published privately
+  for Jacob. A second model (Sonnet), given the slides, D017, the output and the plan but not the builder's
+  conclusions, found 15 things to fix. Each was checked against its source before it went in (v7).
+- **What it taught:**
+  - The hand-off's own facts carried an attribution slip: history's "t 3.6" is on the raw +0.85%. The net +0.65% has
+    t 2.76, the SPY-hedged net 2.25 (D009). A number copied from a brief needs the same source check as a web figure.
+  - The near-miss holds under D017's fixed ±1.96 SE and fails under a small-sample t(7) interval (upper bound
+    ≈ +0.73%, derived). Showing both is the honest version; either one alone overclaims.
+  - Even Gate 2's floor (250 events) gives a real premium of history's size only t ≈ 1.4; t ≈ 2 needs ~600–850. So
+    "when will we know?" has no date answer, and the deck now says so.
+  - P1 passes while two CHARTER §6 health numbers miss target (T2 missing 7.7% of 26 frozen PASS; 1 fence breach).
+    The PASS test and the health targets measure different things; a deck showing only the PASS hides that.
+- **What changed:** the deck carries the corrections. No registry, code or output file changed. Still owed: D011 v4,
+  a new-RED alarm, gate1.health counting graded rows with no T2.
+
+## 2026-11-02 (Mon) 07:40 ET — the first live read does not look like history yet, and a 5-day halt went unseen (Stage 1, RQ1, D011)
+- **What happened:** the Stage 1 code was written, tested on synthetic data and committed (07:26 ET) before its one
+  run (07:28 ET). P1 PASS; the primary read (SH-W, 84 events) is INSUFFICIENT on 8 of the 10 sessions rule 7 needs.
+  The same startup found the paper options book halted since Wed 14:38 ET: 15 structures were never opened, and no
+  chat noticed. Jacob cleared it at 07:14 ET.
+- **What it taught:**
+  - The live premium is not visible, and the interval already leans against history: SH-W's upper 95% bound is
+    +0.48%, below D006's +0.65%. The market-wide shadow (596 events, 13 sessions) is near zero over SPY. Only the
+    session floor keeps the word at INSUFFICIENT, and with 8 clusters the interval is too narrow. The floor did its
+    job; the deck has to show the near-miss, not hide behind it.
+  - A health report that is RED every day can't announce a new RED. The halt was the only real emergency on the
+    page, and it read like the others for five days.
+  - A counter that counts one failure mode reads zero when another one happens: gate1.health's T2 missing said 0
+    while 2 graded events (ABT, SPCX) had no T2.
+  - A short iron fly sent at the natural can open at a debit when the indicative quotes are absurd (1.02/4.92). That
+    is a trade that can only lose, and v3 sends it.
+- **What changed:** the halt was cleared with its evidence kept in the ledger. Stage 1's output is committed and
+  never replaced. Owed: D011 v4 (skip a debit-natural F open); a "new RED" alarm for a halt; gate1.health to count
+  graded rows with no T2.
+
 ## 2026-10-29 (Thu) 09:40 ET — the funder wants results before the record can give a verdict (Gate 1, RQ1, all RQs)
 - **What happened:** Jacob asked for a Stage 1 review on Tue Nov 3 (SGT): results he can use to judge whether the
   model is useful, not redundant and worth funding, presented like a PhD qualifying review. The plan put Gate 1 in

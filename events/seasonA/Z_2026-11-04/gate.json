@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "Z",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:33:29.541264-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/zillow-group-announce-third-quarter-2026-results-nov-4-2026-10-06",
+  "published_et": "2026-10-06T16:05-04:00",
+  "quote": "linkedin facebook x email reddit Conference call to be webcast live at 2 p.m. PT / 5 p.m. ET SEATTLE , Oct. 6, 2026 /PRNewswire/ -- Zillow Group, Inc. (Nasdaq: Z and ZG) today announced it will release third-quarter 2026 financial results after market close on Wednesday, Nov. 4, 2026 .",
+  "title": "Zillow Group to Announce Third-Quarter 2026 Results Nov. 4",
+  "retrieved_et": "2026-10-19T21:26:18.228248-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 31.05500030517578,
+  "expiry": "2026-11-20",
+  "strike": 30.0,
+  "call": {
+   "bid": 2.6,
+   "ask": 2.85,
+   "openInterest": 1074.0,
+   "lastPrice": 2.7,
+   "impliedVolatility": 0.79883013671875,
+   "lastTradeDate": "2026-11-03T18:12:13+00:00"
+  },
+  "put": {
+   "bid": 1.55,
+   "ask": 1.65,
+   "openInterest": 4382.0,
+   "lastPrice": 1.6,
+   "impliedVolatility": 0.7719749365234375,
+   "lastTradeDate": "2026-11-03T19:14:34+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.13926903743353608,
+  "rel_spread": {
+   "call": 0.09174311926605504,
+   "put": 0.06249999999999992
+  },
+  "oi_atm": 5456.0,
+  "oi_sum": 5456.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}

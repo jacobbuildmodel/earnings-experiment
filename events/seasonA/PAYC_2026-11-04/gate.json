@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "PAYC",
+ "report_date": "2026-11-04",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-04"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-05"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "reaction_day": "2026-11-05"
+ },
+ "snapshot_session": "2026-11-03",
+ "captured_et": "2026-11-03T14:32:11.294599-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.paycom.com/news/news-details/2026/Paycom-Software-Inc--Announces-Third-Quarter-2026-Earnings-Release-Date-and-Conference-Call/default.aspx",
+  "published_et": "2026-10-14T16:05-04:00",
+  "quote": "ngs Release Date and Conference Call 10/14/2026 Download (opens in new window) PDF 138 KB OKLAHOMA CITY--(BUSINESS WIRE)-- Paycom Software, Inc. (“Paycom”) (NYSE: PAYC), a leading provider of comprehensive, cloud-based human capital management software, will release its results for the third quarter ended Sept. 30, 2026, after the market closes on Nov. 4.",
+  "title": "Paycom Software, Inc. Announces Third Quarter 2026 Earnings Release Date and Conference Call",
+  "retrieved_et": "2026-10-19T21:45:51.792891-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.paycom.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-04T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-04T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 267.6400146484375,
+  "expiry": "2026-11-20",
+  "strike": 270.0,
+  "call": {
+   "bid": 13.7,
+   "ask": 15.7,
+   "openInterest": 80.0,
+   "lastPrice": 14.7,
+   "impliedVolatility": 0.6662020684814456,
+   "lastTradeDate": "2026-11-03T15:49:37+00:00"
+  },
+  "put": {
+   "bid": 15.8,
+   "ask": 17.3,
+   "openInterest": 11.0,
+   "lastPrice": 16.6,
+   "impliedVolatility": 0.6447789428710937,
+   "lastTradeDate": "2026-11-03T15:37:29+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 11,
+  "implied_move": 0.11676131478713637,
+  "rel_spread": {
+   "call": 0.1360544217687075,
+   "put": 0.09063444108761329
+  },
+  "oi_atm": 91.0,
+  "oi_sum": 91.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

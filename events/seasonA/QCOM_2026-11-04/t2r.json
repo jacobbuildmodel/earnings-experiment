@@ -1,0 +1,141 @@
+{
+ "track": "T2R",
+ "event": "QCOM_2026-11-04",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "Beaten-down QCOM with a depressed setup and a large implied move has no clear edge; the semis base rate and recent weak prints offset oversold mean reversion.",
+  "reasons": [
+   "Semis cluster hit rate is 47.9% against 54% overall, pulling the prior below the buy-everything bar",
+   "Stock is down 11.6% over 5 days and 34.5% below its 52w high, so expectations are low and a relief bounce is plausible",
+   "Last 4 prints averaged near zero with large two-sided moves (-9.9%, +13.6%, -10.6%, +1.7%)",
+   "Implied move of about 8.8% is large and gives no directional signal; call and put IV are roughly balanced",
+   "Recent sector news is negative (Intel PC warning, AMD slide), while the Amazon warrant and the data center narrative are already known"
+  ],
+  "deciding_variable": "FY27 guidance, including the Q1 revenue and EPS outlook given memory-cost pressure, and the data center and Amazon ramp timing.",
+  "prior": {
+   "p": 0.5,
+   "from": "Semis cluster base rate 47.9% (n=434), blended with AMC 53.8% and overall 54.2%; semis weakness is a candidate, not a finding, so about 0.50"
+  },
+  "leak_probe": "I don't know. The date you're asking about (2026-11-04) is after today's date (2026-11-03) and past my knowledge cutoff, so I have no information on how QCOM's stock moved after that earnings report.",
+  "moved_from_prior": "Moved from 0.50 by about 0.00: the oversold bounce roughly cancels the weak semis cluster base rate and the handset and Apple headwinds.",
+  "theses": [
+   {
+    "expected": "Stock rises",
+    "mechanism": "Low expectations after the pullback, with data center and Amazon commentary and FY27 non-handset growth above 60% lifting sentiment",
+    "wrong_if": "The Q1 guide midpoint falls below consensus because of memory and supply constraints"
+   },
+   {
+    "expected": "Stock falls",
+    "mechanism": "Handset revenue decline, Apple modem loss and input-cost margin pressure lead to a soft guide",
+    "wrong_if": "Guidance is in line or better and management reiterates the data center timeline"
+   },
+   {
+    "expected": "Flat or noisy open",
+    "mechanism": "The implied move is already priced and the open reflects broad semis sentiment more than company specifics",
+    "wrong_if": "A clear beat or miss on guidance produces a gap of more than 5%"
+   }
+  ],
+  "key_observations": [
+   "Q1 FY27 revenue and EPS guidance vs consensus",
+   "Handset revenue trend and Apple share commentary",
+   "Data center and Amazon ramp timeline and revenue expectations",
+   "Gross margin and memory cost pass-through"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/QCOM_2026-11-04/gate.json",
+    "published": "2026-11-03T14:32:27.108390-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/QCOM_2026-11-04/factors.json",
+    "published": "2026-11-03T14:32:27.108390-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/804328/000080432826000085/qcom062826erex991.htm",
+    "published": "2026-07-29T16:01:35-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/804328/000110465926105718/tm2623289d1_8k.htm",
+    "published": "2026-09-08T09:00:20-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/qualcomm-is-down-10-in-a-year-its-cfo-says-things-can-only-go-up-from-here?ref=yahoofinance&tlnk=yf-261103-9466pc8p&.tsrc=rss",
+    "published": "2026-11-03T09:25:43-05:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/02/amd-slides-3-ahead-of-earnings-as-pc-worries-linger-intel-drops-5-nvidia-edges-higher/?.tsrc=rss",
+    "published": "2026-11-02T12:49:21-05:00",
+    "dossier_item": "I23"
+   }
+  ],
+  "decided_et": "2026-11-03T16:54:55-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 21688,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 905,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 21688,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 905,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 21688,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 21688
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.09586929999999999
+ }
+}

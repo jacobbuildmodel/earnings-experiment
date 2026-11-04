@@ -1,0 +1,57 @@
+{
+ "event": "SNAP_2026-11-04",
+ "backend": "sonnet_r",
+ "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+ "dossier_sha256": "f742a83b0024acc09b41546398cfe0b439ae0e8ca50c4388bb1ad152f3f04d51",
+ "called_et": "2026-11-03T16:54:22-05:00",
+ "prompt_sha256": "a3ed4785c3f860da49bd1b33e14e65cd8e1d14669dd3f100ba5d44b8fcdac87a",
+ "probe_reply": "I don't know. That earnings date is after today's date (2026-11-03) and beyond my knowledge, so I have no information on how SNAP's stock moved afterward.",
+ "reply": "{\"prior\":{\"p\":0.54,\"from\":\"I3 overall validation t0_hit 0.542; AMC 0.538; software_internet 0.541; consumer 0.555\"},\"confidence\":0.50,\"thesis\":\"SNAP enters earnings with a depressed price, a 13.8% implied move and mixed prior reactions, so the base-rate edge is offset by a lack of directional information.\",\"reasons\":[\"Base rates of about 54% apply, and nothing in the dossier gives a clear directional edge\",\"Stock is down 28% over 12 months and 8% over 5 days, which is depressed sentiment with low expectations (forward P/E 7)\",\"Last 4 earnings reactions were 2 up and 2 down despite EPS beats every time, so beats are not rewarded reliably\",\"Implied move of 13.8% and ATM IV of 3x realized vol price in a big move, so there is no mispricing signal\",\"Overhang from legal settlements and CBO departure is already known, and the competitor Reddit fell sharply on its print\"],\"moved_from_prior\":\"Moved down about 4 points from 0.54. Weak sector read-through from Reddit's -25% drop and AMC entry-to-open gap risk offset the depressed-sentiment bounce potential. The result is near-coin-flip.\",\"deciding_variable\":\"Q4 revenue guidance and DAU/user growth trend (North America DAU declines), with free cash flow progress.\",\"theses\":[{\"expected\":\"Rise: guidance in line or better, margin and FCF expansion, low bar.\",\"mechanism\":\"Depressed price and short interest of 7.5% allow a squeeze on a steady print.\",\"wrong_if\":\"Q4 revenue guide is below consensus or DAU declines further.\"},{\"expected\":\"Fall: weak ad demand and user metrics disappoint.\",\"mechanism\":\"Competition and platform changes slow revenue growth, as flagged in the 10-Q.\",\"wrong_if\":\"Revenue growth holds near 19% with a firm guide.\"},{\"expected\":\"Flat or choppy open: the large move is partly faded at the open.\",\"mechanism\":\"The 13.8% implied move overprices the reaction and the stock stays near $5.5.\",\"wrong_if\":\"A gap of more than 10% in either direction.\"}],\"key_observations\":[\"Q4 revenue and adjusted EBITDA guidance versus consensus\",\"North America and global DAU trend\",\"Free cash flow and cost discipline\",\"ARPU growth and direct revenue business\",\"Commentary on legal settlements and the CBO transition\"],\"items_used\":[\"I1\",\"I2\",\"I3\",\"I4\",\"I5\",\"I6\",\"I19\"]}",
+ "error": null,
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 19373,
+  "cache_read_input_tokens": 633,
+  "output_tokens": 869,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 19373,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 869,
+    "cache_read_input_tokens": 633,
+    "cache_creation_input_tokens": 19373,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 19373
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "model": "claude-sonnet-5-5",
+ "isolation": {
+  "tools": [],
+  "mcp_servers": [],
+  "num_turns": 1,
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "model": "claude-sonnet-5-5"
+ },
+ "outcome": "decided"
+}
