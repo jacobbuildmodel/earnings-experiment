@@ -1,0 +1,670 @@
+{
+ "event": "WULF_2026-11-06",
+ "season": "seasonA",
+ "built_et": "2026-11-04T14:33:41-05:00",
+ "cutoff_et": "2026-11-04T14:33:25.431524-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/WULF_2026-11-06/gate.json",
+   "published": "2026-11-04T14:33:25.431524-05:00",
+   "data": {
+    "ticker": "WULF",
+    "report_date": "2026-11-06",
+    "session": "BMO",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-06"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-06"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-13"
+     },
+     "reaction_day": "2026-11-06"
+    },
+    "snapshot_session": "2026-11-04",
+    "captured_et": "2026-11-04T14:33:25.431524-05:00",
+    "options": {
+     "spot": 11.895000457763672,
+     "expiry": "2026-11-06",
+     "strike": 12.0,
+     "call": {
+      "bid": 0.65,
+      "ask": 0.66,
+      "openInterest": 3941.0,
+      "lastPrice": 0.65,
+      "impliedVolatility": 1.6367205664062499,
+      "lastTradeDate": "2026-11-04T19:16:34+00:00"
+     },
+     "put": {
+      "bid": 0.71,
+      "ask": 0.74,
+      "openInterest": 2621.0,
+      "lastPrice": 0.73,
+      "impliedVolatility": 1.5546897265624997,
+      "lastTradeDate": "2026-11-04T19:17:49+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.11601512794388305,
+     "rel_spread": {
+      "call": 0.015267175572519097,
+      "put": 0.04137931034482763
+     },
+     "oi_atm": 6562.0,
+     "oi_sum": 6562.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/WULF_2026-11-06/factors.json",
+   "published": "2026-11-04T14:33:25.431524-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.26118011329650614,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.20541080523811184,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.11363633456486655,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.1453382279318316,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.9002143308256728,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.4029497178311305,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.5895444911782163,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "BMO",
+       "raw_return_A": -0.0237467411515635,
+       "eps_est": -0.27,
+       "eps_rep": -0.33,
+       "surprise_pct": -23.59,
+       "reaction_volume_ratio": 0.7737308633903481
+      },
+      {
+       "date": "2026-05-08",
+       "session": "BMO",
+       "raw_return_A": 0.01755788281861692,
+       "eps_est": -0.19,
+       "eps_rep": -0.2,
+       "surprise_pct": -4.0,
+       "reaction_volume_ratio": 1.0490454230981927
+      },
+      {
+       "date": "2026-02-26",
+       "session": "AMC",
+       "raw_return_A": -0.054054031307240846,
+       "eps_est": -0.16,
+       "eps_rep": -0.27,
+       "surprise_pct": -65.75,
+       "reaction_volume_ratio": 0.8620013140124831
+      },
+      {
+       "date": "2025-11-10",
+       "session": "AMC",
+       "raw_return_A": -0.04344828375454601,
+       "eps_est": -0.05,
+       "eps_rep": -0.04,
+       "surprise_pct": 20.0,
+       "reaction_volume_ratio": 1.1421521280870834
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 0.9567324321470269,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -23.59,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": -3,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.375,
+      "7daysAgo": -0.36333,
+      "30daysAgo": -0.375,
+      "60daysAgo": -0.375,
+      "90daysAgo": -0.15,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -1.5,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.375,
+      "low": -0.4,
+      "high": -0.35,
+      "yearAgoEps": -0.038,
+      "numberOfAnalysts": 2,
+      "growth": -8.868401,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.13333333333333344,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.30200002,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": -49.6411,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 35.92908,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": -0.06,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 5935232512,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.28,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.11601512794388305,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.08203083984375015,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0039062304687500493,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.47325315428318454,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.45159975545139597,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 39934.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.7725835857565173,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.09885704703768262,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 117,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Friday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": -0.060227558988999896,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -3.137355641432305,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.26118011329650614,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.11363633456486655,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.1453382279318316,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.9002143308256728,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.1443672021213604,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -4.402007219564824,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 5935232641.324734,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.027832607411177938,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": -3,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.05138751266556873,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1083301/000108330126000162/a_wulfearningsreleaseq22026.htm",
+   "published": "2026-08-05T07:00:50-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 a_wulfearningsreleaseq22026.htm EX-99.1 Document TeraWulf Reports Second Quarter 2026 Results 102 MW of revenue-generating critical IT capacity online at Lake Mariner, with an additional 336 MW under construction and delivery expected within cost and schedule guidance Expands power-backed platform in Kentucky through ~$19 billion Anthropic lease at Justified and acquisition of the gigawatt-scale Muskie Data Campus Agrees to monetize Abernathy Joint Venture interest for ~$530 million and reaffirms target of contracting 250–500 MW of incremental critical IT capacity annually EASTON, Md. – August 5, 2026 – TeraWulf Inc. (Nasdaq: WULF) (“TeraWulf” or the “Company”), a vertically integrated owner, developer and operator of large-scale digital infrastructure, today announced its financial results for the second quarter ended June 30, 2026 and provided an update on its operations, development activities and strategic execution. Second Quarter 2026 Financial Highlights • Generated second-quarter revenue of $44.8 million, including $31.9 million of HPC lease revenue, representing approximately 71% of total revenue. • Ended the quarter with approximately $3.0 billion of cash and restricted cash, maintaining substantial liquidity to fund contracted development and future growth. Q2 2026 Operational and Development Highlights • Operated 81 MW of revenue-generating critical IT capacity at Lake Mariner as of June 30, 2026 and completed delivery of CB-3 in early July, increasing revenue-generating capacity to 102 MW and satisfying the applicable conditions for $600 million of Google’s credit support for Fluidstack’s lease obligations to become effective. • Continued construction of an additional 336 MW across CB-4 and CB-5. The first CB-4 data hall has entered commissioning, with phased delivery and rent commencement expected during the second half of 2026, while CB-5 remains targeted to begin phased delivery in early 2027. WULF Compute continues to progress within the Company’s previously disclosed cost guidance of $8-10 million per critical IT MW. • Acquired the Muskie Data Campus in Eastern Kentucky and entered into electric service and related infrastructure agreements with Kentucky Power Company providing for up to 1 GW of contracted electric service. Subsequent Events • Entered into a 20-year data center lease with Anthropic for approximately 401 MW of critical IT capacity at the Justified Data Campus. The lease represents approximately $19 billion of contracted revenue over the initial term and up to approximately $33 billion if Anthropic exercises both five-year extension options. • Entered into an agreement to sell the Company’s entire 50.1% interest in the Abernathy Joint Venture for aggregate cash consideration of approximately $530 million. • Received FERC authorization for the proposed acquisition of the Morgantown generating station, clearing a significant regulatory condition toward closing and development of the up to 1 GW Chesapeake Data Campus. Management Commentary Paul Prager, Chairman and Chief Executive Officer of TeraWulf, commented: “The second quarter demonstrates that TeraWulf is moving from platform formation to scaled execution. At Lake Mariner, we delivered additional contracted capacity and converted it into recurring lease revenue. In Kentucky, we established the next phase of growth through the Anthropic lease at Justified and the acquisition of the gigawatt-scale Muskie Data Campus. These are not isolated developments. They reflect a repeatable model built around controlling power-advantaged infrastructure, securing long-duration customer contracts and delivering capacity in phases. As access to power becomes the defining constraint on AI infrastructure development, we believe our ability to combine energy expertise, infrastructure control and execution at scale will become increasingly valuable. Our agreement to monetize Abernathy reflects the same discipline. We are prepared to realize value where appropriate and redeploy capital toward larger-scale opportunities where we have greater control over the infrastructure, customer relationship and long-term economics. Our objective is not simply to accumulate megawatts—it is to build a durable, capital-efficient platform that compounds value for shareholders.\" Patrick Fleury, Chief Financial Officer of TeraWulf, added: “The second quarter marked another meaningful step in the transformation of our financial profile, with HPC leasing representing approximately 71% of total revenue. The delivery of CB-3 also unlocked $600 million of Google’s credit support for Fluidstack’s lease obligations. This is an important credit milestone that further strengthens the contracted revenue profile of the Lake Mariner buildout. With substantial liquidity and access to project-level financing, we have the flexibility to complete our contracted developments and fund the next phase of growth. We remain focused on matching capital deployment to contracted demand and selectively recycling capital when doing so improves control, scale and long-term shareholder returns.” Infrastructure Platform Expansion TeraWulf continues to expand its national platform beyond its flagship Lake Mariner Data Campus, focusing on power-advantaged sites capable of supporting large-scale, phased HPC development. Justified Data Campus - Hawesville, Kentucky Justified is a large-scale HPC campus with access to up to approximately 480 MW of gross power capacity, an energized on-site substation, existing high-voltage transmission infrastructure and more than 250 buildable acres. Subsequent to quarter-end, TeraWulf entered into a 20-year lease with Anthropic for approximately 401 MW of critical IT capacity, with initial delivery expected in the second half of 2027 and full delivery expected in early 2028. Muskie Data Campus - Grayson, Kentucky Acquired in May 2026, Muskie comprises approximately 308 acres in Eastern Kentucky. Electric service and related infrastructure agreements with Kentucky Power Company provide for up to 1 GW of contracted electric service, with initial service expected in the fourth quarter of 2028 and phased development thereafter. Chesapeake Data Campus - Morgantown, Maryland Chesapeake is an existing grid-connected generation site with approximately 210 MW of operational capacity, substantial electrical infrastructure and significant long-term expansion potential. On July 29, 2026, FERC authorized the pending acquisition of the Morgantown generating station. Subject to the remaining closing conditions and required approvals, the site could support an integrated generation, energy-storage and data center campus capable of scaling to up to 1 GW, with initial data center operations currently contemplated for 2030. New York Platform - Lake Mariner and Lake Hawkeye In New York, TeraWulf continues to expand its flagship Lake Mariner Data Campus while advancing Lake Hawkeye as a longer-term redevelopment opportunity. In addition to the 102 MW of revenue-generating critical IT capacity and 336 MW currently under construction at Lake Mariner, the Company is pursuing 250 MW of incremental power capacity, subject to applicable interconnection approval. Lake Hawkeye encompasses approximately 183 leased acres at a former industrial site with existing electrical infrastructure and, subject to permitting and site development, has the potential to support approximately 400 MW of gross capacity, or approximately 320 MW of critical IT load, with operations not currently contemplated until approximately 2029. Strategic Positioning TeraWulf’s development model is focused on controlling power-advantaged infrastructure, securing long-duration, credit-supported customer contracts, aligning capital deployment with contracted demand and financing and delivering capacity in sequential phases. The Muskie acquisition, Anthropic lease and agreement to monetize the Company’s interest in the Abernathy Joint Venture demonstrate the repeatability of this model across site acquisition, customer contracting, project execution and capital recycling. Against this backdrop, TeraWulf reaffirms its target of contracting 250 MW to 500 MW of incremental critical IT capacity annually. The Company intends to pursue that growth selectively, prioritizing opportunities with secured power, clear customer demand, scalable infrastructure and attractive risk-adjusted returns. Investor Conference Call and Webcast The Company will host its earnings conference call and webcast for the second quarter ended June 30, 2026, today, August 5, 2026, at 8:00 a.m. Eastern Time. The call will be available for replay in the “News & Events” section of the Company’s website at https://investors.terawulf.com/events-and-presentations/. About TeraWulf TeraWulf develops, owns and operates large-scale, power-backed digital infrastructure in the United States, purpose-built for high-performance computing and artificial intelligence workloads. The Company combines long-term control of land, power and interconnection infrastructure with deep in-house expertise in energy markets, infrastructure development and data center operations. TeraWulf operates the Lake Mariner Data Campus in New York and is developing and pursuing additional large-scale campuses in Kentucky, New York and Maryland. The Company also operates existing bitcoin-mining infrastructure at Lake Mariner, portions of which are being repurposed to support contracted HPC development. Forward-Looking Statements This press release contains forward-looking statements within the meaning of the “safe harbor” provisions of the Private Securities Litigation Reform Act of 1995, as amended. Such forward-looking statements include statements concerning anticipated future events and expectations that are not historical facts. All statements, other than statements of historical fact, are statements that could be deemed forward-looking statements. In addition, forward-looking statements are typically identified by words such as “plan,” “believe,” “goal,” “target,” “aim,” “expect,” “anticipate,” “intend,” “outlook,” “estimate,” “forecast,” “project,” “seek,” “continue,” “could,” “may,” “might,” “possible,” “potential,” “strategy,” “opportunity,” “predict,” “should,” “would” and other similar words and expressions, although the absence of these words or expressions does not mean that a statement is not forward-looking. Forward-looking statements are based on the current expectations and beliefs of TeraWulf’s management and are inherently subject to a number of factors, risks, uncertainties and assumptions and their potential effects. There can be no assurance that future developments will be those that have been anticipated. Actual results may vary materially from those expressed or implied by forward-looking statements based on a number of factors, risks, uncertainties and assumptions, including, among others: (1) TeraWulf’s ability to attract additional customers to lease its HPC data centers; (2) TeraWulf’s ability to complete its data center campuses and future strategic growth initiatives in a timely manner or within anticipated cost estimates; (3) operational risks associated with its data centers and TeraWulf’s ability to perform under its existing data center lease agreements; (4) changes in applicable laws, regulations and/or permits affecting TeraWulf’s operations or the industries in which it operates; (5) failure to obtain adequate financing on a timely basis and/or on acceptable terms with regard to expansion or existing operations; (6) adverse geopolitical or economic conditions, including a high inflationary environment, the implementation of new tariffs and more restrictive trade regulations; (7) the potential of cybercrime, money-laundering, malware infections and phishing and/or loss and interference as a result of equipment malfunction or break-down, physical disaster, data security breach, computer malfunction or sabotage (and the costs associated with any of the foregoing); (8) the availability and cost of power as well as electrical infrastructure equipment necessary to maintain and grow the business and operations of TeraWulf; and (9) other risks and uncertainties detailed from time to time in TeraWulf’s filings with the Securities and Exchange Commission (“SEC”). Potential investors, stockholders and other readers are cautioned not to place undue reliance on these forward-looking statements, which speak only as of the date on which they were made. TeraWulf does not assume any obligation to publicly update any forward-looking statement after it was made, whether as a result of new information, future events or otherwise, except as required by law or regulation. Investors are referred to the full discussion of risks and uncertainties associated with forward-looking statements and the discussion of risk factors contained in the Company’s filings with the SEC, which are available at www.sec.gov. Investors : Investors@terawulf.com Media : media@terawulf.com CONDENSED CONSOLIDATED BALANCE SHEETS AS OF JUNE 30, 2026 AND DECEMBER 31, 2025 (In thousands, except number of shares and par value; unaudited) June 30, 2026 December 31, 2025 ASSETS CURRENT ASSETS: Cash and cash equivalents $ 2,619,191 $ 3,266,389 Restricted cash 142,938 189,933 Accounts receivable 13,202 1,212 Digital assets 133 270 Prepaid expenses 18,314 6,272 Other current assets 12,726 14,197 Total current assets 2,806,504 3,478,273 Property, plant and equipment, net 3,600,191 1,507,699 Equity in net assets of investee 424,062 446,008 Goodwill 55,457 55,457 Operating lease right-of-use asset 101,754 103,975 Finance lease right-of-use asset 117,814 119,338 Restricted cash 266,479 266,453 Deferred charges 572,599 572,888 Restricted trust investments 20,607 — Other assets 82,928 8,091 TOTAL ASSETS $ 8,048,395 $ 6,558,182 LIABILITIES AND EQUITY CURRENT LIABILITIES: Accounts payable $ 197,812 $ 65,139 Accrued construction liabilities ",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1083301/000108330126000166/wulf-20260630.htm",
+   "published": "2026-08-05T16:31:02-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following Management’s Discussion and Analysis of Financial Condition and Results of Operations should be read in conjunction with a review of the other Items included in this Quarterly Report on Form 10-Q, as well as our audited consolidated financial statements and related notes as disclosed in our Annual Report on Form 10-K for the fiscal year ended December 31, 2025. All figures presented below represent results from continuing operations, unless otherwise specified. Capitalized terms used but not otherwise defined herein shall have the meanings ascribed to such terms in the consolidated financial statements. Unless the context otherwise requires, references in this Quarterly Report on Form 10-Q to the “Company,” “TeraWulf,” “we,” “us” or “our” refer to TeraWulf Inc. and its consolidated subsidiaries, unless otherwise indicated. Certain statements contained in this Management’s Discussion and Analysis of Financial Condition and Results of Operations may be deemed forward-looking statements. See “Forward-Looking Statements.” Overview We are a vertically integrated owner, developer, and operator of digital infrastructure assets in the United States, purpose-built to support HPC workloads, including AI, machine learning, and advanced cloud applications. During the three and six months ended June 30, 2026, HPC leasing revenue represented a majority of total revenue, reflecting the continued ramp of long-term contracted capacity at the Lake Mariner Data Campus. The Company has undergone a deliberate strategic transition toward HPC leasing as its primary growth driver and operating focus. While TeraWulf historically operated bitcoin mining facilities and used flexible compute loads to support the development of its infrastructure platform, the Company has begun to curtail and repurpose portions of that infrastructure to support HPC development. Going forward, the Company’s capital allocation, development activities and operating focus are centered on HPC data center development, long-term data center leases and infrastructure supporting AI-driven compute workloads. The Company intends to continue bitcoin mining operations where they remain economically attractive and do not conflict with HPC development. Our strategy is grounded in controlling utility-scale infrastructure and pairing compute-optimized facilities with reliable, long-duration power resources. Through ownership or long-term control of land, interconnection rights and electrical and cooling infrastructure - and, where appropriate, on-site generation - the Company seeks to deliver resilient, cost-efficient capacity to hyperscale and enterprise customers under long-term data center leases. These arrangements generally range from 10 to 25 years and, in certain cases, benefit from investment-grade credit support, enhancing the durability and bankability of contracted revenues. The Company expects these arrangements to provide long-term revenue visibility and support project-level financing as the platform scales. The Company’s platform is differentiated by its control of utility-scale infrastructure, deep in-house power and grid expertise, and a scalable development model supported by long-term, credit-enhanced customer contracts. Strategy Execution and Capital Allocation Management’s execution of the Company’s strategy is focused on converting advantaged infrastructure positions into long-term, contracted HPC capacity. This includes the phased conversion of existing infrastructure, where appropriate, and the development of new campuses aligned with customer deployment schedules and power availability. This execution model emphasizes vertical integration, long-duration customer contracts supported by credit enhancement and disciplined, phased development. A core element of this approach is infrastructure control. By retaining control over land use, interconnection rights and electrical and cooling systems—and on-site generation where appropriate—the Company is able to manage development risk, optimize capital deployment and maintain operational oversight throughout the lifecycle of its facilities. Management believes this approach reduces execution risk relative to development models that rely more extensively on third parties. The Company’s contracting strategy prioritizes long-term data center leases with credit-supported customers. These arrangements reduce the Company’s exposure to commodity-driven revenue streams, including bitcoin price volatility, as its revenue mix continues to shift toward contracted HPC leasing. They also provide long-term revenue visibility, support project-level financing and reduce cash-flow volatility as the platform scales. Credit enhancement associated with certain customer contracts has been an important factor in accelerating development timelines and facilitating third-party financing. 53 Table of Contents Each campus is designed for modular, multi-phase expansion. Initial phases are intended to deliver near-term contracted capacity, while subsequent phases are aligned with customer deployment schedules and infrastructure readiness, including power availability and interconnection timing. Management believes this phased approach allows the Company to scale efficiently while maintaining capital discipline. While the Company currently derives a significant portion of its revenue from bitcoin mining, HPC leasing is now the Company’s primary growth driver and operating focus. Strategic Transactions Acquisition of Beowulf E&D On May 21, 2025 (the “Acquisition Date”), the Company acquired 100% o f the membership interests in Beowulf Electricity & Data LLC, Beowulf E&D (NY) LLC and Beowulf E&D (MD) LLC (collectively, “Beowulf E&D”). Additional detail regarding the consideration paid and contingent consideration associated with the Beowulf E&D acquisition is included in Note 3 to the condensed consolidated financial statements. The acquisition materially expanded the Company’s internal capabilities across power infrastructure development, site operations, engineering, and project execution. Approximately 94 employees transitioned to the Company as part of the transaction. Management believes this acquisition strengthened operational integration and execution capability as the Company scales its HPC platform. Cayuga Site Ground Lease On August 12, 2025, the Company entered into a long-term ground lease for approximately 183 acres in Lansing, New York. Upon completion of permitting and site development, the Cayuga Site has the potential for up to 400 MW of gross capacity, supporting approximately 320 MW of critical IT load. The Cayuga Site provides an additional anchor location with existing interconnection and supporting infrastructure and represents a key component of the Company’s forward development pipeline. Abernathy Joint Venture On October 27, 2025, the Company entered into an amended and restated limited liability company agreement governing the Abernathy Joint Venture. The Company holds a 50.1% equity interest in the joint venture. The Abernathy HPC Campus is designed for 168 MW of critical IT load, representing the full build-out of the site. The campus is 100% pre-leased to Fluidstack under a 25-year data center sublease with contractual rent escalators and options for term contraction. Lease obligations are supported by investment-grade credit enhancement provided by Google, materially strengthening the credit profile of the contracted revenues and facilitating third-party debt financing. In July 2026, the Company entered into a definitive agreement selling its entire 50.1% equity interest in the Abernathy Joint Venture to a group of purchasers for an aggregate cash consideration of approximately $530.0 million, representing a premium to the Company's invested capital. The consideration is payable in installments in 2026 and 2027. The Company believes this sales transaction realizes the value created through the Company's initial investment and provides capital for redeployment into wholly owned AI infrastructure, where the Company retains direct ownership, customer relationships, and operational control. Justified Data Campus In February 2026, the Company entered into an Agreement of Purchase and Sale for a former industrial site in Hawesville, Kentucky (the “Justified Data Campus”). The Justified Data Campus is a strategically located brownfield infrastructure site which includes more than 250 buildable acres with immediate access to power infrastructure, including multiple high-voltage transmission lines, an on-site energized substation, and a direct connection to the regional transmission network. The Company plans on constructing and operating a HPC/AI data center on the Justified Data Campus. The Justified Data Campus has up to 480 MW of gross power availability; construction is expected to commence in 2026, with a phased buildout extending through 2027, subject to site planning and permitting approvals. In July 2026, the Company entered into a long-term datacenter lease agreement with Anthropic for approximately 401 MW of critical IT load at the Justified Data Campus. Initial capacity is expected to be placed into service during the second half of 2027, with the campus ramping to the full 401 MW by early 2028. The Justified Data Campus is expected to further diversify the Company’s geographic footprint and support growing customer demand for large-scale HPC infrastructure. 54 Table of Contents Muskie Data Campus In May 2026, the Company acquired 100% of the membership interests of Industrial Equity Partners LLC, which owned or held contractual rights to purchase approximately 308 acres of land in Grayson, Kentucky (the \"Muskie Data Campus\"). The Muskie Data Campus is a hyperscale HPC/AI development site. Transmission infrastructure and energy service agreements for the Muskie Data Campus were executed concurrently with the Membership Interest Purchase Agreement pursuant to the applicable Industrial General Service tariff structure for large loads, establishing a clear pathway to long-term, large-scale power delivery. The energy services agreement with Kentucky Power Company, an AEP Company, provides for 1,000 MW of contracted electric service. Energy service is expected to commence in the fourth quarter of 2028. Kentucky Power Company is also constructing a 345 kV substation connected to the existing 765 kV transmission network, providing redundant, utility-scale power infrastructure designed to support the full 1,000 MW Muskie Data Campus. Along with the Company's 480 MW Justified Data Campus, the Muskie Data Campus represents the Company’s second major digital infrastructure campus in Kentucky. This further expands the Company’s presence in a state that continues to emerge as an attractive market for large-scale AI and HPC development due to its robust energy infrastructure, supportive business environment, and strong engagement from state and local stakeholders. Operations Overview Lake Mariner Data Campus The Lake Mariner Data Campus is TeraWulf’s flagship HPC campus and a core component of the Company’s contracted HPC platform. The Lake Mariner Data Campus is located in Barker, New York on the site of a former coal-fired power plant that was retired and repurposed into a modern digital infrastructure campus with operations that commenced in March 2022. The site benefits from substantial existing transmission infrastructure and is designed for scalable expansion. As of June 30, 2026, the Lake Mariner Data Campus operated 145 MW of legacy bitcoin mining capacity and had 81 MW of critical IT HPC capacity. The campus is undergoing phased expansion to support additional HPC contracted deployments with gross capacity of approximately 500 MW in the near term, and with potential expansion to approximately 750 MW, subject to additional approvals from the NYISO. During the six",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1083301/000162828026069810/wulf-20261104.htm",
+   "published": "2026-11-04T08:16:25-05:00",
+   "form": "8-K",
+   "items": "1.01,7.01,8.01,9.01",
+   "text": "Item 1.01. Entry into a Material Definitive Agreement. Justified Data Campus Credit Support Agreements As previously disclosed by TeraWulf Inc. (“TeraWulf” or the “Company”), in July 2026, the Company’s subsidiary Raylan Data LLC (“Raylan”) entered into a 20-year lease agreement with Anthropic, PBC (“Anthropic”), as tenant, to provide Anthropic with approximately 401 MW of critical IT load for high-performance computing (“HPC”) operations at the Company’s data center campus located in Hawesville, Kentucky. Anthropic’s obligation to pay rent commences upon the delivery of each data hall at the applicable leased premises, which consist of CB-1, CB-2 and CB-3 (the leases for such premises are referred to individually as a “Justified Lease” and, collectively, as the “Justified Leases”). Delivery of the capacity under the Justified Leases is expected to occur in phases beginning in late 2027 and concluding in the second quarter of 2028. In connection with the Justified Leases, on November 4, 2026, the Company entered into three Credit Support Agreements for CB-1, CB-2 and CB-3, respectively (each a “Google Credit Support Agreement” and collectively, the “Google Credit Support Agreements”), with Raylan, Justified DataPower LLC, a wholly owned subsidiary of the Company, Anthropic and Google LLC (“Google”), pursuant to which Google agreed to backstop (the “Justified Google Backstop”) certain obligations of Anthropic under the Justified Leases. The Justified Google Backstop under each Google Credit Support Agreement will become effective as of the commencement date for the final data hall under the corresponding Justified Lease and will terminate upon the conditions described in the Google Credit Support Agreements, including Anthropic (or its affiliate, if such affiliate has agreed to guarantee Anthropic’s obligations under the applicable Justified Lease) achieving and maintaining certain investment grade credit ratings for a period of at least three months. The Justified Google Backstop provides that in the event of a payment default under a Justified Lease, or if Anthropic becomes subject to an insolvency event, following notice from Raylan, Google will have the option to (i) pay all rent currently due under the applicable Justified Lease and assume the Justified Lease as the tenant thereunder, or (ii) under certain circumstances, pay a certain termination fee pursuant to the applicable Google Credit Support Agreement; provided that upon payment of such terminat",
+   "exhibit_99_1": "EX-99.1 3 wulfhawesvillecsaandepcmpr.htm EX-99.1 Document Exhibit 99.1 TeraWulf Secures Google Credit Backstop for Project Financing in Support of $19 Billion Anthropic Lease; Executes Definitive Fluor EPC Agreement Google credit support strengthens TeraWulf’s ability to secure competitive project financing for contracted AI infrastructure at Hawesville, Kentucky campus Fluor agreement expands engineering and construction capacity, with defined delivery milestones EASTON, Md., November 4, 2026 – TeraWulf Inc. (NASDAQ: WULF) (“TeraWulf” or the “Company”), a vertically integrated owner, developer and operator of large-scale digital infrastructure, today announced the execution of credit support agreements with Google LLC (“Google”) in connection with debt financing supporting approximately $19 billion of contracted lease commitments with Anthropic, PBC (“Anthropic”) at its Justified Data Campus in Hawesville, Kentucky (“Justified”). The Company also announced a definitive engineering, procurement and construction (“EPC”) agreement with Fluor Enterprises, Inc. (“Fluor”) on a GMP-basis for the development of Justified. Together, these agreements strengthen the project’s financing framework and expand construction execution capacity, advancing TeraWulf’s strategy of converting long-term contracted demand into durable cash flow. “We structured our Anthropic leases from the outset to address counterparty credit, financing costs and capital requirements,” said Paul Prager, Chairman and Chief Executive Officer of TeraWulf. “Google’s credit support strengthens our ability to secure competitive project financing, while Fluor’s engineering and construction capabilities expand our capacity to execute at scale. Together, these agreements reinforce our disciplined approach to capital deployment and our focus on delivering attractive risk-adjusted returns.” Google Credit Support Strengthens Project Financing Under the credit support agreements, Google LLC, a subsidiary of Alphabet Inc., provides contractual credit support for anticipated debt financing supporting TeraWulf’s long-term Justified development. Alphabet’s senior unsecured debt is rated AA+ by S&P Global Ratings and Aa2 by Moody’s. “Cost of capital is fundamental to infrastructure development,” said Patrick Fleury, Chief Financial Officer of TeraWulf. “Strong investment-grade credit support strengthens the project’s financing profile and our ability to pursue competitive long-term debt, reinforcing our focus on"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1083301/000162828026067100/wulf-20261023.htm",
+   "published": "2026-10-23T17:13:37-04:00",
+   "form": "8-K",
+   "items": "1.01,2.03",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. On October 23, 2026 (the “Effective Date”), TeraWulf Inc. (“TeraWulf” or the “Company”) entered into Amendment No. 1 (the “Amendment”) to the Existing Credit Agreement (as defined below), by and among the Company, as borrower, certain of the Company’s subsidiaries, as guarantors, the lenders from time to time party thereto, and Morgan Stanley Senior Funding, Inc., as administrative agent and collateral agent (the “Agent”). The Amendment amends that certain Revolving Credit Agreement, dated as of May 7, 2026 (as amended, restated, amended and restated, supplemented or otherwise modified prior to the effectiveness of the Amendment, the “Existing Credit Agreement”), by and among the Company, as borrower, the lenders from time to time party thereto, and the Agent. The Amendment amends the Existing Credit Agreement (as so amended, the “Amended Credit Agreement”) to, among other things, (i) increase the total commitments under the senior secured revolving credit facility from $250 million to approximately $400 million on the Effective Date, (ii) provide for an uncommitted “accordion” feature, pursuant to which the aggregate commitments under the senior secured revolving credit facility may be increased by an additional amount of approximately $150 million, subject to the availability of additional lender commitments and satisfaction of certain other conditions, and (iii) eliminate the $150 million sublimit previously applicable to the issuance of letters of credit. The Amendment also provides for the release of collateral from the security interest of the Agent upon the occurrence of certain conditions as set forth in the Amendment. The foregoing description does not purport to be complete and is qualified in its entirety by reference to the full text of the Amended Credit Agreement, a copy of which will be filed with the Company’s Quarterly Report on Form 10-Q for the quarter ending September 30, 2026. Item 2.03 Creation of a Direct Financial Obligation or an Obligation under an Off-Balance Sheet Arrangement of a Registrant. The information set forth above under Item 1.01 of this Current Report on Form 8-K is hereby incorporated by reference into this Item 2.03. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, hereunto duly authorized. Date: October 23, 2026 TERAWULF INC. By: /s/ Patrick A"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1083301/000162828026064757/wulf-20261001.htm",
+   "published": "2026-10-05T08:21:35-04:00",
+   "form": "8-K",
+   "items": "8.01,9.01",
+   "text": "Item 8.01. Other Events. Muskie Expansion On October 5, 2026, TeraWulf Inc. (“TeraWulf” or the “Company”) issued a press release (the “Press Release”) announcing that its wholly-owned subsidiary, DB Long Hunts Data LLC, entered into amended and restated transmission infrastructure and energy service agreements (the “Amended & Restated KY Power Agreements”) with Kentucky Power Company (“Kentucky Power”), an American Electric Power company. The Amended & Restated KY Power Agreements increase the Company’s contracted power capacity at its Muskie Data Campus (“Muskie”) in eastern Kentucky from 500 megawatts (“MW”) to 1 gigawatt (“GW”). In addition, the Amended & Restated KY Power Agreements move the planned delivery of Muskie’s second 500 MW phase from 2030 to 2029, subject to Kentucky Public Service Commission approval and Kentucky Power’s construction schedule. The first 500 MW phase at Muskie remains targeted to begin ramping in 2028. The Amended & Restated KY Power Agreements were executed on October 1, 2026. A copy of the Company’s Press Release is attached hereto as Exhibit 99.1 and is incorporated herein by reference. Financing Strategy Update In connection with the development of its data center campuses, the Company intends to increase the size of its existing senior secured revolving credit facility and is also seeking to raise additional senior secured debt to further support letter of credit needs in connection with the Company’s long-term power development partnerships with utilities. The upsize of the existing revolving credit facility will be subject to customary closing conditions, and there can be no assurance that the Company will obtain any additional financing. Item 9.01. Financial Statements and Exhibits. (d) Exhibits. Exhibit No. Description 99.1 Press Release, dated October 5, 2026. 104 Cover Page Interactive Data File (embedded within the inline XBRL document). Cautionary Note Regarding Forward-Looking Statements. Statements in this Current Report on Form 8-K about future expectations, plans, and prospects, as well as any other statements regarding matters that are not historical facts, may constitute “forward-looking statements” within the meaning of The Private Securities Litigation Reform Act of 1995 as amended. Such forward-looking statements include statements concerning anticipated future events and expectations that are not historical facts. All statements, other than statements of historical fact, are statements that could be de",
+   "exhibit_99_1": "EX-99.1 2 muskieexpansionpr.htm EX-99.1 Document Exhibit 99.1 TeraWulf Expands Contracted Power Capacity at its Muskie Data Campus to 1 GW Amended Kentucky Power agreement advances the second 500 MW phase into 2029 amid strong customer interest EASTON, Md. – October 5, 2026 – TeraWulf Inc. (Nasdaq: WULF) (“TeraWulf” or the “Company”), a vertically integrated owner, developer and operator of large-scale digital infrastructure, today announced that it has executed an amended and restated electric service agreement with Kentucky Power, an American Electric Power (“AEP”) company, increasing contracted power capacity at its Muskie Data Campus in eastern Kentucky from 500 megawatts (“MW”) to 1 gigawatt (“GW”). The amendment advances planned delivery of Muskie’s second 500 MW phase from 2030 to 2029, subject to Kentucky Public Service Commission approval and Kentucky Power’s construction schedule. Development will proceed consistent with the requirements of Governor Beshear’s Executive Order on Data Center Development (2026-494). The first 500 MW phase remains targeted to begin ramping in 2028. “Customer interest in Muskie has been tremendous, and power availability is central to those conversations,” said Paul Prager, Chairman and Chief Executive Officer of TeraWulf. “Securing the next 500 MW and moving its planned delivery into 2029 gives us greater flexibility to meet prospective customers’ deployment needs. It also builds on the progress our teams have made with Kentucky Power since we acquired the site.” Additionally, the Company continues to evaluate the campus’s potential to support up to 2 GW over time, subject to additional utility planning, infrastructure and agreements. TeraWulf acquired Muskie in May 2026 for phased development as an AI and high-performance computing campus. Kentucky Power is developing a 765-kV / 345-kV substation connected to the regional transmission network to serve the site. The Muskie amendment follows TeraWulf’s approach to large-scale development in Kentucky: coordinate with the utility on the infrastructure needed to serve the campus, provide financial protections for utility investment and structure the agreement to benefit existing customers. In August, the Kentucky Public Service Commission approved the separate electric service agreement for TeraWulf’s Justified Data Campus in Hawesville, finding that its terms adequately protected existing customers and appropriately allocated the costs and risks of serving that project."
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/04/terawulf-falls-4-despite-google-backstop-for-19-billion-anthropic-leases-cipher-digital-plunges-18-iren-tumbles-9/?.tsrc=rss",
+   "published": "2026-11-04T12:56:12-05:00",
+   "text": "TeraWulf Falls 4% Despite Google Backstop for $19 Billion Anthropic Leases; Cipher Digital Plunges 18%, IREN Tumbles 9% - Google locked in a massive long-term guarantee for Anthropic's leases at TeraWulf's Kentucky campus, yet the stock is still sliding while rivals are getting crushed. The funding math behind these AI data center buildouts is making investors nervous about who actually pays before the first tenant fli",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/iren-report-q1-earnings-buy-174900782.html?.tsrc=rss",
+   "published": "2026-11-04T12:49:00-05:00",
+   "text": "IREN to Report Q1 Earnings: Should You Buy, Sell or Hold the Stock? - IREN faces a challenging Q1 earnings outlook as AI cloud growth battles declining bitcoin mining revenues and rising costs. Is reducing exposure the right move?",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/c5d0833e-fe1d-3e77-b792-4b103f8d64bf/bitcoin-rises%2C-crypto-miners.html?.tsrc=rss",
+   "published": "2026-11-04T11:07:41-05:00",
+   "text": "Bitcoin Rises, Crypto Miners Sharply Divided As Midterms Dampen AI Outlook - Bitcoin price rises. Miners diverge sharply after midterm elections on AI, data center slowdown fears. Riot Platforms spikes on $28bil deal.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/bc-most-active-stocks-153021165.html?.tsrc=rss",
+   "published": "2026-11-04T10:30:21-05:00",
+   "text": "BC-Most Active Stocks - NEW YORK (AP) — prices for the Nasdaq composite, NYSE and NYSE American listed most active stocks. Nasdaq most active stocks:Stock Name Volume High Low Last Change Curis Inc.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/terawulf-becomes-rosenblatt-top-pick/?.tsrc=rss",
+   "published": "2026-11-04T10:01:53-05:00",
+   "text": "Rosenblatt picks TeraWulf as Democratic wins raise the value of permitted MW - Brendler says Texas's data-center pause no longer has an end date. That puts a political discount on about 4.2 GW of Cipher and Galaxy studied load and favors TeraWulf's approved…",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/google-backstops-terawulf-anthropic-leases/?.tsrc=rss",
+   "published": "2026-11-04T09:12:48-05:00",
+   "text": "Google backstops TeraWulf’s $19 billion Anthropic leases in Kentucky - TeraWulf said Google can assume Anthropic's rent or pay a declining termination fee after a default, but the support starts only once each lease's final data hall commences. Fluor's guaranteed…",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/cipher-mining-sinks-17-texas-134134061.html?.tsrc=rss",
+   "published": "2026-11-04T08:41:34-05:00",
+   "text": "Cipher Mining sinks 17% as Texas election puts AI data-center expansion at risk - Investing.com -- Cipher Mining shares plunged 17% on Wednesday as investors reassessed the outlook for AI data-center development in Texas following Gina Hinojosa’s victory in the state’s gubernatorial election. Cantor Fitzgerald warned that the result could delay Cipher’s next major growth catalyst",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/circle-internet-group-inc-crcl-113501060.html?.tsrc=rss",
+   "published": "2026-11-04T06:35:01-05:00",
+   "text": "Circle Internet Group, Inc. (CRCL) Tops Q3 Earnings and Revenue Estimates - Circle Internet Group, Inc. (CRCL) delivered earnings and revenue surprises of +100.00% and +7.96%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/terawulf-stock-gets-bigger-credit-043758093.html?.tsrc=rss",
+   "published": "2026-11-03T23:37:58-05:00",
+   "text": "TeraWulf Stock Gets Bigger Credit Line As AI Hosting Risks Stay In Focus - TeraWulf amended its senior secured revolving credit facility in October 2026, lifting total commitments from US$250 million to about US$400 million, adding an uncommitted US$150 million accordion and removing the prior US$150 million letter of credit sublimit. The larger, more flexible credit line ",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/terawulf-lost-20-in-a-month-kbw-cut-its-target-but-still-sees-62-upside?ref=yahoofinance&tlnk=yf-261103-x459q85j&.tsrc=rss",
+   "published": "2026-11-03T15:28:50-05:00",
+   "text": "TeraWulf Lost 20% in a Month. KBW Cut Its Target but Still Sees 62% Upside - Key TakeawaysTeraWulf stock is down 20% in the past month as fears over how AI-hosting companies will fund their buildouts hit the whole group, CoreWeave above all. TeraWulf’s own news was good: it doubled the power under contract at its Muskie campus in Kentucky to 1 GW and moved the second phase u",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/03/cipher-digital-soars-11-as-ai-data-center-stocks-rebound-after-price-target-selloff-iren-jumps-10-terawulf-surges-9/?.tsrc=rss",
+   "published": "2026-11-03T10:53:32-05:00",
+   "text": "Cipher Digital Soars 11% as AI Data Center Stocks Rebound After Price-Target Selloff; IREN Jumps 10%, TeraWulf Surges 9% - AI data center stocks are staging a sharp morning rebound, but with massive debt loads, a revenue miss, and a potential lease catalyst drought looming, the real question is whether today's bounce has any staying power.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/02/cipher-digital-falls-5-on-revenue-miss-and-keefe-bruyette-target-cut-terawulf-and-iren-drop-4/?.tsrc=rss",
+   "published": "2026-11-02T09:55:17-05:00",
+   "text": "Cipher Digital Falls 5% on Revenue Miss and Keefe Bruyette Target Cut; TeraWulf and IREN Drop 4% - Keefe Bruyette just slashed Cipher Digital's price target by more than half, and a revenue miss is adding fuel to a stock that has already lost more than half its value in a single month. Whether the AI landlord model survives this stress test depends on a tight window of deadlines that could break ",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/cifr-stock-gets-biggest-price-target-cut-amid-ai-hosting-valuation-concerns/cNG9DBuR9PT?.tsrc=rss",
+   "published": "2026-11-02T07:11:59-05:00",
+   "text": "CIFR Stock Gets Biggest Price-Target Cut In Sector-Wide Reset Amid Keefe Bruyette’s AI Hosting Valuation Concerns - Keefe Bruyette lowered price targets on seven bitcoin miners and AI hosting companies on Monday.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/earnings-preview-terawulf-inc-wulf-130007619.html?.tsrc=rss",
+   "published": "2026-10-30T09:00:07-04:00",
+   "text": "Earnings Preview: TeraWulf Inc. (WULF) Q3 Earnings Expected to Decline - TeraWulf (WULF) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://blockspace.media/short/why-morgan-stanley-thinks-terawulf-could-rise-400/?.tsrc=rss",
+   "published": "2026-10-29T10:46:28-04:00",
+   "text": "Why Morgan Stanley Thinks TeraWulf Could Rise 400% - The bank argues that months of underperformance reflect misconceptions about powered-shell providers, and it kept its Attractive industry view.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/morgan-stanley-sees-terawulf-upside/?.tsrc=rss",
+   "published": "2026-10-28T10:38:03-04:00",
+   "text": "Morgan Stanley reiterates Overweight on five AI data center stocks, with 441% TeraWulf upside - Morgan Stanley argues TeraWulf, Cipher, Hut 8, Riot and Galaxy are priced like neoclouds while operating as landlords. It sketches a TeraWulf asset sale worth $3.3 billion and a 2027…",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://stocktwits.com/news-articles/markets/equity/bitcoin-outperforms-grayscale-s-ai-compute-etf-as-ai-cloud-stocks-slide/cZUehy1RBCA?.tsrc=rss",
+   "published": "2026-10-27T13:34:30-04:00",
+   "text": "Bitcoin Outperforms Grayscale’s AI Compute ETF As AI Cloud Stocks Slide - Grayscale has recently added CoreWeave, Nebius and DigitalOcean to its AI Compute ETF, which together make up about 26% of the fund.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/anthropic-leases-core-scientific-terawulf/?.tsrc=rss",
+   "published": "2026-10-27T09:43:52-04:00",
+   "text": "KBW sees Anthropic’s AMD and overseas lease plans favoring Core Scientific and TeraWulf, backstops still required - KBW's Stephen Glagola reviewed Anthropic's S-1 and found leasing upside for Core Scientific and TeraWulf. He does not expect an investment-grade rating soon, so hardware providers will keep guaranteeing the…",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://247wallst.com/videos/will-elon-musks-prediction-of-guppy-level-death-sink-neoclouds-like-coreweave-nebius-and-terawulf/?.tsrc=rss",
+   "published": "2026-10-26T17:08:40-04:00",
+   "text": "Will Elon Musk’s Prediction of ‘Guppy Level Death’ Sink Neoclouds like CoreWeave, Nebius, and Terawulf? - Elon Musk just issued a devastating warning about the future of AI infrastructure companies, predicting \"guppy-level death\" and consolidation across more than 200 neocloud providers. Could this spell disaster for investors in CoreWeave (NASDAQ: CRWV), Nebius Group (NASDAQ: NBIS), and TeraWulf (NASDA",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  },
+  {
+   "id": "I28",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/26/terawulf-jumps-7-as-ceo-pushes-back-on-stranded-data-center-fears-cipher-digital-rises-3-applied-digital-edges-higher/?.tsrc=rss",
+   "published": "2026-10-26T11:56:04-04:00",
+   "text": "TeraWulf Jumps 7% as CEO Pushes Back on Stranded Data Center Fears; Cipher Digital Rises 3%, Applied Digital Edges Higher - TeraWulf's CEO fired back at analysts calling his unfinished data centers stranded assets, and his argument rests on a build sequence that he says most critics are getting backwards.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:33:41-05:00",
+    "sha256": "2cd32abf416c5b4e2a937ef066f513212dc4357341a958501eccaad74d9556ef"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 63420
+}
