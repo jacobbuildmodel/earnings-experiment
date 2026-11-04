@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "TXG",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:33:05.704153-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.10xgenomics.com/news/news-details/2026/10x-Genomics-to-Report-Third-Quarter-2026-Financial-Results-on-November-5-2026/default.aspx",
+  "published_et": "2026-10-13T16:05-04:00",
+  "quote": "inancial Results on November 5, 2026 10/13/2026 PLEASANTON, Calif. , Oct. 13, 2026 /PRNewswire/ -- 10x Genomics, Inc. (Nasdaq: TXG), the life science technology leader focused on accelerating science and advancing human health, announced it will report financial results for the third quarter ended September 30, 2026 after market close on Thursday, November 5, 2026.",
+  "title": "10x Genomics to Report Third Quarter 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-19T22:00:02.463441-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.10xgenomics.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 66.11000061035156,
+  "expiry": "2026-11-20",
+  "strike": 65.0,
+  "call": {
+   "bid": 7.0,
+   "ask": 7.9,
+   "openInterest": 163.0,
+   "lastPrice": 6.4,
+   "impliedVolatility": 1.22266013671875,
+   "lastTradeDate": "2026-11-04T15:02:15+00:00"
+  },
+  "put": {
+   "bid": 5.7,
+   "ask": 6.6,
+   "openInterest": 429.0,
+   "lastPrice": 6.05,
+   "impliedVolatility": 1.1887247595214845,
+   "lastTradeDate": "2026-11-04T18:36:04+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.20571774125608616,
+  "rel_spread": {
+   "call": 0.12080536912751683,
+   "put": 0.14634146341463405
+  },
+  "oi_atm": 592.0,
+  "oi_sum": 592.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

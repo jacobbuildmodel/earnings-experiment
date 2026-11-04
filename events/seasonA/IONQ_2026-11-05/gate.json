@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "IONQ",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:50.397701-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.ionq.com/news/news-details/2026/IonQ-to-Report-Third-Quarter-2026-Financial-Results-on-November-5-2026/default.aspx",
+  "published_et": "2026-10-22T17:00-04:00",
+  "quote": "2026 News Details View All News IonQ to Report Third Quarter 2026 Financial Results on November 5, 2026 October 22, 2026 COLLEGE PARK, Md.--(BUSINESS WIRE)-- IonQ (NYSE: IONQ), the world’s leading quantum platform and foundry, today announced that the company will release its financial results for the quarter ended September 30, 2026, on Thursday, Nov. 5, 2026, after the financial markets close.",
+  "title": "IonQ to Report Third Quarter 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-26T09:21:15.373578-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://investors.ionq.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 29.18000030517578,
+  "expiry": "2026-11-06",
+  "strike": 29.0,
+  "call": {
+   "bid": 1.57,
+   "ask": 1.71,
+   "openInterest": 209.0,
+   "lastPrice": 1.55,
+   "impliedVolatility": 1.47265888671875,
+   "lastTradeDate": "2026-11-04T19:01:15+00:00"
+  },
+  "put": {
+   "bid": 1.29,
+   "ask": 1.44,
+   "openInterest": 1040.0,
+   "lastPrice": 1.33,
+   "impliedVolatility": 1.3828155859374998,
+   "lastTradeDate": "2026-11-04T19:11:52+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.10298149309707136,
+  "rel_spread": {
+   "call": 0.08536585365853652,
+   "put": 0.10989010989010982
+  },
+  "oi_atm": 1249.0,
+  "oi_sum": 2142.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

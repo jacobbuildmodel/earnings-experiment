@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "LASR",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:32:07.007417-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.nlight.net/news-releases/news-details/2026/nLIGHT-to-Announce-Third-Quarter-2026-Financial-Results-on-November-5th/default.aspx",
+  "published_et": "2026-10-12T08:05-04:00",
+  "quote": "A webcast to discuss the third quarter results will be held on Thursday, November 5, 2026, at 2:00 p.m. Pacific Time (5:00 p.m. Eastern Time).",
+  "title": "nLIGHT to Announce Third Quarter 2026 Financial Results on November 5th",
+  "retrieved_et": "2026-10-19T21:55:47.447952-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.nlight.net/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 33.310001373291016,
+  "expiry": "2026-11-06",
+  "strike": 33.0,
+  "call": {
+   "bid": 2.7,
+   "ask": 3.3,
+   "openInterest": 3.0,
+   "lastPrice": 2.9,
+   "impliedVolatility": 2.3750040624999995,
+   "lastTradeDate": "2026-11-04T19:04:09+00:00"
+  },
+  "put": {
+   "bid": 2.35,
+   "ask": 2.8,
+   "openInterest": 23.0,
+   "lastPrice": 2.67,
+   "impliedVolatility": 2.2783246166992184,
+   "lastTradeDate": "2026-11-04T17:18:16+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.16736715010976272,
+  "rel_spread": {
+   "call": 0.19999999999999987,
+   "put": 0.17475728155339795
+  },
+  "oi_atm": 26.0,
+  "oi_sum": 26.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

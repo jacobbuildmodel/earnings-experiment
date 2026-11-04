@@ -1,0 +1,49 @@
+# D019 §3(b): the Layer-1 capture - code only, no AI (pipeline/layer1.py). It diagnoses the reaction layer at
+# Gate 1 and tests nothing.
+#
+# Weekly, Saturday morning (no session, so no S2 window or paper window to race): for every printed SH-M / SH-W
+# event, the EPS estimate, reported and surprise from yfinance and the quarterly revenue from SEC EDGAR XBRL
+# frames, each stored once with its source tier in outcomes/layer1/<season>.jsonl (fenced from every AI step).
+# A missing field is retried by later runs inside its window (EPS 30 days, revenue 100 days after the print).
+# GitHub's schedule is best-effort: a dropped Saturday is caught by the next one (the windows are 4+ weeks).
+name: Earnings experiment - Layer 1 capture (weekly)
+
+on:
+  schedule:
+    - cron: "0 13 * * 6"      # 09:00 EDT / 08:00 EST, Saturday
+  workflow_dispatch:
+
+concurrency:
+  group: layer1
+  cancel-in-progress: false
+
+jobs:
+  layer1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: pip install -r requirements.txt
+
+      - name: Identify the committer
+        run: |
+          git config user.name "Earnings Experiment (GitHub Actions)"
+          git config user.email "actions@github.com"
+
+      - name: Health check - PASS, or stop
+        run: python check.py
+
+      - name: Capture every season with a shadow grade, commit
+        run: |
+          seasons=$(for s in seasonA seasonB; do if [ -f "outcomes/shadow/$s/graded.json" ]; then echo "$s"; fi; done)
+          python pipeline/layer1.py capture $seasons --commit

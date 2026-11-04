@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "FIVN",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:31.162641-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/five9-report-third-quarter-2026-financial-results-november-5-2026-2026-10-26",
+  "published_et": "2026-10-26T16:05-04:00",
+  "quote": "linkedin facebook x email reddit SAN RAMON, Calif. --(BUSINESS WIRE)-- Five9 (NASDAQ: FIVN), provider of the Genius CX Platform, today announced it will report third quarter 2026 financial results and host a conference call on Thursday, November 5, 2026 , at 1:30 p.m. Pacific Time ( 4:30 p.m. Eastern Time ) .",
+  "title": "Five9 to Report Third Quarter 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-28T22:10:07.661246-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 36.18000030517578,
+  "expiry": "2026-11-20",
+  "strike": 35.0,
+  "call": {
+   "bid": 3.7,
+   "ask": 4.0,
+   "openInterest": 137.0,
+   "lastPrice": 3.9,
+   "impliedVolatility": 1.0551805053710939,
+   "lastTradeDate": "2026-11-04T19:12:52+00:00"
+  },
+  "put": {
+   "bid": 2.15,
+   "ask": 2.95,
+   "openInterest": 214.0,
+   "lastPrice": 2.17,
+   "impliedVolatility": 1.0151416430664062,
+   "lastTradeDate": "2026-11-04T14:42:02+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.1768933097295867,
+  "rel_spread": {
+   "call": 0.07792207792207788,
+   "put": 0.31372549019607854
+  },
+  "oi_atm": 351.0,
+  "oi_sum": 351.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

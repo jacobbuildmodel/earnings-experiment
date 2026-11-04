@@ -129,14 +129,15 @@ def spy_return(opens, divs, entry, exit_):
 
 def decisions(season, events):
     """The shadow T2 decisions (T2R, T2O) and the recorded cost of every T2 decision, per event. Decisions and
-    costs only: no outcome is read here."""
+    costs only: no outcome is read here. D004 v4 decides T2 in stage 2, so its cost is in t2.json (D019 §7);
+    decision.json holds it only for a pre-v4 event."""
     out = {}
     for ev in events:
         d = {"cost": {}}
-        for tr, name, key in (("T2", "decision.json", "t2"), ("T2G", "t2g.json", "t2"), ("T2R", "t2r.json", "t2"),
-                              ("T2O", "t2o.json", "t2")):
-            p = os.path.join(ROOT, "events", season, ev, name)
-            if not os.path.exists(p):
+        for tr, names, key in (("T2", ("t2.json", "decision.json"), "t2"), ("T2G", ("t2g.json",), "t2"),
+                               ("T2R", ("t2r.json",), "t2"), ("T2O", ("t2o.json",), "t2")):
+            p = next((p for p in (os.path.join(ROOT, "events", season, ev, n) for n in names) if os.path.exists(p)), None)
+            if p is None:
                 continue
             blk = json.load(open(p, encoding="utf-8")).get(key) or {}
             if tr in ("T2R", "T2O"):

@@ -83,24 +83,28 @@ def load_d009(season):
 
 
 def health(season, window=None):
-    """CHARTER §6. Denominators: frozen PASS events (manifest status PASS) for T2 missing and VOID."""
+    """CHARTER §6. Denominators: frozen PASS events (manifest status PASS) for T2 missing, settled PASS for VOID.
+    T2 missing (D019 §7): a manifest that froze T2 as MISSING, or a graded PASS event whose grade has no T2
+    decision (D004 v4's stage 2 froze none before the entry open, e.g. ABT and SPCX in Season A)."""
     st = os.path.join(ROOT, "universe", season, "event_status.json")
     evs = json.load(open(st, encoding="utf-8"))["events"] if os.path.exists(st) else {}
     evs = evs.values() if isinstance(evs, dict) else evs
     missed = sum(1 for e in evs if e.get("reason") == "missed_window")
-    passed, t2_missing = 0, 0
+    passed, t2_missing = 0, set()
     for mp in glob.glob(os.path.join(ROOT, "events", season, "*", "manifest.json")):
         m = json.load(open(mp, encoding="utf-8"))
         if m.get("status") != "PASS" or m.get("dry"):
             continue
         passed += 1
         if any("T2 frozen as MISSING" in str(n) for n in m.get("notes") or []):
-            t2_missing += 1
+            t2_missing.add(os.path.basename(os.path.dirname(mp)))
     voids, single, graded_or_void = 0, 0, 0
     for op in glob.glob(os.path.join(ROOT, "outcomes", season, "*.json")):
         o = json.load(open(op, encoding="utf-8"))
         if o.get("gate_status") != "PASS":
             continue
+        if o.get("graded") and (o.get("decisions") or {}).get("T2") not in ("BUY", "NO_BUY"):
+            t2_missing.add(os.path.basename(op)[:-len(".json")])
         if o.get("void"):
             voids += 1
         if o.get("void") or o.get("graded"):
@@ -118,8 +122,8 @@ def health(season, window=None):
         fb = fb if isinstance(fb, list) else [{}] * int(fb)
         breaches += len(fb)
         listed += [{"log": os.path.basename(lp), "fence": b.get("fence"), "tool": b.get("tool")} for b in fb]
-    return {"missed_windows": missed, "t2_missing": t2_missing, "frozen_pass": passed,
-            "t2_missing_rate": t2_missing / passed if passed else None,
+    return {"missed_windows": missed, "t2_missing": len(t2_missing), "t2_missing_events": sorted(t2_missing),
+            "frozen_pass": passed, "t2_missing_rate": len(t2_missing) / passed if passed else None,
             "void": voids, "graded_or_void": graded_or_void, "void_rate": voids / graded_or_void if graded_or_void else None,
             "single_source": single, "fence_breaches": breaches, "action_logs": logs, "breach_list": listed}
 
@@ -231,6 +235,8 @@ def health_section(h):
         v = h.get(key)
         met = "–" if v is None else ("yes" if ok(v) else "**NO**")
         out.append(f"| {label} | {shown[key]} | {target} | {met} |")
+    if h.get("t2_missing_events"):
+        out += ["", "T2 missing: " + ", ".join(f"`{e}`" for e in h["t2_missing_events"])]
     if h.get("breach_list"):
         out += ["", "Fence breaches as flagged by `runlog.py` (pattern matches; each needs a human look, some are false positives):", ""]
         out += [f"- `{b['log']}`: {b['fence']} via {b['tool']}" for b in h["breach_list"]]
