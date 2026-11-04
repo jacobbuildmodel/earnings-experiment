@@ -189,3 +189,20 @@ def test_out_base_never_replaces(tmp_path, monkeypatch):
     assert b.endswith("stage1_2026-10-30")
     open(b + ".md", "w").close()
     assert stage1.out_base("2026-10-30").endswith("stage1_2026-10-30_r2")
+
+
+def test_t2_cost_is_read_from_stage_2(tmp_path, monkeypatch):
+    # D019 §7: D004 v4 decides T2 in stage 2 (t2.json); decision.json's t2 block has no cost. A pre-v4 event
+    # (no t2.json) still reads decision.json.
+    monkeypatch.setattr(stage1, "ROOT", str(tmp_path))
+    ev4, ev3 = tmp_path / "events" / "s" / "V4_1", tmp_path / "events" / "s" / "V3_1"
+    ev4.mkdir(parents=True)
+    ev3.mkdir(parents=True)
+    (ev4 / "decision.json").write_text(json.dumps({"t2": {"decision": None, "stage2": "t2.json"}}))
+    (ev4 / "t2.json").write_text(json.dumps({"t2": {"decision": "BUY", "cost_usd_equiv": 0.42}}))
+    (ev4 / "t2r.json").write_text(json.dumps({"t2": {"decision": "NO_BUY", "cost_usd_equiv": 0.01}}))
+    (ev3 / "decision.json").write_text(json.dumps({"t2": {"decision": "BUY", "cost_usd_equiv": 0.30}}))
+    d = stage1.decisions("s", ["V4_1", "V3_1", "NONE_1"])
+    assert d["V4_1"] == {"cost": {"T2": 0.42, "T2R": 0.01}, "T2R": "NO_BUY"}
+    assert d["V3_1"] == {"cost": {"T2": 0.30}}
+    assert d["NONE_1"] == {"cost": {}}

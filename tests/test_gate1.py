@@ -95,6 +95,7 @@ def test_health_counts(tmp_path, monkeypatch):
     write(os.path.join(root, "events", "s", "C_1", "manifest.json"), {"status": "PASS", "notes": ["T2 frozen as MISSING: capacity"]})
     write(os.path.join(root, "events", "s", "D_1", "manifest.json"), {"status": "INELIGIBLE"})
     write(os.path.join(root, "outcomes", "s", "B_1.json"), {"gate_status": "PASS", "graded": True, "void": None,
+                                                           "decisions": {"T0": "BUY", "T2": "NO_BUY"},
                                                            "flags": [], "exits": {"exit_A": {"flags": ["single_source"]}}})
     write(os.path.join(root, "outcomes", "s", "C_1.json"), {"gate_status": "PASS", "graded": False, "void": "split_in_window"})
     write(os.path.join(root, "outcomes", "s", "D_1.json"), {"gate_status": "INELIGIBLE"})
@@ -107,6 +108,27 @@ def test_health_counts(tmp_path, monkeypatch):
     assert h["single_source"] == 1
     assert (h["fence_breaches"], h["action_logs"]) == (1, 1)           # the September log is outside the window
     assert h["breach_list"] == [{"log": "2026-10-20T0100Z_1.json", "fence": "outcomes/", "tool": "Read"}]
+
+
+def test_t2_missing_counts_a_graded_pass_event_with_no_t2_decision(tmp_path, monkeypatch):
+    # D019 §7: ABT and SPCX had no stage-2 T2 frozen, no MISSING note, and the count read 0
+    root = str(tmp_path)
+    monkeypatch.setattr(gate1, "ROOT", root)
+    for e in ("ABT_1", "SPCX_1", "OK_1", "LATE_1"):
+        write(os.path.join(root, "events", "s", e, "manifest.json"), {"status": "PASS", "notes": []})
+    write(os.path.join(root, "events", "s", "OLD_1", "manifest.json"), {"status": "PASS", "notes": ["T2 frozen as MISSING: x"]})
+    none = {"T0": "BUY", "T2": None, "T2G": "BUY"}
+    write(os.path.join(root, "outcomes", "s", "ABT_1.json"), {"gate_status": "PASS", "graded": True, "decisions": none})
+    write(os.path.join(root, "outcomes", "s", "SPCX_1.json"), {"gate_status": "PASS", "graded": True, "decisions": {"T0": "BUY"}})
+    write(os.path.join(root, "outcomes", "s", "OK_1.json"), {"gate_status": "PASS", "graded": True, "decisions": {"T2": "BUY"}})
+    write(os.path.join(root, "outcomes", "s", "LATE_1.json"), {"gate_status": "PASS", "graded": False, "decisions": none})
+    write(os.path.join(root, "outcomes", "s", "OLD_1.json"), {"gate_status": "PASS", "graded": True, "decisions": none})
+    h = gate1.health("s")
+    assert h["t2_missing_events"] == ["ABT_1", "OLD_1", "SPCX_1"]      # OLD_1 once; LATE_1 not graded yet
+    assert (h["t2_missing"], h["frozen_pass"], h["t2_missing_rate"]) == (3, 5, 0.6)
+    md = "\n".join(gate1.health_section(h))
+    assert "| T2 missing | 60.0% (3 of 5 frozen PASS) | < 5% | **NO** |" in md
+    assert "T2 missing: `ABT_1`, `OLD_1`, `SPCX_1`" in md
 
 
 def test_newest_saved_report_wins(tmp_path, monkeypatch):
