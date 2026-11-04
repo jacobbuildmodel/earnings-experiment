@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "GRND",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:39.584030-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.grindr.com/news/news-details/2026/Grindr-Announces-Date-of-Third-Quarter-2026-Financial-Results-Earnings-Call/default.aspx",
+  "published_et": "2026-10-22T16:05-04:00",
+  "quote": "o main content View All News Grindr Announces Date of Third Quarter 2026 Financial Results Earnings Call 10/22/2026 LOS ANGELES--(BUSINESS WIRE)-- Grindr Inc. (NYSE: GRND), the Global Gayborhood in Your Pocket™, announced that it will release its financial results for the third quarter ended September 30, 2026, after the market closes on Thursday, November 5, 2026.",
+  "title": "Grindr Announces Date of Third Quarter 2026 Financial Results Earnings Call",
+  "retrieved_et": "2026-10-26T09:35:03.145138-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://investors.grindr.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 13.739999771118164,
+  "expiry": "2026-11-20",
+  "strike": 14.0,
+  "call": {
+   "bid": 0.9,
+   "ask": 0.95,
+   "openInterest": 440.0,
+   "lastPrice": 0.95,
+   "impliedVolatility": 0.8808605664062499,
+   "lastTradeDate": "2026-11-04T18:28:35+00:00"
+  },
+  "put": {
+   "bid": 0.9,
+   "ask": 1.15,
+   "openInterest": 27.0,
+   "lastPrice": 1.1,
+   "impliedVolatility": 0.7460962890625,
+   "lastTradeDate": "2026-11-04T18:55:40+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.1419213997440488,
+  "rel_spread": {
+   "call": 0.05405405405405398,
+   "put": 0.24390243902439016
+  },
+  "oi_atm": 467.0,
+  "oi_sum": 467.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
