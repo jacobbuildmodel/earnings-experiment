@@ -1,4 +1,4 @@
-# Health 2026-11-04 09:46 ET - **RED**
+# Health 2026-11-04 10:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -7,6 +7,8 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: HALT - D019 §1 (registry/D019_reframe_v1.md): the committee's §12 REFRAME, approved by Jacob 2026-11-03 - paper options stopped. No new opens; open positions close under D011's own exit rules. Not a fill anomaly: do not clear.
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-11-04T14:47:04Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41851017921
+- Actions failure: Earnings experiment - paper long straddle at 2026-11-04T14:47:04Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41851017816
 - Actions failure: Earnings experiment - paper options at 2026-11-04T03:04:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41764827525
 - Actions failure: Earnings experiment - paper options at 2026-11-04T00:26:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41746811706
 - Actions failure: Earnings experiment - paper options at 2026-11-03T23:49:43Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41742180661
@@ -16,8 +18,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-11-03T22:15:49Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41729242094
 - Actions failure: Earnings experiment - paper options at 2026-11-03T21:40:54Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41723986280
 - Actions failure: Earnings experiment - paper options at 2026-11-03T20:52:36Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41716577417
-- Actions failure: Earnings experiment - paper window runner (routine push) at 2026-11-03T15:46:23Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41667336028
-- Actions failure: Earnings experiment - paper options at 2026-11-03T14:47:07Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41657109564
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
