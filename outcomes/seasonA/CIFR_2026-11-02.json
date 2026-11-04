@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-02T22:00:19-05:00",
+ "graded_et": "2026-11-03T20:34:35-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "CIFR",
  "report_date": "2026-11-02",
@@ -13,14 +13,63 @@
  "entry_session": "2026-10-30",
  "cluster": "ai_infra",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-02T07:17:40-05:00",
+   "window": "BMO"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 7.51,
+   "entry_session": "2026-10-30",
+   "exit": 7.36,
+   "exit_session": "2026-11-02",
+   "dividends": 0,
+   "raw_return": -0.019973368841544548,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.268345,
+    "bench_return": -0.009389929163692301,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.001326230027271065,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.02929427430093201,
+    "print_gap": 0.009602194787380114,
+    "entry_close": 7.29,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 7.51,
+   "entry_session": "2026-10-30",
+   "exit": 6.86,
+   "exit_session": "2026-11-02",
+   "dividends": 0,
+   "raw_return": -0.08655126498002652,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.268345,
+    "bench_return": -0.04332546263247494,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.011725831555034857,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": true,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }
