@@ -1,4 +1,4 @@
-# Health 2026-11-03 20:19 ET - **AMBER**
+# Health 2026-11-03 22:04 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -17,8 +17,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-11-03T15:46:23Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41667336028
 - Actions failure: Earnings experiment - paper options at 2026-11-03T14:47:07Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41657109564
 - Actions failure: Earnings experiment - paper options at 2026-11-03T04:03:59Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41575882842
-- Actions failure: Earnings experiment - paper options at 2026-11-03T02:02:31Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41563598606
-- Actions failure: Earnings experiment - paper options at 2026-11-03T01:25:03Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41559603872
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
@@ -41,7 +39,7 @@ check.py: PASS - 1 warning(s)
 - Tue 03 Nov: 48 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KTB, KVYO, LOAR, MELI, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RDW, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
 - Wed 04 Nov: 35 snapshot(s) - AKAM, ALRM, ATEN, AVPT, AXON, BILL, CARG, CART, DBX, DIOD, FIGS, FIVN, FROG, GRND, HALO, IONQ, IREN, KRMN, LASR, LITE, LYFT, MRNA, NET, PCTY, PDFS, QNT, SARO, SOUN, TDC, TEAM, TXG, TXRH, UA, VSAT, WULF
 - Thu 05 Nov: 2 snapshot(s) - ROIV, VIA
-- Fri 06 Nov: 9 snapshot(s) - ACHR, ASTS, CSQR, MARA, ONTO, QBTS, QLYS, SANM, ZETA
+- Fri 06 Nov: 10 snapshot(s) - ACHR, ASTS, CSQR, MARA, ONTO, QBTS, QLYS, SANM, TDG, ZETA
 - Mon 09 Nov: 7 snapshot(s) - ATRO, CRWV, FLY, MRCY, RGTI, RUM, STUB
-- seasonA: 42 name(s) still PENDING a confirmed date
+- seasonA: 41 name(s) still PENDING a confirmed date
 
