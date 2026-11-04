@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "ATEN",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:00.271922-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.a10networks.com/news-events/news/news-details/2026/A10-Networks-to-Announce-Third-Quarter-2026-Financial-Results-on-November-5-2026/default.aspx",
+  "published_et": "2026-10-08T08:00-04:00",
+  "quote": "ovember 5, 2026 Skip to main content News Details View All News A10 Networks to Announce Third Quarter 2026 Financial Results on November 5, 2026 October 8, 2026 SAN JOSE, Calif.--(BUSINESS WIRE)-- A10 Networks (NYSE: ATEN) today announced that the company’s third quarter 2026 financial results will be released after the markets close on Thursday, November 5, 2026.",
+  "title": "A10 Networks to Announce Third Quarter 2026 Financial Results on November 5, 2026",
+  "retrieved_et": "2026-10-19T21:32:15.154476-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.a10networks.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 23.969999313354492,
+  "expiry": "2026-11-20",
+  "strike": 25.0,
+  "call": {
+   "bid": 0.35,
+   "ask": 1.25,
+   "openInterest": 471.0,
+   "lastPrice": 1.0,
+   "impliedVolatility": 0.5927775097656252,
+   "lastTradeDate": "2026-11-03T19:08:31+00:00"
+  },
+  "put": {
+   "bid": 1.2,
+   "ask": 3.5,
+   "openInterest": 285.0,
+   "lastPrice": 1.8,
+   "impliedVolatility": 0.84961087890625,
+   "lastTradeDate": "2026-11-03T18:20:05+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.1314142715992916,
+  "rel_spread": {
+   "call": 1.125,
+   "put": 0.978723404255319
+  },
+  "oi_atm": 756.0,
+  "oi_sum": 756.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

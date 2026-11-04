@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "AVPT",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:00.242887-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/avepoint-announce-third-quarter-2026-financial-results-november-5-2026-10-13",
+  "published_et": "2026-10-13T16:05-04:00",
+  "quote": "The Company will host a conference call at 4:30pm ET on Thursday, November 5 .",
+  "title": "AvePoint to Announce Third Quarter 2026 Financial Results on November 5",
+  "retrieved_et": "2026-10-19T21:53:02.204665-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 17.020000457763672,
+  "expiry": "2026-11-20",
+  "strike": 17.0,
+  "call": {
+   "bid": 0.85,
+   "ask": 1.1,
+   "openInterest": 662.0,
+   "lastPrice": 1.04,
+   "impliedVolatility": 0.659183095703125,
+   "lastTradeDate": "2026-11-02T17:53:02+00:00"
+  },
+  "put": {
+   "bid": 0.8,
+   "ask": 1.35,
+   "openInterest": 4.0,
+   "lastPrice": 0.88,
+   "impliedVolatility": 0.7421900781249999,
+   "lastTradeDate": "2026-10-30T18:37:44+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 10,
+  "implied_move": 0.12044653025052611,
+  "rel_spread": {
+   "call": 0.2564102564102565,
+   "put": 0.5116279069767441
+  },
+  "oi_atm": 666.0,
+  "oi_sum": 666.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
