@@ -1,30 +1,30 @@
 # STATE — Earnings Experiment
 
-**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-04 08:55 ET · **D019 REFRAME live** · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
+**Season A live (week 4 of 6) · D015 C1 live (blind) · Pro plan (usage card, 2026-10-26; STATE said Max)** · updated 2026-11-04 11:40 ET · **D019 REFRAME live** · roadmap `RESEARCH_PLAN.md` · lab notebook `JOURNAL.md` (newest first) · **history before 2026-10-14:** `ops/state_history/STATE_2026-09-14_to_2026-10-13.md` (moved verbatim 2026-10-19).
 
 ## NOW — the start-up read (`python ops/startup.py`); every hand-off and session end rewrites it, ≤ 25 lines
-*Rewritten Wed 2026-11-04 08:55 ET by the D019 implementation chat (handed off at the context guard, 253k).*
-- 🔴 **REFRAME is live: `registry/D019_reframe_v1.md`** (`149a1738`, sha256 `58b32147…724a`). PRE is now a code-only
-  premium monitor. **Primary read: SH-M**, on REPORT §12's kill bars (copied verbatim, D019 §5). Gate 1 (early Dec):
-  continue only if SH-M raw mean's upper 95% bound (cluster t, G − 1 df) ≥ +0.50% and P1 PASS; else TERMINATE.
-- ✅ **Paper options F and L halted** (`e4511bed`, 08:39 ET, before today's gates): `halt` with `"stop": "D019"` in both
-  ledgers. **Do not clear it.** 32 F and 44 L positions still open; they close under D011's own exits (reaction sessions
-  Wed 11-04 and Thu 11-05, from 14:30 ET). Each paper run now exits 1 and health shows RED for the halt (by design).
-- ✅ **Shadow T2R/T2O/T2M stopped:** the routine `earnings-t2-models` is disabled (RemoteTrigger, 08:40 ET).
-- **T2G/T2E:** still run until Jacob removes the `GEMINI_API_KEY` repository secret. Decisions after `149a1738` count
-  for nothing (D019 §1).
+*Rewritten Wed 2026-11-04 ~11:40 ET by the D019 owed-items chat (the last non-repair chat before Gate 1, D019 §6).*
+- 🔴 **REFRAME is live: `registry/D019_reframe_v1.md`** (`149a1738`). PRE is a code-only premium monitor. **Primary
+  read: SH-M**, on REPORT §12's kill bars (D019 §5). Gate 1 (early Dec): continue only if SH-M raw mean's upper 95%
+  bound (cluster t, G − 1 df) ≥ +0.50% and P1 PASS; else TERMINATE.
+- ✅ **Paper options F and L halted** (`e4511bed`): `halt` with `"stop": "D019"` in both ledgers. **Do not clear it.**
+  Open positions close under D011's own exits. Health now reads the stop, and the gates it blocks, as information
+  (`edec9fd2`), not RED. Shadow T2R/T2O/T2M stopped (`earnings-t2-models` disabled).
+- **T2G/T2E** run until Jacob removes `GEMINI_API_KEY`; their decisions after `149a1738` count for nothing (D019 §1).
 - **Main T2** runs to Season A's close (report dates to Fri 11-20), then `earnings-t2-cloud` gets disabled. H-T2C is
   "stopped for resources, no verdict". No D018, no new batches, no D003 v5 build (Season B keeps D003 v4).
-- ✅ **MOC secondary registered** (`registry/D019_moc_secondary_v1.md`, `acc61fb6`); code `pipeline/moc_secondary.py` +
-  10 tests (`c0700fbd`, hashed in `D019_implementation_v1.sha256`). Not run on any season. Only Season B counts.
-- **Owed (the hand-off brief, STATE Log 11-04 08:55 ET):** (1) the Layer-1 capture script (D019 §3b); (2) the gate1
-  health T2-missing counter; (3) stage1 P6's cost from `t2.json`; (4) health.py: a D019 halt should not read RED;
-  (5) check.py: verify `D019_implementation_v1.sha256`.
+- ✅ **D019's owed items: all done 11-04** (STATE Log 11-04 11:40 ET). Layer-1 capture `ba8afe6d` (weekly, Sat 09:00 ET,
+  `layer1.yml`; first run `0df43813`: EPS 871 / 913, revenue + year-ago 654 / 913). gate1 T2 missing `f0ce1a4e`. stage1 P6 cost `826ecaf6`.
+  check.py verifies the MOC list `7f484c3d`.
+- 🔴 **T2 missing is 5.1% (2 of 39 frozen PASS: ABT, SPCX), over CHARTER §6's < 5%.** It read 0% until today: the
+  counter only saw v3's MISSING note, never a v4 stage 2 that froze nothing. It goes into the Gate 1 health table.
+- **AMBER that stays:** 16 pre-D019 alerts on the options ledger: DPZ (acknowledged to Fri 11-06) and 15 gates blocked
+  by the 10-28 fill halt, never opened and not acknowledged. They keep every paper run's failure AMBER. To quiet
+  them, a person acknowledges them in `ops/health_known.json`. Otherwise they stay.
 - **Budget (D019 §6):** one laptop chat per gate, ≤ 300k tokens, ≤ 10% of the weekly allowance, read each Monday.
-  The hand-off chat finishing the owed items is the last non-repair chat before Gate 1.
-- **Waiting on Jacob:** remove `GEMINI_API_KEY` (GitHub repo settings → Secrets) · after Fri 11-20, disable
-  `earnings-t2-cloud` (or say so and a chat does it) · the one-off `earnings-d010-backtest` routine (Jan 1, 2027, options
-  research) is out of D019's scope; recommend disabling it.
+  The next laptop chat is Gate 1 (early Dec; C1 look 1 from 12-07). Before then, only repairs.
+- **Waiting on Jacob:** remove `GEMINI_API_KEY` · after Fri 11-20, disable `earnings-t2-cloud` · disable the one-off
+  `earnings-d010-backtest` routine (out of D019's scope) · DPZ's 100 assigned shares · acknowledge the 15 alerts or not.
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -191,6 +191,23 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
 | DRIVE | PRE was removed there in commit `ea4d32d`; a DRIVE chat that hears `pre earnings model` sends Jacob here |
 
 ## Log — newest first (2026-10-14 onward)
+
+**2026-11-04 (Wed) 11:40 ET — D019's five owed items done; the Layer-1 capture's first run on Season A.**
+- Started 10:39 ET from the 08:55 hand-off. Startup: check.py PASS, 0 warnings.
+- `f0ce1a4e` gate1 health: T2 missing = v3's MISSING note ∪ a graded PASS event whose grade has no T2 decision.
+  Season A: 2 of 39 (ABT, SPCX) = 5.1%, target < 5%. `826ecaf6` stage1 P6: T2's cost from `t2.json` (37 decisions,
+  mean US$0.0998); pre-v4 events still read `decision.json`. `edec9fd2` health: the D019 stop → information (13 tests).
+  `7f484c3d` check.py verifies `D019_implementation_v1.sha256`. `ba8afe6d` `pipeline/layer1.py` + 14 tests + `layer1.yml`.
+- Layer 1 design: one row per printed, non-void SH-M/SH-W (ticker, date). EPS from the yfinance row on the print's ET
+  date only. Revenue from EDGAR frames (5 concepts in order; `Revenues` first), the CIK's quarter ending ≤ 90 days
+  before the print. The brief said 120, which takes the previous quarter whenever the new 10-Q is unfiled. The shortest
+  quarter is 12 weeks (ACI) and no print comes within 7 days of its quarter's end, so 90 never does. Year-ago quarter: the same concept, end 365 ± 14 days earlier. Write-once
+  jsonl; missing fields are retried inside their windows (EPS 30 d, revenue 100 d). Not hash-listed: it tests nothing.
+- First run (laptop, 10:55 ET, outside every window), `0df43813`: 913 printed events; EPS reported 871, estimate 868,
+  surprise 865; revenue + year-ago 654. The 259 without revenue: mostly 10-Qs not yet filed (retried to day 100),
+  fiscal Q4s and IFRS filers. Spot check: AMD Q3 $13.377B (matches the frames probe), NFLX, TSLA, ACI plausible.
+  ACI's 12-week quarter disproved the "quarter ≥ 90 days" reason; the bound holds anyway (fixed, `13f06c23`).
+- Not done: the 15 alerts from the 10-28 fill halt stay unacknowledged (a person's call; NOW).
 
 **2026-11-04 (Wed) 08:55 ET — D019 REFRAME frozen and implemented in part; handed off at the context guard.**
 - Started 08:27 ET (the hand-off came Tue 11:50 ET, so Tuesday's 14:30 gates ran unhalted; today's are the first
