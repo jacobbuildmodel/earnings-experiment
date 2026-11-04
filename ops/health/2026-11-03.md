@@ -1,4 +1,4 @@
-# Health 2026-11-03 19:00 ET - **AMBER**
+# Health 2026-11-03 19:41 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-11-04T00:26:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41746811706
 - Actions failure: Earnings experiment - paper options at 2026-11-03T23:49:43Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41742180661
 - Actions failure: Earnings experiment - paper options at 2026-11-03T23:33:21Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41740072629
 - Actions failure: Earnings experiment - paper options at 2026-11-03T23:10:48Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41737054993
@@ -38,7 +39,7 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: open ['seasonA-AMD-2026-11-03-L', 'seasonA-ANET-2026-11-03-L', 'seasonA-DDOG-2026-11-04-L', 'seasonA-DUOL-2026-11-03-L', 'seasonA-FLYW-2026-11-03-L', 'seasonA-FRSH-2026-11-03-L', 'seasonA-NVTS-2026-11-03-L', 'seasonA-OUST-2026-11-03-L', 'seasonA-Q-2026-11-04-L', 'seasonA-RAL-2026-11-04-L', 'seasonA-RIOT-2026-11-04-L', 'seasonA-SWKS-2026-11-03-L', 'seasonA-TOST-2026-11-03-L', 'seasonA-UBER-2026-11-04-L', 'seasonA-VSH-2026-11-04-L', 'seasonA-W-2026-11-04-L', 'seasonA-XYZ-2026-11-03-L', 'seasonA-YOU-2026-11-04-L', 'seasonA-ZBH-2026-11-04-L', 'seasonA-ACIW-2026-11-05-L', 'seasonA-ACLS-2026-11-05-L', 'seasonA-BROS-2026-11-04-L', 'seasonA-BSY-2026-11-05-L', 'seasonA-CAVA-2026-11-04-L', 'seasonA-CHYM-2026-11-04-L', 'seasonA-CORZ-2026-11-05-L', 'seasonA-CPAY-2026-11-04-L', 'seasonA-CRUS-2026-11-04-L', 'seasonA-CW-2026-11-04-L', 'seasonA-DCO-2026-11-05-L', 'seasonA-EW-2026-11-04-L', 'seasonA-FICO-2026-11-04-L', 'seasonA-FIG-2026-11-04-L', 'seasonA-FOUR-2026-11-05-L', 'seasonA-KVYO-2026-11-04-L', 'seasonA-LOAR-2026-11-05-L', 'seasonA-MELI-2026-11-04-L', 'seasonA-MTSI-2026-11-05-L', 'seasonA-NTCT-2026-11-05-L', 'seasonA-ONC-2026-11-05-L', 'seasonA-OTEX-2026-11-05-L', 'seasonA-PAYC-2026-11-04-L', 'seasonA-POWI-2026-11-04-L', 'seasonA-PTRN-2026-11-04-L']
 - paper window (options): paper-window-push.yml afternoon step since 12:00 ET (done)
 - paper window (long): paper-window-push.yml afternoon step since 12:00 ET (done)
-- paper/options: 177 position(s), 0 open order(s) - they match the ledgers
+- paper/options: 177 position(s), 13 open order(s) - they match the ledgers
 - paper/long: 91 position(s), 0 open order(s) - they match the ledgers
 - Tue 03 Nov: 48 snapshot(s) - ACIW, ACLS, ACMR, APPN, BROS, BSY, CAVA, CHYM, CORZ, CPAY, CRUS, CW, DASH, DAVE, DCO, EW, FICO, FIG, FOUR, FSLY, HUBS, KTB, KVYO, LOAR, MELI, MTSI, NTCT, ONC, OTEX, PAYC, PAYO, POWI, PTC, PTRN, QCOM, RDW, RELY, RVMD, SHAK, SITM, SNAP, STE, U, VECO, VERX, VIAV, VSEC, Z
 - Wed 04 Nov: 35 snapshot(s) - AKAM, ALRM, ATEN, AVPT, AXON, BILL, CARG, CART, DBX, DIOD, FIGS, FIVN, FROG, GRND, HALO, IONQ, IREN, KRMN, LASR, LITE, LYFT, MRNA, NET, PCTY, PDFS, QNT, SARO, SOUN, TDC, TEAM, TXG, TXRH, UA, VSAT, WULF
