@@ -260,6 +260,26 @@ if os.path.exists(_impl):
     else:
         ok(f"D016 v1 implementation: {len(_want)} file(s) match their registered hashes")
 
+# D019 v1 (registry/D019_moc_secondary_v1.md): the MOC secondary's code and tests match the frozen list, so the
+# Season B statistic is computed by the code registered before any of its numbers; a fix is a dated addendum.
+_impl = os.path.join(ROOT, "registry", "D019_implementation_v1.sha256")
+if os.path.exists(_impl):
+    _want = {}
+    for _ln in open(_impl, encoding="utf-8"):
+        if _ln.strip() and not _ln.startswith("#"):
+            _h, _n = _ln.split(maxsplit=1)
+            _want[_n.strip()] = _h
+    _drift = []
+    for _n, _h in _want.items():
+        _p = os.path.join(ROOT, _n)
+        _d = hashlib.sha256(open(_p, "rb").read().replace(b"\r\n", b"\n")).hexdigest() if os.path.exists(_p) else "missing"
+        if _d != _h:
+            _drift.append(_n)
+    if _drift:
+        bad(f"D019 v1 implementation changed: {_drift} - the MOC secondary is frozen; a fix is a dated D019 addendum")
+    else:
+        ok(f"D019 v1 implementation: {len(_want)} file(s) match their registered hashes")
+
 # Frozen events: every file listed in an event's manifest must still match its hash.
 import json
 import glob

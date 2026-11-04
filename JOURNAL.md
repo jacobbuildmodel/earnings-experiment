@@ -9,6 +9,27 @@
 
 ---
 
+## 2026-11-04 (Wed) 11:40 ET — a health number read 0% for a month because it counted the old code's note (D019, Gate 1)
+
+- **What happened.** I finished D019's five owed items: the Layer-1 capture, gate1's T2-missing count, stage1's P6 cost,
+  health's reading of the D019 stop, and check.py on the MOC list. The capture ran once on Season A: 913 printed events,
+  EPS for 871 and revenue for 654.
+- **T2 missing was never 0%.** The counter looked for v3's "T2 frozen as MISSING" note. Under D004 v4 a missing T2
+  leaves no note: stage 2 simply never freezes a file. So ABT and SPCX were invisible. The real figure is 2 of 39 =
+  5.1%, over CHARTER §6's < 5%. P6's cost had the same flaw: it read the stage-1 file, which under v4 has no cost.
+  **Lesson:** a health number must be defined on the record the grader writes (the outcome's `decisions`), not on a
+  side-effect of one code version. When a protocol version changes, every counter that reads its files needs a re-check.
+- **A designed RED hides a real one.** Since 08:39 ET, health read RED by design for the halt, and every paper run
+  showed an AMBER failure. A true RED today (an unfilled exit) would have sat in an already-red report. The stop is now
+  information. Still AMBER: 15 gates that the 10-28 fill halt blocked, which never opened and will alert forever
+  (`paper_options.py` is hash-locked). That is noise, but acknowledging it is a person's call.
+- **A spec number was wrong, and so was my first reason for the fix.** The brief's "end within 120 days" picks the
+  previous quarter whenever the new 10-Q is late. I wrote 90 days, "because a quarter is ≥ 90 days". The first real row
+  I checked (ACI, a 12-week quarter) disproved that reason. The bound survives because prints lag their quarter's end by
+  2+ weeks. **Lesson:** check a bound's reason against real rows before writing it down, not only the bound.
+- **What changed.** `f0ce1a4e`, `826ecaf6`, `edec9fd2`, `7f484c3d`, `ba8afe6d`, `13f06c23`, capture `0df43813`; weekly
+  `layer1.yml`. Gate 1 now gets an honest T2-missing row and a Layer-1 table to read the reaction layer against.
+
 ## 2026-11-04 (Wed) 08:55 ET — the stop arrived a day late, and the halt was the cheapest lever (D019, Gate 1)
 
 - **What happened.** Jacob approved the committee's §12 stops Tue ~11:40 ET. The chat that took the approval hit its

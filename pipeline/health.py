@@ -14,8 +14,13 @@ Checks, each mechanical (reviewed by Opus 5.5, 2026-10-13, fixes applied):
   T2 (D004 v4)       PASS event, no manifest_t2.json: past the deadline -> RED "T2 MISSING";
                      less than 14 h to the deadline -> RED "T2 AT RISK"          (deadline from the frozen rule)
   D013 shadows       T2R / T2O missing after the deadline, events entering after 2026-10-13 with a dossier -> AMBER
-  Actions            failed / timed-out / startup-failure runs in the last 24 h; S2 window or T2 queue -> RED, else AMBER
-  paper ledgers      a halt -> RED; alerts or errors on the last run -> AMBER
+  Actions            failed / timed-out / startup-failure runs in the last 24 h; S2 window or T2 queue -> RED, else AMBER;
+                     a paper run whose job logs show it failed only on the D019 stop -> information (below)
+  paper ledgers      a halt -> RED; alerts or errors on the last run -> AMBER. A halt with "stop": "D019" in every
+                     ledger is D019 §1's registered stop of paper options F and L (registry/D019_reframe_v1.md), not
+                     a fill anomaly -> information, and so are the gates it blocked (open_failed "halt", created after
+                     the stop). A paper run that failed after the stop, whose every job log shows errors 0, halt True,
+                     each alert acknowledged or blocked by the stop, and one error line (the exit code) -> information
   paper exits        a filled position still open on its reaction session 15:15-15:55 ET -> RED (still savable);
                      still open after that -> AMBER (added after the DPZ incident)
   SH-M capture       no shadow/calendar/<today>.json after 12:00 ET on a session -> AMBER
@@ -106,6 +111,8 @@ WINDOW_LEDGER = {"options": "options_ledger.json", "long": "long_ledger.json"}  
 KNOWN_FILE = os.path.join("ops", "health_known.json")
 KNOWN_FIELDS = ("why", "source", "acknowledged", "until")
 PAPER_OPTIONS = "Earnings experiment - paper options"
+PAPER_RUNS = (PAPER_OPTIONS, "Earnings experiment - paper long straddle", "Earnings experiment - paper window runner",
+              "Earnings experiment - paper window runner (routine push)")   # every workflow that runs a paper sync
 # paper_options.py's summary line, printed once per sync run (pipeline/paper_options.py, hash-locked)
 LEDGER_LINE = re.compile(r"options ledger: \d+ record\(s\), \d+ with a result; errors (\d+); alerts (\[[^\]]*\]); "
                          r"halt (True|False)")
@@ -304,6 +311,67 @@ def known_failure(url, keys, logs=None):
     return sorted(alerts)
 
 
+def iso(s):
+    return datetime.datetime.fromisoformat(str(s).replace("Z", "+00:00"))
+
+
+def d019_blocked(led):
+    """The gates a D019 stop blocked in one ledger: open_failed "halt" on a trade created after the stop began."""
+    h = led.get("halt") or {}
+    if h.get("stop") != "D019" or not h.get("since"):
+        return set()
+    return {k for k, t in led.get("trades", {}).items()
+            if t.get("open_failed") == "halt" and t.get("created_et") and iso(t["created_et"]) >= iso(h["since"])}
+
+
+def d019_stop():
+    """{"since": the latest start, "blocked": gate keys} when every paper ledger carries the D019 stop, else None."""
+    since, blocked, seen = None, set(), 0
+    for name in WINDOW_LEDGER.values():
+        p = os.path.join(ROOT, "paper", name)
+        if not os.path.exists(p):
+            continue
+        led = load(p)
+        h = led.get("halt") or {}
+        if h.get("stop") != "D019" or not h.get("since"):
+            return None
+        seen += 1
+        since = max(since or iso(h["since"]), iso(h["since"]))
+        blocked |= d019_blocked(led)
+    return {"since": since, "blocked": blocked} if seen else None
+
+
+def d019_failure(url, when, stop, keys, logs=None):
+    """True when a failed paper run began after the D019 stop and every job that failed stopped only on it: one error
+    line (the exit code), each paper_options.py summary line with errors 0 and halt True, every alert acknowledged
+    or a gate the stop blocked, and no push failure, broker outage or traceback. A job that passed is fine."""
+    m = RUN_ID.search(url or "")
+    if not m or not stop or iso(when) < stop["since"]:
+        return False
+    try:
+        texts = (logs or job_logs)(m.group(1))
+    except Exception:
+        return False
+    ok, failed = set(keys) | stop["blocked"], 0
+    for text in texts:
+        errs = [x for x in text.splitlines() if "##[error]" in x]
+        if not errs:
+            continue
+        failed += 1
+        found = LEDGER_LINE.findall(text)
+        if (len(errs) != 1 or "Process completed with exit code 1." not in errs[0] or not found
+                or any(s in text for s in NOT_ONLY_ALERTS)):
+            return False
+        for n_err, alerts, halt in found:
+            try:
+                alerts = ast.literal_eval(alerts)
+            except (ValueError, SyntaxError):
+                return False
+            if n_err != "0" or halt != "True" or not set(alerts) <= ok:
+                return False
+    return failed > 0
+
+
 def split_known(red, amber, lines):
     """RED and AMBER without the lines that read exactly as acknowledged ones, and those lines for KNOWN."""
     known = [f"{x} - {lines[x]['why']} ({lines[x]['source']}; acknowledged {lines[x]['acknowledged']}, until "
@@ -348,10 +416,18 @@ def ledgers(now):
         led = load(p)
         r, a = exits(name, led, now)
         red, amber = red + r, amber + a
-        if led.get("halt"):
-            red.append(f"paper/{name}: HALT - {led['halt'].get('why')}")
-        if led.get("alerts"):
-            amber.append(f"paper/{name}: alerts {led['alerts']}")
+        h = led.get("halt")
+        if h and h.get("stop") == "D019":
+            info.append(f"paper/{name}: stopped by D019 since {str(h.get('since'))[:16]} (registry/D019_reframe_v1.md "
+                        "§1) - no new opens; open positions close under D011's own exits")
+        elif h:
+            red.append(f"paper/{name}: HALT - {h.get('why')}")
+        blocked = d019_blocked(led)
+        alerts = [k for k in led.get("alerts") or [] if k not in blocked]
+        if blocked:
+            info.append(f"paper/{name}: {len(blocked)} gate(s) not opened under the D019 stop {sorted(blocked)}")
+        if alerts:
+            amber.append(f"paper/{name}: alerts {alerts}")
         if led.get("errors_last_run"):
             amber.append(f"paper/{name}: errors on its last run {led['errors_last_run']}")
         open_ = [k for k, t in led.get("trades", {}).items() if (t.get("orders") or {}).get("open") and "result" not in t
@@ -877,11 +953,15 @@ def run(write=False, commit=False, now=None):
     if fl is None:
         amber.append("GitHub Actions status unreadable (API)")
     else:
-        only = collections.defaultdict(list)
+        only, stopped = collections.defaultdict(list), []
+        stop = d019_stop()
         for name, when, url, st in fl:
             k = known_failure(url, k_keys) if name == PAPER_OPTIONS and st == "failure" else None
             if k:
                 only[tuple(k)].append((when, url))
+                continue
+            if stop and name in PAPER_RUNS and st == "failure" and d019_failure(url, when, stop, k_keys):
+                stopped.append((when, url))
                 continue
             (red if name in CRITICAL_WORKFLOWS else amber).append(f"Actions {st}: {name} at {when} {url}")
         for k, runs in only.items():
@@ -889,6 +969,10 @@ def run(write=False, commit=False, now=None):
             known.append(f"{len(runs)} paper-options run(s) in 24 h failed only on the acknowledged alert(s) "
                          f"{list(k)}, each read from its job log; newest {when} {url} "
                          f"({'; '.join(sorted({k_keys[x]['source'] for x in k}))})")
+        if stopped:
+            when, url = max(stopped)
+            info.append(f"{len(stopped)} paper run(s) in 24 h failed only on the D019 stop (halt True, errors 0, every "
+                        f"alert acknowledged or a gate the stop blocked), each read from its job logs; newest {when} {url}")
     r, a, i = ledgers(now)
     red, amber, info = red + r, amber + a, info + i
     for check in (ai_refusals, dates_stale):
