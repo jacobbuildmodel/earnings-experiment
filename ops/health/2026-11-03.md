@@ -1,4 +1,4 @@
-# Health 2026-11-03 19:41 ET - **AMBER**
+# Health 2026-11-03 20:19 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -19,9 +19,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-11-03T04:03:59Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41575882842
 - Actions failure: Earnings experiment - paper options at 2026-11-03T02:02:31Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41563598606
 - Actions failure: Earnings experiment - paper options at 2026-11-03T01:25:03Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41559603872
-- Actions failure: Earnings experiment - paper options at 2026-11-03T01:08:15Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41557714310
-- Actions failure: Earnings experiment - paper options at 2026-11-03T00:52:24Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41555922689
-- Actions failure: Earnings experiment - paper options at 2026-11-03T00:51:29Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41555817177
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
