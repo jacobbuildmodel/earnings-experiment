@@ -1,4 +1,4 @@
-# Health 2026-11-04 19:24 ET - **AMBER**
+# Health 2026-11-04 19:56 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,6 +6,7 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
+- Actions failure: Earnings experiment - paper options at 2026-11-05T00:45:51Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41943735920
 - Actions failure: Earnings experiment - paper options at 2026-11-05T00:04:02Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41938520468
 - Actions failure: Earnings experiment - paper options at 2026-11-04T23:51:09Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41936927688
 - Actions failure: Earnings experiment - paper options at 2026-11-04T23:32:17Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41934495038
@@ -18,7 +19,6 @@ check.py: PASS - 1 warning(s)
 - Actions failure: Earnings experiment - paper options at 2026-11-04T14:47:04Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41851017921
 - Actions failure: Earnings experiment - paper window runner (routine push) at 2026-11-04T14:46:33Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41850934058
 - Actions failure: Earnings experiment - paper options at 2026-11-04T03:04:52Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41764827525
-- Actions failure: Earnings experiment - paper options at 2026-11-04T00:26:18Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41746811706
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
 
 ## KNOWN - acknowledged in ops/health_known.json, reads exactly as acknowledged; not in the status
@@ -28,7 +28,7 @@ check.py: PASS - 1 warning(s)
 - LYFT_2026-11-05: T2 deadline Thu 05 Nov 09:15 ET - frozen so far: T2, T2G
 - WULF_2026-11-06: T2 deadline Thu 05 Nov 09:15 ET - frozen so far: T2, T2G
 - IREN_2026-11-05: T2 deadline Thu 05 Nov 09:15 ET - frozen so far: T2, T2G
-- 9 paper run(s) in 24 h failed only on the D019 stop (halt True, errors 0, every alert acknowledged or a gate the stop blocked), each read from its job logs; newest 2026-11-05T00:04:02Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41938520426
+- 10 paper run(s) in 24 h failed only on the D019 stop (halt True, errors 0, every alert acknowledged or a gate the stop blocked), each read from its job logs; newest 2026-11-05T00:45:51Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/41943736147
 - paper/options_ledger.json: stopped by D019 since 2026-11-04T08:39 (registry/D019_reframe_v1.md §1) - no new opens; open positions close under D011's own exits
 - paper/options_ledger.json: 27 gate(s) not opened under the D019 stop ['seasonA-ALRM-2026-11-05-F', 'seasonA-ATEN-2026-11-05-F', 'seasonA-AVPT-2026-11-05-F', 'seasonA-AXON-2026-11-05-F', 'seasonA-BILL-2026-11-05-F', 'seasonA-CARG-2026-11-05-F', 'seasonA-DIOD-2026-11-05-F', 'seasonA-FIVN-2026-11-05-F', 'seasonA-FROG-2026-11-05-F', 'seasonA-GRND-2026-11-05-F', 'seasonA-HALO-2026-11-05-F', 'seasonA-IONQ-2026-11-05-F', 'seasonA-KRMN-2026-11-05-F', 'seasonA-LYFT-2026-11-05-F', 'seasonA-MRNA-2026-11-06-F', 'seasonA-NET-2026-11-05-F', 'seasonA-PCTY-2026-11-05-F', 'seasonA-PDFS-2026-11-05-F', 'seasonA-SARO-2026-11-05-F', 'seasonA-SOUN-2026-11-05-F', 'seasonA-TDC-2026-11-05-F', 'seasonA-TEAM-2026-11-05-F', 'seasonA-TXG-2026-11-05-F', 'seasonA-TXRH-2026-11-05-F', 'seasonA-UA-2026-11-06-F', 'seasonA-VSAT-2026-11-05-F', 'seasonA-WULF-2026-11-06-F']
 - paper/options_ledger.json: open ['seasonA-ACIW-2026-11-05-F', 'seasonA-ACLS-2026-11-05-F', 'seasonA-BROS-2026-11-04-F', 'seasonA-BSY-2026-11-05-F', 'seasonA-CAVA-2026-11-04-F', 'seasonA-CHYM-2026-11-04-F', 'seasonA-CORZ-2026-11-05-F', 'seasonA-CPAY-2026-11-04-F', 'seasonA-SNAP-2026-11-04-F', 'seasonA-U-2026-11-05-F', 'seasonA-VERX-2026-11-04-F', 'seasonA-VIAV-2026-11-04-F']
