@@ -18,13 +18,13 @@
   check.py verifies the MOC list `7f484c3d`.
 - 🔴 **T2 missing is 5.1% (2 of 39 frozen PASS: ABT, SPCX), over CHARTER §6's < 5%.** It read 0% until today: the
   counter only saw v3's MISSING note, never a v4 stage 2 that froze nothing. It goes into the Gate 1 health table.
-- **AMBER that stays:** 16 pre-D019 alerts on the options ledger: DPZ (acknowledged to Fri 11-06) and 15 gates blocked
-  by the 10-28 fill halt, never opened and not acknowledged. They keep every paper run's failure AMBER. To quiet
-  them, a person acknowledges them in `ops/health_known.json`. Otherwise they stay.
+- ✅ **The 15 gates the 10-28 fill halt blocked are acknowledged** (Jacob, 11-05; `ops/health_known.json`, to 12-07).
+  The ledger's alert line is KNOWN, and a paper run that fails only on the stop reads as information. DPZ's
+  acknowledgment lapses Fri 11-06: from then on, the line and every paper run alarm again until the DPZ shares are settled.
 - **Budget (D019 §6):** one laptop chat per gate, ≤ 300k tokens, ≤ 10% of the weekly allowance, read each Monday.
   The next laptop chat is Gate 1 (early Dec; C1 look 1 from 12-07). Before then, only repairs.
 - **Waiting on Jacob:** remove `GEMINI_API_KEY` · after Fri 11-20, disable `earnings-t2-cloud` · disable the one-off
-  `earnings-d010-backtest` routine (out of D019's scope) · DPZ's 100 assigned shares · acknowledge the 15 alerts or not.
+  `earnings-d010-backtest` routine (out of D019's scope) · DPZ's 100 assigned shares (its alarm returns Fri 11-06).
 - **Clock:** no commits 14:30–15:56 ET on a weekday. T2 deadline 09:15 ET. SGT = ET + 13.
 
 ## PLAN — Mon 2026-10-19 (today) and the next session · ~08:55 ET (committed 09:05, `22de568`) · reviewed (Sonnet: SOUND WITH CHANGES, all applied)
@@ -207,7 +207,8 @@ closes: NOC, RTX, VICR butterflies (F) and RTX, VICR straddles (L).
   surprise 865; revenue + year-ago 654. The 259 without revenue: mostly 10-Qs not yet filed (retried to day 100),
   fiscal Q4s and IFRS filers. Spot check: AMD Q3 $13.377B (matches the frames probe), NFLX, TSLA, ACI plausible.
   ACI's 12-week quarter disproved the "quarter ≥ 90 days" reason; the bound holds anyway (fixed, `13f06c23`).
-- Not done: the 15 alerts from the 10-28 fill halt stay unacknowledged (a person's call; NOW).
+- 11-05 07:30 ET: Jacob, "Yes, acknowledge": the 15 fill-halt gates are in `ops/health_known.json` until 12-07. The
+  DPZ-only line entry became the 16-key line, keeping DPZ's 11-06 date. Health's paper-ledger AMBER is now KNOWN.
 
 **2026-11-04 (Wed) 08:55 ET — D019 REFRAME frozen and implemented in part; handed off at the context guard.**
 - Started 08:27 ET (the hand-off came Tue 11:50 ET, so Tuesday's 14:30 gates ran unhalted; today's are the first
