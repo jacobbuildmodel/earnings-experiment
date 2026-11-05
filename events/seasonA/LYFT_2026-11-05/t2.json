@@ -1,0 +1,148 @@
+{
+ "track": "T2",
+ "event": "LYFT_2026-11-05",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "LYFT enters earnings after an ~11% sympathy jump on Uber's results and a strong 1-month run, leaving the implied ~10% move fairly priced with no clear directional edge.",
+  "reasons": [
+   "Base rate ~54% for buy-everything on AMC consumer names.",
+   "Stock rallied ~19% in 1m and ~15% in 5d, including an 11% sympathy jump on Uber's print, so good news is partly priced in by the entry open.",
+   "Fundamentals are strong: Q2 gross bookings +23%, record riders, EBITDA margin expansion, and Q3 guidance was reaffirmed in September.",
+   "Short interest is high at ~22% of float, which supports upside squeezes on a good print.",
+   "New CFO and AV competition concerns add event risk, and the implied move is large at ~10%, so the distribution is wide."
+  ],
+  "deciding_variable": "Q4 gross bookings and EBITDA guidance relative to elevated expectations after the rally, plus AV and Uber read-through commentary.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation hit rate 0.542, AMC 0.538, consumer cluster 0.555; blended ~0.54"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-04, so the 2026-11-05 earnings report hasn't happened yet, and I have no information on how LYFT's stock reacted.",
+  "moved_from_prior": "Down about 4 points from 0.54: the run-up and the Uber sympathy rally raise the bar for the print, offset partly by high short interest and solid fundamentals.",
+  "theses": [
+   {
+    "expected": "Beat with Q4 guide at or above consensus, stock gaps up",
+    "mechanism": "Bookings growth near 20% and margin expansion, with a short squeeze given 22% short interest",
+    "wrong_if": "Q4 EBITDA guide midpoint is below consensus or bookings growth decelerates sharply"
+   },
+   {
+    "expected": "Sell the news after the run-up",
+    "mechanism": "The stock is up about 19% in a month, and Uber's soft profit outlook sets a cautious tone for the group",
+    "wrong_if": "Management raises targets and the stock opens higher despite the run"
+   },
+   {
+    "expected": "Flat to slightly down reaction on mixed signals",
+    "mechanism": "The first print with the new CFO, Waymo and AV competition worries, and an EPS miss history (two of the last three) cap enthusiasm",
+    "wrong_if": "Clean beat on all metrics with an upbeat AV partnership update"
+   }
+  ],
+  "key_observations": [
+   "Q4 gross bookings and adjusted EBITDA guidance versus consensus",
+   "Rides and active rider growth, and the Freenow international contribution",
+   "AV partnership updates (Waymo Nashville, depot opening) and competitive commentary",
+   "Cash flow and buyback pace",
+   "New CFO tone and margin trajectory"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/LYFT_2026-11-05/gate.json",
+    "published": "2026-11-04T14:32:15.642014-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/LYFT_2026-11-05/factors.json",
+    "published": "2026-11-04T14:32:15.642014-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1759509/000162828026054305/lyft-20260630xpressrelease.htm",
+    "published": "2026-08-06T16:10:24-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1759509/000162828026064095/lyft-20260930.htm",
+    "published": "2026-10-01T06:02:16-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1759509/000162828026061020/lyft-20260906.htm",
+    "published": "2026-09-09T08:02:16-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/04/uber-climbs-7-despite-soft-profit-outlook-as-delivery-strength-shines-lyft-jumps-11-doordash-gains-7/?.tsrc=rss",
+    "published": "2026-11-04T12:02:34-05:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/lyft-lyft-dips-more-broader-211502748.html?.tsrc=rss",
+    "published": "2026-10-30T17:15:02-04:00",
+    "dossier_item": "I17"
+   }
+  ],
+  "decided_et": "2026-11-04T16:22:53-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 22252,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 962,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 22252,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 962,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 22252,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 22252
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.0986953
+ }
+}

@@ -9,6 +9,43 @@
 
 ---
 
+## 2026-11-04 (Wed) 11:40 ET — a health number read 0% for a month because it counted the old code's note (D019, Gate 1)
+
+- **What happened.** I finished D019's five owed items: the Layer-1 capture, gate1's T2-missing count, stage1's P6 cost,
+  health's reading of the D019 stop, and check.py on the MOC list. The capture ran once on Season A: 913 printed events,
+  EPS for 871 and revenue for 654.
+- **T2 missing was never 0%.** The counter looked for v3's "T2 frozen as MISSING" note. Under D004 v4 a missing T2
+  leaves no note: stage 2 simply never freezes a file. So ABT and SPCX were invisible. The real figure is 2 of 39 =
+  5.1%, over CHARTER §6's < 5%. P6's cost had the same flaw: it read the stage-1 file, which under v4 has no cost.
+  **Lesson:** a health number must be defined on the record the grader writes (the outcome's `decisions`), not on a
+  side-effect of one code version. When a protocol version changes, every counter that reads its files needs a re-check.
+- **A designed RED hides a real one.** Since 08:39 ET, health read RED by design for the halt, and every paper run
+  showed an AMBER failure. A true RED today (an unfilled exit) would have sat in an already-red report. The stop is now
+  information. Still AMBER: 15 gates that the 10-28 fill halt blocked, which never opened and will alert forever
+  (`paper_options.py` is hash-locked). That is noise, but acknowledging it is a person's call.
+- **A spec number was wrong, and so was my first reason for the fix.** The brief's "end within 120 days" picks the
+  previous quarter whenever the new 10-Q is late. I wrote 90 days, "because a quarter is ≥ 90 days". The first real row
+  I checked (ACI, a 12-week quarter) disproved that reason. The bound survives because prints lag their quarter's end by
+  2+ weeks. **Lesson:** check a bound's reason against real rows before writing it down, not only the bound.
+- **What changed.** `f0ce1a4e`, `826ecaf6`, `edec9fd2`, `7f484c3d`, `ba8afe6d`, `13f06c23`, capture `0df43813`; weekly
+  `layer1.yml`. Gate 1 now gets an honest T2-missing row and a Layer-1 table to read the reaction layer against.
+
+## 2026-11-04 (Wed) 08:55 ET — the stop arrived a day late, and the halt was the cheapest lever (D019, Gate 1)
+
+- **What happened.** Jacob approved the committee's §12 stops Tue ~11:40 ET. The chat that took the approval hit its
+  context guard and handed off at 11:50 ET. The implementation chat started Wed 08:27 ET. So Tuesday's 14:30 gates
+  opened 12 more F and 25 more L structures that the stop would have blocked. The brief said "before 14:30 ET today",
+  and "today" had passed by the time anyone read it.
+- **What it taught.** A hand-off brief with a same-day deadline needs a session that starts at once. A decision with a
+  clock should be implemented by the chat that takes it, and only the rest handed off. The same was true on 10-19.
+- **What changed.** D019 is frozen (`149a1738`). The halt went in at 08:39 ET (`e4511bed`), six hours before today's
+  gates. `earnings-t2-models` is disabled. The MOC secondary is registered (`acc61fb6`) before any number, with its code
+  and tests (`c0700fbd`).
+- **A design choice to watch.** The MOC spread is 0 in v1, because an MOC order fills at the closing-auction price, which
+  is the price used. It is an assumption, not a measurement. Season C's paper pilot is where it gets measured.
+- **The guard bit again.** The guard counted ~253k by 08:47 ET, inside the T2 window (limit 200k), so the rest is handed
+  off. Each `RemoteTrigger get/update` returns the routine's full record, prompt three times over: filter it in a script.
+
 ## 2026-11-03 (Tue) 11:10 ET — the first output read an incomplete cut, and nothing in it said so (Stage 1, RQ1, Gate 2)
 - **What happened:** an independent committee rebuilt Stage 1 from the raw files and found 20 SH-W, ~100 SH-M and 5
   gated events missing from D017 §2's cut. True, but not a stale pull: no grade of the 10-30 exits existed yet. D017 fixed

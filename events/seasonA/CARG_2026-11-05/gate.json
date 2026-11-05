@@ -1,0 +1,87 @@
+{
+ "season": "seasonA",
+ "ticker": "CARG",
+ "report_date": "2026-11-05",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-05"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-06"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-13"
+  },
+  "reaction_day": "2026-11-06"
+ },
+ "snapshot_session": "2026-11-04",
+ "captured_et": "2026-11-04T14:31:10.395376-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/cargurus-report-third-quarter-2026-financial-results-2026-10-19",
+  "published_et": "2026-10-19T16:05-04:00",
+  "quote": "linkedin facebook x email reddit BOSTON , Oct. 19, 2026 (GLOBE NEWSWIRE) -- CarGurus, Inc. (Nasdaq: CARG), the No. 1 visited automotive shopping site in the U.S .1, today announced that it will report financial results for the third quarter ended September 30, 2026 , after the market close on Thursday, November 5, 2026 .",
+  "title": "CarGurus To Report Third Quarter 2026 Financial Results",
+  "retrieved_et": "2026-10-26T09:33:20.967948-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-05T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-05T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 37.08000183105469,
+  "expiry": "2026-11-20",
+  "strike": 37.0,
+  "call": {
+   "bid": 2.25,
+   "ask": 2.85,
+   "openInterest": 2.0,
+   "lastPrice": 0.26,
+   "impliedVolatility": 0.782228740234375,
+   "lastTradeDate": "2026-10-19T16:58:07+00:00"
+  },
+  "put": {
+   "bid": 0.0,
+   "ask": 2.5,
+   "openInterest": 0.0,
+   "lastPrice": 2.03,
+   "impliedVolatility": 0.8027363476562499,
+   "lastTradeDate": "2026-11-04T18:14:14+00:00"
+  },
+  "quote_retried": true,
+  "expiry_sessions_after_reaction": 10
+ },
+ "status": "INELIGIBLE",
+ "reason": "no_quote"
+}

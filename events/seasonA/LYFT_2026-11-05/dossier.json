@@ -1,0 +1,627 @@
+{
+ "event": "LYFT_2026-11-05",
+ "season": "seasonA",
+ "built_et": "2026-11-04T14:32:29-05:00",
+ "cutoff_et": "2026-11-04T14:32:15.642014-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/LYFT_2026-11-05/gate.json",
+   "published": "2026-11-04T14:32:15.642014-05:00",
+   "data": {
+    "ticker": "LYFT",
+    "report_date": "2026-11-05",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-05"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-06"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-06"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-13"
+     },
+     "reaction_day": "2026-11-06"
+    },
+    "snapshot_session": "2026-11-04",
+    "captured_et": "2026-11-04T14:32:15.642014-05:00",
+    "options": {
+     "spot": 18.739999771118164,
+     "expiry": "2026-11-06",
+     "strike": 18.5,
+     "call": {
+      "bid": 1.02,
+      "ask": 1.1,
+      "openInterest": 1819.0,
+      "lastPrice": 1.04,
+      "impliedVolatility": 1.3906280468749999,
+      "lastTradeDate": "2026-11-04T19:04:42+00:00"
+     },
+     "put": {
+      "bid": 0.84,
+      "ask": 0.89,
+      "openInterest": 42.0,
+      "lastPrice": 0.89,
+      "impliedVolatility": 1.4570339648437498,
+      "lastTradeDate": "2026-11-04T19:02:57+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.10272145269536151,
+     "rel_spread": {
+      "call": 0.07547169811320761,
+      "put": 0.05780346820809254
+     },
+     "oi_atm": 1861.0,
+     "oi_sum": 2757.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/LYFT_2026-11-05/factors.json",
+   "published": "2026-11-04T14:32:15.642014-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.10548930364388243,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": 0.18908626262423334,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.14687880025204092,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.12417514609180613,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.4516965616603262,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7301976257712436,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.23728123712326177,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-06",
+       "session": "AMC",
+       "raw_return_A": 0.033804500404798654,
+       "eps_est": 0.14,
+       "eps_rep": 0.13,
+       "surprise_pct": -7.74,
+       "reaction_volume_ratio": 2.11615427761314
+      },
+      {
+       "date": "2026-05-07",
+       "session": "AMC",
+       "raw_return_A": -0.02081888923744435,
+       "eps_est": 0.07,
+       "eps_rep": 0.04,
+       "surprise_pct": -44.27,
+       "reaction_volume_ratio": 2.2106051661230848
+      },
+      {
+       "date": "2026-02-10",
+       "session": "AMC",
+       "raw_return_A": -0.14367470928158332,
+       "eps_est": 0.12,
+       "eps_rep": 6.59,
+       "surprise_pct": 5480.96,
+       "reaction_volume_ratio": 5.2299510944399605
+      },
+      {
+       "date": "2025-11-05",
+       "session": "AMC",
+       "raw_return_A": 0.08112964789512445,
+       "eps_est": 0.07,
+       "eps_rep": 0.11,
+       "surprise_pct": 53.1,
+       "reaction_volume_ratio": 3.585531565264745
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.2855605258602325,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -7.74,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.19576,
+      "7daysAgo": 0.199,
+      "30daysAgo": 0.19733,
+      "60daysAgo": 0.20625,
+      "90daysAgo": 0.19837,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.013157231436205077,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.19576,
+      "low": 0.13778,
+      "high": 0.3,
+      "yearAgoEps": 0.11,
+      "numberOfAnalysts": 30,
+      "growth": 0.77959996,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.8286677564364527,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.2171,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 8.6558895,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 1.0475352,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.161,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 7093844480,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.48889,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.10272145269536151,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.06640591796874995,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.0976557617187499,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.5356430255759115,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.2746266657737896,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 8466.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 3.152184733542624,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.11767231205208195,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 612,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.16078814595043522,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.02580139123340696,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.10548930364388243,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.14687880025204092,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.12417514609180613,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.4516965616603262,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 3.182011444364984,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.013443215399403217,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 7093844179.619013,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.9546218987239862,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.013145559597895621,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1759509/000162828026054305/lyft-20260630xpressrelease.htm",
+   "published": "2026-08-06T16:10:24-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 lyft-20260630xpressrelease.htm EX-99.1 Document Exhibit 99.1 Lyft Reports Strong Q2 2026 Results Record Active Riders of over 30 million globally Growth accelerated in Q2 delivering record Rides and Gross Bookings SAN FRANCISCO, CA, August 6, 2026 - Lyft, Inc. (Nasdaq: LYFT) today announced financial results for the second quarter ended June 30, 2026. “We have surpassed 30 million Active Riders globally, our highest ever, as more people embed Lyft into their everyday lives,” said Lyft CEO David Risher. “This milestone is driven by our customer obsession and operational excellence, and fuels our transformation into a hybrid transportation platform while we deliver strong financial performance. So buckle up, the opportunity ahead is massive, and we’re just getting started.” “The business delivered acceleration in the second quarter, with growth in Rides and Gross Bookings reaching record levels, alongside continued strong cash generation of over $1 billion for the trailing twelve months,” said CFO Erin Brewer. “These results reflect the strength of our foundation and give us confidence in the road ahead.” Second Quarter 2026 Financial Highlights • Gross Bookings of $5.5 billion, up 23% year over year. • Revenue of $1.8 billion, up 16% year over year. • Net income was up 25% year over year to $50.3 million compared to $40.3 million in Q2'25. ◦ Net income as a percentage of Gross Bookings of 0.9%, flat compared to Q2'25. • Adjusted EBITDA up 37% year over year to $177.2 million compared to $129.4 million in Q2'25. ◦ Adjusted EBITDA margin as a percentage of Gross Bookings of 3.2% compared to 2.9% in Q2'25. • Net cash provided by operating activities of $349.9 million compared to $343.7 million in Q2'25. ◦ For the trailing twelve months, net cash provided by operating activities was $1.2 billion. • Free cash flow of $319.6 million compared to $329.4 million in Q2'25. ◦ For the trailing twelve months, free cash flow was $1.1 billion. Second Quarter 2026 Operational Highlights • Record Active Riders, our leading indicator of growth, was up 17% year over year to 30.5 million, the 7th consecutive quarter of double-digit growth. • Rides accelerated sequentially to record levels, up 12% year over year to 262 million, with global strength across Freenow by Lyft in Europe, North American rideshare, and Lyft Urban Solutions. • Approximately 30% of North American rideshare rides were linked to a partnership, an all-time high as we continue to be a good partner and collaborate to create value for our riders and partners. • In Nashville, in partnership with Waymo, our fleet operations officially began in June and are running smoothly as we gear up for the opening of our 80,000-square-foot purpose-built AV depot in October. • Lyft and Curb expanded their strategic partnership to New York City, the largest taxi market in the U.S., reflecting our strategy of expanding transport options for riders through partnerships with established, licensed operators. Third Quarter 2026 Outlook • Gross Bookings of approximately $5.50 billion to $5.67 billion, up approximately 15% to 19% year over year. • Adjusted EBITDA of approximately $183 million to $203 million ◦ Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) of approximately 3.3% to 3.6%. We have not provided the forward-looking GAAP equivalent to our non-GAAP outlook or a GAAP reconciliation as a result of the uncertainty regarding, and the potential variability of reconciling items which include, but are not limited to, stock- based compensation, income tax, legal, tax, and regulatory reserve changes and settlements, and costs related to acquisitions. Accordingly, a reconciliation of these non-GAAP guidance metrics to their corresponding GAAP equivalent is not available without unreasonable effort. However, it is important to note that the reconciling items could have a significant effect on future GAAP results. We have provided historical reconciliations of GAAP to non-GAAP metrics in tables at the end of this release. For more information regarding the non-GAAP financial measures discussed in this earnings release, please see “GAAP to non-GAAP Reconciliations” below. Financial and Operational Results Three Months Ended June 30, 2026 March 31, 2026 June 30, 2025 (in millions, except for percentages) Active Riders 30.5 28.3 26.1 Rides 262.4 236.9 234.8 Gross Bookings $ 5,504.2 $ 4,946.0 $ 4,490.1 Revenue $ 1,843.5 $ 1,650.5 $ 1,588.2 Net income $ 50.3 $ 14.2 $ 40.3 Net income as a percentage of Gross Bookings 0.9 % 0.3 % 0.9 % Adjusted EBITDA $ 177.2 $ 132.8 $ 129.4 Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) 3.2 % 2.7 % 2.9 % Net cash provided by operating activities $ 349.9 $ 307.7 $ 343.7 Free cash flow $ 319.6 $ 287.3 $ 329.4 Note: Information on our key metrics and non-GAAP financial measures is also available on our Investor Relations page. Definitions of Key Metrics Active Riders The number of Active Riders is a key indicator of the scale of Lyft’s user community. Lyft defines Active Riders as all unique riders who have taken at least one ride during the quarter. If a ride is requested by another organization or person for the benefit of a rider, that rider is only included in the calculation of Active Riders if the ride is accessible in the rider’s Lyft App. Rides Rides represent the level of usage of our multimodal platform. Lyft defines Rides as the total number of rides completed on our multimodal platform that contribute to our revenue. These include any Rides taken through our Lyft App. If multiple riders take a private rideshare ride, including situations where one party picks up another party on the way to a destination, or splits the bill, we count this as a single rideshare ride. Each unique segment of a Shared Ride is considered a single Ride. For example, if two riders successfully match in Shared Ride mode and both complete their Rides, we count this as two Rides. We have largely shifted away from Shared Rides, and now only offer Shared Rides in limited markets. Lyft includes all Rides taken by riders via our Concierge offering, even though such riders may be excluded from the definition of Active Riders unless the ride is accessible in that rider’s Lyft App. Gross Bookings Gross Bookings is a key indicator of the scale and impact of our overall platform. Lyft defines Gross Bookings as the total dollar value of transactions including any applicable taxes, tolls and fees, for rides and other offerings provided by Lyft, excluding tips to drivers. Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) is calculated by dividing Adjusted EBITDA for a period by Gross Bookings for the same period. For the definition of Adjusted EBITDA, refer to “Non-GAAP Financial Measures”. Webcast Lyft will host a webcast today at 2:00 p.m. Pacific Time (5:00 p.m. Eastern Time) to discuss these financial results and business highlights. Supplemental materials, including management’s prepared remarks, will be available on the Company’s Investor Relations page in advance of the call. To listen to a live audio webcast, please visit our Investor Relations page at https://investor.lyft.com/ . The archived webcast will be available on our Investor Relations page shortly after the call. About Lyft Whether it’s an everyday commute or a journey that changes everything, Lyft is driven by our purpose: to serve and connect. Founded in 2012, Lyft has grown into a global mobility platform offering a mix of rideshare, taxis, private hire vehicles, executive chauffeur services, car sharing, bikes, and scooters across six continents and thousands of cities. Millions of drivers have chosen to earn on billions of rides - helping to create a more connected world, with transportation options for everyone. Available Information Lyft announces material information to the public about Lyft, its products and services and other matters through a variety of means, including filings with the Securities and Exchange Commission, press releases, public conference calls, webcasts, the investor relations section of its website (investor.lyft.com), its X accounts (@lyft and @davidrisher), its Chief Executive Officer’s LinkedIn account (linkedin.com/in/jdavidrisher) and its blogs (including: lyft.com/blog, lyft.com/hub, and eng.lyft.com) in order to achieve broad, non-exclusionary distribution of information to the public and for complying with its disclosure obligations under Regulation FD. Forward Looking Statements This press release contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. Forward-looking statements generally relate to future events or Lyft’s future financial or operating performance. In some cases, you can identify forward looking statements because they contain words such as “may,” “will,” “should,” “expects,” “plans,” “anticipates,” “going to,” “could,” “intends,” “target,” “projects,” “contemplates,” “believes,” “estimates,” “predicts,” “potential” or “continue” or the negative of these words or other similar terms or expressions that concern Lyft’s expectations, strategy, priorities, plans or intentions. Forward-looking statements in this release include, but are not limited to, Lyft’s guidance and outlook, including expectations for the third quarter of 2026, and the trends and assumptions underlying such guidance and outlook, Lyft’s expectations regarding its share repurchase program, including the timing of repurchases thereunder, Lyft’s strategies and opportunity, Lyft’s plans and expectations regarding its new and existing strategic partnerships, the timing of developments and the benefits such partnerships will provide, Lyft’s expectations regarding its products and features, and Lyft’s expectations regarding AV technology, including the deployment of AVs, and Lyft’s expectations regarding its acquisitions and their anticipated impacts on Lyft’s international operations and financial results, and risks related to their integrations and operations. Lyft’s expectations and beliefs regarding these matters may not materialize, and actual results in future periods are subject to risks and uncertainties that could cause actual results to differ materially from those projected, including risks related to the macroeconomic environment and risks regarding our ability to forecast our performance due to our limited operating history and the macroeconomic environment and the risk that our partnerships may not materialize as expected. The forward-looking statements contained in this release are also subject to other risks and uncertainties, including those more fully described in Lyft’s filings with the Securities and Exchange Commission (“SEC”), including in our Annual Report on Form 10-K for the year ended December 31, 2025 and subsequent Quarterly Reports on Form 10-Q filed with the SEC. The forward-looking statements in this release are based on information available to Lyft as of the date hereof, and Lyft disclaims any obligation to update any forward-looking statements, except as required by law. This press release discusses “customers.” For rideshare, there are generally two customers in every car - the driver is Lyft’s customer, and the rider is the driver’s customer. We care about both. Non-GAAP Financial Measures To supplement Lyft's financial information presented in accordance with generally accepted accounting principles in the United States of America, or GAAP, Lyft considers certain financial measures that are not prepared in accordance with GAAP, including Adjusted EBITDA, Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) and free cash flow. Lyft defines Adjusted EBITDA as net income (loss) adjusted for interest expense, other income (expense), net, provision for (benefit from) income taxes, depreciation and amortization, stock-based compensation expense, payroll tax expense related to stock-based compensation, as well as, if applicable, sublease income, gain from lease termination, restructuring charges, costs related to acquisitions, divestitures and other corporate matters, and certain legal, tax, and regulatory reserve changes and settlements. Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) is calculated by dividing Adjusted EBITDA for a period by Gross Bookings for the same period and is considered a key metric. Lyft defines free cash flow as GAAP net cash provided by (used in) operating activities less purchases of property and equipment and scooter fleet. Lyft subleases certain office space and earns sublease income. Sublease income is included within other income, net on the condensed consolidated statement of operations, while the related lease expense is included within operating expenses and loss from operations. Lyft believes the adjustment to include sublease income in Adjusted EBITDA is useful to investors by enabling them to better assess Lyft’s operating performance, including the benefits of recent transactions, by presenting sublease income as a contra-expense to the related lease charges that are part of operating expenses. Lyft excludes certain costs related to acquisitions including due diligence costs, professional fees in connection with an acquisition, certain financing costs, and certain integration-related expenses. These expenses are unpredictable, and depend on factors that may be outside of our control and are not reflective of our ongoing core operations. In addition, the size and complexity of an acquisition, which often drives the magnitude of costs related to acquisitions, may not be indicative of such future costs. We believe excluding costs related to acquisitions, divestitures and other corporate matters facilitates the comparison of our financial results to our historic",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1759509/000162828026054499/lyft-20260630.htm",
+   "published": "2026-08-06T17:45:30-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our condensed consolidated financial statements and related notes thereto included elsewhere in this Quarterly Report on Form 10-Q and our audited consolidated financial statements included in our Annual Report on Form 10-K for the fiscal year ended December 31, 2025 (the “2025 Annual Report”). As discussed in the section titled “Note About Forward-Looking Statements,” the following discussion contains forward-looking statements that involve risks and uncertainties. Factors that could cause or contribute to such differences include those identified below and those discussed in the section titled “Risk Factors” and other parts of this Quarterly Report on Form 10-Q and in our 2025 Annual Report. Our historical results are not necessarily indicative of the results that may be expected for any period in the future. Our fiscal year ends December 31. Our Business Lyft, Inc. (the “Company” or “Lyft”) operates as a global mobility platform offering a mix of rideshare, taxis, private hire vehicles, executive chauffeur services, car sharing, bikes and scooters. Our established, scaled network of users is brought together by our robust technology platforms (the “Lyft Platform”) that powers rides and connections every day. Our Lyft mobile applications (the “Lyft App”) connects riders with drivers for on-demand ride services and supports a variety of other multimodal solutions. Substantially all of our revenue is generated from our ridesharing marketplace that connects drivers and riders. We collect service fees and commissions from drivers for their use of our ridesharing marketplace. We also generate revenue from licensing and data access agreements, the sale of bikes and bike station software and hardware, advertising services, riders renting through our network of shared bikes and scooters, drivers renting vehicles through Express Drive and by making our ridesharing marketplace available to organizations through our Lyft Business offerings. Financial and Operational Results for the Three Months Ended June 30, 2026 and 2025 Three Months Ended June 30, 2026 2025 % Change (in millions, except percentages) GAAP Financial Measures Revenue $ 1,843.5 $ 1,588.2 16% Net income $ 50.3 $ 40.3 25% Net income as a percentage of revenue 2.7 % 2.5 % Net cash provided by operating activities $ 349.9 $ 343.7 2% Key Metrics and Non-GAAP Financial Measures Active Riders 30.5 26.1 17% Rides 262.4 234.8 12% Gross Bookings $ 5,504.2 $ 4,490.1 23% Adjusted EBITDA (1) $ 177.2 $ 129.4 37% Net income as a percentage of Gross Bookings 0.9 % 0.9 % Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) 3.2 % 2.9 % Free cash flow (1)(2) $ 319.6 $ 329.4 (3)% ___________ (1) For more information regarding our use of our non-GAAP financial measures and reconciliations of these measures to the most comparable GAAP measures, see “Non-GAAP Financial Measures”. (2) Free cash flow is defined as net cash provided by operating activities less purchases of property and equipment and scooter fleet. 31 Table of Contents Definitions of Key Metrics Active Riders The number of Active Riders is a key indicator of the scale of our user community. We define Active Riders as all unique riders who have taken at least one ride during the quarter. If a ride is requested by another organization or person for the benefit of a rider, that rider is only included in the calculation of Active Riders if the ride is accessible in the rider’s Lyft App. The increase in the number of Active Riders in the three months ended June 30, 2026 as compared to the three months ended June 30, 2025 was due primarily to international expansion, improved retention and overall marketplace health. Rides Rides represent the level of usage of our multimodal platform. We define Rides as the total number of rides completed on our multimodal platform that contribute to our revenue. These include any Rides taken through our Lyft App. If multiple riders take a private rideshare ride, including situations where one party picks up another party on the way to a destination, or splits the bill, we count this as a single rideshare ride. Each unique segment of a Shared Ride is considered a single Ride. For example, if two riders successfully match in Shared Ride mode and both complete their Rides, we count this as two Rides. We have largely shifted away from Shared Rides, and now only offer Shared Rides in limited markets. We include all Rides taken by riders via our Concierge offering, even though such riders may be excluded from the definition of Active Riders unless the ride is accessible in that rider’s Lyft App. The increase in Rides in the three months ended June 30, 2026 as compared to the three months ended June 30, 2025 was due primarily to international expansion and overall marketplace health. Gross Bookings and Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) Gross Bookings is a key indicator of the scale and impact of our overall platform. We define Gross Bookings as the total dollar value of transactions including any applicable taxes, tolls and fees, for rides and other offerings provided by Lyft, excluding tips to drivers. Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) is calculated by dividing Adjusted EBITDA for a period by Gross Bookings for the same period. For the definition of Adjusted EBITDA, refer to “Non-GAAP Financial Measures”. The increase in Gross Bookings in the three months ended June 30, 2026 as compared to the three months ended June 30, 2025 was primarily due to international expansion, and Rides growth which benefited from overall marketplace health. Net income as a percentage of Gross Bookings and Adjusted EBITDA margin (calculated as a percentage of Gross Bookings) in the three months ended June 30, 2026 as compared to the three months ended June 30, 2025 were primarily due to our focus on cost discipline as growth in Gross Bookings outpaced growth in total costs and expenses, along with Rides growth and overall marketplace health. Net income as a percentage of Gross Bookings was partially offset by the increase in the provision for income taxes. Components of Results of Operations Revenue Revenue consists of revenue recognized from fees paid by drivers for use of our Lyft Platform offerings, gross amounts collected from riders in certain markets where we control the transportation services provided, Concierge platform fees from organizations that use our Concierge offering, subscription fees paid by riders to access transportation options through the Lyft Platform, bikes and bike station hardware and software sales, licensing and data access agreements, and arrangements to provide advertising services to third parties that are interested in reaching users of our platform. Revenue also consists of rental revenues recognized through leases or subleases of vehicles primarily from our wholly-owned subsidiary, Flexdrive Services, LLC (“Flexdrive”). Revenue derived from our offerings is recognized in accordance with ASC 606 or ASC 842 as described in Note 3 “Revenue” to the condensed consolidated financial statements as well as the Critical Accounting Estimates and Note 2 of the notes to our audited consolidated financial statements included in our Annual Report on Form 10-K for the year ended December 31, 2025. We offer various incentive programs to drivers that are recorded as a reduction to revenue if we do not receive a distinct good or service in consideration or if we cannot reasonably estimate the fair value of goods or services received. Cost of Revenue Cost of revenue primarily consists of costs directly related to generating revenue through our multimodal platform which primarily includes insurance costs, payment processing charges, payments to drivers or driver incentive costs in certain 32 Table of Contents markets where we control the transportation services provided, and other costs. Insurance costs consist of insurance generally required under transportation network company (“TNC”) and city regulations for ridesharing, and bike and scooter rentals and also includes occupational hazard insurance for drivers. Payment processing charges include merchant fees, chargebacks and failed charges. Other costs included in cost of revenue are hosting and platform-related technology costs, personnel-related compensation costs, depreciation, amortization of technology-related intangible assets, asset write-off charges and costs related to Flexdrive, which include vehicle lease expenses and remarketing gains and losses related to the sale of vehicles. Operations and Support Operations and support expenses primarily consist of personnel-related compensation costs of local operations teams and teams who provide phone, email and chat support to users, bikes and scooters fleet operations support costs, driver background checks and onboarding costs, fees paid to third-parties providing operations support, facility costs and certain car rental fleet support costs. Bikes and scooters fleet operations support costs include general repairs and maintenance, and other customer support activities related to repositioning bikes and scooters for rider convenience, cleaning and safety checks. Research and Development Research and development (“R&D”) expenses primarily consist of personnel-related compensation costs and facilities costs. Research and development costs are expensed as incurred. Sales and Marketing Sales and marketing expenses primarily consist of rider incentives, personnel-related compensation costs, certain driver incentives, advertising expenses, rider refunds, amortization of certain intangible assets and marketing partnerships with third parties. Incentive programs are intended to improve our marketplace. Sales and marketing costs are expensed as incurred. General and Administrative General and administrative expenses primarily consist of personnel-related compensation costs, professional services fees, certain insurance costs that are generally not required under TNC regulations, certain loss contingency expenses including legal accruals and settlements, insurance claims administrative fees, policy spend, depreciation, facility costs, amortization of certain intangible assets and other corporate costs. General and administrative expenses are expensed as incurred. Interest Expense Interest expense consists primarily of interest incurred on our convertible senior notes, as well as the related amortization of deferred debt issuance costs and debt discount. Interest expense also includes interest incurred on our Non-Revolving Loan and our Master Vehicle Loan. Other Income, Net Other income, net consists primarily of interest earned on our cash, cash equivalents and restricted and unrestricted investments and realized and unrealized gains and losses on foreign currency transactions and balances. Provision for Income Taxes Our provision for income taxes consists of federal and state taxes in the U.S. and foreign taxes in jurisdictions in which we conduct business. As we expand the scale of our international business activities, any changes in the U.S. and foreign taxation of such activities may increase our overall provision for income taxes in the future. We record a valuation allowance to reduce deferred tax assets to the net amount that we believe is more-likely-than-not to be realized. In assessing the need for a valuation allowance, we consider all available evidence, both positive and negative, including historical profitability, expectations and risks associated with future taxable income, and ongoing tax planning strategies. Based on available positive and negative evidence, we continue to maintain a valuation allowance against the California R&D credits, ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1759509/000162828026064095/lyft-20260930.htm",
+   "published": "2026-10-01T06:02:16-04:00",
+   "form": "8-K",
+   "items": "7.01",
+   "text": "Item 7.01 Regulation FD Disclosure On September 30, 2026, Lyft, Inc. (the “Company”) reached an agreement (the “Settlement Agreement”), subject to approval by the Superior Court of California, County of San Francisco, with the State of California (represented by the California Attorney General and the City Attorneys of San Francisco, Los Angeles, and San Diego), the Labor Commissioner for the State of California, and two private plaintiffs suing under the Private Attorneys General Act (collectively, the “Plaintiffs”), to resolve allegations that the Company misclassified drivers in California for the period from April 5, 2016 through December 15, 2020 (the “Covered Period”) as independent contractors in violation of California law. Under the terms of the Settlement Agreement, the Plaintiffs agree to release the Company from all claims that are or could have been asserted based on alleged misclassification of drivers or other alleged violations of labor laws by the Company during the Covered Period, for a total of $272.5 million (inclusive of attorneys’ fees, costs and expenses). The Company can elect to make settlement payments over four years, with 5% simple interest accruing after the first year, subject to a maximum amount of $12.4 million in interest. The Settlement Agreement does not include prepayment penalties or prospective operational commitments. The Settlement Agreement and any related documents do not constitute evidence or admission of fact or liability by the Company. The Company believes resolving this matter with certainty now will allow it to avoid the costs and distraction of protracted litigation and enable management to maintain its focus on executing its business objectives. The Company also believes settlement reduces meaningful legal uncertainty and risk associated with complex litigation. In the fourth quarter of 2025, the Company recorded a $210 million accrual related to this matter within accrued and other current liabilities on its condensed consolidated balance sheet and recognized a corresponding charge on its condensed consolidated statement of operations, allocated between a reduction to revenue and general and administrative expenses. Amounts for this matter constitute “certain legal, tax, and regulatory reserve changes and settlements” that are excluded from the Company’s Adjusted EBITDA and Adjusted EBITDA margin (calculated as a percentage of Gross Bookings). As of September 30, 2026, the Company confirmed there have bee"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1759509/000162828026061020/lyft-20260906.htm",
+   "published": "2026-09-09T08:02:16-04:00",
+   "form": "8-K",
+   "items": "5.02,7.01,9.01",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers On September 9, 2026, Lyft, Inc. (the “Company”) announced the appointment of Michael Brous as the Chief Financial Officer (“CFO”) of the Company, effective as of September 28, 2026 (the “Effective Date”). Erin Brewer, the Company’s current CFO, will retire from her position as CFO, effective as of the Effective Date. Mr. Brous was selected for the role due to his financial expertise in mobility and investing, combined with his deep knowledge of the Company across strategy, growth, operations, and finance gained over his nearly eight-year tenure at the Company. Mr. Brous, age 39, has served as the Company’s Head of Lyft Urban Solutions and Safety & Customer Care since November 2025 and served as the Company’s Head of Lyft Urban Solutions from September 2023 to November 2025. Mr. Brous previously served in a variety of roles for Lyft Urban Solutions, including as Head of Strategy and Growth from May 2023 to September 2023, as Co-Head of Operations from December 2021 to May 2023, and as Head of Financial Planning & Analysis from December 2018 to May 2023. Mr. Brous served as Vice President of Finance at Motivate International Inc. (“Motivate”), a company providing bike-sharing technology and operations, prior to its acquisition by the Company in 2018, and prior to that, held multiple leadership roles across finance and strategy within Motivate. Prior to his tenure in micromobility, Mr. Brous served in a variety of roles at REQX Ventures LLC, an investment company, Versa Capital Management, a private equity firm, and Financo, Inc., an investment advisory firm. Mr. Brous holds a B.S. in Finance from the Wharton School at the University of Pennsylvania. Ms. Brewer will serve as an advisor to the Company from the Effective Date through December 15, 2026 to assist in the transition of her duties. Ms. Brewer’s departure is not the result of any dispute or disagreement with the Company, its board of directors, or its management, or any matter relating to the Company’s operations, policies or practices. Brous Employment Letter On September 7, 2026, the Company entered into an employment letter with Mr. Brous (the “Employment Letter”). The Employment Letter does not have a specific term and provides that Mr. Brous’s employment will be at-will. Under the Employment Letter, the Company will pay Mr. Brous an annual b",
+   "exhibit_99_1": "EX-99.1 2 ex991-pressrelease90926.htm EX-99.1 Document Lyft Names Michael Brous Chief Financial Officer Erin Brewer to retire with advisory role through December 15 to support transition; Hands reins to proven Lyft and mobility industry executive across finance, strategy, and operations Lyft Reaffirms Q3 2026 Guidance SAN FRANCISCO – September 9, 2026 – Lyft, Inc. (Nasdaq: LYFT) today announced that Michael Brous has been appointed Chief Financial Officer, effective September 28, 2026. Brous takes over from Erin Brewer, who plans to retire and will remain with Lyft as an advisor through December 15, 2026 to support the transition. Brous has served in Lyft senior management for nearly eight years, currently as Head of Lyft Urban Solutions (LUS) and Safety and Customer Care (SCC). \"As we scale our global platform and grow our AV capabilities, Michael’s financial discipline, operational chops, and deep knowledge of our business and customers make him the perfect choice as our next CFO,\" said Lyft CEO David Risher. \"He has delivered results again and again – across finance, strategy, growth, and operations. I am excited to partner with him as we execute on our next chapter of growth.\" Brous joined Lyft in 2018 through its acquisition of Motivate, where he was the VP of Finance. Since then, he's taken on several senior leadership roles at Lyft. As Head of LUS, Brous oversaw a leading micromobility provider with over 195,000 bikes across 55 systems worldwide, including New York’s Citi Bike, London’s Santander Cycles, and Barcelona’s Bicing. Since Brous took on the role three years ago, he scaled popular ebikes and improved asset uptime and utilization, which led to compounding double-digit rides growth. This growth, coupled with operational discipline, drove strong margins and cash flows for the business. He also secured renewals for key markets including London and San Francisco, introduced a next-generation ebike, and oversaw the planned acquisition of Serveo’s bikeshare business in Spain, extending LUS’ operations footprint to the other side of the Atlantic. \"Lyft continues to prove the fundamentals of the business are strong and that there's a meaningful runway ahead as we scale the platform,” said Brous. “I’m fortunate to be stepping into a finance organization that is already executing with real rigor and discipline. As CFO, I’m looking forward to building on that foundation as we continue creating long-term value for drivers, riders, partners, team member"
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/uber-q3-earnings-miss-estimates-180600289.html?.tsrc=rss",
+   "published": "2026-11-04T13:06:00-05:00",
+   "text": "UBER Q3 Earnings Miss Estimates on Investment Loss, Revenue Beat - Uber's Q3 earnings miss estimates on investment losses despite revenue growth, as bookings surge 20% and operating profits improve across key businesses.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/04/uber-climbs-7-despite-soft-profit-outlook-as-delivery-strength-shines-lyft-jumps-11-doordash-gains-7/?.tsrc=rss",
+   "published": "2026-11-04T12:02:34-05:00",
+   "text": "Uber Climbs 7% Despite Soft Profit Outlook as Delivery Strength Shines; Lyft Jumps 11%, DoorDash Gains 7% - Uber's delivery business just ignited a rally across the entire ride-hailing and food delivery sector, but the profit warning hiding inside the results tells a more complicated story about where this group is actually headed.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/6adcdc67-6490-3bde-bd18-5a7b0270bfef/uber%E2%80%99s-delivery-business.html?.tsrc=rss",
+   "published": "2026-11-04T11:23:00-05:00",
+   "text": "Uber’s Delivery Business Narrows Gap With Ride-Sharing. Now Comes the Robo-Taxi Push. - Uber’s earnings grow as it prepares to invest billions on robo-taxis.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/personal-finance/credit-cards/article/did-you-know-you-can-use-lyft-in-europe-182437436.html?.tsrc=rss",
+   "published": "2026-11-03T13:24:37-05:00",
+   "text": "Did you know you can use Lyft in Europe? - Lyft has launched in Europe, allowing North American Lyft users to continue using the same Lyft app, account, and payment methods in certain European cities.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/lyft-lyft-just-overtook-20-133501000.html?.tsrc=rss",
+   "published": "2026-11-03T08:35:01-05:00",
+   "text": "Lyft (LYFT) Just Overtook the 20-Day Moving Average - When a stock breaks out above the 20-day simple moving average, good things could be on the horizon. How should investors react?",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/lyft-lyft-just-overtook-50-133002539.html?.tsrc=rss",
+   "published": "2026-11-03T08:30:02-05:00",
+   "text": "Lyft (LYFT) Just Overtook the 50-Day Moving Average - Good things could be on the horizon when a stock surpasses the 50-Day simple moving average. How should investors react?",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/stay-ahead-game-lyft-lyft-131505379.html?.tsrc=rss",
+   "published": "2026-11-03T08:15:05-05:00",
+   "text": "Stay Ahead of the Game With Lyft (LYFT) Q3 Earnings: Wall Street's Insights on Key Metrics - Looking beyond Wall Street's top-and-bottom-line estimate forecasts for Lyft (LYFT), delve into some of its key metrics to gain a deeper insight into the company's potential performance for the quarter ended September 2026.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/037d81ec-598e-3929-84b5-91fa99c367f3/tesla-faces-a-robo-taxi.html?.tsrc=rss",
+   "published": "2026-11-02T07:49:00-05:00",
+   "text": "Tesla Faces a Robo-Taxi Revolution in China. Musk’s Ambitions Have a Tough Test. - Morgan Stanley has thoughts on how robo-taxis will grow.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/avantis-u-small-cap-value-110534166.html?.tsrc=rss",
+   "published": "2026-11-02T06:05:34-05:00",
+   "text": "What Avantis U.S. Small Cap Value ETF (AVUV) Bought: Navient Leads on Thursday - The fund bought $156.2 million more than it sold on Thursday, adding Navient as a new position while increasing 474 holdings.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/lyft-lyft-dips-more-broader-211502748.html?.tsrc=rss",
+   "published": "2026-10-30T17:15:02-04:00",
+   "text": "Lyft (LYFT) Dips More Than Broader Market: What You Should Know - Lyft (LYFT) reached $16.09 at the closing of the latest trading day, reflecting a -1.95% change compared to its last close.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.retail-insight-network.com/news/walmart-target-face-ftc-inquiry/?.tsrc=rss",
+   "published": "2026-10-30T06:01:38-04:00",
+   "text": "Walmart and Target face FTC inquiry over dynamic pricing and worker pay - The regulator is seeking information on whether prices for goods, tickets, ride shares, and deliveries differ between individuals.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/ipo-edge-nasdaq-firesides-scheduled-222359804.html?.tsrc=rss",
+   "published": "2026-10-28T18:23:59-04:00",
+   "text": "IPO Edge Nasdaq Firesides Scheduled for Dec 8 - IPO Edge, CorpGov, and Exec Edge invite guests to join 15-minute interviews in the iconic Studios A and B at Nasdaq’s MarketSite in Times Square on Dec. 8, 2026. Please […]",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/economy/policy/articles/ftc-orders-walmart-delta-others-211247864.html?.tsrc=rss",
+   "published": "2026-10-28T17:12:47-04:00",
+   "text": "FTC orders Walmart, Delta and others to share how they use personal data to set prices and pay - Federal Trade Commission said Wednesday it is ordering Delta Air Lines, Walmart and other companies to provide detailed information on how they use consumers’ data when they're setting prices.The commission said it is also studying how ride-sharing and delivery companies like Uber use their independ",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/alphabet-inc-goog-misses-q3-202002246.html?.tsrc=rss",
+   "published": "2026-10-28T16:20:02-04:00",
+   "text": "Alphabet Inc. (GOOG) Misses Q3 Earnings and Revenue Estimates - Alphabet (GOOG) delivered earnings and revenue surprises of -27.89% and -0.57%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/uber/articles/621010/what-are-uber-stock-bears-missing/2026-10-28?.tsrc=rss",
+   "published": "2026-10-28T13:20:57-04:00",
+   "text": "What Are Uber Stock Bears Missing? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/lyft-lyft-vs-uber-dash-131254929.html?.tsrc=rss",
+   "published": "2026-10-28T09:12:54-04:00",
+   "text": "Lyft (LYFT) vs. UBER and DASH: Can Record Riders and Margin Expansion Close the Gap With Larger Rivals? - Is LYFT a good stock to buy? We came across a bullish thesis on Lyft, Inc. on TradersPro’s Substack Since the thesis was published on August 31st, LYFT shares have remained nearly flat as concerns about autonomous-vehicle competition and a $272.5 million California driver settlement offset the compa",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/grab-report-q3-earnings-buy-150800323.html?.tsrc=rss",
+   "published": "2026-10-27T11:08:00-04:00",
+   "text": "GRAB to Report Q3 Earnings: Should You Buy, Sell or Hold the Stock? - Grab Holdings faces rising fuel costs and margin pressures ahead of Q3 earnings, despite strong growth prospects. Is holding the stock the best move for now?",
+   "feed": {
+    "fetched_et": "2026-11-04T14:32:29-05:00",
+    "sha256": "6c94b96d0fb26e2cd7de7807bfbd6de5bcef6cb3050997f3f8122303fc88023b"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 54433
+}
