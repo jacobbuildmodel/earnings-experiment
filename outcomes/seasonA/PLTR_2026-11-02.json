@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-03T20:34:44-05:00",
+ "graded_et": "2026-11-04T20:41:11-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "PLTR",
  "report_date": "2026-11-02",
@@ -13,14 +13,63 @@
  "entry_session": "2026-11-02",
  "cluster": "software_internet",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-02T16:06:48-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 186.52,
+   "entry_session": "2026-11-02",
+   "exit": 168.18,
+   "exit_session": "2026-11-03",
+   "dividends": 0,
+   "raw_return": -0.09832725713060264,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.312782,
+    "bench_return": -0.033862636311459804,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.05387299770837182,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.04385588676817498,
+    "print_gap": -0.05696983290344282,
+    "entry_close": 178.34,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 186.52,
+   "entry_session": "2026-11-02",
+   "exit": 175.4,
+   "exit_session": "2026-11-03",
+   "dividends": 0,
+   "raw_return": -0.05961827149903498,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.312782,
+    "bench_return": -0.017983546967668018,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.03600979474372583,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }
