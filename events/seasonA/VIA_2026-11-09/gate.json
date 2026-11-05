@@ -1,0 +1,96 @@
+{
+ "season": "seasonA",
+ "ticker": "VIA",
+ "report_date": "2026-11-09",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-06"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-09"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-09"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-16"
+  },
+  "reaction_day": "2026-11-09"
+ },
+ "snapshot_session": "2026-11-05",
+ "captured_et": "2026-11-05T14:31:00.251584-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.ridewithvia.com/news/news-details/2026/Via-to-Announce-Third-Quarter-2026-Financial-Results-on-November-9-2026/default.aspx",
+  "published_et": "2026-10-06T08:30-04:00",
+  "quote": "Via Third Quarter 2026 Financial Results When: Monday, November 9, 2026 Time: 8:30 a.m. Eastern Time Live Access: Webcast Following completion of the events, a webcast replay will also be available at https://investors.ridewithvia.com for twelve months.",
+  "title": "Via to Announce Third Quarter 2026 Financial Results on November 9, 2026",
+  "retrieved_et": "2026-10-09T21:39:01.443689-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.ridewithvia.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "session_from_call_time",
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-09T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-09T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 38.15999984741211,
+  "expiry": "2026-11-20",
+  "strike": 40.0,
+  "call": {
+   "bid": 1.5,
+   "ask": 2.15,
+   "openInterest": 136.0,
+   "lastPrice": 1.7,
+   "impliedVolatility": 0.8110370458984374,
+   "lastTradeDate": "2026-11-05T18:51:35+00:00"
+  },
+  "put": {
+   "bid": 2.95,
+   "ask": 4.5,
+   "openInterest": 2.0,
+   "lastPrice": 2.8,
+   "impliedVolatility": 0.8300798242187499,
+   "lastTradeDate": "2026-11-04T15:12:43+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 9,
+  "implied_move": 0.14544025215388945,
+  "rel_spread": {
+   "call": 0.3561643835616438,
+   "put": 0.4161073825503355
+  },
+  "oi_atm": 138.0,
+  "oi_sum": 138.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
