@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-03T20:34:45-05:00",
+ "graded_et": "2026-11-04T20:41:13-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "SHOP",
  "report_date": "2026-11-03",
@@ -13,14 +13,63 @@
  "entry_session": "2026-11-02",
  "cluster": "software_internet",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-03T08:08:14-05:00",
+   "window": "BMO"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 158.285,
+   "entry_session": "2026-11-02",
+   "exit": 136.43,
+   "exit_session": "2026-11-03",
+   "dividends": 0,
+   "raw_return": -0.13807372776952953,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.046464,
+    "bench_return": -0.033862636311459804,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.10263769792449406,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.013046087753103564,
+    "print_gap": -0.1266803226219434,
+    "entry_close": 156.22,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 158.285,
+   "entry_session": "2026-11-02",
+   "exit": 142.57,
+   "exit_session": "2026-11-03",
+   "dividends": 0,
+   "raw_return": -0.09928293900243235,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.046464,
+    "bench_return": -0.017983546967668018,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.08046380450845861,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }

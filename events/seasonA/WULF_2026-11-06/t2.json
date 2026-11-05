@@ -1,0 +1,142 @@
+{
+ "track": "T2",
+ "event": "WULF_2026-11-06",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "Near-coin-flip: a beaten-down, heavily shorted AI-hosting name with strong analyst support and a sector selloff may bounce into the print, but WULF has fallen on 3 of its last 4 prints and sector financing fears persist.",
+  "reasons": [
+   "Base rate ~54% for BMO; the entry open is the day before the print, so the window captures a ~1-day pre-earnings drift plus the overnight gap into the print",
+   "Stock is down 20% in a month and 59% below its 52-week high, with 30% short interest; mean-reversion and short-squeeze potential",
+   "Fresh positive news (Google backstop, Fluor EPC, upsized revolver, Muskie 1 GW) and Morgan Stanley and Rosenblatt bullish calls",
+   "Negative: sector financing and midterm-driven AI data-center fears, WULF fell 4% on Nov 4 despite good news, 1 of the last 4 prints was a win, and recent EPS misses",
+   "The implied move of ~11.6% is large and symmetric; the options skew gives no directional signal"
+  ],
+  "deciding_variable": "Sector sentiment on AI-hosting financing (CIFR, IREN, CoreWeave moves on Nov 5) and the tone of Nov 6 pre-market for the gap.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall buy-everything hit rate (0.541/0.542) and BMO session 0.548; crypto_proxy cluster (n=8, 0.25) is insufficient so ignored"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-04, so the 2026-11-06 earnings report hasn't happened yet, and I have no information on how WULF (TeraWulf) stock moved afterward.",
+  "moved_from_prior": "Down about 2 points from 0.54: the sector selloff and weak earnings-reaction history roughly offset the oversold and short-interest bounce potential.",
+  "theses": [
+   {
+    "expected": "Rise: oversold bounce and a squeeze ahead of the print",
+    "mechanism": "30% short interest, a depressed price, and a sector rebound lift the stock between the Nov 5 and Nov 6 opens",
+    "wrong_if": "Peers like IREN or CoreWeave sell off further on Nov 5 and the sector financing fears intensify"
+   },
+   {
+    "expected": "Fall: the print disappoints on EPS and financing detail",
+    "mechanism": "EPS misses (-23% last quarter), capex and debt needs, and the Google backstop only taking effect at final delivery leave the market unconvinced",
+    "wrong_if": "Management announces financing closure or a new tenant and the stock gaps up"
+   },
+   {
+    "expected": "Flat to small move, with direction decided by the sector",
+    "mechanism": "Fundamentals (HPC leasing ramp) are already priced in; the reaction follows AI-infra beta",
+    "wrong_if": "A company-specific surprise such as a new lease or guidance change dominates"
+   }
+  ],
+  "key_observations": [
+   "Nov 5 sector price action for CIFR, IREN, CRWV and bitcoin",
+   "Pre-market indication on Nov 6",
+   "Financing update and timing of the Justified project debt",
+   "New lease or tenant commentary and Lake Mariner CB-4 delivery timing",
+   "HPC revenue vs the ~$31.9M prior quarter"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/WULF_2026-11-06/gate.json",
+    "published": "2026-11-04T14:33:25.431524-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/WULF_2026-11-06/factors.json",
+    "published": "2026-11-04T14:33:25.431524-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/04/terawulf-falls-4-despite-google-backstop-for-19-billion-anthropic-leases-cipher-digital-plunges-18-iren-tumbles-9/?.tsrc=rss",
+    "published": "2026-11-04T12:56:12-05:00",
+    "dossier_item": "I9"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://blockspace.media/insight/terawulf-becomes-rosenblatt-top-pick/?.tsrc=rss",
+    "published": "2026-11-04T10:01:53-05:00",
+    "dossier_item": "I13"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/terawulf-lost-20-in-a-month-kbw-cut-its-target-but-still-sees-62-upside?ref=yahoofinance&tlnk=yf-261103-x459q85j&.tsrc=rss",
+    "published": "2026-11-03T15:28:50-05:00",
+    "dossier_item": "I18"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1083301/000162828026069810/wulf-20261104.htm",
+    "published": "2026-11-04T08:16:25-05:00",
+    "dossier_item": "I6"
+   }
+  ],
+  "decided_et": "2026-11-04T16:22:13-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 26081,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1095,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 26081,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1095,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 26081,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 26081
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.115278
+ }
+}

@@ -20390,7 +20390,7 @@
       },
       "limit_price": "-0.87",
       "id": "1a0d3e91-0ac3-4be8-b0fa-003b7a25c2c7",
-      "status": "new",
+      "status": "canceled",
       "filled_qty": 0.0,
       "filled_at": null,
       "legs_filled": [
@@ -20408,12 +20408,76 @@
        }
       ],
       "cancel_requested": "2026-11-04T14:45:12.183125-05:00"
+     },
+     {
+      "client_order_id": "seasonA-NVTS-2026-11-03-L-close-r3",
+      "sent_et": "2026-11-04T14:47:44.957977-05:00",
+      "qty": 3,
+      "natural": -0.93,
+      "sides": {
+       "NVTS261106C00008000": "sell",
+       "NVTS261106P00008000": "sell"
+      },
+      "quotes": {
+       "NVTS261106C00008000": {
+        "bid": 0.92,
+        "ask": 1.26,
+        "t": "2026-11-04T19:47:36.763807704Z"
+       },
+       "NVTS261106P00008000": {
+        "bid": 0.01,
+        "ask": 0.06,
+        "t": "2026-11-04T19:47:31.055870372Z"
+       }
+      },
+      "exec": "v3",
+      "concession": 0.15,
+      "dropped_legs": [],
+      "all_sides": {
+       "NVTS261106C00008000": "sell",
+       "NVTS261106P00008000": "sell"
+      },
+      "quote_age_s": {
+       "NVTS261106C00008000": 8,
+       "NVTS261106P00008000": 14
+      },
+      "limit_price": "-0.79",
+      "id": "78464f19-dcbb-4d77-b9d2-aebc84f6c22b",
+      "status": "filled",
+      "filled_qty": 3.0,
+      "filled_at": "2026-11-04T19:49:45.708282195Z",
+      "legs_filled": [
+       {
+        "symbol": "NVTS261106C00008000",
+        "side": "sell",
+        "qty": 3.0,
+        "price": 0.94
+       },
+       {
+        "symbol": "NVTS261106P00008000",
+        "side": "sell",
+        "qty": 3.0,
+        "price": 0.03
+       }
+      ]
      }
     ]
    },
    "sanity_checked": true,
    "exit_first_sent_et": "2026-11-04T14:32:11.668507-05:00",
-   "exit_late": false
+   "exit_late": false,
+   "result": {
+    "open_net": 1.1700000000000002,
+    "close_net": -0.9699999999999999,
+    "pnl_per_unit": -0.2000000000000003,
+    "qty": 3.0,
+    "pnl": -60.0,
+    "pnl_on_spot": -0.024767802442610985,
+    "simulated_legs": [],
+    "simulated_why": null,
+    "entry_vs_alpaca_natural": -0.039999999999999813,
+    "entry_credit_vs_gate_bid_sum": -2.2300000000000004
+   }
   },
   "seasonA-OUST-2026-11-03-L": {
    "season": "seasonA",
@@ -26533,7 +26597,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-ATEN-2026-11-05-L": {
    "season": "seasonA",
@@ -26573,7 +26638,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-AVPT-2026-11-05-L": {
    "season": "seasonA",
@@ -26613,7 +26679,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-AXON-2026-11-05-L": {
    "season": "seasonA",
@@ -26653,7 +26720,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-BILL-2026-11-05-L": {
    "season": "seasonA",
@@ -26693,7 +26761,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-DIOD-2026-11-05-L": {
    "season": "seasonA",
@@ -26733,7 +26802,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-FIGS-2026-11-05-L": {
    "season": "seasonA",
@@ -26795,7 +26865,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-FROG-2026-11-05-L": {
    "season": "seasonA",
@@ -26835,7 +26906,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-DBX-2026-11-05-L": {
    "key": "seasonA-DBX-2026-11-05-L",
@@ -26882,7 +26954,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-HALO-2026-11-05-L": {
    "season": "seasonA",
@@ -26922,7 +26995,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-IONQ-2026-11-05-L": {
    "season": "seasonA",
@@ -26962,7 +27036,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-IREN-2026-11-05-L": {
    "season": "seasonA",
@@ -27024,7 +27099,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-LASR-2026-11-05-L": {
    "season": "seasonA",
@@ -27086,7 +27162,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-MRNA-2026-11-06-L": {
    "season": "seasonA",
@@ -27126,7 +27203,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-NET-2026-11-05-L": {
    "season": "seasonA",
@@ -27166,7 +27244,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-PCTY-2026-11-05-L": {
    "season": "seasonA",
@@ -27206,7 +27285,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-PDFS-2026-11-05-L": {
    "season": "seasonA",
@@ -27246,7 +27326,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-QNT-2026-11-05-L": {
    "season": "seasonA",
@@ -27308,7 +27389,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-SOUN-2026-11-05-L": {
    "season": "seasonA",
@@ -27348,7 +27430,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-TDC-2026-11-05-L": {
    "season": "seasonA",
@@ -27388,7 +27471,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-TEAM-2026-11-05-L": {
    "season": "seasonA",
@@ -27428,7 +27512,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-TXG-2026-11-05-L": {
    "season": "seasonA",
@@ -27468,7 +27553,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-TXRH-2026-11-05-L": {
    "season": "seasonA",
@@ -27508,7 +27594,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-UA-2026-11-06-L": {
    "season": "seasonA",
@@ -27548,7 +27635,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-VSAT-2026-11-05-L": {
    "season": "seasonA",
@@ -27588,7 +27676,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-WULF-2026-11-06-L": {
    "season": "seasonA",
@@ -27628,7 +27717,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-LITE-2026-11-05-L": {
    "key": "seasonA-LITE-2026-11-05-L",
@@ -27675,7 +27765,8 @@
      "position_intent": "buy_to_open"
     }
    ],
-   "open_blocked": "halt"
+   "open_blocked": "halt",
+   "open_failed": "halt"
   },
   "seasonA-CART-2026-11-05-L": {
    "key": "seasonA-CART-2026-11-05-L",
@@ -27686,8 +27777,36 @@
   }
  },
  "errors_last_run": null,
- "alerts": null,
- "updated_et": "2026-11-04T14:45:12.183125-05:00",
+ "alerts": [
+  "seasonA-ALRM-2026-11-05-L",
+  "seasonA-ATEN-2026-11-05-L",
+  "seasonA-AVPT-2026-11-05-L",
+  "seasonA-AXON-2026-11-05-L",
+  "seasonA-BILL-2026-11-05-L",
+  "seasonA-DIOD-2026-11-05-L",
+  "seasonA-FIVN-2026-11-05-L",
+  "seasonA-FROG-2026-11-05-L",
+  "seasonA-GRND-2026-11-05-L",
+  "seasonA-HALO-2026-11-05-L",
+  "seasonA-IONQ-2026-11-05-L",
+  "seasonA-KRMN-2026-11-05-L",
+  "seasonA-LYFT-2026-11-05-L",
+  "seasonA-MRNA-2026-11-06-L",
+  "seasonA-NET-2026-11-05-L",
+  "seasonA-PCTY-2026-11-05-L",
+  "seasonA-PDFS-2026-11-05-L",
+  "seasonA-SARO-2026-11-05-L",
+  "seasonA-SOUN-2026-11-05-L",
+  "seasonA-TDC-2026-11-05-L",
+  "seasonA-TEAM-2026-11-05-L",
+  "seasonA-TXG-2026-11-05-L",
+  "seasonA-TXRH-2026-11-05-L",
+  "seasonA-UA-2026-11-06-L",
+  "seasonA-VSAT-2026-11-05-L",
+  "seasonA-WULF-2026-11-06-L",
+  "seasonA-CARG-2026-11-05-L"
+ ],
+ "updated_et": "2026-11-04T15:55:49.982758-05:00",
  "convention_verified": {
   "trade": "seasonA-RTX-2026-10-20-L",
   "fill_net": 10.25,
