@@ -1,0 +1,608 @@
+{
+ "event": "ZETA_2026-11-09",
+ "season": "seasonA",
+ "built_et": "2026-11-06T14:31:30-05:00",
+ "cutoff_et": "2026-11-06T14:31:19.396127-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/ZETA_2026-11-09/gate.json",
+   "published": "2026-11-06T14:31:19.396127-05:00",
+   "data": {
+    "ticker": "ZETA",
+    "report_date": "2026-11-09",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-09"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-10"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-10"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-17"
+     },
+     "reaction_day": "2026-11-10"
+    },
+    "snapshot_session": "2026-11-06",
+    "captured_et": "2026-11-06T14:31:19.396127-05:00",
+    "options": {
+     "spot": 31.010000228881836,
+     "expiry": "2026-11-13",
+     "strike": 31.0,
+     "call": {
+      "bid": 2.33,
+      "ask": 2.49,
+      "openInterest": 336.0,
+      "lastPrice": 2.4,
+      "impliedVolatility": 1.3154331103515622,
+      "lastTradeDate": "2026-11-06T19:13:29+00:00"
+     },
+     "put": {
+      "bid": 2.31,
+      "ask": 2.54,
+      "openInterest": 191.0,
+      "lastPrice": 2.46,
+      "impliedVolatility": 1.3291049169921871,
+      "lastTradeDate": "2026-11-06T19:02:59+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 3,
+     "implied_move": 0.15591744483435438,
+     "rel_spread": {
+      "call": 0.06639004149377599,
+      "put": 0.09484536082474226
+     },
+     "oi_atm": 527.0,
+     "oi_sum": 1750.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/ZETA_2026-11-09/factors.json",
+   "published": "2026-11-06T14:31:19.396127-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": 0.5551654663156405,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.06115648274504837,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.005133135932642974,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.05225656435049464,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.48175730627924673,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.612468162216201,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.09088244872469897,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-04",
+       "session": "AMC",
+       "raw_return_A": 0.062271049324504224,
+       "eps_est": 0.19,
+       "eps_rep": 0.27,
+       "surprise_pct": 39.84,
+       "reaction_volume_ratio": 4.789674568231902
+      },
+      {
+       "date": "2026-05-01",
+       "session": "BMO",
+       "raw_return_A": 0.07688017281959247,
+       "eps_est": 0.12,
+       "eps_rep": 0.16,
+       "surprise_pct": 39.18,
+       "reaction_volume_ratio": 3.243951823647605
+      },
+      {
+       "date": "2026-02-25",
+       "session": "BMO",
+       "raw_return_A": 0.12516638505126343,
+       "eps_est": 0.23,
+       "eps_rep": 0.37,
+       "surprise_pct": 58.13,
+       "reaction_volume_ratio": 1.8603828322762308
+      },
+      {
+       "date": "2025-11-05",
+       "session": "BMO",
+       "raw_return_A": 0.09418598023410274,
+       "eps_est": 0.18,
+       "eps_rep": 0.27,
+       "surprise_pct": 47.22,
+       "reaction_volume_ratio": 2.657207426892025
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 1.0,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.137804162761941,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 39.84,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 5,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.27305,
+      "7daysAgo": 0.27222,
+      "30daysAgo": 0.27897,
+      "60daysAgo": 0.27897,
+      "90daysAgo": 0.2775,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.01603603603603607,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.27305,
+      "low": 0.24,
+      "high": 0.29662,
+      "yearAgoEps": 0.27066,
+      "numberOfAnalysts": 12,
+      "growth": 0.0088,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.20736128914118293,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0713,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 25.752607,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 4.920486,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.435,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 7729478656,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.4,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.15591744483435438,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.01367180664062495,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.17871004394531265,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.47181171319102355,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7720936715918595,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 2689.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.744678692855012,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.14650083755025314,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 254,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Monday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.4354919239273509,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.038223350483099425,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": 0.5546639503370048,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.005453964577409098,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.051917228445681696,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.4816042204741116,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 3.0659288996517846,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.8163166367754743,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 7954027337.0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.19749454376309494,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 5,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.016810369494305935,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1851003/000119312526332770/zeta-ex99_1.htm",
+   "published": "2026-08-04T16:05:17-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 zeta-ex99_1.htm EX-99.1 EX-99.1 Exhibit 99.1 August 4, 2026 Zeta Global Reports 20 th Consecutive “Beat and Raise” Quarter, Achieves the Rule of 64 and Generates Positive GAAP Net Income in 2Q’26 • Delivered revenue of $443 million for the second quarter, an increase of 44%Y/Y, exceeding midpoint of guidance by $23 million, or 5%. • Grew Super-Scaled Customer count to 197, an increase of 17% Y/Y and Super-Scaled customer ARPU grew to $1.8 million, up 17%Y/Y, both ahead of 2028 model. • Achieved positive GAAP net income of $8 million, and GAAP earnings per share of $0.03. Generated $92 million of adjusted EBITDA and expanded adjusted EBITDA margin by 170 bps Y/Y to 20.7%, reflecting the rule of 64 and the rule of 49 excluding M&A. • Generated net cash provided by operating activities of $69 million, an increase of 65% Y/Y, and Free Cash Flow of $58 million, an increase of 73% Y/Y. • Increasing full year 2026 revenue guidance by $33 million to $1,818 million at the midpoint, up from prior guidance of $1,785 million reflecting Y/Y growth of 39%. • Introducing an initial framework to measure adoption and monetization of Zeta's AI. NEW YORK – Zeta Global (NYSE: ZETA), the intelligent AI infrastructure company, today announced financial results for the second quarter ended June 30, 2026. “Accelerating revenue growth to 44% and achieving the rule of 64 in the second quarter reflects the growing demand for Zeta’s intelligent AI infrastructure platform,” said David A. Steinberg, Co-Founder, Chairman, and CEO of Zeta. “Our proprietary Data Cloud and Athena intelligence layer position us at the center of enterprise decision-making. With new momentum from our collaborations with OpenAI, Snowflake, and Palantir, we have reached an inflection point for Zeta, bringing together capabilities and investments we have been building for years. We are still in the early stages of what the Zeta platform can do for enterprises.” “Our results this quarter reflect the broad-based strength and consistent execution across the business, driven by AI adoption and usage across the platform,” said Chris Greiner, Zeta’s CFO. “Our first-half performance and pipeline visibility gives us the confidence to significantly increase the midpoint of our revenue, adjusted EBITDA, free cash flow and GAAP EPS expectations.” Increasing 2026 Guidance* Third Quarter 2026 • Increasing revenue guidance to a range of $469 million to $472 million, up $10 million at the midpoint from the prior guidance of $461 million. The revised guidance represents a year-over-year growth rate of 39% to 40%, and 23% to 24% when excluding M&A and political candidate revenue. 1 • Increasing adjusted EBITDA guidance to a range of $115.0 million to $116.0 million, up $2.7 million at the midpoint from the prior guidance of $112.8 million. The revised guidance represents a year-over-year growth rate of 47% to 49% and an adjusted EBITDA margin of 24.4% to 24.7%. Full Year 2026 • Increasing revenue guidance to a range of $1,811 million to $1,824 million, up $33 million at the midpoint from the prior guidance of $1,785 million. The revised guidance represents a year-over-year growth rate of 39% to 40%, and 24% to 25% when excluding M&A and political candidate revenue. • Increasing adjusted EBITDA guidance to a range of $404.1 million to $406.3 million, up $7.9 million at the midpoint from the prior guidance of $397.3 million. The revised guidance represents a year-over-year growth rate of 45% to 46% and an adjusted EBITDA margin of 22.1% to 22.4%. • Increasing free cash flow guidance to a range of $254.8 million to $255.8 million, up $20.3 million at the midpoint from the prior guidance of $235.0 million. The revised guidance represents a year-over-year growth rate of 55% and a free cash flow margin of 14.0% to 14.1%. • Increasing full year 2026 GAAP EPS guidance to a range of $0.09 to $0.11, up $0.07 or greater than 300% at the midpoint from prior guidance of $0.02 to $0.04. *This press release does not include a reconciliation of forward-looking adjusted EBITDA, adjusted EBITDA margin, free cash flow, and free cash flow margin to forward-looking GAAP net income / (loss), net income / (loss) margin, net cash provided by operating activities, or net cash provided by operating activities margin, respectively, because the Company is unable, without making unreasonable efforts, to provide a meaningful or reasonably accurate calculation or estimation of certain reconciling items which could be significant to the Company’s results. Zeta Live Zeta will hold its sixth annual conference, Zeta Live 2026, on Thursday, October 8, in New York City at David Geffen Hall, Lincoln Center. This year’s program will examine how the most advanced organizations are building AI-powered marketing and dynamic Business Intelligence systems that know customers with greater precision, grow with measurable impact, and prove marketing’s contribution to revenue with certainty. For more information or to request an invitation, visit here. Investor Conference Call and Webcast Zeta will host a conference call today, Tuesday, August 4, 2026, at 4:30 p.m. Eastern Time to discuss financial results for the second quarter of 2026. A supplemental earnings presentation and a live webcast of the conference call can be accessed from the Company’s investor relations website (https://investors.zetaglobal.com/) where they will remain available for one year. About Zeta Zeta Global (NYSE: ZETA) is the intelligent AI infrastructure company helping enterprises transform proprietary data into enterprise intelligence. The Zeta Data Cloud and Athena by Zeta™ connect proprietary enterprise knowledge with advanced AI to enable better decisions, more effective customer engagement, and stronger business outcomes. With one of the industry's largest proprietary data assets, Zeta helps organizations accelerate AI transformation and build durable competitive advantage. Founded in 2007 by David A. Steinberg and John Sculley, Zeta is headquartered in New York City with offices worldwide. Learn more at www.zetaglobal.com. 2 Forward-Looking Statements This press release, together with other statements and information publicly disseminated by the Company, contains certain forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. The Company intends such forward-looking statements to be covered by the safe harbor provisions for forward-looking statements contained in the Private Securities Litigation Reform Act of 1995 and includes this statement for purposes of complying with these safe harbor provisions. Any statements made in this press release or during the earnings call that are not statements of historical fact, including statements about our third quarter 2026 guidance, full year 2026 guidance, the Zeta 2028 targets, the expected benefits, adoption, and impact of Athena, expectations regarding the contribution of Marigold’s Enterprise Business, the expected benefits of and contributions from our partnerships and other strategic relationships, anticipated market share growth, the impacts of our prior investments on accelerating the timing of the marketing cloud replacement cycle, our products capabilities to provide strong investment returns to our customers, our strong competitive position, expansion of existing customers, the capabilities of AI and Zeta’s platform, the predictability and profitability of our growth, and the growth and expansion of AI and the Zeta Marketing Platform, are forward-looking statements and should be evaluated as such. Forward-looking statements include information concerning our anticipated future financial performance, our market opportunities and our expectations regarding our business plan and strategies. These statements often include words such as “anticipate,” “expect,” “suggests,” “plan,” “believe,” “intend,” “estimates,” “targets,” “projects,” “should,” “could,” “would,” “may,” “will,” “forecast,” “outlook,” “guidance” and other similar expressions. We base these forward-looking statements on our current expectations, plans and assumptions that we have made in light of our experience in the industry, as well as our perceptions of historical trends, current conditions, expected future developments and other factors we believe are appropriate under the circumstances at such time. Although we believe that these forward-looking statements are based on reasonable assumptions at the time they are made, you should be aware that many factors could affect our business, results of operations and financial condition and could cause actual results to differ materially from those expressed in the forward-looking statements. These statements are not guarantees of future performance or results. 3 The forward-looking statements are subject to and involve risks, uncertainties and assumptions, and you should not place undue reliance on these forward-looking statements. Factors that may materially affect such forward-looking statements include, but are not limited to: global supply chain disruptions; macroeconomic and industry trends and adverse developments in the debt, consumer credit and financial services markets and other macroeconomic factors beyond Zeta’s control; increases in our borrowing costs as a result of changes in interest rates and other factors; the impact of inflation, tariffs and changes in global trade policies on us and on our customers; potential fluctuations in our operating results, which could make our future operating results difficult to predict; underlying circumstances, including cash flows, cash position, financial performance, market conditions and potential acquisitions; prevailing stock prices, general economic and market conditions; the impact of future pandemics, epidemics and other health crises on the global economy, our customers, employees and business; domestic and international political and geopolitical conditions or uncertainty, including political or civil unrest or changes in trade policy; our ability to innovate and make the right investment decisions in our product offerings and platform; the impact of new generative AI capabilities and the proliferation of AI on our business; our ability to attract and retain customers, including our super-scaled customers; our ability to manage our growth effectively; our ability to identify and integrate acquisitions or strategic investments; our ability to collect and use data online; the standards that private entities and inbox service providers adopt in the future to regulate the use and delivery of email may interfere with the effectiveness of our platform and our ability to conduct business; a significant inadvertent disclosure or breach of confidential and/or personal information we process, or a security breach of our or our customers’, suppliers’ or other partners’ computer systems; and any disruption to our third-party data centers, systems and technologies. These cautionary statements should not be construed by you to be exhaustive and the forward-looking statements are made only as of the date of this press release. We undertake no obligation to update or revise any forward-looking statements, whether as a result of new information, future events or otherwise, except as required by applicable law. If we update one or more forward-looking statements, no inference should be drawn that we will make additional updates with respect to those or other forward-looking statements. The third quarter and full year 2026 guidance provided herein and the Zeta 2028 targets are based on Zeta’s current estimates and assumptions and are not a guarantee of future performance. The guidance and the Zeta 2028 targets provided are subject to significant risks and uncertainties, including the risk factors discussed in the Company's reports on file with the Securities and Exchange Commission (“SEC”), that could cause actual results to differ materially. There can be no assurance that the Company will achieve the results expressed by this guidance or the targets. Availability of Information on Zeta’s Website and Social Media Profiles Investors and others should note that Zeta routinely announces material information to investors and the marketplace using SEC filings, press releases, public conference calls, webcasts and the Zeta investor relations website at https://investors.zetaglobal.com (“Investors Website”). We also intend to use the social media profiles listed below as a means of disclosing information about us to our customers, investors and the public. While not all of the information that the Company posts to the Investors Website or to social media profiles is of a material nature, some information could be deemed to be material. Accordingly, the Company encourages investors, the media, and others interested in Zeta to review the information that it shares on the Investors Website and to regularly follow our social media profile links located at the bottom of the page on www.zetaglobal.com. Users may automatically receive email alerts and other information about Zeta when enrolling an email address by visiting \"Investor Email Alerts\" in the \"Resources\" section of the Investors Website. Social Media Profiles: www.x.com/zetaglobal www.facebook.com/zetaglobal/ www.linkedin.com/company/zetaglobal www.instagram.com/zetaglobal/ www.youtube.com/@zetaglobal 4 The Following Definitions Apply to the Terms Used Throughout this Release, the Supplemental Earnings Presentation and Investor Conference Call • Direct Platform and Integrated Platform : When the Company generates revenues entirely through the Company platform, the Company considers it direct platform revenue. When the Company generates revenue by leveraging its platform’s integration with third parties, it is considered integrated platform revenue. • Cost of revenues (excluding depreciation and am",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1851003/000119312526333902/zeta-20260630.htm",
+   "published": "2026-08-05T08:00:40-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our condensed unaudited consolidated financial statements and related notes included elsewhere in this Quarterly Report on Form 10-Q. In addition to historical financial information, the following discussion contains forward-looking statements that are based upon current plans, expectations and beliefs that involve risks and uncertainties. Our actual results and the timing of events may differ materially from those anticipated and discussed in the forward-looking statements as a result of various factors, including those set forth in Part I, Item 1A “Risk Factors” in the Company’s Annual Report on Form 10-K for the year ended December 31, 2025 (“2025 Annual Report”) filed on February 25, 2026, and in Part II, Item 1A “Risk Factors” included in this Quarterly Report on Form 10-Q. Overview Zeta is a leading AI-powered omnichannel data-driven cloud platform that provides enterprises with consumer intelligence and marketing automation software. We empower our customers to target, connect and engage consumers through software that delivers personalized marketing across all addressable channels, including email, social media, web, chat, Connected TV (“CTV”) and video, among others. Our Generative AI (GenAI)-driven marketing solutions enable brands to personalize experiences at scale, measure impact with precision and optimize marketing spend to increase return on investment (“ROI”). Our Zeta Marketing Platform, or ZMP, is an AI-powered marketing platform with identity data at its core. Leveraging GenAI and machine learning, the ZMP processes billions of structured and unstructured data signals to predict consumer intent, optimize messaging and drive personalized messaging across all channels. The ZMP enables brands to connect with consumers through native integration of marketing channels and application programming interface (“API”) integration with third parties. The ZMP’s data-driven algorithms and processes learn and optimize each customer’s marketing program in real time, producing a ‘flywheel effect’ that enables our customers to test, learn and improve their marketing programs in real time. The ZMP enhances our customers’ ability to personalize consumer experiences at scale across multiple touchpoints. With AI-driven automation, brands can orchestrate highly effective programs through intuitive workflows and real-time intelligence. Our Zeta SuperGraph™ improves identity resolution while maintaining compliance with evolving privacy standards. Zeta Answers, our intelligence suite, synthesizes Zeta’s proprietary data and data generated by our customers to uncover consumer insights that are translated into marketing programs designed for highly targeted audiences across digital channels, including email, SMS, websites, applications, social media, CTV and chat. Macroeconomic trends Our business and the operations of our customers depend on the overall state of the economy, and we and they could be negatively impacted by slower economic growth and the potential for a recession. While core inflation has remained relatively steady for the first six months of the year, the economy continues to be impacted by the looming potential of increased inflation rates and faces further inflation risk. To date, the effects of tariffs and changes in global trade policies on the overall state of the economy and on our business have not materially impacted our costs or operations. However, the evolving tariffs and changes in global trade policies continue to cause overall economic uncertainty and may increase our costs and adversely impact our operations as well as customers’ businesses and operations. Additionally, other potentially challenging macroeconomic conditions, and the resulting impact on the economy and consumer spending, could negatively impact our and our customers’ businesses and operations. Factors Affecting Results of Operations For a discussion of the factors affecting our results of operations, please see “Factors Affecting Results of Operations” in Part II, Item 7 “Management’s Discussion and Analysis of Financial Condition and Results of Operations” and Part 1, Item 1A “Risk Factors” of our 2025 Annual Report, as well as in Part II, Item 1A “Risk Factors” included in this Quarterly Report on Form 10-Q. Key Performance Metrics We review key performance metrics, discussed below, to evaluate our business, track performance, identify trends, formulate plans and make strategic decisions. We believe that the presentation of such metrics provides investors with effective ways to measure and model the performance of companies such as ours, with recurring revenue streams. Super-scaled customers increased 17% to 197 as of June 30, 2026, compared to 168 as of June 30, 2025, primarily due to higher usage of our platform among our customers and new additions to our super-scaled customer base. Super-scaled customer Average Revenue Per User (“ARPU”) increased 17% to $1.8 million (across 197 customers) for the three months ended June 30, 2026, compared to $1.6 million (across 168 customers) for the three months ended June 30, 2025. 22 Description of Certain Components of Financial Data Revenues Our revenue primarily arises from use of our technology platform via subscription fees, volume-based utilization fees and fees for professional services. Our platform revenue is comprised of a mix of direct platform revenue and integrated platform revenue, which leverages API integrations with third parties. For the six months ended June 30, 2026 and 2025, we derived 73% and 74% of our revenues from direct platforms, respectively, and 27% and 26% of our revenues from integrated platforms, respectively. Revenues are recognized when control of these services is transferred to our customers, in an amount that reflects the consideration we expect to be entitled to in exchange for those services. Sales and other taxes collected by us are excluded from revenue. Our revenue recognition policies are discussed in more detail below under “Critical Accounting Estimates.” Cost of revenues (excluding depreciation and amortization) Cost of revenues excludes depreciation and amortization and consists primarily of media and marketing costs and certain employee-related costs. Media and marketing costs consist primarily of fees paid to third-party publishers, media owners or managers, and strategic partners that are directly related to revenue-generating events. We pay these third-party publishers, media owners or managers and strategic partners on revenue-share, a cost-per-lead, cost-per-click, or cost-per-thousand-impressions basis. Expenses related to “internet traffic” associated with the viewing of available impressions or queries per second and costs of providing support to our customers are also included in the cost of revenues (excluding depreciation and amortization). Employee-related costs included in cost of revenues (excluding depreciation and amortization) include salaries, bonuses, commissions, stock-based compensation and employee benefit costs primarily related to individuals directly associated with providing services to our customers. Our cost of revenues (excluding depreciation and amortization) are dependent on the revenue mix and therefore can slightly increase or decrease in the future as a percentage of revenue over the long term. General and administrative expenses General and administrative expenses primarily consist of technology and infrastructure costs, employee-related costs, including salaries, bonuses, stock-based compensation and employee benefits costs associated with our executives, finance, legal, human resources and other administrative personnel, as well as accounting and legal professional services fees and platform and related infrastructure costs. We expect general and administrative expenses to increase in absolute dollars in future periods. We expect that general and administrative expenses to decrease as a percentage of revenue over the long term. Selling and marketing expenses Selling and marketing expenses primarily consist of employee-related costs, including salaries, bonuses, employee benefits costs, stock-based compensation and commission costs for our sales and marketing personnel. Selling and marketing expenses also include costs for market development programs, advertising, promotional and other marketing activities. We intend to continue to invest in marketing initiatives and as a result we expect selling and marketing expenses to increase in absolute dollars in future periods. Selling and marketing expenses as a percentage of revenue may fluctuate from period to period based on revenue levels and the timing of our investments in these functions over the long term. Research and development expenses Research and development expenses primarily consist of employee-related costs, including salaries, bonuses and employee benefit costs, stock-based compensation associated with engineering and technology services associated with the ongoing research and maintenance of internal use software. We expect to continue to invest in research and development in order to develop our technology platform to drive incremental value and growth, and as a result we expect research and development expenses to increase in absolute dollars in future periods. We also expect that research and development expenses to fluctuate from period to period as a percentage of revenue over the long term. Depreciation and amortization Depreciation and amortization relate to property and equipment, website and software development costs as well as acquisition-related and other acquired intangible assets. We record depreciation and amortization using straight-line method over the estimated useful life of the assets. 23 Acquisition-related expenses Acquisition-related expenses primarily consist of legal and professional services fees and employee related expenses that are associated with business combinations. We expect that acquisition-related expenses will be correlated with future acquisitions (if any), which could be greater than or less than our historic levels. Restructuring expenses Restructuring expenses primarily consist of employee termination costs due to internal restructuring. We expect that restructuring expenses will be correlated with future restructuring activities (if any), which could be greater than or less than our historic levels. Interest expenses, net Interest expenses, net primarily consists of interest payable on our long-term borrowings, net of interest earned on our short-term investments in money market accounts and other short-term deposits. We anticipate interest expense to be impacted by changes in variable interest rates. Other expenses, net Other expenses, net primarily consist of changes in fair value of acquisition-related liabilities, gains and losses on assets and foreign exchange gains and losses. We expect that the magnitude of other income and expenses will depend on external factors such as foreign exchange rates and the remeasurement impact of acquisition-related liabilities, which depends on the performance of our acquisitions and could be greater than or less than our historic levels. Income tax (benefit) / provision We account for income taxes in accordance with ASC 740, Income Taxes , which requires an asset and liability approach for the financial accounting and reporting of income taxes. Under this method, deferred tax assets and liabilities are determined based on temporary differences between the financial statement and tax basis of assets and liabilities using enacted tax rates in effect for the year in which the differences are expected to reverse. The effect on deferred tax assets and liabilities of a change in tax laws is recognized in",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zeta-rba-ese-business-services-153700427.html?.tsrc=rss",
+   "published": "2026-11-06T10:37:00-05:00",
+   "text": "ZETA, RBA & ESE: Can These Business Services Stocks Beat Q3 Earnings? - Business Services sector earnings are projected to rise 12.7% in Q3 2026. ZETA, RBA and ESE face different prospects ahead of their upcoming earnings releases.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zeta-global-holdings-zeta-below-032052642.html?.tsrc=rss",
+   "published": "2026-11-05T22:20:52-05:00",
+   "text": "Is Zeta Global Holdings (ZETA) Below Fair Value on Cash Flow? - Zeta Global Holdings has had a powerful multiyear share price run, yet the recent pullback raises a simple question for you as an investor. Is the current valuation still grounded in the cash flows the business can generate, or has enthusiasm moved ahead of the numbers? Over the past 3 years the sto",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zeta-gears-report-q3-earnings-135300884.html?.tsrc=rss",
+   "published": "2026-11-05T08:53:00-05:00",
+   "text": "ZETA Gears Up to Report Q3 Earnings: What's in the Cards? - Zeta Global is set to report Q3 2026 earnings, with strong growth expected on rising AI adoption, strategic partnerships & enterprise expansion.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/zeta-global-participate-upcoming-investor-210500010.html?.tsrc=rss",
+   "published": "2026-11-03T16:05:00-05:00",
+   "text": "Zeta Global to Participate in Upcoming Investor Conferences - NEW YORK, November 03, 2026--Zeta Global to Participate in Upcoming Investor Conferences",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/media-advertising/articles/zetadisplay-strengthens-european-presence-expansion-070000525.html?.tsrc=rss",
+   "published": "2026-11-03T02:00:00-05:00",
+   "text": "ZetaDisplay strengthens European presence with expansion into Iberia - MALMÖ, ZETADISPLAY AB (PUBL) – 3 November 2026 ZetaDisplay is strengthening its European footprint with an expanded commercial presence in Iberia. The appointment of industry expert Álvaro Morales as Country Manager for Spain and Portugal will accelerate the company's growth ambitions and strengthen",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zeta-global-commerce-stocks-trade-093129865.html?.tsrc=rss",
+   "published": "2026-10-31T05:31:29-04:00",
+   "text": "Zeta Global and Commerce stocks trade down, what you need to know - A number of stocks fell in the afternoon session after underwhelming earnings reports from tech giants Amazon and Intel (after mediocre earnings reports from Alphabet and ServiceNow the previous day) sparked widespread investor anxiety regarding aggressive artificial intelligence spending and sustai",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/1-small-cap-stock-competitive-152329552.html?.tsrc=rss",
+   "published": "2026-10-30T11:23:29-04:00",
+   "text": "1 small-cap stock with competitive advantages and 2 facing challenges - Investors looking for hidden gems should keep an eye on small-cap stocks because they’re frequently overlooked by Wall Street. Many opportunities exist in this part of the market, but it is also a high-risk, high-reward environment due to the lack of reliable analyst price targets.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/3-ai-stocks-retail-investors-210919323.html?.tsrc=rss",
+   "published": "2026-10-27T17:09:19-04:00",
+   "text": "3 AI Stocks Retail Investors Are Watching After Anthropic’s Nasdaq Filing - Anthropic’s plan to list on Nasdaq with a potential US$1.5 to US$2 trillion valuation, rapid revenue expansion to US$16.3b and a hefty US$80.7b first half loss has thrown a spotlight on how high the bar now sits for AI leaders. Investors are watching closely, not wanting to miss the next major move.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/zeta-global-announce-third-quarter-200500178.html?.tsrc=rss",
+   "published": "2026-10-26T16:05:00-04:00",
+   "text": "Zeta Global to Announce Third Quarter 2026 Results on November 9, 2026 - NEW YORK, October 26, 2026--Zeta Global to Announce Third Quarter 2026 Results on November 9, 2026",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/media-advertising/articles/advertising-software-stocks-q2-teardown-014439675.html?.tsrc=rss",
+   "published": "2026-10-23T21:44:39-04:00",
+   "text": "Advertising software stocks Q2 teardown: Zeta Global (NYSE:ZETA) vs the rest - As the Q2 earnings season comes to a close, it’s time to take stock of this quarter’s best and worst performers in the advertising software industry, including Zeta Global (NYSE:ZETA) and its peers.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/goldman-sachs-sees-shift-stock-174800209.html?.tsrc=rss",
+   "published": "2026-10-22T13:48:00-04:00",
+   "text": "Goldman Sachs Sees a Shift in the Stock Market — and Names 2 Stocks to Buy Now - Long-term stock market performance depends on more than economic growth, interest rates, and corporate earnings. Broader trends that develop over many years can also create investment opportunities, particularly for companies positioned to benefit from lasting changes in consumer behavior and busine",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.thestreet.com/investing/goldman-sees-41-upside-in-zeta-global-overlooked-ai-stock?.tsrc=rss",
+   "published": "2026-10-20T18:07:00-04:00",
+   "text": "Goldman sees 41% upside in overlooked AI stock - Zeta Global’s growth and Palantir partnership have Goldman expecting another leg higher.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/media-advertising/articles/meta-earnings-puts-adobe-stock-201147047.html?.tsrc=rss",
+   "published": "2026-10-18T16:11:47-04:00",
+   "text": "Meta Earnings Puts Adobe Stock And AI Ad Software Names In Focus - AI hype is colliding with earnings season, and Meta’s upcoming report has suddenly become a live stress test for the whole trade. After the sharp pullback in Nvidia and the Nasdaq 100, investors are asking which digital ad and social platforms look ready to handle heavier AI spending and tougher exp",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/goldman-upgrades-zeta-buy-cuts-134635046.html?.tsrc=rss",
+   "published": "2026-10-16T09:46:35-04:00",
+   "text": "Goldman upgrades Zeta to Buy, cuts Klaviyo on visibility gap - Investing.com -- Goldman Sachs upgraded Zeta Global to Buy from Neutral and downgraded Klaviyo to Neutral from Buy on Friday, telling investors in a note that it sees greater visibility into upside to 2027 estimates for Zeta.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/1-software-stock-worth-investigating-085847731.html?.tsrc=rss",
+   "published": "2026-10-14T04:58:47-04:00",
+   "text": "1 Software Stock Worth Investigating and 2 We Turn Down - Software is rapidly reducing operating expenses for businesses. Companies bringing it to life have been rewarded with explosive earnings growth, and the upward trend shows no signs of stopping as the industry has posted a 56.3% gain over the past six months, beating the S&P 500 by 44.2 percentage po",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/hackerone-report-highlights-challenges-exposure-125500999.html?.tsrc=rss",
+   "published": "2026-10-09T08:55:00-04:00",
+   "text": "HackerOne Report Highlights Challenges of 'Exposure Debt': NYSE Content Update - The New York Stock Exchange (NYSE) provides a daily pre-market update directly from the NYSE Trading Floor. Access today's NYSE Pre-market update for market insights before trading begins.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.marketbeat.com/instant-alerts/event-zeta-global-unveils-athenaos-to-connect-ai-data-and-marketing-workflows-2026-10-08/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+   "published": "2026-10-08T19:02:14-04:00",
+   "text": "Zeta Global Unveils AthenaOS to Connect AI, Data and Marketing Workflows - Zeta Global (NYSE:ZETA) unveiled AthenaOS, an AI-focused operating system intended to bring together customer data, intelligence, workflows and business applications across marketing and other enterprise functions. At the company’s Zeta Live event, Chief Technology Officer and Head of Product Chris",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:30-05:00",
+    "sha256": "06a5e277e6a33d3d9f0292afc0947c09a1da594d4f737babc2c5fff27c40d442"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 47525
+}
