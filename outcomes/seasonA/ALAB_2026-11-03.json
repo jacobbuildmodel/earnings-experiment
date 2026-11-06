@@ -3,24 +3,77 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-04T20:40:57-05:00",
+ "graded_et": "2026-11-05T20:42:56-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "ALAB",
  "report_date": "2026-11-03",
  "session": "AMC",
  "entry_session": "2026-11-03",
  "cluster": "semis",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-03T16:09:51-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 236.195,
+   "entry_session": "2026-11-03",
+   "exit": 217.97,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": -0.07716082050847817,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "SOXX",
+    "beta": 1.479932,
+    "bench_return": -0.01658762687495985,
+    "flags": [
+     "bench_weight_missing",
+     "price_dispute"
+    ]
+   },
+   "excess_return": -0.05261226069216508,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.010902008933296625,
+    "print_gap": -0.06698912764318121,
+    "entry_close": 233.62,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 236.195,
+   "entry_session": "2026-11-03",
+   "exit": 223.27,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": -0.054721734160333546,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "SOXX",
+    "beta": 1.479932,
+    "bench_return": -0.03347567648762895,
+    "flags": [
+     "bench_weight_missing",
+     "price_dispute"
+    ]
+   },
+   "excess_return": -0.005180009304643865,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +92,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": false,
+  "T1": true,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }

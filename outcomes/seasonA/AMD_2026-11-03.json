@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-04T20:40:59-05:00",
+ "graded_et": "2026-11-05T20:42:58-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "AMD",
  "report_date": "2026-11-03",
@@ -13,14 +13,65 @@
  "entry_session": "2026-11-03",
  "cluster": "semis",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-03T16:16:27-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 479.99,
+   "entry_session": "2026-11-03",
+   "exit": 485.25,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": 0.010958561636700725,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "SOXX",
+    "beta": 1.205311,
+    "bench_return": -0.01658762687495985,
+    "flags": [
+     "bench_weight_missing",
+     "price_dispute"
+    ]
+   },
+   "excess_return": 0.030951810772985457,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.008146003041729966,
+    "print_gap": 0.002789832610043508,
+    "entry_close": 483.9,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 479.99,
+   "entry_session": "2026-11-03",
+   "exit": 488.78,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": 0.018312881518364854,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "SOXX",
+    "beta": 1.205311,
+    "bench_return": -0.03347567648762895,
+    "flags": [
+     "bench_weight_missing",
+     "price_dispute"
+    ]
+   },
+   "excess_return": 0.058661482621345386,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +90,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": true,
+  "T1": true,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }
