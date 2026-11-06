@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-04T20:41:00-05:00",
+ "graded_et": "2026-11-05T20:42:59-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "ANET",
  "report_date": "2026-11-03",
@@ -13,14 +13,65 @@
  "entry_session": "2026-11-03",
  "cluster": "hardware_networking",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-03T16:10:17-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 165.6,
+   "entry_session": "2026-11-03",
+   "exit": 179.0,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": 0.0809178743961354,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 1.28941,
+    "bench_return": 0.008447488584474971,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": 0.07002559814042753,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.026026570048309106,
+    "print_gap": 0.05349891118827621,
+    "entry_close": 169.91,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 165.6,
+   "entry_session": "2026-11-03",
+   "exit": 178.48,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": 0.07777777777777772,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 1.28941,
+    "bench_return": 0.007420091324201072,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": 0.06821023782343962,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +90,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": true,
+  "T1": true,
+  "T2": true,
+  "T2G": true,
+  "T2E": true
  }
 }
