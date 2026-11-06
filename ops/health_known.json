@@ -1,10 +1,10 @@
 {
   "about": "Alerts a person has looked at and acknowledged (pipeline/health.py, 'known'). A RED or AMBER line that reads exactly as one under 'lines', and a failed paper-options run whose own job log shows it stopped only on alerts under 'paper_options_alerts', are reported under KNOWN and do not count in the status. Any change to the line, a new alert, an unreadable log or a date past 'until' alarms as before. Every entry needs why, source, acknowledged and until. Remove an entry when its cause is gone.",
   "lines": {
-    "paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F']": {
-      "why": "the DPZ trade's flag held_past_expiry is set once and never cleared (pipeline/paper_options.py, hash-locked); no other alert is on the ledger",
+    "paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']": {
+      "why": "DPZ's held_past_expiry flag (set once, never cleared) and 15 gates the 2026-10-28 fill halt blocked, never opened (paper_options_alerts below); the gates the D019 stop blocks are not in this line (health.py reads them as information) (the 15: STATE.md Log 2026-11-02 07:40 ET; the stop: registry/D019_reframe_v1.md §1)",
       "source": "ops/incidents/2026-10-13_DPZ_exit.md",
-      "acknowledged": "2026-10-28, laptop chat (the new-RED marker owed in STATE.md NOW, 2026-10-27)",
+      "acknowledged": "2026-10-28, laptop chat (the new-RED marker owed in STATE.md NOW, 2026-10-27); the 15 gates 2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
       "until": "2026-11-06"
     }
   },
@@ -14,6 +14,96 @@
       "source": "ops/incidents/2026-10-13_DPZ_exit.md",
       "acknowledged": "2026-10-28, laptop chat (the new-RED marker owed in STATE.md NOW, 2026-10-27)",
       "until": "2026-11-06"
+    },
+    "seasonA-CIFR-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-BWXT-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-DOCN-2026-11-03-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-BETA-2026-11-03-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-DT-2026-11-03-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-IPGP-2026-11-03-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-LSCC-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-MTCH-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-ON-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-PAY-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-PLTR-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-SHOP-2026-11-03-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-VRTX-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-VVX-2026-11-02-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
+    },
+    "seasonA-YUMC-2026-11-03-F": {
+      "why": "blocked by the D011 §5 fill halt of 2026-10-28 (COLM), cleared 2026-11-02 07:14 ET; the trade never opened, and paper_options.py (hash-locked) lists open_failed 'halt' as an alert on every run for good. D019 stops paper options, so the record cannot change (STATE.md Log 2026-11-02 07:40 ET: the halt and its clearing, 199b8c4)",
+      "source": "registry/D019_reframe_v1.md",
+      "acknowledged": "2026-11-05, Jacob (\"Yes, acknowledge\") in the D019 owed-items chat",
+      "until": "2026-12-07"
     }
   }
 }
