@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-04T20:41:16-05:00",
+ "graded_et": "2026-11-05T20:43:23-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "YOU",
  "report_date": "2026-11-04",
@@ -13,14 +13,69 @@
  "entry_session": "2026-11-03",
  "cluster": "software_internet",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-04T06:03:02-05:00",
+   "window": "BMO"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 47.22,
+   "entry_session": "2026-11-03",
+   "exit": 51.4,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": 0.0885218127911902,
+   "flags": [
+    "single_source"
+   ],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.500287,
+    "bench_return": 0.016732673267326748,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": 0.0801506738802991,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.011435832274459878,
+    "print_gap": 0.07621440536013391,
+    "entry_close": 47.76,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 47.22,
+   "entry_session": "2026-11-03",
+   "exit": 59.08,
+   "exit_session": "2026-11-04",
+   "dividends": 0,
+   "raw_return": 0.251164760694621,
+   "flags": [
+    "single_source"
+   ],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.500287,
+    "bench_return": 0.02534653465346537,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": 0.23848421891244279,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +94,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": true,
+  "T1": true,
+  "T2": true,
+  "T2G": true,
+  "T2E": true
  }
 }

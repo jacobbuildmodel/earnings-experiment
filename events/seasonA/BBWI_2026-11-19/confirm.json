@@ -1,0 +1,23 @@
+{
+ "session": "BMO",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/bath-body-works-report-third-quarter-results-november-19-2026-2026-11-05",
+  "published_et": "2026-11-05T08:30-05:00",
+  "quote": "Bath & Body Works, Inc. (NYSE: BBWI) announced today that it plans to report its third quarter 2026 financial results before market open on Thursday, November 19, 2026.",
+  "title": "Bath & Body Works to Report Third Quarter Results on November 19, 2026",
+  "retrieved_et": "2026-11-06T07:44:18-05:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "error": "YFRateLimitError: Too Many Requests. Rate limited. Try after a while."
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ]
+}
