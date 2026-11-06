@@ -1,0 +1,676 @@
+{
+ "event": "ACHR_2026-11-09",
+ "season": "seasonA",
+ "built_et": "2026-11-06T14:31:17-05:00",
+ "cutoff_et": "2026-11-06T14:31:00.210025-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/ACHR_2026-11-09/gate.json",
+   "published": "2026-11-06T14:31:00.210025-05:00",
+   "data": {
+    "ticker": "ACHR",
+    "report_date": "2026-11-09",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-09"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-10"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-10"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-17"
+     },
+     "reaction_day": "2026-11-10"
+    },
+    "snapshot_session": "2026-11-06",
+    "captured_et": "2026-11-06T14:31:00.210025-05:00",
+    "options": {
+     "spot": 4.324999809265137,
+     "expiry": "2026-11-13",
+     "strike": 4.5,
+     "call": {
+      "bid": 0.21,
+      "ask": 0.22,
+      "openInterest": 5962.0,
+      "lastPrice": 0.22,
+      "impliedVolatility": 1.1328168359375002,
+      "lastTradeDate": "2026-11-06T19:14:15+00:00"
+     },
+     "put": {
+      "bid": 0.38,
+      "ask": 0.41,
+      "openInterest": 2377.0,
+      "lastPrice": 0.42,
+      "impliedVolatility": 1.1484417578125,
+      "lastTradeDate": "2026-11-06T19:11:32+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 3,
+     "implied_move": 0.1410404686477074,
+     "rel_spread": {
+      "call": 0.046511627906976785,
+      "put": 0.07594936708860751
+     },
+     "oi_atm": 8339.0,
+     "oi_sum": 8339.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/ACHR_2026-11-09/factors.json",
+   "published": "2026-11-06T14:31:00.210025-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.5480668811719771,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.08368644035691264,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.02976190611348417,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.11757104319405509,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.5809382925564994,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.5787124987128431,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.5199778358050187,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-10",
+       "session": "AMC",
+       "raw_return_A": -0.028081097133144883,
+       "eps_est": -0.25,
+       "eps_rep": -0.22,
+       "surprise_pct": 12.61,
+       "reaction_volume_ratio": 2.702558370870449
+      },
+      {
+       "date": "2026-05-11",
+       "session": "AMC",
+       "raw_return_A": 0.003139714487570666,
+       "eps_est": -0.24,
+       "eps_rep": -0.19,
+       "surprise_pct": 23.48,
+       "reaction_volume_ratio": 1.7751809125059475
+      },
+      {
+       "date": "2026-03-02",
+       "session": "AMC",
+       "raw_return_A": 0.07153288390908452,
+       "eps_est": -0.17,
+       "eps_rep": -0.14,
+       "surprise_pct": 18.08,
+       "reaction_volume_ratio": 1.3302741916859377
+      },
+      {
+       "date": "2025-11-06",
+       "session": "AMC",
+       "raw_return_A": -0.17578948171515218,
+       "eps_est": -0.2,
+       "eps_rep": -0.12,
+       "surprise_pct": 42.3,
+       "reaction_volume_ratio": 2.5513358864392464
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 2.0898373403753947,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 12.61,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 4,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.24503,
+      "7daysAgo": -0.24503,
+      "30daysAgo": -0.24503,
+      "60daysAgo": -0.24503,
+      "90daysAgo": -0.22207,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.10339082271355883,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.24503,
+      "low": -0.26,
+      "high": -0.23006,
+      "yearAgoEps": -0.1155,
+      "numberOfAnalysts": 2,
+      "growth": -1.1215,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.12218911969962871,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.1715,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": -5.357098,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 482.66174,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": null,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 3330365952,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.77778,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.1410404686477074,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.015624921874999753,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.08593707031249975,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.12033454000748971,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.32618504907661533,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 8975.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.963425911994031,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.10714126570822437,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 254,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Monday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unknown",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": null,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -55.84,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.547554866668952,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.030928567746869362,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.1188371875823222,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.5821050290407206,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 2.3703795557235283,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 0.10343976531760421,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 3334125888.3001328,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 4,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.42586822020503096,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000056/archerlettertoshareholde.htm",
+   "published": "2026-08-10T16:07:51-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 archerlettertoshareholde.htm EX-99.1 archerlettertoshareholde UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 1 Q2 2026 BUILDING THE PHYSICAL AI FUTURE OF AEROSPACE & DEFENSE UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 2 Signed deal to acquire Boeing’s Wisk Aero, Insitu and SkyGrid in a highly strategic transaction with Boeing to invest in Archer and collaborate* Unveiled Halo/Thunder, a jointly-developed autonomous, hybrid, VTOL platform designed to serve both defense and commercial applications with Anduril Launched ACES: America’s Consortium for Electric Skyways to bring interoperable charging to 250+ sites across US by 2030 with BETA Technologies & Macquarie Capital Completed piloted city-to-city Midnight flights as we prepare to begin operations later this year under the White House’s eIPP Strong liquidity with Q2 ending with ~$1.6B of cash and cash equivalents** *Transaction is subject to agreed-upon closing conditions, including regulatory approvals. **Includes short-term investments. Announced ZEE, Archer’s AI foundation model purpose-built for aviation and its frontier breakthrough for aviation safety UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 3 Dear Shareholders, Today, we announced that we entered into agreements to acquire Wisk Aero, Insitu, and SkyGrid, three highly innovative Boeing-owned companies, in exchange for Boeing taking a strategic equity stake in Archer1. We anticipate closing the transaction by year end. This transaction will help accelerate our evolution into becoming a diversified aerospace and defense platform. After closing, our product portfolio will span piloted air taxis, unmanned aircraft systems (UAS) in Groups 2 through 5, purpose-built AI for aviation, and the vertical technology stack for autonomous flight. Let me walk you through the transaction rationale in more detail. Archer got its start by standing up a world-class team to find the most efficient path to commercializing the air taxi industry. That will always be core to our mission, and Midnight is well on its way to achieving that. We went from an unknown in 2018, to today leading the air taxi industry in certification progress with the FAA. As I've talked about over the last 18 months, defense is becoming an increasingly large near-term market for autonomous VTOL. Last month, with our partner Anduril, we revealed our Group 5 Halo/Thunder platform, a clean-sheet, autonomous, hybrid-electric VTOL aircraft for both commercial and defense. Thunder, Anduril’s missionized defense version of Halo, aims to serve as a loyal wingman for reconnaissance attack helicopters, like the Apache, targeting multi-decade programs of record across allied forces. It's become increasingly clear that the combined market for this Group 5 platform is massive. And in addition to the revenue, deploying nascent tech early in defense can deliver value across Archer’s entire business, with benefits like autonomy and lower costs flowing back into our air taxi products. Over the past year, we have been assembling a focused team for Halo/Thunder to build the autonomy, flight controls, sensor integration, and flight test capabilities. Wisk will help us round out this team. We are acquiring Wisk to accelerate the Halo/Thunder platform, which I believe will be a generational vertical lift program. Wisk has developed some of the most advanced autonomy, flight controls, and sensor technologies in the industry. We plan to deploy that technology on Halo first, so that we can harden it and then bring it back to the air taxi platform when the FAA is ready to certify autonomy for passenger air taxis. I am confident that our planned acquisition of Wisk can accelerate Halo/Thunder R&D at a fraction of the time it would have taken us to achieve the same results organically. 1 Transaction is subject to agreed-upon closing conditions, including regulatory approvals. UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 4 2 Based on Insitu’s current financials and financial estimates. As part of this transaction, we are also set to acquire Insitu, one of the most trusted and reputable intelligence, surveillance, and reconnaissance (ISR) drone manufacturers, operating profitably with over $200M in annual revenue across 35 countries2. Insitu, which has manufactured over 4,000 Group 2 and Group 3 UAS to date, will give Archer an immediate, sizeable revenue base to grow in the near term. Its fleet has flown nearly 2 million autonomous flight hours, building one of the largest datasets of its kind, key to our autonomy development. This transaction with Boeing would not have been possible without the relationship we have cultivated with Boeing over the last couple of years. Boeing is synonymous with American aviation, and our deal structure demonstrates how leaned in they are on our future together: taking all stock with a lockup, planned collaboration with us across many fronts, and commitment to future equity investment in Archer. A core value proposition for us both is the opportunity to jointly drive innovation in aerospace, defense, and autonomy and deliver long-term value for shareholders. I want to thank Kelly Ortberg and the Boeing leadership for their trust and belief in Archer as the right long-term partner. Last quarter, I called Archer a “dual-threat” company because we are commercializing both an air taxi and our dual-use autonomous VTOL aircraft platform. Over the last couple months, we've shared more on our strategy for purpose-built AI for aerospace and defense. We introduced ZEE, the world's leading aviation-specific foundation model, a unified intelligence platform built on ADS-B, ATC communication, maps and charts, aircraft movements, terrain, and weather data, designed to run on-device across environments from air taxis and UAS to commercial airlines and air traffic management. And just last week, we announced that the model delivered a frontier breakthrough in aviation safety: highly accurate real-time airport surface trajectory prediction. To safely adapt this technology into the aviation ecosystem, our teams are working with government agencies and customers to rigorously validate ZEE in the real world. In fact, we've already begun testing ZEE at Hawthorne Airport, our future LA air taxi hub. SkyGrid is highly complementary to ZEE as it has been developing next-generation airspace management solutions since 2018. That tech is in use today, and I believe SkyGrid plus ZEE can become a ”must have” air traffic management product that helps modernize airspaces around the world. I see a clear path to significant AI revenue, and the team is heads-down building toward that. UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 5 I am confident that the other side of this transaction with Boeing is a stronger Archer with a groundbreaking end-to-end physical AI platform for aerospace and defense. I’ve tasked my team with integrating these companies to do so in a thoughtful and synergistic way that will not structurally increase our overall cash burn. Through it all, our commercial Midnight program continues to accelerate and remain a top priority at Archer. Recently, we flew our first intercity flights in California, and over the next few months, we plan to begin flying in the Los Angeles area based out of Hawthorne Airport, and subsequently commence operations under the White House’s eIPP later this year in Texas. Beyond flight test, our team has also been hard at work on the infrastructure front. This quarter we jointly launched an industry-first consortium with BETA and Macquarie to scale charging infrastructure across the U.S and unify a single approach for OEMs and vertiport developers. I’m proud to do that arm in arm with Kyle and the team at BETA. I started Archer to change the way the world moves. Nearly a decade in, I've never been more confident, or more all in. Adam Goldstein Founder & Chief Executive Officer UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 6 BUILDING THE PHYSICAL AI FUTURE OF AEROSPACE & DEFENSE UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 7 6 generations of aircraft over nearly 20 years End-to-end flight autonomy stack – designed to achieve the highest commercial aviation safety standards 1,700+ hours of autonomous test flights – across six aircraft generations since its 2010 founding by Larry Page Critical enabling tech – multi-sensor detect and avoid suite, precision landing technology, and in-house simulation solution with advanced software verification and validation capabilities Synergies from 12-tilt-6 aircraft design – with focus on vertical innovation in avionics, flight controls, and structures Leading IP Portfolio – 700+ patent assets in key areas AUTONOMY TECHNOLOGY & TOP TALENT TO ACCELERATE OUR AIRCRAFT PROGRAMS UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 8 Pioneer in the design, development, production, and operation of high-performance, cost-effective, tactical Group 2 / 3 uncrewed aircraft systems (UAS) $200M+ annualized revenue and profitable with customers across 35 countries Nearly 2M uncrewed flight hours across 175,000+ flights in active combat zones, shipboard maritime missions, and harsh environment operations ~4,100 aircraft produced; 500+ active patents Product portfolio spans two leading UAS platforms: ScanEagle: Long-endurance Group 2 tactical ISR, small-footprint workhorse with 18+ hours of flight time and up to 17 lbs of AI-enabled payloads. Integrator: Expeditionary multi-payload Group 3 ISR, built for U.S. Navy and Marine Corps; can fly up to 27.5 hours with 2,000 nmi range and up to 50lbs of payload across 10 bays. ONE OF THE MOST TRUSTED & REPUTABLE ISR DRONE COMPANIES IN THE INDUSTRY UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 9 AI solution enabling safe integration of autonomous aircraft into shared airspace via next generation technology Fuses critical datasets to form a high-fidelity digital model of the airspace for air traffic controllers Delivers advanced automation and decision support tools: flight plan validation plus automated traffic surveillance, synchronization, deconfliction, and rerouting High assurance technology backed by robust safety cases, cybersecurity controls, and rigorous engineering Spatial pathfinding algorithms have calculated collision-free trajectories for 10,000+ simultaneous aircraft in large metropolitan area simulation NEXT-GENERATION AIRSPACE MANAGEMENT SOLUTION HIGHLY COMPLEMENTARY TO ARCHER’S ZEE UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 10 OTHER HIGHLIGHTS FROM THE QUARTER Unveiled Halo/Thunder: Archer’s Dual-Use Autonomous, Hybrid VTOL Platform With Anduril In July, Archer and Anduril unveiled their jointly-developed autonomous, hybrid VTOL aircraft platform at the Farnborough International Airshow, introduced as Thunder for defense missions and Halo for commercial applications. The two variants share the same airframe, hybrid powertrain and core systems, with configurable payload depending on mission requirements. Announced ZEE, Archer’s AI Foundation Model Purpose-Built For Aviation Archer announced ZEE, its AI foundation model purpose-built for aviation, delivering a unified aviation intelligence platform built on ADS-B, ATC communication, maps and charts, aircraft state, terrain and weather data. The foundation model is designed to work both offline, on-device and as a server-hosted solution, critical for use in a wide range of aviation environments from air taxis and UASs to commercial airlines and air traffic management. Completed City-to-City Midnight Flights In Preparation for eIPP Operations In July, Archer's Midnight aircraft completed a piloted round trip journey between Salinas Municipal Airport and Monterey Regional Airport, with each leg completed in approximately nine minutes compared to over 35 minutes by car. The flight was executed in close coordination with the FAA and marks a critical step toward Archer launching Midnight operations later this year under the eIPP. UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 11 UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 12 Archer Halo Anduril Thunder UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 13 Archer Halo Anduril Thunder unveil presentation at Farnborough International Airshow Archer Halo Archer Halo UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 14 Farnborough International Airshow, Archer Chalet UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 15 Farnborough International Airshow UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 16 Recent Midnight flight test UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 17 Archer Zee predicting real-time aircraft trajectories Archer x BETA | ACES Infrastructure Consortium UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 18 Archer’s ZEE showcasing real-time aircraft trajectories prediction capabilities UNLOCK THE SKIES Q2 2026 SHAREHOLDER LETTER | 19 Forward-Looking Statements & Disclaimers This shareholder letter contains forward-looking statements under the \"safe harbor\" provisions of the Private Securities Litigation Reform Act of 1995. These statements include those regarding the design, safety, target specifications, and use cases of its aircraft and technologies; pace of design and regulatory progress; the timing, phasing, geographic scope and planned operations under the eIPP; its ability to timely develop, certify, test, manufacture and commercialize its aircraft and technologies, or its ability to do so at all; infrastructure development; the expected timing and structure of the proposed acquisition and transactions with Boeing (the “Transactions”); the ability of the parties to complete the Transactions; the expected benefits of the Transactions, including future financial and operating results and strategic benefits; development of its hybrid aircraft and defense programs; timing and ability to win a defense program award; expansion of its planned business lines and development of new business opportunities; and plans and anticipated benefits of acquisitions, strategic investment",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000059/achr-20260630.htm",
+   "published": "2026-08-10T17:04:05-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis of our financial condition and results of operations should be read in conjunction with our condensed consolidated financial statements and related accompanying notes included elsewhere in this Quarterly Report and the audited consolidated financial statements as of and for the year ended December 31, 2025 set forth in our Annual Report. The following discussion includes forward-looking statements, which are based on our current expectations and beliefs concerning future developments and the potential effects of such developments on us. There can be no assurance that future developments affecting us will be those that we have anticipated. See the section titled “Special Note Regarding Forward-Looking Statements” in this Quarterly Report. Our actual results could differ materially from such forward-looking statements. Factors that could cause or contribute to those differences include, but are not limited to, those set forth in Part I, Item 1A, “Risk Factors” in our Annual Report. Overview Headquartered in Silicon Valley, California, Archer is building an end-to-end advanced air mobility platform that delivers air taxis, unmanned aircraft systems (“UAS”), aviation-related physical artificial intelligence (“AI”) solutions, and other technologies to customers worldwide across the commercial aerospace and defense sectors. Air Taxis Midnight is our electric vertical takeoff and landing (eVTOL) aircraft purpose-built for air taxi operations. To prepare for commercial operations, we are working with aviation authorities, governments, and strategic partners in key U.S. and international markets to certify Midnight and build out air taxi networks. These networks will connect major population and business centers with key transportation hubs in select metropolitan areas, through partnerships with airline operators to integrate eVTOL flights into passenger journeys and collaborations with infrastructure partners to develop vertiports. • In the U.S., we were recently selected as a partner in multiple winning applications under the White House-backed eVTOL Integration Pilot Program (eIPP). Through the program, we have the opportunity to begin early operations this year in several key states, such as Florida, Texas and New York. The eIPP paves the way for us to bring our technology directly to U.S. communities in parallel with our continued work to receive FAA type certification of Midnight. As part of our broader commercialization strategy in the U.S., we acquired control of the Hawthorne Airport located near Los Angeles International Airport, SoFi Stadium and Downtown Los Angeles. We plan for Hawthorne to serve as the operational hub for our Los Angeles network and an innovation hub for developing and commercializing next-generation AI-powered aviation technologies. • Outside the U.S., through our Launch Edition program, we are offering aircraft, technologies, and services to governments and customers to support the commercialization of Midnight in select international markets, with the UAE leading the way. In the UAE, we have been working closely with the country’s federal aviation regulator, the GCAA, to establish the optimal regulatory pathway for commercial operations. Following hot weather flight testing last year, we are on track to deliver additional Midnight aircraft this year, in preparation for initial passenger operations and are working with strategic partners to build out a vertiport network across Abu Dhabi and the UAE. Our commercial readiness progress is driving growing global demand across Europe, Middle East, Africa and Asia-Pacific for this new category of transportation. UAS We are also advancing the development of our hybrid-electric, autonomous vertical take-off and landing (“VTOL”) aircraft platform, called Halo, intended for dual use by both commercial and defense customers. As part of the defense opportunities with this aircraft, we are working closely with our strategic partner, Anduril Industries Inc. (“Anduril”), to ensure this platform meets their next generation vertical lift needs, which are based on what they believe is necessary to win programs of record with allied nations. For commercial customers, Halo is expected to be used primarily for cargo and rescue operations. AI We are also developing physical AI and autonomy technologies to support the advancement of our aircraft and the modernization of U.S. and international airspace and air traffic control systems . We recently announced our aviation-specific AI foundation model, ZEE, that is purpose-built to turn disparate data from ADS-B, ATC communication, maps and charts, aircraft state, terrain and weather into a unified intelligence layer that can help operators, airlines and pilots make better, more informed decisions with the goal of increasing safety and efficiency across the entire aviation system, from air taxis and UAS to commercial airlines and air traffic management. Our Planned Lines of Business 32 Table of Contents By maintaining an innovative and disciplined approach to new product and service development, manufacturing, and commercialization we believe that we can deliver advanced technologies and solutions to the aerospace and defense sectors that can service a broad range of industries and use cases. We intend to primarily operate in the following areas: • Commercial : This is planned to primarily consist of the sale of our piloted, commercial aircraft, physical AI solutions and related technologies and services, as well as providing direct-to-consumer air taxi services. • Defense : This is planned to primarily consist of the sale of next-generation UAS, physical AI solutions and related technologies and services for defense applications. To date, we have not generated significant revenue from these planned areas. We will use our cash and cash equivalents for the foreseeable future as we continue to develop our aircraft, related technologies, manufacturing operations and urban air mobility (“UAM”) operations, and work to commercialize both the commercial and defense sectors of our business. Proposed Acquisition of Wisk, Insitu and SkyGrid On August 9, 2026, we entered into a definitive Equity Purchase Agreement (the “Purchase Agreement\") with The Boeing Company (”Boeing”) to acquire all of the equity interests of Wisk Aero LLC, an autonomous aviation company, SkyGrid, a digital airspace integration and air traffic management platform, and Insitu, Inc., a manufacturer of unmanned aircraft systems and AI-enabled technologies, together with certain of their respective related entities (collectively, the “Target Companies” and such acquisition, the “Acquisition”) for total consideration consisting of (i) shares of our Class A common stock representing approximately 19.75% (subject to closing adjustments) of our shares outstanding immediately prior to the closing date of the Acquisition (the “Acquisition Closing Date”) and (ii) two warrants, each covering $100.0 million of Class A common stock, with the first warrant, with an exercise price of $13.00 per share, exercisable during the period beginning on the first anniversary through the third anniversary of the Acquisition Closing Date, and the second warrant, with an exercise price of $17.88 per share, exercisable during the period beginning on the first anniversary through the fourth anniversary of the Acquisition Closing Date. Under the terms of the Purchase Agreement, completion of the Acquisition is subject to agreed upon closing conditions, including regulatory clearances and required consents. For additional detail on the Acquisition, see the Current Report on Form 8-K filed on August 10, 2026, and Item 1A, “Risk Factors” of this Quarterly Report on Form 10-Q. Components of Results of Operations Revenue We continue to design, develop, certify, and bring up manufacturing of our aircraft and do not expect to begin generating significant revenues until we complete the design, development, certification, and manufacturing ramp-up of our aircraft, as well as the development of related technologies and services. We began generating revenue from the leasing of space at Hawthorne Airport in the fourth quarter of 2025. Lease revenue is recognized on a straight-line basis over the lease term, beginning on the lease commencement date. In the second quarter of 2026, we also began generating FBO revenue from aviation fueling, ground handling, and related services at Hawthorne Airport. We expect revenue from both our hangar and FBO operations to increase as we bring additional spaces into service and expand FBO service offerings at Hawthorne Airport. Operating Expenses Cost of Revenue Cost of revenue primarily consists of master ground lease payments to the City of Hawthorne, fuel and supplies costs associated with FBO operations, amortization of operating rights, depreciation and other operating costs. Master ground lease payments are accounted for in accordance with ASC 842, Leases. Fuel and supplies costs are recognized as incurred upon delivery of services. Amortization of operating rights associated with the Hawthorne FBO acquisition is recognized on a straight-line basis over their respective estimated useful lives. All other costs are recognized as incurred. We expect cost of revenue to increase as FBO operations scale and we bring additional spaces into service. Research and Development Research and development activities represent a significant part of our business. Our efforts focus on the design and development of our aircraft and certain systems within it. As part of those activities, we continue to work closely with U.S. and international regulators towards our goal of commercialization. Research and development expenses consist primarily of personnel-related costs (including salaries, bonuses, benefits, and stock-based compensation) for employees focused on research and development activities, costs associated with developing and building prototype aircraft, associated facilities and 33 Table of Contents IT infrastructure costs, and depreciation. We expect research and development expenses to increase significantly as we progress towards commercialization and manufacturing. We cannot determine with certainty the timing, duration or the costs necessary to complete the design, development, certification, and manufacturing bring up due to the inherently unpredictable nature of our research and development activities. Development timelines, the probability of success, and development costs may differ materially from expectations. General and Administrative General and administrative expenses consist primarily of personnel-related costs (including salaries, bonuses, benefits, and stock-based compensation) for employees associated with administrative services such as finance, legal, human resources, information technology, associated facilities and IT infrastructure costs, depreciation, and amortization expense. We expect our general and administrative expenses to increase as we hire additional personnel and consultants to support our operations and comply with applicable regulations. Other Income (Expense), Net Other income (expense), net consists of miscellaneous income and expense items, including the change in fair value of our warrant liabilities. Interest Income, Net Interest income, net primarily consists of interest income from our cash and cash equivalents and short-term investments in marketable securities, net of interest on debt. Results of Operations The following table sets forth our condensed consolidated statements of operations for the periods indicated: Three Months Ended June 30, Six Months Ended June 30, 2026 2025 Change $ Change % 2026 2025 Change $ Change % (In millions except percentages) Revenue $ 5.0 $ — $ 5.0 100.0 % $ 6.6 $ — $ 6.6 100.0 % Operating expenses: Cost of revenue 4.3 ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000078/achr-20260929.htm",
+   "published": "2026-10-02T16:11:34-04:00",
+   "form": "8-K",
+   "items": "7.01",
+   "text": "Item 7.01 Regulation FD Disclosure. On September 29, 2026, the United States District Court for the Northern District of California (the \"Court\") ruled on the parties’ motions to dismiss in Joby Aero, Inc. v. Archer Aviation Inc., et al., Case No. 5:25-cv-10703-SVK (N.D. Cal.), which the Company previously disclosed. The Court narrowed the claims asserted against the Company and its employee, dismissing certain trade-secret and contract-related claims, with leave to amend in some cases, while allowing other claims to proceed. The Court also dismissed, without leave to amend, the Company’s counterclaims against Joby Aero, Inc. and Joby Aviation, Inc. in regards to allegations of violations of the Lanham Act and California’s Unfair Competition Law. SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. ARCHER AVIATION INC. Date: October 2, 2026 By: /s/ Aaron Goodman Name: Aaron Goodman Title: Chief Legal Officer and Corporate Secretary"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000075/achr-20260924.htm",
+   "published": "2026-09-24T08:12:41-04:00",
+   "form": "8-K",
+   "items": "7.01",
+   "text": "Item 7.01 Regulation FD Disclosure. On September 24, 2026, Archer Aviation Inc. (the “Company”) issued a press release announcing the expiration of the required waiting period under the Hart-Scott-Rodino Antitrust Improvements Act of 1976, as amended, with respect to its previously announced transaction with The Boeing Company (“Boeing”) pursuant to which the Company has agreed to acquire all of the equity interests of Wisk Aero LLC, SkyGrid, LLC, and Insitu, Inc., together with certain of their respective related entities (the “Acquisition”). Completion of the Acquisition remains subject to the satisfaction or waiver of certain other closing conditions, including receipt of certain other regulatory approvals, as described more fully in the Form 8-K filed by the Company on August 10, 2026. A copy of the press release is attached as Exhibit 99.1 to this Current Report on Form 8-K. The information in this Item 7.01 of this Current Report on Form 8-K is being furnished and shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liabilities of such section, nor shall it be deemed incorporated by reference in any filing under the Exchange Act or the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference in such filing. Forward-looking Statements This Current Report on Form 8-K contains certain statements that are not historical facts but are forward-looking statements for purposes of the safe harbor provisions under the Private Securities Litigation Reform Act of 1995. Forward-looking statements generally are accompanied by words such as “believe,” “may,” “will,” “estimate,” “continue,” “anticipate,” “intend,” “expect,” “should,” “would,” “plan,” “predict,” “potential,” “seem,” “seek,” “future,” “outlook,” and similar expressions that predict or indicate future events or trends or that are not statements of historical matters. These forward-looking statements include, but are not limited to, statements regarding future events, including statements about the expected benefits of the Acquisition, the anticipated timing of the closing of the Acquisition and potential impacts on the Company’s business, and other statements that are not historical facts. These statements are based on the current expectations of the Company’s management and are not predictions of actual performance. These forward-looking statements are provided"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000068/achr-20260901.htm",
+   "published": "2026-09-04T16:52:09-04:00",
+   "form": "8-K",
+   "items": "3.01,8.01",
+   "text": "Item 3.01 Notice of Delisting or Failure to Satisfy a Continued Listing Rule or Standard; Transfer of Listing The disclosure set forth in Item 8.01 below with respect to the issuance of the Warrants (defined below) is incorporated by reference into this Item 3.01. Item 8.01 Other Events. Reminder of Planned Expiration of Public Warrants As disclosed in the Form 10-Q for the second quarter ended June 30, 2026 of Archer Aviation Inc. (the “Company”), the Company is reminding holders of its outstanding warrants, each exercisable for one share of the Company's Class A common stock, par value $0.0001 per share (“Common Stock”), at an exercise price of $11.50 per share (the “Warrants”), that the Warrants will expire on September 16, 2026, at 5:00 p.m., New York City time (the “Expiration Date”), in accordance with the Warrant Agreement, dated as of October 27, 2020, by and between the Company (as successor to Atlas Crest Investment Corp.) and Continental Stock Transfer & Trust Company, as warrant agent. The Company was informed that trading of the Warrants under the symbol “ACHR WS” was halted by the New York Stock Exchange on September 1, 2026 pursuant to Section 802.01D of the NYSE Listed Company Manual, and will remain halted until trading is suspended before the open of trading on September 15, 2026. Any Warrants that remain unexercised as of the Expiration Date will expire and become void, and the holders thereof will have no further rights with respect to such Warrants. The Company’s Common Stock continues to trade on the NYSE under the symbol “ACHR.” SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. ARCHER AVIATION INC. Date: September 4, 2026 By: /s/ Eric Lentell Name: Eric Lentell Title: Chief Strategy Officer"
+  },
+  {
+   "id": "I9",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000063/achr-20260818.htm",
+   "published": "2026-08-18T16:13:41-04:00",
+   "form": "8-K",
+   "items": "3.02,8.01",
+   "text": "Item 3.02 Unregistered Sales of Equity Securities. The disclosure set forth in Item 8.01 below with respect to the issuance of the Resale Shares (defined below) is incorporated by reference into this Item 3.02. Item 8.01 Other Events. Vendor Share Issuances On August 18, 2026, Archer Aviation Inc. (the “Company”) filed a prospectus supplement pursuant to Rule 424(b) under the Securities Act of 1933, as amended (the “Securities Act”), with the Securities and Exchange Commission (the “SEC”), relating to shares of Class A common stock, $0.0001 par value per share (“Class A common stock”) that the Company issues to certain vendors from time to time in exchange for services rendered and/or goods purchased (the “Vendor Share Issuances”), as previously disclosed in its quarterly and annual reports. This prospectus supplement covers the resale of 8,261,273 shares (the “Resale Shares”) of Class A common stock, of the Company that were issued by the Company to the applicable vendors. The prospectus supplement forms a part of the Company’s Registration Statement on Form S-3 (No. 333-284812), which was originally filed with the SEC on February 11, 2025 (the “Registration Statement”). The Resale Shares were issued pursuant to stock purchase agreements, on or about August 17, 2026, by and among the Company and applicable vendors in connection with the Vendor Share Issuances. The Resale Shares were issued in reliance on Section 4(a)(2) of the Securities Act. The Company did not receive any cash proceeds from this issuance. A copy of the legal opinion of Fenwick & West LLP relating to the validity of the Resale Shares is filed as Exhibit 5.1 to this Current Report on Form 8-K and is filed with reference to, and is hereby incorporated by reference into, the Registration Statement. Item 9.01 Financial Statements and Exhibits. (d) Exhibits. Exhibit Number Description 5.1 Opinion of Fenwick & West LLP . 23.1 Consent of Fenwick & West LLP. (included in Exhibit 5.1) . 104 Cover Page Interactive Data File (formatted in the Inline XBRL and contained in Exhibit 101) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. ARCHER AVIATION INC. Date: August 18, 2026 By: /s/ Eric Lentell Name: Eric Lentell Title: Chief Strategy Officer"
+  },
+  {
+   "id": "I10",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1824502/000110465926093056/tm2622394d1_8k.htm",
+   "published": "2026-08-10T08:06:08-04:00",
+   "form": "8-K",
+   "items": "1.01,3.02,7.01,9.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. Equity Purchase Agreement On August 9, 2026, Archer Aviation Inc. (the “Company”) entered into a definitive Equity Purchase Agreement (the “Purchase Agreement”) with The Boeing Company (“Boeing”) to acquire all of the equity interests of Wisk Aero LLC, an autonomous aviation company, SkyGrid, LLC, a digital airspace integration and air traffic management platform, and Insitu, Inc., a manufacturer of unmanned aircraft systems and AI-enabled technologies, together with certain of their respective related entities, including Insitu Pacific Pty Ltd, Wisk Australia Pty Ltd, and Boeing Emirates Ltd (collectively, the “Target Companies”, and such acquisition, the “Acquisition”). Consideration As consideration for the Acquisition, the Company will issue to Boeing at the closing of the Acquisition (the “Closing”): (i) a number of shares (the “Consideration Shares”) of Class A common stock, $0.0001 par value per share (“Class A common stock”), of the Company equal to 19.75% of the shares of the Company’s Class A common stock outstanding as of immediately prior to the date of Closing (the “Closing Date”), subject to customary closing adjustments based on the Target Companies’ cash position at Closing relative to an agreed cash target amount, net of indebtedness and transaction expenses, with any excess above the agreed target cash amount to be provided to Boeing, and any shortfall resulting from such adjustment to reduce the number of Consideration Shares issued, in each case as calculated pursuant to the Purchase Agreement; provided that if the Company raises additional equity capital under certain conditions, shares issued in such capital raise may be excluded from the calculation of the Consideration Shares described above; (ii) a warrant (the “First Warrant”) to purchase a number of shares of Class A common stock equal to $100.0 million divided by the volume weighted average price of the Company’s Class A Common Stock for the five consecutive trading days ending on the trading day immediately prior to the Closing Date (“Per Share Price”), at an exercise price of $13.00 per share, exercisable during the period from twelve (12) months to thirty-six (36) months following the Closing Date; and (iii) a warrant (the “Second Warrant,” and together with the First Warrant, the “Warrants”) to purchase a number of shares of Class A common stock equal to $100.0 million divided by the Per Share Price, at an exercise price ",
+   "exhibit_99_1": "EX-99.1 8 tm2622394d1_ex99-1.htm EXHIBIT 99.1 Exhibit 99.1 Archer to Shape Physical AI Future of Aerospace and Defense with Acquisition of Boeing’s Wisk Aero, Insitu and SkyGrid Subsidiaries; Boeing to Invest in Archer and Collaborate ● Transaction creates an end-to-end physical AI platform for aerospace and defense. ● Adds a profitable defense business generating over $200M in annual revenue [1] , with operations across 35 countries, to Archer’s portfolio. ● Combines Wisk, SkyGrid and Insitu’s pioneering autonomy and airspace intelligence software with Archer’s leading purpose-built AI foundation model for aerospace and defense, ZEE. ● Boeing to take stake and become a strategic partner to Archer; establishes ongoing Archer and Boeing collaboration and technology sharing arrangement. ARLINGTON, VA & SILICON VALLEY, CA, August 10, 2026 -- The Boeing Company (NYSE: BA) and Archer Aviation Inc. (NYSE: ACHR) today announced the companies have signed definitive agreements in which Archer will acquire Boeing’s Wisk Aero, SkyGrid and Insitu subsidiaries. The deal will combine complementary capabilities developed over decades in autonomy, electric vertical takeoff and landing (eVTOL) aircraft, and unmanned aircraft systems (UAS) – creating a groundbreaking end-to-end physical AI platform for aerospace and defense. Wisk, SkyGrid and Insitu have pioneered and incubated core autonomous flight technologies for the future that, in combination with Archer’s air taxi, UAS and AI technologies, will bring new and innovative solutions to the market. These companies, with nearly two million combined flight hours, are expected to bring a deep autonomy foundation to Archer’s ZEE artificial intelligence platform. This positions Archer to deliver an end-to-end physical AI platform across commercial aerospace, defense and air traffic management that can lead the next generation of aviation. Archer’s Founder and CEO, Adam Goldstein said, “This is a watershed moment for Archer and the future of physical AI in aerospace and defense. This is the next big step forward in becoming a diversified platform, rapidly growing our revenue base and bringing scale to our business.” In conjunction with the transaction, Boeing and Archer are entering into a collaboration and technology-sharing arrangement through which Boeing will retain access to the Wisk core autonomous flight technology for its current and next-generation commercial and defense aircraft. The transaction allows Boeing to retai"
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/archer-aviation-faces-15-stock-191300735.html?.tsrc=rss",
+   "published": "2026-11-06T14:13:00-05:00",
+   "text": "Archer Aviation faces a 15% stock swing before earnings - Options traders expect a sharp move after Monday's results as the electric aircraft maker faces pressure on its share price.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/archer-aviation-q3-earnings-loom-141200625.html?.tsrc=rss",
+   "published": "2026-11-06T09:12:00-05:00",
+   "text": "Archer Aviation Q3 Earnings Loom: What Should You Do Now? - ACHR's Q3 earnings approach amid widening loss estimates, Midnight air taxi progress and a 56.4% stock decline, highlighting risks and growth potential.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/05/prediction-buying-archer-today-could-set-you/?.tsrc=rss",
+   "published": "2026-11-05T16:35:00-05:00",
+   "text": "Prediction: Buying Archer Aviation Today Could Set You Up for Life - Could Archer turn patient investors into millionaires?",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/articles/global-evtol-aircraft-market-report-154300891.html?.tsrc=rss",
+   "published": "2026-11-05T10:43:00-05:00",
+   "text": "Global eVTOL Aircraft Market Report 2026: Trends and Forecast to 2030 | Capitalize on 44.1% CAGR as Airbus, Joby Aviation, Archer Aviation, and Wisk Aero Scale Urban Air Mobility - Profiles Airbus, Textron, Embraer, Wisk Aero and Volocopter, covering their eVTOL aircraft, technologies, product innovation and competitive positioning.Dublin, Nov. 05, 2026 (GLOBE NEWSWIRE) -- \"eVTOL Aircraft Market Global Report 2026\" has been added to ResearchAndMarkets.com's offering. The globa",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/05/joby-gains-4-on-revenue-beat-and-raised-outlook-archer-aviation-falls-5-ehang-sinks-7/?.tsrc=rss",
+   "published": "2026-11-05T10:02:11-05:00",
+   "text": "Joby Gains 4% on Revenue Beat and Raised Outlook; Archer Aviation Falls 5%, EHang Sinks 7% - While rivals Archer and EHang slide, Joby is climbing on the strength of an unlikely engine: a ride-booking business it bought. But a pile of debt, big losses, and a certification clock that keeps ticking could still ground the rally.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/joby-aviation-soars-8-on-revenue-beat-raised-outlook-as-certification-hits-fifth-and-final-stage?ref=yahoofinance&tlnk=yf-261105-mqgw829v&.tsrc=rss",
+   "published": "2026-11-05T09:39:31-05:00",
+   "text": "Joby Aviation Soars 8% on Revenue Beat, Raised Outlook as Certification Hits “Fifth and Final Stage” - Key TakeawaysJoby Aviation shares jumped 8% after third-quarter revenue of $55. 1 million beat estimates and the company raised its 2026 outlook to $135 million-$140 million.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/05/could-archer-make-you-a-millionaire-by-2036/?.tsrc=rss",
+   "published": "2026-11-05T06:50:00-05:00",
+   "text": "Could Archer Aviation Stock Make You a Millionaire by 2036? - A multitrillion-dollar opportunity in aviation, an eVTOL that ferries passengers in the sky: Could Archer mint new millionaires?",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/05/invest-5k-evtol-leader-archer-aviation-stock-ipo/?.tsrc=rss",
+   "published": "2026-11-05T04:39:00-05:00",
+   "text": "If You'd Invested $5,000 in eVTOL Leader Archer Aviation Stock 5 Years Ago at Its IPO, Here's How Much You'd Have Today - The S&P 500 has rocketed higher since Archer's IPO date. Has this leading eVTOL stock followed a similar trajectory, or has it plummeted from its former heights?",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/joby-aviation-rises-4-on-expanded-37-million-air-force-autonomy-contracts-reducing-risk-to-aircrews?ref=yahoofinance&tlnk=yf-261104-fg69wpqc&.tsrc=rss",
+   "published": "2026-11-04T10:36:14-05:00",
+   "text": "Joby Aviation Rises 4% on Expanded $37 Million Air Force Autonomy Contracts: “Reducing Risk to Aircrews” - Key TakeawaysJoby Aviation shares rose 4% after the U. S.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/archer-aviation-just-dropped-15-in-a-month-is-it-time-to-sell-or-load-up?ref=yahoofinance&tlnk=yf-261103-wph8ppr7&.tsrc=rss",
+   "published": "2026-11-03T15:09:00-05:00",
+   "text": "Archer Aviation Just Dropped 15% in a Month. Is It Time to Sell, or Load Up? - Key TakeawaysArcher Aviation shares have fallen 15% in the past month, and rival Joby Aviation fell even further as investors sold speculative tech stocks. Most of Archer’s own news was good, from a Barclays upgrade and a partial court win against Joby to new air-taxi plans in Texas and Italy.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/joby/articles/622296/does-the-move-in-joby-stock-change-anything/2026-11-03?.tsrc=rss",
+   "published": "2026-11-03T08:18:06-05:00",
+   "text": "Does The Move In Joby Stock Change Anything? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/03/the-10-year-treasury-eased-to-49-heres-why-oklo-a/?.tsrc=rss",
+   "published": "2026-11-03T07:00:00-05:00",
+   "text": "The 10-Year Treasury Eased to 4.9%. Here's Why Oklo, Archer, and Rocket Lab All Got Crushed -- and Which One I'd Buy Anyway. - Rising Treasury yields were bad news for many companies.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/02/beta-technologies-beat-archer-and-joby-faa-first/?.tsrc=rss",
+   "published": "2026-11-02T08:35:00-05:00",
+   "text": "Beta Technologies Beat Archer and Joby to an FAA First. Here's Why I'd Still Rather Own Archer. - Beta Technologies has beat Archer to the punch. So why choose Archer stock over Beta?",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/31/wall-street-thinks-archer-aviation-stock-is-a-buy/?.tsrc=rss",
+   "published": "2026-10-31T06:44:00-04:00",
+   "text": "Wall Street Thinks Archer Aviation Stock Is a Buy. Here's Why I Don't - Some Wall Street analysts see 330% upside in Archer stock over the next 12 months. Here's the sobering reality.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/31/betting-on-archer-aviation-or-joby-aviation-being/?.tsrc=rss",
+   "published": "2026-10-31T01:20:00-04:00",
+   "text": "Betting on Archer Aviation or Joby Aviation Being the Tesla of eVTOLs? They Could End Up More Like Lucid. - Archer and Joby both want to be the Tesla of the commercial eVTOL market. Struggling EV player Lucid could be the more apt parallel.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/10/30/cathie-wood-shifts-from-ai-chips-to-robinhood-and-air-taxis-in-latest-ark-trades/?.tsrc=rss",
+   "published": "2026-10-30T19:09:47-04:00",
+   "text": "Cathie Wood Shifts From AI Chips to Robinhood and Air Taxis in Latest ARK Trades - Cathie Wood just pulled millions out of two of this year's hottest AI chip winners and poured it into a battered broker and a pair of air taxi startups burning through cash. The trades raise a pointed question: does ARK see something the market is punishing, or is this a costly bet on visions that m",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/30/joby-is-buying-a-defense-company-archer-bought-3-f/?.tsrc=rss",
+   "published": "2026-10-30T06:05:00-04:00",
+   "text": "Joby Is Buying a Defense Company. Archer Plans to Buy 3 From Boeing. Here's Which Pivot Makes More Sense. - What do recent pivots to the defense sector mean for Joby Aviation and Archer Aviation?",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I28",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/29/the-uae-just-inspected-archers-and-jobys-aircraft/?.tsrc=rss",
+   "published": "2026-10-29T22:35:00-04:00",
+   "text": "The UAE Just Inspected Archer's and Joby's Aircraft in Person. Here's Why Dubai, Not the FAA, Could Deliver the First Paying Passenger. - Starting in the UAE was always part of the plan, and it looks closer to fruition than ever.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  },
+  {
+   "id": "I29",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/10/29/is-archer-aviation-a-buy-before-its-q3-earnings/?.tsrc=rss",
+   "published": "2026-10-29T13:20:00-04:00",
+   "text": "Is Archer Aviation Stock a Buy Before Its Q3 Earnings Report? - Archer Aviation is scheduled to report earnings on Nov. 9. Will investors wish they had invested beforehand?",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:16-05:00",
+    "sha256": "83ddfad7495d9b519209bbf2e570a1b390876994b4b8b32aba64c2015ffe322a"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 61913
+}
