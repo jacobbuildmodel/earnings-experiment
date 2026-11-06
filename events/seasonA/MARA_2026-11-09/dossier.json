@@ -1,0 +1,650 @@
+{
+ "event": "MARA_2026-11-09",
+ "season": "seasonA",
+ "built_et": "2026-11-06T14:31:14-05:00",
+ "cutoff_et": "2026-11-06T14:31:00.211752-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/MARA_2026-11-09/gate.json",
+   "published": "2026-11-06T14:31:00.211752-05:00",
+   "data": {
+    "ticker": "MARA",
+    "report_date": "2026-11-09",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-09"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-10"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-10"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-17"
+     },
+     "reaction_day": "2026-11-10"
+    },
+    "snapshot_session": "2026-11-06",
+    "captured_et": "2026-11-06T14:31:00.211752-05:00",
+    "options": {
+     "spot": 6.239999771118164,
+     "expiry": "2026-11-13",
+     "strike": 6.0,
+     "call": {
+      "bid": 0.6,
+      "ask": 0.62,
+      "openInterest": 1579.0,
+      "lastPrice": 0.63,
+      "impliedVolatility": 1.3164096679687498,
+      "lastTradeDate": "2026-11-06T19:13:39+00:00"
+     },
+     "put": {
+      "bid": 0.34,
+      "ask": 0.35,
+      "openInterest": 7384.0,
+      "lastPrice": 0.34,
+      "impliedVolatility": 1.2695349023437497,
+      "lastTradeDate": "2026-11-06T19:13:44+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 3,
+     "implied_move": 0.15304487740852443,
+     "rel_spread": {
+      "call": 0.03278688524590167,
+      "put": 0.02898550724637668
+     },
+     "oi_atm": 8963.0,
+     "oi_sum": 8963.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/MARA_2026-11-09/factors.json",
+   "published": "2026-11-06T14:31:00.211752-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.6352072245871392,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.369434910908918,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.07697194176050393,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.11353033259133127,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.9112817934175058,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.8056769680384164,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.6084649171842014,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-05",
+       "session": "AMC",
+       "raw_return_A": -0.06260716567662294,
+       "eps_est": -0.48,
+       "eps_rep": -0.62,
+       "surprise_pct": -30.57,
+       "reaction_volume_ratio": 0.7362183067566882
+      },
+      {
+       "date": "2026-05-11",
+       "session": "AMC",
+       "raw_return_A": -0.0038580393971983096,
+       "eps_est": -0.85,
+       "eps_rep": -0.63,
+       "surprise_pct": 26.14,
+       "reaction_volume_ratio": 1.0864185618238509
+      },
+      {
+       "date": "2026-02-26",
+       "session": "AMC",
+       "raw_return_A": 0.14827994718250914,
+       "eps_est": -0.02,
+       "eps_rep": -0.77,
+       "surprise_pct": -2986.4,
+       "reaction_volume_ratio": 2.1356786907862655
+      },
+      {
+       "date": "2025-11-04",
+       "session": "AMC",
+       "raw_return_A": -0.014874155359878904,
+       "eps_est": 0.35,
+       "eps_rep": 0.37,
+       "surprise_pct": 6.05,
+       "reaction_volume_ratio": 0.9396602266357527
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.25,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.2244939465006393,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -30.57,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 6,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.1,
+      "7daysAgo": -0.1,
+      "30daysAgo": -0.1,
+      "60daysAgo": 0.195,
+      "90daysAgo": 0.195,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -1.512820512820513,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.1,
+      "low": -0.1,
+      "high": -0.1,
+      "yearAgoEps": 0.3747,
+      "numberOfAnalysts": 1,
+      "growth": -1.2669001,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.0,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.33150002,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": -18.379118,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 3.0016022,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": -0.267,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 2413945600,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.13333,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.15304487740852443,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.04687476562500015,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.0039062304687500493,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.12989268379569843,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.8269700800674252,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 101496.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.4188501235247126,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.08377964300346583,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 254,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Monday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": -0.2667002117533598,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -2.9795689640384033,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.6357209449715975,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.07827179844875076,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.11353033259133127,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.9108128046533516,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.6742670587261033,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -1.3249754804644445,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 2410546207.253497,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.3336252163845897,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.6773060074395978,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1507605/000150760526000020/q226shareholderletter.htm",
+   "published": "2026-08-06T16:05:12-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q226shareholderletter.htm EX-99.1 Q2'26 Shareholder Letter Contents To Our Shareholders 3 Financial and Operational Discussion 10 Earnings Webcast and Conference Call 15 Statements of Operations 16 Investor Notice 19 Forward-Looking Statements 19 Key Highlights Revenues decreased 27% to $174.9 million IN Q2 2026 from $238.5 million in Q2 2025 . Net income (loss) decreased to ($611.3 million) IN Q2 2026 from $808.2 million in Q2 2025 . Adjusted EBITDA decreased to ($360.9 million) IN Q2 2026 compared to $1.2 billion in Q2 2025 . Cost/petahash per day decreased by 4% IN Q2 2026 from Q2 2025 . Energized hashrate (\"EH/s\") increased 22% TO 70.3 EH/S IN Q2 2026 from 57.4 EH/s in Q2 2025 . Bitcoin holdings decreased 29% TO 35,577 BTC (C. $2.1B ) Including 9,270 BTC loaned or pledged as collateral as of June 30, 2026 . Total blocks won increased 1% to 700 IN Q2 2026 from 694 in Q2 2025 . Purchased energy cost per BTC was $38,690 IN Q2 2026 for our owned sites. Cost per kWh: $0.04 FOR Q2 2026 . Mined 2,422 BTC IN Q2 2026 . No BTC was purchased in Q2 2026 SHAREHOLDER LETTER Q2 2026 3 To Our Shareholders Artificial intelligence is no longer constrained by capital alone. It is constrained by power. That simple reality is reshaping the economics of digital infrastructure. Capital is abundant. Power-ready sites are scarce. The challenge is no longer attracting investment, it is securing energized, permitted power and transforming it into compute. We believe that the companies that control power, not simply capital, will define the next generation of compute. This is the business MARA is building. \"These AI data centers are going to require more power than anything we could ever have imagined . . . We don't have enough power in the G7.\" - Larry Fink, CEO BlackRock We are an owner, developer, and operator of digital infrastructure, vertically integrated across power, land, and compute. We do not sell electrons. We convert them into higher-value compute or make that infrastructure available to customers. What separates MARA from peers is that we already have what most are still trying to secure: active utility-scale power, a decade of operating experience at scale, and disciplined capital allocation . Our evolution into AI infrastructure is not a departure from our past. It is the natural progression of what we have built. For nearly a decade, we have developed and operated one of the world's largest Bitcoin mining platforms with 19 data centers across four continents. That experience has enabled us to assemble strategic power and land assets, develop expertise in large-scale distributed computing, build relationships across the energy and infrastructure ecosystem, and establish the disciplined capital allocation framework that guides our business today. SHAREHOLDER LETTER Q2 2026 4 Those capabilities are increasingly valuable in the AI sector where access to power is the defining constraint on AI deployments. The second quarter marked another important step in our evolution. We continued to advance the Long Ridge transaction and are currently awaiting FERC approval. Subsequent to quarter-end, we secured the rights to a 2 GW powered land site in Matagorda County, Texas — an acquisition that, upon ERCOT and interconnect approvals, would more than double our powered land portfolio. Together, these actions are expected to expand our power portfolio up to 4.8 GW, establishing one of the largest powered land portfolios in the industry. We believe this platform positions us to create significant long-term shareholder value . Source: Public Company reports. 1. Site power capacity of up to 2,000 MW secured via a definitive agreement; subject to FERC and interconnect approval. 2. Includes MARA’s existing capacity at Hannibal and expanded grid and onsite generation capacity (active permits for both). As our strategy has evolved, our focus has become clearer. MARA operates an integrated digital infrastructure platform built around power, land, and compute. Digital Infrastructure is our primary growth focus. Exaion and our technology initiatives provide targeted capabilities that can help us serve specialized customer needs, improve infrastructure utilization, and extend the value of our core assets. We manage these capabilities as part of one integrated platform and allocate capital across them based on expected returns, customer demand, execution risk, and their contribution to long-term shareholder value. Digital Infrastructure Demand for AI infrastructure continues to accelerate, but the supply of power-ready sites is not keeping pace. SHAREHOLDER LETTER Q2 2026 5 The four largest hyperscalers alone are expected to invest approximately $725 billion in AI infrastructure during 2026, with annual capital expenditures projected to exceed $1 trillion by 2027. At the same time, U.S. data center electricity demand is expected to increase from approximately 31 gigawatts in 2025 to 41 gigawatts in 2026 before reaching 66 gigawatts in 2027, while new power generation and transmission continue to lag demand. The result is a growing premium on existing energized infrastructure. (Goldman Sachs Commodities Research, May 2026) Against that backdrop, our objective is straightforward: own scarce powered assets and maximize their long-term value. Our recent agreement to acquire rights to a strategically located powered site in Matagorda County, Texas, is expected to add approximately two gigawatts in one of the country's most attractive markets, subject to ERCOT and interconnect approvals. Just as importantly, we expect it will provide sufficient wholly owned capacity to complete our transition away from hosted mining as existing agreements expire, increasing operational control, improving unit economics, and giving us greater flexibility in how we allocate capital. The pending acquisition of Long Ridge is equally important. We believe this transaction will transform our existing Hannibal campus by adding adjacent land while immediately contributing positive EBITDA upon closing. With more than 70% of its power output contracted under long-term agreements, we expect Long Ridge will enhance our earnings profile while significantly expanding our AI infrastructure opportunity. Together, these acquisitions reflect the investment philosophy that guides our infrastructure strategy. We seek to acquire scarce powered assets, enhance their strategic value, develop high-quality digital infrastructure, and secure long-term customers. As our mining sites convert into AI/HPC campuses, we expect they will become durable cash-flow generators that can remain in our portfolio or be monetized, allowing us to recycle capital into future opportunities. This approach resembles institutional infrastructure investing more than traditional data center development. SHAREHOLDER LETTER Q2 2026 6 We measure success not simply by the number of megawatts we develop, but by the long-term value we create from every megawatt we own. Speed. Certainty. Reliability. These principles define how we invest, how we build, and how we aim to serve customers. Speed, because customers cannot wait years for power to become available. Our portfolio of energized sites allows us to deliver earlier in-service dates than many competing developments that are still beginning the power procurement and interconnection process, giving prospective customers access to capacity sooner. Certainty, because digital infrastructure must be delivered on time, on budget, to specification, and with disciplined capital allocation. Our development strategy, relationships with utilities and equipment providers, and partnership with Starwood will provide customers with confidence that projects will be executed efficiently while allowing us to scale with proportional capital support from Starwood. Reliability, because mission-critical AI infrastructure requires trusted partners with proven operational expertise. MARA has spent years designing, owning, and operating large-scale compute infrastructure, while Starwood contributes engineering, procurement, construction, and development capabilities backed by more than seven gigawatts of delivered infrastructure for many of the world’s leading hyperscalers and frontier AI companies. Together, we offer prospective customers a combination of operational experience and development expertise that few competitors can match. Commercial momentum across the portfolio continues to build. Our objective is to build a diversified customer base across hyperscalers, AI-native cloud providers, silicon vendors, and enterprise customers — balancing credit quality, returns, and long-term portfolio value. Working alongside Starwood, lease discussions are progressing across multiple sites, and we remain confident in our ability to sign at least one lease before year-end. Our objective is not simply to sign tenants, but to establish long-term customer relationships that maximize the value of our infrastructure for decades to come. We believe our combination of scarce powered assets, speed, certainty, reliability, capital efficiency, strategic partnerships, and proven operating expertise positions MARA to become one of the industry’s leading digital infrastructure companies. Exaion Owning power is only part of the opportunity. As AI moves from experimentation into mission-critical operations, enterprises are looking beyond traditional public cloud for infrastructure with greater control, security, and flexibility — where data governance, regulatory compliance, and operational resilience have become as important as compute performance. This shift is creating a growing market for sovereign AI infrastructure. SHAREHOLDER LETTER Q2 2026 7 Exaion provides enterprises with private AI cloud infrastructure that allows customers to deploy advanced AI workloads while maintaining control over their infrastructure, their data, and their operations. As a European company, Exaion is positioned to serve customers whose technical sovereignty requirements demand infrastructure governed under European jurisdiction, a meaningful competitive advantage as enterprises and public-sector organizations increasingly prefer providers operating within the EU regulatory framework. For organizations in critical infrastructure, regulated industries, and government-adjacent services, sovereignty is no longer a preference, it is becoming a requirement. Today, approximately 80% of enterprise data still resides outside the public cloud, representing a significant opportunity as organizations modernize existing infrastructure for AI. Exaion enters this market with credibility. It operates the critical infrastructure supporting EDF's nuclear reactor operations, one of Europe's most demanding enterprise computing environments, demonstrating the company’s ability to deliver secure, resilient infrastructure for customers where operational reliability is non-negotiable. Exaion's selection to participate in the AION Consortium, a European Union-backed initiative targeting approximately three gigawatts of AI-ready data center capacity, further validates both its technical capabilities and strategic positioning. Technology Initiatives Building and operating large-scale compute infrastructure has generated more than digital assets. It has created intellectual property that we are now beginning to commercialize outside MARA. As the operator of one of the world’s largest distributed compute platforms, MARA has developed deep expertise in power management, infrastructure optimization, and digital asset management. What began as solutions built to improve our own operations are increasingly becoming commercial products, allowing us to leverage our operational expertise to serve the broader industry. Vertebr.AI, our intelligent power optimization platform, continuously manages power allocation and infrastructure performance in real time. As power becomes an increasingly scarce and valuable resource, we believe the opportunity extends well beyond Bitcoin mining. AI data centers, independent power producers, and other energy-intensive industries can use the same technology to maximize infrastructure utilization, improve operational efficiency, and lower operating costs. Hashrate Under Management (HUM) is our blockchain financial infrastructure platform. While this is the first time we are discussing the platform publicly, we do so from a position of demonstrated commercial traction rather than future potential, reflecting a broader objective of leveraging software and financial infrastructure to create higher value services around digital assets. Together, HUM and Vertebr.AI reinforce our broader investment philosophy: every innovation should increase the value of the infrastructure we own, and create value for customers as well. SHAREHOLDER LETTER Q2 2026 8 Bitcoin Mining Today, Bitcoin mining represents the core of MARA's business. For more than a decade, Bitcoin mining has been the foundation upon which we built our company. It enabled us to acquire strategic power assets, develop expertise operating large-scale compute infrastructure, and establish the disciplined capital allocation framework that guides our business today. In many respects, Bitcoin mining was never the destination. It was the foundation. Today, mining continues to play an important strategic role within MARA's broader platform. First, it generates cash flow that supports investment across our business while maintaining one of the industry's lowest cost structures. Second, it provides operational flexibility. Mining equipment can be rapidly deployed at newly energized sites, allowing us to immediately monetize power while AI infrastructure is designed, permitted, and constructed. As customer demand develops, those same sites can transition toward higher value AI and high-performance computing workloads without leaving valuable infrastructure underutilized. Finally, mining continues to serve",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1507605/000150760526000022/mara-20260630.htm",
+   "published": "2026-08-06T16:15:50-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS Unless otherwise indicated or the context otherwise requires, references to “MARA,” “we,” “us,” “our” and the “Company” refer to MARA Holdings, Inc. and its consolidated subsidiaries. You should read the following discussion and analysis together with our financial statements and related notes in Part I, Item 1 of this Quarterly Report on Form 10-Q for the quarter ended June 30, 2026 (this “Quarterly Report”). This Quarterly Report contains forward-looking statements within the meaning of the federal securities laws, which statements are subject to considerable risks and uncertainties. These forward-looking statements are intended to qualify for the safe harbor from liability established by the Private Securities Litigation Reform Act of 1995. All statements included or incorporated by reference in this Quarterly Report, other than statements of historical fact, are forward-looking statements. You can identify forward-looking statements by the use of words such as “may,” “will,” “could,” “anticipate,” “expect,” “intend,” “believe,” “continue” or the negative of such terms, or other comparable terminology. Forward-looking statements also include the assumptions underlying or relating to such statements. Our forward-looking statements are based on our management’s current assumptions and expectations about future events and trends, which affect or may affect our business, strategy, operations or financial performance. Although we believe that these forward-looking statements are based upon reasonable assumptions, they are subject to numerous known and unknown risks and uncertainties and are made in light of information currently available to us. Our actual financial condition and results could differ materially from those anticipated in these forward-looking statements as a result of various factors, including those set forth in the section entitled “Risk Factors” in Part I, Item 1A, of our Annual Report on Form 10-K for the year ended December 31, 2025, filed with the SEC on March 2, 2026, (our “Annual Report”), which is incorporated herein by reference, as well as in the other public filings we make with the U.S. Securities and Exchange Commission (the “SEC”). You should read this Quarterly Report with the understanding that our actual future financial condition and results may be materially different from and worse than what we expect. Additionally, information regarding market and industry statistics contained in this Quarterly Report is included based upon information available to us that we believe is accurate as of the date of this Quarterly Report. It is generally based upon industry and other publications that are not produced for purposes of securities offerings or economic analysis. We have not reviewed or included data from all sources and cannot assure investors of the accuracy or completeness of the data included in this Quarterly Report. Forecasts and other forward-looking information obtained from these sources are subject to the same qualifications and the additional uncertainties accompanying any estimates of future market size, revenue and market acceptance of products and services. We do not assume any obligation to update any forward-looking statement. As a result, investors should not place undue reliance on these forward-looking statements. BUSINESS OVERVIEW AND TRENDS Overview MARA is an owner, developer and operator of digital infrastructure built to convert energy into high-value compute workloads. Bitcoin mining serves as the foundation of our business, and we have begun pursuing opportunities to expand our infrastructure capacity into adjacent high-value workloads, including artificial intelligence (“AI”), high-performance computing (“HPC”) and critical information technology (“IT”). We are vertically integrated across power, land and compute, with a portfolio of energized utility-scale power assets and a decade of large-scale compute operating experience. As our expansion progresses, we intend to allocate capacity across workloads based on economics and demand to optimize asset utilization. We believe the next phase of digital infrastructure value creation will be shaped by control of power: where it is located, how flexibly it can be deployed and what returns it can generate across compute markets. Our strategy is organized around three reinforcing priorities. 1. Own and control low-cost energy. We believe energy is increasingly becoming the binding constraint on infrastructure growth. By acquiring and operating energy generation assets at below-market costs, we 38 Table of Contents believe we can reduce our overall cost structure, protect against energy price volatility, and create a durable supply of power for high-value compute workloads. 2. Build AI and digital infrastructure at scale . We are developing large-scale data center campuses, including co-located generation, land, water access and grid interconnection, to serve the growing demand for training, inference and critical IT workloads, with the goal of increasing the proportion of revenue derived from these higher-value workloads. 3. Bitcoin mining is our foundation. Bitcoin mining remains the foundation of our platform and the current primary monetization pathway for our energy assets. We intend to maintain a leading position as one of the world’s largest publicly traded Bitcoin mining companies while expanding our revenue base into AI, critical IT, and power markets over time. As of June 30, 2026, our total energy portfolio consists of approximately 1.9 gigawatts (“GW”) of capacity across 19 data centers in North America, the Middle East, Europe, and Latin America. The term “Bitcoin” with a capital “B” is used to denote the Bitcoin protocol which implements a highly available, public, permanent, and decentralized ledger. The terms “bitcoin” with a lower case “b” and “BTC” are used to denote the digital asset, bitcoin. Recent Developments Highlights from the quarter ended June 30, 2026: • On April 29, 2026, we entered into an equity purchase agreement to acquire Long Ridge Energy & Power LLC (“Long Ridge”) for an approximately $1.5 billion enterprise value. In connection with the Long Ridge equity purchase agreement, we entered into a commitment letter with Barclays Bank PLC (“Barclays”) to provide a senior secured bridge term loan facility for an aggregate amount of up to $785.0 million. • Subsequent to quarter end, we entered into a membership interest purchase agreement with HIF USA LLC (“HIF”) to acquire all of the issued and outstanding membership interests of MAT 1177 LLC (the “Project Company”), securing rights to a site in Matagorda County, Texas with access to 2,000 megawatts (“MW”) of power capacity for an aggregate purchase price of up to $600.0 million. We intend to develop the site into a large-scale digital infrastructure campus supporting high-performance computing and Bitcoin mining operations. • Subsequent to quarter end, we entered into two bitcoin-backed credit facilities with Coinbase Credit, Inc. (“Coinbase”) and Two Prime Lending Limited (“Two Prime”) providing for an aggregate $600.0 million of incremental borrowings. In addition, we refinanced our existing $150.0 million borrowing with Coinbase (the “2026 Line of Credit”) and consolidated it into the new Coinbase facility. The facilities were initially collateralized by 18,750 bitcoin. Proceeds are expected to be used for general corporate purposes, including funding a portion of the cash consideration for the Long Ridge acquisition. With the closing of the Long Ridge acquisition and the full energization of the site in Matagorda County, Texas, our potential portfolio of power capacity is expected to expand to approximately 4.8 GW. Bitcoin Mining Operations During the six months ended June 30, 2026, we mined 4,669 bitcoin, an increase of 25 bitcoin, or 1%, from the prior year period. The increase was primarily due to an increase in our average operational hashrate driven by the continued fleet expansion and the energization of new mining capacity, partially offset by an increase in the global hashrate, resulting in higher network difficulty and fewer blocks mined. In addition, our mining operations provide operational flexibility, as mining equipment can be rapidly deployed at newly energized sites to generate revenue as AI infrastructure is developed, maintaining productive utilization of our energy assets throughout the development cycle. As of June 30, 2026, we owned approximately 440,000 mining rigs globally, including our share of mining rigs from our equity method investee, the Abu Dhabi Global Markets company (the “ADGM Entity”), with an energized hashrate of approximately 70.3 exahashes per second (“EH/s”). To stay competitive, we remain focused on 39 Table of Contents strategically deploying additional mining rigs and scaling our operations, while managing our fleet as it ages along the obsolescence curve. In addition, we continuously evaluate strategic opportunities to support our growth strategy and seek to enhance operational efficiencies by utilizing efficient mining rigs and securing supply contracts. At the beginning of the year, we purchased 2.4 EH of next-generation used application-specific integrated circuit (ASIC) miners, still under warranty, at below-market prices, to replace legacy machines and enhance operational efficiency. We continued this strategy during the second quarter of 2026 by entering into an agreement to purchase additional miners. Going forward, we expect to make smaller, targeted replacements only when the economics are accretive, rather than large-scale purchases. On January 21, 2026, we acquired an operational data center in Central Nebraska with 35 MW of operational mining capacity and a nameplate capacity of 42 MW. The acquisition increased our total operational capacity in Central Nebraska by approximately 40% to 142 MW, expanding our owned infrastructure footprint and lowering our average cost to mine by adding low-cost, immediately operational capacity adjacent to our existing Nebraska operations. The following table presents our computing power and miner efficiency as of June 30, 2026 and 2025: As of June 30, 2026 2025 Energized hashrate (1) 70.3 57.4 Miner efficiency (in joules per terahash) (2) 17.3 18.3 Total energy capacity (in GW) (3) 1.9 1.7 (1) We define “Energized hashrate” as the total hashrate that could theoretically be generated if all mining rigs that have been operational are currently in operation and running at 100% of manufacturers’ specifications. We use this metric as an indicator of progress in bringing mining rigs online. We believe this metric is a useful indicator of potential bitcoin production. However, metrics cannot be tied directly to any production level expected to be actually achieved as (a) there may be delays in the energization of hashrate, (b) we cannot predict when operational mining rigs may be offline for any reason, including curtailment or machine failure, and (c) we cannot predict global hashrate (and therefore our share of the global hashrate), which has a significant impact on our ability to generate bitcoin in any given period. (2) The average number of joules of energy required to produce one terahash of computing power. (3) Total energy capacity represents the maximum amount of electricity our facilities can utilize for our operations. Bitcoin Value Our revenues are generally comprised of block rewards earned in bitcoin as a result of successfully solving blocks, and transaction fees earned for verifying transactions in support of the blockchain. Historically, we have held bitcoin produced from our mining operations or purchased on the open market on our Condensed Consolidated Balance Sheets, and in 2025, we changed our digital asset management strategy to permit sales of bitcoin generated from operations. In 2026, we expand",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1507605/000095014226002607/eh260835247_8k.htm",
+   "published": "2026-09-25T16:30:16-04:00",
+   "form": "8-K",
+   "items": "1.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement As previously disclosed, on July 2, 2026, Volt Texas LLC (“Buyer”), a Delaware limited liability company and a subsidiary of MARA Holdings, Inc., a Nevada corporation (“MARA” or the “Company”), entered into a Membership Interest Purchase Agreement (the “Original Purchase Agreement”) with HIF USA LLC, a Delaware limited liability company (“Seller”), and solely for the purposes of Section 14.14, MARA USA Corporation, a Delaware corporation and a subsidiary of MARA (“Guarantor”), pursuant to which Buyer acquired all of the issued and outstanding limited liability company membership interests (other than a retained equity interest to be held by Seller as described below) of MAT 1177 LLC, a Delaware limited liability company (the “Project Company”), resulting in the Project Company becoming an indirect subsidiary of MARA (the “Transaction”). The Transaction closed simultaneously with the execution of the Original Purchase Agreement. The Project Company holds (i) rights under certain purchase and sale contracts to acquire land located in Texas (the “Site Under Contract”), (ii) title to an additional parcel of adjacent land (the “Owned Site” and, together with the Site Under Contract, the “Site”), and (iii) rights under a letter agreement with an electric utility company (the “Electric Utility Company”) relating to the provision of 2,000 megawatts of power capacity to the Site. Under the Original Purchase Agreement, the aggregate purchase price for the membership interests being acquired was structured as a series of post-closing milestone payments (collectively, the “Milestone Payments”) tied to specified project events (each, a “Milestone” and, collectively, “Milestones”). On September 21, 2026, Buyer, Seller and Guarantor entered into the First Amendment to the Purchase Agreement (the “Amendment” and the Original Purchase Agreement as amended by the Amendment, the “Purchase Agreement”). Pursuant to the Amendment, Buyer posted a security deposit of $100.0 million (the “Security Deposit”) with the Electric Utility Company in respect of the power capacity contemplated for the Site, which Buyer may elect to withdraw in its sole discretion, subject to the sale process described below. The Amendment, among other things, also revises the Milestones and corresponding Milestone Payments, principally by (i) restructuring the payments tied to the receipt of certain regulatory approvals to be payable in two installments"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/mara-fell-4-as-riot-landed-a-28-billion-ai-lease-heres-what-november-9-must-show?ref=yahoofinance&tlnk=yf-261106-69pcj3gw&.tsrc=rss",
+   "published": "2026-11-06T11:08:45-05:00",
+   "text": "MARA Fell 4% as Riot Landed a $28 Billion AI Lease. Here’s What November 9 Must Show - Key TakeawaysMARA Holdings fell 4% on Nov. 4 as Riot Platforms jumped 10% on a 15-year AI lease worth about $28 billion for its Corsicana campus.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/mara-sinks-14-as-ai-data-center-selloff-hits-bitcoin-miners-despite-ferc-nod?ref=yahoofinance&tlnk=yf-261105-vcm2pf2j&.tsrc=rss",
+   "published": "2026-11-05T17:02:34-05:00",
+   "text": "MARA Sinks 14% as AI Data Center Selloff Hits Bitcoin Miners Despite FERC Nod - Key TakeawaysMARA Holdings fell 14% today despite regulators approving its roughly $1. 5 billion Long Ridge purchase.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/riot-platforms-sinks-6-as-ai-data-center-selloff-deepens?ref=yahoofinance&tlnk=yf-261105-73p7ghw9&.tsrc=rss",
+   "published": "2026-11-05T13:02:03-05:00",
+   "text": "Riot Platforms Sinks 6% as AI Data Center Selloff Deepens - Key TakeawaysRiot Platforms fell 6% today as the AI data center selloff ran into a second day. Today’s drop looks overdone, since Riot had no bad news and three firms raised their price targets this morning.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/lincoln-national-lnc-q3-earnings-113503995.html?.tsrc=rss",
+   "published": "2026-11-05T06:35:03-05:00",
+   "text": "Lincoln National (LNC) Q3 Earnings Lag Estimates - Lincoln National (LNC) delivered earnings and revenue surprises of -12.25% and +0.90%, respectively, for the quarter ended September 2026. Do the numbers hold clues to what lies ahead for the stock?",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/learn-why-bull-case-mara-111211108.html?.tsrc=rss",
+   "published": "2026-11-05T06:12:11-05:00",
+   "text": "Learn Why The Bull Case For MARA Holdings (MARA) Could Change Following Power Plant Approval - MARA Holdings secured U.S. regulatory approval to acquire the Long Ridge gas power plant for about US$1.51b. It plans to use roughly 0.5 GW of generation capacity to support AI and high performance computing data centers funded with US$900 million of debt and a US$600 million Bitcoin backed loan. Th",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/mara-holdings-mara-secured-approval-091254445.html?.tsrc=rss",
+   "published": "2026-11-05T04:12:54-05:00",
+   "text": "MARA Holdings (MARA) Secured Approval For Its $1.51 Billion Long Ridge Acquisition - On 4 November 2026, MARA Holdings (NasdaqCM:MARA) secured U.S. FERC approval for its planned US$1.51b Long Ridge gas plant acquisition. The Long Ridge facility is intended to support MARA Holdings' buildout of AI and high performance computing infrastructure capacity. MARA Holdings recently moved 1,",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/mara-holdings-mara-commits-billions-081639997.html?.tsrc=rss",
+   "published": "2026-11-05T03:16:39-05:00",
+   "text": "MARA Holdings (MARA) Commits Billions To AI Power, Is It 63% Below Fair Value? - MARA Holdings (MARA) is pushing hard into AI infrastructure after committing around US$1.5b to buy the Long Ridge gas plant and roughly US$600 million for Texas land, even as revenue and digital asset values decline. MARA Holdings’ share price has retreated sharply, with a 1-month share price return",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/mara-holdings-mara-stock-looks-071605373.html?.tsrc=rss",
+   "published": "2026-11-05T02:16:05-05:00",
+   "text": "MARA Holdings (MARA) Stock Looks Above Fair Value After Its Pivot Plans - MARA Holdings has been through a rough stretch on the market, and the latest swings in its Bitcoin operations and energy footprint raise a simple but important question for you as a shareholder. Is the current share price really lining up with what this business is generating through its sales today",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/strategy-is-down-45-from-its-high-saylor-sees-the-next-bitcoin-bull-market?ref=yahoofinance&tlnk=yf-261104-g94hj65j&.tsrc=rss",
+   "published": "2026-11-04T21:35:32-05:00",
+   "text": "Strategy Is Down 45% From Its High. Saylor Sees “the Next Bitcoin Bull Market” - Key TakeawaysStrategy is down 45% from its high a year ago after bitcoin fell below what it paid for its coins and its STRC preferred stock slipped under $100, a slide that also hit MARA Holdings and Coinbase. Executive Chairman Michael Saylor says the next bitcoin bull market has begun, but Strateg",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/mara/articles/622541/what-just-happened-to-mara-stock/2026-11-04?.tsrc=rss",
+   "published": "2026-11-04T16:47:15-05:00",
+   "text": "What Just Happened To MARA Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/marathon-digital-holdings-inc-mara-214502531.html?.tsrc=rss",
+   "published": "2026-11-04T16:45:02-05:00",
+   "text": "Marathon Digital Holdings, Inc. (MARA) Stock Slides as Market Rises: Facts to Know Before You Trade - In the most recent trading session, Marathon Digital Holdings, Inc. (MARA) closed at $6.88, indicating a -3.98% shift from the previous trading day.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.cryptoprowl.com/releases/bernstein-cuts-price-targets-on-seven-bitcoin-miners-after-democrats-texas-win-threatens-ai-data-center-boom-7670?.tsrc=rss",
+   "published": "2026-11-04T14:41:00-05:00",
+   "text": "Bernstein Cuts Price Targets on Seven Bitcoin Miners After Democrats’ Texas Win Threatens AI Data Center Boom - Research firm Bernstein cut its target prices on seven Bitcoin (CRYPTO: $BTC) miners by as much as 54% on Wednesday...",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/bloom-energy-sinks-8-lumentum-down-11-as-ai-power-stocks-fade-after-democrat-sweep?ref=yahoofinance&tlnk=yf-261104-xw87w6cx&.tsrc=rss",
+   "published": "2026-11-04T11:51:29-05:00",
+   "text": "Bloom Energy Sinks 8%, Lumentum Down 11% as AI Power Stocks Fade After Democrat Sweep - Key TakeawaysBloom Energy fell 8% as AI stocks sold off after Democrats swept Tuesday’s elections, and Lumentum and MARA Holdings fell with it. Data center contractors fell even more, a sign investors fear fewer data centers will get built, which would hurt Bloom too.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/cleanspark-sinks-11-cipher-down-18-as-texas-elects-critic-of-data-center-madness?ref=yahoofinance&tlnk=yf-261104-xp6476wj&.tsrc=rss",
+   "published": "2026-11-04T10:23:20-05:00",
+   "text": "CleanSpark Sinks 11%, Cipher Down 18% as Texas Elects Critic of “Data Center Madness” - Key TakeawaysCleanSpark fell 11% after Gina Hinojosa, who called for a moratorium on new data centers, won the Texas governor’s race, and Keefe Bruyette downgraded it and Cipher Digital. The result puts CleanSpark’s Texas campuses in doubt, and they’re the upside beyond the Georgia lease in analysts",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://blockspace.media/insight/texas-data-center-policy-risks/?.tsrc=rss",
+   "published": "2026-11-04T09:42:35-05:00",
+   "text": "Morgan Stanley flags Texas risk for Cipher, Galaxy and MARA after Hinojosa win - Morgan Stanley changed no ratings but said it will likely cut its odds on Texas projects in ERCOT's Batch process, naming Galaxy's Helios II, Cipher's Colchis and MARA's development site.…",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/04/riot-platforms-soars-20-on-earnings-and-28-billion-corsicana-ai-lease-cipher-digital-plunges-13-mara-drops-5/?.tsrc=rss",
+   "published": "2026-11-04T08:55:18-05:00",
+   "text": "Riot Platforms Soars 20% on Earnings and $28 Billion Corsicana AI Lease; Cipher Digital Plunges 13%, MARA Drops 5% - Riot Platforms just landed the biggest lease in its history while two of its closest crypto-miner rivals bled double digits in the same session, and the gap between them reveals exactly what the market is demanding before it rewards anyone else in this space.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/apld/articles/622643/what-is-behind-the-move-in-applied-digital-stock/2026-11-04?.tsrc=rss",
+   "published": "2026-11-04T07:55:44-05:00",
+   "text": "What Is Behind The Move In Applied Digital Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/cryptocurrency/2026/11/03/tether-says-it-holds-150000-bitcoin-50000-more-than-its-reserve-report-showed-what-does-that-mean-for-btc/?.tsrc=rss",
+   "published": "2026-11-03T12:47:51-05:00",
+   "text": "Tether Says It Holds 150,000 Bitcoin, 50,000 More Than Its Reserve Report Showed. What Does That Mean for BTC? - Tether's CEO just revealed a Bitcoin stockpile far larger than any official reserve report has shown, raising questions about what the stablecoin giant is actually building and whether its public disclosures tell the whole story.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/03/hut-8-surges-16-ahead-of-earnings-as-bitcoin-miners-rebound-riot-platforms-surges-14-mara-holdings-jumps-9/?.tsrc=rss",
+   "published": "2026-11-03T12:03:18-05:00",
+   "text": "Hut 8 Surges 16% Ahead of Earnings as Bitcoin Miners Rebound; Riot Platforms Surges 14%, MARA Holdings Jumps 9% - Bitcoin miners pivoting toward AI infrastructure are staging a sharp rebound, but the real question is whether Hut 8 can prove its lease timeline holds when it opens its books on November 4.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://beincrypto.com/4-crypto-stocks-beat-bitcoin-election/?.tsrc=rss",
+   "published": "2026-11-03T11:40:01-05:00",
+   "text": "4 Crypto Stocks Outpace Bitcoin on Election Day: What Drove the Jump? - 4 crypto stocks beat Bitcoin on Election Day, jumping up to 13%. See what drove the move and what could undo it.",
+   "feed": {
+    "fetched_et": "2026-11-06T14:31:14-05:00",
+    "sha256": "fa135696a32208ac1be1885da6f46deb0f9c9254d3224c38b71d5cd2848fba06"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 52346
+}
