@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "ONTO",
+ "report_date": "2026-11-09",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-09"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-10"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-17"
+  },
+  "reaction_day": "2026-11-10"
+ },
+ "snapshot_session": "2026-11-06",
+ "captured_et": "2026-11-06T14:31:00.209901-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.ontoinnovation.com/news/news-details/2026/Onto-Innovation-to-Report-Third-Quarter-2026-Financial-Results-on-November-9-2026/default.aspx",
+  "published_et": "2026-10-19T16:30-04:00",
+  "quote": "Onto Innovation - Onto Innovation to Report Third Quarter 2026 Financial Results on November 9, 2026 Skip to main content Site Search News Details View All News Onto Innovation to Report Third Quarter 2026 Financial Results on November 9, 2026 10/19/2026 Download (opens in new window) WILMINGTON, Mass.--(BUSINESS WIRE)-- Onto Innovation Inc. (NYSE: ONTO) will release its 2026 third quarter results shortly after the market closes on November 9, 2026.",
+  "title": "Onto Innovation to Report Third Quarter 2026 Financial Results on November 9, 2026",
+  "retrieved_et": "2026-10-21T21:29:38.689685-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.ontoinnovation.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-09T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-09T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 171.61500549316406,
+  "expiry": "2026-11-20",
+  "strike": 170.0,
+  "call": {
+   "bid": 15.6,
+   "ask": 16.3,
+   "openInterest": 12.0,
+   "lastPrice": 15.6,
+   "impliedVolatility": 1.09375453125,
+   "lastTradeDate": "2026-11-06T19:05:51+00:00"
+  },
+  "put": {
+   "bid": 12.3,
+   "ask": 13.7,
+   "openInterest": 119.0,
+   "lastPrice": 13.3,
+   "impliedVolatility": 1.003056742553711,
+   "lastTradeDate": "2026-11-06T19:06:29+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 8,
+  "implied_move": 0.16869154254202534,
+  "rel_spread": {
+   "call": 0.04388714733542327,
+   "put": 0.10769230769230759
+  },
+  "oi_atm": 131.0,
+  "oi_sum": 168.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

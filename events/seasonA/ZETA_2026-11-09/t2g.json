@@ -1,0 +1,112 @@
+{
+ "track": "T2G",
+ "event": "ZETA_2026-11-09",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.61,
+  "thesis": "Zeta brings an unbroken string of beat-and-raise prints (20 consecutive quarters) and a perfect 4-for-4 post-earnings open win rate into an earnings release following mild recent share price consolidation.",
+  "reasons": [
+   "Consistent historical performance: 4 of the last 4 earnings prints generated positive open-to-open returns ranging from +6.2% to +12.5% with double-digit EPS surprises.",
+   "Strong operating momentum with 43.5% revenue growth, positive GAAP net income inflection, and positive institutional backing (recent Goldman Sachs upgrade).",
+   "The stock has pulled back ~6% over the past month and sits 9% off its 52-week high, easing short-term bar-clearing pressure ahead of the print."
+  ],
+  "deciding_variable": "Q4 and full-year 2026 guidance raise magnitude, particularly organic revenue growth and AI/Athena enterprise customer adoption trajectory.",
+  "prior": {
+   "p": 0.54,
+   "from": "software_internet cluster base rate (0.541) and AMC base rate (0.538)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved up from 0.54 to 0.61 (+0.07) driven by the company's flawless 4/4 reaction win rate, sustained 40%+ revenue growth profile, and constructive positioning into the release.",
+  "theses": [
+   {
+    "expected": "ZETA posts another substantial revenue and EPS beat and raises full-year guidance above consensus.",
+    "mechanism": "Enterprise customer expansion (Super-Scaled customer ARPU up 17%) and AI platform monetization drive accelerated revenue upside, forcing momentum buyers and short covering.",
+    "wrong_if": "Management guides Q4 conservatively or political/ad spend normalization reveals a deceleration in organic baseline revenue growth."
+   },
+   {
+    "expected": "High implied move (15.6%) leads to strong gap up if top-line beats comfortably.",
+    "mechanism": "A 1.4 average analyst rating and healthy call skew facilitate a bullish pre-market opening auction.",
+    "wrong_if": "Broader software/tech sentiment sours or operating expenses from R&D and AthenaOS rollout pressure margin expectations."
+   },
+   {
+    "expected": "Stock rallies initially on headline metrics at the open.",
+    "mechanism": "First reaction auction responds directly to another consecutive beat-and-raise headline.",
+    "wrong_if": "Guidance commentary highlights macro elongation of enterprise sales cycles or budget pushbacks."
+   }
+  ],
+  "key_observations": [
+   "Q3 2026 revenue vs guidance midpoint ($469-$472M)",
+   "Full-year 2026 revenue and adjusted EBITDA guidance adjustments",
+   "Super-Scaled customer count and ARPU metrics",
+   "Net income and Free Cash Flow generation progression"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/ZETA_2026-11-09/gate.json",
+    "published": "2026-11-06T14:31:19.396127-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/ZETA_2026-11-09/factors.json",
+    "published": "2026-11-06T14:31:19.396127-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1851003/000119312526332770/zeta-ex99_1.htm",
+    "published": "2026-08-04T16:05:17-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.thestreet.com/investing/goldman-sees-41-upside-in-zeta-global-overlooked-ai-stock?.tsrc=rss",
+    "published": "2026-10-20T18:07:00-04:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/goldman-upgrades-zeta-buy-cuts-134635046.html?.tsrc=rss",
+    "published": "2026-10-16T09:46:35-04:00",
+    "dossier_item": "I19"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.marketbeat.com/instant-alerts/event-zeta-global-unveils-athenaos-to-connect-ai-data-and-marketing-workflows-2026-10-08/?utm_source=yahoofinance&utm_medium=yahoofinance&.tsrc=rss",
+    "published": "2026-10-08T19:02:14-04:00",
+    "dossier_item": "I22"
+   }
+  ],
+  "decided_et": "2026-11-06T18:00:18-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 14676,
+   "candidatesTokenCount": 726,
+   "totalTokenCount": 16009,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 14676
+    }
+   ],
+   "thoughtsTokenCount": 607,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

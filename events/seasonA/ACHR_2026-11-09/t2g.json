@@ -1,0 +1,124 @@
+{
+ "track": "T2G",
+ "event": "ACHR_2026-11-09",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.48,
+  "thesis": "Despite high short interest and strategic tailwinds from the Boeing deal, pending equity dilution of ~20%, pronounced options put skew, and ongoing cash burn tilt the opening reaction slightly negative.",
+  "reasons": [
+   "Options market demonstrates strong downside bias with ATM put prices roughly double ATM call prices ($0.395 vs $0.215) and positive put skew.",
+   "Pending acquisition of Boeing units (Wisk, Insitu, SkyGrid) carries an overhang of ~19.75% equity dilution plus warrants that caps upside momentum.",
+   "Peer Joby's recent revenue beat sets a high competitive benchmark, highlighting Archer's pre-commercial revenue base ($5M FBO/lease) and heavy operational cash burn."
+  ],
+  "deciding_variable": "Q3 cash burn rate, liquidity guidance, and regulatory/closing clarity regarding the Boeing transaction and FAA Midnight certification.",
+  "prior": {
+   "p": 0.586,
+   "from": "drones_robotics_space_defense cluster base rate"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down 10.6 percentage points from the 0.586 cluster prior to 0.48, driven by heavy put skew, substantial pending share dilution, and negative 12-month price momentum.",
+  "theses": [
+   {
+    "expected": "Conservative cash burn and reaffirmation of eIPP operational launch in late 2026 spark a short squeeze given 17% float short.",
+    "mechanism": "High short interest combined with progress on defense and commercial contracts forces short covering.",
+    "wrong_if": "Dilution concerns and widening quarterly net losses dominate investor focus."
+   },
+   {
+    "expected": "Persistent operating losses, increased R&D spend, and details on share issuance depress the share price at the open.",
+    "mechanism": "Investors de-risk developmental eVTOL assets with heavy cash burn in favor of capitalized peers.",
+    "wrong_if": "Management announces major non-dilutive defense contract awards or accelerated Insitu revenue contribution."
+   },
+   {
+    "expected": "Neutral print with stock moving less than the 14% implied volatility range.",
+    "mechanism": "Market largely anticipates ongoing development expenses and awaits final closing of the Boeing transaction.",
+    "wrong_if": "Unexpected delays in FAA certification or closing of the Target Companies acquisition emerge."
+   }
+  ],
+  "key_observations": [
+   "Quarterly operating cash burn and remaining liquidity against the ~$1.6B reported at Q2",
+   "Target closing timeline and final share issuance terms for the Boeing Wisk/Insitu acquisition",
+   "Progress and timeline on FAA Midnight certification and initial eIPP operational flight launches",
+   "Revenue contribution from Hawthorne FBO and early defense UAS contracts"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/ACHR_2026-11-09/gate.json",
+    "published": "2026-11-06T14:31:00.210025-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/ACHR_2026-11-09/factors.json",
+    "published": "2026-11-06T14:31:00.210025-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000056/archerlettertoshareholde.htm",
+    "published": "2026-08-10T16:07:51-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000059/achr-20260630.htm",
+    "published": "2026-08-10T17:04:05-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1824502/000182450226000075/achr-20260924.htm",
+    "published": "2026-09-24T08:12:41-04:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1824502/000110465926093056/tm2622394d1_8k.htm",
+    "published": "2026-08-10T08:06:08-04:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/archer-aviation-q3-earnings-loom-141200625.html?.tsrc=rss",
+    "published": "2026-11-06T09:12:00-05:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/05/joby-gains-4-on-revenue-beat-and-raised-outlook-archer-aviation-falls-5-ehang-sinks-7/?.tsrc=rss",
+    "published": "2026-11-05T10:02:11-05:00",
+    "dossier_item": "I15"
+   }
+  ],
+  "decided_et": "2026-11-06T18:26:56-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 18794,
+   "candidatesTokenCount": 702,
+   "totalTokenCount": 20936,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 18794
+    }
+   ],
+   "thoughtsTokenCount": 1440,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

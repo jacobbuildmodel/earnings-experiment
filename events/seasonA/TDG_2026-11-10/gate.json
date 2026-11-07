@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "TDG",
+ "report_date": "2026-11-10",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-09"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-10"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-10"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-17"
+  },
+  "reaction_day": "2026-11-10"
+ },
+ "snapshot_session": "2026-11-06",
+ "captured_et": "2026-11-06T14:31:17.213741-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/transdigm-fourth-quarter-earnings-report-and-conference-call-set-tuesday-november-10",
+  "published_et": "2026-11-02T07:15-05:00",
+  "quote": "linkedin facebook x email reddit CLEVELAND , Nov. 2, 2026 /PRNewswire/ -- TransDigm Group Incorporated (NYSE: TDG) today said it will report fiscal 2026 fourth quarter earnings before the market opens on Tuesday, November 10, 2026 .",
+  "title": "TransDigm Fourth Quarter Earnings Report and Conference Call Set for Tuesday, November 10, 2026",
+  "retrieved_et": "2026-11-03T21:58:09.093386-05:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-10T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-10T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 1198.9764404296875,
+  "expiry": "2026-11-20",
+  "strike": 1200.0,
+  "call": {
+   "bid": 40.5,
+   "ask": 48.9,
+   "openInterest": 54.0,
+   "lastPrice": 35.0,
+   "impliedVolatility": 0.5095416477966308,
+   "lastTradeDate": "2026-10-29T17:11:31+00:00"
+  },
+  "put": {
+   "bid": 41.9,
+   "ask": 47.8,
+   "openInterest": 78.0,
+   "lastPrice": 49.9,
+   "impliedVolatility": 0.48767602172851565,
+   "lastTradeDate": "2026-11-05T16:04:54+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 8,
+  "implied_move": 0.07468870695066135,
+  "rel_spread": {
+   "call": 0.18791946308724827,
+   "put": 0.13154960981047936
+  },
+  "oi_atm": 132.0,
+  "oi_sum": 313.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
