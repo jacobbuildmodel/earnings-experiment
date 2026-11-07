@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-05T20:43:16-05:00",
+ "graded_et": "2026-11-06T20:04:19-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "QCOM",
  "report_date": "2026-11-04",
@@ -13,14 +13,67 @@
  "entry_session": "2026-11-04",
  "cluster": "semis",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-04T16:03:36-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 166.51,
+   "entry_session": "2026-11-04",
+   "exit": 150.06,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.09879286529337572,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "SOXX",
+    "beta": 0.030623,
+    "bench_return": -0.6877891245526752,
+    "flags": [
+     "bench_weight_missing",
+     "price_dispute",
+     "split_in_window"
+    ]
+   },
+   "excess_return": -0.07773069893219915,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.040117710648009064,
+    "print_gap": -0.13355274553958074,
+    "entry_close": 173.19,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 166.51,
+   "entry_session": "2026-11-04",
+   "exit": 156.75,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.05861509819230071,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "SOXX",
+    "beta": 0.030623,
+    "bench_return": -0.7121846905821768,
+    "flags": [
+     "bench_weight_missing",
+     "price_dispute",
+     "split_in_window"
+    ]
+   },
+   "excess_return": -0.03680586641260271,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -37,5 +90,10 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "no stage-2 decision frozen"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2": true
  }
 }

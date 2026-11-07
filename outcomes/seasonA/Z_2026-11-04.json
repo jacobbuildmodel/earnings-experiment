@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-05T20:43:24-05:00",
+ "graded_et": "2026-11-06T20:04:26-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "Z",
  "report_date": "2026-11-04",
@@ -13,14 +13,69 @@
  "entry_session": "2026-11-04",
  "cluster": "software_internet",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-04T16:06:07-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 32.87,
+   "entry_session": "2026-11-04",
+   "exit": 30.775,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.06373592941892303,
+   "flags": [
+    "single_source"
+   ],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.296686,
+    "bench_return": 0.03627043234355343,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": -0.11076729125275595,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.03133556434438711,
+    "print_gap": -0.09218289085545728,
+    "entry_close": 33.9,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 32.87,
+   "entry_session": "2026-11-04",
+   "exit": 30.29,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.07849102525098872,
+   "flags": [
+    "single_source"
+   ],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.296686,
+    "bench_return": 0.00918850952703365,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": -0.09040563691555988,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -37,5 +92,10 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "no stage-2 decision frozen"
+ },
+ "correct": {
+  "T0": false,
+  "T1": true,
+  "T2": true
  }
 }

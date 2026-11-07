@@ -3,24 +3,75 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-05T20:43:13-05:00",
+ "graded_et": "2026-11-06T20:04:13-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "KVYO",
  "report_date": "2026-11-04",
  "session": "AMC",
  "entry_session": "2026-11-04",
  "cluster": "software_internet",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-04T16:07:59-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 21.48,
+   "entry_session": "2026-11-04",
+   "exit": 20.3,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.05493482309124764,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.384954,
+    "bench_return": 0.004089979550102374,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": -0.060599256629080125,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.005586592178770999,
+    "print_gap": -0.04962546816479396,
+    "entry_close": 21.36,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 21.48,
+   "entry_session": "2026-11-04",
+   "exit": 20.81,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.031191806331471228,
+   "flags": [],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.384954,
+    "bench_return": -0.035836011296133896,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.018439420857154595,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -37,5 +88,10 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "no stage-2 decision frozen"
+ },
+ "correct": {
+  "T0": false,
+  "T1": true,
+  "T2": true
  }
 }
