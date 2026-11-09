@@ -1,0 +1,670 @@
+{
+ "event": "RGTI_2026-11-10",
+ "season": "seasonA",
+ "built_et": "2026-11-09T14:31:27-05:00",
+ "cutoff_et": "2026-11-09T14:31:10.874930-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/RGTI_2026-11-10/gate.json",
+   "published": "2026-11-09T14:31:10.874930-05:00",
+   "data": {
+    "ticker": "RGTI",
+    "report_date": "2026-11-10",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-10"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-11"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-11"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-18"
+     },
+     "reaction_day": "2026-11-11"
+    },
+    "snapshot_session": "2026-11-09",
+    "captured_et": "2026-11-09T14:31:10.874930-05:00",
+    "options": {
+     "spot": 12.880000114440918,
+     "expiry": "2026-11-13",
+     "strike": 13.0,
+     "call": {
+      "bid": 0.7,
+      "ask": 0.75,
+      "openInterest": 1367.0,
+      "lastPrice": 0.75,
+      "impliedVolatility": 1.2968785156249998,
+      "lastTradeDate": "2026-11-09T19:15:03+00:00"
+     },
+     "put": {
+      "bid": 0.8,
+      "ask": 0.86,
+      "openInterest": 325.0,
+      "lastPrice": 0.82,
+      "impliedVolatility": 1.2734411328124997,
+      "lastTradeDate": "2026-11-09T19:03:51+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 2,
+     "implied_move": 0.12072981259189206,
+     "rel_spread": {
+      "call": 0.06896551724137938,
+      "put": 0.07228915662650595
+     },
+     "oi_atm": 1692.0,
+     "oi_sum": 1692.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/RGTI_2026-11-10/factors.json",
+   "published": "2026-11-09T14:31:10.874930-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.6251455213722963,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.0819671874852369,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.20712277622725006,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.19289335481698466,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.8308071268538035,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.5083363370103502,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.618596389107249,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-06",
+       "session": "AMC",
+       "raw_return_A": 0.038699691316579576,
+       "eps_est": -0.05,
+       "eps_rep": -0.05,
+       "surprise_pct": -8.11,
+       "reaction_volume_ratio": 1.3950108253747062
+      },
+      {
+       "date": "2026-05-11",
+       "session": "AMC",
+       "raw_return_A": 0.09831229544414999,
+       "eps_est": -0.04,
+       "eps_rep": -0.04,
+       "surprise_pct": 6.67,
+       "reaction_volume_ratio": 1.5479536282224287
+      },
+      {
+       "date": "2026-03-04",
+       "session": "AMC",
+       "raw_return_A": -0.002934339302976041,
+       "eps_est": -0.03,
+       "eps_rep": -0.03,
+       "surprise_pct": 8.7,
+       "reaction_volume_ratio": 1.3800924068908675
+      },
+      {
+       "date": "2025-11-10",
+       "session": "AMC",
+       "raw_return_A": -0.08856301130649469,
+       "eps_est": -0.04,
+       "eps_rep": -0.03,
+       "surprise_pct": 25.0,
+       "reaction_volume_ratio": 0.5441891334699065
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.2168114984894771,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": -8.11,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.05125,
+      "7daysAgo": -0.05125,
+      "30daysAgo": -0.05125,
+      "60daysAgo": -0.05125,
+      "90daysAgo": -0.05143,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.0034999027804783127,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.05125,
+      "low": -0.06,
+      "high": -0.04,
+      "yearAgoEps": -0.03,
+      "numberOfAnalysts": 8,
+      "growth": -0.7083,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.39024390243902435,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.21370001,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": -62.524273,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 321.94574,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 1.853,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 4298941440,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.69231,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.12072981259189206,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.023437382812500074,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.06249968750000012,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.33512080496475266,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.7257818459191457,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 22159.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 1.5468810782660731,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.12459948833488586,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 173,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unprofitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 1.852859522487507,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -5.461658232775399,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.6252910427445925,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.20665416194372943,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.19289335481698466,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.8305862473174593,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.4534768091540284,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": -0.0662453563542375,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 4297272617.625,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.0031073197323422046,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": -0.14988283533852798,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926091979/rgti-20260806xex99d1.htm",
+   "published": "2026-08-06T16:05:29-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 rgti-20260806xex99d1.htm EX-99.1 Exhibit 99.1 ​ Rigetti Computing Reports Second Quarter 2026 Financial Results Growing demand for Rigetti’s quantum systems, progress on the technology roadmap, and strategic U.S. government support BERKELEY, Calif., August 6, 2026 -- Rigetti Computing, Inc. (Nasdaq: RGTI) (“Rigetti” or the “Company”), a pioneer in full-stack quantum-classical computing, today announced financial results for the second quarter ended June 30, 2026 and provided an update on recent business and technology milestones. Second Quarter 2026 Financial Highlights ● Total revenues for the three months ended June 30, 2026 were $5.1 million ● Operating loss for the three months ended June 30, 2026 was $28.1 million ● For the three months ended June 30, 2026: GAAP net loss $52.6 million; non-GAAP net loss $16.0 million ● For the three months ended June 30, 2026: GAAP diluted net loss per share $0.16; non-GAAP diluted net loss per share $0.05 ● As of June 30, 2026, cash, cash equivalents and available-for-sale investments totaled $541.3 million “In the second quarter, we continued to execute on our strategy by focusing on our system performance, progressing our core technology roadmap, and broadening on-premises system deployments,” said Dr. Subodh Kulkarni, Rigetti CEO. “Our recently announced expanded collaboration with Hewlett Packard Enterprise Company (HPE) and the Pittsburgh Supercomputing Center to develop a hybrid quantum-classical supercomputer reflects growing demand for our approach and positions Rigetti to deliver differentiated quantum-enhanced high-performance computing (HPC) solutions.” ​ “We are seeing broadening engagement across government, academic, and commercial customers, and we believe our open modular approach, superconducting gate-based architecture, and chiplet-based scaling strategy continue to differentiate Rigetti in the market. End users who leverage our systems over the cloud benefit from ease of use and consistent uptime, which we will continue to prioritize as quantum computing R&D progresses,” Dr. Kulkarni continued. “In addition, our recently announced letter of intent with the U.S. Department of Commerce for up to $100 million in potential funding underscores the strategic importance of our platform and could help us accelerate key R&D programs aimed at scaling and advancing superconducting quantum computing.” ​ Rigetti ended the second quarter of 2026 with a strong cash position and no debt, providing flexibility to continue investing behind its technology roadmap and customer opportunities. ​ Business and Strategic Updates ​ Hybrid-Quantum Classical Supercomputer with HPE and PSC ​ Rigetti will deliver a 9-qubit Novera™ quantum computing system to the Pittsburgh Supercomputing Center’s new TangleLab testbed, funded by a National Science Foundation grant. The deployment builds on Rigetti’s strategic collaboration with HPE to advance the commercialization of quantum-enabled high-performance computing systems. Advancing On-Premises Quantum Computing Systems Rigetti is fulfilling recently announced on-premises systems, including Novera-based systems and the Company’s 108-qubit system program for C-DAC in India. The Company also continues to see demand from universities, national laboratories, and research organizations for on-premises quantum computing systems that support direct hardware access, experimentation, and ecosystem development. Strategic U.S. Government Letter of Intent In May 2026, Rigetti announced that it signed a letter of intent with the U.S. Department of Commerce for an award of up to $100 million in funding over three years to accelerate superconducting quantum computing R&D. The funding is allocated under the CHIPS Research and Development Office Broad Agency Announcement pursuant to the CHIPS Act, and the LOI contemplates that the Department would receive an equity stake in Rigetti consistent with the total amount of the funding. Under the LOI, Rigetti would pursue R&D projects that address major technical challenges in scaling and advancing superconducting quantum computing. Technology Milestones Progress on Fidelity, Coherence, and Speed Rigetti continued to make progress against the technology milestones that management has identified as most important on the path to quantum advantage, including qubit count, two-qubit gate fidelity, coherence time, and gate speed. Cepheus-1-108Q currently operates at approximately 99.9% median single-qubit gate fidelity, approximately 99.1% median two-qubit gate fidelity, and approximately 60 nanosecond gate speeds. At 9-qubit and 36-qubit level, Rigetti has demonstrated 99.8% and 99.6% median two-qubit gate fidelities, respectively. ​ The Company remains focused on improving coherence time, which management has identified as a key factor in raising fidelity further. Rigetti is pursuing chip design, fabrication, materials, and process improvements. These efforts are intended to improve coherence time and support the Company’s goal of continued fidelity improvement as systems scale. ​ Roadmap Toward Higher-Qubit Systems Rigetti continues to target a path toward systems with approximately 1,000 qubits, approximately 99.9% two-qubit gate fidelity, and gate speeds below 50 nanoseconds over roughly a three-year time horizon. In support of that roadmap, the Company has continued investing in dilution refrigeration capacity and related infrastructure that can support higher-qubit-count systems. Rigetti believes its chiplet-based and open modular architecture provide a practical framework for scaling over time. ​ International Expansion and UK Initiative Rigetti continues to advance its previously announced plan to invest up to $100 million in the United Kingdom over the next several years to accelerate quantum computing development. The planned investment is intended to support physical system deployments, talent, and facilities in the UK and builds on Rigetti’s existing presence in the country, including its deployed 36-qubit system at the UK’s National Quantum Computing Centre. ​ Conference Call and Webcast Rigetti will host a conference call today, August 6, 2026, at 5:00 pm ET, or 2:00 pm PT, to discuss its second quarter 2026 financial results. You can listen to a live audio webcast of the conference call at https://edge.media-server.com/mmc/p/9pedzvky or the \"Events & Presentations\" section of the Company's Investor Relations website at https://investors.rigetti.com/ . A replay of the conference call will be available at the same locations following the conclusion of the call for one year. To participate in the live call, you must register using the following link: https://register-conf.media-server.com/register/BI6483c92f267f4169a6d27a72dc7c5e58 . Once registered, you will receive dial-in numbers and a unique PIN number. When you dial in, you will input your PIN and be routed into the call. If you register and forget your PIN, or lose the registration confirmation email, simply re-register to receive a new PIN. About Rigetti Rigetti is a pioneer in full-stack quantum computing. Rigetti quantum computers are based on superconducting qubits, which are widely believed to be the leading qubit modality given their maturity, clear path to scaling, and fast gate speeds. Rigetti quantum computing systems achieve gate speeds of 50-70 nanoseconds, which is about 10,000 times faster than trapped-ion systems and 100x faster than neutral-atom systems. Rigetti sells on-premises 9-qubit to 108-qubit quantum computing systems, which support national laboratories and quantum computing centers. Rigetti’s Cepheus 36-qubit to 108-qubit systems are based on the Company’s proprietary chiplet-based technology and include the Company’s control electronics. Rigetti’s 9-qubit Novera QPU supports a broader R&D community with a high-performance, on-premises QPU designed to plug into a customer’s existing cryogenic and control systems. The Company operates quantum computers over the cloud through its Rigetti Quantum Cloud Services (QCS) platform, enabling global enterprise, government, and research clients to pursue R&D. The Company’s proprietary quantum-classical infrastructure provides high-performance integration with public and private clouds for practical quantum computing. Rigetti developed the industry’s first multi-chip quantum processor for scalable quantum computing systems. Leveraging this proprietary technology, Rigetti deployed the industry’s largest multi-chip quantum computer in 2026 with Cepheus-1-108Q, based on twelve 9-qubit chiplets tiled together . The Company designs and manufactures its chips in-house at Fab-1, the industry’s first dedicated and integrated quantum device manufacturing facility. Learn more at https://www.rigetti.com/ . Contacts Rigetti Computing Investor Contact: IR@Rigetti.com ​ Rigetti Computing Media Contact: press@rigetti.com ​ Non-GAAP Financial Measures To supplement Rigetti’s consolidated financial statements presented in accordance with U.S. generally accepted accounting principles (GAAP), the Company uses certain non-GAAP financial measures, non-GAAP net loss and non-GAAP net loss per share attributable to common stockholders-basic and diluted. The Company believes that providing these non-GAAP financial measures enhances the Company’s and investors’ ability to compare the Company’s past financial performance with its current performance. Non-GAAP net loss is defined as GAAP net income (loss) excluding stock-based compensation expenses, change in fair value of derivative warrant liabilities and change in fair value of earn-out liabilities and non-GAAP net loss per share attributable to common stockholders-basic and diluted is defined as non-GAAP net loss divided by the weighted average shares used to compute net loss per share attributable to common stockholders-basic and diluted. The Company excludes stock-based compensation expenses, change in fair value of derivative warrant liabilities and change in fair value of earn-out liabilities from non-GAAP net loss and non-GAAP net loss per share attributable to common stockholders-basic and diluted, primarily because these are non-cash items that the Company believes are not reflective of ongoing operating results and such items may not be comparable from period to period due to changes in the fair market value of the Company’s common stock, which is influenced by external factors such as the volatility of public markets and the performance of the Company’s peers. These non-GAAP financial measures, which are included in this press release and which may be referred to on the conference call discussing the Company’s second quarter financial results, are provided as supplemental information to the financial measures presented in this press release and discussed on the conference call that are calculated and presented in accordance with GAAP. Non-GAAP financial measures should not be considered a substitute for, or superior to, financial measures determined or calculated in accordance with GAAP. The Company’s definitions of its non-GAAP financial measures may not be comparable to similarly titled measures reported by other companies. For a reconciliation of each non-GAAP financial measure to its most directly comparable GAAP measure, please refer to the reconciliation tables at the end of this press release. ​ Cautionary Language and Forward-Looking Statements Certain statements in this communication may be considered “forward-looking statements” within the meaning of the federal securities laws, including statements with respect to the Company’s expectations with respect to its future success and performance, including the belief that our open modular approach, superconducting gate-based architecture, and chiplet-based scaling strategy continue to differentiate Rigetti in the market; the potential funding of up to $100 million from our recently announced letter of intent with the U.S. Department of Commerce; the potential that funding from the U.S. Department of Commerce could help us accelerate key R&D programs aimed at scaling and advancing superconducting quantum computing; the potential that Rigetti will deliver a 9-qubit Novera™ quantum computing system to the Pittsburgh Supercomputing Center’s new TangleLab testbed; the intention to improve coherence time and support the Company’s goal of continued fidelity improvement as systems scale; the belief that its chiplet-based and open modular architecture provide a practical framework for scaling over time; the targeting of a path toward systems with approximately 1,000 qubits, approximately 99.9% two-qubit gate fidelity, and gate speeds below 50 nanoseconds over roughly a three-year time horizon; and its planned investment that is intended to support physical system deployments, talent, and facilities in the UK and to build on Rigetti’s existing presence in the UK, including its deployed 36-qubit system at the UK’s National Quantum Computing Centre. These forward-looking statements are based upon estimates and assumptions that, while considered reasonable by the Company and its management, are inherently uncertain. Factors that may cause actual results to differ materially from current expectations include, but are not limited to: Company and the U.S. Department of Commerce’s ability to enter into definitive transaction agreements; the timing of entry into any such definitive transaction agreements; potential impact on the Company, its business and price of its securities with respect to the transactions contemplated by the LOI and definitive transaction agreements; the Company’s issuance of securities to the U.S. Department of Commerce pursuant to the transaction (including dilution to existing stockholders); the Company’s ability to achieve milestones, technological advancements, including with respect to its technology roadmap; Company’s ability to deliver products to customers in time or at all, including action",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926091993/rgti-20260630x10q.htm",
+   "published": "2026-08-06T16:08:25-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "ITEM 2. MANAGEMENT’S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS This Management’s Discussion and Analysis of Financial Condition and Results of Operations section should be read in conjunction with the condensed consolidated financial statements and notes thereto included elsewhere in this Quarterly Report on Form 10-Q. This discussion and analysis contains forward-looking statements, such as statements of our plans, objectives, expectations and intentions. Any statements that are not statements of historical fact are forward-looking statements. When used, the words “believe,” “plan,” “intend,” “anticipate,” “target,” “estimate,” “expect,” “will,” “continue,” “project,” “forecast,” “goal,” “should,” “could,” “would,” “potential,” and the like, and/or future tense or conditional constructions (“will,” “may,” “could,” “should,” etc.), or similar expressions, identify certain of these forward-looking statements. These forward-looking statements are subject to risks and uncertainties, including those described under Part I “Item 1A. Risk Factors” in our Annual Report on Form 10-K for the year ended December 31, 2025, as updated under Part II “Item 1A. Risk Factors” and elsewhere in this Quarterly Report on Form 10-Q that could cause actual results or events to differ materially from those expressed or implied by the forward-looking statements. Our actual results and the timing of events could differ materially from those anticipated in these forward-looking statements as a result of a variety of factors. See “Cautionary Note Regarding Forward-Looking Statements” elsewhere in this Quarterly Report on Form 10-Q. ​ For purposes of this discussion, “Rigetti,” “the Company,” “we,” “us” or “our” refer to Rigetti Computing, Inc. and its subsidiaries unless the context otherwise requires. ​ Overview ​ We build quantum computers and the superconducting quantum processors that power them. We believe quantum computing represents one of the most transformative emerging capabilities in the world today. By leveraging quantum mechanics, we believe our quantum computers process information in fundamentally new, more powerful ways than classical computers. When scaled, it is anticipated that these systems will be poised to solve problems of staggering computational complexity at unprecedented speed. We are located and headquartered in Berkeley, California. We also operate in Fremont, California; London, United Kingdom; Adelaide, Australia; British Columbia, Canada; and Thane, India. Our revenue is derived primarily from operations in the United States and the United Kingdom. ​ With the goal of unlocking this opportunity, we have developed the world’s first multi-chip quantum processor for scalable quantum computing systems. We believe that this patented and patent pending, modular chip architecture is the building block for new generations of quantum processors that we expect to achieve a clear advantage over classical computers. Our long-term business model centers on revenue generated from sales of quantum processing units (“QPUs”) and quantum computing systems and providing access to quantum computing systems via the cloud in the form of Quantum Computing as a Service (“QCaaS”). Historically, most of our revenues have been derived from development contracts, and we anticipate this market opportunity will continue to represent an important source of revenue for at least the next several years as we work to ramp up sales of QPUs, quantum computing systems and QCaaS. Additionally, we are working to further develop a revenue stream and forging important customer relationships by entering into technology development contracts with various partners. ​ We are a vertically integrated company. We operate Fab-1, a wafer fabrication facility dedicated to prototyping and producing our quantum processors. Through Fab-1, we own the means of production of our breakthrough multi-chip quantum processor technology. We leverage our chips through a full-stack product development approach, from quantum chip design and manufacturing through cloud delivery. We believe this full-stack development approach offers both the fastest and lowest risk path to building commercially valuable quantum computers. We have been generating revenue since 2018 through partnerships with government agencies and commercial organizations; however, we have incurred significant operating losses since inception. Our net loss was $216.2 million for the year ended December 31, 2025. We incurred a loss from operations of $54.0 million for the six months ended June 30, 2026. We expect to continue to incur additional losses for the foreseeable future as we invest in research, development, and infrastructure consistent with our long-term business strategy. As of June 30, 2026, we had an accumulated deficit of $790.5 million. ​ Based on our forecasts, we believe that our existing cash, cash equivalents and marketable securities will be sufficient to meet our anticipated operating cash needs for at least the next 12 months based on our current business plan, and expectations and assumptions considering current macroeconomic conditions. Our operating plans may change because of factors currently unknown, and we may need to seek additional funds sooner than planned, through public or private equity or debt financing or other sources, such as strategic collaborations or other transactions. In addition, we may seek additional capital even if we believe that we have sufficient funds for current or future operating plans. ​ ​ 27 Table of Contents We are focused on continuing to improve our system performance. As of the date of this Quarterly Report on Form 10-Q, we have achieved a median 99.8% two-qubit gate fidelity (based on internal testing) with 40 nanosecond gate speeds on our 9-qubit system by using a proprietary adiabatic CZ gate scheme. Leveraging this same gate scheme, we achieved two-qubit gate fidelities (based on internal testing) as high as 99.9% on prototype systems. We continue to be at 99.9% one-qubit gate fidelity (based on internal testing). In January 2026, we announced achievement of a median two-qubit gate fidelity (based on internal testing) of 99.6% on our 36-qubit system. ​ In January 2026, Rigetti Computing India P L, a wholly owned subsidiary of Rigetti Computing, Inc., announced that it received an $8.4 million purchase order to deliver a 108-qubit quantum computer to C-DAC. The system will be installed on-premises at C - DAC’s Bengaluru center and is expected to be deployed in the second half of 2026. ​ In April 2026, Rigetti announced the general availability of its 108-qubit quantum computing system, Cepheus™-1-108Q, with the system being accessible to customers and partners via the Rigetti Quantum Cloud Services (QCS ® ) Platform and through Amazon Braket, the quantum computing service by AWS. The system is also now available on Microsoft Azure Quantum and qBraid. ​ Cepheus-1-108Q is Rigetti’s highest qubit-count system to date and based on Rigetti’s proprietary chiplet-based architecture. The system comprises twelve interconnected 9-qubit chiplets, tripling the number of qubits and chiplets from Rigetti’s previous 36-qubit system, Cepheus-1-36Q. As of the date of this Quarterly Report on Form 10-Q, the system is performing at a 99.1% median two-qubit gate fidelity (based on internal testing) with a gate speed of approximately 60 nanoseconds and a 99.9% median single-gate fidelity (based on internal testing). ​ We believe that we will be able to achieve our plans described above and elsewhere in this Quarterly Report on Form 10-Q; however, we face various risks and uncertainties relating to our business that could cause actual results to differ materially from our expectations stated herein. This Quarterly Report on Form 10-Q, including this Management’s Discussion and Analysis of Financial Condition and Results of Operations should be read in conjunction with the section entitled “Risk Factors” in Part I, Item 1A of our Annual Report on Form 10-K for the year ended December 31, 2025, as updated under Part II “Item 1A. Risk Factors” and elsewhere in this Quarterly Report on Form 10-Q. ​ Recent Developments – Department of Commerce Transaction ​ On May 21, 2026, we announced that our wholly-owned subsidiary, Rigetti & Co, LLC (“Rigetti Sub”) entered into a Letter of Intent (“LOI”) with the U.S. Department of Commerce (the “Department”) under the CHIPS Act of 2022, covering an award (the “Award”) of up to $100.0 million in the aggregate, to be disbursed to Rigetti Sub in multiple payments, with $19.9 million to be made available on or about the date of the Award (the “Award Date”), two subsequent potential payments of $22.2 million and $18.5 million, respectively, to be disbursed contingent on the satisfactory completion of certain project milestones, and subject to the Department’s approval, an additional potential $39.4 million that may be disbursed to Rigetti Sub for other project activities (collectively, the “Department of Commerce Transaction”). ​ The LOI contemplates that Rigetti Sub will develop intellectual property and equip facilities at multiple existing U.S. project sites to address key technical challenges to accelerate superconducting quantum computing, including conducting, at project facilities, research and development activities related to the miniaturization and integration of readout electronics and leveraging of new, larger cryostat architectures. The Department of Commerce Transaction is subject to the negotiation and execution of definitive award documentation (the “Definitive Award Documents”). The LOI provides that the period of performance of the Award (“Period of Performance”) terminates on the earlier of the completion of all project milestones and five (5) years from the Award Date. Additionally, the LOI requires that Rigetti Sub expend advance payments solely on eligible project costs as defined in the Definitive Award Documents. Under its terms, the LOI terminates upon the execution of the Definitive Award Documents or by mutual agreement of the parties. ​ Pursuant to the terms of the LOI, in exchange for receiving the Award, the Company will be required to issue shares of the Company’s Common Stock on the Award Date to the Department in the total aggregate potential amount of the Award, at an implied issuance price that is based on the lowest reported closing price per share on: (i) the date that the first draft of the LOI was transmitted from the Department to Rigetti Sub (May 5, 2026), (ii) the date that the LOI was executed by Rigetti Sub and the Department (May 20, 2026), and (iii) the Award Date, in each case, discounted by fifteen percent (15%). The LOI contemplates that, while held by the Department, the securities that the Company will issue pursuant to the Definitive Award Documents will be non-voting to the extent permitted by applicable law and freely transferable. ​ 28 Table of Contents The LOI provides for certain data and intellectual property rights, domestic production, and research security requirements, including U.S. government license rights and restrictions on transfer of intellectual property developed using funds from the Award, U.S.-ownership and manufacturing requirements, and research security compliance and certification obligations. The LOI also provides the right to the Department to claw back up to the full disbursed Award amount for certain breaches involving intellectual property, domestic production, or research security requirements, or for failure to complete or abandonment of the project. ​ Pursuant to the LOI, the Company and the Department have agreed to negotiate in good faith to enter into Definitive Award Documents with respect to the Award within 60 days and no later than 90 days after the date of the LOI (unless otherwise extended by the Department). In the event that Definitive Award Documents are not executed and ",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926105662/tm2624940d1_8k.htm",
+   "published": "2026-09-08T07:25:18-04:00",
+   "form": "8-K",
+   "items": "1.01,3.02,7.01,8.01,9.01",
+   "text": "Item 1.01 Entry into a Material Definitive Agreement. Rigetti Computing, Inc. (the “Company”) previously announced that its wholly-owned subsidiary, Rigetti & Co, LLC (“Rigetti Sub”), had entered into a letter of intent with the United States Department of Commerce (the “Department”) with respect to a proposed award under the U.S. CHIPS Act of 2022. On September 4, 2026 (the “Award Date”), Rigetti Sub entered into an Other Transaction Agreement (the “Other Transaction Agreement”) with the Department, pursuant to which the Department agreed to provide Rigetti Sub funding in the amount of up to $100 million (the “Award”) to accelerate superconducting quantum computing research and development. The Other Transaction Agreement contemplates that Rigetti Sub will pursue research and development activities related to three overall project tasks to address key technical challenges related to superconducting quantum computing: (i) compressing readout electronics into an integrated, miniaturized package, (ii) expanding cryogenic capacity by orders of magnitude using a new cryostat architecture, and (iii) developing the fabrication capabilities for high-connectivity chip architectures. The Other Transaction Agreement commences on the Award Date and terminates on the earlier of (i) the date all of the milestones under the Other Transaction Agreement have been completed or (ii) the fifth anniversary of the Award Date, unless earlier terminated in accordance with the terms set forth in the Other Transaction Agreement (the “Period of Performance”). Rigetti Sub may request an amendment of the Other Transaction Agreement to extend the Period of Performance by submitting a request to the Department at least sixty calendar days prior to the expiration of the Period of Performance. Under the Other Transaction Agreement, $43.9 million of the Award will be made available to Rigetti Sub on or as soon as practicable after the Award Date, and two subsequent tranches of $29.9 million and $26.2 million to be made available by the Department to Rigetti Sub if the Department determines to its satisfaction in its sole discretion that Rigetti Sub has achieved the milestones with respect to the tranche in accordance with the applicable success criteria and by the applicable milestone date for such tranche. If Rigetti Sub fails to complete any required project activity under the Other Transaction Agreement prior to the applicable required project activity date, subject to any applicable c",
+   "exhibit_99_1": "EX-99.1 4 tm2624940d1_ex99-1.htm EXHIBIT 99.1 Exhibit 99.1 Rigetti Signs Definitive Agreement for $100M with U.S. Government to Accelerate R&D for Superconducting Quantum Computing Rigetti announces that it has signed a definitive agreement with the U.S. Department of Commerce for an award of $100 million to accelerate R&D projects addressing key technical challenges in scaling and advancing superconducting quantum computers. Berkeley, CA, September 8, 2026 -- Rigetti Computing, Inc. (Nasdaq: RGTI) (“Rigetti” or the “Company”), a pioneer in full-stack quantum-classical computing, today announced that its wholly owned subsidiary, Rigetti & Co, LLC, has signed a definitive agreement with the U.S. Department of Commerce (the “Department”) for an award of $100 million in funding to accelerate superconducting quantum computing R&D. The funding is allocated under the CHIPS Research and Development Office Broad Agency Announcement pursuant to the CHIPS Act. Under the agreement, Rigetti will pursue three R&D projects that aim to address major technical bottlenecks in scaling superconducting quantum computing and will accelerate the Company’s roadmap towards utility-scale quantum computing: 1. Compressing readout electronics into an integrated, miniaturized package 2. Expanding cryogenic capacity by orders of magnitude using a new cryostat architecture 3. Developing the fabrication capabilities for high-connectivity chip architectures Quantum computing has tremendous promise to dramatically transform critical areas including cryptography, chemistry, materials science, mathematical optimization, and AI/machine learning. Governments worldwide are investing in this emerging technology given the national security and economic implications of quantum advantage. “We are proud to be selected by the U.S. government to accelerate R&D and progress against our roadmap to deliver commercially viable quantum computing capabilities,” says Dr. Subodh Kulkarni, Rigetti CEO. “Solving crucial challenges in scaling gives us the opportunity to transform the industry by putting large-scale quantum computers in the hands of America’s quantum computing researchers faster. Shortening the time to build quantum systems at scale and reducing their cost will also allow for broader adoption, which will strengthen our domestic quantum computing ecosystem.” The Department will receive a minority, non-controlling equity stake in Rigetti as a condition for receiving the funds to enhance the return"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926098999/tm2623611d2_8k.htm",
+   "published": "2026-08-20T08:00:28-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On August 19, 2026, Dr. Ray Johnson, a member of the Board of Directors (the “Board”) of Rigetti Computing, Inc. (the “Company”), notified the Company of his resignation from the Board, effective August 28, 2026. Dr. Johnson’s decision to resign was not due to any disagreement with the Company on any matter relating to the Company’s operations, policies or practices. The Company thanks Dr. Johnson for his commitment and service to the Company. SIGNATURES Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. Date: August 20, 2026 RIGETTI COMPUTING, INC. By: /s/ Jeffrey Bertelsen Jeffrey Bertelsen Chief Financial Officer"
+  },
+  {
+   "id": "I8",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926098877/tm2623611d1_8k.htm",
+   "published": "2026-08-19T19:16:15-04:00",
+   "form": "8-K",
+   "items": "5.02,7.01,8.01,9.01",
+   "text": "Item 5.02. Departure of Directors or Principal Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On August 18, 2026, the Board of Directors (the “Board”) of Rigetti Computing, Inc. (the “Company”) appointed David Rivas to the newly created role of Chief Operating Officer of the Company, effective the same date. Mr. Rivas previously served as the Company’s Chief Technology Officer. In connection with the appointment, the Compensation Committee of the Board increased Mr. Rivas’ annual base salary to $440,000. Mr. Rivas, age 65, served as the Company’s Chief Technology Officer since February 2023, and he previously served as Senior Vice President, Systems and Services at the Company since March 2019, where he oversaw the engineering and operations of the Company’s Quantum Cloud Services platform. There is no arrangement or understanding between Mr. Rivas and any other person pursuant to which Mr. Rivas was selected as the Company’s Chief Operating Officer. There are no related party transactions between the Company and Mr. Rivas reportable under Item 404(a) of Regulation S-K and no family relationships between Mr. Rivas and any of the Company’s directors or officers. Item 7.01. Regulation FD Disclosure. On August 19, 2026, the Company issued a press release regarding the Company’s leadership changes. A copy of the press release is furnished as Exhibit 99.1 to this Current Report on Form 8-K (the “Current Report”) and is incorporated herein by reference. The information included in Item 7.01 of this Current Report (including Exhibit 99.1 hereto) is being furnished and shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to liabilities of that section, and shall not be deemed incorporated by reference into any filing under the Exchange Act or the Securities Act of 1933, as amended, except as expressly set forth by specific reference in such filing. Item 8.01. Other Events. On August 18, 2026, the Board appointed Andrew Bestwick to the role of Chief Technology Officer of the Company, effective the same date. Mr. Bestwick served as the Company’s Senior Vice President, Quantum Systems since January 2024. Prior to this role, he worked in a variety of technical capacities at Rigetti beginning in August 2015, including chip fabrication, circuit design, cryo-RF hardware engineering, and system architecture. Item",
+   "exhibit_99_1": "EX-99.1 2 tm2623611d1_ex99-1.htm EXHIBIT 99.1 Exhibit 99.1 Rigetti Computing Establishes Dedicated Systems Delivery Organization to Scale Customer Deployments and Advance Quantum Processor Roadmap David Rivas appointed to newly created Chief Operating Officer role; Andrew Bestwick, Ph.D. appointed Chief Technology Officer BERKELEY, Calif. — August 19, 2026 — Rigetti Computing, Inc. (Nasdaq: RGTI) (“Rigetti”), a pioneer in full-stack quantum computing, today announced a new operating structure designed to scale deployment of on-premises quantum systems, strengthen end-to-end operational execution, and further focus its engineering resources on quantum processor development. Rigetti is establishing a dedicated Systems Delivery organization and creating the role of Chief Operating Officer to lead manufacturing operations, systems delivery, commercial functions, and customer-facing engineering. Quantum processor architecture, chip development, and hardware engineering will be consolidated under the Chief Technology Officer. The Company has seen increased demand for customer deployments of on-premises systems, ranging from 9-qubit Novera systems to large-scale 108-qubit Cepheus-class systems. Historically, installation and customer support activities have been supported within the engineering organization. The new structure creates dedicated leadership and resources for system deployment and customer success, while enabling engineering teams to concentrate on advancing processor performance and the Company’s published technology roadmap, including its target of 99.5% median two-qubit gate fidelity on Cepheus-1-108Q. David Rivas , who has served as Rigetti’s Chief Technology Officer since February 2023, has been appointed Chief Operating Officer . In this newly created role, Rivas will oversee fabrication operations, systems delivery, software engineering, applications, business development, government programs, supply chain, and facilities. Andrew Bestwick, Ph.D. , currently Senior Vice President, Quantum Systems, has been appointed Chief Technology Officer . Dr. Bestwick has led the architecture of Rigetti’s Cepheus-class multi-chip systems and will oversee quantum processor development, chip fabrication development, and hardware engineering. The technology organization will remain Rigetti’s largest engineering organization, underscoring the Company’s continued focus on advancing processor performance and executing its technology roadmap. Both executives repor"
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rigetti-pre-q3-earnings-analysis-175700401.html?.tsrc=rss",
+   "published": "2026-11-09T12:57:00-05:00",
+   "text": "Rigetti Pre-Q3 Earnings Analysis: Buy, Sell or Hold the Stock? - Rigetti faces a crucial Q3 earnings test as rising quantum computing demand meets widening losses, high costs and premium valuation. Is holding the best bet?",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/5ab5228d-ecaf-3956-bd5e-1ec2e0f9e0dc/d-wave-and-rigetti-face-high.html?.tsrc=rss",
+   "published": "2026-11-09T10:55:00-05:00",
+   "text": "D-Wave and Rigetti Face High Stakes After Quantum Peers Raise the Earnings Bar - After strong quarterly results from IonQ and Quantinuum, Rigetti Computing and D-Wave Quantum are set to report earnings on Tuesday.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/3-top-quantum-stocks-watch-141158992.html?.tsrc=rss",
+   "published": "2026-11-09T09:11:58-05:00",
+   "text": "3 Top Quantum Stocks To Watch With Up To 71% Revenue Growth - Google’s latest push into custom AI chips has put advanced computing power back in the spotlight, and quantum technology sits on the frontier of what could come next. Investors who ignore this shift risk watching the next wave of computing pass by. This article breaks down three stocks from a focuse",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rigetti-q3-earnings-preview-expect-132833007.html?.tsrc=rss",
+   "published": "2026-11-09T08:28:33-05:00",
+   "text": "Rigetti Q3 Earnings Preview: What To Expect From Upcoming Report - Rigetti Reports Earnings Tuesday, and the Quantum Computing Stock Faces a Big Test",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/09/d-wave-and-rigetti-are-down-big-this-year-their-q3-reports-must-answer-the-cash-burn-question/?.tsrc=rss",
+   "published": "2026-11-09T08:06:32-05:00",
+   "text": "D-Wave and Rigetti Are Down Big This Year. Their Q3 Reports Must Answer the Cash Burn Question - Two quantum stocks have lost more than half their value this year, and both report on the same day. One company's own guidance sets a simple test, and a rival's single quarter dwarfs them both.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/d-wave-rallied-18-on-ionqs-guidance-its-own-november-10-report-has-to-earn-it?ref=yahoofinance&tlnk=yf-261109-5xm88h3x&.tsrc=rss",
+   "published": "2026-11-09T07:20:58-05:00",
+   "text": "D-Wave Rallied 18% on IonQ’s Guidance. Its Own November 10 Report Has to Earn It - Key TakeawaysD-Wave Quantum closed up 18% on Friday after IonQ raised its 2026 revenue guidance to $505-515 million, with no news of its own. D-Wave’s second-quarter revenue was $3.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/rigetti-stock-jumped-17-on-ionqs-guidance-raise-heres-what-its-november-10-report-has-to-show?ref=yahoofinance&tlnk=yf-261109-36m97mqw&.tsrc=rss",
+   "published": "2026-11-09T06:54:15-05:00",
+   "text": "Rigetti Stock Jumped 17% on IonQ’s Guidance Raise. Here’s What Its November 10 Report Has to Show - Key TakeawaysRigetti Computing closed up 19% on Friday and D-Wave Quantum 18% after IonQ raised its 2026 revenue guidance to $505-515 million. Rigetti needs about $13.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/rigetti-gained-19-friday-its-100-million-chips-award-hasnt-reached-revenue-yet?ref=yahoofinance&tlnk=yf-261108-m2jqp67f&.tsrc=rss",
+   "published": "2026-11-08T15:50:55-05:00",
+   "text": "Rigetti Gained 19% Friday. Its $100 Million CHIPS Award Hasn’t Reached Revenue Yet - Key TakeawaysRigetti shares jumped 19. 3% on Friday as IonQ’s 336% revenue growth and raised guidance lifted the quantum group.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/08/should-you-forget-ionq-and-buy-these-2-quantum-com/?.tsrc=rss",
+   "published": "2026-11-08T08:57:00-05:00",
+   "text": "Should You Forget IonQ and Buy These 2 Quantum Computing Stocks Instead? - D-Wave Quantum and Rigetti are taking different approaches to developing quantum computers. Here's how their commercial progress and valuations stack up against IonQ's.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/07/where-will-rigetti-computing-stock-be-in-3-years/?.tsrc=rss",
+   "published": "2026-11-07T13:57:00-05:00",
+   "text": "Where Will Rigetti Computing Stock Be in 3 Years? - Will Rigetti Computing hit its quantum milestones by 2029? Here is how to judge the stock's risk before it does.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/infleqtion-infq-mirrors-quantum-tech-013942503.html?.tsrc=rss",
+   "published": "2026-11-06T20:39:42-05:00",
+   "text": "Here’s Why Infleqtion (INFQ) Shares Skyrocketed on Friday - Infleqtion Inc. (NYSE:INFQ) is one of the 10 Stocks With Effortless 18-42% Gains. Infleqtion Inc. (NYSE:INFQ) climbed by 19.49 percent on Friday to close at $8.89 apiece, mirroring the rally in technology stocks and its quantum computing counterparts, thanks to a combination of bargain-hunting from ",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rigetti-computing-rgti-q3-earnings-013720588.html?.tsrc=rss",
+   "published": "2026-11-06T20:37:20-05:00",
+   "text": "Here’s Why Rigetti Computing (RGTI) Shares Surged 19% On Friday - Rigetti Computing Inc. (NASDAQ:RGTI) is one of the 10 Stocks With Effortless 18-42% Gains. Rigetti Computing soared by 19.29 percent on Friday to finish at $11.75 apiece, as investors grew interested in its stock ahead of the results of its earnings performance for the third quarter of the year. Bas",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/rigetti-soars-17-d-wave-up-17-as-ionq-raises-guidance-to-an-industry-record?ref=yahoofinance&tlnk=yf-261106-cpj55426&.tsrc=rss",
+   "published": "2026-11-06T13:36:47-05:00",
+   "text": "Rigetti Soars 17%, D-Wave Up 17% as IonQ Raises Guidance to “An Industry Record” - Key TakeawaysRigetti Computing and D-Wave Quantum both jumped 17% today after IonQ raised its 2026 revenue guidance to $505-515 million. Rigetti’s $5.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/06/ionq-beat-and-raised-can-the-quantum-stock-buck-the-tech-selloff/?.tsrc=rss",
+   "published": "2026-11-06T13:03:21-05:00",
+   "text": "IonQ Beat and Raised. Can the Quantum Stock Buck the Tech Selloff? - Revenue more than tripled, guidance went up, and the stock still sank toward its yearly low. Behind IonQ's disconnect sit a sold-out 2027 order book, heavy dilution, and a cash burn that could swing the verdict either way.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.trefis.com/stock/rgti/articles/623217/how-much-could-you-lose-in-rigetti-computing-stock/2026-11-06?.tsrc=rss",
+   "published": "2026-11-06T07:21:28-05:00",
+   "text": "How Much Could You Lose In Rigetti Computing Stock? - For questions about this article or underlying research, email help@trefis.com.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rigetti-computing-rgti-stock-trades-002052189.html?.tsrc=rss",
+   "published": "2026-11-05T19:20:52-05:00",
+   "text": "Rigetti Computing (RGTI) Stock Trades At A Premium To Book Value - Rigetti Computing has seen its share price move sharply in recent years, which puts a spotlight on whether the current US$9.85 level lines up with the strength of its balance sheet. For anyone watching quantum computing as a high risk, high potential space, the question is how today’s valuation stac",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/options/articles/signal-says-quantum-name-prime-202613525.html?.tsrc=rss",
+   "published": "2026-11-05T15:26:13-05:00",
+   "text": "Signal Says This is Quantum Name is a Prime Play for Bears - The historically bearish signal has yielded significant pullbacks",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/rigetti-q3-earnings-commercial-progress-164400077.html?.tsrc=rss",
+   "published": "2026-11-05T11:44:00-05:00",
+   "text": "Rigetti Q3 Earnings: Will Commercial Progress Translate Into Growth? - RGTI's Q3 earnings spotlight Novera orders, pending system deliveries and quantum performance milestones as investors seek signs of commercial growth.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I27",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/d-wave-sinks-8-rigetti-down-8-ionq-down-8-as-quantum-stocks-slide-again?ref=yahoofinance&tlnk=yf-261105-p9jvcx5c&.tsrc=rss",
+   "published": "2026-11-05T10:54:29-05:00",
+   "text": "D-Wave Sinks 8%, Rigetti Down 8%, IonQ Down 8% as Quantum Stocks Slide Again - Key TakeawaysD-Wave Quantum shares fell 18% today alongside Rigetti Computing and IonQ, with no D-Wave news behind the drop. Quantum stocks are trading as high-beta bets on tech risk, and Wednesday’s chip selloff carried into Thursday.",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  },
+  {
+   "id": "I28",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/rigetti-computing-rgti-powered-quantum-152322158.html?.tsrc=rss",
+   "published": "2026-11-05T10:23:22-05:00",
+   "text": "Rigetti Computing (RGTI) Powered A Quantum Forecasting Breakthrough In Finance - Rigetti Computing (NasdaqCM:RGTI) hardware powered FirstQFM's new quantum reservoir computing system for financial forecasting, announced in early November 2026. FirstQFM reported that its quantum forecasting setup outperformed classical financial models on select real market data test cases. The pr",
+   "feed": {
+    "fetched_et": "2026-11-09T14:31:27-05:00",
+    "sha256": "da134b01336b2f1ac8ae0ec39c733edfde4f41e1d770b12e78415dab6256ef76"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 61114
+}
