@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "FLY",
+ "report_date": "2026-11-10",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-10"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-18"
+  },
+  "reaction_day": "2026-11-11"
+ },
+ "snapshot_session": "2026-11-09",
+ "captured_et": "2026-11-09T14:31:00.420492-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/firefly-aerospace-announce-third-quarter-2026-financial-results-november-10-2026-2026",
+  "published_et": "2026-10-14T16:15-04:00",
+  "quote": "linkedin facebook x email reddit CEDAR PARK, Texas , Oct. 14, 2026 (GLOBE NEWSWIRE) -- Firefly Aerospace (Nasdaq: FLY), a market leading space and defense technology company, will release its third quarter 2026 financial results for the period ended September 30, 2026 , on Tuesday, November 10, 2026 , after market close.",
+  "title": "Firefly Aerospace to Announce Third Quarter 2026 Financial Results on November 10, 2026",
+  "retrieved_et": "2026-10-26T09:42:32.171392-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session (company feed https://www.fireflyspace.com/news/rss (RSS) gave no readable statement)"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-10T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-10T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 23.329999923706055,
+  "expiry": "2026-11-13",
+  "strike": 23.0,
+  "call": {
+   "bid": 1.95,
+   "ask": 2.25,
+   "openInterest": 161.0,
+   "lastPrice": 2.03,
+   "impliedVolatility": 1.7880869970703124,
+   "lastTradeDate": "2026-11-09T18:37:57+00:00"
+  },
+  "put": {
+   "bid": 1.55,
+   "ask": 1.75,
+   "openInterest": 8.0,
+   "lastPrice": 1.67,
+   "impliedVolatility": 1.67578287109375,
+   "lastTradeDate": "2026-11-09T18:34:34+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.16073724870395537,
+  "rel_spread": {
+   "call": 0.14285714285714288,
+   "put": 0.12121212121212119
+  },
+  "oi_atm": 169.0,
+  "oi_sum": 331.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
