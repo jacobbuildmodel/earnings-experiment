@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "RUM",
+ "report_date": "2026-11-11",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-10"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-18"
+  },
+  "reaction_day": "2026-11-11"
+ },
+ "snapshot_session": "2026-11-09",
+ "captured_et": "2026-11-09T14:31:11.399217-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/rum-group-announces-timing-third-quarter-2026-earnings-release-and-conference-call",
+  "published_et": "2026-10-28T09:00-04:00",
+  "quote": "dit LONGBOAT KEY, Fla. , Oct. 28, 2026 (GLOBE NEWSWIRE) -- RUM Group Inc. (NASDAQ: RUM) (“RUM Group” or the “Company”), an AI infrastructure and video company on a mission to unlock the power of human imagination, today announced that it will release financial results for the fiscal quarter ended September 30, 2026 before market open on Wednesday, November 11, 2026 .",
+  "title": "RUM Group Announces Timing of Third Quarter 2026 Earnings Release and Conference Call as well as Upcoming Conference Participation",
+  "retrieved_et": "2026-10-29T22:27:23.269948-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-11T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-11T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 5.090000152587891,
+  "expiry": "2026-11-13",
+  "strike": 5.0,
+  "call": {
+   "bid": 0.35,
+   "ask": 0.4,
+   "openInterest": 303.0,
+   "lastPrice": 0.35,
+   "impliedVolatility": 1.3906280468749999,
+   "lastTradeDate": "2026-11-09T18:07:41+00:00"
+  },
+  "put": {
+   "bid": 0.2,
+   "ask": 0.25,
+   "openInterest": 200.0,
+   "lastPrice": 0.22,
+   "impliedVolatility": 1.140629296875,
+   "lastTradeDate": "2026-11-09T18:13:27+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.11787818900063178,
+  "rel_spread": {
+   "call": 0.13333333333333344,
+   "put": 0.22222222222222215
+  },
+  "oi_atm": 503.0,
+  "oi_sum": 503.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
