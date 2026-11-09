@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-05T20:43:04-05:00",
+ "graded_et": "2026-11-06T20:04:00-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "CHYM",
  "report_date": "2026-11-04",
@@ -13,14 +13,63 @@
  "entry_session": "2026-11-04",
  "cluster": "software_internet",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-04T16:09:14-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 29.0,
+   "entry_session": "2026-11-04",
+   "exit": 31.78,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": 0.09586206896551719,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.812741,
+    "bench_return": 0.004089979550102374,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.09253797489598743,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.030000000000000027,
+    "print_gap": 0.06394375627720117,
+    "entry_close": 29.87,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 29.0,
+   "entry_session": "2026-11-04",
+   "exit": 30.18,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": 0.04068965517241385,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "IGV",
+    "beta": 0.812741,
+    "bench_return": -0.035836011296133896,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.06981505082924501,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -37,5 +86,10 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "no stage-2 decision frozen"
+ },
+ "correct": {
+  "T0": true,
+  "T1": false,
+  "T2": true
  }
 }

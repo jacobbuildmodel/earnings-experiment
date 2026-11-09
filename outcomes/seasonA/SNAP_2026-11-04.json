@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-05T20:43:19-05:00",
+ "graded_et": "2026-11-06T20:04:23-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "SNAP",
  "report_date": "2026-11-04",
@@ -13,14 +13,69 @@
  "entry_session": "2026-11-04",
  "cluster": "software_internet",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-04T16:11:55-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 5.73,
+   "entry_session": "2026-11-04",
+   "exit": 5.29,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.07678883071553233,
+   "flags": [
+    "single_source"
+   ],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.734746,
+    "bench_return": 0.03627043234355343,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": -0.13970881814178226,
+   "WIN_excess": false,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.03315881326352521,
+    "print_gap": -0.10641891891891886,
+    "entry_close": 5.92,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 5.73,
+   "entry_session": "2026-11-04",
+   "exit": 5.09,
+   "exit_session": "2026-11-05",
+   "dividends": 0,
+   "raw_return": -0.11169284467713791,
+   "flags": [
+    "single_source"
+   ],
+   "WIN_raw": false,
+   "WIN_net": false,
+   "bench": {
+    "etf": "XLC",
+    "beta": 1.734746,
+    "bench_return": 0.00918850952703365,
+    "flags": [
+     "bench_weight_missing",
+     "single_source"
+    ]
+   },
+   "excess_return": -0.12763257482512144,
+   "WIN_excess": false,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -37,5 +92,10 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "no stage-2 decision frozen"
+ },
+ "correct": {
+  "T0": false,
+  "T1": false,
+  "T2": true
  }
 }
