@@ -1,0 +1,119 @@
+{
+ "track": "T2G",
+ "event": "CRWV_2026-11-10",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.47,
+  "thesis": "Despite high short interest and recent contract momentum, escalating debt service costs and reports of hyperscalers like Microsoft cooling on neocloud partnerships make an earnings-driven open-to-open rally slightly less likely than not.",
+  "reasons": [
+   "CoreWeave has an uninspiring 25% win rate across its last four earnings sessions, with three prints resulting in double-digit percentage drops.",
+   "Reports highlighting hyperscalers like Microsoft backing away from neocloud contracts pose an acute structural risk to forward revenue commitments and capacity utilization.",
+   "Massive interest expense ($640M in Q2 alone) alongside continuous large-scale debt and convertible issuances creates severe profitability drag.",
+   "High short interest (22.4% of float) and deeply oversold conditions (-40.8% over the past month) offer substantial short-squeeze potential, partially cushioning downside risk."
+  ],
+  "deciding_variable": "Forward revenue backlog expansion and management commentary regarding hyperscaler contract renewals versus capacity utilization.",
+  "prior": {
+   "p": 0.558,
+   "from": "cluster base rate (ai_infra, n=43)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down 8.8 percentage points from the ai_infra prior (0.558 to 0.47) driven by persistent earnings-reaction underperformance, negative EPS revisions (-11.1%), and emerging headwinds around neocloud customer concentration and debt costs.",
+  "theses": [
+   {
+    "expected": "Management highlights substantial revenue backlog additions and expanding non-hyperscaler enterprise demand (e.g., Wayve deal), triggering a short squeeze given 22.4% short interest.",
+    "mechanism": "Heavy short positioning and beaten-down sentiment reverse abruptly if Q3 revenue and FY guidance prove resilient against hyperscaler pullback fears.",
+    "wrong_if": "Guidance reflects slower order bookings or rising idle capacity, validating fears of hyperscaler insourcing."
+   },
+   {
+    "expected": "Rising data center power costs and soaring interest expenses widen net losses and depress operating margins, triggering an open drop.",
+    "mechanism": "CoreWeave's heavy debt burden and capital costs outstrip operating cash generation, causing the market to penalize unprofitable neocloud growth models.",
+    "wrong_if": "Cost of revenue scales down as a percentage of revenue faster than expected due to operational efficiencies."
+   },
+   {
+    "expected": "Broader AI infrastructure jitters (including ongoing leadership scrutiny at key partner Nvidia) spill over into conservative capital expenditure plans.",
+    "mechanism": "Customer purchasing pauses or delays in cluster deployments prompt cautious commentary on Q4/2027 demand cadence.",
+    "wrong_if": "Enterprise AI training and inference demand displays clear immunity to partner-level headlines."
+   }
+  ],
+  "key_observations": [
+   "Net loss and operating margin trajectory relative to Q2's -$49M operating loss and -$640M interest expense.",
+   "Total contracted revenue backlog figures and new customer commitments disclosed for Q3.",
+   "Commentary during the conference call addressing hyperscaler relationship stability, notably Microsoft.",
+   "CapEx trajectory and liquidity runway following the $4.2B September convertible note offering."
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CRWV_2026-11-10/gate.json",
+    "published": "2026-11-09T14:31:00.315227-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CRWV_2026-11-10/factors.json",
+    "published": "2026-11-09T14:31:00.315227-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000362/coreweave2q26earningspress.htm",
+    "published": "2026-08-11T16:10:26-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000366/crwv-20260630.htm",
+    "published": "2026-08-11T19:24:42-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1769628/000176962826000432/crwv-20260917.htm",
+    "published": "2026-09-22T16:17:14-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/coreweave-lands-major-ai-deal-161422191.html?.tsrc=rss",
+    "published": "2026-11-09T11:14:22-05:00",
+    "dossier_item": "I15"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/microsoft-borrows-at-10-percentage-points-below-coreweave-now-its-backing-away-from-neoclouds?ref=yahoofinance&tlnk=yf-261109-g8p4p4fv&.tsrc=rss",
+    "published": "2026-11-09T10:27:21-05:00",
+    "dossier_item": "I16"
+   }
+  ],
+  "decided_et": "2026-11-09T14:42:21-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 18229,
+   "candidatesTokenCount": 791,
+   "totalTokenCount": 20382,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 18229
+    }
+   ],
+   "thoughtsTokenCount": 1362,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
