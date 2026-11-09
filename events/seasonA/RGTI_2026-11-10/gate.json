@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "RGTI",
+ "report_date": "2026-11-10",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-10"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-18"
+  },
+  "reaction_day": "2026-11-11"
+ },
+ "snapshot_session": "2026-11-09",
+ "captured_et": "2026-11-09T14:31:10.874930-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/rigetti-computing-report-third-quarter-2026-financial-results-and-host-conference",
+  "published_et": "2026-10-27T16:05-04:00",
+  "quote": "linkedin facebook x email reddit BERKELEY, Calif. , Oct. 27, 2026 (GLOBE NEWSWIRE) -- Rigetti Computing, Inc. (\"Rigetti\" or the \"Company\") (Nasdaq: RGTI), a pioneer in hybrid quantum-classical computing, announced today that it will release third quarter 2026 results on Tuesday, November 10, 2026 , after market close.",
+  "title": "Rigetti Computing to Report Third Quarter 2026 Financial Results and Host Conference Call on November 10, 2026",
+  "retrieved_et": "2026-10-29T22:26:52.744668-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-10T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-10T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 12.880000114440918,
+  "expiry": "2026-11-13",
+  "strike": 13.0,
+  "call": {
+   "bid": 0.7,
+   "ask": 0.75,
+   "openInterest": 1367.0,
+   "lastPrice": 0.75,
+   "impliedVolatility": 1.2968785156249998,
+   "lastTradeDate": "2026-11-09T19:15:03+00:00"
+  },
+  "put": {
+   "bid": 0.8,
+   "ask": 0.86,
+   "openInterest": 325.0,
+   "lastPrice": 0.82,
+   "impliedVolatility": 1.2734411328124997,
+   "lastTradeDate": "2026-11-09T19:03:51+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.12072981259189206,
+  "rel_spread": {
+   "call": 0.06896551724137938,
+   "put": 0.07228915662650595
+  },
+  "oi_atm": 1692.0,
+  "oi_sum": 1692.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
