@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "STUB",
+ "report_date": "2026-11-10",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-10"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-11"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-18"
+  },
+  "reaction_day": "2026-11-11"
+ },
+ "snapshot_session": "2026-11-09",
+ "captured_et": "2026-11-09T14:31:12.471659-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.stubhub.com/news/news-details/2026/StubHub-to-Report-Third-Quarter-2026-Financial-Results-on-November-10-2026/default.aspx",
+  "published_et": "2026-10-15T16:15-04:00",
+  "quote": "to Report Third Quarter 2026 Financial Results on November 10, 2026 October 15, 2026 Download (opens in new window) NEW YORK--(BUSINESS WIRE)-- StubHub Holdings, Inc. (NYSE: STUB), a leading global ticketing marketplace for live events, today announced that it will report its third quarter 2026 financial results after the market close on Tuesday, November 10, 2026.",
+  "title": "StubHub to Report Third Quarter 2026 Financial Results on November 10, 2026",
+  "retrieved_et": "2026-10-19T22:04:42.000363-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://investors.stubhub.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-10T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-10T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 5.840000152587891,
+  "expiry": "2026-11-13",
+  "strike": 6.0,
+  "call": {
+   "bid": 0.3,
+   "ask": 0.4,
+   "openInterest": 339.0,
+   "lastPrice": 0.33,
+   "impliedVolatility": 1.5390648046875,
+   "lastTradeDate": "2026-11-09T18:56:52+00:00"
+  },
+  "put": {
+   "bid": 0.45,
+   "ask": 0.6,
+   "openInterest": 118.0,
+   "lastPrice": 0.5,
+   "impliedVolatility": 1.5937520312499998,
+   "lastTradeDate": "2026-11-09T18:15:24+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.14982876320855223,
+  "rel_spread": {
+   "call": 0.2857142857142858,
+   "put": 0.28571428571428564
+  },
+  "oi_atm": 457.0,
+  "oi_sum": 457.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

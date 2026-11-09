@@ -1,9 +1,9 @@
-# Health 2026-11-09 10:47 ET - **RED**
+# Health 2026-11-09 13:46 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
 ## RED - events or decisions being lost, or about to be
-- DATES STALE (seasonA): no date confirmed or retired since Fri 06 Nov 07:44 ET (over 30 h), while 2 PENDING name(s) have a calendar date within 7 days, 2 within 3 sessions ['LIF', 'RKLB']; newest re-check Fri 06 Nov 21:29 ET - the re-checks are not running
+- DATES STALE (seasonA): no date confirmed or retired since Fri 06 Nov 07:44 ET (over 30 h), while 2 PENDING name(s) have a calendar date within 7 days, 2 within 3 sessions ['LIF', 'RKLB']; newest re-check Mon 09 Nov 10:48 ET - the re-checks run but confirm nothing
 - LEDGER STALE: paper/options ACHR: the account holds +403, the ledgers show +0 - its ledger order (sent Fri 06 Nov 19:16 ET) still reads live: no paper run has refreshed the ledger
 - LEDGER STALE: paper/options MARA: the account holds +257, the ledgers show +0 - its ledger order (sent Fri 06 Nov 19:16 ET) still reads live: no paper run has refreshed the ledger
 - LEDGER STALE: paper/options ZETA: the account holds +50, the ledgers show +0 - its ledger order (sent Fri 06 Nov 19:16 ET) still reads live: no paper run has refreshed the ledger
