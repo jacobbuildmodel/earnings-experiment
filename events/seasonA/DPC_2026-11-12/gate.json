@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "DPC",
+ "report_date": "2026-11-12",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-12"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-19"
+  },
+  "reaction_day": "2026-11-12"
+ },
+ "snapshot_session": "2026-11-10",
+ "captured_et": "2026-11-10T14:31:00.223270-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.doncasters.com/news-and-events/news/news-details/2026/DPC-Holdings-Announces-Date-and-Time-for-Third-Quarter-2026-Financial-Results-and-Webcast/default.aspx",
+  "published_et": "2026-10-20T16:30-04:00",
+  "quote": "e for Third Quarter 2026 Financial Results and Webcast View All News DPC Holdings Announces Date and Time for Third Quarter 2026 Financial Results and Webcast October 20, 2026 Download (opens in new window) ST HELIER, Jersey--(BUSINESS WIRE)-- DPC Holdings PLC (NYSE: DPC) (“Doncasters”) will release its third quarter financial results on Thursday, November 12, 2026, before the market opens.",
+  "title": "DPC Holdings Announces Date and Time for Third Quarter 2026 Financial Results and Webcast",
+  "retrieved_et": "2026-10-21T21:32:57.480035-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://ir.doncasters.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-12T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-12T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 30.09000015258789,
+  "expiry": "2026-11-20",
+  "strike": 30.0,
+  "call": {
+   "bid": 2.5,
+   "ask": 3.0,
+   "openInterest": 21.0,
+   "lastPrice": 3.75,
+   "impliedVolatility": 1.3027378613281246,
+   "lastTradeDate": "2026-11-09T15:52:12+00:00"
+  },
+  "put": {
+   "bid": 1.2,
+   "ask": 3.7,
+   "openInterest": 38.0,
+   "lastPrice": 3.65,
+   "impliedVolatility": 1.201175869140625,
+   "lastTradeDate": "2026-10-28T15:57:29+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 6,
+  "implied_move": 0.17281488779097842,
+  "rel_spread": {
+   "call": 0.18181818181818182,
+   "put": 1.0204081632653061
+  },
+  "oi_atm": 59.0,
+  "oi_sum": 59.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
