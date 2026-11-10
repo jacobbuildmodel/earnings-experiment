@@ -3,9 +3,9 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-06T20:04:12-05:00",
+ "graded_et": "2026-11-09T22:43:33-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "IREN",
  "report_date": "2026-11-05",
@@ -13,14 +13,63 @@
  "entry_session": "2026-11-05",
  "cluster": "ai_infra",
  "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-05T16:03:11-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 20.705,
+   "entry_session": "2026-11-05",
+   "exit": 21.15,
+   "exit_session": "2026-11-06",
+   "dividends": 0,
+   "raw_return": 0.02149239314175322,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.319095,
+    "bench_return": -0.0311611443161377,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.09375804711958657,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": -0.12919584641390958,
+    "print_gap": 0.17304492512479186,
+    "entry_close": 18.03,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 20.705,
+   "entry_session": "2026-11-05",
+   "exit": 21.64,
+   "exit_session": "2026-11-06",
+   "dividends": 0,
+   "raw_return": 0.04515817435402081,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "XLK",
+    "beta": 2.319095,
+    "bench_return": -0.04404340509487614,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.1472990148925226,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +88,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": true,
+  "T1": false,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }
