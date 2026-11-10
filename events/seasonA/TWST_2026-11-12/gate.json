@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "TWST",
+ "report_date": "2026-11-12",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-12"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-19"
+  },
+  "reaction_day": "2026-11-12"
+ },
+ "snapshot_session": "2026-11-10",
+ "captured_et": "2026-11-10T14:31:10.718980-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/twist-bioscience-report-fiscal-2026-fourth-quarter-and-full-year-financial-results",
+  "published_et": "2026-10-26T08:00-04:00",
+  "quote": "ny to host conference call at 8:00 AM ET SOUTH SAN FRANCISCO, Calif. --(BUSINESS WIRE)-- Twist Bioscience Corporation (NASDAQ: TWST), a mid-cap growth and value healthcare company, today announced that it will issue its financial results for the fiscal 2026 fourth quarter and full year ended September 30, 2026 , before the opening of the market on November 12, 2026 .",
+  "title": "Twist Bioscience to Report Fiscal 2026 Fourth Quarter and Full Year Financial Results on Thursday, November 12, 2026",
+  "retrieved_et": "2026-10-26T09:44:58.469020-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-12T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-12T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 131.9550018310547,
+  "expiry": "2026-11-20",
+  "strike": 130.0,
+  "call": {
+   "bid": 13.7,
+   "ask": 16.4,
+   "openInterest": 48.0,
+   "lastPrice": 17.8,
+   "impliedVolatility": 1.553713168945312,
+   "lastTradeDate": "2026-11-09T20:03:18+00:00"
+  },
+  "put": {
+   "bid": 11.7,
+   "ask": 13.7,
+   "openInterest": 301.0,
+   "lastPrice": 12.73,
+   "impliedVolatility": 1.509768076171875,
+   "lastTradeDate": "2026-11-10T18:51:16+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 6,
+  "implied_move": 0.2102989626382562,
+  "rel_spread": {
+   "call": 0.17940199335548168,
+   "put": 0.15748031496062992
+  },
+  "oi_atm": 349.0,
+  "oi_sum": 349.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
