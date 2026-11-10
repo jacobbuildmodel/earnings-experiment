@@ -1,0 +1,130 @@
+{
+ "track": "T2G",
+ "event": "RGTI_2026-11-10",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.48,
+  "thesis": "A steep 20% pre-earnings runup fueled by sympathy with IonQ's results sets an unsustainably high bar for Rigetti given its nascent revenue base, extreme valuation, and widening losses.",
+  "reasons": [
+   "RGTI surged 20.7% over the past 5 sessions primarily in sympathy with IonQ's guidance raise, inflating near-term expectations without fundamental company-specific backing.",
+   "Trading at an extreme price-to-sales multiple of over 320x with an operating margin of -546%, the stock is highly vulnerable to post-earnings 'sell-the-news' mean reversion.",
+   "While high short interest (21.4%) provides some squeeze potential, retail call-skew froth (put/call volume 0.34) signals overextended sentiment heading into the print."
+  ],
+  "deciding_variable": "Q3 recognized revenue and timeline/revenue conversion updates on the C-DAC system deployment and CHIPS Act funding milestones.",
+  "prior": {
+   "p": 0.538,
+   "from": "base_rates AMC session (n=1820, hit rate 53.8%)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down from the 0.538 AMC base rate to 0.48 (-5.8 points) because the sharp 5-day pre-earnings rally on peer sympathy elevates the hurdle rate for a low-revenue, deep-loss quantum name.",
+  "theses": [
+   {
+    "expected": "bearish",
+    "mechanism": "Revenue fails to show meaningful sequential acceleration beyond $5-6M, causing the recent 20% sympathy rally to rapidly unwind.",
+    "wrong_if": "Management announces unexpected large commercial system orders or immediate CHIPS Act revenue recognition that justifies the valuation."
+   },
+   {
+    "expected": "neutral",
+    "mechanism": "In-line financial results accompanied by standard roadmap updates keep the stock roughly flat within its implied 12% move band.",
+    "wrong_if": "Heavy short-covering triggers a multi-sigma squeeze regardless of financial metrics."
+   },
+   {
+    "expected": "bullish",
+    "mechanism": "Delivery completion of the $8.4M C-DAC contract boosts quarterly revenue significantly above consensus, triggering aggressive short covering.",
+    "wrong_if": "Cash burn rate accelerates faster than anticipated, refocusing investors on dilution risks."
+   }
+  ],
+  "key_observations": [
+   "Q3 total revenue versus the ~$5M quarterly run-rate",
+   "Updates on the delivery and revenue timing of the 108-qubit system for C-DAC in India",
+   "Net operating loss and quarterly cash burn rate",
+   "Details on disbursement timing and potential dilution from the $100M CHIPS Act definitive agreement"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/RGTI_2026-11-10/gate.json",
+    "published": "2026-11-09T14:31:10.874930-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/RGTI_2026-11-10/factors.json",
+    "published": "2026-11-09T14:31:10.874930-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926091979/rgti-20260806xex99d1.htm",
+    "published": "2026-08-06T16:05:29-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926091993/rgti-20260630x10q.htm",
+    "published": "2026-08-06T16:08:25-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1838359/000110465926105662/tm2624940d1_8k.htm",
+    "published": "2026-09-08T07:25:18-04:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/d-wave-rallied-18-on-ionqs-guidance-its-own-november-10-report-has-to-earn-it?ref=yahoofinance&tlnk=yf-261109-5xm88h3x&.tsrc=rss",
+    "published": "2026-11-09T07:20:58-05:00",
+    "dossier_item": "I14"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/rigetti-stock-jumped-17-on-ionqs-guidance-raise-heres-what-its-november-10-report-has-to-show?ref=yahoofinance&tlnk=yf-261109-36m97mqw&.tsrc=rss",
+    "published": "2026-11-09T06:54:15-05:00",
+    "dossier_item": "I15"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/rigetti-gained-19-friday-its-100-million-chips-award-hasnt-reached-revenue-yet?ref=yahoofinance&tlnk=yf-261108-m2jqp67f&.tsrc=rss",
+    "published": "2026-11-08T15:50:55-05:00",
+    "dossier_item": "I16"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/rigetti-computing-rgti-q3-earnings-013720588.html?.tsrc=rss",
+    "published": "2026-11-06T20:37:20-05:00",
+    "dossier_item": "I20"
+   }
+  ],
+  "decided_et": "2026-11-09T19:43:29-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 18618,
+   "candidatesTokenCount": 643,
+   "totalTokenCount": 21028,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 18618
+    }
+   ],
+   "thoughtsTokenCount": 1767,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
