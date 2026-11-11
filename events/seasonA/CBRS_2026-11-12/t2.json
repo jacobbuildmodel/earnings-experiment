@@ -1,0 +1,148 @@
+{
+ "track": "T2",
+ "event": "CBRS_2026-11-12",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.5,
+  "thesis": "CBRS reports into a heavily de-rated AI tape with a ~14% implied move, high short interest and beaten-down positioning, but prior prints fell on beats, so the setup is balanced and I stay near the base rate.",
+  "reasons": [
+   "Stock is down about 67% from its 52w high and about 32% over 1m, with analysts still bullish (rec 1.27) and Wedbush expecting a beat and raise (I16); low expectations and 20% short interest favor a squeeze on good news.",
+   "Both prior prints were negative on the open-to-open measure (-11.6%, -2.7%) despite large EPS beats; the stock sells off on beats, and valuation is rich (P/S 35).",
+   "Implied move of about 14% and IV at 2.3x realized vol make the outcome close to a coin flip with a fat-tailed distribution; no skew or call/put signal (IV spread about 0, put/call volume about 1.04).",
+   "Macro is a headwind: hot inflation, talk of rate hikes and an AI-infrastructure selloff (I7, I18, I21); the entry-day open is also taken before the print, so the 11/12 move itself is not captured."
+  ],
+  "deciding_variable": "Q4 guidance and 2027 outlook versus the elevated bar, especially the revenue conversion of the $25.4B RPO, gross margin and OpenAI concentration, as read against the AI-infrastructure sentiment.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation hit rate 0.542 and AMC session 0.538; hardware_networking cluster 0.586 is the closest cluster, but small differences are only candidates, so I stayed near the overall rate."
+  },
+  "leak_probe": "I don't know. The date you mention (2026-11-12) is after today's date (2026-11-11) and beyond my knowledge, so I have no information on how CBRS's stock moved after that earnings report.",
+  "moved_from_prior": "Moved down about 4 points from 0.54 to 0.50: the weak post-earnings history and the risk-off AI/rate backdrop roughly offset the washed-out positioning and short-squeeze potential.",
+  "theses": [
+   {
+    "expected": "Rise: beat and raise with RPO conversion and capacity updates trigger a squeeze in a washed-out, heavily shorted name.",
+    "mechanism": "Low expectations after a 60%+ drawdown, 20% short interest and a bullish analyst base make good news produce an outsized rebound.",
+    "wrong_if": "Guidance is merely in line, or margins and cash burn disappoint, and the stock sells the news as it did in August."
+   },
+   {
+    "expected": "Fall: sell the news despite an EPS beat, as in the last two prints.",
+    "mechanism": "Rich valuation, GAAP losses, warrant dilution and customer concentration, plus a hostile macro backdrop, limit the upside from a beat.",
+    "wrong_if": "The company raises 2027 guidance sharply and announces new large customers, so the stock gaps up."
+   },
+   {
+    "expected": "Roughly flat: a large implied move but a muddled print leaves the open-to-open change small.",
+    "mechanism": "Mixed signals, with strong cloud growth offset by margin pressure and pass-through revenue noise, so macro and the AI tape dominate.",
+    "wrong_if": "Revenue or guidance is clearly far above or below consensus, producing a gap of 10% or more."
+   }
+  ],
+  "key_observations": [
+   "Q4 core revenue guide and the 2027 'more than triple' commentary",
+   "Core and GAAP gross margin trajectory and operating loss",
+   "RPO growth and its conversion schedule (OpenAI MRA, AWS lease commencement)",
+   "Data center capacity and financing, working capital loan and warrant dilution",
+   "Customer concentration and any new contract announcements",
+   "Tone of the AI-infrastructure sector on the day"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CBRS_2026-11-12/gate.json",
+    "published": "2026-11-11T14:31:00.272257-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CBRS_2026-11-12/factors.json",
+    "published": "2026-11-11T14:31:00.272257-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/2021728/000162828026056186/cbrsannouncesfinancialresu.htm",
+    "published": "2026-08-12T16:09:19-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.barchart.com/story/news/8760542/cbrs-stock-alert-what-to-do-as-wedbush-slashes-its-cerebras-stock-price-target-by-100?.tsrc=rss",
+    "published": "2026-11-10T10:50:56-05:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.proactiveinvestors.com/companies/news/1101450/cerebras-tipped-for-another-earnings-beat-as-wedbush-maintains-bullish-stance-1101450.html?.tsrc=rss",
+    "published": "2026-11-09T13:06:00-05:00",
+    "dossier_item": "I16"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/article/2-big-ai-narratives-wrestle-with-each-other-what-to-watch-this-week-170000318.html?.tsrc=rss",
+    "published": "2026-11-08T12:00:00-05:00",
+    "dossier_item": "I18"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/cerebras-sinks-18-in-a-week-coreweave-down-16-as-ai-stocks-slide-buy-before-earnings?ref=yahoofinance&tlnk=yf-261107-g9qph757&.tsrc=rss",
+    "published": "2026-11-07T09:06:18-05:00",
+    "dossier_item": "I21"
+   }
+  ],
+  "decided_et": "2026-11-11T16:22:54-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 20854,
+   "cache_read_input_tokens": 633,
+   "output_tokens": 1236,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 20854,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1236,
+     "cache_read_input_tokens": 633,
+     "cache_creation_input_tokens": 20854,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 20854
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.0958433
+ }
+}
