@@ -1,0 +1,623 @@
+{
+ "event": "CBRS_2026-11-12",
+ "season": "seasonA",
+ "built_et": "2026-11-11T14:31:11-05:00",
+ "cutoff_et": "2026-11-11T14:31:00.272257-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/CBRS_2026-11-12/gate.json",
+   "published": "2026-11-11T14:31:00.272257-05:00",
+   "data": {
+    "ticker": "CBRS",
+    "report_date": "2026-11-12",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-12"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-13"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-13"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-20"
+     },
+     "reaction_day": "2026-11-13"
+    },
+    "snapshot_session": "2026-11-11",
+    "captured_et": "2026-11-11T14:31:00.272257-05:00",
+    "options": {
+     "spot": 101.61000061035156,
+     "expiry": "2026-11-13",
+     "strike": 102.0,
+     "call": {
+      "bid": 6.6,
+      "ask": 7.1,
+      "openInterest": 51.0,
+      "lastPrice": 6.75,
+      "impliedVolatility": 1.9150394873046879,
+      "lastTradeDate": "2026-11-11T19:15:13+00:00"
+     },
+     "put": {
+      "bid": 7.0,
+      "ask": 7.5,
+      "openInterest": 14.0,
+      "lastPrice": 6.64,
+      "impliedVolatility": 1.9179691601562503,
+      "lastTradeDate": "2026-11-11T17:58:27+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.1387658686674937,
+     "rel_spread": {
+      "call": 0.07299270072992702,
+      "put": 0.06896551724137931
+     },
+     "oi_atm": 65.0,
+     "oi_sum": 4770.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/CBRS_2026-11-12/factors.json",
+   "published": "2026-11-11T14:31:00.272257-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": null,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.31846533566164026,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": 0.10626023188209821,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.10095039710937681,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.8432597925333173,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.3064056395071235,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.6733532702674014,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-12",
+       "session": "AMC",
+       "raw_return_A": -0.11582672805995686,
+       "eps_est": -0.18,
+       "eps_rep": -0.05,
+       "surprise_pct": 74.57,
+       "reaction_volume_ratio": 3.1875674708323953
+      },
+      {
+       "date": "2026-06-23",
+       "session": "AMC",
+       "raw_return_A": -0.026900584795321647,
+       "eps_est": -0.15,
+       "eps_rep": -0.04,
+       "surprise_pct": 73.96,
+       "reaction_volume_ratio": 3.7084982731742104
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.0,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.448032872003303,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 74.57,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": null,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": -0.14285,
+      "7daysAgo": -0.14185,
+      "30daysAgo": -0.14185,
+      "60daysAgo": -0.14185,
+      "90daysAgo": -0.30914,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.5379116258006081,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": -0.14285,
+      "low": -0.21,
+      "high": -0.04,
+      "numberOfAnalysts": 10,
+      "yearAgoEps": null,
+      "growth": null,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 1.1900595029751486,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.19780001,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 79.42687,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 35.463257,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 0.743,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 24138883072,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.27273,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.1387658686674937,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.002929672851562426,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.04540992919921916,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 1.0369942196531792,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.3947676871864598,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 14096.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.272732959285199,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.14896328120040686,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 395,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "unprofitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 0.7431911887110199,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": -2.649675198489812,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": 0.1074578433375033,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.10095039710937681,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.8438357837236443,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "us-gaap:WeightedAverageNumberOfDilutedSharesOutstanding (quarter)",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 15356465144.28711,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": null,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/2021728/000162828026056186/cbrsannouncesfinancialresu.htm",
+   "published": "2026-08-12T16:09:19-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 cbrsannouncesfinancialresu.htm EX-99.1 Document Cerebras Systems Fast Inference Cloud Business Nearly Quadruples in Second Quarter 2026 • GAAP cloud revenue grew 281%, core cloud revenue grew 287% from a year ago • 600 MW of data center capacity now under contract • Manufacturing capacity to scale more than 10x in 2026 • OpenAI launch partner for frontier model GPT-5.6 Sol • Partnerships with AMD and AWS establish Cerebras as the leader in disaggregated inference SUNNYVALE, Calif. — August 12, 2026 — Cerebras Systems (NASDAQ: CBRS), maker of the world’s fastest AI infrastructure, today announced financial results for the second quarter ended June 30, 2026. “This was an outstanding quarter for Cerebras. Core revenue more than doubled to $210 million, and our cloud business nearly quadrupled year-over-year,” said Andrew Feldman, Cerebras co-founder and CEO. “Speed changes what AI can do. It makes AI more useful, more productive, and opens entirely new markets. As a result, the demand for fast inference is enormous and Cerebras is scaling to meet it, securing more data center capacity, expanding manufacturing, and growing with customers and partners including OpenAI, AWS, AMD, and CrowdStrike.” “Our quarterly results exceeded our guidance across all core business metrics. The market has responded strongly to the value of fast inference. We significantly improved core gross and operating margins compared to a year ago,” said Bob Komin, Chief Financial Officer of Cerebras. “We have made rapid progress in key areas required to deliver exceptional growth against our remaining performance obligations of $25.4 billion, and plan to more than triple revenue in 2027.” Q2 2026 Financial Highlights Core Financial Results are all non-GAAP metrics (and exclude the impacts of non-cash amortization of customer warrants and stock-based compensation, data center pass-through revenues and costs, and certain other items): • Record GAAP cloud and other services revenue of $126.0 million, up 281% year-over-year; Record core cloud and other services revenue of $127.7 million, up 287% year-over-year. • GAAP total revenue of $180.1 million, up 74% year-over-year; Core total revenue of $209.9 million, up 103% year-over-year. • GAAP gross margin of 14%; Core gross margin of 41%, an improvement of approximately 940 basis points from Q2’25. • GAAP operating margin of (265%); Core operating margin of (16%), an improvement of approximately 2,600 basis points from Q2’25. • Strong liquidity with cash, cash equivalents, restricted cash, and short-term investments of $8.6 billion and debt capacity of $850 million. Business Highlights: General • Successfully raised $6.4 billion in gross proceeds through our IPO and closed a revolving credit facility for up to $850 million to accelerate the pace of our data center acquisitions. • $25.4 billion in remaining performance obligations as of June 30, 2026. Business Highlights: Capacity • Data Center Capacity Expansion: Increased data center capacity, live and under contract for delivery by the end of 2027 to more than 600 MW. Increased pipeline of data center opportunities to gigawatts. • Manufacturing Capacity Expansion: New factory lines added at contract manufacturers Flex, Sanmina, and Rocket EMS. Manufacturing capacity to increase more than 10x in 2026. • Supply Chain Capacity Expansion: Secured TSMC wafer supply needed for continued growth. Well positioned with other component vendors to meet the rapid growth forecasted in 2027 and beyond. • Supply Chain Advantages: Through our wafer-scale architecture, we avoid many of the components that are currently in short supply. We do not use HBM memory, CoWoS packaging or 3nm fabrication technology, all of which are currently supply limited. Business Highlights: Capabilities • Enabled support for OpenAI GPT-5.6 Sol at 750 tokens per second. • Stood up pioneering disaggregated inference solutions with AMD to deliver Cerebras speed while increasing throughput by up to 5x, which will be in production in Q4 2026. • Deepened our partnership with AWS and expect to bring Cerebras’s disaggregated inference and the same 5x throughput benefits to Amazon Bedrock in the first quarter of 2027. Business Highlights: Customers • Signed new cloud capacity agreements with leading AI coding companies including Cognition and Lovable. • Cerebras fast inference serves as the foundation for agentic flows in industries ranging from finance to life sciences with customers including Block, Figma, AlphaSense, and GSK. • Pioneered a new segment of the security market with CrowdStrike. Cerebras fast inference enables inline security using LLMs for a large portion of enterprise traffic. Third Quarter 2026 Financial Outlook Core Non-GAAP Financial Outlook: • Core revenue of approximately $214 to $216 million • Core gross margin in the range of 38% - 40% • Core operating margins in the range of (25%) to (23%) Full Year 2026 Financial Outlook Core Non-GAAP Financial Outlook has been raised for all metrics: • Core revenue of $880 to $890 million • Core gross margin in the range of 41% - 43% • Core operating margins in the range of (19%) to (17%) Earnings Webcast and Conference Call Cerebras Systems will host a conference call to review its financial results for the second quarter of 2026 and to discuss our financial outlook today at 2 p.m. PT (5 p.m. ET). Interested parties may join the conference call via the webcast and can be accessed at the Cerebras website at https://investors.cerebras.ai/. The webcast will be recorded and available for replay on the same website following the conclusion of the conference call. About Cerebras Systems Cerebras Systems (NASDAQ: CBRS) builds the world’s fastest AI infrastructure. The Cerebras team of pioneering computer architects, computer scientists, AI researchers, and engineers of all types came together to make AI blisteringly fast through innovation and invention. Cerebras believes that when AI is fast, it will change the world. Leading global corporations, research institutes, and governments choose Cerebras to run their AI workloads. Cerebras solutions are available on premises and in the cloud. Investor Relations Sean Dorsey investors@cerebras.ai Media Relations Kriselle Laran pr@cerebras.ai Forward-Looking Statements This press release contains “forward-looking statements” within the meaning of applicable securities laws. All statements other than statements of historical fact could be deemed to be forward-looking, including, but not limited to, statements regarding Cerebras’s expectations regarding growth in its revenue, customer demand, outlook for Q3, full year 2026 and 2027, the timing, execution and anticipated benefits of customer and partner arrangements, deployments and capacity expansion initiatives, ability to secure and deliver increased data center capacity, maintain and increase manufacturing capacity and supply chain capacity, realize remaining performance obligations, provide disaggregated inference architecture with industry leading speed and increasing throughput, growing with customers and partners such as AMD and AWS, winning new customers and partners, and expanding into new industries and markets, and any assumptions relating to the foregoing. The words “may,” “will,” “shall,” “should,” “expects,” “plans,” “anticipates,” “could,” “intends,” “target,” “projects,” “contemplates,” “believes,” “estimates,” “predicts,” “potential,” “objective,” or “continue,” or the negative of these words or other similar terms or expressions that concern our expectations, strategy, plans, or intentions are intended to identify forward-looking statements, although not all forward-looking statements contain these identifying words. These forward-looking statements are subject to a number of risks and uncertainties, many of which involve factors or circumstances that are beyond Cerebras’s control. These risks and uncertainties include, but are not limited to: Cerebras’s ability to sustain and manage its growth, access borrowings and other sources of capital on acceptable terms, and deploy available capital to support growth; its history of net losses and ability to achieve and maintain profitability; its limited operating history at its current scale and ability to accurately forecast revenue and appropriately budget and manage expenses; its dependence on a limited number of significant customers, including OpenAI, Group 42 Holding Ltd, Mohamed bin Zayed University of Artificial Intelligence, and AWS, and the potential impact of any reduction in demand from, material adverse development in its relationships with, or failure to meet its obligations to, such customers, including under its Master Relationship Agreement with OpenAI; the timing, execution and expected benefits of its strategic customer, partner and financing arrangements; its historical reliance on sales of hardware systems and the early-stage, rapidly evolving market for its cloud-based offerings and AI infrastructure; its ability to secure sufficient data center capacity and capital to support its cloud-based offerings; its ability to launch new offerings and add new product capabilities; and its ability to compete effectively in the rapidly evolving and competitive market for AI computing solutions. Cerebras’s actual results could differ materially from those stated or implied in forward-looking statements due to a number of factors. Accordingly, undue reliance should not be placed on such statements. These forward-looking statements are made as of the date they were first issued and are based on information available to Cerebras together with Cerebras’s expectations, estimates, forecasts, projections, beliefs, and assumptions as of such date. These forward-looking statements should not be relied upon as representing Cerebras’s views as of any date subsequent to the date of this press release. Past performance is not necessarily indicative of future results. Cerebras undertakes no intention or obligation to update or revise any forward-looking statements, whether as a result of new information, future events, or otherwise, except as required by law. Further information on potential risks that could affect actual results is included in Cerebras’s most recent filings with the Securities and Exchange Commission (the “SEC”), including in Cerebras’s most recent Quarterly Report on Form 10-Q, copies of which may be obtained by visiting Cerebras’s Investor Relations website at investors.cerebras.ai or the SEC’s website at www.sec.gov. CEREBRAS SYSTEMS INC. CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (unaudited) (in thousands, except per share amounts) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Revenue Hardware $ 54,119 $ 70,295 $ 164,712 $ 139,969 Cloud and other services 125,991 33,027 208,804 62,865 Total revenue 180,110 103,322 373,516 202,834 Cost of revenue Hardware 53,141 46,649 118,072 95,059 Cloud and other services 101,410 24,574 143,709 34,072 Total cost of revenue 154,551 71,223 261,781 129,131 Gross profit 25,559 32,099 111,735 73,703 Operating expenses Research and development 320,151 60,768 395,646 113,519 Sales and marketing 86,969 18,228 101,670 28,554 General and administrative 95,672 10,285 106,689 17,282 Total operating expenses 502,792 89,281 604,005 159,355 Loss from operations (477,233) (57,182) (492,270) (85,652) Other income, net 26,979 368,358 29,507 374,644 Income (loss) before income taxes (450,254) 311,176 (462,763) 288,992 Income tax expense 274 1,664 1,771 3,347 Net income (loss) $ (450,528) $ 309,512 $ (464,534) $ 285,645 Net income (loss) attributable to common shareholders Basic $ (450,528) $ 120,318 $ (464,534) $ 110,580 Diluted $ (450,528) $ 309,512 $ (464,534) $ 285,645 Net income (loss) per share attributable to common shareholders Basic $ (2.98) $ 2.28 $ (4.34) $ 2.11 Diluted $ (2.98) $ 1.91 $ (4.34) $ 1.76 Weighted average shares outstanding Basic 150,968 52,720 107,132 52,363 Diluted 150,968 161,822 107,132 162,276 CEREBRAS SYSTEMS INC. CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS) (unaudited) (in thousands) Three Months Ended June 30, Six Months Ended June 30, 2026 2025 2026 2025 Net income (loss) $ (450,528) $ 309,512 $ (464,534) $ 285,645 Change in foreign currency translation adjustments, net of tax (274) 732 638 912 Available-for-sale investments: Change in net unrealized gain (loss) on debt securities, net of tax 2,645 (735) 3,828 (807) Comprehensive income (loss) $ (448,157) $ 309,509 $ (460,068) $ 285,750 CEREBRAS SYSTEMS INC. CONDENSED CONSOLIDATED BALANCE SHEETS (unaudited) (in thousands) June 30, 2026 December 31, 2025 ASSETS Current assets: Cash and cash equivalents $ 6,742,157 $ 701,706 Restricted cash 684,680 228,672 Investments 1,179,390 406,531 Accounts receivable, net 123,361 50,423 Inventories 32,666 63,626 Customer warrants 167,762 60,906 Prepaid expenses and other current assets 191,698 31,782 Total current assets 9,121,714 1,543,646 Property and equipment, net 986,808 437,396 Customer warrants, net of current portion 960,635 91,447 Operating lease right-of-use assets 528,275 248,950 Other non-current assets 30,440 4,598 Total assets $ 11,627,872 $ 2,326,037 LIABILITIES, REDEEMABLE CONVERTIBLE PREFERRED STOCK, AND STOCKHOLDERS’ EQUITY (DEFICIT) Current liabilities: Accounts payable $ 88,313 $ 48,630 Deferred revenue 173,735 131,049 Operating lease liability 88,422 45,865 Customer deposits 242,672 354,460 Working capital loan 736,036 — Accrued and other current liabilities 236,910 139,536 Total current liabilities 1,566,088 719,540 Deferred revenue, net of current portion 244,529 35,847 Operating lease liability, net of current portion 480,405 215,957 Working capital loan, net of current portion 182,208 — Total liabilities 2,473,230 971,344 Redeemable convertible preferred stock — 1,933,348 Stockholders’ equity (deficit) Class A common stock 1 1 Class B common stock 1 — Class N common sto",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm",
+   "published": "2026-08-12T17:15:51-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations The following discussion and analysis of financial condition and results of operations should be read together with our unaudited condensed consolidated financial statements and related notes, and other financial information, included elsewhere in this Quarterly Report on Form 10-Q and our final prospectus (the “Prospectus”) filed with the Securities and Exchange Commission (the “SEC”) pursuant to Rule 424(b) under the Securities Act of 1933, as amended (the “Securities Act”), on May 14, 2026, in connection with our initial public offering (the “IPO”). In addition to our historical results of operations and financial position, this discussion contains forward-looking statements that involve risks and uncertainties. Our actual results could differ materially from those discussed in or implied by these forward-looking statements. Factors that could cause or contribute to such differences include, but are not limited to, those discussed in the section titled “Risk Factors” in Part II, Item 1A of this Quarterly Report on Form 10-Q. Our historical results are not necessarily indicative of the results to be expected for any period in the future, and results for any interim period should not be construed as an inference of what our results would be for any full year or future period. Overview We are building the fastest AI infrastructure in the world. In AI, speed is critical to win. Speed improves user engagement, expands product capabilities, can lower operating costs, and opens new markets. It shortens iteration cycles for engineers, researchers, and professionals across industries, allowing them to be more productive. Speed unlocks new applications and new industries. Our solutions are built for speed. Cerebras Inference delivers answers substantially faster than GPU-based solutions. These performance breakthroughs are the result of our core innovation: the world’s first and only commercialized wafer-scale processor. Our customers include hyperscalers, foundation model labs, AI-native and digital native businesses, enterprises, and sovereign AI initiatives. Our customers use Cerebras solutions to run applications that demand speed, scale, and intelligence. This work includes training and serving large frontier models with near-instant responses, processing massive datasets in real time, and generating full-stack applications in a single step. Once customers adopt fast inference, user expectations for interactivity rise, and engineering teams shift from latency optimizations to other work, making it difficult to return to slower inference. We deliver our solutions to customers in several different ways. Organizations that require full data and infrastructure control can purchase Cerebras AI supercomputers for on-premises deployments. Customers seeking cloud flexibility can access Cerebras compute through consumption-based models on Cerebras Cloud or through partner clouds. For example, our high-speed inference services are available through partners, including AWS Marketplace, Microsoft Marketplace, IBM watsonx Model Gateway, Vercel AI Gateway, OpenRouter, and Hugging Face, enabling seamless adoption within existing workflows. Beyond providing compute infrastructure, we provide AI services to our customers to co-develop solutions to address their most complex challenges, from training state-of-the-art models to optimizing deployments for each application’s needs, and maintaining and operating their on-premises hardware. Recent Developments OpenAI Collaboration In December 2025, we entered into a master relationship agreement (the “MRA”) with OpenAI OpCo, LLC (“OpenAI”), under which OpenAI committed to purchase 750MW of AI inference compute capacity and related services, with deployment expected in tranches during 2026 through 2028. OpenAI also has the option to purchase an additional 1.25GW of capacity for deployment by the end of 2030. In the first quarter of 2026, we began recognizing revenue from the arrangement, and the initial tranche of the warrant issued to OpenAI vested upon the funding of a working capital loan of approximately $1.0 billion (the “Working Capital Loan”) in January 2026. Refer to Note 3 - Revenue, Note 10 - Debt, and Note 12 - Common Stock to our unaudited condensed consolidated financial statements for additional information regarding the OpenAI collaboration, including the revenue arrangement, Working Capital Loan, and warrant, respectively. The Company has to date repaid a portion of the balance using non-cash service credits and expects to continue to repay the balance using non-cash service credits. Initial Public Offering On May 13, 2026, our registration statement on Form S-1 (File No. 333-295145) related to the IPO was declared effective by the SEC, and our Class A common stock began trading on the Nasdaq Global Select Market on May 14, 2026. The IPO was completed on May 15, 2026. For additional information, see Note 2 - Basis of Presentation and Summary of Significant Accounting Policies to our unaudited condensed consolidated financial statements included in Part I, Item 1 of this Quarterly Report on Form 10-Q. 30 Table of Contents AWS In June 2026, we entered into a global hardware leasing agreement with Amazon Web Services (“AWS”) to collaborate on the development and deployment of a joint compute solution in AWS data centers, together with related software and support services. As of June 30, 2026, the applicable lease commencement conditions had not been satisfied. Accordingly, the leases had not commenced, and we had not recognized revenue under the arrangement. In connection with the arrangement, we also issued a warrant to AWS. Refer to Note 12 - Common Stock to our unaudited condensed consolidated financial statements for additional information regarding the warrant issued in connection with the AWS collaboration. Components of Results of Operations Revenue We generate revenue primarily from hardware solutions and cloud and other services. Hardware solutions consist of sales of our AI systems and related equipment for on-premises use. Cloud and other services include our Dedicated Capacity and On-Demand cloud offerings, support and management services, and AI modeling services. Cloud and other services revenue also includes pass-through amounts for data center set-up and operation costs that we incur and bill to certain specific customers under custom arrangements with those customers. These pass-through revenues are not part of our core technology or service offerings. Hardware Solutions Hardware revenue consists of sales of our AI systems and other equipment that can be used for both training and inference on-premises. We recognize revenue from sales of AI systems when control of the goods transfers to the customer, which generally occurs upon shipment or delivery, depending on shipping terms or upon meeting the contractual acceptance terms. Beginning in the first quarter of 2026, we began recognizing amortization of customer warrant assets as a reduction in revenue. Refer to Note 12 - Common Stock for additional information on common stock warrants issued to customers. This non-cash reduction in revenue negatively impacts sequential revenue growth trends in the near term. Cloud and Other Services Customers procure cloud capacity from us through two primary models: Dedicated Capacity and On-Demand. Dedicated Capacity contracts are generally structured as take-or-pay commitments, under which customers pay for dedicated compute capacity irrespective of utilization. We recognize revenue from sales of these cloud-based computing services, including hosted inference, over the service term, as the customer benefits from our services throughout the contract period. Beginning in the first quarter of 2026, we began recognizing revenue for pass-through data center costs due to a customer agreement. Also beginning in the first quarter of 2026, we began amortization of customer warrant assets as a reduction in revenue. Refer to Note 12 - Common Stock for additional information on warrants issued to customers. This non-cash reduction in revenue negatively impacts sequential revenue growth trends in the near term. Our On-Demand model includes a consumption-based “pay-as-you-go” approach for inference, allowing customers to either pay for tokens as they consume them or pre-purchase token bundles for fixed amounts that are drawn down over time as the tokens are consumed, as well as for training workloads that run for contracted periods of time. The On-Demand model allows customers to scale elastically and many customers have begun with on-demand usage and transitioned to dedicated capacity as their workloads expand. We generate services and support revenue primarily through software support agreements that range from one to five years, as well as offering a comprehensive suite of services to manage and operate Cerebras supercomputer clusters located in our customers’ data centers. Such revenue is recognized ratably over time as the services are provided. We also generate revenue from custom AI modeling services over time as services are provided or at a point-in-time upon completion and acceptance by the customer of contract deliverables, depending on the terms of the agreement. As a result of the MRA with OpenAI for the delivery of the Committed Capacity, we expect our cloud and other services revenue to comprise a significantly higher percentage of total revenue in future periods. The mix of hardware and cloud and other services revenue may vary from period to period based on OpenAI’s deployment options and the manner in which they elect to have the Committed Capacity, and any Additional Capacity, delivered by us. In the near term, we expect pass-through revenue to also increase significantly as initial Committed Capacity will be deployed in our cloud. This may vary over the longer term based on the deployment options elected for future Committed Capacity. 31 Table of Contents Hardware Cost of Revenue Cost of revenue for hardware consists primarily of the cost of materials, such as wafers processed by third-party foundries, costs associated with packaging, assembly, shipping, logistics, quality assurance, warranty cost, cost of personnel, including salaries, stock-based compensation, and employee benefits, write-down of inventories, and facilities expenses. Cloud and Other Services Cost of Revenue Cost of revenue for cloud-based and other support services revenue primarily consists of data center costs, depreciation or rental of equipment, cost of personnel, including salaries, stock-based compensation, and employee benefits, and facilities expenses. We expect to incur other start-up costs related to expediting the availability of cloud capacity to fulfill the significant increase in near-term demand. We also began recognizing pass-through data center costs due to our MRA with OpenAI and expect these costs to grow as we deliver more cloud capacity under the agreement. Gross Profit and Gross Margin Gross profit represents revenue less cost of revenue. Gross margin is gross profit expressed as a percentage of revenue. Our gross profit has been, and we expect will continue to be, influenced by several factors, including sales volume and pricing of our products and services, mix of revenue between hardware and cloud and other services, changes in inventory costs, including wafer yield, contract manufacturing and supplier pricing, data center costs, repair and warranty costs, cost of logistics, and personnel costs. We expect overall gross profit will increase in absolute dollars in the near term, primarily due to higher gross profit from Cloud and other services as revenue increases in connection with the continued ramp-up of dedicated cloud capacity deployments. We expect gross margin to be significantly lower in the near term compared to recent prior peri",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cerebras-systems-q3-2026-earnings-180921297.html?.tsrc=rss",
+   "published": "2026-11-11T13:09:21-05:00",
+   "text": "Cerebras Systems Q3 2026 earnings preview: key metrics and risks to watch - Investing.com -- Cerebras Systems Inc (CBRS) is scheduled to report fiscal Q3 2026 results on Nov 12, 2026, after the close (official date). The stock is a long way from where it traded at the last print.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-growth-stocks-earnings-growth-061648888.html?.tsrc=rss",
+   "published": "2026-11-11T01:16:48-05:00",
+   "text": "3 Growth Stocks With Earnings Growth Reaching 120% - Hotter than expected US inflation and talk of larger rate hikes have hit bonds and pushed borrowing costs higher. Expensive money can punish weaker balance sheets and reward businesses that already run tight operations. That is where financially sound companies with strong earnings potential come in",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-cerebras-systems-193300221.html?.tsrc=rss",
+   "published": "2026-11-10T14:33:00-05:00",
+   "text": "Should You Buy, Sell, or Hold Cerebras Systems Stock Before Q3 Earnings? - CBRS Q3 results are likely to reflect strong AI inference demand and growing cloud adoption, but margin pressure, persistent losses, and valuation risks remain.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/ai-growth-stocks-stand-november-171550246.html?.tsrc=rss",
+   "published": "2026-11-10T12:15:50-05:00",
+   "text": "These AI Growth Stocks Stand Out In November 2026 - Anthropic’s push for a valuation above US$1t has thrown a spotlight on companies that can scale quickly when a powerful theme catches fire. Growth on its own is exciting. Growth that leaders are heavily invested in themselves can be harder to find. This article walks through three fast expanding, hi",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8760542/cbrs-stock-alert-what-to-do-as-wedbush-slashes-its-cerebras-stock-price-target-by-100?.tsrc=rss",
+   "published": "2026-11-10T10:50:56-05:00",
+   "text": "CBRS Stock Alert: What to Do as Wedbush Slashes Its Cerebras Stock Price Target by $100 - Wedbush cuts its CBRS price target by $100 but retains its bullish rating. Should investors buy the dip, or stay on the sidelines?",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/6a35e2b6-21cc-39ab-bc01-c6752b981f1c/while-sanmina%E2%80%99s-key-driver-is.html?.tsrc=rss",
+   "published": "2026-11-10T08:25:00-05:00",
+   "text": "While Sanmina’s Key Driver Is Its Manufacturing Business, It Could Be AI Tomorrow. - Sanmina is getting a boost from the AI data-center boom—but its core business drives its latest earnings beat.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/cerebras-q3-earnings-preview-expect-114201820.html?.tsrc=rss",
+   "published": "2026-11-10T06:42:01-05:00",
+   "text": "Cerebras Q3 Earnings Preview: What To Expect From Upcoming Report - Cerebras Earnings on Tap as AI Chip Demand Faces Its Biggest Test Yet",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/bilt-selects-cerebras-deliver-faster-113000771.html?.tsrc=rss",
+   "published": "2026-11-10T06:30:00-05:00",
+   "text": "Bilt Selects Cerebras to Deliver Faster AI Experiences to More than Eight Million Members - New Bilt Neighborhood OS and personal assistant Bilt Concierge will be powered by Cerebras’ high-speed AI infrastructure making everyday consumer experiences faster and more usefulSUNNYVALE, Calif., Nov. 10, 2026 (GLOBE NEWSWIRE) -- Cerebras Systems (NASDAQ: CBRS), maker of the world's fastest AI in",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8743948/this-analyst-just-cut-its-price-target-on-cerebras-stock-here-s-why?.tsrc=rss",
+   "published": "2026-11-09T17:04:03-05:00",
+   "text": "This Analyst Just Cut Its Price Target on Cerebras Stock. Here's Why. - Wedbush analyst trims price target on Cerebras stock. His reduced objective still represents massive upside potential in CBRS shares heading into 2027.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/d8569aae-2d5d-3e7e-84aa-eaa29f9f5bbb/ark-invest-dumps-these-shares.html?.tsrc=rss",
+   "published": "2026-11-09T14:29:22-05:00",
+   "text": "ARK Invest Dumps These Shares While They're Hot, Buys Chips The Size Of Your Face - Cathie Wood's ARK Invest bought and sold medtech shares Friday. She also bought shares of an unconventional AI chipmaker — an unpopular one at that.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://www.proactiveinvestors.com/companies/news/1101450/cerebras-tipped-for-another-earnings-beat-as-wedbush-maintains-bullish-stance-1101450.html?.tsrc=rss",
+   "published": "2026-11-09T13:06:00-05:00",
+   "text": "Cerebras tipped for another earnings beat as Wedbush maintains bullish stance - Cerebras Systems Inc (NASDAQ:CBRS) is expected to deliver another earnings beat and raise its forward guidance, according to Wedbush, which maintained its Outperform rating but cut its price target to $190 from $290 amid a broader valuation pullback across semiconductor and hardware...",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/cathie-wood-funds-bought-chip-stocks-cerebras-down-51-time-to-buy?ref=yahoofinance&tlnk=yf-261109-9fcqjhc6&.tsrc=rss",
+   "published": "2026-11-09T08:33:39-05:00",
+   "text": "Cathie Wood and 73 Other Funds Bought Chip Stocks. Cerebras Is Down 59% Since. Time to Buy? - Key TakeawaysCathie Wood’s ARK and dozens of other funds held Cerebras (CBRS:NASDAQ), Intel (INTC:NASDAQ), KLA (KLAC:NASDAQ), Applied Materials (AMAT:NASDAQ), or Lam Research (LRCX:NASDAQ) as of June 30, and all five stocks have fallen 53% to 59% since. Cerebras was a new holding for every fund that",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/article/2-big-ai-narratives-wrestle-with-each-other-what-to-watch-this-week-170000318.html?.tsrc=rss",
+   "published": "2026-11-08T12:00:00-05:00",
+   "text": "2 big AI narratives wrestle with each other: What to watch this week - The data center-powered sell-off leaves a lot of questions to be answered this week, and investors will get a new batch of inflation data to help parse the still-strong economy.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-fast-growing-stocks-earnings-081114425.html?.tsrc=rss",
+   "published": "2026-11-08T03:11:14-05:00",
+   "text": "3 Fast Growing Stocks With Earnings Growth Up To 120% - Rising mentions of inflation on S&P 500 earnings calls are forcing investors to think harder about which businesses can keep growing without relying on cheap money. When costs are under pressure, companies where insiders own a lot and are already pursuing strong expansion plans can look especially c",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-growth-stocks-earnings-growth-021232593.html?.tsrc=rss",
+   "published": "2026-11-07T21:12:32-05:00",
+   "text": "3 Growth Stocks With Earnings Growth Up To 120% - Wall Street’s rush into AI earlier this year and the subsequent $3.2b tech sell off showed how quickly sentiment can swing when themes are driven mainly by hype rather than business fundamentals. Companies that are actually growing fast, with management heavily invested alongside shareholders, can l",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://www.tikr.com/blog/cerebras-sinks-18-in-a-week-coreweave-down-16-as-ai-stocks-slide-buy-before-earnings?ref=yahoofinance&tlnk=yf-261107-g9qph757&.tsrc=rss",
+   "published": "2026-11-07T09:06:18-05:00",
+   "text": "Cerebras Sinks 18% in a Week, CoreWeave Down 16% as AI Stocks Slide: Buy Before Earnings? - Key TakeawaysCerebras shares fell 18% in a week as AI stocks sold off on Oracle’s $20 billion raise and again after the midterms. Cerebras made no announcement of its own, and CoreWeave and Oracle fell on the same AI worries.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/5-best-52-week-low-040530286.html?.tsrc=rss",
+   "published": "2026-11-06T23:05:30-05:00",
+   "text": "5 Best 52-Week Low NASDAQ Stocks to Buy According to Billionaires - Scan the Nasdaq stocks hitting 52-week lows this week and a pattern jumps out: many of the biggest names build, power or rent space for artificial intelligence. Few of these businesses are shrinking. Several reported record revenue in recent weeks, and their shares kept sliding anyway. The reason ha",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://www.fool.com/coverage/better-buy/2026/11/06/cerebras-systems-vs-nebius-which-artificial-intelligence-stock-is-a-better-buy-going-into-2027/?.tsrc=rss",
+   "published": "2026-11-06T20:40:14-05:00",
+   "text": "Cerebras Systems vs. Nebius: Which Artificial Intelligence Stock Is a Better Buy Going into 2027? - Cerebras bets on giant wafer-scale chips while Nebius sells a full-lifecycle AI cloud, but one valuation gap and a cash flow twist could tip the 2027 verdict.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/a6e64e40-fcac-36ae-90d3-af4f85a83748/ipos-struggle-in-tech.html?.tsrc=rss",
+   "published": "2026-11-06T17:02:00-05:00",
+   "text": "IPOs Struggle in Tech Selloff. Berkshire Has a Winner. - Bending Spoons is a bright spot for Berkshire Hathaway as many of this year’s new listings trade below their offering prices.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://www.barchart.com/story/news/8702424/dear-cerebras-stock-fans-mark-your-calendars-for-november-12?.tsrc=rss",
+   "published": "2026-11-06T10:24:35-05:00",
+   "text": "Dear Cerebras Stock Fans, Mark Your Calendars for November 12 - Cerebras’ shares have spent months in the red. However, its Q3 earnings could shed light on what lies ahead.",
+   "feed": {
+    "fetched_et": "2026-11-11T14:31:11-05:00",
+    "sha256": "069fb1d4e4233d0526307f319aa7e30d736178038c1fa2bfe31a8f8ce70d83d6"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 48874
+}
