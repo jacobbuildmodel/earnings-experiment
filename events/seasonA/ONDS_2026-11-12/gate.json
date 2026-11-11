@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "ONDS",
+ "report_date": "2026-11-12",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-12"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-19"
+  },
+  "reaction_day": "2026-11-12"
+ },
+ "snapshot_session": "2026-11-10",
+ "captured_et": "2026-11-10T14:31:09.599689-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.ondas.com/press-releases/detail/336/ondas-to-report-third-quarter-2026-financial-results-on",
+  "published_et": "2026-10-29T08:30-04:00",
+  "quote": "Ondas to Report Third Quarter 2026 Financial Results on November 12, 2026 at 8:30 AM ET :: Ondas Inc. (ONDS) Press Releases Ondas to Report Third Quarter 2026 Financial Results on November 12, 2026 at 8:30 AM ET Download as PDF October 29, 2026 WEST PALM BEACH, FL / ACCESS Newswire / October 29, 2026 / Ondas Inc. (NASDAQ:",
+  "title": "Ondas to Report Third Quarter 2026 Financial Results on November 12, 2026 at 8:30 AM ET",
+  "retrieved_et": "2026-10-30T22:07:14.713299-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://ir.ondas.com/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-12T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-12T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 5.517176151275635,
+  "expiry": "2026-11-13",
+  "strike": 5.5,
+  "call": {
+   "bid": 0.38,
+   "ask": 0.43,
+   "openInterest": 3422.0,
+   "lastPrice": 0.41,
+   "impliedVolatility": 1.7265638671875,
+   "lastTradeDate": "2026-11-10T19:12:11+00:00"
+  },
+  "put": {
+   "bid": 0.36,
+   "ask": 0.37,
+   "openInterest": 5255.0,
+   "lastPrice": 0.36,
+   "impliedVolatility": 1.625001875,
+   "lastTradeDate": "2026-11-10T19:13:56+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.1395641500085088,
+  "rel_spread": {
+   "call": 0.12345679012345676,
+   "put": 0.02739726027397263
+  },
+  "oi_atm": 8677.0,
+  "oi_sum": 8677.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

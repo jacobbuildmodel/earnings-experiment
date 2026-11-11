@@ -1,0 +1,95 @@
+{
+ "season": "seasonA",
+ "ticker": "OCTV",
+ "report_date": "2026-11-12",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-11"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-12"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-12"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-19"
+  },
+  "reaction_day": "2026-11-12"
+ },
+ "snapshot_session": "2026-11-10",
+ "captured_et": "2026-11-10T14:31:08.783940-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/octave-report-third-quarter-2026-financial-results-november-12-2026-10-06-1",
+  "published_et": "2026-10-06T07:00-04:00",
+  "quote": "linkedin facebook x email reddit HUNTSVILLE, Ala. , Oct. 06, 2026 (GLOBE NEWSWIRE) -- Octave Intelligence plc (Nasdaq New York: OCTV and Nasdaq Stockholm: OCTV SDB), a global leader in software for the world’s mission critical facilities and infrastructure, will release its third quarter 2026 financial results on Thursday, November 12, 2026 , at approximately 7:00 a.m. Eastern Time .",
+  "title": "Octave to Report Third Quarter 2026 Financial Results on November 12",
+  "retrieved_et": "2026-10-09T21:41:33.488231-04:00",
+  "how": "find_dates v3 (2026-10-07): company feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [
+  "diluted_implied_move"
+ ],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-12T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-12T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 20.815000534057617,
+  "expiry": "2026-11-20",
+  "strike": 20.0,
+  "call": {
+   "bid": 1.2,
+   "ask": 1.4,
+   "openInterest": 457.0,
+   "lastPrice": 1.3,
+   "impliedVolatility": 0.58789474609375,
+   "lastTradeDate": "2026-11-09T18:08:16+00:00"
+  },
+  "put": {
+   "bid": 0.4,
+   "ask": 0.5,
+   "openInterest": 3.0,
+   "lastPrice": 0.44,
+   "impliedVolatility": 0.56055126953125,
+   "lastTradeDate": "2026-11-03T20:53:18+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 6,
+  "implied_move": 0.08407398294977894,
+  "rel_spread": {
+   "call": 0.15384615384615383,
+   "put": 0.22222222222222215
+  },
+  "oi_atm": 460.0,
+  "oi_sum": 460.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
