@@ -1,0 +1,24 @@
+{
+ "session": "AMC",
+ "session_from_call_time": false,
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/kulicke-soffa-schedules-fourth-quarter-2026-conference-call-8-00-am-et-november-19th",
+  "published_et": "2026-11-10T09:05-05:00",
+  "quote": "The Company will issue its fourth fiscal quarter 2026 financial results on Wednesday, November 18, 2026 , shortly after 4:00 pm ET .",
+  "title": "Kulicke & Soffa Schedules Fourth Quarter 2026 Conference Call for 8:00 AM ET, November 19th, 2026",
+  "retrieved_et": "2026-11-11T07:40:37-05:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "second_sources_at_confirm": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-18T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ]
+}
