@@ -1,0 +1,112 @@
+{
+ "track": "T2G",
+ "event": "CBRS_2026-11-12",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.48,
+  "thesis": "Despite washed-out positioning and high short interest after a 67% drawdown, Cerebras faces intense margin scrutiny and a history of post-earnings gap-downs driven by heavy GAAP losses and warrant-related revenue dilution.",
+  "reasons": [
+   "CBRS has dropped at the open following both of its public earnings reports (-11.6% and -2.7%) despite wide headline EPS beats.",
+   "Massive GAAP operating losses (-265% operating margin) and customer warrant amortizations continue to weigh on market perception during tech/AI valuation pullbacks.",
+   "High short float (~19.8%) and a -31.8% 1-month selloff present squeeze potential, but recent analyst price-target reductions signal tempered near-term expectations."
+  ],
+  "deciding_variable": "Q4 and FY2027 core cloud revenue guidance relative to ongoing data center buildout cash burn.",
+  "prior": {
+   "p": 0.56,
+   "from": "ai_infra cluster base rate (0.558)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Moved down 8 percentage points from the 0.56 ai_infra prior due to CBRS's 0/2 historical post-earnings win rate, massive GAAP burn, and broader AI hardware multiple compression, partially offset by short squeeze risk.",
+  "theses": [
+   {
+    "expected": "Core cloud revenue exceeds guidance and full-year outlook is raised alongside clear progress on OpenAI/AWS deployments, sparking a short-covering rally.",
+    "mechanism": "High short interest (19.8%) rapidly unwinds if top-line momentum and margins show inflection towards positive operating leverage.",
+    "wrong_if": "Investors fixate on steep GAAP losses, dilution from customer warrants, and high capital expenditure requirements."
+   },
+   {
+    "expected": "Results beat consensus on core metrics but GAAP operating loss remains wide, causing another negative open similar to Q1 and Q2 prints.",
+    "mechanism": "Market remains unforgiving toward unprofitable growth companies in an environment of elevated cost of capital and AI hardware multiple contraction.",
+    "wrong_if": "Guidance for 2027 cloud revenue expansion is aggressive enough to alleviate profitability timeline concerns."
+   },
+   {
+    "expected": "Gross margins compress due to accelerated cloud data center setup costs, leading to a guidance cut or soft Q4 outlook.",
+    "mechanism": "Pass-through data center expenses and manufacturing scaling dilute near-term core gross margins below the 38-40% target.",
+    "wrong_if": "Direct wafer-scale cost advantages shield margins better than expected."
+   }
+  ],
+  "key_observations": [
+   "Core non-GAAP cloud revenue and total core revenue versus Q3 guidance of $214M-$216M",
+   "Core gross margin performance against the guided 38%-40% range",
+   "FY2026 core revenue outlook update (previously $880M-$890M) and commentary on 2027 RPO conversion",
+   "GAAP operating cash flow and cash burn trajectory against current liquidity ($8.6B)"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CBRS_2026-11-12/gate.json",
+    "published": "2026-11-11T14:31:00.272257-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CBRS_2026-11-12/factors.json",
+    "published": "2026-11-11T14:31:00.272257-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/2021728/000162828026056186/cbrsannouncesfinancialresu.htm",
+    "published": "2026-08-12T16:09:19-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/2021728/000162828026056357/cbrs-20260630.htm",
+    "published": "2026-08-12T17:15:51-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.barchart.com/story/news/8760542/cbrs-stock-alert-what-to-do-as-wedbush-slashes-its-cerebras-stock-price-target-by-100?.tsrc=rss",
+    "published": "2026-11-10T10:50:56-05:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.proactiveinvestors.com/companies/news/1101450/cerebras-tipped-for-another-earnings-beat-as-wedbush-maintains-bullish-stance-1101450.html?.tsrc=rss",
+    "published": "2026-11-09T13:06:00-05:00",
+    "dossier_item": "I16"
+   }
+  ],
+  "decided_et": "2026-11-11T19:48:50-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 16388,
+   "candidatesTokenCount": 770,
+   "totalTokenCount": 18161,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 16388
+    }
+   ],
+   "thoughtsTokenCount": 1003,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}

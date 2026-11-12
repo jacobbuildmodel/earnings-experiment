@@ -1,0 +1,136 @@
+{
+ "track": "T2",
+ "event": "CSCO_2026-11-12",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.52,
+  "thesis": "CSCO enters the print with strong AI-networking momentum and rising estimates, but a pullback, a high implied move (~8.9%) and a high bar from the guide leave the reaction near a coin flip with a slight positive tilt.",
+  "reasons": [
+   "Base rate for hardware_networking (58.6%) and AMC (53.8%) supports a mild upward lean from 50%.",
+   "Estimates were revised up (90d EPS revision +15%) and consensus ($1.32) sits at the low end of guidance ($1.32-1.34), so a beat is likely, but a beat is expected.",
+   "The stock is down 11.5% over 1 month and 21% below its 52w high, so expectations may have reset, which helps a bounce.",
+   "Last 4 reactions were mixed (2 up, 2 down) with large magnitudes, so the outcome is driven by guidance and not by the EPS beat.",
+   "The implied move of ~8.9% is large for CSCO, so the distribution is wide and the sign is hard to call."
+  ],
+  "deciding_variable": "FY27 guidance and the AI infrastructure order outlook, together with gross margin given memory costs.",
+  "prior": {
+   "p": 0.55,
+   "from": "I3: hardware_networking cluster t0_hit 0.586, AMC 0.538, overall ~0.54; blended to ~0.55"
+  },
+  "leak_probe": "I don't know. The report date you mention (2026-11-12) is after today's date (2026-11-11), so the earnings release hasn't happened yet, and I have no information on how Cisco's stock reacted.",
+  "moved_from_prior": "Moved down about 3 points from 0.55 to 0.52 because the bar is high after a 44% 12-month run, an AI-trade selloff, and memory-cost and gross-margin pressure that can cap upside.",
+  "theses": [
+   {
+    "expected": "Rise: AI orders and a raised FY27 hyperscaler revenue target drive an upside reaction.",
+    "mechanism": "Networking supercycle plus strong order growth leads to estimate raises after a pullback in the stock.",
+    "wrong_if": "Guidance for Q2 or FY27 is only in line, or hyperscaler orders decelerate."
+   },
+   {
+    "expected": "Fall: gross margin compression from memory costs and mix leads to a guide that disappoints.",
+    "mechanism": "A 44% 12-month run and a high implied move mean good results are already priced in, so a sell-the-news reaction follows.",
+    "wrong_if": "Gross margin guidance holds at or above 65-66% and EPS guidance is raised above consensus."
+   },
+   {
+    "expected": "Flat or small move: the in-line print gives a muted, noisy open-to-open change.",
+    "mechanism": "The beat is expected, and the options market has already priced a large move, so the sign depends on small details.",
+    "wrong_if": "Orders or guidance shock either way by more than a few percent."
+   }
+  ],
+  "key_observations": [
+   "Q2 FY27 revenue and EPS guide versus consensus",
+   "Gross margin and the effect of memory costs",
+   "AI infrastructure orders and the hyperscaler FY27 $7.5B target",
+   "Product orders growth, ex-hyperscalers",
+   "Inventory build and supply commentary"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CSCO_2026-11-12/gate.json",
+    "published": "2026-11-11T14:31:00.207967-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CSCO_2026-11-12/factors.json",
+    "published": "2026-11-11T14:31:00.207967-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000106/exhibit991pressrelease-q4f.htm",
+    "published": "2026-08-12T16:07:06-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/cisco-earnings-preview-eps-margins-180725950.html?.tsrc=rss",
+    "published": "2026-11-11T13:07:25-05:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/buy-sell-hold-cisco-systems-192200624.html?.tsrc=rss",
+    "published": "2026-11-10T14:22:00-05:00",
+    "dossier_item": "I21"
+   }
+  ],
+  "decided_et": "2026-11-11T16:22:32-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 23270,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1038,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 23270,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1038,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 23270,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 23270
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.103464
+ }
+}
