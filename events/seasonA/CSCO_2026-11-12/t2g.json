@@ -1,0 +1,107 @@
+{
+ "track": "T2G",
+ "event": "CSCO_2026-11-12",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.58,
+  "thesis": "CSCO enters earnings having pulled back 11.5% over the past month to an undemanding 18x forward P/E, with strong AI networking order backlog and favorable call IV skew supporting a positive reaction.",
+  "reasons": [
+   "Hardware and networking stocks exhibit a favorable 58.6% base hit rate for positive overnight earnings reactions.",
+   "A 21% drawdown from 52-week highs and -11.5% 1-month return significantly lowers the hurdle rate compared to the previous quarter.",
+   "Options pricing shows a bullish tilt with call IV exceeding put IV by 7.2 percentage points and a low put/call open interest ratio of 0.46.",
+   "Upward 90-day EPS revisions (+15.5%) reflect sustained momentum in hyperscaler AI networking demand."
+  ],
+  "deciding_variable": "AI infrastructure order conversion and gross margin guidance amid memory cost pressures",
+  "prior": {
+   "p": 0.586,
+   "from": "hardware_networking cluster base rate (n=348)"
+  },
+  "leak_probe": "I don't know.",
+  "moved_from_prior": "Maintained close to prior (0.586 to 0.580): the favorable pullback, attractive multiple, and positive option skew are tempered by the memory-cost gross margin pressure flagged in the 10-K and the negative reaction to the prior Q4 beat.",
+  "theses": [
+   {
+    "expected": "Q1 FY27 beat and FY27 guidance raise",
+    "mechanism": "Hyperscaler orders for AI switching deliver above-guidance product revenue and operating leverage, driving the stock higher from oversold levels.",
+    "wrong_if": "Supply chain constraints or customer deployment delays cause AI infrastructure shipments to slip into later quarters."
+   },
+   {
+    "expected": "In-line print with margin compression",
+    "mechanism": "Rising memory component costs eat into hardware gross margins, causing full-year non-GAAP operating margin guidance to disappoint.",
+    "wrong_if": "Enterprise campus networking pricing power successfully offsets component input inflation."
+   },
+   {
+    "expected": "Relief bounce on steady demand",
+    "mechanism": "Even a modest beat with maintained full-year targets triggers short covering and multiple expansion given the recent 20%+ drawdown.",
+    "wrong_if": "Enterprise enterprise IT budgets exhibit broader deterioration outside of pure AI infrastructure."
+   }
+  ],
+  "key_observations": [
+   "Q1 FY27 non-GAAP EPS vs consensus $1.32 and revenue vs $18.11B",
+   "Non-GAAP gross margin trajectory vs the guided 65-66% range",
+   "Updates on FY27 AI infrastructure revenue target ($7.5B expected) and total order intake",
+   "FY27 full-year revenue and non-GAAP EPS guidance revisions"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/CSCO_2026-11-12/gate.json",
+    "published": "2026-11-11T14:31:00.207967-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/CSCO_2026-11-12/factors.json",
+    "published": "2026-11-11T14:31:00.207967-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000106/exhibit991pressrelease-q4f.htm",
+    "published": "2026-08-12T16:07:06-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/858877/000085887726000132/csco-20260725.htm",
+    "published": "2026-09-02T16:36:56-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/cisco-earnings-preview-eps-margins-180725950.html?.tsrc=rss",
+    "published": "2026-11-11T13:07:25-05:00",
+    "dossier_item": "I8"
+   }
+  ],
+  "decided_et": "2026-11-11T19:41:54-05:00",
+  "model": "gemini-3.8-flash",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": "none sent",
+   "grounding": "none sent"
+  },
+  "usage": {
+   "promptTokenCount": 17829,
+   "candidatesTokenCount": 721,
+   "totalTokenCount": 19521,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 17829
+    }
+   ],
+   "thoughtsTokenCount": 971,
+   "serviceTier": "standard"
+  },
+  "cost_usd_equiv": null
+ }
+}
