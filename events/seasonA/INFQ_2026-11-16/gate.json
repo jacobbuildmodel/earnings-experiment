@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "INFQ",
+ "report_date": "2026-11-16",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-16"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-17"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-17"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-24"
+  },
+  "reaction_day": "2026-11-17"
+ },
+ "snapshot_session": "2026-11-13",
+ "captured_et": "2026-11-13T14:31:00.252859-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.infleqtion.com/news-events/press-releases/detail/217/infleqtion-to-report-third-quarter-2026-financial-results-on-november-16-2026",
+  "published_et": "2026-10-29T16:30-04:00",
+  "quote": "Financial Results on November 16, 2026 October 29, 2026 4:30pm EDT LOUISVILLE, Colo.--(BUSINESS WIRE)-- Infleqtion (NYSE: INFQ) (the “Company”), a global leader in quantum computing and quantum sensing powered by neutral-atom technology, today announced that it will release its financial results for the quarter ended September 30, 2026, on Monday, November 16, 2026, after the financial markets close.",
+  "title": "Infleqtion to Report Third Quarter 2026 Financial Results on November 16, 2026",
+  "retrieved_et": "2026-11-02T22:56:10.032253-05:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://ir.infleqtion.com/news-events/press-releases/rss (RSS); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-16T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-16T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 8.475000381469727,
+  "expiry": "2026-11-20",
+  "strike": 8.5,
+  "call": {
+   "bid": 0.55,
+   "ask": 0.65,
+   "openInterest": 418.0,
+   "lastPrice": 0.55,
+   "impliedVolatility": 1.22266013671875,
+   "lastTradeDate": "2026-11-13T18:57:00+00:00"
+  },
+  "put": {
+   "bid": 0.55,
+   "ask": 0.65,
+   "openInterest": 322.0,
+   "lastPrice": 0.59,
+   "impliedVolatility": 1.171879140625,
+   "lastTradeDate": "2026-11-13T18:49:50+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 3,
+  "implied_move": 0.14159291398071858,
+  "rel_spread": {
+   "call": 0.1666666666666666,
+   "put": 0.1666666666666666
+  },
+  "oi_atm": 740.0,
+  "oi_sum": 740.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
