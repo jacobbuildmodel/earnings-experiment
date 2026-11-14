@@ -1,7 +1,7 @@
 {
  "season": "seasonA",
  "rule": "D003_universe_screen_v4",
- "updated_et": "2026-11-12T22:02:37.214496-05:00",
+ "updated_et": "2026-11-13T14:32:08.382251-05:00",
  "events": {
   "AAOI": {
    "status": "INELIGIBLE",
@@ -1229,7 +1229,8 @@
     "2026-11-11T07:40:57-05:00: housekeeping - Probe 2026-11-11: newest item 2026-11-05 October net sales, no earnings date announced; calendar 2026-11-20 snapshot still open.",
     "2026-11-11T22:30:13.644267-05:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-11-05T00:00 'The Buckle, Inc. Reports October 2026 Net Sales'",
     "2026-11-12T07:39:30-05:00: housekeeping - probe 2026-11-12: no_date_announced; newest item 2026-11-05 October net sales, no earnings date statement",
-    "2026-11-12T22:02:33.112911-05:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-11-05T00:00 'The Buckle, Inc. Reports October 2026 Net Sales'"
+    "2026-11-12T22:02:33.112911-05:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://api.nasdaq.com/api/news/topic/press_release (Nasdaq copy of the company's wire release), newest item 2026-11-05T00:00 'The Buckle, Inc. Reports October 2026 Net Sales'",
+    "2026-11-13T07:38:07-05:00: housekeeping - find_dates probe 2026-11-13: no earnings date announced; newest company item 2026-11-05 October sales release; calendar date 2026-11-20 snapshot sessions not yet passed"
    ]
   },
   "BLKB": {
@@ -4218,7 +4219,7 @@
    "freeze_commit": "eead0c61"
   },
   "INFQ": {
-   "status": "CONFIRMED",
+   "status": "FROZEN",
    "calendar_dates": [
     "2026-11-11"
    ],
@@ -4250,7 +4251,13 @@
    "entry": "2026-11-16 open",
    "flags": [
     "confirmed_by_code"
-   ]
+   ],
+   "gate_status": "INELIGIBLE",
+   "gate_reason": "wide_spread",
+   "frozen_et": "2026-11-13T14:31:08.154860-05:00",
+   "t2_decision": null,
+   "t2_confidence": null,
+   "freeze_commit": "25bc16d7"
   },
   "INSM": {
    "status": "INELIGIBLE",
@@ -9864,7 +9871,7 @@
    "reason": "unconfirmed"
   },
   "WSM": {
-   "status": "PENDING",
+   "status": "CONFIRMED",
    "calendar_dates": [
     "2026-11-18"
    ],
@@ -9900,8 +9907,14 @@
     "2026-11-11T07:40:57-05:00: housekeeping - Probe 2026-11-11: company feed newest item 2026-10-23 (Pottery Barn Kids), no earnings date announced yet; calendar 2026-11-18 snapshot still open.",
     "2026-11-11T22:30:00.000372-05:00: find_dates v4 (2026-10-26) - no_date_announced; feed https://ir.williams-sonomainc.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-10-23T08:55 'POTTERY BARN KIDS AND POTTERY BARN TEEN UNVEIL TEN HOLIDAY COLLABORATIONS FEATUR'",
     "2026-11-12T07:39:30-05:00: housekeeping - probe 2026-11-12: no_date_announced; newest IR item 2026-10-23 (Pottery Barn Kids), no earnings date statement",
-    "2026-11-12T22:02:25.077021-05:00: find_dates v4 (2026-10-26) - ambiguous_dates ['2026-11-12', '2026-11-19']; feed https://ir.williams-sonomainc.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-11-12T20:52 'Williams-Sonoma, Inc. announces release date for third quarter results: Thursday'"
-   ]
+    "2026-11-12T22:02:25.077021-05:00: find_dates v4 (2026-10-26) - ambiguous_dates ['2026-11-12', '2026-11-19']; feed https://ir.williams-sonomainc.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed), newest item 2026-11-12T20:52 'Williams-Sonoma, Inc. announces release date for third quarter results: Thursday'",
+    "2026-11-13T07:38:04-05:00: housekeeping - company statement (https://ir.williams-sonomainc.com/investor-information/news-releases/news-release-details/2026/Williams-Sonoma-Inc--announces-release-date-for-third-quarter-results-Thursday-November-19th-2026/default.aspx); CONFIRMED 2026-11-19 BMO, snapshot 2026-11-17"
+   ],
+   "calendar_date": "2026-11-19",
+   "session": "BMO",
+   "snapshot_session": "2026-11-17",
+   "entry": "2026-11-18 open",
+   "flags": []
   },
   "WULF": {
    "status": "FROZEN",
