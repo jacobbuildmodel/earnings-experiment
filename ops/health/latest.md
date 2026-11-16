@@ -1,4 +1,4 @@
-# Health 2026-11-16 16:08 ET - **RED**
+# Health 2026-11-16 17:58 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -20,7 +20,7 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## Information
-- NVDA_2026-11-17: T2 deadline Tue 17 Nov 09:15 ET - frozen so far: none
+- NVDA_2026-11-17: T2 deadline Tue 17 Nov 09:15 ET - frozen so far: T2
 - ops/health_known.json: paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F'] lapsed on 2026-11-06 - it alarms again until re-acknowledged
 - ops/health_known.json: seasonA-DPZ-2026-10-13-F lapsed on 2026-11-06 - it alarms again until re-acknowledged
 - 2 paper run(s) in 24 h failed only on the D019 stop (halt True, errors 0, every alert acknowledged or a gate the stop blocked), each read from its job logs; newest 2026-11-16T14:50:02Z https://github.com/jacobbuildmodel/earnings-experiment/actions/runs/43889913118
