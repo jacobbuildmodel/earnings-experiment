@@ -1,0 +1,550 @@
+{
+ "event": "NVDA_2026-11-17",
+ "season": "seasonA",
+ "built_et": "2026-11-16T14:31:13-05:00",
+ "cutoff_et": "2026-11-16T14:31:00.254924-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/NVDA_2026-11-17/gate.json",
+   "published": "2026-11-16T14:31:00.254924-05:00",
+   "data": {
+    "ticker": "NVDA",
+    "report_date": "2026-11-17",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-17"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-18"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-18"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-25"
+     },
+     "reaction_day": "2026-11-18"
+    },
+    "snapshot_session": "2026-11-16",
+    "captured_et": "2026-11-16T14:31:00.254924-05:00",
+    "options": {
+     "spot": 156.18600463867188,
+     "expiry": "2026-11-18",
+     "strike": 155.0,
+     "call": {
+      "bid": 7.3,
+      "ask": 7.4,
+      "openInterest": 2945.0,
+      "lastPrice": 7.35,
+      "impliedVolatility": 1.1989786145019532,
+      "lastTradeDate": "2026-11-16T19:14:38+00:00"
+     },
+     "put": {
+      "bid": 6.3,
+      "ask": 6.35,
+      "openInterest": 7453.0,
+      "lastPrice": 6.3,
+      "impliedVolatility": 1.2265663671875,
+      "lastTradeDate": "2026-11-16T19:16:01+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.08755586028105651,
+     "rel_spread": {
+      "call": 0.01360544217687082,
+      "put": 0.007905138339920922
+     },
+     "oi_atm": 10398.0,
+     "oi_sum": 16809.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/NVDA_2026-11-17/factors.json",
+   "published": "2026-11-16T14:31:00.254924-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.16234497662928882,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.2707696392503961,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.12604185197138318,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.028657684619467716,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.4411495969553867,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 1.341434067763404,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.3473077364877858,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-26",
+       "session": "AMC",
+       "raw_return_A": 0.048062457080011445,
+       "eps_est": 2.09,
+       "eps_rep": 2.22,
+       "surprise_pct": 6.16,
+       "reaction_volume_ratio": 2.598473731435029
+      },
+      {
+       "date": "2026-05-20",
+       "session": "AMC",
+       "raw_return_A": -0.003987799373381007,
+       "eps_est": 1.77,
+       "eps_rep": 1.87,
+       "surprise_pct": 5.54,
+       "reaction_volume_ratio": 1.2989968088060704
+      },
+      {
+       "date": "2026-02-25",
+       "session": "AMC",
+       "raw_return_A": -0.0009256066016039011,
+       "eps_est": 1.54,
+       "eps_rep": 1.62,
+       "surprise_pct": 5.32,
+       "reaction_volume_ratio": 2.0820554838902896
+      },
+      {
+       "date": "2025-11-19",
+       "session": "AMC",
+       "raw_return_A": 0.06039298481996025,
+       "eps_est": 1.26,
+       "eps_rep": 1.3,
+       "surprise_pct": 3.46,
+       "reaction_volume_ratio": 1.7780153722938765
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 1.9393853491063162,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 6.16,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": -1,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 2.47121,
+      "7daysAgo": 2.47325,
+      "30daysAgo": 2.47325,
+      "60daysAgo": 2.47269,
+      "90daysAgo": 2.35237,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": 0.05051926355122708,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 2.47121,
+      "low": 2.25754,
+      "high": 2.7,
+      "yearAgoEps": 1.3,
+      "numberOfAnalysts": 43,
+      "growth": 0.90089995,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.17904589249800706,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.0121,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 9.857337,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 12.446898,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": 1.059,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 3771036860416,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 1.63934,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.08755586028105651,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": -0.027587752685546807,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": 0.045165789794921585,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 0.799395254790658,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 0.8368312493445049,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 388000.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.749118437860375,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.06879526245641757,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 56,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Tuesday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "profitable_growth",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": 1.0585114348672526,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.6623710000935347,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.16229199014569218,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.1259864260229696,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.028657684619467716,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.4411282723817798,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 1.8763825103632752,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 2.835711462850705,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 3763456088256.836,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 0.08050286568916225,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": -1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.6169100014987261,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+   "published": "2026-08-26T16:21:19-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q2fy27pr.htm EX-99.1 Document NVIDIA Announces Financial Results for Second Quarter Fiscal 2027 • Revenue of $96.2 billion, up 106% from a year ago • Data Center revenue of $89.0 billion, up 117% from a year ago SANTA CLARA, Calif.—Aug. 26, 2026― NVIDIA (NASDAQ: NVDA) today reported revenue for the second quarter ended July 26, 2026, of $96.2 billion, up 18% from the previous quarter and up 106% from a year ago. For the quarter, GAAP and non-GAAP gross margins were both 75.0%. GAAP and non-GAAP earnings per diluted share were $2.46 and $2.22, respectively. “AI has reached its inflection point. It’s doing useful work. Its tokens are productive and profitable. Now, compute is revenue,” said Jensen Huang, founder and CEO of NVIDIA. “And demand is accelerating. This time last year, one lab alone was driving the buildout; today, we have a golden age of new AI labs and startups, multiple frontier labs scaling in parallel, a thriving open-model ecosystem and physical AI coming online — with strong momentum across the U.S. and around the world. The AI infrastructure buildout is at full steam. Vera Rubin, now in full production, was built to power exactly this moment.” During the second quarter of fiscal 2027, NVIDIA returned approximately $26.0 billion to shareholders in the form of shares repurchased and cash dividends. As of the end of the second quarter, the company had approximately $99.0 billion remaining under its share repurchase authorization. NVIDIA will pay its next quarterly cash dividend of $0.25 per share on October 1, 2026, to all shareholders of record on September 10, 2026. Q2 Fiscal 2027 Summary GAAP ($ in millions, except earnings per share) Q2 FY27 Q1 FY27 Q2 FY26 Q/Q Y/Y Revenue $96,221 $81,615 $46,743 18 % 106 % Gross margin 75.0 % 74.9 % 72.4 % 0.1 pts 2.6 pts Operating expenses $8,408 $7,621 $5,413 10 % 55 % Operating income $63,734 $53,536 $28,440 19 % 124 % Net income $59,688 $58,321 $26,422 2 % 126 % Diluted earnings per share $2.46 $2.39 $1.08 3 % 128 % Non-GAAP ($ in millions, except earnings per share) Q2 FY27 Q1 FY27 Q2 FY26 Q/Q Y/Y Revenue $96,221 $81,615 $46,743 18 % 106 % Gross margin 75.0 % 75.0 % 72.5 % — 2.5 pts Operating expenses $8,232 $7,449 $5,361 11 % 54 % Operating income $63,956 $53,783 $28,541 19 % 124 % Net income $53,954 $45,548 $24,763 18 % 118 % Diluted earnings per share $2.22 $1.87 $1.01 19 % 120 % Outlook NVIDIA’s outlook for the third quarter of fiscal 2027 is as follows: • Revenue is expected to be $108.0 billion, plus or minus 2%. NVIDIA is not assuming any Data Center compute revenue from China in its outlook. • GAAP and non-GAAP gross margins are expected to be 74.0%, plus or minus 50 basis points. • GAAP and non-GAAP operating expenses are expected to be approximately $9.2 billion and $9.0 billion, respectively. For the full year fiscal 2027, NVIDIA expects GAAP and non-GAAP tax rates to be between 16.0% and 18.0%, excluding any discrete items and material changes to NVIDIA’s tax environment. Highlights Data Center • Second-quarter revenue was $89.0 billion, up 18% from the previous quarter and up 117% from a year ago. • Announced the NVIDIA Vera Rubin platform is ramping into full production with racks running at partners including CoreWeave, Google Cloud, Microsoft Azure, Oracle Cloud Infrastructure and Nebius. • Revealed that NVIDIA Spectrum™-6 switch systems — supporting both pluggable and co-packaged optics as part of the NVIDIA Vera Rubin platform — are arriving across the world’s gigascale AI factories. • Unveiled NVIDIA Vera, the first CPU built for AI agents, with broad adoption planned across the world’s leading technology providers. • Announced that NVIDIA Groq 3 LPX, the interactive AI inference accelerator, is now in full production. • Introduced new security innovations for NVIDIA Vera BlueField™-4 STX, delivering agentic AI storage processing with in-silicon security for AI factories. • Launched the NVIDIA DSX™ platform, providing infrastructure builders a complete playbook to design, build and operate AI factories at scale. • Announced strategic partnerships to establish independent compute financing platforms with Apollo, BlackRock, Blackstone, Brookfield, Goldman Sachs and KKR to mobilize over $500 billion of third-party capital for the buildout of AI infrastructure over time, subject to definitive agreements. • Announced that SpaceXAI will deploy NVIDIA Vera CPUs to accelerate its next generation of agentic AI applications. • Secured land, power and shell capacity through a partnership with SB Energy at the PORTS-Pike Technology Campus in Ohio to host NVIDIA compute. • Revealed that NVIDIA Blackwell led across every category in the MLPerf Training 6.0 benchmarks and in AgentPerf, the industry’s first agentic AI infrastructure benchmark. • Announced new software, open source models and partnerships with the world’s leading software platform providers to build autonomous AI agents for industries and enterprises; expanded NVIDIA Agent Toolkit with NVIDIA PhysicsNeMo and new and updated NVIDIA CUDA-X™ libraries. • Launched NVIDIA BioNeMo™ Agent Toolkit, which provides domain-specific tools and skills for the agentic life sciences era. • Formed the Open Secure AI Alliance with industry leaders to advance AI safety and security. • Revealed that NVIDIA GPUs with Confidential Computing are now used for confidential inference in Apple’s Private Cloud Compute. • Expanded Korea’s AI factory ecosystem through strategic partnerships with SK Telecom, NAVER and Brookfield to build sovereign AI infrastructure at gigawatt scale on the NVIDIA DSX platform, as part of a broader NVIDIA-powered national AI push across Korea’s industries and research institutions. • Announced a multiyear technology partnership with SK hynix to advance next-generation memory for the global AI factory buildout. • Partnered with the Japan government and industrial leaders to launch the world’s first national AI infrastructure; revealed that Japan’s leading enterprises, startups and research institutions are building industry-specialized AI models with NVIDIA Nemotron™ open models. • Announced that the NVIDIA Vera Rubin platform delivers world-class supercomputers for science; announced a record 35 new NVIDIA AI HPC supercomputers in development across Europe. Edge Computing • Second-quarter Edge Computing revenue was $7.2 billion, up 13% from the previous quarter and up 27% from a year ago. • Partnered with Microsoft to reinvent the Windows PC with NVIDIA RTX Spark™ — a 1-petaflop superchip with the full CUDA™ and NVIDIA RTX™ ecosystem. • Announced NVIDIA DGX Station™ for Windows, the world’s most powerful deskside AI supercomputer for developing and running agents on Windows. • Launched a local AI initiative with optimizations for top open models — DeepSeek v4 Flash, Diffusion Gemma, Nemotron 3.5 Lightning and Qwen 3.8 — and agent harnesses Hermes Agent and OpenClaw across RTX and DGX platforms. • Expanded the NVIDIA DRIVE Hyperion™ robotaxi-ready platform ecosystem, including strategic collaborations with Foxconn, VinFast, Uber and HUMAIN. • Introduced NVIDIA Alpamayo 2 Super, the frontier open reasoning model for safe robotaxi and autonomous vehicle development, for commercial use. • Launched NVIDIA Cosmos™ 3, the world’s first fully open frontier omnimodel for physical AI. • Announced the NVIDIA Isaac™ GR00T Reference Humanoid Robot, the first open humanoid robot reference design built on NVIDIA Jetson Thor™ and the NVIDIA Isaac GR00T open development platform. • Announced NVIDIA Halos for Robotics, the industry’s first full-stack safety system for physical AI, unifying AI compute and safety in a single comprehensive platform. • Released a major collection of open source agent tools and skills for physical AI, enabling developers to turn complex robotics, autonomous vehicle and vision AI workflows into agent-executable tasks. CFO Commentary Commentary on the quarter by Colette Kress, NVIDIA’s executive vice president and chief financial officer, is available at https://investor.nvidia.com. Conference Call and Webcast Information NVIDIA will conduct a conference call with analysts and investors to discuss its second quarter fiscal 2027 financial results and current financial prospects today at 2 p.m. Pacific time (5 p.m. Eastern time). A live webcast (listen-only mode) of the conference call will be accessible at NVIDIA’s investor relations website, https://investor.nvidia.com. The webcast will be recorded and available for replay until NVIDIA’s conference call to discuss its financial results for its third quarter of fiscal 2027. Non-GAAP Measures To supplement NVIDIA’s condensed consolidated financial statements presented in accordance with GAAP, the company uses non-GAAP measures of certain components of financial performance. These non-GAAP measures include non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP operating income, non-GAAP other income (expense), net, non-GAAP net income, non-GAAP net income, or earnings, per diluted share, and free cash flow. For NVIDIA’s investors to be better able to compare its current results with those of previous periods, the company has shown a reconciliation of GAAP to non-GAAP financial measures. These reconciliations adjust the related GAAP financial measures to exclude acquisition-related and other costs, other, gains/losses from equity securities, net, certain other income and expense, and the associated tax impact of these items where applicable. Beginning in the first quarter of fiscal 2027, NVIDIA’s non-GAAP financial measures no longer exclude stock-based compensation expense. The historical non-GAAP financial information presented has been updated to include stock-based compensation expense. Free cash flow is calculated as GAAP net cash provided by operating activities less both purchases related to property and equipment and intangible assets and principal payments on property and equipment and intangible assets. NVIDIA believes the presentation of its non-GAAP financial measures enhances the users’ overall understanding of the company’s historical financial performance. The presentation of the company’s non-GAAP financial measures is not meant to be considered in isolation or as a substitute for the company’s financial results prepared in accordance with GAAP, and the company’s non-GAAP measures may be different from non-GAAP measures used by other companies. About NVIDIA NVIDIA (NASDAQ: NVDA) is the world leader in AI and accelerated computing. ### For further information, contact: Toshiya Hari Mylene Mangalindan Investor Relations Corporate Communications NVIDIA Corporation NVIDIA Corporation IR@nvidia.com press@nvidia.com Certain statements in this press release including, but not limited to, statements as to: the buildout of AI factories; expectations with respect to growth, performance and benefits of NVIDIA’s products, services and technologies, including Blackwell and Vera Rubin, and related trends and drivers; expectations with respect to supply and demand for NVIDIA’s products, services and technologies, including Blackwell and Vera Rubin, and related matters including inventory, production and distribution; expectations with respect to NVIDIA’s third party arrangements, including with its collaborators and partners; expectations with respect to our investments; expectations with respect to our financing arrangements; expectations with respect to technology developments, and related trends and drivers; future NVIDIA cash dividends or other returns to stockholders; NVIDIA’s financial and business outlook for the third quarter of fiscal 2027 and beyond; projected market growth and trends; expectations with respect to AI and related industries; and other statements that are not historical facts are forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, which are subject to the “safe harbor” created by those sections based on management’s beliefs and assumptions and on information currently available to management and are subject to risks and uncertainties that could cause results to be materially different than expectations. Important factors that could cause actual results to differ materially include: global economic and political conditions; NVIDIA’s reliance on third parties to manufacture, assemble, package and test NVIDIA’s products; the impact of technological development and competition; development of new products and technologies or enhancements to NVIDIA’s existing products and technologies; market acceptance of NVIDIA’s products or NVIDIA’s partners’ products; design, manufacturing or software defects; changes in consumer preferences or demands; changes in industry standards and interfaces; unexpected loss of performance of NVIDIA’s products or technologies when integrated into systems; NVIDIA’s ability to realize the potential benefits of business investments or acquisitions; and changes in applicable laws and regulations, as well as other factors detailed from time to time in the most recent reports NVIDIA files with the Securities and Exchange Commission, or SEC, including, but not limited to, its Annual Report on Form 10-K and Quarterly Reports on Form 10-Q. Copies of reports filed with the SEC are posted on the company’s website and are available from NVIDIA without charge. These forward-looking statements are not guarantees of future performance and speak only as of the date hereof, and, except as required by law, NVIDIA disclaims any obligation to update these forward-looking statements to reflect future events or circumstances. © 2026 NVIDIA Corporation. All rights reserved. NVIDIA, the NVIDIA logo, BlueField, Cosmos, Nemotron, NVIDIA Isaac, BioNeMo, CUDA-X, NVIDIA DRIVE Hyperion, NVIDIA Spectrum, NVIDIA DSX, NVIDIA RTX, RTX Spark, DGX Station, and Jetson Thor are trad",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+   "published": "2026-08-26T16:36:00-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations Forward-Looking Statements This Quarterly Report on Form 10-Q contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, which are subject to the “safe harbor” created by those sections based on management’s beliefs and assumptions and on information currently available to management. In some cases, you can identify forward-looking statements by terms such as “may,” “will,” “should,” “could,” “goal,” “would,” “expect,” “plan,” “anticipate,” “believe,” “estimate,” “project,” “predict,” “potential” and similar expressions intended to identify forward-looking statements. These statements involve known and unknown risks, uncertainties and other factors, which may cause our actual results, performance, time frames or achievements to be materially different from any future results, performance, time frames or achievements expressed or implied by the forward-looking statements. We discuss many of these risks, uncertainties and other factors in this Quarterly Report on Form 10-Q and our Annual Report on Form 10-K for the fiscal year ended January 25, 2026 in greater detail under the heading “Risk Factors” of such reports. Given these risks, uncertainties, and other factors, you should not place undue reliance on these forward-looking statements. Also, these forward-looking statements represent our estimates and assumptions only as of the date of this filing. You should read this Quarterly Report on Form 10-Q completely and understand that our actual future results may be materially different from what we expect. We hereby qualify our forward-looking statements by these cautionary statements. Except as required by law, we assume no obligation to update these forward-looking statements publicly, or to update the reasons actual results could differ materially from those anticipated in these forward-looking statements, even if new information becomes available in the future. All references to “NVIDIA,” “we,” “us,” “our” or the “Company” mean NVIDIA Corporation and its subsidiaries. In addition, statements that “we believe” and similar statements reflect our beliefs and opinions on the relevant subject. These statements are based upon information available to us as of the filing date of this Quarterly Report on Form 10-Q, and while we believe such information forms a reasonable basis for such statements, such information may be limited or incomplete, and our statements should not be read to indicate that we have conducted an exhaustive inquiry into, or review of, all potentially available relevant information. These statements are inherently uncertain, and investors are cautioned not to unduly rely upon these statements. © 2026 NVIDIA Corporation. All rights reserved. The following discussion and analysis of our financial condition and results of operations should be read in conjunction with the risk factors set forth in Item 1A. “Risk Factors” of our Annual Report on Form 10-K for the fiscal year ended January 25, 2026 and Part II, Item 1A. “Risk Factors” of this Quarterly Report on Form 10-Q and our Condensed Consolidated Financial Statements and related Notes thereto, as well as other cautionary statements and risks described elsewhere in this Quarterly Report on Form 10-Q and our other filings with the SEC, before deciding to purchase, hold, or sell our securities. Overview Our Company and Our Businesses NVIDIA pioneered accelerated computing to help solve the most challenging computational problems. Since our original focus on PC graphics, we have expanded to several other large and important computationally intensive fields. Fueled by the sustained demand for exceptional 3D graphics and the scale of the gaming market, NVIDIA has leveraged its GPU architecture to create platforms for scientific computing, AI, data science, autonomous vehicles, robotics, and digital twin applications. NVIDIA is now a data center-scale AI infrastructure company reshaping all industries. Our two operating segments are “Compute & Networking” and “Graphics.” Refer to Note 13 of the Notes to Condensed Consolidated Financial Statements in Part I, Item 1 of this Quarterly Report on Form 10-Q for additional information. Headquartered in Santa Clara, California, NVIDIA was incorporated in California in April 1993 and reincorporated in Delaware in April 1998. Recent Developments, Future Objectives and Challenges Revenue growth in the second quarter and the first half of fiscal year 2027 was driven by data center products for accelerated computing and AI solutions. Blackwell continued to account for the majority of our system shipments. Our next-generation Data Center architecture, Vera Rubin, began production shipments in the third quarter of fiscal year 2027. We will be shipping both Blackwell and Rubin systems in the future and are currently experiencing certain supply constraints. Demand estimates for our products can be inaccurate and create volatility in our revenue or supply levels. To secure inventory and capacity to meet demand for the next several years, we have entered into significant commitments and may continue to enter into manufacturing and supply agreements for both current and future products, and we continue to expand our supplier base. The scale and size of our production needs and the complexity of producing our data center systems has caused and could in the future cause delays in production, challenges in managing supply and demand, revenue volatility, quality issues, increased inventory provisions, decreases in product yields, higher material 25 costs, and increased warranty costs. We have significantly increased our supply and capacity commitments from $119 billion last quarter to $279 billion as of July 26, 2026 to meet future demand. Refer to Note 10 of the Notes to Condensed Consolidated Financial Statements included in Part 1, Item 1 of this Quarterly Report on Form 10-Q. Customers may postpone purchasing new architectures due to the lack of availability of data center infrastructure to deploy our products, constraints on capital to have sufficient funding to purchase our products, or may adopt new technologies more gradually than anticipated, affecting our revenue timing and supply chain expenses. The availability of land, power, shell, and capital is crucial to support the buildout of a full data center inclusive of NVIDIA AI infrastructure by our customers and partners, and any shortage of these or other necessary resources could impact our future revenue and financial performance. Expanding land, power, shell, and energy needs to meet demand is a complex, multi-year process that involves significant regulatory, technical, and construction challenges. In addition, access to capital can be particularly constrained for less-capitalized companies, which may face difficulties securing financing for large-scale infrastructure projects. We believe AI clouds and AI model makers have significant demand for training and inference compute and currently lack the ability to secure long-term infrastructure contracts and investment-grade financing capacity to secure the AI infrastructure necessary to grow. These limitations could delay customer and partner deployments or reduce the scale of accelerated computing and AI adoption and may impact the growth of our revenue. We have undertaken initiatives to address these challenges including securing and providing guarantees of land, power, shell, and capacity of select data center infrastructure that customers require to deploy our products. We expect to focus our data center infrastructure initiatives on exceptional sites and apply the same discipline to these initiatives as we do to our supply-chain management by securing critical inputs when we have visibility into customer demand and when doing so enables long-term productive capacity. We expect our large cloud service provider customers and investment grade enterprises to continue to secure land, power, and shell commitments independently. Our land, power, and shell commitments and guarantees may impact our financial results and are dependent on the performance of our customers and partners. In August 2026, we entered into guarantees with SB Energy Corp. to provide credit support on the land, power, and shell buildout at SB Energy’s PORTS Technology Campus in Pike County, Ohio, covering leases for approximately 4.25 gigawatts of IT load. The campus will exclusively host our compute under 20-year leases to OpenAI, subject to limited exceptions, with our obligation capped at $105 billion in the aggregate, subject to certain conditions including SB Energy, the lessor, satisfying applicable ready-for-service conditions. Each guarantee generally becomes effective upon commencement of the applicable lease, with corresponding guarantee amounts increasing as each of nine data centers is placed in service, which is expected to begin in fiscal year 2029. Our exposure declines as OpenAI fulfills its lease payments. Our guarantees are limited to defined portions of lease and power payments and not the full cost of the site or all of the tenant’s obligations. The guarantees terminate upon certain events, including OpenAI achieving a satisfactory credit rating or after each respective lease term has completed. We also hold an option, exercisable in our sole discretion, to provide additional credit support in phases for approximately 3.8 additional gigawatts as the site scales. Refer to Note 10 of the Notes to Condensed Consolidated Financial Statements in Part 1, Item 1 of this Quarterly Report on Form 10-Q. We have made, and may continue to make, investments and commitments in our ecosystem to enhance our growth opportunities, cultivate our ecosystem, and strengthen our competitive position. These include equity investments of $99 billion and equity investment commitments of $25 billion as of July 26, 2026. In the second quarter of fiscal year 2027, we introduced a new business model with certain select AI cloud partners, to enable broader access to our data center infrastructure products to serve AI startups, model builders, enterprises, research organizations, and sovereign customers. We believe these AI cloud partners have strong customer demand and robust sales pipelines but are constrained by the large-scale infrastructure that is required to meet that demand. Through this model, we expect our AI cloud partners will be able to deploy incremental NVIDIA AI infrastructure, enabling them to serve a broader set of customers and address expanding demand for AI compute. Under these agreements, AI clouds procure our data center infrastructure products and we commit to cloud service agreements, which the AI clouds can unilaterally stop providing to us and sell to third-party customers at more advantageous rates. Our commitments, which are typically six years in duration, totaled $36 billion as of July 26, 2026, and decrease as capacity is used by third-party customers or by us for our research and development efforts. If certain criteria are met, we will participate in revenue share generated by the AI clouds from third-party customers, which may contribute to revenue in the future. If market conditions change, it may negatively impact our financial results. Refer to Note 10 of the Notes to Condensed Consolidated Financial Statements in Part 1, Item 1 of this Quarterly Report on Form 10-Q. In August 2026, we entered into memorandums of understanding with several large capital providers to establish independent financing platforms designed to mobilize more than $500 billion of third-party capital over time to support the deployment of AI infrastructure. These and other preliminary arrangements may not lead to definitive agreements. These arrangements are designed for our ecosystem partners an",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm",
+   "published": "2026-11-12T08:52:41-05:00",
+   "form": "8-K",
+   "items": "5.02,9.01",
+   "text": "Item 5.02. Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On November 11, 2026, the Board of Directors, or the Board, of NVIDIA Corporation accepted the resignation of Jen-Hsun Huang, as NVIDIA’s President, Chief Executive Officer and member of the Board, effective immediately. Following Mr. Huang’s resignation, the Board appointed NVIDIA’s Executive Vice President and Chief Financial Officer Colette M. Kress, age 59, to serve as interim Chief Executive Officer, while the Board conducts a search for a new Chief Executive Officer. Ms. Kress has served as NVIDIA’s Executive Vice President and Chief Financial Officer since 2013 and will continue in that role while she serves as the interim Chief Executive Officer. On November 11, 2026, the Board appointed Harvey C. Jones, age 73, as Chair of the Board. Mr. Jones has served on the Board since 1993. He has been the Managing Partner of Square Wave Ventures, a private family office, since 2004 and has over 30 years of experience as an entrepreneur, high technology executive, and venture investor. A copy of the press release announcing the above is attached as Exhibit 99.1 to this Current Report on Form 8-K. Item 9.01. Financial Statements and Exhibits. (d) Exhibits Exhibit Description 99.1 Press Release, dated November 12, 2026 104 The cover page of this Current Report on Form 8-K, formatted in inline XBRL (included as Exhibit 101) SIGNATURE Pursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized. NVIDIA Corporation Date: November 12, 2026 By: /s/ Colette M. Kress Colette M. Kress Interim Chief Executive Officer, Executive Vice President and Chief Financial Officer",
+   "exhibit_99_1": "EX-99.1 2 nvidiaannouncesceotransiti.htm EX-99.1 Document NVIDIA Announces CEO Transition • Jensen Huang Resigns • Colette Kress, Executive Vice President and Chief Financial Officer, Appointed Interim CEO • Harvey C. Jones Appointed First-Ever Chair of the Board SANTA CLARA, Calif., November 12, 2026 (GLOBE NEWSWIRE) -- NVIDIA (NASDAQ: NVDA) Board of Directors announced today that Jensen Huang has resigned as President, Chief Executive Officer, and a member of the Board, effective immediately. Colette Kress, current Executive Vice President and Chief Financial Officer of NVIDIA, has agreed to serve as Interim Chief Executive Officer. Kress will continue to serve as Executive Vice President and Chief Financial Officer while serving as Interim Chief Executive Officer until a permanent successor has been named. The Board is initiating a search for a permanent Chief Executive Officer and will consider internal and external candidates. Kress has served as Executive Vice President and Chief Financial Officer of NVIDIA since joining the company in September 2013. During her tenure, she has led the company’s finance organization and has played a key role in NVIDIA’s growth and evolution. Prior to joining NVIDIA, Kress spent nearly 25 years in finance roles at leading technology companies, including Cisco and Microsoft. The Board of Directors appointed Harvey C. Jones as its first-ever Chair of the Board. Mr. Jones has been an entrepreneur, technology executive, and active venture investor for over 30 years, including serving as Chief Executive Officer and Executive Chairman of Synopsys. “Colette has helped lead NVIDIA through a period of extraordinary growth and has a deep understanding of our business, customers, operations and financial position,” said Harvey Jones, Chair of the NVIDIA Board of Directors. “She is supported by an experienced leadership team that has been instrumental in executing NVIDIA’s strategy and advancing its technology roadmap. The Board has full confidence in Colette and the leadership team, and we expect the company’s operations, customer commitments and product roadmap to continue without interruption.” “NVIDIA’s strength has always come from its people, and together with our leadership team, I am committed to building on the extraordinary foundation Jensen created over the last 33 years, ” said Colette Kress, Interim CEO and CFO, NVIDIA. “We will continue advancing the work that has made NVIDIA a leader in accelerated computing and AI"
+  },
+  {
+   "id": "I7",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000078/nvda-20260902.htm",
+   "published": "2026-09-03T08:03:56-04:00",
+   "form": "8-K",
+   "items": "8.01",
+   "text": "Item 8.01. Other Events. On September 2, 2026, NVIDIA Corporation (“NVIDIA”) entered into a definitive agreement to acquire Hugging Face, Inc. (“Hugging Face”). Hugging Face operates a platform and community for developing, sharing and deploying open-source models, datasets and applications. The transaction includes an approximately $11.9 billion purchase price payable to Hugging Face stockholders, subject to certain adjustments, and an equity-based retention program of up to approximately $1.0 billion for Hugging Face employees joining NVIDIA. The transaction is expected to close in the first half of 2027, subject to the satisfaction or waiver of customary closing conditions, including receipt of required regulatory approvals. NVIDIA expects the acquisition to provide additional resources to Hugging Face and support developers building, sharing and deploying open models and applications. NVIDIA has committed to, among other things, keep Hugging Face’s platform open, consistent with Hugging Face’s existing practices. Under this commitment, Hugging Face would continue to permit model makers, developers, and users to upload and download models and datasets of their choosing and to support other silicon vendors. Risks Related to the Proposed Acquisition of Hugging Face The following risk factor supplements, and should be read together with, the risks relating to acquisitions and other risks described in NVIDIA’s Annual Report on Form 10-K for the fiscal year ended January 25, 2026 and subsequent Quarterly Reports on Form 10-Q. Government restrictions may negatively impact our business and the Hugging Face platform. Demand for open-source foundation models and applications based on them promotes the use of our products worldwide and sustains the Hugging Face platform. We are committed to promoting the training, distribution, and use of both closed and open-source AI models and applications. Other parties are actively lobbying the U.S. Government and other stakeholders worldwide to adopt legislative or regulatory measures that would restrict or disadvantage open-source models and the customers of them. Governments may impose new or additional requirements governing the development, training, release, distribution, access, transfer, deployment or use of AI models, including open-source models. Such requirements could restrict the models or datasets available through Hugging Face, require changes to Hugging Face’s platform or practices, delay or restrict offering"
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/technology/ai/articles/nvidia-braces-first-earnings-without-173610594.html?.tsrc=rss",
+   "published": "2026-11-16T14:15:56-05:00",
+   "text": "Nvidia faces earnings test amid calls for Huang comeback - AI chip juggernaut Nvidia entered its first full week without Jensen Huang as CEO, with Wall Street nervously eyeing Tuesday’s earnings report for signs of whether the AI boom can withstand the widening scandal that toppled him.That could ripple across the AI investment boom propping up the US econo",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/16/tokenized-equities-hit-another-record-high/?.tsrc=rss",
+   "published": "2026-11-16T14:15:38-05:00",
+   "text": "Tokenized Equities Hit Another Record High of $3.8 Billion. Is This the Biggest Bull Market in Crypto Right Now? - The tokenized equities market continues to grow at a blistering pace. Here's how to invest in this trend.",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/equities-tumble-intraday-nvidia-slides-191503897.html?.tsrc=rss",
+   "published": "2026-11-16T14:15:03-05:00",
+   "text": "Update: Equities Tumble Intraday as Nvidia Slides, Fed's Warsh Discusses AI Impact - (Updates with latest market prices and developments.) US stock markets declined intraday Monday a",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/3-stocks-watch-proxy-voting-191147513.html?.tsrc=rss",
+   "published": "2026-11-16T14:11:47-05:00",
+   "text": "3 Stocks to Watch as Proxy Voting Demand Puts Broadridge Stock in Focus - Jensen Huang’s sudden exit from Nvidia has turned boardrooms and ballot boxes into the real action point for investors. Control of a company’s direction now sits under a sharper spotlight, and that can create opportunity for anyone paying attention to who shapes the votes. This article walks through",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/39ef7153-50f4-318d-98b9-fae6150d7fe4/tyson%2C-starbucks-lead-the-s%26p.html?.tsrc=rss",
+   "published": "2026-11-16T14:11:23-05:00",
+   "text": "Tyson, Starbucks Lead The S&P 500, Nasdaq 100 As Investors Play Defense - The AI sell-off steepened on Monday. Defensive stocks made strides amid rotation out of tech. Starbucks jumped on the Nasdaq-100.",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://decrypt.co/383351/trump-elon-musk-sam-altman-jensen-huang-nvidia?.tsrc=rss",
+   "published": "2026-11-16T14:05:02-05:00",
+   "text": "Trump Backs Jensen Huang’s Return to Nvidia as Sam Altman Says 'Heroes Have Flaws' - Trump would welcome Nvidia’s co-founder back. Altman, who survived his own CEO ouster, sympathizes but stops short of endorsing Huang’s comeback.",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://www.fool.com/investing/2026/11/16/prediction-what-nvidia-stock-will-do-after-usd108-billion-quarter-nov-17/?.tsrc=rss",
+   "published": "2026-11-16T14:04:02-05:00",
+   "text": "Prediction: Here’s What Nvidia Stock Will Do After Its Projected $108 Billion Quarter Results Are Announced on Nov. 17 - Nvidia's stock could rebound after its quarterly earnings report is out.",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/16/sk-hynix-is-down-16-in-a-month-what-will-it-take-to-get-skhy-stock-back-to-150/?.tsrc=rss",
+   "published": "2026-11-16T14:03:21-05:00",
+   "text": "SK Hynix Is Down 16% in a Month. What Will It Take to Get SKHY Stock Back to $150? - SK Hynix is sliding with the rest of the memory group, yet it is falling the least among its peers. A price-fixing lawsuit, a looming NVIDIA earnings report, and China's rise all stand between the stock and a comeback.",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/video/could-jensen-huang-launch-startup-190300368.html?.tsrc=rss",
+   "published": "2026-11-16T14:03:00-05:00",
+   "text": "Could Jensen Huang launch a new startup within six months? - Market Hang host Mark Malek, Siebert Financial's chief investment officer, and his panel of experts weigh in on whether Jensen Huang would start a new venture rather than return to Nvidia (NVDA). Today's panel includes Neostellar Principal Willy Lee, FAS Wealth Partners Chief Investment Strategist M",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://247wallst.com/investing/2026/11/16/nvdl-2x-nvidia-etf-sinks-9-as-nvidia-falls-4-on-jensen-huang-fallout-ahead-of-earnings-amd-drops-5/?.tsrc=rss",
+   "published": "2026-11-16T14:02:18-05:00",
+   "text": "NVDL 2X NVIDIA ETF Sinks 9% as NVIDIA Falls 4% on Jensen Huang Fallout Ahead of Earnings; AMD Drops 5% - A CEO exit, an unconfirmed comeback rumor, and an earnings report days away have a double-leveraged fund bleeding far faster than the stock it tracks. Why does the math punish NVDL holders even when NVIDIA bounces?",
+   "feed": {
+    "fetched_et": "2026-11-16T14:31:13-05:00",
+    "sha256": "ded0ef9225107b07e6d9051487b8d3421a6b6bf08b54ad1e9caa34be0e990851"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 50390
+}
