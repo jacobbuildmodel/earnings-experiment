@@ -1,4 +1,4 @@
-# Health 2026-11-15 06:24 ET - **AMBER**
+# Health 2026-11-15 21:54 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -6,14 +6,10 @@ check.py: PASS - 1 warning(s)
 - none
 
 ## AMBER - look at
-- T2R missing: CRWV_2026-11-10 (D013 shadow; the budget may have skipped it)
-- T2O missing: CRWV_2026-11-10 (D013 shadow; the budget may have skipped it)
 - T2R missing: CBRS_2026-11-12 (D013 shadow; the budget may have skipped it)
 - T2O missing: CBRS_2026-11-12 (D013 shadow; the budget may have skipped it)
 - T2R missing: CSCO_2026-11-12 (D013 shadow; the budget may have skipped it)
 - T2O missing: CSCO_2026-11-12 (D013 shadow; the budget may have skipped it)
-- T2R missing: RGTI_2026-11-10 (D013 shadow; the budget may have skipped it)
-- T2O missing: RGTI_2026-11-10 (D013 shadow; the budget may have skipped it)
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
 - DATES STALE (seasonA): no date confirmed or retired since Fri 13 Nov 07:38 ET (over 30 h), while 1 PENDING name(s) have a calendar date within 7 days; newest re-check Fri 13 Nov 21:49 ET - the re-checks are not running
 
