@@ -1,4 +1,4 @@
-# Health 2026-11-17 14:45 ET - **RED**
+# Health 2026-11-17 14:56 ET - **RED**
 
 check.py: PASS - 1 warning(s)
 
@@ -36,8 +36,6 @@ check.py: PASS - 1 warning(s)
 - paper/long_ledger.json: 52 gate(s) not opened under the D019 stop ['seasonA-ACHR-2026-11-09-L', 'seasonA-ALRM-2026-11-05-L', 'seasonA-AMAT-2026-11-12-L', 'seasonA-ATEN-2026-11-05-L', 'seasonA-ATRO-2026-11-10-L', 'seasonA-AVPT-2026-11-05-L', 'seasonA-AXON-2026-11-05-L', 'seasonA-BILL-2026-11-05-L', 'seasonA-CARG-2026-11-05-L', 'seasonA-CBRS-2026-11-12-L', 'seasonA-CRWV-2026-11-10-L', 'seasonA-CSCO-2026-11-12-L', 'seasonA-DIOD-2026-11-05-L', 'seasonA-FIVN-2026-11-05-L', 'seasonA-FLY-2026-11-10-L', 'seasonA-FROG-2026-11-05-L', 'seasonA-GRND-2026-11-05-L', 'seasonA-HALO-2026-11-05-L', 'seasonA-INFQ-2026-11-16-L', 'seasonA-IONQ-2026-11-05-L', 'seasonA-KRMN-2026-11-05-L', 'seasonA-LUNR-2026-11-12-L', 'seasonA-LYFT-2026-11-05-L', 'seasonA-MARA-2026-11-09-L', 'seasonA-MBGL-2026-11-12-L', 'seasonA-MRCY-2026-11-10-L', 'seasonA-MRNA-2026-11-06-L', 'seasonA-NET-2026-11-05-L', 'seasonA-NVDA-2026-11-17-L', 'seasonA-OCTV-2026-11-12-L', 'seasonA-ONDS-2026-11-12-L', 'seasonA-PCTY-2026-11-05-L', 'seasonA-PDFS-2026-11-05-L', 'seasonA-QBTS-2026-11-10-L', 'seasonA-QLYS-2026-11-09-L', 'seasonA-RGTI-2026-11-10-L', 'seasonA-ROIV-2026-11-09-L', 'seasonA-RUM-2026-11-11-L', 'seasonA-SANM-2026-11-09-L', 'seasonA-SARO-2026-11-05-L', 'seasonA-SOUN-2026-11-05-L', 'seasonA-STUB-2026-11-10-L', 'seasonA-TDC-2026-11-05-L', 'seasonA-TDG-2026-11-10-L', 'seasonA-TEAM-2026-11-05-L', 'seasonA-TJX-2026-11-18-L', 'seasonA-TXG-2026-11-05-L', 'seasonA-TXRH-2026-11-05-L', 'seasonA-UA-2026-11-06-L', 'seasonA-VSAT-2026-11-05-L', 'seasonA-WULF-2026-11-06-L', 'seasonA-ZETA-2026-11-09-L']
 - paper window (options): paper-window-push.yml afternoon step since 10:49 ET
 - paper window (long): paper-window-push.yml afternoon step since 10:49 ET
-- paper/options: NVDA: the account holds +18, the ledgers show +0 - a ledger order on it is still live (the ledger lags the broker by one run)
-- paper/options: ['seasonA-NVDA-2026-11-17-buy'] live in the ledger, no longer open at Alpaca (the next paper run records how they ended)
 - paper/options: 67 position(s), 0 open order(s) - they match the ledgers
 - paper/long: 5 position(s), 0 open order(s) - they match the ledgers
 - Tue 17 Nov: 6 snapshot(s) - BBWI, KLIC, P, PANW, WSM, WWD
