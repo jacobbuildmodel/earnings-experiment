@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "KLIC",
+ "report_date": "2026-11-18",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-18"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-19"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-19"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-27"
+  },
+  "reaction_day": "2026-11-19"
+ },
+ "snapshot_session": "2026-11-17",
+ "captured_et": "2026-11-17T14:31:00.188823-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/kulicke-soffa-schedules-fourth-quarter-2026-conference-call-8-00-am-et-november-19th",
+  "published_et": "2026-11-10T09:05-05:00",
+  "quote": "The Company will issue its fourth fiscal quarter 2026 financial results on Wednesday, November 18, 2026 , shortly after 4:00 pm ET .",
+  "title": "Kulicke & Soffa Schedules Fourth Quarter 2026 Conference Call for 8:00 AM ET, November 19th, 2026",
+  "retrieved_et": "2026-11-11T07:40:37-05:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-18T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-18T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 64.94999694824219,
+  "expiry": "2026-11-20",
+  "strike": 65.0,
+  "call": {
+   "bid": 2.85,
+   "ask": 4.2,
+   "openInterest": 9.0,
+   "lastPrice": 3.47,
+   "impliedVolatility": 1.3095737646484373,
+   "lastTradeDate": "2026-11-17T18:15:00+00:00"
+  },
+  "put": {
+   "bid": 2.7,
+   "ask": 4.4,
+   "openInterest": 10.0,
+   "lastPrice": 3.6,
+   "impliedVolatility": 1.2998081884765622,
+   "lastTradeDate": "2026-11-17T15:33:14+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.10892995123060556,
+  "rel_spread": {
+   "call": 0.3829787234042553,
+   "put": 0.47887323943661975
+  },
+  "oi_atm": 19.0,
+  "oi_sum": 19.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
