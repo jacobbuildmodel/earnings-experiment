@@ -1,0 +1,264 @@
+{
+ "meta": {
+  "ticker": "KLIC",
+  "report_date": "2026-11-18",
+  "session": "AMC",
+  "captured_et": "2026-11-17T14:31:04.741685-05:00",
+  "snapshot_session": "2026-11-17",
+  "dry": false
+ },
+ "factors": {
+  "A_ret_12m_LR01": {
+   "value": 0.7688680710532962,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_ret_1m": {
+   "value": -0.20130352690623454,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_ret_5d_LR10": {
+   "value": -0.06814921388773165,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_max_daily_ret_21d_LR11": {
+   "value": 0.07748787562788162,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_vol_60d_ann": {
+   "value": 0.6192211575900963,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_volume_20d_vs_250d": {
+   "value": 0.8546531367911429,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "A_dist_from_52w_high": {
+   "value": -0.5133561829031118,
+   "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+  },
+  "E_last4_prints": {
+   "value": [
+    {
+     "date": "2026-08-05",
+     "session": "AMC",
+     "raw_return_A": -0.036461686452465725,
+     "eps_est": 1.01,
+     "eps_rep": 1.2,
+     "surprise_pct": 19.2,
+     "reaction_volume_ratio": 1.4019536994456263
+    },
+    {
+     "date": "2026-05-06",
+     "session": "AMC",
+     "raw_return_A": 0.12812594182770454,
+     "eps_est": 0.67,
+     "eps_rep": 0.79,
+     "surprise_pct": 17.91,
+     "reaction_volume_ratio": 4.195794457596435
+    },
+    {
+     "date": "2026-02-04",
+     "session": "AMC",
+     "raw_return_A": -0.00641130571404025,
+     "eps_est": 0.33,
+     "eps_rep": 0.44,
+     "surprise_pct": 33.33,
+     "reaction_volume_ratio": 3.8961687951138257
+    },
+    {
+     "date": "2025-11-19",
+     "session": "AMC",
+     "raw_return_A": 0.11950744389586831,
+     "eps_est": 0.22,
+     "eps_rep": 0.28,
+     "surprise_pct": 26.13,
+     "reaction_volume_ratio": 3.9684083263246426
+    }
+   ],
+   "source": "yfinance get_earnings_dates + history (adjusted opens)",
+   "note": "EPS basis NOT pinned (STATE #2) - surprise is vendor-defined"
+  },
+  "E_last4_win_rate_A": {
+   "value": 0.5,
+   "source": "yfinance get_earnings_dates + history (adjusted opens)"
+  },
+  "E_past_reaction_volume_LR02": {
+   "value": 3.3655813196201323,
+   "source": "yfinance get_earnings_dates + history (adjusted opens)"
+  },
+  "E_last_surprise_pct_LR17": {
+   "value": 19.2,
+   "source": "yfinance get_earnings_dates + history (adjusted opens)",
+   "note": "EPS basis NOT pinned"
+  },
+  "L_report_date_shift_days": {
+   "value": 0,
+   "source": "yfinance get_earnings_dates",
+   "note": "vs 2025-11-19; positive = later than the same quarter last year"
+  },
+  "D_eps_trend_current_q": {
+   "value": {
+    "current": 1.43,
+    "7daysAgo": 1.43,
+    "30daysAgo": 1.43,
+    "60daysAgo": 1.43,
+    "90daysAgo": 1.15,
+    "currency": "USD"
+   },
+   "source": "yfinance eps_trend / earnings_estimate / info"
+  },
+  "D_eps_revision_90d_LR19": {
+   "value": 0.24347826086956526,
+   "source": "yfinance eps_trend / earnings_estimate / info"
+  },
+  "D_eps_est_current_q": {
+   "value": {
+    "avg": 1.43,
+    "low": 1.42,
+    "high": 1.45,
+    "yearAgoEps": 0.28,
+    "numberOfAnalysts": 3,
+    "growth": 4.1071,
+    "currency": "USD"
+   },
+   "source": "yfinance eps_trend / earnings_estimate / info"
+  },
+  "C_analyst_dispersion_LR08": {
+   "value": 0.020979020979020997,
+   "source": "yfinance eps_trend / earnings_estimate / info",
+   "note": "(high-low)/|avg| - a crude dispersion proxy"
+  },
+  "C_short_pct_float": {
+   "value": 0.051999997,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "J_forward_pe_LR20": {
+   "value": 11.002265,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "J_price_to_sales_LR20": {
+   "value": 3.5768569,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "J_revenue_growth": {
+   "value": 1.226,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "K_market_cap": {
+   "value": 3398775808,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "C_analyst_rec_mean": {
+   "value": 2.66667,
+   "source": "yfinance info (vendor snapshot, no timestamp)"
+  },
+  "B_implied_move": {
+   "value": 0.10892995123060556,
+   "source": "own option-chain capture (gate step, yfinance)"
+  },
+  "B_iv_spread_call_minus_put_atm_LR12": {
+   "value": 0.009765576171875123,
+   "source": "own option-chain capture (gate step, yfinance)"
+  },
+  "B_put_skew_90_LR13": {
+   "value": 0.23535038574218747,
+   "source": "own option-chain capture (gate step, yfinance)",
+   "note": "IV(put nearest 0.9*spot) - IV(ATM call), same expiry"
+  },
+  "B_put_call_volume_LR14": {
+   "value": 0.15789473684210525,
+   "source": "own option-chain capture (gate step, yfinance)",
+   "note": "plain volume, gate expiry only"
+  },
+  "B_put_call_oi": {
+   "value": 0.2125,
+   "source": "own option-chain capture (gate step, yfinance)",
+   "note": "gate expiry only"
+  },
+  "B_option_volume_gate_expiry": {
+   "value": 396.0,
+   "source": "own option-chain capture (gate step, yfinance)"
+  },
+  "B_atm_iv_over_rv60": {
+   "value": 2.106987076540045,
+   "source": "own option-chain capture (gate step, yfinance)",
+   "note": "mean ATM IV of the gate expiry / 60-session realised vol (A_vol_60d_ann)"
+  },
+  "B_event_move_term_structure": {
+   "value": 0.12131041170312828,
+   "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry",
+   "note": "std of the event-day return; iv1=1.3047 (2026-11-20), iv2=0.7966 (2026-12-18)"
+  },
+  "L_same_day_reporters_LR06": {
+   "value": 79,
+   "source": "nasdaq calendar (all caps)"
+  },
+  "L_weekday_LR07": {
+   "value": "Wednesday",
+   "source": "report date"
+  },
+  "K_stage": {
+   "value": "profitable_growth",
+   "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)",
+   "note": "quarter ending 2026-07-04; flags []; revenue tag Revenues"
+  },
+  "K_rev_growth_yoy_q": {
+   "value": 1.226280716648811,
+   "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)",
+   "note": "quarter ending 2026-07-04"
+  },
+  "K_op_margin_q": {
+   "value": 0.20661059474772175,
+   "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)",
+   "note": "quarter ending 2026-07-04"
+  },
+  "H1": {
+   "value": 0.7688680710532962,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H2": {
+   "value": -0.06814921388773165,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H3": {
+   "value": 0.07748787562788162,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H4": {
+   "value": 0.6192211575900963,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H5": {
+   "value": 2.5904601297948857,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H6": {
+   "value": 1.0657876536141373,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H7": {
+   "value": 0,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H_shares_source": {
+   "value": "dei:EntityCommonStockSharesOutstanding",
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H_market_cap_pit": {
+   "value": 3398775859.5542145,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H8": {
+   "value": 0.27957507033859846,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H9": {
+   "value": 0,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  },
+  "H10": {
+   "value": 0.09517195997834864,
+   "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+  }
+ }
+}

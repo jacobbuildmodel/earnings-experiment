@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "WWD",
+ "report_date": "2026-11-18",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-18"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-19"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-19"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-27"
+  },
+  "reaction_day": "2026-11-19"
+ },
+ "snapshot_session": "2026-11-17",
+ "captured_et": "2026-11-17T14:31:10.141302-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.woodward.com/news/news-details/2026/Woodward-Schedules-Fiscal-2026-Fourth-Quarter-and-Full-Year-Earnings-Release-and-Conference-Call/default.aspx",
+  "published_et": "2026-10-28T16:00-04:00",
+  "quote": "26 Fourth Quarter and Full Year Earnings Release and Conference Call October 28, 2026 Download (opens in new window) FORT COLLINS, Colo., Oct. 28, 2026 (GLOBE NEWSWIRE) -- Woodward, Inc. (NASDAQ: WWD) announced today that it expects to report its fiscal 2026 fourth quarter and full year financial results at approximately 4:00 p.m. ET on Wednesday, November 18, 2026.",
+  "title": "Woodward Schedules Fiscal 2026 Fourth Quarter and Full Year Earnings Release and Conference Call",
+  "retrieved_et": "2026-10-30T22:12:55.241278-04:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://ir.woodward.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-18T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-18T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 309.5450134277344,
+  "expiry": "2026-11-20",
+  "strike": 310.0,
+  "call": {
+   "bid": 13.1,
+   "ask": 18.0,
+   "openInterest": 33.0,
+   "lastPrice": 15.06,
+   "impliedVolatility": 1.2202187426757813,
+   "lastTradeDate": "2026-11-17T18:56:57+00:00"
+  },
+  "put": {
+   "bid": 11.5,
+   "ask": 17.2,
+   "openInterest": 1657.0,
+   "lastPrice": 19.01,
+   "impliedVolatility": 1.0921676251220702,
+   "lastTradeDate": "2026-11-05T18:58:33+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.09659338287799742,
+  "rel_spread": {
+   "call": 0.31511254019292606,
+   "put": 0.3972125435540069
+  },
+  "oi_atm": 1690.0,
+  "oi_sum": 1690.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
