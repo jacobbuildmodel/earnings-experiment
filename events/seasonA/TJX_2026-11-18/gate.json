@@ -1,0 +1,92 @@
+{
+ "season": "seasonA",
+ "ticker": "TJX",
+ "report_date": "2026-11-18",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-17"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-18"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-18"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-25"
+  },
+  "reaction_day": "2026-11-18"
+ },
+ "snapshot_session": "2026-11-16",
+ "captured_et": "2026-11-16T14:31:00.253260-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://www.nasdaq.com/press-release/tjx-companies-inc-report-q3-fy27-results-november-18-2026-2026-11-04",
+  "published_et": "2026-11-04T11:15-05:00",
+  "quote": "The TJX Companies, Inc. today announced that it plans to release its third quarter Fiscal 2027 sales and earnings results on Wednesday, November 18, 2026, before 9:30 a.m. ET.",
+  "title": "The TJX Companies, Inc. to Report Q3 FY27 Results November 18, 2026",
+  "retrieved_et": "2026-11-06T07:41:00-05:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "error": "OperationalError: database is locked"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "nasdaq calendar",
+  "time": "time-pre-market",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 131.4199981689453,
+  "expiry": "2026-11-20",
+  "strike": 131.0,
+  "call": {
+   "bid": 3.9,
+   "ask": 4.3,
+   "openInterest": 3.0,
+   "lastPrice": 4.08,
+   "impliedVolatility": 0.6345251391601563,
+   "lastTradeDate": "2026-11-16T18:58:37+00:00"
+  },
+  "put": {
+   "bid": 3.2,
+   "ask": 3.8,
+   "openInterest": 3.0,
+   "lastPrice": 2.15,
+   "impliedVolatility": 0.6049844189453126,
+   "lastTradeDate": "2026-11-11T16:54:21+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 2,
+  "implied_move": 0.05782985927476514,
+  "rel_spread": {
+   "call": 0.09756097560975609,
+   "put": 0.17142857142857132
+  },
+  "oi_atm": 6.0,
+  "oi_sum": 4000.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
