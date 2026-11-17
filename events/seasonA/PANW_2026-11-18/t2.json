@@ -1,0 +1,149 @@
+{
+ "track": "T2",
+ "event": "PANW_2026-11-18",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "NO_BUY",
+  "confidence": 0.46,
+  "thesis": "PANW has fallen after each of its last four prints despite EPS beats, and the stock enters this print already down ~20% in two months, but the implied ~12% move is large and sentiment is already washed out, so I lean slightly below the base rate.",
+  "reasons": [
+   "Last four prints all had negative open-to-open returns (E_last4_win_rate 0.0) despite EPS beats of 4-10%, which suggests a pattern of 'beat but sell' with high expectations.",
+   "The 12% implied move (ATM IV about 2.2x realized vol) prices in a big move, so the options carry a large premium and give no directional edge.",
+   "Stock is down about 11% over 1m and 27% from its 52w high, with funds trimming positions and a software selloff; this lowers the bar but also shows deteriorating momentum.",
+   "Prior guidance for FY27 implied sharp deceleration (NGS ARR growth 63% to 22-23%, revenue 34% to 23-24%), and the Q1 guide sits roughly in line with consensus EPS ($0.97), leaving little room for upside surprise.",
+   "The AI-security tailwind and CrowdStrike's strong ARR quarter are supportive, and the washed-out positioning could give a relief rally, so I only shade below the base rate."
+  ],
+  "deciding_variable": "Whether NGS ARR and the FY27 guide (especially the raise and net new ARR) beat elevated buy-side expectations, along with margin and FCF commentary given Chronosphere/Idira dilution.",
+  "prior": {
+   "p": 0.54,
+   "from": "I3 overall validation hit rate 0.542; AMC session 0.538; hardware_networking cluster 0.586, software_internet 0.541"
+  },
+  "leak_probe": "I don't know. That earnings date (2026-11-18) is after today's date (2026-11-17) and past my knowledge cutoff, so I have no information on how PANW's stock reacted.",
+  "moved_from_prior": "Down about 8 points from 0.54 to 0.46: the 0-for-4 recent post-earnings record, momentum weakness and the slowing guidance, partly offset by reduced positioning and a favorable peer print.",
+  "theses": [
+   {
+    "expected": "Beat-and-sell again: EPS in line or slightly ahead, but ARR/guide only meets expectations and shares open lower.",
+    "mechanism": "Premium valuation (about 63x forward PE) and decelerating growth leave no room for a merely in-line print; margin dilution from acquisitions weighs.",
+    "wrong_if": "NGS ARR and the FY27 guide are raised meaningfully above consensus and the stock gaps up."
+   },
+   {
+    "expected": "Relief rally: pessimism is already priced after a 20% drawdown, and strong AI security demand lifts shares.",
+    "mechanism": "Short-covering and re-rating on net new ARR strength, similar to CrowdStrike's record quarter.",
+    "wrong_if": "Net new ARR growth slows or guidance is cut, causing the stock to drop despite low expectations."
+   },
+   {
+    "expected": "Muted move relative to the 12% implied, with direction decided by the broader tech/AI tape (Nvidia earnings the same week).",
+    "mechanism": "Implied volatility is inflated relative to realized, so the actual move is smaller and market beta dominates the open-to-open result.",
+    "wrong_if": "The gap exceeds 10% in either direction, indicating company-specific news dominates."
+   }
+  ],
+  "key_observations": [
+   "NGS ARR vs the roughly $9.55B guide and net new ARR",
+   "FY27 revenue/ARR guide changes and the operating margin outlook",
+   "FCF margin trajectory (38% guide) and Chronosphere/CyberArk dilution",
+   "Product revenue growth (28% last time) versus Fortinet's slowdown",
+   "Commentary on AI security demand and competition from Anthropic/hyperscalers",
+   "Nvidia reaction and the broader software tape on the night"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/PANW_2026-11-18/gate.json",
+    "published": "2026-11-17T14:31:00.188143-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/PANW_2026-11-18/factors.json",
+    "published": "2026-11-17T14:31:00.188143-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1327567/000132756726000019/ex991q426earningsrelease.htm",
+    "published": "2026-09-01T16:32:15-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/6-big-funds-sold-palo-alto-networks-last-quarter-should-you-follow-them-before-earnings?ref=yahoofinance&tlnk=yf-261117-6c9xjwqj&.tsrc=rss",
+    "published": "2026-11-17T10:46:51-05:00",
+    "dossier_item": "I7"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/palo-alto-networks-report-q1-135100352.html?.tsrc=rss",
+    "published": "2026-11-16T08:51:00-05:00",
+    "dossier_item": "I17"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/palo-alto-networks-sank-nearly-10-in-a-day-arora-still-sees-ai-as-durable-tailwinds?ref=yahoofinance&tlnk=yf-261114-cmh3q2hx&.tsrc=rss",
+    "published": "2026-11-14T12:05:33-05:00",
+    "dossier_item": "I25"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://www.tikr.com/blog/crowdstrike-doubles-down-on-ai-agents-with-495-million-in-deals-after-a-record-333-million-arr-quarter?ref=yahoofinance&tlnk=yf-261114-37qrwpvx&.tsrc=rss",
+    "published": "2026-11-14T00:43:16-05:00",
+    "dossier_item": "I26"
+   }
+  ],
+  "decided_et": "2026-11-17T16:22:20-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 21822,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1300,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 21822,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1300,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 21822,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 21822
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.100292
+ }
+}
