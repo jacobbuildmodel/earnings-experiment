@@ -1,0 +1,159 @@
+{
+ "track": "T2",
+ "event": "NVDA_2026-11-17",
+ "season": "seasonA",
+ "rule": "D004_decision_protocol_v4",
+ "t2": {
+  "decision": "BUY",
+  "confidence": 0.54,
+  "thesis": "NVDA enters earnings after a sharp ~27% one-month drawdown and a surprise CEO resignation, with a large implied move of ~8.8% and no clear directional edge, so the outcome stays near the base rate with a slight lean toward a relief bounce.",
+  "reasons": [
+   "Base rate for AMC/ai_infra events is ~54-56%, while semis cluster is lower at 48%, which roughly nets out to ~54%.",
+   "Stock is down ~27% in a month and ~35% from its 52w high at ~9.9x forward PE, so expectations are depressed and strong guidance ($108B guide, supply commitments up to $279B) could trigger a relief rally.",
+   "CEO Huang's abrupt resignation and a widening scandal add large uncertainty; the entry open on 11/17 already prices in much of the news, but any CEO-comeback or clarification on the call is a two-sided tail.",
+   "Options imply ~8.8% move with call/put IV roughly balanced (put skew mild), so no directional signal from options; recent 4-print history is 50% win rate."
+  ],
+  "deciding_variable": "Q3 guide vs. elevated whisper (above ~$108B plus Q4 commentary) and management's handling of the CEO transition and Huang's possible return on the call.",
+  "prior": {
+   "p": 0.54,
+   "from": "Overall buy-everything hit rate ~54.2% (validation); AMC 53.8%; ai_infra cluster 55.8%, semis 47.9%"
+  },
+  "leak_probe": "I don't know. Today is 2026-11-16, so that earnings report hasn't happened yet, and I have no information about how NVDA's stock moved afterward.",
+  "moved_from_prior": "No net move from the 54% prior: oversold/cheap valuation and a beat-and-raise pattern (+0.5 to +1pt) are offset by the leadership-crisis uncertainty and a weak AI/semis tape (-0.5 to -1pt).",
+  "theses": [
+   {
+    "expected": "Relief rally: beat-and-raise with Kress reassuring on continuity lifts the beaten-down stock at the next open.",
+    "mechanism": "Depressed positioning and low forward PE mean good guidance gets rewarded; the leadership overhang partly clears.",
+    "wrong_if": "Guide is only in line with the whisper or the call reveals more governance or scandal detail."
+   },
+   {
+    "expected": "Sell the news: strong numbers but the stock falls as the scandal and AI-capex financing concerns dominate.",
+    "mechanism": "Circular financing, large guarantees (OpenAI, SB Energy) and supply commitments raise worries; the AI sell-off continues.",
+    "wrong_if": "Data center revenue and guide beat meaningfully and the broad AI tape stabilizes."
+   },
+   {
+    "expected": "Muted or mixed move with the gap mostly set by the pre-earnings drift on 11/17.",
+    "mechanism": "The entry open on 11/17 already reflects Monday's weakness and any rebound, so the earnings gap is a coin flip around the implied move.",
+    "wrong_if": "A decisive surprise in either direction produces a move well beyond 8.8%."
+   }
+  ],
+  "key_observations": [
+   "Q3 revenue guide versus ~$108B and the Q4 commentary",
+   "Data center revenue and gross margin (~74-75%)",
+   "Any statement on Huang's role, a return, or the CEO search timeline",
+   "Supply constraints, China assumptions and customer financing commitments",
+   "Size and direction of the 11/17 open versus Monday's close"
+  ],
+  "inputs_read": [
+   {
+    "what": "gate",
+    "url_or_file": "events/seasonA/NVDA_2026-11-17/gate.json",
+    "published": "2026-11-16T14:31:00.254924-05:00",
+    "dossier_item": "I1"
+   },
+   {
+    "what": "factors",
+    "url_or_file": "events/seasonA/NVDA_2026-11-17/factors.json",
+    "published": "2026-11-16T14:31:00.254924-05:00",
+    "dossier_item": "I2"
+   },
+   {
+    "what": "base_rates",
+    "url_or_file": "registry/D004_base_rates_v3.json",
+    "published": "2026-09-29",
+    "dossier_item": "I3"
+   },
+   {
+    "what": "release 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000073/q2fy27pr.htm",
+    "published": "2026-08-26T16:21:19-04:00",
+    "dossier_item": "I4"
+   },
+   {
+    "what": "periodic 10-Q",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm",
+    "published": "2026-08-26T16:36:00-04:00",
+    "dossier_item": "I5"
+   },
+   {
+    "what": "8k 8-K",
+    "url_or_file": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm",
+    "published": "2026-11-12T08:52:41-05:00",
+    "dossier_item": "I6"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/technology/ai/articles/nvidia-braces-first-earnings-without-173610594.html?.tsrc=rss",
+    "published": "2026-11-16T14:15:56-05:00",
+    "dossier_item": "I8"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/markets/stocks/articles/equities-tumble-intraday-nvidia-slides-191503897.html?.tsrc=rss",
+    "published": "2026-11-16T14:15:03-05:00",
+    "dossier_item": "I10"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://finance.yahoo.com/m/39ef7153-50f4-318d-98b9-fae6150d7fe4/tyson%2C-starbucks-lead-the-s%26p.html?.tsrc=rss",
+    "published": "2026-11-16T14:11:23-05:00",
+    "dossier_item": "I12"
+   },
+   {
+    "what": "headline",
+    "url_or_file": "https://247wallst.com/investing/2026/11/16/nvdl-2x-nvidia-etf-sinks-9-as-nvidia-falls-4-on-jensen-huang-fallout-ahead-of-earnings-amd-drops-5/?.tsrc=rss",
+    "published": "2026-11-16T14:02:18-05:00",
+    "dossier_item": "I17"
+   }
+  ],
+  "decided_et": "2026-11-16T16:22:06-05:00",
+  "model": "claude-sonnet-5-5",
+  "method": "D004 v4: leak-probe call without the dossier, then one decision call on the frozen dossier; no tools",
+  "system_sha256": "ff7e817ebcc7e957e85b379eccffb6fed02ebf4d06d947965a91f099a8f9da77",
+  "isolation": {
+   "tools": [],
+   "mcp_servers": [],
+   "num_turns": 1,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "model": "claude-sonnet-5-5"
+  },
+  "usage": {
+   "input_tokens": 2,
+   "cache_creation_input_tokens": 21231,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 1149,
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "standard",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 21231,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "global",
+   "iterations": [
+    {
+     "input_tokens": 2,
+     "output_tokens": 1149,
+     "cache_read_input_tokens": 0,
+     "cache_creation_input_tokens": 21231,
+     "cache_creation": {
+      "ephemeral_5m_input_tokens": 0,
+      "ephemeral_1h_input_tokens": 21231
+     },
+     "type": "message"
+    }
+   ],
+   "speed": "standard",
+   "fallback_credit": null
+  },
+  "cost_usd_equiv": 0.096418
+ }
+}
