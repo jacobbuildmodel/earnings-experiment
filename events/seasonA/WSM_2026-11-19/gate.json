@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "WSM",
+ "report_date": "2026-11-19",
+ "session": "BMO",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-18"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-19"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-19"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-27"
+  },
+  "reaction_day": "2026-11-19"
+ },
+ "snapshot_session": "2026-11-17",
+ "captured_et": "2026-11-17T14:31:00.188822-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.williams-sonomainc.com/investor-information/news-releases/news-release-details/2026/Williams-Sonoma-Inc--announces-release-date-for-third-quarter-results-Thursday-November-19th-2026/default.aspx",
+  "published_et": "2026-11-12T20:52-05:00",
+  "quote": "Williams-Sonoma, Inc. (NYSE: WSM) announced today that it will release its third quarter results on Thursday, November 19th, 2026 before the market opens.",
+  "title": "Williams-Sonoma, Inc. announces release date for third quarter results: Thursday, November 19th, 2026",
+  "retrieved_et": "2026-11-13T07:38:04-05:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-19T08:00:00-05:00",
+   "session": "BMO"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-pre-market",
+   "session": "BMO"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-19T08:00:00-05:00",
+  "session": "BMO"
+ },
+ "options": {
+  "spot": 250.14999389648438,
+  "expiry": "2026-11-20",
+  "strike": 250.0,
+  "call": {
+   "bid": 8.7,
+   "ask": 10.8,
+   "openInterest": 145.0,
+   "lastPrice": 10.1,
+   "impliedVolatility": 0.9267585449218749,
+   "lastTradeDate": "2026-11-17T17:30:33+00:00"
+  },
+  "put": {
+   "bid": 8.3,
+   "ask": 10.4,
+   "openInterest": 112.0,
+   "lastPrice": 8.8,
+   "impliedVolatility": 0.9028330029296875,
+   "lastTradeDate": "2026-11-17T18:26:54+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 1,
+  "implied_move": 0.07635418935050566,
+  "rel_spread": {
+   "call": 0.21538461538461554,
+   "put": 0.22459893048128335
+  },
+  "oi_atm": 257.0,
+  "oi_sum": 257.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}
