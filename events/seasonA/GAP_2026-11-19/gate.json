@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "GAP",
+ "report_date": "2026-11-19",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-19"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-20"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-20"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-30"
+  },
+  "reaction_day": "2026-11-20"
+ },
+ "snapshot_session": "2026-11-18",
+ "captured_et": "2026-11-18T14:31:00.209520-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://investors.gapinc.com/press-releases/news-details/2026/Gap-Inc--to-Report-Third-Quarter-Fiscal-2026-Results-on-November-19/default.aspx",
+  "published_et": "2026-10-29T16:15-04:00",
+  "quote": "ite Search Careers Login Investors News and Events News Details News Details Gap Inc. to Report Third Quarter Fiscal 2026 Results on November 19 October 29, 2026 Download (opens in new window) SAN FRANCISCO , Oct. 29, 2026 /PRNewswire/ -- Gap Inc. (NYSE: GAP) will report its third quarter fiscal 2026 financial results by press release on Thursday, November 19, 2026, at approximately 1:15 p.m. Pacific Time.",
+  "title": "Gap Inc. to Report Third Quarter Fiscal 2026 Results on November 19",
+  "retrieved_et": "2026-11-02T23:01:00.394231-05:00",
+  "how": "find_dates v4 (2026-10-26): company feed https://investors.gapinc.com/feed/PressRelease.svc/GetPressReleaseList (Q4 press-release feed); the quote is the sentence on the linked page that states the date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-19T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-19T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 19.844999313354492,
+  "expiry": "2026-11-20",
+  "strike": 20.0,
+  "call": {
+   "bid": 1.07,
+   "ask": 1.14,
+   "openInterest": 274.0,
+   "lastPrice": 1.1,
+   "impliedVolatility": 1.640626796875,
+   "lastTradeDate": "2026-11-18T19:08:59+00:00"
+  },
+  "put": {
+   "bid": 1.05,
+   "ask": 1.12,
+   "openInterest": 3587.0,
+   "lastPrice": 1.04,
+   "impliedVolatility": 1.396487392578125,
+   "lastTradeDate": "2026-11-18T18:56:29+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.11035525703073527,
+  "rel_spread": {
+   "call": 0.06334841628959262,
+   "put": 0.06451612903225812
+  },
+  "oi_atm": 3861.0,
+  "oi_sum": 4328.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "PASS",
+ "reason": null
+}
