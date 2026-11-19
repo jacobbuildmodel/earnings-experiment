@@ -1,0 +1,650 @@
+{
+ "event": "GAP_2026-11-19",
+ "season": "seasonA",
+ "built_et": "2026-11-18T14:31:12-05:00",
+ "cutoff_et": "2026-11-18T14:31:00.209520-05:00",
+ "rule": "D004_decision_protocol_v4 §1 (stage 1)",
+ "items": [
+  {
+   "id": "I1",
+   "kind": "gate",
+   "source": "events/seasonA/GAP_2026-11-19/gate.json",
+   "published": "2026-11-18T14:31:00.209520-05:00",
+   "data": {
+    "ticker": "GAP",
+    "report_date": "2026-11-19",
+    "session": "AMC",
+    "timing": {
+     "entry": {
+      "price": "open",
+      "session": "2026-11-19"
+     },
+     "exit_A": {
+      "price": "open",
+      "session": "2026-11-20"
+     },
+     "exit_B": {
+      "price": "close",
+      "session": "2026-11-20"
+     },
+     "exit_C": {
+      "price": "close",
+      "session": "2026-11-30"
+     },
+     "reaction_day": "2026-11-20"
+    },
+    "snapshot_session": "2026-11-18",
+    "captured_et": "2026-11-18T14:31:00.209520-05:00",
+    "options": {
+     "spot": 19.844999313354492,
+     "expiry": "2026-11-20",
+     "strike": 20.0,
+     "call": {
+      "bid": 1.07,
+      "ask": 1.14,
+      "openInterest": 274.0,
+      "lastPrice": 1.1,
+      "impliedVolatility": 1.640626796875,
+      "lastTradeDate": "2026-11-18T19:08:59+00:00"
+     },
+     "put": {
+      "bid": 1.05,
+      "ask": 1.12,
+      "openInterest": 3587.0,
+      "lastPrice": 1.04,
+      "impliedVolatility": 1.396487392578125,
+      "lastTradeDate": "2026-11-18T18:56:29+00:00"
+     },
+     "quote_retried": false,
+     "expiry_sessions_after_reaction": 0,
+     "implied_move": 0.11035525703073527,
+     "rel_spread": {
+      "call": 0.06334841628959262,
+      "put": 0.06451612903225812
+     },
+     "oi_atm": 3861.0,
+     "oi_sum": 4328.0,
+     "oi_band_pct": 0.02
+    },
+    "status": "PASS"
+   }
+  },
+  {
+   "id": "I2",
+   "kind": "factors",
+   "source": "events/seasonA/GAP_2026-11-19/factors.json",
+   "published": "2026-11-18T14:31:00.209520-05:00",
+   "data": {
+    "A_ret_12m_LR01": {
+     "value": -0.13985119406105595,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_1m": {
+     "value": -0.1544524970623823,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_ret_5d_LR10": {
+     "value": -0.07826295028110142,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_max_daily_ret_21d_LR11": {
+     "value": 0.08003639141431163,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_vol_60d_ann": {
+     "value": 0.5148466542213279,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_volume_20d_vs_250d": {
+     "value": 0.7713063153588785,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "A_dist_from_52w_high": {
+     "value": -0.3024021795341215,
+     "source": "yfinance history(2y, auto_adjust=True), to snapshot session (intraday last bar if live)"
+    },
+    "E_last4_prints": {
+     "value": [
+      {
+       "date": "2026-08-27",
+       "session": "AMC",
+       "raw_return_A": 0.18987959678422972,
+       "eps_est": 0.49,
+       "eps_rep": 1.38,
+       "surprise_pct": 180.88,
+       "reaction_volume_ratio": 4.654905208859816
+      },
+      {
+       "date": "2026-05-28",
+       "session": "AMC",
+       "raw_return_A": -0.10557187980936422,
+       "eps_est": 0.51,
+       "eps_rep": 0.9,
+       "surprise_pct": 75.1,
+       "reaction_volume_ratio": 4.597712733178307
+      },
+      {
+       "date": "2026-03-05",
+       "session": "AMC",
+       "raw_return_A": -0.13085791232421462,
+       "eps_est": 0.45,
+       "eps_rep": 0.45,
+       "surprise_pct": -0.72,
+       "reaction_volume_ratio": 3.4985019697404893
+      },
+      {
+       "date": "2025-11-20",
+       "session": "AMC",
+       "raw_return_A": 0.028293913140227778,
+       "eps_est": 0.59,
+       "eps_rep": 0.62,
+       "surprise_pct": 5.59,
+       "reaction_volume_ratio": 2.653566575077866
+      }
+     ],
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last4_win_rate_A": {
+     "value": 0.5,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_past_reaction_volume_LR02": {
+     "value": 3.8511716217141196,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "E_last_surprise_pct_LR17": {
+     "value": 180.88,
+     "source": "yfinance get_earnings_dates + history (adjusted opens)"
+    },
+    "L_report_date_shift_days": {
+     "value": 0,
+     "source": "yfinance get_earnings_dates"
+    },
+    "D_eps_trend_current_q": {
+     "value": {
+      "current": 0.7803,
+      "7daysAgo": 0.78591,
+      "30daysAgo": 0.78549,
+      "60daysAgo": 0.78549,
+      "90daysAgo": 0.80591,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_revision_90d_LR19": {
+     "value": -0.03177774193148121,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "D_eps_est_current_q": {
+     "value": {
+      "avg": 0.7803,
+      "low": 0.73263,
+      "high": 0.83,
+      "yearAgoEps": 0.62,
+      "numberOfAnalysts": 17,
+      "growth": 0.2585,
+      "currency": "USD"
+     },
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_analyst_dispersion_LR08": {
+     "value": 0.12478533897219013,
+     "source": "yfinance eps_trend / earnings_estimate / info"
+    },
+    "C_short_pct_float": {
+     "value": 0.12640001,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_forward_pe_LR20": {
+     "value": 7.585893,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_price_to_sales_LR20": {
+     "value": 0.45484507,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "J_revenue_growth": {
+     "value": -0.02,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "K_market_cap": {
+     "value": 6970955776,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "C_analyst_rec_mean": {
+     "value": 2.31818,
+     "source": "yfinance info (vendor snapshot, no timestamp)"
+    },
+    "B_implied_move": {
+     "value": 0.11035525703073527,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_iv_spread_call_minus_put_atm_LR12": {
+     "value": 0.24413940429687497,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_skew_90_LR13": {
+     "value": -0.17968660156250005,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_volume_LR14": {
+     "value": 2.554365733113674,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_put_call_oi": {
+     "value": 1.2915188200097405,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_option_volume_gate_expiry": {
+     "value": 4315.0,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_atm_iv_over_rv60": {
+     "value": 2.9495328021957943,
+     "source": "own option-chain capture (gate step, yfinance)"
+    },
+    "B_event_move_term_structure": {
+     "value": 0.13104902508937957,
+     "source": "own yfinance capture at snapshot: ATM IV of the gate expiry and the next expiry"
+    },
+    "L_same_day_reporters_LR06": {
+     "value": 63,
+     "source": "nasdaq calendar (all caps)"
+    },
+    "L_weekday_LR07": {
+     "value": "Thursday",
+     "source": "report date"
+    },
+    "K_stage": {
+     "value": "mature",
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_rev_growth_yoy_q": {
+     "value": -0.01986577181208049,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "K_op_margin_q": {
+     "value": 0.1851547521227061,
+     "source": "SEC XBRL companyfacts (10-Q/10-K, filed before snapshot)"
+    },
+    "H1": {
+     "value": -0.13920098755331967,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H2": {
+     "value": -0.07756618778604141,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H3": {
+     "value": 0.08003639141431163,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H4": {
+     "value": 0.5150112007388834,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H5": {
+     "value": 3.4704469454369615,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H6": {
+     "value": 4.945227150040247,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H7": {
+     "value": 1,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_shares_source": {
+     "value": "dei:EntityCommonStockSharesOutstanding",
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H_market_cap_pit": {
+     "value": 6976225135.218277,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H8": {
+     "value": 2.1968901093270796,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H9": {
+     "value": 0,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    },
+    "H10": {
+     "value": 0.13098942128189173,
+     "source": "pipeline/history_factors.py (D006 §4), as of the snapshot; the last bar is intraday when live"
+    }
+   }
+  },
+  {
+   "id": "I3",
+   "kind": "base_rates",
+   "source": "registry/D004_base_rates_v3.json",
+   "published": "2026-09-29",
+   "data": {
+    "what": "share of events where buying at the entry open and selling at the exit-A open made money (D001 WIN_raw), buying every event",
+    "overall": {
+     "train_2023_09_2025_08": {
+      "n": 1684,
+      "t0_hit": 0.541,
+      "mean_return": 0.0066
+     },
+     "validation_2025_09_2026_09": {
+      "n": 1034,
+      "t0_hit": 0.542,
+      "mean_return": 0.0116
+     }
+    },
+    "by_cluster": {
+     "ai_infra": {
+      "n": 43,
+      "t0_hit": 0.558,
+      "sufficient": true
+     },
+     "consumer": {
+      "n": 436,
+      "t0_hit": 0.555,
+      "sufficient": true
+     },
+     "crypto_proxy": {
+      "n": 8,
+      "t0_hit": 0.25,
+      "sufficient": false
+     },
+     "drones_robotics_space_defense": {
+      "n": 278,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "hardware_networking": {
+      "n": 348,
+      "t0_hit": 0.586,
+      "sufficient": true
+     },
+     "healthcare_growth": {
+      "n": 252,
+      "t0_hit": 0.52,
+      "sufficient": true
+     },
+     "semis": {
+      "n": 434,
+      "t0_hit": 0.479,
+      "sufficient": true
+     },
+     "software_internet": {
+      "n": 919,
+      "t0_hit": 0.541,
+      "sufficient": true
+     }
+    },
+    "by_session": {
+     "AMC": {
+      "n": 1820,
+      "t0_hit": 0.538
+     },
+     "BMO": {
+      "n": 898,
+      "t0_hit": 0.548
+     }
+    },
+    "caveats": [
+     "survivorship: today's listed companies",
+     "no option gate: a superset of live events",
+     "descriptive; cluster differences are candidates, not findings"
+    ]
+   }
+  },
+  {
+   "id": "I4",
+   "kind": "release",
+   "source": "https://www.sec.gov/Archives/edgar/data/39911/000162828026059262/q22026eprexhibit991.htm",
+   "published": "2026-08-27T16:22:34-04:00",
+   "form": "8-K",
+   "text": "EX-99.1 2 q22026eprexhibit991.htm EX-99.1 Document Exhibit 99.1 Gap Inc. Reports Second Quarter Fiscal 2026 Results Net sales down 2% compared to last year; comparable sales down 1% Exceeded reported and adjusted operating margin expectations Returned $726 million to shareholders through share repurchases and dividends year-to-date Provides updated outlook for full year while raising earnings per share outlook Company separately announces Michael Francis as Old Navy's next President and CEO, succeeding Haio Barbeito SAN FRANCISCO – August 27, 2026 – Gap Inc. (NYSE: GAP), the largest specialty apparel company in the U.S. with a purpose-driven house of iconic brands including Old Navy, Gap, Banana Republic, and Athleta, today reported financial results for its second quarter ended August 1, 2026. “While top-line results in the second quarter were modestly below expectations, continued operational and financial rigor contributed to gross margin strength resulting in the Company exceeding profit expectations,” said President and Chief Executive Officer, Richard Dickson. “We are particularly proud of the momentum at the Gap brand, which posted another quarter of double-digit comparable sales. We have work to do at Old Navy, but we have a clear understanding of the factors that impacted performance and are taking targeted actions that are already driving improved results. We remain focused on disciplined execution and performing while we transform in order to win in the second half,” Dickson continued. Second Quarter Fiscal 2026 – Financial Results • Net sales of $3.7 billion were down 2% compared to last year. Comparable sales were down 1%. • Store sales decreased 3% compared to last year. The Company ended the quarter with nearly 3,500 store locations in about 35 countries, of which 2,471 were Company-operated. • Online sales decreased 1% compared to last year and represented 35% of total net sales. • Gross margin of 52.8% increased 1,160 basis points versus last year on a reported basis including 1,140 1 basis points of net benefit related to the expected recovery of tariffs imposed under the International Emergency Economic Powers Act (\"IEEPA\") (the \"net 1 Represents the impact of IEEPA tariff refunds of approximately $512 million, partially offset by a commitment of appreciation of approximately $95 million for certain vendors. IEEPA tariff recovery\"). Adjusted gross margin excluding this benefit was 41.4% and increased 20 basis points versus last year. • Merchandise margin increased 1,220 basis points versus last year on a reported basis. Adjusted for the net IEEPA tariff recovery, merchandise margin increased 80 basis points including the benefit from tariff mitigation strategies with the underlying expansion primarily driven by strength at the Gap brand, partially offset by higher promotional activity at Old Navy. Average unit retail increased across all brands. • Rent, occupancy, and depreciation (\"ROD\") as a percent of sales deleveraged 60 basis points versus last year. • Operating expense was $1.3 billion or 34.3% of net sales. • Operating income was $676 million and operating margin was 18.5%. • Adjusted operating income was $259 million and adjusted operating margin was 7.1%, excluding the net IEEPA tariff recovery. • The effective tax rate was 26.3% and adjusted effective tax rate was 26.4%, which excludes the tax impact of the net IEEPA tariff recovery and related interest income. • Net income was $501 million and diluted earnings per share were $1.38. • Adjusted net income was $190 million and adjusted diluted earnings per share were $0.52, excluding the net IEEPA tariff recovery and related interest income. • Diluted weighted average shares were 362 million. Balance Sheet and Cash Flow Highlights • Ended the quarter with cash, cash equivalents and short-term investments of $2.5 billion, an increase of 2% from the prior year. • Year-to-date net cash from operating activities was $550 million. Free cash flow , defined as net cash from operating activities less purchases of property and equipment, was $261 million year-to-date. • Ending inventory of $2.3 billion was flat compared to last year. • Capital expenditures were $289 million year-to-date. Shareholder Returns • Returned $262 million of cash to shareholders in the form of share repurchases and dividends during the second quarter of fiscal 2026. • Share Repurchases : ◦ In the second quarter, the Company completed its previously announced $200 million accelerated share repurchase program (\"ASR\"). Following the initial delivery of 6.9 million shares in the first quarter, the Company received an additional 1.4 million shares in May, resulting in aggregate repurchases under the program of 8.3 million shares. ◦ In addition to the ASR, repurchased 9.3 million shares in the open market for $200 million during the second quarter. ◦ The Company has $399 million remaining under its existing share repurchase authorization. • Dividends : ◦ Paid $62 million in dividends during the second quarter of fiscal 2026, reflecting a quarterly dividend of $0.175 per share, up 6% from the prior year. ◦ The Company’s Board of Directors approved a third quarter fiscal 2026 dividend of $0.175 per share. • Year-to-date , the Company has returned $726 million to shareholders inclusive of $125 million in the form of dividends and $601 million of share repurchases. Additional information regarding adjusted gross margin, adjusted operating income, adjusted operating margin, adjusted effective tax rate, adjusted net income, adjusted diluted earnings per share, and free cash flow, which are non-GAAP financial measures, is provided at the end of this press release along with reconciliations of these measures from the most directly comparable GAAP financial measures for the applicable period. Second Quarter Fiscal 2026 – Global Brand Results Comparable Sales: Q2 2026 Q2 2025 Old Navy (4) % 2 % Gap 10 % 4 % Banana Republic 3 % 4 % Athleta (12) % (9) % Gap Inc. (1) % 1 % Old Navy: • Second quarter net sales of $2.1 billion were down 4% compared to last year. Comparable sales were down 4% reflecting expected pressure in the women's seasonal assortment, in addition to an unanticipated slowdown in traffic. Gap: • Second quarter net sales of $844 million were up 9% compared to last year. Comparable sales were up 10%, with the brand's focus on big ideas and culturally relevant storytelling continuing to drive strong performance in destination categories including denim, fleece, and kids and baby. Banana Republic: • Second quarter net sales of $478 million were up 1% compared to last year. Comparable sales were up 3%. Performance was balanced across both men’s and women’s as the brand continued to make progress in strengthening its assortment, supported by more distinctive marketing and brand storytelling. Athleta: • Second quarter net sales of $264 million were down 12% compared to last year. Comparable sales were down 12%. Athleta remains focused on disciplined execution to rebuild the brand profitably. Tariff Update In the second quarter, the Company recorded a $417 million adjustment to cost of goods sold related to the net IEEPA tariff recovery. The Company received refunds of $95 million and related interest income of $5 million in the second quarter of 2026, with the remaining refunds and related interest income expected in the third quarter. The Company's adjusted outlook excludes the impact of the refunds. Following the Section 301 announcement in July, the Company updated its tariff rate assumptions to incorporate a roughly 10% incremental rate from July 24, 2026 through the end of August reflecting the rates currently in place. The prior outlook assumed an incremental high-teens rate beginning July 24, 2026. This update is expected to provide approximately $15 million of net tariff relief to full-year gross profit and operating income, or approximately 10 basis points of benefit to full-year gross margin and operating margin. The benefit is expected to be concentrated in the fourth quarter based on the timing of receipts and is reflected in the Company's current outlook. Fiscal 2026 Outlook The Company's outlook reflects a balanced approach, factoring in visibility into the consumer and broader macroeconomic and geopolitical environment in the near term which is largely unchanged, while recognizing potential uncertainties moving forward around energy prices and U.S. tariffs. The Company's updated full-year net sales outlook of up 1% to 1.5% now assumes Old Navy comparable sales of flat to down 1%, compared with the prior range of flat to up 1%, reflecting the brand's second-quarter performance. Comparable sales at the Gap brand are now expected to grow in the high-single to low double-digit range, compared with prior expectations of up high-single digits, while expectations for the balance of the portfolio remain unchanged. On a reported basis, the Company now expects full year diluted earnings per share to be approximately $3.77 to $3.87. The Company's outlook below is provided on an adjusted, non-GAAP basis. Full Year Fiscal 2026 Current FY 2026 Outlook Prior FY 2026 Outlook FY 2025 Results 1 Net sales Up 1% to 1.5% year-over-year Up 1% to 2% year-over-year $15.4 billion Adjusted gross margin Up slightly year-over-year Flat to up slightly year-over-year 40.8% Adjusted operating expense (% of net sales) About flat year-over-year About flat year-over-year 33.5% Adjusted operating margin About 7.4% to 7.6% About 7.3% to 7.5% 7.3% Adjusted interest, net Approximately $20 million Approximately $25 million $17 million Adjusted effective tax rate Approximately 25% to 26% Approximately 25% 27.9% Diluted weighted average share count Approximately 367 million Approximately 375 million 384 million Adjusted diluted earnings per share Approximately $2.35 to $2.45 Approximately $2.30 to $2.40 $2.13 Capital expenditures Approximately $650 million Approximately $650 million $470 million Net store closures 2 About flat About flat 32 Third Quarter Fiscal 2026 Third Quarter Fiscal 2026 Outlook Q3 2025 Results Net sales Up 1.5% to 2.5% year-over-year $3.9 billion Gross margin Up about 25 to 75 basis points 42.4% Operating expense (% of net sales) Slight leverage 33.9% Webcast and Conference Call Information Shirley Martin, Senior Director of Investor Relations at Gap Inc., will host a conference call to review the Company’s second quarter fiscal 2026 results beginning at approximately 2:00 p.m. Pacific Time today. Ms. Martin will be joined by President and Chief Executive Officer, Richard Dickson and Chief Financial Officer, Katrina O’Connell. A live webcast of the conference call and accompanying materials will be available online at investors.gapinc.com. A replay of the webcast will be available at the same location. 1 There were no adjusted metrics during fiscal 2025; therefore, reported amounts for gross margin, operating expense as a percentage of net sales, operating margin, interest, net, effective tax rate, and diluted earnings per share are included for comparative purposes. 2 Refers to Company-operated stores. Market Share Information References to market share in this press release and related conference call and accompanying materials are for the US market, according to Circana data for the 12 month period ending July 2026, unless stated otherwise. Market share data is subject to limitations on the availability of up-to-date information. In particular, market share data may not be available for all retail channels in a category. The Company believes that the Circana data is reliable, but it has not verified the accuracy or completeness of the data or any assumptions underlying the data. In addition, market share information reported by the Company may be different from market share information reported by other companies due to differences in category definitions, the use of data from different vendors, internal estimates and other factors. Non-GAAP Disclosure This press release and related conference call and accompanying materials include financial measures that have not been calculated in accordance with U.S. generally accepted accounting principles (GAAP) and are therefore referred to as non-GAAP financial measures. The non-GAAP measures described below are intended to provide investors with additional useful information about the Company’s financial performance, to enhance the overall understanding of its past performance and future prospects, and to allow for greater transparency with respect to important metrics used by management for financial and operating decision-making. The Company presents these non-GAAP financial measures to assist investors in seeing its financial performance from management's view and because it believes they provide an additional tool for investors to use in computing the Company's core financial performance over multiple periods with other companies in its industry. Additional information regarding the intended use of non-GAAP measures included in this press release and related conference call and accompanying materials is provided in the tables to this press release. The non-GAAP measures included in this press release and related conference call and accompanying materials are free cash flow and certain adjusted statement of operations metrics, including: (i) adjusted cost of goods sold and occupancy expenses; (ii) adjusted gross profit; (iii) adjusted gross margin; (iv) adjusted operating income; (v) adjusted operating margin; (vi) adjusted interest, net; (vii) adjusted income tax expense; (viii) adjusted net income; and (ix) adjusted earnings per share. 1 Free cash flow and the adjusted statement of operations metrics exclude the impact of certain items. Reconciliations from the most directly comparable GAAP measures are set forth in the tables to this press release. Reconciliations of adjusted expected fiscal 2026 gross margin, expected fiscal 2026 operating margin, ",
+   "truncated_at": 14000
+  },
+  {
+   "id": "I5",
+   "kind": "periodic",
+   "source": "https://www.sec.gov/Archives/edgar/data/39911/000162828026059345/gap-20260801.htm",
+   "published": "2026-08-28T12:05:57-04:00",
+   "form": "10-Q",
+   "section": "MD&A",
+   "text": "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations. OUR BUSINESS We are a house of iconic American brands offering apparel, accessories, and personal care products for men, women, and children under the Old Navy, Gap, Banana Republic, and Athleta brands. Our products are available to customers both in stores and online, through Company-operated and franchise stores, websites, and third-party arrangements. We have Company-operated stores in the United States, Canada, Japan, and Taiwan. We also have franchise agreements to operate Old Navy, Gap, Banana Republic, and Athleta throughout Asia, Australia, Europe, Latin America, and the Middle East. Under these agreements, third parties operate, or will operate, stores and websites that sell apparel and related products under our brand names. In addition to operating in the specialty, outlet, online, and franchise channels, we use our omni-channel capabilities to bridge the digital world and physical stores. The shopping experience is further enhanced by our omni-channel services, including buy online pick-up in store, order-in-store, and ship-from-store, as well as enhanced mobile-enabled experiences, which allow our customers to shop seamlessly across our brands and channels. Our brands have shared investments in supply chain and information technology, which allows us to optimize efficiency and responsiveness in our operations. Most of the products sold under our brand names are designed by us and manufactured by independent sources globally. OVERVIEW Financial results for the second quarter of fiscal 2026 are as follows: • Net sales for the second quarter of fiscal 2026 decreased 2 percent compared with the second quarter of fiscal 2025. • Gross profit for the second quarter of fiscal 2026 was $1.93 billion compared with $1.54 billion for the second quarter of fiscal 2025. Gross margin for the second quarter of fiscal 2026 was 52.8 percent compared with 41.2 percent for the second quarter of fiscal 2025. The second quarter of fiscal 2026 includes approximately $417 million of net IEEPA tariff recoveries. • Operating income for the second quarter of fiscal 2026 was $676 million compared with $292 million for the second quarter of fiscal 2025. • The effective income tax rate for the second quarter of fiscal 2026 was 26.3 percent compared with 27.0 percent for the second quarter of fiscal 2025. • Net income for the second quarter of fiscal 2026 was $501 million compared with $216 million for the second quarter of fiscal 2025. • Diluted earnings per share was $1.38 for the second quarter of fiscal 2026 compared with $0.57 for the second quarter of fiscal 2025. We are focused on building momentum through the following strategic priorities: • delivering financial and operational rigor, through an optimized cost structure and disciplined execution; • building our brands to increase relevance, while we elevate our product and customer experience to drive sustainable growth; • optimizing our platform to drive scale by advancing capabilities that amplify and enable our brands; • strengthening our culture by developing talent and fostering a high-performance environment; and • continuing to integrate sustainability into business practices to support long-term growth. Our execution of these strategic priorities will position us to continue growing our core apparel business, while pursuing new strategic initiatives. We are expanding our beauty and accessories assortment, increasing customer engagement through our revamped loyalty program, and advancing technology capabilities throughout our organization. Macroeconomic factors, including uncertainty surrounding global geopolitical instability, inflationary pressures, foreign currency fluctuations, and changes in interest rates, duties, tariffs, tax laws, and other restrictions as a result of government fiscal, monetary, trade, and tax policies, continue to create a complex and challenging retail environment. In fiscal 2025, the United States enacted significant changes to its trade policy and imposed substantial tariffs on imported goods from most countries. In February 2026, the U.S. Supreme Court invalidated tariffs imposed under IEEPA, and subsequently, tariffs were imposed on a temporary basis pursuant to alternative statutory authority. These tariffs expired in July 2026 and were subsequently replaced by new tariffs under Section 301 of the Trade Act of 1974. In April 2026, the U.S. Customs and Border Protection launched a platform for importers of record to submit claims for IEEPA tariff refunds that were previously collected. During the second quarter of fiscal 2026, we submitted claims for previously paid eligible tariffs and have received tariff refunds of approximately $95 million with the remaining $417 million recorded within other current assets on the Condensed Consolidated Balance Sheets. In addition, we received approximately $5 million of related interest. We are monitoring developments related to the refund process and assessing the timing and extent of additional recoveries. 16 Given the continued uncertainty surrounding global trade policy and broader macroeconomic conditions, we will continue to evaluate potential impacts on our business. RESULTS OF OPERATIONS Net Sales See Note 2 of Notes to Condensed Consolidated Financial Statements included in Part I, Item 1 of this Form 10-Q, for net sales disaggregation. Comparable Sales (\"Comp Sales\") Comp Sales include the results of Company-operated stores and sales through our online channel. The calculation of Comp Sales excludes the results of our franchise and licensing business. A store is included in the Comp Sales calculations when it has been open and operated by the Company for at least one year and the selling square footage has not changed by 15 percent or more within the past year. A store is included in the Comp Sales calculations on the first day it has comparable prior year sales. Stores in which the selling square footage has changed by 15 percent or more as a result of a remodel, expansion, or reduction are excluded from the Comp Sales calculations until the first day they have comparable prior year sales. A store is considered non-comparable (\"Non-comp\") when it has been open and operated by the Company for less than one year or has changed its selling square footage by 15 percent or more within the past year. A store is considered \"Closed\" if it is temporarily closed for three or more full consecutive days or it is permanently closed. When a temporarily closed store reopens, the store will be placed in the Comp/Non-comp status it was in prior to its closure. If a store was in Closed status for three or more days in the prior year, the store will be in Non-comp status for the same days the following year. Current year foreign exchange rates are applied to both current year and prior year Comp Sales to achieve a consistent basis for comparison. The percentage change in Comp Sales by global brand and for The Gap, Inc., as compared with the preceding year, is as follows: 13 Weeks Ended 26 Weeks Ended August 1, 2026 August 2, 2025 August 1, 2026 August 2, 2025 Old Navy Global (4) % 2 % (1) % 2 % Gap Global 10 % 4 % 10 % 4 % Banana Republic Global 3 % 4 % 2 % 2 % Athleta Global (12) % (9) % (11) % (9) % The Gap, Inc. (1) % 1 % — % 2 % 17 Store count, net openings/closings, and square footage for our stores are as follows: January 31, 2026 26 Weeks Ended August 1, 2026 August 1, 2026 Number of Store Locations Net Number of Stores Opened/(Closed) Number of Store Locations Square Footage (in millions) Old Navy North America 1,242 (1) 1,241 19.6 Gap North America 459 2 461 4.9 Gap Asia 123 4 127 1.1 Banana Republic North America 358 (9) 349 2.8 Banana Republic Asia 40 2 42 0.1 Athleta North America 252 (1) 251 1.0 Company-operated stores total 2,474 (3) 2,471 29.5 February 1, 2025 26 Weeks Ended August 2, 2025 August 2, 2025 Number of Store Locations Net Number of Stores Opened/(Closed) Number of Store Locations Square Footage (in millions) Old Navy North America 1,249 (9) 1,240 19.6 Gap North America 453 — 453 4.8 Gap Asia 122 3 125 1.1 Banana Republic North America 380 (9) 371 3.1 Banana Republic Asia 42 — 42 0.1 Athleta North America 260 (5) 255 1.0 Company-operated stores total 2,506 (20) 2,486 29.7 Outlet and factory stores are reflected in each of the respective brands. As of August 1, 2026 and August 2, 2025, the Company's franchise partners operated approximately 1,000 franchise stores. 18 Net Sales Our net sales decreased $74 million, or 2 percent, during the second quarter of fiscal 2026 compared with the second quarter of fiscal 2025, primarily driven by a decrease in net sales at Old Navy Global and Athleta Global, partially offset by an increase in net sales at Gap Global. Our net sales decreased $40 million, or 1 percent, during the first half of fiscal 2026 compared with the first half of fiscal 2025. While Comp Sales were flat, the decline was primarily due to incremental income in the first half of fiscal 2025 related to the revenue sharing arrangement from our credit card agreement. Cost of Goods Sold and Occupancy Expenses 13 Weeks Ended 26 Weeks Ended ($ in millions) August 1, 2026 August 2, 2025 August 1, 2026 August 2, 2025 Cost of goods sold and occupancy expenses $ 1,722 $ 2,189 $ 3,802 $ 4,204 Gross profit $ 1,929 $ 1,536 $ 3,346 $ 2,984 Cost of goods sold and occupancy expenses as a percentage of net sales 47.2 % 58.8 % 53.2 % 58.5 % Gross margin 52.8 % 41.2 % 46.8 % 41.5 % Cost of goods sold and occupancy expenses decreased 11.6 percentage points as a percentage of net sales in the second quarter of fiscal 2026 compared with the second quarter of fiscal 2025. • Cost of goods sold decreased 12.2 percentage points as a percentage of net sales in the second quarter of fiscal 2026 compared with the second quarter of fiscal 2025, primarily driven by 11.4 percentage points, or approximately $417 million, of net IEEPA tariff recoveries. Additionally, there was a benefit from less promotional activity at Gap Global, partially offset by higher promotional activity at Old Navy Global primarily related to seasonal products. The net IEEPA tariff recovery reflects tariff refunds of approximately $512 million, partially offset by a commitment of appreciation of approximately $95 million for certain vendors. • Occupancy expenses increased 0.6 percentage points as a percentage of net sales in the second quarter of fiscal 2026 compared with the second quarter of fiscal 2025, primarily driven by incremental cost related to our store population. Cost of goods sold and occupancy expenses decreased 5.3 percentage points as a percentage of net sales in the first half of fiscal 2026 compared with the first half of fiscal 2025. • Cost of goods sold decreased 5.7 percentage points as a percentage of net sales in the first half of fiscal 2026 compared with the first half of fiscal 2025, primarily driven by 5.8 percentage points, or approximately $417 million, of net IEEPA tariff recoveries. The net IEEPA tariff recovery reflects tariff refunds of approximately $512 million, partially offset by a commitment of appreciation of approximately $95 million for certain vendors. • Occupancy expenses increased 0.4 percentage points as a percentage of net sales in the first half of fiscal 2026 compared with the first half of fiscal 2025, primarily driven by incremental cost related to our store population. Uncertainty surrounding changes in U.S. trade policy and tariff rates since fiscal 2025 is contributing to overall macroeconomic volatility. The Company continues to evaluate the impact of U.S. trade policy and tariff rates on our cost of goods sold. Ongoing developments, including changes to tariff rates and refund processing, may continue to impact our gross margins in future quarters and may also impact comparability across periods. As a result of these ongoing dynamics, our g",
+   "truncated_at": 12000
+  },
+  {
+   "id": "I6",
+   "kind": "8k",
+   "source": "https://www.sec.gov/Archives/edgar/data/39911/000162828026062054/gps-20260915.htm",
+   "published": "2026-09-15T16:16:47-04:00",
+   "form": "8-K",
+   "items": "5.02",
+   "text": "Item 5.02 Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers; Compensatory Arrangements of Certain Officers. On September 15, 2026, the board of directors (the “Board”) of The Gap, Inc. (the “Company”) appointed Kirsten Green to serve as a director of the Company, with such appointment effective the same day. In connection with Ms. Green's appointment to the Board, she received Company stock units with an initial aggregate value of $185,000 (based on the then-current fair market value of the Company's common stock) upon the effective date of her appointment. The terms of the stock units are consistent with the stock units for the Company's other non-employee directors, as described under the heading \" Compensation of Directors \" in the Company's 2026 proxy statement, which description is incorporated herein by reference. Ms. Green will also receive a pro rata portion of the current $95,000 annual cash retainer amount for fiscal 2026 that the Company pays to non-employee directors for service as a director. There are no arrangements or understandings between Ms. Green and any other person pursuant to which she was appointed as a director, and she has no direct or indirect material interest in any transaction required to be disclosed pursuant to Item 404(a) of Regulation S-K. Item 7.01 Regulation FD Disclosure. On September 15, 2026, the Company issued a press release announcing the election of Kirsten Green to serve as a director of the Company. A copy of this press release is furnished as Exhibit 99.1 to this Current Report on Form 8-K and is incorporated herein by reference. The information provided pursuant to this Item 7.01, including Exhibit 99.1 attached hereto, is being furnished to the Securities and Exchange Commission and shall not be deemed “filed” for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the “Exchange Act”), or otherwise subject to the liabilities of that Section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act, except as expressly set forth by specific reference in such filing. Item 9.01 Financial Statements and Exhibits. (d) Exhibits. Exhibit No. Exhibit Description 99.1 Press Release dated September 15, 2026 announcing the appointment of Kirsten Green to the Board 104 Cover Page Interactive Data File (embedded within the Inline XBRL document) SIGNATURES Pursuant to the require"
+  },
+  {
+   "id": "I7",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-gap-stock-still-looks-101337141.html?.tsrc=rss",
+   "published": "2026-11-18T05:13:37-05:00",
+   "text": "Gap (GAP) Stock Still Looks Undervalued On Future Cash Flow - Gap Inc. shares have fallen sharply this year, which puts fresh focus on whether the current US$19.35 price still lines up with the cash the retailer can generate. After a weak run, the question for investors is how that drop squares with what a Discounted Cash Flow (DCF) view of Gap's future cash s",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I8",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-gap-shares-dropped-driving-081336220.html?.tsrc=rss",
+   "published": "2026-11-18T03:13:36-05:00",
+   "text": "Gap (GAP) Shares Dropped, So What Is Driving Attention Now? - Dividend decision puts Gap stock under the income spotlight Gap (GAP) just affirmed a fourth quarter fiscal 2026 dividend of $0.175 per share, a fresh data point for investors weighing income potential against recent share price weakness. Gap shares have come under pressure, with the 7 day share pri",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I9",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/5-top-earnings-charts-watch-223600810.html?.tsrc=rss",
+   "published": "2026-11-17T17:36:00-05:00",
+   "text": "5 Top Earnings Charts to Watch This Week - Will Walmart and the other retailers save the market?",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I10",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/urban-outfitters-urbn-reports-next-140004283.html?.tsrc=rss",
+   "published": "2026-11-17T09:00:04-05:00",
+   "text": "Urban Outfitters (URBN) Reports Next Week: Wall Street Expects Earnings Growth - Urban Outfitters (URBN) doesn't possess the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I11",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-gap-q3-earnings-horizon-131503356.html?.tsrc=rss",
+   "published": "2026-11-16T08:15:03-05:00",
+   "text": "Gap (GAP) Q3 Earnings on the Horizon: Analysts' Insights on Key Performance Measures - Looking beyond Wall Street's top-and-bottom-line estimate forecasts for Gap (GAP), delve into some of its key metrics to gain a deeper insight into the company's potential performance for the quarter ended October 2026.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I12",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-set-report-q3-earnings-145700111.html?.tsrc=rss",
+   "published": "2026-11-13T09:57:00-05:00",
+   "text": "Gap Set to Report Q3 Earnings: Here's What Investors Should Know - GAP is poised for Q3 earnings and revenue growth, fueled by brand momentum, stronger assortments and cost discipline despite challenges at Athleta and Old Navy.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I13",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-gap-earnings-expected-grow-140002741.html?.tsrc=rss",
+   "published": "2026-11-12T09:00:02-05:00",
+   "text": "Gap (GAP) Earnings Expected to Grow: Should You Buy? - Gap (GAP) possesses the right combination of the two key ingredients for a likely earnings beat in its upcoming report. Get prepared with the key expectations.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I14",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-inc-announces-fourth-quarter-024000380.html?.tsrc=rss",
+   "published": "2026-11-10T21:40:00-05:00",
+   "text": "Gap Inc. Announces Fourth Quarter Dividend - Gap Inc. (NYSE: GAP) today announced that its board of directors has authorized a fourth quarter fiscal year 2026 dividend of $0.175 per share, payable on or after January 27, 2027, to shareholders of record at the close of business on January 6, 2027.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I15",
+   "kind": "headline",
+   "source": "https://www.proactiveinvestors.com/companies/news/1101543/gap-results-unlikely-to-shift-earnings-forecasts-or-valuation-ubs-says-1101543.html?.tsrc=rss",
+   "published": "2026-11-10T14:23:00-05:00",
+   "text": "Gap results unlikely to shift earnings forecasts or valuation, UBS says - UBS expects Gap Inc (NYSE:GPS), the US clothing retailer, to report slightly stronger third-quarter sales but sees little prospect of the results changing earnings forecasts or its valuation. The bank forecasts sales growth of 2.8% year on year, ahead of the 1.9% analyst consensus, while...",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I16",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-poised-top-street-views-175903794.html?.tsrc=rss",
+   "published": "2026-11-10T12:59:03-05:00",
+   "text": "Gap Poised to Top Street Views for Third-Quarter Sales, UBS Says - Gap's (GAP) third-quarter sales are expected to exceed Wall Street's estimates, while the company is",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I17",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/m/74ee9c80-d0da-38c7-8094-e110ce7e8745/gap-and-5-other-dividend.html?.tsrc=rss",
+   "published": "2026-11-05T16:37:00-05:00",
+   "text": "Gap and 5 Other Dividend Stocks Safe From the AI Trade - We looked for names with a high yield, safety, and little correlation to the AI trade currently vexing the market.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I18",
+   "kind": "headline",
+   "source": "https://wwd.com/business-news/business-features/us-election-boosts-holiday-retail-outlook-confidence-1239400298/?.tsrc=rss",
+   "published": "2026-11-04T17:21:49-05:00",
+   "text": "Decisive U.S. Election Clears Way for Merry Holiday at Retail - The election also carried a lesson for brands on keeping the consumer close.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I19",
+   "kind": "headline",
+   "source": "https://www.retaildive.com/news/shakeup-old-navy-amid-merchandising-struggles-walmart/873431/?.tsrc=rss",
+   "published": "2026-11-02T12:23:00-05:00",
+   "text": "Shakeup at Old Navy continues amid merchandising struggles - Nicole Colombo, who led fashion at Walmart’s marketplace, is now head of women’s merchandising at Gap Inc.’s value brand.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I20",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/steven-madden-gears-report-q3-133500175.html?.tsrc=rss",
+   "published": "2026-11-02T08:35:00-05:00",
+   "text": "Steven Madden Gears Up to Report Q3 Earnings: What Should You Expect? - SHOO is poised for Q3 growth, supported by strong footwear demand, handbag momentum, DTC expansion and pricing gains despite rising cost pressures.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I21",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/gap-inc-report-third-quarter-201500621.html?.tsrc=rss",
+   "published": "2026-10-29T16:15:00-04:00",
+   "text": "Gap Inc. to Report Third Quarter Fiscal 2026 Results on November 19 - Gap Inc. (NYSE: GAP) will report its third quarter fiscal 2026 financial results by press release on Thursday, November 19, 2026, at approximately 1:15 p.m. Pacific Time.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I22",
+   "kind": "headline",
+   "source": "https://www.retaildive.com/news/gap-ai-hiring-tool-bridgette/872884/?.tsrc=rss",
+   "published": "2026-10-29T10:32:00-04:00",
+   "text": "Gap Inc. launches AI hiring tool in time for the holidays - The retailer expects around 200,000 seasonal employment applications. Its new AI platform aims to reduce the administrative tasks associated with hiring.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I23",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/zacks-com-featured-highlights-signet-122700200.html?.tsrc=rss",
+   "published": "2026-10-26T08:27:00-04:00",
+   "text": "Zacks.com featured highlights include Signet Jewelers, Arrow Electronics, The Gap and Occidental Petroleum - Signet Jewelers, Arrow Electronics, The Gap and Occidental Petroleum offer value-stock opportunities as AI spending fears and rising oil prices unsettle markets.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I24",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/markets/stocks/articles/4-value-stocks-buy-ai-135000512.html?.tsrc=rss",
+   "published": "2026-10-23T09:50:00-04:00",
+   "text": "4 Value Stocks to Buy as AI Spending Fears & Oil Prices Rattle Markets - Signet, Arrow Electronics, Gap and Occidental Petroleum emerge as value stock picks amid AI spending concerns, surging oil prices and market volatility.",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I25",
+   "kind": "headline",
+   "source": "https://wwd.com/business-news/retail/gap-inc-ai-seasonal-hiring-1239381347/?.tsrc=rss",
+   "published": "2026-10-22T16:36:56-04:00",
+   "text": "Gap Inc. Gets an AI Assist for Seasonal Hiring - The fashion retailer says it’s piloting Bridgette, an AI-enabled virtual career guide, to make hiring \"faster, simpler, more engaging, and more human where it counts.\"",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  },
+  {
+   "id": "I26",
+   "kind": "headline",
+   "source": "https://finance.yahoo.com/small-business/articles/expeditors-named-gap-inc-2025-200900878.html?.tsrc=rss",
+   "published": "2026-10-22T16:09:00-04:00",
+   "text": "Expeditors Named Gap Inc.’s 2025 Strategic Supplier of the Year for Operations Excellence - BELLEVUE, Wash., October 22, 2026--Expeditors International of Washington, Inc. (NYSE: EXPD) received Gap Inc.’s 2025 Strategic Supplier of the Year Award for Operations Excellence at the company’s 2026 Supplier Summit. The award recognizes Expeditors’ performance across customs brokerage, airfreigh",
+   "feed": {
+    "fetched_et": "2026-11-18T14:31:12-05:00",
+    "sha256": "d71cc407564471f955f7ef407382368faf6bf530a536b4739bac41b34dfb98ae"
+   }
+  }
+ ],
+ "missing": [],
+ "transient": [],
+ "chars": 50687
+}
