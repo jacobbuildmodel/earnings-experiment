@@ -1,0 +1,93 @@
+{
+ "season": "seasonA",
+ "ticker": "ESTC",
+ "report_date": "2026-11-19",
+ "session": "AMC",
+ "timing": {
+  "entry": {
+   "price": "open",
+   "session": "2026-11-19"
+  },
+  "exit_A": {
+   "price": "open",
+   "session": "2026-11-20"
+  },
+  "exit_B": {
+   "price": "close",
+   "session": "2026-11-20"
+  },
+  "exit_C": {
+   "price": "close",
+   "session": "2026-11-30"
+  },
+  "reaction_day": "2026-11-20"
+ },
+ "snapshot_session": "2026-11-18",
+ "captured_et": "2026-11-18T14:31:00.209439-05:00",
+ "in_s2_window": true,
+ "dry": false,
+ "rule": "D003_universe_screen_v4 §6",
+ "company_source": {
+  "url": "https://ir.elastic.co/News--Events/news/news-details/2026/Elastic-to-Announce-Second-Quarter-Fiscal-2027-Earnings-Results-on-Thursday-November-19-2026/default.aspx",
+  "published_et": "2026-11-05T16:15-05:00",
+  "quote": "Elastic (NYSE: ESTC) announced that it will release its financial results for its second quarter fiscal 2027 ended October 31, 2026, after the U.S. market close on Thursday, November 19, 2026.",
+  "title": "Elastic to Announce Second Quarter Fiscal 2027 Earnings Results on Thursday, November 19, 2026",
+  "retrieved_et": "2026-11-06T07:42:22-05:00",
+  "how": "housekeeping (pipeline/hk.py), read from the company's own release; the quote is the sentence stating date and session"
+ },
+ "flags": [],
+ "second_sources": [
+  {
+   "source": "yfinance get_earnings_dates",
+   "timestamp": "2026-11-19T16:00:00-05:00",
+   "session": "AMC"
+  },
+  {
+   "source": "nasdaq calendar",
+   "time": "time-after-hours",
+   "session": "AMC"
+  }
+ ],
+ "printed_check": {
+  "days": 30,
+  "item_2_02_filings": []
+ },
+ "second_source_used": {
+  "source": "yfinance get_earnings_dates",
+  "timestamp": "2026-11-19T16:00:00-05:00",
+  "session": "AMC"
+ },
+ "options": {
+  "spot": 83.95500183105469,
+  "expiry": "2026-11-20",
+  "strike": 85.0,
+  "call": {
+   "bid": 5.4,
+   "ask": 6.0,
+   "openInterest": 194.0,
+   "lastPrice": 6.02,
+   "impliedVolatility": 2.0351611621093753,
+   "lastTradeDate": "2026-11-18T18:44:39+00:00"
+  },
+  "put": {
+   "bid": 6.5,
+   "ask": 7.1,
+   "openInterest": 285.0,
+   "lastPrice": 8.33,
+   "impliedVolatility": 2.052739243164062,
+   "lastTradeDate": "2026-11-17T18:31:15+00:00"
+  },
+  "quote_retried": false,
+  "expiry_sessions_after_reaction": 0,
+  "implied_move": 0.1488892826797163,
+  "rel_spread": {
+   "call": 0.10526315789473678,
+   "put": 0.08823529411764701
+  },
+  "oi_atm": 479.0,
+  "oi_sum": 479.0,
+  "oi_band_pct": 0.02
+ },
+ "status": "INELIGIBLE",
+ "reason": "wide_spread"
+}

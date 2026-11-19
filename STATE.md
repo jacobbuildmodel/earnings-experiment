@@ -818,3 +818,4 @@ subscription access for Claude Code"), so laptop sessions add the line by hand u
 - **2026-11-13 (Fri), housekeeping 07:38 ET:** 2 re-checked; confirmed [WSM 2026-11-19 BMO]; retired []; BKE noted (no company date yet, 2026-11-20 snapshot not passed); hk.py needed python3.13 (SyntaxError on 3.11 f-string)
 - **2026-11-16 (Mon), housekeeping 07:37 ET:** 1 re-checked (BKE: no company date yet, noted, still PENDING); confirmed []; retired []; nothing failed. Note: cloud default python3 is 3.11 and hk.py needs >=3.12 (f-string backslash), so ran with python3.13.
 - **2026-11-17 (Tue), housekeeping 07:37 ET:** 1 re-checked (BKE: still no company date, left PENDING); confirmed []; retired []; note: hk.py needs Python 3.13 here (3.11 SyntaxError on f-string), run via python3.13
+- **2026-11-18 (Wed), housekeeping 07:38 ET:** 1 re-checked (BKE); confirmed []; retired []; BKE still no company date. Note: hk.py has a py3.11 f-string syntax error, run with python3.13.
