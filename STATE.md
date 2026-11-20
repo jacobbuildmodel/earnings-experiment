@@ -820,3 +820,4 @@ subscription access for Claude Code"), so laptop sessions add the line by hand u
 - **2026-11-17 (Tue), housekeeping 07:37 ET:** 1 re-checked (BKE: still no company date, left PENDING); confirmed []; retired []; note: hk.py needs Python 3.13 here (3.11 SyntaxError on f-string), run via python3.13
 - **2026-11-18 (Wed), housekeeping 07:38 ET:** 1 re-checked (BKE); confirmed []; retired []; BKE still no company date. Note: hk.py has a py3.11 f-string syntax error, run with python3.13.
 - **2026-11-19 (Thu), housekeeping 07:37 ET:** 1 re-checked (BKE); confirmed []; retired []; BKE no company date yet, noted. Ran hk.py under python3.13 because the runner's python3 is 3.11 and hk.py needs 3.12+ (f-string syntax).
+- **2026-11-20 (Fri), housekeeping 07:38 ET:** 1 re-checked; confirmed []; retired [BKE unconfirmed - company release came 2026-11-20 06:50 ET, after the 2026-11-18 snapshot]; nothing failed (hk.py needs Python>=3.12, run via python3.13)
