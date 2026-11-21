@@ -3,24 +3,75 @@
  "season": "seasonA",
  "gate_status": "PASS",
  "graded_by": "pipeline/grade.py",
- "graded_et": "2026-11-19T21:29:55-05:00",
+ "graded_et": "2026-11-20T21:41:58-05:00",
  "rule": "D001_outcome_v1 + D005 §6",
- "graded": false,
+ "graded": true,
  "void": null,
  "ticker": "PANW",
  "report_date": "2026-11-18",
  "session": "AMC",
  "entry_session": "2026-11-18",
  "cluster": "software_internet",
- "flags": [],
- "timing_check": "pending",
- "timing_evidence": [],
+ "flags": [
+  "confound_8k"
+ ],
+ "timing_check": "verified",
+ "timing_evidence": [
+  {
+   "accepted_et": "2026-11-18T16:37:04-05:00",
+   "window": "AMC"
+  }
+ ],
  "exits": {
   "exit_A": {
-   "status": "pending"
+   "entry": 313.75,
+   "entry_session": "2026-11-18",
+   "exit": 355.81,
+   "exit_session": "2026-11-19",
+   "dividends": 0,
+   "raw_return": 0.1340557768924302,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.13286,
+    "bench_return": 0.02860114404576186,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.10165468484874843,
+   "WIN_excess": true,
+   "label": "PRIMARY",
+   "legs": {
+    "pre_print": 0.08341035856573709,
+    "print_gap": 0.04674629324546942,
+    "entry_close": 339.92,
+    "label": "secondary"
+   }
   },
   "exit_B": {
-   "status": "pending"
+   "entry": 313.75,
+   "entry_session": "2026-11-18",
+   "exit": 361.73,
+   "exit_session": "2026-11-19",
+   "dividends": 0,
+   "raw_return": 0.15292430278884472,
+   "flags": [],
+   "WIN_raw": true,
+   "WIN_net": true,
+   "bench": {
+    "etf": "IGV",
+    "beta": 1.13286,
+    "bench_return": -0.0005200208008321328,
+    "flags": [
+     "bench_weight_missing"
+    ]
+   },
+   "excess_return": 0.1535134135532754,
+   "WIN_excess": true,
+   "label": "secondary"
   },
   "exit_C": {
    "status": "pending"
@@ -39,5 +90,12 @@
  "stage2": {
   "T2": "frozen before the entry open",
   "T2G": "frozen before the entry open"
+ },
+ "correct": {
+  "T0": true,
+  "T1": false,
+  "T2": false,
+  "T2G": false,
+  "T2E": false
  }
 }
