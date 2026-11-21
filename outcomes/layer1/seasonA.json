@@ -2,7 +2,7 @@
  "season": "seasonA",
  "rule": "D019_reframe_v1 §3(b)",
  "captured_by": "pipeline/layer1.py",
- "run_et": "2026-11-14T13:42:11-05:00",
+ "run_et": "2026-11-21T14:57:41-05:00",
  "store": "outcomes/layer1/seasonA.jsonl",
  "windows_days": {
   "eps": 30,
@@ -1357,6 +1357,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-07T13:03:26-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "ACM",
+   "date": "2026-11-16",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.59,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:55:54-05:00"
+    },
+    "eps_reported": {
+     "value": 1.63,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:55:54-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 2.45,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:55:54-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -6859,6 +6906,53 @@
    }
   },
   {
+   "ticker": "ARMK",
+   "date": "2026-11-16",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.75,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:55:59-05:00"
+    },
+    "eps_reported": {
+     "value": 0.71,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:55:59-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -5.9,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:55:59-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "AROC",
    "date": "2026-11-03",
    "session": "BMO",
@@ -7824,7 +7918,7 @@
     "eps_surprise_pct": {
      "value": null,
      "missing": "Yahoo's row has no value for it",
-     "final": false
+     "final": true
     },
     "revenue": {
      "value": null,
@@ -9589,17 +9683,17 @@
     "eps_estimate": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-16 (nearest 2026-10-21)",
-     "final": false
+     "final": true
     },
     "eps_reported": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-16 (nearest 2026-10-21)",
-     "final": false
+     "final": true
     },
     "eps_surprise_pct": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-16 (nearest 2026-10-21)",
-     "final": false
+     "final": true
     },
     "revenue": {
      "value": null,
@@ -9894,6 +9988,74 @@
      "value": null,
      "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
      "final": false
+    }
+   }
+  },
+  {
+   "ticker": "BBWI",
+   "date": "2026-11-19",
+   "session": "BMO",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.12,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:02-05:00"
+    },
+    "eps_reported": {
+     "value": 0.26,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:02-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 117.76,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:02-05:00"
+    },
+    "revenue": {
+     "value": 1577000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-08-02",
+      "end": "2026-10-31",
+      "accn": "0000701985-26-000033",
+      "cik": 701985,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    },
+    "revenue_year_ago": {
+     "value": 1594000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-08-03",
+      "end": "2025-11-01",
+      "accn": "0000701985-26-000033",
+      "cik": 701985,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -11391,6 +11553,53 @@
    }
   },
   {
+   "ticker": "BJ",
+   "date": "2026-11-20",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.26,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:04-05:00"
+    },
+    "eps_reported": {
+     "value": 1.74,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:04-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 38.47,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:04-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "BKD",
    "date": "2026-11-06",
    "session": "BMO",
@@ -11454,6 +11663,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-07T13:03:26-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "BKE",
+   "date": "2026-11-20",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.84,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:05-05:00"
+    },
+    "eps_reported": {
+     "value": 0.94,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:05-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 12.03,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:05-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -11991,53 +12247,6 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-04T11:03:12-05:00"
-    }
-   }
-  },
-  {
-   "ticker": "BLTE",
-   "date": "2026-11-12",
-   "session": "AMC",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": -0.77,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T06:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:39:33-05:00"
-    },
-    "eps_reported": {
-     "value": -0.75,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T06:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:39:33-05:00"
-    },
-    "eps_surprise_pct": {
-     "value": 2.44,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T06:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:39:33-05:00"
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
     }
    }
   },
@@ -13025,6 +13234,41 @@
    }
   },
   {
+   "ticker": "BSP",
+   "date": "2026-11-20",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2026-11-19)",
+     "final": false
+    },
+    "eps_reported": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2026-11-19)",
+     "final": false
+    },
+    "eps_surprise_pct": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2026-11-19)",
+     "final": false
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "BSX",
    "date": "2026-10-28",
    "session": "BMO",
@@ -13291,6 +13535,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-07T13:03:26-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "BULL",
+   "date": "2026-11-19",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.07,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:07-05:00"
+    },
+    "eps_reported": {
+     "value": 0.11,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:07-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 62.62,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:07-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -17159,41 +17450,6 @@
    }
   },
   {
-   "ticker": "CIG",
-   "date": "2026-11-12",
-   "session": "AMC",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-12 (nearest 2026-08-13)",
-     "final": false
-    },
-    "eps_reported": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-12 (nearest 2026-08-13)",
-     "final": false
-    },
-    "eps_surprise_pct": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-12 (nearest 2026-08-13)",
-     "final": false
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
    "ticker": "CINF",
    "date": "2026-10-26",
    "session": "AMC",
@@ -20886,14 +21142,34 @@
      "captured_et": "2026-11-14T13:39:45-05:00"
     },
     "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 18517000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-07-26",
+      "end": "2026-10-24",
+      "accn": "0000858877-26-000185",
+      "cik": 858877,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     },
     "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 14883000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-07-27",
+      "end": "2025-10-25",
+      "accn": "0000858877-26-000185",
+      "cik": 858877,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -24073,6 +24349,53 @@
    }
   },
   {
+   "ticker": "DIS",
+   "date": "2026-11-17",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.68,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:15-05:00"
+    },
+    "eps_reported": {
+     "value": 1.77,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:15-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 5.43,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:15-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "DK",
    "date": "2026-11-06",
    "session": "BMO",
@@ -24274,39 +24597,39 @@
    }
   },
   {
-   "ticker": "DLO",
-   "date": "2026-11-12",
+   "ticker": "DLB",
+   "date": "2026-11-17",
    "session": "AMC",
    "tracks": [
     "SH-M"
    ],
    "fields": {
     "eps_estimate": {
-     "value": 0.22,
+     "value": 1.2,
      "source": "yfinance get_earnings_dates",
      "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
      "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
      },
-     "captured_et": "2026-11-14T13:39:54-05:00"
+     "captured_et": "2026-11-21T14:56:16-05:00"
     },
     "eps_reported": {
-     "value": 0.23,
+     "value": 1.25,
      "source": "yfinance get_earnings_dates",
      "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
      "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
      },
-     "captured_et": "2026-11-14T13:39:54-05:00"
+     "captured_et": "2026-11-21T14:56:16-05:00"
     },
     "eps_surprise_pct": {
-     "value": 4.81,
+     "value": 4.6,
      "source": "yfinance get_earnings_dates",
      "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
      "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
      },
-     "captured_et": "2026-11-14T13:39:54-05:00"
+     "captured_et": "2026-11-21T14:56:16-05:00"
     },
     "revenue": {
      "value": null,
@@ -26952,41 +27275,6 @@
    }
   },
   {
-   "ticker": "ELPC",
-   "date": "2026-11-12",
-   "session": "AMC",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-12 (nearest 2026-11-13)",
-     "final": false
-    },
-    "eps_reported": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-12 (nearest 2026-11-13)",
-     "final": false
-    },
-    "eps_surprise_pct": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-12 (nearest 2026-11-13)",
-     "final": false
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
    "ticker": "ELS",
    "date": "2026-10-20",
    "session": "AMC",
@@ -28524,6 +28812,53 @@
    }
   },
   {
+   "ticker": "ESE",
+   "date": "2026-11-19",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 2.6,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:19-05:00"
+    },
+    "eps_reported": {
+     "value": 2.67,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:19-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 2.82,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:19-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "ESI",
    "date": "2026-10-21",
    "session": "AMC",
@@ -28701,6 +29036,74 @@
      "value": null,
      "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
      "final": false
+    }
+   }
+  },
+  {
+   "ticker": "ESTC",
+   "date": "2026-11-19",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.81,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:20-05:00"
+    },
+    "eps_reported": {
+     "value": 0.94,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:20-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 16.12,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:20-05:00"
+    },
+    "revenue": {
+     "value": 495947000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-08-01",
+      "end": "2026-10-31",
+      "accn": "0001707753-26-000070",
+      "cik": 1707753,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    },
+    "revenue_year_ago": {
+     "value": 423481000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-08-01",
+      "end": "2025-10-31",
+      "accn": "0001707753-26-000070",
+      "cik": 1707753,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -31219,17 +31622,17 @@
     "eps_estimate": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-15 (nearest 2026-10-14)",
-     "final": false
+     "final": true
     },
     "eps_reported": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-15 (nearest 2026-10-14)",
-     "final": false
+     "final": true
     },
     "eps_surprise_pct": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-15 (nearest 2026-10-14)",
-     "final": false
+     "final": true
     },
     "revenue": {
      "value": 407000000,
@@ -31462,14 +31865,34 @@
      "captured_et": "2026-11-14T13:40:05-05:00"
     },
     "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 287122000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2026Q3",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "accn": "0001628280-26-074112",
+      "cik": 2064124,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     },
     "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 156365000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2025Q3",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "accn": "0001628280-26-074112",
+      "cik": 2064124,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -32885,28 +33308,48 @@
    "fields": {
     "eps_estimate": {
      "value": null,
-     "missing": "no Yahoo row dated 2026-11-06 (nearest 2026-11-16)",
+     "missing": "no Yahoo row dated 2026-11-06 (nearest 2027-02-08)",
      "final": false
     },
     "eps_reported": {
      "value": null,
-     "missing": "no Yahoo row dated 2026-11-06 (nearest 2026-11-16)",
+     "missing": "no Yahoo row dated 2026-11-06 (nearest 2027-02-08)",
      "final": false
     },
     "eps_surprise_pct": {
      "value": null,
-     "missing": "no Yahoo row dated 2026-11-06 (nearest 2026-11-16)",
+     "missing": "no Yahoo row dated 2026-11-06 (nearest 2027-02-08)",
      "final": false
     },
     "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 910112000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2026Q3",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "accn": "0000924805-26-000063",
+      "cik": 924805,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     },
     "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 503641000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2025Q3",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "accn": "0000924805-26-000063",
+      "cik": 924805,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -32991,6 +33434,41 @@
       "yahoo_timestamp": "2026-11-12T07:00:00-05:00"
      },
      "captured_et": "2026-11-14T13:40:08-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
+   "ticker": "FRO",
+   "date": "2026-11-20",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2026-11-19)",
+     "final": false
+    },
+    "eps_reported": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2026-11-19)",
+     "final": false
+    },
+    "eps_surprise_pct": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2026-11-19)",
+     "final": false
     },
     "revenue": {
      "value": null,
@@ -34042,6 +34520,54 @@
    }
   },
   {
+   "ticker": "GAP",
+   "date": "2026-11-19",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.78,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:25-05:00"
+    },
+    "eps_reported": {
+     "value": 0.82,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:25-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 5.09,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:25-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "GATX",
    "date": "2026-10-29",
    "session": "BMO",
@@ -34142,6 +34668,53 @@
       "yahoo_timestamp": "2026-10-22T16:00:00-04:00"
      },
      "captured_et": "2026-11-04T10:55:17-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
+   "ticker": "GBDC",
+   "date": "2026-11-17",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.33,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:26-05:00"
+    },
+    "eps_reported": {
+     "value": 0.32,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:26-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -2.54,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:26-05:00"
     },
     "revenue": {
      "value": null,
@@ -34739,6 +35312,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-04T11:03:12-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "GFF",
+   "date": "2026-11-17",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.59,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:27-05:00"
+    },
+    "eps_reported": {
+     "value": 1.61,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:27-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 1.52,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:27-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -37679,6 +38299,73 @@
    }
   },
   {
+   "ticker": "HD",
+   "date": "2026-11-17",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 3.84,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:28-05:00"
+    },
+    "eps_reported": {
+     "value": 3.86,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:28-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 0.57,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:28-05:00"
+    },
+    "revenue": {
+     "value": 43398000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-08-03",
+      "end": "2026-11-01",
+      "accn": "0001628280-26-075287",
+      "cik": 354950,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    },
+    "revenue_year_ago": {
+     "value": 41352000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-08-04",
+      "end": "2025-11-02",
+      "accn": "0001628280-26-075287",
+      "cik": 354950,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    }
+   }
+  },
+  {
    "ticker": "HG",
    "date": "2026-10-29",
    "session": "AMC",
@@ -39032,6 +39719,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-14T13:42:11-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "HP",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.24,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:30-05:00"
+    },
+    "eps_reported": {
+     "value": 0.36,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:30-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 52.42,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:30-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -41027,6 +41761,41 @@
    }
   },
   {
+   "ticker": "IESC",
+   "date": "2026-11-20",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2027-01-29)",
+     "final": false
+    },
+    "eps_reported": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2027-01-29)",
+     "final": false
+    },
+    "eps_surprise_pct": {
+     "value": null,
+     "missing": "no Yahoo row dated 2026-11-20 (nearest 2027-01-29)",
+     "final": false
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "IEX",
    "date": "2026-10-28",
    "session": "BMO",
@@ -41579,6 +42348,74 @@
    }
   },
   {
+   "ticker": "INFQ",
+   "date": "2026-11-16",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": -0.05,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:34-05:00"
+    },
+    "eps_reported": {
+     "value": -0.08,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:34-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -42.18,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:34-05:00"
+    },
+    "revenue": {
+     "value": 9149000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "accn": "0001628280-26-074188",
+      "cik": 2007825,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    },
+    "revenue_year_ago": {
+     "value": 7311000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "accn": "0001628280-26-074188",
+      "cik": 2007825,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    }
+   }
+  },
+  {
    "ticker": "INGM",
    "date": "2026-10-29",
    "session": "AMC",
@@ -42117,49 +42954,70 @@
    }
   },
   {
-   "ticker": "INTR",
-   "date": "2026-11-12",
+   "ticker": "INTU",
+   "date": "2026-11-19",
    "session": "AMC",
    "tracks": [
+    "SH-W",
     "SH-M"
    ],
    "fields": {
     "eps_estimate": {
-     "value": 0.19,
+     "value": 2.65,
      "source": "yfinance get_earnings_dates",
      "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
      "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
      },
-     "captured_et": "2026-11-14T13:40:18-05:00"
+     "captured_et": "2026-11-21T14:56:34-05:00"
     },
     "eps_reported": {
-     "value": 0.17,
+     "value": 2.91,
      "source": "yfinance get_earnings_dates",
      "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
      "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
      },
-     "captured_et": "2026-11-14T13:40:18-05:00"
+     "captured_et": "2026-11-21T14:56:34-05:00"
     },
     "eps_surprise_pct": {
-     "value": -9.54,
+     "value": 9.91,
      "source": "yfinance get_earnings_dates",
      "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
      "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
      },
-     "captured_et": "2026-11-14T13:40:18-05:00"
+     "captured_et": "2026-11-21T14:56:34-05:00"
     },
     "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 4354000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2026Q3",
+      "start": "2026-08-01",
+      "end": "2026-10-31",
+      "accn": "0000896878-26-000045",
+      "cik": 896878,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     },
     "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 3885000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2025Q3",
+      "start": "2025-08-01",
+      "end": "2025-10-31",
+      "accn": "0000896878-26-000045",
+      "cik": 896878,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -42967,19 +43825,31 @@
    ],
    "fields": {
     "eps_estimate": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-05 (nearest 2026-08-27)",
-     "final": false
+     "value": -0.66,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-05T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:36-05:00"
     },
     "eps_reported": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-05 (nearest 2026-08-27)",
-     "final": false
+     "value": -0.27,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-05T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:36-05:00"
     },
     "eps_surprise_pct": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-05 (nearest 2026-08-27)",
-     "final": false
+     "value": 60.01,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-05T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:36-05:00"
     },
     "revenue": {
      "value": 228000000,
@@ -45088,6 +45958,53 @@
    }
   },
   {
+   "ticker": "KEYS",
+   "date": "2026-11-19",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 3.38,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:38-05:00"
+    },
+    "eps_reported": {
+     "value": 3.61,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:38-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 6.79,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:38-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "KGS",
    "date": "2026-11-09",
    "session": "BMO",
@@ -45400,6 +46317,54 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-04T11:03:12-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "KLIC",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.43,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:38-05:00"
+    },
+    "eps_reported": {
+     "value": 1.52,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:38-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 6.29,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:38-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -49306,6 +50271,53 @@
    }
   },
   {
+   "ticker": "LOW",
+   "date": "2026-11-18",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 2.88,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:43-05:00"
+    },
+    "eps_reported": {
+     "value": 3.1,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:43-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 7.63,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:43-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "LPG",
    "date": "2026-11-05",
    "session": "BMO",
@@ -52588,53 +53600,6 @@
    }
   },
   {
-   "ticker": "MFG",
-   "date": "2026-11-13",
-   "session": "BMO",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": 0.21,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-13T01:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:38-05:00"
-    },
-    "eps_reported": {
-     "value": 0.24,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-13T01:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:38-05:00"
-    },
-    "eps_surprise_pct": {
-     "value": 16.71,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-13T01:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:38-05:00"
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
    "ticker": "MGM",
    "date": "2026-10-28",
    "session": "AMC",
@@ -53703,6 +54668,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-04T11:03:12-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "MMS",
+   "date": "2026-11-19",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.85,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:45-05:00"
+    },
+    "eps_reported": {
+     "value": 2.11,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:45-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 14.05,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:45-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -55952,53 +56964,6 @@
    }
   },
   {
-   "ticker": "MUFG",
-   "date": "2026-11-13",
-   "session": "AMC",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": 0.45,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-13T02:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:40-05:00"
-    },
-    "eps_reported": {
-     "value": 0.46,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-13T02:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:40-05:00"
-    },
-    "eps_surprise_pct": {
-     "value": 2.1,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-13T02:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:40-05:00"
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
    "ticker": "MUR",
    "date": "2026-11-04",
    "session": "AMC",
@@ -57708,6 +58673,53 @@
    }
   },
   {
+   "ticker": "NJR",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.13,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T17:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:47-05:00"
+    },
+    "eps_reported": {
+     "value": 0.11,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T17:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:47-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -15.91,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T17:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:47-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "NLY",
    "date": "2026-10-20",
    "session": "AMC",
@@ -57718,17 +58730,17 @@
     "eps_estimate": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "eps_reported": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "eps_surprise_pct": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "revenue": {
      "value": null,
@@ -58853,53 +59865,6 @@
    }
   },
   {
-   "ticker": "NU",
-   "date": "2026-11-12",
-   "session": "AMC",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": 0.22,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:50-05:00"
-    },
-    "eps_reported": {
-     "value": 0.22,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:50-05:00"
-    },
-    "eps_surprise_pct": {
-     "value": 0.32,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:40:50-05:00"
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
    "ticker": "NUE",
    "date": "2026-10-26",
    "session": "AMC",
@@ -58963,6 +59928,54 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-14T13:42:11-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "NVDA",
+   "date": "2026-11-17",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 2.47,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:49-05:00"
+    },
+    "eps_reported": {
+     "value": 2.68,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:49-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 8.36,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:49-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -62283,17 +63296,64 @@
     "eps_estimate": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "eps_reported": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "eps_surprise_pct": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
+     "final": true
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
      "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
+   "ticker": "P",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-W"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.78,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:52-05:00"
+    },
+    "eps_reported": {
+     "value": 0.86,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:52-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 10.85,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:52-05:00"
     },
     "revenue": {
      "value": null,
@@ -62560,6 +63620,74 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-14T13:42:11-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "PANW",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.97,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:54-05:00"
+    },
+    "eps_reported": {
+     "value": 1.05,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:54-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 8.21,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:54-05:00"
+    },
+    "revenue": {
+     "value": 3445000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-08-01",
+      "end": "2026-10-31",
+      "accn": "0001327567-26-000033",
+      "cik": 1327567,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    },
+    "revenue_year_ago": {
+     "value": 2474000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-08-01",
+      "end": "2025-10-31",
+      "accn": "0001327567-26-000033",
+      "cik": 1327567,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -66115,6 +67243,73 @@
    }
   },
   {
+   "ticker": "POST",
+   "date": "2026-11-19",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.77,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:55-05:00"
+    },
+    "eps_reported": {
+     "value": 1.84,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:55-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 3.79,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:55-05:00"
+    },
+    "revenue": {
+     "value": 1954500000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2026Q3",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "accn": "0001530950-26-000101",
+      "cik": 1530950,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    },
+    "revenue_year_ago": {
+     "value": 2247000000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "Revenues",
+      "frame": "CY2025Q3",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "accn": "0001530950-26-000101",
+      "cik": 1530950,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    }
+   }
+  },
+  {
    "ticker": "POWI",
    "date": "2026-11-04",
    "session": "AMC",
@@ -66179,6 +67374,73 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-07T13:03:26-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "POWL",
+   "date": "2026-11-16",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.56,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:56-05:00"
+    },
+    "eps_reported": {
+     "value": 2.23,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:56-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 43.35,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:56:56-05:00"
+    },
+    "revenue": {
+     "value": 396707000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "accn": "0000080420-26-000143",
+      "cik": 80420,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
+    },
+    "revenue_year_ago": {
+     "value": 297983000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerIncludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "accn": "0000080420-26-000143",
+      "cik": 80420,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -68152,14 +69414,34 @@
      "captured_et": "2026-11-14T13:41:03-05:00"
     },
     "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 4513000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-07-01",
+      "end": "2026-09-30",
+      "accn": "0001907982-26-000186",
+      "cik": 1907982,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     },
     "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 3739000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-07-01",
+      "end": "2025-09-30",
+      "accn": "0001907982-26-000186",
+      "cik": 1907982,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -70775,6 +72057,53 @@
    }
   },
   {
+   "ticker": "RLX",
+   "date": "2026-11-20",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.23,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T04:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:00-05:00"
+    },
+    "eps_reported": {
+     "value": 0.18,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T04:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:00-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -24.29,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-20T04:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:00-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "RMBS",
    "date": "2026-10-26",
    "session": "AMC",
@@ -71078,6 +72407,53 @@
       "yahoo_timestamp": "2026-10-27T16:00:00-04:00"
      },
      "captured_et": "2026-11-04T10:59:39-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
+   "ticker": "ROAD",
+   "date": "2026-11-19",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.03,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:01-05:00"
+    },
+    "eps_reported": {
+     "value": 1.01,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:01-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -1.86,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:01-05:00"
     },
     "revenue": {
      "value": null,
@@ -71472,6 +72848,54 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-04T11:03:12-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "ROST",
+   "date": "2026-11-19",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.87,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:02-05:00"
+    },
+    "eps_reported": {
+     "value": 1.91,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:02-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 2.21,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:02-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -75077,41 +76501,6 @@
    }
   },
   {
-   "ticker": "SMFG",
-   "date": "2026-11-13",
-   "session": "BMO",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-13 (nearest 2026-11-12)",
-     "final": false
-    },
-    "eps_reported": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-13 (nearest 2026-11-12)",
-     "final": false
-    },
-    "eps_surprise_pct": {
-     "value": null,
-     "missing": "no Yahoo row dated 2026-11-13 (nearest 2026-11-12)",
-     "final": false
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
    "ticker": "SMG",
    "date": "2026-11-04",
    "session": "BMO",
@@ -75169,17 +76558,17 @@
     "eps_estimate": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-19 (nearest 2026-11-04)",
-     "final": false
+     "final": true
     },
     "eps_reported": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-19 (nearest 2026-11-04)",
-     "final": false
+     "final": true
     },
     "eps_surprise_pct": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-19 (nearest 2026-11-04)",
-     "final": false
+     "final": true
     },
     "revenue": {
      "value": null,
@@ -75590,6 +76979,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-04T11:03:12-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "SNEX",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.92,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:06-05:00"
+    },
+    "eps_reported": {
+     "value": 0.68,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:06-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -26.07,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:06-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -76490,6 +77926,53 @@
    }
   },
   {
+   "ticker": "SR",
+   "date": "2026-11-17",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": -1.02,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:07-05:00"
+    },
+    "eps_reported": {
+     "value": -0.99,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:07-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 3.06,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-17T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:07-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "SRCE",
    "date": "2026-10-22",
    "session": "AMC",
@@ -77358,100 +78841,6 @@
    }
   },
   {
-   "ticker": "STN",
-   "date": "2026-11-12",
-   "session": "AMC",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": 1.78,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T17:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:41:25-05:00"
-    },
-    "eps_reported": {
-     "value": 1.89,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T17:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:41:25-05:00"
-    },
-    "eps_surprise_pct": {
-     "value": 6.15,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T17:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:41:25-05:00"
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
-   "ticker": "STNE",
-   "date": "2026-11-12",
-   "session": "AMC",
-   "tracks": [
-    "SH-M"
-   ],
-   "fields": {
-    "eps_estimate": {
-     "value": 2.5,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:41:26-05:00"
-    },
-    "eps_reported": {
-     "value": 2.32,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:41:26-05:00"
-    },
-    "eps_surprise_pct": {
-     "value": -7.43,
-     "source": "yfinance get_earnings_dates",
-     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
-     "detail": {
-      "yahoo_timestamp": "2026-11-12T16:00:00-05:00"
-     },
-     "captured_et": "2026-11-14T13:41:26-05:00"
-    },
-    "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    },
-    "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
-    }
-   }
-  },
-  {
    "ticker": "STRL",
    "date": "2026-10-28",
    "session": "AMC",
@@ -78229,17 +79618,17 @@
     "eps_estimate": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "eps_reported": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "eps_surprise_pct": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-20 (nearest 2026-10-19)",
-     "final": false
+     "final": true
     },
     "revenue": {
      "value": null,
@@ -79741,6 +81130,53 @@
    }
   },
   {
+   "ticker": "TGT",
+   "date": "2026-11-18",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 2.08,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:08-05:00"
+    },
+    "eps_reported": {
+     "value": 2.65,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:08-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 27.23,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:08-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "TGTX",
    "date": "2026-11-02",
    "session": "BMO",
@@ -80060,6 +81496,54 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-14T13:42:11-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "TJX",
+   "date": "2026-11-18",
+   "session": "BMO",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 1.34,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:10-05:00"
+    },
+    "eps_reported": {
+     "value": 1.34,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:10-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -0.07,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:10-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -81630,6 +83114,53 @@
    }
   },
   {
+   "ticker": "TSN",
+   "date": "2026-11-16",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.61,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:12-05:00"
+    },
+    "eps_reported": {
+     "value": 0.61,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:12-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -0.23,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-16T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:12-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "TT",
    "date": "2026-10-29",
    "session": "BMO",
@@ -81787,14 +83318,34 @@
      "final": false
     },
     "revenue": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 1337362000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2026Q3",
+      "start": "2026-06-29",
+      "end": "2026-09-27",
+      "accn": "0000831641-26-000024",
+      "cik": 831641,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     },
     "revenue_year_ago": {
-     "value": null,
-     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
-     "final": false
+     "value": 1330100000,
+     "source": "SEC EDGAR XBRL frames",
+     "tier": "filed (10-Q / 10-K XBRL; the frame's last-filed value)",
+     "detail": {
+      "concept": "RevenueFromContractWithCustomerExcludingAssessedTax",
+      "frame": "CY2025Q3",
+      "start": "2025-06-30",
+      "end": "2025-09-28",
+      "accn": "0000831641-26-000024",
+      "cik": 831641,
+      "unit": "USD"
+     },
+     "captured_et": "2026-11-21T14:57:41-05:00"
     }
    }
   },
@@ -83255,6 +84806,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-07T13:03:26-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "UGI",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": -0.91,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T18:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:15-05:00"
+    },
+    "eps_reported": {
+     "value": -0.17,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T18:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:15-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 81.25,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T18:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:15-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -87134,6 +88732,53 @@
    }
   },
   {
+   "ticker": "VVV",
+   "date": "2026-11-19",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.42,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:18-05:00"
+    },
+    "eps_reported": {
+     "value": 0.42,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:18-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": -0.62,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:18-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "VVX",
    "date": "2026-11-02",
    "session": "AMC",
@@ -87414,17 +89059,17 @@
     "eps_estimate": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-15 (nearest 2026-10-14)",
-     "final": false
+     "final": true
     },
     "eps_reported": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-15 (nearest 2026-10-14)",
-     "final": false
+     "final": true
     },
     "eps_surprise_pct": {
      "value": null,
      "missing": "no Yahoo row dated 2026-10-15 (nearest 2026-10-14)",
-     "final": false
+     "final": true
     },
     "revenue": {
      "value": null,
@@ -88863,6 +90508,53 @@
    }
   },
   {
+   "ticker": "WMG",
+   "date": "2026-11-19",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.43,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:20-05:00"
+    },
+    "eps_reported": {
+     "value": 0.55,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:20-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 28.47,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T07:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:20-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
    "ticker": "WMS",
    "date": "2026-11-05",
    "session": "BMO",
@@ -88926,6 +90618,53 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-07T13:03:26-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "WMT",
+   "date": "2026-11-19",
+   "session": "BMO",
+   "tracks": [
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 0.64,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:20-05:00"
+    },
+    "eps_reported": {
+     "value": 0.65,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:20-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 2.16,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T06:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:20-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
@@ -89278,6 +91017,54 @@
       "yahoo_timestamp": "2026-10-22T16:00:00-04:00"
      },
      "captured_et": "2026-11-04T11:02:05-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    }
+   }
+  },
+  {
+   "ticker": "WSM",
+   "date": "2026-11-19",
+   "session": "BMO",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 2.21,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T08:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:21-05:00"
+    },
+    "eps_reported": {
+     "value": 2.38,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T08:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:21-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 7.59,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-19T08:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:21-05:00"
     },
     "revenue": {
      "value": null,
@@ -89927,6 +91714,54 @@
       "unit": "USD"
      },
      "captured_et": "2026-11-07T13:03:26-05:00"
+    }
+   }
+  },
+  {
+   "ticker": "WWD",
+   "date": "2026-11-18",
+   "session": "AMC",
+   "tracks": [
+    "SH-W",
+    "SH-M"
+   ],
+   "fields": {
+    "eps_estimate": {
+     "value": 2.52,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:23-05:00"
+    },
+    "eps_reported": {
+     "value": 2.83,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:23-05:00"
+    },
+    "eps_surprise_pct": {
+     "value": 12.28,
+     "source": "yfinance get_earnings_dates",
+     "tier": "aggregator (Yahoo Finance; its adjusted EPS basis)",
+     "detail": {
+      "yahoo_timestamp": "2026-11-18T16:00:00-05:00"
+     },
+     "captured_et": "2026-11-21T14:57:23-05:00"
+    },
+    "revenue": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
+    },
+    "revenue_year_ago": {
+     "value": null,
+     "missing": "no quarterly fact ending <= 90 days before the print (fiscal Q4 is often annual-only; the 10-Q may be unfiled; a foreign filer reports in IFRS)",
+     "final": false
     }
    }
   },
