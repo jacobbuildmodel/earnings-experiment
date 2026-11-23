@@ -1,4 +1,4 @@
-# Health 2026-11-22 06:52 ET - **AMBER**
+# Health 2026-11-22 22:51 ET - **AMBER**
 
 check.py: PASS - 1 warning(s)
 
@@ -8,8 +8,6 @@ check.py: PASS - 1 warning(s)
 ## AMBER - look at
 - T2R missing: GAP_2026-11-19 (D013 shadow; the budget may have skipped it)
 - T2O missing: GAP_2026-11-19 (D013 shadow; the budget may have skipped it)
-- T2R missing: NVDA_2026-11-17 (D013 shadow; the budget may have skipped it)
-- T2O missing: NVDA_2026-11-17 (D013 shadow; the budget may have skipped it)
 - T2R missing: PANW_2026-11-18 (D013 shadow; the budget may have skipped it)
 - T2O missing: PANW_2026-11-18 (D013 shadow; the budget may have skipped it)
 - paper/options_ledger.json: alerts ['seasonA-DPZ-2026-10-13-F', 'seasonA-CIFR-2026-11-02-F', 'seasonA-BWXT-2026-11-02-F', 'seasonA-DOCN-2026-11-03-F', 'seasonA-BETA-2026-11-03-F', 'seasonA-DT-2026-11-03-F', 'seasonA-IPGP-2026-11-03-F', 'seasonA-LSCC-2026-11-02-F', 'seasonA-MTCH-2026-11-02-F', 'seasonA-ON-2026-11-02-F', 'seasonA-PAY-2026-11-02-F', 'seasonA-PLTR-2026-11-02-F', 'seasonA-SHOP-2026-11-03-F', 'seasonA-VRTX-2026-11-02-F', 'seasonA-VVX-2026-11-02-F', 'seasonA-YUMC-2026-11-03-F']
