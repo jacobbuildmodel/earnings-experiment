@@ -1,5 +1,8 @@
 # Earnings Experiment
 
+> **CLOSED 26 November 2026 and archived read-only.** Why: `CLOSED.md`. The whole journey in plain language: `HISTORY.md`.
+
+
 A buy-side experiment: **before each earnings print, decide BUY or NO_BUY — and learn which factors
 actually separate the winners, separately for each kind of business.**
 
